@@ -92,7 +92,8 @@ const (
 )
 
 type QGLFormat struct {
-	h *C.QGLFormat
+	h  *C.QGLFormat
+	gc *[1]*C.QGLFormat
 }
 
 func (this *QGLFormat) cPointer() *C.QGLFormat {
@@ -388,17 +389,22 @@ func (this *QGLFormat) Delete() {
 	C.QGLFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGLFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGLFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGLFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLFormat) {
+		C.QGLFormat_delete(gc[0])
 	})
 }
 
 type QGLContext struct {
-	h *C.QGLContext
+	h  *C.QGLContext
+	gc *[1]*C.QGLContext
 }
 
 func (this *QGLContext) cPointer() *C.QGLContext {
@@ -749,17 +755,22 @@ func (this *QGLContext) Delete() {
 	C.QGLContext_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGLContext) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGLContext) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGLContext{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLContext) {
+		C.QGLContext_delete(gc[0])
 	})
 }
 
 type QGLWidget struct {
-	h *C.QGLWidget
+	h  *C.QGLWidget
+	gc *[1]*C.QGLWidget
 	*qt.QWidget
 }
 
@@ -2736,11 +2747,15 @@ func (this *QGLWidget) Delete() {
 	C.QGLWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGLWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGLWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGLWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLWidget) {
+		C.QGLWidget_delete(gc[0])
 	})
 }

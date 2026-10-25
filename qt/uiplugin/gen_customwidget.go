@@ -16,7 +16,8 @@ import (
 )
 
 type QDesignerCustomWidgetInterface struct {
-	h *C.QDesignerCustomWidgetInterface
+	h  *C.QDesignerCustomWidgetInterface
+	gc *[1]*C.QDesignerCustomWidgetInterface
 }
 
 func (this *QDesignerCustomWidgetInterface) cPointer() *C.QDesignerCustomWidgetInterface {
@@ -123,17 +124,22 @@ func (this *QDesignerCustomWidgetInterface) Delete() {
 	C.QDesignerCustomWidgetInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerCustomWidgetInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerCustomWidgetInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerCustomWidgetInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerCustomWidgetInterface) {
+		C.QDesignerCustomWidgetInterface_delete(gc[0])
 	})
 }
 
 type QDesignerCustomWidgetCollectionInterface struct {
-	h *C.QDesignerCustomWidgetCollectionInterface
+	h  *C.QDesignerCustomWidgetCollectionInterface
+	gc *[1]*C.QDesignerCustomWidgetCollectionInterface
 }
 
 func (this *QDesignerCustomWidgetCollectionInterface) cPointer() *C.QDesignerCustomWidgetCollectionInterface {
@@ -173,11 +179,15 @@ func (this *QDesignerCustomWidgetCollectionInterface) Delete() {
 	C.QDesignerCustomWidgetCollectionInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerCustomWidgetCollectionInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerCustomWidgetCollectionInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerCustomWidgetCollectionInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerCustomWidgetCollectionInterface) {
+		C.QDesignerCustomWidgetCollectionInterface_delete(gc[0])
 	})
 }

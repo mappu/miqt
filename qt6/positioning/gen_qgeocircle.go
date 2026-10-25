@@ -14,7 +14,8 @@ import (
 )
 
 type QGeoCircle struct {
-	h *C.QGeoCircle
+	h  *C.QGeoCircle
+	gc *[1]*C.QGeoCircle
 	*QGeoShape
 }
 
@@ -127,11 +128,15 @@ func (this *QGeoCircle) Delete() {
 	C.QGeoCircle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoCircle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoCircle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoCircle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoCircle) {
+		C.QGeoCircle_delete(gc[0])
 	})
 }

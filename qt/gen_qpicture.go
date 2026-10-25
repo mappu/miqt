@@ -15,7 +15,8 @@ import (
 )
 
 type QPicture struct {
-	h *C.QPicture
+	h  *C.QPicture
+	gc *[1]*C.QPicture
 	*QPaintDevice
 }
 
@@ -157,7 +158,7 @@ func QPicture_PictureFormat(fileName string) string {
 func QPicture_InputFormats() [][]byte {
 	var _ma C.struct_miqt_array = C.QPicture_inputFormats()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -170,7 +171,7 @@ func QPicture_InputFormats() [][]byte {
 func QPicture_OutputFormats() [][]byte {
 	var _ma C.struct_miqt_array = C.QPicture_outputFormats()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -183,7 +184,7 @@ func QPicture_OutputFormats() [][]byte {
 func QPicture_InputFormatList() []string {
 	var _ma C.struct_miqt_array = C.QPicture_inputFormatList()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -196,7 +197,7 @@ func QPicture_InputFormatList() []string {
 func QPicture_OutputFormatList() []string {
 	var _ma C.struct_miqt_array = C.QPicture_outputFormatList()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -435,17 +436,22 @@ func (this *QPicture) Delete() {
 	C.QPicture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPicture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPicture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPicture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPicture) {
+		C.QPicture_delete(gc[0])
 	})
 }
 
 type QPictureIO struct {
-	h *C.QPictureIO
+	h  *C.QPictureIO
+	gc *[1]*C.QPictureIO
 }
 
 func (this *QPictureIO) cPointer() *C.QPictureIO {
@@ -623,7 +629,7 @@ func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
 func QPictureIO_InputFormats() [][]byte {
 	var _ma C.struct_miqt_array = C.QPictureIO_inputFormats()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -636,7 +642,7 @@ func QPictureIO_InputFormats() [][]byte {
 func QPictureIO_OutputFormats() [][]byte {
 	var _ma C.struct_miqt_array = C.QPictureIO_outputFormats()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -651,11 +657,15 @@ func (this *QPictureIO) Delete() {
 	C.QPictureIO_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPictureIO) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPictureIO) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPictureIO{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPictureIO) {
+		C.QPictureIO_delete(gc[0])
 	})
 }

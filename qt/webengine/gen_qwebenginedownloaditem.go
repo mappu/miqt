@@ -73,7 +73,8 @@ const (
 )
 
 type QWebEngineDownloadItem struct {
-	h *C.QWebEngineDownloadItem
+	h  *C.QWebEngineDownloadItem
+	gc *[1]*C.QWebEngineDownloadItem
 	*qt.QObject
 }
 
@@ -400,11 +401,15 @@ func (this *QWebEngineDownloadItem) Delete() {
 	C.QWebEngineDownloadItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineDownloadItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineDownloadItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineDownloadItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineDownloadItem) {
+		C.QWebEngineDownloadItem_delete(gc[0])
 	})
 }

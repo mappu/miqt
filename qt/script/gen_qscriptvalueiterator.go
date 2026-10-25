@@ -14,7 +14,8 @@ import (
 )
 
 type QScriptValueIterator struct {
-	h *C.QScriptValueIterator
+	h  *C.QScriptValueIterator
+	gc *[1]*C.QScriptValueIterator
 }
 
 func (this *QScriptValueIterator) cPointer() *C.QScriptValueIterator {
@@ -115,11 +116,15 @@ func (this *QScriptValueIterator) Delete() {
 	C.QScriptValueIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptValueIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptValueIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptValueIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptValueIterator) {
+		C.QScriptValueIterator_delete(gc[0])
 	})
 }

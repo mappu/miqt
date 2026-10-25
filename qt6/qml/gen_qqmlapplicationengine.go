@@ -16,7 +16,8 @@ import (
 )
 
 type QQmlApplicationEngine struct {
-	h *C.QQmlApplicationEngine
+	h  *C.QQmlApplicationEngine
+	gc *[1]*C.QQmlApplicationEngine
 	*QQmlEngine
 }
 
@@ -117,7 +118,7 @@ func QQmlApplicationEngine_Tr(s string) string {
 func (this *QQmlApplicationEngine) RootObjects() []*qt6.QObject {
 	var _ma C.struct_miqt_array = C.QQmlApplicationEngine_rootObjects(this.h)
 	_ret := make([]*qt6.QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt6.UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
@@ -137,10 +138,12 @@ func (this *QQmlApplicationEngine) LoadWithFilePath(filePath string) {
 }
 
 func (this *QQmlApplicationEngine) SetInitialProperties(initialProperties map[string]qt6.QVariant) {
-	initialProperties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray))
-	initialProperties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Values_CArray))
+	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
+	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
+	initialProperties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Values_CArray_ptr))
+	initialProperties_Values_CArray := unsafe.Slice(initialProperties_Values_CArray_ptr, len(initialProperties))
 	initialProperties_ctr := 0
 	for initialProperties_k, initialProperties_v := range initialProperties {
 		initialProperties_k_ms := C.struct_miqt_string{}
@@ -153,15 +156,16 @@ func (this *QQmlApplicationEngine) SetInitialProperties(initialProperties map[st
 	}
 	initialProperties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(initialProperties)),
-		keys:   unsafe.Pointer(initialProperties_Keys_CArray),
-		values: unsafe.Pointer(initialProperties_Values_CArray),
+		keys:   unsafe.Pointer(initialProperties_Keys_CArray_ptr),
+		values: unsafe.Pointer(initialProperties_Values_CArray_ptr),
 	}
 	C.QQmlApplicationEngine_setInitialProperties(this.h, initialProperties_mm)
 }
 
 func (this *QQmlApplicationEngine) SetExtraFileSelectors(extraFileSelectors []string) {
-	extraFileSelectors_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(extraFileSelectors))))
-	defer C.free(unsafe.Pointer(extraFileSelectors_CArray))
+	extraFileSelectors_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(extraFileSelectors))))
+	defer C.free(unsafe.Pointer(extraFileSelectors_CArray_ptr))
+	extraFileSelectors_CArray := unsafe.Slice(extraFileSelectors_CArray_ptr, len(extraFileSelectors))
 	for i := range extraFileSelectors {
 		extraFileSelectors_i_ms := C.struct_miqt_string{}
 		extraFileSelectors_i_ms.data = C.CString(extraFileSelectors[i])
@@ -169,7 +173,7 @@ func (this *QQmlApplicationEngine) SetExtraFileSelectors(extraFileSelectors []st
 		defer C.free(unsafe.Pointer(extraFileSelectors_i_ms.data))
 		extraFileSelectors_CArray[i] = extraFileSelectors_i_ms
 	}
-	extraFileSelectors_ma := C.struct_miqt_array{len: C.size_t(len(extraFileSelectors)), data: unsafe.Pointer(extraFileSelectors_CArray)}
+	extraFileSelectors_ma := C.struct_miqt_array{len: C.size_t(len(extraFileSelectors)), data: unsafe.Pointer(extraFileSelectors_CArray_ptr)}
 	C.QQmlApplicationEngine_setExtraFileSelectors(this.h, extraFileSelectors_ma)
 }
 
@@ -510,11 +514,15 @@ func (this *QQmlApplicationEngine) Delete() {
 	C.QQmlApplicationEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlApplicationEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlApplicationEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlApplicationEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlApplicationEngine) {
+		C.QQmlApplicationEngine_delete(gc[0])
 	})
 }

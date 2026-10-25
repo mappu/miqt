@@ -15,7 +15,8 @@ import (
 )
 
 type QSignalMapper struct {
-	h *C.QSignalMapper
+	h  *C.QSignalMapper
+	gc *[1]*C.QSignalMapper
 	*QObject
 }
 
@@ -611,11 +612,15 @@ func (this *QSignalMapper) Delete() {
 	C.QSignalMapper_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSignalMapper) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSignalMapper) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSignalMapper{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSignalMapper) {
+		C.QSignalMapper_delete(gc[0])
 	})
 }

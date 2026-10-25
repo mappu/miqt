@@ -30,7 +30,8 @@ const (
 )
 
 type QValidator struct {
-	h *C.QValidator
+	h  *C.QValidator
+	gc *[1]*C.QValidator
 	*QObject
 }
 
@@ -471,17 +472,22 @@ func (this *QValidator) Delete() {
 	C.QValidator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QValidator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QValidator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QValidator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QValidator) {
+		C.QValidator_delete(gc[0])
 	})
 }
 
 type QIntValidator struct {
-	h *C.QIntValidator
+	h  *C.QIntValidator
+	gc *[1]*C.QIntValidator
 	*QValidator
 }
 
@@ -977,17 +983,22 @@ func (this *QIntValidator) Delete() {
 	C.QIntValidator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIntValidator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIntValidator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIntValidator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIntValidator) {
+		C.QIntValidator_delete(gc[0])
 	})
 }
 
 type QDoubleValidator struct {
-	h *C.QDoubleValidator
+	h  *C.QDoubleValidator
+	gc *[1]*C.QDoubleValidator
 	*QValidator
 }
 
@@ -1543,17 +1554,22 @@ func (this *QDoubleValidator) Delete() {
 	C.QDoubleValidator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDoubleValidator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDoubleValidator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDoubleValidator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDoubleValidator) {
+		C.QDoubleValidator_delete(gc[0])
 	})
 }
 
 type QRegularExpressionValidator struct {
-	h *C.QRegularExpressionValidator
+	h  *C.QRegularExpressionValidator
+	gc *[1]*C.QRegularExpressionValidator
 	*QValidator
 }
 
@@ -2011,11 +2027,15 @@ func (this *QRegularExpressionValidator) Delete() {
 	C.QRegularExpressionValidator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRegularExpressionValidator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRegularExpressionValidator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRegularExpressionValidator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpressionValidator) {
+		C.QRegularExpressionValidator_delete(gc[0])
 	})
 }

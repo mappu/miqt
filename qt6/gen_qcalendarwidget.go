@@ -38,7 +38,8 @@ const (
 )
 
 type QCalendarWidget struct {
-	h *C.QCalendarWidget
+	h  *C.QCalendarWidget
+	gc *[1]*C.QCalendarWidget
 	*QWidget
 }
 
@@ -223,8 +224,8 @@ func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *Q
 func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
 	var _mm C.struct_miqt_map = C.QCalendarWidget_dateTextFormat(this.h)
 	_ret := make(map[QDate]QTextCharFormat, int(_mm.len))
-	_Keys := (*[0xffff]*C.QDate)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QTextCharFormat)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((**C.QDate)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QTextCharFormat)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_mapkey_goptr := newQDate(_Keys[i])
 		_mapkey_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1850,11 +1851,15 @@ func (this *QCalendarWidget) Delete() {
 	C.QCalendarWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCalendarWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCalendarWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCalendarWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendarWidget) {
+		C.QCalendarWidget_delete(gc[0])
 	})
 }

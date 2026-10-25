@@ -33,7 +33,8 @@ const (
 )
 
 type QStateMachine struct {
-	h *C.QStateMachine
+	h  *C.QStateMachine
+	gc *[1]*C.QStateMachine
 	*QState
 }
 
@@ -153,7 +154,7 @@ func (this *QStateMachine) AddDefaultAnimation(animation *qt6.QAbstractAnimation
 func (this *QStateMachine) DefaultAnimations() []*qt6.QAbstractAnimation {
 	var _ma C.struct_miqt_array = C.QStateMachine_defaultAnimations(this.h)
 	_ret := make([]*qt6.QAbstractAnimation, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractAnimation)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt6.UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
@@ -187,7 +188,7 @@ func (this *QStateMachine) CancelDelayedEvent(id int) bool {
 func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 	var _ma C.struct_miqt_array = C.QStateMachine_configuration(this.h)
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractState)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_element := newQAbstractState(_outCast[i])
 
@@ -696,17 +697,22 @@ func (this *QStateMachine) Delete() {
 	C.QStateMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStateMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStateMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStateMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine) {
+		C.QStateMachine_delete(gc[0])
 	})
 }
 
 type QStateMachine__SignalEvent struct {
-	h *C.QStateMachine__SignalEvent
+	h  *C.QStateMachine__SignalEvent
+	gc *[1]*C.QStateMachine__SignalEvent
 	*qt6.QEvent
 }
 
@@ -743,12 +749,13 @@ func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer) *QStateMachine__Signa
 
 // NewQStateMachine__SignalEvent constructs a new QStateMachine::SignalEvent object.
 func NewQStateMachine__SignalEvent(sender *qt6.QObject, signalIndex int, arguments []qt6.QVariant) *QStateMachine__SignalEvent {
-	arguments_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_CArray[i] = (*C.QVariant)(arguments[i].UnsafePointer())
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 
 	return newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new((*C.QObject)(sender.UnsafePointer()), (C.int)(signalIndex), arguments_ma))
 }
@@ -770,7 +777,7 @@ func (this *QStateMachine__SignalEvent) SignalIndex() int {
 func (this *QStateMachine__SignalEvent) Arguments() []qt6.QVariant {
 	var _ma C.struct_miqt_array = C.QStateMachine__SignalEvent_arguments(this.h)
 	_ret := make([]qt6.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -839,17 +846,22 @@ func (this *QStateMachine__SignalEvent) Delete() {
 	C.QStateMachine__SignalEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStateMachine__SignalEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStateMachine__SignalEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStateMachine__SignalEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine__SignalEvent) {
+		C.QStateMachine__SignalEvent_delete(gc[0])
 	})
 }
 
 type QStateMachine__WrappedEvent struct {
-	h *C.QStateMachine__WrappedEvent
+	h  *C.QStateMachine__WrappedEvent
+	gc *[1]*C.QStateMachine__WrappedEvent
 	*qt6.QEvent
 }
 
@@ -964,11 +976,15 @@ func (this *QStateMachine__WrappedEvent) Delete() {
 	C.QStateMachine__WrappedEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStateMachine__WrappedEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStateMachine__WrappedEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStateMachine__WrappedEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine__WrappedEvent) {
+		C.QStateMachine__WrappedEvent_delete(gc[0])
 	})
 }

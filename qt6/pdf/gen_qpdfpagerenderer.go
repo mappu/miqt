@@ -23,7 +23,8 @@ const (
 )
 
 type QPdfPageRenderer struct {
-	h *C.QPdfPageRenderer
+	h  *C.QPdfPageRenderer
+	gc *[1]*C.QPdfPageRenderer
 	*qt6.QObject
 }
 
@@ -458,11 +459,15 @@ func (this *QPdfPageRenderer) Delete() {
 	C.QPdfPageRenderer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPdfPageRenderer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPdfPageRenderer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPdfPageRenderer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfPageRenderer) {
+		C.QPdfPageRenderer_delete(gc[0])
 	})
 }

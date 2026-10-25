@@ -15,7 +15,8 @@ import (
 )
 
 type QFocusFrame struct {
-	h *C.QFocusFrame
+	h  *C.QFocusFrame
+	gc *[1]*C.QFocusFrame
 	*QWidget
 }
 
@@ -1534,11 +1535,15 @@ func (this *QFocusFrame) Delete() {
 	C.QFocusFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFocusFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFocusFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFocusFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFocusFrame) {
+		C.QFocusFrame_delete(gc[0])
 	})
 }

@@ -23,7 +23,8 @@ const (
 )
 
 type QWebElement struct {
-	h *C.QWebElement
+	h  *C.QWebElement
+	gc *[1]*C.QWebElement
 }
 
 func (this *QWebElement) cPointer() *C.QWebElement {
@@ -248,7 +249,7 @@ func (this *QWebElement) HasAttributes() bool {
 func (this *QWebElement) AttributeNames() []string {
 	var _ma C.struct_miqt_array = C.QWebElement_attributeNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -261,7 +262,7 @@ func (this *QWebElement) AttributeNames() []string {
 func (this *QWebElement) Classes() []string {
 	var _ma C.struct_miqt_array = C.QWebElement_classes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -569,7 +570,7 @@ func (this *QWebElement) AttributeNamesWithNamespaceUri(namespaceUri string) []s
 	defer C.free(unsafe.Pointer(namespaceUri_ms.data))
 	var _ma C.struct_miqt_array = C.QWebElement_attributeNamesWithNamespaceUri(this.h, namespaceUri_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -584,17 +585,22 @@ func (this *QWebElement) Delete() {
 	C.QWebElement_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebElement) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebElement) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebElement{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebElement) {
+		C.QWebElement_delete(gc[0])
 	})
 }
 
 type QWebElementCollection struct {
-	h *C.QWebElementCollection
+	h  *C.QWebElementCollection
+	gc *[1]*C.QWebElementCollection
 }
 
 func (this *QWebElementCollection) cPointer() *C.QWebElementCollection {
@@ -696,7 +702,7 @@ func (this *QWebElementCollection) Last() *QWebElement {
 func (this *QWebElementCollection) ToList() []QWebElement {
 	var _ma C.struct_miqt_array = C.QWebElementCollection_toList(this.h)
 	_ret := make([]QWebElement, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebElement)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebElement)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebElement(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -746,17 +752,22 @@ func (this *QWebElementCollection) Delete() {
 	C.QWebElementCollection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebElementCollection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebElementCollection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebElementCollection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebElementCollection) {
+		C.QWebElementCollection_delete(gc[0])
 	})
 }
 
 type QWebElementCollection__const_iterator struct {
-	h *C.QWebElementCollection__const_iterator
+	h  *C.QWebElementCollection__const_iterator
+	gc *[1]*C.QWebElementCollection__const_iterator
 }
 
 func (this *QWebElementCollection__const_iterator) cPointer() *C.QWebElementCollection__const_iterator {
@@ -878,17 +889,22 @@ func (this *QWebElementCollection__const_iterator) Delete() {
 	C.QWebElementCollection__const_iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebElementCollection__const_iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebElementCollection__const_iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebElementCollection__const_iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebElementCollection__const_iterator) {
+		C.QWebElementCollection__const_iterator_delete(gc[0])
 	})
 }
 
 type QWebElementCollection__iterator struct {
-	h *C.QWebElementCollection__iterator
+	h  *C.QWebElementCollection__iterator
+	gc *[1]*C.QWebElementCollection__iterator
 }
 
 func (this *QWebElementCollection__iterator) cPointer() *C.QWebElementCollection__iterator {
@@ -1010,11 +1026,15 @@ func (this *QWebElementCollection__iterator) Delete() {
 	C.QWebElementCollection__iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebElementCollection__iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebElementCollection__iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebElementCollection__iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebElementCollection__iterator) {
+		C.QWebElementCollection__iterator_delete(gc[0])
 	})
 }

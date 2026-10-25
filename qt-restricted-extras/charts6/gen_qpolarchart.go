@@ -23,7 +23,8 @@ const (
 )
 
 type QPolarChart struct {
-	h *C.QPolarChart
+	h  *C.QPolarChart
+	gc *[1]*C.QPolarChart
 	*QChart
 }
 
@@ -102,7 +103,7 @@ func (this *QPolarChart) AddAxis(axis *QAbstractAxis, polarOrientation QPolarCha
 func (this *QPolarChart) Axes() []*QAbstractAxis {
 	var _ma C.struct_miqt_array = C.QPolarChart_axes(this.h)
 	_ret := make([]*QAbstractAxis, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAxis)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractAxis)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAbstractAxis(_outCast[i])
 	}
@@ -138,7 +139,7 @@ func QPolarChart_Tr3(s string, c string, n int) string {
 func (this *QPolarChart) AxesWithPolarOrientation(polarOrientation QPolarChart__PolarOrientation) []*QAbstractAxis {
 	var _ma C.struct_miqt_array = C.QPolarChart_axesWithPolarOrientation(this.h, (C.int)(polarOrientation))
 	_ret := make([]*QAbstractAxis, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAxis)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractAxis)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAbstractAxis(_outCast[i])
 	}
@@ -148,7 +149,7 @@ func (this *QPolarChart) AxesWithPolarOrientation(polarOrientation QPolarChart__
 func (this *QPolarChart) Axes2(polarOrientation QPolarChart__PolarOrientation, series *QAbstractSeries) []*QAbstractAxis {
 	var _ma C.struct_miqt_array = C.QPolarChart_axes2(this.h, (C.int)(polarOrientation), series.cPointer())
 	_ret := make([]*QAbstractAxis, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAxis)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractAxis)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAbstractAxis(_outCast[i])
 	}
@@ -2029,11 +2030,15 @@ func (this *QPolarChart) Delete() {
 	C.QPolarChart_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPolarChart) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPolarChart) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPolarChart{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPolarChart) {
+		C.QPolarChart_delete(gc[0])
 	})
 }

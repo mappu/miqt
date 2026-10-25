@@ -40,7 +40,8 @@ const (
 )
 
 type QCameraImageCapture struct {
-	h *C.QCameraImageCapture
+	h  *C.QCameraImageCapture
+	gc *[1]*C.QCameraImageCapture
 	*qt.QObject
 	*QMediaBindableInterface
 }
@@ -148,7 +149,7 @@ func (this *QCameraImageCapture) IsReadyForCapture() bool {
 func (this *QCameraImageCapture) SupportedImageCodecs() []string {
 	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedImageCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -172,7 +173,7 @@ func (this *QCameraImageCapture) ImageCodecDescription(codecName string) string 
 func (this *QCameraImageCapture) SupportedResolutions() []qt.QSize {
 	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -194,7 +195,7 @@ func (this *QCameraImageCapture) SetEncodingSettings(settings *QImageEncoderSett
 func (this *QCameraImageCapture) SupportedBufferFormats() []QVideoFrame__PixelFormat {
 	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedBufferFormats(this.h)
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QVideoFrame__PixelFormat)(_outCast[i])
 	}
@@ -490,7 +491,7 @@ func QCameraImageCapture_TrUtf83(s string, c string, n int) string {
 func (this *QCameraImageCapture) SupportedResolutionsWithSettings(settings *QImageEncoderSettings) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -502,7 +503,7 @@ func (this *QCameraImageCapture) SupportedResolutionsWithSettings(settings *QIma
 func (this *QCameraImageCapture) SupportedResolutions2(settings *QImageEncoderSettings, continuous *bool) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -823,11 +824,15 @@ func (this *QCameraImageCapture) Delete() {
 	C.QCameraImageCapture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraImageCapture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraImageCapture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraImageCapture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraImageCapture) {
+		C.QCameraImageCapture_delete(gc[0])
 	})
 }

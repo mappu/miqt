@@ -220,7 +220,8 @@ const (
 )
 
 type QsciScintilla struct {
-	h *C.QsciScintilla
+	h  *C.QsciScintilla
+	gc *[1]*C.QsciScintilla
 	*QsciScintillaBase
 }
 
@@ -298,7 +299,7 @@ func QsciScintilla_TrUtf8(s string) string {
 func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_start *int) []string {
 	var _ma C.struct_miqt_array = C.QsciScintilla_apiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -439,7 +440,7 @@ func (this *QsciScintilla) Color() *qt.QColor {
 func (this *QsciScintilla) ContractedFolds() []int {
 	var _ma C.struct_miqt_array = C.QsciScintilla_contractedFolds(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -785,8 +786,9 @@ func (this *QsciScintilla) SetAutoCompletionFillups(fillups string) {
 }
 
 func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) {
-	separators_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(separators))))
-	defer C.free(unsafe.Pointer(separators_CArray))
+	separators_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(separators))))
+	defer C.free(unsafe.Pointer(separators_CArray_ptr))
+	separators_CArray := unsafe.Slice(separators_CArray_ptr, len(separators))
 	for i := range separators {
 		separators_i_ms := C.struct_miqt_string{}
 		separators_i_ms.data = C.CString(separators[i])
@@ -794,7 +796,7 @@ func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) 
 		defer C.free(unsafe.Pointer(separators_i_ms.data))
 		separators_CArray[i] = separators_i_ms
 	}
-	separators_ma := C.struct_miqt_array{len: C.size_t(len(separators)), data: unsafe.Pointer(separators_CArray)}
+	separators_ma := C.struct_miqt_array{len: C.size_t(len(separators)), data: unsafe.Pointer(separators_CArray_ptr)}
 	C.QsciScintilla_setAutoCompletionWordSeparators(this.h, separators_ma)
 }
 
@@ -823,12 +825,13 @@ func (this *QsciScintilla) SetCallTipsVisible(nr int) {
 }
 
 func (this *QsciScintilla) SetContractedFolds(folds []int) {
-	folds_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(folds))))
-	defer C.free(unsafe.Pointer(folds_CArray))
+	folds_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(folds))))
+	defer C.free(unsafe.Pointer(folds_CArray_ptr))
+	folds_CArray := unsafe.Slice(folds_CArray_ptr, len(folds))
 	for i := range folds {
 		folds_CArray[i] = (C.int)(folds[i])
 	}
-	folds_ma := C.struct_miqt_array{len: C.size_t(len(folds)), data: unsafe.Pointer(folds_CArray)}
+	folds_ma := C.struct_miqt_array{len: C.size_t(len(folds)), data: unsafe.Pointer(folds_CArray_ptr)}
 	C.QsciScintilla_setContractedFolds(this.h, folds_ma)
 }
 
@@ -1036,8 +1039,9 @@ func (this *QsciScintilla) SetWrapIndentMode(mode QsciScintilla__WrapIndentMode)
 }
 
 func (this *QsciScintilla) ShowUserList(id int, list []string) {
-	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_i_ms := C.struct_miqt_string{}
 		list_i_ms.data = C.CString(list[i])
@@ -1045,7 +1049,7 @@ func (this *QsciScintilla) ShowUserList(id int, list []string) {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QsciScintilla_showUserList(this.h, (C.int)(id), list_ma)
 }
 
@@ -2074,7 +2078,7 @@ func (this *QsciScintilla) callVirtualBase_ApiContext(pos int, context_start *in
 
 	var _ma C.struct_miqt_array = C.QsciScintilla_virtualbase_apiContext(unsafe.Pointer(this.h), (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -2106,14 +2110,15 @@ func miqt_exec_callback_QsciScintilla_apiContext(self *C.QsciScintilla, cb C.int
 	slotval3 := (*int)(unsafe.Pointer(last_word_start))
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_ApiContext, slotval1, slotval2, slotval3)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -5795,11 +5800,15 @@ func (this *QsciScintilla) Delete() {
 	C.QsciScintilla_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QsciScintilla) GoGC() {
-	runtime.SetFinalizer(this, func(this *QsciScintilla) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QsciScintilla{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciScintilla) {
+		C.QsciScintilla_delete(gc[0])
 	})
 }

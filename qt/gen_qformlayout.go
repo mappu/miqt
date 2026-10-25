@@ -39,7 +39,8 @@ const (
 )
 
 type QFormLayout struct {
-	h *C.QFormLayout
+	h  *C.QFormLayout
+	gc *[1]*C.QFormLayout
 	*QLayout
 }
 
@@ -1224,17 +1225,22 @@ func (this *QFormLayout) Delete() {
 	C.QFormLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFormLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFormLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFormLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFormLayout) {
+		C.QFormLayout_delete(gc[0])
 	})
 }
 
 type QFormLayout__TakeRowResult struct {
-	h *C.QFormLayout__TakeRowResult
+	h  *C.QFormLayout__TakeRowResult
+	gc *[1]*C.QFormLayout__TakeRowResult
 }
 
 func (this *QFormLayout__TakeRowResult) cPointer() *C.QFormLayout__TakeRowResult {
@@ -1286,11 +1292,15 @@ func (this *QFormLayout__TakeRowResult) Delete() {
 	C.QFormLayout__TakeRowResult_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFormLayout__TakeRowResult) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFormLayout__TakeRowResult) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFormLayout__TakeRowResult{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFormLayout__TakeRowResult) {
+		C.QFormLayout__TakeRowResult_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QWebEngineClientCertificateSelection struct {
-	h *C.QWebEngineClientCertificateSelection
+	h  *C.QWebEngineClientCertificateSelection
+	gc *[1]*C.QWebEngineClientCertificateSelection
 }
 
 func (this *QWebEngineClientCertificateSelection) cPointer() *C.QWebEngineClientCertificateSelection {
@@ -74,7 +75,7 @@ func (this *QWebEngineClientCertificateSelection) SelectNone() {
 func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslCertificate {
 	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateSelection_certificates(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -88,11 +89,15 @@ func (this *QWebEngineClientCertificateSelection) Delete() {
 	C.QWebEngineClientCertificateSelection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineClientCertificateSelection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineClientCertificateSelection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineClientCertificateSelection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineClientCertificateSelection) {
+		C.QWebEngineClientCertificateSelection_delete(gc[0])
 	})
 }

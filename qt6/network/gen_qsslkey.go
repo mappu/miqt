@@ -15,7 +15,8 @@ import (
 )
 
 type QSslKey struct {
-	h *C.QSslKey
+	h  *C.QSslKey
+	gc *[1]*C.QSslKey
 }
 
 func (this *QSslKey) cPointer() *C.QSslKey {
@@ -247,11 +248,15 @@ func (this *QSslKey) Delete() {
 	C.QSslKey_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSslKey) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSslKey) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSslKey{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslKey) {
+		C.QSslKey_delete(gc[0])
 	})
 }

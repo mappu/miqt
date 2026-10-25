@@ -14,7 +14,8 @@ import (
 )
 
 type QMimeType struct {
-	h *C.QMimeType
+	h  *C.QMimeType
+	gc *[1]*C.QMimeType
 }
 
 func (this *QMimeType) cPointer() *C.QMimeType {
@@ -112,7 +113,7 @@ func (this *QMimeType) IconName() string {
 func (this *QMimeType) GlobPatterns() []string {
 	var _ma C.struct_miqt_array = C.QMimeType_globPatterns(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -125,7 +126,7 @@ func (this *QMimeType) GlobPatterns() []string {
 func (this *QMimeType) ParentMimeTypes() []string {
 	var _ma C.struct_miqt_array = C.QMimeType_parentMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -138,7 +139,7 @@ func (this *QMimeType) ParentMimeTypes() []string {
 func (this *QMimeType) AllAncestors() []string {
 	var _ma C.struct_miqt_array = C.QMimeType_allAncestors(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -151,7 +152,7 @@ func (this *QMimeType) AllAncestors() []string {
 func (this *QMimeType) Aliases() []string {
 	var _ma C.struct_miqt_array = C.QMimeType_aliases(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -164,7 +165,7 @@ func (this *QMimeType) Aliases() []string {
 func (this *QMimeType) Suffixes() []string {
 	var _ma C.struct_miqt_array = C.QMimeType_suffixes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -201,11 +202,15 @@ func (this *QMimeType) Delete() {
 	C.QMimeType_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMimeType) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMimeType) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMimeType{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMimeType) {
+		C.QMimeType_delete(gc[0])
 	})
 }

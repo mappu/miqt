@@ -14,7 +14,8 @@ import (
 )
 
 type QGeoRectangle struct {
-	h *C.QGeoRectangle
+	h  *C.QGeoRectangle
+	gc *[1]*C.QGeoRectangle
 	*QGeoShape
 }
 
@@ -69,12 +70,13 @@ func NewQGeoRectangle3(topLeft *QGeoCoordinate, bottomRight *QGeoCoordinate) *QG
 
 // NewQGeoRectangle4 constructs a new QGeoRectangle object.
 func NewQGeoRectangle4(coordinates []QGeoCoordinate) *QGeoRectangle {
-	coordinates_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(coordinates))))
-	defer C.free(unsafe.Pointer(coordinates_CArray))
+	coordinates_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(coordinates))))
+	defer C.free(unsafe.Pointer(coordinates_CArray_ptr))
+	coordinates_CArray := unsafe.Slice(coordinates_CArray_ptr, len(coordinates))
 	for i := range coordinates {
 		coordinates_CArray[i] = coordinates[i].cPointer()
 	}
-	coordinates_ma := C.struct_miqt_array{len: C.size_t(len(coordinates)), data: unsafe.Pointer(coordinates_CArray)}
+	coordinates_ma := C.struct_miqt_array{len: C.size_t(len(coordinates)), data: unsafe.Pointer(coordinates_CArray_ptr)}
 
 	return newQGeoRectangle(C.QGeoRectangle_new4(coordinates_ma))
 }
@@ -219,11 +221,15 @@ func (this *QGeoRectangle) Delete() {
 	C.QGeoRectangle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoRectangle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoRectangle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoRectangle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoRectangle) {
+		C.QGeoRectangle_delete(gc[0])
 	})
 }

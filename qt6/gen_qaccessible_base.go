@@ -217,7 +217,8 @@ const (
 )
 
 type QAccessible struct {
-	h *C.QAccessible
+	h  *C.QAccessible
+	gc *[1]*C.QAccessible
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -318,17 +319,22 @@ func (this *QAccessible) Delete() {
 	C.QAccessible_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessible) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessible) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessible{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible) {
+		C.QAccessible_delete(gc[0])
 	})
 }
 
 type QAccessible__State struct {
-	h *C.QAccessible__State
+	h  *C.QAccessible__State
+	gc *[1]*C.QAccessible__State
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -666,17 +672,22 @@ func (this *QAccessible__State) Delete() {
 	C.QAccessible__State_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessible__State) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessible__State) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessible__State{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible__State) {
+		C.QAccessible__State_delete(gc[0])
 	})
 }
 
 type QAccessible__ActivationObserver struct {
-	h *C.QAccessible__ActivationObserver
+	h  *C.QAccessible__ActivationObserver
+	gc *[1]*C.QAccessible__ActivationObserver
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
@@ -720,11 +731,15 @@ func (this *QAccessible__ActivationObserver) Delete() {
 	C.QAccessible__ActivationObserver_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessible__ActivationObserver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessible__ActivationObserver) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessible__ActivationObserver{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible__ActivationObserver) {
+		C.QAccessible__ActivationObserver_delete(gc[0])
 	})
 }

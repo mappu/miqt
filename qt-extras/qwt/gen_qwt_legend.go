@@ -16,7 +16,8 @@ import (
 )
 
 type QwtLegend struct {
-	h *C.QwtLegend
+	h  *C.QwtLegend
+	gc *[1]*C.QwtLegend
 	*QwtAbstractLegend
 }
 
@@ -122,7 +123,7 @@ func (this *QwtLegend) LegendWidget(param1 *qt.QVariant) *qt.QWidget {
 func (this *QwtLegend) LegendWidgets(param1 *qt.QVariant) []*qt.QWidget {
 	var _ma C.struct_miqt_array = C.QwtLegend_legendWidgets(this.h, (*C.QVariant)(param1.UnsafePointer()))
 	_ret := make([]*qt.QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt.UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
@@ -220,12 +221,13 @@ func miqt_exec_callback_QwtLegend_checked(cb C.intptr_t, itemInfo *C.QVariant, o
 }
 
 func (this *QwtLegend) UpdateLegend(param1 *qt.QVariant, param2 []QwtLegendData) {
-	param2_CArray := (*[0xffff]*C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = param2[i].cPointer()
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 	C.QwtLegend_updateLegend(this.h, (*C.QVariant)(param1.UnsafePointer()), param2_ma)
 }
 
@@ -644,12 +646,13 @@ func miqt_exec_callback_QwtLegend_scrollExtent(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_UpdateLegend(param1 *qt.QVariant, param2 []QwtLegendData) {
-	param2_CArray := (*[0xffff]*C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = param2[i].cPointer()
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 
 	C.QwtLegend_virtualbase_updateLegend(unsafe.Pointer(this.h), (*C.QVariant)(param1.UnsafePointer()), param2_ma)
 
@@ -673,7 +676,7 @@ func miqt_exec_callback_QwtLegend_updateLegend(self *C.QwtLegend, cb C.intptr_t,
 
 	var param2_ma C.struct_miqt_array = param2
 	param2_ret := make([]QwtLegendData, int(param2_ma.len))
-	param2_outCast := (*[0xffff]*C.QwtLegendData)(unsafe.Pointer(param2_ma.data)) // hey ya
+	param2_outCast := unsafe.Slice((**C.QwtLegendData)(unsafe.Pointer(param2_ma.data)), int(param2_ma.len))
 	for i := 0; i < int(param2_ma.len); i++ {
 		param2_lv_goptr := newQwtLegendData(param2_outCast[i])
 		param2_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1914,11 +1917,15 @@ func (this *QwtLegend) Delete() {
 	C.QwtLegend_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLegend) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLegend) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLegend{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLegend) {
+		C.QwtLegend_delete(gc[0])
 	})
 }

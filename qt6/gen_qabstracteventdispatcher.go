@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractEventDispatcher struct {
-	h *C.QAbstractEventDispatcher
+	h  *C.QAbstractEventDispatcher
+	gc *[1]*C.QAbstractEventDispatcher
 	*QObject
 }
 
@@ -104,7 +105,7 @@ func (this *QAbstractEventDispatcher) UnregisterTimers(object *QObject) bool {
 func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstractEventDispatcher__TimerInfo {
 	var _ma C.struct_miqt_array = C.QAbstractEventDispatcher_registeredTimers(this.h, object.cPointer())
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -217,17 +218,22 @@ func (this *QAbstractEventDispatcher) Delete() {
 	C.QAbstractEventDispatcher_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractEventDispatcher) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractEventDispatcher) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractEventDispatcher{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractEventDispatcher) {
+		C.QAbstractEventDispatcher_delete(gc[0])
 	})
 }
 
 type QAbstractEventDispatcher__TimerInfo struct {
-	h *C.QAbstractEventDispatcher__TimerInfo
+	h  *C.QAbstractEventDispatcher__TimerInfo
+	gc *[1]*C.QAbstractEventDispatcher__TimerInfo
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDispatcher__TimerInfo {
@@ -293,11 +299,15 @@ func (this *QAbstractEventDispatcher__TimerInfo) Delete() {
 	C.QAbstractEventDispatcher__TimerInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractEventDispatcher__TimerInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractEventDispatcher__TimerInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractEventDispatcher__TimerInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractEventDispatcher__TimerInfo) {
+		C.QAbstractEventDispatcher__TimerInfo_delete(gc[0])
 	})
 }

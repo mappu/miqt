@@ -16,7 +16,8 @@ import (
 )
 
 type QBoxPlotSeries struct {
-	h *C.QBoxPlotSeries
+	h  *C.QBoxPlotSeries
+	gc *[1]*C.QBoxPlotSeries
 	*QAbstractSeries
 }
 
@@ -95,12 +96,13 @@ func (this *QBoxPlotSeries) Take(box *QBoxSet) bool {
 }
 
 func (this *QBoxPlotSeries) AppendWithBoxes(boxes []*QBoxSet) bool {
-	boxes_CArray := (*[0xffff]*C.QBoxSet)(C.malloc(C.size_t(8 * len(boxes))))
-	defer C.free(unsafe.Pointer(boxes_CArray))
+	boxes_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(boxes))))
+	defer C.free(unsafe.Pointer(boxes_CArray_ptr))
+	boxes_CArray := unsafe.Slice(boxes_CArray_ptr, len(boxes))
 	for i := range boxes {
 		boxes_CArray[i] = boxes[i].cPointer()
 	}
-	boxes_ma := C.struct_miqt_array{len: C.size_t(len(boxes)), data: unsafe.Pointer(boxes_CArray)}
+	boxes_ma := C.struct_miqt_array{len: C.size_t(len(boxes)), data: unsafe.Pointer(boxes_CArray_ptr)}
 	return (bool)(C.QBoxPlotSeries_appendWithBoxes(this.h, boxes_ma))
 }
 
@@ -115,7 +117,7 @@ func (this *QBoxPlotSeries) Count() int {
 func (this *QBoxPlotSeries) BoxSets() []*QBoxSet {
 	var _ma C.struct_miqt_array = C.QBoxPlotSeries_boxSets(this.h)
 	_ret := make([]*QBoxSet, int(_ma.len))
-	_outCast := (*[0xffff]*C.QBoxSet)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QBoxSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQBoxSet(_outCast[i])
 	}
@@ -354,12 +356,13 @@ func miqt_exec_callback_QBoxPlotSeries_boxWidthChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxPlotSeries) BoxsetsAdded(sets []*QBoxSet) {
-	sets_CArray := (*[0xffff]*C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QBoxPlotSeries_boxsetsAdded(this.h, sets_ma)
 }
 func (this *QBoxPlotSeries) OnBoxsetsAdded(slot func(sets []*QBoxSet)) {
@@ -376,7 +379,7 @@ func miqt_exec_callback_QBoxPlotSeries_boxsetsAdded(cb C.intptr_t, sets C.struct
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QBoxSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QBoxSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QBoxSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQBoxSet(sets_outCast[i])
 	}
@@ -386,12 +389,13 @@ func miqt_exec_callback_QBoxPlotSeries_boxsetsAdded(cb C.intptr_t, sets C.struct
 }
 
 func (this *QBoxPlotSeries) BoxsetsRemoved(sets []*QBoxSet) {
-	sets_CArray := (*[0xffff]*C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QBoxPlotSeries_boxsetsRemoved(this.h, sets_ma)
 }
 func (this *QBoxPlotSeries) OnBoxsetsRemoved(slot func(sets []*QBoxSet)) {
@@ -408,7 +412,7 @@ func miqt_exec_callback_QBoxPlotSeries_boxsetsRemoved(cb C.intptr_t, sets C.stru
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QBoxSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QBoxSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QBoxSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQBoxSet(sets_outCast[i])
 	}
@@ -715,11 +719,15 @@ func (this *QBoxPlotSeries) Delete() {
 	C.QBoxPlotSeries_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBoxPlotSeries) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBoxPlotSeries) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBoxPlotSeries{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxPlotSeries) {
+		C.QBoxPlotSeries_delete(gc[0])
 	})
 }

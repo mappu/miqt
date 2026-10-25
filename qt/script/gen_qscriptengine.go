@@ -46,7 +46,8 @@ const (
 )
 
 type QScriptSyntaxCheckResult struct {
-	h *C.QScriptSyntaxCheckResult
+	h  *C.QScriptSyntaxCheckResult
+	gc *[1]*C.QScriptSyntaxCheckResult
 }
 
 func (this *QScriptSyntaxCheckResult) cPointer() *C.QScriptSyntaxCheckResult {
@@ -111,17 +112,22 @@ func (this *QScriptSyntaxCheckResult) Delete() {
 	C.QScriptSyntaxCheckResult_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptSyntaxCheckResult) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptSyntaxCheckResult) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptSyntaxCheckResult{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptSyntaxCheckResult) {
+		C.QScriptSyntaxCheckResult_delete(gc[0])
 	})
 }
 
 type QScriptEngine struct {
-	h *C.QScriptEngine
+	h  *C.QScriptEngine
+	gc *[1]*C.QScriptEngine
 	*qt.QObject
 }
 
@@ -277,7 +283,7 @@ func (this *QScriptEngine) UncaughtExceptionLineNumber() int {
 func (this *QScriptEngine) UncaughtExceptionBacktrace() []string {
 	var _ma C.struct_miqt_array = C.QScriptEngine_uncaughtExceptionBacktrace(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -416,7 +422,7 @@ func (this *QScriptEngine) ImportExtension(extension string) *QScriptValue {
 func (this *QScriptEngine) AvailableExtensions() []string {
 	var _ma C.struct_miqt_array = C.QScriptEngine_availableExtensions(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -429,7 +435,7 @@ func (this *QScriptEngine) AvailableExtensions() []string {
 func (this *QScriptEngine) ImportedExtensions() []string {
 	var _ma C.struct_miqt_array = C.QScriptEngine_importedExtensions(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -878,11 +884,15 @@ func (this *QScriptEngine) Delete() {
 	C.QScriptEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptEngine) {
+		C.QScriptEngine_delete(gc[0])
 	})
 }

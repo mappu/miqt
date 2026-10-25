@@ -14,7 +14,8 @@ import (
 )
 
 type QSemaphore struct {
-	h *C.QSemaphore
+	h  *C.QSemaphore
+	gc *[1]*C.QSemaphore
 }
 
 func (this *QSemaphore) cPointer() *C.QSemaphore {
@@ -98,17 +99,22 @@ func (this *QSemaphore) Delete() {
 	C.QSemaphore_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSemaphore) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSemaphore) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSemaphore{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSemaphore) {
+		C.QSemaphore_delete(gc[0])
 	})
 }
 
 type QSemaphoreReleaser struct {
-	h *C.QSemaphoreReleaser
+	h  *C.QSemaphoreReleaser
+	gc *[1]*C.QSemaphoreReleaser
 }
 
 func (this *QSemaphoreReleaser) cPointer() *C.QSemaphoreReleaser {
@@ -186,11 +192,15 @@ func (this *QSemaphoreReleaser) Delete() {
 	C.QSemaphoreReleaser_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSemaphoreReleaser) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSemaphoreReleaser) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSemaphoreReleaser{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSemaphoreReleaser) {
+		C.QSemaphoreReleaser_delete(gc[0])
 	})
 }

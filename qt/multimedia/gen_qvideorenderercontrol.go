@@ -15,7 +15,8 @@ import (
 )
 
 type QVideoRendererControl struct {
-	h *C.QVideoRendererControl
+	h  *C.QVideoRendererControl
+	gc *[1]*C.QVideoRendererControl
 	*QMediaControl
 }
 
@@ -135,11 +136,15 @@ func (this *QVideoRendererControl) Delete() {
 	C.QVideoRendererControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoRendererControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoRendererControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoRendererControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoRendererControl) {
+		C.QVideoRendererControl_delete(gc[0])
 	})
 }

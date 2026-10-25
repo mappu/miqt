@@ -49,6 +49,7 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
 - [rsmqt](https://github.com/benjamesfleming/rsmqt), a cross-platform desktop GUI application for managing [RSMQ](https://github.com/smrchy/rsmq) (Redis Simple Message Queue) instances
 - [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool
+- [TriggerAPI](https://github.com/nomad-software/triggerapi), A desktop client for making REST API, GraphQL and gRPC calls, calling the tools of MCP servers and talking to WebSocket servers
 - [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing
 - [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages

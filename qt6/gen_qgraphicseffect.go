@@ -40,7 +40,8 @@ const (
 )
 
 type QGraphicsEffect struct {
-	h *C.QGraphicsEffect
+	h  *C.QGraphicsEffect
+	gc *[1]*C.QGraphicsEffect
 	*QObject
 }
 
@@ -633,17 +634,22 @@ func (this *QGraphicsEffect) Delete() {
 	C.QGraphicsEffect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsEffect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsEffect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsEffect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsEffect) {
+		C.QGraphicsEffect_delete(gc[0])
 	})
 }
 
 type QGraphicsColorizeEffect struct {
-	h *C.QGraphicsColorizeEffect
+	h  *C.QGraphicsColorizeEffect
+	gc *[1]*C.QGraphicsColorizeEffect
 	*QGraphicsEffect
 }
 
@@ -1192,17 +1198,22 @@ func (this *QGraphicsColorizeEffect) Delete() {
 	C.QGraphicsColorizeEffect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsColorizeEffect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsColorizeEffect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsColorizeEffect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsColorizeEffect) {
+		C.QGraphicsColorizeEffect_delete(gc[0])
 	})
 }
 
 type QGraphicsBlurEffect struct {
-	h *C.QGraphicsBlurEffect
+	h  *C.QGraphicsBlurEffect
+	gc *[1]*C.QGraphicsBlurEffect
 	*QGraphicsEffect
 }
 
@@ -1755,17 +1766,22 @@ func (this *QGraphicsBlurEffect) Delete() {
 	C.QGraphicsBlurEffect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsBlurEffect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsBlurEffect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsBlurEffect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsBlurEffect) {
+		C.QGraphicsBlurEffect_delete(gc[0])
 	})
 }
 
 type QGraphicsDropShadowEffect struct {
-	h *C.QGraphicsDropShadowEffect
+	h  *C.QGraphicsDropShadowEffect
+	gc *[1]*C.QGraphicsDropShadowEffect
 	*QGraphicsEffect
 }
 
@@ -2374,17 +2390,22 @@ func (this *QGraphicsDropShadowEffect) Delete() {
 	C.QGraphicsDropShadowEffect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsDropShadowEffect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsDropShadowEffect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsDropShadowEffect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsDropShadowEffect) {
+		C.QGraphicsDropShadowEffect_delete(gc[0])
 	})
 }
 
 type QGraphicsOpacityEffect struct {
-	h *C.QGraphicsOpacityEffect
+	h  *C.QGraphicsOpacityEffect
+	gc *[1]*C.QGraphicsOpacityEffect
 	*QGraphicsEffect
 }
 
@@ -2933,11 +2954,15 @@ func (this *QGraphicsOpacityEffect) Delete() {
 	C.QGraphicsOpacityEffect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsOpacityEffect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsOpacityEffect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsOpacityEffect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsOpacityEffect) {
+		C.QGraphicsOpacityEffect_delete(gc[0])
 	})
 }

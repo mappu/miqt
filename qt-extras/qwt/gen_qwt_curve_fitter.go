@@ -22,7 +22,8 @@ const (
 )
 
 type QwtCurveFitter struct {
-	h *C.QwtCurveFitter
+	h  *C.QwtCurveFitter
+	gc *[1]*C.QwtCurveFitter
 }
 
 func (this *QwtCurveFitter) cPointer() *C.QwtCurveFitter {
@@ -58,17 +59,22 @@ func (this *QwtCurveFitter) Delete() {
 	C.QwtCurveFitter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCurveFitter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCurveFitter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCurveFitter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCurveFitter) {
+		C.QwtCurveFitter_delete(gc[0])
 	})
 }
 
 type QwtSplineCurveFitter struct {
-	h *C.QwtSplineCurveFitter
+	h  *C.QwtSplineCurveFitter
+	gc *[1]*C.QwtSplineCurveFitter
 	*QwtCurveFitter
 }
 
@@ -142,17 +148,22 @@ func (this *QwtSplineCurveFitter) Delete() {
 	C.QwtSplineCurveFitter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSplineCurveFitter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSplineCurveFitter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSplineCurveFitter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSplineCurveFitter) {
+		C.QwtSplineCurveFitter_delete(gc[0])
 	})
 }
 
 type QwtWeedingCurveFitter struct {
-	h *C.QwtWeedingCurveFitter
+	h  *C.QwtWeedingCurveFitter
+	gc *[1]*C.QwtWeedingCurveFitter
 	*QwtCurveFitter
 }
 
@@ -220,11 +231,15 @@ func (this *QwtWeedingCurveFitter) Delete() {
 	C.QwtWeedingCurveFitter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtWeedingCurveFitter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtWeedingCurveFitter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtWeedingCurveFitter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtWeedingCurveFitter) {
+		C.QwtWeedingCurveFitter_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QDesignerFormEditorPluginInterface struct {
-	h *C.QDesignerFormEditorPluginInterface
+	h  *C.QDesignerFormEditorPluginInterface
+	gc *[1]*C.QDesignerFormEditorPluginInterface
 }
 
 func (this *QDesignerFormEditorPluginInterface) cPointer() *C.QDesignerFormEditorPluginInterface {
@@ -71,11 +72,15 @@ func (this *QDesignerFormEditorPluginInterface) Delete() {
 	C.QDesignerFormEditorPluginInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerFormEditorPluginInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerFormEditorPluginInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerFormEditorPluginInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormEditorPluginInterface) {
+		C.QDesignerFormEditorPluginInterface_delete(gc[0])
 	})
 }

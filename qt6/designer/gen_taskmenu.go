@@ -16,7 +16,8 @@ import (
 )
 
 type QDesignerTaskMenuExtension struct {
-	h *C.QDesignerTaskMenuExtension
+	h  *C.QDesignerTaskMenuExtension
+	gc *[1]*C.QDesignerTaskMenuExtension
 }
 
 func (this *QDesignerTaskMenuExtension) cPointer() *C.QDesignerTaskMenuExtension {
@@ -60,7 +61,7 @@ func (this *QDesignerTaskMenuExtension) PreferredEditAction() *qt6.QAction {
 func (this *QDesignerTaskMenuExtension) TaskActions() []*qt6.QAction {
 	var _ma C.struct_miqt_array = C.QDesignerTaskMenuExtension_taskActions(this.h)
 	_ret := make([]*qt6.QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt6.UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
@@ -106,11 +107,12 @@ func miqt_exec_callback_QDesignerTaskMenuExtension_taskActions(self *C.QDesigner
 	}
 
 	virtualReturn := gofunc()
-	virtualReturn_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QAction)(virtualReturn[i].UnsafePointer())
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -121,11 +123,15 @@ func (this *QDesignerTaskMenuExtension) Delete() {
 	C.QDesignerTaskMenuExtension_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerTaskMenuExtension) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerTaskMenuExtension) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerTaskMenuExtension{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerTaskMenuExtension) {
+		C.QDesignerTaskMenuExtension_delete(gc[0])
 	})
 }

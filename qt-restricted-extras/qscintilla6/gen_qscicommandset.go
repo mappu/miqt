@@ -56,7 +56,7 @@ func (this *QsciCommandSet) WriteSettings(qs *qt6.QSettings) bool {
 func (this *QsciCommandSet) Commands() []*QsciCommand {
 	var _ma C.struct_miqt_array = C.QsciCommandSet_commands(this.h)
 	_ret := make([]*QsciCommand, int(_ma.len))
-	_outCast := (*[0xffff]*C.QsciCommand)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QsciCommand)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQsciCommand(_outCast[i])
 	}

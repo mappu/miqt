@@ -15,7 +15,8 @@ import (
 )
 
 type QPieModelMapper struct {
-	h *C.QPieModelMapper
+	h  *C.QPieModelMapper
+	gc *[1]*C.QPieModelMapper
 	*qt6.QObject
 }
 
@@ -96,11 +97,15 @@ func (this *QPieModelMapper) Delete() {
 	C.QPieModelMapper_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPieModelMapper) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPieModelMapper) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPieModelMapper{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPieModelMapper) {
+		C.QPieModelMapper_delete(gc[0])
 	})
 }

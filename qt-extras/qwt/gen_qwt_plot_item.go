@@ -59,7 +59,8 @@ const (
 )
 
 type QwtPlotItem struct {
-	h *C.QwtPlotItem
+	h  *C.QwtPlotItem
+	gc *[1]*C.QwtPlotItem
 }
 
 func (this *QwtPlotItem) cPointer() *C.QwtPlotItem {
@@ -227,19 +228,20 @@ func (this *QwtPlotItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv
 }
 
 func (this *QwtPlotItem) UpdateLegend(param1 *QwtPlotItem, param2 []QwtLegendData) {
-	param2_CArray := (*[0xffff]*C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = param2[i].cPointer()
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 	C.QwtPlotItem_updateLegend(this.h, param1.cPointer(), param2_ma)
 }
 
 func (this *QwtPlotItem) LegendData() []QwtLegendData {
 	var _ma C.struct_miqt_array = C.QwtPlotItem_legendData(this.h)
 	_ret := make([]QwtLegendData, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtLegendData)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtLegendData)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQwtLegendData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -271,11 +273,15 @@ func (this *QwtPlotItem) Delete() {
 	C.QwtPlotItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotItem) {
+		C.QwtPlotItem_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QPauseAnimation struct {
-	h *C.QPauseAnimation
+	h  *C.QPauseAnimation
+	gc *[1]*C.QPauseAnimation
 	*QAbstractAnimation
 }
 
@@ -479,11 +480,15 @@ func (this *QPauseAnimation) Delete() {
 	C.QPauseAnimation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPauseAnimation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPauseAnimation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPauseAnimation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPauseAnimation) {
+		C.QPauseAnimation_delete(gc[0])
 	})
 }

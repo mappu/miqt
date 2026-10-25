@@ -15,7 +15,8 @@ import (
 )
 
 type QWebHistoryItem struct {
-	h *C.QWebHistoryItem
+	h  *C.QWebHistoryItem
+	gc *[1]*C.QWebHistoryItem
 }
 
 func (this *QWebHistoryItem) cPointer() *C.QWebHistoryItem {
@@ -104,8 +105,8 @@ func (this *QWebHistoryItem) IsValid() bool {
 func (this *QWebHistoryItem) ToMap() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QWebHistoryItem_toMap(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -121,10 +122,12 @@ func (this *QWebHistoryItem) ToMap() map[string]qt.QVariant {
 }
 
 func (this *QWebHistoryItem) LoadFromMap(mapVal map[string]qt.QVariant) {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -137,8 +140,8 @@ func (this *QWebHistoryItem) LoadFromMap(mapVal map[string]qt.QVariant) {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	C.QWebHistoryItem_loadFromMap(this.h, mapVal_mm)
 }
@@ -148,12 +151,16 @@ func (this *QWebHistoryItem) Delete() {
 	C.QWebHistoryItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebHistoryItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebHistoryItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebHistoryItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebHistoryItem) {
+		C.QWebHistoryItem_delete(gc[0])
 	})
 }
 
@@ -196,7 +203,7 @@ func (this *QWebHistory) Clear() {
 func (this *QWebHistory) Items() []QWebHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebHistory_items(this.h)
 	_ret := make([]QWebHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -208,7 +215,7 @@ func (this *QWebHistory) Items() []QWebHistoryItem {
 func (this *QWebHistory) BackItems(maxItems int) []QWebHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebHistory_backItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -220,7 +227,7 @@ func (this *QWebHistory) BackItems(maxItems int) []QWebHistoryItem {
 func (this *QWebHistory) ForwardItems(maxItems int) []QWebHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebHistory_forwardItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -292,8 +299,8 @@ func (this *QWebHistory) SetMaximumItemCount(count int) {
 func (this *QWebHistory) ToMap() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QWebHistory_toMap(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -309,10 +316,12 @@ func (this *QWebHistory) ToMap() map[string]qt.QVariant {
 }
 
 func (this *QWebHistory) LoadFromMap(mapVal map[string]qt.QVariant) {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -325,8 +334,8 @@ func (this *QWebHistory) LoadFromMap(mapVal map[string]qt.QVariant) {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	C.QWebHistory_loadFromMap(this.h, mapVal_mm)
 }

@@ -22,7 +22,8 @@ const (
 )
 
 type QGraphicsSvgItem struct {
-	h *C.QGraphicsSvgItem
+	h  *C.QGraphicsSvgItem
+	gc *[1]*C.QGraphicsSvgItem
 	*qt6.QGraphicsObject
 }
 
@@ -1436,11 +1437,15 @@ func (this *QGraphicsSvgItem) Delete() {
 	C.QGraphicsSvgItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSvgItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSvgItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSvgItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSvgItem) {
+		C.QGraphicsSvgItem_delete(gc[0])
 	})
 }

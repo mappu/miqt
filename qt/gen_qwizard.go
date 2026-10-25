@@ -75,7 +75,8 @@ const (
 )
 
 type QWizard struct {
-	h *C.QWizard
+	h  *C.QWizard
+	gc *[1]*C.QWizard
 	*QDialog
 }
 
@@ -179,7 +180,7 @@ func (this *QWizard) HasVisitedPage(id int) bool {
 func (this *QWizard) VisitedPages() []int {
 	var _ma C.struct_miqt_array = C.QWizard_visitedPages(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -189,7 +190,7 @@ func (this *QWizard) VisitedPages() []int {
 func (this *QWizard) VisitedIds() []int {
 	var _ma C.struct_miqt_array = C.QWizard_visitedIds(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -199,7 +200,7 @@ func (this *QWizard) VisitedIds() []int {
 func (this *QWizard) PageIds() []int {
 	var _ma C.struct_miqt_array = C.QWizard_pageIds(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -288,12 +289,13 @@ func (this *QWizard) ButtonText(which QWizard__WizardButton) string {
 }
 
 func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
-	layout_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(layout))))
-	defer C.free(unsafe.Pointer(layout_CArray))
+	layout_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(layout))))
+	defer C.free(unsafe.Pointer(layout_CArray_ptr))
+	layout_CArray := unsafe.Slice(layout_CArray_ptr, len(layout))
 	for i := range layout {
 		layout_CArray[i] = (C.int)(layout[i])
 	}
-	layout_ma := C.struct_miqt_array{len: C.size_t(len(layout)), data: unsafe.Pointer(layout_CArray)}
+	layout_ma := C.struct_miqt_array{len: C.size_t(len(layout)), data: unsafe.Pointer(layout_CArray_ptr)}
 	C.QWizard_setButtonLayout(this.h, layout_ma)
 }
 
@@ -2130,17 +2132,22 @@ func (this *QWizard) Delete() {
 	C.QWizard_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWizard) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWizard) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWizard{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWizard) {
+		C.QWizard_delete(gc[0])
 	})
 }
 
 type QWizardPage struct {
-	h *C.QWizardPage
+	h  *C.QWizardPage
+	gc *[1]*C.QWizardPage
 	*QWidget
 }
 
@@ -3972,11 +3979,15 @@ func (this *QWizardPage) Delete() {
 	C.QWizardPage_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWizardPage) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWizardPage) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWizardPage{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWizardPage) {
+		C.QWizardPage_delete(gc[0])
 	})
 }

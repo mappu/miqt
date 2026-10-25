@@ -23,7 +23,8 @@ const (
 )
 
 type QApplication struct {
-	h *C.QApplication
+	h  *C.QApplication
+	gc *[1]*C.QApplication
 	*QGuiApplication
 }
 
@@ -201,7 +202,7 @@ func QApplication_WindowIcon() *QIcon {
 func QApplication_AllWidgets() []*QWidget {
 	var _ma C.struct_miqt_array = C.QApplication_allWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQWidget(_outCast[i])
 	}
@@ -211,7 +212,7 @@ func QApplication_AllWidgets() []*QWidget {
 func QApplication_TopLevelWidgets() []*QWidget {
 	var _ma C.struct_miqt_array = C.QApplication_topLevelWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQWidget(_outCast[i])
 	}
@@ -738,11 +739,15 @@ func (this *QApplication) Delete() {
 	C.QApplication_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QApplication) GoGC() {
-	runtime.SetFinalizer(this, func(this *QApplication) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QApplication{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QApplication) {
+		C.QApplication_delete(gc[0])
 	})
 }

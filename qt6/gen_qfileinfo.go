@@ -14,7 +14,8 @@ import (
 )
 
 type QFileInfo struct {
-	h *C.QFileInfo
+	h  *C.QFileInfo
+	gc *[1]*C.QFileInfo
 }
 
 func (this *QFileInfo) cPointer() *C.QFileInfo {
@@ -394,11 +395,15 @@ func (this *QFileInfo) Delete() {
 	C.QFileInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFileInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFileInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFileInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileInfo) {
+		C.QFileInfo_delete(gc[0])
 	})
 }

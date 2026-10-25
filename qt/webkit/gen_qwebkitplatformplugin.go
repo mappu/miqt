@@ -60,7 +60,8 @@ const (
 )
 
 type QWebSelectData struct {
-	h *C.QWebSelectData
+	h  *C.QWebSelectData
+	gc *[1]*C.QWebSelectData
 }
 
 func (this *QWebSelectData) cPointer() *C.QWebSelectData {
@@ -158,17 +159,22 @@ func (this *QWebSelectData) Delete() {
 	C.QWebSelectData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSelectData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSelectData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSelectData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSelectData) {
+		C.QWebSelectData_delete(gc[0])
 	})
 }
 
 type QWebSelectMethod struct {
-	h *C.QWebSelectMethod
+	h  *C.QWebSelectMethod
+	gc *[1]*C.QWebSelectMethod
 	*qt.QObject
 }
 
@@ -337,17 +343,22 @@ func (this *QWebSelectMethod) Delete() {
 	C.QWebSelectMethod_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSelectMethod) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSelectMethod) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSelectMethod{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSelectMethod) {
+		C.QWebSelectMethod_delete(gc[0])
 	})
 }
 
 type QWebNotificationData struct {
-	h *C.QWebNotificationData
+	h  *C.QWebNotificationData
+	gc *[1]*C.QWebNotificationData
 }
 
 func (this *QWebNotificationData) cPointer() *C.QWebNotificationData {
@@ -413,17 +424,22 @@ func (this *QWebNotificationData) Delete() {
 	C.QWebNotificationData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebNotificationData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebNotificationData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebNotificationData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebNotificationData) {
+		C.QWebNotificationData_delete(gc[0])
 	})
 }
 
 type QWebNotificationPresenter struct {
-	h *C.QWebNotificationPresenter
+	h  *C.QWebNotificationPresenter
+	gc *[1]*C.QWebNotificationPresenter
 	*qt.QObject
 }
 
@@ -573,17 +589,22 @@ func (this *QWebNotificationPresenter) Delete() {
 	C.QWebNotificationPresenter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebNotificationPresenter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebNotificationPresenter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebNotificationPresenter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebNotificationPresenter) {
+		C.QWebNotificationPresenter_delete(gc[0])
 	})
 }
 
 type QWebHapticFeedbackPlayer struct {
-	h *C.QWebHapticFeedbackPlayer
+	h  *C.QWebHapticFeedbackPlayer
+	gc *[1]*C.QWebHapticFeedbackPlayer
 	*qt.QObject
 }
 
@@ -703,17 +724,22 @@ func (this *QWebHapticFeedbackPlayer) Delete() {
 	C.QWebHapticFeedbackPlayer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebHapticFeedbackPlayer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebHapticFeedbackPlayer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebHapticFeedbackPlayer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebHapticFeedbackPlayer) {
+		C.QWebHapticFeedbackPlayer_delete(gc[0])
 	})
 }
 
 type QWebTouchModifier struct {
-	h *C.QWebTouchModifier
+	h  *C.QWebTouchModifier
+	gc *[1]*C.QWebTouchModifier
 	*qt.QObject
 }
 
@@ -829,17 +855,22 @@ func (this *QWebTouchModifier) Delete() {
 	C.QWebTouchModifier_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebTouchModifier) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebTouchModifier) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebTouchModifier{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebTouchModifier) {
+		C.QWebTouchModifier_delete(gc[0])
 	})
 }
 
 type QWebSpellChecker struct {
-	h *C.QWebSpellChecker
+	h  *C.QWebSpellChecker
+	gc *[1]*C.QWebSpellChecker
 	*qt.QObject
 }
 
@@ -954,8 +985,9 @@ func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesse
 	context_ms.data = C.CString(context)
 	context_ms.len = C.size_t(len(context))
 	defer C.free(unsafe.Pointer(context_ms.data))
-	guesses_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
-	defer C.free(unsafe.Pointer(guesses_CArray))
+	guesses_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
+	defer C.free(unsafe.Pointer(guesses_CArray_ptr))
+	guesses_CArray := unsafe.Slice(guesses_CArray_ptr, len(guesses))
 	for i := range guesses {
 		guesses_i_ms := C.struct_miqt_string{}
 		guesses_i_ms.data = C.CString(guesses[i])
@@ -963,7 +995,7 @@ func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesse
 		defer C.free(unsafe.Pointer(guesses_i_ms.data))
 		guesses_CArray[i] = guesses_i_ms
 	}
-	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray)}
+	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray_ptr)}
 	C.QWebSpellChecker_guessesForWord(this.h, word_ms, context_ms, guesses_ma)
 }
 
@@ -980,12 +1012,13 @@ func (this *QWebSpellChecker) CheckGrammarOfString(param1 string, param2 []QWebS
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	param2_CArray := (*[0xffff]*C.QWebSpellChecker__GrammarDetail)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (**C.QWebSpellChecker__GrammarDetail)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = param2[i].cPointer()
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 	C.QWebSpellChecker_checkGrammarOfString(this.h, param1_ms, param2_ma, (*C.int)(unsafe.Pointer(badGrammarLocation)), (*C.int)(unsafe.Pointer(badGrammarLength)))
 }
 
@@ -1038,17 +1071,22 @@ func (this *QWebSpellChecker) Delete() {
 	C.QWebSpellChecker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSpellChecker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSpellChecker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSpellChecker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSpellChecker) {
+		C.QWebSpellChecker_delete(gc[0])
 	})
 }
 
 type QWebKitPlatformPlugin struct {
-	h *C.QWebKitPlatformPlugin
+	h  *C.QWebKitPlatformPlugin
+	gc *[1]*C.QWebKitPlatformPlugin
 }
 
 func (this *QWebKitPlatformPlugin) cPointer() *C.QWebKitPlatformPlugin {
@@ -1096,17 +1134,22 @@ func (this *QWebKitPlatformPlugin) Delete() {
 	C.QWebKitPlatformPlugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebKitPlatformPlugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebKitPlatformPlugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebKitPlatformPlugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebKitPlatformPlugin) {
+		C.QWebKitPlatformPlugin_delete(gc[0])
 	})
 }
 
 type QWebSpellChecker__GrammarDetail struct {
-	h *C.QWebSpellChecker__GrammarDetail
+	h  *C.QWebSpellChecker__GrammarDetail
+	gc *[1]*C.QWebSpellChecker__GrammarDetail
 }
 
 func (this *QWebSpellChecker__GrammarDetail) cPointer() *C.QWebSpellChecker__GrammarDetail {
@@ -1168,7 +1211,7 @@ func (this *QWebSpellChecker__GrammarDetail) SetLength(length int) {
 func (this *QWebSpellChecker__GrammarDetail) Guesses() []string {
 	var guesses_ma C.struct_miqt_array = C.QWebSpellChecker__GrammarDetail_guesses(this.h)
 	guesses_ret := make([]string, int(guesses_ma.len))
-	guesses_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(guesses_ma.data)) // hey ya
+	guesses_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(guesses_ma.data)), int(guesses_ma.len))
 	for i := 0; i < int(guesses_ma.len); i++ {
 		var guesses_lv_ms C.struct_miqt_string = guesses_outCast[i]
 		guesses_lv_ret := C.GoStringN(guesses_lv_ms.data, C.int(int64(guesses_lv_ms.len)))
@@ -1179,8 +1222,9 @@ func (this *QWebSpellChecker__GrammarDetail) Guesses() []string {
 }
 
 func (this *QWebSpellChecker__GrammarDetail) SetGuesses(guesses []string) {
-	guesses_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
-	defer C.free(unsafe.Pointer(guesses_CArray))
+	guesses_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
+	defer C.free(unsafe.Pointer(guesses_CArray_ptr))
+	guesses_CArray := unsafe.Slice(guesses_CArray_ptr, len(guesses))
 	for i := range guesses {
 		guesses_i_ms := C.struct_miqt_string{}
 		guesses_i_ms.data = C.CString(guesses[i])
@@ -1188,7 +1232,7 @@ func (this *QWebSpellChecker__GrammarDetail) SetGuesses(guesses []string) {
 		defer C.free(unsafe.Pointer(guesses_i_ms.data))
 		guesses_CArray[i] = guesses_i_ms
 	}
-	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray)}
+	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray_ptr)}
 	C.QWebSpellChecker__GrammarDetail_setGuesses(this.h, guesses_ma)
 }
 
@@ -1216,11 +1260,15 @@ func (this *QWebSpellChecker__GrammarDetail) Delete() {
 	C.QWebSpellChecker__GrammarDetail_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSpellChecker__GrammarDetail) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSpellChecker__GrammarDetail) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSpellChecker__GrammarDetail{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSpellChecker__GrammarDetail) {
+		C.QWebSpellChecker__GrammarDetail_delete(gc[0])
 	})
 }

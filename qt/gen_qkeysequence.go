@@ -105,7 +105,8 @@ const (
 )
 
 type QKeySequence struct {
-	h *C.QKeySequence
+	h  *C.QKeySequence
+	gc *[1]*C.QKeySequence
 }
 
 func (this *QKeySequence) cPointer() *C.QKeySequence {
@@ -230,7 +231,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 	defer C.free(unsafe.Pointer(str_ms.data))
 	var _ma C.struct_miqt_array = C.QKeySequence_listFromString(str_ms)
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QKeySequence)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -240,12 +241,13 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 }
 
 func QKeySequence_ListToString(list []QKeySequence) string {
-	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	var _ms C.struct_miqt_string = C.QKeySequence_listToString(list_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -269,7 +271,7 @@ func QKeySequence_Mnemonic(text string) *QKeySequence {
 func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 	var _ma C.struct_miqt_array = C.QKeySequence_keyBindings((C.int)(key))
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QKeySequence)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -348,7 +350,7 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 	defer C.free(unsafe.Pointer(str_ms.data))
 	var _ma C.struct_miqt_array = C.QKeySequence_listFromString2(str_ms, (C.int)(format))
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QKeySequence)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -358,12 +360,13 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 }
 
 func QKeySequence_ListToString2(list []QKeySequence, format QKeySequence__SequenceFormat) string {
-	list_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	var _ms C.struct_miqt_string = C.QKeySequence_listToString2(list_ma, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -375,11 +378,15 @@ func (this *QKeySequence) Delete() {
 	C.QKeySequence_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QKeySequence) GoGC() {
-	runtime.SetFinalizer(this, func(this *QKeySequence) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QKeySequence{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeySequence) {
+		C.QKeySequence_delete(gc[0])
 	})
 }

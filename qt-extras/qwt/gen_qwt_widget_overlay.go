@@ -32,7 +32,8 @@ const (
 )
 
 type QwtWidgetOverlay struct {
-	h *C.QwtWidgetOverlay
+	h  *C.QwtWidgetOverlay
+	gc *[1]*C.QwtWidgetOverlay
 	*qt.QWidget
 }
 
@@ -1524,11 +1525,15 @@ func (this *QwtWidgetOverlay) Delete() {
 	C.QwtWidgetOverlay_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtWidgetOverlay) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtWidgetOverlay) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtWidgetOverlay{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtWidgetOverlay) {
+		C.QwtWidgetOverlay_delete(gc[0])
 	})
 }

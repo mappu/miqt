@@ -30,7 +30,8 @@ const (
 )
 
 type QDesignerWidgetBoxInterface struct {
-	h *C.QDesignerWidgetBoxInterface
+	h  *C.QDesignerWidgetBoxInterface
+	gc *[1]*C.QDesignerWidgetBoxInterface
 	*qt6.QWidget
 }
 
@@ -147,12 +148,13 @@ func (this *QDesignerWidgetBoxInterface) FindOrInsertCategory(categoryName strin
 }
 
 func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt6.QPoint) {
-	item_list_CArray := (*[0xffff]*C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
-	defer C.free(unsafe.Pointer(item_list_CArray))
+	item_list_CArray_ptr := (**C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
+	defer C.free(unsafe.Pointer(item_list_CArray_ptr))
+	item_list_CArray := unsafe.Slice(item_list_CArray_ptr, len(item_list))
 	for i := range item_list {
 		item_list_CArray[i] = item_list[i].cPointer()
 	}
-	item_list_ma := C.struct_miqt_array{len: C.size_t(len(item_list)), data: unsafe.Pointer(item_list_CArray)}
+	item_list_ma := C.struct_miqt_array{len: C.size_t(len(item_list)), data: unsafe.Pointer(item_list_CArray_ptr)}
 	C.QDesignerWidgetBoxInterface_dropWidgets(this.h, item_list_ma, (*C.QPoint)(global_mouse_pos.UnsafePointer()))
 }
 
@@ -510,7 +512,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(self *C.QDesigne
 	// Convert all CABI parameters to Go parameters
 	var item_list_ma C.struct_miqt_array = item_list
 	item_list_ret := make([]*QDesignerDnDItemInterface, int(item_list_ma.len))
-	item_list_outCast := (*[0xffff]*C.QDesignerDnDItemInterface)(unsafe.Pointer(item_list_ma.data)) // hey ya
+	item_list_outCast := unsafe.Slice((**C.QDesignerDnDItemInterface)(unsafe.Pointer(item_list_ma.data)), int(item_list_ma.len))
 	for i := 0; i < int(item_list_ma.len); i++ {
 		item_list_ret[i] = newQDesignerDnDItemInterface(item_list_outCast[i])
 	}
@@ -1863,17 +1865,22 @@ func (this *QDesignerWidgetBoxInterface) Delete() {
 	C.QDesignerWidgetBoxInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerWidgetBoxInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerWidgetBoxInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerWidgetBoxInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetBoxInterface) {
+		C.QDesignerWidgetBoxInterface_delete(gc[0])
 	})
 }
 
 type QDesignerWidgetBoxInterface__Widget struct {
-	h *C.QDesignerWidgetBoxInterface__Widget
+	h  *C.QDesignerWidgetBoxInterface__Widget
+	gc *[1]*C.QDesignerWidgetBoxInterface__Widget
 }
 
 func (this *QDesignerWidgetBoxInterface__Widget) cPointer() *C.QDesignerWidgetBoxInterface__Widget {
@@ -2042,17 +2049,22 @@ func (this *QDesignerWidgetBoxInterface__Widget) Delete() {
 	C.QDesignerWidgetBoxInterface__Widget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerWidgetBoxInterface__Widget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerWidgetBoxInterface__Widget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerWidgetBoxInterface__Widget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetBoxInterface__Widget) {
+		C.QDesignerWidgetBoxInterface__Widget_delete(gc[0])
 	})
 }
 
 type QDesignerWidgetBoxInterface__Category struct {
-	h *C.QDesignerWidgetBoxInterface__Category
+	h  *C.QDesignerWidgetBoxInterface__Category
+	gc *[1]*C.QDesignerWidgetBoxInterface__Category
 }
 
 func (this *QDesignerWidgetBoxInterface__Category) cPointer() *C.QDesignerWidgetBoxInterface__Category {
@@ -2169,11 +2181,15 @@ func (this *QDesignerWidgetBoxInterface__Category) Delete() {
 	C.QDesignerWidgetBoxInterface__Category_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerWidgetBoxInterface__Category) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerWidgetBoxInterface__Category) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerWidgetBoxInterface__Category{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetBoxInterface__Category) {
+		C.QDesignerWidgetBoxInterface__Category_delete(gc[0])
 	})
 }

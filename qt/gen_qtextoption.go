@@ -45,7 +45,8 @@ const (
 )
 
 type QTextOption struct {
-	h *C.QTextOption
+	h  *C.QTextOption
+	gc *[1]*C.QTextOption
 }
 
 func (this *QTextOption) cPointer() *C.QTextOption {
@@ -147,19 +148,20 @@ func (this *QTextOption) TabStopDistance() float64 {
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
-	tabStops_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(tabStops))))
-	defer C.free(unsafe.Pointer(tabStops_CArray))
+	tabStops_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(tabStops))))
+	defer C.free(unsafe.Pointer(tabStops_CArray_ptr))
+	tabStops_CArray := unsafe.Slice(tabStops_CArray_ptr, len(tabStops))
 	for i := range tabStops {
 		tabStops_CArray[i] = (C.double)(tabStops[i])
 	}
-	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
+	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray_ptr)}
 	C.QTextOption_setTabArray(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) TabArray() []float64 {
 	var _ma C.struct_miqt_array = C.QTextOption_tabArray(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -167,19 +169,20 @@ func (this *QTextOption) TabArray() []float64 {
 }
 
 func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
-	tabStops_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabStops))))
-	defer C.free(unsafe.Pointer(tabStops_CArray))
+	tabStops_CArray_ptr := (**C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabStops))))
+	defer C.free(unsafe.Pointer(tabStops_CArray_ptr))
+	tabStops_CArray := unsafe.Slice(tabStops_CArray_ptr, len(tabStops))
 	for i := range tabStops {
 		tabStops_CArray[i] = tabStops[i].cPointer()
 	}
-	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
+	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray_ptr)}
 	C.QTextOption_setTabs(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) Tabs() []QTextOption__Tab {
 	var _ma C.struct_miqt_array = C.QTextOption_tabs(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextOption__Tab)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextOption__Tab(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -201,17 +204,22 @@ func (this *QTextOption) Delete() {
 	C.QTextOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextOption) {
+		C.QTextOption_delete(gc[0])
 	})
 }
 
 type QTextOption__Tab struct {
-	h *C.QTextOption__Tab
+	h  *C.QTextOption__Tab
+	gc *[1]*C.QTextOption__Tab
 }
 
 func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
@@ -305,11 +313,15 @@ func (this *QTextOption__Tab) Delete() {
 	C.QTextOption__Tab_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextOption__Tab) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextOption__Tab) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextOption__Tab{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextOption__Tab) {
+		C.QTextOption__Tab_delete(gc[0])
 	})
 }

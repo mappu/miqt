@@ -15,7 +15,8 @@ import (
 )
 
 type QShortcut struct {
-	h *C.QShortcut
+	h  *C.QShortcut
+	gc *[1]*C.QShortcut
 	*QObject
 }
 
@@ -504,11 +505,15 @@ func (this *QShortcut) Delete() {
 	C.QShortcut_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QShortcut) GoGC() {
-	runtime.SetFinalizer(this, func(this *QShortcut) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QShortcut{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShortcut) {
+		C.QShortcut_delete(gc[0])
 	})
 }

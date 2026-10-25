@@ -15,7 +15,8 @@ import (
 )
 
 type QQmlTypesExtensionInterface struct {
-	h *C.QQmlTypesExtensionInterface
+	h  *C.QQmlTypesExtensionInterface
+	gc *[1]*C.QQmlTypesExtensionInterface
 }
 
 func (this *QQmlTypesExtensionInterface) cPointer() *C.QQmlTypesExtensionInterface {
@@ -88,17 +89,22 @@ func (this *QQmlTypesExtensionInterface) Delete() {
 	C.QQmlTypesExtensionInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlTypesExtensionInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlTypesExtensionInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlTypesExtensionInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlTypesExtensionInterface) {
+		C.QQmlTypesExtensionInterface_delete(gc[0])
 	})
 }
 
 type QQmlExtensionInterface struct {
-	h *C.QQmlExtensionInterface
+	h  *C.QQmlExtensionInterface
+	gc *[1]*C.QQmlExtensionInterface
 	*QQmlTypesExtensionInterface
 }
 
@@ -198,17 +204,22 @@ func (this *QQmlExtensionInterface) Delete() {
 	C.QQmlExtensionInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlExtensionInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlExtensionInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlExtensionInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlExtensionInterface) {
+		C.QQmlExtensionInterface_delete(gc[0])
 	})
 }
 
 type QQmlEngineExtensionInterface struct {
-	h *C.QQmlEngineExtensionInterface
+	h  *C.QQmlEngineExtensionInterface
+	gc *[1]*C.QQmlEngineExtensionInterface
 }
 
 func (this *QQmlEngineExtensionInterface) cPointer() *C.QQmlEngineExtensionInterface {
@@ -254,11 +265,15 @@ func (this *QQmlEngineExtensionInterface) Delete() {
 	C.QQmlEngineExtensionInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlEngineExtensionInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlEngineExtensionInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlEngineExtensionInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlEngineExtensionInterface) {
+		C.QQmlEngineExtensionInterface_delete(gc[0])
 	})
 }

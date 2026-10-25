@@ -16,7 +16,8 @@ import (
 )
 
 type QAbstractAudioDeviceInfo struct {
-	h *C.QAbstractAudioDeviceInfo
+	h  *C.QAbstractAudioDeviceInfo
+	gc *[1]*C.QAbstractAudioDeviceInfo
 	*qt.QObject
 }
 
@@ -99,7 +100,7 @@ func (this *QAbstractAudioDeviceInfo) DeviceName() string {
 func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -112,7 +113,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
 func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -122,7 +123,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
 func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedChannelCounts(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -132,7 +133,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
 func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleSizes(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -142,7 +143,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
 func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedByteOrders(this.h)
 	_ret := make([]QAudioFormat__Endian, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QAudioFormat__Endian)(_outCast[i])
 	}
@@ -152,7 +153,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endi
 func (this *QAbstractAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType {
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleTypes(this.h)
 	_ret := make([]QAudioFormat__SampleType, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QAudioFormat__SampleType)(_outCast[i])
 	}
@@ -208,17 +209,22 @@ func (this *QAbstractAudioDeviceInfo) Delete() {
 	C.QAbstractAudioDeviceInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractAudioDeviceInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractAudioDeviceInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractAudioDeviceInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractAudioDeviceInfo) {
+		C.QAbstractAudioDeviceInfo_delete(gc[0])
 	})
 }
 
 type QAbstractAudioOutput struct {
-	h *C.QAbstractAudioOutput
+	h  *C.QAbstractAudioOutput
+	gc *[1]*C.QAbstractAudioOutput
 	*qt.QObject
 }
 
@@ -484,17 +490,22 @@ func (this *QAbstractAudioOutput) Delete() {
 	C.QAbstractAudioOutput_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractAudioOutput) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractAudioOutput) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractAudioOutput{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractAudioOutput) {
+		C.QAbstractAudioOutput_delete(gc[0])
 	})
 }
 
 type QAbstractAudioInput struct {
-	h *C.QAbstractAudioInput
+	h  *C.QAbstractAudioInput
+	gc *[1]*C.QAbstractAudioInput
 	*qt.QObject
 }
 
@@ -745,11 +756,15 @@ func (this *QAbstractAudioInput) Delete() {
 	C.QAbstractAudioInput_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractAudioInput) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractAudioInput) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractAudioInput{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractAudioInput) {
+		C.QAbstractAudioInput_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QWebEngineUrlRequestInterceptor struct {
-	h *C.QWebEngineUrlRequestInterceptor
+	h  *C.QWebEngineUrlRequestInterceptor
+	gc *[1]*C.QWebEngineUrlRequestInterceptor
 	*qt6.QObject
 }
 
@@ -379,11 +380,15 @@ func (this *QWebEngineUrlRequestInterceptor) Delete() {
 	C.QWebEngineUrlRequestInterceptor_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineUrlRequestInterceptor) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineUrlRequestInterceptor) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineUrlRequestInterceptor{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineUrlRequestInterceptor) {
+		C.QWebEngineUrlRequestInterceptor_delete(gc[0])
 	})
 }

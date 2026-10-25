@@ -14,7 +14,8 @@ import (
 )
 
 type qfloat16 struct {
-	h *C.qfloat16
+	h  *C.qfloat16
+	gc *[1]*C.qfloat16
 }
 
 func (this *qfloat16) cPointer() *C.qfloat16 {
@@ -88,11 +89,15 @@ func (this *qfloat16) Delete() {
 	C.qfloat16_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *qfloat16) GoGC() {
-	runtime.SetFinalizer(this, func(this *qfloat16) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.qfloat16{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.qfloat16) {
+		C.qfloat16_delete(gc[0])
 	})
 }

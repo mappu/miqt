@@ -32,7 +32,8 @@ const (
 )
 
 type QPrintPreviewWidget struct {
-	h *C.QPrintPreviewWidget
+	h  *C.QPrintPreviewWidget
+	gc *[1]*C.QPrintPreviewWidget
 	*qt6.QWidget
 }
 
@@ -1661,11 +1662,15 @@ func (this *QPrintPreviewWidget) Delete() {
 	C.QPrintPreviewWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPrintPreviewWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPrintPreviewWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPrintPreviewWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPrintPreviewWidget) {
+		C.QPrintPreviewWidget_delete(gc[0])
 	})
 }

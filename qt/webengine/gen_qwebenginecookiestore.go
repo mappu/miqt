@@ -17,7 +17,8 @@ import (
 )
 
 type QWebEngineCookieStore struct {
-	h *C.QWebEngineCookieStore
+	h  *C.QWebEngineCookieStore
+	gc *[1]*C.QWebEngineCookieStore
 	*qt.QObject
 }
 
@@ -197,17 +198,22 @@ func (this *QWebEngineCookieStore) Delete() {
 	C.QWebEngineCookieStore_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineCookieStore) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineCookieStore) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineCookieStore{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCookieStore) {
+		C.QWebEngineCookieStore_delete(gc[0])
 	})
 }
 
 type QWebEngineCookieStore__FilterRequest struct {
-	h *C.QWebEngineCookieStore__FilterRequest
+	h  *C.QWebEngineCookieStore__FilterRequest
+	gc *[1]*C.QWebEngineCookieStore__FilterRequest
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) cPointer() *C.QWebEngineCookieStore__FilterRequest {
@@ -303,11 +309,15 @@ func (this *QWebEngineCookieStore__FilterRequest) Delete() {
 	C.QWebEngineCookieStore__FilterRequest_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineCookieStore__FilterRequest) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineCookieStore__FilterRequest) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineCookieStore__FilterRequest{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCookieStore__FilterRequest) {
+		C.QWebEngineCookieStore__FilterRequest_delete(gc[0])
 	})
 }

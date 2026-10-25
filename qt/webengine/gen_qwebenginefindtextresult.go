@@ -14,7 +14,8 @@ import (
 )
 
 type QWebEngineFindTextResult struct {
-	h *C.QWebEngineFindTextResult
+	h  *C.QWebEngineFindTextResult
+	gc *[1]*C.QWebEngineFindTextResult
 }
 
 func (this *QWebEngineFindTextResult) cPointer() *C.QWebEngineFindTextResult {
@@ -74,11 +75,15 @@ func (this *QWebEngineFindTextResult) Delete() {
 	C.QWebEngineFindTextResult_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineFindTextResult) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineFindTextResult) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineFindTextResult{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineFindTextResult) {
+		C.QWebEngineFindTextResult_delete(gc[0])
 	})
 }

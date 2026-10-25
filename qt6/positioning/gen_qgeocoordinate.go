@@ -33,7 +33,8 @@ const (
 )
 
 type QGeoCoordinate struct {
-	h *C.QGeoCoordinate
+	h  *C.QGeoCoordinate
+	gc *[1]*C.QGeoCoordinate
 }
 
 func (this *QGeoCoordinate) cPointer() *C.QGeoCoordinate {
@@ -167,11 +168,15 @@ func (this *QGeoCoordinate) Delete() {
 	C.QGeoCoordinate_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoCoordinate) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoCoordinate) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoCoordinate{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoCoordinate) {
+		C.QGeoCoordinate_delete(gc[0])
 	})
 }

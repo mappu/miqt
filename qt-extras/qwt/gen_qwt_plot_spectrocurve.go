@@ -20,7 +20,8 @@ const (
 )
 
 type QwtPlotSpectroCurve struct {
-	h *C.QwtPlotSpectroCurve
+	h  *C.QwtPlotSpectroCurve
+	gc *[1]*C.QwtPlotSpectroCurve
 	*QwtPlotSeriesItem
 }
 
@@ -90,12 +91,13 @@ func (this *QwtPlotSpectroCurve) TestPaintAttribute(param1 QwtPlotSpectroCurve__
 }
 
 func (this *QwtPlotSpectroCurve) SetSamples(samples []QwtPoint3D) {
-	samples_CArray := (*[0xffff]*C.QwtPoint3D)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (**C.QwtPoint3D)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = samples[i].cPointer()
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotSpectroCurve_setSamples(this.h, samples_ma)
 }
 
@@ -132,11 +134,15 @@ func (this *QwtPlotSpectroCurve) Delete() {
 	C.QwtPlotSpectroCurve_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotSpectroCurve) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotSpectroCurve) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotSpectroCurve{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotSpectroCurve) {
+		C.QwtPlotSpectroCurve_delete(gc[0])
 	})
 }

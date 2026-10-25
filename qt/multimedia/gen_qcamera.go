@@ -91,7 +91,8 @@ const (
 )
 
 type QCamera struct {
-	h *C.QCamera
+	h  *C.QCamera
+	gc *[1]*C.QCamera
 	*QMediaObject
 }
 
@@ -219,7 +220,7 @@ func QCamera_TrUtf8(s string) string {
 func QCamera_AvailableDevices() [][]byte {
 	var _ma C.struct_miqt_array = C.QCamera_availableDevices()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -300,7 +301,7 @@ func (this *QCamera) SetViewfinderSettings(settings *QCameraViewfinderSettings) 
 func (this *QCamera) SupportedViewfinderSettings() []QCameraViewfinderSettings {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettings(this.h)
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraViewfinderSettings(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -312,7 +313,7 @@ func (this *QCamera) SupportedViewfinderSettings() []QCameraViewfinderSettings {
 func (this *QCamera) SupportedViewfinderResolutions() []qt.QSize {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -324,7 +325,7 @@ func (this *QCamera) SupportedViewfinderResolutions() []qt.QSize {
 func (this *QCamera) SupportedViewfinderFrameRateRanges() []QCamera__FrameRateRange {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRanges(this.h)
 	_ret := make([]QCamera__FrameRateRange, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCamera__FrameRateRange(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -336,7 +337,7 @@ func (this *QCamera) SupportedViewfinderFrameRateRanges() []QCamera__FrameRateRa
 func (this *QCamera) SupportedViewfinderPixelFormats() []QVideoFrame__PixelFormat {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormats(this.h)
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QVideoFrame__PixelFormat)(_outCast[i])
 	}
@@ -633,7 +634,7 @@ func QCamera_TrUtf83(s string, c string, n int) string {
 func (this *QCamera) SupportedViewfinderSettingsWithSettings(settings *QCameraViewfinderSettings) []QCameraViewfinderSettings {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettingsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraViewfinderSettings(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -645,7 +646,7 @@ func (this *QCamera) SupportedViewfinderSettingsWithSettings(settings *QCameraVi
 func (this *QCamera) SupportedViewfinderResolutionsWithSettings(settings *QCameraViewfinderSettings) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -657,7 +658,7 @@ func (this *QCamera) SupportedViewfinderResolutionsWithSettings(settings *QCamer
 func (this *QCamera) SupportedViewfinderFrameRateRangesWithSettings(settings *QCameraViewfinderSettings) []QCamera__FrameRateRange {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRangesWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCamera__FrameRateRange, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCamera__FrameRateRange(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -669,7 +670,7 @@ func (this *QCamera) SupportedViewfinderFrameRateRangesWithSettings(settings *QC
 func (this *QCamera) SupportedViewfinderPixelFormatsWithSettings(settings *QCameraViewfinderSettings) []QVideoFrame__PixelFormat {
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormatsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QVideoFrame__PixelFormat)(_outCast[i])
 	}
@@ -1094,17 +1095,22 @@ func (this *QCamera) Delete() {
 	C.QCamera_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCamera) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCamera) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCamera{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCamera) {
+		C.QCamera_delete(gc[0])
 	})
 }
 
 type QCamera__FrameRateRange struct {
-	h *C.QCamera__FrameRateRange
+	h  *C.QCamera__FrameRateRange
+	gc *[1]*C.QCamera__FrameRateRange
 }
 
 func (this *QCamera__FrameRateRange) cPointer() *C.QCamera__FrameRateRange {
@@ -1174,11 +1180,15 @@ func (this *QCamera__FrameRateRange) Delete() {
 	C.QCamera__FrameRateRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCamera__FrameRateRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCamera__FrameRateRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCamera__FrameRateRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCamera__FrameRateRange) {
+		C.QCamera__FrameRateRange_delete(gc[0])
 	})
 }

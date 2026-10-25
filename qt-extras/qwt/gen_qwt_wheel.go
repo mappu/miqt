@@ -16,7 +16,8 @@ import (
 )
 
 type QwtWheel struct {
-	h *C.QwtWheel
+	h  *C.QwtWheel
+	gc *[1]*C.QwtWheel
 	*qt.QWidget
 }
 
@@ -1849,11 +1850,15 @@ func (this *QwtWheel) Delete() {
 	C.QwtWheel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtWheel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtWheel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtWheel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtWheel) {
+		C.QwtWheel_delete(gc[0])
 	})
 }

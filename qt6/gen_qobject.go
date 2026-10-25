@@ -21,7 +21,8 @@ const (
 )
 
 type QObject struct {
-	h *C.QObject
+	h  *C.QObject
+	gc *[1]*C.QObject
 }
 
 func (this *QObject) cPointer() *C.QObject {
@@ -149,7 +150,7 @@ func (this *QObject) KillTimer(id int) {
 func (this *QObject) Children() []*QObject {
 	var _ma C.struct_miqt_array = C.QObject_children(this.h)
 	_ret := make([]*QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQObject(_outCast[i])
 	}
@@ -217,7 +218,7 @@ func (this *QObject) Property(name string) *QVariant {
 func (this *QObject) DynamicPropertyNames() [][]byte {
 	var _ma C.struct_miqt_array = C.QObject_dynamicPropertyNames(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -602,17 +603,22 @@ func (this *QObject) Delete() {
 	C.QObject_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QObject) GoGC() {
-	runtime.SetFinalizer(this, func(this *QObject) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QObject{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QObject) {
+		C.QObject_delete(gc[0])
 	})
 }
 
 type QSignalBlocker struct {
-	h *C.QSignalBlocker
+	h  *C.QSignalBlocker
+	gc *[1]*C.QSignalBlocker
 }
 
 func (this *QSignalBlocker) cPointer() *C.QSignalBlocker {
@@ -668,11 +674,15 @@ func (this *QSignalBlocker) Delete() {
 	C.QSignalBlocker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSignalBlocker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSignalBlocker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSignalBlocker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSignalBlocker) {
+		C.QSignalBlocker_delete(gc[0])
 	})
 }

@@ -57,7 +57,8 @@ const (
 )
 
 type QSslError struct {
-	h *C.QSslError
+	h  *C.QSslError
+	gc *[1]*C.QSslError
 }
 
 func (this *QSslError) cPointer() *C.QSslError {
@@ -150,11 +151,15 @@ func (this *QSslError) Delete() {
 	C.QSslError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSslError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSslError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSslError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslError) {
+		C.QSslError_delete(gc[0])
 	})
 }

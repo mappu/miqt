@@ -36,7 +36,8 @@ const (
 )
 
 type QAbstractPrintDialog struct {
-	h *C.QAbstractPrintDialog
+	h  *C.QAbstractPrintDialog
+	gc *[1]*C.QAbstractPrintDialog
 	*qt6.QDialog
 }
 
@@ -103,12 +104,13 @@ func QAbstractPrintDialog_Tr(s string) string {
 }
 
 func (this *QAbstractPrintDialog) SetOptionTabs(tabs []*qt6.QWidget) {
-	tabs_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(tabs))))
-	defer C.free(unsafe.Pointer(tabs_CArray))
+	tabs_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(tabs))))
+	defer C.free(unsafe.Pointer(tabs_CArray_ptr))
+	tabs_CArray := unsafe.Slice(tabs_CArray_ptr, len(tabs))
 	for i := range tabs {
 		tabs_CArray[i] = (*C.QWidget)(tabs[i].UnsafePointer())
 	}
-	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
+	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray_ptr)}
 	C.QAbstractPrintDialog_setOptionTabs(this.h, tabs_ma)
 }
 
@@ -1682,11 +1684,15 @@ func (this *QAbstractPrintDialog) Delete() {
 	C.QAbstractPrintDialog_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractPrintDialog) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractPrintDialog) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractPrintDialog{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractPrintDialog) {
+		C.QAbstractPrintDialog_delete(gc[0])
 	})
 }

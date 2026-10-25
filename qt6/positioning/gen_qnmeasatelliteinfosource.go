@@ -31,7 +31,8 @@ const (
 )
 
 type QNmeaSatelliteInfoSource struct {
-	h *C.QNmeaSatelliteInfoSource
+	h  *C.QNmeaSatelliteInfoSource
+	gc *[1]*C.QNmeaSatelliteInfoSource
 	*QGeoSatelliteInfoSource
 }
 
@@ -467,12 +468,13 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_requestUpdate(self *C.QNmeaSate
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ParseSatellitesInUseFromNmea(data string, size int, pnrsInUse []int) QGeoSatelliteInfo__SatelliteSystem {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	pnrsInUse_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(pnrsInUse))))
-	defer C.free(unsafe.Pointer(pnrsInUse_CArray))
+	pnrsInUse_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(pnrsInUse))))
+	defer C.free(unsafe.Pointer(pnrsInUse_CArray_ptr))
+	pnrsInUse_CArray := unsafe.Slice(pnrsInUse_CArray_ptr, len(pnrsInUse))
 	for i := range pnrsInUse {
 		pnrsInUse_CArray[i] = (C.int)(pnrsInUse[i])
 	}
-	pnrsInUse_ma := C.struct_miqt_array{len: C.size_t(len(pnrsInUse)), data: unsafe.Pointer(pnrsInUse_CArray)}
+	pnrsInUse_ma := C.struct_miqt_array{len: C.size_t(len(pnrsInUse)), data: unsafe.Pointer(pnrsInUse_CArray_ptr)}
 
 	return (QGeoSatelliteInfo__SatelliteSystem)(C.QNmeaSatelliteInfoSource_virtualbase_parseSatellitesInUseFromNmea(unsafe.Pointer(this.h), data_Cstring, (C.int)(size), pnrsInUse_ma))
 
@@ -499,7 +501,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_parseSatellitesInUseFromNmea(se
 
 	var pnrsInUse_ma C.struct_miqt_array = pnrsInUse
 	pnrsInUse_ret := make([]int, int(pnrsInUse_ma.len))
-	pnrsInUse_outCast := (*[0xffff]C.int)(unsafe.Pointer(pnrsInUse_ma.data)) // hey ya
+	pnrsInUse_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(pnrsInUse_ma.data)), int(pnrsInUse_ma.len))
 	for i := 0; i < int(pnrsInUse_ma.len); i++ {
 		pnrsInUse_ret[i] = (int)(pnrsInUse_outCast[i])
 	}
@@ -514,12 +516,13 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_parseSatellitesInUseFromNmea(se
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ParseSatelliteInfoFromNmea(data string, size int, infos []QGeoSatelliteInfo, system *QGeoSatelliteInfo__SatelliteSystem) QNmeaSatelliteInfoSource__SatelliteInfoParseStatus {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	infos_CArray := (*[0xffff]*C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(infos))))
-	defer C.free(unsafe.Pointer(infos_CArray))
+	infos_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(infos))))
+	defer C.free(unsafe.Pointer(infos_CArray_ptr))
+	infos_CArray := unsafe.Slice(infos_CArray_ptr, len(infos))
 	for i := range infos {
 		infos_CArray[i] = infos[i].cPointer()
 	}
-	infos_ma := C.struct_miqt_array{len: C.size_t(len(infos)), data: unsafe.Pointer(infos_CArray)}
+	infos_ma := C.struct_miqt_array{len: C.size_t(len(infos)), data: unsafe.Pointer(infos_CArray_ptr)}
 
 	return (QNmeaSatelliteInfoSource__SatelliteInfoParseStatus)(C.QNmeaSatelliteInfoSource_virtualbase_parseSatelliteInfoFromNmea(unsafe.Pointer(this.h), data_Cstring, (C.int)(size), infos_ma, (*C.int)(unsafe.Pointer(system))))
 
@@ -546,7 +549,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_parseSatelliteInfoFromNmea(self
 
 	var infos_ma C.struct_miqt_array = infos
 	infos_ret := make([]QGeoSatelliteInfo, int(infos_ma.len))
-	infos_outCast := (*[0xffff]*C.QGeoSatelliteInfo)(unsafe.Pointer(infos_ma.data)) // hey ya
+	infos_outCast := unsafe.Slice((**C.QGeoSatelliteInfo)(unsafe.Pointer(infos_ma.data)), int(infos_ma.len))
 	for i := 0; i < int(infos_ma.len); i++ {
 		infos_lv_goptr := newQGeoSatelliteInfo(infos_outCast[i])
 		infos_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -755,11 +758,15 @@ func (this *QNmeaSatelliteInfoSource) Delete() {
 	C.QNmeaSatelliteInfoSource_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNmeaSatelliteInfoSource) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNmeaSatelliteInfoSource) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNmeaSatelliteInfoSource{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNmeaSatelliteInfoSource) {
+		C.QNmeaSatelliteInfoSource_delete(gc[0])
 	})
 }

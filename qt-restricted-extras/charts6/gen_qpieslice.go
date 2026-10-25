@@ -25,7 +25,8 @@ const (
 )
 
 type QPieSlice struct {
-	h *C.QPieSlice
+	h  *C.QPieSlice
+	gc *[1]*C.QPieSlice
 	*qt6.QObject
 }
 
@@ -875,11 +876,15 @@ func (this *QPieSlice) Delete() {
 	C.QPieSlice_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPieSlice) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPieSlice) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPieSlice{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPieSlice) {
+		C.QPieSlice_delete(gc[0])
 	})
 }

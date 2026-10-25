@@ -25,7 +25,8 @@ const (
 )
 
 type QHttpPart struct {
-	h *C.QHttpPart
+	h  *C.QHttpPart
+	gc *[1]*C.QHttpPart
 }
 
 func (this *QHttpPart) cPointer() *C.QHttpPart {
@@ -126,17 +127,22 @@ func (this *QHttpPart) Delete() {
 	C.QHttpPart_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHttpPart) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHttpPart) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHttpPart{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHttpPart) {
+		C.QHttpPart_delete(gc[0])
 	})
 }
 
 type QHttpMultiPart struct {
-	h *C.QHttpMultiPart
+	h  *C.QHttpMultiPart
+	gc *[1]*C.QHttpMultiPart
 	*qt6.QObject
 }
 
@@ -513,11 +519,15 @@ func (this *QHttpMultiPart) Delete() {
 	C.QHttpMultiPart_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHttpMultiPart) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHttpMultiPart) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHttpMultiPart{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHttpMultiPart) {
+		C.QHttpMultiPart_delete(gc[0])
 	})
 }

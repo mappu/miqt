@@ -38,7 +38,8 @@ const (
 )
 
 type QTimeZone struct {
-	h *C.QTimeZone
+	h  *C.QTimeZone
+	gc *[1]*C.QTimeZone
 }
 
 func (this *QTimeZone) cPointer() *C.QTimeZone {
@@ -267,7 +268,7 @@ func (this *QTimeZone) PreviousTransition(beforeDateTime *QDateTime) *QTimeZone_
 func (this *QTimeZone) Transitions(fromDateTime *QDateTime, toDateTime *QDateTime) []QTimeZone__OffsetData {
 	var _ma C.struct_miqt_array = C.QTimeZone_transitions(this.h, fromDateTime.cPointer(), toDateTime.cPointer())
 	_ret := make([]QTimeZone__OffsetData, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTimeZone__OffsetData)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTimeZone__OffsetData)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTimeZone__OffsetData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -309,7 +310,7 @@ func QTimeZone_IsTimeZoneIdAvailable(ianaId []byte) bool {
 func QTimeZone_AvailableTimeZoneIds() [][]byte {
 	var _ma C.struct_miqt_array = C.QTimeZone_availableTimeZoneIds()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -322,7 +323,7 @@ func QTimeZone_AvailableTimeZoneIds() [][]byte {
 func QTimeZone_AvailableTimeZoneIdsWithTerritory(territory QLocale__Country) [][]byte {
 	var _ma C.struct_miqt_array = C.QTimeZone_availableTimeZoneIdsWithTerritory((C.ushort)(territory))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -335,7 +336,7 @@ func QTimeZone_AvailableTimeZoneIdsWithTerritory(territory QLocale__Country) [][
 func QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(offsetSeconds int) [][]byte {
 	var _ma C.struct_miqt_array = C.QTimeZone_availableTimeZoneIdsWithOffsetSeconds((C.int)(offsetSeconds))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -397,7 +398,7 @@ func QTimeZone_WindowsIdToIanaIds(windowsId []byte) [][]byte {
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _ma C.struct_miqt_array = C.QTimeZone_windowsIdToIanaIds(windowsId_alias)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -417,7 +418,7 @@ func QTimeZone_WindowsIdToIanaIds2(windowsId []byte, territory QLocale__Country)
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _ma C.struct_miqt_array = C.QTimeZone_windowsIdToIanaIds2(windowsId_alias, (C.ushort)(territory))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -460,17 +461,22 @@ func (this *QTimeZone) Delete() {
 	C.QTimeZone_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTimeZone) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTimeZone) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTimeZone{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeZone) {
+		C.QTimeZone_delete(gc[0])
 	})
 }
 
 type QTimeZone__OffsetData struct {
-	h *C.QTimeZone__OffsetData
+	h  *C.QTimeZone__OffsetData
+	gc *[1]*C.QTimeZone__OffsetData
 }
 
 func (this *QTimeZone__OffsetData) cPointer() *C.QTimeZone__OffsetData {
@@ -571,11 +577,15 @@ func (this *QTimeZone__OffsetData) Delete() {
 	C.QTimeZone__OffsetData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTimeZone__OffsetData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTimeZone__OffsetData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTimeZone__OffsetData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeZone__OffsetData) {
+		C.QTimeZone__OffsetData_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QwtPlotPicker struct {
-	h *C.QwtPlotPicker
+	h  *C.QwtPlotPicker
+	gc *[1]*C.QwtPlotPicker
 	*QwtPicker
 }
 
@@ -166,12 +167,13 @@ func miqt_exec_callback_QwtPlotPicker_selectedWithRect(cb C.intptr_t, rect *C.QR
 }
 
 func (this *QwtPlotPicker) SelectedWithPa(pa []qt.QPointF) {
-	pa_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(pa))))
-	defer C.free(unsafe.Pointer(pa_CArray))
+	pa_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(pa))))
+	defer C.free(unsafe.Pointer(pa_CArray_ptr))
+	pa_CArray := unsafe.Slice(pa_CArray_ptr, len(pa))
 	for i := range pa {
 		pa_CArray[i] = (*C.QPointF)(pa[i].UnsafePointer())
 	}
-	pa_ma := C.struct_miqt_array{len: C.size_t(len(pa)), data: unsafe.Pointer(pa_CArray)}
+	pa_ma := C.struct_miqt_array{len: C.size_t(len(pa)), data: unsafe.Pointer(pa_CArray_ptr)}
 	C.QwtPlotPicker_selectedWithPa(this.h, pa_ma)
 }
 func (this *QwtPlotPicker) OnSelectedWithPa(slot func(pa []qt.QPointF)) {
@@ -188,7 +190,7 @@ func miqt_exec_callback_QwtPlotPicker_selectedWithPa(cb C.intptr_t, pa C.struct_
 	// Convert all CABI parameters to Go parameters
 	var pa_ma C.struct_miqt_array = pa
 	pa_ret := make([]qt.QPointF, int(pa_ma.len))
-	pa_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(pa_ma.data)) // hey ya
+	pa_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(pa_ma.data)), int(pa_ma.len))
 	for i := 0; i < int(pa_ma.len); i++ {
 		pa_vv_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(pa_outCast[i]))
 		pa_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1386,11 +1388,15 @@ func (this *QwtPlotPicker) Delete() {
 	C.QwtPlotPicker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotPicker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotPicker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotPicker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotPicker) {
+		C.QwtPlotPicker_delete(gc[0])
 	})
 }

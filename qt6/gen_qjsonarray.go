@@ -14,7 +14,8 @@ import (
 )
 
 type QJsonArray struct {
-	h *C.QJsonArray
+	h  *C.QJsonArray
+	gc *[1]*C.QJsonArray
 }
 
 func (this *QJsonArray) cPointer() *C.QJsonArray {
@@ -62,8 +63,9 @@ func (this *QJsonArray) OperatorAssign(other *QJsonArray) {
 }
 
 func QJsonArray_FromStringList(list []string) *QJsonArray {
-	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_i_ms := C.struct_miqt_string{}
 		list_i_ms.data = C.CString(list[i])
@@ -71,19 +73,20 @@ func QJsonArray_FromStringList(list []string) *QJsonArray {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	_goptr := newQJsonArray(C.QJsonArray_fromStringList(list_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QJsonArray_FromVariantList(list []QVariant) *QJsonArray {
-	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	_goptr := newQJsonArray(C.QJsonArray_fromVariantList(list_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -92,7 +95,7 @@ func QJsonArray_FromVariantList(list []QVariant) *QJsonArray {
 func (this *QJsonArray) ToVariantList() []QVariant {
 	var _ma C.struct_miqt_array = C.QJsonArray_toVariantList(this.h)
 	_ret := make([]QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQVariant(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -292,17 +295,22 @@ func (this *QJsonArray) Delete() {
 	C.QJsonArray_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonArray) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonArray) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonArray{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonArray) {
+		C.QJsonArray_delete(gc[0])
 	})
 }
 
 type QJsonArray__iterator struct {
-	h *C.QJsonArray__iterator
+	h  *C.QJsonArray__iterator
+	gc *[1]*C.QJsonArray__iterator
 }
 
 func (this *QJsonArray__iterator) cPointer() *C.QJsonArray__iterator {
@@ -472,17 +480,22 @@ func (this *QJsonArray__iterator) Delete() {
 	C.QJsonArray__iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonArray__iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonArray__iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonArray__iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonArray__iterator) {
+		C.QJsonArray__iterator_delete(gc[0])
 	})
 }
 
 type QJsonArray__const_iterator struct {
-	h *C.QJsonArray__const_iterator
+	h  *C.QJsonArray__const_iterator
+	gc *[1]*C.QJsonArray__const_iterator
 }
 
 func (this *QJsonArray__const_iterator) cPointer() *C.QJsonArray__const_iterator {
@@ -630,11 +643,15 @@ func (this *QJsonArray__const_iterator) Delete() {
 	C.QJsonArray__const_iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonArray__const_iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonArray__const_iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonArray__const_iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonArray__const_iterator) {
+		C.QJsonArray__const_iterator_delete(gc[0])
 	})
 }

@@ -45,7 +45,8 @@ const (
 )
 
 type QScriptValue struct {
-	h *C.QScriptValue
+	h  *C.QScriptValue
+	gc *[1]*C.QScriptValue
 }
 
 func (this *QScriptValue) cPointer() *C.QScriptValue {
@@ -512,24 +513,26 @@ func (this *QScriptValue) CallWithThisObject(thisObject *QScriptValue) *QScriptV
 }
 
 func (this *QScriptValue) Call3(thisObject *QScriptValue, args []QScriptValue) *QScriptValue {
-	args_CArray := (*[0xffff]*C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
-	defer C.free(unsafe.Pointer(args_CArray))
+	args_CArray_ptr := (**C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
+	defer C.free(unsafe.Pointer(args_CArray_ptr))
+	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
-	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
+	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray_ptr)}
 	_goptr := newQScriptValue(C.QScriptValue_call3(this.h, thisObject.cPointer(), args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ConstructWithArgs(args []QScriptValue) *QScriptValue {
-	args_CArray := (*[0xffff]*C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
-	defer C.free(unsafe.Pointer(args_CArray))
+	args_CArray_ptr := (**C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
+	defer C.free(unsafe.Pointer(args_CArray_ptr))
+	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
-	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
+	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray_ptr)}
 	_goptr := newQScriptValue(C.QScriptValue_constructWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -540,11 +543,15 @@ func (this *QScriptValue) Delete() {
 	C.QScriptValue_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptValue) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptValue) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptValue{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptValue) {
+		C.QScriptValue_delete(gc[0])
 	})
 }

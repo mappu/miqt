@@ -39,7 +39,8 @@ const (
 )
 
 type QPointingDeviceUniqueId struct {
-	h *C.QPointingDeviceUniqueId
+	h  *C.QPointingDeviceUniqueId
+	gc *[1]*C.QPointingDeviceUniqueId
 }
 
 func (this *QPointingDeviceUniqueId) cPointer() *C.QPointingDeviceUniqueId {
@@ -101,17 +102,22 @@ func (this *QPointingDeviceUniqueId) Delete() {
 	C.QPointingDeviceUniqueId_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPointingDeviceUniqueId) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPointingDeviceUniqueId) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPointingDeviceUniqueId{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPointingDeviceUniqueId) {
+		C.QPointingDeviceUniqueId_delete(gc[0])
 	})
 }
 
 type QPointingDevice struct {
-	h *C.QPointingDevice
+	h  *C.QPointingDevice
+	gc *[1]*C.QPointingDevice
 	*QInputDevice
 }
 
@@ -574,11 +580,15 @@ func (this *QPointingDevice) Delete() {
 	C.QPointingDevice_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPointingDevice) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPointingDevice) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPointingDevice{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPointingDevice) {
+		C.QPointingDevice_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QVideoDeviceSelectorControl struct {
-	h *C.QVideoDeviceSelectorControl
+	h  *C.QVideoDeviceSelectorControl
+	gc *[1]*C.QVideoDeviceSelectorControl
 	*QMediaControl
 }
 
@@ -222,11 +223,15 @@ func (this *QVideoDeviceSelectorControl) Delete() {
 	C.QVideoDeviceSelectorControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoDeviceSelectorControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoDeviceSelectorControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoDeviceSelectorControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoDeviceSelectorControl) {
+		C.QVideoDeviceSelectorControl_delete(gc[0])
 	})
 }

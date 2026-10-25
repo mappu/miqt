@@ -30,7 +30,8 @@ const (
 )
 
 type QIcon struct {
-	h *C.QIcon
+	h  *C.QIcon
+	gc *[1]*C.QIcon
 }
 
 func (this *QIcon) cPointer() *C.QIcon {
@@ -197,7 +198,7 @@ func (this *QIcon) AddFile(fileName string) {
 func (this *QIcon) AvailableSizes() []QSize {
 	var _ma C.struct_miqt_array = C.QIcon_availableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -245,7 +246,7 @@ func QIcon_HasThemeIcon(name string) bool {
 func QIcon_ThemeSearchPaths() []string {
 	var _ma C.struct_miqt_array = C.QIcon_themeSearchPaths()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -256,8 +257,9 @@ func QIcon_ThemeSearchPaths() []string {
 }
 
 func QIcon_SetThemeSearchPaths(searchpath []string) {
-	searchpath_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(searchpath))))
-	defer C.free(unsafe.Pointer(searchpath_CArray))
+	searchpath_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(searchpath))))
+	defer C.free(unsafe.Pointer(searchpath_CArray_ptr))
+	searchpath_CArray := unsafe.Slice(searchpath_CArray_ptr, len(searchpath))
 	for i := range searchpath {
 		searchpath_i_ms := C.struct_miqt_string{}
 		searchpath_i_ms.data = C.CString(searchpath[i])
@@ -265,14 +267,14 @@ func QIcon_SetThemeSearchPaths(searchpath []string) {
 		defer C.free(unsafe.Pointer(searchpath_i_ms.data))
 		searchpath_CArray[i] = searchpath_i_ms
 	}
-	searchpath_ma := C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray)}
+	searchpath_ma := C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray_ptr)}
 	C.QIcon_setThemeSearchPaths(searchpath_ma)
 }
 
 func QIcon_FallbackSearchPaths() []string {
 	var _ma C.struct_miqt_array = C.QIcon_fallbackSearchPaths()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -283,8 +285,9 @@ func QIcon_FallbackSearchPaths() []string {
 }
 
 func QIcon_SetFallbackSearchPaths(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -292,7 +295,7 @@ func QIcon_SetFallbackSearchPaths(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QIcon_setFallbackSearchPaths(paths_ma)
 }
 
@@ -469,7 +472,7 @@ func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, stat
 func (this *QIcon) AvailableSizesWithMode(mode QIcon__Mode) []QSize {
 	var _ma C.struct_miqt_array = C.QIcon_availableSizesWithMode(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -481,7 +484,7 @@ func (this *QIcon) AvailableSizesWithMode(mode QIcon__Mode) []QSize {
 func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _ma C.struct_miqt_array = C.QIcon_availableSizes2(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -495,11 +498,15 @@ func (this *QIcon) Delete() {
 	C.QIcon_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIcon) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIcon) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIcon{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIcon) {
+		C.QIcon_delete(gc[0])
 	})
 }

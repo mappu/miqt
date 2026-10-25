@@ -36,7 +36,8 @@ const (
 )
 
 type QComboBox struct {
-	h *C.QComboBox
+	h  *C.QComboBox
+	gc *[1]*C.QComboBox
 	*QWidget
 }
 
@@ -343,8 +344,9 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 }
 
 func (this *QComboBox) AddItems(texts []string) {
-	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
-	defer C.free(unsafe.Pointer(texts_CArray))
+	texts_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
+	defer C.free(unsafe.Pointer(texts_CArray_ptr))
+	texts_CArray := unsafe.Slice(texts_CArray_ptr, len(texts))
 	for i := range texts {
 		texts_i_ms := C.struct_miqt_string{}
 		texts_i_ms.data = C.CString(texts[i])
@@ -352,7 +354,7 @@ func (this *QComboBox) AddItems(texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray_ptr)}
 	C.QComboBox_addItems(this.h, texts_ma)
 }
 
@@ -373,8 +375,9 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
-	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
-	defer C.free(unsafe.Pointer(texts_CArray))
+	texts_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
+	defer C.free(unsafe.Pointer(texts_CArray_ptr))
+	texts_CArray := unsafe.Slice(texts_CArray_ptr, len(texts))
 	for i := range texts {
 		texts_i_ms := C.struct_miqt_string{}
 		texts_i_ms.data = C.CString(texts[i])
@@ -382,7 +385,7 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray_ptr)}
 	C.QComboBox_insertItems(this.h, (C.int)(index), texts_ma)
 }
 
@@ -2277,11 +2280,15 @@ func (this *QComboBox) Delete() {
 	C.QComboBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QComboBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QComboBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QComboBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QComboBox) {
+		C.QComboBox_delete(gc[0])
 	})
 }

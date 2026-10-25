@@ -34,7 +34,8 @@ const (
 )
 
 type QMediaServiceProviderHint struct {
-	h *C.QMediaServiceProviderHint
+	h  *C.QMediaServiceProviderHint
+	gc *[1]*C.QMediaServiceProviderHint
 }
 
 func (this *QMediaServiceProviderHint) cPointer() *C.QMediaServiceProviderHint {
@@ -77,8 +78,9 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	codecs_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
-	defer C.free(unsafe.Pointer(codecs_CArray))
+	codecs_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
+	defer C.free(unsafe.Pointer(codecs_CArray_ptr))
+	codecs_CArray := unsafe.Slice(codecs_CArray_ptr, len(codecs))
 	for i := range codecs {
 		codecs_i_ms := C.struct_miqt_string{}
 		codecs_i_ms.data = C.CString(codecs[i])
@@ -86,7 +88,7 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 		defer C.free(unsafe.Pointer(codecs_i_ms.data))
 		codecs_CArray[i] = codecs_i_ms
 	}
-	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
+	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray_ptr)}
 
 	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma))
 }
@@ -152,7 +154,7 @@ func (this *QMediaServiceProviderHint) MimeType() string {
 func (this *QMediaServiceProviderHint) Codecs() []string {
 	var _ma C.struct_miqt_array = C.QMediaServiceProviderHint_codecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -182,17 +184,22 @@ func (this *QMediaServiceProviderHint) Delete() {
 	C.QMediaServiceProviderHint_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceProviderHint) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceProviderHint) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceProviderHint{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderHint) {
+		C.QMediaServiceProviderHint_delete(gc[0])
 	})
 }
 
 type QMediaServiceProviderFactoryInterface struct {
-	h *C.QMediaServiceProviderFactoryInterface
+	h  *C.QMediaServiceProviderFactoryInterface
+	gc *[1]*C.QMediaServiceProviderFactoryInterface
 }
 
 func (this *QMediaServiceProviderFactoryInterface) cPointer() *C.QMediaServiceProviderFactoryInterface {
@@ -244,17 +251,22 @@ func (this *QMediaServiceProviderFactoryInterface) Delete() {
 	C.QMediaServiceProviderFactoryInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceProviderFactoryInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceProviderFactoryInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceProviderFactoryInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderFactoryInterface) {
+		C.QMediaServiceProviderFactoryInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceSupportedFormatsInterface struct {
-	h *C.QMediaServiceSupportedFormatsInterface
+	h  *C.QMediaServiceSupportedFormatsInterface
+	gc *[1]*C.QMediaServiceSupportedFormatsInterface
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) cPointer() *C.QMediaServiceSupportedFormatsInterface {
@@ -290,8 +302,9 @@ func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, 
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	codecs_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
-	defer C.free(unsafe.Pointer(codecs_CArray))
+	codecs_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
+	defer C.free(unsafe.Pointer(codecs_CArray_ptr))
+	codecs_CArray := unsafe.Slice(codecs_CArray_ptr, len(codecs))
 	for i := range codecs {
 		codecs_i_ms := C.struct_miqt_string{}
 		codecs_i_ms.data = C.CString(codecs[i])
@@ -299,14 +312,14 @@ func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, 
 		defer C.free(unsafe.Pointer(codecs_i_ms.data))
 		codecs_CArray[i] = codecs_i_ms
 	}
-	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
+	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray_ptr)}
 	return (QMultimedia__SupportEstimate)(C.QMediaServiceSupportedFormatsInterface_hasSupport(this.h, mimeType_ms, codecs_ma))
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) SupportedMimeTypes() []string {
 	var _ma C.struct_miqt_array = C.QMediaServiceSupportedFormatsInterface_supportedMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -325,17 +338,22 @@ func (this *QMediaServiceSupportedFormatsInterface) Delete() {
 	C.QMediaServiceSupportedFormatsInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceSupportedFormatsInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceSupportedFormatsInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceSupportedFormatsInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceSupportedFormatsInterface) {
+		C.QMediaServiceSupportedFormatsInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceSupportedDevicesInterface struct {
-	h *C.QMediaServiceSupportedDevicesInterface
+	h  *C.QMediaServiceSupportedDevicesInterface
+	gc *[1]*C.QMediaServiceSupportedDevicesInterface
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) cPointer() *C.QMediaServiceSupportedDevicesInterface {
@@ -376,7 +394,7 @@ func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]
 	service_alias.len = C.size_t(len(service))
 	var _ma C.struct_miqt_array = C.QMediaServiceSupportedDevicesInterface_devices(this.h, service_alias)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -416,17 +434,22 @@ func (this *QMediaServiceSupportedDevicesInterface) Delete() {
 	C.QMediaServiceSupportedDevicesInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceSupportedDevicesInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceSupportedDevicesInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceSupportedDevicesInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceSupportedDevicesInterface) {
+		C.QMediaServiceSupportedDevicesInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceDefaultDeviceInterface struct {
-	h *C.QMediaServiceDefaultDeviceInterface
+	h  *C.QMediaServiceDefaultDeviceInterface
+	gc *[1]*C.QMediaServiceDefaultDeviceInterface
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) cPointer() *C.QMediaServiceDefaultDeviceInterface {
@@ -480,17 +503,22 @@ func (this *QMediaServiceDefaultDeviceInterface) Delete() {
 	C.QMediaServiceDefaultDeviceInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceDefaultDeviceInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceDefaultDeviceInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceDefaultDeviceInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceDefaultDeviceInterface) {
+		C.QMediaServiceDefaultDeviceInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceCameraInfoInterface struct {
-	h *C.QMediaServiceCameraInfoInterface
+	h  *C.QMediaServiceCameraInfoInterface
+	gc *[1]*C.QMediaServiceCameraInfoInterface
 }
 
 func (this *QMediaServiceCameraInfoInterface) cPointer() *C.QMediaServiceCameraInfoInterface {
@@ -552,17 +580,22 @@ func (this *QMediaServiceCameraInfoInterface) Delete() {
 	C.QMediaServiceCameraInfoInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceCameraInfoInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceCameraInfoInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceCameraInfoInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceCameraInfoInterface) {
+		C.QMediaServiceCameraInfoInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceFeaturesInterface struct {
-	h *C.QMediaServiceFeaturesInterface
+	h  *C.QMediaServiceFeaturesInterface
+	gc *[1]*C.QMediaServiceFeaturesInterface
 }
 
 func (this *QMediaServiceFeaturesInterface) cPointer() *C.QMediaServiceFeaturesInterface {
@@ -613,17 +646,22 @@ func (this *QMediaServiceFeaturesInterface) Delete() {
 	C.QMediaServiceFeaturesInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceFeaturesInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceFeaturesInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceFeaturesInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceFeaturesInterface) {
+		C.QMediaServiceFeaturesInterface_delete(gc[0])
 	})
 }
 
 type QMediaServiceProviderPlugin struct {
-	h *C.QMediaServiceProviderPlugin
+	h  *C.QMediaServiceProviderPlugin
+	gc *[1]*C.QMediaServiceProviderPlugin
 	*qt.QObject
 	*QMediaServiceProviderFactoryInterface
 }
@@ -750,11 +788,15 @@ func (this *QMediaServiceProviderPlugin) Delete() {
 	C.QMediaServiceProviderPlugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaServiceProviderPlugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaServiceProviderPlugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaServiceProviderPlugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderPlugin) {
+		C.QMediaServiceProviderPlugin_delete(gc[0])
 	})
 }

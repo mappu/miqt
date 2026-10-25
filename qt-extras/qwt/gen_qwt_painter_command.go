@@ -25,7 +25,8 @@ const (
 )
 
 type QwtPainterCommand struct {
-	h *C.QwtPainterCommand
+	h  *C.QwtPainterCommand
+	gc *[1]*C.QwtPainterCommand
 }
 
 func (this *QwtPainterCommand) cPointer() *C.QwtPainterCommand {
@@ -127,17 +128,22 @@ func (this *QwtPainterCommand) Delete() {
 	C.QwtPainterCommand_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPainterCommand) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPainterCommand) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPainterCommand{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand) {
+		C.QwtPainterCommand_delete(gc[0])
 	})
 }
 
 type QwtPainterCommand__PixmapData struct {
-	h *C.QwtPainterCommand__PixmapData
+	h  *C.QwtPainterCommand__PixmapData
+	gc *[1]*C.QwtPainterCommand__PixmapData
 }
 
 func (this *QwtPainterCommand__PixmapData) cPointer() *C.QwtPainterCommand__PixmapData {
@@ -219,17 +225,22 @@ func (this *QwtPainterCommand__PixmapData) Delete() {
 	C.QwtPainterCommand__PixmapData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPainterCommand__PixmapData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPainterCommand__PixmapData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPainterCommand__PixmapData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__PixmapData) {
+		C.QwtPainterCommand__PixmapData_delete(gc[0])
 	})
 }
 
 type QwtPainterCommand__ImageData struct {
-	h *C.QwtPainterCommand__ImageData
+	h  *C.QwtPainterCommand__ImageData
+	gc *[1]*C.QwtPainterCommand__ImageData
 }
 
 func (this *QwtPainterCommand__ImageData) cPointer() *C.QwtPainterCommand__ImageData {
@@ -319,17 +330,22 @@ func (this *QwtPainterCommand__ImageData) Delete() {
 	C.QwtPainterCommand__ImageData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPainterCommand__ImageData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPainterCommand__ImageData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPainterCommand__ImageData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__ImageData) {
+		C.QwtPainterCommand__ImageData_delete(gc[0])
 	})
 }
 
 type QwtPainterCommand__StateData struct {
-	h *C.QwtPainterCommand__StateData
+	h  *C.QwtPainterCommand__StateData
+	gc *[1]*C.QwtPainterCommand__StateData
 }
 
 func (this *QwtPainterCommand__StateData) cPointer() *C.QwtPainterCommand__StateData {
@@ -527,11 +543,15 @@ func (this *QwtPainterCommand__StateData) Delete() {
 	C.QwtPainterCommand__StateData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPainterCommand__StateData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPainterCommand__StateData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPainterCommand__StateData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__StateData) {
+		C.QwtPainterCommand__StateData_delete(gc[0])
 	})
 }

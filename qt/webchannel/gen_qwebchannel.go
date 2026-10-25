@@ -16,7 +16,8 @@ import (
 )
 
 type QWebChannel struct {
-	h *C.QWebChannel
+	h  *C.QWebChannel
+	gc *[1]*C.QWebChannel
 	*qt.QObject
 }
 
@@ -92,10 +93,12 @@ func QWebChannel_TrUtf8(s string) string {
 }
 
 func (this *QWebChannel) RegisterObjects(objects map[string]*qt.QObject) {
-	objects_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(objects))))
-	defer C.free(unsafe.Pointer(objects_Keys_CArray))
-	objects_Values_CArray := (*[0xffff]*C.QObject)(C.malloc(C.size_t(8 * len(objects))))
-	defer C.free(unsafe.Pointer(objects_Values_CArray))
+	objects_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(objects))))
+	defer C.free(unsafe.Pointer(objects_Keys_CArray_ptr))
+	objects_Keys_CArray := unsafe.Slice(objects_Keys_CArray_ptr, len(objects))
+	objects_Values_CArray_ptr := (**C.QObject)(C.malloc(C.size_t(8 * len(objects))))
+	defer C.free(unsafe.Pointer(objects_Values_CArray_ptr))
+	objects_Values_CArray := unsafe.Slice(objects_Values_CArray_ptr, len(objects))
 	objects_ctr := 0
 	for objects_k, objects_v := range objects {
 		objects_k_ms := C.struct_miqt_string{}
@@ -108,8 +111,8 @@ func (this *QWebChannel) RegisterObjects(objects map[string]*qt.QObject) {
 	}
 	objects_mm := C.struct_miqt_map{
 		len:    C.size_t(len(objects)),
-		keys:   unsafe.Pointer(objects_Keys_CArray),
-		values: unsafe.Pointer(objects_Values_CArray),
+		keys:   unsafe.Pointer(objects_Keys_CArray_ptr),
+		values: unsafe.Pointer(objects_Values_CArray_ptr),
 	}
 	C.QWebChannel_registerObjects(this.h, objects_mm)
 }
@@ -117,8 +120,8 @@ func (this *QWebChannel) RegisterObjects(objects map[string]*qt.QObject) {
 func (this *QWebChannel) RegisteredObjects() map[string]*qt.QObject {
 	var _mm C.struct_miqt_map = C.QWebChannel_registeredObjects(this.h)
 	_ret := make(map[string]*qt.QObject, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QObject)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QObject)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _hashkey_ms C.struct_miqt_string = _Keys[i]
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
@@ -474,11 +477,15 @@ func (this *QWebChannel) Delete() {
 	C.QWebChannel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebChannel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebChannel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebChannel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebChannel) {
+		C.QWebChannel_delete(gc[0])
 	})
 }

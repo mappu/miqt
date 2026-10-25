@@ -37,7 +37,8 @@ const (
 )
 
 type QwtDialNeedle struct {
-	h *C.QwtDialNeedle
+	h  *C.QwtDialNeedle
+	gc *[1]*C.QwtDialNeedle
 }
 
 func (this *QwtDialNeedle) cPointer() *C.QwtDialNeedle {
@@ -217,17 +218,22 @@ func (this *QwtDialNeedle) Delete() {
 	C.QwtDialNeedle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtDialNeedle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtDialNeedle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtDialNeedle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDialNeedle) {
+		C.QwtDialNeedle_delete(gc[0])
 	})
 }
 
 type QwtDialSimpleNeedle struct {
-	h *C.QwtDialSimpleNeedle
+	h  *C.QwtDialSimpleNeedle
+	gc *[1]*C.QwtDialSimpleNeedle
 	*QwtDialNeedle
 }
 
@@ -431,17 +437,22 @@ func (this *QwtDialSimpleNeedle) Delete() {
 	C.QwtDialSimpleNeedle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtDialSimpleNeedle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtDialSimpleNeedle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtDialSimpleNeedle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDialSimpleNeedle) {
+		C.QwtDialSimpleNeedle_delete(gc[0])
 	})
 }
 
 type QwtCompassMagnetNeedle struct {
-	h *C.QwtCompassMagnetNeedle
+	h  *C.QwtCompassMagnetNeedle
+	gc *[1]*C.QwtCompassMagnetNeedle
 	*QwtDialNeedle
 }
 
@@ -637,17 +648,22 @@ func (this *QwtCompassMagnetNeedle) Delete() {
 	C.QwtCompassMagnetNeedle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCompassMagnetNeedle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCompassMagnetNeedle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCompassMagnetNeedle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassMagnetNeedle) {
+		C.QwtCompassMagnetNeedle_delete(gc[0])
 	})
 }
 
 type QwtCompassWindArrow struct {
-	h *C.QwtCompassWindArrow
+	h  *C.QwtCompassWindArrow
+	gc *[1]*C.QwtCompassWindArrow
 	*QwtDialNeedle
 }
 
@@ -837,11 +853,15 @@ func (this *QwtCompassWindArrow) Delete() {
 	C.QwtCompassWindArrow_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCompassWindArrow) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCompassWindArrow) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCompassWindArrow{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassWindArrow) {
+		C.QwtCompassWindArrow_delete(gc[0])
 	})
 }

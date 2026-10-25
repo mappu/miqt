@@ -25,7 +25,8 @@ const (
 )
 
 type QAbstractItemDelegate struct {
-	h *C.QAbstractItemDelegate
+	h  *C.QAbstractItemDelegate
+	gc *[1]*C.QAbstractItemDelegate
 	*QObject
 }
 
@@ -152,7 +153,7 @@ func (this *QAbstractItemDelegate) HelpEvent(event *QHelpEvent, view *QAbstractI
 func (this *QAbstractItemDelegate) PaintingRoles() []int {
 	var _ma C.struct_miqt_array = C.QAbstractItemDelegate_paintingRoles(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -611,7 +612,7 @@ func (this *QAbstractItemDelegate) callVirtualBase_PaintingRoles() []int {
 
 	var _ma C.struct_miqt_array = C.QAbstractItemDelegate_virtualbase_paintingRoles(unsafe.Pointer(this.h))
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -633,11 +634,12 @@ func miqt_exec_callback_QAbstractItemDelegate_paintingRoles(self *C.QAbstractIte
 	}
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_PaintingRoles)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -836,11 +838,15 @@ func (this *QAbstractItemDelegate) Delete() {
 	C.QAbstractItemDelegate_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractItemDelegate) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractItemDelegate) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractItemDelegate{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractItemDelegate) {
+		C.QAbstractItemDelegate_delete(gc[0])
 	})
 }

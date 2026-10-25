@@ -71,7 +71,8 @@ const (
 )
 
 type QProcessEnvironment struct {
-	h *C.QProcessEnvironment
+	h  *C.QProcessEnvironment
+	gc *[1]*C.QProcessEnvironment
 }
 
 func (this *QProcessEnvironment) cPointer() *C.QProcessEnvironment {
@@ -190,7 +191,7 @@ func (this *QProcessEnvironment) Value(name string) string {
 func (this *QProcessEnvironment) ToStringList() []string {
 	var _ma C.struct_miqt_array = C.QProcessEnvironment_toStringList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -203,7 +204,7 @@ func (this *QProcessEnvironment) ToStringList() []string {
 func (this *QProcessEnvironment) Keys() []string {
 	var _ma C.struct_miqt_array = C.QProcessEnvironment_keys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -243,17 +244,22 @@ func (this *QProcessEnvironment) Delete() {
 	C.QProcessEnvironment_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QProcessEnvironment) GoGC() {
-	runtime.SetFinalizer(this, func(this *QProcessEnvironment) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QProcessEnvironment{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProcessEnvironment) {
+		C.QProcessEnvironment_delete(gc[0])
 	})
 }
 
 type QProcess struct {
-	h *C.QProcess
+	h  *C.QProcess
+	gc *[1]*C.QProcess
 	*QIODevice
 }
 
@@ -365,7 +371,7 @@ func (this *QProcess) SetProgram(program string) {
 func (this *QProcess) Arguments() []string {
 	var _ma C.struct_miqt_array = C.QProcess_arguments(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -376,8 +382,9 @@ func (this *QProcess) Arguments() []string {
 }
 
 func (this *QProcess) SetArguments(arguments []string) {
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -385,7 +392,7 @@ func (this *QProcess) SetArguments(arguments []string) {
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	C.QProcess_setArguments(this.h, arguments_ma)
 }
 
@@ -465,8 +472,9 @@ func (this *QProcess) SetWorkingDirectory(dir string) {
 }
 
 func (this *QProcess) SetEnvironment(environment []string) {
-	environment_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(environment))))
-	defer C.free(unsafe.Pointer(environment_CArray))
+	environment_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(environment))))
+	defer C.free(unsafe.Pointer(environment_CArray_ptr))
+	environment_CArray := unsafe.Slice(environment_CArray_ptr, len(environment))
 	for i := range environment {
 		environment_i_ms := C.struct_miqt_string{}
 		environment_i_ms.data = C.CString(environment[i])
@@ -474,14 +482,14 @@ func (this *QProcess) SetEnvironment(environment []string) {
 		defer C.free(unsafe.Pointer(environment_i_ms.data))
 		environment_CArray[i] = environment_i_ms
 	}
-	environment_ma := C.struct_miqt_array{len: C.size_t(len(environment)), data: unsafe.Pointer(environment_CArray)}
+	environment_ma := C.struct_miqt_array{len: C.size_t(len(environment)), data: unsafe.Pointer(environment_CArray_ptr)}
 	C.QProcess_setEnvironment(this.h, environment_ma)
 }
 
 func (this *QProcess) Environment() []string {
 	var _ma C.struct_miqt_array = C.QProcess_environment(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -582,7 +590,7 @@ func QProcess_StartDetachedWithProgram(program string) bool {
 func QProcess_SystemEnvironment() []string {
 	var _ma C.struct_miqt_array = C.QProcess_systemEnvironment()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -674,8 +682,9 @@ func (this *QProcess) Start3(program string, arguments []string) {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -683,7 +692,7 @@ func (this *QProcess) Start3(program string, arguments []string) {
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	C.QProcess_start3(this.h, program_ms, arguments_ma)
 }
 
@@ -692,8 +701,9 @@ func (this *QProcess) Start4(program string, arguments []string, mode QIODeviceB
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -701,7 +711,7 @@ func (this *QProcess) Start4(program string, arguments []string, mode QIODeviceB
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	C.QProcess_start4(this.h, program_ms, arguments_ma, (C.int)(mode))
 }
 
@@ -750,8 +760,9 @@ func QProcess_Execute2(program string, arguments []string) int {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -759,7 +770,7 @@ func QProcess_Execute2(program string, arguments []string) int {
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	return (int)(C.QProcess_execute2(program_ms, arguments_ma))
 }
 
@@ -768,8 +779,9 @@ func QProcess_StartDetached2(program string, arguments []string) bool {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -777,7 +789,7 @@ func QProcess_StartDetached2(program string, arguments []string) bool {
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	return (bool)(C.QProcess_startDetached2(program_ms, arguments_ma))
 }
 
@@ -786,8 +798,9 @@ func QProcess_StartDetached3(program string, arguments []string, workingDirector
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -795,7 +808,7 @@ func QProcess_StartDetached3(program string, arguments []string, workingDirector
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	workingDirectory_ms := C.struct_miqt_string{}
 	workingDirectory_ms.data = C.CString(workingDirectory)
 	workingDirectory_ms.len = C.size_t(len(workingDirectory))
@@ -808,8 +821,9 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
-	defer C.free(unsafe.Pointer(arguments_CArray))
+	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
+	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
 	for i := range arguments {
 		arguments_i_ms := C.struct_miqt_string{}
 		arguments_i_ms.data = C.CString(arguments[i])
@@ -817,7 +831,7 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 		defer C.free(unsafe.Pointer(arguments_i_ms.data))
 		arguments_CArray[i] = arguments_i_ms
 	}
-	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray_ptr)}
 	workingDirectory_ms := C.struct_miqt_string{}
 	workingDirectory_ms.data = C.CString(workingDirectory)
 	workingDirectory_ms.len = C.size_t(len(workingDirectory))
@@ -1658,11 +1672,15 @@ func (this *QProcess) Delete() {
 	C.QProcess_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QProcess) GoGC() {
-	runtime.SetFinalizer(this, func(this *QProcess) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QProcess{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProcess) {
+		C.QProcess_delete(gc[0])
 	})
 }

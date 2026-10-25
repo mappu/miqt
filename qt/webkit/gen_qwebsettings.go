@@ -230,8 +230,9 @@ func QWebSettings_IconForUrl(url *qt.QUrl) *qt.QIcon {
 }
 
 func QWebSettings_SetPluginSearchPaths(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -239,14 +240,14 @@ func QWebSettings_SetPluginSearchPaths(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QWebSettings_setPluginSearchPaths(paths_ma)
 }
 
 func QWebSettings_PluginSearchPaths() []string {
 	var _ma C.struct_miqt_array = C.QWebSettings_pluginSearchPaths()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))

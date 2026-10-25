@@ -22,7 +22,8 @@ const (
 )
 
 type QSqlQuery struct {
-	h *C.QSqlQuery
+	h  *C.QSqlQuery
+	gc *[1]*C.QSqlQuery
 }
 
 func (this *QSqlQuery) cPointer() *C.QSqlQuery {
@@ -279,8 +280,8 @@ func (this *QSqlQuery) BoundValueWithPos(pos int) *qt.QVariant {
 func (this *QSqlQuery) BoundValues() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QSqlQuery_boundValues(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -345,11 +346,15 @@ func (this *QSqlQuery) Delete() {
 	C.QSqlQuery_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSqlQuery) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSqlQuery) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSqlQuery{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlQuery) {
+		C.QSqlQuery_delete(gc[0])
 	})
 }

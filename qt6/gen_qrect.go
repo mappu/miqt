@@ -14,7 +14,8 @@ import (
 )
 
 type QRect struct {
-	h *C.QRect
+	h  *C.QRect
+	gc *[1]*C.QRect
 }
 
 func (this *QRect) cPointer() *C.QRect {
@@ -410,17 +411,22 @@ func (this *QRect) Delete() {
 	C.QRect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRect) {
+		C.QRect_delete(gc[0])
 	})
 }
 
 type QRectF struct {
-	h *C.QRectF
+	h  *C.QRectF
+	gc *[1]*C.QRectF
 }
 
 func (this *QRectF) cPointer() *C.QRectF {
@@ -810,11 +816,15 @@ func (this *QRectF) Delete() {
 	C.QRectF_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRectF) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRectF) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRectF{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRectF) {
+		C.QRectF_delete(gc[0])
 	})
 }

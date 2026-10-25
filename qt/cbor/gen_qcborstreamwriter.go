@@ -15,7 +15,8 @@ import (
 )
 
 type QCborStreamWriter struct {
-	h *C.QCborStreamWriter
+	h  *C.QCborStreamWriter
+	gc *[1]*C.QCborStreamWriter
 }
 
 func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
@@ -176,11 +177,15 @@ func (this *QCborStreamWriter) Delete() {
 	C.QCborStreamWriter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborStreamWriter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborStreamWriter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborStreamWriter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborStreamWriter) {
+		C.QCborStreamWriter_delete(gc[0])
 	})
 }

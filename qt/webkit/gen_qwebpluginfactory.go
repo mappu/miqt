@@ -16,7 +16,8 @@ import (
 )
 
 type QWebPluginFactory struct {
-	h *C.QWebPluginFactory
+	h  *C.QWebPluginFactory
+	gc *[1]*C.QWebPluginFactory
 	*qt.QObject
 }
 
@@ -94,7 +95,7 @@ func QWebPluginFactory_TrUtf8(s string) string {
 func (this *QWebPluginFactory) Plugins() []QWebPluginFactory__Plugin {
 	var _ma C.struct_miqt_array = C.QWebPluginFactory_plugins(this.h)
 	_ret := make([]QWebPluginFactory__Plugin, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebPluginFactory__Plugin)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebPluginFactory__Plugin)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebPluginFactory__Plugin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -112,8 +113,9 @@ func (this *QWebPluginFactory) Create(mimeType string, param2 *qt.QUrl, argument
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	argumentNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(argumentNames))))
-	defer C.free(unsafe.Pointer(argumentNames_CArray))
+	argumentNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(argumentNames))))
+	defer C.free(unsafe.Pointer(argumentNames_CArray_ptr))
+	argumentNames_CArray := unsafe.Slice(argumentNames_CArray_ptr, len(argumentNames))
 	for i := range argumentNames {
 		argumentNames_i_ms := C.struct_miqt_string{}
 		argumentNames_i_ms.data = C.CString(argumentNames[i])
@@ -121,9 +123,10 @@ func (this *QWebPluginFactory) Create(mimeType string, param2 *qt.QUrl, argument
 		defer C.free(unsafe.Pointer(argumentNames_i_ms.data))
 		argumentNames_CArray[i] = argumentNames_i_ms
 	}
-	argumentNames_ma := C.struct_miqt_array{len: C.size_t(len(argumentNames)), data: unsafe.Pointer(argumentNames_CArray)}
-	argumentValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(argumentValues))))
-	defer C.free(unsafe.Pointer(argumentValues_CArray))
+	argumentNames_ma := C.struct_miqt_array{len: C.size_t(len(argumentNames)), data: unsafe.Pointer(argumentNames_CArray_ptr)}
+	argumentValues_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(argumentValues))))
+	defer C.free(unsafe.Pointer(argumentValues_CArray_ptr))
+	argumentValues_CArray := unsafe.Slice(argumentValues_CArray_ptr, len(argumentValues))
 	for i := range argumentValues {
 		argumentValues_i_ms := C.struct_miqt_string{}
 		argumentValues_i_ms.data = C.CString(argumentValues[i])
@@ -131,7 +134,7 @@ func (this *QWebPluginFactory) Create(mimeType string, param2 *qt.QUrl, argument
 		defer C.free(unsafe.Pointer(argumentValues_i_ms.data))
 		argumentValues_CArray[i] = argumentValues_i_ms
 	}
-	argumentValues_ma := C.struct_miqt_array{len: C.size_t(len(argumentValues)), data: unsafe.Pointer(argumentValues_CArray)}
+	argumentValues_ma := C.struct_miqt_array{len: C.size_t(len(argumentValues)), data: unsafe.Pointer(argumentValues_CArray_ptr)}
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebPluginFactory_create(this.h, mimeType_ms, (*C.QUrl)(param2.UnsafePointer()), argumentNames_ma, argumentValues_ma)))
 }
 
@@ -259,11 +262,12 @@ func miqt_exec_callback_QWebPluginFactory_plugins(self *C.QWebPluginFactory, cb 
 	}
 
 	virtualReturn := gofunc()
-	virtualReturn_CArray := (*[0xffff]*C.QWebPluginFactory__Plugin)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QWebPluginFactory__Plugin)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -314,7 +318,7 @@ func miqt_exec_callback_QWebPluginFactory_create(self *C.QWebPluginFactory, cb C
 
 	var argumentNames_ma C.struct_miqt_array = argumentNames
 	argumentNames_ret := make([]string, int(argumentNames_ma.len))
-	argumentNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(argumentNames_ma.data)) // hey ya
+	argumentNames_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(argumentNames_ma.data)), int(argumentNames_ma.len))
 	for i := 0; i < int(argumentNames_ma.len); i++ {
 		var argumentNames_lv_ms C.struct_miqt_string = argumentNames_outCast[i]
 		argumentNames_lv_ret := C.GoStringN(argumentNames_lv_ms.data, C.int(int64(argumentNames_lv_ms.len)))
@@ -325,7 +329,7 @@ func miqt_exec_callback_QWebPluginFactory_create(self *C.QWebPluginFactory, cb C
 
 	var argumentValues_ma C.struct_miqt_array = argumentValues
 	argumentValues_ret := make([]string, int(argumentValues_ma.len))
-	argumentValues_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(argumentValues_ma.data)) // hey ya
+	argumentValues_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(argumentValues_ma.data)), int(argumentValues_ma.len))
 	for i := 0; i < int(argumentValues_ma.len); i++ {
 		var argumentValues_lv_ms C.struct_miqt_string = argumentValues_outCast[i]
 		argumentValues_lv_ret := C.GoStringN(argumentValues_lv_ms.data, C.int(int64(argumentValues_lv_ms.len)))
@@ -593,17 +597,22 @@ func (this *QWebPluginFactory) Delete() {
 	C.QWebPluginFactory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPluginFactory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPluginFactory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPluginFactory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPluginFactory) {
+		C.QWebPluginFactory_delete(gc[0])
 	})
 }
 
 type QWebPluginFactory__MimeType struct {
-	h *C.QWebPluginFactory__MimeType
+	h  *C.QWebPluginFactory__MimeType
+	gc *[1]*C.QWebPluginFactory__MimeType
 }
 
 func (this *QWebPluginFactory__MimeType) cPointer() *C.QWebPluginFactory__MimeType {
@@ -679,7 +688,7 @@ func (this *QWebPluginFactory__MimeType) SetDescription(description string) {
 func (this *QWebPluginFactory__MimeType) FileExtensions() []string {
 	var fileExtensions_ma C.struct_miqt_array = C.QWebPluginFactory__MimeType_fileExtensions(this.h)
 	fileExtensions_ret := make([]string, int(fileExtensions_ma.len))
-	fileExtensions_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(fileExtensions_ma.data)) // hey ya
+	fileExtensions_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(fileExtensions_ma.data)), int(fileExtensions_ma.len))
 	for i := 0; i < int(fileExtensions_ma.len); i++ {
 		var fileExtensions_lv_ms C.struct_miqt_string = fileExtensions_outCast[i]
 		fileExtensions_lv_ret := C.GoStringN(fileExtensions_lv_ms.data, C.int(int64(fileExtensions_lv_ms.len)))
@@ -690,8 +699,9 @@ func (this *QWebPluginFactory__MimeType) FileExtensions() []string {
 }
 
 func (this *QWebPluginFactory__MimeType) SetFileExtensions(fileExtensions []string) {
-	fileExtensions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileExtensions))))
-	defer C.free(unsafe.Pointer(fileExtensions_CArray))
+	fileExtensions_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileExtensions))))
+	defer C.free(unsafe.Pointer(fileExtensions_CArray_ptr))
+	fileExtensions_CArray := unsafe.Slice(fileExtensions_CArray_ptr, len(fileExtensions))
 	for i := range fileExtensions {
 		fileExtensions_i_ms := C.struct_miqt_string{}
 		fileExtensions_i_ms.data = C.CString(fileExtensions[i])
@@ -699,7 +709,7 @@ func (this *QWebPluginFactory__MimeType) SetFileExtensions(fileExtensions []stri
 		defer C.free(unsafe.Pointer(fileExtensions_i_ms.data))
 		fileExtensions_CArray[i] = fileExtensions_i_ms
 	}
-	fileExtensions_ma := C.struct_miqt_array{len: C.size_t(len(fileExtensions)), data: unsafe.Pointer(fileExtensions_CArray)}
+	fileExtensions_ma := C.struct_miqt_array{len: C.size_t(len(fileExtensions)), data: unsafe.Pointer(fileExtensions_CArray_ptr)}
 	C.QWebPluginFactory__MimeType_setFileExtensions(this.h, fileExtensions_ma)
 }
 
@@ -720,17 +730,22 @@ func (this *QWebPluginFactory__MimeType) Delete() {
 	C.QWebPluginFactory__MimeType_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPluginFactory__MimeType) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPluginFactory__MimeType) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPluginFactory__MimeType{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPluginFactory__MimeType) {
+		C.QWebPluginFactory__MimeType_delete(gc[0])
 	})
 }
 
 type QWebPluginFactory__Plugin struct {
-	h *C.QWebPluginFactory__Plugin
+	h  *C.QWebPluginFactory__Plugin
+	gc *[1]*C.QWebPluginFactory__Plugin
 }
 
 func (this *QWebPluginFactory__Plugin) cPointer() *C.QWebPluginFactory__Plugin {
@@ -806,7 +821,7 @@ func (this *QWebPluginFactory__Plugin) SetDescription(description string) {
 func (this *QWebPluginFactory__Plugin) MimeTypes() []QWebPluginFactory__MimeType {
 	var mimeTypes_ma C.struct_miqt_array = C.QWebPluginFactory__Plugin_mimeTypes(this.h)
 	mimeTypes_ret := make([]QWebPluginFactory__MimeType, int(mimeTypes_ma.len))
-	mimeTypes_outCast := (*[0xffff]*C.QWebPluginFactory__MimeType)(unsafe.Pointer(mimeTypes_ma.data)) // hey ya
+	mimeTypes_outCast := unsafe.Slice((**C.QWebPluginFactory__MimeType)(unsafe.Pointer(mimeTypes_ma.data)), int(mimeTypes_ma.len))
 	for i := 0; i < int(mimeTypes_ma.len); i++ {
 		mimeTypes_lv_goptr := newQWebPluginFactory__MimeType(mimeTypes_outCast[i])
 		mimeTypes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -816,12 +831,13 @@ func (this *QWebPluginFactory__Plugin) MimeTypes() []QWebPluginFactory__MimeType
 }
 
 func (this *QWebPluginFactory__Plugin) SetMimeTypes(mimeTypes []QWebPluginFactory__MimeType) {
-	mimeTypes_CArray := (*[0xffff]*C.QWebPluginFactory__MimeType)(C.malloc(C.size_t(8 * len(mimeTypes))))
-	defer C.free(unsafe.Pointer(mimeTypes_CArray))
+	mimeTypes_CArray_ptr := (**C.QWebPluginFactory__MimeType)(C.malloc(C.size_t(8 * len(mimeTypes))))
+	defer C.free(unsafe.Pointer(mimeTypes_CArray_ptr))
+	mimeTypes_CArray := unsafe.Slice(mimeTypes_CArray_ptr, len(mimeTypes))
 	for i := range mimeTypes {
 		mimeTypes_CArray[i] = mimeTypes[i].cPointer()
 	}
-	mimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(mimeTypes)), data: unsafe.Pointer(mimeTypes_CArray)}
+	mimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(mimeTypes)), data: unsafe.Pointer(mimeTypes_CArray_ptr)}
 	C.QWebPluginFactory__Plugin_setMimeTypes(this.h, mimeTypes_ma)
 }
 
@@ -834,17 +850,22 @@ func (this *QWebPluginFactory__Plugin) Delete() {
 	C.QWebPluginFactory__Plugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPluginFactory__Plugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPluginFactory__Plugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPluginFactory__Plugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPluginFactory__Plugin) {
+		C.QWebPluginFactory__Plugin_delete(gc[0])
 	})
 }
 
 type QWebPluginFactory__ExtensionOption struct {
-	h *C.QWebPluginFactory__ExtensionOption
+	h  *C.QWebPluginFactory__ExtensionOption
+	gc *[1]*C.QWebPluginFactory__ExtensionOption
 }
 
 func (this *QWebPluginFactory__ExtensionOption) cPointer() *C.QWebPluginFactory__ExtensionOption {
@@ -880,17 +901,22 @@ func (this *QWebPluginFactory__ExtensionOption) Delete() {
 	C.QWebPluginFactory__ExtensionOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPluginFactory__ExtensionOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPluginFactory__ExtensionOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPluginFactory__ExtensionOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPluginFactory__ExtensionOption) {
+		C.QWebPluginFactory__ExtensionOption_delete(gc[0])
 	})
 }
 
 type QWebPluginFactory__ExtensionReturn struct {
-	h *C.QWebPluginFactory__ExtensionReturn
+	h  *C.QWebPluginFactory__ExtensionReturn
+	gc *[1]*C.QWebPluginFactory__ExtensionReturn
 }
 
 func (this *QWebPluginFactory__ExtensionReturn) cPointer() *C.QWebPluginFactory__ExtensionReturn {
@@ -926,11 +952,15 @@ func (this *QWebPluginFactory__ExtensionReturn) Delete() {
 	C.QWebPluginFactory__ExtensionReturn_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPluginFactory__ExtensionReturn) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPluginFactory__ExtensionReturn) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPluginFactory__ExtensionReturn{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPluginFactory__ExtensionReturn) {
+		C.QWebPluginFactory__ExtensionReturn_delete(gc[0])
 	})
 }

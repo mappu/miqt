@@ -23,7 +23,8 @@ const (
 )
 
 type QAbstractTransition struct {
-	h *C.QAbstractTransition
+	h  *C.QAbstractTransition
+	gc *[1]*C.QAbstractTransition
 	*qt6.QObject
 }
 
@@ -104,7 +105,7 @@ func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
 func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 	var _ma C.struct_miqt_array = C.QAbstractTransition_targetStates(this.h)
 	_ret := make([]*QAbstractState, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractState)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAbstractState(_outCast[i])
 	}
@@ -112,12 +113,13 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 }
 
 func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
-	targets_CArray := (*[0xffff]*C.QAbstractState)(C.malloc(C.size_t(8 * len(targets))))
-	defer C.free(unsafe.Pointer(targets_CArray))
+	targets_CArray_ptr := (**C.QAbstractState)(C.malloc(C.size_t(8 * len(targets))))
+	defer C.free(unsafe.Pointer(targets_CArray_ptr))
+	targets_CArray := unsafe.Slice(targets_CArray_ptr, len(targets))
 	for i := range targets {
 		targets_CArray[i] = targets[i].cPointer()
 	}
-	targets_ma := C.struct_miqt_array{len: C.size_t(len(targets)), data: unsafe.Pointer(targets_CArray)}
+	targets_ma := C.struct_miqt_array{len: C.size_t(len(targets)), data: unsafe.Pointer(targets_CArray_ptr)}
 	C.QAbstractTransition_setTargetStates(this.h, targets_ma)
 }
 
@@ -144,7 +146,7 @@ func (this *QAbstractTransition) RemoveAnimation(animation *qt6.QAbstractAnimati
 func (this *QAbstractTransition) Animations() []*qt6.QAbstractAnimation {
 	var _ma C.struct_miqt_array = C.QAbstractTransition_animations(this.h)
 	_ret := make([]*qt6.QAbstractAnimation, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractAnimation)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt6.UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
@@ -507,11 +509,15 @@ func (this *QAbstractTransition) Delete() {
 	C.QAbstractTransition_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractTransition) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractTransition) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractTransition{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTransition) {
+		C.QAbstractTransition_delete(gc[0])
 	})
 }

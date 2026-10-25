@@ -22,7 +22,8 @@ const (
 )
 
 type QQmlDebuggingEnabler struct {
-	h *C.QQmlDebuggingEnabler
+	h  *C.QQmlDebuggingEnabler
+	gc *[1]*C.QQmlDebuggingEnabler
 }
 
 func (this *QQmlDebuggingEnabler) cPointer() *C.QQmlDebuggingEnabler {
@@ -72,7 +73,7 @@ func QQmlDebuggingEnabler_EnableDebugging(printWarning bool) {
 func QQmlDebuggingEnabler_DebuggerServices() []string {
 	var _ma C.struct_miqt_array = C.QQmlDebuggingEnabler_debuggerServices()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -85,7 +86,7 @@ func QQmlDebuggingEnabler_DebuggerServices() []string {
 func QQmlDebuggingEnabler_InspectorServices() []string {
 	var _ma C.struct_miqt_array = C.QQmlDebuggingEnabler_inspectorServices()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -98,7 +99,7 @@ func QQmlDebuggingEnabler_InspectorServices() []string {
 func QQmlDebuggingEnabler_ProfilerServices() []string {
 	var _ma C.struct_miqt_array = C.QQmlDebuggingEnabler_profilerServices()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -111,7 +112,7 @@ func QQmlDebuggingEnabler_ProfilerServices() []string {
 func QQmlDebuggingEnabler_NativeDebuggerServices() []string {
 	var _ma C.struct_miqt_array = C.QQmlDebuggingEnabler_nativeDebuggerServices()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -122,8 +123,9 @@ func QQmlDebuggingEnabler_NativeDebuggerServices() []string {
 }
 
 func QQmlDebuggingEnabler_SetServices(services []string) {
-	services_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(services))))
-	defer C.free(unsafe.Pointer(services_CArray))
+	services_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(services))))
+	defer C.free(unsafe.Pointer(services_CArray_ptr))
+	services_CArray := unsafe.Slice(services_CArray_ptr, len(services))
 	for i := range services {
 		services_i_ms := C.struct_miqt_string{}
 		services_i_ms.data = C.CString(services[i])
@@ -131,7 +133,7 @@ func QQmlDebuggingEnabler_SetServices(services []string) {
 		defer C.free(unsafe.Pointer(services_i_ms.data))
 		services_CArray[i] = services_i_ms
 	}
-	services_ma := C.struct_miqt_array{len: C.size_t(len(services)), data: unsafe.Pointer(services_CArray)}
+	services_ma := C.struct_miqt_array{len: C.size_t(len(services)), data: unsafe.Pointer(services_CArray_ptr)}
 	C.QQmlDebuggingEnabler_setServices(services_ma)
 }
 
@@ -180,10 +182,12 @@ func QQmlDebuggingEnabler_StartDebugConnector2(pluginName string, configuration 
 	pluginName_ms.data = C.CString(pluginName)
 	pluginName_ms.len = C.size_t(len(pluginName))
 	defer C.free(unsafe.Pointer(pluginName_ms.data))
-	configuration_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Keys_CArray))
-	configuration_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Values_CArray))
+	configuration_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Keys_CArray_ptr))
+	configuration_Keys_CArray := unsafe.Slice(configuration_Keys_CArray_ptr, len(configuration))
+	configuration_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Values_CArray_ptr))
+	configuration_Values_CArray := unsafe.Slice(configuration_Values_CArray_ptr, len(configuration))
 	configuration_ctr := 0
 	for configuration_k, configuration_v := range configuration {
 		configuration_k_ms := C.struct_miqt_string{}
@@ -196,8 +200,8 @@ func QQmlDebuggingEnabler_StartDebugConnector2(pluginName string, configuration 
 	}
 	configuration_mm := C.struct_miqt_map{
 		len:    C.size_t(len(configuration)),
-		keys:   unsafe.Pointer(configuration_Keys_CArray),
-		values: unsafe.Pointer(configuration_Values_CArray),
+		keys:   unsafe.Pointer(configuration_Keys_CArray_ptr),
+		values: unsafe.Pointer(configuration_Values_CArray_ptr),
 	}
 	return (bool)(C.QQmlDebuggingEnabler_startDebugConnector2(pluginName_ms, configuration_mm))
 }
@@ -207,11 +211,15 @@ func (this *QQmlDebuggingEnabler) Delete() {
 	C.QQmlDebuggingEnabler_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlDebuggingEnabler) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlDebuggingEnabler) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlDebuggingEnabler{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlDebuggingEnabler) {
+		C.QQmlDebuggingEnabler_delete(gc[0])
 	})
 }

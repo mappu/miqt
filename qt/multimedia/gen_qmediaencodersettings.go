@@ -15,7 +15,8 @@ import (
 )
 
 type QAudioEncoderSettings struct {
-	h *C.QAudioEncoderSettings
+	h  *C.QAudioEncoderSettings
+	gc *[1]*C.QAudioEncoderSettings
 }
 
 func (this *QAudioEncoderSettings) cPointer() *C.QAudioEncoderSettings {
@@ -142,8 +143,8 @@ func (this *QAudioEncoderSettings) EncodingOption(option string) *qt.QVariant {
 func (this *QAudioEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QAudioEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -167,10 +168,12 @@ func (this *QAudioEncoderSettings) SetEncodingOption(option string, value *qt.QV
 }
 
 func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
-	options_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
-	defer C.free(unsafe.Pointer(options_Keys_CArray))
-	options_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(options))))
-	defer C.free(unsafe.Pointer(options_Values_CArray))
+	options_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
+	defer C.free(unsafe.Pointer(options_Keys_CArray_ptr))
+	options_Keys_CArray := unsafe.Slice(options_Keys_CArray_ptr, len(options))
+	options_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(options))))
+	defer C.free(unsafe.Pointer(options_Values_CArray_ptr))
+	options_Values_CArray := unsafe.Slice(options_Values_CArray_ptr, len(options))
 	options_ctr := 0
 	for options_k, options_v := range options {
 		options_k_ms := C.struct_miqt_string{}
@@ -183,8 +186,8 @@ func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 	}
 	options_mm := C.struct_miqt_map{
 		len:    C.size_t(len(options)),
-		keys:   unsafe.Pointer(options_Keys_CArray),
-		values: unsafe.Pointer(options_Values_CArray),
+		keys:   unsafe.Pointer(options_Keys_CArray_ptr),
+		values: unsafe.Pointer(options_Values_CArray_ptr),
 	}
 	C.QAudioEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
@@ -194,17 +197,22 @@ func (this *QAudioEncoderSettings) Delete() {
 	C.QAudioEncoderSettings_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioEncoderSettings) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioEncoderSettings) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioEncoderSettings{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioEncoderSettings) {
+		C.QAudioEncoderSettings_delete(gc[0])
 	})
 }
 
 type QVideoEncoderSettings struct {
-	h *C.QVideoEncoderSettings
+	h  *C.QVideoEncoderSettings
+	gc *[1]*C.QVideoEncoderSettings
 }
 
 func (this *QVideoEncoderSettings) cPointer() *C.QVideoEncoderSettings {
@@ -337,8 +345,8 @@ func (this *QVideoEncoderSettings) EncodingOption(option string) *qt.QVariant {
 func (this *QVideoEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QVideoEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -362,10 +370,12 @@ func (this *QVideoEncoderSettings) SetEncodingOption(option string, value *qt.QV
 }
 
 func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
-	options_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
-	defer C.free(unsafe.Pointer(options_Keys_CArray))
-	options_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(options))))
-	defer C.free(unsafe.Pointer(options_Values_CArray))
+	options_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
+	defer C.free(unsafe.Pointer(options_Keys_CArray_ptr))
+	options_Keys_CArray := unsafe.Slice(options_Keys_CArray_ptr, len(options))
+	options_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(options))))
+	defer C.free(unsafe.Pointer(options_Values_CArray_ptr))
+	options_Values_CArray := unsafe.Slice(options_Values_CArray_ptr, len(options))
 	options_ctr := 0
 	for options_k, options_v := range options {
 		options_k_ms := C.struct_miqt_string{}
@@ -378,8 +388,8 @@ func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 	}
 	options_mm := C.struct_miqt_map{
 		len:    C.size_t(len(options)),
-		keys:   unsafe.Pointer(options_Keys_CArray),
-		values: unsafe.Pointer(options_Values_CArray),
+		keys:   unsafe.Pointer(options_Keys_CArray_ptr),
+		values: unsafe.Pointer(options_Values_CArray_ptr),
 	}
 	C.QVideoEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
@@ -389,17 +399,22 @@ func (this *QVideoEncoderSettings) Delete() {
 	C.QVideoEncoderSettings_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoEncoderSettings) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoEncoderSettings) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoEncoderSettings{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoEncoderSettings) {
+		C.QVideoEncoderSettings_delete(gc[0])
 	})
 }
 
 type QImageEncoderSettings struct {
-	h *C.QImageEncoderSettings
+	h  *C.QImageEncoderSettings
+	gc *[1]*C.QImageEncoderSettings
 }
 
 func (this *QImageEncoderSettings) cPointer() *C.QImageEncoderSettings {
@@ -508,8 +523,8 @@ func (this *QImageEncoderSettings) EncodingOption(option string) *qt.QVariant {
 func (this *QImageEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QImageEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -533,10 +548,12 @@ func (this *QImageEncoderSettings) SetEncodingOption(option string, value *qt.QV
 }
 
 func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
-	options_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
-	defer C.free(unsafe.Pointer(options_Keys_CArray))
-	options_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(options))))
-	defer C.free(unsafe.Pointer(options_Values_CArray))
+	options_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(options))))
+	defer C.free(unsafe.Pointer(options_Keys_CArray_ptr))
+	options_Keys_CArray := unsafe.Slice(options_Keys_CArray_ptr, len(options))
+	options_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(options))))
+	defer C.free(unsafe.Pointer(options_Values_CArray_ptr))
+	options_Values_CArray := unsafe.Slice(options_Values_CArray_ptr, len(options))
 	options_ctr := 0
 	for options_k, options_v := range options {
 		options_k_ms := C.struct_miqt_string{}
@@ -549,8 +566,8 @@ func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 	}
 	options_mm := C.struct_miqt_map{
 		len:    C.size_t(len(options)),
-		keys:   unsafe.Pointer(options_Keys_CArray),
-		values: unsafe.Pointer(options_Values_CArray),
+		keys:   unsafe.Pointer(options_Keys_CArray_ptr),
+		values: unsafe.Pointer(options_Values_CArray_ptr),
 	}
 	C.QImageEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
@@ -560,11 +577,15 @@ func (this *QImageEncoderSettings) Delete() {
 	C.QImageEncoderSettings_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QImageEncoderSettings) GoGC() {
-	runtime.SetFinalizer(this, func(this *QImageEncoderSettings) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QImageEncoderSettings{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImageEncoderSettings) {
+		C.QImageEncoderSettings_delete(gc[0])
 	})
 }

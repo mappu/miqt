@@ -50,7 +50,8 @@ const (
 )
 
 type QwtSymbol struct {
-	h *C.QwtSymbol
+	h  *C.QwtSymbol
+	gc *[1]*C.QwtSymbol
 }
 
 func (this *QwtSymbol) cPointer() *C.QwtSymbol {
@@ -336,11 +337,15 @@ func (this *QwtSymbol) Delete() {
 	C.QwtSymbol_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSymbol) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSymbol) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSymbol{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSymbol) {
+		C.QwtSymbol_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QVersionNumber struct {
-	h *C.QVersionNumber
+	h  *C.QVersionNumber
+	gc *[1]*C.QVersionNumber
 }
 
 func (this *QVersionNumber) cPointer() *C.QVersionNumber {
@@ -53,12 +54,13 @@ func NewQVersionNumber() *QVersionNumber {
 
 // NewQVersionNumber2 constructs a new QVersionNumber object.
 func NewQVersionNumber2(seg []int) *QVersionNumber {
-	seg_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(seg))))
-	defer C.free(unsafe.Pointer(seg_CArray))
+	seg_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(seg))))
+	defer C.free(unsafe.Pointer(seg_CArray_ptr))
+	seg_CArray := unsafe.Slice(seg_CArray_ptr, len(seg))
 	for i := range seg {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
-	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
+	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray_ptr)}
 
 	return newQVersionNumber(C.QVersionNumber_new2(seg_ma))
 }
@@ -116,7 +118,7 @@ func (this *QVersionNumber) Normalized() *QVersionNumber {
 func (this *QVersionNumber) Segments() []int {
 	var _ma C.struct_miqt_array = C.QVersionNumber_segments(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -181,17 +183,22 @@ func (this *QVersionNumber) Delete() {
 	C.QVersionNumber_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVersionNumber) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVersionNumber) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVersionNumber{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVersionNumber) {
+		C.QVersionNumber_delete(gc[0])
 	})
 }
 
 type QTypeRevision struct {
-	h *C.QTypeRevision
+	h  *C.QTypeRevision
+	gc *[1]*C.QTypeRevision
 }
 
 func (this *QTypeRevision) cPointer() *C.QTypeRevision {
@@ -265,11 +272,15 @@ func (this *QTypeRevision) Delete() {
 	C.QTypeRevision_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTypeRevision) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTypeRevision) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTypeRevision{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTypeRevision) {
+		C.QTypeRevision_delete(gc[0])
 	})
 }

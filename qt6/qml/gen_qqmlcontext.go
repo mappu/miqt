@@ -16,7 +16,8 @@ import (
 )
 
 type QQmlContext struct {
-	h *C.QQmlContext
+	h  *C.QQmlContext
+	gc *[1]*C.QQmlContext
 	*qt6.QObject
 }
 
@@ -141,12 +142,13 @@ func (this *QQmlContext) SetContextProperty2(param1 string, param2 *qt6.QVariant
 }
 
 func (this *QQmlContext) SetContextProperties(properties []QQmlContext__PropertyPair) {
-	properties_CArray := (*[0xffff]*C.QQmlContext__PropertyPair)(C.malloc(C.size_t(8 * len(properties))))
-	defer C.free(unsafe.Pointer(properties_CArray))
+	properties_CArray_ptr := (**C.QQmlContext__PropertyPair)(C.malloc(C.size_t(8 * len(properties))))
+	defer C.free(unsafe.Pointer(properties_CArray_ptr))
+	properties_CArray := unsafe.Slice(properties_CArray_ptr, len(properties))
 	for i := range properties {
 		properties_CArray[i] = properties[i].cPointer()
 	}
-	properties_ma := C.struct_miqt_array{len: C.size_t(len(properties)), data: unsafe.Pointer(properties_CArray)}
+	properties_ma := C.struct_miqt_array{len: C.size_t(len(properties)), data: unsafe.Pointer(properties_CArray_ptr)}
 	C.QQmlContext_setContextProperties(this.h, properties_ma)
 }
 
@@ -464,17 +466,22 @@ func (this *QQmlContext) Delete() {
 	C.QQmlContext_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlContext) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlContext) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlContext{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlContext) {
+		C.QQmlContext_delete(gc[0])
 	})
 }
 
 type QQmlContext__PropertyPair struct {
-	h *C.QQmlContext__PropertyPair
+	h  *C.QQmlContext__PropertyPair
+	gc *[1]*C.QQmlContext__PropertyPair
 }
 
 func (this *QQmlContext__PropertyPair) cPointer() *C.QQmlContext__PropertyPair {
@@ -551,11 +558,15 @@ func (this *QQmlContext__PropertyPair) Delete() {
 	C.QQmlContext__PropertyPair_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlContext__PropertyPair) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlContext__PropertyPair) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlContext__PropertyPair{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlContext__PropertyPair) {
+		C.QQmlContext__PropertyPair_delete(gc[0])
 	})
 }

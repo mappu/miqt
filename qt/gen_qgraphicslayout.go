@@ -15,7 +15,8 @@ import (
 )
 
 type QGraphicsLayout struct {
-	h *C.QGraphicsLayout
+	h  *C.QGraphicsLayout
+	gc *[1]*C.QGraphicsLayout
 	*QGraphicsLayoutItem
 }
 
@@ -366,11 +367,15 @@ func (this *QGraphicsLayout) Delete() {
 	C.QGraphicsLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsLayout) {
+		C.QGraphicsLayout_delete(gc[0])
 	})
 }

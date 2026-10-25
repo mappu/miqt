@@ -22,7 +22,8 @@ const (
 )
 
 type QHistoryState struct {
-	h *C.QHistoryState
+	h  *C.QHistoryState
+	gc *[1]*C.QHistoryState
 	*QAbstractState
 }
 
@@ -521,11 +522,15 @@ func (this *QHistoryState) Delete() {
 	C.QHistoryState_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHistoryState) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHistoryState) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHistoryState{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHistoryState) {
+		C.QHistoryState_delete(gc[0])
 	})
 }

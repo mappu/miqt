@@ -22,7 +22,8 @@ const (
 )
 
 type QIconEngine struct {
-	h *C.QIconEngine
+	h  *C.QIconEngine
+	gc *[1]*C.QIconEngine
 }
 
 func (this *QIconEngine) cPointer() *C.QIconEngine {
@@ -109,7 +110,7 @@ func (this *QIconEngine) Write(out *QDataStream) bool {
 func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []QSize {
 	var _ma C.struct_miqt_array = C.QIconEngine_availableSizes(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -410,7 +411,7 @@ func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state 
 
 	var _ma C.struct_miqt_array = C.QIconEngine_virtualbase_availableSizes(unsafe.Pointer(this.h), (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -439,11 +440,12 @@ func miqt_exec_callback_QIconEngine_availableSizes(self *C.QIconEngine, cb C.int
 	slotval2 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_AvailableSizes, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]*C.QSize)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QSize)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -573,17 +575,22 @@ func (this *QIconEngine) Delete() {
 	C.QIconEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIconEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIconEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIconEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconEngine) {
+		C.QIconEngine_delete(gc[0])
 	})
 }
 
 type QIconEngine__ScaledPixmapArgument struct {
-	h *C.QIconEngine__ScaledPixmapArgument
+	h  *C.QIconEngine__ScaledPixmapArgument
+	gc *[1]*C.QIconEngine__ScaledPixmapArgument
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__ScaledPixmapArgument {
@@ -679,11 +686,15 @@ func (this *QIconEngine__ScaledPixmapArgument) Delete() {
 	C.QIconEngine__ScaledPixmapArgument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIconEngine__ScaledPixmapArgument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIconEngine__ScaledPixmapArgument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIconEngine__ScaledPixmapArgument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconEngine__ScaledPixmapArgument) {
+		C.QIconEngine__ScaledPixmapArgument_delete(gc[0])
 	})
 }

@@ -31,7 +31,8 @@ const (
 )
 
 type QNetworkCookie struct {
-	h *C.QNetworkCookie
+	h  *C.QNetworkCookie
+	gc *[1]*C.QNetworkCookie
 }
 
 func (this *QNetworkCookie) cPointer() *C.QNetworkCookie {
@@ -252,7 +253,7 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 	cookieString_alias.len = C.size_t(len(cookieString))
 	var _ma C.struct_miqt_array = C.QNetworkCookie_parseCookies(cookieString_alias)
 	_ret := make([]QNetworkCookie, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -273,11 +274,15 @@ func (this *QNetworkCookie) Delete() {
 	C.QNetworkCookie_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkCookie) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkCookie) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkCookie{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkCookie) {
+		C.QNetworkCookie_delete(gc[0])
 	})
 }

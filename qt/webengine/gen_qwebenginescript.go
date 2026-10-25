@@ -30,7 +30,8 @@ const (
 )
 
 type QWebEngineScript struct {
-	h *C.QWebEngineScript
+	h  *C.QWebEngineScript
+	gc *[1]*C.QWebEngineScript
 }
 
 func (this *QWebEngineScript) cPointer() *C.QWebEngineScript {
@@ -152,11 +153,15 @@ func (this *QWebEngineScript) Delete() {
 	C.QWebEngineScript_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineScript) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineScript) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineScript{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineScript) {
+		C.QWebEngineScript_delete(gc[0])
 	})
 }

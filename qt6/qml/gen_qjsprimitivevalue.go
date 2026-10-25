@@ -26,7 +26,8 @@ const (
 )
 
 type QJSPrimitiveUndefined struct {
-	h *C.QJSPrimitiveUndefined
+	h  *C.QJSPrimitiveUndefined
+	gc *[1]*C.QJSPrimitiveUndefined
 }
 
 func (this *QJSPrimitiveUndefined) cPointer() *C.QJSPrimitiveUndefined {
@@ -74,17 +75,22 @@ func (this *QJSPrimitiveUndefined) Delete() {
 	C.QJSPrimitiveUndefined_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJSPrimitiveUndefined) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJSPrimitiveUndefined) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJSPrimitiveUndefined{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSPrimitiveUndefined) {
+		C.QJSPrimitiveUndefined_delete(gc[0])
 	})
 }
 
 type QJSPrimitiveNull struct {
-	h *C.QJSPrimitiveNull
+	h  *C.QJSPrimitiveNull
+	gc *[1]*C.QJSPrimitiveNull
 }
 
 func (this *QJSPrimitiveNull) cPointer() *C.QJSPrimitiveNull {
@@ -132,17 +138,22 @@ func (this *QJSPrimitiveNull) Delete() {
 	C.QJSPrimitiveNull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJSPrimitiveNull) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJSPrimitiveNull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJSPrimitiveNull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSPrimitiveNull) {
+		C.QJSPrimitiveNull_delete(gc[0])
 	})
 }
 
 type QJSPrimitiveValue struct {
-	h *C.QJSPrimitiveValue
+	h  *C.QJSPrimitiveValue
+	gc *[1]*C.QJSPrimitiveValue
 }
 
 func (this *QJSPrimitiveValue) cPointer() *C.QJSPrimitiveValue {
@@ -315,11 +326,15 @@ func (this *QJSPrimitiveValue) Delete() {
 	C.QJSPrimitiveValue_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJSPrimitiveValue) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJSPrimitiveValue) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJSPrimitiveValue{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSPrimitiveValue) {
+		C.QJSPrimitiveValue_delete(gc[0])
 	})
 }

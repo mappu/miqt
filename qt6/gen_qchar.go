@@ -354,7 +354,8 @@ const (
 )
 
 type QLatin1Char struct {
-	h *C.QLatin1Char
+	h  *C.QLatin1Char
+	gc *[1]*C.QLatin1Char
 }
 
 func (this *QLatin1Char) cPointer() *C.QLatin1Char {
@@ -406,17 +407,22 @@ func (this *QLatin1Char) Delete() {
 	C.QLatin1Char_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLatin1Char) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLatin1Char) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLatin1Char{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLatin1Char) {
+		C.QLatin1Char_delete(gc[0])
 	})
 }
 
 type QChar struct {
-	h *C.QChar
+	h  *C.QChar
+	gc *[1]*C.QChar
 }
 
 func (this *QChar) cPointer() *C.QChar {
@@ -689,11 +695,15 @@ func (this *QChar) Delete() {
 	C.QChar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QChar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QChar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QChar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QChar) {
+		C.QChar_delete(gc[0])
 	})
 }

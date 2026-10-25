@@ -23,7 +23,8 @@ const (
 )
 
 type QwtInterval struct {
-	h *C.QwtInterval
+	h  *C.QwtInterval
+	gc *[1]*C.QwtInterval
 }
 
 func (this *QwtInterval) cPointer() *C.QwtInterval {
@@ -219,11 +220,15 @@ func (this *QwtInterval) Delete() {
 	C.QwtInterval_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtInterval) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtInterval) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtInterval{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtInterval) {
+		C.QwtInterval_delete(gc[0])
 	})
 }

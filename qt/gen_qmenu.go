@@ -15,7 +15,8 @@ import (
 )
 
 type QMenu struct {
-	h *C.QMenu
+	h  *C.QMenu
+	gc *[1]*C.QMenu
 	*QWidget
 }
 
@@ -251,12 +252,13 @@ func (this *QMenu) ExecWithPos(pos *QPoint) *QAction {
 }
 
 func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
-	defer C.free(unsafe.Pointer(actions_CArray))
+	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
+	defer C.free(unsafe.Pointer(actions_CArray_ptr))
+	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
 	return newQAction(C.QMenu_exec2(actions_ma, pos.cPointer()))
 }
 
@@ -452,22 +454,24 @@ func (this *QMenu) Exec3(pos *QPoint, at *QAction) *QAction {
 }
 
 func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction) *QAction {
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
-	defer C.free(unsafe.Pointer(actions_CArray))
+	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
+	defer C.free(unsafe.Pointer(actions_CArray_ptr))
+	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
 	return newQAction(C.QMenu_exec4(actions_ma, pos.cPointer(), at.cPointer()))
 }
 
 func QMenu_Exec5(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
-	defer C.free(unsafe.Pointer(actions_CArray))
+	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
+	defer C.free(unsafe.Pointer(actions_CArray_ptr))
+	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
 	return newQAction(C.QMenu_exec5(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer()))
 }
 
@@ -1877,11 +1881,15 @@ func (this *QMenu) Delete() {
 	C.QMenu_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMenu) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMenu) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMenu{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMenu) {
+		C.QMenu_delete(gc[0])
 	})
 }

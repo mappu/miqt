@@ -85,7 +85,8 @@ const (
 )
 
 type QMediaFormat struct {
-	h *C.QMediaFormat
+	h  *C.QMediaFormat
+	gc *[1]*C.QMediaFormat
 }
 
 func (this *QMediaFormat) cPointer() *C.QMediaFormat {
@@ -179,7 +180,7 @@ func (this *QMediaFormat) MimeType() *qt6.QMimeType {
 func (this *QMediaFormat) SupportedFileFormats(m QMediaFormat__ConversionMode) []QMediaFormat__FileFormat {
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedFileFormats(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__FileFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QMediaFormat__FileFormat)(_outCast[i])
 	}
@@ -189,7 +190,7 @@ func (this *QMediaFormat) SupportedFileFormats(m QMediaFormat__ConversionMode) [
 func (this *QMediaFormat) SupportedVideoCodecs(m QMediaFormat__ConversionMode) []QMediaFormat__VideoCodec {
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedVideoCodecs(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__VideoCodec, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QMediaFormat__VideoCodec)(_outCast[i])
 	}
@@ -199,7 +200,7 @@ func (this *QMediaFormat) SupportedVideoCodecs(m QMediaFormat__ConversionMode) [
 func (this *QMediaFormat) SupportedAudioCodecs(m QMediaFormat__ConversionMode) []QMediaFormat__AudioCodec {
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedAudioCodecs(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__AudioCodec, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QMediaFormat__AudioCodec)(_outCast[i])
 	}
@@ -265,11 +266,15 @@ func (this *QMediaFormat) Delete() {
 	C.QMediaFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaFormat) {
+		C.QMediaFormat_delete(gc[0])
 	})
 }

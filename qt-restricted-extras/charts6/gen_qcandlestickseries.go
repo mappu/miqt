@@ -16,7 +16,8 @@ import (
 )
 
 type QCandlestickSeries struct {
-	h *C.QCandlestickSeries
+	h  *C.QCandlestickSeries
+	gc *[1]*C.QCandlestickSeries
 	*QAbstractSeries
 }
 
@@ -91,22 +92,24 @@ func (this *QCandlestickSeries) Remove(set *QCandlestickSet) bool {
 }
 
 func (this *QCandlestickSeries) AppendWithSets(sets []*QCandlestickSet) bool {
-	sets_CArray := (*[0xffff]*C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	return (bool)(C.QCandlestickSeries_appendWithSets(this.h, sets_ma))
 }
 
 func (this *QCandlestickSeries) RemoveWithSets(sets []*QCandlestickSet) bool {
-	sets_CArray := (*[0xffff]*C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	return (bool)(C.QCandlestickSeries_removeWithSets(this.h, sets_ma))
 }
 
@@ -125,7 +128,7 @@ func (this *QCandlestickSeries) Clear() {
 func (this *QCandlestickSeries) Sets() []*QCandlestickSet {
 	var _ma C.struct_miqt_array = C.QCandlestickSeries_sets(this.h)
 	_ret := make([]*QCandlestickSet, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCandlestickSet)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCandlestickSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQCandlestickSet(_outCast[i])
 	}
@@ -331,12 +334,13 @@ func miqt_exec_callback_QCandlestickSeries_doubleClicked(cb C.intptr_t, set *C.Q
 }
 
 func (this *QCandlestickSeries) CandlestickSetsAdded(sets []*QCandlestickSet) {
-	sets_CArray := (*[0xffff]*C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QCandlestickSeries_candlestickSetsAdded(this.h, sets_ma)
 }
 func (this *QCandlestickSeries) OnCandlestickSetsAdded(slot func(sets []*QCandlestickSet)) {
@@ -353,7 +357,7 @@ func miqt_exec_callback_QCandlestickSeries_candlestickSetsAdded(cb C.intptr_t, s
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QCandlestickSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QCandlestickSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QCandlestickSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQCandlestickSet(sets_outCast[i])
 	}
@@ -363,12 +367,13 @@ func miqt_exec_callback_QCandlestickSeries_candlestickSetsAdded(cb C.intptr_t, s
 }
 
 func (this *QCandlestickSeries) CandlestickSetsRemoved(sets []*QCandlestickSet) {
-	sets_CArray := (*[0xffff]*C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QCandlestickSeries_candlestickSetsRemoved(this.h, sets_ma)
 }
 func (this *QCandlestickSeries) OnCandlestickSetsRemoved(slot func(sets []*QCandlestickSet)) {
@@ -385,7 +390,7 @@ func miqt_exec_callback_QCandlestickSeries_candlestickSetsRemoved(cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QCandlestickSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QCandlestickSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QCandlestickSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQCandlestickSet(sets_outCast[i])
 	}
@@ -879,11 +884,15 @@ func (this *QCandlestickSeries) Delete() {
 	C.QCandlestickSeries_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCandlestickSeries) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCandlestickSeries) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCandlestickSeries{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCandlestickSeries) {
+		C.QCandlestickSeries_delete(gc[0])
 	})
 }

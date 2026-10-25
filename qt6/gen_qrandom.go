@@ -14,7 +14,8 @@ import (
 )
 
 type QRandomGenerator struct {
-	h *C.QRandomGenerator
+	h  *C.QRandomGenerator
+	gc *[1]*C.QRandomGenerator
 }
 
 func (this *QRandomGenerator) cPointer() *C.QRandomGenerator {
@@ -190,17 +191,22 @@ func (this *QRandomGenerator) Delete() {
 	C.QRandomGenerator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRandomGenerator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRandomGenerator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRandomGenerator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRandomGenerator) {
+		C.QRandomGenerator_delete(gc[0])
 	})
 }
 
 type QRandomGenerator64 struct {
-	h *C.QRandomGenerator64
+	h  *C.QRandomGenerator64
+	gc *[1]*C.QRandomGenerator64
 	*QRandomGenerator
 }
 
@@ -314,11 +320,15 @@ func (this *QRandomGenerator64) Delete() {
 	C.QRandomGenerator64_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRandomGenerator64) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRandomGenerator64) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRandomGenerator64{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRandomGenerator64) {
+		C.QRandomGenerator64_delete(gc[0])
 	})
 }

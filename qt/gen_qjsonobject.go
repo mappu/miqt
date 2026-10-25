@@ -14,7 +14,8 @@ import (
 )
 
 type QJsonObject struct {
-	h *C.QJsonObject
+	h  *C.QJsonObject
+	gc *[1]*C.QJsonObject
 }
 
 func (this *QJsonObject) cPointer() *C.QJsonObject {
@@ -66,10 +67,12 @@ func (this *QJsonObject) Swap(other *QJsonObject) {
 }
 
 func QJsonObject_FromVariantMap(mapVal map[string]QVariant) *QJsonObject {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -82,8 +85,8 @@ func QJsonObject_FromVariantMap(mapVal map[string]QVariant) *QJsonObject {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	_goptr := newQJsonObject(C.QJsonObject_fromVariantMap(mapVal_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -93,8 +96,8 @@ func QJsonObject_FromVariantMap(mapVal map[string]QVariant) *QJsonObject {
 func (this *QJsonObject) ToVariantMap() map[string]QVariant {
 	var _mm C.struct_miqt_map = C.QJsonObject_toVariantMap(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -110,10 +113,12 @@ func (this *QJsonObject) ToVariantMap() map[string]QVariant {
 }
 
 func QJsonObject_FromVariantHash(mapVal map[string]QVariant) *QJsonObject {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -126,8 +131,8 @@ func QJsonObject_FromVariantHash(mapVal map[string]QVariant) *QJsonObject {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	_goptr := newQJsonObject(C.QJsonObject_fromVariantHash(mapVal_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -137,8 +142,8 @@ func QJsonObject_FromVariantHash(mapVal map[string]QVariant) *QJsonObject {
 func (this *QJsonObject) ToVariantHash() map[string]QVariant {
 	var _mm C.struct_miqt_map = C.QJsonObject_toVariantHash(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _hashkey_ms C.struct_miqt_string = _Keys[i]
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
@@ -156,7 +161,7 @@ func (this *QJsonObject) ToVariantHash() map[string]QVariant {
 func (this *QJsonObject) Keys() []string {
 	var _ma C.struct_miqt_array = C.QJsonObject_keys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -337,17 +342,22 @@ func (this *QJsonObject) Delete() {
 	C.QJsonObject_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonObject) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonObject) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonObject{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonObject) {
+		C.QJsonObject_delete(gc[0])
 	})
 }
 
 type QJsonObject__iterator struct {
-	h *C.QJsonObject__iterator
+	h  *C.QJsonObject__iterator
+	gc *[1]*C.QJsonObject__iterator
 }
 
 func (this *QJsonObject__iterator) cPointer() *C.QJsonObject__iterator {
@@ -524,17 +534,22 @@ func (this *QJsonObject__iterator) Delete() {
 	C.QJsonObject__iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonObject__iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonObject__iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonObject__iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonObject__iterator) {
+		C.QJsonObject__iterator_delete(gc[0])
 	})
 }
 
 type QJsonObject__const_iterator struct {
-	h *C.QJsonObject__const_iterator
+	h  *C.QJsonObject__const_iterator
+	gc *[1]*C.QJsonObject__const_iterator
 }
 
 func (this *QJsonObject__const_iterator) cPointer() *C.QJsonObject__const_iterator {
@@ -717,11 +732,15 @@ func (this *QJsonObject__const_iterator) Delete() {
 	C.QJsonObject__const_iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonObject__const_iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonObject__const_iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonObject__const_iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonObject__const_iterator) {
+		C.QJsonObject__const_iterator_delete(gc[0])
 	})
 }

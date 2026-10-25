@@ -22,7 +22,8 @@ const (
 )
 
 type QSqlQuery struct {
-	h *C.QSqlQuery
+	h  *C.QSqlQuery
+	gc *[1]*C.QSqlQuery
 }
 
 func (this *QSqlQuery) cPointer() *C.QSqlQuery {
@@ -283,7 +284,7 @@ func (this *QSqlQuery) BoundValueWithPos(pos int) *qt6.QVariant {
 func (this *QSqlQuery) BoundValues() []qt6.QVariant {
 	var _ma C.struct_miqt_array = C.QSqlQuery_boundValues(this.h)
 	_ret := make([]qt6.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -342,11 +343,15 @@ func (this *QSqlQuery) Delete() {
 	C.QSqlQuery_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSqlQuery) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSqlQuery) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSqlQuery{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlQuery) {
+		C.QSqlQuery_delete(gc[0])
 	})
 }

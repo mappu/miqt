@@ -16,7 +16,8 @@ import (
 )
 
 type QwtPointSeriesData struct {
-	h *C.QwtPointSeriesData
+	h  *C.QwtPointSeriesData
+	gc *[1]*C.QwtPointSeriesData
 }
 
 func (this *QwtPointSeriesData) cPointer() *C.QwtPointSeriesData {
@@ -55,12 +56,13 @@ func NewQwtPointSeriesData() *QwtPointSeriesData {
 
 // NewQwtPointSeriesData2 constructs a new QwtPointSeriesData object.
 func NewQwtPointSeriesData2(param1 []qt.QPointF) *QwtPointSeriesData {
-	param1_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = (*C.QPointF)(param1[i].UnsafePointer())
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtPointSeriesData(C.QwtPointSeriesData_new2(param1_ma))
 }
@@ -103,17 +105,22 @@ func (this *QwtPointSeriesData) Delete() {
 	C.QwtPointSeriesData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPointSeriesData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPointSeriesData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPointSeriesData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPointSeriesData) {
+		C.QwtPointSeriesData_delete(gc[0])
 	})
 }
 
 type QwtPoint3DSeriesData struct {
-	h *C.QwtPoint3DSeriesData
+	h  *C.QwtPoint3DSeriesData
+	gc *[1]*C.QwtPoint3DSeriesData
 }
 
 func (this *QwtPoint3DSeriesData) cPointer() *C.QwtPoint3DSeriesData {
@@ -152,12 +159,13 @@ func NewQwtPoint3DSeriesData() *QwtPoint3DSeriesData {
 
 // NewQwtPoint3DSeriesData2 constructs a new QwtPoint3DSeriesData object.
 func NewQwtPoint3DSeriesData2(param1 []QwtPoint3D) *QwtPoint3DSeriesData {
-	param1_CArray := (*[0xffff]*C.QwtPoint3D)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (**C.QwtPoint3D)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = param1[i].cPointer()
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtPoint3DSeriesData(C.QwtPoint3DSeriesData_new2(param1_ma))
 }
@@ -200,17 +208,22 @@ func (this *QwtPoint3DSeriesData) Delete() {
 	C.QwtPoint3DSeriesData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPoint3DSeriesData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPoint3DSeriesData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPoint3DSeriesData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPoint3DSeriesData) {
+		C.QwtPoint3DSeriesData_delete(gc[0])
 	})
 }
 
 type QwtIntervalSeriesData struct {
-	h *C.QwtIntervalSeriesData
+	h  *C.QwtIntervalSeriesData
+	gc *[1]*C.QwtIntervalSeriesData
 }
 
 func (this *QwtIntervalSeriesData) cPointer() *C.QwtIntervalSeriesData {
@@ -249,12 +262,13 @@ func NewQwtIntervalSeriesData() *QwtIntervalSeriesData {
 
 // NewQwtIntervalSeriesData2 constructs a new QwtIntervalSeriesData object.
 func NewQwtIntervalSeriesData2(param1 []QwtIntervalSample) *QwtIntervalSeriesData {
-	param1_CArray := (*[0xffff]*C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (**C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = param1[i].cPointer()
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtIntervalSeriesData(C.QwtIntervalSeriesData_new2(param1_ma))
 }
@@ -297,17 +311,22 @@ func (this *QwtIntervalSeriesData) Delete() {
 	C.QwtIntervalSeriesData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtIntervalSeriesData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtIntervalSeriesData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtIntervalSeriesData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtIntervalSeriesData) {
+		C.QwtIntervalSeriesData_delete(gc[0])
 	})
 }
 
 type QwtSetSeriesData struct {
-	h *C.QwtSetSeriesData
+	h  *C.QwtSetSeriesData
+	gc *[1]*C.QwtSetSeriesData
 }
 
 func (this *QwtSetSeriesData) cPointer() *C.QwtSetSeriesData {
@@ -346,12 +365,13 @@ func NewQwtSetSeriesData() *QwtSetSeriesData {
 
 // NewQwtSetSeriesData2 constructs a new QwtSetSeriesData object.
 func NewQwtSetSeriesData2(param1 []QwtSetSample) *QwtSetSeriesData {
-	param1_CArray := (*[0xffff]*C.QwtSetSample)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (**C.QwtSetSample)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = param1[i].cPointer()
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtSetSeriesData(C.QwtSetSeriesData_new2(param1_ma))
 }
@@ -394,17 +414,22 @@ func (this *QwtSetSeriesData) Delete() {
 	C.QwtSetSeriesData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSetSeriesData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSetSeriesData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSetSeriesData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSetSeriesData) {
+		C.QwtSetSeriesData_delete(gc[0])
 	})
 }
 
 type QwtTradingChartData struct {
-	h *C.QwtTradingChartData
+	h  *C.QwtTradingChartData
+	gc *[1]*C.QwtTradingChartData
 }
 
 func (this *QwtTradingChartData) cPointer() *C.QwtTradingChartData {
@@ -443,12 +468,13 @@ func NewQwtTradingChartData() *QwtTradingChartData {
 
 // NewQwtTradingChartData2 constructs a new QwtTradingChartData object.
 func NewQwtTradingChartData2(param1 []QwtOHLCSample) *QwtTradingChartData {
-	param1_CArray := (*[0xffff]*C.QwtOHLCSample)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (**C.QwtOHLCSample)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = param1[i].cPointer()
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtTradingChartData(C.QwtTradingChartData_new2(param1_ma))
 }
@@ -491,11 +517,15 @@ func (this *QwtTradingChartData) Delete() {
 	C.QwtTradingChartData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtTradingChartData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtTradingChartData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtTradingChartData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTradingChartData) {
+		C.QwtTradingChartData_delete(gc[0])
 	})
 }

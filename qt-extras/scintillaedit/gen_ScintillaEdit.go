@@ -1693,7 +1693,8 @@ const (
 )
 
 type Scintilla__Internal__Point struct {
-	h *C.Scintilla__Internal__Point
+	h  *C.Scintilla__Internal__Point
+	gc *[1]*C.Scintilla__Internal__Point
 }
 
 func (this *Scintilla__Internal__Point) cPointer() *C.Scintilla__Internal__Point {
@@ -1795,17 +1796,22 @@ func (this *Scintilla__Internal__Point) Delete() {
 	C.Scintilla__Internal__Point_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Point) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Point) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Point{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Point) {
+		C.Scintilla__Internal__Point_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Interval struct {
-	h *C.Scintilla__Internal__Interval
+	h  *C.Scintilla__Internal__Interval
+	gc *[1]*C.Scintilla__Internal__Interval
 }
 
 func (this *Scintilla__Internal__Interval) cPointer() *C.Scintilla__Internal__Interval {
@@ -1879,17 +1885,22 @@ func (this *Scintilla__Internal__Interval) Delete() {
 	C.Scintilla__Internal__Interval_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Interval) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Interval) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Interval{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Interval) {
+		C.Scintilla__Internal__Interval_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__PRectangle struct {
-	h *C.Scintilla__Internal__PRectangle
+	h  *C.Scintilla__Internal__PRectangle
+	gc *[1]*C.Scintilla__Internal__PRectangle
 }
 
 func (this *Scintilla__Internal__PRectangle) cPointer() *C.Scintilla__Internal__PRectangle {
@@ -2063,17 +2074,22 @@ func (this *Scintilla__Internal__PRectangle) Delete() {
 	C.Scintilla__Internal__PRectangle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__PRectangle) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__PRectangle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__PRectangle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__PRectangle) {
+		C.Scintilla__Internal__PRectangle_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__ColourRGBA struct {
-	h *C.Scintilla__Internal__ColourRGBA
+	h  *C.Scintilla__Internal__ColourRGBA
+	gc *[1]*C.Scintilla__Internal__ColourRGBA
 }
 
 func (this *Scintilla__Internal__ColourRGBA) cPointer() *C.Scintilla__Internal__ColourRGBA {
@@ -2245,17 +2261,22 @@ func (this *Scintilla__Internal__ColourRGBA) Delete() {
 	C.Scintilla__Internal__ColourRGBA_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__ColourRGBA) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__ColourRGBA) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__ColourRGBA{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__ColourRGBA) {
+		C.Scintilla__Internal__ColourRGBA_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Stroke struct {
-	h *C.Scintilla__Internal__Stroke
+	h  *C.Scintilla__Internal__Stroke
+	gc *[1]*C.Scintilla__Internal__Stroke
 }
 
 func (this *Scintilla__Internal__Stroke) cPointer() *C.Scintilla__Internal__Stroke {
@@ -2331,17 +2352,22 @@ func (this *Scintilla__Internal__Stroke) Delete() {
 	C.Scintilla__Internal__Stroke_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Stroke) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Stroke) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Stroke{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Stroke) {
+		C.Scintilla__Internal__Stroke_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Fill struct {
-	h *C.Scintilla__Internal__Fill
+	h  *C.Scintilla__Internal__Fill
+	gc *[1]*C.Scintilla__Internal__Fill
 }
 
 func (this *Scintilla__Internal__Fill) cPointer() *C.Scintilla__Internal__Fill {
@@ -2399,17 +2425,22 @@ func (this *Scintilla__Internal__Fill) Delete() {
 	C.Scintilla__Internal__Fill_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Fill) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Fill) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Fill{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Fill) {
+		C.Scintilla__Internal__Fill_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__FillStroke struct {
-	h *C.Scintilla__Internal__FillStroke
+	h  *C.Scintilla__Internal__FillStroke
+	gc *[1]*C.Scintilla__Internal__FillStroke
 }
 
 func (this *Scintilla__Internal__FillStroke) cPointer() *C.Scintilla__Internal__FillStroke {
@@ -2489,17 +2520,22 @@ func (this *Scintilla__Internal__FillStroke) Delete() {
 	C.Scintilla__Internal__FillStroke_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__FillStroke) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__FillStroke) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__FillStroke{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__FillStroke) {
+		C.Scintilla__Internal__FillStroke_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__ColourStop struct {
-	h *C.Scintilla__Internal__ColourStop
+	h  *C.Scintilla__Internal__ColourStop
+	gc *[1]*C.Scintilla__Internal__ColourStop
 }
 
 func (this *Scintilla__Internal__ColourStop) cPointer() *C.Scintilla__Internal__ColourStop {
@@ -2559,17 +2595,22 @@ func (this *Scintilla__Internal__ColourStop) Delete() {
 	C.Scintilla__Internal__ColourStop_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__ColourStop) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__ColourStop) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__ColourStop{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__ColourStop) {
+		C.Scintilla__Internal__ColourStop_delete(gc[0])
 	})
 }
 
 type Scintilla__CharacterRange struct {
-	h *C.Scintilla__CharacterRange
+	h  *C.Scintilla__CharacterRange
+	gc *[1]*C.Scintilla__CharacterRange
 }
 
 func (this *Scintilla__CharacterRange) cPointer() *C.Scintilla__CharacterRange {
@@ -2621,17 +2662,22 @@ func (this *Scintilla__CharacterRange) Delete() {
 	C.Scintilla__CharacterRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__CharacterRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__CharacterRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__CharacterRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__CharacterRange) {
+		C.Scintilla__CharacterRange_delete(gc[0])
 	})
 }
 
 type Scintilla__CharacterRangeFull struct {
-	h *C.Scintilla__CharacterRangeFull
+	h  *C.Scintilla__CharacterRangeFull
+	gc *[1]*C.Scintilla__CharacterRangeFull
 }
 
 func (this *Scintilla__CharacterRangeFull) cPointer() *C.Scintilla__CharacterRangeFull {
@@ -2683,17 +2729,22 @@ func (this *Scintilla__CharacterRangeFull) Delete() {
 	C.Scintilla__CharacterRangeFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__CharacterRangeFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__CharacterRangeFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__CharacterRangeFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__CharacterRangeFull) {
+		C.Scintilla__CharacterRangeFull_delete(gc[0])
 	})
 }
 
 type Scintilla__TextRange struct {
-	h *C.Scintilla__TextRange
+	h  *C.Scintilla__TextRange
+	gc *[1]*C.Scintilla__TextRange
 }
 
 func (this *Scintilla__TextRange) cPointer() *C.Scintilla__TextRange {
@@ -2750,17 +2801,22 @@ func (this *Scintilla__TextRange) Delete() {
 	C.Scintilla__TextRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__TextRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__TextRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__TextRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__TextRange) {
+		C.Scintilla__TextRange_delete(gc[0])
 	})
 }
 
 type Scintilla__TextRangeFull struct {
-	h *C.Scintilla__TextRangeFull
+	h  *C.Scintilla__TextRangeFull
+	gc *[1]*C.Scintilla__TextRangeFull
 }
 
 func (this *Scintilla__TextRangeFull) cPointer() *C.Scintilla__TextRangeFull {
@@ -2817,17 +2873,22 @@ func (this *Scintilla__TextRangeFull) Delete() {
 	C.Scintilla__TextRangeFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__TextRangeFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__TextRangeFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__TextRangeFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__TextRangeFull) {
+		C.Scintilla__TextRangeFull_delete(gc[0])
 	})
 }
 
 type Scintilla__TextToFind struct {
-	h *C.Scintilla__TextToFind
+	h  *C.Scintilla__TextToFind
+	gc *[1]*C.Scintilla__TextToFind
 }
 
 func (this *Scintilla__TextToFind) cPointer() *C.Scintilla__TextToFind {
@@ -2894,17 +2955,22 @@ func (this *Scintilla__TextToFind) Delete() {
 	C.Scintilla__TextToFind_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__TextToFind) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__TextToFind) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__TextToFind{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__TextToFind) {
+		C.Scintilla__TextToFind_delete(gc[0])
 	})
 }
 
 type Scintilla__TextToFindFull struct {
-	h *C.Scintilla__TextToFindFull
+	h  *C.Scintilla__TextToFindFull
+	gc *[1]*C.Scintilla__TextToFindFull
 }
 
 func (this *Scintilla__TextToFindFull) cPointer() *C.Scintilla__TextToFindFull {
@@ -2971,17 +3037,22 @@ func (this *Scintilla__TextToFindFull) Delete() {
 	C.Scintilla__TextToFindFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__TextToFindFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__TextToFindFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__TextToFindFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__TextToFindFull) {
+		C.Scintilla__TextToFindFull_delete(gc[0])
 	})
 }
 
 type Scintilla__Rectangle struct {
-	h *C.Scintilla__Rectangle
+	h  *C.Scintilla__Rectangle
+	gc *[1]*C.Scintilla__Rectangle
 }
 
 func (this *Scintilla__Rectangle) cPointer() *C.Scintilla__Rectangle {
@@ -3049,17 +3120,22 @@ func (this *Scintilla__Rectangle) Delete() {
 	C.Scintilla__Rectangle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Rectangle) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Rectangle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Rectangle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Rectangle) {
+		C.Scintilla__Rectangle_delete(gc[0])
 	})
 }
 
 type Scintilla__RangeToFormat struct {
-	h *C.Scintilla__RangeToFormat
+	h  *C.Scintilla__RangeToFormat
+	gc *[1]*C.Scintilla__RangeToFormat
 }
 
 func (this *Scintilla__RangeToFormat) cPointer() *C.Scintilla__RangeToFormat {
@@ -3141,17 +3217,22 @@ func (this *Scintilla__RangeToFormat) Delete() {
 	C.Scintilla__RangeToFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__RangeToFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__RangeToFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__RangeToFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__RangeToFormat) {
+		C.Scintilla__RangeToFormat_delete(gc[0])
 	})
 }
 
 type Scintilla__RangeToFormatFull struct {
-	h *C.Scintilla__RangeToFormatFull
+	h  *C.Scintilla__RangeToFormatFull
+	gc *[1]*C.Scintilla__RangeToFormatFull
 }
 
 func (this *Scintilla__RangeToFormatFull) cPointer() *C.Scintilla__RangeToFormatFull {
@@ -3233,17 +3314,22 @@ func (this *Scintilla__RangeToFormatFull) Delete() {
 	C.Scintilla__RangeToFormatFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__RangeToFormatFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__RangeToFormatFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__RangeToFormatFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__RangeToFormatFull) {
+		C.Scintilla__RangeToFormatFull_delete(gc[0])
 	})
 }
 
 type Scintilla__NotifyHeader struct {
-	h *C.Scintilla__NotifyHeader
+	h  *C.Scintilla__NotifyHeader
+	gc *[1]*C.Scintilla__NotifyHeader
 }
 
 func (this *Scintilla__NotifyHeader) cPointer() *C.Scintilla__NotifyHeader {
@@ -3295,17 +3381,22 @@ func (this *Scintilla__NotifyHeader) Delete() {
 	C.Scintilla__NotifyHeader_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__NotifyHeader) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__NotifyHeader) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__NotifyHeader{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__NotifyHeader) {
+		C.Scintilla__NotifyHeader_delete(gc[0])
 	})
 }
 
 type Scintilla__NotificationData struct {
-	h *C.Scintilla__NotificationData
+	h  *C.Scintilla__NotificationData
+	gc *[1]*C.Scintilla__NotificationData
 }
 
 func (this *Scintilla__NotificationData) cPointer() *C.Scintilla__NotificationData {
@@ -3530,17 +3621,22 @@ func (this *Scintilla__NotificationData) Delete() {
 	C.Scintilla__NotificationData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__NotificationData) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__NotificationData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__NotificationData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__NotificationData) {
+		C.Scintilla__NotificationData_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__FontParameters struct {
-	h *C.Scintilla__Internal__FontParameters
+	h  *C.Scintilla__Internal__FontParameters
+	gc *[1]*C.Scintilla__Internal__FontParameters
 }
 
 func (this *Scintilla__Internal__FontParameters) cPointer() *C.Scintilla__Internal__FontParameters {
@@ -3730,17 +3826,22 @@ func (this *Scintilla__Internal__FontParameters) Delete() {
 	C.Scintilla__Internal__FontParameters_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__FontParameters) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__FontParameters) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__FontParameters{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__FontParameters) {
+		C.Scintilla__Internal__FontParameters_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Font struct {
-	h *C.Scintilla__Internal__Font
+	h  *C.Scintilla__Internal__Font
+	gc *[1]*C.Scintilla__Internal__Font
 }
 
 func (this *Scintilla__Internal__Font) cPointer() *C.Scintilla__Internal__Font {
@@ -3782,17 +3883,22 @@ func (this *Scintilla__Internal__Font) Delete() {
 	C.Scintilla__Internal__Font_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Font) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Font) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Font{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Font) {
+		C.Scintilla__Internal__Font_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__IScreenLine struct {
-	h *C.Scintilla__Internal__IScreenLine
+	h  *C.Scintilla__Internal__IScreenLine
+	gc *[1]*C.Scintilla__Internal__IScreenLine
 }
 
 func (this *Scintilla__Internal__IScreenLine) cPointer() *C.Scintilla__Internal__IScreenLine {
@@ -3868,17 +3974,22 @@ func (this *Scintilla__Internal__IScreenLine) Delete() {
 	C.Scintilla__Internal__IScreenLine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__IScreenLine) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__IScreenLine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__IScreenLine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__IScreenLine) {
+		C.Scintilla__Internal__IScreenLine_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__IScreenLineLayout struct {
-	h *C.Scintilla__Internal__IScreenLineLayout
+	h  *C.Scintilla__Internal__IScreenLineLayout
+	gc *[1]*C.Scintilla__Internal__IScreenLineLayout
 }
 
 func (this *Scintilla__Internal__IScreenLineLayout) cPointer() *C.Scintilla__Internal__IScreenLineLayout {
@@ -3926,17 +4037,22 @@ func (this *Scintilla__Internal__IScreenLineLayout) Delete() {
 	C.Scintilla__Internal__IScreenLineLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__IScreenLineLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__IScreenLineLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__IScreenLineLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__IScreenLineLayout) {
+		C.Scintilla__Internal__IScreenLineLayout_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__SurfaceMode struct {
-	h *C.Scintilla__Internal__SurfaceMode
+	h  *C.Scintilla__Internal__SurfaceMode
+	gc *[1]*C.Scintilla__Internal__SurfaceMode
 }
 
 func (this *Scintilla__Internal__SurfaceMode) cPointer() *C.Scintilla__Internal__SurfaceMode {
@@ -4000,17 +4116,22 @@ func (this *Scintilla__Internal__SurfaceMode) Delete() {
 	C.Scintilla__Internal__SurfaceMode_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__SurfaceMode) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__SurfaceMode) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__SurfaceMode{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__SurfaceMode) {
+		C.Scintilla__Internal__SurfaceMode_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Surface struct {
-	h *C.Scintilla__Internal__Surface
+	h  *C.Scintilla__Internal__Surface
+	gc *[1]*C.Scintilla__Internal__Surface
 }
 
 func (this *Scintilla__Internal__Surface) cPointer() *C.Scintilla__Internal__Surface {
@@ -4174,17 +4295,22 @@ func (this *Scintilla__Internal__Surface) Delete() {
 	C.Scintilla__Internal__Surface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Surface) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Surface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Surface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Surface) {
+		C.Scintilla__Internal__Surface_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Window struct {
-	h *C.Scintilla__Internal__Window
+	h  *C.Scintilla__Internal__Window
+	gc *[1]*C.Scintilla__Internal__Window
 }
 
 func (this *Scintilla__Internal__Window) cPointer() *C.Scintilla__Internal__Window {
@@ -4288,17 +4414,22 @@ func (this *Scintilla__Internal__Window) Delete() {
 	C.Scintilla__Internal__Window_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Window) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Window) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Window{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Window) {
+		C.Scintilla__Internal__Window_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__ListBoxEvent struct {
-	h *C.Scintilla__Internal__ListBoxEvent
+	h  *C.Scintilla__Internal__ListBoxEvent
+	gc *[1]*C.Scintilla__Internal__ListBoxEvent
 }
 
 func (this *Scintilla__Internal__ListBoxEvent) cPointer() *C.Scintilla__Internal__ListBoxEvent {
@@ -4340,17 +4471,22 @@ func (this *Scintilla__Internal__ListBoxEvent) Delete() {
 	C.Scintilla__Internal__ListBoxEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__ListBoxEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__ListBoxEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__ListBoxEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__ListBoxEvent) {
+		C.Scintilla__Internal__ListBoxEvent_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__IListBoxDelegate struct {
-	h *C.Scintilla__Internal__IListBoxDelegate
+	h  *C.Scintilla__Internal__IListBoxDelegate
+	gc *[1]*C.Scintilla__Internal__IListBoxDelegate
 }
 
 func (this *Scintilla__Internal__IListBoxDelegate) cPointer() *C.Scintilla__Internal__IListBoxDelegate {
@@ -4394,17 +4530,22 @@ func (this *Scintilla__Internal__IListBoxDelegate) Delete() {
 	C.Scintilla__Internal__IListBoxDelegate_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__IListBoxDelegate) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__IListBoxDelegate) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__IListBoxDelegate{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__IListBoxDelegate) {
+		C.Scintilla__Internal__IListBoxDelegate_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__ListOptions struct {
-	h *C.Scintilla__Internal__ListOptions
+	h  *C.Scintilla__Internal__ListOptions
+	gc *[1]*C.Scintilla__Internal__ListOptions
 }
 
 func (this *Scintilla__Internal__ListOptions) cPointer() *C.Scintilla__Internal__ListOptions {
@@ -4454,17 +4595,22 @@ func (this *Scintilla__Internal__ListOptions) Delete() {
 	C.Scintilla__Internal__ListOptions_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__ListOptions) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__ListOptions) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__ListOptions{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__ListOptions) {
+		C.Scintilla__Internal__ListOptions_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__ListBox struct {
-	h *C.Scintilla__Internal__ListBox
+	h  *C.Scintilla__Internal__ListBox
+	gc *[1]*C.Scintilla__Internal__ListBox
 	*Scintilla__Internal__Window
 }
 
@@ -4590,17 +4736,22 @@ func (this *Scintilla__Internal__ListBox) Delete() {
 	C.Scintilla__Internal__ListBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__ListBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__ListBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__ListBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__ListBox) {
+		C.Scintilla__Internal__ListBox_delete(gc[0])
 	})
 }
 
 type Scintilla__Internal__Menu struct {
-	h *C.Scintilla__Internal__Menu
+	h  *C.Scintilla__Internal__Menu
+	gc *[1]*C.Scintilla__Internal__Menu
 }
 
 func (this *Scintilla__Internal__Menu) cPointer() *C.Scintilla__Internal__Menu {
@@ -4658,17 +4809,22 @@ func (this *Scintilla__Internal__Menu) Delete() {
 	C.Scintilla__Internal__Menu_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Scintilla__Internal__Menu) GoGC() {
-	runtime.SetFinalizer(this, func(this *Scintilla__Internal__Menu) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Scintilla__Internal__Menu{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Scintilla__Internal__Menu) {
+		C.Scintilla__Internal__Menu_delete(gc[0])
 	})
 }
 
 type Sci_CharacterRange struct {
-	h *C.Sci_CharacterRange
+	h  *C.Sci_CharacterRange
+	gc *[1]*C.Sci_CharacterRange
 }
 
 func (this *Sci_CharacterRange) cPointer() *C.Sci_CharacterRange {
@@ -4720,17 +4876,22 @@ func (this *Sci_CharacterRange) Delete() {
 	C.Sci_CharacterRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_CharacterRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_CharacterRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_CharacterRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_CharacterRange) {
+		C.Sci_CharacterRange_delete(gc[0])
 	})
 }
 
 type Sci_CharacterRangeFull struct {
-	h *C.Sci_CharacterRangeFull
+	h  *C.Sci_CharacterRangeFull
+	gc *[1]*C.Sci_CharacterRangeFull
 }
 
 func (this *Sci_CharacterRangeFull) cPointer() *C.Sci_CharacterRangeFull {
@@ -4782,17 +4943,22 @@ func (this *Sci_CharacterRangeFull) Delete() {
 	C.Sci_CharacterRangeFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_CharacterRangeFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_CharacterRangeFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_CharacterRangeFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_CharacterRangeFull) {
+		C.Sci_CharacterRangeFull_delete(gc[0])
 	})
 }
 
 type Sci_TextRange struct {
-	h *C.Sci_TextRange
+	h  *C.Sci_TextRange
+	gc *[1]*C.Sci_TextRange
 }
 
 func (this *Sci_TextRange) cPointer() *C.Sci_TextRange {
@@ -4839,17 +5005,22 @@ func (this *Sci_TextRange) Delete() {
 	C.Sci_TextRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_TextRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_TextRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_TextRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_TextRange) {
+		C.Sci_TextRange_delete(gc[0])
 	})
 }
 
 type Sci_TextRangeFull struct {
-	h *C.Sci_TextRangeFull
+	h  *C.Sci_TextRangeFull
+	gc *[1]*C.Sci_TextRangeFull
 }
 
 func (this *Sci_TextRangeFull) cPointer() *C.Sci_TextRangeFull {
@@ -4896,17 +5067,22 @@ func (this *Sci_TextRangeFull) Delete() {
 	C.Sci_TextRangeFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_TextRangeFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_TextRangeFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_TextRangeFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_TextRangeFull) {
+		C.Sci_TextRangeFull_delete(gc[0])
 	})
 }
 
 type Sci_TextToFind struct {
-	h *C.Sci_TextToFind
+	h  *C.Sci_TextToFind
+	gc *[1]*C.Sci_TextToFind
 }
 
 func (this *Sci_TextToFind) cPointer() *C.Sci_TextToFind {
@@ -4953,17 +5129,22 @@ func (this *Sci_TextToFind) Delete() {
 	C.Sci_TextToFind_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_TextToFind) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_TextToFind) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_TextToFind{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_TextToFind) {
+		C.Sci_TextToFind_delete(gc[0])
 	})
 }
 
 type Sci_TextToFindFull struct {
-	h *C.Sci_TextToFindFull
+	h  *C.Sci_TextToFindFull
+	gc *[1]*C.Sci_TextToFindFull
 }
 
 func (this *Sci_TextToFindFull) cPointer() *C.Sci_TextToFindFull {
@@ -5010,17 +5191,22 @@ func (this *Sci_TextToFindFull) Delete() {
 	C.Sci_TextToFindFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_TextToFindFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_TextToFindFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_TextToFindFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_TextToFindFull) {
+		C.Sci_TextToFindFull_delete(gc[0])
 	})
 }
 
 type Sci_Rectangle struct {
-	h *C.Sci_Rectangle
+	h  *C.Sci_Rectangle
+	gc *[1]*C.Sci_Rectangle
 }
 
 func (this *Sci_Rectangle) cPointer() *C.Sci_Rectangle {
@@ -5088,17 +5274,22 @@ func (this *Sci_Rectangle) Delete() {
 	C.Sci_Rectangle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_Rectangle) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_Rectangle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_Rectangle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_Rectangle) {
+		C.Sci_Rectangle_delete(gc[0])
 	})
 }
 
 type Sci_RangeToFormat struct {
-	h *C.Sci_RangeToFormat
+	h  *C.Sci_RangeToFormat
+	gc *[1]*C.Sci_RangeToFormat
 }
 
 func (this *Sci_RangeToFormat) cPointer() *C.Sci_RangeToFormat {
@@ -5150,17 +5341,22 @@ func (this *Sci_RangeToFormat) Delete() {
 	C.Sci_RangeToFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_RangeToFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_RangeToFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_RangeToFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_RangeToFormat) {
+		C.Sci_RangeToFormat_delete(gc[0])
 	})
 }
 
 type Sci_RangeToFormatFull struct {
-	h *C.Sci_RangeToFormatFull
+	h  *C.Sci_RangeToFormatFull
+	gc *[1]*C.Sci_RangeToFormatFull
 }
 
 func (this *Sci_RangeToFormatFull) cPointer() *C.Sci_RangeToFormatFull {
@@ -5212,17 +5408,22 @@ func (this *Sci_RangeToFormatFull) Delete() {
 	C.Sci_RangeToFormatFull_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_RangeToFormatFull) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_RangeToFormatFull) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_RangeToFormatFull{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_RangeToFormatFull) {
+		C.Sci_RangeToFormatFull_delete(gc[0])
 	})
 }
 
 type Sci_NotifyHeader struct {
-	h *C.Sci_NotifyHeader
+	h  *C.Sci_NotifyHeader
+	gc *[1]*C.Sci_NotifyHeader
 }
 
 func (this *Sci_NotifyHeader) cPointer() *C.Sci_NotifyHeader {
@@ -5274,17 +5475,22 @@ func (this *Sci_NotifyHeader) Delete() {
 	C.Sci_NotifyHeader_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *Sci_NotifyHeader) GoGC() {
-	runtime.SetFinalizer(this, func(this *Sci_NotifyHeader) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.Sci_NotifyHeader{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.Sci_NotifyHeader) {
+		C.Sci_NotifyHeader_delete(gc[0])
 	})
 }
 
 type SCNotification struct {
-	h *C.SCNotification
+	h  *C.SCNotification
+	gc *[1]*C.SCNotification
 }
 
 func (this *SCNotification) cPointer() *C.SCNotification {
@@ -5509,17 +5715,22 @@ func (this *SCNotification) Delete() {
 	C.SCNotification_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *SCNotification) GoGC() {
-	runtime.SetFinalizer(this, func(this *SCNotification) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.SCNotification{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.SCNotification) {
+		C.SCNotification_delete(gc[0])
 	})
 }
 
 type ScintillaEditBase struct {
-	h *C.ScintillaEditBase
+	h  *C.ScintillaEditBase
+	gc *[1]*C.ScintillaEditBase
 	*qt.QAbstractScrollArea
 }
 
@@ -8058,17 +8269,22 @@ func (this *ScintillaEditBase) Delete() {
 	C.ScintillaEditBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *ScintillaEditBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *ScintillaEditBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.ScintillaEditBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.ScintillaEditBase) {
+		C.ScintillaEditBase_delete(gc[0])
 	})
 }
 
 type ScintillaDocument struct {
-	h *C.ScintillaDocument
+	h  *C.ScintillaDocument
+	gc *[1]*C.ScintillaDocument
 	*qt.QObject
 }
 
@@ -8738,17 +8954,22 @@ func (this *ScintillaDocument) Delete() {
 	C.ScintillaDocument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *ScintillaDocument) GoGC() {
-	runtime.SetFinalizer(this, func(this *ScintillaDocument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.ScintillaDocument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.ScintillaDocument) {
+		C.ScintillaDocument_delete(gc[0])
 	})
 }
 
 type ScintillaEdit struct {
-	h *C.ScintillaEdit
+	h  *C.ScintillaEdit
+	gc *[1]*C.ScintillaEdit
 	*ScintillaEditBase
 }
 
@@ -13972,11 +14193,15 @@ func (this *ScintillaEdit) Delete() {
 	C.ScintillaEdit_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *ScintillaEdit) GoGC() {
-	runtime.SetFinalizer(this, func(this *ScintillaEdit) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.ScintillaEdit{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.ScintillaEdit) {
+		C.ScintillaEdit_delete(gc[0])
 	})
 }

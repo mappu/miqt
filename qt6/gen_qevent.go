@@ -54,7 +54,8 @@ const (
 )
 
 type QInputEvent struct {
-	h *C.QInputEvent
+	h  *C.QInputEvent
+	gc *[1]*C.QInputEvent
 	*QEvent
 }
 
@@ -211,17 +212,22 @@ func (this *QInputEvent) Delete() {
 	C.QInputEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QInputEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QInputEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QInputEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputEvent) {
+		C.QInputEvent_delete(gc[0])
 	})
 }
 
 type QPointerEvent struct {
-	h *C.QPointerEvent
+	h  *C.QPointerEvent
+	gc *[1]*C.QPointerEvent
 	*QInputEvent
 }
 
@@ -270,12 +276,13 @@ func NewQPointerEvent2(typeVal QEvent__Type, dev *QPointingDevice, modifiers Key
 
 // NewQPointerEvent3 constructs a new QPointerEvent object.
 func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier, points []QEventPoint) *QPointerEvent {
-	points_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
-	defer C.free(unsafe.Pointer(points_CArray))
+	points_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
 		points_CArray[i] = points[i].cPointer()
 	}
-	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray)}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 
 	return newQPointerEvent(C.QPointerEvent_new3((C.int)(typeVal), dev.cPointer(), (C.int)(modifiers), points_ma))
 }
@@ -307,7 +314,7 @@ func (this *QPointerEvent) Point(i int64) *QEventPoint {
 func (this *QPointerEvent) Points() []QEventPoint {
 	var _ma C.struct_miqt_array = C.QPointerEvent_points(this.h)
 	_ret := make([]QEventPoint, int(_ma.len))
-	_outCast := (*[0xffff]*C.QEventPoint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QEventPoint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQEventPoint(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -521,17 +528,22 @@ func (this *QPointerEvent) Delete() {
 	C.QPointerEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPointerEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPointerEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPointerEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPointerEvent) {
+		C.QPointerEvent_delete(gc[0])
 	})
 }
 
 type QSinglePointEvent struct {
-	h *C.QSinglePointEvent
+	h  *C.QSinglePointEvent
+	gc *[1]*C.QSinglePointEvent
 	*QPointerEvent
 }
 
@@ -621,17 +633,22 @@ func (this *QSinglePointEvent) Delete() {
 	C.QSinglePointEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSinglePointEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSinglePointEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSinglePointEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSinglePointEvent) {
+		C.QSinglePointEvent_delete(gc[0])
 	})
 }
 
 type QEnterEvent struct {
-	h *C.QEnterEvent
+	h  *C.QEnterEvent
+	gc *[1]*C.QEnterEvent
 	*QSinglePointEvent
 }
 
@@ -885,17 +902,22 @@ func (this *QEnterEvent) Delete() {
 	C.QEnterEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QEnterEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QEnterEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QEnterEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEnterEvent) {
+		C.QEnterEvent_delete(gc[0])
 	})
 }
 
 type QMouseEvent struct {
-	h *C.QMouseEvent
+	h  *C.QMouseEvent
+	gc *[1]*C.QMouseEvent
 	*QSinglePointEvent
 }
 
@@ -1193,17 +1215,22 @@ func (this *QMouseEvent) Delete() {
 	C.QMouseEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMouseEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMouseEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMouseEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMouseEvent) {
+		C.QMouseEvent_delete(gc[0])
 	})
 }
 
 type QHoverEvent struct {
-	h *C.QHoverEvent
+	h  *C.QHoverEvent
+	gc *[1]*C.QHoverEvent
 	*QSinglePointEvent
 }
 
@@ -1463,17 +1490,22 @@ func (this *QHoverEvent) Delete() {
 	C.QHoverEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHoverEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHoverEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHoverEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHoverEvent) {
+		C.QHoverEvent_delete(gc[0])
 	})
 }
 
 type QWheelEvent struct {
-	h *C.QWheelEvent
+	h  *C.QWheelEvent
+	gc *[1]*C.QWheelEvent
 	*QSinglePointEvent
 }
 
@@ -1731,17 +1763,22 @@ func (this *QWheelEvent) Delete() {
 	C.QWheelEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWheelEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWheelEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWheelEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWheelEvent) {
+		C.QWheelEvent_delete(gc[0])
 	})
 }
 
 type QTabletEvent struct {
-	h *C.QTabletEvent
+	h  *C.QTabletEvent
+	gc *[1]*C.QTabletEvent
 	*QSinglePointEvent
 }
 
@@ -2019,17 +2056,22 @@ func (this *QTabletEvent) Delete() {
 	C.QTabletEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTabletEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTabletEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTabletEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTabletEvent) {
+		C.QTabletEvent_delete(gc[0])
 	})
 }
 
 type QNativeGestureEvent struct {
-	h *C.QNativeGestureEvent
+	h  *C.QNativeGestureEvent
+	gc *[1]*C.QNativeGestureEvent
 	*QSinglePointEvent
 }
 
@@ -2291,17 +2333,22 @@ func (this *QNativeGestureEvent) Delete() {
 	C.QNativeGestureEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNativeGestureEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNativeGestureEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNativeGestureEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNativeGestureEvent) {
+		C.QNativeGestureEvent_delete(gc[0])
 	})
 }
 
 type QKeyEvent struct {
-	h *C.QKeyEvent
+	h  *C.QKeyEvent
+	gc *[1]*C.QKeyEvent
 	*QInputEvent
 }
 
@@ -2549,17 +2596,22 @@ func (this *QKeyEvent) Delete() {
 	C.QKeyEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QKeyEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QKeyEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QKeyEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeyEvent) {
+		C.QKeyEvent_delete(gc[0])
 	})
 }
 
 type QFocusEvent struct {
-	h *C.QFocusEvent
+	h  *C.QFocusEvent
+	gc *[1]*C.QFocusEvent
 	*QEvent
 }
 
@@ -2678,17 +2730,22 @@ func (this *QFocusEvent) Delete() {
 	C.QFocusEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFocusEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFocusEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFocusEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFocusEvent) {
+		C.QFocusEvent_delete(gc[0])
 	})
 }
 
 type QPaintEvent struct {
-	h *C.QPaintEvent
+	h  *C.QPaintEvent
+	gc *[1]*C.QPaintEvent
 	*QEvent
 }
 
@@ -2803,17 +2860,22 @@ func (this *QPaintEvent) Delete() {
 	C.QPaintEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPaintEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPaintEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPaintEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEvent) {
+		C.QPaintEvent_delete(gc[0])
 	})
 }
 
 type QMoveEvent struct {
-	h *C.QMoveEvent
+	h  *C.QMoveEvent
+	gc *[1]*C.QMoveEvent
 	*QEvent
 }
 
@@ -2922,17 +2984,22 @@ func (this *QMoveEvent) Delete() {
 	C.QMoveEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMoveEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMoveEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMoveEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMoveEvent) {
+		C.QMoveEvent_delete(gc[0])
 	})
 }
 
 type QExposeEvent struct {
-	h *C.QExposeEvent
+	h  *C.QExposeEvent
+	gc *[1]*C.QExposeEvent
 	*QEvent
 }
 
@@ -3037,17 +3104,22 @@ func (this *QExposeEvent) Delete() {
 	C.QExposeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QExposeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QExposeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QExposeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QExposeEvent) {
+		C.QExposeEvent_delete(gc[0])
 	})
 }
 
 type QPlatformSurfaceEvent struct {
-	h *C.QPlatformSurfaceEvent
+	h  *C.QPlatformSurfaceEvent
+	gc *[1]*C.QPlatformSurfaceEvent
 	*QEvent
 }
 
@@ -3152,17 +3224,22 @@ func (this *QPlatformSurfaceEvent) Delete() {
 	C.QPlatformSurfaceEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPlatformSurfaceEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPlatformSurfaceEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPlatformSurfaceEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPlatformSurfaceEvent) {
+		C.QPlatformSurfaceEvent_delete(gc[0])
 	})
 }
 
 type QResizeEvent struct {
-	h *C.QResizeEvent
+	h  *C.QResizeEvent
+	gc *[1]*C.QResizeEvent
 	*QEvent
 }
 
@@ -3271,17 +3348,22 @@ func (this *QResizeEvent) Delete() {
 	C.QResizeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QResizeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QResizeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QResizeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QResizeEvent) {
+		C.QResizeEvent_delete(gc[0])
 	})
 }
 
 type QCloseEvent struct {
-	h *C.QCloseEvent
+	h  *C.QCloseEvent
+	gc *[1]*C.QCloseEvent
 	*QEvent
 }
 
@@ -3382,17 +3464,22 @@ func (this *QCloseEvent) Delete() {
 	C.QCloseEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCloseEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCloseEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCloseEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCloseEvent) {
+		C.QCloseEvent_delete(gc[0])
 	})
 }
 
 type QIconDragEvent struct {
-	h *C.QIconDragEvent
+	h  *C.QIconDragEvent
+	gc *[1]*C.QIconDragEvent
 	*QEvent
 }
 
@@ -3493,17 +3580,22 @@ func (this *QIconDragEvent) Delete() {
 	C.QIconDragEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIconDragEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIconDragEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIconDragEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconDragEvent) {
+		C.QIconDragEvent_delete(gc[0])
 	})
 }
 
 type QShowEvent struct {
-	h *C.QShowEvent
+	h  *C.QShowEvent
+	gc *[1]*C.QShowEvent
 	*QEvent
 }
 
@@ -3604,17 +3696,22 @@ func (this *QShowEvent) Delete() {
 	C.QShowEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QShowEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QShowEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QShowEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShowEvent) {
+		C.QShowEvent_delete(gc[0])
 	})
 }
 
 type QHideEvent struct {
-	h *C.QHideEvent
+	h  *C.QHideEvent
+	gc *[1]*C.QHideEvent
 	*QEvent
 }
 
@@ -3715,17 +3812,22 @@ func (this *QHideEvent) Delete() {
 	C.QHideEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHideEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHideEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHideEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHideEvent) {
+		C.QHideEvent_delete(gc[0])
 	})
 }
 
 type QContextMenuEvent struct {
-	h *C.QContextMenuEvent
+	h  *C.QContextMenuEvent
+	gc *[1]*C.QContextMenuEvent
 	*QInputEvent
 }
 
@@ -3892,17 +3994,22 @@ func (this *QContextMenuEvent) Delete() {
 	C.QContextMenuEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QContextMenuEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QContextMenuEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QContextMenuEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QContextMenuEvent) {
+		C.QContextMenuEvent_delete(gc[0])
 	})
 }
 
 type QInputMethodEvent struct {
-	h *C.QInputMethodEvent
+	h  *C.QInputMethodEvent
+	gc *[1]*C.QInputMethodEvent
 	*QEvent
 }
 
@@ -3949,12 +4056,13 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	preeditText_ms.data = C.CString(preeditText)
 	preeditText_ms.len = C.size_t(len(preeditText))
 	defer C.free(unsafe.Pointer(preeditText_ms.data))
-	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
-	defer C.free(unsafe.Pointer(attributes_CArray))
+	attributes_CArray_ptr := (**C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
+	defer C.free(unsafe.Pointer(attributes_CArray_ptr))
+	attributes_CArray := unsafe.Slice(attributes_CArray_ptr, len(attributes))
 	for i := range attributes {
 		attributes_CArray[i] = attributes[i].cPointer()
 	}
-	attributes_ma := C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray)}
+	attributes_ma := C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray_ptr)}
 
 	return newQInputMethodEvent(C.QInputMethodEvent_new2(preeditText_ms, attributes_ma))
 }
@@ -3974,7 +4082,7 @@ func (this *QInputMethodEvent) SetCommitString(commitString string) {
 func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 	var _ma C.struct_miqt_array = C.QInputMethodEvent_attributes(this.h)
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
-	_outCast := (*[0xffff]*C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQInputMethodEvent__Attribute(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4077,17 +4185,22 @@ func (this *QInputMethodEvent) Delete() {
 	C.QInputMethodEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QInputMethodEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QInputMethodEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QInputMethodEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodEvent) {
+		C.QInputMethodEvent_delete(gc[0])
 	})
 }
 
 type QInputMethodQueryEvent struct {
-	h *C.QInputMethodQueryEvent
+	h  *C.QInputMethodQueryEvent
+	gc *[1]*C.QInputMethodQueryEvent
 	*QEvent
 }
 
@@ -4202,17 +4315,22 @@ func (this *QInputMethodQueryEvent) Delete() {
 	C.QInputMethodQueryEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QInputMethodQueryEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QInputMethodQueryEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QInputMethodQueryEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodQueryEvent) {
+		C.QInputMethodQueryEvent_delete(gc[0])
 	})
 }
 
 type QDropEvent struct {
-	h *C.QDropEvent
+	h  *C.QDropEvent
+	gc *[1]*C.QDropEvent
 	*QEvent
 }
 
@@ -4381,17 +4499,22 @@ func (this *QDropEvent) Delete() {
 	C.QDropEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDropEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDropEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDropEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDropEvent) {
+		C.QDropEvent_delete(gc[0])
 	})
 }
 
 type QDragMoveEvent struct {
-	h *C.QDragMoveEvent
+	h  *C.QDragMoveEvent
+	gc *[1]*C.QDragMoveEvent
 	*QDropEvent
 }
 
@@ -4520,17 +4643,22 @@ func (this *QDragMoveEvent) Delete() {
 	C.QDragMoveEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDragMoveEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDragMoveEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDragMoveEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragMoveEvent) {
+		C.QDragMoveEvent_delete(gc[0])
 	})
 }
 
 type QDragEnterEvent struct {
-	h *C.QDragEnterEvent
+	h  *C.QDragEnterEvent
+	gc *[1]*C.QDragEnterEvent
 	*QDragMoveEvent
 }
 
@@ -4631,17 +4759,22 @@ func (this *QDragEnterEvent) Delete() {
 	C.QDragEnterEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDragEnterEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDragEnterEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDragEnterEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragEnterEvent) {
+		C.QDragEnterEvent_delete(gc[0])
 	})
 }
 
 type QDragLeaveEvent struct {
-	h *C.QDragLeaveEvent
+	h  *C.QDragLeaveEvent
+	gc *[1]*C.QDragLeaveEvent
 	*QEvent
 }
 
@@ -4742,17 +4875,22 @@ func (this *QDragLeaveEvent) Delete() {
 	C.QDragLeaveEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDragLeaveEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDragLeaveEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDragLeaveEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragLeaveEvent) {
+		C.QDragLeaveEvent_delete(gc[0])
 	})
 }
 
 type QHelpEvent struct {
-	h *C.QHelpEvent
+	h  *C.QHelpEvent
+	gc *[1]*C.QHelpEvent
 	*QEvent
 }
 
@@ -4877,17 +5015,22 @@ func (this *QHelpEvent) Delete() {
 	C.QHelpEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHelpEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHelpEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHelpEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHelpEvent) {
+		C.QHelpEvent_delete(gc[0])
 	})
 }
 
 type QStatusTipEvent struct {
-	h *C.QStatusTipEvent
+	h  *C.QStatusTipEvent
+	gc *[1]*C.QStatusTipEvent
 	*QEvent
 }
 
@@ -4999,17 +5142,22 @@ func (this *QStatusTipEvent) Delete() {
 	C.QStatusTipEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStatusTipEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStatusTipEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStatusTipEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStatusTipEvent) {
+		C.QStatusTipEvent_delete(gc[0])
 	})
 }
 
 type QWhatsThisClickedEvent struct {
-	h *C.QWhatsThisClickedEvent
+	h  *C.QWhatsThisClickedEvent
+	gc *[1]*C.QWhatsThisClickedEvent
 	*QEvent
 }
 
@@ -5121,17 +5269,22 @@ func (this *QWhatsThisClickedEvent) Delete() {
 	C.QWhatsThisClickedEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWhatsThisClickedEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWhatsThisClickedEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWhatsThisClickedEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWhatsThisClickedEvent) {
+		C.QWhatsThisClickedEvent_delete(gc[0])
 	})
 }
 
 type QActionEvent struct {
-	h *C.QActionEvent
+	h  *C.QActionEvent
+	gc *[1]*C.QActionEvent
 	*QEvent
 }
 
@@ -5246,17 +5399,22 @@ func (this *QActionEvent) Delete() {
 	C.QActionEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QActionEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QActionEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QActionEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QActionEvent) {
+		C.QActionEvent_delete(gc[0])
 	})
 }
 
 type QFileOpenEvent struct {
-	h *C.QFileOpenEvent
+	h  *C.QFileOpenEvent
+	gc *[1]*C.QFileOpenEvent
 	*QEvent
 }
 
@@ -5384,17 +5542,22 @@ func (this *QFileOpenEvent) Delete() {
 	C.QFileOpenEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFileOpenEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFileOpenEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFileOpenEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileOpenEvent) {
+		C.QFileOpenEvent_delete(gc[0])
 	})
 }
 
 type QToolBarChangeEvent struct {
-	h *C.QToolBarChangeEvent
+	h  *C.QToolBarChangeEvent
+	gc *[1]*C.QToolBarChangeEvent
 	*QEvent
 }
 
@@ -5499,17 +5662,22 @@ func (this *QToolBarChangeEvent) Delete() {
 	C.QToolBarChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QToolBarChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QToolBarChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QToolBarChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QToolBarChangeEvent) {
+		C.QToolBarChangeEvent_delete(gc[0])
 	})
 }
 
 type QShortcutEvent struct {
-	h *C.QShortcutEvent
+	h  *C.QShortcutEvent
+	gc *[1]*C.QShortcutEvent
 	*QEvent
 }
 
@@ -5628,17 +5796,22 @@ func (this *QShortcutEvent) Delete() {
 	C.QShortcutEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QShortcutEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QShortcutEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QShortcutEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShortcutEvent) {
+		C.QShortcutEvent_delete(gc[0])
 	})
 }
 
 type QWindowStateChangeEvent struct {
-	h *C.QWindowStateChangeEvent
+	h  *C.QWindowStateChangeEvent
+	gc *[1]*C.QWindowStateChangeEvent
 	*QEvent
 }
 
@@ -5753,17 +5926,22 @@ func (this *QWindowStateChangeEvent) Delete() {
 	C.QWindowStateChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWindowStateChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWindowStateChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWindowStateChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWindowStateChangeEvent) {
+		C.QWindowStateChangeEvent_delete(gc[0])
 	})
 }
 
 type QTouchEvent struct {
-	h *C.QTouchEvent
+	h  *C.QTouchEvent
+	gc *[1]*C.QTouchEvent
 	*QPointerEvent
 }
 
@@ -5824,24 +6002,26 @@ func NewQTouchEvent4(eventType QEvent__Type, device *QPointingDevice, modifiers 
 
 // NewQTouchEvent5 constructs a new QTouchEvent object.
 func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPoints []QEventPoint) *QTouchEvent {
-	touchPoints_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
-	defer C.free(unsafe.Pointer(touchPoints_CArray))
+	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
+	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
+	touchPoints_CArray := unsafe.Slice(touchPoints_CArray_ptr, len(touchPoints))
 	for i := range touchPoints {
 		touchPoints_CArray[i] = touchPoints[i].cPointer()
 	}
-	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
+	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray_ptr)}
 
 	return newQTouchEvent(C.QTouchEvent_new5((C.int)(eventType), device.cPointer(), (C.int)(modifiers), touchPoints_ma))
 }
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State, touchPoints []QEventPoint) *QTouchEvent {
-	touchPoints_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
-	defer C.free(unsafe.Pointer(touchPoints_CArray))
+	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
+	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
+	touchPoints_CArray := unsafe.Slice(touchPoints_CArray_ptr, len(touchPoints))
 	for i := range touchPoints {
 		touchPoints_CArray[i] = touchPoints[i].cPointer()
 	}
-	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
+	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray_ptr)}
 
 	return newQTouchEvent(C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uint8_t)(touchPointStates), touchPoints_ma))
 }
@@ -5861,7 +6041,7 @@ func (this *QTouchEvent) TouchPointStates() QEventPoint__State {
 func (this *QTouchEvent) TouchPoints() []QEventPoint {
 	var _ma C.struct_miqt_array = C.QTouchEvent_touchPoints(this.h)
 	_ret := make([]QEventPoint, int(_ma.len))
-	_outCast := (*[0xffff]*C.QEventPoint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QEventPoint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQEventPoint(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -6039,17 +6219,22 @@ func (this *QTouchEvent) Delete() {
 	C.QTouchEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTouchEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTouchEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTouchEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTouchEvent) {
+		C.QTouchEvent_delete(gc[0])
 	})
 }
 
 type QScrollPrepareEvent struct {
-	h *C.QScrollPrepareEvent
+	h  *C.QScrollPrepareEvent
+	gc *[1]*C.QScrollPrepareEvent
 	*QEvent
 }
 
@@ -6186,17 +6371,22 @@ func (this *QScrollPrepareEvent) Delete() {
 	C.QScrollPrepareEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScrollPrepareEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScrollPrepareEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScrollPrepareEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollPrepareEvent) {
+		C.QScrollPrepareEvent_delete(gc[0])
 	})
 }
 
 type QScrollEvent struct {
-	h *C.QScrollEvent
+	h  *C.QScrollEvent
+	gc *[1]*C.QScrollEvent
 	*QEvent
 }
 
@@ -6313,17 +6503,22 @@ func (this *QScrollEvent) Delete() {
 	C.QScrollEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScrollEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScrollEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScrollEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollEvent) {
+		C.QScrollEvent_delete(gc[0])
 	})
 }
 
 type QScreenOrientationChangeEvent struct {
-	h *C.QScreenOrientationChangeEvent
+	h  *C.QScreenOrientationChangeEvent
+	gc *[1]*C.QScreenOrientationChangeEvent
 	*QEvent
 }
 
@@ -6432,17 +6627,22 @@ func (this *QScreenOrientationChangeEvent) Delete() {
 	C.QScreenOrientationChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScreenOrientationChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScreenOrientationChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScreenOrientationChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScreenOrientationChangeEvent) {
+		C.QScreenOrientationChangeEvent_delete(gc[0])
 	})
 }
 
 type QApplicationStateChangeEvent struct {
-	h *C.QApplicationStateChangeEvent
+	h  *C.QApplicationStateChangeEvent
+	gc *[1]*C.QApplicationStateChangeEvent
 	*QEvent
 }
 
@@ -6547,17 +6747,22 @@ func (this *QApplicationStateChangeEvent) Delete() {
 	C.QApplicationStateChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QApplicationStateChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QApplicationStateChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QApplicationStateChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QApplicationStateChangeEvent) {
+		C.QApplicationStateChangeEvent_delete(gc[0])
 	})
 }
 
 type QInputMethodEvent__Attribute struct {
-	h *C.QInputMethodEvent__Attribute
+	h  *C.QInputMethodEvent__Attribute
+	gc *[1]*C.QInputMethodEvent__Attribute
 }
 
 func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attribute {
@@ -6649,11 +6854,15 @@ func (this *QInputMethodEvent__Attribute) Delete() {
 	C.QInputMethodEvent__Attribute_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QInputMethodEvent__Attribute) GoGC() {
-	runtime.SetFinalizer(this, func(this *QInputMethodEvent__Attribute) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QInputMethodEvent__Attribute{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodEvent__Attribute) {
+		C.QInputMethodEvent__Attribute_delete(gc[0])
 	})
 }

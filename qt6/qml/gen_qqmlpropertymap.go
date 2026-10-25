@@ -16,7 +16,8 @@ import (
 )
 
 type QQmlPropertyMap struct {
-	h *C.QQmlPropertyMap
+	h  *C.QQmlPropertyMap
+	gc *[1]*C.QQmlPropertyMap
 	*qt6.QObject
 }
 
@@ -101,10 +102,12 @@ func (this *QQmlPropertyMap) Insert(key string, value *qt6.QVariant) {
 }
 
 func (this *QQmlPropertyMap) InsertWithValues(values map[string]qt6.QVariant) {
-	values_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(values))))
-	defer C.free(unsafe.Pointer(values_Keys_CArray))
-	values_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_Values_CArray))
+	values_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(values))))
+	defer C.free(unsafe.Pointer(values_Keys_CArray_ptr))
+	values_Keys_CArray := unsafe.Slice(values_Keys_CArray_ptr, len(values))
+	values_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_Values_CArray_ptr))
+	values_Values_CArray := unsafe.Slice(values_Values_CArray_ptr, len(values))
 	values_ctr := 0
 	for values_k, values_v := range values {
 		values_k_ms := C.struct_miqt_string{}
@@ -117,8 +120,8 @@ func (this *QQmlPropertyMap) InsertWithValues(values map[string]qt6.QVariant) {
 	}
 	values_mm := C.struct_miqt_map{
 		len:    C.size_t(len(values)),
-		keys:   unsafe.Pointer(values_Keys_CArray),
-		values: unsafe.Pointer(values_Values_CArray),
+		keys:   unsafe.Pointer(values_Keys_CArray_ptr),
+		values: unsafe.Pointer(values_Values_CArray_ptr),
 	}
 	C.QQmlPropertyMap_insertWithValues(this.h, values_mm)
 }
@@ -138,7 +141,7 @@ func (this *QQmlPropertyMap) Freeze() {
 func (this *QQmlPropertyMap) Keys() []string {
 	var _ma C.struct_miqt_array = C.QQmlPropertyMap_keys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -525,11 +528,15 @@ func (this *QQmlPropertyMap) Delete() {
 	C.QQmlPropertyMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlPropertyMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlPropertyMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlPropertyMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlPropertyMap) {
+		C.QQmlPropertyMap_delete(gc[0])
 	})
 }

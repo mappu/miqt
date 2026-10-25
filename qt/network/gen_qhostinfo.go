@@ -22,7 +22,8 @@ const (
 )
 
 type QHostInfo struct {
-	h *C.QHostInfo
+	h  *C.QHostInfo
+	gc *[1]*C.QHostInfo
 }
 
 func (this *QHostInfo) cPointer() *C.QHostInfo {
@@ -97,7 +98,7 @@ func (this *QHostInfo) SetHostName(name string) {
 func (this *QHostInfo) Addresses() []QHostAddress {
 	var _ma C.struct_miqt_array = C.QHostInfo_addresses(this.h)
 	_ret := make([]QHostAddress, int(_ma.len))
-	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QHostAddress)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQHostAddress(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -107,12 +108,13 @@ func (this *QHostInfo) Addresses() []QHostAddress {
 }
 
 func (this *QHostInfo) SetAddresses(addresses []QHostAddress) {
-	addresses_CArray := (*[0xffff]*C.QHostAddress)(C.malloc(C.size_t(8 * len(addresses))))
-	defer C.free(unsafe.Pointer(addresses_CArray))
+	addresses_CArray_ptr := (**C.QHostAddress)(C.malloc(C.size_t(8 * len(addresses))))
+	defer C.free(unsafe.Pointer(addresses_CArray_ptr))
+	addresses_CArray := unsafe.Slice(addresses_CArray_ptr, len(addresses))
 	for i := range addresses {
 		addresses_CArray[i] = addresses[i].cPointer()
 	}
-	addresses_ma := C.struct_miqt_array{len: C.size_t(len(addresses)), data: unsafe.Pointer(addresses_CArray)}
+	addresses_ma := C.struct_miqt_array{len: C.size_t(len(addresses)), data: unsafe.Pointer(addresses_CArray_ptr)}
 	C.QHostInfo_setAddresses(this.h, addresses_ma)
 }
 
@@ -180,11 +182,15 @@ func (this *QHostInfo) Delete() {
 	C.QHostInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHostInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHostInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHostInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHostInfo) {
+		C.QHostInfo_delete(gc[0])
 	})
 }

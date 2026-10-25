@@ -14,7 +14,8 @@ import (
 )
 
 type QBackingStore struct {
-	h *C.QBackingStore
+	h  *C.QBackingStore
+	gc *[1]*C.QBackingStore
 }
 
 func (this *QBackingStore) cPointer() *C.QBackingStore {
@@ -112,11 +113,15 @@ func (this *QBackingStore) Delete() {
 	C.QBackingStore_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBackingStore) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBackingStore) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBackingStore{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBackingStore) {
+		C.QBackingStore_delete(gc[0])
 	})
 }

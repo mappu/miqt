@@ -38,7 +38,8 @@ const (
 )
 
 type QOperatingSystemVersionBase struct {
-	h *C.QOperatingSystemVersionBase
+	h  *C.QOperatingSystemVersionBase
+	gc *[1]*C.QOperatingSystemVersionBase
 }
 
 func (this *QOperatingSystemVersionBase) cPointer() *C.QOperatingSystemVersionBase {
@@ -148,17 +149,22 @@ func (this *QOperatingSystemVersionBase) Delete() {
 	C.QOperatingSystemVersionBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QOperatingSystemVersionBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QOperatingSystemVersionBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QOperatingSystemVersionBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOperatingSystemVersionBase) {
+		C.QOperatingSystemVersionBase_delete(gc[0])
 	})
 }
 
 type QOperatingSystemVersion struct {
-	h *C.QOperatingSystemVersion
+	h  *C.QOperatingSystemVersion
+	gc *[1]*C.QOperatingSystemVersion
 	*QOperatingSystemVersionBase
 }
 
@@ -271,11 +277,15 @@ func (this *QOperatingSystemVersion) Delete() {
 	C.QOperatingSystemVersion_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QOperatingSystemVersion) GoGC() {
-	runtime.SetFinalizer(this, func(this *QOperatingSystemVersion) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QOperatingSystemVersion{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOperatingSystemVersion) {
+		C.QOperatingSystemVersion_delete(gc[0])
 	})
 }

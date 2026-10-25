@@ -16,7 +16,8 @@ import (
 )
 
 type QBarCategoryAxis struct {
-	h *C.QBarCategoryAxis
+	h  *C.QBarCategoryAxis
+	gc *[1]*C.QBarCategoryAxis
 	*QAbstractAxis
 }
 
@@ -87,8 +88,9 @@ func (this *QBarCategoryAxis) Type() QAbstractAxis__AxisType {
 }
 
 func (this *QBarCategoryAxis) Append(categories []string) {
-	categories_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(categories))))
-	defer C.free(unsafe.Pointer(categories_CArray))
+	categories_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(categories))))
+	defer C.free(unsafe.Pointer(categories_CArray_ptr))
+	categories_CArray := unsafe.Slice(categories_CArray_ptr, len(categories))
 	for i := range categories {
 		categories_i_ms := C.struct_miqt_string{}
 		categories_i_ms.data = C.CString(categories[i])
@@ -96,7 +98,7 @@ func (this *QBarCategoryAxis) Append(categories []string) {
 		defer C.free(unsafe.Pointer(categories_i_ms.data))
 		categories_CArray[i] = categories_i_ms
 	}
-	categories_ma := C.struct_miqt_array{len: C.size_t(len(categories)), data: unsafe.Pointer(categories_CArray)}
+	categories_ma := C.struct_miqt_array{len: C.size_t(len(categories)), data: unsafe.Pointer(categories_CArray_ptr)}
 	C.QBarCategoryAxis_append(this.h, categories_ma)
 }
 
@@ -141,8 +143,9 @@ func (this *QBarCategoryAxis) Clear() {
 }
 
 func (this *QBarCategoryAxis) SetCategories(categories []string) {
-	categories_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(categories))))
-	defer C.free(unsafe.Pointer(categories_CArray))
+	categories_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(categories))))
+	defer C.free(unsafe.Pointer(categories_CArray_ptr))
+	categories_CArray := unsafe.Slice(categories_CArray_ptr, len(categories))
 	for i := range categories {
 		categories_i_ms := C.struct_miqt_string{}
 		categories_i_ms.data = C.CString(categories[i])
@@ -150,14 +153,14 @@ func (this *QBarCategoryAxis) SetCategories(categories []string) {
 		defer C.free(unsafe.Pointer(categories_i_ms.data))
 		categories_CArray[i] = categories_i_ms
 	}
-	categories_ma := C.struct_miqt_array{len: C.size_t(len(categories)), data: unsafe.Pointer(categories_CArray)}
+	categories_ma := C.struct_miqt_array{len: C.size_t(len(categories)), data: unsafe.Pointer(categories_CArray_ptr)}
 	C.QBarCategoryAxis_setCategories(this.h, categories_ma)
 }
 
 func (this *QBarCategoryAxis) Categories() []string {
 	var _ma C.struct_miqt_array = C.QBarCategoryAxis_categories(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -641,11 +644,15 @@ func (this *QBarCategoryAxis) Delete() {
 	C.QBarCategoryAxis_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBarCategoryAxis) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBarCategoryAxis) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBarCategoryAxis{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBarCategoryAxis) {
+		C.QBarCategoryAxis_delete(gc[0])
 	})
 }

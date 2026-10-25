@@ -34,7 +34,8 @@ const (
 )
 
 type QCameraImageProcessingControl struct {
-	h *C.QCameraImageProcessingControl
+	h  *C.QCameraImageProcessingControl
+	gc *[1]*C.QCameraImageProcessingControl
 	*QMediaControl
 }
 
@@ -164,11 +165,15 @@ func (this *QCameraImageProcessingControl) Delete() {
 	C.QCameraImageProcessingControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraImageProcessingControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraImageProcessingControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraImageProcessingControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraImageProcessingControl) {
+		C.QCameraImageProcessingControl_delete(gc[0])
 	})
 }

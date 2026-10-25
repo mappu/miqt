@@ -14,7 +14,8 @@ import (
 )
 
 type QPen struct {
-	h *C.QPen
+	h  *C.QPen
+	gc *[1]*C.QPen
 }
 
 func (this *QPen) cPointer() *C.QPen {
@@ -112,7 +113,7 @@ func (this *QPen) SetStyle(style PenStyle) {
 func (this *QPen) DashPattern() []float64 {
 	var _ma C.struct_miqt_array = C.QPen_dashPattern(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -120,12 +121,13 @@ func (this *QPen) DashPattern() []float64 {
 }
 
 func (this *QPen) SetDashPattern(pattern []float64) {
-	pattern_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(pattern))))
-	defer C.free(unsafe.Pointer(pattern_CArray))
+	pattern_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(pattern))))
+	defer C.free(unsafe.Pointer(pattern_CArray_ptr))
+	pattern_CArray := unsafe.Slice(pattern_CArray_ptr, len(pattern))
 	for i := range pattern {
 		pattern_CArray[i] = (C.double)(pattern[i])
 	}
-	pattern_ma := C.struct_miqt_array{len: C.size_t(len(pattern)), data: unsafe.Pointer(pattern_CArray)}
+	pattern_ma := C.struct_miqt_array{len: C.size_t(len(pattern)), data: unsafe.Pointer(pattern_CArray_ptr)}
 	C.QPen_setDashPattern(this.h, pattern_ma)
 }
 
@@ -232,11 +234,15 @@ func (this *QPen) Delete() {
 	C.QPen_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPen) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPen) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPen{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPen) {
+		C.QPen_delete(gc[0])
 	})
 }

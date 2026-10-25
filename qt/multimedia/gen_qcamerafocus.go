@@ -45,7 +45,8 @@ const (
 )
 
 type QCameraFocusZone struct {
-	h *C.QCameraFocusZone
+	h  *C.QCameraFocusZone
+	gc *[1]*C.QCameraFocusZone
 }
 
 func (this *QCameraFocusZone) cPointer() *C.QCameraFocusZone {
@@ -135,12 +136,16 @@ func (this *QCameraFocusZone) Delete() {
 	C.QCameraFocusZone_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraFocusZone) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraFocusZone) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraFocusZone{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraFocusZone) {
+		C.QCameraFocusZone_delete(gc[0])
 	})
 }
 
@@ -249,7 +254,7 @@ func (this *QCameraFocus) SetCustomFocusPoint(point *qt.QPointF) {
 func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
 	var _ma C.struct_miqt_array = C.QCameraFocus_focusZones(this.h)
 	_ret := make([]QCameraFocusZone, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraFocusZone)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraFocusZone)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraFocusZone(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractTextDocumentLayout struct {
-	h *C.QAbstractTextDocumentLayout
+	h  *C.QAbstractTextDocumentLayout
+	gc *[1]*C.QAbstractTextDocumentLayout
 	*QObject
 }
 
@@ -811,17 +812,22 @@ func (this *QAbstractTextDocumentLayout) Delete() {
 	C.QAbstractTextDocumentLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractTextDocumentLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractTextDocumentLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout) {
+		C.QAbstractTextDocumentLayout_delete(gc[0])
 	})
 }
 
 type QTextObjectInterface struct {
-	h *C.QTextObjectInterface
+	h  *C.QTextObjectInterface
+	gc *[1]*C.QTextObjectInterface
 }
 
 func (this *QTextObjectInterface) cPointer() *C.QTextObjectInterface {
@@ -871,17 +877,22 @@ func (this *QTextObjectInterface) Delete() {
 	C.QTextObjectInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextObjectInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextObjectInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextObjectInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextObjectInterface) {
+		C.QTextObjectInterface_delete(gc[0])
 	})
 }
 
 type QAbstractTextDocumentLayout__Selection struct {
-	h *C.QAbstractTextDocumentLayout__Selection
+	h  *C.QAbstractTextDocumentLayout__Selection
+	gc *[1]*C.QAbstractTextDocumentLayout__Selection
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextDocumentLayout__Selection {
@@ -953,17 +964,22 @@ func (this *QAbstractTextDocumentLayout__Selection) Delete() {
 	C.QAbstractTextDocumentLayout__Selection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractTextDocumentLayout__Selection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout__Selection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractTextDocumentLayout__Selection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout__Selection) {
+		C.QAbstractTextDocumentLayout__Selection_delete(gc[0])
 	})
 }
 
 type QAbstractTextDocumentLayout__PaintContext struct {
-	h *C.QAbstractTextDocumentLayout__PaintContext
+	h  *C.QAbstractTextDocumentLayout__PaintContext
+	gc *[1]*C.QAbstractTextDocumentLayout__PaintContext
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTextDocumentLayout__PaintContext {
@@ -1037,7 +1053,7 @@ func (this *QAbstractTextDocumentLayout__PaintContext) SetClip(clip QRectF) {
 func (this *QAbstractTextDocumentLayout__PaintContext) Selections() []QAbstractTextDocumentLayout__Selection {
 	var selections_ma C.struct_miqt_array = C.QAbstractTextDocumentLayout__PaintContext_selections(this.h)
 	selections_ret := make([]QAbstractTextDocumentLayout__Selection, int(selections_ma.len))
-	selections_outCast := (*[0xffff]*C.QAbstractTextDocumentLayout__Selection)(unsafe.Pointer(selections_ma.data)) // hey ya
+	selections_outCast := unsafe.Slice((**C.QAbstractTextDocumentLayout__Selection)(unsafe.Pointer(selections_ma.data)), int(selections_ma.len))
 	for i := 0; i < int(selections_ma.len); i++ {
 		selections_lv_goptr := newQAbstractTextDocumentLayout__Selection(selections_outCast[i])
 		selections_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1047,12 +1063,13 @@ func (this *QAbstractTextDocumentLayout__PaintContext) Selections() []QAbstractT
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) SetSelections(selections []QAbstractTextDocumentLayout__Selection) {
-	selections_CArray := (*[0xffff]*C.QAbstractTextDocumentLayout__Selection)(C.malloc(C.size_t(8 * len(selections))))
-	defer C.free(unsafe.Pointer(selections_CArray))
+	selections_CArray_ptr := (**C.QAbstractTextDocumentLayout__Selection)(C.malloc(C.size_t(8 * len(selections))))
+	defer C.free(unsafe.Pointer(selections_CArray_ptr))
+	selections_CArray := unsafe.Slice(selections_CArray_ptr, len(selections))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray_ptr)}
 	C.QAbstractTextDocumentLayout__PaintContext_setSelections(this.h, selections_ma)
 }
 
@@ -1065,11 +1082,15 @@ func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
 	C.QAbstractTextDocumentLayout__PaintContext_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractTextDocumentLayout__PaintContext) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractTextDocumentLayout__PaintContext) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractTextDocumentLayout__PaintContext{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout__PaintContext) {
+		C.QAbstractTextDocumentLayout__PaintContext_delete(gc[0])
 	})
 }

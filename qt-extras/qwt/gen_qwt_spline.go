@@ -21,7 +21,8 @@ const (
 )
 
 type QwtSpline struct {
-	h *C.QwtSpline
+	h  *C.QwtSpline
+	gc *[1]*C.QwtSpline
 }
 
 func (this *QwtSpline) cPointer() *C.QwtSpline {
@@ -91,7 +92,7 @@ func (this *QwtSpline) Value(x float64) float64 {
 func (this *QwtSpline) CoefficientsA() []float64 {
 	var _ma C.struct_miqt_array = C.QwtSpline_coefficientsA(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -101,7 +102,7 @@ func (this *QwtSpline) CoefficientsA() []float64 {
 func (this *QwtSpline) CoefficientsB() []float64 {
 	var _ma C.struct_miqt_array = C.QwtSpline_coefficientsB(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -111,7 +112,7 @@ func (this *QwtSpline) CoefficientsB() []float64 {
 func (this *QwtSpline) CoefficientsC() []float64 {
 	var _ma C.struct_miqt_array = C.QwtSpline_coefficientsC(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -123,11 +124,15 @@ func (this *QwtSpline) Delete() {
 	C.QwtSpline_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSpline) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSpline) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSpline{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSpline) {
+		C.QwtSpline_delete(gc[0])
 	})
 }

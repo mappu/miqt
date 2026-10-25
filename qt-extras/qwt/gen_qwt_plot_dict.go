@@ -14,7 +14,8 @@ import (
 )
 
 type QwtPlotDict struct {
-	h *C.QwtPlotDict
+	h  *C.QwtPlotDict
+	gc *[1]*C.QwtPlotDict
 }
 
 func (this *QwtPlotDict) cPointer() *C.QwtPlotDict {
@@ -62,7 +63,7 @@ func (this *QwtPlotDict) AutoDelete() bool {
 func (this *QwtPlotDict) ItemList() []*QwtPlotItem {
 	var _ma C.struct_miqt_array = C.QwtPlotDict_itemList(this.h)
 	_ret := make([]*QwtPlotItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtPlotItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtPlotItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQwtPlotItem(_outCast[i])
 	}
@@ -72,7 +73,7 @@ func (this *QwtPlotDict) ItemList() []*QwtPlotItem {
 func (this *QwtPlotDict) ItemListWithRtti(rtti int) []*QwtPlotItem {
 	var _ma C.struct_miqt_array = C.QwtPlotDict_itemListWithRtti(this.h, (C.int)(rtti))
 	_ret := make([]*QwtPlotItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtPlotItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtPlotItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQwtPlotItem(_outCast[i])
 	}
@@ -100,11 +101,15 @@ func (this *QwtPlotDict) Delete() {
 	C.QwtPlotDict_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotDict) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotDict) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotDict{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotDict) {
+		C.QwtPlotDict_delete(gc[0])
 	})
 }

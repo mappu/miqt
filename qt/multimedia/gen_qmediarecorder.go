@@ -46,7 +46,8 @@ const (
 )
 
 type QMediaRecorder struct {
-	h *C.QMediaRecorder
+	h  *C.QMediaRecorder
+	gc *[1]*C.QMediaRecorder
 	*qt.QObject
 	*QMediaBindableInterface
 }
@@ -186,7 +187,7 @@ func (this *QMediaRecorder) Volume() float64 {
 func (this *QMediaRecorder) SupportedContainers() []string {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedContainers(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -210,7 +211,7 @@ func (this *QMediaRecorder) ContainerDescription(format string) string {
 func (this *QMediaRecorder) SupportedAudioCodecs() []string {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -234,7 +235,7 @@ func (this *QMediaRecorder) AudioCodecDescription(codecName string) string {
 func (this *QMediaRecorder) SupportedAudioSampleRates() []int {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -244,7 +245,7 @@ func (this *QMediaRecorder) SupportedAudioSampleRates() []int {
 func (this *QMediaRecorder) SupportedVideoCodecs() []string {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedVideoCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -268,7 +269,7 @@ func (this *QMediaRecorder) VideoCodecDescription(codecName string) string {
 func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -280,7 +281,7 @@ func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
 func (this *QMediaRecorder) SupportedFrameRates() []float64 {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRates(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -355,7 +356,7 @@ func (this *QMediaRecorder) SetMetaData(key string, value *qt.QVariant) {
 func (this *QMediaRecorder) AvailableMetaData() []string {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -697,7 +698,7 @@ func QMediaRecorder_TrUtf83(s string, c string, n int) string {
 func (this *QMediaRecorder) SupportedAudioSampleRatesWithSettings(settings *QAudioEncoderSettings) []int {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -707,7 +708,7 @@ func (this *QMediaRecorder) SupportedAudioSampleRatesWithSettings(settings *QAud
 func (this *QMediaRecorder) SupportedAudioSampleRates2(settings *QAudioEncoderSettings, continuous *bool) []int {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -717,7 +718,7 @@ func (this *QMediaRecorder) SupportedAudioSampleRates2(settings *QAudioEncoderSe
 func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEncoderSettings) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -729,7 +730,7 @@ func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEnc
 func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSettings, continuous *bool) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -741,7 +742,7 @@ func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSetting
 func (this *QMediaRecorder) SupportedFrameRatesWithSettings(settings *QVideoEncoderSettings) []float64 {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -751,7 +752,7 @@ func (this *QMediaRecorder) SupportedFrameRatesWithSettings(settings *QVideoEnco
 func (this *QMediaRecorder) SupportedFrameRates2(settings *QVideoEncoderSettings, continuous *bool) []float64 {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -1074,11 +1075,15 @@ func (this *QMediaRecorder) Delete() {
 	C.QMediaRecorder_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaRecorder) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaRecorder) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaRecorder{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaRecorder) {
+		C.QMediaRecorder_delete(gc[0])
 	})
 }

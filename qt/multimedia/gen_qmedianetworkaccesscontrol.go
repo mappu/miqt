@@ -17,7 +17,8 @@ import (
 )
 
 type QMediaNetworkAccessControl struct {
-	h *C.QMediaNetworkAccessControl
+	h  *C.QMediaNetworkAccessControl
+	gc *[1]*C.QMediaNetworkAccessControl
 	*QMediaControl
 }
 
@@ -81,12 +82,13 @@ func QMediaNetworkAccessControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []network.QNetworkConfiguration) {
-	configuration_CArray := (*[0xffff]*C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_CArray))
+	configuration_CArray_ptr := (**C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_CArray_ptr))
+	configuration_CArray := unsafe.Slice(configuration_CArray_ptr, len(configuration))
 	for i := range configuration {
 		configuration_CArray[i] = (*C.QNetworkConfiguration)(configuration[i].UnsafePointer())
 	}
-	configuration_ma := C.struct_miqt_array{len: C.size_t(len(configuration)), data: unsafe.Pointer(configuration_CArray)}
+	configuration_ma := C.struct_miqt_array{len: C.size_t(len(configuration)), data: unsafe.Pointer(configuration_CArray_ptr)}
 	C.QMediaNetworkAccessControl_setConfigurations(this.h, configuration_ma)
 }
 
@@ -165,11 +167,15 @@ func (this *QMediaNetworkAccessControl) Delete() {
 	C.QMediaNetworkAccessControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaNetworkAccessControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaNetworkAccessControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaNetworkAccessControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaNetworkAccessControl) {
+		C.QMediaNetworkAccessControl_delete(gc[0])
 	})
 }

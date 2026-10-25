@@ -22,7 +22,8 @@ const (
 )
 
 type QwtPlotBarChart struct {
-	h *C.QwtPlotBarChart
+	h  *C.QwtPlotBarChart
+	gc *[1]*C.QwtPlotBarChart
 	*QwtPlotAbstractBarChart
 }
 
@@ -84,22 +85,24 @@ func (this *QwtPlotBarChart) Rtti() int {
 }
 
 func (this *QwtPlotBarChart) SetSamples(samples []qt.QPointF) {
-	samples_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = (*C.QPointF)(samples[i].UnsafePointer())
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotBarChart_setSamples(this.h, samples_ma)
 }
 
 func (this *QwtPlotBarChart) SetSamplesWithSamples(samples []float64) {
-	samples_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = (C.double)(samples[i])
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotBarChart_setSamplesWithSamples(this.h, samples_ma)
 }
 
@@ -140,11 +143,15 @@ func (this *QwtPlotBarChart) Delete() {
 	C.QwtPlotBarChart_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotBarChart) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotBarChart) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotBarChart{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotBarChart) {
+		C.QwtPlotBarChart_delete(gc[0])
 	})
 }

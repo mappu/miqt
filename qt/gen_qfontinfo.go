@@ -14,7 +14,8 @@ import (
 )
 
 type QFontInfo struct {
-	h *C.QFontInfo
+	h  *C.QFontInfo
+	gc *[1]*C.QFontInfo
 }
 
 func (this *QFontInfo) cPointer() *C.QFontInfo {
@@ -140,11 +141,15 @@ func (this *QFontInfo) Delete() {
 	C.QFontInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFontInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFontInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFontInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontInfo) {
+		C.QFontInfo_delete(gc[0])
 	})
 }

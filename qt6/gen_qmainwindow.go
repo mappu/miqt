@@ -26,7 +26,8 @@ const (
 )
 
 type QMainWindow struct {
-	h *C.QMainWindow
+	h  *C.QMainWindow
+	gc *[1]*C.QMainWindow
 	*QWidget
 }
 
@@ -271,7 +272,7 @@ func (this *QMainWindow) TabifyDockWidget(first *QDockWidget, second *QDockWidge
 func (this *QMainWindow) TabifiedDockWidgets(dockwidget *QDockWidget) []*QDockWidget {
 	var _ma C.struct_miqt_array = C.QMainWindow_tabifiedDockWidgets(this.h, dockwidget.cPointer())
 	_ret := make([]*QDockWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDockWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDockWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQDockWidget(_outCast[i])
 	}
@@ -291,18 +292,20 @@ func (this *QMainWindow) DockWidgetArea(dockwidget *QDockWidget) DockWidgetArea 
 }
 
 func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientation Orientation) {
-	docks_CArray := (*[0xffff]*C.QDockWidget)(C.malloc(C.size_t(8 * len(docks))))
-	defer C.free(unsafe.Pointer(docks_CArray))
+	docks_CArray_ptr := (**C.QDockWidget)(C.malloc(C.size_t(8 * len(docks))))
+	defer C.free(unsafe.Pointer(docks_CArray_ptr))
+	docks_CArray := unsafe.Slice(docks_CArray_ptr, len(docks))
 	for i := range docks {
 		docks_CArray[i] = docks[i].cPointer()
 	}
-	docks_ma := C.struct_miqt_array{len: C.size_t(len(docks)), data: unsafe.Pointer(docks_CArray)}
-	sizes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(sizes))))
-	defer C.free(unsafe.Pointer(sizes_CArray))
+	docks_ma := C.struct_miqt_array{len: C.size_t(len(docks)), data: unsafe.Pointer(docks_CArray_ptr)}
+	sizes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(sizes))))
+	defer C.free(unsafe.Pointer(sizes_CArray_ptr))
+	sizes_CArray := unsafe.Slice(sizes_CArray_ptr, len(sizes))
 	for i := range sizes {
 		sizes_CArray[i] = (C.int)(sizes[i])
 	}
-	sizes_ma := C.struct_miqt_array{len: C.size_t(len(sizes)), data: unsafe.Pointer(sizes_CArray)}
+	sizes_ma := C.struct_miqt_array{len: C.size_t(len(sizes)), data: unsafe.Pointer(sizes_CArray_ptr)}
 	C.QMainWindow_resizeDocks(this.h, docks_ma, sizes_ma, (C.int)(orientation))
 }
 
@@ -1849,11 +1852,15 @@ func (this *QMainWindow) Delete() {
 	C.QMainWindow_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMainWindow) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMainWindow) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMainWindow{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMainWindow) {
+		C.QMainWindow_delete(gc[0])
 	})
 }

@@ -32,7 +32,8 @@ const (
 )
 
 type QColor struct {
-	h *C.QColor
+	h  *C.QColor
+	gc *[1]*C.QColor
 }
 
 func (this *QColor) cPointer() *C.QColor {
@@ -177,7 +178,7 @@ func (this *QColor) SetNamedColor(name string) {
 func QColor_ColorNames() []string {
 	var _ma C.struct_miqt_array = C.QColor_colorNames()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -733,11 +734,15 @@ func (this *QColor) Delete() {
 	C.QColor_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QColor) GoGC() {
-	runtime.SetFinalizer(this, func(this *QColor) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QColor{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColor) {
+		C.QColor_delete(gc[0])
 	})
 }

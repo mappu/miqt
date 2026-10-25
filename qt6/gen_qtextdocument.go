@@ -58,7 +58,8 @@ const (
 )
 
 type QAbstractUndoItem struct {
-	h *C.QAbstractUndoItem
+	h  *C.QAbstractUndoItem
+	gc *[1]*C.QAbstractUndoItem
 }
 
 func (this *QAbstractUndoItem) cPointer() *C.QAbstractUndoItem {
@@ -106,17 +107,22 @@ func (this *QAbstractUndoItem) Delete() {
 	C.QAbstractUndoItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractUndoItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractUndoItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractUndoItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractUndoItem) {
+		C.QAbstractUndoItem_delete(gc[0])
 	})
 }
 
 type QTextDocument struct {
-	h *C.QTextDocument
+	h  *C.QTextDocument
+	gc *[1]*C.QTextDocument
 	*QObject
 }
 
@@ -482,7 +488,7 @@ func (this *QTextDocument) AddResource(typeVal int, name *QUrl, resource *QVaria
 func (this *QTextDocument) AllFormats() []QTextFormat {
 	var _ma C.struct_miqt_array = C.QTextDocument_allFormats(this.h)
 	_ret := make([]QTextFormat, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextFormat)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextFormat)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextFormat(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1274,11 +1280,15 @@ func (this *QTextDocument) Delete() {
 	C.QTextDocument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextDocument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextDocument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextDocument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextDocument) {
+		C.QTextDocument_delete(gc[0])
 	})
 }

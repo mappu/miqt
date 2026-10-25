@@ -30,7 +30,8 @@ const (
 )
 
 type QwtColorMap struct {
-	h *C.QwtColorMap
+	h  *C.QwtColorMap
+	gc *[1]*C.QwtColorMap
 }
 
 func (this *QwtColorMap) cPointer() *C.QwtColorMap {
@@ -94,7 +95,7 @@ func (this *QwtColorMap) Color(param1 *QwtInterval, value float64) *qt.QColor {
 func (this *QwtColorMap) ColorTable(param1 *QwtInterval) []uint {
 	var _ma C.struct_miqt_array = C.QwtColorMap_colorTable(this.h, param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -157,7 +158,7 @@ func (this *QwtColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []uint 
 
 	var _ma C.struct_miqt_array = C.QwtColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -182,11 +183,12 @@ func miqt_exec_callback_QwtColorMap_colorTable(self *C.QwtColorMap, cb C.intptr_
 	slotval1 := newQwtInterval(param1)
 
 	virtualReturn := gofunc((&QwtColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
-	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -197,17 +199,22 @@ func (this *QwtColorMap) Delete() {
 	C.QwtColorMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtColorMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtColorMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtColorMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColorMap) {
+		C.QwtColorMap_delete(gc[0])
 	})
 }
 
 type QwtLinearColorMap struct {
-	h *C.QwtLinearColorMap
+	h  *C.QwtLinearColorMap
+	gc *[1]*C.QwtLinearColorMap
 	*QwtColorMap
 }
 
@@ -285,7 +292,7 @@ func (this *QwtLinearColorMap) AddColorStop(value float64, param2 *qt.QColor) {
 func (this *QwtLinearColorMap) ColorStops() []float64 {
 	var _ma C.struct_miqt_array = C.QwtLinearColorMap_colorStops(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -376,7 +383,7 @@ func (this *QwtLinearColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) [
 
 	var _ma C.struct_miqt_array = C.QwtLinearColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -401,11 +408,12 @@ func miqt_exec_callback_QwtLinearColorMap_colorTable(self *C.QwtLinearColorMap, 
 	slotval1 := newQwtInterval(param1)
 
 	virtualReturn := gofunc((&QwtLinearColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
-	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -416,17 +424,22 @@ func (this *QwtLinearColorMap) Delete() {
 	C.QwtLinearColorMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLinearColorMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLinearColorMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLinearColorMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLinearColorMap) {
+		C.QwtLinearColorMap_delete(gc[0])
 	})
 }
 
 type QwtAlphaColorMap struct {
-	h *C.QwtAlphaColorMap
+	h  *C.QwtAlphaColorMap
+	gc *[1]*C.QwtAlphaColorMap
 	*QwtColorMap
 }
 
@@ -521,7 +534,7 @@ func (this *QwtAlphaColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []
 
 	var _ma C.struct_miqt_array = C.QwtAlphaColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -546,11 +559,12 @@ func miqt_exec_callback_QwtAlphaColorMap_colorTable(self *C.QwtAlphaColorMap, cb
 	slotval1 := newQwtInterval(param1)
 
 	virtualReturn := gofunc((&QwtAlphaColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
-	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -561,11 +575,15 @@ func (this *QwtAlphaColorMap) Delete() {
 	C.QwtAlphaColorMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtAlphaColorMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtAlphaColorMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtAlphaColorMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtAlphaColorMap) {
+		C.QwtAlphaColorMap_delete(gc[0])
 	})
 }

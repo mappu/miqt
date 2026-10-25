@@ -29,7 +29,8 @@ const (
 )
 
 type QGeoSatelliteInfo struct {
-	h *C.QGeoSatelliteInfo
+	h  *C.QGeoSatelliteInfo
+	gc *[1]*C.QGeoSatelliteInfo
 }
 
 func (this *QGeoSatelliteInfo) cPointer() *C.QGeoSatelliteInfo {
@@ -129,11 +130,15 @@ func (this *QGeoSatelliteInfo) Delete() {
 	C.QGeoSatelliteInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoSatelliteInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoSatelliteInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoSatelliteInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoSatelliteInfo) {
+		C.QGeoSatelliteInfo_delete(gc[0])
 	})
 }

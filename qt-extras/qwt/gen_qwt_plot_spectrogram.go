@@ -22,7 +22,8 @@ const (
 )
 
 type QwtPlotSpectrogram struct {
-	h *C.QwtPlotSpectrogram
+	h  *C.QwtPlotSpectrogram
+	gc *[1]*C.QwtPlotSpectrogram
 	*QwtPlotRasterItem
 }
 
@@ -142,19 +143,20 @@ func (this *QwtPlotSpectrogram) TestConrecFlag(param1 QwtRasterData__ConrecFlag)
 }
 
 func (this *QwtPlotSpectrogram) SetContourLevels(contourLevels []float64) {
-	contourLevels_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(contourLevels))))
-	defer C.free(unsafe.Pointer(contourLevels_CArray))
+	contourLevels_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(contourLevels))))
+	defer C.free(unsafe.Pointer(contourLevels_CArray_ptr))
+	contourLevels_CArray := unsafe.Slice(contourLevels_CArray_ptr, len(contourLevels))
 	for i := range contourLevels {
 		contourLevels_CArray[i] = (C.double)(contourLevels[i])
 	}
-	contourLevels_ma := C.struct_miqt_array{len: C.size_t(len(contourLevels)), data: unsafe.Pointer(contourLevels_CArray)}
+	contourLevels_ma := C.struct_miqt_array{len: C.size_t(len(contourLevels)), data: unsafe.Pointer(contourLevels_CArray_ptr)}
 	C.QwtPlotSpectrogram_setContourLevels(this.h, contourLevels_ma)
 }
 
 func (this *QwtPlotSpectrogram) ContourLevels() []float64 {
 	var _ma C.struct_miqt_array = C.QwtPlotSpectrogram_contourLevels(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -182,11 +184,15 @@ func (this *QwtPlotSpectrogram) Delete() {
 	C.QwtPlotSpectrogram_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotSpectrogram) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotSpectrogram) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotSpectrogram{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotSpectrogram) {
+		C.QwtPlotSpectrogram_delete(gc[0])
 	})
 }

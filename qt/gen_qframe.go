@@ -42,7 +42,8 @@ const (
 )
 
 type QFrame struct {
-	h *C.QFrame
+	h  *C.QFrame
+	gc *[1]*C.QFrame
 	*QWidget
 }
 
@@ -1631,11 +1632,15 @@ func (this *QFrame) Delete() {
 	C.QFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFrame) {
+		C.QFrame_delete(gc[0])
 	})
 }

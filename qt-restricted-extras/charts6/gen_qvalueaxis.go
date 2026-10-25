@@ -23,7 +23,8 @@ const (
 )
 
 type QValueAxis struct {
-	h *C.QValueAxis
+	h  *C.QValueAxis
+	gc *[1]*C.QValueAxis
 	*QAbstractAxis
 }
 
@@ -659,11 +660,15 @@ func (this *QValueAxis) Delete() {
 	C.QValueAxis_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QValueAxis) GoGC() {
-	runtime.SetFinalizer(this, func(this *QValueAxis) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QValueAxis{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QValueAxis) {
+		C.QValueAxis_delete(gc[0])
 	})
 }

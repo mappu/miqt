@@ -28,7 +28,8 @@ const (
 )
 
 type QwtPlotShapeItem struct {
-	h *C.QwtPlotShapeItem
+	h  *C.QwtPlotShapeItem
+	gc *[1]*C.QwtPlotShapeItem
 	*QwtPlotItem
 }
 
@@ -180,11 +181,15 @@ func (this *QwtPlotShapeItem) Delete() {
 	C.QwtPlotShapeItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotShapeItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotShapeItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotShapeItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotShapeItem) {
+		C.QwtPlotShapeItem_delete(gc[0])
 	})
 }

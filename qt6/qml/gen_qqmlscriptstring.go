@@ -14,7 +14,8 @@ import (
 )
 
 type QQmlScriptString struct {
-	h *C.QQmlScriptString
+	h  *C.QQmlScriptString
+	gc *[1]*C.QQmlScriptString
 }
 
 func (this *QQmlScriptString) cPointer() *C.QQmlScriptString {
@@ -101,11 +102,15 @@ func (this *QQmlScriptString) Delete() {
 	C.QQmlScriptString_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlScriptString) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlScriptString) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlScriptString{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlScriptString) {
+		C.QQmlScriptString_delete(gc[0])
 	})
 }

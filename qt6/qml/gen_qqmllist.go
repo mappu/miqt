@@ -15,7 +15,8 @@ import (
 )
 
 type QQmlListReference struct {
-	h *C.QQmlListReference
+	h  *C.QQmlListReference
+	gc *[1]*C.QQmlListReference
 }
 
 func (this *QQmlListReference) cPointer() *C.QQmlListReference {
@@ -171,11 +172,15 @@ func (this *QQmlListReference) Delete() {
 	C.QQmlListReference_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlListReference) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlListReference) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlListReference{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlListReference) {
+		C.QQmlListReference_delete(gc[0])
 	})
 }

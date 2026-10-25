@@ -21,7 +21,8 @@ const (
 )
 
 type QCommandLineOption struct {
-	h *C.QCommandLineOption
+	h  *C.QCommandLineOption
+	gc *[1]*C.QCommandLineOption
 }
 
 func (this *QCommandLineOption) cPointer() *C.QCommandLineOption {
@@ -64,8 +65,9 @@ func NewQCommandLineOption(name string) *QCommandLineOption {
 
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
 func NewQCommandLineOption2(names []string) *QCommandLineOption {
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
-	defer C.free(unsafe.Pointer(names_CArray))
+	names_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
+	defer C.free(unsafe.Pointer(names_CArray_ptr))
+	names_CArray := unsafe.Slice(names_CArray_ptr, len(names))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
 		names_i_ms.data = C.CString(names[i])
@@ -73,7 +75,7 @@ func NewQCommandLineOption2(names []string) *QCommandLineOption {
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray_ptr)}
 
 	return newQCommandLineOption(C.QCommandLineOption_new2(names_ma))
 }
@@ -94,8 +96,9 @@ func NewQCommandLineOption3(name string, description string) *QCommandLineOption
 
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
 func NewQCommandLineOption4(names []string, description string) *QCommandLineOption {
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
-	defer C.free(unsafe.Pointer(names_CArray))
+	names_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
+	defer C.free(unsafe.Pointer(names_CArray_ptr))
+	names_CArray := unsafe.Slice(names_CArray_ptr, len(names))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
 		names_i_ms.data = C.CString(names[i])
@@ -103,7 +106,7 @@ func NewQCommandLineOption4(names []string, description string) *QCommandLineOpt
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray_ptr)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -160,8 +163,9 @@ func NewQCommandLineOption7(name string, description string, valueName string, d
 
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
 func NewQCommandLineOption8(names []string, description string, valueName string) *QCommandLineOption {
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
-	defer C.free(unsafe.Pointer(names_CArray))
+	names_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
+	defer C.free(unsafe.Pointer(names_CArray_ptr))
+	names_CArray := unsafe.Slice(names_CArray_ptr, len(names))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
 		names_i_ms.data = C.CString(names[i])
@@ -169,7 +173,7 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray_ptr)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -184,8 +188,9 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
 func NewQCommandLineOption9(names []string, description string, valueName string, defaultValue string) *QCommandLineOption {
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
-	defer C.free(unsafe.Pointer(names_CArray))
+	names_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
+	defer C.free(unsafe.Pointer(names_CArray_ptr))
+	names_CArray := unsafe.Slice(names_CArray_ptr, len(names))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
 		names_i_ms.data = C.CString(names[i])
@@ -193,7 +198,7 @@ func NewQCommandLineOption9(names []string, description string, valueName string
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray_ptr)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -221,7 +226,7 @@ func (this *QCommandLineOption) Swap(other *QCommandLineOption) {
 func (this *QCommandLineOption) Names() []string {
 	var _ma C.struct_miqt_array = C.QCommandLineOption_names(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -270,8 +275,9 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
-	defaultValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(defaultValues))))
-	defer C.free(unsafe.Pointer(defaultValues_CArray))
+	defaultValues_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(defaultValues))))
+	defer C.free(unsafe.Pointer(defaultValues_CArray_ptr))
+	defaultValues_CArray := unsafe.Slice(defaultValues_CArray_ptr, len(defaultValues))
 	for i := range defaultValues {
 		defaultValues_i_ms := C.struct_miqt_string{}
 		defaultValues_i_ms.data = C.CString(defaultValues[i])
@@ -279,14 +285,14 @@ func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 		defer C.free(unsafe.Pointer(defaultValues_i_ms.data))
 		defaultValues_CArray[i] = defaultValues_i_ms
 	}
-	defaultValues_ma := C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
+	defaultValues_ma := C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray_ptr)}
 	C.QCommandLineOption_setDefaultValues(this.h, defaultValues_ma)
 }
 
 func (this *QCommandLineOption) DefaultValues() []string {
 	var _ma C.struct_miqt_array = C.QCommandLineOption_defaultValues(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -317,11 +323,15 @@ func (this *QCommandLineOption) Delete() {
 	C.QCommandLineOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCommandLineOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCommandLineOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCommandLineOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCommandLineOption) {
+		C.QCommandLineOption_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QWebEngineScriptCollection struct {
-	h *C.QWebEngineScriptCollection
+	h  *C.QWebEngineScriptCollection
+	gc *[1]*C.QWebEngineScriptCollection
 }
 
 func (this *QWebEngineScriptCollection) cPointer() *C.QWebEngineScriptCollection {
@@ -64,7 +65,7 @@ func (this *QWebEngineScriptCollection) Find(name string) []QWebEngineScript {
 	defer C.free(unsafe.Pointer(name_ms.data))
 	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_find(this.h, name_ms)
 	_ret := make([]QWebEngineScript, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebEngineScript)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebEngineScript(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -78,12 +79,13 @@ func (this *QWebEngineScriptCollection) Insert(param1 *QWebEngineScript) {
 }
 
 func (this *QWebEngineScriptCollection) InsertWithList(list []QWebEngineScript) {
-	list_CArray := (*[0xffff]*C.QWebEngineScript)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QWebEngineScript)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QWebEngineScriptCollection_insertWithList(this.h, list_ma)
 }
 
@@ -98,7 +100,7 @@ func (this *QWebEngineScriptCollection) Clear() {
 func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
 	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_toList(this.h)
 	_ret := make([]QWebEngineScript, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebEngineScript)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebEngineScript(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -112,11 +114,15 @@ func (this *QWebEngineScriptCollection) Delete() {
 	C.QWebEngineScriptCollection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineScriptCollection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineScriptCollection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineScriptCollection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineScriptCollection) {
+		C.QWebEngineScriptCollection_delete(gc[0])
 	})
 }

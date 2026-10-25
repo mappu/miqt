@@ -66,7 +66,8 @@ const (
 )
 
 type QVideoFrame struct {
-	h *C.QVideoFrame
+	h  *C.QVideoFrame
+	gc *[1]*C.QVideoFrame
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -248,8 +249,8 @@ func (this *QVideoFrame) SetEndTime(time int64) {
 func (this *QVideoFrame) AvailableMetaData() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QVideoFrame_availableMetaData(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -301,11 +302,15 @@ func (this *QVideoFrame) Delete() {
 	C.QVideoFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrame) {
+		C.QVideoFrame_delete(gc[0])
 	})
 }

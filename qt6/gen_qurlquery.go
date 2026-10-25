@@ -14,7 +14,8 @@ import (
 )
 
 type QUrlQuery struct {
-	h *C.QUrlQuery
+	h  *C.QUrlQuery
+	gc *[1]*C.QUrlQuery
 }
 
 func (this *QUrlQuery) cPointer() *C.QUrlQuery {
@@ -143,8 +144,9 @@ func (this *QUrlQuery) SetQueryItems(query []struct {
 	First  string
 	Second string
 }) {
-	query_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(query))))
-	defer C.free(unsafe.Pointer(query_CArray))
+	query_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(query))))
+	defer C.free(unsafe.Pointer(query_CArray_ptr))
+	query_CArray := unsafe.Slice(query_CArray_ptr, len(query))
 	for i := range query {
 		query_i_First_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})))))
 		defer C.free(unsafe.Pointer(query_i_First_CArray))
@@ -167,7 +169,7 @@ func (this *QUrlQuery) SetQueryItems(query []struct {
 		}
 		query_CArray[i] = query_i_pair
 	}
-	query_ma := C.struct_miqt_array{len: C.size_t(len(query)), data: unsafe.Pointer(query_CArray)}
+	query_ma := C.struct_miqt_array{len: C.size_t(len(query)), data: unsafe.Pointer(query_CArray_ptr)}
 	C.QUrlQuery_setQueryItems(this.h, query_ma)
 }
 
@@ -180,7 +182,7 @@ func (this *QUrlQuery) QueryItems() []struct {
 		First  string
 		Second string
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
@@ -247,7 +249,7 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 	defer C.free(unsafe.Pointer(key_ms.data))
 	var _ma C.struct_miqt_array = C.QUrlQuery_allQueryItemValues(this.h, key_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -288,7 +290,7 @@ func (this *QUrlQuery) QueryItemsWithEncoding(encoding QUrl__ComponentFormatting
 		First  string
 		Second string
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
@@ -327,7 +329,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 	defer C.free(unsafe.Pointer(key_ms.data))
 	var _ma C.struct_miqt_array = C.QUrlQuery_allQueryItemValues2(this.h, key_ms, (C.uint)(encoding))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -342,11 +344,15 @@ func (this *QUrlQuery) Delete() {
 	C.QUrlQuery_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUrlQuery) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUrlQuery) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUrlQuery{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUrlQuery) {
+		C.QUrlQuery_delete(gc[0])
 	})
 }

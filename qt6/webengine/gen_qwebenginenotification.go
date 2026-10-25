@@ -16,7 +16,8 @@ import (
 )
 
 type QWebEngineNotification struct {
-	h *C.QWebEngineNotification
+	h  *C.QWebEngineNotification
+	gc *[1]*C.QWebEngineNotification
 	*qt6.QObject
 }
 
@@ -174,11 +175,15 @@ func (this *QWebEngineNotification) Delete() {
 	C.QWebEngineNotification_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineNotification) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineNotification) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineNotification{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineNotification) {
+		C.QWebEngineNotification_delete(gc[0])
 	})
 }

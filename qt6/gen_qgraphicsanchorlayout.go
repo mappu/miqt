@@ -15,7 +15,8 @@ import (
 )
 
 type QGraphicsAnchor struct {
-	h *C.QGraphicsAnchor
+	h  *C.QGraphicsAnchor
+	gc *[1]*C.QGraphicsAnchor
 	*QObject
 }
 
@@ -116,17 +117,22 @@ func (this *QGraphicsAnchor) Delete() {
 	C.QGraphicsAnchor_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsAnchor) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsAnchor) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsAnchor{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsAnchor) {
+		C.QGraphicsAnchor_delete(gc[0])
 	})
 }
 
 type QGraphicsAnchorLayout struct {
-	h *C.QGraphicsAnchorLayout
+	h  *C.QGraphicsAnchorLayout
+	gc *[1]*C.QGraphicsAnchorLayout
 	*QGraphicsLayout
 }
 
@@ -540,11 +546,15 @@ func (this *QGraphicsAnchorLayout) Delete() {
 	C.QGraphicsAnchorLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsAnchorLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsAnchorLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsAnchorLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsAnchorLayout) {
+		C.QGraphicsAnchorLayout_delete(gc[0])
 	})
 }

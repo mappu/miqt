@@ -15,7 +15,8 @@ import (
 )
 
 type QItemEditorCreatorBase struct {
-	h *C.QItemEditorCreatorBase
+	h  *C.QItemEditorCreatorBase
+	gc *[1]*C.QItemEditorCreatorBase
 }
 
 func (this *QItemEditorCreatorBase) cPointer() *C.QItemEditorCreatorBase {
@@ -66,17 +67,22 @@ func (this *QItemEditorCreatorBase) Delete() {
 	C.QItemEditorCreatorBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QItemEditorCreatorBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QItemEditorCreatorBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QItemEditorCreatorBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemEditorCreatorBase) {
+		C.QItemEditorCreatorBase_delete(gc[0])
 	})
 }
 
 type QItemEditorFactory struct {
-	h *C.QItemEditorFactory
+	h  *C.QItemEditorFactory
+	gc *[1]*C.QItemEditorFactory
 }
 
 func (this *QItemEditorFactory) cPointer() *C.QItemEditorFactory {
@@ -218,11 +224,15 @@ func (this *QItemEditorFactory) Delete() {
 	C.QItemEditorFactory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QItemEditorFactory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QItemEditorFactory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QItemEditorFactory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemEditorFactory) {
+		C.QItemEditorFactory_delete(gc[0])
 	})
 }

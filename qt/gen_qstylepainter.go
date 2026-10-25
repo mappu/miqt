@@ -14,7 +14,8 @@ import (
 )
 
 type QStylePainter struct {
-	h *C.QStylePainter
+	h  *C.QStylePainter
+	gc *[1]*C.QStylePainter
 	*QPainter
 }
 
@@ -116,11 +117,15 @@ func (this *QStylePainter) Delete() {
 	C.QStylePainter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStylePainter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStylePainter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStylePainter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStylePainter) {
+		C.QStylePainter_delete(gc[0])
 	})
 }

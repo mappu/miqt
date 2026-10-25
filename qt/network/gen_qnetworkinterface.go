@@ -54,7 +54,8 @@ const (
 )
 
 type QNetworkAddressEntry struct {
-	h *C.QNetworkAddressEntry
+	h  *C.QNetworkAddressEntry
+	gc *[1]*C.QNetworkAddressEntry
 }
 
 func (this *QNetworkAddressEntry) cPointer() *C.QNetworkAddressEntry {
@@ -196,17 +197,22 @@ func (this *QNetworkAddressEntry) Delete() {
 	C.QNetworkAddressEntry_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkAddressEntry) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkAddressEntry) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkAddressEntry{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkAddressEntry) {
+		C.QNetworkAddressEntry_delete(gc[0])
 	})
 }
 
 type QNetworkInterface struct {
-	h *C.QNetworkInterface
+	h  *C.QNetworkInterface
+	gc *[1]*C.QNetworkInterface
 }
 
 func (this *QNetworkInterface) cPointer() *C.QNetworkInterface {
@@ -301,7 +307,7 @@ func (this *QNetworkInterface) HardwareAddress() string {
 func (this *QNetworkInterface) AddressEntries() []QNetworkAddressEntry {
 	var _ma C.struct_miqt_array = C.QNetworkInterface_addressEntries(this.h)
 	_ret := make([]QNetworkAddressEntry, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkAddressEntry)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkAddressEntry)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkAddressEntry(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -344,7 +350,7 @@ func QNetworkInterface_InterfaceNameFromIndex(index int) string {
 func QNetworkInterface_AllInterfaces() []QNetworkInterface {
 	var _ma C.struct_miqt_array = C.QNetworkInterface_allInterfaces()
 	_ret := make([]QNetworkInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkInterface)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkInterface(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -356,7 +362,7 @@ func QNetworkInterface_AllInterfaces() []QNetworkInterface {
 func QNetworkInterface_AllAddresses() []QHostAddress {
 	var _ma C.struct_miqt_array = C.QNetworkInterface_allAddresses()
 	_ret := make([]QHostAddress, int(_ma.len))
-	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QHostAddress)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQHostAddress(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -370,11 +376,15 @@ func (this *QNetworkInterface) Delete() {
 	C.QNetworkInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkInterface) {
+		C.QNetworkInterface_delete(gc[0])
 	})
 }

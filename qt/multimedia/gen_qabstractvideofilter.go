@@ -22,7 +22,8 @@ const (
 )
 
 type QVideoFilterRunnable struct {
-	h *C.QVideoFilterRunnable
+	h  *C.QVideoFilterRunnable
+	gc *[1]*C.QVideoFilterRunnable
 }
 
 func (this *QVideoFilterRunnable) cPointer() *C.QVideoFilterRunnable {
@@ -68,17 +69,22 @@ func (this *QVideoFilterRunnable) Delete() {
 	C.QVideoFilterRunnable_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoFilterRunnable) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoFilterRunnable) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoFilterRunnable{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFilterRunnable) {
+		C.QVideoFilterRunnable_delete(gc[0])
 	})
 }
 
 type QAbstractVideoFilter struct {
-	h *C.QAbstractVideoFilter
+	h  *C.QAbstractVideoFilter
+	gc *[1]*C.QAbstractVideoFilter
 	*qt.QObject
 }
 
@@ -496,11 +502,15 @@ func (this *QAbstractVideoFilter) Delete() {
 	C.QAbstractVideoFilter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractVideoFilter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractVideoFilter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractVideoFilter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractVideoFilter) {
+		C.QAbstractVideoFilter_delete(gc[0])
 	})
 }

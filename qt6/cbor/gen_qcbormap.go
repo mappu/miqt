@@ -15,7 +15,8 @@ import (
 )
 
 type QCborMap struct {
-	h *C.QCborMap
+	h  *C.QCborMap
+	gc *[1]*C.QCborMap
 }
 
 func (this *QCborMap) cPointer() *C.QCborMap {
@@ -87,7 +88,7 @@ func (this *QCborMap) Clear() {
 func (this *QCborMap) Keys() []QCborValue {
 	var _ma C.struct_miqt_array = C.QCborMap_keys(this.h)
 	_ret := make([]QCborValue, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCborValue)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCborValue)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCborValue(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -417,10 +418,12 @@ func (this *QCborMap) InsertWithQCborMapvalueType(v struct {
 }
 
 func QCborMap_FromVariantMap(mapVal map[string]qt6.QVariant) *QCborMap {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -433,8 +436,8 @@ func QCborMap_FromVariantMap(mapVal map[string]qt6.QVariant) *QCborMap {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	_goptr := newQCborMap(C.QCborMap_fromVariantMap(mapVal_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -442,10 +445,12 @@ func QCborMap_FromVariantMap(mapVal map[string]qt6.QVariant) *QCborMap {
 }
 
 func QCborMap_FromVariantHash(hash map[string]qt6.QVariant) *QCborMap {
-	hash_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
-	defer C.free(unsafe.Pointer(hash_Keys_CArray))
-	hash_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(hash))))
-	defer C.free(unsafe.Pointer(hash_Values_CArray))
+	hash_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
+	defer C.free(unsafe.Pointer(hash_Keys_CArray_ptr))
+	hash_Keys_CArray := unsafe.Slice(hash_Keys_CArray_ptr, len(hash))
+	hash_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(hash))))
+	defer C.free(unsafe.Pointer(hash_Values_CArray_ptr))
+	hash_Values_CArray := unsafe.Slice(hash_Values_CArray_ptr, len(hash))
 	hash_ctr := 0
 	for hash_k, hash_v := range hash {
 		hash_k_ms := C.struct_miqt_string{}
@@ -458,8 +463,8 @@ func QCborMap_FromVariantHash(hash map[string]qt6.QVariant) *QCborMap {
 	}
 	hash_mm := C.struct_miqt_map{
 		len:    C.size_t(len(hash)),
-		keys:   unsafe.Pointer(hash_Keys_CArray),
-		values: unsafe.Pointer(hash_Values_CArray),
+		keys:   unsafe.Pointer(hash_Keys_CArray_ptr),
+		values: unsafe.Pointer(hash_Values_CArray_ptr),
 	}
 	_goptr := newQCborMap(C.QCborMap_fromVariantHash(hash_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -475,8 +480,8 @@ func QCborMap_FromJsonObject(o *qt6.QJsonObject) *QCborMap {
 func (this *QCborMap) ToVariantMap() map[string]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QCborMap_toVariantMap(this.h)
 	_ret := make(map[string]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -494,8 +499,8 @@ func (this *QCborMap) ToVariantMap() map[string]qt6.QVariant {
 func (this *QCborMap) ToVariantHash() map[string]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QCborMap_toVariantHash(this.h)
 	_ret := make(map[string]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _hashkey_ms C.struct_miqt_string = _Keys[i]
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
@@ -521,17 +526,22 @@ func (this *QCborMap) Delete() {
 	C.QCborMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborMap) {
+		C.QCborMap_delete(gc[0])
 	})
 }
 
 type QCborMap__Iterator struct {
-	h *C.QCborMap__Iterator
+	h  *C.QCborMap__Iterator
+	gc *[1]*C.QCborMap__Iterator
 }
 
 func (this *QCborMap__Iterator) cPointer() *C.QCborMap__Iterator {
@@ -737,17 +747,22 @@ func (this *QCborMap__Iterator) Delete() {
 	C.QCborMap__Iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborMap__Iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborMap__Iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborMap__Iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborMap__Iterator) {
+		C.QCborMap__Iterator_delete(gc[0])
 	})
 }
 
 type QCborMap__ConstIterator struct {
-	h *C.QCborMap__ConstIterator
+	h  *C.QCborMap__ConstIterator
+	gc *[1]*C.QCborMap__ConstIterator
 }
 
 func (this *QCborMap__ConstIterator) cPointer() *C.QCborMap__ConstIterator {
@@ -949,11 +964,15 @@ func (this *QCborMap__ConstIterator) Delete() {
 	C.QCborMap__ConstIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborMap__ConstIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborMap__ConstIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborMap__ConstIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborMap__ConstIterator) {
+		C.QCborMap__ConstIterator_delete(gc[0])
 	})
 }

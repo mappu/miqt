@@ -36,7 +36,8 @@ const (
 )
 
 type QMdiArea struct {
-	h *C.QMdiArea
+	h  *C.QMdiArea
+	gc *[1]*C.QMdiArea
 	*QAbstractScrollArea
 }
 
@@ -134,7 +135,7 @@ func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
 	var _ma C.struct_miqt_array = C.QMdiArea_subWindowList(this.h)
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QMdiSubWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQMdiSubWindow(_outCast[i])
 	}
@@ -318,7 +319,7 @@ func QMdiArea_TrUtf83(s string, c string, n int) string {
 func (this *QMdiArea) SubWindowListWithOrder(order QMdiArea__WindowOrder) []*QMdiSubWindow {
 	var _ma C.struct_miqt_array = C.QMdiArea_subWindowListWithOrder(this.h, (C.int)(order))
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QMdiSubWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQMdiSubWindow(_outCast[i])
 	}
@@ -1874,11 +1875,15 @@ func (this *QMdiArea) Delete() {
 	C.QMdiArea_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMdiArea) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMdiArea) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMdiArea{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMdiArea) {
+		C.QMdiArea_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QCameraInfo struct {
-	h *C.QCameraInfo
+	h  *C.QCameraInfo
+	gc *[1]*C.QCameraInfo
 }
 
 func (this *QCameraInfo) cPointer() *C.QCameraInfo {
@@ -123,7 +124,7 @@ func QCameraInfo_DefaultCamera() *QCameraInfo {
 func QCameraInfo_AvailableCameras() []QCameraInfo {
 	var _ma C.struct_miqt_array = C.QCameraInfo_availableCameras()
 	_ret := make([]QCameraInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -135,7 +136,7 @@ func QCameraInfo_AvailableCameras() []QCameraInfo {
 func QCameraInfo_AvailableCamerasWithPosition(position QCamera__Position) []QCameraInfo {
 	var _ma C.struct_miqt_array = C.QCameraInfo_availableCamerasWithPosition((C.int)(position))
 	_ret := make([]QCameraInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -149,11 +150,15 @@ func (this *QCameraInfo) Delete() {
 	C.QCameraInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraInfo) {
+		C.QCameraInfo_delete(gc[0])
 	})
 }

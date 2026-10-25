@@ -68,7 +68,8 @@ const (
 )
 
 type QEasingCurve struct {
-	h *C.QEasingCurve
+	h  *C.QEasingCurve
+	gc *[1]*C.QEasingCurve
 }
 
 func (this *QEasingCurve) cPointer() *C.QEasingCurve {
@@ -168,7 +169,7 @@ func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
 	var _ma C.struct_miqt_array = C.QEasingCurve_toCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQPointF(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -194,11 +195,15 @@ func (this *QEasingCurve) Delete() {
 	C.QEasingCurve_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QEasingCurve) GoGC() {
-	runtime.SetFinalizer(this, func(this *QEasingCurve) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QEasingCurve{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEasingCurve) {
+		C.QEasingCurve_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QwtTextEngine struct {
-	h *C.QwtTextEngine
+	h  *C.QwtTextEngine
+	gc *[1]*C.QwtTextEngine
 }
 
 func (this *QwtTextEngine) cPointer() *C.QwtTextEngine {
@@ -249,17 +250,22 @@ func (this *QwtTextEngine) Delete() {
 	C.QwtTextEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtTextEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtTextEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtTextEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTextEngine) {
+		C.QwtTextEngine_delete(gc[0])
 	})
 }
 
 type QwtPlainTextEngine struct {
-	h *C.QwtPlainTextEngine
+	h  *C.QwtPlainTextEngine
+	gc *[1]*C.QwtPlainTextEngine
 	*QwtTextEngine
 }
 
@@ -554,17 +560,22 @@ func (this *QwtPlainTextEngine) Delete() {
 	C.QwtPlainTextEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlainTextEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlainTextEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlainTextEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlainTextEngine) {
+		C.QwtPlainTextEngine_delete(gc[0])
 	})
 }
 
 type QwtRichTextEngine struct {
-	h *C.QwtRichTextEngine
+	h  *C.QwtRichTextEngine
+	gc *[1]*C.QwtRichTextEngine
 	*QwtTextEngine
 }
 
@@ -859,11 +870,15 @@ func (this *QwtRichTextEngine) Delete() {
 	C.QwtRichTextEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtRichTextEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtRichTextEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtRichTextEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtRichTextEngine) {
+		C.QwtRichTextEngine_delete(gc[0])
 	})
 }

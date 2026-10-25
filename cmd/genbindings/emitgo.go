@@ -409,8 +409,9 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		mallocSize := listType.mallocSizeCgoExpression()
 
-		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray))\n"
+		preamble += nameprefix + "_CArray_ptr := (*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.goParameterName() + "))))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray_ptr))\n"
+		preamble += nameprefix + "_CArray := unsafe.Slice(" + nameprefix + "_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
 		preamble += "for i := range " + p.goParameterName() + "{\n"
 
@@ -420,7 +421,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
 
-		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.goParameterName() + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
+		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.goParameterName() + ")), data: unsafe.Pointer(" + nameprefix + "_CArray_ptr)}\n"
 
 		rvalue = nameprefix + "_ma"
 
@@ -432,11 +433,13 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		gfs.imports["unsafe"] = struct{}{}
 
-		preamble += nameprefix + "_Keys_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Keys_CArray))\n"
+		preamble += nameprefix + "_Keys_CArray_ptr := (*" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Keys_CArray_ptr))\n"
+		preamble += nameprefix + "_Keys_CArray := unsafe.Slice(" + nameprefix + "_Keys_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
-		preamble += nameprefix + "_Values_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Values_CArray))\n"
+		preamble += nameprefix + "_Values_CArray_ptr := (*" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Values_CArray_ptr))\n"
+		preamble += nameprefix + "_Values_CArray := unsafe.Slice(" + nameprefix + "_Values_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
 		preamble += nameprefix + "_ctr := 0\n"
 
@@ -456,7 +459,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		preamble += "}\n"
 
-		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.goParameterName() + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
+		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.goParameterName() + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray_ptr),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray_ptr),\n}\n"
 
 		rvalue = nameprefix + "_mm"
 
@@ -588,7 +591,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "var " + namePrefix + "_ma C.struct_miqt_array = "
 
 		afterword += namePrefix + "_ret := make([]" + t.RenderTypeGo(gfs) + ", int(" + namePrefix + "_ma.len))\n"
-		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
+		afterword += namePrefix + "_outCast := unsafe.Slice((*" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)), int(" + namePrefix + "_ma.len))\n"
 		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
 		afterword += gfs.emitCabiToGo(namePrefix+"_ret[i] = ", t, namePrefix+"_outCast[i]")
@@ -605,7 +608,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "var " + namePrefix + "_ma C.struct_miqt_array = "
 
 		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo(gfs) + "]struct{}, int(" + namePrefix + "_ma.len))\n"
-		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
+		afterword += namePrefix + "_outCast := unsafe.Slice((*" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)), int(" + namePrefix + "_ma.len))\n"
 		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
 		afterword += gfs.emitCabiToGo(namePrefix+"_element := ", t, namePrefix+"_outCast[i]") + "\n"
@@ -621,8 +624,8 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "var " + namePrefix + "_mm C.struct_miqt_map = "
 
 		afterword += namePrefix + "_ret := make(map[" + kType.RenderTypeGo(gfs) + "]" + vType.RenderTypeGo(gfs) + ", int(" + namePrefix + "_mm.len))\n"
-		afterword += namePrefix + "_Keys := (*[0xffff]" + kType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.keys))\n"
-		afterword += namePrefix + "_Values := (*[0xffff]" + vType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.values))\n"
+		afterword += namePrefix + "_Keys := unsafe.Slice((*" + kType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.keys)), int(" + namePrefix + "_mm.len))\n"
+		afterword += namePrefix + "_Values := unsafe.Slice((*" + vType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.values)), int(" + namePrefix + "_mm.len))\n"
 		afterword += "for i := 0; i < int(" + namePrefix + "_mm.len); i++ {\n"
 
 		afterword += gfs.emitCabiToGo(namePrefix+"_entry_Key := ", kType, namePrefix+"_Keys[i]") + "\n"
@@ -828,6 +831,12 @@ import "C"
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
 		`)
+
+		if c.CanDelete {
+			// Value copies of this struct share the gc pointer, so the
+			// finalizer added by GoGC() only runs once all copies are unreachable
+			ret.WriteString("gc *[1]*C." + goClassName + "\n")
+		}
 
 		// Embed all inherited types to directly allow calling inherited methods
 		// Only include the direct inherits; the recursive inherits will exist
@@ -1221,12 +1230,16 @@ import "C"
 				C.` + cabiDeleteName(c) + `(this.h)
 			}
 
-			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-			// from C++ memory once it is unreachable from Go memory.
+			// GoGC adds a Go Finalizer to this object, so that it will be deleted
+			// from C++ memory once it (and every value copy of it) is unreachable
+			// from Go memory.
 			func (this *` + goClassName + `) GoGC() {
-				runtime.SetFinalizer(this, func(this *` + goClassName + `) {
-					this.Delete()
-					runtime.KeepAlive(this.h)
+				if this.gc != nil {
+					return
+				}
+				this.gc = &[1]*C.` + goClassName + `{this.h}
+				runtime.SetFinalizer(this.gc, func(gc *[1]*C.` + goClassName + `) {
+					C.` + cabiDeleteName(c) + `(gc[0])
 				})
 			}
 			`)

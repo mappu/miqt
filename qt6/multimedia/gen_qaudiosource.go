@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioSource struct {
-	h *C.QAudioSource
+	h  *C.QAudioSource
+	gc *[1]*C.QAudioSource
 	*qt6.QObject
 }
 
@@ -469,11 +470,15 @@ func (this *QAudioSource) Delete() {
 	C.QAudioSource_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioSource) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioSource) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioSource{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioSource) {
+		C.QAudioSource_delete(gc[0])
 	})
 }

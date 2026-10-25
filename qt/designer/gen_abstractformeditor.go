@@ -16,7 +16,8 @@ import (
 )
 
 type QDesignerFormEditorInterface struct {
-	h *C.QDesignerFormEditorInterface
+	h  *C.QDesignerFormEditorInterface
+	gc *[1]*C.QDesignerFormEditorInterface
 	*qt.QObject
 }
 
@@ -153,7 +154,7 @@ func (this *QDesignerFormEditorInterface) ResourceLocation() string {
 func (this *QDesignerFormEditorInterface) OptionsPages() []*QDesignerOptionsPageInterface {
 	var _ma C.struct_miqt_array = C.QDesignerFormEditorInterface_optionsPages(this.h)
 	_ret := make([]*QDesignerOptionsPageInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDesignerOptionsPageInterface)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDesignerOptionsPageInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQDesignerOptionsPageInterface(_outCast[i])
 	}
@@ -189,19 +190,20 @@ func (this *QDesignerFormEditorInterface) SetSettingsManager(settingsManager *QD
 }
 
 func (this *QDesignerFormEditorInterface) SetOptionsPages(optionsPages []*QDesignerOptionsPageInterface) {
-	optionsPages_CArray := (*[0xffff]*C.QDesignerOptionsPageInterface)(C.malloc(C.size_t(8 * len(optionsPages))))
-	defer C.free(unsafe.Pointer(optionsPages_CArray))
+	optionsPages_CArray_ptr := (**C.QDesignerOptionsPageInterface)(C.malloc(C.size_t(8 * len(optionsPages))))
+	defer C.free(unsafe.Pointer(optionsPages_CArray_ptr))
+	optionsPages_CArray := unsafe.Slice(optionsPages_CArray_ptr, len(optionsPages))
 	for i := range optionsPages {
 		optionsPages_CArray[i] = optionsPages[i].cPointer()
 	}
-	optionsPages_ma := C.struct_miqt_array{len: C.size_t(len(optionsPages)), data: unsafe.Pointer(optionsPages_CArray)}
+	optionsPages_ma := C.struct_miqt_array{len: C.size_t(len(optionsPages)), data: unsafe.Pointer(optionsPages_CArray_ptr)}
 	C.QDesignerFormEditorInterface_setOptionsPages(this.h, optionsPages_ma)
 }
 
 func (this *QDesignerFormEditorInterface) PluginInstances() []*qt.QObject {
 	var _ma C.struct_miqt_array = C.QDesignerFormEditorInterface_pluginInstances(this.h)
 	_ret := make([]*qt.QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt.UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
@@ -585,11 +587,15 @@ func (this *QDesignerFormEditorInterface) Delete() {
 	C.QDesignerFormEditorInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerFormEditorInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerFormEditorInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerFormEditorInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormEditorInterface) {
+		C.QDesignerFormEditorInterface_delete(gc[0])
 	})
 }

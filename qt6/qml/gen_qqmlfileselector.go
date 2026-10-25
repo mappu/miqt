@@ -16,7 +16,8 @@ import (
 )
 
 type QQmlFileSelector struct {
-	h *C.QQmlFileSelector
+	h  *C.QQmlFileSelector
+	gc *[1]*C.QQmlFileSelector
 	*qt6.QObject
 }
 
@@ -91,8 +92,9 @@ func (this *QQmlFileSelector) SetSelector(selector *qt6.QFileSelector) {
 }
 
 func (this *QQmlFileSelector) SetExtraSelectors(strings []string) {
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
-	defer C.free(unsafe.Pointer(strings_CArray))
+	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
+	defer C.free(unsafe.Pointer(strings_CArray_ptr))
+	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
 		strings_i_ms.data = C.CString(strings[i])
@@ -100,7 +102,7 @@ func (this *QQmlFileSelector) SetExtraSelectors(strings []string) {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray_ptr)}
 	C.QQmlFileSelector_setExtraSelectors(this.h, strings_ma)
 }
 
@@ -381,11 +383,15 @@ func (this *QQmlFileSelector) Delete() {
 	C.QQmlFileSelector_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlFileSelector) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlFileSelector) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlFileSelector{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlFileSelector) {
+		C.QQmlFileSelector_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QMaskGenerator struct {
-	h *C.QMaskGenerator
+	h  *C.QMaskGenerator
+	gc *[1]*C.QMaskGenerator
 	*qt6.QObject
 }
 
@@ -360,11 +361,15 @@ func (this *QMaskGenerator) Delete() {
 	C.QMaskGenerator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMaskGenerator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMaskGenerator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMaskGenerator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMaskGenerator) {
+		C.QMaskGenerator_delete(gc[0])
 	})
 }

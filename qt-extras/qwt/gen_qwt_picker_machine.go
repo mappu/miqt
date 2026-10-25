@@ -35,7 +35,8 @@ const (
 )
 
 type QwtPickerMachine struct {
-	h *C.QwtPickerMachine
+	h  *C.QwtPickerMachine
+	gc *[1]*C.QwtPickerMachine
 }
 
 func (this *QwtPickerMachine) cPointer() *C.QwtPickerMachine {
@@ -81,7 +82,7 @@ func NewQwtPickerMachine2(param1 *QwtPickerMachine) *QwtPickerMachine {
 func (this *QwtPickerMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -123,11 +124,12 @@ func miqt_exec_callback_QwtPickerMachine_transition(self *C.QwtPickerMachine, cb
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -138,17 +140,22 @@ func (this *QwtPickerMachine) Delete() {
 	C.QwtPickerMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerMachine) {
+		C.QwtPickerMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerTrackerMachine struct {
-	h *C.QwtPickerTrackerMachine
+	h  *C.QwtPickerTrackerMachine
+	gc *[1]*C.QwtPickerTrackerMachine
 	*QwtPickerMachine
 }
 
@@ -198,7 +205,7 @@ func NewQwtPickerTrackerMachine2(param1 *QwtPickerTrackerMachine) *QwtPickerTrac
 func (this *QwtPickerTrackerMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerTrackerMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -209,7 +216,7 @@ func (this *QwtPickerTrackerMachine) callVirtualBase_Transition(param1 *QwtEvent
 
 	var _ma C.struct_miqt_array = C.QwtPickerTrackerMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -236,11 +243,12 @@ func miqt_exec_callback_QwtPickerTrackerMachine_transition(self *C.QwtPickerTrac
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerTrackerMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -251,17 +259,22 @@ func (this *QwtPickerTrackerMachine) Delete() {
 	C.QwtPickerTrackerMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerTrackerMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerTrackerMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerTrackerMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerTrackerMachine) {
+		C.QwtPickerTrackerMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerClickPointMachine struct {
-	h *C.QwtPickerClickPointMachine
+	h  *C.QwtPickerClickPointMachine
+	gc *[1]*C.QwtPickerClickPointMachine
 	*QwtPickerMachine
 }
 
@@ -311,7 +324,7 @@ func NewQwtPickerClickPointMachine2(param1 *QwtPickerClickPointMachine) *QwtPick
 func (this *QwtPickerClickPointMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerClickPointMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -322,7 +335,7 @@ func (this *QwtPickerClickPointMachine) callVirtualBase_Transition(param1 *QwtEv
 
 	var _ma C.struct_miqt_array = C.QwtPickerClickPointMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -349,11 +362,12 @@ func miqt_exec_callback_QwtPickerClickPointMachine_transition(self *C.QwtPickerC
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerClickPointMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -364,17 +378,22 @@ func (this *QwtPickerClickPointMachine) Delete() {
 	C.QwtPickerClickPointMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerClickPointMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerClickPointMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerClickPointMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerClickPointMachine) {
+		C.QwtPickerClickPointMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerDragPointMachine struct {
-	h *C.QwtPickerDragPointMachine
+	h  *C.QwtPickerDragPointMachine
+	gc *[1]*C.QwtPickerDragPointMachine
 	*QwtPickerMachine
 }
 
@@ -424,7 +443,7 @@ func NewQwtPickerDragPointMachine2(param1 *QwtPickerDragPointMachine) *QwtPicker
 func (this *QwtPickerDragPointMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerDragPointMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -435,7 +454,7 @@ func (this *QwtPickerDragPointMachine) callVirtualBase_Transition(param1 *QwtEve
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragPointMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -462,11 +481,12 @@ func miqt_exec_callback_QwtPickerDragPointMachine_transition(self *C.QwtPickerDr
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerDragPointMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -477,17 +497,22 @@ func (this *QwtPickerDragPointMachine) Delete() {
 	C.QwtPickerDragPointMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerDragPointMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerDragPointMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerDragPointMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragPointMachine) {
+		C.QwtPickerDragPointMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerClickRectMachine struct {
-	h *C.QwtPickerClickRectMachine
+	h  *C.QwtPickerClickRectMachine
+	gc *[1]*C.QwtPickerClickRectMachine
 	*QwtPickerMachine
 }
 
@@ -537,7 +562,7 @@ func NewQwtPickerClickRectMachine2(param1 *QwtPickerClickRectMachine) *QwtPicker
 func (this *QwtPickerClickRectMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerClickRectMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -548,7 +573,7 @@ func (this *QwtPickerClickRectMachine) callVirtualBase_Transition(param1 *QwtEve
 
 	var _ma C.struct_miqt_array = C.QwtPickerClickRectMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -575,11 +600,12 @@ func miqt_exec_callback_QwtPickerClickRectMachine_transition(self *C.QwtPickerCl
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerClickRectMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -590,17 +616,22 @@ func (this *QwtPickerClickRectMachine) Delete() {
 	C.QwtPickerClickRectMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerClickRectMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerClickRectMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerClickRectMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerClickRectMachine) {
+		C.QwtPickerClickRectMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerDragRectMachine struct {
-	h *C.QwtPickerDragRectMachine
+	h  *C.QwtPickerDragRectMachine
+	gc *[1]*C.QwtPickerDragRectMachine
 	*QwtPickerMachine
 }
 
@@ -650,7 +681,7 @@ func NewQwtPickerDragRectMachine2(param1 *QwtPickerDragRectMachine) *QwtPickerDr
 func (this *QwtPickerDragRectMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerDragRectMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -661,7 +692,7 @@ func (this *QwtPickerDragRectMachine) callVirtualBase_Transition(param1 *QwtEven
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragRectMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -688,11 +719,12 @@ func miqt_exec_callback_QwtPickerDragRectMachine_transition(self *C.QwtPickerDra
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerDragRectMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -703,17 +735,22 @@ func (this *QwtPickerDragRectMachine) Delete() {
 	C.QwtPickerDragRectMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerDragRectMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerDragRectMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerDragRectMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragRectMachine) {
+		C.QwtPickerDragRectMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerDragLineMachine struct {
-	h *C.QwtPickerDragLineMachine
+	h  *C.QwtPickerDragLineMachine
+	gc *[1]*C.QwtPickerDragLineMachine
 	*QwtPickerMachine
 }
 
@@ -763,7 +800,7 @@ func NewQwtPickerDragLineMachine2(param1 *QwtPickerDragLineMachine) *QwtPickerDr
 func (this *QwtPickerDragLineMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerDragLineMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -774,7 +811,7 @@ func (this *QwtPickerDragLineMachine) callVirtualBase_Transition(param1 *QwtEven
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragLineMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -801,11 +838,12 @@ func miqt_exec_callback_QwtPickerDragLineMachine_transition(self *C.QwtPickerDra
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerDragLineMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -816,17 +854,22 @@ func (this *QwtPickerDragLineMachine) Delete() {
 	C.QwtPickerDragLineMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerDragLineMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerDragLineMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerDragLineMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragLineMachine) {
+		C.QwtPickerDragLineMachine_delete(gc[0])
 	})
 }
 
 type QwtPickerPolygonMachine struct {
-	h *C.QwtPickerPolygonMachine
+	h  *C.QwtPickerPolygonMachine
+	gc *[1]*C.QwtPickerPolygonMachine
 	*QwtPickerMachine
 }
 
@@ -876,7 +919,7 @@ func NewQwtPickerPolygonMachine2(param1 *QwtPickerPolygonMachine) *QwtPickerPoly
 func (this *QwtPickerPolygonMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
 	var _ma C.struct_miqt_array = C.QwtPickerPolygonMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -887,7 +930,7 @@ func (this *QwtPickerPolygonMachine) callVirtualBase_Transition(param1 *QwtEvent
 
 	var _ma C.struct_miqt_array = C.QwtPickerPolygonMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QwtPickerMachine__Command)(_outCast[i])
 	}
@@ -914,11 +957,12 @@ func miqt_exec_callback_QwtPickerPolygonMachine_transition(self *C.QwtPickerPoly
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QwtPickerPolygonMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
-	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -929,11 +973,15 @@ func (this *QwtPickerPolygonMachine) Delete() {
 	C.QwtPickerPolygonMachine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPickerPolygonMachine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPickerPolygonMachine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPickerPolygonMachine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerPolygonMachine) {
+		C.QwtPickerPolygonMachine_delete(gc[0])
 	})
 }

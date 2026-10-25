@@ -46,7 +46,8 @@ const (
 )
 
 type QVideoFrame struct {
-	h *C.QVideoFrame
+	h  *C.QVideoFrame
+	gc *[1]*C.QVideoFrame
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -249,17 +250,22 @@ func (this *QVideoFrame) Delete() {
 	C.QVideoFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrame) {
+		C.QVideoFrame_delete(gc[0])
 	})
 }
 
 type QVideoFrame__PaintOptions struct {
-	h *C.QVideoFrame__PaintOptions
+	h  *C.QVideoFrame__PaintOptions
+	gc *[1]*C.QVideoFrame__PaintOptions
 }
 
 func (this *QVideoFrame__PaintOptions) cPointer() *C.QVideoFrame__PaintOptions {
@@ -327,11 +333,15 @@ func (this *QVideoFrame__PaintOptions) Delete() {
 	C.QVideoFrame__PaintOptions_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoFrame__PaintOptions) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoFrame__PaintOptions) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoFrame__PaintOptions{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrame__PaintOptions) {
+		C.QVideoFrame__PaintOptions_delete(gc[0])
 	})
 }

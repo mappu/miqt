@@ -15,7 +15,8 @@ import (
 )
 
 type QDesignerPropertySheetExtension struct {
-	h *C.QDesignerPropertySheetExtension
+	h  *C.QDesignerPropertySheetExtension
+	gc *[1]*C.QDesignerPropertySheetExtension
 }
 
 func (this *QDesignerPropertySheetExtension) cPointer() *C.QDesignerPropertySheetExtension {
@@ -135,11 +136,15 @@ func (this *QDesignerPropertySheetExtension) Delete() {
 	C.QDesignerPropertySheetExtension_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerPropertySheetExtension) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerPropertySheetExtension) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerPropertySheetExtension{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerPropertySheetExtension) {
+		C.QDesignerPropertySheetExtension_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QDesignerWidgetDataBaseItemInterface struct {
-	h *C.QDesignerWidgetDataBaseItemInterface
+	h  *C.QDesignerWidgetDataBaseItemInterface
+	gc *[1]*C.QDesignerWidgetDataBaseItemInterface
 }
 
 func (this *QDesignerWidgetDataBaseItemInterface) cPointer() *C.QDesignerWidgetDataBaseItemInterface {
@@ -195,19 +196,20 @@ func (this *QDesignerWidgetDataBaseItemInterface) SetExtends(s string) {
 }
 
 func (this *QDesignerWidgetDataBaseItemInterface) SetDefaultPropertyValues(list []qt.QVariant) {
-	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = (*C.QVariant)(list[i].UnsafePointer())
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QDesignerWidgetDataBaseItemInterface_setDefaultPropertyValues(this.h, list_ma)
 }
 
 func (this *QDesignerWidgetDataBaseItemInterface) DefaultPropertyValues() []qt.QVariant {
 	var _ma C.struct_miqt_array = C.QDesignerWidgetDataBaseItemInterface_defaultPropertyValues(this.h)
 	_ret := make([]qt.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -225,17 +227,22 @@ func (this *QDesignerWidgetDataBaseItemInterface) Delete() {
 	C.QDesignerWidgetDataBaseItemInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerWidgetDataBaseItemInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerWidgetDataBaseItemInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerWidgetDataBaseItemInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetDataBaseItemInterface) {
+		C.QDesignerWidgetDataBaseItemInterface_delete(gc[0])
 	})
 }
 
 type QDesignerWidgetDataBaseInterface struct {
-	h *C.QDesignerWidgetDataBaseInterface
+	h  *C.QDesignerWidgetDataBaseInterface
+	gc *[1]*C.QDesignerWidgetDataBaseInterface
 	*qt.QObject
 }
 
@@ -900,11 +907,15 @@ func (this *QDesignerWidgetDataBaseInterface) Delete() {
 	C.QDesignerWidgetDataBaseInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerWidgetDataBaseInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerWidgetDataBaseInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerWidgetDataBaseInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetDataBaseInterface) {
+		C.QDesignerWidgetDataBaseInterface_delete(gc[0])
 	})
 }

@@ -22,7 +22,8 @@ const (
 )
 
 type QWebEngineHttpRequest struct {
-	h *C.QWebEngineHttpRequest
+	h  *C.QWebEngineHttpRequest
+	gc *[1]*C.QWebEngineHttpRequest
 }
 
 func (this *QWebEngineHttpRequest) cPointer() *C.QWebEngineHttpRequest {
@@ -82,10 +83,12 @@ func (this *QWebEngineHttpRequest) OperatorAssign(other *QWebEngineHttpRequest) 
 }
 
 func QWebEngineHttpRequest_PostRequest(url *qt6.QUrl, postData map[string]string) *QWebEngineHttpRequest {
-	postData_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(postData))))
-	defer C.free(unsafe.Pointer(postData_Keys_CArray))
-	postData_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(postData))))
-	defer C.free(unsafe.Pointer(postData_Values_CArray))
+	postData_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(postData))))
+	defer C.free(unsafe.Pointer(postData_Keys_CArray_ptr))
+	postData_Keys_CArray := unsafe.Slice(postData_Keys_CArray_ptr, len(postData))
+	postData_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(postData))))
+	defer C.free(unsafe.Pointer(postData_Values_CArray_ptr))
+	postData_Values_CArray := unsafe.Slice(postData_Values_CArray_ptr, len(postData))
 	postData_ctr := 0
 	for postData_k, postData_v := range postData {
 		postData_k_ms := C.struct_miqt_string{}
@@ -102,8 +105,8 @@ func QWebEngineHttpRequest_PostRequest(url *qt6.QUrl, postData map[string]string
 	}
 	postData_mm := C.struct_miqt_map{
 		len:    C.size_t(len(postData)),
-		keys:   unsafe.Pointer(postData_Keys_CArray),
-		values: unsafe.Pointer(postData_Values_CArray),
+		keys:   unsafe.Pointer(postData_Keys_CArray_ptr),
+		values: unsafe.Pointer(postData_Values_CArray_ptr),
 	}
 	_goptr := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_postRequest((*C.QUrl)(url.UnsafePointer()), postData_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -172,7 +175,7 @@ func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
 func (this *QWebEngineHttpRequest) Headers() [][]byte {
 	var _ma C.struct_miqt_array = C.QWebEngineHttpRequest_headers(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -230,11 +233,15 @@ func (this *QWebEngineHttpRequest) Delete() {
 	C.QWebEngineHttpRequest_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineHttpRequest) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineHttpRequest) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineHttpRequest{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineHttpRequest) {
+		C.QWebEngineHttpRequest_delete(gc[0])
 	})
 }

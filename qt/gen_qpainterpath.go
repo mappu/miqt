@@ -23,7 +23,8 @@ const (
 )
 
 type QPainterPath struct {
-	h *C.QPainterPath
+	h  *C.QPainterPath
+	gc *[1]*C.QPainterPath
 }
 
 func (this *QPainterPath) cPointer() *C.QPainterPath {
@@ -419,17 +420,22 @@ func (this *QPainterPath) Delete() {
 	C.QPainterPath_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPainterPath) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPainterPath) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPainterPath{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPainterPath) {
+		C.QPainterPath_delete(gc[0])
 	})
 }
 
 type QPainterPathStroker struct {
-	h *C.QPainterPathStroker
+	h  *C.QPainterPathStroker
+	gc *[1]*C.QPainterPathStroker
 }
 
 func (this *QPainterPathStroker) cPointer() *C.QPainterPathStroker {
@@ -517,19 +523,20 @@ func (this *QPainterPathStroker) SetDashPattern(dashPattern PenStyle) {
 }
 
 func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []float64) {
-	dashPattern_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(dashPattern))))
-	defer C.free(unsafe.Pointer(dashPattern_CArray))
+	dashPattern_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(dashPattern))))
+	defer C.free(unsafe.Pointer(dashPattern_CArray_ptr))
+	dashPattern_CArray := unsafe.Slice(dashPattern_CArray_ptr, len(dashPattern))
 	for i := range dashPattern {
 		dashPattern_CArray[i] = (C.double)(dashPattern[i])
 	}
-	dashPattern_ma := C.struct_miqt_array{len: C.size_t(len(dashPattern)), data: unsafe.Pointer(dashPattern_CArray)}
+	dashPattern_ma := C.struct_miqt_array{len: C.size_t(len(dashPattern)), data: unsafe.Pointer(dashPattern_CArray_ptr)}
 	C.QPainterPathStroker_setDashPatternWithDashPattern(this.h, dashPattern_ma)
 }
 
 func (this *QPainterPathStroker) DashPattern() []float64 {
 	var _ma C.struct_miqt_array = C.QPainterPathStroker_dashPattern(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -555,17 +562,22 @@ func (this *QPainterPathStroker) Delete() {
 	C.QPainterPathStroker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPainterPathStroker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPainterPathStroker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPainterPathStroker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPainterPathStroker) {
+		C.QPainterPathStroker_delete(gc[0])
 	})
 }
 
 type QPainterPath__Element struct {
-	h *C.QPainterPath__Element
+	h  *C.QPainterPath__Element
+	gc *[1]*C.QPainterPath__Element
 }
 
 func (this *QPainterPath__Element) cPointer() *C.QPainterPath__Element {
@@ -651,11 +663,15 @@ func (this *QPainterPath__Element) Delete() {
 	C.QPainterPath__Element_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPainterPath__Element) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPainterPath__Element) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPainterPath__Element{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPainterPath__Element) {
+		C.QPainterPath__Element_delete(gc[0])
 	})
 }

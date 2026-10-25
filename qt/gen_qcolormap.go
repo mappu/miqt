@@ -22,7 +22,8 @@ const (
 )
 
 type QColormap struct {
-	h *C.QColormap
+	h  *C.QColormap
+	gc *[1]*C.QColormap
 }
 
 func (this *QColormap) cPointer() *C.QColormap {
@@ -102,7 +103,7 @@ func (this *QColormap) ColorAt(pixel uint) *QColor {
 func (this *QColormap) Colormap() []QColor {
 	var _ma C.struct_miqt_array = C.QColormap_colormap(this.h)
 	_ret := make([]QColor, int(_ma.len))
-	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QColor)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQColor(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -122,11 +123,15 @@ func (this *QColormap) Delete() {
 	C.QColormap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QColormap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QColormap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QColormap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColormap) {
+		C.QColormap_delete(gc[0])
 	})
 }

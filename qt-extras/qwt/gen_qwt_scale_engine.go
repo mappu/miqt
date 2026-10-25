@@ -25,7 +25,8 @@ const (
 )
 
 type QwtScaleArithmetic struct {
-	h *C.QwtScaleArithmetic
+	h  *C.QwtScaleArithmetic
+	gc *[1]*C.QwtScaleArithmetic
 }
 
 func (this *QwtScaleArithmetic) cPointer() *C.QwtScaleArithmetic {
@@ -77,17 +78,22 @@ func (this *QwtScaleArithmetic) Delete() {
 	C.QwtScaleArithmetic_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtScaleArithmetic) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtScaleArithmetic) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtScaleArithmetic{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleArithmetic) {
+		C.QwtScaleArithmetic_delete(gc[0])
 	})
 }
 
 type QwtScaleEngine struct {
-	h *C.QwtScaleEngine
+	h  *C.QwtScaleEngine
+	gc *[1]*C.QwtScaleEngine
 }
 
 func (this *QwtScaleEngine) cPointer() *C.QwtScaleEngine {
@@ -222,17 +228,18 @@ func (this *QwtScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
 
 // Strip can only be called from a QwtScaleEngine that was directly constructed.
 func (this *QwtScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
-	param1_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = (C.double)(param1[i])
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtScaleEngine_protectedbase_strip(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1_ma, param2.cPointer())
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -337,17 +344,22 @@ func (this *QwtScaleEngine) Delete() {
 	C.QwtScaleEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtScaleEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtScaleEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtScaleEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleEngine) {
+		C.QwtScaleEngine_delete(gc[0])
 	})
 }
 
 type QwtLinearScaleEngine struct {
-	h *C.QwtLinearScaleEngine
+	h  *C.QwtLinearScaleEngine
+	gc *[1]*C.QwtLinearScaleEngine
 	*QwtScaleEngine
 }
 
@@ -432,12 +444,13 @@ func (this *QwtLinearScaleEngine) Align(param1 *QwtInterval, stepSize float64) Q
 
 // BuildTicks can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64, maxMinorSteps int, ticks []float64) {
-	ticks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(ticks))))
-	defer C.free(unsafe.Pointer(ticks_CArray))
+	ticks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(ticks))))
+	defer C.free(unsafe.Pointer(ticks_CArray_ptr))
+	ticks_CArray := unsafe.Slice(ticks_CArray_ptr, len(ticks))
 	for i := range ticks {
 		ticks_CArray[i] = (C.double)(ticks[i])
 	}
-	ticks_ma := C.struct_miqt_array{len: C.size_t(len(ticks)), data: unsafe.Pointer(ticks_CArray)}
+	ticks_ma := C.struct_miqt_array{len: C.size_t(len(ticks)), data: unsafe.Pointer(ticks_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLinearScaleEngine_protectedbase_buildTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(stepSize), (C.int)(maxMinorSteps), ticks_ma)
@@ -454,7 +467,7 @@ func (this *QwtLinearScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSiz
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLinearScaleEngine_protectedbase_buildMajorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), interval.cPointer(), (C.double)(stepSize))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -470,24 +483,27 @@ func (this *QwtLinearScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSiz
 
 // BuildMinorTicks can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSteps int, stepSize float64, minorTicks []float64, mediumTicks []float64) {
-	majorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
-	defer C.free(unsafe.Pointer(majorTicks_CArray))
+	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
+	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
+	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
 	for i := range majorTicks {
 		majorTicks_CArray[i] = (C.double)(majorTicks[i])
 	}
-	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray)}
-	minorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
-	defer C.free(unsafe.Pointer(minorTicks_CArray))
+	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray_ptr)}
+	minorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
+	defer C.free(unsafe.Pointer(minorTicks_CArray_ptr))
+	minorTicks_CArray := unsafe.Slice(minorTicks_CArray_ptr, len(minorTicks))
 	for i := range minorTicks {
 		minorTicks_CArray[i] = (C.double)(minorTicks[i])
 	}
-	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray)}
-	mediumTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
-	defer C.free(unsafe.Pointer(mediumTicks_CArray))
+	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray_ptr)}
+	mediumTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
+	defer C.free(unsafe.Pointer(mediumTicks_CArray_ptr))
+	mediumTicks_CArray := unsafe.Slice(mediumTicks_CArray_ptr, len(mediumTicks))
 	for i := range mediumTicks {
 		mediumTicks_CArray[i] = (C.double)(mediumTicks[i])
 	}
-	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray)}
+	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLinearScaleEngine_protectedbase_buildMinorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), majorTicks_ma, (C.int)(maxMinorSteps), (C.double)(stepSize), minorTicks_ma, mediumTicks_ma)
@@ -514,17 +530,18 @@ func (this *QwtLinearScaleEngine) Contains(param1 *QwtInterval, value float64) b
 
 // Strip can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
-	param1_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = (C.double)(param1[i])
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLinearScaleEngine_protectedbase_strip(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1_ma, param2.cPointer())
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -643,17 +660,22 @@ func (this *QwtLinearScaleEngine) Delete() {
 	C.QwtLinearScaleEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLinearScaleEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLinearScaleEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLinearScaleEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLinearScaleEngine) {
+		C.QwtLinearScaleEngine_delete(gc[0])
 	})
 }
 
 type QwtLogScaleEngine struct {
-	h *C.QwtLogScaleEngine
+	h  *C.QwtLogScaleEngine
+	gc *[1]*C.QwtLogScaleEngine
 	*QwtScaleEngine
 }
 
@@ -738,12 +760,13 @@ func (this *QwtLogScaleEngine) Align(param1 *QwtInterval, stepSize float64) QwtI
 
 // BuildTicks can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64, maxMinorSteps int, ticks []float64) {
-	ticks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(ticks))))
-	defer C.free(unsafe.Pointer(ticks_CArray))
+	ticks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(ticks))))
+	defer C.free(unsafe.Pointer(ticks_CArray_ptr))
+	ticks_CArray := unsafe.Slice(ticks_CArray_ptr, len(ticks))
 	for i := range ticks {
 		ticks_CArray[i] = (C.double)(ticks[i])
 	}
-	ticks_ma := C.struct_miqt_array{len: C.size_t(len(ticks)), data: unsafe.Pointer(ticks_CArray)}
+	ticks_ma := C.struct_miqt_array{len: C.size_t(len(ticks)), data: unsafe.Pointer(ticks_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLogScaleEngine_protectedbase_buildTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(stepSize), (C.int)(maxMinorSteps), ticks_ma)
@@ -760,7 +783,7 @@ func (this *QwtLogScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize f
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLogScaleEngine_protectedbase_buildMajorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), interval.cPointer(), (C.double)(stepSize))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -776,24 +799,27 @@ func (this *QwtLogScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize f
 
 // BuildMinorTicks can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSteps int, stepSize float64, minorTicks []float64, mediumTicks []float64) {
-	majorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
-	defer C.free(unsafe.Pointer(majorTicks_CArray))
+	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
+	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
+	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
 	for i := range majorTicks {
 		majorTicks_CArray[i] = (C.double)(majorTicks[i])
 	}
-	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray)}
-	minorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
-	defer C.free(unsafe.Pointer(minorTicks_CArray))
+	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray_ptr)}
+	minorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
+	defer C.free(unsafe.Pointer(minorTicks_CArray_ptr))
+	minorTicks_CArray := unsafe.Slice(minorTicks_CArray_ptr, len(minorTicks))
 	for i := range minorTicks {
 		minorTicks_CArray[i] = (C.double)(minorTicks[i])
 	}
-	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray)}
-	mediumTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
-	defer C.free(unsafe.Pointer(mediumTicks_CArray))
+	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray_ptr)}
+	mediumTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
+	defer C.free(unsafe.Pointer(mediumTicks_CArray_ptr))
+	mediumTicks_CArray := unsafe.Slice(mediumTicks_CArray_ptr, len(mediumTicks))
 	for i := range mediumTicks {
 		mediumTicks_CArray[i] = (C.double)(mediumTicks[i])
 	}
-	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray)}
+	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLogScaleEngine_protectedbase_buildMinorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), majorTicks_ma, (C.int)(maxMinorSteps), (C.double)(stepSize), minorTicks_ma, mediumTicks_ma)
@@ -820,17 +846,18 @@ func (this *QwtLogScaleEngine) Contains(param1 *QwtInterval, value float64) bool
 
 // Strip can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
-	param1_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param1))))
-	defer C.free(unsafe.Pointer(param1_CArray))
+	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
+	defer C.free(unsafe.Pointer(param1_CArray_ptr))
+	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
 		param1_CArray[i] = (C.double)(param1[i])
 	}
-	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
+	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLogScaleEngine_protectedbase_strip(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1_ma, param2.cPointer())
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -949,11 +976,15 @@ func (this *QwtLogScaleEngine) Delete() {
 	C.QwtLogScaleEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLogScaleEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLogScaleEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLogScaleEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLogScaleEngine) {
+		C.QwtLogScaleEngine_delete(gc[0])
 	})
 }

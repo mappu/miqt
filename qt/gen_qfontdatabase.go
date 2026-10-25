@@ -64,7 +64,8 @@ const (
 )
 
 type QFontDatabase struct {
-	h *C.QFontDatabase
+	h  *C.QFontDatabase
+	gc *[1]*C.QFontDatabase
 }
 
 func (this *QFontDatabase) cPointer() *C.QFontDatabase {
@@ -104,7 +105,7 @@ func NewQFontDatabase() *QFontDatabase {
 func QFontDatabase_StandardSizes() []int {
 	var _ma C.struct_miqt_array = C.QFontDatabase_standardSizes()
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -114,7 +115,7 @@ func QFontDatabase_StandardSizes() []int {
 func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
 	var _ma C.struct_miqt_array = C.QFontDatabase_writingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
@@ -128,7 +129,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 	defer C.free(unsafe.Pointer(family_ms.data))
 	var _ma C.struct_miqt_array = C.QFontDatabase_writingSystemsWithFamily(this.h, family_ms)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
@@ -138,7 +139,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 func (this *QFontDatabase) Families() []string {
 	var _ma C.struct_miqt_array = C.QFontDatabase_families(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -155,7 +156,7 @@ func (this *QFontDatabase) Styles(family string) []string {
 	defer C.free(unsafe.Pointer(family_ms.data))
 	var _ma C.struct_miqt_array = C.QFontDatabase_styles(this.h, family_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -172,7 +173,7 @@ func (this *QFontDatabase) PointSizes(family string) []int {
 	defer C.free(unsafe.Pointer(family_ms.data))
 	var _ma C.struct_miqt_array = C.QFontDatabase_pointSizes(this.h, family_ms)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -190,7 +191,7 @@ func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
 	defer C.free(unsafe.Pointer(style_ms.data))
 	var _ma C.struct_miqt_array = C.QFontDatabase_smoothSizes(this.h, family_ms, style_ms)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -345,7 +346,7 @@ func QFontDatabase_AddApplicationFontFromData(fontData []byte) int {
 func QFontDatabase_ApplicationFontFamilies(id int) []string {
 	var _ma C.struct_miqt_array = C.QFontDatabase_applicationFontFamilies((C.int)(id))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -376,7 +377,7 @@ func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
 func (this *QFontDatabase) FamiliesWithWritingSystem(writingSystem QFontDatabase__WritingSystem) []string {
 	var _ma C.struct_miqt_array = C.QFontDatabase_familiesWithWritingSystem(this.h, (C.int)(writingSystem))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -397,7 +398,7 @@ func (this *QFontDatabase) PointSizes2(family string, style string) []int {
 	defer C.free(unsafe.Pointer(style_ms.data))
 	var _ma C.struct_miqt_array = C.QFontDatabase_pointSizes2(this.h, family_ms, style_ms)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -457,11 +458,15 @@ func (this *QFontDatabase) Delete() {
 	C.QFontDatabase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFontDatabase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFontDatabase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFontDatabase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontDatabase) {
+		C.QFontDatabase_delete(gc[0])
 	})
 }

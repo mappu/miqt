@@ -87,7 +87,8 @@ const (
 )
 
 type QPixelFormat struct {
-	h *C.QPixelFormat
+	h  *C.QPixelFormat
+	gc *[1]*C.QPixelFormat
 }
 
 func (this *QPixelFormat) cPointer() *C.QPixelFormat {
@@ -241,11 +242,15 @@ func (this *QPixelFormat) Delete() {
 	C.QPixelFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPixelFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPixelFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPixelFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPixelFormat) {
+		C.QPixelFormat_delete(gc[0])
 	})
 }

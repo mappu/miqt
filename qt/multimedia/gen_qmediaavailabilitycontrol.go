@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaAvailabilityControl struct {
-	h *C.QMediaAvailabilityControl
+	h  *C.QMediaAvailabilityControl
+	gc *[1]*C.QMediaAvailabilityControl
 	*QMediaControl
 }
 
@@ -152,11 +153,15 @@ func (this *QMediaAvailabilityControl) Delete() {
 	C.QMediaAvailabilityControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaAvailabilityControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaAvailabilityControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaAvailabilityControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaAvailabilityControl) {
+		C.QMediaAvailabilityControl_delete(gc[0])
 	})
 }

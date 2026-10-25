@@ -55,7 +55,8 @@ const (
 )
 
 type QCborParserError struct {
-	h *C.QCborParserError
+	h  *C.QCborParserError
+	gc *[1]*C.QCborParserError
 }
 
 func (this *QCborParserError) cPointer() *C.QCborParserError {
@@ -122,17 +123,22 @@ func (this *QCborParserError) Delete() {
 	C.QCborParserError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborParserError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborParserError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborParserError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborParserError) {
+		C.QCborParserError_delete(gc[0])
 	})
 }
 
 type QCborValue struct {
-	h *C.QCborValue
+	h  *C.QCborValue
+	gc *[1]*C.QCborValue
 }
 
 func (this *QCborValue) cPointer() *C.QCborValue {
@@ -736,17 +742,22 @@ func (this *QCborValue) Delete() {
 	C.QCborValue_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborValue) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborValue) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborValue{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborValue) {
+		C.QCborValue_delete(gc[0])
 	})
 }
 
 type QCborValueConstRef struct {
-	h *C.QCborValueConstRef
+	h  *C.QCborValueConstRef
+	gc *[1]*C.QCborValueConstRef
 }
 
 func (this *QCborValueConstRef) cPointer() *C.QCborValueConstRef {
@@ -1121,17 +1132,22 @@ func (this *QCborValueConstRef) Delete() {
 	C.QCborValueConstRef_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborValueConstRef) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborValueConstRef) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborValueConstRef{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborValueConstRef) {
+		C.QCborValueConstRef_delete(gc[0])
 	})
 }
 
 type QCborValueRef struct {
-	h *C.QCborValueRef
+	h  *C.QCborValueRef
+	gc *[1]*C.QCborValueRef
 	*QCborValueConstRef
 }
 
@@ -1534,11 +1550,15 @@ func (this *QCborValueRef) Delete() {
 	C.QCborValueRef_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborValueRef) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborValueRef) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborValueRef{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborValueRef) {
+		C.QCborValueRef_delete(gc[0])
 	})
 }

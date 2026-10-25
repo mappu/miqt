@@ -15,7 +15,8 @@ import (
 )
 
 type QSplashScreen struct {
-	h *C.QSplashScreen
+	h  *C.QSplashScreen
+	gc *[1]*C.QSplashScreen
 	*QWidget
 }
 
@@ -1613,11 +1614,15 @@ func (this *QSplashScreen) Delete() {
 	C.QSplashScreen_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSplashScreen) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSplashScreen) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSplashScreen{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSplashScreen) {
+		C.QSplashScreen_delete(gc[0])
 	})
 }

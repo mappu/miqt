@@ -14,7 +14,8 @@ import (
 )
 
 type QAbstractConcatenable struct {
-	h *C.QAbstractConcatenable
+	h  *C.QAbstractConcatenable
+	gc *[1]*C.QAbstractConcatenable
 }
 
 func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {
@@ -50,11 +51,15 @@ func (this *QAbstractConcatenable) Delete() {
 	C.QAbstractConcatenable_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractConcatenable) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractConcatenable) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractConcatenable{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractConcatenable) {
+		C.QAbstractConcatenable_delete(gc[0])
 	})
 }

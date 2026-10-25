@@ -25,7 +25,8 @@ const (
 )
 
 type QXYSeries struct {
-	h *C.QXYSeries
+	h  *C.QXYSeries
+	gc *[1]*C.QXYSeries
 	*QAbstractSeries
 }
 
@@ -88,12 +89,13 @@ func (this *QXYSeries) AppendWithPoint(point *qt6.QPointF) {
 }
 
 func (this *QXYSeries) AppendWithPoints(points []qt6.QPointF) {
-	points_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(points))))
-	defer C.free(unsafe.Pointer(points_CArray))
+	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
 		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
 	}
-	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray)}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	C.QXYSeries_appendWithPoints(this.h, points_ma)
 }
 
@@ -144,7 +146,7 @@ func (this *QXYSeries) Count() int {
 func (this *QXYSeries) Points() []qt6.QPointF {
 	var _ma C.struct_miqt_array = C.QXYSeries_points(this.h)
 	_ret := make([]qt6.QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -156,7 +158,7 @@ func (this *QXYSeries) Points() []qt6.QPointF {
 func (this *QXYSeries) PointsVector() []qt6.QPointF {
 	var _ma C.struct_miqt_array = C.QXYSeries_pointsVector(this.h)
 	_ret := make([]qt6.QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -174,12 +176,13 @@ func (this *QXYSeries) OperatorShiftLeft(point *qt6.QPointF) *QXYSeries {
 }
 
 func (this *QXYSeries) OperatorShiftLeftWithPoints(points []qt6.QPointF) *QXYSeries {
-	points_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(points))))
-	defer C.free(unsafe.Pointer(points_CArray))
+	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
 		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
 	}
-	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray)}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	return newQXYSeries(C.QXYSeries_operatorShiftLeftWithPoints(this.h, points_ma))
 }
 
@@ -283,12 +286,13 @@ func (this *QXYSeries) PointLabelsClipping() bool {
 }
 
 func (this *QXYSeries) ReplaceWithPoints(points []qt6.QPointF) {
-	points_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(points))))
-	defer C.free(unsafe.Pointer(points_CArray))
+	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
 		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
 	}
-	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray)}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	C.QXYSeries_replaceWithPoints(this.h, points_ma)
 }
 
@@ -317,39 +321,42 @@ func (this *QXYSeries) DeselectAllPoints() {
 }
 
 func (this *QXYSeries) SelectPoints(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QXYSeries_selectPoints(this.h, indexes_ma)
 }
 
 func (this *QXYSeries) DeselectPoints(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QXYSeries_deselectPoints(this.h, indexes_ma)
 }
 
 func (this *QXYSeries) ToggleSelection(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QXYSeries_toggleSelection(this.h, indexes_ma)
 }
 
 func (this *QXYSeries) SelectedPoints() []int {
 	var _ma C.struct_miqt_array = C.QXYSeries_selectedPoints(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -442,10 +449,12 @@ func (this *QXYSeries) ClearPointsConfigurationWithKey(key QXYSeries__PointConfi
 }
 
 func (this *QXYSeries) SetPointConfiguration(index int, configuration map[QXYSeries__PointConfiguration]qt6.QVariant) {
-	configuration_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Keys_CArray))
-	configuration_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Values_CArray))
+	configuration_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Keys_CArray_ptr))
+	configuration_Keys_CArray := unsafe.Slice(configuration_Keys_CArray_ptr, len(configuration))
+	configuration_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Values_CArray_ptr))
+	configuration_Values_CArray := unsafe.Slice(configuration_Values_CArray_ptr, len(configuration))
 	configuration_ctr := 0
 	for configuration_k, configuration_v := range configuration {
 		configuration_Keys_CArray[configuration_ctr] = (C.int)(configuration_k)
@@ -454,8 +463,8 @@ func (this *QXYSeries) SetPointConfiguration(index int, configuration map[QXYSer
 	}
 	configuration_mm := C.struct_miqt_map{
 		len:    C.size_t(len(configuration)),
-		keys:   unsafe.Pointer(configuration_Keys_CArray),
-		values: unsafe.Pointer(configuration_Values_CArray),
+		keys:   unsafe.Pointer(configuration_Keys_CArray_ptr),
+		values: unsafe.Pointer(configuration_Values_CArray_ptr),
 	}
 	C.QXYSeries_setPointConfiguration(this.h, (C.int)(index), configuration_mm)
 }
@@ -465,17 +474,21 @@ func (this *QXYSeries) SetPointConfiguration2(index int, key QXYSeries__PointCon
 }
 
 func (this *QXYSeries) SetPointsConfiguration(pointsConfiguration map[int]map[QXYSeries__PointConfiguration]qt6.QVariant) {
-	pointsConfiguration_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(pointsConfiguration))))
-	defer C.free(unsafe.Pointer(pointsConfiguration_Keys_CArray))
-	pointsConfiguration_Values_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(pointsConfiguration))))
-	defer C.free(unsafe.Pointer(pointsConfiguration_Values_CArray))
+	pointsConfiguration_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(pointsConfiguration))))
+	defer C.free(unsafe.Pointer(pointsConfiguration_Keys_CArray_ptr))
+	pointsConfiguration_Keys_CArray := unsafe.Slice(pointsConfiguration_Keys_CArray_ptr, len(pointsConfiguration))
+	pointsConfiguration_Values_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(pointsConfiguration))))
+	defer C.free(unsafe.Pointer(pointsConfiguration_Values_CArray_ptr))
+	pointsConfiguration_Values_CArray := unsafe.Slice(pointsConfiguration_Values_CArray_ptr, len(pointsConfiguration))
 	pointsConfiguration_ctr := 0
 	for pointsConfiguration_k, pointsConfiguration_v := range pointsConfiguration {
 		pointsConfiguration_Keys_CArray[pointsConfiguration_ctr] = (C.int)(pointsConfiguration_k)
-		pointsConfiguration_v_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(pointsConfiguration_v))))
-		defer C.free(unsafe.Pointer(pointsConfiguration_v_Keys_CArray))
-		pointsConfiguration_v_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(pointsConfiguration_v))))
-		defer C.free(unsafe.Pointer(pointsConfiguration_v_Values_CArray))
+		pointsConfiguration_v_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(pointsConfiguration_v))))
+		defer C.free(unsafe.Pointer(pointsConfiguration_v_Keys_CArray_ptr))
+		pointsConfiguration_v_Keys_CArray := unsafe.Slice(pointsConfiguration_v_Keys_CArray_ptr, len(pointsConfiguration_v))
+		pointsConfiguration_v_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(pointsConfiguration_v))))
+		defer C.free(unsafe.Pointer(pointsConfiguration_v_Values_CArray_ptr))
+		pointsConfiguration_v_Values_CArray := unsafe.Slice(pointsConfiguration_v_Values_CArray_ptr, len(pointsConfiguration_v))
 		pointsConfiguration_v_ctr := 0
 		for pointsConfiguration_v_k, pointsConfiguration_v_v := range pointsConfiguration_v {
 			pointsConfiguration_v_Keys_CArray[pointsConfiguration_v_ctr] = (C.int)(pointsConfiguration_v_k)
@@ -484,16 +497,16 @@ func (this *QXYSeries) SetPointsConfiguration(pointsConfiguration map[int]map[QX
 		}
 		pointsConfiguration_v_mm := C.struct_miqt_map{
 			len:    C.size_t(len(pointsConfiguration_v)),
-			keys:   unsafe.Pointer(pointsConfiguration_v_Keys_CArray),
-			values: unsafe.Pointer(pointsConfiguration_v_Values_CArray),
+			keys:   unsafe.Pointer(pointsConfiguration_v_Keys_CArray_ptr),
+			values: unsafe.Pointer(pointsConfiguration_v_Values_CArray_ptr),
 		}
 		pointsConfiguration_Values_CArray[pointsConfiguration_ctr] = pointsConfiguration_v_mm
 		pointsConfiguration_ctr++
 	}
 	pointsConfiguration_mm := C.struct_miqt_map{
 		len:    C.size_t(len(pointsConfiguration)),
-		keys:   unsafe.Pointer(pointsConfiguration_Keys_CArray),
-		values: unsafe.Pointer(pointsConfiguration_Values_CArray),
+		keys:   unsafe.Pointer(pointsConfiguration_Keys_CArray_ptr),
+		values: unsafe.Pointer(pointsConfiguration_Values_CArray_ptr),
 	}
 	C.QXYSeries_setPointsConfiguration(this.h, pointsConfiguration_mm)
 }
@@ -501,8 +514,8 @@ func (this *QXYSeries) SetPointsConfiguration(pointsConfiguration map[int]map[QX
 func (this *QXYSeries) PointConfiguration(index int) map[QXYSeries__PointConfiguration]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QXYSeries_pointConfiguration(this.h, (C.int)(index))
 	_ret := make(map[QXYSeries__PointConfiguration]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (QXYSeries__PointConfiguration)(_Keys[i])
 
@@ -518,15 +531,15 @@ func (this *QXYSeries) PointConfiguration(index int) map[QXYSeries__PointConfigu
 func (this *QXYSeries) PointsConfiguration() map[int]map[QXYSeries__PointConfiguration]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QXYSeries_pointsConfiguration(this.h)
 	_ret := make(map[int]map[QXYSeries__PointConfiguration]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
 		var _hashval_mm C.struct_miqt_map = _Values[i]
 		_hashval_ret := make(map[QXYSeries__PointConfiguration]qt6.QVariant, int(_hashval_mm.len))
-		_hashval_Keys := (*[0xffff]C.int)(unsafe.Pointer(_hashval_mm.keys))
-		_hashval_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_hashval_mm.values))
+		_hashval_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_hashval_mm.keys)), int(_hashval_mm.len))
+		_hashval_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_hashval_mm.values)), int(_hashval_mm.len))
 		for i := 0; i < int(_hashval_mm.len); i++ {
 			_hashval_entry_Key := (QXYSeries__PointConfiguration)(_hashval_Keys[i])
 
@@ -544,22 +557,24 @@ func (this *QXYSeries) PointsConfiguration() map[int]map[QXYSeries__PointConfigu
 }
 
 func (this *QXYSeries) SizeBy(sourceData []float64, minSize float64, maxSize float64) {
-	sourceData_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(sourceData))))
-	defer C.free(unsafe.Pointer(sourceData_CArray))
+	sourceData_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(sourceData))))
+	defer C.free(unsafe.Pointer(sourceData_CArray_ptr))
+	sourceData_CArray := unsafe.Slice(sourceData_CArray_ptr, len(sourceData))
 	for i := range sourceData {
 		sourceData_CArray[i] = (C.double)(sourceData[i])
 	}
-	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray)}
+	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray_ptr)}
 	C.QXYSeries_sizeBy(this.h, sourceData_ma, (C.double)(minSize), (C.double)(maxSize))
 }
 
 func (this *QXYSeries) ColorBy(sourceData []float64) {
-	sourceData_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(sourceData))))
-	defer C.free(unsafe.Pointer(sourceData_CArray))
+	sourceData_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(sourceData))))
+	defer C.free(unsafe.Pointer(sourceData_CArray_ptr))
+	sourceData_CArray := unsafe.Slice(sourceData_CArray_ptr, len(sourceData))
 	for i := range sourceData {
 		sourceData_CArray[i] = (C.double)(sourceData[i])
 	}
-	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray)}
+	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray_ptr)}
 	C.QXYSeries_colorBy(this.h, sourceData_ma)
 }
 
@@ -1051,17 +1066,21 @@ func miqt_exec_callback_QXYSeries_bestFitLineColorChanged(cb C.intptr_t, color *
 }
 
 func (this *QXYSeries) PointsConfigurationChanged(configuration map[int]map[QXYSeries__PointConfiguration]qt6.QVariant) {
-	configuration_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Keys_CArray))
-	configuration_Values_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(configuration))))
-	defer C.free(unsafe.Pointer(configuration_Values_CArray))
+	configuration_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Keys_CArray_ptr))
+	configuration_Keys_CArray := unsafe.Slice(configuration_Keys_CArray_ptr, len(configuration))
+	configuration_Values_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(configuration))))
+	defer C.free(unsafe.Pointer(configuration_Values_CArray_ptr))
+	configuration_Values_CArray := unsafe.Slice(configuration_Values_CArray_ptr, len(configuration))
 	configuration_ctr := 0
 	for configuration_k, configuration_v := range configuration {
 		configuration_Keys_CArray[configuration_ctr] = (C.int)(configuration_k)
-		configuration_v_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(configuration_v))))
-		defer C.free(unsafe.Pointer(configuration_v_Keys_CArray))
-		configuration_v_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(configuration_v))))
-		defer C.free(unsafe.Pointer(configuration_v_Values_CArray))
+		configuration_v_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(configuration_v))))
+		defer C.free(unsafe.Pointer(configuration_v_Keys_CArray_ptr))
+		configuration_v_Keys_CArray := unsafe.Slice(configuration_v_Keys_CArray_ptr, len(configuration_v))
+		configuration_v_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(configuration_v))))
+		defer C.free(unsafe.Pointer(configuration_v_Values_CArray_ptr))
+		configuration_v_Values_CArray := unsafe.Slice(configuration_v_Values_CArray_ptr, len(configuration_v))
 		configuration_v_ctr := 0
 		for configuration_v_k, configuration_v_v := range configuration_v {
 			configuration_v_Keys_CArray[configuration_v_ctr] = (C.int)(configuration_v_k)
@@ -1070,16 +1089,16 @@ func (this *QXYSeries) PointsConfigurationChanged(configuration map[int]map[QXYS
 		}
 		configuration_v_mm := C.struct_miqt_map{
 			len:    C.size_t(len(configuration_v)),
-			keys:   unsafe.Pointer(configuration_v_Keys_CArray),
-			values: unsafe.Pointer(configuration_v_Values_CArray),
+			keys:   unsafe.Pointer(configuration_v_Keys_CArray_ptr),
+			values: unsafe.Pointer(configuration_v_Values_CArray_ptr),
 		}
 		configuration_Values_CArray[configuration_ctr] = configuration_v_mm
 		configuration_ctr++
 	}
 	configuration_mm := C.struct_miqt_map{
 		len:    C.size_t(len(configuration)),
-		keys:   unsafe.Pointer(configuration_Keys_CArray),
-		values: unsafe.Pointer(configuration_Values_CArray),
+		keys:   unsafe.Pointer(configuration_Keys_CArray_ptr),
+		values: unsafe.Pointer(configuration_Values_CArray_ptr),
 	}
 	C.QXYSeries_pointsConfigurationChanged(this.h, configuration_mm)
 }
@@ -1097,15 +1116,15 @@ func miqt_exec_callback_QXYSeries_pointsConfigurationChanged(cb C.intptr_t, conf
 	// Convert all CABI parameters to Go parameters
 	var configuration_mm C.struct_miqt_map = configuration
 	configuration_ret := make(map[int]map[QXYSeries__PointConfiguration]qt6.QVariant, int(configuration_mm.len))
-	configuration_Keys := (*[0xffff]C.int)(unsafe.Pointer(configuration_mm.keys))
-	configuration_Values := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(configuration_mm.values))
+	configuration_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(configuration_mm.keys)), int(configuration_mm.len))
+	configuration_Values := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(configuration_mm.values)), int(configuration_mm.len))
 	for i := 0; i < int(configuration_mm.len); i++ {
 		configuration_entry_Key := (int)(configuration_Keys[i])
 
 		var configuration_hashval_mm C.struct_miqt_map = configuration_Values[i]
 		configuration_hashval_ret := make(map[QXYSeries__PointConfiguration]qt6.QVariant, int(configuration_hashval_mm.len))
-		configuration_hashval_Keys := (*[0xffff]C.int)(unsafe.Pointer(configuration_hashval_mm.keys))
-		configuration_hashval_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(configuration_hashval_mm.values))
+		configuration_hashval_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(configuration_hashval_mm.keys)), int(configuration_hashval_mm.len))
+		configuration_hashval_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(configuration_hashval_mm.values)), int(configuration_hashval_mm.len))
 		for i := 0; i < int(configuration_hashval_mm.len); i++ {
 			configuration_hashval_entry_Key := (QXYSeries__PointConfiguration)(configuration_hashval_Keys[i])
 
@@ -1183,12 +1202,13 @@ func (this *QXYSeries) SetBestFitLineVisibleWithVisible(visible bool) {
 }
 
 func (this *QXYSeries) ColorBy2(sourceData []float64, gradient *qt6.QLinearGradient) {
-	sourceData_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(sourceData))))
-	defer C.free(unsafe.Pointer(sourceData_CArray))
+	sourceData_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(sourceData))))
+	defer C.free(unsafe.Pointer(sourceData_CArray_ptr))
+	sourceData_CArray := unsafe.Slice(sourceData_CArray_ptr, len(sourceData))
 	for i := range sourceData {
 		sourceData_CArray[i] = (C.double)(sourceData[i])
 	}
-	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray)}
+	sourceData_ma := C.struct_miqt_array{len: C.size_t(len(sourceData)), data: unsafe.Pointer(sourceData_CArray_ptr)}
 	C.QXYSeries_colorBy2(this.h, sourceData_ma, (*C.QLinearGradient)(gradient.UnsafePointer()))
 }
 
@@ -1197,11 +1217,15 @@ func (this *QXYSeries) Delete() {
 	C.QXYSeries_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXYSeries) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXYSeries) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXYSeries{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXYSeries) {
+		C.QXYSeries_delete(gc[0])
 	})
 }

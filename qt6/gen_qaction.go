@@ -42,7 +42,8 @@ const (
 )
 
 type QAction struct {
-	h *C.QAction
+	h  *C.QAction
+	gc *[1]*C.QAction
 	*QObject
 }
 
@@ -151,7 +152,7 @@ func QAction_Tr(s string) string {
 func (this *QAction) AssociatedObjects() []*QObject {
 	var _ma C.struct_miqt_array = C.QAction_associatedObjects(this.h)
 	_ret := make([]*QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQObject(_outCast[i])
 	}
@@ -278,12 +279,13 @@ func (this *QAction) Shortcut() *QKeySequence {
 }
 
 func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
-	shortcuts_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(shortcuts))))
-	defer C.free(unsafe.Pointer(shortcuts_CArray))
+	shortcuts_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(shortcuts))))
+	defer C.free(unsafe.Pointer(shortcuts_CArray_ptr))
+	shortcuts_CArray := unsafe.Slice(shortcuts_CArray_ptr, len(shortcuts))
 	for i := range shortcuts {
 		shortcuts_CArray[i] = shortcuts[i].cPointer()
 	}
-	shortcuts_ma := C.struct_miqt_array{len: C.size_t(len(shortcuts)), data: unsafe.Pointer(shortcuts_CArray)}
+	shortcuts_ma := C.struct_miqt_array{len: C.size_t(len(shortcuts)), data: unsafe.Pointer(shortcuts_CArray_ptr)}
 	C.QAction_setShortcuts(this.h, shortcuts_ma)
 }
 
@@ -294,7 +296,7 @@ func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardK
 func (this *QAction) Shortcuts() []QKeySequence {
 	var _ma C.struct_miqt_array = C.QAction_shortcuts(this.h)
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QKeySequence)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -848,11 +850,15 @@ func (this *QAction) Delete() {
 	C.QAction_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAction) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAction) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAction{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAction) {
+		C.QAction_delete(gc[0])
 	})
 }

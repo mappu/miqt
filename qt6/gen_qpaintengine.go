@@ -104,7 +104,8 @@ const (
 )
 
 type QTextItem struct {
-	h *C.QTextItem
+	h  *C.QTextItem
+	gc *[1]*C.QTextItem
 }
 
 func (this *QTextItem) cPointer() *C.QTextItem {
@@ -169,17 +170,22 @@ func (this *QTextItem) Delete() {
 	C.QTextItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextItem) {
+		C.QTextItem_delete(gc[0])
 	})
 }
 
 type QPaintEngine struct {
-	h *C.QPaintEngine
+	h  *C.QPaintEngine
+	gc *[1]*C.QPaintEngine
 }
 
 func (this *QPaintEngine) cPointer() *C.QPaintEngine {
@@ -982,17 +988,22 @@ func (this *QPaintEngine) Delete() {
 	C.QPaintEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPaintEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPaintEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPaintEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEngine) {
+		C.QPaintEngine_delete(gc[0])
 	})
 }
 
 type QPaintEngineState struct {
-	h *C.QPaintEngineState
+	h  *C.QPaintEngineState
+	gc *[1]*C.QPaintEngineState
 }
 
 func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {
@@ -1122,11 +1133,15 @@ func (this *QPaintEngineState) Delete() {
 	C.QPaintEngineState_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPaintEngineState) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPaintEngineState) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPaintEngineState{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEngineState) {
+		C.QPaintEngineState_delete(gc[0])
 	})
 }

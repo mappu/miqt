@@ -37,7 +37,8 @@ const (
 )
 
 type QSslCertificate struct {
-	h *C.QSslCertificate
+	h  *C.QSslCertificate
+	gc *[1]*C.QSslCertificate
 }
 
 func (this *QSslCertificate) cPointer() *C.QSslCertificate {
@@ -174,7 +175,7 @@ func (this *QSslCertificate) Digest() []byte {
 func (this *QSslCertificate) IssuerInfo(info QSslCertificate__SubjectInfo) []string {
 	var _ma C.struct_miqt_array = C.QSslCertificate_issuerInfo(this.h, (C.int)(info))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -194,7 +195,7 @@ func (this *QSslCertificate) IssuerInfoWithAttribute(attribute []byte) []string 
 	attribute_alias.len = C.size_t(len(attribute))
 	var _ma C.struct_miqt_array = C.QSslCertificate_issuerInfoWithAttribute(this.h, attribute_alias)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -207,7 +208,7 @@ func (this *QSslCertificate) IssuerInfoWithAttribute(attribute []byte) []string 
 func (this *QSslCertificate) SubjectInfo(info QSslCertificate__SubjectInfo) []string {
 	var _ma C.struct_miqt_array = C.QSslCertificate_subjectInfo(this.h, (C.int)(info))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -227,7 +228,7 @@ func (this *QSslCertificate) SubjectInfoWithAttribute(attribute []byte) []string
 	attribute_alias.len = C.size_t(len(attribute))
 	var _ma C.struct_miqt_array = C.QSslCertificate_subjectInfoWithAttribute(this.h, attribute_alias)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -254,7 +255,7 @@ func (this *QSslCertificate) SubjectDisplayName() string {
 func (this *QSslCertificate) SubjectInfoAttributes() [][]byte {
 	var _ma C.struct_miqt_array = C.QSslCertificate_subjectInfoAttributes(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -267,7 +268,7 @@ func (this *QSslCertificate) SubjectInfoAttributes() [][]byte {
 func (this *QSslCertificate) IssuerInfoAttributes() [][]byte {
 	var _ma C.struct_miqt_array = C.QSslCertificate_issuerInfoAttributes(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -298,7 +299,7 @@ func (this *QSslCertificate) PublicKey() *QSslKey {
 func (this *QSslCertificate) Extensions() []QSslCertificateExtension {
 	var _ma C.struct_miqt_array = C.QSslCertificate_extensions(this.h)
 	_ret := make([]QSslCertificateExtension, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificateExtension)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificateExtension)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificateExtension(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -335,7 +336,7 @@ func QSslCertificate_FromPath(path string) []QSslCertificate {
 	defer C.free(unsafe.Pointer(path_ms.data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromPath(path_ms)
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -347,7 +348,7 @@ func QSslCertificate_FromPath(path string) []QSslCertificate {
 func QSslCertificate_FromDevice(device *qt6.QIODevice) []QSslCertificate {
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromDevice((*C.QIODevice)(device.UnsafePointer()))
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -366,7 +367,7 @@ func QSslCertificate_FromData(data []byte) []QSslCertificate {
 	data_alias.len = C.size_t(len(data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromData(data_alias)
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -376,15 +377,16 @@ func QSslCertificate_FromData(data []byte) []QSslCertificate {
 }
 
 func QSslCertificate_Verify(certificateChain []QSslCertificate) []QSslError {
-	certificateChain_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificateChain))))
-	defer C.free(unsafe.Pointer(certificateChain_CArray))
+	certificateChain_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificateChain))))
+	defer C.free(unsafe.Pointer(certificateChain_CArray_ptr))
+	certificateChain_CArray := unsafe.Slice(certificateChain_CArray_ptr, len(certificateChain))
 	for i := range certificateChain {
 		certificateChain_CArray[i] = certificateChain[i].cPointer()
 	}
-	certificateChain_ma := C.struct_miqt_array{len: C.size_t(len(certificateChain)), data: unsafe.Pointer(certificateChain_CArray)}
+	certificateChain_ma := C.struct_miqt_array{len: C.size_t(len(certificateChain)), data: unsafe.Pointer(certificateChain_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QSslCertificate_verify(certificateChain_ma)
 	_ret := make([]QSslError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -415,7 +417,7 @@ func QSslCertificate_FromPath2(path string, format QSsl__EncodingFormat) []QSslC
 	defer C.free(unsafe.Pointer(path_ms.data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromPath2(path_ms, (C.int)(format))
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -431,7 +433,7 @@ func QSslCertificate_FromPath3(path string, format QSsl__EncodingFormat, syntax 
 	defer C.free(unsafe.Pointer(path_ms.data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromPath3(path_ms, (C.int)(format), (C.int)(syntax))
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -443,7 +445,7 @@ func QSslCertificate_FromPath3(path string, format QSsl__EncodingFormat, syntax 
 func QSslCertificate_FromDevice2(device *qt6.QIODevice, format QSsl__EncodingFormat) []QSslCertificate {
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromDevice2((*C.QIODevice)(device.UnsafePointer()), (C.int)(format))
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -462,7 +464,7 @@ func QSslCertificate_FromData2(data []byte, format QSsl__EncodingFormat) []QSslC
 	data_alias.len = C.size_t(len(data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromData2(data_alias, (C.int)(format))
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -472,19 +474,20 @@ func QSslCertificate_FromData2(data []byte, format QSsl__EncodingFormat) []QSslC
 }
 
 func QSslCertificate_Verify2(certificateChain []QSslCertificate, hostName string) []QSslError {
-	certificateChain_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificateChain))))
-	defer C.free(unsafe.Pointer(certificateChain_CArray))
+	certificateChain_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificateChain))))
+	defer C.free(unsafe.Pointer(certificateChain_CArray_ptr))
+	certificateChain_CArray := unsafe.Slice(certificateChain_CArray_ptr, len(certificateChain))
 	for i := range certificateChain {
 		certificateChain_CArray[i] = certificateChain[i].cPointer()
 	}
-	certificateChain_ma := C.struct_miqt_array{len: C.size_t(len(certificateChain)), data: unsafe.Pointer(certificateChain_CArray)}
+	certificateChain_ma := C.struct_miqt_array{len: C.size_t(len(certificateChain)), data: unsafe.Pointer(certificateChain_CArray_ptr)}
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_verify2(certificateChain_ma, hostName_ms)
 	_ret := make([]QSslError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -494,22 +497,24 @@ func QSslCertificate_Verify2(certificateChain []QSslCertificate, hostName string
 }
 
 func QSslCertificate_ImportPkcs122(device *qt6.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate) bool {
-	caCertificates_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
-	defer C.free(unsafe.Pointer(caCertificates_CArray))
+	caCertificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
+	defer C.free(unsafe.Pointer(caCertificates_CArray_ptr))
+	caCertificates_CArray := unsafe.Slice(caCertificates_CArray_ptr, len(caCertificates))
 	for i := range caCertificates {
 		caCertificates_CArray[i] = caCertificates[i].cPointer()
 	}
-	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray)}
+	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray_ptr)}
 	return (bool)(C.QSslCertificate_importPkcs122((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma))
 }
 
 func QSslCertificate_ImportPkcs123(device *qt6.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate, passPhrase []byte) bool {
-	caCertificates_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
-	defer C.free(unsafe.Pointer(caCertificates_CArray))
+	caCertificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
+	defer C.free(unsafe.Pointer(caCertificates_CArray_ptr))
+	caCertificates_CArray := unsafe.Slice(caCertificates_CArray_ptr, len(caCertificates))
 	for i := range caCertificates {
 		caCertificates_CArray[i] = caCertificates[i].cPointer()
 	}
-	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray)}
+	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray_ptr)}
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -525,11 +530,15 @@ func (this *QSslCertificate) Delete() {
 	C.QSslCertificate_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSslCertificate) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSslCertificate) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSslCertificate{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslCertificate) {
+		C.QSslCertificate_delete(gc[0])
 	})
 }

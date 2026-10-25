@@ -15,7 +15,8 @@ import (
 )
 
 type QPdfDestination struct {
-	h *C.QPdfDestination
+	h  *C.QPdfDestination
+	gc *[1]*C.QPdfDestination
 }
 
 func (this *QPdfDestination) cPointer() *C.QPdfDestination {
@@ -83,11 +84,15 @@ func (this *QPdfDestination) Delete() {
 	C.QPdfDestination_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPdfDestination) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPdfDestination) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPdfDestination{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfDestination) {
+		C.QPdfDestination_delete(gc[0])
 	})
 }

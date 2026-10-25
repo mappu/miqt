@@ -31,7 +31,8 @@ const (
 )
 
 type QItemSelectionRange struct {
-	h *C.QItemSelectionRange
+	h  *C.QItemSelectionRange
+	gc *[1]*C.QItemSelectionRange
 }
 
 func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
@@ -169,7 +170,7 @@ func (this *QItemSelectionRange) IsEmpty() bool {
 func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionRange_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -187,17 +188,22 @@ func (this *QItemSelectionRange) Delete() {
 	C.QItemSelectionRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QItemSelectionRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *QItemSelectionRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QItemSelectionRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelectionRange) {
+		C.QItemSelectionRange_delete(gc[0])
 	})
 }
 
 type QItemSelectionModel struct {
-	h *C.QItemSelectionModel
+	h  *C.QItemSelectionModel
+	gc *[1]*C.QItemSelectionModel
 	*QObject
 }
 
@@ -302,7 +308,7 @@ func (this *QItemSelectionModel) HasSelection() bool {
 func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedIndexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -314,7 +320,7 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRows(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -326,7 +332,7 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumns(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -530,7 +536,7 @@ func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *
 func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRowsWithColumn(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -542,7 +548,7 @@ func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelInde
 func (this *QItemSelectionModel) SelectedColumnsWithRow(row int) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumnsWithRow(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -967,17 +973,22 @@ func (this *QItemSelectionModel) Delete() {
 	C.QItemSelectionModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QItemSelectionModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QItemSelectionModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QItemSelectionModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelectionModel) {
+		C.QItemSelectionModel_delete(gc[0])
 	})
 }
 
 type QItemSelection struct {
-	h *C.QItemSelection
+	h  *C.QItemSelection
+	gc *[1]*C.QItemSelection
 	/* Also inherits unprojectable QList<QItemSelectionRange> */
 
 }
@@ -1039,7 +1050,7 @@ func (this *QItemSelection) Contains(index *QModelIndex) bool {
 func (this *QItemSelection) Indexes() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelection_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1061,11 +1072,15 @@ func (this *QItemSelection) Delete() {
 	C.QItemSelection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QItemSelection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QItemSelection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QItemSelection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelection) {
+		C.QItemSelection_delete(gc[0])
 	})
 }

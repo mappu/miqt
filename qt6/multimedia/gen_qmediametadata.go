@@ -48,7 +48,8 @@ const (
 )
 
 type QMediaMetaData struct {
-	h *C.QMediaMetaData
+	h  *C.QMediaMetaData
+	gc *[1]*C.QMediaMetaData
 }
 
 func (this *QMediaMetaData) cPointer() *C.QMediaMetaData {
@@ -108,7 +109,7 @@ func (this *QMediaMetaData) Remove(k QMediaMetaData__Key) {
 func (this *QMediaMetaData) Keys() []QMediaMetaData__Key {
 	var _ma C.struct_miqt_array = C.QMediaMetaData_keys(this.h)
 	_ret := make([]QMediaMetaData__Key, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QMediaMetaData__Key)(_outCast[i])
 	}
@@ -150,11 +151,15 @@ func (this *QMediaMetaData) Delete() {
 	C.QMediaMetaData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaMetaData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaMetaData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaMetaData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaMetaData) {
+		C.QMediaMetaData_delete(gc[0])
 	})
 }

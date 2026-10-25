@@ -15,7 +15,8 @@ import (
 )
 
 type QVariantAnimation struct {
-	h *C.QVariantAnimation
+	h  *C.QVariantAnimation
+	gc *[1]*C.QVariantAnimation
 	*QAbstractAnimation
 }
 
@@ -129,7 +130,7 @@ func (this *QVariantAnimation) KeyValues() []struct {
 		First  float64
 		Second QVariant
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _vv_mm C.struct_miqt_map = _outCast[i]
 		_vv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_vv_mm.keys))
@@ -152,8 +153,9 @@ func (this *QVariantAnimation) SetKeyValues(values []struct {
 	First  float64
 	Second QVariant
 }) {
-	values_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_CArray))
+	values_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_CArray_ptr))
+	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
 	for i := range values {
 		values_i_First_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8)))
 		defer C.free(unsafe.Pointer(values_i_First_CArray))
@@ -168,7 +170,7 @@ func (this *QVariantAnimation) SetKeyValues(values []struct {
 		}
 		values_CArray[i] = values_i_pair
 	}
-	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
+	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray_ptr)}
 	C.QVariantAnimation_setKeyValues(this.h, values_ma)
 }
 
@@ -676,11 +678,15 @@ func (this *QVariantAnimation) Delete() {
 	C.QVariantAnimation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVariantAnimation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVariantAnimation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVariantAnimation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariantAnimation) {
+		C.QVariantAnimation_delete(gc[0])
 	})
 }

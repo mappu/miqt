@@ -15,7 +15,8 @@ import (
 )
 
 type QwtTransform struct {
-	h *C.QwtTransform
+	h  *C.QwtTransform
+	gc *[1]*C.QwtTransform
 }
 
 func (this *QwtTransform) cPointer() *C.QwtTransform {
@@ -174,17 +175,22 @@ func (this *QwtTransform) Delete() {
 	C.QwtTransform_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtTransform) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtTransform) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtTransform{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTransform) {
+		C.QwtTransform_delete(gc[0])
 	})
 }
 
 type QwtNullTransform struct {
-	h *C.QwtNullTransform
+	h  *C.QwtNullTransform
+	gc *[1]*C.QwtNullTransform
 	*QwtTransform
 }
 
@@ -361,17 +367,22 @@ func (this *QwtNullTransform) Delete() {
 	C.QwtNullTransform_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtNullTransform) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtNullTransform) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtNullTransform{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtNullTransform) {
+		C.QwtNullTransform_delete(gc[0])
 	})
 }
 
 type QwtLogTransform struct {
-	h *C.QwtLogTransform
+	h  *C.QwtLogTransform
+	gc *[1]*C.QwtLogTransform
 	*QwtTransform
 }
 
@@ -552,17 +563,22 @@ func (this *QwtLogTransform) Delete() {
 	C.QwtLogTransform_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLogTransform) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLogTransform) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLogTransform{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLogTransform) {
+		C.QwtLogTransform_delete(gc[0])
 	})
 }
 
 type QwtPowerTransform struct {
-	h *C.QwtPowerTransform
+	h  *C.QwtPowerTransform
+	gc *[1]*C.QwtPowerTransform
 	*QwtTransform
 }
 
@@ -735,11 +751,15 @@ func (this *QwtPowerTransform) Delete() {
 	C.QwtPowerTransform_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPowerTransform) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPowerTransform) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPowerTransform{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPowerTransform) {
+		C.QwtPowerTransform_delete(gc[0])
 	})
 }

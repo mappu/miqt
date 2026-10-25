@@ -59,7 +59,8 @@ const (
 )
 
 type QPdfDocument struct {
-	h *C.QPdfDocument
+	h  *C.QPdfDocument
+	gc *[1]*C.QPdfDocument
 	*qt6.QObject
 }
 
@@ -585,11 +586,15 @@ func (this *QPdfDocument) Delete() {
 	C.QPdfDocument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPdfDocument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPdfDocument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPdfDocument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfDocument) {
+		C.QPdfDocument_delete(gc[0])
 	})
 }

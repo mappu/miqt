@@ -15,7 +15,8 @@ import (
 )
 
 type QAudioEncoderSettingsControl struct {
-	h *C.QAudioEncoderSettingsControl
+	h  *C.QAudioEncoderSettingsControl
+	gc *[1]*C.QAudioEncoderSettingsControl
 	*QMediaControl
 }
 
@@ -81,7 +82,7 @@ func QAudioEncoderSettingsControl_TrUtf8(s string) string {
 func (this *QAudioEncoderSettingsControl) SupportedAudioCodecs() []string {
 	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedAudioCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -105,7 +106,7 @@ func (this *QAudioEncoderSettingsControl) CodecDescription(codecName string) str
 func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioEncoderSettings, continuous *bool) []int {
 	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedSampleRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -171,11 +172,15 @@ func (this *QAudioEncoderSettingsControl) Delete() {
 	C.QAudioEncoderSettingsControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioEncoderSettingsControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioEncoderSettingsControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioEncoderSettingsControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioEncoderSettingsControl) {
+		C.QAudioEncoderSettingsControl_delete(gc[0])
 	})
 }

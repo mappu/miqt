@@ -78,7 +78,7 @@ func (this *QAccessibleInterface) Relations(match QAccessible__RelationFlag) []s
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_lv_mm.keys))
@@ -203,7 +203,8 @@ func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceTyp
 }
 
 type QAccessibleTextInterface struct {
-	h *C.QAccessibleTextInterface
+	h  *C.QAccessibleTextInterface
+	gc *[1]*C.QAccessibleTextInterface
 }
 
 func (this *QAccessibleTextInterface) cPointer() *C.QAccessibleTextInterface {
@@ -320,17 +321,22 @@ func (this *QAccessibleTextInterface) Delete() {
 	C.QAccessibleTextInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextInterface) {
+		C.QAccessibleTextInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleEditableTextInterface struct {
-	h *C.QAccessibleEditableTextInterface
+	h  *C.QAccessibleEditableTextInterface
+	gc *[1]*C.QAccessibleEditableTextInterface
 }
 
 func (this *QAccessibleEditableTextInterface) cPointer() *C.QAccessibleEditableTextInterface {
@@ -386,17 +392,22 @@ func (this *QAccessibleEditableTextInterface) Delete() {
 	C.QAccessibleEditableTextInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleEditableTextInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleEditableTextInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleEditableTextInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleEditableTextInterface) {
+		C.QAccessibleEditableTextInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleValueInterface struct {
-	h *C.QAccessibleValueInterface
+	h  *C.QAccessibleValueInterface
+	gc *[1]*C.QAccessibleValueInterface
 }
 
 func (this *QAccessibleValueInterface) cPointer() *C.QAccessibleValueInterface {
@@ -460,17 +471,22 @@ func (this *QAccessibleValueInterface) Delete() {
 	C.QAccessibleValueInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleValueInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleValueInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleValueInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleValueInterface) {
+		C.QAccessibleValueInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleTableCellInterface struct {
-	h *C.QAccessibleTableCellInterface
+	h  *C.QAccessibleTableCellInterface
+	gc *[1]*C.QAccessibleTableCellInterface
 }
 
 func (this *QAccessibleTableCellInterface) cPointer() *C.QAccessibleTableCellInterface {
@@ -508,7 +524,7 @@ func (this *QAccessibleTableCellInterface) IsSelected() bool {
 func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInterface {
 	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_columnHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAccessibleInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAccessibleInterface(_outCast[i])
 	}
@@ -518,7 +534,7 @@ func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInt
 func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterface {
 	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_rowHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAccessibleInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAccessibleInterface(_outCast[i])
 	}
@@ -550,17 +566,22 @@ func (this *QAccessibleTableCellInterface) Delete() {
 	C.QAccessibleTableCellInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTableCellInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTableCellInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTableCellInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTableCellInterface) {
+		C.QAccessibleTableCellInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleTableInterface struct {
-	h *C.QAccessibleTableInterface
+	h  *C.QAccessibleTableInterface
+	gc *[1]*C.QAccessibleTableInterface
 }
 
 func (this *QAccessibleTableInterface) cPointer() *C.QAccessibleTableInterface {
@@ -610,7 +631,7 @@ func (this *QAccessibleTableInterface) SelectedCellCount() int {
 func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
 	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAccessibleInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAccessibleInterface(_outCast[i])
 	}
@@ -650,7 +671,7 @@ func (this *QAccessibleTableInterface) RowCount() int {
 func (this *QAccessibleTableInterface) SelectedColumns() []int {
 	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedColumns(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -660,7 +681,7 @@ func (this *QAccessibleTableInterface) SelectedColumns() []int {
 func (this *QAccessibleTableInterface) SelectedRows() []int {
 	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedRows(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -700,17 +721,22 @@ func (this *QAccessibleTableInterface) Delete() {
 	C.QAccessibleTableInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTableInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTableInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTableInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTableInterface) {
+		C.QAccessibleTableInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleActionInterface struct {
-	h *C.QAccessibleActionInterface
+	h  *C.QAccessibleActionInterface
+	gc *[1]*C.QAccessibleActionInterface
 }
 
 func (this *QAccessibleActionInterface) cPointer() *C.QAccessibleActionInterface {
@@ -753,7 +779,7 @@ func QAccessibleActionInterface_Tr(sourceText string) string {
 func (this *QAccessibleActionInterface) ActionNames() []string {
 	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_actionNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -800,7 +826,7 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 	defer C.free(unsafe.Pointer(actionName_ms.data))
 	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_keyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -921,17 +947,22 @@ func (this *QAccessibleActionInterface) Delete() {
 	C.QAccessibleActionInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleActionInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleActionInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleActionInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleActionInterface) {
+		C.QAccessibleActionInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleImageInterface struct {
-	h *C.QAccessibleImageInterface
+	h  *C.QAccessibleImageInterface
+	gc *[1]*C.QAccessibleImageInterface
 }
 
 func (this *QAccessibleImageInterface) cPointer() *C.QAccessibleImageInterface {
@@ -986,17 +1017,22 @@ func (this *QAccessibleImageInterface) Delete() {
 	C.QAccessibleImageInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleImageInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleImageInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleImageInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleImageInterface) {
+		C.QAccessibleImageInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleHyperlinkInterface struct {
-	h *C.QAccessibleHyperlinkInterface
+	h  *C.QAccessibleHyperlinkInterface
+	gc *[1]*C.QAccessibleHyperlinkInterface
 }
 
 func (this *QAccessibleHyperlinkInterface) cPointer() *C.QAccessibleHyperlinkInterface {
@@ -1058,17 +1094,22 @@ func (this *QAccessibleHyperlinkInterface) Delete() {
 	C.QAccessibleHyperlinkInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleHyperlinkInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleHyperlinkInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleHyperlinkInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleHyperlinkInterface) {
+		C.QAccessibleHyperlinkInterface_delete(gc[0])
 	})
 }
 
 type QAccessibleEvent struct {
-	h *C.QAccessibleEvent
+	h  *C.QAccessibleEvent
+	gc *[1]*C.QAccessibleEvent
 }
 
 func (this *QAccessibleEvent) cPointer() *C.QAccessibleEvent {
@@ -1165,17 +1206,22 @@ func (this *QAccessibleEvent) Delete() {
 	C.QAccessibleEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleEvent) {
+		C.QAccessibleEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleStateChangeEvent struct {
-	h *C.QAccessibleStateChangeEvent
+	h  *C.QAccessibleStateChangeEvent
+	gc *[1]*C.QAccessibleStateChangeEvent
 	*QAccessibleEvent
 }
 
@@ -1258,17 +1304,22 @@ func (this *QAccessibleStateChangeEvent) Delete() {
 	C.QAccessibleStateChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleStateChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleStateChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleStateChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleStateChangeEvent) {
+		C.QAccessibleStateChangeEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTextCursorEvent struct {
-	h *C.QAccessibleTextCursorEvent
+	h  *C.QAccessibleTextCursorEvent
+	gc *[1]*C.QAccessibleTextCursorEvent
 	*QAccessibleEvent
 }
 
@@ -1353,17 +1404,22 @@ func (this *QAccessibleTextCursorEvent) Delete() {
 	C.QAccessibleTextCursorEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextCursorEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextCursorEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextCursorEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextCursorEvent) {
+		C.QAccessibleTextCursorEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTextSelectionEvent struct {
-	h *C.QAccessibleTextSelectionEvent
+	h  *C.QAccessibleTextSelectionEvent
+	gc *[1]*C.QAccessibleTextSelectionEvent
 	*QAccessibleTextCursorEvent
 }
 
@@ -1452,17 +1508,22 @@ func (this *QAccessibleTextSelectionEvent) Delete() {
 	C.QAccessibleTextSelectionEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextSelectionEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextSelectionEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextSelectionEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextSelectionEvent) {
+		C.QAccessibleTextSelectionEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTextInsertEvent struct {
-	h *C.QAccessibleTextInsertEvent
+	h  *C.QAccessibleTextInsertEvent
+	gc *[1]*C.QAccessibleTextInsertEvent
 	*QAccessibleTextCursorEvent
 }
 
@@ -1558,17 +1619,22 @@ func (this *QAccessibleTextInsertEvent) Delete() {
 	C.QAccessibleTextInsertEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextInsertEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextInsertEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextInsertEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextInsertEvent) {
+		C.QAccessibleTextInsertEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTextRemoveEvent struct {
-	h *C.QAccessibleTextRemoveEvent
+	h  *C.QAccessibleTextRemoveEvent
+	gc *[1]*C.QAccessibleTextRemoveEvent
 	*QAccessibleTextCursorEvent
 }
 
@@ -1664,17 +1730,22 @@ func (this *QAccessibleTextRemoveEvent) Delete() {
 	C.QAccessibleTextRemoveEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextRemoveEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextRemoveEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextRemoveEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextRemoveEvent) {
+		C.QAccessibleTextRemoveEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTextUpdateEvent struct {
-	h *C.QAccessibleTextUpdateEvent
+	h  *C.QAccessibleTextUpdateEvent
+	gc *[1]*C.QAccessibleTextUpdateEvent
 	*QAccessibleTextCursorEvent
 }
 
@@ -1785,17 +1856,22 @@ func (this *QAccessibleTextUpdateEvent) Delete() {
 	C.QAccessibleTextUpdateEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTextUpdateEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTextUpdateEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTextUpdateEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTextUpdateEvent) {
+		C.QAccessibleTextUpdateEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleValueChangeEvent struct {
-	h *C.QAccessibleValueChangeEvent
+	h  *C.QAccessibleValueChangeEvent
+	gc *[1]*C.QAccessibleValueChangeEvent
 	*QAccessibleEvent
 }
 
@@ -1882,17 +1958,22 @@ func (this *QAccessibleValueChangeEvent) Delete() {
 	C.QAccessibleValueChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleValueChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleValueChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleValueChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleValueChangeEvent) {
+		C.QAccessibleValueChangeEvent_delete(gc[0])
 	})
 }
 
 type QAccessibleTableModelChangeEvent struct {
-	h *C.QAccessibleTableModelChangeEvent
+	h  *C.QAccessibleTableModelChangeEvent
+	gc *[1]*C.QAccessibleTableModelChangeEvent
 	*QAccessibleEvent
 }
 
@@ -2009,11 +2090,15 @@ func (this *QAccessibleTableModelChangeEvent) Delete() {
 	C.QAccessibleTableModelChangeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleTableModelChangeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleTableModelChangeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleTableModelChangeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleTableModelChangeEvent) {
+		C.QAccessibleTableModelChangeEvent_delete(gc[0])
 	})
 }

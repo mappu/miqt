@@ -124,8 +124,9 @@ func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
-	restartCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(restartCommand))))
-	defer C.free(unsafe.Pointer(restartCommand_CArray))
+	restartCommand_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(restartCommand))))
+	defer C.free(unsafe.Pointer(restartCommand_CArray_ptr))
+	restartCommand_CArray := unsafe.Slice(restartCommand_CArray_ptr, len(restartCommand))
 	for i := range restartCommand {
 		restartCommand_i_ms := C.struct_miqt_string{}
 		restartCommand_i_ms.data = C.CString(restartCommand[i])
@@ -133,14 +134,14 @@ func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 		defer C.free(unsafe.Pointer(restartCommand_i_ms.data))
 		restartCommand_CArray[i] = restartCommand_i_ms
 	}
-	restartCommand_ma := C.struct_miqt_array{len: C.size_t(len(restartCommand)), data: unsafe.Pointer(restartCommand_CArray)}
+	restartCommand_ma := C.struct_miqt_array{len: C.size_t(len(restartCommand)), data: unsafe.Pointer(restartCommand_CArray_ptr)}
 	C.QSessionManager_setRestartCommand(this.h, restartCommand_ma)
 }
 
 func (this *QSessionManager) RestartCommand() []string {
 	var _ma C.struct_miqt_array = C.QSessionManager_restartCommand(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -151,8 +152,9 @@ func (this *QSessionManager) RestartCommand() []string {
 }
 
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
-	discardCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(discardCommand))))
-	defer C.free(unsafe.Pointer(discardCommand_CArray))
+	discardCommand_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(discardCommand))))
+	defer C.free(unsafe.Pointer(discardCommand_CArray_ptr))
+	discardCommand_CArray := unsafe.Slice(discardCommand_CArray_ptr, len(discardCommand))
 	for i := range discardCommand {
 		discardCommand_i_ms := C.struct_miqt_string{}
 		discardCommand_i_ms.data = C.CString(discardCommand[i])
@@ -160,14 +162,14 @@ func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 		defer C.free(unsafe.Pointer(discardCommand_i_ms.data))
 		discardCommand_CArray[i] = discardCommand_i_ms
 	}
-	discardCommand_ma := C.struct_miqt_array{len: C.size_t(len(discardCommand)), data: unsafe.Pointer(discardCommand_CArray)}
+	discardCommand_ma := C.struct_miqt_array{len: C.size_t(len(discardCommand)), data: unsafe.Pointer(discardCommand_CArray_ptr)}
 	C.QSessionManager_setDiscardCommand(this.h, discardCommand_ma)
 }
 
 func (this *QSessionManager) DiscardCommand() []string {
 	var _ma C.struct_miqt_array = C.QSessionManager_discardCommand(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -194,8 +196,9 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	value_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(value))))
-	defer C.free(unsafe.Pointer(value_CArray))
+	value_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(value))))
+	defer C.free(unsafe.Pointer(value_CArray_ptr))
+	value_CArray := unsafe.Slice(value_CArray_ptr, len(value))
 	for i := range value {
 		value_i_ms := C.struct_miqt_string{}
 		value_i_ms.data = C.CString(value[i])
@@ -203,7 +206,7 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 		defer C.free(unsafe.Pointer(value_i_ms.data))
 		value_CArray[i] = value_i_ms
 	}
-	value_ma := C.struct_miqt_array{len: C.size_t(len(value)), data: unsafe.Pointer(value_CArray)}
+	value_ma := C.struct_miqt_array{len: C.size_t(len(value)), data: unsafe.Pointer(value_CArray_ptr)}
 	C.QSessionManager_setManagerProperty2(this.h, name_ms, value_ma)
 }
 

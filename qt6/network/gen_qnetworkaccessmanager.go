@@ -28,7 +28,8 @@ const (
 )
 
 type QNetworkAccessManager struct {
-	h *C.QNetworkAccessManager
+	h  *C.QNetworkAccessManager
+	gc *[1]*C.QNetworkAccessManager
 	*qt6.QObject
 }
 
@@ -97,7 +98,7 @@ func QNetworkAccessManager_Tr(s string) string {
 func (this *QNetworkAccessManager) SupportedSchemes() []string {
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_supportedSchemes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -166,19 +167,20 @@ func (this *QNetworkAccessManager) IsStrictTransportSecurityStoreEnabled() bool 
 }
 
 func (this *QNetworkAccessManager) AddStrictTransportSecurityHosts(knownHosts []QHstsPolicy) {
-	knownHosts_CArray := (*[0xffff]*C.QHstsPolicy)(C.malloc(C.size_t(8 * len(knownHosts))))
-	defer C.free(unsafe.Pointer(knownHosts_CArray))
+	knownHosts_CArray_ptr := (**C.QHstsPolicy)(C.malloc(C.size_t(8 * len(knownHosts))))
+	defer C.free(unsafe.Pointer(knownHosts_CArray_ptr))
+	knownHosts_CArray := unsafe.Slice(knownHosts_CArray_ptr, len(knownHosts))
 	for i := range knownHosts {
 		knownHosts_CArray[i] = knownHosts[i].cPointer()
 	}
-	knownHosts_ma := C.struct_miqt_array{len: C.size_t(len(knownHosts)), data: unsafe.Pointer(knownHosts_CArray)}
+	knownHosts_ma := C.struct_miqt_array{len: C.size_t(len(knownHosts)), data: unsafe.Pointer(knownHosts_CArray_ptr)}
 	C.QNetworkAccessManager_addStrictTransportSecurityHosts(this.h, knownHosts_ma)
 }
 
 func (this *QNetworkAccessManager) StrictTransportSecurityHosts() []QHstsPolicy {
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_strictTransportSecurityHosts(this.h)
 	_ret := make([]QHstsPolicy, int(_ma.len))
-	_outCast := (*[0xffff]*C.QHstsPolicy)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QHstsPolicy)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQHstsPolicy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -414,12 +416,13 @@ func miqt_exec_callback_QNetworkAccessManager_encrypted(cb C.intptr_t, reply *C.
 }
 
 func (this *QNetworkAccessManager) SslErrors(reply *QNetworkReply, errors []QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QNetworkAccessManager_sslErrors(this.h, reply.cPointer(), errors_ma)
 }
 func (this *QNetworkAccessManager) OnSslErrors(slot func(reply *QNetworkReply, errors []QSslError)) {
@@ -438,7 +441,7 @@ func miqt_exec_callback_QNetworkAccessManager_sslErrors(cb C.intptr_t, reply *C.
 
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
-	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
+	errors_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(errors_ma.data)), int(errors_ma.len))
 	for i := 0; i < int(errors_ma.len); i++ {
 		errors_lv_goptr := newQSslError(errors_outCast[i])
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -546,7 +549,7 @@ func (this *QNetworkAccessManager) SupportedSchemesImplementation() []string {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_protectedbase_supportedSchemesImplementation(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -625,7 +628,7 @@ func (this *QNetworkAccessManager) callVirtualBase_SupportedSchemes() []string {
 
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_virtualbase_supportedSchemes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -650,14 +653,15 @@ func miqt_exec_callback_QNetworkAccessManager_supportedSchemes(self *C.QNetworkA
 	}
 
 	virtualReturn := gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_SupportedSchemes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -888,11 +892,15 @@ func (this *QNetworkAccessManager) Delete() {
 	C.QNetworkAccessManager_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkAccessManager) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkAccessManager) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkAccessManager{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkAccessManager) {
+		C.QNetworkAccessManager_delete(gc[0])
 	})
 }

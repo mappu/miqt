@@ -15,7 +15,8 @@ import (
 )
 
 type QGeoPath struct {
-	h *C.QGeoPath
+	h  *C.QGeoPath
+	gc *[1]*C.QGeoPath
 	*QGeoShape
 }
 
@@ -58,12 +59,13 @@ func NewQGeoPath() *QGeoPath {
 
 // NewQGeoPath2 constructs a new QGeoPath object.
 func NewQGeoPath2(path []QGeoCoordinate) *QGeoPath {
-	path_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = path[i].cPointer()
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 
 	return newQGeoPath(C.QGeoPath_new2(path_ma))
 }
@@ -82,12 +84,13 @@ func NewQGeoPath4(other *QGeoShape) *QGeoPath {
 
 // NewQGeoPath5 constructs a new QGeoPath object.
 func NewQGeoPath5(path []QGeoCoordinate, width *float64) *QGeoPath {
-	path_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = path[i].cPointer()
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 
 	return newQGeoPath(C.QGeoPath_new5(path_ma, (*C.double)(unsafe.Pointer(width))))
 }
@@ -105,19 +108,20 @@ func (this *QGeoPath) OperatorNotEqual(other *QGeoPath) bool {
 }
 
 func (this *QGeoPath) SetPath(path []QGeoCoordinate) {
-	path_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = path[i].cPointer()
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 	C.QGeoPath_setPath(this.h, path_ma)
 }
 
 func (this *QGeoPath) Path() []QGeoCoordinate {
 	var _ma C.struct_miqt_array = C.QGeoPath_path(this.h)
 	_ret := make([]QGeoCoordinate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGeoCoordinate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGeoCoordinate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGeoCoordinate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -131,19 +135,20 @@ func (this *QGeoPath) ClearPath() {
 }
 
 func (this *QGeoPath) SetVariantPath(path []qt.QVariant) {
-	path_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = (*C.QVariant)(path[i].UnsafePointer())
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 	C.QGeoPath_setVariantPath(this.h, path_ma)
 }
 
 func (this *QGeoPath) VariantPath() []qt.QVariant {
 	var _ma C.struct_miqt_array = C.QGeoPath_variantPath(this.h)
 	_ret := make([]qt.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -228,11 +233,15 @@ func (this *QGeoPath) Delete() {
 	C.QGeoPath_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoPath) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoPath) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoPath{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPath) {
+		C.QGeoPath_delete(gc[0])
 	})
 }

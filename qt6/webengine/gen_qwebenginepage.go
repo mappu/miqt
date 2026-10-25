@@ -153,7 +153,8 @@ const (
 )
 
 type QWebEnginePage struct {
-	h *C.QWebEnginePage
+	h  *C.QWebEnginePage
+	gc *[1]*C.QWebEnginePage
 	*qt6.QObject
 }
 
@@ -1491,8 +1492,9 @@ func miqt_exec_callback_QWebEnginePage_createWindow(self *C.QWebEnginePage, cb C
 }
 
 func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string {
-	oldFiles_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(oldFiles))))
-	defer C.free(unsafe.Pointer(oldFiles_CArray))
+	oldFiles_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(oldFiles))))
+	defer C.free(unsafe.Pointer(oldFiles_CArray_ptr))
+	oldFiles_CArray := unsafe.Slice(oldFiles_CArray_ptr, len(oldFiles))
 	for i := range oldFiles {
 		oldFiles_i_ms := C.struct_miqt_string{}
 		oldFiles_i_ms.data = C.CString(oldFiles[i])
@@ -1500,9 +1502,10 @@ func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__Fil
 		defer C.free(unsafe.Pointer(oldFiles_i_ms.data))
 		oldFiles_CArray[i] = oldFiles_i_ms
 	}
-	oldFiles_ma := C.struct_miqt_array{len: C.size_t(len(oldFiles)), data: unsafe.Pointer(oldFiles_CArray)}
-	acceptedMimeTypes_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(acceptedMimeTypes))))
-	defer C.free(unsafe.Pointer(acceptedMimeTypes_CArray))
+	oldFiles_ma := C.struct_miqt_array{len: C.size_t(len(oldFiles)), data: unsafe.Pointer(oldFiles_CArray_ptr)}
+	acceptedMimeTypes_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(acceptedMimeTypes))))
+	defer C.free(unsafe.Pointer(acceptedMimeTypes_CArray_ptr))
+	acceptedMimeTypes_CArray := unsafe.Slice(acceptedMimeTypes_CArray_ptr, len(acceptedMimeTypes))
 	for i := range acceptedMimeTypes {
 		acceptedMimeTypes_i_ms := C.struct_miqt_string{}
 		acceptedMimeTypes_i_ms.data = C.CString(acceptedMimeTypes[i])
@@ -1510,11 +1513,11 @@ func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__Fil
 		defer C.free(unsafe.Pointer(acceptedMimeTypes_i_ms.data))
 		acceptedMimeTypes_CArray[i] = acceptedMimeTypes_i_ms
 	}
-	acceptedMimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(acceptedMimeTypes)), data: unsafe.Pointer(acceptedMimeTypes_CArray)}
+	acceptedMimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(acceptedMimeTypes)), data: unsafe.Pointer(acceptedMimeTypes_CArray_ptr)}
 
 	var _ma C.struct_miqt_array = C.QWebEnginePage_virtualbase_chooseFiles(unsafe.Pointer(this.h), (C.int)(mode), oldFiles_ma, acceptedMimeTypes_ma)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1543,7 +1546,7 @@ func miqt_exec_callback_QWebEnginePage_chooseFiles(self *C.QWebEnginePage, cb C.
 
 	var oldFiles_ma C.struct_miqt_array = oldFiles
 	oldFiles_ret := make([]string, int(oldFiles_ma.len))
-	oldFiles_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(oldFiles_ma.data)) // hey ya
+	oldFiles_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(oldFiles_ma.data)), int(oldFiles_ma.len))
 	for i := 0; i < int(oldFiles_ma.len); i++ {
 		var oldFiles_lv_ms C.struct_miqt_string = oldFiles_outCast[i]
 		oldFiles_lv_ret := C.GoStringN(oldFiles_lv_ms.data, C.int(int64(oldFiles_lv_ms.len)))
@@ -1554,7 +1557,7 @@ func miqt_exec_callback_QWebEnginePage_chooseFiles(self *C.QWebEnginePage, cb C.
 
 	var acceptedMimeTypes_ma C.struct_miqt_array = acceptedMimeTypes
 	acceptedMimeTypes_ret := make([]string, int(acceptedMimeTypes_ma.len))
-	acceptedMimeTypes_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(acceptedMimeTypes_ma.data)) // hey ya
+	acceptedMimeTypes_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(acceptedMimeTypes_ma.data)), int(acceptedMimeTypes_ma.len))
 	for i := 0; i < int(acceptedMimeTypes_ma.len); i++ {
 		var acceptedMimeTypes_lv_ms C.struct_miqt_string = acceptedMimeTypes_outCast[i]
 		acceptedMimeTypes_lv_ret := C.GoStringN(acceptedMimeTypes_lv_ms.data, C.int(int64(acceptedMimeTypes_lv_ms.len)))
@@ -1564,14 +1567,15 @@ func miqt_exec_callback_QWebEnginePage_chooseFiles(self *C.QWebEnginePage, cb C.
 	slotval3 := acceptedMimeTypes_ret
 
 	virtualReturn := gofunc((&QWebEnginePage{h: self}).callVirtualBase_ChooseFiles, slotval1, slotval2, slotval3)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -1891,11 +1895,15 @@ func (this *QWebEnginePage) Delete() {
 	C.QWebEnginePage_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEnginePage) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEnginePage) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEnginePage{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEnginePage) {
+		C.QWebEnginePage_delete(gc[0])
 	})
 }

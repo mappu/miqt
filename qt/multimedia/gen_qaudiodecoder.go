@@ -33,7 +33,8 @@ const (
 )
 
 type QAudioDecoder struct {
-	h *C.QAudioDecoder
+	h  *C.QAudioDecoder
+	gc *[1]*C.QAudioDecoder
 	*QMediaObject
 }
 
@@ -418,8 +419,9 @@ func QAudioDecoder_HasSupport2(mimeType string, codecs []string) QMultimedia__Su
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	codecs_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
-	defer C.free(unsafe.Pointer(codecs_CArray))
+	codecs_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
+	defer C.free(unsafe.Pointer(codecs_CArray_ptr))
+	codecs_CArray := unsafe.Slice(codecs_CArray_ptr, len(codecs))
 	for i := range codecs {
 		codecs_i_ms := C.struct_miqt_string{}
 		codecs_i_ms.data = C.CString(codecs[i])
@@ -427,7 +429,7 @@ func QAudioDecoder_HasSupport2(mimeType string, codecs []string) QMultimedia__Su
 		defer C.free(unsafe.Pointer(codecs_i_ms.data))
 		codecs_CArray[i] = codecs_i_ms
 	}
-	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
+	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray_ptr)}
 	return (QMultimedia__SupportEstimate)(C.QAudioDecoder_hasSupport2(mimeType_ms, codecs_ma))
 }
 
@@ -849,11 +851,15 @@ func (this *QAudioDecoder) Delete() {
 	C.QAudioDecoder_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioDecoder) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioDecoder) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioDecoder{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioDecoder) {
+		C.QAudioDecoder_delete(gc[0])
 	})
 }

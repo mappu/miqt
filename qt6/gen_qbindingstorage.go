@@ -14,7 +14,8 @@ import (
 )
 
 type QBindingStatus struct {
-	h *C.QBindingStatus
+	h  *C.QBindingStatus
+	gc *[1]*C.QBindingStatus
 }
 
 func (this *QBindingStatus) cPointer() *C.QBindingStatus {
@@ -64,17 +65,22 @@ func (this *QBindingStatus) Delete() {
 	C.QBindingStatus_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBindingStatus) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBindingStatus) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBindingStatus{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBindingStatus) {
+		C.QBindingStatus_delete(gc[0])
 	})
 }
 
 type QBindingStorage struct {
-	h *C.QBindingStorage
+	h  *C.QBindingStorage
+	gc *[1]*C.QBindingStorage
 }
 
 func (this *QBindingStorage) cPointer() *C.QBindingStorage {
@@ -128,11 +134,15 @@ func (this *QBindingStorage) Delete() {
 	C.QBindingStorage_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBindingStorage) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBindingStorage) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBindingStorage{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBindingStorage) {
+		C.QBindingStorage_delete(gc[0])
 	})
 }

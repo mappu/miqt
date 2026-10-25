@@ -24,7 +24,8 @@ const (
 )
 
 type QwtScaleDiv struct {
-	h *C.QwtScaleDiv
+	h  *C.QwtScaleDiv
+	gc *[1]*C.QwtScaleDiv
 }
 
 func (this *QwtScaleDiv) cPointer() *C.QwtScaleDiv {
@@ -63,48 +64,53 @@ func NewQwtScaleDiv() *QwtScaleDiv {
 
 // NewQwtScaleDiv2 constructs a new QwtScaleDiv object.
 func NewQwtScaleDiv2(param1 *QwtInterval, param2 []float64) *QwtScaleDiv {
-	param2_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = (C.double)(param2[i])
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 
 	return newQwtScaleDiv(C.QwtScaleDiv_new2(param1.cPointer(), param2_ma))
 }
 
 // NewQwtScaleDiv3 constructs a new QwtScaleDiv object.
 func NewQwtScaleDiv3(lowerBound float64, upperBound float64, param3 []float64) *QwtScaleDiv {
-	param3_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param3))))
-	defer C.free(unsafe.Pointer(param3_CArray))
+	param3_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param3))))
+	defer C.free(unsafe.Pointer(param3_CArray_ptr))
+	param3_CArray := unsafe.Slice(param3_CArray_ptr, len(param3))
 	for i := range param3 {
 		param3_CArray[i] = (C.double)(param3[i])
 	}
-	param3_ma := C.struct_miqt_array{len: C.size_t(len(param3)), data: unsafe.Pointer(param3_CArray)}
+	param3_ma := C.struct_miqt_array{len: C.size_t(len(param3)), data: unsafe.Pointer(param3_CArray_ptr)}
 
 	return newQwtScaleDiv(C.QwtScaleDiv_new3((C.double)(lowerBound), (C.double)(upperBound), param3_ma))
 }
 
 // NewQwtScaleDiv4 constructs a new QwtScaleDiv object.
 func NewQwtScaleDiv4(lowerBound float64, upperBound float64, minorTicks []float64, mediumTicks []float64, majorTicks []float64) *QwtScaleDiv {
-	minorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
-	defer C.free(unsafe.Pointer(minorTicks_CArray))
+	minorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(minorTicks))))
+	defer C.free(unsafe.Pointer(minorTicks_CArray_ptr))
+	minorTicks_CArray := unsafe.Slice(minorTicks_CArray_ptr, len(minorTicks))
 	for i := range minorTicks {
 		minorTicks_CArray[i] = (C.double)(minorTicks[i])
 	}
-	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray)}
-	mediumTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
-	defer C.free(unsafe.Pointer(mediumTicks_CArray))
+	minorTicks_ma := C.struct_miqt_array{len: C.size_t(len(minorTicks)), data: unsafe.Pointer(minorTicks_CArray_ptr)}
+	mediumTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(mediumTicks))))
+	defer C.free(unsafe.Pointer(mediumTicks_CArray_ptr))
+	mediumTicks_CArray := unsafe.Slice(mediumTicks_CArray_ptr, len(mediumTicks))
 	for i := range mediumTicks {
 		mediumTicks_CArray[i] = (C.double)(mediumTicks[i])
 	}
-	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray)}
-	majorTicks_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
-	defer C.free(unsafe.Pointer(majorTicks_CArray))
+	mediumTicks_ma := C.struct_miqt_array{len: C.size_t(len(mediumTicks)), data: unsafe.Pointer(mediumTicks_CArray_ptr)}
+	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
+	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
+	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
 	for i := range majorTicks {
 		majorTicks_CArray[i] = (C.double)(majorTicks[i])
 	}
-	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray)}
+	majorTicks_ma := C.struct_miqt_array{len: C.size_t(len(majorTicks)), data: unsafe.Pointer(majorTicks_CArray_ptr)}
 
 	return newQwtScaleDiv(C.QwtScaleDiv_new4((C.double)(lowerBound), (C.double)(upperBound), minorTicks_ma, mediumTicks_ma, majorTicks_ma))
 }
@@ -174,19 +180,20 @@ func (this *QwtScaleDiv) Contains(value float64) bool {
 }
 
 func (this *QwtScaleDiv) SetTicks(tickType int, param2 []float64) {
-	param2_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = (C.double)(param2[i])
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 	C.QwtScaleDiv_setTicks(this.h, (C.int)(tickType), param2_ma)
 }
 
 func (this *QwtScaleDiv) Ticks(tickType int) []float64 {
 	var _ma C.struct_miqt_array = C.QwtScaleDiv_ticks(this.h, (C.int)(tickType))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -226,11 +233,15 @@ func (this *QwtScaleDiv) Delete() {
 	C.QwtScaleDiv_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtScaleDiv) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtScaleDiv) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtScaleDiv{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleDiv) {
+		C.QwtScaleDiv_delete(gc[0])
 	})
 }

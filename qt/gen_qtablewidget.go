@@ -22,7 +22,8 @@ const (
 )
 
 type QTableWidgetSelectionRange struct {
-	h *C.QTableWidgetSelectionRange
+	h  *C.QTableWidgetSelectionRange
+	gc *[1]*C.QTableWidgetSelectionRange
 }
 
 func (this *QTableWidgetSelectionRange) cPointer() *C.QTableWidgetSelectionRange {
@@ -104,17 +105,22 @@ func (this *QTableWidgetSelectionRange) Delete() {
 	C.QTableWidgetSelectionRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTableWidgetSelectionRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTableWidgetSelectionRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTableWidgetSelectionRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidgetSelectionRange) {
+		C.QTableWidgetSelectionRange_delete(gc[0])
 	})
 }
 
 type QTableWidgetItem struct {
-	h *C.QTableWidgetItem
+	h  *C.QTableWidgetItem
+	gc *[1]*C.QTableWidgetItem
 }
 
 func (this *QTableWidgetItem) cPointer() *C.QTableWidgetItem {
@@ -579,17 +585,22 @@ func (this *QTableWidgetItem) Delete() {
 	C.QTableWidgetItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTableWidgetItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTableWidgetItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTableWidgetItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidgetItem) {
+		C.QTableWidgetItem_delete(gc[0])
 	})
 }
 
 type QTableWidget struct {
-	h *C.QTableWidget
+	h  *C.QTableWidget
+	gc *[1]*C.QTableWidget
 	*QTableView
 }
 
@@ -737,8 +748,9 @@ func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem
 }
 
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
-	defer C.free(unsafe.Pointer(labels_CArray))
+	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
+	defer C.free(unsafe.Pointer(labels_CArray_ptr))
+	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}
 		labels_i_ms.data = C.CString(labels[i])
@@ -746,13 +758,14 @@ func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray_ptr)}
 	C.QTableWidget_setVerticalHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
-	defer C.free(unsafe.Pointer(labels_CArray))
+	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
+	defer C.free(unsafe.Pointer(labels_CArray_ptr))
+	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}
 		labels_i_ms.data = C.CString(labels[i])
@@ -760,7 +773,7 @@ func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray_ptr)}
 	C.QTableWidget_setHorizontalHeaderLabels(this.h, labels_ma)
 }
 
@@ -847,7 +860,7 @@ func (this *QTableWidget) SetRangeSelected(rangeVal *QTableWidgetSelectionRange,
 func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
 	var _ma C.struct_miqt_array = C.QTableWidget_selectedRanges(this.h)
 	_ret := make([]QTableWidgetSelectionRange, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTableWidgetSelectionRange)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTableWidgetSelectionRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTableWidgetSelectionRange(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -859,7 +872,7 @@ func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
 func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
 	var _ma C.struct_miqt_array = C.QTableWidget_selectedItems(this.h)
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQTableWidgetItem(_outCast[i])
 	}
@@ -873,7 +886,7 @@ func (this *QTableWidget) FindItems(text string, flags MatchFlag) []*QTableWidge
 	defer C.free(unsafe.Pointer(text_ms.data))
 	var _ma C.struct_miqt_array = C.QTableWidget_findItems(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQTableWidgetItem(_outCast[i])
 	}
@@ -1313,7 +1326,7 @@ func (this *QTableWidget) Items(data *QMimeData) []*QTableWidgetItem {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QTableWidget_protectedbase_items(&_dynamic_cast_ok, unsafe.Pointer(this.h), data.cPointer())
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQTableWidgetItem(_outCast[i])
 	}
@@ -1843,7 +1856,7 @@ func (this *QTableWidget) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1868,26 +1881,28 @@ func miqt_exec_callback_QTableWidget_mimeTypes(self *C.QTableWidget, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QTableWidget) callVirtualBase_MimeData(items []*QTableWidgetItem) *QMimeData {
-	items_CArray := (*[0xffff]*C.QTableWidgetItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QTableWidgetItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 
 	return newQMimeData(C.QTableWidget_virtualbase_mimeData(unsafe.Pointer(this.h), items_ma))
 
@@ -1909,7 +1924,7 @@ func miqt_exec_callback_QTableWidget_mimeData(self *C.QTableWidget, cb C.intptr_
 	// Convert all CABI parameters to Go parameters
 	var items_ma C.struct_miqt_array = items
 	items_ret := make([]*QTableWidgetItem, int(items_ma.len))
-	items_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(items_ma.data)) // hey ya
+	items_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(items_ma.data)), int(items_ma.len))
 	for i := 0; i < int(items_ma.len); i++ {
 		items_ret[i] = newQTableWidgetItem(items_outCast[i])
 	}
@@ -2420,7 +2435,7 @@ func (this *QTableWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2444,11 +2459,12 @@ func miqt_exec_callback_QTableWidget_selectedIndexes(self *C.QTableWidget, cb C.
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SelectedIndexes)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -2806,12 +2822,13 @@ func miqt_exec_callback_QTableWidget_selectAll(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_CArray))
+	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_CArray_ptr))
+	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 
 	C.QTableWidget_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 
@@ -2837,7 +2854,7 @@ func miqt_exec_callback_QTableWidget_dataChanged(self *C.QTableWidget, cb C.intp
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
-	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
+	roles_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(roles_ma.data)), int(roles_ma.len))
 	for i := 0; i < int(roles_ma.len); i++ {
 		roles_ret[i] = (int)(roles_outCast[i])
 	}
@@ -4349,11 +4366,15 @@ func (this *QTableWidget) Delete() {
 	C.QTableWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTableWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTableWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTableWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidget) {
+		C.QTableWidget_delete(gc[0])
 	})
 }

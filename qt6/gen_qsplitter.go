@@ -15,7 +15,8 @@ import (
 )
 
 type QSplitter struct {
-	h *C.QSplitter
+	h  *C.QSplitter
+	gc *[1]*C.QSplitter
 	*QFrame
 }
 
@@ -156,7 +157,7 @@ func (this *QSplitter) MinimumSizeHint() *QSize {
 func (this *QSplitter) Sizes() []int {
 	var _ma C.struct_miqt_array = C.QSplitter_sizes(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -164,12 +165,13 @@ func (this *QSplitter) Sizes() []int {
 }
 
 func (this *QSplitter) SetSizes(list []int) {
-	list_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = (C.int)(list[i])
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QSplitter_setSizes(this.h, list_ma)
 }
 
@@ -1752,17 +1754,22 @@ func (this *QSplitter) Delete() {
 	C.QSplitter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSplitter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSplitter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSplitter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSplitter) {
+		C.QSplitter_delete(gc[0])
 	})
 }
 
 type QSplitterHandle struct {
-	h *C.QSplitterHandle
+	h  *C.QSplitterHandle
+	gc *[1]*C.QSplitterHandle
 	*QWidget
 }
 
@@ -3272,11 +3279,15 @@ func (this *QSplitterHandle) Delete() {
 	C.QSplitterHandle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSplitterHandle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSplitterHandle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSplitterHandle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSplitterHandle) {
+		C.QSplitterHandle_delete(gc[0])
 	})
 }

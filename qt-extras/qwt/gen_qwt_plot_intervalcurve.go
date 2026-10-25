@@ -30,7 +30,8 @@ const (
 )
 
 type QwtPlotIntervalCurve struct {
-	h *C.QwtPlotIntervalCurve
+	h  *C.QwtPlotIntervalCurve
+	gc *[1]*C.QwtPlotIntervalCurve
 	*QwtPlotSeriesItem
 }
 
@@ -100,12 +101,13 @@ func (this *QwtPlotIntervalCurve) TestPaintAttribute(param1 QwtPlotIntervalCurve
 }
 
 func (this *QwtPlotIntervalCurve) SetSamples(samples []QwtIntervalSample) {
-	samples_CArray := (*[0xffff]*C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (**C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = samples[i].cPointer()
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotIntervalCurve_setSamples(this.h, samples_ma)
 }
 
@@ -174,11 +176,15 @@ func (this *QwtPlotIntervalCurve) Delete() {
 	C.QwtPlotIntervalCurve_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotIntervalCurve) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotIntervalCurve) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotIntervalCurve{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotIntervalCurve) {
+		C.QwtPlotIntervalCurve_delete(gc[0])
 	})
 }
