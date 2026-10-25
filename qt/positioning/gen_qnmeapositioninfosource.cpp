@@ -112,7 +112,9 @@ public:
 
 		bool sigval1 = fromSatellitePositioningMethodsOnly;
 		QGeoPositionInfo* callback_return_value = miqt_exec_callback_QNmeaPositionInfoSource_lastKnownPosition(this, handle__lastKnownPosition, sigval1);
-		return *callback_return_value;
+		QGeoPositionInfo callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -680,6 +682,10 @@ bool QNmeaPositionInfoSource_override_virtual_disconnectNotify(void* self, intpt
 
 void QNmeaPositionInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQNmeaPositionInfoSource*>(self)->QNmeaPositionInfoSource::disconnectNotify(*signal);
+}
+
+QGeoPositionInfo* QNmeaPositionInfoSource_virtualreturncopy_QGeoPositionInfo(QGeoPositionInfo* src) {
+	return new QGeoPositionInfo(*src);
 }
 
 QObject* QNmeaPositionInfoSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -221,6 +221,8 @@ bool QwtAbstractScale_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtAbstractScale_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtAbstractScale_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtAbstractScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtAbstractScale_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtAbstractScale_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtAbstractScale_protectedbase_rescale(bool* _dynamic_cast_ok, void* self, double lowerBound, double upperBound, double stepSize);
 void QwtAbstractScale_protectedbase_setAbstractScaleDraw(bool* _dynamic_cast_ok, void* self, QwtAbstractScaleDraw* abstractScaleDraw);

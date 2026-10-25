@@ -27,8 +27,15 @@ const (
 
 type QCameraControl struct {
 	h  *C.QCameraControl
-	gc *[1]*C.QCameraControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraControl) cPointer() *C.QCameraControl {
@@ -63,10 +70,12 @@ func UnsafeNewQCameraControl(h unsafe.Pointer) *QCameraControl {
 }
 
 func (this *QCameraControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraControl_metaObject(this.h)))
 }
 
 func (this *QCameraControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraControl_metacast(this.h, param1_Cstring))
@@ -91,34 +100,42 @@ func QCameraControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraControl) State() QCamera__State {
+	defer runtime.KeepAlive(this)
 	return (QCamera__State)(C.QCameraControl_state(this.h))
 }
 
 func (this *QCameraControl) SetState(state QCamera__State) {
+	defer runtime.KeepAlive(this)
 	C.QCameraControl_setState(this.h, (C.int)(state))
 }
 
 func (this *QCameraControl) Status() QCamera__Status {
+	defer runtime.KeepAlive(this)
 	return (QCamera__Status)(C.QCameraControl_status(this.h))
 }
 
 func (this *QCameraControl) CaptureMode() QCamera__CaptureMode {
+	defer runtime.KeepAlive(this)
 	return (QCamera__CaptureMode)(C.QCameraControl_captureMode(this.h))
 }
 
 func (this *QCameraControl) SetCaptureMode(captureMode QCamera__CaptureMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraControl_setCaptureMode(this.h, (C.int)(captureMode))
 }
 
 func (this *QCameraControl) IsCaptureModeSupported(mode QCamera__CaptureMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraControl_isCaptureModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraControl) CanChangeProperty(changeType QCameraControl__PropertyChangeType, status QCamera__Status) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraControl_canChangeProperty(this.h, (C.int)(changeType), (C.int)(status)))
 }
 
 func (this *QCameraControl) StateChanged(param1 QCamera__State) {
+	defer runtime.KeepAlive(this)
 	C.QCameraControl_stateChanged(this.h, (C.int)(param1))
 }
 func (this *QCameraControl) OnStateChanged(slot func(param1 QCamera__State)) {
@@ -139,6 +156,7 @@ func miqt_exec_callback_QCameraControl_stateChanged(cb C.intptr_t, param1 C.int)
 }
 
 func (this *QCameraControl) StatusChanged(param1 QCamera__Status) {
+	defer runtime.KeepAlive(this)
 	C.QCameraControl_statusChanged(this.h, (C.int)(param1))
 }
 func (this *QCameraControl) OnStatusChanged(slot func(param1 QCamera__Status)) {
@@ -159,6 +177,7 @@ func miqt_exec_callback_QCameraControl_statusChanged(cb C.intptr_t, param1 C.int
 }
 
 func (this *QCameraControl) Error(error int, errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -188,6 +207,7 @@ func miqt_exec_callback_QCameraControl_error(cb C.intptr_t, error C.int, errorSt
 }
 
 func (this *QCameraControl) CaptureModeChanged(mode QCamera__CaptureMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraControl_captureModeChanged(this.h, (C.int)(mode))
 }
 func (this *QCameraControl) OnCaptureModeChanged(slot func(mode QCamera__CaptureMode)) {
@@ -263,8 +283,9 @@ func (this *QCameraControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraControl) {
-		C.QCameraControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraControl_delete((*C.QCameraControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

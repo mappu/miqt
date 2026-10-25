@@ -91,6 +91,8 @@ bool QImageIOHandler_override_virtual_currentImageNumber(void* self, intptr_t sl
 int QImageIOHandler_virtualbase_currentImageNumber(const void* self);
 bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot);
 QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self);
+QVariant* QImageIOHandler_virtualreturncopy_QVariant(QVariant* src);
+QRect* QImageIOHandler_virtualreturncopy_QRect(QRect* src);
 
 void QImageIOHandler_delete(QImageIOHandler* self);
 

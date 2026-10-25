@@ -46,7 +46,13 @@ const (
 
 type QTextOption struct {
 	h  *C.QTextOption
-	gc *[1]*C.QTextOption
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextOption) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextOption) cPointer() *C.QTextOption {
@@ -91,55 +97,69 @@ func NewQTextOption2(alignment AlignmentFlag) *QTextOption {
 
 // NewQTextOption3 constructs a new QTextOption object.
 func NewQTextOption3(o *QTextOption) *QTextOption {
+	defer runtime.KeepAlive(o)
 
 	return newQTextOption(C.QTextOption_new3(o.cPointer()))
 }
 
 func (this *QTextOption) OperatorAssign(o *QTextOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(o)
 	C.QTextOption_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextOption) SetAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextOption) Alignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QTextOption_alignment(this.h))
 }
 
 func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setTextDirection(this.h, (C.int)(aDirection))
 }
 
 func (this *QTextOption) TextDirection() LayoutDirection {
+	defer runtime.KeepAlive(this)
 	return (LayoutDirection)(C.QTextOption_textDirection(this.h))
 }
 
 func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setWrapMode(this.h, (C.int)(wrap))
 }
 
 func (this *QTextOption) WrapMode() QTextOption__WrapMode {
+	defer runtime.KeepAlive(this)
 	return (QTextOption__WrapMode)(C.QTextOption_wrapMode(this.h))
 }
 
 func (this *QTextOption) SetFlags(flags QTextOption__Flag) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextOption) Flags() QTextOption__Flag {
+	defer runtime.KeepAlive(this)
 	return (QTextOption__Flag)(C.QTextOption_flags(this.h))
 }
 
 func (this *QTextOption) SetTabStopDistance(tabStopDistance float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setTabStopDistance(this.h, (C.double)(tabStopDistance))
 }
 
 func (this *QTextOption) TabStopDistance() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextOption_tabStopDistance(this.h))
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
+	defer runtime.KeepAlive(this)
 	tabStops_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray_ptr))
 	tabStops_CArray := unsafe.Slice(tabStops_CArray_ptr, len(tabStops))
@@ -151,6 +171,7 @@ func (this *QTextOption) SetTabArray(tabStops []float64) {
 }
 
 func (this *QTextOption) TabArray() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextOption_tabArray(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -161,6 +182,8 @@ func (this *QTextOption) TabArray() []float64 {
 }
 
 func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tabStops)
 	tabStops_CArray_ptr := (**C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray_ptr))
 	tabStops_CArray := unsafe.Slice(tabStops_CArray_ptr, len(tabStops))
@@ -172,6 +195,7 @@ func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
 }
 
 func (this *QTextOption) Tabs() []QTextOption__Tab {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextOption_tabs(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTextOption__Tab)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -184,10 +208,12 @@ func (this *QTextOption) Tabs() []QTextOption__Tab {
 }
 
 func (this *QTextOption) SetUseDesignMetrics(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption_setUseDesignMetrics(this.h, (C.bool)(b))
 }
 
 func (this *QTextOption) UseDesignMetrics() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextOption_useDesignMetrics(this.h))
 }
 
@@ -203,15 +229,22 @@ func (this *QTextOption) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextOption{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextOption) {
-		C.QTextOption_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextOption_delete((*C.QTextOption)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextOption__Tab struct {
 	h  *C.QTextOption__Tab
-	gc *[1]*C.QTextOption__Tab
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextOption__Tab) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
@@ -256,41 +289,53 @@ func NewQTextOption__Tab2(pos float64, tabType QTextOption__TabType) *QTextOptio
 
 // NewQTextOption__Tab3 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab3(pos float64, tabType QTextOption__TabType, delim QChar) *QTextOption__Tab {
+	defer runtime.KeepAlive(delim)
 
 	return newQTextOption__Tab(C.QTextOption__Tab_new3((C.double)(pos), (C.int)(tabType), delim.cPointer()))
 }
 
 func (this *QTextOption__Tab) OperatorEqual(other *QTextOption__Tab) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QTextOption__Tab_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QTextOption__Tab_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextOption__Tab) Position() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextOption__Tab_position(this.h))
 }
 
 func (this *QTextOption__Tab) SetPosition(position float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption__Tab_setPosition(this.h, (C.double)(position))
 }
 
 func (this *QTextOption__Tab) Type() QTextOption__TabType {
+	defer runtime.KeepAlive(this)
 	return (QTextOption__TabType)(C.QTextOption__Tab_type(this.h))
 }
 
 func (this *QTextOption__Tab) SetType(typeVal QTextOption__TabType) {
+	defer runtime.KeepAlive(this)
 	C.QTextOption__Tab_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QTextOption__Tab) Delimiter() *QChar {
+	defer runtime.KeepAlive(this)
 	delimiter_goptr := newQChar(C.QTextOption__Tab_delimiter(this.h))
 	delimiter_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return delimiter_goptr
 }
 
 func (this *QTextOption__Tab) SetDelimiter(delimiter QChar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(delimiter)
 	C.QTextOption__Tab_setDelimiter(this.h, delimiter.cPointer())
 }
 
@@ -306,8 +351,9 @@ func (this *QTextOption__Tab) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextOption__Tab{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextOption__Tab) {
-		C.QTextOption__Tab_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextOption__Tab_delete((*C.QTextOption__Tab)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

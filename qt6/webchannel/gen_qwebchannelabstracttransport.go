@@ -17,8 +17,14 @@ import (
 
 type QWebChannelAbstractTransport struct {
 	h  *C.QWebChannelAbstractTransport
-	gc *[1]*C.QWebChannelAbstractTransport
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebChannelAbstractTransport) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebChannelAbstractTransport) cPointer() *C.QWebChannelAbstractTransport {
@@ -60,15 +66,18 @@ func NewQWebChannelAbstractTransport() *QWebChannelAbstractTransport {
 
 // NewQWebChannelAbstractTransport2 constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport2(parent *qt6.QObject) *QWebChannelAbstractTransport {
+	defer runtime.KeepAlive(parent)
 
 	return newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebChannelAbstractTransport) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebChannelAbstractTransport_metaObject(this.h)))
 }
 
 func (this *QWebChannelAbstractTransport) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebChannelAbstractTransport_metacast(this.h, param1_Cstring))
@@ -84,10 +93,15 @@ func QWebChannelAbstractTransport_Tr(s string) string {
 }
 
 func (this *QWebChannelAbstractTransport) SendMessage(message *qt6.QJsonObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(message)
 	C.QWebChannelAbstractTransport_sendMessage(this.h, (*C.QJsonObject)(message.UnsafePointer()))
 }
 
 func (this *QWebChannelAbstractTransport) MessageReceived(message *qt6.QJsonObject, transport *QWebChannelAbstractTransport) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(message)
+	defer runtime.KeepAlive(transport)
 	C.QWebChannelAbstractTransport_messageReceived(this.h, (*C.QJsonObject)(message.UnsafePointer()), transport.cPointer())
 }
 func (this *QWebChannelAbstractTransport) OnMessageReceived(slot func(message *qt6.QJsonObject, transport *QWebChannelAbstractTransport)) {
@@ -133,6 +147,7 @@ func QWebChannelAbstractTransport_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QWebChannelAbstractTransport that was directly constructed.
 func (this *QWebChannelAbstractTransport) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QWebChannelAbstractTransport_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -147,6 +162,7 @@ func (this *QWebChannelAbstractTransport) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QWebChannelAbstractTransport that was directly constructed.
 func (this *QWebChannelAbstractTransport) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebChannelAbstractTransport_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -161,6 +177,7 @@ func (this *QWebChannelAbstractTransport) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebChannelAbstractTransport that was directly constructed.
 func (this *QWebChannelAbstractTransport) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -177,6 +194,8 @@ func (this *QWebChannelAbstractTransport) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebChannelAbstractTransport that was directly constructed.
 func (this *QWebChannelAbstractTransport) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWebChannelAbstractTransport_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -210,6 +229,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_sendMessage(self *C.QWebCha
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebChannelAbstractTransport_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -238,6 +259,9 @@ func miqt_exec_callback_QWebChannelAbstractTransport_event(self *C.QWebChannelAb
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebChannelAbstractTransport_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -268,6 +292,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_eventFilter(self *C.QWebCha
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannelAbstractTransport_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -294,6 +320,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_timerEvent(self *C.QWebChan
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannelAbstractTransport_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -320,6 +348,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_childEvent(self *C.QWebChan
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannelAbstractTransport_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -346,6 +376,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_customEvent(self *C.QWebCha
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebChannelAbstractTransport_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -372,6 +404,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_connectNotify(self *C.QWebC
 }
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebChannelAbstractTransport_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -409,8 +443,9 @@ func (this *QWebChannelAbstractTransport) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebChannelAbstractTransport{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebChannelAbstractTransport) {
-		C.QWebChannelAbstractTransport_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebChannelAbstractTransport_delete((*C.QWebChannelAbstractTransport)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

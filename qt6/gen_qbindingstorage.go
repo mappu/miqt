@@ -15,7 +15,13 @@ import (
 
 type QBindingStatus struct {
 	h  *C.QBindingStatus
-	gc *[1]*C.QBindingStatus
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBindingStatus) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBindingStatus) cPointer() *C.QBindingStatus {
@@ -53,10 +59,12 @@ func NewQBindingStatus() *QBindingStatus {
 }
 
 func (this *QBindingStatus) ThreadId() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QBindingStatus_threadId(this.h))
 }
 
 func (this *QBindingStatus) SetThreadId(threadId unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 	C.QBindingStatus_setThreadId(this.h, threadId)
 }
 
@@ -72,15 +80,22 @@ func (this *QBindingStatus) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBindingStatus{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBindingStatus) {
-		C.QBindingStatus_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBindingStatus_delete((*C.QBindingStatus)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QBindingStorage struct {
 	h  *C.QBindingStorage
-	gc *[1]*C.QBindingStorage
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBindingStorage) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBindingStorage) cPointer() *C.QBindingStorage {
@@ -118,14 +133,18 @@ func NewQBindingStorage() *QBindingStorage {
 }
 
 func (this *QBindingStorage) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBindingStorage_isEmpty(this.h))
 }
 
 func (this *QBindingStorage) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBindingStorage_isValid(this.h))
 }
 
 func (this *QBindingStorage) RegisterDependency(data *QUntypedPropertyData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	C.QBindingStorage_registerDependency(this.h, data.cPointer())
 }
 
@@ -141,8 +160,9 @@ func (this *QBindingStorage) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBindingStorage{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBindingStorage) {
-		C.QBindingStorage_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBindingStorage_delete((*C.QBindingStorage)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

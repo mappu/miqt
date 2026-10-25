@@ -16,8 +16,15 @@ import (
 
 type QPdfSearchResult struct {
 	h  *C.QPdfSearchResult
-	gc *[1]*C.QPdfSearchResult
+	gc *[1]unsafe.Pointer
 	*QPdfDestination
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfSearchResult) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPdfDestination.miqtSetGC(gc)
 }
 
 func (this *QPdfSearchResult) cPointer() *C.QPdfSearchResult {
@@ -59,11 +66,13 @@ func NewQPdfSearchResult() *QPdfSearchResult {
 
 // NewQPdfSearchResult2 constructs a new QPdfSearchResult object.
 func NewQPdfSearchResult2(param1 *QPdfSearchResult) *QPdfSearchResult {
+	defer runtime.KeepAlive(param1)
 
 	return newQPdfSearchResult(C.QPdfSearchResult_new2(param1.cPointer()))
 }
 
 func (this *QPdfSearchResult) ContextBefore() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfSearchResult_contextBefore(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -71,6 +80,7 @@ func (this *QPdfSearchResult) ContextBefore() string {
 }
 
 func (this *QPdfSearchResult) ContextAfter() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfSearchResult_contextAfter(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -78,6 +88,7 @@ func (this *QPdfSearchResult) ContextAfter() string {
 }
 
 func (this *QPdfSearchResult) Rectangles() []qt.QRectF {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPdfSearchResult_rectangles(this.h)
 	_ret := make([]qt.QRectF, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -90,6 +101,8 @@ func (this *QPdfSearchResult) Rectangles() []qt.QRectF {
 }
 
 func (this *QPdfSearchResult) OperatorAssign(param1 *QPdfSearchResult) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QPdfSearchResult_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -105,8 +118,9 @@ func (this *QPdfSearchResult) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfSearchResult{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfSearchResult) {
-		C.QPdfSearchResult_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfSearchResult_delete((*C.QPdfSearchResult)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

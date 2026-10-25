@@ -101,7 +101,9 @@ public:
 		// Cast returned reference into pointer
 		QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
 		QVideoSurfaceFormat* callback_return_value = miqt_exec_callback_QAbstractVideoSurface_nearestFormat(this, handle__nearestFormat, sigval1);
-		return *callback_return_value;
+		QVideoSurfaceFormat callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVideoSurfaceFormat* QAbstractVideoSurface_virtualbase_nearestFormat(const void* self, QVideoSurfaceFormat* format);
@@ -643,6 +645,10 @@ bool QAbstractVideoSurface_override_virtual_disconnectNotify(void* self, intptr_
 
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractVideoSurface*>(self)->QAbstractVideoSurface::disconnectNotify(*signal);
+}
+
+QVideoSurfaceFormat* QAbstractVideoSurface_virtualreturncopy_QVideoSurfaceFormat(QVideoSurfaceFormat* src) {
+	return new QVideoSurfaceFormat(*src);
 }
 
 void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error) {

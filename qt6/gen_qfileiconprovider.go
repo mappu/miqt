@@ -16,8 +16,15 @@ import (
 
 type QFileIconProvider struct {
 	h  *C.QFileIconProvider
-	gc *[1]*C.QFileIconProvider
+	gc *[1]unsafe.Pointer
 	*QAbstractFileIconProvider
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFileIconProvider) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractFileIconProvider.miqtSetGC(gc)
 }
 
 func (this *QFileIconProvider) cPointer() *C.QFileIconProvider {
@@ -58,18 +65,22 @@ func NewQFileIconProvider() *QFileIconProvider {
 }
 
 func (this *QFileIconProvider) Icon(typeVal QAbstractFileIconProvider__IconType) *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QFileIconProvider_icon(this.h, (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(info)
 	_goptr := newQIcon(C.QFileIconProvider_iconWithInfo(this.h, info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileIconProvider) callVirtualBase_Icon(typeVal QAbstractFileIconProvider__IconType) *QIcon {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQIcon(C.QFileIconProvider_virtualbase_icon(unsafe.Pointer(this.h), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -94,12 +105,15 @@ func miqt_exec_callback_QFileIconProvider_icon(self *C.QFileIconProvider, cb C.i
 	slotval1 := (QAbstractFileIconProvider__IconType)(typeVal)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_Icon, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileIconProvider_virtualreturncopy_QIcon(virtualReturn.cPointer())
 
 }
 
 func (this *QFileIconProvider) callVirtualBase_IconWithInfo(info *QFileInfo) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(info)
 
 	_goptr := newQIcon(C.QFileIconProvider_virtualbase_iconWithInfo(unsafe.Pointer(this.h), info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -124,12 +138,15 @@ func miqt_exec_callback_QFileIconProvider_iconWithInfo(self *C.QFileIconProvider
 	slotval1 := newQFileInfo(info)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_IconWithInfo, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileIconProvider_virtualreturncopy_QIcon(virtualReturn.cPointer())
 
 }
 
 func (this *QFileIconProvider) callVirtualBase_Type(param1 *QFileInfo) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _ms C.struct_miqt_string = C.QFileIconProvider_virtualbase_type(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -163,6 +180,7 @@ func miqt_exec_callback_QFileIconProvider_type(self *C.QFileIconProvider, cb C.i
 }
 
 func (this *QFileIconProvider) callVirtualBase_SetOptions(options QAbstractFileIconProvider__Option) {
+	defer runtime.KeepAlive(this)
 
 	C.QFileIconProvider_virtualbase_setOptions(unsafe.Pointer(this.h), (C.int)(options))
 
@@ -189,6 +207,7 @@ func miqt_exec_callback_QFileIconProvider_setOptions(self *C.QFileIconProvider, 
 }
 
 func (this *QFileIconProvider) callVirtualBase_Options() QAbstractFileIconProvider__Option {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractFileIconProvider__Option)(C.QFileIconProvider_virtualbase_options(unsafe.Pointer(this.h)))
 
@@ -225,8 +244,9 @@ func (this *QFileIconProvider) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFileIconProvider{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileIconProvider) {
-		C.QFileIconProvider_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFileIconProvider_delete((*C.QFileIconProvider)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -16,7 +16,13 @@ import (
 
 type QAbstractExtensionFactory struct {
 	h  *C.QAbstractExtensionFactory
-	gc *[1]*C.QAbstractExtensionFactory
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractExtensionFactory) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractExtensionFactory) cPointer() *C.QAbstractExtensionFactory {
@@ -48,6 +54,8 @@ func UnsafeNewQAbstractExtensionFactory(h unsafe.Pointer) *QAbstractExtensionFac
 }
 
 func (this *QAbstractExtensionFactory) Extension(object *qt6.QObject, iid string) *qt6.QObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -56,6 +64,8 @@ func (this *QAbstractExtensionFactory) Extension(object *qt6.QObject, iid string
 }
 
 func (this *QAbstractExtensionFactory) OperatorAssign(param1 *QAbstractExtensionFactory) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractExtensionFactory_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -71,15 +81,22 @@ func (this *QAbstractExtensionFactory) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractExtensionFactory{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractExtensionFactory) {
-		C.QAbstractExtensionFactory_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractExtensionFactory_delete((*C.QAbstractExtensionFactory)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractExtensionManager struct {
 	h  *C.QAbstractExtensionManager
-	gc *[1]*C.QAbstractExtensionManager
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractExtensionManager) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractExtensionManager) cPointer() *C.QAbstractExtensionManager {
@@ -111,6 +128,8 @@ func UnsafeNewQAbstractExtensionManager(h unsafe.Pointer) *QAbstractExtensionMan
 }
 
 func (this *QAbstractExtensionManager) RegisterExtensions(factory *QAbstractExtensionFactory, iid string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -119,6 +138,8 @@ func (this *QAbstractExtensionManager) RegisterExtensions(factory *QAbstractExte
 }
 
 func (this *QAbstractExtensionManager) UnregisterExtensions(factory *QAbstractExtensionFactory, iid string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -127,6 +148,8 @@ func (this *QAbstractExtensionManager) UnregisterExtensions(factory *QAbstractEx
 }
 
 func (this *QAbstractExtensionManager) Extension(object *qt6.QObject, iid string) *qt6.QObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -135,6 +158,8 @@ func (this *QAbstractExtensionManager) Extension(object *qt6.QObject, iid string
 }
 
 func (this *QAbstractExtensionManager) OperatorAssign(param1 *QAbstractExtensionManager) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractExtensionManager_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -150,8 +175,9 @@ func (this *QAbstractExtensionManager) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractExtensionManager{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractExtensionManager) {
-		C.QAbstractExtensionManager_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractExtensionManager_delete((*C.QAbstractExtensionManager)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

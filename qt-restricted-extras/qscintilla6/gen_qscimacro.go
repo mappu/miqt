@@ -17,8 +17,14 @@ import (
 
 type QsciMacro struct {
 	h  *C.QsciMacro
-	gc *[1]*C.QsciMacro
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciMacro) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QsciMacro) cPointer() *C.QsciMacro {
@@ -54,12 +60,14 @@ func UnsafeNewQsciMacro(h unsafe.Pointer) *QsciMacro {
 
 // NewQsciMacro constructs a new QsciMacro object.
 func NewQsciMacro(parent *QsciScintilla) *QsciMacro {
+	defer runtime.KeepAlive(parent)
 
 	return newQsciMacro(C.QsciMacro_new(parent.cPointer()))
 }
 
 // NewQsciMacro2 constructs a new QsciMacro object.
 func NewQsciMacro2(asc string, parent *QsciScintilla) *QsciMacro {
+	defer runtime.KeepAlive(parent)
 	asc_ms := C.struct_miqt_string{}
 	asc_ms.data = C.CString(asc)
 	asc_ms.len = C.size_t(len(asc))
@@ -69,10 +77,12 @@ func NewQsciMacro2(asc string, parent *QsciScintilla) *QsciMacro {
 }
 
 func (this *QsciMacro) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciMacro_metaObject(this.h)))
 }
 
 func (this *QsciMacro) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciMacro_metacast(this.h, param1_Cstring))
@@ -88,10 +98,12 @@ func QsciMacro_Tr(s string) string {
 }
 
 func (this *QsciMacro) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QsciMacro_clear(this.h)
 }
 
 func (this *QsciMacro) Load(asc string) bool {
+	defer runtime.KeepAlive(this)
 	asc_ms := C.struct_miqt_string{}
 	asc_ms.data = C.CString(asc)
 	asc_ms.len = C.size_t(len(asc))
@@ -100,6 +112,7 @@ func (this *QsciMacro) Load(asc string) bool {
 }
 
 func (this *QsciMacro) Save() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciMacro_save(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -107,14 +120,17 @@ func (this *QsciMacro) Save() string {
 }
 
 func (this *QsciMacro) Play() {
+	defer runtime.KeepAlive(this)
 	C.QsciMacro_play(this.h)
 }
 
 func (this *QsciMacro) StartRecording() {
+	defer runtime.KeepAlive(this)
 	C.QsciMacro_startRecording(this.h)
 }
 
 func (this *QsciMacro) EndRecording() {
+	defer runtime.KeepAlive(this)
 	C.QsciMacro_endRecording(this.h)
 }
 
@@ -142,6 +158,7 @@ func QsciMacro_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QsciMacro that was directly constructed.
 func (this *QsciMacro) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QsciMacro_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -156,6 +173,7 @@ func (this *QsciMacro) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QsciMacro that was directly constructed.
 func (this *QsciMacro) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciMacro_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -170,6 +188,7 @@ func (this *QsciMacro) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciMacro that was directly constructed.
 func (this *QsciMacro) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -186,6 +205,8 @@ func (this *QsciMacro) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciMacro that was directly constructed.
 func (this *QsciMacro) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciMacro_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -199,6 +220,7 @@ func (this *QsciMacro) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QsciMacro) callVirtualBase_Play() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciMacro_virtualbase_play(unsafe.Pointer(this.h))
 
@@ -222,6 +244,7 @@ func miqt_exec_callback_QsciMacro_play(self *C.QsciMacro, cb C.intptr_t) {
 }
 
 func (this *QsciMacro) callVirtualBase_StartRecording() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciMacro_virtualbase_startRecording(unsafe.Pointer(this.h))
 
@@ -245,6 +268,7 @@ func miqt_exec_callback_QsciMacro_startRecording(self *C.QsciMacro, cb C.intptr_
 }
 
 func (this *QsciMacro) callVirtualBase_EndRecording() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciMacro_virtualbase_endRecording(unsafe.Pointer(this.h))
 
@@ -268,6 +292,8 @@ func miqt_exec_callback_QsciMacro_endRecording(self *C.QsciMacro, cb C.intptr_t)
 }
 
 func (this *QsciMacro) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciMacro_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -296,6 +322,9 @@ func miqt_exec_callback_QsciMacro_event(self *C.QsciMacro, cb C.intptr_t, event 
 }
 
 func (this *QsciMacro) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciMacro_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -326,6 +355,8 @@ func miqt_exec_callback_QsciMacro_eventFilter(self *C.QsciMacro, cb C.intptr_t, 
 }
 
 func (this *QsciMacro) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciMacro_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -352,6 +383,8 @@ func miqt_exec_callback_QsciMacro_timerEvent(self *C.QsciMacro, cb C.intptr_t, e
 }
 
 func (this *QsciMacro) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciMacro_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -378,6 +411,8 @@ func miqt_exec_callback_QsciMacro_childEvent(self *C.QsciMacro, cb C.intptr_t, e
 }
 
 func (this *QsciMacro) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciMacro_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -404,6 +439,8 @@ func miqt_exec_callback_QsciMacro_customEvent(self *C.QsciMacro, cb C.intptr_t, 
 }
 
 func (this *QsciMacro) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciMacro_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -430,6 +467,8 @@ func miqt_exec_callback_QsciMacro_connectNotify(self *C.QsciMacro, cb C.intptr_t
 }
 
 func (this *QsciMacro) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciMacro_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -467,8 +506,9 @@ func (this *QsciMacro) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciMacro{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciMacro) {
-		C.QsciMacro_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciMacro_delete((*C.QsciMacro)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

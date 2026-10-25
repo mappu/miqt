@@ -15,7 +15,13 @@ import (
 
 type QSslEllipticCurve struct {
 	h  *C.QSslEllipticCurve
-	gc *[1]*C.QSslEllipticCurve
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslEllipticCurve) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslEllipticCurve) cPointer() *C.QSslEllipticCurve {
@@ -54,6 +60,7 @@ func NewQSslEllipticCurve() *QSslEllipticCurve {
 
 // NewQSslEllipticCurve2 constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve2(param1 *QSslEllipticCurve) *QSslEllipticCurve {
+	defer runtime.KeepAlive(param1)
 
 	return newQSslEllipticCurve(C.QSslEllipticCurve_new2(param1.cPointer()))
 }
@@ -79,6 +86,7 @@ func QSslEllipticCurve_FromLongName(name string) *QSslEllipticCurve {
 }
 
 func (this *QSslEllipticCurve) ShortName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslEllipticCurve_shortName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -86,6 +94,7 @@ func (this *QSslEllipticCurve) ShortName() string {
 }
 
 func (this *QSslEllipticCurve) LongName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslEllipticCurve_longName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -93,10 +102,12 @@ func (this *QSslEllipticCurve) LongName() string {
 }
 
 func (this *QSslEllipticCurve) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslEllipticCurve_isValid(this.h))
 }
 
 func (this *QSslEllipticCurve) IsTlsNamedCurve() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslEllipticCurve_isTlsNamedCurve(this.h))
 }
 
@@ -112,8 +123,9 @@ func (this *QSslEllipticCurve) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslEllipticCurve{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslEllipticCurve) {
-		C.QSslEllipticCurve_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslEllipticCurve_delete((*C.QSslEllipticCurve)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

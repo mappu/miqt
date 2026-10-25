@@ -16,7 +16,13 @@ import (
 
 type QwtClipper struct {
 	h  *C.QwtClipper
-	gc *[1]*C.QwtClipper
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtClipper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtClipper) cPointer() *C.QwtClipper {
@@ -48,6 +54,8 @@ func UnsafeNewQwtClipper(h unsafe.Pointer) *QwtClipper {
 }
 
 func QwtClipper_ClipCircle(param1 *qt.QRectF, param2 *qt.QPointF, radius float64) []QwtInterval {
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtClipper_clipCircle((*C.QRectF)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.double)(radius))
 	_ret := make([]QwtInterval, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtInterval)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -71,8 +79,9 @@ func (this *QwtClipper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtClipper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtClipper) {
-		C.QwtClipper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtClipper_delete((*C.QwtClipper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,9 +17,16 @@ import (
 
 type QVideoWidget struct {
 	h  *C.QVideoWidget
-	gc *[1]*C.QVideoWidget
+	gc *[1]unsafe.Pointer
 	*qt.QWidget
 	*QMediaBindableInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaBindableInterface.miqtSetGC(gc)
 }
 
 func (this *QVideoWidget) cPointer() *C.QVideoWidget {
@@ -57,6 +64,7 @@ func UnsafeNewQVideoWidget(h unsafe.Pointer) *QVideoWidget {
 
 // NewQVideoWidget constructs a new QVideoWidget object.
 func NewQVideoWidget(parent *qt.QWidget) *QVideoWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQVideoWidget(C.QVideoWidget_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -68,10 +76,12 @@ func NewQVideoWidget2() *QVideoWidget {
 }
 
 func (this *QVideoWidget) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoWidget_metaObject(this.h)))
 }
 
 func (this *QVideoWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoWidget_metacast(this.h, param1_Cstring))
@@ -96,64 +106,79 @@ func QVideoWidget_TrUtf8(s string) string {
 }
 
 func (this *QVideoWidget) MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QVideoWidget_mediaObject(this.h))
 }
 
 func (this *QVideoWidget) VideoSurface() *QAbstractVideoSurface {
+	defer runtime.KeepAlive(this)
 	return newQAbstractVideoSurface(C.QVideoWidget_videoSurface(this.h))
 }
 
 func (this *QVideoWidget) AspectRatioMode() qt.AspectRatioMode {
+	defer runtime.KeepAlive(this)
 	return (qt.AspectRatioMode)(C.QVideoWidget_aspectRatioMode(this.h))
 }
 
 func (this *QVideoWidget) Brightness() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidget_brightness(this.h))
 }
 
 func (this *QVideoWidget) Contrast() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidget_contrast(this.h))
 }
 
 func (this *QVideoWidget) Hue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidget_hue(this.h))
 }
 
 func (this *QVideoWidget) Saturation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidget_saturation(this.h))
 }
 
 func (this *QVideoWidget) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoWidget) SetFullScreen(fullScreen bool) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setFullScreen(this.h, (C.bool)(fullScreen))
 }
 
 func (this *QVideoWidget) SetAspectRatioMode(mode qt.AspectRatioMode) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QVideoWidget) SetBrightness(brightness int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setBrightness(this.h, (C.int)(brightness))
 }
 
 func (this *QVideoWidget) SetContrast(contrast int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setContrast(this.h, (C.int)(contrast))
 }
 
 func (this *QVideoWidget) SetHue(hue int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setHue(this.h, (C.int)(hue))
 }
 
 func (this *QVideoWidget) SetSaturation(saturation int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_setSaturation(this.h, (C.int)(saturation))
 }
 
 func (this *QVideoWidget) FullScreenChanged(fullScreen bool) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_fullScreenChanged(this.h, (C.bool)(fullScreen))
 }
 func (this *QVideoWidget) OnFullScreenChanged(slot func(fullScreen bool)) {
@@ -174,6 +199,7 @@ func miqt_exec_callback_QVideoWidget_fullScreenChanged(cb C.intptr_t, fullScreen
 }
 
 func (this *QVideoWidget) BrightnessChanged(brightness int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_brightnessChanged(this.h, (C.int)(brightness))
 }
 func (this *QVideoWidget) OnBrightnessChanged(slot func(brightness int)) {
@@ -194,6 +220,7 @@ func miqt_exec_callback_QVideoWidget_brightnessChanged(cb C.intptr_t, brightness
 }
 
 func (this *QVideoWidget) ContrastChanged(contrast int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_contrastChanged(this.h, (C.int)(contrast))
 }
 func (this *QVideoWidget) OnContrastChanged(slot func(contrast int)) {
@@ -214,6 +241,7 @@ func miqt_exec_callback_QVideoWidget_contrastChanged(cb C.intptr_t, contrast C.i
 }
 
 func (this *QVideoWidget) HueChanged(hue int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_hueChanged(this.h, (C.int)(hue))
 }
 func (this *QVideoWidget) OnHueChanged(slot func(hue int)) {
@@ -234,6 +262,7 @@ func miqt_exec_callback_QVideoWidget_hueChanged(cb C.intptr_t, hue C.int) {
 }
 
 func (this *QVideoWidget) SaturationChanged(saturation int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidget_saturationChanged(this.h, (C.int)(saturation))
 }
 func (this *QVideoWidget) OnSaturationChanged(slot func(saturation int)) {
@@ -299,6 +328,7 @@ func QVideoWidget_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVideoWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -311,6 +341,7 @@ func (this *QVideoWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVideoWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -323,6 +354,7 @@ func (this *QVideoWidget) Create() {
 
 // Destroy can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVideoWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -335,6 +367,7 @@ func (this *QVideoWidget) Destroy() {
 
 // FocusNextChild can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVideoWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -349,6 +382,7 @@ func (this *QVideoWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVideoWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -363,6 +397,7 @@ func (this *QVideoWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QVideoWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -377,6 +412,7 @@ func (this *QVideoWidget) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVideoWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -391,6 +427,7 @@ func (this *QVideoWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -407,6 +444,8 @@ func (this *QVideoWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVideoWidget that was directly constructed.
 func (this *QVideoWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVideoWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -420,6 +459,7 @@ func (this *QVideoWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QVideoWidget) callVirtualBase_MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 
 	return newQMediaObject(C.QVideoWidget_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
@@ -439,12 +479,14 @@ func miqt_exec_callback_QVideoWidget_mediaObject(self *C.QVideoWidget, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_MediaObject)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QVideoWidget) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -466,12 +508,15 @@ func miqt_exec_callback_QVideoWidget_sizeHint(self *C.QVideoWidget, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QVideoWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QVideoWidget) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVideoWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -500,6 +545,8 @@ func miqt_exec_callback_QVideoWidget_event(self *C.QVideoWidget, cb C.intptr_t, 
 }
 
 func (this *QVideoWidget) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -526,6 +573,8 @@ func miqt_exec_callback_QVideoWidget_showEvent(self *C.QVideoWidget, cb C.intptr
 }
 
 func (this *QVideoWidget) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -552,6 +601,8 @@ func miqt_exec_callback_QVideoWidget_hideEvent(self *C.QVideoWidget, cb C.intptr
 }
 
 func (this *QVideoWidget) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -578,6 +629,8 @@ func miqt_exec_callback_QVideoWidget_resizeEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -604,6 +657,8 @@ func miqt_exec_callback_QVideoWidget_moveEvent(self *C.QVideoWidget, cb C.intptr
 }
 
 func (this *QVideoWidget) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -630,6 +685,8 @@ func miqt_exec_callback_QVideoWidget_paintEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 
 	return (bool)(C.QVideoWidget_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
@@ -658,6 +715,7 @@ func miqt_exec_callback_QVideoWidget_setMediaObject(self *C.QVideoWidget, cb C.i
 }
 
 func (this *QVideoWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVideoWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -683,6 +741,7 @@ func miqt_exec_callback_QVideoWidget_devType(self *C.QVideoWidget, cb C.intptr_t
 }
 
 func (this *QVideoWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QVideoWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -709,6 +768,7 @@ func miqt_exec_callback_QVideoWidget_setVisible(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -730,12 +790,14 @@ func miqt_exec_callback_QVideoWidget_minimumSizeHint(self *C.QVideoWidget, cb C.
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QVideoWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QVideoWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVideoWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -764,6 +826,7 @@ func miqt_exec_callback_QVideoWidget_heightForWidth(self *C.QVideoWidget, cb C.i
 }
 
 func (this *QVideoWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QVideoWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -789,6 +852,7 @@ func miqt_exec_callback_QVideoWidget_hasHeightForWidth(self *C.QVideoWidget, cb 
 }
 
 func (this *QVideoWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QVideoWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -808,12 +872,15 @@ func miqt_exec_callback_QVideoWidget_paintEngine(self *C.QVideoWidget, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QVideoWidget) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -840,6 +907,8 @@ func miqt_exec_callback_QVideoWidget_mousePressEvent(self *C.QVideoWidget, cb C.
 }
 
 func (this *QVideoWidget) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -866,6 +935,8 @@ func miqt_exec_callback_QVideoWidget_mouseReleaseEvent(self *C.QVideoWidget, cb 
 }
 
 func (this *QVideoWidget) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -892,6 +963,8 @@ func miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent(self *C.QVideoWidget,
 }
 
 func (this *QVideoWidget) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -918,6 +991,8 @@ func miqt_exec_callback_QVideoWidget_mouseMoveEvent(self *C.QVideoWidget, cb C.i
 }
 
 func (this *QVideoWidget) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -944,6 +1019,8 @@ func miqt_exec_callback_QVideoWidget_wheelEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -970,6 +1047,8 @@ func miqt_exec_callback_QVideoWidget_keyPressEvent(self *C.QVideoWidget, cb C.in
 }
 
 func (this *QVideoWidget) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -996,6 +1075,8 @@ func miqt_exec_callback_QVideoWidget_keyReleaseEvent(self *C.QVideoWidget, cb C.
 }
 
 func (this *QVideoWidget) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1022,6 +1103,8 @@ func miqt_exec_callback_QVideoWidget_focusInEvent(self *C.QVideoWidget, cb C.int
 }
 
 func (this *QVideoWidget) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1048,6 +1131,8 @@ func miqt_exec_callback_QVideoWidget_focusOutEvent(self *C.QVideoWidget, cb C.in
 }
 
 func (this *QVideoWidget) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1074,6 +1159,8 @@ func miqt_exec_callback_QVideoWidget_enterEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1100,6 +1187,8 @@ func miqt_exec_callback_QVideoWidget_leaveEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1126,6 +1215,8 @@ func miqt_exec_callback_QVideoWidget_closeEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1152,6 +1243,8 @@ func miqt_exec_callback_QVideoWidget_contextMenuEvent(self *C.QVideoWidget, cb C
 }
 
 func (this *QVideoWidget) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1178,6 +1271,8 @@ func miqt_exec_callback_QVideoWidget_tabletEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1204,6 +1299,8 @@ func miqt_exec_callback_QVideoWidget_actionEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1230,6 +1327,8 @@ func miqt_exec_callback_QVideoWidget_dragEnterEvent(self *C.QVideoWidget, cb C.i
 }
 
 func (this *QVideoWidget) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1256,6 +1355,8 @@ func miqt_exec_callback_QVideoWidget_dragMoveEvent(self *C.QVideoWidget, cb C.in
 }
 
 func (this *QVideoWidget) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1282,6 +1383,8 @@ func miqt_exec_callback_QVideoWidget_dragLeaveEvent(self *C.QVideoWidget, cb C.i
 }
 
 func (this *QVideoWidget) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1308,6 +1411,7 @@ func miqt_exec_callback_QVideoWidget_dropEvent(self *C.QVideoWidget, cb C.intptr
 }
 
 func (this *QVideoWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1349,6 +1453,8 @@ func miqt_exec_callback_QVideoWidget_nativeEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QVideoWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1375,6 +1481,7 @@ func miqt_exec_callback_QVideoWidget_changeEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVideoWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1403,6 +1510,8 @@ func miqt_exec_callback_QVideoWidget_metric(self *C.QVideoWidget, cb C.intptr_t,
 }
 
 func (this *QVideoWidget) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QVideoWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1429,6 +1538,8 @@ func miqt_exec_callback_QVideoWidget_initPainter(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1451,12 +1562,14 @@ func miqt_exec_callback_QVideoWidget_redirected(self *C.QVideoWidget, cb C.intpt
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QVideoWidget) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QVideoWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1476,12 +1589,15 @@ func miqt_exec_callback_QVideoWidget_sharedPainter(self *C.QVideoWidget, cb C.in
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QVideoWidget) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QVideoWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1508,6 +1624,7 @@ func miqt_exec_callback_QVideoWidget_inputMethodEvent(self *C.QVideoWidget, cb C
 }
 
 func (this *QVideoWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1532,12 +1649,14 @@ func miqt_exec_callback_QVideoWidget_inputMethodQuery(self *C.QVideoWidget, cb C
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QVideoWidget_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QVideoWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QVideoWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1566,6 +1685,9 @@ func miqt_exec_callback_QVideoWidget_focusNextPrevChild(self *C.QVideoWidget, cb
 }
 
 func (this *QVideoWidget) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVideoWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1596,6 +1718,8 @@ func miqt_exec_callback_QVideoWidget_eventFilter(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1622,6 +1746,8 @@ func miqt_exec_callback_QVideoWidget_timerEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1648,6 +1774,8 @@ func miqt_exec_callback_QVideoWidget_childEvent(self *C.QVideoWidget, cb C.intpt
 }
 
 func (this *QVideoWidget) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVideoWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1674,6 +1802,8 @@ func miqt_exec_callback_QVideoWidget_customEvent(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVideoWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1700,6 +1830,8 @@ func miqt_exec_callback_QVideoWidget_connectNotify(self *C.QVideoWidget, cb C.in
 }
 
 func (this *QVideoWidget) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVideoWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1737,8 +1869,9 @@ func (this *QVideoWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoWidget) {
-		C.QVideoWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoWidget_delete((*C.QVideoWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

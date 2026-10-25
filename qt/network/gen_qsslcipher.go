@@ -15,7 +15,13 @@ import (
 
 type QSslCipher struct {
 	h  *C.QSslCipher
-	gc *[1]*C.QSslCipher
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslCipher) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslCipher) cPointer() *C.QSslCipher {
@@ -74,31 +80,42 @@ func NewQSslCipher3(name string, protocol QSsl__SslProtocol) *QSslCipher {
 
 // NewQSslCipher4 constructs a new QSslCipher object.
 func NewQSslCipher4(other *QSslCipher) *QSslCipher {
+	defer runtime.KeepAlive(other)
 
 	return newQSslCipher(C.QSslCipher_new4(other.cPointer()))
 }
 
 func (this *QSslCipher) OperatorAssign(other *QSslCipher) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslCipher_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslCipher) Swap(other *QSslCipher) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslCipher_swap(this.h, other.cPointer())
 }
 
 func (this *QSslCipher) OperatorEqual(other *QSslCipher) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSslCipher_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslCipher) OperatorNotEqual(other *QSslCipher) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSslCipher_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslCipher) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslCipher_isNull(this.h))
 }
 
 func (this *QSslCipher) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCipher_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -106,14 +123,17 @@ func (this *QSslCipher) Name() string {
 }
 
 func (this *QSslCipher) SupportedBits() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSslCipher_supportedBits(this.h))
 }
 
 func (this *QSslCipher) UsedBits() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSslCipher_usedBits(this.h))
 }
 
 func (this *QSslCipher) KeyExchangeMethod() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCipher_keyExchangeMethod(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -121,6 +141,7 @@ func (this *QSslCipher) KeyExchangeMethod() string {
 }
 
 func (this *QSslCipher) AuthenticationMethod() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCipher_authenticationMethod(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -128,6 +149,7 @@ func (this *QSslCipher) AuthenticationMethod() string {
 }
 
 func (this *QSslCipher) EncryptionMethod() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCipher_encryptionMethod(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -135,6 +157,7 @@ func (this *QSslCipher) EncryptionMethod() string {
 }
 
 func (this *QSslCipher) ProtocolString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCipher_protocolString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -142,6 +165,7 @@ func (this *QSslCipher) ProtocolString() string {
 }
 
 func (this *QSslCipher) Protocol() QSsl__SslProtocol {
+	defer runtime.KeepAlive(this)
 	return (QSsl__SslProtocol)(C.QSslCipher_protocol(this.h))
 }
 
@@ -157,8 +181,9 @@ func (this *QSslCipher) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslCipher{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslCipher) {
-		C.QSslCipher_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslCipher_delete((*C.QSslCipher)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

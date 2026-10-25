@@ -15,7 +15,13 @@ import (
 
 type QAudioDeviceInfo struct {
 	h  *C.QAudioDeviceInfo
-	gc *[1]*C.QAudioDeviceInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioDeviceInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioDeviceInfo) cPointer() *C.QAudioDeviceInfo {
@@ -54,27 +60,36 @@ func NewQAudioDeviceInfo() *QAudioDeviceInfo {
 
 // NewQAudioDeviceInfo2 constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo2(other *QAudioDeviceInfo) *QAudioDeviceInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQAudioDeviceInfo(C.QAudioDeviceInfo_new2(other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) OperatorAssign(other *QAudioDeviceInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QAudioDeviceInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAudioDeviceInfo) OperatorEqual(other *QAudioDeviceInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QAudioDeviceInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) OperatorNotEqual(other *QAudioDeviceInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QAudioDeviceInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioDeviceInfo_isNull(this.h))
 }
 
 func (this *QAudioDeviceInfo) DeviceName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -82,22 +97,28 @@ func (this *QAudioDeviceInfo) DeviceName() string {
 }
 
 func (this *QAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	return (bool)(C.QAudioDeviceInfo_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) PreferredFormat() *QAudioFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAudioDeviceInfo_preferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) NearestFormat(format *QAudioFormat) *QAudioFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	_goptr := newQAudioFormat(C.QAudioDeviceInfo_nearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) SupportedCodecs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -111,6 +132,7 @@ func (this *QAudioDeviceInfo) SupportedCodecs() []string {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleRates() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -121,6 +143,7 @@ func (this *QAudioDeviceInfo) SupportedSampleRates() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedChannelCounts() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedChannelCounts(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -131,6 +154,7 @@ func (this *QAudioDeviceInfo) SupportedChannelCounts() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleSizes() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleSizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -141,6 +165,7 @@ func (this *QAudioDeviceInfo) SupportedSampleSizes() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedByteOrders(this.h)
 	_ret := make([]QAudioFormat__Endian, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -151,6 +176,7 @@ func (this *QAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleTypes(this.h)
 	_ret := make([]QAudioFormat__SampleType, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -161,6 +187,7 @@ func (this *QAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType 
 }
 
 func (this *QAudioDeviceInfo) Realm() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_realm(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -203,8 +230,9 @@ func (this *QAudioDeviceInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioDeviceInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioDeviceInfo) {
-		C.QAudioDeviceInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioDeviceInfo_delete((*C.QAudioDeviceInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

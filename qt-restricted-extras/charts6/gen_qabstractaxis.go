@@ -29,8 +29,14 @@ const (
 
 type QAbstractAxis struct {
 	h  *C.QAbstractAxis
-	gc *[1]*C.QAbstractAxis
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractAxis) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractAxis) cPointer() *C.QAbstractAxis {
@@ -65,10 +71,12 @@ func UnsafeNewQAbstractAxis(h unsafe.Pointer) *QAbstractAxis {
 }
 
 func (this *QAbstractAxis) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAxis_metaObject(this.h)))
 }
 
 func (this *QAbstractAxis) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAxis_metacast(this.h, param1_Cstring))
@@ -84,184 +92,235 @@ func QAbstractAxis_Tr(s string) string {
 }
 
 func (this *QAbstractAxis) Type() QAbstractAxis__AxisType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractAxis__AxisType)(C.QAbstractAxis_type(this.h))
 }
 
 func (this *QAbstractAxis) IsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setVisible(this.h)
 }
 
 func (this *QAbstractAxis) Show() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_show(this.h)
 }
 
 func (this *QAbstractAxis) Hide() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_hide(this.h)
 }
 
 func (this *QAbstractAxis) IsLineVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isLineVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetLineVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLineVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetLinePen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_setLinePen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) LinePen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QAbstractAxis_linePen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetLinePenColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setLinePenColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) LinePenColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_linePenColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) IsGridLineVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isGridLineVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetGridLineVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setGridLineVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetGridLinePen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_setGridLinePen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) GridLinePen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QAbstractAxis_gridLinePen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) IsMinorGridLineVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isMinorGridLineVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetMinorGridLineVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setMinorGridLineVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetMinorGridLinePen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_setMinorGridLinePen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) MinorGridLinePen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QAbstractAxis_minorGridLinePen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetGridLineColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setGridLineColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) GridLineColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_gridLineColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetMinorGridLineColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setMinorGridLineColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) MinorGridLineColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_minorGridLineColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) LabelsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_labelsVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetLabelsVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLabelsVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetLabelsBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_setLabelsBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) LabelsBrush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QAbstractAxis_labelsBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetLabelsFont(font *qt6.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QAbstractAxis_setLabelsFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) LabelsFont() *qt6.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QAbstractAxis_labelsFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetLabelsAngle(angle int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLabelsAngle(this.h, (C.int)(angle))
 }
 
 func (this *QAbstractAxis) LabelsAngle() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAxis_labelsAngle(this.h))
 }
 
 func (this *QAbstractAxis) SetLabelsColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setLabelsColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) LabelsColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_labelsColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) IsTitleVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isTitleVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetTitleVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setTitleVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetTitleBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_setTitleBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) TitleBrush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QAbstractAxis_titleBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetTitleFont(font *qt6.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QAbstractAxis_setTitleFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) TitleFont() *qt6.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QAbstractAxis_titleFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetTitleText(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -270,6 +329,7 @@ func (this *QAbstractAxis) SetTitleText(title string) {
 }
 
 func (this *QAbstractAxis) TitleText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractAxis_titleText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -277,102 +337,133 @@ func (this *QAbstractAxis) TitleText() string {
 }
 
 func (this *QAbstractAxis) ShadesVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_shadesVisible(this.h))
 }
 
 func (this *QAbstractAxis) SetShadesVisible() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setShadesVisible(this.h)
 }
 
 func (this *QAbstractAxis) SetShadesPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_setShadesPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) ShadesPen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QAbstractAxis_shadesPen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetShadesBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_setShadesBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) ShadesBrush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QAbstractAxis_shadesBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetShadesColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setShadesColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) ShadesColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_shadesColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) SetShadesBorderColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_setShadesBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) ShadesBorderColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_shadesBorderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAxis) Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt6.Orientation)(C.QAbstractAxis_orientation(this.h))
 }
 
 func (this *QAbstractAxis) Alignment() qt6.AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (qt6.AlignmentFlag)(C.QAbstractAxis_alignment(this.h))
 }
 
 func (this *QAbstractAxis) SetMin(min *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(min)
 	C.QAbstractAxis_setMin(this.h, (*C.QVariant)(min.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) SetMax(max *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(max)
 	C.QAbstractAxis_setMax(this.h, (*C.QVariant)(max.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) SetRange(min *qt6.QVariant, max *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(min)
+	defer runtime.KeepAlive(max)
 	C.QAbstractAxis_setRange(this.h, (*C.QVariant)(min.UnsafePointer()), (*C.QVariant)(max.UnsafePointer()))
 }
 
 func (this *QAbstractAxis) SetReverse() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setReverse(this.h)
 }
 
 func (this *QAbstractAxis) IsReverse() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_isReverse(this.h))
 }
 
 func (this *QAbstractAxis) SetLabelsEditable() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLabelsEditable(this.h)
 }
 
 func (this *QAbstractAxis) LabelsEditable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_labelsEditable(this.h))
 }
 
 func (this *QAbstractAxis) LabelsTruncated() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_labelsTruncated(this.h))
 }
 
 func (this *QAbstractAxis) SetTruncateLabels() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setTruncateLabels(this.h)
 }
 
 func (this *QAbstractAxis) TruncateLabels() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractAxis_truncateLabels(this.h))
 }
 
 func (this *QAbstractAxis) VisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_visibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnVisibleChanged(slot func(visible bool)) {
@@ -393,6 +484,8 @@ func miqt_exec_callback_QAbstractAxis_visibleChanged(cb C.intptr_t, visible C.bo
 }
 
 func (this *QAbstractAxis) LinePenChanged(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_linePenChanged(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnLinePenChanged(slot func(pen *qt6.QPen)) {
@@ -413,6 +506,7 @@ func miqt_exec_callback_QAbstractAxis_linePenChanged(cb C.intptr_t, pen *C.QPen)
 }
 
 func (this *QAbstractAxis) LineVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_lineVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnLineVisibleChanged(slot func(visible bool)) {
@@ -433,6 +527,7 @@ func miqt_exec_callback_QAbstractAxis_lineVisibleChanged(cb C.intptr_t, visible 
 }
 
 func (this *QAbstractAxis) LabelsVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_labelsVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnLabelsVisibleChanged(slot func(visible bool)) {
@@ -453,6 +548,8 @@ func miqt_exec_callback_QAbstractAxis_labelsVisibleChanged(cb C.intptr_t, visibl
 }
 
 func (this *QAbstractAxis) LabelsBrushChanged(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_labelsBrushChanged(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnLabelsBrushChanged(slot func(brush *qt6.QBrush)) {
@@ -473,6 +570,8 @@ func miqt_exec_callback_QAbstractAxis_labelsBrushChanged(cb C.intptr_t, brush *C
 }
 
 func (this *QAbstractAxis) LabelsFontChanged(pen *qt6.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_labelsFontChanged(this.h, (*C.QFont)(pen.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnLabelsFontChanged(slot func(pen *qt6.QFont)) {
@@ -493,6 +592,7 @@ func miqt_exec_callback_QAbstractAxis_labelsFontChanged(cb C.intptr_t, pen *C.QF
 }
 
 func (this *QAbstractAxis) LabelsAngleChanged(angle int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_labelsAngleChanged(this.h, (C.int)(angle))
 }
 func (this *QAbstractAxis) OnLabelsAngleChanged(slot func(angle int)) {
@@ -513,6 +613,8 @@ func miqt_exec_callback_QAbstractAxis_labelsAngleChanged(cb C.intptr_t, angle C.
 }
 
 func (this *QAbstractAxis) GridLinePenChanged(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_gridLinePenChanged(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnGridLinePenChanged(slot func(pen *qt6.QPen)) {
@@ -533,6 +635,7 @@ func miqt_exec_callback_QAbstractAxis_gridLinePenChanged(cb C.intptr_t, pen *C.Q
 }
 
 func (this *QAbstractAxis) GridVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_gridVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnGridVisibleChanged(slot func(visible bool)) {
@@ -553,6 +656,7 @@ func miqt_exec_callback_QAbstractAxis_gridVisibleChanged(cb C.intptr_t, visible 
 }
 
 func (this *QAbstractAxis) MinorGridVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_minorGridVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnMinorGridVisibleChanged(slot func(visible bool)) {
@@ -573,6 +677,8 @@ func miqt_exec_callback_QAbstractAxis_minorGridVisibleChanged(cb C.intptr_t, vis
 }
 
 func (this *QAbstractAxis) MinorGridLinePenChanged(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_minorGridLinePenChanged(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnMinorGridLinePenChanged(slot func(pen *qt6.QPen)) {
@@ -593,6 +699,8 @@ func miqt_exec_callback_QAbstractAxis_minorGridLinePenChanged(cb C.intptr_t, pen
 }
 
 func (this *QAbstractAxis) GridLineColorChanged(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_gridLineColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnGridLineColorChanged(slot func(color *qt6.QColor)) {
@@ -613,6 +721,8 @@ func miqt_exec_callback_QAbstractAxis_gridLineColorChanged(cb C.intptr_t, color 
 }
 
 func (this *QAbstractAxis) MinorGridLineColorChanged(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_minorGridLineColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnMinorGridLineColorChanged(slot func(color *qt6.QColor)) {
@@ -633,6 +743,8 @@ func miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(cb C.intptr_t, c
 }
 
 func (this *QAbstractAxis) ColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnColorChanged(slot func(color qt6.QColor)) {
@@ -655,6 +767,8 @@ func miqt_exec_callback_QAbstractAxis_colorChanged(cb C.intptr_t, color *C.QColo
 }
 
 func (this *QAbstractAxis) LabelsColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_labelsColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnLabelsColorChanged(slot func(color qt6.QColor)) {
@@ -677,6 +791,7 @@ func miqt_exec_callback_QAbstractAxis_labelsColorChanged(cb C.intptr_t, color *C
 }
 
 func (this *QAbstractAxis) TitleTextChanged(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -704,6 +819,8 @@ func miqt_exec_callback_QAbstractAxis_titleTextChanged(cb C.intptr_t, title C.st
 }
 
 func (this *QAbstractAxis) TitleBrushChanged(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_titleBrushChanged(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnTitleBrushChanged(slot func(brush *qt6.QBrush)) {
@@ -724,6 +841,7 @@ func miqt_exec_callback_QAbstractAxis_titleBrushChanged(cb C.intptr_t, brush *C.
 }
 
 func (this *QAbstractAxis) TitleVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_titleVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnTitleVisibleChanged(slot func(visible bool)) {
@@ -744,6 +862,8 @@ func miqt_exec_callback_QAbstractAxis_titleVisibleChanged(cb C.intptr_t, visible
 }
 
 func (this *QAbstractAxis) TitleFontChanged(font *qt6.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QAbstractAxis_titleFontChanged(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnTitleFontChanged(slot func(font *qt6.QFont)) {
@@ -764,6 +884,7 @@ func miqt_exec_callback_QAbstractAxis_titleFontChanged(cb C.intptr_t, font *C.QF
 }
 
 func (this *QAbstractAxis) ShadesVisibleChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_shadesVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QAbstractAxis) OnShadesVisibleChanged(slot func(visible bool)) {
@@ -784,6 +905,8 @@ func miqt_exec_callback_QAbstractAxis_shadesVisibleChanged(cb C.intptr_t, visibl
 }
 
 func (this *QAbstractAxis) ShadesColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_shadesColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnShadesColorChanged(slot func(color qt6.QColor)) {
@@ -806,6 +929,8 @@ func miqt_exec_callback_QAbstractAxis_shadesColorChanged(cb C.intptr_t, color *C
 }
 
 func (this *QAbstractAxis) ShadesBorderColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QAbstractAxis_shadesBorderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnShadesBorderColorChanged(slot func(color qt6.QColor)) {
@@ -828,6 +953,8 @@ func miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(cb C.intptr_t, co
 }
 
 func (this *QAbstractAxis) ShadesPenChanged(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QAbstractAxis_shadesPenChanged(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnShadesPenChanged(slot func(pen *qt6.QPen)) {
@@ -848,6 +975,8 @@ func miqt_exec_callback_QAbstractAxis_shadesPenChanged(cb C.intptr_t, pen *C.QPe
 }
 
 func (this *QAbstractAxis) ShadesBrushChanged(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QAbstractAxis_shadesBrushChanged(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 func (this *QAbstractAxis) OnShadesBrushChanged(slot func(brush *qt6.QBrush)) {
@@ -868,6 +997,7 @@ func miqt_exec_callback_QAbstractAxis_shadesBrushChanged(cb C.intptr_t, brush *C
 }
 
 func (this *QAbstractAxis) ReverseChanged(reverse bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_reverseChanged(this.h, (C.bool)(reverse))
 }
 func (this *QAbstractAxis) OnReverseChanged(slot func(reverse bool)) {
@@ -888,6 +1018,7 @@ func miqt_exec_callback_QAbstractAxis_reverseChanged(cb C.intptr_t, reverse C.bo
 }
 
 func (this *QAbstractAxis) LabelsEditableChanged(editable bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_labelsEditableChanged(this.h, (C.bool)(editable))
 }
 func (this *QAbstractAxis) OnLabelsEditableChanged(slot func(editable bool)) {
@@ -908,6 +1039,7 @@ func miqt_exec_callback_QAbstractAxis_labelsEditableChanged(cb C.intptr_t, edita
 }
 
 func (this *QAbstractAxis) LabelsTruncatedChanged(labelsTruncated bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_labelsTruncatedChanged(this.h, (C.bool)(labelsTruncated))
 }
 func (this *QAbstractAxis) OnLabelsTruncatedChanged(slot func(labelsTruncated bool)) {
@@ -928,6 +1060,7 @@ func miqt_exec_callback_QAbstractAxis_labelsTruncatedChanged(cb C.intptr_t, labe
 }
 
 func (this *QAbstractAxis) TruncateLabelsChanged(truncateLabels bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_truncateLabelsChanged(this.h, (C.bool)(truncateLabels))
 }
 func (this *QAbstractAxis) OnTruncateLabelsChanged(slot func(truncateLabels bool)) {
@@ -970,42 +1103,52 @@ func QAbstractAxis_Tr3(s string, c string, n int) string {
 }
 
 func (this *QAbstractAxis) SetVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetLineVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetGridLineVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setGridLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetMinorGridLineVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setMinorGridLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetLabelsVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetTitleVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setTitleVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetShadesVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setShadesVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAbstractAxis) SetReverseWithReverse(reverse bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setReverseWithReverse(this.h, (C.bool)(reverse))
 }
 
 func (this *QAbstractAxis) SetLabelsEditableWithEditable(editable bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setLabelsEditableWithEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QAbstractAxis) SetTruncateLabelsWithTruncateLabels(truncateLabels bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractAxis_setTruncateLabelsWithTruncateLabels(this.h, (C.bool)(truncateLabels))
 }
 
@@ -1021,8 +1164,9 @@ func (this *QAbstractAxis) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractAxis{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractAxis) {
-		C.QAbstractAxis_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractAxis_delete((*C.QAbstractAxis)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

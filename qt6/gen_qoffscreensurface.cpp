@@ -68,7 +68,9 @@ public:
 		}
 
 		QSurfaceFormat* callback_return_value = miqt_exec_callback_QOffscreenSurface_format(this, handle__format);
-		return *callback_return_value;
+		QSurfaceFormat callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSurfaceFormat* QOffscreenSurface_virtualbase_format(const void* self);
@@ -83,7 +85,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QOffscreenSurface_size(this, handle__size);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QOffscreenSurface_virtualbase_size(const void* self);
@@ -467,6 +471,14 @@ bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQOffscreenSurface*>(self)->QOffscreenSurface::disconnectNotify(*signal);
+}
+
+QSurfaceFormat* QOffscreenSurface_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
+	return new QSurfaceFormat(*src);
+}
+
+QSize* QOffscreenSurface_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void* QOffscreenSurface_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {

@@ -17,8 +17,14 @@ import (
 
 type QwtArrowButton struct {
 	h  *C.QwtArrowButton
-	gc *[1]*C.QwtArrowButton
+	gc *[1]unsafe.Pointer
 	*qt.QPushButton
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtArrowButton) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtArrowButton) cPointer() *C.QwtArrowButton {
@@ -60,25 +66,30 @@ func NewQwtArrowButton(num int, param2 qt.ArrowType) *QwtArrowButton {
 
 // NewQwtArrowButton2 constructs a new QwtArrowButton object.
 func NewQwtArrowButton2(num int, param2 qt.ArrowType, parent *qt.QWidget) *QwtArrowButton {
+	defer runtime.KeepAlive(parent)
 
 	return newQwtArrowButton(C.QwtArrowButton_new2((C.int)(num), (C.int)(param2), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QwtArrowButton) ArrowType() qt.ArrowType {
+	defer runtime.KeepAlive(this)
 	return (qt.ArrowType)(C.QwtArrowButton_arrowType(this.h))
 }
 
 func (this *QwtArrowButton) Num() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtArrowButton_num(this.h))
 }
 
 func (this *QwtArrowButton) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtArrowButton) MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_minimumSizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -86,6 +97,8 @@ func (this *QwtArrowButton) MinimumSizeHint() *qt.QSize {
 
 // InitStyleOption can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) InitStyleOption(option *qt.QStyleOptionButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtArrowButton_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QStyleOptionButton)(option.UnsafePointer()))
@@ -98,6 +111,7 @@ func (this *QwtArrowButton) InitStyleOption(option *qt.QStyleOptionButton) {
 
 // UpdateMicroFocus can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtArrowButton_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -110,6 +124,7 @@ func (this *QwtArrowButton) UpdateMicroFocus() {
 
 // Create can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtArrowButton_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -122,6 +137,7 @@ func (this *QwtArrowButton) Create() {
 
 // Destroy can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtArrowButton_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -134,6 +150,7 @@ func (this *QwtArrowButton) Destroy() {
 
 // FocusNextChild can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtArrowButton_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -148,6 +165,7 @@ func (this *QwtArrowButton) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtArrowButton_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -162,6 +180,7 @@ func (this *QwtArrowButton) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtArrowButton_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -176,6 +195,7 @@ func (this *QwtArrowButton) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtArrowButton_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -190,6 +210,7 @@ func (this *QwtArrowButton) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -206,6 +227,8 @@ func (this *QwtArrowButton) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtArrowButton that was directly constructed.
 func (this *QwtArrowButton) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtArrowButton_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -219,6 +242,7 @@ func (this *QwtArrowButton) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtArrowButton) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -240,12 +264,14 @@ func miqt_exec_callback_QwtArrowButton_sizeHint(self *C.QwtArrowButton, cb C.int
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -267,12 +293,15 @@ func miqt_exec_callback_QwtArrowButton_minimumSizeHint(self *C.QwtArrowButton, c
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -299,6 +328,8 @@ func miqt_exec_callback_QwtArrowButton_paintEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_DrawButtonLabel(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtArrowButton_virtualbase_drawButtonLabel(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -325,6 +356,9 @@ func miqt_exec_callback_QwtArrowButton_drawButtonLabel(self *C.QwtArrowButton, c
 }
 
 func (this *QwtArrowButton) callVirtualBase_DrawArrow(param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtArrowButton_virtualbase_drawArrow(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRect)(param2.UnsafePointer()), (C.int)(param3))
 
@@ -355,6 +389,7 @@ func miqt_exec_callback_QwtArrowButton_drawArrow(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_LabelRect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtArrowButton_virtualbase_labelRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -376,12 +411,15 @@ func miqt_exec_callback_QwtArrowButton_labelRect(self *C.QwtArrowButton, cb C.in
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_LabelRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRect)(virtualReturn.UnsafePointer())
+	return C.QwtArrowButton_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_ArrowSize(param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boundingSize)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_arrowSize(unsafe.Pointer(this.h), (C.int)(param1), (*C.QSize)(boundingSize.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -408,12 +446,15 @@ func miqt_exec_callback_QwtArrowButton_arrowSize(self *C.QwtArrowButton, cb C.in
 	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(boundingSize))
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_ArrowSize, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtArrowButton_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -440,6 +481,8 @@ func miqt_exec_callback_QwtArrowButton_keyPressEvent(self *C.QwtArrowButton, cb 
 }
 
 func (this *QwtArrowButton) callVirtualBase_Event(e *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QwtArrowButton_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -468,6 +511,8 @@ func miqt_exec_callback_QwtArrowButton_event(self *C.QwtArrowButton, cb C.intptr
 }
 
 func (this *QwtArrowButton) callVirtualBase_FocusInEvent(param1 *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtArrowButton_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(param1.UnsafePointer()))
 
@@ -494,6 +539,8 @@ func miqt_exec_callback_QwtArrowButton_focusInEvent(self *C.QwtArrowButton, cb C
 }
 
 func (this *QwtArrowButton) callVirtualBase_FocusOutEvent(param1 *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtArrowButton_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(param1.UnsafePointer()))
 
@@ -520,6 +567,8 @@ func miqt_exec_callback_QwtArrowButton_focusOutEvent(self *C.QwtArrowButton, cb 
 }
 
 func (this *QwtArrowButton) callVirtualBase_HitButton(pos *qt.QPoint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 
 	return (bool)(C.QwtArrowButton_virtualbase_hitButton(unsafe.Pointer(this.h), (*C.QPoint)(pos.UnsafePointer())))
 
@@ -548,6 +597,7 @@ func miqt_exec_callback_QwtArrowButton_hitButton(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_CheckStateSet() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtArrowButton_virtualbase_checkStateSet(unsafe.Pointer(this.h))
 
@@ -571,6 +621,7 @@ func miqt_exec_callback_QwtArrowButton_checkStateSet(self *C.QwtArrowButton, cb 
 }
 
 func (this *QwtArrowButton) callVirtualBase_NextCheckState() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtArrowButton_virtualbase_nextCheckState(unsafe.Pointer(this.h))
 
@@ -594,6 +645,8 @@ func miqt_exec_callback_QwtArrowButton_nextCheckState(self *C.QwtArrowButton, cb
 }
 
 func (this *QwtArrowButton) callVirtualBase_KeyReleaseEvent(e *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(e.UnsafePointer()))
 
@@ -620,6 +673,8 @@ func miqt_exec_callback_QwtArrowButton_keyReleaseEvent(self *C.QwtArrowButton, c
 }
 
 func (this *QwtArrowButton) callVirtualBase_MousePressEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -646,6 +701,8 @@ func miqt_exec_callback_QwtArrowButton_mousePressEvent(self *C.QwtArrowButton, c
 }
 
 func (this *QwtArrowButton) callVirtualBase_MouseReleaseEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -672,6 +729,8 @@ func miqt_exec_callback_QwtArrowButton_mouseReleaseEvent(self *C.QwtArrowButton,
 }
 
 func (this *QwtArrowButton) callVirtualBase_MouseMoveEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -698,6 +757,8 @@ func miqt_exec_callback_QwtArrowButton_mouseMoveEvent(self *C.QwtArrowButton, cb
 }
 
 func (this *QwtArrowButton) callVirtualBase_ChangeEvent(e *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer()))
 
@@ -724,6 +785,8 @@ func miqt_exec_callback_QwtArrowButton_changeEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_TimerEvent(e *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QwtArrowButton_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(e.UnsafePointer()))
 
@@ -750,6 +813,7 @@ func miqt_exec_callback_QwtArrowButton_timerEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtArrowButton_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -775,6 +839,7 @@ func miqt_exec_callback_QwtArrowButton_devType(self *C.QwtArrowButton, cb C.intp
 }
 
 func (this *QwtArrowButton) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtArrowButton_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -801,6 +866,7 @@ func miqt_exec_callback_QwtArrowButton_setVisible(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtArrowButton_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -829,6 +895,7 @@ func miqt_exec_callback_QwtArrowButton_heightForWidth(self *C.QwtArrowButton, cb
 }
 
 func (this *QwtArrowButton) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtArrowButton_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -854,6 +921,7 @@ func miqt_exec_callback_QwtArrowButton_hasHeightForWidth(self *C.QwtArrowButton,
 }
 
 func (this *QwtArrowButton) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtArrowButton_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -873,12 +941,15 @@ func miqt_exec_callback_QwtArrowButton_paintEngine(self *C.QwtArrowButton, cb C.
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -905,6 +976,8 @@ func miqt_exec_callback_QwtArrowButton_mouseDoubleClickEvent(self *C.QwtArrowBut
 }
 
 func (this *QwtArrowButton) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -931,6 +1004,8 @@ func miqt_exec_callback_QwtArrowButton_wheelEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -957,6 +1032,8 @@ func miqt_exec_callback_QwtArrowButton_enterEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -983,6 +1060,8 @@ func miqt_exec_callback_QwtArrowButton_leaveEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1009,6 +1088,8 @@ func miqt_exec_callback_QwtArrowButton_moveEvent(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -1035,6 +1116,8 @@ func miqt_exec_callback_QwtArrowButton_resizeEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1061,6 +1144,8 @@ func miqt_exec_callback_QwtArrowButton_closeEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1087,6 +1172,8 @@ func miqt_exec_callback_QwtArrowButton_contextMenuEvent(self *C.QwtArrowButton, 
 }
 
 func (this *QwtArrowButton) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1113,6 +1200,8 @@ func miqt_exec_callback_QwtArrowButton_tabletEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1139,6 +1228,8 @@ func miqt_exec_callback_QwtArrowButton_actionEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1165,6 +1256,8 @@ func miqt_exec_callback_QwtArrowButton_dragEnterEvent(self *C.QwtArrowButton, cb
 }
 
 func (this *QwtArrowButton) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1191,6 +1284,8 @@ func miqt_exec_callback_QwtArrowButton_dragMoveEvent(self *C.QwtArrowButton, cb 
 }
 
 func (this *QwtArrowButton) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1217,6 +1312,8 @@ func miqt_exec_callback_QwtArrowButton_dragLeaveEvent(self *C.QwtArrowButton, cb
 }
 
 func (this *QwtArrowButton) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1243,6 +1340,8 @@ func miqt_exec_callback_QwtArrowButton_dropEvent(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1269,6 +1368,8 @@ func miqt_exec_callback_QwtArrowButton_showEvent(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1295,6 +1396,7 @@ func miqt_exec_callback_QwtArrowButton_hideEvent(self *C.QwtArrowButton, cb C.in
 }
 
 func (this *QwtArrowButton) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1336,6 +1438,7 @@ func miqt_exec_callback_QwtArrowButton_nativeEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtArrowButton_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1364,6 +1467,8 @@ func miqt_exec_callback_QwtArrowButton_metric(self *C.QwtArrowButton, cb C.intpt
 }
 
 func (this *QwtArrowButton) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtArrowButton_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1390,6 +1495,8 @@ func miqt_exec_callback_QwtArrowButton_initPainter(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtArrowButton_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1412,12 +1519,14 @@ func miqt_exec_callback_QwtArrowButton_redirected(self *C.QwtArrowButton, cb C.i
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtArrowButton_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1437,12 +1546,15 @@ func miqt_exec_callback_QwtArrowButton_sharedPainter(self *C.QwtArrowButton, cb 
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtArrowButton_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1469,6 +1581,7 @@ func miqt_exec_callback_QwtArrowButton_inputMethodEvent(self *C.QwtArrowButton, 
 }
 
 func (this *QwtArrowButton) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtArrowButton_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1493,12 +1606,14 @@ func miqt_exec_callback_QwtArrowButton_inputMethodQuery(self *C.QwtArrowButton, 
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QwtArrowButton_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtArrowButton) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtArrowButton_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1527,6 +1642,9 @@ func miqt_exec_callback_QwtArrowButton_focusNextPrevChild(self *C.QwtArrowButton
 }
 
 func (this *QwtArrowButton) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtArrowButton_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1557,6 +1675,8 @@ func miqt_exec_callback_QwtArrowButton_eventFilter(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1583,6 +1703,8 @@ func miqt_exec_callback_QwtArrowButton_childEvent(self *C.QwtArrowButton, cb C.i
 }
 
 func (this *QwtArrowButton) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtArrowButton_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1609,6 +1731,8 @@ func miqt_exec_callback_QwtArrowButton_customEvent(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtArrowButton_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1635,6 +1759,8 @@ func miqt_exec_callback_QwtArrowButton_connectNotify(self *C.QwtArrowButton, cb 
 }
 
 func (this *QwtArrowButton) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtArrowButton_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1672,8 +1798,9 @@ func (this *QwtArrowButton) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtArrowButton{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtArrowButton) {
-		C.QwtArrowButton_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtArrowButton_delete((*C.QwtArrowButton)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -21,7 +21,13 @@ const (
 
 type QDeadlineTimer struct {
 	h  *C.QDeadlineTimer
-	gc *[1]*C.QDeadlineTimer
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDeadlineTimer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDeadlineTimer) cPointer() *C.QDeadlineTimer {
@@ -72,6 +78,7 @@ func NewQDeadlineTimer3(msecs int64) *QDeadlineTimer {
 
 // NewQDeadlineTimer4 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer4(param1 *QDeadlineTimer) *QDeadlineTimer {
+	defer runtime.KeepAlive(param1)
 
 	return newQDeadlineTimer(C.QDeadlineTimer_new4(param1.cPointer()))
 }
@@ -95,58 +102,73 @@ func NewQDeadlineTimer7(msecs int64, typeVal TimerType) *QDeadlineTimer {
 }
 
 func (this *QDeadlineTimer) Swap(other *QDeadlineTimer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QDeadlineTimer_swap(this.h, other.cPointer())
 }
 
 func (this *QDeadlineTimer) IsForever() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDeadlineTimer_isForever(this.h))
 }
 
 func (this *QDeadlineTimer) HasExpired() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDeadlineTimer_hasExpired(this.h))
 }
 
 func (this *QDeadlineTimer) TimerType() TimerType {
+	defer runtime.KeepAlive(this)
 	return (TimerType)(C.QDeadlineTimer_timerType(this.h))
 }
 
 func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setTimerType(this.h, (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) RemainingTime() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QDeadlineTimer_remainingTime(this.h))
 }
 
 func (this *QDeadlineTimer) RemainingTimeNSecs() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QDeadlineTimer_remainingTimeNSecs(this.h))
 }
 
 func (this *QDeadlineTimer) SetRemainingTime(msecs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setRemainingTime(this.h, (C.longlong)(msecs))
 }
 
 func (this *QDeadlineTimer) SetPreciseRemainingTime(secs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseRemainingTime(this.h, (C.longlong)(secs))
 }
 
 func (this *QDeadlineTimer) Deadline() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QDeadlineTimer_deadline(this.h))
 }
 
 func (this *QDeadlineTimer) DeadlineNSecs() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QDeadlineTimer_deadlineNSecs(this.h))
 }
 
 func (this *QDeadlineTimer) SetDeadline(msecs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setDeadline(this.h, (C.longlong)(msecs))
 }
 
 func (this *QDeadlineTimer) SetPreciseDeadline(secs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseDeadline(this.h, (C.longlong)(secs))
 }
 
 func QDeadlineTimer_AddNSecs(dt QDeadlineTimer, nsecs int64) *QDeadlineTimer {
+	defer runtime.KeepAlive(dt)
 	_goptr := newQDeadlineTimer(C.QDeadlineTimer_addNSecs(dt.cPointer(), (C.longlong)(nsecs)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -159,42 +181,57 @@ func QDeadlineTimer_Current() *QDeadlineTimer {
 }
 
 func (this *QDeadlineTimer) OperatorPlusAssign(msecs int64) *QDeadlineTimer {
-	return newQDeadlineTimer(C.QDeadlineTimer_operatorPlusAssign(this.h, (C.longlong)(msecs)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDeadlineTimer(C.QDeadlineTimer_operatorPlusAssign(this.h, (C.longlong)(msecs)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
-	return newQDeadlineTimer(C.QDeadlineTimer_operatorMinusAssign(this.h, (C.longlong)(msecs)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDeadlineTimer(C.QDeadlineTimer_operatorMinusAssign(this.h, (C.longlong)(msecs)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDeadlineTimer) RemainingTimeAsDuration() Nanoseconds {
+	defer runtime.KeepAlive(this)
 	return (Nanoseconds)(C.QDeadlineTimer_remainingTimeAsDuration(this.h))
 }
 
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDeadlineTimer_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QDeadlineTimer) SetRemainingTime2(msecs int64, typeVal TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setRemainingTime2(this.h, (C.longlong)(msecs), (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) SetPreciseRemainingTime2(secs int64, nsecs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseRemainingTime2(this.h, (C.longlong)(secs), (C.longlong)(nsecs))
 }
 
 func (this *QDeadlineTimer) SetPreciseRemainingTime3(secs int64, nsecs int64, typeVal TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseRemainingTime3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) SetDeadline2(msecs int64, timerType TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setDeadline2(this.h, (C.longlong)(msecs), (C.int)(timerType))
 }
 
 func (this *QDeadlineTimer) SetPreciseDeadline2(secs int64, nsecs int64) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseDeadline2(this.h, (C.longlong)(secs), (C.longlong)(nsecs))
 }
 
 func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QDeadlineTimer_setPreciseDeadline3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.int)(typeVal))
 }
 
@@ -216,8 +253,9 @@ func (this *QDeadlineTimer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDeadlineTimer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDeadlineTimer) {
-		C.QDeadlineTimer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDeadlineTimer_delete((*C.QDeadlineTimer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

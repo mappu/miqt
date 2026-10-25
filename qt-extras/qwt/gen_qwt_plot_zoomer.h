@@ -200,6 +200,11 @@ bool QwtPlotZoomer_override_virtual_mouseMatch2(void* self, intptr_t slot);
 bool QwtPlotZoomer_virtualbase_mouseMatch2(const void* self, QwtEventPattern__MousePattern* param1, QMouseEvent* param2);
 bool QwtPlotZoomer_override_virtual_keyMatch2(void* self, intptr_t slot);
 bool QwtPlotZoomer_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2);
+QSizeF* QwtPlotZoomer_virtualreturncopy_QSizeF(QSizeF* src);
+QwtText* QwtPlotZoomer_virtualreturncopy_QwtText(QwtText* src);
+QPainterPath* QwtPlotZoomer_virtualreturncopy_QPainterPath(QPainterPath* src);
+QRegion* QwtPlotZoomer_virtualreturncopy_QRegion(QRegion* src);
+QRect* QwtPlotZoomer_virtualreturncopy_QRect(QRect* src);
 
 QRectF* QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
 QRectF* QwtPlotZoomer_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1);

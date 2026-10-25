@@ -237,6 +237,10 @@ bool QSortFilterProxyModel_override_virtual_connectNotify(void* self, intptr_t s
 void QSortFilterProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSortFilterProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QSortFilterProxyModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QItemSelection* QSortFilterProxyModel_virtualreturncopy_QItemSelection(QItemSelection* src);
+QVariant* QSortFilterProxyModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QSortFilterProxyModel_virtualreturncopy_QSize(QSize* src);
 
 void QSortFilterProxyModel_protectedbase_filterChanged(bool* _dynamic_cast_ok, void* self);
 void QSortFilterProxyModel_protectedbase_invalidateFilter(bool* _dynamic_cast_ok, void* self);

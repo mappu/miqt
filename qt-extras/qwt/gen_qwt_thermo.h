@@ -244,6 +244,8 @@ bool QwtThermo_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtThermo_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtThermo_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtThermo_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtThermo_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtThermo_virtualreturncopy_QVariant(QVariant* src);
 
 QwtScaleDraw* QwtThermo_protectedbase_scaleDraw2(bool* _dynamic_cast_ok, void* self);
 QRect* QwtThermo_protectedbase_pipeRect(bool* _dynamic_cast_ok, const void* self);

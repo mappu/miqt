@@ -59,7 +59,13 @@ const (
 
 type QAbstractUndoItem struct {
 	h  *C.QAbstractUndoItem
-	gc *[1]*C.QAbstractUndoItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractUndoItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractUndoItem) cPointer() *C.QAbstractUndoItem {
@@ -91,14 +97,18 @@ func UnsafeNewQAbstractUndoItem(h unsafe.Pointer) *QAbstractUndoItem {
 }
 
 func (this *QAbstractUndoItem) Undo() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractUndoItem_undo(this.h)
 }
 
 func (this *QAbstractUndoItem) Redo() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractUndoItem_redo(this.h)
 }
 
 func (this *QAbstractUndoItem) OperatorAssign(param1 *QAbstractUndoItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractUndoItem_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -114,16 +124,24 @@ func (this *QAbstractUndoItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractUndoItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractUndoItem) {
-		C.QAbstractUndoItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractUndoItem_delete((*C.QAbstractUndoItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextDocument struct {
 	h  *C.QTextDocument
-	gc *[1]*C.QTextDocument
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextDocument) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QTextDocument) cPointer() *C.QTextDocument {
@@ -175,12 +193,14 @@ func NewQTextDocument2(text string) *QTextDocument {
 
 // NewQTextDocument3 constructs a new QTextDocument object.
 func NewQTextDocument3(parent *QObject) *QTextDocument {
+	defer runtime.KeepAlive(parent)
 
 	return newQTextDocument(C.QTextDocument_new3(parent.cPointer()))
 }
 
 // NewQTextDocument4 constructs a new QTextDocument object.
 func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
+	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -190,10 +210,12 @@ func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 }
 
 func (this *QTextDocument) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextDocument_metaObject(this.h))
 }
 
 func (this *QTextDocument) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextDocument_metacast(this.h, param1_Cstring))
@@ -209,54 +231,68 @@ func QTextDocument_Tr(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
+	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QTextDocument_clone(this.h))
 }
 
 func (this *QTextDocument) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isEmpty(this.h))
 }
 
 func (this *QTextDocument) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_clear(this.h)
 }
 
 func (this *QTextDocument) SetUndoRedoEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setUndoRedoEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QTextDocument) IsUndoRedoEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isUndoRedoEnabled(this.h))
 }
 
 func (this *QTextDocument) IsUndoAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isUndoAvailable(this.h))
 }
 
 func (this *QTextDocument) IsRedoAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isRedoAvailable(this.h))
 }
 
 func (this *QTextDocument) AvailableUndoSteps() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_availableUndoSteps(this.h))
 }
 
 func (this *QTextDocument) AvailableRedoSteps() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_availableRedoSteps(this.h))
 }
 
 func (this *QTextDocument) Revision() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_revision(this.h))
 }
 
 func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QTextDocument_setDocumentLayout(this.h, layout.cPointer())
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
+	defer runtime.KeepAlive(this)
 	return newQAbstractTextDocumentLayout(C.QTextDocument_documentLayout(this.h))
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
+	defer runtime.KeepAlive(this)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -265,6 +301,7 @@ func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformatio
 }
 
 func (this *QTextDocument) MetaInformation(info QTextDocument__MetaInformation) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_metaInformation(this.h, (C.int)(info))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -272,6 +309,7 @@ func (this *QTextDocument) MetaInformation(info QTextDocument__MetaInformation) 
 }
 
 func (this *QTextDocument) ToHtml() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -279,6 +317,7 @@ func (this *QTextDocument) ToHtml() string {
 }
 
 func (this *QTextDocument) SetHtml(html string) {
+	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -287,6 +326,7 @@ func (this *QTextDocument) SetHtml(html string) {
 }
 
 func (this *QTextDocument) ToMarkdown() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_toMarkdown(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -294,6 +334,7 @@ func (this *QTextDocument) ToMarkdown() string {
 }
 
 func (this *QTextDocument) SetMarkdown(markdown string) {
+	defer runtime.KeepAlive(this)
 	markdown_ms := C.struct_miqt_string{}
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
@@ -302,6 +343,7 @@ func (this *QTextDocument) SetMarkdown(markdown string) {
 }
 
 func (this *QTextDocument) ToRawText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_toRawText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -309,6 +351,7 @@ func (this *QTextDocument) ToRawText() string {
 }
 
 func (this *QTextDocument) ToPlainText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -316,6 +359,7 @@ func (this *QTextDocument) ToPlainText() string {
 }
 
 func (this *QTextDocument) SetPlainText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -324,12 +368,14 @@ func (this *QTextDocument) SetPlainText(text string) {
 }
 
 func (this *QTextDocument) CharacterAt(pos int) *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QTextDocument_characterAt(this.h, (C.int)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find(subString string) *QTextCursor {
+	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -340,6 +386,8 @@ func (this *QTextDocument) Find(subString string) *QTextCursor {
 }
 
 func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -350,142 +398,181 @@ func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCu
 }
 
 func (this *QTextDocument) FindWithExpr(expr *QRegularExpression) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expr)
 	_goptr := newQTextCursor(C.QTextDocument_findWithExpr(this.h, expr.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find3(expr *QRegularExpression, cursor *QTextCursor) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expr)
+	defer runtime.KeepAlive(cursor)
 	_goptr := newQTextCursor(C.QTextDocument_find3(this.h, expr.cPointer(), cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
+	defer runtime.KeepAlive(this)
 	return newQTextFrame(C.QTextDocument_frameAt(this.h, (C.int)(pos)))
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
+	defer runtime.KeepAlive(this)
 	return newQTextFrame(C.QTextDocument_rootFrame(this.h))
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
+	defer runtime.KeepAlive(this)
 	return newQTextObject(C.QTextDocument_object(this.h, (C.int)(objectIndex)))
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return newQTextObject(C.QTextDocument_objectForFormat(this.h, param1.cPointer()))
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_findBlock(this.h, (C.int)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FindBlockByNumber(blockNumber int) *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_findBlockByNumber(this.h, (C.int)(blockNumber)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FindBlockByLineNumber(blockNumber int) *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_findBlockByLineNumber(this.h, (C.int)(blockNumber)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Begin() *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) End() *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FirstBlock() *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_firstBlock(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) LastBlock() *QTextBlock {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextDocument_lastBlock(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) SetPageSize(size *QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QTextDocument_setPageSize(this.h, size.cPointer())
 }
 
 func (this *QTextDocument) PageSize() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QTextDocument_pageSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) SetDefaultFont(font *QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QTextDocument_setDefaultFont(this.h, font.cPointer())
 }
 
 func (this *QTextDocument) DefaultFont() *QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QTextDocument_defaultFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) SetSuperScriptBaseline(baseline float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setSuperScriptBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QTextDocument) SuperScriptBaseline() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_superScriptBaseline(this.h))
 }
 
 func (this *QTextDocument) SetSubScriptBaseline(baseline float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setSubScriptBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QTextDocument) SubScriptBaseline() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_subScriptBaseline(this.h))
 }
 
 func (this *QTextDocument) SetBaselineOffset(baseline float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setBaselineOffset(this.h, (C.double)(baseline))
 }
 
 func (this *QTextDocument) BaselineOffset() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_baselineOffset(this.h))
 }
 
 func (this *QTextDocument) PageCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_pageCount(this.h))
 }
 
 func (this *QTextDocument) IsModified() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isModified(this.h))
 }
 
 func (this *QTextDocument) Print(printer *QPagedPaintDevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(printer)
 	C.QTextDocument_print(this.h, printer.cPointer())
 }
 
 func (this *QTextDocument) Resource(typeVal int, name *QUrl) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 	_goptr := newQVariant(C.QTextDocument_resource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) AddResource(typeVal int, name *QUrl, resource *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
+	defer runtime.KeepAlive(resource)
 	C.QTextDocument_addResource(this.h, (C.int)(typeVal), name.cPointer(), resource.cPointer())
 }
 
 func (this *QTextDocument) AllFormats() []QTextFormat {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextDocument_allFormats(this.h)
 	_ret := make([]QTextFormat, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTextFormat)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -498,80 +585,100 @@ func (this *QTextDocument) AllFormats() []QTextFormat {
 }
 
 func (this *QTextDocument) MarkContentsDirty(from int, length int) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_markContentsDirty(this.h, (C.int)(from), (C.int)(length))
 }
 
 func (this *QTextDocument) SetUseDesignMetrics(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setUseDesignMetrics(this.h, (C.bool)(b))
 }
 
 func (this *QTextDocument) UseDesignMetrics() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_useDesignMetrics(this.h))
 }
 
 func (this *QTextDocument) SetLayoutEnabled(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setLayoutEnabled(this.h, (C.bool)(b))
 }
 
 func (this *QTextDocument) IsLayoutEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocument_isLayoutEnabled(this.h))
 }
 
 func (this *QTextDocument) DrawContents(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QTextDocument_drawContents(this.h, painter.cPointer())
 }
 
 func (this *QTextDocument) SetTextWidth(width float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setTextWidth(this.h, (C.double)(width))
 }
 
 func (this *QTextDocument) TextWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_textWidth(this.h))
 }
 
 func (this *QTextDocument) IdealWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_idealWidth(this.h))
 }
 
 func (this *QTextDocument) IndentWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_indentWidth(this.h))
 }
 
 func (this *QTextDocument) SetIndentWidth(width float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setIndentWidth(this.h, (C.double)(width))
 }
 
 func (this *QTextDocument) DocumentMargin() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextDocument_documentMargin(this.h))
 }
 
 func (this *QTextDocument) SetDocumentMargin(margin float64) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setDocumentMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextDocument) AdjustSize() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_adjustSize(this.h)
 }
 
 func (this *QTextDocument) Size() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QTextDocument_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) BlockCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_blockCount(this.h))
 }
 
 func (this *QTextDocument) LineCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_lineCount(this.h))
 }
 
 func (this *QTextDocument) CharacterCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_characterCount(this.h))
 }
 
 func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
+	defer runtime.KeepAlive(this)
 	sheet_ms := C.struct_miqt_string{}
 	sheet_ms.data = C.CString(sheet)
 	sheet_ms.len = C.size_t(len(sheet))
@@ -580,6 +687,7 @@ func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
 }
 
 func (this *QTextDocument) DefaultStyleSheet() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_defaultStyleSheet(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -587,54 +695,70 @@ func (this *QTextDocument) DefaultStyleSheet() string {
 }
 
 func (this *QTextDocument) Undo(cursor *QTextCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QTextDocument_undo(this.h, cursor.cPointer())
 }
 
 func (this *QTextDocument) Redo(cursor *QTextCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QTextDocument_redo(this.h, cursor.cPointer())
 }
 
 func (this *QTextDocument) ClearUndoRedoStacks() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_clearUndoRedoStacks(this.h)
 }
 
 func (this *QTextDocument) MaximumBlockCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextDocument_maximumBlockCount(this.h))
 }
 
 func (this *QTextDocument) SetMaximumBlockCount(maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setMaximumBlockCount(this.h, (C.int)(maximum))
 }
 
 func (this *QTextDocument) DefaultTextOption() *QTextOption {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextOption(C.QTextDocument_defaultTextOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) SetDefaultTextOption(option *QTextOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 	C.QTextDocument_setDefaultTextOption(this.h, option.cPointer())
 }
 
 func (this *QTextDocument) BaseUrl() *QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUrl(C.QTextDocument_baseUrl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) SetBaseUrl(url *QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QTextDocument_setBaseUrl(this.h, url.cPointer())
 }
 
 func (this *QTextDocument) DefaultCursorMoveStyle() CursorMoveStyle {
+	defer runtime.KeepAlive(this)
 	return (CursorMoveStyle)(C.QTextDocument_defaultCursorMoveStyle(this.h))
 }
 
 func (this *QTextDocument) SetDefaultCursorMoveStyle(style CursorMoveStyle) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setDefaultCursorMoveStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextDocument) ContentsChange(from int, charsRemoved int, charsAdded int) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_contentsChange(this.h, (C.int)(from), (C.int)(charsRemoved), (C.int)(charsAdded))
 }
 func (this *QTextDocument) OnContentsChange(slot func(from int, charsRemoved int, charsAdded int)) {
@@ -659,6 +783,7 @@ func miqt_exec_callback_QTextDocument_contentsChange(cb C.intptr_t, from C.int, 
 }
 
 func (this *QTextDocument) ContentsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_contentsChanged(this.h)
 }
 func (this *QTextDocument) OnContentsChanged(slot func()) {
@@ -676,6 +801,7 @@ func miqt_exec_callback_QTextDocument_contentsChanged(cb C.intptr_t) {
 }
 
 func (this *QTextDocument) UndoAvailable(param1 bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_undoAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextDocument) OnUndoAvailable(slot func(param1 bool)) {
@@ -696,6 +822,7 @@ func miqt_exec_callback_QTextDocument_undoAvailable(cb C.intptr_t, param1 C.bool
 }
 
 func (this *QTextDocument) RedoAvailable(param1 bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_redoAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextDocument) OnRedoAvailable(slot func(param1 bool)) {
@@ -716,6 +843,7 @@ func miqt_exec_callback_QTextDocument_redoAvailable(cb C.intptr_t, param1 C.bool
 }
 
 func (this *QTextDocument) UndoCommandAdded() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_undoCommandAdded(this.h)
 }
 func (this *QTextDocument) OnUndoCommandAdded(slot func()) {
@@ -733,6 +861,7 @@ func miqt_exec_callback_QTextDocument_undoCommandAdded(cb C.intptr_t) {
 }
 
 func (this *QTextDocument) ModificationChanged(m bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_modificationChanged(this.h, (C.bool)(m))
 }
 func (this *QTextDocument) OnModificationChanged(slot func(m bool)) {
@@ -753,6 +882,8 @@ func miqt_exec_callback_QTextDocument_modificationChanged(cb C.intptr_t, m C.boo
 }
 
 func (this *QTextDocument) CursorPositionChanged(cursor *QTextCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QTextDocument_cursorPositionChanged(this.h, cursor.cPointer())
 }
 func (this *QTextDocument) OnCursorPositionChanged(slot func(cursor *QTextCursor)) {
@@ -773,6 +904,7 @@ func miqt_exec_callback_QTextDocument_cursorPositionChanged(cb C.intptr_t, curso
 }
 
 func (this *QTextDocument) BlockCountChanged(newBlockCount int) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_blockCountChanged(this.h, (C.int)(newBlockCount))
 }
 func (this *QTextDocument) OnBlockCountChanged(slot func(newBlockCount int)) {
@@ -793,6 +925,8 @@ func miqt_exec_callback_QTextDocument_blockCountChanged(cb C.intptr_t, newBlockC
 }
 
 func (this *QTextDocument) BaseUrlChanged(url *QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QTextDocument_baseUrlChanged(this.h, url.cPointer())
 }
 func (this *QTextDocument) OnBaseUrlChanged(slot func(url *QUrl)) {
@@ -813,6 +947,7 @@ func miqt_exec_callback_QTextDocument_baseUrlChanged(cb C.intptr_t, url *C.QUrl)
 }
 
 func (this *QTextDocument) DocumentLayoutChanged() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_documentLayoutChanged(this.h)
 }
 func (this *QTextDocument) OnDocumentLayoutChanged(slot func()) {
@@ -830,18 +965,23 @@ func miqt_exec_callback_QTextDocument_documentLayoutChanged(cb C.intptr_t) {
 }
 
 func (this *QTextDocument) Undo2() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_undo2(this.h)
 }
 
 func (this *QTextDocument) Redo2() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_redo2(this.h)
 }
 
 func (this *QTextDocument) AppendUndoItem(param1 *QAbstractUndoItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QTextDocument_appendUndoItem(this.h, param1.cPointer())
 }
 
 func (this *QTextDocument) SetModified() {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setModified(this.h)
 }
 
@@ -868,10 +1008,13 @@ func QTextDocument_Tr3(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) CloneWithParent(parent *QObject) *QTextDocument {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return newQTextDocument(C.QTextDocument_cloneWithParent(this.h, parent.cPointer()))
 }
 
 func (this *QTextDocument) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocument_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -879,6 +1022,7 @@ func (this *QTextDocument) ToMarkdownWithFeatures(features QTextDocument__Markdo
 }
 
 func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument__MarkdownFeature) {
+	defer runtime.KeepAlive(this)
 	markdown_ms := C.struct_miqt_string{}
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
@@ -887,6 +1031,7 @@ func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument_
 }
 
 func (this *QTextDocument) Find4(subString string, from int) *QTextCursor {
+	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -897,6 +1042,7 @@ func (this *QTextDocument) Find4(subString string, from int) *QTextCursor {
 }
 
 func (this *QTextDocument) Find5(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
+	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -907,6 +1053,8 @@ func (this *QTextDocument) Find5(subString string, from int, options QTextDocume
 }
 
 func (this *QTextDocument) Find6(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -917,37 +1065,50 @@ func (this *QTextDocument) Find6(subString string, cursor *QTextCursor, options 
 }
 
 func (this *QTextDocument) Find7(expr *QRegularExpression, from int) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expr)
 	_goptr := newQTextCursor(C.QTextDocument_find7(this.h, expr.cPointer(), (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find8(expr *QRegularExpression, from int, options QTextDocument__FindFlag) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expr)
 	_goptr := newQTextCursor(C.QTextDocument_find8(this.h, expr.cPointer(), (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find9(expr *QRegularExpression, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expr)
+	defer runtime.KeepAlive(cursor)
 	_goptr := newQTextCursor(C.QTextDocument_find9(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) DrawContents2(painter *QPainter, rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QTextDocument_drawContents2(this.h, painter.cPointer(), rect.cPointer())
 }
 
 func (this *QTextDocument) ClearUndoRedoStacksWithHistoryToClear(historyToClear QTextDocument__Stacks) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_clearUndoRedoStacksWithHistoryToClear(this.h, (C.int)(historyToClear))
 }
 
 func (this *QTextDocument) SetModifiedWithBool(m bool) {
+	defer runtime.KeepAlive(this)
 	C.QTextDocument_setModifiedWithBool(this.h, (C.bool)(m))
 }
 
 // Sender can only be called from a QTextDocument that was directly constructed.
 func (this *QTextDocument) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextDocument_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -962,6 +1123,7 @@ func (this *QTextDocument) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextDocument that was directly constructed.
 func (this *QTextDocument) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextDocument_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -976,6 +1138,7 @@ func (this *QTextDocument) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextDocument that was directly constructed.
 func (this *QTextDocument) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -992,6 +1155,8 @@ func (this *QTextDocument) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextDocument that was directly constructed.
 func (this *QTextDocument) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextDocument_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1005,6 +1170,7 @@ func (this *QTextDocument) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextDocument) callVirtualBase_Clear() {
+	defer runtime.KeepAlive(this)
 
 	C.QTextDocument_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -1028,6 +1194,8 @@ func miqt_exec_callback_QTextDocument_clear(self *C.QTextDocument, cb C.intptr_t
 }
 
 func (this *QTextDocument) callVirtualBase_CreateObject(f *QTextFormat) *QTextObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 
 	return newQTextObject(C.QTextDocument_virtualbase_createObject(unsafe.Pointer(this.h), f.cPointer()))
 
@@ -1050,12 +1218,15 @@ func miqt_exec_callback_QTextDocument_createObject(self *C.QTextDocument, cb C.i
 	slotval1 := newQTextFormat(f)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_CreateObject, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTextDocument) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 
 	_goptr := newQVariant(C.QTextDocument_virtualbase_loadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1082,12 +1253,15 @@ func miqt_exec_callback_QTextDocument_loadResource(self *C.QTextDocument, cb C.i
 	slotval2 := newQUrl(name)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_LoadResource, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTextDocument_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QTextDocument) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextDocument_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1116,6 +1290,9 @@ func miqt_exec_callback_QTextDocument_event(self *C.QTextDocument, cb C.intptr_t
 }
 
 func (this *QTextDocument) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextDocument_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1146,6 +1323,8 @@ func miqt_exec_callback_QTextDocument_eventFilter(self *C.QTextDocument, cb C.in
 }
 
 func (this *QTextDocument) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextDocument_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1172,6 +1351,8 @@ func miqt_exec_callback_QTextDocument_timerEvent(self *C.QTextDocument, cb C.int
 }
 
 func (this *QTextDocument) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextDocument_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1198,6 +1379,8 @@ func miqt_exec_callback_QTextDocument_childEvent(self *C.QTextDocument, cb C.int
 }
 
 func (this *QTextDocument) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextDocument_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1224,6 +1407,8 @@ func miqt_exec_callback_QTextDocument_customEvent(self *C.QTextDocument, cb C.in
 }
 
 func (this *QTextDocument) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTextDocument_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1250,6 +1435,8 @@ func miqt_exec_callback_QTextDocument_connectNotify(self *C.QTextDocument, cb C.
 }
 
 func (this *QTextDocument) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTextDocument_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1287,8 +1474,9 @@ func (this *QTextDocument) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextDocument{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextDocument) {
-		C.QTextDocument_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextDocument_delete((*C.QTextDocument)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

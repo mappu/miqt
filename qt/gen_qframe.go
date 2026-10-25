@@ -43,8 +43,15 @@ const (
 
 type QFrame struct {
 	h  *C.QFrame
-	gc *[1]*C.QFrame
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFrame) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QFrame) cPointer() *C.QFrame {
@@ -80,6 +87,7 @@ func UnsafeNewQFrame(h unsafe.Pointer) *QFrame {
 
 // NewQFrame constructs a new QFrame object.
 func NewQFrame(parent *QWidget) *QFrame {
+	defer runtime.KeepAlive(parent)
 
 	return newQFrame(C.QFrame_new(parent.cPointer()))
 }
@@ -92,15 +100,18 @@ func NewQFrame2() *QFrame {
 
 // NewQFrame3 constructs a new QFrame object.
 func NewQFrame3(parent *QWidget, f WindowType) *QFrame {
+	defer runtime.KeepAlive(parent)
 
 	return newQFrame(C.QFrame_new3(parent.cPointer(), (C.int)(f)))
 }
 
 func (this *QFrame) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFrame_metaObject(this.h))
 }
 
 func (this *QFrame) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFrame_metacast(this.h, param1_Cstring))
@@ -125,62 +136,77 @@ func QFrame_TrUtf8(s string) string {
 }
 
 func (this *QFrame) FrameStyle() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFrame_frameStyle(this.h))
 }
 
 func (this *QFrame) SetFrameStyle(frameStyle int) {
+	defer runtime.KeepAlive(this)
 	C.QFrame_setFrameStyle(this.h, (C.int)(frameStyle))
 }
 
 func (this *QFrame) FrameWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFrame_frameWidth(this.h))
 }
 
 func (this *QFrame) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QFrame_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFrame) FrameShape() QFrame__Shape {
+	defer runtime.KeepAlive(this)
 	return (QFrame__Shape)(C.QFrame_frameShape(this.h))
 }
 
 func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QFrame_setFrameShape(this.h, (C.int)(frameShape))
 }
 
 func (this *QFrame) FrameShadow() QFrame__Shadow {
+	defer runtime.KeepAlive(this)
 	return (QFrame__Shadow)(C.QFrame_frameShadow(this.h))
 }
 
 func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
+	defer runtime.KeepAlive(this)
 	C.QFrame_setFrameShadow(this.h, (C.int)(frameShadow))
 }
 
 func (this *QFrame) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFrame_lineWidth(this.h))
 }
 
 func (this *QFrame) SetLineWidth(lineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QFrame_setLineWidth(this.h, (C.int)(lineWidth))
 }
 
 func (this *QFrame) MidLineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFrame_midLineWidth(this.h))
 }
 
 func (this *QFrame) SetMidLineWidth(midLineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QFrame_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
 func (this *QFrame) FrameRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QFrame_frameRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFrame) SetFrameRect(frameRect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(frameRect)
 	C.QFrame_setFrameRect(this.h, frameRect.cPointer())
 }
 
@@ -230,6 +256,8 @@ func QFrame_TrUtf83(s string, c string, n int) string {
 
 // DrawFrame can only be called from a QFrame that was directly constructed.
 func (this *QFrame) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFrame_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -242,6 +270,8 @@ func (this *QFrame) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QFrame that was directly constructed.
 func (this *QFrame) InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFrame_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -254,6 +284,7 @@ func (this *QFrame) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QFrame that was directly constructed.
 func (this *QFrame) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFrame_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -266,6 +297,7 @@ func (this *QFrame) UpdateMicroFocus() {
 
 // Create can only be called from a QFrame that was directly constructed.
 func (this *QFrame) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFrame_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -278,6 +310,7 @@ func (this *QFrame) Create() {
 
 // Destroy can only be called from a QFrame that was directly constructed.
 func (this *QFrame) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFrame_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -290,6 +323,7 @@ func (this *QFrame) Destroy() {
 
 // FocusNextChild can only be called from a QFrame that was directly constructed.
 func (this *QFrame) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFrame_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -304,6 +338,7 @@ func (this *QFrame) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QFrame that was directly constructed.
 func (this *QFrame) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFrame_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -318,6 +353,7 @@ func (this *QFrame) FocusPreviousChild() bool {
 
 // Sender can only be called from a QFrame that was directly constructed.
 func (this *QFrame) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFrame_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -332,6 +368,7 @@ func (this *QFrame) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFrame that was directly constructed.
 func (this *QFrame) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFrame_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -346,6 +383,7 @@ func (this *QFrame) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFrame that was directly constructed.
 func (this *QFrame) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -362,6 +400,8 @@ func (this *QFrame) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFrame that was directly constructed.
 func (this *QFrame) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFrame_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -375,6 +415,7 @@ func (this *QFrame) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFrame) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFrame_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -396,12 +437,15 @@ func miqt_exec_callback_QFrame_sizeHint(self *C.QFrame, cb C.intptr_t) *C.QSize 
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFrame_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFrame) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QFrame_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -430,6 +474,8 @@ func miqt_exec_callback_QFrame_event(self *C.QFrame, cb C.intptr_t, e *C.QEvent)
 }
 
 func (this *QFrame) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QFrame_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -456,6 +502,8 @@ func miqt_exec_callback_QFrame_paintEvent(self *C.QFrame, cb C.intptr_t, param1 
 }
 
 func (this *QFrame) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QFrame_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -482,6 +530,7 @@ func miqt_exec_callback_QFrame_changeEvent(self *C.QFrame, cb C.intptr_t, param1
 }
 
 func (this *QFrame) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFrame_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -507,6 +556,7 @@ func miqt_exec_callback_QFrame_devType(self *C.QFrame, cb C.intptr_t) C.int {
 }
 
 func (this *QFrame) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QFrame_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -533,6 +583,7 @@ func miqt_exec_callback_QFrame_setVisible(self *C.QFrame, cb C.intptr_t, visible
 }
 
 func (this *QFrame) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFrame_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -554,12 +605,14 @@ func miqt_exec_callback_QFrame_minimumSizeHint(self *C.QFrame, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFrame_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFrame) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFrame_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -588,6 +641,7 @@ func miqt_exec_callback_QFrame_heightForWidth(self *C.QFrame, cb C.intptr_t, par
 }
 
 func (this *QFrame) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFrame_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -613,6 +667,7 @@ func miqt_exec_callback_QFrame_hasHeightForWidth(self *C.QFrame, cb C.intptr_t) 
 }
 
 func (this *QFrame) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QFrame_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -632,12 +687,15 @@ func miqt_exec_callback_QFrame_paintEngine(self *C.QFrame, cb C.intptr_t) *C.QPa
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFrame) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -664,6 +722,8 @@ func miqt_exec_callback_QFrame_mousePressEvent(self *C.QFrame, cb C.intptr_t, ev
 }
 
 func (this *QFrame) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -690,6 +750,8 @@ func miqt_exec_callback_QFrame_mouseReleaseEvent(self *C.QFrame, cb C.intptr_t, 
 }
 
 func (this *QFrame) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -716,6 +778,8 @@ func miqt_exec_callback_QFrame_mouseDoubleClickEvent(self *C.QFrame, cb C.intptr
 }
 
 func (this *QFrame) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -742,6 +806,8 @@ func miqt_exec_callback_QFrame_mouseMoveEvent(self *C.QFrame, cb C.intptr_t, eve
 }
 
 func (this *QFrame) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -768,6 +834,8 @@ func miqt_exec_callback_QFrame_wheelEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -794,6 +862,8 @@ func miqt_exec_callback_QFrame_keyPressEvent(self *C.QFrame, cb C.intptr_t, even
 }
 
 func (this *QFrame) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -820,6 +890,8 @@ func miqt_exec_callback_QFrame_keyReleaseEvent(self *C.QFrame, cb C.intptr_t, ev
 }
 
 func (this *QFrame) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -846,6 +918,8 @@ func miqt_exec_callback_QFrame_focusInEvent(self *C.QFrame, cb C.intptr_t, event
 }
 
 func (this *QFrame) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -872,6 +946,8 @@ func miqt_exec_callback_QFrame_focusOutEvent(self *C.QFrame, cb C.intptr_t, even
 }
 
 func (this *QFrame) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -898,6 +974,8 @@ func miqt_exec_callback_QFrame_enterEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -924,6 +1002,8 @@ func miqt_exec_callback_QFrame_leaveEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -950,6 +1030,8 @@ func miqt_exec_callback_QFrame_moveEvent(self *C.QFrame, cb C.intptr_t, event *C
 }
 
 func (this *QFrame) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -976,6 +1058,8 @@ func miqt_exec_callback_QFrame_resizeEvent(self *C.QFrame, cb C.intptr_t, event 
 }
 
 func (this *QFrame) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1002,6 +1086,8 @@ func miqt_exec_callback_QFrame_closeEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1028,6 +1114,8 @@ func miqt_exec_callback_QFrame_contextMenuEvent(self *C.QFrame, cb C.intptr_t, e
 }
 
 func (this *QFrame) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1054,6 +1142,8 @@ func miqt_exec_callback_QFrame_tabletEvent(self *C.QFrame, cb C.intptr_t, event 
 }
 
 func (this *QFrame) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1080,6 +1170,8 @@ func miqt_exec_callback_QFrame_actionEvent(self *C.QFrame, cb C.intptr_t, event 
 }
 
 func (this *QFrame) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1106,6 +1198,8 @@ func miqt_exec_callback_QFrame_dragEnterEvent(self *C.QFrame, cb C.intptr_t, eve
 }
 
 func (this *QFrame) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1132,6 +1226,8 @@ func miqt_exec_callback_QFrame_dragMoveEvent(self *C.QFrame, cb C.intptr_t, even
 }
 
 func (this *QFrame) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1158,6 +1254,8 @@ func miqt_exec_callback_QFrame_dragLeaveEvent(self *C.QFrame, cb C.intptr_t, eve
 }
 
 func (this *QFrame) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1184,6 +1282,8 @@ func miqt_exec_callback_QFrame_dropEvent(self *C.QFrame, cb C.intptr_t, event *C
 }
 
 func (this *QFrame) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1210,6 +1310,8 @@ func miqt_exec_callback_QFrame_showEvent(self *C.QFrame, cb C.intptr_t, event *C
 }
 
 func (this *QFrame) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1236,6 +1338,7 @@ func miqt_exec_callback_QFrame_hideEvent(self *C.QFrame, cb C.intptr_t, event *C
 }
 
 func (this *QFrame) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1277,6 +1380,7 @@ func miqt_exec_callback_QFrame_nativeEvent(self *C.QFrame, cb C.intptr_t, eventT
 }
 
 func (this *QFrame) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFrame_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1305,6 +1409,8 @@ func miqt_exec_callback_QFrame_metric(self *C.QFrame, cb C.intptr_t, param1 C.in
 }
 
 func (this *QFrame) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QFrame_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1331,6 +1437,8 @@ func miqt_exec_callback_QFrame_initPainter(self *C.QFrame, cb C.intptr_t, painte
 }
 
 func (this *QFrame) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QFrame_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1353,12 +1461,14 @@ func miqt_exec_callback_QFrame_redirected(self *C.QFrame, cb C.intptr_t, offset 
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFrame) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QFrame_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1378,12 +1488,15 @@ func miqt_exec_callback_QFrame_sharedPainter(self *C.QFrame, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFrame) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QFrame_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1410,6 +1523,7 @@ func miqt_exec_callback_QFrame_inputMethodEvent(self *C.QFrame, cb C.intptr_t, p
 }
 
 func (this *QFrame) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QFrame_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1434,12 +1548,14 @@ func miqt_exec_callback_QFrame_inputMethodQuery(self *C.QFrame, cb C.intptr_t, p
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFrame_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QFrame) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFrame_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1468,6 +1584,9 @@ func miqt_exec_callback_QFrame_focusNextPrevChild(self *C.QFrame, cb C.intptr_t,
 }
 
 func (this *QFrame) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFrame_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1498,6 +1617,8 @@ func miqt_exec_callback_QFrame_eventFilter(self *C.QFrame, cb C.intptr_t, watche
 }
 
 func (this *QFrame) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1524,6 +1645,8 @@ func miqt_exec_callback_QFrame_timerEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1550,6 +1673,8 @@ func miqt_exec_callback_QFrame_childEvent(self *C.QFrame, cb C.intptr_t, event *
 }
 
 func (this *QFrame) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFrame_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1576,6 +1701,8 @@ func miqt_exec_callback_QFrame_customEvent(self *C.QFrame, cb C.intptr_t, event 
 }
 
 func (this *QFrame) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFrame_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1602,6 +1729,8 @@ func miqt_exec_callback_QFrame_connectNotify(self *C.QFrame, cb C.intptr_t, sign
 }
 
 func (this *QFrame) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFrame_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1639,8 +1768,9 @@ func (this *QFrame) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFrame{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFrame) {
-		C.QFrame_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFrame_delete((*C.QFrame)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

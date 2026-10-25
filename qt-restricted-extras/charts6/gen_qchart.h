@@ -314,6 +314,10 @@ bool QChart_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QChart_virtualbase_extension(const void* self, QVariant* variant);
 bool QChart_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QChart_virtualbase_isEmpty(const void* self);
+QRectF* QChart_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QChart_virtualreturncopy_QPainterPath(QPainterPath* src);
+QSizeF* QChart_virtualreturncopy_QSizeF(QSizeF* src);
+QVariant* QChart_virtualreturncopy_QVariant(QVariant* src);
 
 void QChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

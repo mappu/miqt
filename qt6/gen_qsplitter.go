@@ -16,8 +16,15 @@ import (
 
 type QSplitter struct {
 	h  *C.QSplitter
-	gc *[1]*C.QSplitter
+	gc *[1]unsafe.Pointer
 	*QFrame
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSplitter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QFrame.miqtSetGC(gc)
 }
 
 func (this *QSplitter) cPointer() *C.QSplitter {
@@ -53,6 +60,7 @@ func UnsafeNewQSplitter(h unsafe.Pointer) *QSplitter {
 
 // NewQSplitter constructs a new QSplitter object.
 func NewQSplitter(parent *QWidget) *QSplitter {
+	defer runtime.KeepAlive(parent)
 
 	return newQSplitter(C.QSplitter_new(parent.cPointer()))
 }
@@ -71,15 +79,18 @@ func NewQSplitter3(param1 Orientation) *QSplitter {
 
 // NewQSplitter4 constructs a new QSplitter object.
 func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
+	defer runtime.KeepAlive(parent)
 
 	return newQSplitter(C.QSplitter_new4((C.int)(param1), parent.cPointer()))
 }
 
 func (this *QSplitter) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSplitter_metaObject(this.h))
 }
 
 func (this *QSplitter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSplitter_metacast(this.h, param1_Cstring))
@@ -95,66 +106,84 @@ func QSplitter_Tr(s string) string {
 }
 
 func (this *QSplitter) AddWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QSplitter_addWidget(this.h, widget.cPointer())
 }
 
 func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QSplitter_insertWidget(this.h, (C.int)(index), widget.cPointer())
 }
 
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return newQWidget(C.QSplitter_replaceWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QSplitter) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QSplitter_orientation(this.h))
 }
 
 func (this *QSplitter) SetChildrenCollapsible(childrenCollapsible bool) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setChildrenCollapsible(this.h, (C.bool)(childrenCollapsible))
 }
 
 func (this *QSplitter) ChildrenCollapsible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSplitter_childrenCollapsible(this.h))
 }
 
 func (this *QSplitter) SetCollapsible(index int, param2 bool) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setCollapsible(this.h, (C.int)(index), (C.bool)(param2))
 }
 
 func (this *QSplitter) IsCollapsible(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSplitter_isCollapsible(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetOpaqueResize() {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setOpaqueResize(this.h)
 }
 
 func (this *QSplitter) OpaqueResize() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSplitter_opaqueResize(this.h))
 }
 
 func (this *QSplitter) Refresh() {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_refresh(this.h)
 }
 
 func (this *QSplitter) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSplitter_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSplitter) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSplitter_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSplitter) Sizes() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSplitter_sizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -165,6 +194,7 @@ func (this *QSplitter) Sizes() []int {
 }
 
 func (this *QSplitter) SetSizes(list []int) {
+	defer runtime.KeepAlive(this)
 	list_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -176,6 +206,7 @@ func (this *QSplitter) SetSizes(list []int) {
 }
 
 func (this *QSplitter) SaveState() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QSplitter_saveState(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -183,6 +214,7 @@ func (this *QSplitter) SaveState() []byte {
 }
 
 func (this *QSplitter) RestoreState(state []byte) bool {
+	defer runtime.KeepAlive(this)
 	state_alias := C.struct_miqt_string{}
 	if len(state) > 0 {
 		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
@@ -194,38 +226,48 @@ func (this *QSplitter) RestoreState(state []byte) bool {
 }
 
 func (this *QSplitter) HandleWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSplitter_handleWidth(this.h))
 }
 
 func (this *QSplitter) SetHandleWidth(handleWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setHandleWidth(this.h, (C.int)(handleWidth))
 }
 
 func (this *QSplitter) IndexOf(w *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	return (int)(C.QSplitter_indexOf(this.h, w.cPointer()))
 }
 
 func (this *QSplitter) Widget(index int) *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QSplitter_widget(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSplitter_count(this.h))
 }
 
 func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_getRange(this.h, (C.int)(index), (*C.int)(unsafe.Pointer(param2)), (*C.int)(unsafe.Pointer(param3)))
 }
 
 func (this *QSplitter) Handle(index int) *QSplitterHandle {
+	defer runtime.KeepAlive(this)
 	return newQSplitterHandle(C.QSplitter_handle(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetStretchFactor(index int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setStretchFactor(this.h, (C.int)(index), (C.int)(stretch))
 }
 
 func (this *QSplitter) SplitterMoved(pos int, index int) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_splitterMoved(this.h, (C.int)(pos), (C.int)(index))
 }
 func (this *QSplitter) OnSplitterMoved(slot func(pos int, index int)) {
@@ -270,11 +312,13 @@ func QSplitter_Tr3(s string, c string, n int) string {
 }
 
 func (this *QSplitter) SetOpaqueResizeWithOpaque(opaque bool) {
+	defer runtime.KeepAlive(this)
 	C.QSplitter_setOpaqueResizeWithOpaque(this.h, (C.bool)(opaque))
 }
 
 // MoveSplitter can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) MoveSplitter(pos int, index int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_moveSplitter(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos), (C.int)(index))
@@ -287,6 +331,7 @@ func (this *QSplitter) MoveSplitter(pos int, index int) {
 
 // SetRubberBand can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) SetRubberBand(position int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_setRubberBand(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(position))
@@ -299,6 +344,7 @@ func (this *QSplitter) SetRubberBand(position int) {
 
 // ClosestLegalPosition can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) ClosestLegalPosition(param1 int, param2 int) int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSplitter_protectedbase_closestLegalPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2)))
@@ -313,6 +359,8 @@ func (this *QSplitter) ClosestLegalPosition(param1 int, param2 int) int {
 
 // DrawFrame can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -325,6 +373,7 @@ func (this *QSplitter) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -337,6 +386,7 @@ func (this *QSplitter) UpdateMicroFocus() {
 
 // Create can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -349,6 +399,7 @@ func (this *QSplitter) Create() {
 
 // Destroy can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitter_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -361,6 +412,7 @@ func (this *QSplitter) Destroy() {
 
 // FocusNextChild can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitter_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,6 +427,7 @@ func (this *QSplitter) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitter_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -389,6 +442,7 @@ func (this *QSplitter) FocusPreviousChild() bool {
 
 // Sender can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSplitter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -403,6 +457,7 @@ func (this *QSplitter) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSplitter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -417,6 +472,7 @@ func (this *QSplitter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -433,6 +489,8 @@ func (this *QSplitter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSplitter that was directly constructed.
 func (this *QSplitter) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -446,6 +504,7 @@ func (this *QSplitter) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSplitter) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplitter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -467,12 +526,14 @@ func miqt_exec_callback_QSplitter_sizeHint(self *C.QSplitter, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitter_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitter) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplitter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -494,12 +555,14 @@ func miqt_exec_callback_QSplitter_minimumSizeHint(self *C.QSplitter, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitter_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitter) callVirtualBase_CreateHandle() *QSplitterHandle {
+	defer runtime.KeepAlive(this)
 
 	return newQSplitterHandle(C.QSplitter_virtualbase_createHandle(unsafe.Pointer(this.h)))
 
@@ -519,12 +582,15 @@ func miqt_exec_callback_QSplitter_createHandle(self *C.QSplitter, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_CreateHandle)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitter) callVirtualBase_ChildEvent(param1 *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitter_virtualbase_childEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -551,6 +617,8 @@ func miqt_exec_callback_QSplitter_childEvent(self *C.QSplitter, cb C.intptr_t, p
 }
 
 func (this *QSplitter) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QSplitter_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -579,6 +647,8 @@ func miqt_exec_callback_QSplitter_event(self *C.QSplitter, cb C.intptr_t, param1
 }
 
 func (this *QSplitter) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitter_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -605,6 +675,8 @@ func miqt_exec_callback_QSplitter_resizeEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitter_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -631,6 +703,8 @@ func miqt_exec_callback_QSplitter_changeEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitter_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -657,6 +731,8 @@ func miqt_exec_callback_QSplitter_paintEvent(self *C.QSplitter, cb C.intptr_t, p
 }
 
 func (this *QSplitter) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QSplitter_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -683,6 +759,7 @@ func miqt_exec_callback_QSplitter_initStyleOption(self *C.QSplitter, cb C.intptr
 }
 
 func (this *QSplitter) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitter_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -708,6 +785,7 @@ func miqt_exec_callback_QSplitter_devType(self *C.QSplitter, cb C.intptr_t) C.in
 }
 
 func (this *QSplitter) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QSplitter_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -734,6 +812,7 @@ func miqt_exec_callback_QSplitter_setVisible(self *C.QSplitter, cb C.intptr_t, v
 }
 
 func (this *QSplitter) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitter_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -762,6 +841,7 @@ func miqt_exec_callback_QSplitter_heightForWidth(self *C.QSplitter, cb C.intptr_
 }
 
 func (this *QSplitter) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplitter_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -787,6 +867,7 @@ func miqt_exec_callback_QSplitter_hasHeightForWidth(self *C.QSplitter, cb C.intp
 }
 
 func (this *QSplitter) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QSplitter_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -806,12 +887,15 @@ func miqt_exec_callback_QSplitter_paintEngine(self *C.QSplitter, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitter) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -838,6 +922,8 @@ func miqt_exec_callback_QSplitter_mousePressEvent(self *C.QSplitter, cb C.intptr
 }
 
 func (this *QSplitter) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -864,6 +950,8 @@ func miqt_exec_callback_QSplitter_mouseReleaseEvent(self *C.QSplitter, cb C.intp
 }
 
 func (this *QSplitter) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -890,6 +978,8 @@ func miqt_exec_callback_QSplitter_mouseDoubleClickEvent(self *C.QSplitter, cb C.
 }
 
 func (this *QSplitter) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -916,6 +1006,8 @@ func miqt_exec_callback_QSplitter_mouseMoveEvent(self *C.QSplitter, cb C.intptr_
 }
 
 func (this *QSplitter) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -942,6 +1034,8 @@ func miqt_exec_callback_QSplitter_wheelEvent(self *C.QSplitter, cb C.intptr_t, e
 }
 
 func (this *QSplitter) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -968,6 +1062,8 @@ func miqt_exec_callback_QSplitter_keyPressEvent(self *C.QSplitter, cb C.intptr_t
 }
 
 func (this *QSplitter) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -994,6 +1090,8 @@ func miqt_exec_callback_QSplitter_keyReleaseEvent(self *C.QSplitter, cb C.intptr
 }
 
 func (this *QSplitter) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1020,6 +1118,8 @@ func miqt_exec_callback_QSplitter_focusInEvent(self *C.QSplitter, cb C.intptr_t,
 }
 
 func (this *QSplitter) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1046,6 +1146,8 @@ func miqt_exec_callback_QSplitter_focusOutEvent(self *C.QSplitter, cb C.intptr_t
 }
 
 func (this *QSplitter) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1072,6 +1174,8 @@ func miqt_exec_callback_QSplitter_enterEvent(self *C.QSplitter, cb C.intptr_t, e
 }
 
 func (this *QSplitter) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1098,6 +1202,8 @@ func miqt_exec_callback_QSplitter_leaveEvent(self *C.QSplitter, cb C.intptr_t, e
 }
 
 func (this *QSplitter) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1124,6 +1230,8 @@ func miqt_exec_callback_QSplitter_moveEvent(self *C.QSplitter, cb C.intptr_t, ev
 }
 
 func (this *QSplitter) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1150,6 +1258,8 @@ func miqt_exec_callback_QSplitter_closeEvent(self *C.QSplitter, cb C.intptr_t, e
 }
 
 func (this *QSplitter) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1176,6 +1286,8 @@ func miqt_exec_callback_QSplitter_contextMenuEvent(self *C.QSplitter, cb C.intpt
 }
 
 func (this *QSplitter) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1202,6 +1314,8 @@ func miqt_exec_callback_QSplitter_tabletEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1228,6 +1342,8 @@ func miqt_exec_callback_QSplitter_actionEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1254,6 +1370,8 @@ func miqt_exec_callback_QSplitter_dragEnterEvent(self *C.QSplitter, cb C.intptr_
 }
 
 func (this *QSplitter) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1280,6 +1398,8 @@ func miqt_exec_callback_QSplitter_dragMoveEvent(self *C.QSplitter, cb C.intptr_t
 }
 
 func (this *QSplitter) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1306,6 +1426,8 @@ func miqt_exec_callback_QSplitter_dragLeaveEvent(self *C.QSplitter, cb C.intptr_
 }
 
 func (this *QSplitter) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1332,6 +1454,8 @@ func miqt_exec_callback_QSplitter_dropEvent(self *C.QSplitter, cb C.intptr_t, ev
 }
 
 func (this *QSplitter) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1358,6 +1482,8 @@ func miqt_exec_callback_QSplitter_showEvent(self *C.QSplitter, cb C.intptr_t, ev
 }
 
 func (this *QSplitter) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1384,6 +1510,7 @@ func miqt_exec_callback_QSplitter_hideEvent(self *C.QSplitter, cb C.intptr_t, ev
 }
 
 func (this *QSplitter) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1425,6 +1552,7 @@ func miqt_exec_callback_QSplitter_nativeEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1453,6 +1581,8 @@ func miqt_exec_callback_QSplitter_metric(self *C.QSplitter, cb C.intptr_t, param
 }
 
 func (this *QSplitter) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QSplitter_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1479,6 +1609,8 @@ func miqt_exec_callback_QSplitter_initPainter(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplitter_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1501,12 +1633,14 @@ func miqt_exec_callback_QSplitter_redirected(self *C.QSplitter, cb C.intptr_t, o
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitter) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QSplitter_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1526,12 +1660,15 @@ func miqt_exec_callback_QSplitter_sharedPainter(self *C.QSplitter, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitter) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitter_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1558,6 +1695,7 @@ func miqt_exec_callback_QSplitter_inputMethodEvent(self *C.QSplitter, cb C.intpt
 }
 
 func (this *QSplitter) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QSplitter_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1582,12 +1720,14 @@ func miqt_exec_callback_QSplitter_inputMethodQuery(self *C.QSplitter, cb C.intpt
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitter_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitter) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplitter_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1616,6 +1756,9 @@ func miqt_exec_callback_QSplitter_focusNextPrevChild(self *C.QSplitter, cb C.int
 }
 
 func (this *QSplitter) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSplitter_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1646,6 +1789,8 @@ func miqt_exec_callback_QSplitter_eventFilter(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1672,6 +1817,8 @@ func miqt_exec_callback_QSplitter_timerEvent(self *C.QSplitter, cb C.intptr_t, e
 }
 
 func (this *QSplitter) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1698,6 +1845,8 @@ func miqt_exec_callback_QSplitter_customEvent(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSplitter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1724,6 +1873,8 @@ func miqt_exec_callback_QSplitter_connectNotify(self *C.QSplitter, cb C.intptr_t
 }
 
 func (this *QSplitter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSplitter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1761,16 +1912,24 @@ func (this *QSplitter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSplitter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSplitter) {
-		C.QSplitter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSplitter_delete((*C.QSplitter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QSplitterHandle struct {
 	h  *C.QSplitterHandle
-	gc *[1]*C.QSplitterHandle
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSplitterHandle) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QSplitterHandle) cPointer() *C.QSplitterHandle {
@@ -1806,15 +1965,18 @@ func UnsafeNewQSplitterHandle(h unsafe.Pointer) *QSplitterHandle {
 
 // NewQSplitterHandle constructs a new QSplitterHandle object.
 func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
+	defer runtime.KeepAlive(parent)
 
 	return newQSplitterHandle(C.QSplitterHandle_new((C.int)(o), parent.cPointer()))
 }
 
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSplitterHandle_metaObject(this.h))
 }
 
 func (this *QSplitterHandle) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSplitterHandle_metacast(this.h, param1_Cstring))
@@ -1830,22 +1992,27 @@ func QSplitterHandle_Tr(s string) string {
 }
 
 func (this *QSplitterHandle) SetOrientation(o Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QSplitterHandle_setOrientation(this.h, (C.int)(o))
 }
 
 func (this *QSplitterHandle) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QSplitterHandle_orientation(this.h))
 }
 
 func (this *QSplitterHandle) OpaqueResize() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSplitterHandle_opaqueResize(this.h))
 }
 
 func (this *QSplitterHandle) Splitter() *QSplitter {
+	defer runtime.KeepAlive(this)
 	return newQSplitter(C.QSplitterHandle_splitter(this.h))
 }
 
 func (this *QSplitterHandle) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSplitterHandle_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1875,6 +2042,7 @@ func QSplitterHandle_Tr3(s string, c string, n int) string {
 
 // MoveSplitter can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) MoveSplitter(p int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitterHandle_protectedbase_moveSplitter(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(p))
@@ -1887,6 +2055,7 @@ func (this *QSplitterHandle) MoveSplitter(p int) {
 
 // ClosestLegalPosition can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) ClosestLegalPosition(p int) int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSplitterHandle_protectedbase_closestLegalPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(p)))
@@ -1901,6 +2070,7 @@ func (this *QSplitterHandle) ClosestLegalPosition(p int) int {
 
 // UpdateMicroFocus can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitterHandle_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1913,6 +2083,7 @@ func (this *QSplitterHandle) UpdateMicroFocus() {
 
 // Create can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitterHandle_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1925,6 +2096,7 @@ func (this *QSplitterHandle) Create() {
 
 // Destroy can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplitterHandle_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1937,6 +2109,7 @@ func (this *QSplitterHandle) Destroy() {
 
 // FocusNextChild can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitterHandle_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1951,6 +2124,7 @@ func (this *QSplitterHandle) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitterHandle_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1965,6 +2139,7 @@ func (this *QSplitterHandle) FocusPreviousChild() bool {
 
 // Sender can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSplitterHandle_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1979,6 +2154,7 @@ func (this *QSplitterHandle) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSplitterHandle_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1993,6 +2169,7 @@ func (this *QSplitterHandle) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2009,6 +2186,8 @@ func (this *QSplitterHandle) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSplitterHandle that was directly constructed.
 func (this *QSplitterHandle) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplitterHandle_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -2022,6 +2201,7 @@ func (this *QSplitterHandle) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSplitterHandle) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplitterHandle_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2043,12 +2223,15 @@ func miqt_exec_callback_QSplitterHandle_sizeHint(self *C.QSplitterHandle, cb C.i
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitterHandle_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2075,6 +2258,8 @@ func miqt_exec_callback_QSplitterHandle_paintEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2101,6 +2286,8 @@ func miqt_exec_callback_QSplitterHandle_mouseMoveEvent(self *C.QSplitterHandle, 
 }
 
 func (this *QSplitterHandle) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2127,6 +2314,8 @@ func miqt_exec_callback_QSplitterHandle_mousePressEvent(self *C.QSplitterHandle,
 }
 
 func (this *QSplitterHandle) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2153,6 +2342,8 @@ func miqt_exec_callback_QSplitterHandle_mouseReleaseEvent(self *C.QSplitterHandl
 }
 
 func (this *QSplitterHandle) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2179,6 +2370,8 @@ func miqt_exec_callback_QSplitterHandle_resizeEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QSplitterHandle_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -2207,6 +2400,7 @@ func miqt_exec_callback_QSplitterHandle_event(self *C.QSplitterHandle, cb C.intp
 }
 
 func (this *QSplitterHandle) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitterHandle_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2232,6 +2426,7 @@ func miqt_exec_callback_QSplitterHandle_devType(self *C.QSplitterHandle, cb C.in
 }
 
 func (this *QSplitterHandle) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QSplitterHandle_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2258,6 +2453,7 @@ func miqt_exec_callback_QSplitterHandle_setVisible(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplitterHandle_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2279,12 +2475,14 @@ func miqt_exec_callback_QSplitterHandle_minimumSizeHint(self *C.QSplitterHandle,
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitterHandle_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitterHandle_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2313,6 +2511,7 @@ func miqt_exec_callback_QSplitterHandle_heightForWidth(self *C.QSplitterHandle, 
 }
 
 func (this *QSplitterHandle) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplitterHandle_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2338,6 +2537,7 @@ func miqt_exec_callback_QSplitterHandle_hasHeightForWidth(self *C.QSplitterHandl
 }
 
 func (this *QSplitterHandle) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QSplitterHandle_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2357,12 +2557,15 @@ func miqt_exec_callback_QSplitterHandle_paintEngine(self *C.QSplitterHandle, cb 
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2389,6 +2592,8 @@ func miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent(self *C.QSplitterH
 }
 
 func (this *QSplitterHandle) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2415,6 +2620,8 @@ func miqt_exec_callback_QSplitterHandle_wheelEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2441,6 +2648,8 @@ func miqt_exec_callback_QSplitterHandle_keyPressEvent(self *C.QSplitterHandle, c
 }
 
 func (this *QSplitterHandle) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2467,6 +2676,8 @@ func miqt_exec_callback_QSplitterHandle_keyReleaseEvent(self *C.QSplitterHandle,
 }
 
 func (this *QSplitterHandle) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2493,6 +2704,8 @@ func miqt_exec_callback_QSplitterHandle_focusInEvent(self *C.QSplitterHandle, cb
 }
 
 func (this *QSplitterHandle) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2519,6 +2732,8 @@ func miqt_exec_callback_QSplitterHandle_focusOutEvent(self *C.QSplitterHandle, c
 }
 
 func (this *QSplitterHandle) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2545,6 +2760,8 @@ func miqt_exec_callback_QSplitterHandle_enterEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2571,6 +2788,8 @@ func miqt_exec_callback_QSplitterHandle_leaveEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2597,6 +2816,8 @@ func miqt_exec_callback_QSplitterHandle_moveEvent(self *C.QSplitterHandle, cb C.
 }
 
 func (this *QSplitterHandle) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2623,6 +2844,8 @@ func miqt_exec_callback_QSplitterHandle_closeEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2649,6 +2872,8 @@ func miqt_exec_callback_QSplitterHandle_contextMenuEvent(self *C.QSplitterHandle
 }
 
 func (this *QSplitterHandle) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2675,6 +2900,8 @@ func miqt_exec_callback_QSplitterHandle_tabletEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2701,6 +2928,8 @@ func miqt_exec_callback_QSplitterHandle_actionEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2727,6 +2956,8 @@ func miqt_exec_callback_QSplitterHandle_dragEnterEvent(self *C.QSplitterHandle, 
 }
 
 func (this *QSplitterHandle) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2753,6 +2984,8 @@ func miqt_exec_callback_QSplitterHandle_dragMoveEvent(self *C.QSplitterHandle, c
 }
 
 func (this *QSplitterHandle) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2779,6 +3012,8 @@ func miqt_exec_callback_QSplitterHandle_dragLeaveEvent(self *C.QSplitterHandle, 
 }
 
 func (this *QSplitterHandle) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2805,6 +3040,8 @@ func miqt_exec_callback_QSplitterHandle_dropEvent(self *C.QSplitterHandle, cb C.
 }
 
 func (this *QSplitterHandle) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2831,6 +3068,8 @@ func miqt_exec_callback_QSplitterHandle_showEvent(self *C.QSplitterHandle, cb C.
 }
 
 func (this *QSplitterHandle) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2857,6 +3096,7 @@ func miqt_exec_callback_QSplitterHandle_hideEvent(self *C.QSplitterHandle, cb C.
 }
 
 func (this *QSplitterHandle) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2898,6 +3138,8 @@ func miqt_exec_callback_QSplitterHandle_nativeEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2924,6 +3166,7 @@ func miqt_exec_callback_QSplitterHandle_changeEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplitterHandle_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2952,6 +3195,8 @@ func miqt_exec_callback_QSplitterHandle_metric(self *C.QSplitterHandle, cb C.int
 }
 
 func (this *QSplitterHandle) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QSplitterHandle_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2978,6 +3223,8 @@ func miqt_exec_callback_QSplitterHandle_initPainter(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplitterHandle_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -3000,12 +3247,14 @@ func miqt_exec_callback_QSplitterHandle_redirected(self *C.QSplitterHandle, cb C
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QSplitterHandle_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3025,12 +3274,15 @@ func miqt_exec_callback_QSplitterHandle_sharedPainter(self *C.QSplitterHandle, c
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSplitterHandle_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3057,6 +3309,7 @@ func miqt_exec_callback_QSplitterHandle_inputMethodEvent(self *C.QSplitterHandle
 }
 
 func (this *QSplitterHandle) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QSplitterHandle_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3081,12 +3334,14 @@ func miqt_exec_callback_QSplitterHandle_inputMethodQuery(self *C.QSplitterHandle
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSplitterHandle_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QSplitterHandle) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplitterHandle_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -3115,6 +3370,9 @@ func miqt_exec_callback_QSplitterHandle_focusNextPrevChild(self *C.QSplitterHand
 }
 
 func (this *QSplitterHandle) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSplitterHandle_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -3145,6 +3403,8 @@ func miqt_exec_callback_QSplitterHandle_eventFilter(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3171,6 +3431,8 @@ func miqt_exec_callback_QSplitterHandle_timerEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3197,6 +3459,8 @@ func miqt_exec_callback_QSplitterHandle_childEvent(self *C.QSplitterHandle, cb C
 }
 
 func (this *QSplitterHandle) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSplitterHandle_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3223,6 +3487,8 @@ func miqt_exec_callback_QSplitterHandle_customEvent(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSplitterHandle_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3249,6 +3515,8 @@ func miqt_exec_callback_QSplitterHandle_connectNotify(self *C.QSplitterHandle, c
 }
 
 func (this *QSplitterHandle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSplitterHandle_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3286,8 +3554,9 @@ func (this *QSplitterHandle) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSplitterHandle{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSplitterHandle) {
-		C.QSplitterHandle_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSplitterHandle_delete((*C.QSplitterHandle)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -76,8 +76,15 @@ const (
 
 type QWizard struct {
 	h  *C.QWizard
-	gc *[1]*C.QWizard
+	gc *[1]unsafe.Pointer
 	*QDialog
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWizard) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDialog.miqtSetGC(gc)
 }
 
 func (this *QWizard) cPointer() *C.QWizard {
@@ -113,6 +120,7 @@ func UnsafeNewQWizard(h unsafe.Pointer) *QWizard {
 
 // NewQWizard constructs a new QWizard object.
 func NewQWizard(parent *QWidget) *QWizard {
+	defer runtime.KeepAlive(parent)
 
 	return newQWizard(C.QWizard_new(parent.cPointer()))
 }
@@ -125,15 +133,18 @@ func NewQWizard2() *QWizard {
 
 // NewQWizard3 constructs a new QWizard object.
 func NewQWizard3(parent *QWidget, flags WindowType) *QWizard {
+	defer runtime.KeepAlive(parent)
 
 	return newQWizard(C.QWizard_new3(parent.cPointer(), (C.int)(flags)))
 }
 
 func (this *QWizard) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QWizard_metaObject(this.h))
 }
 
 func (this *QWizard) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWizard_metacast(this.h, param1_Cstring))
@@ -158,26 +169,34 @@ func QWizard_TrUtf8(s string) string {
 }
 
 func (this *QWizard) AddPage(page *QWizardPage) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(page)
 	return (int)(C.QWizard_addPage(this.h, page.cPointer()))
 }
 
 func (this *QWizard) SetPage(id int, page *QWizardPage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(page)
 	C.QWizard_setPage(this.h, (C.int)(id), page.cPointer())
 }
 
 func (this *QWizard) RemovePage(id int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_removePage(this.h, (C.int)(id))
 }
 
 func (this *QWizard) Page(id int) *QWizardPage {
+	defer runtime.KeepAlive(this)
 	return newQWizardPage(C.QWizard_page(this.h, (C.int)(id)))
 }
 
 func (this *QWizard) HasVisitedPage(id int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizard_hasVisitedPage(this.h, (C.int)(id)))
 }
 
 func (this *QWizard) VisitedPages() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWizard_visitedPages(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -188,6 +207,7 @@ func (this *QWizard) VisitedPages() []int {
 }
 
 func (this *QWizard) VisitedIds() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWizard_visitedIds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -198,6 +218,7 @@ func (this *QWizard) VisitedIds() []int {
 }
 
 func (this *QWizard) PageIds() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWizard_pageIds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -208,30 +229,38 @@ func (this *QWizard) PageIds() []int {
 }
 
 func (this *QWizard) SetStartId(id int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setStartId(this.h, (C.int)(id))
 }
 
 func (this *QWizard) StartId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWizard_startId(this.h))
 }
 
 func (this *QWizard) CurrentPage() *QWizardPage {
+	defer runtime.KeepAlive(this)
 	return newQWizardPage(C.QWizard_currentPage(this.h))
 }
 
 func (this *QWizard) CurrentId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWizard_currentId(this.h))
 }
 
 func (this *QWizard) ValidateCurrentPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizard_validateCurrentPage(this.h))
 }
 
 func (this *QWizard) NextId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWizard_nextId(this.h))
 }
 
 func (this *QWizard) SetField(name string, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -240,6 +269,7 @@ func (this *QWizard) SetField(name string, value *QVariant) {
 }
 
 func (this *QWizard) Field(name string) *QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -250,30 +280,37 @@ func (this *QWizard) Field(name string) *QVariant {
 }
 
 func (this *QWizard) SetWizardStyle(style QWizard__WizardStyle) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setWizardStyle(this.h, (C.int)(style))
 }
 
 func (this *QWizard) WizardStyle() QWizard__WizardStyle {
+	defer runtime.KeepAlive(this)
 	return (QWizard__WizardStyle)(C.QWizard_wizardStyle(this.h))
 }
 
 func (this *QWizard) SetOption(option QWizard__WizardOption) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setOption(this.h, (C.int)(option))
 }
 
 func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizard_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QWizard) SetOptions(options QWizard__WizardOption) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QWizard) Options() QWizard__WizardOption {
+	defer runtime.KeepAlive(this)
 	return (QWizard__WizardOption)(C.QWizard_options(this.h))
 }
 
 func (this *QWizard) SetButtonText(which QWizard__WizardButton, text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -282,6 +319,7 @@ func (this *QWizard) SetButtonText(which QWizard__WizardButton, text string) {
 }
 
 func (this *QWizard) ButtonText(which QWizard__WizardButton) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWizard_buttonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -289,6 +327,7 @@ func (this *QWizard) ButtonText(which QWizard__WizardButton) string {
 }
 
 func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
+	defer runtime.KeepAlive(this)
 	layout_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(layout))))
 	defer C.free(unsafe.Pointer(layout_CArray_ptr))
 	layout_CArray := unsafe.Slice(layout_CArray_ptr, len(layout))
@@ -300,48 +339,62 @@ func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
 }
 
 func (this *QWizard) SetButton(which QWizard__WizardButton, button *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QWizard_setButton(this.h, (C.int)(which), button.cPointer())
 }
 
 func (this *QWizard) Button(which QWizard__WizardButton) *QAbstractButton {
+	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QWizard_button(this.h, (C.int)(which)))
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) TitleFormat() TextFormat {
+	defer runtime.KeepAlive(this)
 	return (TextFormat)(C.QWizard_titleFormat(this.h))
 }
 
 func (this *QWizard) SetSubTitleFormat(format TextFormat) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setSubTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) SubTitleFormat() TextFormat {
+	defer runtime.KeepAlive(this)
 	return (TextFormat)(C.QWizard_subTitleFormat(this.h))
 }
 
 func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QWizard_setPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizard) Pixmap(which QWizard__WizardPixmap) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QWizard_pixmap(this.h, (C.int)(which)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWizard) SetSideWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QWizard_setSideWidget(this.h, widget.cPointer())
 }
 
 func (this *QWizard) SideWidget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWizard_sideWidget(this.h))
 }
 
 func (this *QWizard) SetDefaultProperty(className string, property string, changedSignal string) {
+	defer runtime.KeepAlive(this)
 	className_Cstring := C.CString(className)
 	defer C.free(unsafe.Pointer(className_Cstring))
 	property_Cstring := C.CString(property)
@@ -352,16 +405,19 @@ func (this *QWizard) SetDefaultProperty(className string, property string, chang
 }
 
 func (this *QWizard) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QWizard) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWizard_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWizard) CurrentIdChanged(id int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_currentIdChanged(this.h, (C.int)(id))
 }
 func (this *QWizard) OnCurrentIdChanged(slot func(id int)) {
@@ -382,6 +438,7 @@ func miqt_exec_callback_QWizard_currentIdChanged(cb C.intptr_t, id C.int) {
 }
 
 func (this *QWizard) HelpRequested() {
+	defer runtime.KeepAlive(this)
 	C.QWizard_helpRequested(this.h)
 }
 func (this *QWizard) OnHelpRequested(slot func()) {
@@ -399,6 +456,7 @@ func miqt_exec_callback_QWizard_helpRequested(cb C.intptr_t) {
 }
 
 func (this *QWizard) CustomButtonClicked(which int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_customButtonClicked(this.h, (C.int)(which))
 }
 func (this *QWizard) OnCustomButtonClicked(slot func(which int)) {
@@ -419,6 +477,7 @@ func miqt_exec_callback_QWizard_customButtonClicked(cb C.intptr_t, which C.int) 
 }
 
 func (this *QWizard) PageAdded(id int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_pageAdded(this.h, (C.int)(id))
 }
 func (this *QWizard) OnPageAdded(slot func(id int)) {
@@ -439,6 +498,7 @@ func miqt_exec_callback_QWizard_pageAdded(cb C.intptr_t, id C.int) {
 }
 
 func (this *QWizard) PageRemoved(id int) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_pageRemoved(this.h, (C.int)(id))
 }
 func (this *QWizard) OnPageRemoved(slot func(id int)) {
@@ -459,14 +519,17 @@ func miqt_exec_callback_QWizard_pageRemoved(cb C.intptr_t, id C.int) {
 }
 
 func (this *QWizard) Back() {
+	defer runtime.KeepAlive(this)
 	C.QWizard_back(this.h)
 }
 
 func (this *QWizard) Next() {
+	defer runtime.KeepAlive(this)
 	C.QWizard_next(this.h)
 }
 
 func (this *QWizard) Restart() {
+	defer runtime.KeepAlive(this)
 	C.QWizard_restart(this.h)
 }
 
@@ -515,11 +578,14 @@ func QWizard_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWizard) SetOption2(option QWizard__WizardOption, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QWizard_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // AdjustPosition can only be called from a QWizard that was directly constructed.
 func (this *QWizard) AdjustPosition(param1 *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizard_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -532,6 +598,7 @@ func (this *QWizard) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QWizard that was directly constructed.
 func (this *QWizard) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizard_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -544,6 +611,7 @@ func (this *QWizard) UpdateMicroFocus() {
 
 // Create can only be called from a QWizard that was directly constructed.
 func (this *QWizard) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizard_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -556,6 +624,7 @@ func (this *QWizard) Create() {
 
 // Destroy can only be called from a QWizard that was directly constructed.
 func (this *QWizard) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizard_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -568,6 +637,7 @@ func (this *QWizard) Destroy() {
 
 // FocusNextChild can only be called from a QWizard that was directly constructed.
 func (this *QWizard) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizard_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -582,6 +652,7 @@ func (this *QWizard) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QWizard that was directly constructed.
 func (this *QWizard) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizard_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -596,6 +667,7 @@ func (this *QWizard) FocusPreviousChild() bool {
 
 // Sender can only be called from a QWizard that was directly constructed.
 func (this *QWizard) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QWizard_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -610,6 +682,7 @@ func (this *QWizard) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QWizard that was directly constructed.
 func (this *QWizard) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWizard_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -624,6 +697,7 @@ func (this *QWizard) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWizard that was directly constructed.
 func (this *QWizard) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -640,6 +714,8 @@ func (this *QWizard) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWizard that was directly constructed.
 func (this *QWizard) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizard_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -653,6 +729,7 @@ func (this *QWizard) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QWizard) callVirtualBase_ValidateCurrentPage() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizard_virtualbase_validateCurrentPage(unsafe.Pointer(this.h)))
 
@@ -678,6 +755,7 @@ func miqt_exec_callback_QWizard_validateCurrentPage(self *C.QWizard, cb C.intptr
 }
 
 func (this *QWizard) callVirtualBase_NextId() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizard_virtualbase_nextId(unsafe.Pointer(this.h)))
 
@@ -703,6 +781,7 @@ func miqt_exec_callback_QWizard_nextId(self *C.QWizard, cb C.intptr_t) C.int {
 }
 
 func (this *QWizard) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -729,6 +808,7 @@ func miqt_exec_callback_QWizard_setVisible(self *C.QWizard, cb C.intptr_t, visib
 }
 
 func (this *QWizard) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWizard_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -750,12 +830,15 @@ func miqt_exec_callback_QWizard_sizeHint(self *C.QWizard, cb C.intptr_t) *C.QSiz
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizard_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWizard) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWizard_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -784,6 +867,8 @@ func miqt_exec_callback_QWizard_event(self *C.QWizard, cb C.intptr_t, event *C.Q
 }
 
 func (this *QWizard) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -810,6 +895,8 @@ func miqt_exec_callback_QWizard_resizeEvent(self *C.QWizard, cb C.intptr_t, even
 }
 
 func (this *QWizard) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -836,6 +923,7 @@ func miqt_exec_callback_QWizard_paintEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_Done(result int) {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -862,6 +950,7 @@ func miqt_exec_callback_QWizard_done(self *C.QWizard, cb C.intptr_t, result C.in
 }
 
 func (this *QWizard) callVirtualBase_InitializePage(id int) {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_initializePage(unsafe.Pointer(this.h), (C.int)(id))
 
@@ -888,6 +977,7 @@ func miqt_exec_callback_QWizard_initializePage(self *C.QWizard, cb C.intptr_t, i
 }
 
 func (this *QWizard) callVirtualBase_CleanupPage(id int) {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_cleanupPage(unsafe.Pointer(this.h), (C.int)(id))
 
@@ -914,6 +1004,7 @@ func miqt_exec_callback_QWizard_cleanupPage(self *C.QWizard, cb C.intptr_t, id C
 }
 
 func (this *QWizard) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWizard_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -935,12 +1026,14 @@ func miqt_exec_callback_QWizard_minimumSizeHint(self *C.QWizard, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizard_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWizard) callVirtualBase_Open() {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -964,6 +1057,7 @@ func miqt_exec_callback_QWizard_open(self *C.QWizard, cb C.intptr_t) {
 }
 
 func (this *QWizard) callVirtualBase_Exec() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizard_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -989,6 +1083,7 @@ func miqt_exec_callback_QWizard_exec(self *C.QWizard, cb C.intptr_t) C.int {
 }
 
 func (this *QWizard) callVirtualBase_Accept() {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -1012,6 +1107,7 @@ func miqt_exec_callback_QWizard_accept(self *C.QWizard, cb C.intptr_t) {
 }
 
 func (this *QWizard) callVirtualBase_Reject() {
+	defer runtime.KeepAlive(this)
 
 	C.QWizard_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -1035,6 +1131,8 @@ func miqt_exec_callback_QWizard_reject(self *C.QWizard, cb C.intptr_t) {
 }
 
 func (this *QWizard) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1061,6 +1159,8 @@ func miqt_exec_callback_QWizard_keyPressEvent(self *C.QWizard, cb C.intptr_t, pa
 }
 
 func (this *QWizard) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1087,6 +1187,8 @@ func miqt_exec_callback_QWizard_closeEvent(self *C.QWizard, cb C.intptr_t, param
 }
 
 func (this *QWizard) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1113,6 +1215,8 @@ func miqt_exec_callback_QWizard_showEvent(self *C.QWizard, cb C.intptr_t, param1
 }
 
 func (this *QWizard) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1139,6 +1243,9 @@ func miqt_exec_callback_QWizard_contextMenuEvent(self *C.QWizard, cb C.intptr_t,
 }
 
 func (this *QWizard) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QWizard_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -1169,6 +1276,7 @@ func miqt_exec_callback_QWizard_eventFilter(self *C.QWizard, cb C.intptr_t, para
 }
 
 func (this *QWizard) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizard_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1194,6 +1302,7 @@ func miqt_exec_callback_QWizard_devType(self *C.QWizard, cb C.intptr_t) C.int {
 }
 
 func (this *QWizard) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizard_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1222,6 +1331,7 @@ func miqt_exec_callback_QWizard_heightForWidth(self *C.QWizard, cb C.intptr_t, p
 }
 
 func (this *QWizard) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizard_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1247,6 +1357,7 @@ func miqt_exec_callback_QWizard_hasHeightForWidth(self *C.QWizard, cb C.intptr_t
 }
 
 func (this *QWizard) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QWizard_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1266,12 +1377,15 @@ func miqt_exec_callback_QWizard_paintEngine(self *C.QWizard, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizard) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1298,6 +1412,8 @@ func miqt_exec_callback_QWizard_mousePressEvent(self *C.QWizard, cb C.intptr_t, 
 }
 
 func (this *QWizard) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1324,6 +1440,8 @@ func miqt_exec_callback_QWizard_mouseReleaseEvent(self *C.QWizard, cb C.intptr_t
 }
 
 func (this *QWizard) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1350,6 +1468,8 @@ func miqt_exec_callback_QWizard_mouseDoubleClickEvent(self *C.QWizard, cb C.intp
 }
 
 func (this *QWizard) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1376,6 +1496,8 @@ func miqt_exec_callback_QWizard_mouseMoveEvent(self *C.QWizard, cb C.intptr_t, e
 }
 
 func (this *QWizard) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1402,6 +1524,8 @@ func miqt_exec_callback_QWizard_wheelEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1428,6 +1552,8 @@ func miqt_exec_callback_QWizard_keyReleaseEvent(self *C.QWizard, cb C.intptr_t, 
 }
 
 func (this *QWizard) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1454,6 +1580,8 @@ func miqt_exec_callback_QWizard_focusInEvent(self *C.QWizard, cb C.intptr_t, eve
 }
 
 func (this *QWizard) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1480,6 +1608,8 @@ func miqt_exec_callback_QWizard_focusOutEvent(self *C.QWizard, cb C.intptr_t, ev
 }
 
 func (this *QWizard) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1506,6 +1636,8 @@ func miqt_exec_callback_QWizard_enterEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1532,6 +1664,8 @@ func miqt_exec_callback_QWizard_leaveEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1558,6 +1692,8 @@ func miqt_exec_callback_QWizard_moveEvent(self *C.QWizard, cb C.intptr_t, event 
 }
 
 func (this *QWizard) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1584,6 +1720,8 @@ func miqt_exec_callback_QWizard_tabletEvent(self *C.QWizard, cb C.intptr_t, even
 }
 
 func (this *QWizard) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1610,6 +1748,8 @@ func miqt_exec_callback_QWizard_actionEvent(self *C.QWizard, cb C.intptr_t, even
 }
 
 func (this *QWizard) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1636,6 +1776,8 @@ func miqt_exec_callback_QWizard_dragEnterEvent(self *C.QWizard, cb C.intptr_t, e
 }
 
 func (this *QWizard) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1662,6 +1804,8 @@ func miqt_exec_callback_QWizard_dragMoveEvent(self *C.QWizard, cb C.intptr_t, ev
 }
 
 func (this *QWizard) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1688,6 +1832,8 @@ func miqt_exec_callback_QWizard_dragLeaveEvent(self *C.QWizard, cb C.intptr_t, e
 }
 
 func (this *QWizard) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1714,6 +1860,8 @@ func miqt_exec_callback_QWizard_dropEvent(self *C.QWizard, cb C.intptr_t, event 
 }
 
 func (this *QWizard) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1740,6 +1888,7 @@ func miqt_exec_callback_QWizard_hideEvent(self *C.QWizard, cb C.intptr_t, event 
 }
 
 func (this *QWizard) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1781,6 +1930,8 @@ func miqt_exec_callback_QWizard_nativeEvent(self *C.QWizard, cb C.intptr_t, even
 }
 
 func (this *QWizard) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1807,6 +1958,7 @@ func miqt_exec_callback_QWizard_changeEvent(self *C.QWizard, cb C.intptr_t, para
 }
 
 func (this *QWizard) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizard_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1835,6 +1987,8 @@ func miqt_exec_callback_QWizard_metric(self *C.QWizard, cb C.intptr_t, param1 C.
 }
 
 func (this *QWizard) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QWizard_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1861,6 +2015,8 @@ func miqt_exec_callback_QWizard_initPainter(self *C.QWizard, cb C.intptr_t, pain
 }
 
 func (this *QWizard) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWizard_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1883,12 +2039,14 @@ func miqt_exec_callback_QWizard_redirected(self *C.QWizard, cb C.intptr_t, offse
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizard) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QWizard_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1908,12 +2066,15 @@ func miqt_exec_callback_QWizard_sharedPainter(self *C.QWizard, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizard) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizard_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1940,6 +2101,7 @@ func miqt_exec_callback_QWizard_inputMethodEvent(self *C.QWizard, cb C.intptr_t,
 }
 
 func (this *QWizard) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QWizard_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1964,12 +2126,14 @@ func miqt_exec_callback_QWizard_inputMethodQuery(self *C.QWizard, cb C.intptr_t,
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizard_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QWizard) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizard_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1998,6 +2162,8 @@ func miqt_exec_callback_QWizard_focusNextPrevChild(self *C.QWizard, cb C.intptr_
 }
 
 func (this *QWizard) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2024,6 +2190,8 @@ func miqt_exec_callback_QWizard_timerEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2050,6 +2218,8 @@ func miqt_exec_callback_QWizard_childEvent(self *C.QWizard, cb C.intptr_t, event
 }
 
 func (this *QWizard) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizard_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2076,6 +2246,8 @@ func miqt_exec_callback_QWizard_customEvent(self *C.QWizard, cb C.intptr_t, even
 }
 
 func (this *QWizard) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWizard_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2102,6 +2274,8 @@ func miqt_exec_callback_QWizard_connectNotify(self *C.QWizard, cb C.intptr_t, si
 }
 
 func (this *QWizard) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWizard_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2139,16 +2313,24 @@ func (this *QWizard) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWizard{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWizard) {
-		C.QWizard_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWizard_delete((*C.QWizard)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWizardPage struct {
 	h  *C.QWizardPage
-	gc *[1]*C.QWizardPage
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWizardPage) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QWizardPage) cPointer() *C.QWizardPage {
@@ -2184,6 +2366,7 @@ func UnsafeNewQWizardPage(h unsafe.Pointer) *QWizardPage {
 
 // NewQWizardPage constructs a new QWizardPage object.
 func NewQWizardPage(parent *QWidget) *QWizardPage {
+	defer runtime.KeepAlive(parent)
 
 	return newQWizardPage(C.QWizardPage_new(parent.cPointer()))
 }
@@ -2195,10 +2378,12 @@ func NewQWizardPage2() *QWizardPage {
 }
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QWizardPage_metaObject(this.h))
 }
 
 func (this *QWizardPage) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWizardPage_metacast(this.h, param1_Cstring))
@@ -2223,6 +2408,7 @@ func QWizardPage_TrUtf8(s string) string {
 }
 
 func (this *QWizardPage) SetTitle(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -2231,6 +2417,7 @@ func (this *QWizardPage) SetTitle(title string) {
 }
 
 func (this *QWizardPage) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWizardPage_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2238,6 +2425,7 @@ func (this *QWizardPage) Title() string {
 }
 
 func (this *QWizardPage) SetSubTitle(subTitle string) {
+	defer runtime.KeepAlive(this)
 	subTitle_ms := C.struct_miqt_string{}
 	subTitle_ms.data = C.CString(subTitle)
 	subTitle_ms.len = C.size_t(len(subTitle))
@@ -2246,6 +2434,7 @@ func (this *QWizardPage) SetSubTitle(subTitle string) {
 }
 
 func (this *QWizardPage) SubTitle() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWizardPage_subTitle(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2253,32 +2442,40 @@ func (this *QWizardPage) SubTitle() string {
 }
 
 func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QWizardPage_setPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizardPage) Pixmap(which QWizard__WizardPixmap) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QWizardPage_pixmap(this.h, (C.int)(which)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWizardPage) SetFinalPage(finalPage bool) {
+	defer runtime.KeepAlive(this)
 	C.QWizardPage_setFinalPage(this.h, (C.bool)(finalPage))
 }
 
 func (this *QWizardPage) IsFinalPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizardPage_isFinalPage(this.h))
 }
 
 func (this *QWizardPage) SetCommitPage(commitPage bool) {
+	defer runtime.KeepAlive(this)
 	C.QWizardPage_setCommitPage(this.h, (C.bool)(commitPage))
 }
 
 func (this *QWizardPage) IsCommitPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizardPage_isCommitPage(this.h))
 }
 
 func (this *QWizardPage) SetButtonText(which QWizard__WizardButton, text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2287,6 +2484,7 @@ func (this *QWizardPage) SetButtonText(which QWizard__WizardButton, text string)
 }
 
 func (this *QWizardPage) ButtonText(which QWizard__WizardButton) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWizardPage_buttonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2294,26 +2492,32 @@ func (this *QWizardPage) ButtonText(which QWizard__WizardButton) string {
 }
 
 func (this *QWizardPage) InitializePage() {
+	defer runtime.KeepAlive(this)
 	C.QWizardPage_initializePage(this.h)
 }
 
 func (this *QWizardPage) CleanupPage() {
+	defer runtime.KeepAlive(this)
 	C.QWizardPage_cleanupPage(this.h)
 }
 
 func (this *QWizardPage) ValidatePage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizardPage_validatePage(this.h))
 }
 
 func (this *QWizardPage) IsComplete() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWizardPage_isComplete(this.h))
 }
 
 func (this *QWizardPage) NextId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWizardPage_nextId(this.h))
 }
 
 func (this *QWizardPage) CompleteChanged() {
+	defer runtime.KeepAlive(this)
 	C.QWizardPage_completeChanged(this.h)
 }
 func (this *QWizardPage) OnCompleteChanged(slot func()) {
@@ -2376,6 +2580,8 @@ func QWizardPage_TrUtf83(s string, c string, n int) string {
 
 // SetField can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) SetField(name string, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2392,6 +2598,7 @@ func (this *QWizardPage) SetField(name string, value *QVariant) {
 
 // Field can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Field(name string) QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2412,6 +2619,8 @@ func (this *QWizardPage) Field(name string) QVariant {
 
 // RegisterField can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) RegisterField(name string, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2428,6 +2637,7 @@ func (this *QWizardPage) RegisterField(name string, widget *QWidget) {
 
 // Wizard can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Wizard() *QWizard {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQWizard(C.QWizardPage_protectedbase_wizard(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2442,6 +2652,8 @@ func (this *QWizardPage) Wizard() *QWizard {
 
 // RegisterField2 can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) RegisterField2(name string, widget *QWidget, property string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2460,6 +2672,8 @@ func (this *QWizardPage) RegisterField2(name string, widget *QWidget, property s
 
 // RegisterField3 can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property string, changedSignal string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2480,6 +2694,7 @@ func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property s
 
 // UpdateMicroFocus can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizardPage_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2492,6 +2707,7 @@ func (this *QWizardPage) UpdateMicroFocus() {
 
 // Create can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizardPage_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2504,6 +2720,7 @@ func (this *QWizardPage) Create() {
 
 // Destroy can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWizardPage_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2516,6 +2733,7 @@ func (this *QWizardPage) Destroy() {
 
 // FocusNextChild can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizardPage_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2530,6 +2748,7 @@ func (this *QWizardPage) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizardPage_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2544,6 +2763,7 @@ func (this *QWizardPage) FocusPreviousChild() bool {
 
 // Sender can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QWizardPage_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2558,6 +2778,7 @@ func (this *QWizardPage) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWizardPage_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2572,6 +2793,7 @@ func (this *QWizardPage) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2588,6 +2810,8 @@ func (this *QWizardPage) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWizardPage that was directly constructed.
 func (this *QWizardPage) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWizardPage_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -2601,6 +2825,7 @@ func (this *QWizardPage) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QWizardPage) callVirtualBase_InitializePage() {
+	defer runtime.KeepAlive(this)
 
 	C.QWizardPage_virtualbase_initializePage(unsafe.Pointer(this.h))
 
@@ -2624,6 +2849,7 @@ func miqt_exec_callback_QWizardPage_initializePage(self *C.QWizardPage, cb C.int
 }
 
 func (this *QWizardPage) callVirtualBase_CleanupPage() {
+	defer runtime.KeepAlive(this)
 
 	C.QWizardPage_virtualbase_cleanupPage(unsafe.Pointer(this.h))
 
@@ -2647,6 +2873,7 @@ func miqt_exec_callback_QWizardPage_cleanupPage(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_ValidatePage() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizardPage_virtualbase_validatePage(unsafe.Pointer(this.h)))
 
@@ -2672,6 +2899,7 @@ func miqt_exec_callback_QWizardPage_validatePage(self *C.QWizardPage, cb C.intpt
 }
 
 func (this *QWizardPage) callVirtualBase_IsComplete() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizardPage_virtualbase_isComplete(unsafe.Pointer(this.h)))
 
@@ -2697,6 +2925,7 @@ func miqt_exec_callback_QWizardPage_isComplete(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_NextId() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizardPage_virtualbase_nextId(unsafe.Pointer(this.h)))
 
@@ -2722,6 +2951,7 @@ func miqt_exec_callback_QWizardPage_nextId(self *C.QWizardPage, cb C.intptr_t) C
 }
 
 func (this *QWizardPage) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizardPage_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2747,6 +2977,7 @@ func miqt_exec_callback_QWizardPage_devType(self *C.QWizardPage, cb C.intptr_t) 
 }
 
 func (this *QWizardPage) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QWizardPage_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2773,6 +3004,7 @@ func miqt_exec_callback_QWizardPage_setVisible(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWizardPage_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2794,12 +3026,14 @@ func miqt_exec_callback_QWizardPage_sizeHint(self *C.QWizardPage, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizardPage_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWizardPage) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWizardPage_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2821,12 +3055,14 @@ func miqt_exec_callback_QWizardPage_minimumSizeHint(self *C.QWizardPage, cb C.in
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizardPage_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWizardPage) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizardPage_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2855,6 +3091,7 @@ func miqt_exec_callback_QWizardPage_heightForWidth(self *C.QWizardPage, cb C.int
 }
 
 func (this *QWizardPage) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizardPage_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2880,6 +3117,7 @@ func miqt_exec_callback_QWizardPage_hasHeightForWidth(self *C.QWizardPage, cb C.
 }
 
 func (this *QWizardPage) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QWizardPage_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2899,12 +3137,15 @@ func miqt_exec_callback_QWizardPage_paintEngine(self *C.QWizardPage, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizardPage) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWizardPage_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2933,6 +3174,8 @@ func miqt_exec_callback_QWizardPage_event(self *C.QWizardPage, cb C.intptr_t, ev
 }
 
 func (this *QWizardPage) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2959,6 +3202,8 @@ func miqt_exec_callback_QWizardPage_mousePressEvent(self *C.QWizardPage, cb C.in
 }
 
 func (this *QWizardPage) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2985,6 +3230,8 @@ func miqt_exec_callback_QWizardPage_mouseReleaseEvent(self *C.QWizardPage, cb C.
 }
 
 func (this *QWizardPage) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3011,6 +3258,8 @@ func miqt_exec_callback_QWizardPage_mouseDoubleClickEvent(self *C.QWizardPage, c
 }
 
 func (this *QWizardPage) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3037,6 +3286,8 @@ func miqt_exec_callback_QWizardPage_mouseMoveEvent(self *C.QWizardPage, cb C.int
 }
 
 func (this *QWizardPage) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3063,6 +3314,8 @@ func miqt_exec_callback_QWizardPage_wheelEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3089,6 +3342,8 @@ func miqt_exec_callback_QWizardPage_keyPressEvent(self *C.QWizardPage, cb C.intp
 }
 
 func (this *QWizardPage) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3115,6 +3370,8 @@ func miqt_exec_callback_QWizardPage_keyReleaseEvent(self *C.QWizardPage, cb C.in
 }
 
 func (this *QWizardPage) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3141,6 +3398,8 @@ func miqt_exec_callback_QWizardPage_focusInEvent(self *C.QWizardPage, cb C.intpt
 }
 
 func (this *QWizardPage) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3167,6 +3426,8 @@ func miqt_exec_callback_QWizardPage_focusOutEvent(self *C.QWizardPage, cb C.intp
 }
 
 func (this *QWizardPage) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3193,6 +3454,8 @@ func miqt_exec_callback_QWizardPage_enterEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3219,6 +3482,8 @@ func miqt_exec_callback_QWizardPage_leaveEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3245,6 +3510,8 @@ func miqt_exec_callback_QWizardPage_paintEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3271,6 +3538,8 @@ func miqt_exec_callback_QWizardPage_moveEvent(self *C.QWizardPage, cb C.intptr_t
 }
 
 func (this *QWizardPage) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3297,6 +3566,8 @@ func miqt_exec_callback_QWizardPage_resizeEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3323,6 +3594,8 @@ func miqt_exec_callback_QWizardPage_closeEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3349,6 +3622,8 @@ func miqt_exec_callback_QWizardPage_contextMenuEvent(self *C.QWizardPage, cb C.i
 }
 
 func (this *QWizardPage) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3375,6 +3650,8 @@ func miqt_exec_callback_QWizardPage_tabletEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3401,6 +3678,8 @@ func miqt_exec_callback_QWizardPage_actionEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3427,6 +3706,8 @@ func miqt_exec_callback_QWizardPage_dragEnterEvent(self *C.QWizardPage, cb C.int
 }
 
 func (this *QWizardPage) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3453,6 +3734,8 @@ func miqt_exec_callback_QWizardPage_dragMoveEvent(self *C.QWizardPage, cb C.intp
 }
 
 func (this *QWizardPage) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3479,6 +3762,8 @@ func miqt_exec_callback_QWizardPage_dragLeaveEvent(self *C.QWizardPage, cb C.int
 }
 
 func (this *QWizardPage) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3505,6 +3790,8 @@ func miqt_exec_callback_QWizardPage_dropEvent(self *C.QWizardPage, cb C.intptr_t
 }
 
 func (this *QWizardPage) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3531,6 +3818,8 @@ func miqt_exec_callback_QWizardPage_showEvent(self *C.QWizardPage, cb C.intptr_t
 }
 
 func (this *QWizardPage) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3557,6 +3846,7 @@ func miqt_exec_callback_QWizardPage_hideEvent(self *C.QWizardPage, cb C.intptr_t
 }
 
 func (this *QWizardPage) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -3598,6 +3888,8 @@ func miqt_exec_callback_QWizardPage_nativeEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizardPage_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3624,6 +3916,7 @@ func miqt_exec_callback_QWizardPage_changeEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWizardPage_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3652,6 +3945,8 @@ func miqt_exec_callback_QWizardPage_metric(self *C.QWizardPage, cb C.intptr_t, p
 }
 
 func (this *QWizardPage) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QWizardPage_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -3678,6 +3973,8 @@ func miqt_exec_callback_QWizardPage_initPainter(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWizardPage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -3700,12 +3997,14 @@ func miqt_exec_callback_QWizardPage_redirected(self *C.QWizardPage, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizardPage) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QWizardPage_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3725,12 +4024,15 @@ func miqt_exec_callback_QWizardPage_sharedPainter(self *C.QWizardPage, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWizardPage) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QWizardPage_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3757,6 +4059,7 @@ func miqt_exec_callback_QWizardPage_inputMethodEvent(self *C.QWizardPage, cb C.i
 }
 
 func (this *QWizardPage) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QWizardPage_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3781,12 +4084,14 @@ func miqt_exec_callback_QWizardPage_inputMethodQuery(self *C.QWizardPage, cb C.i
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWizardPage_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QWizardPage) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWizardPage_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -3815,6 +4120,9 @@ func miqt_exec_callback_QWizardPage_focusNextPrevChild(self *C.QWizardPage, cb C
 }
 
 func (this *QWizardPage) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWizardPage_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -3845,6 +4153,8 @@ func miqt_exec_callback_QWizardPage_eventFilter(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3871,6 +4181,8 @@ func miqt_exec_callback_QWizardPage_timerEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3897,6 +4209,8 @@ func miqt_exec_callback_QWizardPage_childEvent(self *C.QWizardPage, cb C.intptr_
 }
 
 func (this *QWizardPage) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWizardPage_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3923,6 +4237,8 @@ func miqt_exec_callback_QWizardPage_customEvent(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWizardPage_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3949,6 +4265,8 @@ func miqt_exec_callback_QWizardPage_connectNotify(self *C.QWizardPage, cb C.intp
 }
 
 func (this *QWizardPage) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWizardPage_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3986,8 +4304,9 @@ func (this *QWizardPage) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWizardPage{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWizardPage) {
-		C.QWizardPage_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWizardPage_delete((*C.QWizardPage)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

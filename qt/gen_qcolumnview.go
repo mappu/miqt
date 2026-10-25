@@ -16,8 +16,15 @@ import (
 
 type QColumnView struct {
 	h  *C.QColumnView
-	gc *[1]*C.QColumnView
+	gc *[1]unsafe.Pointer
 	*QAbstractItemView
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QColumnView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractItemView.miqtSetGC(gc)
 }
 
 func (this *QColumnView) cPointer() *C.QColumnView {
@@ -53,6 +60,7 @@ func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
 
 // NewQColumnView constructs a new QColumnView object.
 func NewQColumnView(parent *QWidget) *QColumnView {
+	defer runtime.KeepAlive(parent)
 
 	return newQColumnView(C.QColumnView_new(parent.cPointer()))
 }
@@ -64,10 +72,12 @@ func NewQColumnView2() *QColumnView {
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QColumnView_metaObject(this.h))
 }
 
 func (this *QColumnView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QColumnView_metacast(this.h, param1_Cstring))
@@ -92,6 +102,8 @@ func QColumnView_TrUtf8(s string) string {
 }
 
 func (this *QColumnView) UpdatePreviewWidget(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QColumnView_updatePreviewWidget(this.h, index.cPointer())
 }
 func (this *QColumnView) OnUpdatePreviewWidget(slot func(index *QModelIndex)) {
@@ -112,60 +124,80 @@ func miqt_exec_callback_QColumnView_updatePreviewWidget(cb C.intptr_t, index *C.
 }
 
 func (this *QColumnView) IndexAt(point *QPoint) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	_goptr := newQModelIndex(C.QColumnView_indexAt(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColumnView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QColumnView_scrollTo(this.h, index.cPointer(), (C.int)(hint))
 }
 
 func (this *QColumnView) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QColumnView_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColumnView) VisualRect(index *QModelIndex) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQRect(C.QColumnView_visualRect(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColumnView) SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QColumnView_setModel(this.h, model.cPointer())
 }
 
 func (this *QColumnView) SetSelectionModel(selectionModel *QItemSelectionModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectionModel)
 	C.QColumnView_setSelectionModel(this.h, selectionModel.cPointer())
 }
 
 func (this *QColumnView) SetRootIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QColumnView_setRootIndex(this.h, index.cPointer())
 }
 
 func (this *QColumnView) SelectAll() {
+	defer runtime.KeepAlive(this)
 	C.QColumnView_selectAll(this.h)
 }
 
 func (this *QColumnView) SetResizeGripsVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QColumnView_setResizeGripsVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QColumnView) ResizeGripsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QColumnView_resizeGripsVisible(this.h))
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QColumnView_previewWidget(this.h))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QColumnView_setPreviewWidget(this.h, widget.cPointer())
 }
 
 func (this *QColumnView) SetColumnWidths(list []int) {
+	defer runtime.KeepAlive(this)
 	list_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -177,6 +209,7 @@ func (this *QColumnView) SetColumnWidths(list []int) {
 }
 
 func (this *QColumnView) ColumnWidths() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QColumnView_columnWidths(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -232,6 +265,8 @@ func QColumnView_TrUtf83(s string, c string, n int) string {
 
 // InitializeColumn can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) InitializeColumn(column *QAbstractItemView) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(column)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_initializeColumn(&_dynamic_cast_ok, unsafe.Pointer(this.h), column.cPointer())
@@ -244,6 +279,7 @@ func (this *QColumnView) InitializeColumn(column *QAbstractItemView) {
 
 // SetHorizontalStepsPerItem can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SetHorizontalStepsPerItem(steps int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_setHorizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -256,6 +292,7 @@ func (this *QColumnView) SetHorizontalStepsPerItem(steps int) {
 
 // HorizontalStepsPerItem can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) HorizontalStepsPerItem() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QColumnView_protectedbase_horizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -270,6 +307,7 @@ func (this *QColumnView) HorizontalStepsPerItem() int {
 
 // SetVerticalStepsPerItem can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SetVerticalStepsPerItem(steps int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_setVerticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -282,6 +320,7 @@ func (this *QColumnView) SetVerticalStepsPerItem(steps int) {
 
 // VerticalStepsPerItem can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) VerticalStepsPerItem() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QColumnView_protectedbase_verticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -296,6 +335,7 @@ func (this *QColumnView) VerticalStepsPerItem() int {
 
 // State can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) State() QAbstractItemView__State {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QColumnView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -310,6 +350,7 @@ func (this *QColumnView) State() QAbstractItemView__State {
 
 // SetState can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SetState(state QAbstractItemView__State) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -322,6 +363,7 @@ func (this *QColumnView) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) ScheduleDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -334,6 +376,7 @@ func (this *QColumnView) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) ExecuteDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -346,6 +389,8 @@ func (this *QColumnView) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SetDirtyRegion(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
@@ -358,6 +403,7 @@ func (this *QColumnView) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) ScrollDirtyRegion(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -370,6 +416,7 @@ func (this *QColumnView) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) DirtyRegionOffset() QPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QColumnView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -386,6 +433,7 @@ func (this *QColumnView) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) StartAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -398,6 +446,7 @@ func (this *QColumnView) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) StopAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -410,6 +459,7 @@ func (this *QColumnView) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) DoAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -422,6 +472,7 @@ func (this *QColumnView) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QColumnView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -436,6 +487,7 @@ func (this *QColumnView) DropIndicatorPosition() QAbstractItemView__DropIndicato
 
 // SetViewportMargins can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -448,6 +500,7 @@ func (this *QColumnView) SetViewportMargins(left int, top int, right int, bottom
 
 // ViewportMargins can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QColumnView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -464,6 +517,8 @@ func (this *QColumnView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -476,6 +531,8 @@ func (this *QColumnView) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -488,6 +545,7 @@ func (this *QColumnView) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -500,6 +558,7 @@ func (this *QColumnView) UpdateMicroFocus() {
 
 // Create can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -512,6 +571,7 @@ func (this *QColumnView) Create() {
 
 // Destroy can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColumnView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -524,6 +584,7 @@ func (this *QColumnView) Destroy() {
 
 // FocusNextChild can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QColumnView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -538,6 +599,7 @@ func (this *QColumnView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QColumnView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -552,6 +614,7 @@ func (this *QColumnView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QColumnView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -566,6 +629,7 @@ func (this *QColumnView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QColumnView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -580,6 +644,7 @@ func (this *QColumnView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -596,6 +661,8 @@ func (this *QColumnView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QColumnView that was directly constructed.
 func (this *QColumnView) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QColumnView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -609,6 +676,8 @@ func (this *QColumnView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QColumnView) callVirtualBase_IndexAt(point *QPoint) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 
 	_goptr := newQModelIndex(C.QColumnView_virtualbase_indexAt(unsafe.Pointer(this.h), point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -633,12 +702,15 @@ func miqt_exec_callback_QColumnView_indexAt(self *C.QColumnView, cb C.intptr_t, 
 	slotval1 := newQPoint(point)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_IndexAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QColumnView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
@@ -667,6 +739,7 @@ func miqt_exec_callback_QColumnView_scrollTo(self *C.QColumnView, cb C.intptr_t,
 }
 
 func (this *QColumnView) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QColumnView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -688,12 +761,15 @@ func miqt_exec_callback_QColumnView_sizeHint(self *C.QColumnView, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QColumnView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -718,12 +794,15 @@ func miqt_exec_callback_QColumnView_visualRect(self *C.QColumnView, cb C.intptr_
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_VisualRect, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 
 	C.QColumnView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -750,6 +829,8 @@ func miqt_exec_callback_QColumnView_setModel(self *C.QColumnView, cb C.intptr_t,
 }
 
 func (this *QColumnView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectionModel)
 
 	C.QColumnView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -776,6 +857,8 @@ func miqt_exec_callback_QColumnView_setSelectionModel(self *C.QColumnView, cb C.
 }
 
 func (this *QColumnView) callVirtualBase_SetRootIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QColumnView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
@@ -802,6 +885,7 @@ func miqt_exec_callback_QColumnView_setRootIndex(self *C.QColumnView, cb C.intpt
 }
 
 func (this *QColumnView) callVirtualBase_SelectAll() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -825,6 +909,8 @@ func miqt_exec_callback_QColumnView_selectAll(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QColumnView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -853,6 +939,7 @@ func miqt_exec_callback_QColumnView_isIndexHidden(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QColumnView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -879,12 +966,15 @@ func miqt_exec_callback_QColumnView_moveCursor(self *C.QColumnView, cb C.intptr_
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -911,6 +1001,8 @@ func miqt_exec_callback_QColumnView_resizeEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QColumnView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
@@ -939,6 +1031,8 @@ func miqt_exec_callback_QColumnView_setSelection(self *C.QColumnView, cb C.intpt
 }
 
 func (this *QColumnView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QColumnView_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -963,12 +1057,14 @@ func miqt_exec_callback_QColumnView_visualRegionForSelection(self *C.QColumnView
 	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QRegion(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_HorizontalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -994,6 +1090,7 @@ func miqt_exec_callback_QColumnView_horizontalOffset(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_VerticalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -1019,6 +1116,8 @@ func miqt_exec_callback_QColumnView_verticalOffset(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QColumnView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -1049,6 +1148,9 @@ func miqt_exec_callback_QColumnView_rowsInserted(self *C.QColumnView, cb C.intpt
 }
 
 func (this *QColumnView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 
 	C.QColumnView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
@@ -1077,6 +1179,7 @@ func miqt_exec_callback_QColumnView_currentChanged(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1105,6 +1208,8 @@ func miqt_exec_callback_QColumnView_scrollContentsBy(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_CreateColumn(rootIndex *QModelIndex) *QAbstractItemView {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rootIndex)
 
 	return newQAbstractItemView(C.QColumnView_virtualbase_createColumn(unsafe.Pointer(this.h), rootIndex.cPointer()))
 
@@ -1127,12 +1232,14 @@ func miqt_exec_callback_QColumnView_createColumn(self *C.QColumnView, cb C.intpt
 	slotval1 := newQModelIndex(rootIndex)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_CreateColumn, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QColumnView) callVirtualBase_KeyboardSearch(search string) {
+	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -1166,6 +1273,7 @@ func miqt_exec_callback_QColumnView_keyboardSearch(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_SizeHintForRow(row int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1194,6 +1302,7 @@ func miqt_exec_callback_QColumnView_sizeHintForRow(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_SizeHintForColumn(column int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -1222,6 +1331,7 @@ func miqt_exec_callback_QColumnView_sizeHintForColumn(self *C.QColumnView, cb C.
 }
 
 func (this *QColumnView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QColumnView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1246,12 +1356,14 @@ func miqt_exec_callback_QColumnView_inputMethodQuery(self *C.QColumnView, cb C.i
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -1275,6 +1387,7 @@ func miqt_exec_callback_QColumnView_reset(self *C.QColumnView, cb C.intptr_t) {
 }
 
 func (this *QColumnView) callVirtualBase_DoItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -1298,6 +1411,9 @@ func miqt_exec_callback_QColumnView_doItemsLayout(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -1341,6 +1457,8 @@ func miqt_exec_callback_QColumnView_dataChanged(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QColumnView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -1371,6 +1489,9 @@ func miqt_exec_callback_QColumnView_rowsAboutToBeRemoved(self *C.QColumnView, cb
 }
 
 func (this *QColumnView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selected)
+	defer runtime.KeepAlive(deselected)
 
 	C.QColumnView_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
@@ -1399,6 +1520,7 @@ func miqt_exec_callback_QColumnView_selectionChanged(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_UpdateEditorData() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -1422,6 +1544,7 @@ func miqt_exec_callback_QColumnView_updateEditorData(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_UpdateEditorGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -1445,6 +1568,7 @@ func miqt_exec_callback_QColumnView_updateEditorGeometries(self *C.QColumnView, 
 }
 
 func (this *QColumnView) callVirtualBase_UpdateGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -1468,6 +1592,7 @@ func miqt_exec_callback_QColumnView_updateGeometries(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_VerticalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1494,6 +1619,7 @@ func miqt_exec_callback_QColumnView_verticalScrollbarAction(self *C.QColumnView,
 }
 
 func (this *QColumnView) callVirtualBase_HorizontalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1520,6 +1646,7 @@ func miqt_exec_callback_QColumnView_horizontalScrollbarAction(self *C.QColumnVie
 }
 
 func (this *QColumnView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1546,6 +1673,7 @@ func miqt_exec_callback_QColumnView_verticalScrollbarValueChanged(self *C.QColum
 }
 
 func (this *QColumnView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1572,6 +1700,8 @@ func miqt_exec_callback_QColumnView_horizontalScrollbarValueChanged(self *C.QCol
 }
 
 func (this *QColumnView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QColumnView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -1600,6 +1730,8 @@ func miqt_exec_callback_QColumnView_closeEditor(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_CommitData(editor *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QColumnView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1626,6 +1758,8 @@ func miqt_exec_callback_QColumnView_commitData(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_EditorDestroyed(editor *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QColumnView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1652,6 +1786,7 @@ func miqt_exec_callback_QColumnView_editorDestroyed(self *C.QColumnView, cb C.in
 }
 
 func (this *QColumnView) callVirtualBase_SelectedIndexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QColumnView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -1679,10 +1814,11 @@ func miqt_exec_callback_QColumnView_selectedIndexes(self *C.QColumnView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_SelectedIndexes)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QColumnView_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1691,6 +1827,9 @@ func miqt_exec_callback_QColumnView_selectedIndexes(self *C.QColumnView, cb C.in
 }
 
 func (this *QColumnView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QColumnView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
@@ -1723,6 +1862,9 @@ func miqt_exec_callback_QColumnView_edit2(self *C.QColumnView, cb C.intptr_t, in
 }
 
 func (this *QColumnView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (QItemSelectionModel__SelectionFlag)(C.QColumnView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
@@ -1753,6 +1895,7 @@ func miqt_exec_callback_QColumnView_selectionCommand(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_StartDrag(supportedActions DropAction) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -1779,6 +1922,7 @@ func miqt_exec_callback_QColumnView_startDrag(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQStyleOptionViewItem(C.QColumnView_virtualbase_viewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1800,12 +1944,14 @@ func miqt_exec_callback_QColumnView_viewOptions(self *C.QColumnView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_ViewOptions)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QStyleOptionViewItem(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QColumnView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1834,6 +1980,8 @@ func miqt_exec_callback_QColumnView_focusNextPrevChild(self *C.QColumnView, cb C
 }
 
 func (this *QColumnView) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QColumnView_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1862,6 +2010,8 @@ func miqt_exec_callback_QColumnView_event(self *C.QColumnView, cb C.intptr_t, ev
 }
 
 func (this *QColumnView) callVirtualBase_ViewportEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QColumnView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1890,6 +2040,8 @@ func miqt_exec_callback_QColumnView_viewportEvent(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1916,6 +2068,8 @@ func miqt_exec_callback_QColumnView_mousePressEvent(self *C.QColumnView, cb C.in
 }
 
 func (this *QColumnView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1942,6 +2096,8 @@ func miqt_exec_callback_QColumnView_mouseMoveEvent(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1968,6 +2124,8 @@ func miqt_exec_callback_QColumnView_mouseReleaseEvent(self *C.QColumnView, cb C.
 }
 
 func (this *QColumnView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1994,6 +2152,8 @@ func miqt_exec_callback_QColumnView_mouseDoubleClickEvent(self *C.QColumnView, c
 }
 
 func (this *QColumnView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2020,6 +2180,8 @@ func miqt_exec_callback_QColumnView_dragEnterEvent(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2046,6 +2208,8 @@ func miqt_exec_callback_QColumnView_dragMoveEvent(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2072,6 +2236,8 @@ func miqt_exec_callback_QColumnView_dragLeaveEvent(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2098,6 +2264,8 @@ func miqt_exec_callback_QColumnView_dropEvent(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2124,6 +2292,8 @@ func miqt_exec_callback_QColumnView_focusInEvent(self *C.QColumnView, cb C.intpt
 }
 
 func (this *QColumnView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2150,6 +2320,8 @@ func miqt_exec_callback_QColumnView_focusOutEvent(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2176,6 +2348,8 @@ func miqt_exec_callback_QColumnView_keyPressEvent(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2202,6 +2376,8 @@ func miqt_exec_callback_QColumnView_timerEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2228,6 +2404,9 @@ func miqt_exec_callback_QColumnView_inputMethodEvent(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QColumnView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -2258,6 +2437,7 @@ func miqt_exec_callback_QColumnView_eventFilter(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QColumnView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2279,12 +2459,14 @@ func miqt_exec_callback_QColumnView_viewportSizeHint(self *C.QColumnView, cb C.i
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QColumnView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2306,12 +2488,15 @@ func miqt_exec_callback_QColumnView_minimumSizeHint(self *C.QColumnView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QColumnView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QColumnView) callVirtualBase_SetupViewport(viewport *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QColumnView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2338,6 +2523,8 @@ func miqt_exec_callback_QColumnView_setupViewport(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QColumnView_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2364,6 +2551,8 @@ func miqt_exec_callback_QColumnView_paintEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QColumnView_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2390,6 +2579,8 @@ func miqt_exec_callback_QColumnView_wheelEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QColumnView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2416,6 +2607,8 @@ func miqt_exec_callback_QColumnView_contextMenuEvent(self *C.QColumnView, cb C.i
 }
 
 func (this *QColumnView) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QColumnView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2442,6 +2635,7 @@ func miqt_exec_callback_QColumnView_changeEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2467,6 +2661,7 @@ func miqt_exec_callback_QColumnView_devType(self *C.QColumnView, cb C.intptr_t) 
 }
 
 func (this *QColumnView) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QColumnView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2493,6 +2688,7 @@ func miqt_exec_callback_QColumnView_setVisible(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2521,6 +2717,7 @@ func miqt_exec_callback_QColumnView_heightForWidth(self *C.QColumnView, cb C.int
 }
 
 func (this *QColumnView) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QColumnView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2546,6 +2743,7 @@ func miqt_exec_callback_QColumnView_hasHeightForWidth(self *C.QColumnView, cb C.
 }
 
 func (this *QColumnView) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QColumnView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2565,12 +2763,15 @@ func miqt_exec_callback_QColumnView_paintEngine(self *C.QColumnView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QColumnView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2597,6 +2798,8 @@ func miqt_exec_callback_QColumnView_keyReleaseEvent(self *C.QColumnView, cb C.in
 }
 
 func (this *QColumnView) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2623,6 +2826,8 @@ func miqt_exec_callback_QColumnView_enterEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2649,6 +2854,8 @@ func miqt_exec_callback_QColumnView_leaveEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2675,6 +2882,8 @@ func miqt_exec_callback_QColumnView_moveEvent(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2701,6 +2910,8 @@ func miqt_exec_callback_QColumnView_closeEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2727,6 +2938,8 @@ func miqt_exec_callback_QColumnView_tabletEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2753,6 +2966,8 @@ func miqt_exec_callback_QColumnView_actionEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2779,6 +2994,8 @@ func miqt_exec_callback_QColumnView_showEvent(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2805,6 +3022,7 @@ func miqt_exec_callback_QColumnView_hideEvent(self *C.QColumnView, cb C.intptr_t
 }
 
 func (this *QColumnView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2846,6 +3064,7 @@ func miqt_exec_callback_QColumnView_nativeEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColumnView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2874,6 +3093,8 @@ func miqt_exec_callback_QColumnView_metric(self *C.QColumnView, cb C.intptr_t, p
 }
 
 func (this *QColumnView) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QColumnView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2900,6 +3121,8 @@ func miqt_exec_callback_QColumnView_initPainter(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QColumnView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2922,12 +3145,14 @@ func miqt_exec_callback_QColumnView_redirected(self *C.QColumnView, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QColumnView) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QColumnView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2947,12 +3172,15 @@ func miqt_exec_callback_QColumnView_sharedPainter(self *C.QColumnView, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QColumnView) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2979,6 +3207,8 @@ func miqt_exec_callback_QColumnView_childEvent(self *C.QColumnView, cb C.intptr_
 }
 
 func (this *QColumnView) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QColumnView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3005,6 +3235,8 @@ func miqt_exec_callback_QColumnView_customEvent(self *C.QColumnView, cb C.intptr
 }
 
 func (this *QColumnView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QColumnView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3031,6 +3263,8 @@ func miqt_exec_callback_QColumnView_connectNotify(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QColumnView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3068,8 +3302,9 @@ func (this *QColumnView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QColumnView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColumnView) {
-		C.QColumnView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QColumnView_delete((*C.QColumnView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

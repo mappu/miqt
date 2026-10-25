@@ -127,7 +127,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&defaultValue_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDesignerSettingsInterface_value(this, handle__value, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -244,6 +246,10 @@ bool QDesignerSettingsInterface_override_virtual_remove(void* self, intptr_t slo
 
 	self_cast->handle__remove = slot;
 	return true;
+}
+
+QVariant* QDesignerSettingsInterface_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDesignerSettingsInterface_delete(QDesignerSettingsInterface* self) {

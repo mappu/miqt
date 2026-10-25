@@ -156,8 +156,15 @@ const (
 
 type QPagedPaintDevice struct {
 	h  *C.QPagedPaintDevice
-	gc *[1]*C.QPagedPaintDevice
+	gc *[1]unsafe.Pointer
 	*QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPagedPaintDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QPagedPaintDevice) cPointer() *C.QPagedPaintDevice {
@@ -198,58 +205,77 @@ func NewQPagedPaintDevice() *QPagedPaintDevice {
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPagedPaintDevice_newPage(this.h))
 }
 
 func (this *QPagedPaintDevice) SetPageLayout(pageLayout *QPageLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageLayout)
 	return (bool)(C.QPagedPaintDevice_setPageLayout(this.h, pageLayout.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageSize(pageSize *QPageSize) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageSize)
 	return (bool)(C.QPagedPaintDevice_setPageSize(this.h, pageSize.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orientation) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPagedPaintDevice_setPageOrientation(this.h, (C.int)(orientation)))
 }
 
 func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 	return (bool)(C.QPagedPaintDevice_setPageMargins(this.h, margins.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 	return (bool)(C.QPagedPaintDevice_setPageMargins2(this.h, margins.cPointer(), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPageLayout(C.QPagedPaintDevice_pageLayout(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPagedPaintDevice) SetPageSizeWithSize(size QPagedPaintDevice__PageSize) {
+	defer runtime.KeepAlive(this)
 	C.QPagedPaintDevice_setPageSizeWithSize(this.h, (C.int)(size))
 }
 
 func (this *QPagedPaintDevice) PageSize() QPagedPaintDevice__PageSize {
+	defer runtime.KeepAlive(this)
 	return (QPagedPaintDevice__PageSize)(C.QPagedPaintDevice_pageSize(this.h))
 }
 
 func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QPagedPaintDevice_setPageSizeMM(this.h, size.cPointer())
 }
 
 func (this *QPagedPaintDevice) PageSizeMM() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QPagedPaintDevice_pageSizeMM(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPagedPaintDevice) SetMargins(margins *QPagedPaintDevice__Margins) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 	C.QPagedPaintDevice_setMargins(this.h, margins.cPointer())
 }
 
 func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPagedPaintDevice__Margins(C.QPagedPaintDevice_margins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -257,6 +283,7 @@ func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
 
 // DevicePageLayout can only be called from a QPagedPaintDevice that was directly constructed.
 func (this *QPagedPaintDevice) DevicePageLayout() QPageLayout {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPageLayout(C.QPagedPaintDevice_protectedbase_devicePageLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -273,6 +300,7 @@ func (this *QPagedPaintDevice) DevicePageLayout() QPageLayout {
 
 // DevicePageLayout2 can only be called from a QPagedPaintDevice that was directly constructed.
 func (this *QPagedPaintDevice) DevicePageLayout2() *QPageLayout {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQPageLayout(C.QPagedPaintDevice_protectedbase_devicePageLayout2(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -305,6 +333,7 @@ func miqt_exec_callback_QPagedPaintDevice_newPage(self *C.QPagedPaintDevice, cb 
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeWithSize(size QPagedPaintDevice__PageSize) {
+	defer runtime.KeepAlive(this)
 
 	C.QPagedPaintDevice_virtualbase_setPageSizeWithSize(unsafe.Pointer(this.h), (C.int)(size))
 
@@ -331,6 +360,8 @@ func miqt_exec_callback_QPagedPaintDevice_setPageSizeWithSize(self *C.QPagedPain
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeMM(size *QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 
 	C.QPagedPaintDevice_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), size.cPointer())
 
@@ -357,6 +388,8 @@ func miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(self *C.QPagedPaintDevic
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_SetMargins(margins *QPagedPaintDevice__Margins) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 
 	C.QPagedPaintDevice_virtualbase_setMargins(unsafe.Pointer(this.h), margins.cPointer())
 
@@ -383,6 +416,7 @@ func miqt_exec_callback_QPagedPaintDevice_setMargins(self *C.QPagedPaintDevice, 
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPagedPaintDevice_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -421,12 +455,14 @@ func miqt_exec_callback_QPagedPaintDevice_paintEngine(self *C.QPagedPaintDevice,
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_Metric(metric QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPagedPaintDevice_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(metric)))
 
@@ -455,6 +491,8 @@ func miqt_exec_callback_QPagedPaintDevice_metric(self *C.QPagedPaintDevice, cb C
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPagedPaintDevice_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -481,6 +519,8 @@ func miqt_exec_callback_QPagedPaintDevice_initPainter(self *C.QPagedPaintDevice,
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPagedPaintDevice_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -503,12 +543,14 @@ func miqt_exec_callback_QPagedPaintDevice_redirected(self *C.QPagedPaintDevice, 
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPagedPaintDevice) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QPagedPaintDevice_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -528,6 +570,7 @@ func miqt_exec_callback_QPagedPaintDevice_sharedPainter(self *C.QPagedPaintDevic
 	}
 
 	virtualReturn := gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -545,15 +588,22 @@ func (this *QPagedPaintDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPagedPaintDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPagedPaintDevice) {
-		C.QPagedPaintDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPagedPaintDevice_delete((*C.QPagedPaintDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPagedPaintDevice__Margins struct {
 	h  *C.QPagedPaintDevice__Margins
-	gc *[1]*C.QPagedPaintDevice__Margins
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPagedPaintDevice__Margins) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPagedPaintDevice__Margins) cPointer() *C.QPagedPaintDevice__Margins {
@@ -585,34 +635,42 @@ func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__M
 }
 
 func (this *QPagedPaintDevice__Margins) Left() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPagedPaintDevice__Margins_left(this.h))
 }
 
 func (this *QPagedPaintDevice__Margins) SetLeft(left float64) {
+	defer runtime.KeepAlive(this)
 	C.QPagedPaintDevice__Margins_setLeft(this.h, (C.double)(left))
 }
 
 func (this *QPagedPaintDevice__Margins) Right() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPagedPaintDevice__Margins_right(this.h))
 }
 
 func (this *QPagedPaintDevice__Margins) SetRight(right float64) {
+	defer runtime.KeepAlive(this)
 	C.QPagedPaintDevice__Margins_setRight(this.h, (C.double)(right))
 }
 
 func (this *QPagedPaintDevice__Margins) Top() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPagedPaintDevice__Margins_top(this.h))
 }
 
 func (this *QPagedPaintDevice__Margins) SetTop(top float64) {
+	defer runtime.KeepAlive(this)
 	C.QPagedPaintDevice__Margins_setTop(this.h, (C.double)(top))
 }
 
 func (this *QPagedPaintDevice__Margins) Bottom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPagedPaintDevice__Margins_bottom(this.h))
 }
 
 func (this *QPagedPaintDevice__Margins) SetBottom(bottom float64) {
+	defer runtime.KeepAlive(this)
 	C.QPagedPaintDevice__Margins_setBottom(this.h, (C.double)(bottom))
 }
 
@@ -628,8 +686,9 @@ func (this *QPagedPaintDevice__Margins) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPagedPaintDevice__Margins{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPagedPaintDevice__Margins) {
-		C.QPagedPaintDevice__Margins_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPagedPaintDevice__Margins_delete((*C.QPagedPaintDevice__Margins)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

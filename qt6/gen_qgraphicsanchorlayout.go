@@ -16,8 +16,15 @@ import (
 
 type QGraphicsAnchor struct {
 	h  *C.QGraphicsAnchor
-	gc *[1]*C.QGraphicsAnchor
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsAnchor) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QGraphicsAnchor) cPointer() *C.QGraphicsAnchor {
@@ -52,10 +59,12 @@ func UnsafeNewQGraphicsAnchor(h unsafe.Pointer) *QGraphicsAnchor {
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsAnchor_metaObject(this.h))
 }
 
 func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsAnchor_metacast(this.h, param1_Cstring))
@@ -71,22 +80,27 @@ func QGraphicsAnchor_Tr(s string) string {
 }
 
 func (this *QGraphicsAnchor) SetSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchor) UnsetSpacing() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_unsetSpacing(this.h)
 }
 
 func (this *QGraphicsAnchor) Spacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsAnchor_spacing(this.h))
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_setSizePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__Policy)(C.QGraphicsAnchor_sizePolicy(this.h))
 }
 
@@ -124,16 +138,24 @@ func (this *QGraphicsAnchor) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsAnchor{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsAnchor) {
-		C.QGraphicsAnchor_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsAnchor_delete((*C.QGraphicsAnchor)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGraphicsAnchorLayout struct {
 	h  *C.QGraphicsAnchorLayout
-	gc *[1]*C.QGraphicsAnchorLayout
+	gc *[1]unsafe.Pointer
 	*QGraphicsLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsAnchorLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsLayout.miqtSetGC(gc)
 }
 
 func (this *QGraphicsAnchorLayout) cPointer() *C.QGraphicsAnchorLayout {
@@ -175,72 +197,101 @@ func NewQGraphicsAnchorLayout() *QGraphicsAnchorLayout {
 
 // NewQGraphicsAnchorLayout2 constructs a new QGraphicsAnchorLayout object.
 func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsAnchorLayout(C.QGraphicsAnchorLayout_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstItem)
+	defer runtime.KeepAlive(secondItem)
 	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_addAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstItem)
+	defer runtime.KeepAlive(secondItem)
 	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstItem)
+	defer runtime.KeepAlive(secondItem)
 	C.QGraphicsAnchorLayout_addCornerAnchors(this.h, firstItem.cPointer(), (C.int)(firstCorner), secondItem.cPointer(), (C.int)(secondCorner))
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstItem)
+	defer runtime.KeepAlive(secondItem)
 	C.QGraphicsAnchorLayout_addAnchors(this.h, firstItem.cPointer(), secondItem.cPointer())
 }
 
 func (this *QGraphicsAnchorLayout) SetHorizontalSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchorLayout_setHorizontalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) SetVerticalSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchorLayout_setVerticalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) SetSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchorLayout_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) HorizontalSpacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsAnchorLayout_horizontalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) VerticalSpacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsAnchorLayout_verticalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchorLayout_removeAt(this.h, (C.int)(index))
 }
 
 func (this *QGraphicsAnchorLayout) SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsAnchorLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsAnchorLayout) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsAnchorLayout_count(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_itemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchorLayout_invalidate(this.h)
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors2(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations Orientation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstItem)
+	defer runtime.KeepAlive(secondItem)
 	C.QGraphicsAnchorLayout_addAnchors2(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
 // AddChildLayoutItem can only be called from a QGraphicsAnchorLayout that was directly constructed.
 func (this *QGraphicsAnchorLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layoutItem)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
@@ -253,6 +304,8 @@ func (this *QGraphicsAnchorLayout) AddChildLayoutItem(layoutItem *QGraphicsLayou
 
 // SetGraphicsItem can only be called from a QGraphicsAnchorLayout that was directly constructed.
 func (this *QGraphicsAnchorLayout) SetGraphicsItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsAnchorLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
@@ -265,6 +318,7 @@ func (this *QGraphicsAnchorLayout) SetGraphicsItem(item *QGraphicsItem) {
 
 // SetOwnedByLayout can only be called from a QGraphicsAnchorLayout that was directly constructed.
 func (this *QGraphicsAnchorLayout) SetOwnedByLayout(ownedByLayout bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
@@ -276,6 +330,7 @@ func (this *QGraphicsAnchorLayout) SetOwnedByLayout(ownedByLayout bool) {
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsAnchorLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))
 
@@ -302,6 +357,8 @@ func miqt_exec_callback_QGraphicsAnchorLayout_removeAt(self *C.QGraphicsAnchorLa
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsAnchorLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
@@ -328,6 +385,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(self *C.QGraphicsAncho
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsAnchorLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -353,6 +411,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_count(self *C.QGraphicsAnchorLayou
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_ItemAt(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -375,12 +434,14 @@ func miqt_exec_callback_QGraphicsAnchorLayout_itemAt(self *C.QGraphicsAnchorLayo
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_ItemAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsAnchorLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -404,6 +465,8 @@ func miqt_exec_callback_QGraphicsAnchorLayout_invalidate(self *C.QGraphicsAnchor
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 
 	_goptr := newQSizeF(C.QGraphicsAnchorLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -430,12 +493,14 @@ func miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self *C.QGraphicsAnchorLa
 	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsAnchorLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsAnchorLayout_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
@@ -468,6 +533,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_getContentsMargins(self *C.QGraphi
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsAnchorLayout_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
@@ -491,6 +557,8 @@ func miqt_exec_callback_QGraphicsAnchorLayout_updateGeometry(self *C.QGraphicsAn
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_WidgetEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QGraphicsAnchorLayout_virtualbase_widgetEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -517,6 +585,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_widgetEvent(self *C.QGraphicsAncho
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsAnchorLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -553,8 +622,9 @@ func (this *QGraphicsAnchorLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsAnchorLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsAnchorLayout) {
-		C.QGraphicsAnchorLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsAnchorLayout_delete((*C.QGraphicsAnchorLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

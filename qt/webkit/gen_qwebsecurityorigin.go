@@ -23,7 +23,13 @@ const (
 
 type QWebSecurityOrigin struct {
 	h  *C.QWebSecurityOrigin
-	gc *[1]*C.QWebSecurityOrigin
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSecurityOrigin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSecurityOrigin) cPointer() *C.QWebSecurityOrigin {
@@ -56,12 +62,14 @@ func UnsafeNewQWebSecurityOrigin(h unsafe.Pointer) *QWebSecurityOrigin {
 
 // NewQWebSecurityOrigin constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin(url *qt.QUrl) *QWebSecurityOrigin {
+	defer runtime.KeepAlive(url)
 
 	return newQWebSecurityOrigin(C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQWebSecurityOrigin2 constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin2(other *QWebSecurityOrigin) *QWebSecurityOrigin {
+	defer runtime.KeepAlive(other)
 
 	return newQWebSecurityOrigin(C.QWebSecurityOrigin_new2(other.cPointer()))
 }
@@ -108,6 +116,7 @@ func QWebSecurityOrigin_LocalSchemes() []string {
 }
 
 func (this *QWebSecurityOrigin) AddAccessWhitelistEntry(scheme string, host string, subdomainSetting QWebSecurityOrigin__SubdomainSetting) {
+	defer runtime.KeepAlive(this)
 	scheme_ms := C.struct_miqt_string{}
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))
@@ -120,6 +129,7 @@ func (this *QWebSecurityOrigin) AddAccessWhitelistEntry(scheme string, host stri
 }
 
 func (this *QWebSecurityOrigin) RemoveAccessWhitelistEntry(scheme string, host string, subdomainSetting QWebSecurityOrigin__SubdomainSetting) {
+	defer runtime.KeepAlive(this)
 	scheme_ms := C.struct_miqt_string{}
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))
@@ -132,6 +142,7 @@ func (this *QWebSecurityOrigin) RemoveAccessWhitelistEntry(scheme string, host s
 }
 
 func (this *QWebSecurityOrigin) Scheme() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSecurityOrigin_scheme(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -139,6 +150,7 @@ func (this *QWebSecurityOrigin) Scheme() string {
 }
 
 func (this *QWebSecurityOrigin) Host() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSecurityOrigin_host(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -146,26 +158,32 @@ func (this *QWebSecurityOrigin) Host() string {
 }
 
 func (this *QWebSecurityOrigin) Port() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSecurityOrigin_port(this.h))
 }
 
 func (this *QWebSecurityOrigin) DatabaseUsage() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QWebSecurityOrigin_databaseUsage(this.h))
 }
 
 func (this *QWebSecurityOrigin) DatabaseQuota() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QWebSecurityOrigin_databaseQuota(this.h))
 }
 
 func (this *QWebSecurityOrigin) SetDatabaseQuota(quota int64) {
+	defer runtime.KeepAlive(this)
 	C.QWebSecurityOrigin_setDatabaseQuota(this.h, (C.longlong)(quota))
 }
 
 func (this *QWebSecurityOrigin) SetApplicationCacheQuota(quota int64) {
+	defer runtime.KeepAlive(this)
 	C.QWebSecurityOrigin_setApplicationCacheQuota(this.h, (C.longlong)(quota))
 }
 
 func (this *QWebSecurityOrigin) Databases() []QWebDatabase {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebSecurityOrigin_databases(this.h)
 	_ret := make([]QWebDatabase, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebDatabase)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -178,6 +196,8 @@ func (this *QWebSecurityOrigin) Databases() []QWebDatabase {
 }
 
 func (this *QWebSecurityOrigin) OperatorAssign(other *QWebSecurityOrigin) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebSecurityOrigin_operatorAssign(this.h, other.cPointer())
 }
 
@@ -193,8 +213,9 @@ func (this *QWebSecurityOrigin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSecurityOrigin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSecurityOrigin) {
-		C.QWebSecurityOrigin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSecurityOrigin_delete((*C.QWebSecurityOrigin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

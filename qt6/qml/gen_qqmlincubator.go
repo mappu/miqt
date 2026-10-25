@@ -34,7 +34,13 @@ const (
 
 type QQmlIncubator struct {
 	h  *C.QQmlIncubator
-	gc *[1]*C.QQmlIncubator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlIncubator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlIncubator) cPointer() *C.QQmlIncubator {
@@ -78,30 +84,37 @@ func NewQQmlIncubator2(param1 QQmlIncubator__IncubationMode) *QQmlIncubator {
 }
 
 func (this *QQmlIncubator) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QQmlIncubator_clear(this.h)
 }
 
 func (this *QQmlIncubator) ForceCompletion() {
+	defer runtime.KeepAlive(this)
 	C.QQmlIncubator_forceCompletion(this.h)
 }
 
 func (this *QQmlIncubator) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlIncubator_isNull(this.h))
 }
 
 func (this *QQmlIncubator) IsReady() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlIncubator_isReady(this.h))
 }
 
 func (this *QQmlIncubator) IsError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlIncubator_isError(this.h))
 }
 
 func (this *QQmlIncubator) IsLoading() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlIncubator_isLoading(this.h))
 }
 
 func (this *QQmlIncubator) Errors() []QQmlError {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlIncubator_errors(this.h)
 	_ret := make([]QQmlError, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QQmlError)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -114,18 +127,23 @@ func (this *QQmlIncubator) Errors() []QQmlError {
 }
 
 func (this *QQmlIncubator) IncubationMode() QQmlIncubator__IncubationMode {
+	defer runtime.KeepAlive(this)
 	return (QQmlIncubator__IncubationMode)(C.QQmlIncubator_incubationMode(this.h))
 }
 
 func (this *QQmlIncubator) Status() QQmlIncubator__Status {
+	defer runtime.KeepAlive(this)
 	return (QQmlIncubator__Status)(C.QQmlIncubator_status(this.h))
 }
 
 func (this *QQmlIncubator) Object() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlIncubator_object(this.h)))
 }
 
 func (this *QQmlIncubator) SetInitialProperties(initialProperties map[string]qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(initialProperties)
 	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
 	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
 	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
@@ -151,6 +169,7 @@ func (this *QQmlIncubator) SetInitialProperties(initialProperties map[string]qt6
 }
 
 func (this *QQmlIncubator) callVirtualBase_StatusChanged(param1 QQmlIncubator__Status) {
+	defer runtime.KeepAlive(this)
 
 	C.QQmlIncubator_virtualbase_statusChanged(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -177,6 +196,8 @@ func miqt_exec_callback_QQmlIncubator_statusChanged(self *C.QQmlIncubator, cb C.
 }
 
 func (this *QQmlIncubator) callVirtualBase_SetInitialState(initialState *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(initialState)
 
 	C.QQmlIncubator_virtualbase_setInitialState(unsafe.Pointer(this.h), (*C.QObject)(initialState.UnsafePointer()))
 
@@ -214,15 +235,22 @@ func (this *QQmlIncubator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlIncubator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlIncubator) {
-		C.QQmlIncubator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlIncubator_delete((*C.QQmlIncubator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QQmlIncubationController struct {
 	h  *C.QQmlIncubationController
-	gc *[1]*C.QQmlIncubationController
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlIncubationController) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlIncubationController) cPointer() *C.QQmlIncubationController {
@@ -260,18 +288,22 @@ func NewQQmlIncubationController() *QQmlIncubationController {
 }
 
 func (this *QQmlIncubationController) Engine() *QQmlEngine {
+	defer runtime.KeepAlive(this)
 	return newQQmlEngine(C.QQmlIncubationController_engine(this.h))
 }
 
 func (this *QQmlIncubationController) IncubatingObjectCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QQmlIncubationController_incubatingObjectCount(this.h))
 }
 
 func (this *QQmlIncubationController) IncubateFor(msecs int) {
+	defer runtime.KeepAlive(this)
 	C.QQmlIncubationController_incubateFor(this.h, (C.int)(msecs))
 }
 
 func (this *QQmlIncubationController) callVirtualBase_IncubatingObjectCountChanged(param1 int) {
+	defer runtime.KeepAlive(this)
 
 	C.QQmlIncubationController_virtualbase_incubatingObjectCountChanged(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -309,8 +341,9 @@ func (this *QQmlIncubationController) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlIncubationController{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlIncubationController) {
-		C.QQmlIncubationController_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlIncubationController_delete((*C.QQmlIncubationController)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

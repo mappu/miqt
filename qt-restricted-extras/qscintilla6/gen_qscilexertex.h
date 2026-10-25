@@ -148,6 +148,8 @@ bool QsciLexerTeX_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerTeX_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerTeX_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerTeX_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerTeX_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerTeX_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerTeX_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerTeX_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

@@ -16,8 +16,15 @@ import (
 
 type QGeoPath struct {
 	h  *C.QGeoPath
-	gc *[1]*C.QGeoPath
+	gc *[1]unsafe.Pointer
 	*QGeoShape
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoPath) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGeoShape.miqtSetGC(gc)
 }
 
 func (this *QGeoPath) cPointer() *C.QGeoPath {
@@ -59,6 +66,7 @@ func NewQGeoPath() *QGeoPath {
 
 // NewQGeoPath2 constructs a new QGeoPath object.
 func NewQGeoPath2(path []QGeoCoordinate) *QGeoPath {
+	defer runtime.KeepAlive(path)
 	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
 	defer C.free(unsafe.Pointer(path_CArray_ptr))
 	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
@@ -72,18 +80,21 @@ func NewQGeoPath2(path []QGeoCoordinate) *QGeoPath {
 
 // NewQGeoPath3 constructs a new QGeoPath object.
 func NewQGeoPath3(other *QGeoPath) *QGeoPath {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoPath(C.QGeoPath_new3(other.cPointer()))
 }
 
 // NewQGeoPath4 constructs a new QGeoPath object.
 func NewQGeoPath4(other *QGeoShape) *QGeoPath {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoPath(C.QGeoPath_new4(other.cPointer()))
 }
 
 // NewQGeoPath5 constructs a new QGeoPath object.
 func NewQGeoPath5(path []QGeoCoordinate, width *float64) *QGeoPath {
+	defer runtime.KeepAlive(path)
 	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
 	defer C.free(unsafe.Pointer(path_CArray_ptr))
 	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
@@ -96,10 +107,14 @@ func NewQGeoPath5(path []QGeoCoordinate, width *float64) *QGeoPath {
 }
 
 func (this *QGeoPath) OperatorAssign(other *QGeoPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGeoPath_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGeoPath) SetPath(path []QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
 	defer C.free(unsafe.Pointer(path_CArray_ptr))
 	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
@@ -111,6 +126,7 @@ func (this *QGeoPath) SetPath(path []QGeoCoordinate) {
 }
 
 func (this *QGeoPath) Path() []QGeoCoordinate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGeoPath_path(this.h)
 	_ret := make([]QGeoCoordinate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGeoCoordinate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -123,10 +139,13 @@ func (this *QGeoPath) Path() []QGeoCoordinate {
 }
 
 func (this *QGeoPath) ClearPath() {
+	defer runtime.KeepAlive(this)
 	C.QGeoPath_clearPath(this.h)
 }
 
 func (this *QGeoPath) SetVariantPath(path []qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	path_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(path))))
 	defer C.free(unsafe.Pointer(path_CArray_ptr))
 	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
@@ -138,6 +157,7 @@ func (this *QGeoPath) SetVariantPath(path []qt6.QVariant) {
 }
 
 func (this *QGeoPath) VariantPath() []qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGeoPath_variantPath(this.h)
 	_ret := make([]qt6.QVariant, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -150,62 +170,81 @@ func (this *QGeoPath) VariantPath() []qt6.QVariant {
 }
 
 func (this *QGeoPath) SetWidth(width *float64) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPath_setWidth(this.h, (*C.double)(unsafe.Pointer(width)))
 }
 
 func (this *QGeoPath) Width() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGeoPath_width(this.h))
 }
 
 func (this *QGeoPath) Translate(degreesLatitude float64, degreesLongitude float64) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPath_translate(this.h, (C.double)(degreesLatitude), (C.double)(degreesLongitude))
 }
 
 func (this *QGeoPath) Translated(degreesLatitude float64, degreesLongitude float64) *QGeoPath {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoPath(C.QGeoPath_translated(this.h, (C.double)(degreesLatitude), (C.double)(degreesLongitude)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoPath) Length() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGeoPath_length(this.h))
 }
 
 func (this *QGeoPath) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QGeoPath_size(this.h))
 }
 
 func (this *QGeoPath) AddCoordinate(coordinate *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	C.QGeoPath_addCoordinate(this.h, coordinate.cPointer())
 }
 
 func (this *QGeoPath) InsertCoordinate(index int64, coordinate *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	C.QGeoPath_insertCoordinate(this.h, (C.ptrdiff_t)(index), coordinate.cPointer())
 }
 
 func (this *QGeoPath) ReplaceCoordinate(index int64, coordinate *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	C.QGeoPath_replaceCoordinate(this.h, (C.ptrdiff_t)(index), coordinate.cPointer())
 }
 
 func (this *QGeoPath) CoordinateAt(index int64) *QGeoCoordinate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoCoordinate(C.QGeoPath_coordinateAt(this.h, (C.ptrdiff_t)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoPath) ContainsCoordinate(coordinate *QGeoCoordinate) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	return (bool)(C.QGeoPath_containsCoordinate(this.h, coordinate.cPointer()))
 }
 
 func (this *QGeoPath) RemoveCoordinate(coordinate *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	C.QGeoPath_removeCoordinate(this.h, coordinate.cPointer())
 }
 
 func (this *QGeoPath) RemoveCoordinateWithIndex(index int64) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPath_removeCoordinateWithIndex(this.h, (C.ptrdiff_t)(index))
 }
 
 func (this *QGeoPath) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoPath_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -213,10 +252,12 @@ func (this *QGeoPath) ToString() string {
 }
 
 func (this *QGeoPath) LengthWithIndexFrom(indexFrom int64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGeoPath_lengthWithIndexFrom(this.h, (C.ptrdiff_t)(indexFrom)))
 }
 
 func (this *QGeoPath) Length2(indexFrom int64, indexTo int64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGeoPath_length2(this.h, (C.ptrdiff_t)(indexFrom), (C.ptrdiff_t)(indexTo)))
 }
 
@@ -232,8 +273,9 @@ func (this *QGeoPath) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoPath{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPath) {
-		C.QGeoPath_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoPath_delete((*C.QGeoPath)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

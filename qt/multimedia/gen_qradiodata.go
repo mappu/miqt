@@ -79,9 +79,16 @@ const (
 
 type QRadioData struct {
 	h  *C.QRadioData
-	gc *[1]*C.QRadioData
+	gc *[1]unsafe.Pointer
 	*qt.QObject
 	*QMediaBindableInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRadioData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaBindableInterface.miqtSetGC(gc)
 }
 
 func (this *QRadioData) cPointer() *C.QRadioData {
@@ -119,21 +126,26 @@ func UnsafeNewQRadioData(h unsafe.Pointer) *QRadioData {
 
 // NewQRadioData constructs a new QRadioData object.
 func NewQRadioData(mediaObject *QMediaObject) *QRadioData {
+	defer runtime.KeepAlive(mediaObject)
 
 	return newQRadioData(C.QRadioData_new(mediaObject.cPointer()))
 }
 
 // NewQRadioData2 constructs a new QRadioData object.
 func NewQRadioData2(mediaObject *QMediaObject, parent *qt.QObject) *QRadioData {
+	defer runtime.KeepAlive(mediaObject)
+	defer runtime.KeepAlive(parent)
 
 	return newQRadioData(C.QRadioData_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QRadioData) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioData_metaObject(this.h)))
 }
 
 func (this *QRadioData) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRadioData_metacast(this.h, param1_Cstring))
@@ -158,14 +170,17 @@ func QRadioData_TrUtf8(s string) string {
 }
 
 func (this *QRadioData) Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QRadioData_availability(this.h))
 }
 
 func (this *QRadioData) MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QRadioData_mediaObject(this.h))
 }
 
 func (this *QRadioData) StationId() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioData_stationId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -173,10 +188,12 @@ func (this *QRadioData) StationId() string {
 }
 
 func (this *QRadioData) ProgramType() QRadioData__ProgramType {
+	defer runtime.KeepAlive(this)
 	return (QRadioData__ProgramType)(C.QRadioData_programType(this.h))
 }
 
 func (this *QRadioData) ProgramTypeName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioData_programTypeName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -184,6 +201,7 @@ func (this *QRadioData) ProgramTypeName() string {
 }
 
 func (this *QRadioData) StationName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioData_stationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -191,6 +209,7 @@ func (this *QRadioData) StationName() string {
 }
 
 func (this *QRadioData) RadioText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioData_radioText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -198,14 +217,17 @@ func (this *QRadioData) RadioText() string {
 }
 
 func (this *QRadioData) IsAlternativeFrequenciesEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioData_isAlternativeFrequenciesEnabled(this.h))
 }
 
 func (this *QRadioData) Error() QRadioData__Error {
+	defer runtime.KeepAlive(this)
 	return (QRadioData__Error)(C.QRadioData_error(this.h))
 }
 
 func (this *QRadioData) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioData_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -213,10 +235,12 @@ func (this *QRadioData) ErrorString() string {
 }
 
 func (this *QRadioData) SetAlternativeFrequenciesEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QRadioData_setAlternativeFrequenciesEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QRadioData) StationIdChanged(stationId string) {
+	defer runtime.KeepAlive(this)
 	stationId_ms := C.struct_miqt_string{}
 	stationId_ms.data = C.CString(stationId)
 	stationId_ms.len = C.size_t(len(stationId))
@@ -244,6 +268,7 @@ func miqt_exec_callback_QRadioData_stationIdChanged(cb C.intptr_t, stationId C.s
 }
 
 func (this *QRadioData) ProgramTypeChanged(programType QRadioData__ProgramType) {
+	defer runtime.KeepAlive(this)
 	C.QRadioData_programTypeChanged(this.h, (C.int)(programType))
 }
 func (this *QRadioData) OnProgramTypeChanged(slot func(programType QRadioData__ProgramType)) {
@@ -264,6 +289,7 @@ func miqt_exec_callback_QRadioData_programTypeChanged(cb C.intptr_t, programType
 }
 
 func (this *QRadioData) ProgramTypeNameChanged(programTypeName string) {
+	defer runtime.KeepAlive(this)
 	programTypeName_ms := C.struct_miqt_string{}
 	programTypeName_ms.data = C.CString(programTypeName)
 	programTypeName_ms.len = C.size_t(len(programTypeName))
@@ -291,6 +317,7 @@ func miqt_exec_callback_QRadioData_programTypeNameChanged(cb C.intptr_t, program
 }
 
 func (this *QRadioData) StationNameChanged(stationName string) {
+	defer runtime.KeepAlive(this)
 	stationName_ms := C.struct_miqt_string{}
 	stationName_ms.data = C.CString(stationName)
 	stationName_ms.len = C.size_t(len(stationName))
@@ -318,6 +345,7 @@ func miqt_exec_callback_QRadioData_stationNameChanged(cb C.intptr_t, stationName
 }
 
 func (this *QRadioData) RadioTextChanged(radioText string) {
+	defer runtime.KeepAlive(this)
 	radioText_ms := C.struct_miqt_string{}
 	radioText_ms.data = C.CString(radioText)
 	radioText_ms.len = C.size_t(len(radioText))
@@ -345,6 +373,7 @@ func miqt_exec_callback_QRadioData_radioTextChanged(cb C.intptr_t, radioText C.s
 }
 
 func (this *QRadioData) AlternativeFrequenciesEnabledChanged(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QRadioData_alternativeFrequenciesEnabledChanged(this.h, (C.bool)(enabled))
 }
 func (this *QRadioData) OnAlternativeFrequenciesEnabledChanged(slot func(enabled bool)) {
@@ -365,6 +394,7 @@ func miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(cb C.int
 }
 
 func (this *QRadioData) ErrorWithError(error QRadioData__Error) {
+	defer runtime.KeepAlive(this)
 	C.QRadioData_errorWithError(this.h, (C.int)(error))
 }
 func (this *QRadioData) OnErrorWithError(slot func(error QRadioData__Error)) {
@@ -430,6 +460,7 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QRadioData that was directly constructed.
 func (this *QRadioData) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QRadioData_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -444,6 +475,7 @@ func (this *QRadioData) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QRadioData that was directly constructed.
 func (this *QRadioData) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRadioData_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -458,6 +490,7 @@ func (this *QRadioData) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRadioData that was directly constructed.
 func (this *QRadioData) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -474,6 +507,8 @@ func (this *QRadioData) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRadioData that was directly constructed.
 func (this *QRadioData) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRadioData_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -487,6 +522,7 @@ func (this *QRadioData) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QRadioData) callVirtualBase_MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 
 	return newQMediaObject(C.QRadioData_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
@@ -506,12 +542,15 @@ func miqt_exec_callback_QRadioData_mediaObject(self *C.QRadioData, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_MediaObject)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRadioData) callVirtualBase_SetMediaObject(mediaObject *QMediaObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mediaObject)
 
 	return (bool)(C.QRadioData_virtualbase_setMediaObject(unsafe.Pointer(this.h), mediaObject.cPointer()))
 
@@ -540,6 +579,8 @@ func miqt_exec_callback_QRadioData_setMediaObject(self *C.QRadioData, cb C.intpt
 }
 
 func (this *QRadioData) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRadioData_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -568,6 +609,9 @@ func miqt_exec_callback_QRadioData_event(self *C.QRadioData, cb C.intptr_t, even
 }
 
 func (this *QRadioData) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRadioData_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -598,6 +642,8 @@ func miqt_exec_callback_QRadioData_eventFilter(self *C.QRadioData, cb C.intptr_t
 }
 
 func (this *QRadioData) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioData_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -624,6 +670,8 @@ func miqt_exec_callback_QRadioData_timerEvent(self *C.QRadioData, cb C.intptr_t,
 }
 
 func (this *QRadioData) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioData_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -650,6 +698,8 @@ func miqt_exec_callback_QRadioData_childEvent(self *C.QRadioData, cb C.intptr_t,
 }
 
 func (this *QRadioData) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioData_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -676,6 +726,8 @@ func miqt_exec_callback_QRadioData_customEvent(self *C.QRadioData, cb C.intptr_t
 }
 
 func (this *QRadioData) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRadioData_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -702,6 +754,8 @@ func miqt_exec_callback_QRadioData_connectNotify(self *C.QRadioData, cb C.intptr
 }
 
 func (this *QRadioData) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRadioData_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -739,8 +793,9 @@ func (this *QRadioData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRadioData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRadioData) {
-		C.QRadioData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRadioData_delete((*C.QRadioData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

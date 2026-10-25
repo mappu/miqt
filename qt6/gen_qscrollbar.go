@@ -16,8 +16,15 @@ import (
 
 type QScrollBar struct {
 	h  *C.QScrollBar
-	gc *[1]*C.QScrollBar
+	gc *[1]unsafe.Pointer
 	*QAbstractSlider
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScrollBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractSlider.miqtSetGC(gc)
 }
 
 func (this *QScrollBar) cPointer() *C.QScrollBar {
@@ -53,6 +60,7 @@ func UnsafeNewQScrollBar(h unsafe.Pointer) *QScrollBar {
 
 // NewQScrollBar constructs a new QScrollBar object.
 func NewQScrollBar(parent *QWidget) *QScrollBar {
+	defer runtime.KeepAlive(parent)
 
 	return newQScrollBar(C.QScrollBar_new(parent.cPointer()))
 }
@@ -71,15 +79,18 @@ func NewQScrollBar3(param1 Orientation) *QScrollBar {
 
 // NewQScrollBar4 constructs a new QScrollBar object.
 func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
+	defer runtime.KeepAlive(parent)
 
 	return newQScrollBar(C.QScrollBar_new4((C.int)(param1), parent.cPointer()))
 }
 
 func (this *QScrollBar) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QScrollBar_metaObject(this.h))
 }
 
 func (this *QScrollBar) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QScrollBar_metacast(this.h, param1_Cstring))
@@ -95,12 +106,15 @@ func QScrollBar_Tr(s string) string {
 }
 
 func (this *QScrollBar) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QScrollBar_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollBar) Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	return (bool)(C.QScrollBar_event(this.h, event.cPointer()))
 }
 
@@ -128,6 +142,7 @@ func QScrollBar_Tr3(s string, c string, n int) string {
 
 // SetRepeatAction can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) SetRepeatAction(action QAbstractSlider__SliderAction) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QScrollBar_protectedbase_setRepeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action))
@@ -140,6 +155,7 @@ func (this *QScrollBar) SetRepeatAction(action QAbstractSlider__SliderAction) {
 
 // RepeatAction can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) RepeatAction() QAbstractSlider__SliderAction {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractSlider__SliderAction)(C.QScrollBar_protectedbase_repeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -154,6 +170,7 @@ func (this *QScrollBar) RepeatAction() QAbstractSlider__SliderAction {
 
 // UpdateMicroFocus can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QScrollBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -166,6 +183,7 @@ func (this *QScrollBar) UpdateMicroFocus() {
 
 // Create can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QScrollBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -178,6 +196,7 @@ func (this *QScrollBar) Create() {
 
 // Destroy can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QScrollBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -190,6 +209,7 @@ func (this *QScrollBar) Destroy() {
 
 // FocusNextChild can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QScrollBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -204,6 +224,7 @@ func (this *QScrollBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QScrollBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -218,6 +239,7 @@ func (this *QScrollBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QScrollBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -232,6 +254,7 @@ func (this *QScrollBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QScrollBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -246,6 +269,7 @@ func (this *QScrollBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -262,6 +286,8 @@ func (this *QScrollBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QScrollBar that was directly constructed.
 func (this *QScrollBar) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QScrollBar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -275,6 +301,7 @@ func (this *QScrollBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QScrollBar) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QScrollBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -296,12 +323,15 @@ func miqt_exec_callback_QScrollBar_sizeHint(self *C.QScrollBar, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QScrollBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QScrollBar) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QScrollBar_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -330,6 +360,8 @@ func miqt_exec_callback_QScrollBar_event(self *C.QScrollBar, cb C.intptr_t, even
 }
 
 func (this *QScrollBar) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -356,6 +388,8 @@ func miqt_exec_callback_QScrollBar_wheelEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -382,6 +416,8 @@ func miqt_exec_callback_QScrollBar_paintEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -408,6 +444,8 @@ func miqt_exec_callback_QScrollBar_mousePressEvent(self *C.QScrollBar, cb C.intp
 }
 
 func (this *QScrollBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -434,6 +472,8 @@ func miqt_exec_callback_QScrollBar_mouseReleaseEvent(self *C.QScrollBar, cb C.in
 }
 
 func (this *QScrollBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -460,6 +500,8 @@ func miqt_exec_callback_QScrollBar_mouseMoveEvent(self *C.QScrollBar, cb C.intpt
 }
 
 func (this *QScrollBar) callVirtualBase_HideEvent(param1 *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_hideEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -486,6 +528,7 @@ func miqt_exec_callback_QScrollBar_hideEvent(self *C.QScrollBar, cb C.intptr_t, 
 }
 
 func (this *QScrollBar) callVirtualBase_SliderChange(change QAbstractSlider__SliderChange) {
+	defer runtime.KeepAlive(this)
 
 	C.QScrollBar_virtualbase_sliderChange(unsafe.Pointer(this.h), (C.int)(change))
 
@@ -512,6 +555,8 @@ func miqt_exec_callback_QScrollBar_sliderChange(self *C.QScrollBar, cb C.intptr_
 }
 
 func (this *QScrollBar) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -538,6 +583,8 @@ func miqt_exec_callback_QScrollBar_contextMenuEvent(self *C.QScrollBar, cb C.int
 }
 
 func (this *QScrollBar) callVirtualBase_InitStyleOption(option *QStyleOptionSlider) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QScrollBar_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -564,6 +611,8 @@ func miqt_exec_callback_QScrollBar_initStyleOption(self *C.QScrollBar, cb C.intp
 }
 
 func (this *QScrollBar) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ev)
 
 	C.QScrollBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
 
@@ -590,6 +639,8 @@ func miqt_exec_callback_QScrollBar_keyPressEvent(self *C.QScrollBar, cb C.intptr
 }
 
 func (this *QScrollBar) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -616,6 +667,8 @@ func miqt_exec_callback_QScrollBar_timerEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_ChangeEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QScrollBar_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -642,6 +695,7 @@ func miqt_exec_callback_QScrollBar_changeEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QScrollBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -667,6 +721,7 @@ func miqt_exec_callback_QScrollBar_devType(self *C.QScrollBar, cb C.intptr_t) C.
 }
 
 func (this *QScrollBar) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QScrollBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -693,6 +748,7 @@ func miqt_exec_callback_QScrollBar_setVisible(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QScrollBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -714,12 +770,14 @@ func miqt_exec_callback_QScrollBar_minimumSizeHint(self *C.QScrollBar, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QScrollBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QScrollBar) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QScrollBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -748,6 +806,7 @@ func miqt_exec_callback_QScrollBar_heightForWidth(self *C.QScrollBar, cb C.intpt
 }
 
 func (this *QScrollBar) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QScrollBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -773,6 +832,7 @@ func miqt_exec_callback_QScrollBar_hasHeightForWidth(self *C.QScrollBar, cb C.in
 }
 
 func (this *QScrollBar) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QScrollBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -792,12 +852,15 @@ func miqt_exec_callback_QScrollBar_paintEngine(self *C.QScrollBar, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScrollBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -824,6 +887,8 @@ func miqt_exec_callback_QScrollBar_mouseDoubleClickEvent(self *C.QScrollBar, cb 
 }
 
 func (this *QScrollBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -850,6 +915,8 @@ func miqt_exec_callback_QScrollBar_keyReleaseEvent(self *C.QScrollBar, cb C.intp
 }
 
 func (this *QScrollBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -876,6 +943,8 @@ func miqt_exec_callback_QScrollBar_focusInEvent(self *C.QScrollBar, cb C.intptr_
 }
 
 func (this *QScrollBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -902,6 +971,8 @@ func miqt_exec_callback_QScrollBar_focusOutEvent(self *C.QScrollBar, cb C.intptr
 }
 
 func (this *QScrollBar) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -928,6 +999,8 @@ func miqt_exec_callback_QScrollBar_enterEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -954,6 +1027,8 @@ func miqt_exec_callback_QScrollBar_leaveEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -980,6 +1055,8 @@ func miqt_exec_callback_QScrollBar_moveEvent(self *C.QScrollBar, cb C.intptr_t, 
 }
 
 func (this *QScrollBar) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1006,6 +1083,8 @@ func miqt_exec_callback_QScrollBar_resizeEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1032,6 +1111,8 @@ func miqt_exec_callback_QScrollBar_closeEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1058,6 +1139,8 @@ func miqt_exec_callback_QScrollBar_tabletEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1084,6 +1167,8 @@ func miqt_exec_callback_QScrollBar_actionEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1110,6 +1195,8 @@ func miqt_exec_callback_QScrollBar_dragEnterEvent(self *C.QScrollBar, cb C.intpt
 }
 
 func (this *QScrollBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1136,6 +1223,8 @@ func miqt_exec_callback_QScrollBar_dragMoveEvent(self *C.QScrollBar, cb C.intptr
 }
 
 func (this *QScrollBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1162,6 +1251,8 @@ func miqt_exec_callback_QScrollBar_dragLeaveEvent(self *C.QScrollBar, cb C.intpt
 }
 
 func (this *QScrollBar) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1188,6 +1279,8 @@ func miqt_exec_callback_QScrollBar_dropEvent(self *C.QScrollBar, cb C.intptr_t, 
 }
 
 func (this *QScrollBar) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1214,6 +1307,7 @@ func miqt_exec_callback_QScrollBar_showEvent(self *C.QScrollBar, cb C.intptr_t, 
 }
 
 func (this *QScrollBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1255,6 +1349,7 @@ func miqt_exec_callback_QScrollBar_nativeEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QScrollBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1283,6 +1378,8 @@ func miqt_exec_callback_QScrollBar_metric(self *C.QScrollBar, cb C.intptr_t, par
 }
 
 func (this *QScrollBar) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QScrollBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1309,6 +1406,8 @@ func miqt_exec_callback_QScrollBar_initPainter(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QScrollBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1331,12 +1430,14 @@ func miqt_exec_callback_QScrollBar_redirected(self *C.QScrollBar, cb C.intptr_t,
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScrollBar) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QScrollBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1356,12 +1457,15 @@ func miqt_exec_callback_QScrollBar_sharedPainter(self *C.QScrollBar, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScrollBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QScrollBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1388,6 +1492,7 @@ func miqt_exec_callback_QScrollBar_inputMethodEvent(self *C.QScrollBar, cb C.int
 }
 
 func (this *QScrollBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QScrollBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1412,12 +1517,14 @@ func miqt_exec_callback_QScrollBar_inputMethodQuery(self *C.QScrollBar, cb C.int
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QScrollBar_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QScrollBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QScrollBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1446,6 +1553,9 @@ func miqt_exec_callback_QScrollBar_focusNextPrevChild(self *C.QScrollBar, cb C.i
 }
 
 func (this *QScrollBar) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QScrollBar_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1476,6 +1586,8 @@ func miqt_exec_callback_QScrollBar_eventFilter(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1502,6 +1614,8 @@ func miqt_exec_callback_QScrollBar_childEvent(self *C.QScrollBar, cb C.intptr_t,
 }
 
 func (this *QScrollBar) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScrollBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1528,6 +1642,8 @@ func miqt_exec_callback_QScrollBar_customEvent(self *C.QScrollBar, cb C.intptr_t
 }
 
 func (this *QScrollBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QScrollBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1554,6 +1670,8 @@ func miqt_exec_callback_QScrollBar_connectNotify(self *C.QScrollBar, cb C.intptr
 }
 
 func (this *QScrollBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QScrollBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1591,8 +1709,9 @@ func (this *QScrollBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScrollBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollBar) {
-		C.QScrollBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScrollBar_delete((*C.QScrollBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

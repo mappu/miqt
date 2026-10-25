@@ -297,6 +297,9 @@ bool QDateTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDateTimeEdit_virtualreturncopy_QSize(QSize* src);
+QDateTime* QDateTimeEdit_virtualreturncopy_QDateTime(QDateTime* src);
+QVariant* QDateTimeEdit_virtualreturncopy_QVariant(QVariant* src);
 
 QLineEdit* QDateTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QDateTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
@@ -435,6 +438,9 @@ bool QTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QTimeEdit_virtualreturncopy_QSize(QSize* src);
+QDateTime* QTimeEdit_virtualreturncopy_QDateTime(QDateTime* src);
+QVariant* QTimeEdit_virtualreturncopy_QVariant(QVariant* src);
 
 QLineEdit* QTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
@@ -573,6 +579,9 @@ bool QDateEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDateEdit_virtualreturncopy_QSize(QSize* src);
+QDateTime* QDateEdit_virtualreturncopy_QDateTime(QDateTime* src);
+QVariant* QDateEdit_virtualreturncopy_QVariant(QVariant* src);
 
 QLineEdit* QDateEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QDateEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);

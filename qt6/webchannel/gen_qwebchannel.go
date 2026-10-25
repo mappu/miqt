@@ -17,8 +17,14 @@ import (
 
 type QWebChannel struct {
 	h  *C.QWebChannel
-	gc *[1]*C.QWebChannel
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebChannel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebChannel) cPointer() *C.QWebChannel {
@@ -60,15 +66,18 @@ func NewQWebChannel() *QWebChannel {
 
 // NewQWebChannel2 constructs a new QWebChannel object.
 func NewQWebChannel2(parent *qt6.QObject) *QWebChannel {
+	defer runtime.KeepAlive(parent)
 
 	return newQWebChannel(C.QWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebChannel) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebChannel_metaObject(this.h)))
 }
 
 func (this *QWebChannel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebChannel_metacast(this.h, param1_Cstring))
@@ -84,6 +93,8 @@ func QWebChannel_Tr(s string) string {
 }
 
 func (this *QWebChannel) RegisterObjects(objects map[string]*qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(objects)
 	objects_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(objects))))
 	defer C.free(unsafe.Pointer(objects_Keys_CArray_ptr))
 	objects_Keys_CArray := unsafe.Slice(objects_Keys_CArray_ptr, len(objects))
@@ -109,6 +120,7 @@ func (this *QWebChannel) RegisterObjects(objects map[string]*qt6.QObject) {
 }
 
 func (this *QWebChannel) RegisteredObjects() map[string]*qt6.QObject {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QWebChannel_registeredObjects(this.h)
 	_ret := make(map[string]*qt6.QObject, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -126,6 +138,8 @@ func (this *QWebChannel) RegisteredObjects() map[string]*qt6.QObject {
 }
 
 func (this *QWebChannel) RegisterObject(id string, object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -134,26 +148,33 @@ func (this *QWebChannel) RegisterObject(id string, object *qt6.QObject) {
 }
 
 func (this *QWebChannel) DeregisterObject(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QWebChannel_deregisterObject(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QWebChannel) BlockUpdates() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebChannel_blockUpdates(this.h))
 }
 
 func (this *QWebChannel) SetBlockUpdates(block bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebChannel_setBlockUpdates(this.h, (C.bool)(block))
 }
 
 func (this *QWebChannel) PropertyUpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebChannel_propertyUpdateInterval(this.h))
 }
 
 func (this *QWebChannel) SetPropertyUpdateInterval(ms int) {
+	defer runtime.KeepAlive(this)
 	C.QWebChannel_setPropertyUpdateInterval(this.h, (C.int)(ms))
 }
 
 func (this *QWebChannel) BlockUpdatesChanged(block bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebChannel_blockUpdatesChanged(this.h, (C.bool)(block))
 }
 func (this *QWebChannel) OnBlockUpdatesChanged(slot func(block bool)) {
@@ -174,10 +195,14 @@ func miqt_exec_callback_QWebChannel_blockUpdatesChanged(cb C.intptr_t, block C.b
 }
 
 func (this *QWebChannel) ConnectTo(transport *QWebChannelAbstractTransport) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transport)
 	C.QWebChannel_connectTo(this.h, transport.cPointer())
 }
 
 func (this *QWebChannel) DisconnectFrom(transport *QWebChannelAbstractTransport) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transport)
 	C.QWebChannel_disconnectFrom(this.h, transport.cPointer())
 }
 
@@ -205,6 +230,7 @@ func QWebChannel_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QWebChannel that was directly constructed.
 func (this *QWebChannel) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QWebChannel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -219,6 +245,7 @@ func (this *QWebChannel) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QWebChannel that was directly constructed.
 func (this *QWebChannel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebChannel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -233,6 +260,7 @@ func (this *QWebChannel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebChannel that was directly constructed.
 func (this *QWebChannel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -249,6 +277,8 @@ func (this *QWebChannel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebChannel that was directly constructed.
 func (this *QWebChannel) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWebChannel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -262,6 +292,8 @@ func (this *QWebChannel) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QWebChannel) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebChannel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -290,6 +322,9 @@ func miqt_exec_callback_QWebChannel_event(self *C.QWebChannel, cb C.intptr_t, ev
 }
 
 func (this *QWebChannel) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebChannel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -320,6 +355,8 @@ func miqt_exec_callback_QWebChannel_eventFilter(self *C.QWebChannel, cb C.intptr
 }
 
 func (this *QWebChannel) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -346,6 +383,8 @@ func miqt_exec_callback_QWebChannel_timerEvent(self *C.QWebChannel, cb C.intptr_
 }
 
 func (this *QWebChannel) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -372,6 +411,8 @@ func miqt_exec_callback_QWebChannel_childEvent(self *C.QWebChannel, cb C.intptr_
 }
 
 func (this *QWebChannel) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebChannel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -398,6 +439,8 @@ func miqt_exec_callback_QWebChannel_customEvent(self *C.QWebChannel, cb C.intptr
 }
 
 func (this *QWebChannel) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebChannel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -424,6 +467,8 @@ func miqt_exec_callback_QWebChannel_connectNotify(self *C.QWebChannel, cb C.intp
 }
 
 func (this *QWebChannel) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebChannel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -461,8 +506,9 @@ func (this *QWebChannel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebChannel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebChannel) {
-		C.QWebChannel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebChannel_delete((*C.QWebChannel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

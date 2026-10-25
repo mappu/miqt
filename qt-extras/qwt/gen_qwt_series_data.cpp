@@ -35,7 +35,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtPointSeriesData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtPointSeriesData_virtualbase_boundingRect(const void* self);
@@ -74,6 +76,10 @@ QRectF* QwtPointSeriesData_virtualbase_boundingRect(const void* self) {
 	return new QRectF(static_cast<const MiqtVirtualQwtPointSeriesData*>(self)->QwtPointSeriesData::boundingRect());
 }
 
+QRectF* QwtPointSeriesData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QwtPointSeriesData_delete(QwtPointSeriesData* self) {
 	delete self;
 }
@@ -96,7 +102,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtPoint3DSeriesData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtPoint3DSeriesData_virtualbase_boundingRect(const void* self);
@@ -135,6 +143,10 @@ QRectF* QwtPoint3DSeriesData_virtualbase_boundingRect(const void* self) {
 	return new QRectF(static_cast<const MiqtVirtualQwtPoint3DSeriesData*>(self)->QwtPoint3DSeriesData::boundingRect());
 }
 
+QRectF* QwtPoint3DSeriesData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QwtPoint3DSeriesData_delete(QwtPoint3DSeriesData* self) {
 	delete self;
 }
@@ -157,7 +169,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtIntervalSeriesData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtIntervalSeriesData_virtualbase_boundingRect(const void* self);
@@ -196,6 +210,10 @@ QRectF* QwtIntervalSeriesData_virtualbase_boundingRect(const void* self) {
 	return new QRectF(static_cast<const MiqtVirtualQwtIntervalSeriesData*>(self)->QwtIntervalSeriesData::boundingRect());
 }
 
+QRectF* QwtIntervalSeriesData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QwtIntervalSeriesData_delete(QwtIntervalSeriesData* self) {
 	delete self;
 }
@@ -218,7 +236,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtSetSeriesData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtSetSeriesData_virtualbase_boundingRect(const void* self);
@@ -257,6 +277,10 @@ QRectF* QwtSetSeriesData_virtualbase_boundingRect(const void* self) {
 	return new QRectF(static_cast<const MiqtVirtualQwtSetSeriesData*>(self)->QwtSetSeriesData::boundingRect());
 }
 
+QRectF* QwtSetSeriesData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QwtSetSeriesData_delete(QwtSetSeriesData* self) {
 	delete self;
 }
@@ -279,7 +303,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtTradingChartData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtTradingChartData_virtualbase_boundingRect(const void* self);
@@ -316,6 +342,10 @@ bool QwtTradingChartData_override_virtual_boundingRect(void* self, intptr_t slot
 
 QRectF* QwtTradingChartData_virtualbase_boundingRect(const void* self) {
 	return new QRectF(static_cast<const MiqtVirtualQwtTradingChartData*>(self)->QwtTradingChartData::boundingRect());
+}
+
+QRectF* QwtTradingChartData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 void QwtTradingChartData_delete(QwtTradingChartData* self) {

@@ -72,8 +72,14 @@ const (
 
 type QWebEngineContextMenuRequest struct {
 	h  *C.QWebEngineContextMenuRequest
-	gc *[1]*C.QWebEngineContextMenuRequest
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineContextMenuRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineContextMenuRequest) cPointer() *C.QWebEngineContextMenuRequest {
@@ -108,10 +114,12 @@ func UnsafeNewQWebEngineContextMenuRequest(h unsafe.Pointer) *QWebEngineContextM
 }
 
 func (this *QWebEngineContextMenuRequest) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineContextMenuRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineContextMenuRequest) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineContextMenuRequest_metacast(this.h, param1_Cstring))
@@ -127,12 +135,14 @@ func QWebEngineContextMenuRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineContextMenuRequest) Position() *qt6.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuRequest_position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) SelectedText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -140,6 +150,7 @@ func (this *QWebEngineContextMenuRequest) SelectedText() string {
 }
 
 func (this *QWebEngineContextMenuRequest) LinkText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_linkText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -147,26 +158,31 @@ func (this *QWebEngineContextMenuRequest) LinkText() string {
 }
 
 func (this *QWebEngineContextMenuRequest) LinkUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_linkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) MediaUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_mediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) MediaType() QWebEngineContextMenuRequest__MediaType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineContextMenuRequest__MediaType)(C.QWebEngineContextMenuRequest_mediaType(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) IsContentEditable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineContextMenuRequest_isContentEditable(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) MisspelledWord() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_misspelledWord(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -174,6 +190,7 @@ func (this *QWebEngineContextMenuRequest) MisspelledWord() string {
 }
 
 func (this *QWebEngineContextMenuRequest) SpellCheckerSuggestions() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineContextMenuRequest_spellCheckerSuggestions(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -187,18 +204,22 @@ func (this *QWebEngineContextMenuRequest) SpellCheckerSuggestions() []string {
 }
 
 func (this *QWebEngineContextMenuRequest) IsAccepted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineContextMenuRequest_isAccepted(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineContextMenuRequest_setAccepted(this.h, (C.bool)(accepted))
 }
 
 func (this *QWebEngineContextMenuRequest) MediaFlags() QWebEngineContextMenuRequest__MediaFlag {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineContextMenuRequest__MediaFlag)(C.QWebEngineContextMenuRequest_mediaFlags(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) EditFlags() QWebEngineContextMenuRequest__EditFlag {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineContextMenuRequest__EditFlag)(C.QWebEngineContextMenuRequest_editFlags(this.h))
 }
 
@@ -236,8 +257,9 @@ func (this *QWebEngineContextMenuRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineContextMenuRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineContextMenuRequest) {
-		C.QWebEngineContextMenuRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineContextMenuRequest_delete((*C.QWebEngineContextMenuRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

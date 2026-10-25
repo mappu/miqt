@@ -190,6 +190,9 @@ bool QGraphicsVideoItem_override_virtual_setExtension(void* self, intptr_t slot)
 void QGraphicsVideoItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsVideoItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant);
+QRectF* QGraphicsVideoItem_virtualreturncopy_QRectF(QRectF* src);
+QVariant* QGraphicsVideoItem_virtualreturncopy_QVariant(QVariant* src);
+QPainterPath* QGraphicsVideoItem_virtualreturncopy_QPainterPath(QPainterPath* src);
 
 void QGraphicsVideoItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsVideoItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

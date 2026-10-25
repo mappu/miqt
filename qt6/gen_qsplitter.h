@@ -233,6 +233,8 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QSplitter_virtualreturncopy_QSize(QSize* src);
+QVariant* QSplitter_virtualreturncopy_QVariant(QVariant* src);
 
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index);
 void QSplitter_protectedbase_setRubberBand(bool* _dynamic_cast_ok, void* self, int position);
@@ -363,6 +365,8 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QSplitterHandle_virtualreturncopy_QSize(QSize* src);
+QVariant* QSplitterHandle_virtualreturncopy_QVariant(QVariant* src);
 
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p);
 int QSplitterHandle_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int p);

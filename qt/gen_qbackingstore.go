@@ -15,7 +15,13 @@ import (
 
 type QBackingStore struct {
 	h  *C.QBackingStore
-	gc *[1]*C.QBackingStore
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBackingStore) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBackingStore) cPointer() *C.QBackingStore {
@@ -48,63 +54,87 @@ func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
 
 // NewQBackingStore constructs a new QBackingStore object.
 func NewQBackingStore(window *QWindow) *QBackingStore {
+	defer runtime.KeepAlive(window)
 
 	return newQBackingStore(C.QBackingStore_new(window.cPointer()))
 }
 
 func (this *QBackingStore) Window() *QWindow {
+	defer runtime.KeepAlive(this)
 	return newQWindow(C.QBackingStore_window(this.h))
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
+	defer runtime.KeepAlive(this)
 	return newQPaintDevice(C.QBackingStore_paintDevice(this.h))
 }
 
 func (this *QBackingStore) Flush(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 	C.QBackingStore_flush(this.h, region.cPointer())
 }
 
 func (this *QBackingStore) Resize(size *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QBackingStore_resize(this.h, size.cPointer())
 }
 
 func (this *QBackingStore) Size() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QBackingStore_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBackingStore) Scroll(area *QRegion, dx int, dy int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(area)
 	return (bool)(C.QBackingStore_scroll(this.h, area.cPointer(), (C.int)(dx), (C.int)(dy)))
 }
 
 func (this *QBackingStore) BeginPaint(param1 *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBackingStore_beginPaint(this.h, param1.cPointer())
 }
 
 func (this *QBackingStore) EndPaint() {
+	defer runtime.KeepAlive(this)
 	C.QBackingStore_endPaint(this.h)
 }
 
 func (this *QBackingStore) SetStaticContents(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 	C.QBackingStore_setStaticContents(this.h, region.cPointer())
 }
 
 func (this *QBackingStore) StaticContents() *QRegion {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QBackingStore_staticContents(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBackingStore) HasStaticContents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBackingStore_hasStaticContents(this.h))
 }
 
 func (this *QBackingStore) Flush2(region *QRegion, window *QWindow) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
+	defer runtime.KeepAlive(window)
 	C.QBackingStore_flush2(this.h, region.cPointer(), window.cPointer())
 }
 
 func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(offset)
 	C.QBackingStore_flush3(this.h, region.cPointer(), window.cPointer(), offset.cPointer())
 }
 
@@ -120,8 +150,9 @@ func (this *QBackingStore) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBackingStore{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBackingStore) {
-		C.QBackingStore_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBackingStore_delete((*C.QBackingStore)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

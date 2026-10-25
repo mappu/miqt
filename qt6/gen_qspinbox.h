@@ -238,6 +238,8 @@ bool QSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QSpinBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QSpinBox_virtualreturncopy_QVariant(QVariant* src);
 
 QLineEdit* QSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
@@ -398,6 +400,8 @@ bool QDoubleSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDoubleSpinBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QDoubleSpinBox_virtualreturncopy_QVariant(QVariant* src);
 
 QLineEdit* QDoubleSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QDoubleSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);

@@ -81,6 +81,7 @@ bool QGraphicsLinearLayout_override_virtual_updateGeometry(void* self, intptr_t 
 void QGraphicsLinearLayout_virtualbase_updateGeometry(void* self);
 bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slot);
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e);
+QSizeF* QGraphicsLinearLayout_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsLinearLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

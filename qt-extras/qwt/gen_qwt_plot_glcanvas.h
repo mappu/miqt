@@ -241,6 +241,8 @@ bool QwtPlotGLCanvas_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtPlotGLCanvas_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtPlotGLCanvas_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtPlotGLCanvas_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtPlotGLCanvas_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtPlotGLCanvas_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtPlotGLCanvas_protectedbase_setAutoBufferSwap(bool* _dynamic_cast_ok, void* self, bool on);
 bool QwtPlotGLCanvas_protectedbase_autoBufferSwap(bool* _dynamic_cast_ok, const void* self);

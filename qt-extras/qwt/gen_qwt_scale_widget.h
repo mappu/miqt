@@ -248,6 +248,8 @@ bool QwtScaleWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtScaleWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtScaleWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtScaleWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtScaleWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtScaleWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtScaleWidget_protectedbase_draw(bool* _dynamic_cast_ok, const void* self, QPainter* param1);
 void QwtScaleWidget_protectedbase_scaleChange(bool* _dynamic_cast_ok, void* self);

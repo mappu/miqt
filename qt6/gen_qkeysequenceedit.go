@@ -16,8 +16,15 @@ import (
 
 type QKeySequenceEdit struct {
 	h  *C.QKeySequenceEdit
-	gc *[1]*C.QKeySequenceEdit
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QKeySequenceEdit) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QKeySequenceEdit) cPointer() *C.QKeySequenceEdit {
@@ -53,6 +60,7 @@ func UnsafeNewQKeySequenceEdit(h unsafe.Pointer) *QKeySequenceEdit {
 
 // NewQKeySequenceEdit constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit(parent *QWidget) *QKeySequenceEdit {
+	defer runtime.KeepAlive(parent)
 
 	return newQKeySequenceEdit(C.QKeySequenceEdit_new(parent.cPointer()))
 }
@@ -65,21 +73,26 @@ func NewQKeySequenceEdit2() *QKeySequenceEdit {
 
 // NewQKeySequenceEdit3 constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit3(keySequence *QKeySequence) *QKeySequenceEdit {
+	defer runtime.KeepAlive(keySequence)
 
 	return newQKeySequenceEdit(C.QKeySequenceEdit_new3(keySequence.cPointer()))
 }
 
 // NewQKeySequenceEdit4 constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit4(keySequence *QKeySequence, parent *QWidget) *QKeySequenceEdit {
+	defer runtime.KeepAlive(keySequence)
+	defer runtime.KeepAlive(parent)
 
 	return newQKeySequenceEdit(C.QKeySequenceEdit_new4(keySequence.cPointer(), parent.cPointer()))
 }
 
 func (this *QKeySequenceEdit) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QKeySequenceEdit_metaObject(this.h))
 }
 
 func (this *QKeySequenceEdit) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QKeySequenceEdit_metacast(this.h, param1_Cstring))
@@ -95,28 +108,35 @@ func QKeySequenceEdit_Tr(s string) string {
 }
 
 func (this *QKeySequenceEdit) KeySequence() *QKeySequence {
+	defer runtime.KeepAlive(this)
 	_goptr := newQKeySequence(C.QKeySequenceEdit_keySequence(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QKeySequenceEdit) SetClearButtonEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QKeySequenceEdit_setClearButtonEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QKeySequenceEdit) IsClearButtonEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QKeySequenceEdit_isClearButtonEnabled(this.h))
 }
 
 func (this *QKeySequenceEdit) SetKeySequence(keySequence *QKeySequence) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(keySequence)
 	C.QKeySequenceEdit_setKeySequence(this.h, keySequence.cPointer())
 }
 
 func (this *QKeySequenceEdit) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QKeySequenceEdit_clear(this.h)
 }
 
 func (this *QKeySequenceEdit) EditingFinished() {
+	defer runtime.KeepAlive(this)
 	C.QKeySequenceEdit_editingFinished(this.h)
 }
 func (this *QKeySequenceEdit) OnEditingFinished(slot func()) {
@@ -134,6 +154,8 @@ func miqt_exec_callback_QKeySequenceEdit_editingFinished(cb C.intptr_t) {
 }
 
 func (this *QKeySequenceEdit) KeySequenceChanged(keySequence *QKeySequence) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(keySequence)
 	C.QKeySequenceEdit_keySequenceChanged(this.h, keySequence.cPointer())
 }
 func (this *QKeySequenceEdit) OnKeySequenceChanged(slot func(keySequence *QKeySequence)) {
@@ -177,6 +199,7 @@ func QKeySequenceEdit_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QKeySequenceEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -189,6 +212,7 @@ func (this *QKeySequenceEdit) UpdateMicroFocus() {
 
 // Create can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QKeySequenceEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -201,6 +225,7 @@ func (this *QKeySequenceEdit) Create() {
 
 // Destroy can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QKeySequenceEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -213,6 +238,7 @@ func (this *QKeySequenceEdit) Destroy() {
 
 // FocusNextChild can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QKeySequenceEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -227,6 +253,7 @@ func (this *QKeySequenceEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QKeySequenceEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -241,6 +268,7 @@ func (this *QKeySequenceEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QKeySequenceEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -255,6 +283,7 @@ func (this *QKeySequenceEdit) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QKeySequenceEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -269,6 +298,7 @@ func (this *QKeySequenceEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -285,6 +315,8 @@ func (this *QKeySequenceEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QKeySequenceEdit that was directly constructed.
 func (this *QKeySequenceEdit) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QKeySequenceEdit_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -298,6 +330,8 @@ func (this *QKeySequenceEdit) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QKeySequenceEdit_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -326,6 +360,8 @@ func miqt_exec_callback_QKeySequenceEdit_event(self *C.QKeySequenceEdit, cb C.in
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -352,6 +388,8 @@ func miqt_exec_callback_QKeySequenceEdit_keyPressEvent(self *C.QKeySequenceEdit,
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_KeyReleaseEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -378,6 +416,8 @@ func miqt_exec_callback_QKeySequenceEdit_keyReleaseEvent(self *C.QKeySequenceEdi
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -404,6 +444,8 @@ func miqt_exec_callback_QKeySequenceEdit_timerEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -430,6 +472,7 @@ func miqt_exec_callback_QKeySequenceEdit_focusOutEvent(self *C.QKeySequenceEdit,
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QKeySequenceEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -455,6 +498,7 @@ func miqt_exec_callback_QKeySequenceEdit_devType(self *C.QKeySequenceEdit, cb C.
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QKeySequenceEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -481,6 +525,7 @@ func miqt_exec_callback_QKeySequenceEdit_setVisible(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QKeySequenceEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -502,12 +547,14 @@ func miqt_exec_callback_QKeySequenceEdit_sizeHint(self *C.QKeySequenceEdit, cb C
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QKeySequenceEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QKeySequenceEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -529,12 +576,14 @@ func miqt_exec_callback_QKeySequenceEdit_minimumSizeHint(self *C.QKeySequenceEdi
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QKeySequenceEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QKeySequenceEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -563,6 +612,7 @@ func miqt_exec_callback_QKeySequenceEdit_heightForWidth(self *C.QKeySequenceEdit
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QKeySequenceEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -588,6 +638,7 @@ func miqt_exec_callback_QKeySequenceEdit_hasHeightForWidth(self *C.QKeySequenceE
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QKeySequenceEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -607,12 +658,15 @@ func miqt_exec_callback_QKeySequenceEdit_paintEngine(self *C.QKeySequenceEdit, c
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -639,6 +693,8 @@ func miqt_exec_callback_QKeySequenceEdit_mousePressEvent(self *C.QKeySequenceEdi
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -665,6 +721,8 @@ func miqt_exec_callback_QKeySequenceEdit_mouseReleaseEvent(self *C.QKeySequenceE
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -691,6 +749,8 @@ func miqt_exec_callback_QKeySequenceEdit_mouseDoubleClickEvent(self *C.QKeySeque
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -717,6 +777,8 @@ func miqt_exec_callback_QKeySequenceEdit_mouseMoveEvent(self *C.QKeySequenceEdit
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -743,6 +805,8 @@ func miqt_exec_callback_QKeySequenceEdit_wheelEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -769,6 +833,8 @@ func miqt_exec_callback_QKeySequenceEdit_focusInEvent(self *C.QKeySequenceEdit, 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -795,6 +861,8 @@ func miqt_exec_callback_QKeySequenceEdit_enterEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -821,6 +889,8 @@ func miqt_exec_callback_QKeySequenceEdit_leaveEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -847,6 +917,8 @@ func miqt_exec_callback_QKeySequenceEdit_paintEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -873,6 +945,8 @@ func miqt_exec_callback_QKeySequenceEdit_moveEvent(self *C.QKeySequenceEdit, cb 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -899,6 +973,8 @@ func miqt_exec_callback_QKeySequenceEdit_resizeEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -925,6 +1001,8 @@ func miqt_exec_callback_QKeySequenceEdit_closeEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -951,6 +1029,8 @@ func miqt_exec_callback_QKeySequenceEdit_contextMenuEvent(self *C.QKeySequenceEd
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -977,6 +1057,8 @@ func miqt_exec_callback_QKeySequenceEdit_tabletEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1003,6 +1085,8 @@ func miqt_exec_callback_QKeySequenceEdit_actionEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1029,6 +1113,8 @@ func miqt_exec_callback_QKeySequenceEdit_dragEnterEvent(self *C.QKeySequenceEdit
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1055,6 +1141,8 @@ func miqt_exec_callback_QKeySequenceEdit_dragMoveEvent(self *C.QKeySequenceEdit,
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1081,6 +1169,8 @@ func miqt_exec_callback_QKeySequenceEdit_dragLeaveEvent(self *C.QKeySequenceEdit
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1107,6 +1197,8 @@ func miqt_exec_callback_QKeySequenceEdit_dropEvent(self *C.QKeySequenceEdit, cb 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1133,6 +1225,8 @@ func miqt_exec_callback_QKeySequenceEdit_showEvent(self *C.QKeySequenceEdit, cb 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1159,6 +1253,7 @@ func miqt_exec_callback_QKeySequenceEdit_hideEvent(self *C.QKeySequenceEdit, cb 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1200,6 +1295,8 @@ func miqt_exec_callback_QKeySequenceEdit_nativeEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1226,6 +1323,7 @@ func miqt_exec_callback_QKeySequenceEdit_changeEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QKeySequenceEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1254,6 +1352,8 @@ func miqt_exec_callback_QKeySequenceEdit_metric(self *C.QKeySequenceEdit, cb C.i
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QKeySequenceEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1280,6 +1380,8 @@ func miqt_exec_callback_QKeySequenceEdit_initPainter(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QKeySequenceEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1302,12 +1404,14 @@ func miqt_exec_callback_QKeySequenceEdit_redirected(self *C.QKeySequenceEdit, cb
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QKeySequenceEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1327,12 +1431,15 @@ func miqt_exec_callback_QKeySequenceEdit_sharedPainter(self *C.QKeySequenceEdit,
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QKeySequenceEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1359,6 +1466,7 @@ func miqt_exec_callback_QKeySequenceEdit_inputMethodEvent(self *C.QKeySequenceEd
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QKeySequenceEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1383,12 +1491,14 @@ func miqt_exec_callback_QKeySequenceEdit_inputMethodQuery(self *C.QKeySequenceEd
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QKeySequenceEdit_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QKeySequenceEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1417,6 +1527,9 @@ func miqt_exec_callback_QKeySequenceEdit_focusNextPrevChild(self *C.QKeySequence
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QKeySequenceEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1447,6 +1560,8 @@ func miqt_exec_callback_QKeySequenceEdit_eventFilter(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1473,6 +1588,8 @@ func miqt_exec_callback_QKeySequenceEdit_childEvent(self *C.QKeySequenceEdit, cb
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QKeySequenceEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1499,6 +1616,8 @@ func miqt_exec_callback_QKeySequenceEdit_customEvent(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QKeySequenceEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1525,6 +1644,8 @@ func miqt_exec_callback_QKeySequenceEdit_connectNotify(self *C.QKeySequenceEdit,
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QKeySequenceEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1562,8 +1683,9 @@ func (this *QKeySequenceEdit) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QKeySequenceEdit{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeySequenceEdit) {
-		C.QKeySequenceEdit_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QKeySequenceEdit_delete((*C.QKeySequenceEdit)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

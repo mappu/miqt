@@ -15,7 +15,13 @@ import (
 
 type QByteArrayMatcher struct {
 	h  *C.QByteArrayMatcher
-	gc *[1]*C.QByteArrayMatcher
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QByteArrayMatcher) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QByteArrayMatcher) cPointer() *C.QByteArrayMatcher {
@@ -67,6 +73,7 @@ func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
 
 // NewQByteArrayMatcher3 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher3(pattern QByteArrayView) *QByteArrayMatcher {
+	defer runtime.KeepAlive(pattern)
 
 	return newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern.cPointer()))
 }
@@ -81,6 +88,7 @@ func NewQByteArrayMatcher4(pattern string) *QByteArrayMatcher {
 
 // NewQByteArrayMatcher5 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher5(other *QByteArrayMatcher) *QByteArrayMatcher {
+	defer runtime.KeepAlive(other)
 
 	return newQByteArrayMatcher(C.QByteArrayMatcher_new5(other.cPointer()))
 }
@@ -94,10 +102,13 @@ func NewQByteArrayMatcher6(pattern string, length int64) *QByteArrayMatcher {
 }
 
 func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QByteArrayMatcher_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
+	defer runtime.KeepAlive(this)
 	pattern_alias := C.struct_miqt_string{}
 	if len(pattern) > 0 {
 		pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
@@ -109,16 +120,20 @@ func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
 }
 
 func (this *QByteArrayMatcher) IndexIn(str string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	return (int64)(C.QByteArrayMatcher_indexIn(this.h, str_Cstring, (C.ptrdiff_t)(lenVal)))
 }
 
 func (this *QByteArrayMatcher) IndexInWithData(data QByteArrayView) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	return (int64)(C.QByteArrayMatcher_indexInWithData(this.h, data.cPointer()))
 }
 
 func (this *QByteArrayMatcher) Pattern() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_pattern(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -126,12 +141,15 @@ func (this *QByteArrayMatcher) Pattern() []byte {
 }
 
 func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int64, from int64) int64 {
+	defer runtime.KeepAlive(this)
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	return (int64)(C.QByteArrayMatcher_indexIn2(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn3(data QByteArrayView, from int64) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
 }
 
@@ -147,14 +165,22 @@ func (this *QByteArrayMatcher) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QByteArrayMatcher{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QByteArrayMatcher) {
-		C.QByteArrayMatcher_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QByteArrayMatcher_delete((*C.QByteArrayMatcher)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStaticByteArrayMatcherBase struct {
-	h *C.QStaticByteArrayMatcherBase
+	h  *C.QStaticByteArrayMatcherBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStaticByteArrayMatcherBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStaticByteArrayMatcherBase) cPointer() *C.QStaticByteArrayMatcherBase {

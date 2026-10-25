@@ -15,7 +15,13 @@ import (
 
 type QVersionNumber struct {
 	h  *C.QVersionNumber
-	gc *[1]*C.QVersionNumber
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVersionNumber) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QVersionNumber) cPointer() *C.QVersionNumber {
@@ -85,37 +91,45 @@ func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
 
 // NewQVersionNumber6 constructs a new QVersionNumber object.
 func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
+	defer runtime.KeepAlive(param1)
 
 	return newQVersionNumber(C.QVersionNumber_new6(param1.cPointer()))
 }
 
 func (this *QVersionNumber) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVersionNumber_isNull(this.h))
 }
 
 func (this *QVersionNumber) IsNormalized() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVersionNumber_isNormalized(this.h))
 }
 
 func (this *QVersionNumber) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVersionNumber_majorVersion(this.h))
 }
 
 func (this *QVersionNumber) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVersionNumber_minorVersion(this.h))
 }
 
 func (this *QVersionNumber) MicroVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVersionNumber_microVersion(this.h))
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVersionNumber(C.QVersionNumber_normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVersionNumber) Segments() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QVersionNumber_segments(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -126,28 +140,37 @@ func (this *QVersionNumber) Segments() []int {
 }
 
 func (this *QVersionNumber) SegmentAt(index int64) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVersionNumber_segmentAt(this.h, (C.ptrdiff_t)(index)))
 }
 
 func (this *QVersionNumber) SegmentCount() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVersionNumber_segmentCount(this.h))
 }
 
 func (this *QVersionNumber) IsPrefixOf(other *QVersionNumber) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QVersionNumber_isPrefixOf(this.h, other.cPointer()))
 }
 
 func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
+	defer runtime.KeepAlive(v1)
+	defer runtime.KeepAlive(v2)
 	return (int)(C.QVersionNumber_compare(v1.cPointer(), v2.cPointer()))
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {
+	defer runtime.KeepAlive(v1)
+	defer runtime.KeepAlive(v2)
 	_goptr := newQVersionNumber(C.QVersionNumber_commonPrefix(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVersionNumber) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVersionNumber_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -165,6 +188,8 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 }
 
 func (this *QVersionNumber) OperatorAssign(param1 *QVersionNumber) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QVersionNumber_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -190,15 +215,22 @@ func (this *QVersionNumber) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVersionNumber{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVersionNumber) {
-		C.QVersionNumber_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVersionNumber_delete((*C.QVersionNumber)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTypeRevision struct {
 	h  *C.QTypeRevision
-	gc *[1]*C.QTypeRevision
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTypeRevision) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTypeRevision) cPointer() *C.QTypeRevision {
@@ -237,6 +269,7 @@ func NewQTypeRevision() *QTypeRevision {
 
 // NewQTypeRevision2 constructs a new QTypeRevision object.
 func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
+	defer runtime.KeepAlive(param1)
 
 	return newQTypeRevision(C.QTypeRevision_new2(param1.cPointer()))
 }
@@ -248,22 +281,27 @@ func QTypeRevision_Zero() *QTypeRevision {
 }
 
 func (this *QTypeRevision) HasMajorVersion() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTypeRevision_hasMajorVersion(this.h))
 }
 
 func (this *QTypeRevision) MajorVersion() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QTypeRevision_majorVersion(this.h))
 }
 
 func (this *QTypeRevision) HasMinorVersion() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTypeRevision_hasMinorVersion(this.h))
 }
 
 func (this *QTypeRevision) MinorVersion() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QTypeRevision_minorVersion(this.h))
 }
 
 func (this *QTypeRevision) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTypeRevision_isValid(this.h))
 }
 
@@ -279,8 +317,9 @@ func (this *QTypeRevision) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTypeRevision{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTypeRevision) {
-		C.QTypeRevision_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTypeRevision_delete((*C.QTypeRevision)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -28,6 +28,7 @@ void QQmlAbstractUrlInterceptor_operatorAssign(QQmlAbstractUrlInterceptor* self,
 
 bool QQmlAbstractUrlInterceptor_override_virtual_intercept(void* self, intptr_t slot);
 QUrl* QQmlAbstractUrlInterceptor_virtualbase_intercept(void* self, QUrl* path, int type);
+QUrl* QQmlAbstractUrlInterceptor_virtualreturncopy_QUrl(QUrl* src);
 
 void QQmlAbstractUrlInterceptor_delete(QQmlAbstractUrlInterceptor* self);
 

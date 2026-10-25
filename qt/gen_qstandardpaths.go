@@ -45,7 +45,14 @@ const (
 )
 
 type QStandardPaths struct {
-	h *C.QStandardPaths
+	h  *C.QStandardPaths
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStandardPaths) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStandardPaths) cPointer() *C.QStandardPaths {

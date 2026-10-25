@@ -140,6 +140,8 @@ bool QsciLexerFortran_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerFortran_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerFortran_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerFortran_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerFortran_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerFortran_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

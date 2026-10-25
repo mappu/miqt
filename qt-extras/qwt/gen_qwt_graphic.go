@@ -23,8 +23,15 @@ const (
 
 type QwtGraphic struct {
 	h  *C.QwtGraphic
-	gc *[1]*C.QwtGraphic
+	gc *[1]unsafe.Pointer
 	*QwtNullPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtGraphic) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtNullPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QwtGraphic) cPointer() *C.QwtGraphic {
@@ -66,131 +73,177 @@ func NewQwtGraphic() *QwtGraphic {
 
 // NewQwtGraphic2 constructs a new QwtGraphic object.
 func NewQwtGraphic2(param1 *QwtGraphic) *QwtGraphic {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtGraphic(C.QwtGraphic_new2(param1.cPointer()))
 }
 
 func (this *QwtGraphic) OperatorAssign(param1 *QwtGraphic) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtGraphic_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtGraphic) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QwtGraphic_reset(this.h)
 }
 
 func (this *QwtGraphic) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtGraphic_isNull(this.h))
 }
 
 func (this *QwtGraphic) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtGraphic_isEmpty(this.h))
 }
 
 func (this *QwtGraphic) Render(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtGraphic_render(this.h, (*C.QPainter)(param1.UnsafePointer()))
 }
 
 func (this *QwtGraphic) Render2(param1 *qt.QPainter, param2 *qt.QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))
 }
 
 func (this *QwtGraphic) Render3(param1 *qt.QPainter, param2 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
 }
 
 func (this *QwtGraphic) Render4(param1 *qt.QPainter, param2 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render4(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()))
 }
 
 func (this *QwtGraphic) ToPixmap() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ToPixmapWithQSize(param1 *qt.QSize) *qt.QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmapWithQSize(this.h, (*C.QSize)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ToImage() *qt.QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImage(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ToImageWithQSize(param1 *qt.QSize) *qt.QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImageWithQSize(this.h, (*C.QSize)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ScaledBoundingRect(sx float64, sy float64) *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_scaledBoundingRect(this.h, (C.double)(sx), (C.double)(sy))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ControlPointRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_controlPointRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) SetDefaultSize(defaultSize *qt.QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(defaultSize)
 	C.QwtGraphic_setDefaultSize(this.h, (*C.QSizeF)(defaultSize.UnsafePointer()))
 }
 
 func (this *QwtGraphic) DefaultSize() *qt.QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtGraphic_defaultSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) SetRenderHint(param1 QwtGraphic__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QwtGraphic_setRenderHint(this.h, (C.int)(param1))
 }
 
 func (this *QwtGraphic) TestRenderHint(param1 QwtGraphic__RenderHint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtGraphic_testRenderHint(this.h, (C.int)(param1)))
 }
 
 func (this *QwtGraphic) Render5(param1 *qt.QPainter, param2 *qt.QSizeF, param3 qt.AspectRatioMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render5(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()), (C.int)(param3))
 }
 
 func (this *QwtGraphic) Render6(param1 *qt.QPainter, param2 *qt.QRectF, param3 qt.AspectRatioMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render6(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()), (C.int)(param3))
 }
 
 func (this *QwtGraphic) Render7(param1 *qt.QPainter, param2 *qt.QPointF, param3 qt.AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtGraphic_render7(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(param3))
 }
 
 func (this *QwtGraphic) ToPixmap2(param1 *qt.QSize, param2 qt.AspectRatioMode) *qt.QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmap2(this.h, (*C.QSize)(param1.UnsafePointer()), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) ToImage2(param1 *qt.QSize, param2 qt.AspectRatioMode) *qt.QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImage2(this.h, (*C.QSize)(param1.UnsafePointer()), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtGraphic) SetRenderHint2(param1 QwtGraphic__RenderHint, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtGraphic_setRenderHint2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtGraphic) callVirtualBase_SizeMetrics() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtGraphic_virtualbase_sizeMetrics(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -212,12 +265,15 @@ func miqt_exec_callback_QwtGraphic_sizeMetrics(self *C.QwtGraphic, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QwtGraphic{h: self}).callVirtualBase_SizeMetrics)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtGraphic_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawPath(param1 *qt.QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawPath(unsafe.Pointer(this.h), (*C.QPainterPath)(param1.UnsafePointer()))
 
@@ -244,6 +300,10 @@ func miqt_exec_callback_QwtGraphic_drawPath(self *C.QwtGraphic, cb C.intptr_t, p
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtGraphic_virtualbase_drawPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
 
@@ -274,6 +334,10 @@ func miqt_exec_callback_QwtGraphic_drawPixmap(self *C.QwtGraphic, cb C.intptr_t,
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtGraphic_virtualbase_drawImage(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
 
@@ -306,6 +370,8 @@ func miqt_exec_callback_QwtGraphic_drawImage(self *C.QwtGraphic, cb C.intptr_t, 
 }
 
 func (this *QwtGraphic) callVirtualBase_UpdateState(state *qt.QPaintEngineState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 
 	C.QwtGraphic_virtualbase_updateState(unsafe.Pointer(this.h), (*C.QPaintEngineState)(state.UnsafePointer()))
 
@@ -332,6 +398,7 @@ func miqt_exec_callback_QwtGraphic_updateState(self *C.QwtGraphic, cb C.intptr_t
 }
 
 func (this *QwtGraphic) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtGraphic_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -351,12 +418,14 @@ func miqt_exec_callback_QwtGraphic_paintEngine(self *C.QwtGraphic, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QwtGraphic{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtGraphic) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtGraphic_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -385,6 +454,8 @@ func miqt_exec_callback_QwtGraphic_metric(self *C.QwtGraphic, cb C.intptr_t, par
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawRects(param1 *qt.QRect, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawRects(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -413,6 +484,8 @@ func miqt_exec_callback_QwtGraphic_drawRects(self *C.QwtGraphic, cb C.intptr_t, 
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawLines(param1 *qt.QLine, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawLines(unsafe.Pointer(this.h), (*C.QLine)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -441,6 +514,8 @@ func miqt_exec_callback_QwtGraphic_drawLines(self *C.QwtGraphic, cb C.intptr_t, 
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawEllipse(param1 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawEllipse(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
 
@@ -467,6 +542,8 @@ func miqt_exec_callback_QwtGraphic_drawEllipse(self *C.QwtGraphic, cb C.intptr_t
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawPoints(param1 *qt.QPointF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawPoints(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -495,6 +572,8 @@ func miqt_exec_callback_QwtGraphic_drawPoints(self *C.QwtGraphic, cb C.intptr_t,
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawPolygon(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -525,6 +604,9 @@ func miqt_exec_callback_QwtGraphic_drawPolygon(self *C.QwtGraphic, cb C.intptr_t
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtGraphic_virtualbase_drawTextItem(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
 
@@ -553,6 +635,10 @@ func miqt_exec_callback_QwtGraphic_drawTextItem(self *C.QwtGraphic, cb C.intptr_
 }
 
 func (this *QwtGraphic) callVirtualBase_DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtGraphic_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
 
@@ -583,6 +669,7 @@ func miqt_exec_callback_QwtGraphic_drawTiledPixmap(self *C.QwtGraphic, cb C.intp
 }
 
 func (this *QwtGraphic) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtGraphic_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -608,6 +695,8 @@ func miqt_exec_callback_QwtGraphic_devType(self *C.QwtGraphic, cb C.intptr_t) C.
 }
 
 func (this *QwtGraphic) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtGraphic_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -634,6 +723,8 @@ func miqt_exec_callback_QwtGraphic_initPainter(self *C.QwtGraphic, cb C.intptr_t
 }
 
 func (this *QwtGraphic) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtGraphic_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -656,12 +747,14 @@ func miqt_exec_callback_QwtGraphic_redirected(self *C.QwtGraphic, cb C.intptr_t,
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtGraphic{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtGraphic) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtGraphic_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -681,6 +774,7 @@ func miqt_exec_callback_QwtGraphic_sharedPainter(self *C.QwtGraphic, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QwtGraphic{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
@@ -698,8 +792,9 @@ func (this *QwtGraphic) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtGraphic{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtGraphic) {
-		C.QwtGraphic_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtGraphic_delete((*C.QwtGraphic)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

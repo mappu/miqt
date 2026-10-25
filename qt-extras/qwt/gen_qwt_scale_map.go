@@ -15,7 +15,13 @@ import (
 
 type QwtScaleMap struct {
 	h  *C.QwtScaleMap
-	gc *[1]*C.QwtScaleMap
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtScaleMap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtScaleMap) cPointer() *C.QwtScaleMap {
@@ -53,54 +59,68 @@ func NewQwtScaleMap() *QwtScaleMap {
 }
 
 func (this *QwtScaleMap) SetTransformation(transformation *QwtTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transformation)
 	C.QwtScaleMap_setTransformation(this.h, transformation.cPointer())
 }
 
 func (this *QwtScaleMap) Transformation() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtScaleMap_transformation(this.h))
 }
 
 func (this *QwtScaleMap) SetPaintInterval(p1 float64, p2 float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleMap_setPaintInterval(this.h, (C.double)(p1), (C.double)(p2))
 }
 
 func (this *QwtScaleMap) SetScaleInterval(s1 float64, s2 float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleMap_setScaleInterval(this.h, (C.double)(s1), (C.double)(s2))
 }
 
 func (this *QwtScaleMap) Transform(s float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_transform(this.h, (C.double)(s)))
 }
 
 func (this *QwtScaleMap) InvTransform(p float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_invTransform(this.h, (C.double)(p)))
 }
 
 func (this *QwtScaleMap) P1() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_p1(this.h))
 }
 
 func (this *QwtScaleMap) P2() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_p2(this.h))
 }
 
 func (this *QwtScaleMap) S1() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_s1(this.h))
 }
 
 func (this *QwtScaleMap) S2() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_s2(this.h))
 }
 
 func (this *QwtScaleMap) PDist() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_pDist(this.h))
 }
 
 func (this *QwtScaleMap) SDist() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleMap_sDist(this.h))
 }
 
 func (this *QwtScaleMap) IsInverting() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleMap_isInverting(this.h))
 }
 
@@ -116,8 +136,9 @@ func (this *QwtScaleMap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtScaleMap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleMap) {
-		C.QwtScaleMap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtScaleMap_delete((*C.QwtScaleMap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

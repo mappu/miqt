@@ -224,6 +224,8 @@ bool QScrollArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QScrollArea_virtualreturncopy_QSize(QSize* src);
+QVariant* QScrollArea_virtualreturncopy_QVariant(QVariant* src);
 
 void QScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);

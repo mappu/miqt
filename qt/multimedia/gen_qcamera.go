@@ -92,8 +92,15 @@ const (
 
 type QCamera struct {
 	h  *C.QCamera
-	gc *[1]*C.QCamera
+	gc *[1]unsafe.Pointer
 	*QMediaObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCamera) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaObject.miqtSetGC(gc)
 }
 
 func (this *QCamera) cPointer() *C.QCamera {
@@ -148,6 +155,7 @@ func NewQCamera2(deviceName []byte) *QCamera {
 
 // NewQCamera3 constructs a new QCamera object.
 func NewQCamera3(cameraInfo *QCameraInfo) *QCamera {
+	defer runtime.KeepAlive(cameraInfo)
 
 	return newQCamera(C.QCamera_new3(cameraInfo.cPointer()))
 }
@@ -160,12 +168,14 @@ func NewQCamera4(position QCamera__Position) *QCamera {
 
 // NewQCamera5 constructs a new QCamera object.
 func NewQCamera5(parent *qt.QObject) *QCamera {
+	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new5((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQCamera6 constructs a new QCamera object.
 func NewQCamera6(deviceName []byte, parent *qt.QObject) *QCamera {
+	defer runtime.KeepAlive(parent)
 	deviceName_alias := C.struct_miqt_string{}
 	if len(deviceName) > 0 {
 		deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
@@ -179,21 +189,26 @@ func NewQCamera6(deviceName []byte, parent *qt.QObject) *QCamera {
 
 // NewQCamera7 constructs a new QCamera object.
 func NewQCamera7(cameraInfo *QCameraInfo, parent *qt.QObject) *QCamera {
+	defer runtime.KeepAlive(cameraInfo)
+	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new7(cameraInfo.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQCamera8 constructs a new QCamera object.
 func NewQCamera8(position QCamera__Position, parent *qt.QObject) *QCamera {
+	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new8((C.int)(position), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCamera) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCamera_metaObject(this.h)))
 }
 
 func (this *QCamera) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCamera_metacast(this.h, param1_Cstring))
@@ -245,60 +260,78 @@ func QCamera_DeviceDescription(device []byte) string {
 }
 
 func (this *QCamera) Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QCamera_availability(this.h))
 }
 
 func (this *QCamera) State() QCamera__State {
+	defer runtime.KeepAlive(this)
 	return (QCamera__State)(C.QCamera_state(this.h))
 }
 
 func (this *QCamera) Status() QCamera__Status {
+	defer runtime.KeepAlive(this)
 	return (QCamera__Status)(C.QCamera_status(this.h))
 }
 
 func (this *QCamera) CaptureMode() QCamera__CaptureMode {
+	defer runtime.KeepAlive(this)
 	return (QCamera__CaptureMode)(C.QCamera_captureMode(this.h))
 }
 
 func (this *QCamera) IsCaptureModeSupported(mode QCamera__CaptureMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isCaptureModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) Exposure() *QCameraExposure {
+	defer runtime.KeepAlive(this)
 	return newQCameraExposure(C.QCamera_exposure(this.h))
 }
 
 func (this *QCamera) Focus() *QCameraFocus {
+	defer runtime.KeepAlive(this)
 	return newQCameraFocus(C.QCamera_focus(this.h))
 }
 
 func (this *QCamera) ImageProcessing() *QCameraImageProcessing {
+	defer runtime.KeepAlive(this)
 	return newQCameraImageProcessing(C.QCamera_imageProcessing(this.h))
 }
 
 func (this *QCamera) SetViewfinder(viewfinder *QVideoWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewfinder)
 	C.QCamera_setViewfinder(this.h, viewfinder.cPointer())
 }
 
 func (this *QCamera) SetViewfinderWithViewfinder(viewfinder *QGraphicsVideoItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewfinder)
 	C.QCamera_setViewfinderWithViewfinder(this.h, viewfinder.cPointer())
 }
 
 func (this *QCamera) SetViewfinderWithSurface(surface *QAbstractVideoSurface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(surface)
 	C.QCamera_setViewfinderWithSurface(this.h, surface.cPointer())
 }
 
 func (this *QCamera) ViewfinderSettings() *QCameraViewfinderSettings {
+	defer runtime.KeepAlive(this)
 	_goptr := newQCameraViewfinderSettings(C.QCamera_viewfinderSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) SetViewfinderSettings(settings *QCameraViewfinderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	C.QCamera_setViewfinderSettings(this.h, settings.cPointer())
 }
 
 func (this *QCamera) SupportedViewfinderSettings() []QCameraViewfinderSettings {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettings(this.h)
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -311,6 +344,7 @@ func (this *QCamera) SupportedViewfinderSettings() []QCameraViewfinderSettings {
 }
 
 func (this *QCamera) SupportedViewfinderResolutions() []qt.QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -323,6 +357,7 @@ func (this *QCamera) SupportedViewfinderResolutions() []qt.QSize {
 }
 
 func (this *QCamera) SupportedViewfinderFrameRateRanges() []QCamera__FrameRateRange {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRanges(this.h)
 	_ret := make([]QCamera__FrameRateRange, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -335,6 +370,7 @@ func (this *QCamera) SupportedViewfinderFrameRateRanges() []QCamera__FrameRateRa
 }
 
 func (this *QCamera) SupportedViewfinderPixelFormats() []QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormats(this.h)
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -345,10 +381,12 @@ func (this *QCamera) SupportedViewfinderPixelFormats() []QVideoFrame__PixelForma
 }
 
 func (this *QCamera) Error() QCamera__Error {
+	defer runtime.KeepAlive(this)
 	return (QCamera__Error)(C.QCamera_error(this.h))
 }
 
 func (this *QCamera) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCamera_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -356,58 +394,72 @@ func (this *QCamera) ErrorString() string {
 }
 
 func (this *QCamera) SupportedLocks() QCamera__LockType {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockType)(C.QCamera_supportedLocks(this.h))
 }
 
 func (this *QCamera) RequestedLocks() QCamera__LockType {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockType)(C.QCamera_requestedLocks(this.h))
 }
 
 func (this *QCamera) LockStatus() QCamera__LockStatus {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockStatus)(C.QCamera_lockStatus(this.h))
 }
 
 func (this *QCamera) LockStatusWithLock(lock QCamera__LockType) QCamera__LockStatus {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockStatus)(C.QCamera_lockStatusWithLock(this.h, (C.int)(lock)))
 }
 
 func (this *QCamera) SetCaptureMode(mode QCamera__CaptureMode) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_setCaptureMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) Load() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_load(this.h)
 }
 
 func (this *QCamera) Unload() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_unload(this.h)
 }
 
 func (this *QCamera) Start() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_start(this.h)
 }
 
 func (this *QCamera) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_stop(this.h)
 }
 
 func (this *QCamera) SearchAndLock() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_searchAndLock(this.h)
 }
 
 func (this *QCamera) Unlock() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_unlock(this.h)
 }
 
 func (this *QCamera) SearchAndLockWithLocks(locks QCamera__LockType) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_searchAndLockWithLocks(this.h, (C.int)(locks))
 }
 
 func (this *QCamera) UnlockWithLocks(locks QCamera__LockType) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_unlockWithLocks(this.h, (C.int)(locks))
 }
 
 func (this *QCamera) StateChanged(state QCamera__State) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_stateChanged(this.h, (C.int)(state))
 }
 func (this *QCamera) OnStateChanged(slot func(state QCamera__State)) {
@@ -428,6 +480,7 @@ func miqt_exec_callback_QCamera_stateChanged(cb C.intptr_t, state C.int) {
 }
 
 func (this *QCamera) CaptureModeChanged(param1 QCamera__CaptureMode) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_captureModeChanged(this.h, (C.int)(param1))
 }
 func (this *QCamera) OnCaptureModeChanged(slot func(param1 QCamera__CaptureMode)) {
@@ -448,6 +501,7 @@ func miqt_exec_callback_QCamera_captureModeChanged(cb C.intptr_t, param1 C.int) 
 }
 
 func (this *QCamera) StatusChanged(status QCamera__Status) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_statusChanged(this.h, (C.int)(status))
 }
 func (this *QCamera) OnStatusChanged(slot func(status QCamera__Status)) {
@@ -468,6 +522,7 @@ func miqt_exec_callback_QCamera_statusChanged(cb C.intptr_t, status C.int) {
 }
 
 func (this *QCamera) Locked() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_locked(this.h)
 }
 func (this *QCamera) OnLocked(slot func()) {
@@ -485,6 +540,7 @@ func miqt_exec_callback_QCamera_locked(cb C.intptr_t) {
 }
 
 func (this *QCamera) LockFailed() {
+	defer runtime.KeepAlive(this)
 	C.QCamera_lockFailed(this.h)
 }
 func (this *QCamera) OnLockFailed(slot func()) {
@@ -502,6 +558,7 @@ func miqt_exec_callback_QCamera_lockFailed(cb C.intptr_t) {
 }
 
 func (this *QCamera) LockStatusChanged(status QCamera__LockStatus, reason QCamera__LockChangeReason) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_lockStatusChanged(this.h, (C.int)(status), (C.int)(reason))
 }
 func (this *QCamera) OnLockStatusChanged(slot func(status QCamera__LockStatus, reason QCamera__LockChangeReason)) {
@@ -524,6 +581,7 @@ func miqt_exec_callback_QCamera_lockStatusChanged(cb C.intptr_t, status C.int, r
 }
 
 func (this *QCamera) LockStatusChanged2(lock QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_lockStatusChanged2(this.h, (C.int)(lock), (C.int)(status), (C.int)(reason))
 }
 func (this *QCamera) OnLockStatusChanged2(slot func(lock QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason)) {
@@ -548,6 +606,7 @@ func miqt_exec_callback_QCamera_lockStatusChanged2(cb C.intptr_t, lock C.int, st
 }
 
 func (this *QCamera) ErrorWithQCameraError(param1 QCamera__Error) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_errorWithQCameraError(this.h, (C.int)(param1))
 }
 func (this *QCamera) OnErrorWithQCameraError(slot func(param1 QCamera__Error)) {
@@ -568,6 +627,7 @@ func miqt_exec_callback_QCamera_errorWithQCameraError(cb C.intptr_t, param1 C.in
 }
 
 func (this *QCamera) ErrorOccurred(param1 QCamera__Error) {
+	defer runtime.KeepAlive(this)
 	C.QCamera_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QCamera) OnErrorOccurred(slot func(param1 QCamera__Error)) {
@@ -632,6 +692,8 @@ func QCamera_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QCamera) SupportedViewfinderSettingsWithSettings(settings *QCameraViewfinderSettings) []QCameraViewfinderSettings {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettingsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -644,6 +706,8 @@ func (this *QCamera) SupportedViewfinderSettingsWithSettings(settings *QCameraVi
 }
 
 func (this *QCamera) SupportedViewfinderResolutionsWithSettings(settings *QCameraViewfinderSettings) []qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -656,6 +720,8 @@ func (this *QCamera) SupportedViewfinderResolutionsWithSettings(settings *QCamer
 }
 
 func (this *QCamera) SupportedViewfinderFrameRateRangesWithSettings(settings *QCameraViewfinderSettings) []QCamera__FrameRateRange {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRangesWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCamera__FrameRateRange, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -668,6 +734,8 @@ func (this *QCamera) SupportedViewfinderFrameRateRangesWithSettings(settings *QC
 }
 
 func (this *QCamera) SupportedViewfinderPixelFormatsWithSettings(settings *QCameraViewfinderSettings) []QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormatsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -679,6 +747,7 @@ func (this *QCamera) SupportedViewfinderPixelFormatsWithSettings(settings *QCame
 
 // AddPropertyWatch can only be called from a QCamera that was directly constructed.
 func (this *QCamera) AddPropertyWatch(name []byte) {
+	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -698,6 +767,7 @@ func (this *QCamera) AddPropertyWatch(name []byte) {
 
 // RemovePropertyWatch can only be called from a QCamera that was directly constructed.
 func (this *QCamera) RemovePropertyWatch(name []byte) {
+	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -717,6 +787,7 @@ func (this *QCamera) RemovePropertyWatch(name []byte) {
 
 // Sender can only be called from a QCamera that was directly constructed.
 func (this *QCamera) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QCamera_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -731,6 +802,7 @@ func (this *QCamera) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QCamera that was directly constructed.
 func (this *QCamera) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCamera_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -745,6 +817,7 @@ func (this *QCamera) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCamera that was directly constructed.
 func (this *QCamera) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -761,6 +834,8 @@ func (this *QCamera) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCamera that was directly constructed.
 func (this *QCamera) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCamera_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -774,6 +849,7 @@ func (this *QCamera) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QCamera) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 
 	return (QMultimedia__AvailabilityStatus)(C.QCamera_virtualbase_availability(unsafe.Pointer(this.h)))
 
@@ -799,6 +875,7 @@ func miqt_exec_callback_QCamera_availability(self *C.QCamera, cb C.intptr_t) C.i
 }
 
 func (this *QCamera) callVirtualBase_IsAvailable() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCamera_virtualbase_isAvailable(unsafe.Pointer(this.h)))
 
@@ -824,6 +901,7 @@ func miqt_exec_callback_QCamera_isAvailable(self *C.QCamera, cb C.intptr_t) C.bo
 }
 
 func (this *QCamera) callVirtualBase_Service() *QMediaService {
+	defer runtime.KeepAlive(this)
 
 	return newQMediaService(C.QCamera_virtualbase_service(unsafe.Pointer(this.h)))
 
@@ -843,12 +921,15 @@ func miqt_exec_callback_QCamera_service(self *C.QCamera, cb C.intptr_t) *C.QMedi
 	}
 
 	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_Service)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCamera) callVirtualBase_Bind(param1 *qt.QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QCamera_virtualbase_bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
 
@@ -877,6 +958,8 @@ func miqt_exec_callback_QCamera_bind(self *C.QCamera, cb C.intptr_t, param1 *C.Q
 }
 
 func (this *QCamera) callVirtualBase_Unbind(param1 *qt.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QCamera_virtualbase_unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
 
@@ -903,6 +986,8 @@ func miqt_exec_callback_QCamera_unbind(self *C.QCamera, cb C.intptr_t, param1 *C
 }
 
 func (this *QCamera) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCamera_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -931,6 +1016,9 @@ func miqt_exec_callback_QCamera_event(self *C.QCamera, cb C.intptr_t, event *C.Q
 }
 
 func (this *QCamera) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCamera_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -961,6 +1049,8 @@ func miqt_exec_callback_QCamera_eventFilter(self *C.QCamera, cb C.intptr_t, watc
 }
 
 func (this *QCamera) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -987,6 +1077,8 @@ func miqt_exec_callback_QCamera_timerEvent(self *C.QCamera, cb C.intptr_t, event
 }
 
 func (this *QCamera) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1013,6 +1105,8 @@ func miqt_exec_callback_QCamera_childEvent(self *C.QCamera, cb C.intptr_t, event
 }
 
 func (this *QCamera) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1039,6 +1133,8 @@ func miqt_exec_callback_QCamera_customEvent(self *C.QCamera, cb C.intptr_t, even
 }
 
 func (this *QCamera) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCamera_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1065,6 +1161,8 @@ func miqt_exec_callback_QCamera_connectNotify(self *C.QCamera, cb C.intptr_t, si
 }
 
 func (this *QCamera) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCamera_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1102,15 +1200,22 @@ func (this *QCamera) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCamera{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCamera) {
-		C.QCamera_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCamera_delete((*C.QCamera)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCamera__FrameRateRange struct {
 	h  *C.QCamera__FrameRateRange
-	gc *[1]*C.QCamera__FrameRateRange
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCamera__FrameRateRange) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCamera__FrameRateRange) cPointer() *C.QCamera__FrameRateRange {
@@ -1155,23 +1260,28 @@ func NewQCamera__FrameRateRange2(minimum float64, maximum float64) *QCamera__Fra
 
 // NewQCamera__FrameRateRange3 constructs a new QCamera::FrameRateRange object.
 func NewQCamera__FrameRateRange3(param1 *QCamera__FrameRateRange) *QCamera__FrameRateRange {
+	defer runtime.KeepAlive(param1)
 
 	return newQCamera__FrameRateRange(C.QCamera__FrameRateRange_new3(param1.cPointer()))
 }
 
 func (this *QCamera__FrameRateRange) MinimumFrameRate() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCamera__FrameRateRange_minimumFrameRate(this.h))
 }
 
 func (this *QCamera__FrameRateRange) SetMinimumFrameRate(minimumFrameRate float64) {
+	defer runtime.KeepAlive(this)
 	C.QCamera__FrameRateRange_setMinimumFrameRate(this.h, (C.double)(minimumFrameRate))
 }
 
 func (this *QCamera__FrameRateRange) MaximumFrameRate() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCamera__FrameRateRange_maximumFrameRate(this.h))
 }
 
 func (this *QCamera__FrameRateRange) SetMaximumFrameRate(maximumFrameRate float64) {
+	defer runtime.KeepAlive(this)
 	C.QCamera__FrameRateRange_setMaximumFrameRate(this.h, (C.double)(maximumFrameRate))
 }
 
@@ -1187,8 +1297,9 @@ func (this *QCamera__FrameRateRange) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCamera__FrameRateRange{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCamera__FrameRateRange) {
-		C.QCamera__FrameRateRange_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCamera__FrameRateRange_delete((*C.QCamera__FrameRateRange)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

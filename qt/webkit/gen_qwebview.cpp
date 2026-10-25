@@ -130,7 +130,9 @@ public:
 		Qt::InputMethodQuery property_ret = property;
 		int sigval1 = static_cast<int>(property_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QWebView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QWebView_virtualbase_inputMethodQuery(const void* self, int property);
@@ -145,7 +147,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QWebView_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QWebView_virtualbase_sizeHint(const void* self);
@@ -547,7 +551,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QWebView_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QWebView_virtualbase_minimumSizeHint(const void* self);
@@ -2015,6 +2021,14 @@ bool QWebView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWebView*>(self)->QWebView::disconnectNotify(*signal);
+}
+
+QVariant* QWebView_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QSize* QWebView_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

@@ -16,8 +16,15 @@ import (
 
 type QPauseAnimation struct {
 	h  *C.QPauseAnimation
-	gc *[1]*C.QPauseAnimation
+	gc *[1]unsafe.Pointer
 	*QAbstractAnimation
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPauseAnimation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractAnimation.miqtSetGC(gc)
 }
 
 func (this *QPauseAnimation) cPointer() *C.QPauseAnimation {
@@ -65,21 +72,25 @@ func NewQPauseAnimation2(msecs int) *QPauseAnimation {
 
 // NewQPauseAnimation3 constructs a new QPauseAnimation object.
 func NewQPauseAnimation3(parent *QObject) *QPauseAnimation {
+	defer runtime.KeepAlive(parent)
 
 	return newQPauseAnimation(C.QPauseAnimation_new3(parent.cPointer()))
 }
 
 // NewQPauseAnimation4 constructs a new QPauseAnimation object.
 func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
+	defer runtime.KeepAlive(parent)
 
 	return newQPauseAnimation(C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer()))
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPauseAnimation_metaObject(this.h))
 }
 
 func (this *QPauseAnimation) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPauseAnimation_metacast(this.h, param1_Cstring))
@@ -95,10 +106,12 @@ func QPauseAnimation_Tr(s string) string {
 }
 
 func (this *QPauseAnimation) Duration() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPauseAnimation_duration(this.h))
 }
 
 func (this *QPauseAnimation) SetDuration(msecs int) {
+	defer runtime.KeepAlive(this)
 	C.QPauseAnimation_setDuration(this.h, (C.int)(msecs))
 }
 
@@ -126,6 +139,7 @@ func QPauseAnimation_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QPauseAnimation that was directly constructed.
 func (this *QPauseAnimation) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPauseAnimation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -140,6 +154,7 @@ func (this *QPauseAnimation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPauseAnimation that was directly constructed.
 func (this *QPauseAnimation) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPauseAnimation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -154,6 +169,7 @@ func (this *QPauseAnimation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPauseAnimation that was directly constructed.
 func (this *QPauseAnimation) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -170,6 +186,8 @@ func (this *QPauseAnimation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPauseAnimation that was directly constructed.
 func (this *QPauseAnimation) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPauseAnimation_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -183,6 +201,7 @@ func (this *QPauseAnimation) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPauseAnimation) callVirtualBase_Duration() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPauseAnimation_virtualbase_duration(unsafe.Pointer(this.h)))
 
@@ -208,6 +227,8 @@ func miqt_exec_callback_QPauseAnimation_duration(self *C.QPauseAnimation, cb C.i
 }
 
 func (this *QPauseAnimation) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QPauseAnimation_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -236,6 +257,7 @@ func miqt_exec_callback_QPauseAnimation_event(self *C.QPauseAnimation, cb C.intp
 }
 
 func (this *QPauseAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
+	defer runtime.KeepAlive(this)
 
 	C.QPauseAnimation_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -262,6 +284,7 @@ func miqt_exec_callback_QPauseAnimation_updateCurrentTime(self *C.QPauseAnimatio
 }
 
 func (this *QPauseAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+	defer runtime.KeepAlive(this)
 
 	C.QPauseAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -290,6 +313,7 @@ func miqt_exec_callback_QPauseAnimation_updateState(self *C.QPauseAnimation, cb 
 }
 
 func (this *QPauseAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+	defer runtime.KeepAlive(this)
 
 	C.QPauseAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -316,6 +340,9 @@ func miqt_exec_callback_QPauseAnimation_updateDirection(self *C.QPauseAnimation,
 }
 
 func (this *QPauseAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPauseAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -346,6 +373,8 @@ func miqt_exec_callback_QPauseAnimation_eventFilter(self *C.QPauseAnimation, cb 
 }
 
 func (this *QPauseAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPauseAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -372,6 +401,8 @@ func miqt_exec_callback_QPauseAnimation_timerEvent(self *C.QPauseAnimation, cb C
 }
 
 func (this *QPauseAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPauseAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -398,6 +429,8 @@ func miqt_exec_callback_QPauseAnimation_childEvent(self *C.QPauseAnimation, cb C
 }
 
 func (this *QPauseAnimation) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPauseAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -424,6 +457,8 @@ func miqt_exec_callback_QPauseAnimation_customEvent(self *C.QPauseAnimation, cb 
 }
 
 func (this *QPauseAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPauseAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -450,6 +485,8 @@ func miqt_exec_callback_QPauseAnimation_connectNotify(self *C.QPauseAnimation, c
 }
 
 func (this *QPauseAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPauseAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -487,8 +524,9 @@ func (this *QPauseAnimation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPauseAnimation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPauseAnimation) {
-		C.QPauseAnimation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPauseAnimation_delete((*C.QPauseAnimation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

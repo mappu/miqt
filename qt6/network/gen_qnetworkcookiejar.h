@@ -77,6 +77,7 @@ bool QNetworkCookieJar_override_virtual_connectNotify(void* self, intptr_t slot)
 void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QNetworkCookie* QNetworkCookieJar_virtualreturncopy_QNetworkCookie(QNetworkCookie* src);
 
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self);
 void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QNetworkCookie* */  cookieList);

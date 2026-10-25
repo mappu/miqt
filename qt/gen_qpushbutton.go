@@ -16,8 +16,15 @@ import (
 
 type QPushButton struct {
 	h  *C.QPushButton
-	gc *[1]*C.QPushButton
+	gc *[1]unsafe.Pointer
 	*QAbstractButton
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPushButton) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractButton.miqtSetGC(gc)
 }
 
 func (this *QPushButton) cPointer() *C.QPushButton {
@@ -53,6 +60,7 @@ func UnsafeNewQPushButton(h unsafe.Pointer) *QPushButton {
 
 // NewQPushButton constructs a new QPushButton object.
 func NewQPushButton(parent *QWidget) *QPushButton {
+	defer runtime.KeepAlive(parent)
 
 	return newQPushButton(C.QPushButton_new(parent.cPointer()))
 }
@@ -75,6 +83,7 @@ func NewQPushButton3(text string) *QPushButton {
 
 // NewQPushButton4 constructs a new QPushButton object.
 func NewQPushButton4(icon *QIcon, text string) *QPushButton {
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -85,6 +94,7 @@ func NewQPushButton4(icon *QIcon, text string) *QPushButton {
 
 // NewQPushButton5 constructs a new QPushButton object.
 func NewQPushButton5(text string, parent *QWidget) *QPushButton {
+	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -95,6 +105,8 @@ func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 
 // NewQPushButton6 constructs a new QPushButton object.
 func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
+	defer runtime.KeepAlive(icon)
+	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -104,10 +116,12 @@ func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
 }
 
 func (this *QPushButton) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPushButton_metaObject(this.h))
 }
 
 func (this *QPushButton) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPushButton_metacast(this.h, param1_Cstring))
@@ -132,50 +146,62 @@ func QPushButton_TrUtf8(s string) string {
 }
 
 func (this *QPushButton) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QPushButton_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPushButton) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QPushButton_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPushButton) AutoDefault() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPushButton_autoDefault(this.h))
 }
 
 func (this *QPushButton) SetAutoDefault(autoDefault bool) {
+	defer runtime.KeepAlive(this)
 	C.QPushButton_setAutoDefault(this.h, (C.bool)(autoDefault))
 }
 
 func (this *QPushButton) IsDefault() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPushButton_isDefault(this.h))
 }
 
 func (this *QPushButton) SetDefault(defaultVal bool) {
+	defer runtime.KeepAlive(this)
 	C.QPushButton_setDefault(this.h, (C.bool)(defaultVal))
 }
 
 func (this *QPushButton) SetMenu(menu *QMenu) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(menu)
 	C.QPushButton_setMenu(this.h, menu.cPointer())
 }
 
 func (this *QPushButton) Menu() *QMenu {
+	defer runtime.KeepAlive(this)
 	return newQMenu(C.QPushButton_menu(this.h))
 }
 
 func (this *QPushButton) SetFlat(flat bool) {
+	defer runtime.KeepAlive(this)
 	C.QPushButton_setFlat(this.h, (C.bool)(flat))
 }
 
 func (this *QPushButton) IsFlat() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPushButton_isFlat(this.h))
 }
 
 func (this *QPushButton) ShowMenu() {
+	defer runtime.KeepAlive(this)
 	C.QPushButton_showMenu(this.h)
 }
 
@@ -225,6 +251,8 @@ func QPushButton_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) InitStyleOption(option *QStyleOptionButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPushButton_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -237,6 +265,7 @@ func (this *QPushButton) InitStyleOption(option *QStyleOptionButton) {
 
 // UpdateMicroFocus can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPushButton_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -249,6 +278,7 @@ func (this *QPushButton) UpdateMicroFocus() {
 
 // Create can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPushButton_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -261,6 +291,7 @@ func (this *QPushButton) Create() {
 
 // Destroy can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPushButton_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -273,6 +304,7 @@ func (this *QPushButton) Destroy() {
 
 // FocusNextChild can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPushButton_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -287,6 +319,7 @@ func (this *QPushButton) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPushButton_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -301,6 +334,7 @@ func (this *QPushButton) FocusPreviousChild() bool {
 
 // Sender can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPushButton_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -315,6 +349,7 @@ func (this *QPushButton) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPushButton_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -329,6 +364,7 @@ func (this *QPushButton) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -345,6 +381,8 @@ func (this *QPushButton) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPushButton that was directly constructed.
 func (this *QPushButton) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPushButton_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -358,6 +396,7 @@ func (this *QPushButton) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPushButton) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QPushButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -379,12 +418,14 @@ func miqt_exec_callback_QPushButton_sizeHint(self *C.QPushButton, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QPushButton_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QPushButton) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QPushButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -406,12 +447,15 @@ func miqt_exec_callback_QPushButton_minimumSizeHint(self *C.QPushButton, cb C.in
 	}
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QPushButton_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QPushButton) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QPushButton_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -440,6 +484,8 @@ func miqt_exec_callback_QPushButton_event(self *C.QPushButton, cb C.intptr_t, e 
 }
 
 func (this *QPushButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPushButton_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -466,6 +512,8 @@ func miqt_exec_callback_QPushButton_paintEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPushButton_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -492,6 +540,8 @@ func miqt_exec_callback_QPushButton_keyPressEvent(self *C.QPushButton, cb C.intp
 }
 
 func (this *QPushButton) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPushButton_virtualbase_focusInEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -518,6 +568,8 @@ func miqt_exec_callback_QPushButton_focusInEvent(self *C.QPushButton, cb C.intpt
 }
 
 func (this *QPushButton) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPushButton_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -544,6 +596,8 @@ func miqt_exec_callback_QPushButton_focusOutEvent(self *C.QPushButton, cb C.intp
 }
 
 func (this *QPushButton) callVirtualBase_HitButton(pos *QPoint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 
 	return (bool)(C.QPushButton_virtualbase_hitButton(unsafe.Pointer(this.h), pos.cPointer()))
 
@@ -572,6 +626,7 @@ func miqt_exec_callback_QPushButton_hitButton(self *C.QPushButton, cb C.intptr_t
 }
 
 func (this *QPushButton) callVirtualBase_CheckStateSet() {
+	defer runtime.KeepAlive(this)
 
 	C.QPushButton_virtualbase_checkStateSet(unsafe.Pointer(this.h))
 
@@ -595,6 +650,7 @@ func miqt_exec_callback_QPushButton_checkStateSet(self *C.QPushButton, cb C.intp
 }
 
 func (this *QPushButton) callVirtualBase_NextCheckState() {
+	defer runtime.KeepAlive(this)
 
 	C.QPushButton_virtualbase_nextCheckState(unsafe.Pointer(this.h))
 
@@ -618,6 +674,8 @@ func miqt_exec_callback_QPushButton_nextCheckState(self *C.QPushButton, cb C.int
 }
 
 func (this *QPushButton) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -644,6 +702,8 @@ func miqt_exec_callback_QPushButton_keyReleaseEvent(self *C.QPushButton, cb C.in
 }
 
 func (this *QPushButton) callVirtualBase_MousePressEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -670,6 +730,8 @@ func miqt_exec_callback_QPushButton_mousePressEvent(self *C.QPushButton, cb C.in
 }
 
 func (this *QPushButton) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -696,6 +758,8 @@ func miqt_exec_callback_QPushButton_mouseReleaseEvent(self *C.QPushButton, cb C.
 }
 
 func (this *QPushButton) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -722,6 +786,8 @@ func miqt_exec_callback_QPushButton_mouseMoveEvent(self *C.QPushButton, cb C.int
 }
 
 func (this *QPushButton) callVirtualBase_ChangeEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -748,6 +814,8 @@ func miqt_exec_callback_QPushButton_changeEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_TimerEvent(e *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QPushButton_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -774,6 +842,7 @@ func miqt_exec_callback_QPushButton_timerEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPushButton_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -799,6 +868,7 @@ func miqt_exec_callback_QPushButton_devType(self *C.QPushButton, cb C.intptr_t) 
 }
 
 func (this *QPushButton) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPushButton_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -825,6 +895,7 @@ func miqt_exec_callback_QPushButton_setVisible(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPushButton_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -853,6 +924,7 @@ func miqt_exec_callback_QPushButton_heightForWidth(self *C.QPushButton, cb C.int
 }
 
 func (this *QPushButton) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPushButton_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -878,6 +950,7 @@ func miqt_exec_callback_QPushButton_hasHeightForWidth(self *C.QPushButton, cb C.
 }
 
 func (this *QPushButton) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QPushButton_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -897,12 +970,15 @@ func miqt_exec_callback_QPushButton_paintEngine(self *C.QPushButton, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPushButton) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -929,6 +1005,8 @@ func miqt_exec_callback_QPushButton_mouseDoubleClickEvent(self *C.QPushButton, c
 }
 
 func (this *QPushButton) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -955,6 +1033,8 @@ func miqt_exec_callback_QPushButton_wheelEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -981,6 +1061,8 @@ func miqt_exec_callback_QPushButton_enterEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1007,6 +1089,8 @@ func miqt_exec_callback_QPushButton_leaveEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1033,6 +1117,8 @@ func miqt_exec_callback_QPushButton_moveEvent(self *C.QPushButton, cb C.intptr_t
 }
 
 func (this *QPushButton) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1059,6 +1145,8 @@ func miqt_exec_callback_QPushButton_resizeEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1085,6 +1173,8 @@ func miqt_exec_callback_QPushButton_closeEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1111,6 +1201,8 @@ func miqt_exec_callback_QPushButton_contextMenuEvent(self *C.QPushButton, cb C.i
 }
 
 func (this *QPushButton) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1137,6 +1229,8 @@ func miqt_exec_callback_QPushButton_tabletEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1163,6 +1257,8 @@ func miqt_exec_callback_QPushButton_actionEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1189,6 +1285,8 @@ func miqt_exec_callback_QPushButton_dragEnterEvent(self *C.QPushButton, cb C.int
 }
 
 func (this *QPushButton) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1215,6 +1313,8 @@ func miqt_exec_callback_QPushButton_dragMoveEvent(self *C.QPushButton, cb C.intp
 }
 
 func (this *QPushButton) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1241,6 +1341,8 @@ func miqt_exec_callback_QPushButton_dragLeaveEvent(self *C.QPushButton, cb C.int
 }
 
 func (this *QPushButton) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1267,6 +1369,8 @@ func miqt_exec_callback_QPushButton_dropEvent(self *C.QPushButton, cb C.intptr_t
 }
 
 func (this *QPushButton) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1293,6 +1397,8 @@ func miqt_exec_callback_QPushButton_showEvent(self *C.QPushButton, cb C.intptr_t
 }
 
 func (this *QPushButton) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1319,6 +1425,7 @@ func miqt_exec_callback_QPushButton_hideEvent(self *C.QPushButton, cb C.intptr_t
 }
 
 func (this *QPushButton) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1360,6 +1467,7 @@ func miqt_exec_callback_QPushButton_nativeEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPushButton_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1388,6 +1496,8 @@ func miqt_exec_callback_QPushButton_metric(self *C.QPushButton, cb C.intptr_t, p
 }
 
 func (this *QPushButton) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPushButton_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1414,6 +1524,8 @@ func miqt_exec_callback_QPushButton_initPainter(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPushButton_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1436,12 +1548,14 @@ func miqt_exec_callback_QPushButton_redirected(self *C.QPushButton, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPushButton) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QPushButton_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1461,12 +1575,15 @@ func miqt_exec_callback_QPushButton_sharedPainter(self *C.QPushButton, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPushButton) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPushButton_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1493,6 +1610,7 @@ func miqt_exec_callback_QPushButton_inputMethodEvent(self *C.QPushButton, cb C.i
 }
 
 func (this *QPushButton) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QPushButton_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1517,12 +1635,14 @@ func miqt_exec_callback_QPushButton_inputMethodQuery(self *C.QPushButton, cb C.i
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QPushButton{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QPushButton_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QPushButton) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPushButton_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1551,6 +1671,9 @@ func miqt_exec_callback_QPushButton_focusNextPrevChild(self *C.QPushButton, cb C
 }
 
 func (this *QPushButton) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPushButton_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1581,6 +1704,8 @@ func miqt_exec_callback_QPushButton_eventFilter(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1607,6 +1732,8 @@ func miqt_exec_callback_QPushButton_childEvent(self *C.QPushButton, cb C.intptr_
 }
 
 func (this *QPushButton) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPushButton_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1633,6 +1760,8 @@ func miqt_exec_callback_QPushButton_customEvent(self *C.QPushButton, cb C.intptr
 }
 
 func (this *QPushButton) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPushButton_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1659,6 +1788,8 @@ func miqt_exec_callback_QPushButton_connectNotify(self *C.QPushButton, cb C.intp
 }
 
 func (this *QPushButton) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPushButton_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1696,8 +1827,9 @@ func (this *QPushButton) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPushButton{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPushButton) {
-		C.QPushButton_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPushButton_delete((*C.QPushButton)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

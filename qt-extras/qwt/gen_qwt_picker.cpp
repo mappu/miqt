@@ -104,7 +104,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QwtPicker_pickArea(this, handle__pickArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QwtPicker_virtualbase_pickArea(const void* self);
@@ -153,7 +155,9 @@ public:
 		}
 
 		QRegion* callback_return_value = miqt_exec_callback_QwtPicker_rubberBandMask(this, handle__rubberBandMask);
-		return *callback_return_value;
+		QRegion callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRegion* QwtPicker_virtualbase_rubberBandMask(const void* self);
@@ -171,7 +175,9 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPicker_trackerText(this, handle__trackerText, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtPicker_virtualbase_trackerText(const void* self, QPoint* pos);
@@ -189,7 +195,9 @@ public:
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
 		QRect* callback_return_value = miqt_exec_callback_QwtPicker_trackerRect(this, handle__trackerRect, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtPicker_virtualbase_trackerRect(const void* self, QFont* param1);
@@ -1368,6 +1376,22 @@ bool QwtPicker_override_virtual_keyMatch2(void* self, intptr_t slot) {
 
 bool QwtPicker_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2) {
 	return static_cast<const MiqtVirtualQwtPicker*>(self)->QwtPicker::keyMatch(*param1, param2);
+}
+
+QPainterPath* QwtPicker_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QRegion* QwtPicker_virtualreturncopy_QRegion(QRegion* src) {
+	return new QRegion(*src);
+}
+
+QwtText* QwtPicker_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
+}
+
+QRect* QwtPicker_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 QwtWidgetOverlay* QwtPicker_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self) {

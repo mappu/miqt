@@ -25,7 +25,13 @@ const (
 
 type QwtScaleDiv struct {
 	h  *C.QwtScaleDiv
-	gc *[1]*C.QwtScaleDiv
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtScaleDiv) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtScaleDiv) cPointer() *C.QwtScaleDiv {
@@ -64,6 +70,7 @@ func NewQwtScaleDiv() *QwtScaleDiv {
 
 // NewQwtScaleDiv2 constructs a new QwtScaleDiv object.
 func NewQwtScaleDiv2(param1 *QwtInterval, param2 []float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(param1)
 	param2_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray_ptr))
 	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
@@ -117,6 +124,7 @@ func NewQwtScaleDiv4(lowerBound float64, upperBound float64, minorTicks []float6
 
 // NewQwtScaleDiv5 constructs a new QwtScaleDiv object.
 func NewQwtScaleDiv5(param1 *QwtScaleDiv) *QwtScaleDiv {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtScaleDiv(C.QwtScaleDiv_new5(param1.cPointer()))
 }
@@ -134,52 +142,67 @@ func NewQwtScaleDiv7(lowerBound float64, upperBound float64) *QwtScaleDiv {
 }
 
 func (this *QwtScaleDiv) OperatorEqual(param1 *QwtScaleDiv) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtScaleDiv_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtScaleDiv) OperatorNotEqual(param1 *QwtScaleDiv) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtScaleDiv_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtScaleDiv) SetInterval(lowerBound float64, upperBound float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDiv_setInterval(this.h, (C.double)(lowerBound), (C.double)(upperBound))
 }
 
 func (this *QwtScaleDiv) SetIntervalWithInterval(interval *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 	C.QwtScaleDiv_setIntervalWithInterval(this.h, interval.cPointer())
 }
 
 func (this *QwtScaleDiv) Interval() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtScaleDiv_interval(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDiv) SetLowerBound(lowerBound float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDiv_setLowerBound(this.h, (C.double)(lowerBound))
 }
 
 func (this *QwtScaleDiv) LowerBound() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleDiv_lowerBound(this.h))
 }
 
 func (this *QwtScaleDiv) SetUpperBound(upperBound float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDiv_setUpperBound(this.h, (C.double)(upperBound))
 }
 
 func (this *QwtScaleDiv) UpperBound() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleDiv_upperBound(this.h))
 }
 
 func (this *QwtScaleDiv) Range() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleDiv_range(this.h))
 }
 
 func (this *QwtScaleDiv) Contains(value float64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleDiv_contains(this.h, (C.double)(value)))
 }
 
 func (this *QwtScaleDiv) SetTicks(tickType int, param2 []float64) {
+	defer runtime.KeepAlive(this)
 	param2_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray_ptr))
 	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
@@ -191,6 +214,7 @@ func (this *QwtScaleDiv) SetTicks(tickType int, param2 []float64) {
 }
 
 func (this *QwtScaleDiv) Ticks(tickType int) []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtScaleDiv_ticks(this.h, (C.int)(tickType))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -201,30 +225,37 @@ func (this *QwtScaleDiv) Ticks(tickType int) []float64 {
 }
 
 func (this *QwtScaleDiv) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleDiv_isEmpty(this.h))
 }
 
 func (this *QwtScaleDiv) IsIncreasing() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleDiv_isIncreasing(this.h))
 }
 
 func (this *QwtScaleDiv) Invert() {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDiv_invert(this.h)
 }
 
 func (this *QwtScaleDiv) Inverted() *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtScaleDiv_inverted(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDiv) Bounded(lowerBound float64, upperBound float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtScaleDiv_bounded(this.h, (C.double)(lowerBound), (C.double)(upperBound)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDiv) OperatorAssign(param1 *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtScaleDiv_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -240,8 +271,9 @@ func (this *QwtScaleDiv) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtScaleDiv{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleDiv) {
-		C.QwtScaleDiv_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtScaleDiv_delete((*C.QwtScaleDiv)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

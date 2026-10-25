@@ -42,6 +42,7 @@ bool QAbstractVideoBuffer_override_virtual_unmap(void* self, intptr_t slot);
 void QAbstractVideoBuffer_virtualbase_unmap(void* self);
 bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot);
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self);
+QVariant* QAbstractVideoBuffer_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractVideoBuffer_delete(QAbstractVideoBuffer* self);
 

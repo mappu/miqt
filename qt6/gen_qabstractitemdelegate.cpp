@@ -93,7 +93,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 		QSize* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -786,6 +788,10 @@ bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_
 
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::disconnectNotify(*signal);
+}
+
+QSize* QAbstractItemDelegate_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 QObject* QAbstractItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

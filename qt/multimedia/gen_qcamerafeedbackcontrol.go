@@ -32,8 +32,15 @@ const (
 
 type QCameraFeedbackControl struct {
 	h  *C.QCameraFeedbackControl
-	gc *[1]*C.QCameraFeedbackControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraFeedbackControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraFeedbackControl) cPointer() *C.QCameraFeedbackControl {
@@ -68,10 +75,12 @@ func UnsafeNewQCameraFeedbackControl(h unsafe.Pointer) *QCameraFeedbackControl {
 }
 
 func (this *QCameraFeedbackControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFeedbackControl_metaObject(this.h)))
 }
 
 func (this *QCameraFeedbackControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraFeedbackControl_metacast(this.h, param1_Cstring))
@@ -96,22 +105,27 @@ func QCameraFeedbackControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraFeedbackControl) IsEventFeedbackLocked(param1 QCameraFeedbackControl__EventType) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFeedbackControl_isEventFeedbackLocked(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFeedbackControl) IsEventFeedbackEnabled(param1 QCameraFeedbackControl__EventType) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFeedbackControl_isEventFeedbackEnabled(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFeedbackControl) SetEventFeedbackEnabled(param1 QCameraFeedbackControl__EventType, param2 bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFeedbackControl_setEventFeedbackEnabled(this.h, (C.int)(param1), (C.bool)(param2)))
 }
 
 func (this *QCameraFeedbackControl) ResetEventFeedback(param1 QCameraFeedbackControl__EventType) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFeedbackControl_resetEventFeedback(this.h, (C.int)(param1))
 }
 
 func (this *QCameraFeedbackControl) SetEventFeedbackSound(param1 QCameraFeedbackControl__EventType, filePath string) bool {
+	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -175,8 +189,9 @@ func (this *QCameraFeedbackControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraFeedbackControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraFeedbackControl) {
-		C.QCameraFeedbackControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraFeedbackControl_delete((*C.QCameraFeedbackControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

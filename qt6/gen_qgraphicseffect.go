@@ -41,8 +41,15 @@ const (
 
 type QGraphicsEffect struct {
 	h  *C.QGraphicsEffect
-	gc *[1]*C.QGraphicsEffect
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QGraphicsEffect) cPointer() *C.QGraphicsEffect {
@@ -84,15 +91,18 @@ func NewQGraphicsEffect() *QGraphicsEffect {
 
 // NewQGraphicsEffect2 constructs a new QGraphicsEffect object.
 func NewQGraphicsEffect2(parent *QObject) *QGraphicsEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsEffect(C.QGraphicsEffect_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsEffect_metaObject(this.h))
 }
 
 func (this *QGraphicsEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsEffect_metacast(this.h, param1_Cstring))
@@ -108,30 +118,37 @@ func QGraphicsEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsEffect) BoundingRectFor(sourceRect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceRect)
 	_goptr := newQRectF(C.QGraphicsEffect_boundingRectFor(this.h, sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsEffect) BoundingRect() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QGraphicsEffect_boundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsEffect) IsEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsEffect_isEnabled(this.h))
 }
 
 func (this *QGraphicsEffect) SetEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsEffect_setEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QGraphicsEffect) Update() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsEffect_update(this.h)
 }
 
 func (this *QGraphicsEffect) EnabledChanged(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsEffect_enabledChanged(this.h, (C.bool)(enabled))
 }
 func (this *QGraphicsEffect) OnEnabledChanged(slot func(enabled bool)) {
@@ -175,6 +192,7 @@ func QGraphicsEffect_Tr3(s string, c string, n int) string {
 
 // UpdateBoundingRect can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) UpdateBoundingRect() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -187,6 +205,7 @@ func (this *QGraphicsEffect) UpdateBoundingRect() {
 
 // SourceIsPixmap can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -201,6 +220,7 @@ func (this *QGraphicsEffect) SourceIsPixmap() bool {
 
 // SourceBoundingRect can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourceBoundingRect() QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -217,6 +237,8 @@ func (this *QGraphicsEffect) SourceBoundingRect() QRectF {
 
 // DrawSource can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) DrawSource(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
@@ -229,6 +251,7 @@ func (this *QGraphicsEffect) DrawSource(painter *QPainter) {
 
 // SourcePixmap can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmap() QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -245,6 +268,7 @@ func (this *QGraphicsEffect) SourcePixmap() QPixmap {
 
 // SourceBoundingRectWithSystem can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourceBoundingRectWithSystem(system CoordinateSystem) QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
@@ -261,6 +285,7 @@ func (this *QGraphicsEffect) SourceBoundingRectWithSystem(system CoordinateSyste
 
 // SourcePixmapWithSystem can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmapWithSystem(system CoordinateSystem) QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmapWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
@@ -277,6 +302,8 @@ func (this *QGraphicsEffect) SourcePixmapWithSystem(system CoordinateSystem) QPi
 
 // SourcePixmap2 can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmap2(system CoordinateSystem, offset *QPoint) QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer()))
@@ -293,6 +320,8 @@ func (this *QGraphicsEffect) SourcePixmap2(system CoordinateSystem, offset *QPoi
 
 // SourcePixmap3 can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmap3(system CoordinateSystem, offset *QPoint, mode QGraphicsEffect__PixmapPadMode) QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer(), (C.int)(mode)))
@@ -309,6 +338,7 @@ func (this *QGraphicsEffect) SourcePixmap3(system CoordinateSystem, offset *QPoi
 
 // Sender can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -323,6 +353,7 @@ func (this *QGraphicsEffect) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -337,6 +368,7 @@ func (this *QGraphicsEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -353,6 +385,8 @@ func (this *QGraphicsEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -366,6 +400,8 @@ func (this *QGraphicsEffect) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceRect)
 
 	_goptr := newQRectF(C.QGraphicsEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -390,8 +426,9 @@ func miqt_exec_callback_QGraphicsEffect_boundingRectFor(self *C.QGraphicsEffect,
 	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 func (this *QGraphicsEffect) OnDraw(slot func(painter *QPainter)) {
@@ -416,6 +453,7 @@ func miqt_exec_callback_QGraphicsEffect_draw(self *C.QGraphicsEffect, cb C.intpt
 }
 
 func (this *QGraphicsEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
@@ -442,6 +480,8 @@ func miqt_exec_callback_QGraphicsEffect_sourceChanged(self *C.QGraphicsEffect, c
 }
 
 func (this *QGraphicsEffect) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -470,6 +510,9 @@ func miqt_exec_callback_QGraphicsEffect_event(self *C.QGraphicsEffect, cb C.intp
 }
 
 func (this *QGraphicsEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -500,6 +543,8 @@ func miqt_exec_callback_QGraphicsEffect_eventFilter(self *C.QGraphicsEffect, cb 
 }
 
 func (this *QGraphicsEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -526,6 +571,8 @@ func miqt_exec_callback_QGraphicsEffect_timerEvent(self *C.QGraphicsEffect, cb C
 }
 
 func (this *QGraphicsEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -552,6 +599,8 @@ func miqt_exec_callback_QGraphicsEffect_childEvent(self *C.QGraphicsEffect, cb C
 }
 
 func (this *QGraphicsEffect) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -578,6 +627,8 @@ func miqt_exec_callback_QGraphicsEffect_customEvent(self *C.QGraphicsEffect, cb 
 }
 
 func (this *QGraphicsEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -604,6 +655,8 @@ func miqt_exec_callback_QGraphicsEffect_connectNotify(self *C.QGraphicsEffect, c
 }
 
 func (this *QGraphicsEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -641,16 +694,24 @@ func (this *QGraphicsEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsEffect) {
-		C.QGraphicsEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsEffect_delete((*C.QGraphicsEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGraphicsColorizeEffect struct {
 	h  *C.QGraphicsColorizeEffect
-	gc *[1]*C.QGraphicsColorizeEffect
+	gc *[1]unsafe.Pointer
 	*QGraphicsEffect
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsColorizeEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsEffect.miqtSetGC(gc)
 }
 
 func (this *QGraphicsColorizeEffect) cPointer() *C.QGraphicsColorizeEffect {
@@ -692,15 +753,18 @@ func NewQGraphicsColorizeEffect() *QGraphicsColorizeEffect {
 
 // NewQGraphicsColorizeEffect2 constructs a new QGraphicsColorizeEffect object.
 func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsColorizeEffect(C.QGraphicsColorizeEffect_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsColorizeEffect_metaObject(this.h))
 }
 
 func (this *QGraphicsColorizeEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsColorizeEffect_metacast(this.h, param1_Cstring))
@@ -716,24 +780,31 @@ func QGraphicsColorizeEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsColorizeEffect) Color() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QGraphicsColorizeEffect_color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsColorizeEffect) Strength() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsColorizeEffect_strength(this.h))
 }
 
 func (this *QGraphicsColorizeEffect) SetColor(c *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QGraphicsColorizeEffect_setColor(this.h, c.cPointer())
 }
 
 func (this *QGraphicsColorizeEffect) SetStrength(strength float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsColorizeEffect_setStrength(this.h, (C.double)(strength))
 }
 
 func (this *QGraphicsColorizeEffect) ColorChanged(color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QGraphicsColorizeEffect_colorChanged(this.h, color.cPointer())
 }
 func (this *QGraphicsColorizeEffect) OnColorChanged(slot func(color *QColor)) {
@@ -754,6 +825,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(cb C.intptr_t, colo
 }
 
 func (this *QGraphicsColorizeEffect) StrengthChanged(strength float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsColorizeEffect_strengthChanged(this.h, (C.double)(strength))
 }
 func (this *QGraphicsColorizeEffect) OnStrengthChanged(slot func(strength float64)) {
@@ -797,6 +869,7 @@ func QGraphicsColorizeEffect_Tr3(s string, c string, n int) string {
 
 // UpdateBoundingRect can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) UpdateBoundingRect() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsColorizeEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -809,6 +882,7 @@ func (this *QGraphicsColorizeEffect) UpdateBoundingRect() {
 
 // SourceIsPixmap can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) SourceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -823,6 +897,7 @@ func (this *QGraphicsColorizeEffect) SourceIsPixmap() bool {
 
 // SourceBoundingRect can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) SourceBoundingRect() QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -839,6 +914,8 @@ func (this *QGraphicsColorizeEffect) SourceBoundingRect() QRectF {
 
 // DrawSource can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) DrawSource(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsColorizeEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
@@ -851,6 +928,7 @@ func (this *QGraphicsColorizeEffect) DrawSource(painter *QPainter) {
 
 // SourcePixmap can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) SourcePixmap() QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsColorizeEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -867,6 +945,7 @@ func (this *QGraphicsColorizeEffect) SourcePixmap() QPixmap {
 
 // Sender can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsColorizeEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -881,6 +960,7 @@ func (this *QGraphicsColorizeEffect) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsColorizeEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -895,6 +975,7 @@ func (this *QGraphicsColorizeEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -911,6 +992,8 @@ func (this *QGraphicsColorizeEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsColorizeEffect that was directly constructed.
 func (this *QGraphicsColorizeEffect) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsColorizeEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -924,6 +1007,8 @@ func (this *QGraphicsColorizeEffect) IsSignalConnected(signal *QMetaMethod) bool
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_Draw(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGraphicsColorizeEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -950,6 +1035,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_draw(self *C.QGraphicsColorizeEf
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceRect)
 
 	_goptr := newQRectF(C.QGraphicsColorizeEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -974,12 +1061,14 @@ func miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(self *C.QGraphic
 	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsColorizeEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsColorizeEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsColorizeEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
@@ -1006,6 +1095,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_sourceChanged(self *C.QGraphicsC
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsColorizeEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1034,6 +1125,9 @@ func miqt_exec_callback_QGraphicsColorizeEffect_event(self *C.QGraphicsColorizeE
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsColorizeEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1064,6 +1158,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_eventFilter(self *C.QGraphicsCol
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsColorizeEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1090,6 +1186,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_timerEvent(self *C.QGraphicsColo
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsColorizeEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1116,6 +1214,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_childEvent(self *C.QGraphicsColo
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsColorizeEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1142,6 +1242,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_customEvent(self *C.QGraphicsCol
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsColorizeEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1168,6 +1270,8 @@ func miqt_exec_callback_QGraphicsColorizeEffect_connectNotify(self *C.QGraphicsC
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsColorizeEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1205,16 +1309,24 @@ func (this *QGraphicsColorizeEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsColorizeEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsColorizeEffect) {
-		C.QGraphicsColorizeEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsColorizeEffect_delete((*C.QGraphicsColorizeEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGraphicsBlurEffect struct {
 	h  *C.QGraphicsBlurEffect
-	gc *[1]*C.QGraphicsBlurEffect
+	gc *[1]unsafe.Pointer
 	*QGraphicsEffect
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsBlurEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsEffect.miqtSetGC(gc)
 }
 
 func (this *QGraphicsBlurEffect) cPointer() *C.QGraphicsBlurEffect {
@@ -1256,15 +1368,18 @@ func NewQGraphicsBlurEffect() *QGraphicsBlurEffect {
 
 // NewQGraphicsBlurEffect2 constructs a new QGraphicsBlurEffect object.
 func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsBlurEffect(C.QGraphicsBlurEffect_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsBlurEffect_metaObject(this.h))
 }
 
 func (this *QGraphicsBlurEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsBlurEffect_metacast(this.h, param1_Cstring))
@@ -1280,28 +1395,35 @@ func QGraphicsBlurEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsBlurEffect) BoundingRectFor(rect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	_goptr := newQRectF(C.QGraphicsBlurEffect_boundingRectFor(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsBlurEffect) BlurRadius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsBlurEffect_blurRadius(this.h))
 }
 
 func (this *QGraphicsBlurEffect) BlurHints() QGraphicsBlurEffect__BlurHint {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsBlurEffect__BlurHint)(C.QGraphicsBlurEffect_blurHints(this.h))
 }
 
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsBlurEffect_setBlurRadius(this.h, (C.double)(blurRadius))
 }
 
 func (this *QGraphicsBlurEffect) SetBlurHints(hints QGraphicsBlurEffect__BlurHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsBlurEffect_setBlurHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsBlurEffect) BlurRadiusChanged(blurRadius float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsBlurEffect_blurRadiusChanged(this.h, (C.double)(blurRadius))
 }
 func (this *QGraphicsBlurEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
@@ -1322,6 +1444,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_blurRadiusChanged(cb C.intptr_t, blu
 }
 
 func (this *QGraphicsBlurEffect) BlurHintsChanged(hints QGraphicsBlurEffect__BlurHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsBlurEffect_blurHintsChanged(this.h, (C.int)(hints))
 }
 func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints QGraphicsBlurEffect__BlurHint)) {
@@ -1365,6 +1488,7 @@ func QGraphicsBlurEffect_Tr3(s string, c string, n int) string {
 
 // UpdateBoundingRect can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) UpdateBoundingRect() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsBlurEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1377,6 +1501,7 @@ func (this *QGraphicsBlurEffect) UpdateBoundingRect() {
 
 // SourceIsPixmap can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) SourceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsBlurEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1391,6 +1516,7 @@ func (this *QGraphicsBlurEffect) SourceIsPixmap() bool {
 
 // SourceBoundingRect can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) SourceBoundingRect() QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsBlurEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1407,6 +1533,8 @@ func (this *QGraphicsBlurEffect) SourceBoundingRect() QRectF {
 
 // DrawSource can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) DrawSource(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsBlurEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
@@ -1419,6 +1547,7 @@ func (this *QGraphicsBlurEffect) DrawSource(painter *QPainter) {
 
 // SourcePixmap can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) SourcePixmap() QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsBlurEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1435,6 +1564,7 @@ func (this *QGraphicsBlurEffect) SourcePixmap() QPixmap {
 
 // Sender can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsBlurEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1449,6 +1579,7 @@ func (this *QGraphicsBlurEffect) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsBlurEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1463,6 +1594,7 @@ func (this *QGraphicsBlurEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1479,6 +1611,8 @@ func (this *QGraphicsBlurEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsBlurEffect that was directly constructed.
 func (this *QGraphicsBlurEffect) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsBlurEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1492,6 +1626,8 @@ func (this *QGraphicsBlurEffect) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	_goptr := newQRectF(C.QGraphicsBlurEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1516,12 +1652,15 @@ func miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(self *C.QGraphicsBlu
 	slotval1 := newQRectF(rect)
 
 	virtualReturn := gofunc((&QGraphicsBlurEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsBlurEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_Draw(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGraphicsBlurEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1548,6 +1687,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_draw(self *C.QGraphicsBlurEffect, cb
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsBlurEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
@@ -1574,6 +1714,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_sourceChanged(self *C.QGraphicsBlurE
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsBlurEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1602,6 +1744,9 @@ func miqt_exec_callback_QGraphicsBlurEffect_event(self *C.QGraphicsBlurEffect, c
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsBlurEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1632,6 +1777,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_eventFilter(self *C.QGraphicsBlurEff
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsBlurEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1658,6 +1805,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_timerEvent(self *C.QGraphicsBlurEffe
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsBlurEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1684,6 +1833,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_childEvent(self *C.QGraphicsBlurEffe
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsBlurEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1710,6 +1861,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_customEvent(self *C.QGraphicsBlurEff
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsBlurEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1736,6 +1889,8 @@ func miqt_exec_callback_QGraphicsBlurEffect_connectNotify(self *C.QGraphicsBlurE
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsBlurEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1773,16 +1928,24 @@ func (this *QGraphicsBlurEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsBlurEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsBlurEffect) {
-		C.QGraphicsBlurEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsBlurEffect_delete((*C.QGraphicsBlurEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGraphicsDropShadowEffect struct {
 	h  *C.QGraphicsDropShadowEffect
-	gc *[1]*C.QGraphicsDropShadowEffect
+	gc *[1]unsafe.Pointer
 	*QGraphicsEffect
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsDropShadowEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsEffect.miqtSetGC(gc)
 }
 
 func (this *QGraphicsDropShadowEffect) cPointer() *C.QGraphicsDropShadowEffect {
@@ -1824,15 +1987,18 @@ func NewQGraphicsDropShadowEffect() *QGraphicsDropShadowEffect {
 
 // NewQGraphicsDropShadowEffect2 constructs a new QGraphicsDropShadowEffect object.
 func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsDropShadowEffect(C.QGraphicsDropShadowEffect_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsDropShadowEffect_metaObject(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsDropShadowEffect_metacast(this.h, param1_Cstring))
@@ -1848,64 +2014,82 @@ func QGraphicsDropShadowEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsDropShadowEffect) BoundingRectFor(rect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	_goptr := newQRectF(C.QGraphicsDropShadowEffect_boundingRectFor(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) Offset() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QGraphicsDropShadowEffect_offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) XOffset() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsDropShadowEffect_xOffset(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) YOffset() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsDropShadowEffect_yOffset(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) BlurRadius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsDropShadowEffect_blurRadius(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) Color() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QGraphicsDropShadowEffect_color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) SetOffset(ofs *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ofs)
 	C.QGraphicsDropShadowEffect_setOffset(this.h, ofs.cPointer())
 }
 
 func (this *QGraphicsDropShadowEffect) SetOffset2(dx float64, dy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_setOffset2(this.h, (C.double)(dx), (C.double)(dy))
 }
 
 func (this *QGraphicsDropShadowEffect) SetOffsetWithQreal(d float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_setOffsetWithQreal(this.h, (C.double)(d))
 }
 
 func (this *QGraphicsDropShadowEffect) SetXOffset(dx float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_setXOffset(this.h, (C.double)(dx))
 }
 
 func (this *QGraphicsDropShadowEffect) SetYOffset(dy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_setYOffset(this.h, (C.double)(dy))
 }
 
 func (this *QGraphicsDropShadowEffect) SetBlurRadius(blurRadius float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_setBlurRadius(this.h, (C.double)(blurRadius))
 }
 
 func (this *QGraphicsDropShadowEffect) SetColor(color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QGraphicsDropShadowEffect_setColor(this.h, color.cPointer())
 }
 
 func (this *QGraphicsDropShadowEffect) OffsetChanged(offset *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 	C.QGraphicsDropShadowEffect_offsetChanged(this.h, offset.cPointer())
 }
 func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func(offset *QPointF)) {
@@ -1926,6 +2110,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(cb C.intptr_t, o
 }
 
 func (this *QGraphicsDropShadowEffect) BlurRadiusChanged(blurRadius float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsDropShadowEffect_blurRadiusChanged(this.h, (C.double)(blurRadius))
 }
 func (this *QGraphicsDropShadowEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
@@ -1946,6 +2131,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_blurRadiusChanged(cb C.intptr_
 }
 
 func (this *QGraphicsDropShadowEffect) ColorChanged(color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QGraphicsDropShadowEffect_colorChanged(this.h, color.cPointer())
 }
 func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func(color *QColor)) {
@@ -1989,6 +2176,7 @@ func QGraphicsDropShadowEffect_Tr3(s string, c string, n int) string {
 
 // UpdateBoundingRect can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) UpdateBoundingRect() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2001,6 +2189,7 @@ func (this *QGraphicsDropShadowEffect) UpdateBoundingRect() {
 
 // SourceIsPixmap can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) SourceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2015,6 +2204,7 @@ func (this *QGraphicsDropShadowEffect) SourceIsPixmap() bool {
 
 // SourceBoundingRect can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) SourceBoundingRect() QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2031,6 +2221,8 @@ func (this *QGraphicsDropShadowEffect) SourceBoundingRect() QRectF {
 
 // DrawSource can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) DrawSource(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsDropShadowEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
@@ -2043,6 +2235,7 @@ func (this *QGraphicsDropShadowEffect) DrawSource(painter *QPainter) {
 
 // SourcePixmap can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) SourcePixmap() QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsDropShadowEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2059,6 +2252,7 @@ func (this *QGraphicsDropShadowEffect) SourcePixmap() QPixmap {
 
 // Sender can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsDropShadowEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2073,6 +2267,7 @@ func (this *QGraphicsDropShadowEffect) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2087,6 +2282,7 @@ func (this *QGraphicsDropShadowEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2103,6 +2299,8 @@ func (this *QGraphicsDropShadowEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsDropShadowEffect that was directly constructed.
 func (this *QGraphicsDropShadowEffect) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsDropShadowEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -2116,6 +2314,8 @@ func (this *QGraphicsDropShadowEffect) IsSignalConnected(signal *QMetaMethod) bo
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	_goptr := newQRectF(C.QGraphicsDropShadowEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2140,12 +2340,15 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(self *C.QGraph
 	slotval1 := newQRectF(rect)
 
 	virtualReturn := gofunc((&QGraphicsDropShadowEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsDropShadowEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_Draw(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGraphicsDropShadowEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2172,6 +2375,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_draw(self *C.QGraphicsDropShad
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsDropShadowEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
@@ -2198,6 +2402,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_sourceChanged(self *C.QGraphic
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsDropShadowEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2226,6 +2432,9 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_event(self *C.QGraphicsDropSha
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsDropShadowEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2256,6 +2465,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_eventFilter(self *C.QGraphicsD
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsDropShadowEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2282,6 +2493,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_timerEvent(self *C.QGraphicsDr
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsDropShadowEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2308,6 +2521,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_childEvent(self *C.QGraphicsDr
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsDropShadowEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2334,6 +2549,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_customEvent(self *C.QGraphicsD
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsDropShadowEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2360,6 +2577,8 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_connectNotify(self *C.QGraphic
 }
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsDropShadowEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2397,16 +2616,24 @@ func (this *QGraphicsDropShadowEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsDropShadowEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsDropShadowEffect) {
-		C.QGraphicsDropShadowEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsDropShadowEffect_delete((*C.QGraphicsDropShadowEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGraphicsOpacityEffect struct {
 	h  *C.QGraphicsOpacityEffect
-	gc *[1]*C.QGraphicsOpacityEffect
+	gc *[1]unsafe.Pointer
 	*QGraphicsEffect
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsOpacityEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsEffect.miqtSetGC(gc)
 }
 
 func (this *QGraphicsOpacityEffect) cPointer() *C.QGraphicsOpacityEffect {
@@ -2448,15 +2675,18 @@ func NewQGraphicsOpacityEffect() *QGraphicsOpacityEffect {
 
 // NewQGraphicsOpacityEffect2 constructs a new QGraphicsOpacityEffect object.
 func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsOpacityEffect(C.QGraphicsOpacityEffect_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsOpacityEffect_metaObject(this.h))
 }
 
 func (this *QGraphicsOpacityEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsOpacityEffect_metacast(this.h, param1_Cstring))
@@ -2472,24 +2702,30 @@ func QGraphicsOpacityEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsOpacityEffect) Opacity() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsOpacityEffect_opacity(this.h))
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMask() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QGraphicsOpacityEffect_opacityMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsOpacityEffect) SetOpacity(opacity float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsOpacityEffect_setOpacity(this.h, (C.double)(opacity))
 }
 
 func (this *QGraphicsOpacityEffect) SetOpacityMask(mask *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mask)
 	C.QGraphicsOpacityEffect_setOpacityMask(this.h, mask.cPointer())
 }
 
 func (this *QGraphicsOpacityEffect) OpacityChanged(opacity float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsOpacityEffect_opacityChanged(this.h, (C.double)(opacity))
 }
 func (this *QGraphicsOpacityEffect) OnOpacityChanged(slot func(opacity float64)) {
@@ -2510,6 +2746,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_opacityChanged(cb C.intptr_t, opa
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMaskChanged(mask *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mask)
 	C.QGraphicsOpacityEffect_opacityMaskChanged(this.h, mask.cPointer())
 }
 func (this *QGraphicsOpacityEffect) OnOpacityMaskChanged(slot func(mask *QBrush)) {
@@ -2553,6 +2791,7 @@ func QGraphicsOpacityEffect_Tr3(s string, c string, n int) string {
 
 // UpdateBoundingRect can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) UpdateBoundingRect() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsOpacityEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2565,6 +2804,7 @@ func (this *QGraphicsOpacityEffect) UpdateBoundingRect() {
 
 // SourceIsPixmap can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) SourceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2579,6 +2819,7 @@ func (this *QGraphicsOpacityEffect) SourceIsPixmap() bool {
 
 // SourceBoundingRect can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) SourceBoundingRect() QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRectF(C.QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2595,6 +2836,8 @@ func (this *QGraphicsOpacityEffect) SourceBoundingRect() QRectF {
 
 // DrawSource can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) DrawSource(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsOpacityEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
@@ -2607,6 +2850,7 @@ func (this *QGraphicsOpacityEffect) DrawSource(painter *QPainter) {
 
 // SourcePixmap can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) SourcePixmap() QPixmap {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsOpacityEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2623,6 +2867,7 @@ func (this *QGraphicsOpacityEffect) SourcePixmap() QPixmap {
 
 // Sender can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsOpacityEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2637,6 +2882,7 @@ func (this *QGraphicsOpacityEffect) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsOpacityEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2651,6 +2897,7 @@ func (this *QGraphicsOpacityEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2667,6 +2914,8 @@ func (this *QGraphicsOpacityEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsOpacityEffect that was directly constructed.
 func (this *QGraphicsOpacityEffect) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsOpacityEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -2680,6 +2929,8 @@ func (this *QGraphicsOpacityEffect) IsSignalConnected(signal *QMetaMethod) bool 
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_Draw(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGraphicsOpacityEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2706,6 +2957,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_draw(self *C.QGraphicsOpacityEffe
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceRect)
 
 	_goptr := newQRectF(C.QGraphicsOpacityEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2730,12 +2983,14 @@ func miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(self *C.QGraphics
 	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsOpacityEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsOpacityEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsOpacityEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
@@ -2762,6 +3017,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_sourceChanged(self *C.QGraphicsOp
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsOpacityEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2790,6 +3047,9 @@ func miqt_exec_callback_QGraphicsOpacityEffect_event(self *C.QGraphicsOpacityEff
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsOpacityEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2820,6 +3080,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_eventFilter(self *C.QGraphicsOpac
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsOpacityEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2846,6 +3108,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_timerEvent(self *C.QGraphicsOpaci
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsOpacityEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2872,6 +3136,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_childEvent(self *C.QGraphicsOpaci
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsOpacityEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2898,6 +3164,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_customEvent(self *C.QGraphicsOpac
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsOpacityEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2924,6 +3192,8 @@ func miqt_exec_callback_QGraphicsOpacityEffect_connectNotify(self *C.QGraphicsOp
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsOpacityEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2961,8 +3231,9 @@ func (this *QGraphicsOpacityEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsOpacityEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsOpacityEffect) {
-		C.QGraphicsOpacityEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsOpacityEffect_delete((*C.QGraphicsOpacityEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

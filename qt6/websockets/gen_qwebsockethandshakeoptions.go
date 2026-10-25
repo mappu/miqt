@@ -15,7 +15,13 @@ import (
 
 type QWebSocketHandshakeOptions struct {
 	h  *C.QWebSocketHandshakeOptions
-	gc *[1]*C.QWebSocketHandshakeOptions
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSocketHandshakeOptions) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSocketHandshakeOptions) cPointer() *C.QWebSocketHandshakeOptions {
@@ -54,19 +60,25 @@ func NewQWebSocketHandshakeOptions() *QWebSocketHandshakeOptions {
 
 // NewQWebSocketHandshakeOptions2 constructs a new QWebSocketHandshakeOptions object.
 func NewQWebSocketHandshakeOptions2(other *QWebSocketHandshakeOptions) *QWebSocketHandshakeOptions {
+	defer runtime.KeepAlive(other)
 
 	return newQWebSocketHandshakeOptions(C.QWebSocketHandshakeOptions_new2(other.cPointer()))
 }
 
 func (this *QWebSocketHandshakeOptions) OperatorAssign(other *QWebSocketHandshakeOptions) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebSocketHandshakeOptions_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebSocketHandshakeOptions) Swap(other *QWebSocketHandshakeOptions) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebSocketHandshakeOptions_swap(this.h, other.cPointer())
 }
 
 func (this *QWebSocketHandshakeOptions) Subprotocols() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebSocketHandshakeOptions_subprotocols(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -80,6 +92,7 @@ func (this *QWebSocketHandshakeOptions) Subprotocols() []string {
 }
 
 func (this *QWebSocketHandshakeOptions) SetSubprotocols(protocols []string) {
+	defer runtime.KeepAlive(this)
 	protocols_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(protocols))))
 	defer C.free(unsafe.Pointer(protocols_CArray_ptr))
 	protocols_CArray := unsafe.Slice(protocols_CArray_ptr, len(protocols))
@@ -106,8 +119,9 @@ func (this *QWebSocketHandshakeOptions) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSocketHandshakeOptions{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSocketHandshakeOptions) {
-		C.QWebSocketHandshakeOptions_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSocketHandshakeOptions_delete((*C.QWebSocketHandshakeOptions)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

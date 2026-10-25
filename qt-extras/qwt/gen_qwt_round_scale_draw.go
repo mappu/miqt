@@ -17,8 +17,15 @@ import (
 
 type QwtRoundScaleDraw struct {
 	h  *C.QwtRoundScaleDraw
-	gc *[1]*C.QwtRoundScaleDraw
+	gc *[1]unsafe.Pointer
 	*QwtAbstractScaleDraw
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtRoundScaleDraw) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtAbstractScaleDraw.miqtSetGC(gc)
 }
 
 func (this *QwtRoundScaleDraw) cPointer() *C.QwtRoundScaleDraw {
@@ -59,37 +66,47 @@ func NewQwtRoundScaleDraw() *QwtRoundScaleDraw {
 }
 
 func (this *QwtRoundScaleDraw) SetRadius(radius float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtRoundScaleDraw_setRadius(this.h, (C.double)(radius))
 }
 
 func (this *QwtRoundScaleDraw) Radius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtRoundScaleDraw_radius(this.h))
 }
 
 func (this *QwtRoundScaleDraw) MoveCenter(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtRoundScaleDraw_moveCenter(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QwtRoundScaleDraw) MoveCenterWithQPointF(param1 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtRoundScaleDraw_moveCenterWithQPointF(this.h, (*C.QPointF)(param1.UnsafePointer()))
 }
 
 func (this *QwtRoundScaleDraw) Center() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtRoundScaleDraw_center(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtRoundScaleDraw) SetAngleRange(angle1 float64, angle2 float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtRoundScaleDraw_setAngleRange(this.h, (C.double)(angle1), (C.double)(angle2))
 }
 
 func (this *QwtRoundScaleDraw) Extent(param1 *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QwtRoundScaleDraw_extent(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 // InvalidateCache can only be called from a QwtRoundScaleDraw that was directly constructed.
 func (this *QwtRoundScaleDraw) InvalidateCache() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtRoundScaleDraw_protectedbase_invalidateCache(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -102,6 +119,8 @@ func (this *QwtRoundScaleDraw) InvalidateCache() {
 
 // TickLabel can only be called from a QwtRoundScaleDraw that was directly constructed.
 func (this *QwtRoundScaleDraw) TickLabel(param1 *qt.QFont, value float64) *QwtText {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtText(C.QwtRoundScaleDraw_protectedbase_tickLabel(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
@@ -115,6 +134,8 @@ func (this *QwtRoundScaleDraw) TickLabel(param1 *qt.QFont, value float64) *QwtTe
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_Extent(param1 *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (float64)(C.QwtRoundScaleDraw_virtualbase_extent(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer())))
 
@@ -143,6 +164,8 @@ func miqt_exec_callback_QwtRoundScaleDraw_extent(self *C.QwtRoundScaleDraw, cb C
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_DrawTick(param1 *qt.QPainter, value float64, lenVal float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtRoundScaleDraw_virtualbase_drawTick(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(value), (C.double)(lenVal))
 
@@ -173,6 +196,8 @@ func miqt_exec_callback_QwtRoundScaleDraw_drawTick(self *C.QwtRoundScaleDraw, cb
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_DrawBackbone(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtRoundScaleDraw_virtualbase_drawBackbone(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -199,6 +224,8 @@ func miqt_exec_callback_QwtRoundScaleDraw_drawBackbone(self *C.QwtRoundScaleDraw
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_DrawLabel(param1 *qt.QPainter, val float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtRoundScaleDraw_virtualbase_drawLabel(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(val))
 
@@ -227,6 +254,9 @@ func miqt_exec_callback_QwtRoundScaleDraw_drawLabel(self *C.QwtRoundScaleDraw, c
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_Draw(param1 *qt.QPainter, param2 *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtRoundScaleDraw_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()))
 
@@ -255,6 +285,7 @@ func miqt_exec_callback_QwtRoundScaleDraw_draw(self *C.QwtRoundScaleDraw, cb C.i
 }
 
 func (this *QwtRoundScaleDraw) callVirtualBase_Label(param1 float64) *QwtText {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtText(C.QwtRoundScaleDraw_virtualbase_label(unsafe.Pointer(this.h), (C.double)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -279,8 +310,9 @@ func miqt_exec_callback_QwtRoundScaleDraw_label(self *C.QwtRoundScaleDraw, cb C.
 	slotval1 := (float64)(param1)
 
 	virtualReturn := gofunc((&QwtRoundScaleDraw{h: self}).callVirtualBase_Label, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtRoundScaleDraw_virtualreturncopy_QwtText(virtualReturn.cPointer())
 
 }
 
@@ -296,8 +328,9 @@ func (this *QwtRoundScaleDraw) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtRoundScaleDraw{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtRoundScaleDraw) {
-		C.QwtRoundScaleDraw_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtRoundScaleDraw_delete((*C.QwtRoundScaleDraw)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

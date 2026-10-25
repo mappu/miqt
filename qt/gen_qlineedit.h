@@ -307,6 +307,8 @@ bool QLineEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLineEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QLineEdit_virtualreturncopy_QSize(QSize* src);
+QVariant* QLineEdit_virtualreturncopy_QVariant(QVariant* src);
 
 void QLineEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self);

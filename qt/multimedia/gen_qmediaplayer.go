@@ -60,8 +60,15 @@ const (
 
 type QMediaPlayer struct {
 	h  *C.QMediaPlayer
-	gc *[1]*C.QMediaPlayer
+	gc *[1]unsafe.Pointer
 	*QMediaObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaPlayer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaObject.miqtSetGC(gc)
 }
 
 func (this *QMediaPlayer) cPointer() *C.QMediaPlayer {
@@ -103,21 +110,25 @@ func NewQMediaPlayer() *QMediaPlayer {
 
 // NewQMediaPlayer2 constructs a new QMediaPlayer object.
 func NewQMediaPlayer2(parent *qt.QObject) *QMediaPlayer {
+	defer runtime.KeepAlive(parent)
 
 	return newQMediaPlayer(C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQMediaPlayer3 constructs a new QMediaPlayer object.
 func NewQMediaPlayer3(parent *qt.QObject, flags QMediaPlayer__Flag) *QMediaPlayer {
+	defer runtime.KeepAlive(parent)
 
 	return newQMediaPlayer(C.QMediaPlayer_new3((*C.QObject)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QMediaPlayer) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaPlayer_metaObject(this.h)))
 }
 
 func (this *QMediaPlayer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaPlayer_metacast(this.h, param1_Cstring))
@@ -163,18 +174,26 @@ func QMediaPlayer_SupportedMimeTypes() []string {
 }
 
 func (this *QMediaPlayer) SetVideoOutput(videoOutput *QVideoWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(videoOutput)
 	C.QMediaPlayer_setVideoOutput(this.h, videoOutput.cPointer())
 }
 
 func (this *QMediaPlayer) SetVideoOutputWithVideoOutput(videoOutput *QGraphicsVideoItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(videoOutput)
 	C.QMediaPlayer_setVideoOutputWithVideoOutput(this.h, videoOutput.cPointer())
 }
 
 func (this *QMediaPlayer) SetVideoOutputWithSurface(surface *QAbstractVideoSurface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(surface)
 	C.QMediaPlayer_setVideoOutputWithSurface(this.h, surface.cPointer())
 }
 
 func (this *QMediaPlayer) SetVideoOutputWithSurfaces(surfaces []*QAbstractVideoSurface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(surfaces)
 	surfaces_CArray_ptr := (**C.QAbstractVideoSurface)(C.malloc(C.size_t(8 * len(surfaces))))
 	defer C.free(unsafe.Pointer(surfaces_CArray_ptr))
 	surfaces_CArray := unsafe.Slice(surfaces_CArray_ptr, len(surfaces))
@@ -186,74 +205,91 @@ func (this *QMediaPlayer) SetVideoOutputWithSurfaces(surfaces []*QAbstractVideoS
 }
 
 func (this *QMediaPlayer) Media() *QMediaContent {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMediaContent(C.QMediaPlayer_media(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) MediaStream() *qt.QIODevice {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_mediaStream(this.h)))
 }
 
 func (this *QMediaPlayer) Playlist() *QMediaPlaylist {
+	defer runtime.KeepAlive(this)
 	return newQMediaPlaylist(C.QMediaPlayer_playlist(this.h))
 }
 
 func (this *QMediaPlayer) CurrentMedia() *QMediaContent {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMediaContent(C.QMediaPlayer_currentMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) State() QMediaPlayer__State {
+	defer runtime.KeepAlive(this)
 	return (QMediaPlayer__State)(C.QMediaPlayer_state(this.h))
 }
 
 func (this *QMediaPlayer) MediaStatus() QMediaPlayer__MediaStatus {
+	defer runtime.KeepAlive(this)
 	return (QMediaPlayer__MediaStatus)(C.QMediaPlayer_mediaStatus(this.h))
 }
 
 func (this *QMediaPlayer) Duration() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMediaPlayer_duration(this.h))
 }
 
 func (this *QMediaPlayer) Position() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMediaPlayer_position(this.h))
 }
 
 func (this *QMediaPlayer) Volume() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlayer_volume(this.h))
 }
 
 func (this *QMediaPlayer) IsMuted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlayer_isMuted(this.h))
 }
 
 func (this *QMediaPlayer) IsAudioAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlayer_isAudioAvailable(this.h))
 }
 
 func (this *QMediaPlayer) IsVideoAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlayer_isVideoAvailable(this.h))
 }
 
 func (this *QMediaPlayer) BufferStatus() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlayer_bufferStatus(this.h))
 }
 
 func (this *QMediaPlayer) IsSeekable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlayer_isSeekable(this.h))
 }
 
 func (this *QMediaPlayer) PlaybackRate() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QMediaPlayer_playbackRate(this.h))
 }
 
 func (this *QMediaPlayer) Error() QMediaPlayer__Error {
+	defer runtime.KeepAlive(this)
 	return (QMediaPlayer__Error)(C.QMediaPlayer_error(this.h))
 }
 
 func (this *QMediaPlayer) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaPlayer_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -261,24 +297,29 @@ func (this *QMediaPlayer) ErrorString() string {
 }
 
 func (this *QMediaPlayer) CurrentNetworkConfiguration() *network.QNetworkConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(C.QMediaPlayer_currentNetworkConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QMediaPlayer_availability(this.h))
 }
 
 func (this *QMediaPlayer) AudioRole() QAudio__Role {
+	defer runtime.KeepAlive(this)
 	return (QAudio__Role)(C.QMediaPlayer_audioRole(this.h))
 }
 
 func (this *QMediaPlayer) SetAudioRole(audioRole QAudio__Role) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_setAudioRole(this.h, (C.int)(audioRole))
 }
 
 func (this *QMediaPlayer) SupportedAudioRoles() []QAudio__Role {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedAudioRoles(this.h)
 	_ret := make([]QAudio__Role, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -289,6 +330,7 @@ func (this *QMediaPlayer) SupportedAudioRoles() []QAudio__Role {
 }
 
 func (this *QMediaPlayer) CustomAudioRole() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaPlayer_customAudioRole(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -296,6 +338,7 @@ func (this *QMediaPlayer) CustomAudioRole() string {
 }
 
 func (this *QMediaPlayer) SetCustomAudioRole(audioRole string) {
+	defer runtime.KeepAlive(this)
 	audioRole_ms := C.struct_miqt_string{}
 	audioRole_ms.data = C.CString(audioRole)
 	audioRole_ms.len = C.size_t(len(audioRole))
@@ -304,6 +347,7 @@ func (this *QMediaPlayer) SetCustomAudioRole(audioRole string) {
 }
 
 func (this *QMediaPlayer) SupportedCustomAudioRoles() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedCustomAudioRoles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -317,42 +361,55 @@ func (this *QMediaPlayer) SupportedCustomAudioRoles() []string {
 }
 
 func (this *QMediaPlayer) Play() {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_play(this.h)
 }
 
 func (this *QMediaPlayer) Pause() {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_pause(this.h)
 }
 
 func (this *QMediaPlayer) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_stop(this.h)
 }
 
 func (this *QMediaPlayer) SetPosition(position int64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_setPosition(this.h, (C.longlong)(position))
 }
 
 func (this *QMediaPlayer) SetVolume(volume int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_setVolume(this.h, (C.int)(volume))
 }
 
 func (this *QMediaPlayer) SetMuted(muted bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QMediaPlayer) SetPlaybackRate(rate float64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_setPlaybackRate(this.h, (C.double)(rate))
 }
 
 func (this *QMediaPlayer) SetMedia(media *QMediaContent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(media)
 	C.QMediaPlayer_setMedia(this.h, media.cPointer())
 }
 
 func (this *QMediaPlayer) SetPlaylist(playlist *QMediaPlaylist) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(playlist)
 	C.QMediaPlayer_setPlaylist(this.h, playlist.cPointer())
 }
 
 func (this *QMediaPlayer) SetNetworkConfigurations(configurations []network.QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(configurations)
 	configurations_CArray_ptr := (**C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configurations))))
 	defer C.free(unsafe.Pointer(configurations_CArray_ptr))
 	configurations_CArray := unsafe.Slice(configurations_CArray_ptr, len(configurations))
@@ -364,6 +421,8 @@ func (this *QMediaPlayer) SetNetworkConfigurations(configurations []network.QNet
 }
 
 func (this *QMediaPlayer) MediaChanged(media *QMediaContent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(media)
 	C.QMediaPlayer_mediaChanged(this.h, media.cPointer())
 }
 func (this *QMediaPlayer) OnMediaChanged(slot func(media *QMediaContent)) {
@@ -384,6 +443,8 @@ func miqt_exec_callback_QMediaPlayer_mediaChanged(cb C.intptr_t, media *C.QMedia
 }
 
 func (this *QMediaPlayer) CurrentMediaChanged(media *QMediaContent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(media)
 	C.QMediaPlayer_currentMediaChanged(this.h, media.cPointer())
 }
 func (this *QMediaPlayer) OnCurrentMediaChanged(slot func(media *QMediaContent)) {
@@ -404,6 +465,7 @@ func miqt_exec_callback_QMediaPlayer_currentMediaChanged(cb C.intptr_t, media *C
 }
 
 func (this *QMediaPlayer) StateChanged(newState QMediaPlayer__State) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_stateChanged(this.h, (C.int)(newState))
 }
 func (this *QMediaPlayer) OnStateChanged(slot func(newState QMediaPlayer__State)) {
@@ -424,6 +486,7 @@ func miqt_exec_callback_QMediaPlayer_stateChanged(cb C.intptr_t, newState C.int)
 }
 
 func (this *QMediaPlayer) MediaStatusChanged(status QMediaPlayer__MediaStatus) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_mediaStatusChanged(this.h, (C.int)(status))
 }
 func (this *QMediaPlayer) OnMediaStatusChanged(slot func(status QMediaPlayer__MediaStatus)) {
@@ -444,6 +507,7 @@ func miqt_exec_callback_QMediaPlayer_mediaStatusChanged(cb C.intptr_t, status C.
 }
 
 func (this *QMediaPlayer) DurationChanged(duration int64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QMediaPlayer) OnDurationChanged(slot func(duration int64)) {
@@ -464,6 +528,7 @@ func miqt_exec_callback_QMediaPlayer_durationChanged(cb C.intptr_t, duration C.l
 }
 
 func (this *QMediaPlayer) PositionChanged(position int64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_positionChanged(this.h, (C.longlong)(position))
 }
 func (this *QMediaPlayer) OnPositionChanged(slot func(position int64)) {
@@ -484,6 +549,7 @@ func miqt_exec_callback_QMediaPlayer_positionChanged(cb C.intptr_t, position C.l
 }
 
 func (this *QMediaPlayer) VolumeChanged(volume int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_volumeChanged(this.h, (C.int)(volume))
 }
 func (this *QMediaPlayer) OnVolumeChanged(slot func(volume int)) {
@@ -504,6 +570,7 @@ func miqt_exec_callback_QMediaPlayer_volumeChanged(cb C.intptr_t, volume C.int) 
 }
 
 func (this *QMediaPlayer) MutedChanged(muted bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_mutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QMediaPlayer) OnMutedChanged(slot func(muted bool)) {
@@ -524,6 +591,7 @@ func miqt_exec_callback_QMediaPlayer_mutedChanged(cb C.intptr_t, muted C.bool) {
 }
 
 func (this *QMediaPlayer) AudioAvailableChanged(available bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_audioAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaPlayer) OnAudioAvailableChanged(slot func(available bool)) {
@@ -544,6 +612,7 @@ func miqt_exec_callback_QMediaPlayer_audioAvailableChanged(cb C.intptr_t, availa
 }
 
 func (this *QMediaPlayer) VideoAvailableChanged(videoAvailable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_videoAvailableChanged(this.h, (C.bool)(videoAvailable))
 }
 func (this *QMediaPlayer) OnVideoAvailableChanged(slot func(videoAvailable bool)) {
@@ -564,6 +633,7 @@ func miqt_exec_callback_QMediaPlayer_videoAvailableChanged(cb C.intptr_t, videoA
 }
 
 func (this *QMediaPlayer) BufferStatusChanged(percentFilled int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_bufferStatusChanged(this.h, (C.int)(percentFilled))
 }
 func (this *QMediaPlayer) OnBufferStatusChanged(slot func(percentFilled int)) {
@@ -584,6 +654,7 @@ func miqt_exec_callback_QMediaPlayer_bufferStatusChanged(cb C.intptr_t, percentF
 }
 
 func (this *QMediaPlayer) SeekableChanged(seekable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_seekableChanged(this.h, (C.bool)(seekable))
 }
 func (this *QMediaPlayer) OnSeekableChanged(slot func(seekable bool)) {
@@ -604,6 +675,7 @@ func miqt_exec_callback_QMediaPlayer_seekableChanged(cb C.intptr_t, seekable C.b
 }
 
 func (this *QMediaPlayer) PlaybackRateChanged(rate float64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_playbackRateChanged(this.h, (C.double)(rate))
 }
 func (this *QMediaPlayer) OnPlaybackRateChanged(slot func(rate float64)) {
@@ -624,6 +696,7 @@ func miqt_exec_callback_QMediaPlayer_playbackRateChanged(cb C.intptr_t, rate C.d
 }
 
 func (this *QMediaPlayer) AudioRoleChanged(role QAudio__Role) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_audioRoleChanged(this.h, (C.int)(role))
 }
 func (this *QMediaPlayer) OnAudioRoleChanged(slot func(role QAudio__Role)) {
@@ -644,6 +717,7 @@ func miqt_exec_callback_QMediaPlayer_audioRoleChanged(cb C.intptr_t, role C.int)
 }
 
 func (this *QMediaPlayer) CustomAudioRoleChanged(role string) {
+	defer runtime.KeepAlive(this)
 	role_ms := C.struct_miqt_string{}
 	role_ms.data = C.CString(role)
 	role_ms.len = C.size_t(len(role))
@@ -671,6 +745,7 @@ func miqt_exec_callback_QMediaPlayer_customAudioRoleChanged(cb C.intptr_t, role 
 }
 
 func (this *QMediaPlayer) ErrorWithError(error QMediaPlayer__Error) {
+	defer runtime.KeepAlive(this)
 	C.QMediaPlayer_errorWithError(this.h, (C.int)(error))
 }
 func (this *QMediaPlayer) OnErrorWithError(slot func(error QMediaPlayer__Error)) {
@@ -691,6 +766,8 @@ func miqt_exec_callback_QMediaPlayer_errorWithError(cb C.intptr_t, error C.int) 
 }
 
 func (this *QMediaPlayer) NetworkConfigurationChanged(configuration *network.QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(configuration)
 	C.QMediaPlayer_networkConfigurationChanged(this.h, (*C.QNetworkConfiguration)(configuration.UnsafePointer()))
 }
 func (this *QMediaPlayer) OnNetworkConfigurationChanged(slot func(configuration *network.QNetworkConfiguration)) {
@@ -711,10 +788,14 @@ func miqt_exec_callback_QMediaPlayer_networkConfigurationChanged(cb C.intptr_t, 
 }
 
 func (this *QMediaPlayer) Bind(param1 *qt.QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QMediaPlayer_bind(this.h, (*C.QObject)(param1.UnsafePointer())))
 }
 
 func (this *QMediaPlayer) Unbind(param1 *qt.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaPlayer_unbind(this.h, (*C.QObject)(param1.UnsafePointer()))
 }
 
@@ -814,11 +895,15 @@ func QMediaPlayer_SupportedMimeTypesWithFlags(flags QMediaPlayer__Flag) []string
 }
 
 func (this *QMediaPlayer) SetMedia2(media *QMediaContent, stream *qt.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(media)
+	defer runtime.KeepAlive(stream)
 	C.QMediaPlayer_setMedia2(this.h, media.cPointer(), (*C.QIODevice)(stream.UnsafePointer()))
 }
 
 // AddPropertyWatch can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) AddPropertyWatch(name []byte) {
+	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -838,6 +923,7 @@ func (this *QMediaPlayer) AddPropertyWatch(name []byte) {
 
 // RemovePropertyWatch can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) RemovePropertyWatch(name []byte) {
+	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -857,6 +943,7 @@ func (this *QMediaPlayer) RemovePropertyWatch(name []byte) {
 
 // Sender can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMediaPlayer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -871,6 +958,7 @@ func (this *QMediaPlayer) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMediaPlayer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -885,6 +973,7 @@ func (this *QMediaPlayer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -901,6 +990,8 @@ func (this *QMediaPlayer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMediaPlayer that was directly constructed.
 func (this *QMediaPlayer) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMediaPlayer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -914,6 +1005,7 @@ func (this *QMediaPlayer) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QMediaPlayer) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 
 	return (QMultimedia__AvailabilityStatus)(C.QMediaPlayer_virtualbase_availability(unsafe.Pointer(this.h)))
 
@@ -939,6 +1031,8 @@ func miqt_exec_callback_QMediaPlayer_availability(self *C.QMediaPlayer, cb C.int
 }
 
 func (this *QMediaPlayer) callVirtualBase_Bind(param1 *qt.QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QMediaPlayer_virtualbase_bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
 
@@ -967,6 +1061,8 @@ func miqt_exec_callback_QMediaPlayer_bind(self *C.QMediaPlayer, cb C.intptr_t, p
 }
 
 func (this *QMediaPlayer) callVirtualBase_Unbind(param1 *qt.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMediaPlayer_virtualbase_unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
 
@@ -993,6 +1089,7 @@ func miqt_exec_callback_QMediaPlayer_unbind(self *C.QMediaPlayer, cb C.intptr_t,
 }
 
 func (this *QMediaPlayer) callVirtualBase_IsAvailable() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMediaPlayer_virtualbase_isAvailable(unsafe.Pointer(this.h)))
 
@@ -1018,6 +1115,7 @@ func miqt_exec_callback_QMediaPlayer_isAvailable(self *C.QMediaPlayer, cb C.intp
 }
 
 func (this *QMediaPlayer) callVirtualBase_Service() *QMediaService {
+	defer runtime.KeepAlive(this)
 
 	return newQMediaService(C.QMediaPlayer_virtualbase_service(unsafe.Pointer(this.h)))
 
@@ -1037,12 +1135,15 @@ func miqt_exec_callback_QMediaPlayer_service(self *C.QMediaPlayer, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QMediaPlayer{h: self}).callVirtualBase_Service)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMediaPlayer) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaPlayer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1071,6 +1172,9 @@ func miqt_exec_callback_QMediaPlayer_event(self *C.QMediaPlayer, cb C.intptr_t, 
 }
 
 func (this *QMediaPlayer) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaPlayer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1101,6 +1205,8 @@ func miqt_exec_callback_QMediaPlayer_eventFilter(self *C.QMediaPlayer, cb C.intp
 }
 
 func (this *QMediaPlayer) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaPlayer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1127,6 +1233,8 @@ func miqt_exec_callback_QMediaPlayer_timerEvent(self *C.QMediaPlayer, cb C.intpt
 }
 
 func (this *QMediaPlayer) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaPlayer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1153,6 +1261,8 @@ func miqt_exec_callback_QMediaPlayer_childEvent(self *C.QMediaPlayer, cb C.intpt
 }
 
 func (this *QMediaPlayer) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaPlayer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1179,6 +1289,8 @@ func miqt_exec_callback_QMediaPlayer_customEvent(self *C.QMediaPlayer, cb C.intp
 }
 
 func (this *QMediaPlayer) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMediaPlayer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1205,6 +1317,8 @@ func miqt_exec_callback_QMediaPlayer_connectNotify(self *C.QMediaPlayer, cb C.in
 }
 
 func (this *QMediaPlayer) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMediaPlayer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1242,8 +1356,9 @@ func (this *QMediaPlayer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaPlayer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaPlayer) {
-		C.QMediaPlayer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaPlayer_delete((*C.QMediaPlayer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

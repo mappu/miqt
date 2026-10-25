@@ -17,7 +17,13 @@ import (
 
 type QDesignerSettingsInterface struct {
 	h  *C.QDesignerSettingsInterface
-	gc *[1]*C.QDesignerSettingsInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerSettingsInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerSettingsInterface) cPointer() *C.QDesignerSettingsInterface {
@@ -55,6 +61,7 @@ func NewQDesignerSettingsInterface() *QDesignerSettingsInterface {
 }
 
 func (this *QDesignerSettingsInterface) BeginGroup(prefix string) {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -63,10 +70,12 @@ func (this *QDesignerSettingsInterface) BeginGroup(prefix string) {
 }
 
 func (this *QDesignerSettingsInterface) EndGroup() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerSettingsInterface_endGroup(this.h)
 }
 
 func (this *QDesignerSettingsInterface) Contains(key string) bool {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -75,6 +84,8 @@ func (this *QDesignerSettingsInterface) Contains(key string) bool {
 }
 
 func (this *QDesignerSettingsInterface) SetValue(key string, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -83,6 +94,8 @@ func (this *QDesignerSettingsInterface) SetValue(key string, value *qt6.QVariant
 }
 
 func (this *QDesignerSettingsInterface) Value(key string, defaultValue *qt6.QVariant) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(defaultValue)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -93,6 +106,7 @@ func (this *QDesignerSettingsInterface) Value(key string, defaultValue *qt6.QVar
 }
 
 func (this *QDesignerSettingsInterface) Remove(key string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -210,8 +224,9 @@ func miqt_exec_callback_QDesignerSettingsInterface_value(self *C.QDesignerSettin
 	slotval2 := qt6.UnsafeNewQVariant(unsafe.Pointer(defaultValue))
 
 	virtualReturn := gofunc(slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QDesignerSettingsInterface_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 func (this *QDesignerSettingsInterface) OnRemove(slot func(key string)) {
@@ -250,8 +265,9 @@ func (this *QDesignerSettingsInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerSettingsInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerSettingsInterface) {
-		C.QDesignerSettingsInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerSettingsInterface_delete((*C.QDesignerSettingsInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

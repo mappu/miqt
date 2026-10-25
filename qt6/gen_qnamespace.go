@@ -1682,7 +1682,13 @@ const (
 
 type QKeyCombination struct {
 	h  *C.QKeyCombination
-	gc *[1]*C.QKeyCombination
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QKeyCombination) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QKeyCombination) cPointer() *C.QKeyCombination {
@@ -1733,6 +1739,7 @@ func NewQKeyCombination3(modifiers KeyboardModifier) *QKeyCombination {
 
 // NewQKeyCombination4 constructs a new QKeyCombination object.
 func NewQKeyCombination4(param1 *QKeyCombination) *QKeyCombination {
+	defer runtime.KeepAlive(param1)
 
 	return newQKeyCombination(C.QKeyCombination_new4(param1.cPointer()))
 }
@@ -1756,10 +1763,12 @@ func NewQKeyCombination7(modifiers KeyboardModifier, key Key) *QKeyCombination {
 }
 
 func (this *QKeyCombination) KeyboardModifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QKeyCombination_keyboardModifiers(this.h))
 }
 
 func (this *QKeyCombination) Key() Key {
+	defer runtime.KeepAlive(this)
 	return (Key)(C.QKeyCombination_key(this.h))
 }
 
@@ -1770,10 +1779,12 @@ func QKeyCombination_FromCombined(combined int) *QKeyCombination {
 }
 
 func (this *QKeyCombination) ToCombined() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeyCombination_toCombined(this.h))
 }
 
 func (this *QKeyCombination) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeyCombination_ToInt(this.h))
 }
 
@@ -1789,8 +1800,9 @@ func (this *QKeyCombination) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QKeyCombination{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeyCombination) {
-		C.QKeyCombination_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QKeyCombination_delete((*C.QKeyCombination)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

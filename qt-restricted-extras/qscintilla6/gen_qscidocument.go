@@ -15,7 +15,13 @@ import (
 
 type QsciDocument struct {
 	h  *C.QsciDocument
-	gc *[1]*C.QsciDocument
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciDocument) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QsciDocument) cPointer() *C.QsciDocument {
@@ -54,11 +60,14 @@ func NewQsciDocument() *QsciDocument {
 
 // NewQsciDocument2 constructs a new QsciDocument object.
 func NewQsciDocument2(param1 *QsciDocument) *QsciDocument {
+	defer runtime.KeepAlive(param1)
 
 	return newQsciDocument(C.QsciDocument_new2(param1.cPointer()))
 }
 
 func (this *QsciDocument) OperatorAssign(param1 *QsciDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QsciDocument_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -74,8 +83,9 @@ func (this *QsciDocument) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciDocument{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciDocument) {
-		C.QsciDocument_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciDocument_delete((*C.QsciDocument)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

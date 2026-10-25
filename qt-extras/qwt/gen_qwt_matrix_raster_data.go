@@ -24,8 +24,15 @@ const (
 
 type QwtMatrixRasterData struct {
 	h  *C.QwtMatrixRasterData
-	gc *[1]*C.QwtMatrixRasterData
+	gc *[1]unsafe.Pointer
 	*QwtRasterData
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtMatrixRasterData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtRasterData.miqtSetGC(gc)
 }
 
 func (this *QwtMatrixRasterData) cPointer() *C.QwtMatrixRasterData {
@@ -66,18 +73,23 @@ func NewQwtMatrixRasterData() *QwtMatrixRasterData {
 }
 
 func (this *QwtMatrixRasterData) SetResampleMode(mode QwtMatrixRasterData__ResampleMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtMatrixRasterData_setResampleMode(this.h, (C.int)(mode))
 }
 
 func (this *QwtMatrixRasterData) ResampleMode() QwtMatrixRasterData__ResampleMode {
+	defer runtime.KeepAlive(this)
 	return (QwtMatrixRasterData__ResampleMode)(C.QwtMatrixRasterData_resampleMode(this.h))
 }
 
 func (this *QwtMatrixRasterData) SetInterval(param1 qt.Axis, param2 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QwtMatrixRasterData_setInterval(this.h, (C.int)(param1), param2.cPointer())
 }
 
 func (this *QwtMatrixRasterData) SetValueMatrix(values []float64, numColumns int) {
+	defer runtime.KeepAlive(this)
 	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_CArray_ptr))
 	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
@@ -89,6 +101,7 @@ func (this *QwtMatrixRasterData) SetValueMatrix(values []float64, numColumns int
 }
 
 func (this *QwtMatrixRasterData) ValueMatrix() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtMatrixRasterData_valueMatrix(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -99,28 +112,36 @@ func (this *QwtMatrixRasterData) ValueMatrix() []float64 {
 }
 
 func (this *QwtMatrixRasterData) SetValue(row int, col int, value float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtMatrixRasterData_setValue(this.h, (C.int)(row), (C.int)(col), (C.double)(value))
 }
 
 func (this *QwtMatrixRasterData) NumColumns() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtMatrixRasterData_numColumns(this.h))
 }
 
 func (this *QwtMatrixRasterData) NumRows() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtMatrixRasterData_numRows(this.h))
 }
 
 func (this *QwtMatrixRasterData) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtMatrixRasterData_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtMatrixRasterData) Value(x float64, y float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtMatrixRasterData_value(this.h, (C.double)(x), (C.double)(y)))
 }
 
 func (this *QwtMatrixRasterData) callVirtualBase_SetInterval(param1 qt.Axis, param2 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtMatrixRasterData_virtualbase_setInterval(unsafe.Pointer(this.h), (C.int)(param1), param2.cPointer())
 
@@ -149,6 +170,8 @@ func miqt_exec_callback_QwtMatrixRasterData_setInterval(self *C.QwtMatrixRasterD
 }
 
 func (this *QwtMatrixRasterData) callVirtualBase_PixelHint(param1 *qt.QRectF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtMatrixRasterData_virtualbase_pixelHint(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -173,12 +196,14 @@ func miqt_exec_callback_QwtMatrixRasterData_pixelHint(self *C.QwtMatrixRasterDat
 	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtMatrixRasterData{h: self}).callVirtualBase_PixelHint, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QwtMatrixRasterData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtMatrixRasterData) callVirtualBase_Value(x float64, y float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtMatrixRasterData_virtualbase_value(unsafe.Pointer(this.h), (C.double)(x), (C.double)(y)))
 
@@ -209,6 +234,9 @@ func miqt_exec_callback_QwtMatrixRasterData_value(self *C.QwtMatrixRasterData, c
 }
 
 func (this *QwtMatrixRasterData) callVirtualBase_InitRaster(param1 *qt.QRectF, raster *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(raster)
 
 	C.QwtMatrixRasterData_virtualbase_initRaster(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QSize)(raster.UnsafePointer()))
 
@@ -237,6 +265,7 @@ func miqt_exec_callback_QwtMatrixRasterData_initRaster(self *C.QwtMatrixRasterDa
 }
 
 func (this *QwtMatrixRasterData) callVirtualBase_DiscardRaster() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtMatrixRasterData_virtualbase_discardRaster(unsafe.Pointer(this.h))
 
@@ -271,8 +300,9 @@ func (this *QwtMatrixRasterData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtMatrixRasterData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtMatrixRasterData) {
-		C.QwtMatrixRasterData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtMatrixRasterData_delete((*C.QwtMatrixRasterData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

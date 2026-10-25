@@ -18,8 +18,15 @@ import (
 
 type QMediaNetworkAccessControl struct {
 	h  *C.QMediaNetworkAccessControl
-	gc *[1]*C.QMediaNetworkAccessControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaNetworkAccessControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMediaNetworkAccessControl) cPointer() *C.QMediaNetworkAccessControl {
@@ -54,10 +61,12 @@ func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer) *QMediaNetworkAccessC
 }
 
 func (this *QMediaNetworkAccessControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaNetworkAccessControl_metaObject(this.h)))
 }
 
 func (this *QMediaNetworkAccessControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaNetworkAccessControl_metacast(this.h, param1_Cstring))
@@ -82,6 +91,8 @@ func QMediaNetworkAccessControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []network.QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(configuration)
 	configuration_CArray_ptr := (**C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configuration))))
 	defer C.free(unsafe.Pointer(configuration_CArray_ptr))
 	configuration_CArray := unsafe.Slice(configuration_CArray_ptr, len(configuration))
@@ -93,12 +104,15 @@ func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []networ
 }
 
 func (this *QMediaNetworkAccessControl) CurrentConfiguration() *network.QNetworkConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(C.QMediaNetworkAccessControl_currentConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaNetworkAccessControl) ConfigurationChanged(configuration *network.QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(configuration)
 	C.QMediaNetworkAccessControl_configurationChanged(this.h, (*C.QNetworkConfiguration)(configuration.UnsafePointer()))
 }
 func (this *QMediaNetworkAccessControl) OnConfigurationChanged(slot func(configuration *network.QNetworkConfiguration)) {
@@ -174,8 +188,9 @@ func (this *QMediaNetworkAccessControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaNetworkAccessControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaNetworkAccessControl) {
-		C.QMediaNetworkAccessControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaNetworkAccessControl_delete((*C.QMediaNetworkAccessControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

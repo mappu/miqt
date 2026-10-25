@@ -158,6 +158,8 @@ bool QGridLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QGridLayout_virtualbase_widget(void* self);
 bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self);
+QSize* QGridLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QGridLayout_virtualreturncopy_QRect(QRect* src);
 
 void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QGridLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);

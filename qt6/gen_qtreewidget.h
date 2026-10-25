@@ -212,6 +212,7 @@ bool QTreeWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QTreeWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+QVariant* QTreeWidgetItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QTreeWidgetItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
 
@@ -494,6 +495,11 @@ bool QTreeWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QTreeWidget_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QTreeWidget_virtualreturncopy_QModelIndex(QModelIndex* src);
+QRegion* QTreeWidget_virtualreturncopy_QRegion(QRegion* src);
+QSize* QTreeWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QTreeWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
 void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);

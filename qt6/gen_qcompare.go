@@ -30,7 +30,13 @@ const (
 
 type QPartialOrdering struct {
 	h  *C.QPartialOrdering
-	gc *[1]*C.QPartialOrdering
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPartialOrdering) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPartialOrdering) cPointer() *C.QPartialOrdering {
@@ -63,6 +69,7 @@ func UnsafeNewQPartialOrdering(h unsafe.Pointer) *QPartialOrdering {
 
 // NewQPartialOrdering constructs a new QPartialOrdering object.
 func NewQPartialOrdering(param1 *QPartialOrdering) *QPartialOrdering {
+	defer runtime.KeepAlive(param1)
 
 	return newQPartialOrdering(C.QPartialOrdering_new(param1.cPointer()))
 }
@@ -79,8 +86,9 @@ func (this *QPartialOrdering) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPartialOrdering{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPartialOrdering) {
-		C.QPartialOrdering_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPartialOrdering_delete((*C.QPartialOrdering)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

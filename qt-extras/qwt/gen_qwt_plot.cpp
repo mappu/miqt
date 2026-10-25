@@ -123,7 +123,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtPlot_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtPlot_virtualbase_sizeHint(const void* self);
@@ -138,7 +140,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtPlot_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtPlot_virtualbase_minimumSizeHint(const void* self);
@@ -220,7 +224,9 @@ public:
 
 		QwtPlotItem* sigval1 = param1;
 		QVariant* callback_return_value = miqt_exec_callback_QwtPlot_itemToInfo(this, handle__itemToInfo, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QwtPlot_virtualbase_itemToInfo(const void* self, QwtPlotItem* param1);
@@ -879,7 +885,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QwtPlot_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QwtPlot_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -2181,6 +2189,14 @@ bool QwtPlot_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtPlot_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtPlot*>(self)->QwtPlot::disconnectNotify(*signal);
+}
+
+QSize* QwtPlot_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QwtPlot_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QwtPlot_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

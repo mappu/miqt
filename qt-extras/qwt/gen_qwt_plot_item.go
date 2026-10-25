@@ -60,7 +60,13 @@ const (
 
 type QwtPlotItem struct {
 	h  *C.QwtPlotItem
-	gc *[1]*C.QwtPlotItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPlotItem) cPointer() *C.QwtPlotItem {
@@ -92,18 +98,23 @@ func UnsafeNewQwtPlotItem(h unsafe.Pointer) *QwtPlotItem {
 }
 
 func (this *QwtPlotItem) Attach(plot *QwtPlot) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(plot)
 	C.QwtPlotItem_attach(this.h, plot.cPointer())
 }
 
 func (this *QwtPlotItem) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_detach(this.h)
 }
 
 func (this *QwtPlotItem) Plot() *QwtPlot {
+	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotItem_plot(this.h))
 }
 
 func (this *QwtPlotItem) SetTitle(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -112,122 +123,159 @@ func (this *QwtPlotItem) SetTitle(title string) {
 }
 
 func (this *QwtPlotItem) SetTitleWithTitle(title *QwtText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(title)
 	C.QwtPlotItem_setTitleWithTitle(this.h, title.cPointer())
 }
 
 func (this *QwtPlotItem) Title() *QwtText {
-	return newQwtText(C.QwtPlotItem_title(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtText(C.QwtPlotItem_title(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtPlotItem) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotItem_rtti(this.h))
 }
 
 func (this *QwtPlotItem) SetItemAttribute(param1 QwtPlotItem__ItemAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setItemAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtPlotItem) TestItemAttribute(param1 QwtPlotItem__ItemAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotItem_testItemAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotItem) SetItemInterest(param1 QwtPlotItem__ItemInterest) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setItemInterest(this.h, (C.int)(param1))
 }
 
 func (this *QwtPlotItem) TestItemInterest(param1 QwtPlotItem__ItemInterest) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotItem_testItemInterest(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotItem) SetRenderHint(param1 QwtPlotItem__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setRenderHint(this.h, (C.int)(param1))
 }
 
 func (this *QwtPlotItem) TestRenderHint(param1 QwtPlotItem__RenderHint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotItem_testRenderHint(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotItem) SetRenderThreadCount(numThreads uint) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setRenderThreadCount(this.h, (C.uint)(numThreads))
 }
 
 func (this *QwtPlotItem) RenderThreadCount() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtPlotItem_renderThreadCount(this.h))
 }
 
 func (this *QwtPlotItem) SetLegendIconSize(legendIconSize *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(legendIconSize)
 	C.QwtPlotItem_setLegendIconSize(this.h, (*C.QSize)(legendIconSize.UnsafePointer()))
 }
 
 func (this *QwtPlotItem) LegendIconSize() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotItem_legendIconSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotItem) Z() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotItem_z(this.h))
 }
 
 func (this *QwtPlotItem) SetZ(z float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setZ(this.h, (C.double)(z))
 }
 
 func (this *QwtPlotItem) Show() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_show(this.h)
 }
 
 func (this *QwtPlotItem) Hide() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_hide(this.h)
 }
 
 func (this *QwtPlotItem) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QwtPlotItem) IsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotItem_isVisible(this.h))
 }
 
 func (this *QwtPlotItem) SetAxes(xAxis int, yAxis int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setAxes(this.h, (C.int)(xAxis), (C.int)(yAxis))
 }
 
 func (this *QwtPlotItem) SetXAxis(axis int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setXAxis(this.h, (C.int)(axis))
 }
 
 func (this *QwtPlotItem) XAxis() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotItem_xAxis(this.h))
 }
 
 func (this *QwtPlotItem) SetYAxis(axis int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setYAxis(this.h, (C.int)(axis))
 }
 
 func (this *QwtPlotItem) YAxis() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotItem_yAxis(this.h))
 }
 
 func (this *QwtPlotItem) ItemChanged() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_itemChanged(this.h)
 }
 
 func (this *QwtPlotItem) LegendChanged() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_legendChanged(this.h)
 }
 
 func (this *QwtPlotItem) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotItem_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtPlotItem_updateScaleDiv(this.h, param1.cPointer(), param2.cPointer())
 }
 
 func (this *QwtPlotItem) UpdateLegend(param1 *QwtPlotItem, param2 []QwtLegendData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray_ptr))
 	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
@@ -239,6 +287,7 @@ func (this *QwtPlotItem) UpdateLegend(param1 *QwtPlotItem, param2 []QwtLegendDat
 }
 
 func (this *QwtPlotItem) LegendData() []QwtLegendData {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtPlotItem_legendData(this.h)
 	_ret := make([]QwtLegendData, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtLegendData)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -251,20 +300,25 @@ func (this *QwtPlotItem) LegendData() []QwtLegendData {
 }
 
 func (this *QwtPlotItem) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	_goptr := newQwtGraphic(C.QwtPlotItem_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotItem) SetItemAttribute2(param1 QwtPlotItem__ItemAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setItemAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtPlotItem) SetItemInterest2(param1 QwtPlotItem__ItemInterest, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setItemInterest2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtPlotItem) SetRenderHint2(param1 QwtPlotItem__RenderHint, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotItem_setRenderHint2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
@@ -280,8 +334,9 @@ func (this *QwtPlotItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotItem) {
-		C.QwtPlotItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotItem_delete((*C.QwtPlotItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

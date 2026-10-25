@@ -17,8 +17,14 @@ import (
 
 type QPrintPreviewDialog struct {
 	h  *C.QPrintPreviewDialog
-	gc *[1]*C.QPrintPreviewDialog
+	gc *[1]unsafe.Pointer
 	*qt.QDialog
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPrintPreviewDialog) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPrintPreviewDialog) cPointer() *C.QPrintPreviewDialog {
@@ -54,6 +60,7 @@ func UnsafeNewQPrintPreviewDialog(h unsafe.Pointer) *QPrintPreviewDialog {
 
 // NewQPrintPreviewDialog constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog(parent *qt.QWidget) *QPrintPreviewDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQPrintPreviewDialog(C.QPrintPreviewDialog_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -66,33 +73,41 @@ func NewQPrintPreviewDialog2() *QPrintPreviewDialog {
 
 // NewQPrintPreviewDialog3 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog3(printer *QPrinter) *QPrintPreviewDialog {
+	defer runtime.KeepAlive(printer)
 
 	return newQPrintPreviewDialog(C.QPrintPreviewDialog_new3(printer.cPointer()))
 }
 
 // NewQPrintPreviewDialog4 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog4(parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQPrintPreviewDialog(C.QPrintPreviewDialog_new4((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 // NewQPrintPreviewDialog5 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog5(printer *QPrinter, parent *qt.QWidget) *QPrintPreviewDialog {
+	defer runtime.KeepAlive(printer)
+	defer runtime.KeepAlive(parent)
 
 	return newQPrintPreviewDialog(C.QPrintPreviewDialog_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQPrintPreviewDialog6 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog6(printer *QPrinter, parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewDialog {
+	defer runtime.KeepAlive(printer)
+	defer runtime.KeepAlive(parent)
 
 	return newQPrintPreviewDialog(C.QPrintPreviewDialog_new6(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QPrintPreviewDialog) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPrintPreviewDialog_metaObject(this.h)))
 }
 
 func (this *QPrintPreviewDialog) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPrintPreviewDialog_metacast(this.h, param1_Cstring))
@@ -117,18 +132,23 @@ func QPrintPreviewDialog_TrUtf8(s string) string {
 }
 
 func (this *QPrintPreviewDialog) Printer() *QPrinter {
+	defer runtime.KeepAlive(this)
 	return newQPrinter(C.QPrintPreviewDialog_printer(this.h))
 }
 
 func (this *QPrintPreviewDialog) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QPrintPreviewDialog_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QPrintPreviewDialog) Done(result int) {
+	defer runtime.KeepAlive(this)
 	C.QPrintPreviewDialog_done(this.h, (C.int)(result))
 }
 
 func (this *QPrintPreviewDialog) PaintRequested(printer *QPrinter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(printer)
 	C.QPrintPreviewDialog_paintRequested(this.h, printer.cPointer())
 }
 func (this *QPrintPreviewDialog) OnPaintRequested(slot func(printer *QPrinter)) {
@@ -194,6 +214,8 @@ func QPrintPreviewDialog_TrUtf83(s string, c string, n int) string {
 
 // AdjustPosition can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) AdjustPosition(param1 *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPrintPreviewDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QWidget)(param1.UnsafePointer()))
@@ -206,6 +228,7 @@ func (this *QPrintPreviewDialog) AdjustPosition(param1 *qt.QWidget) {
 
 // UpdateMicroFocus can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPrintPreviewDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -218,6 +241,7 @@ func (this *QPrintPreviewDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPrintPreviewDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -230,6 +254,7 @@ func (this *QPrintPreviewDialog) Create() {
 
 // Destroy can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPrintPreviewDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -242,6 +267,7 @@ func (this *QPrintPreviewDialog) Destroy() {
 
 // FocusNextChild can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -256,6 +282,7 @@ func (this *QPrintPreviewDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -270,6 +297,7 @@ func (this *QPrintPreviewDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QPrintPreviewDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -284,6 +312,7 @@ func (this *QPrintPreviewDialog) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPrintPreviewDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -298,6 +327,7 @@ func (this *QPrintPreviewDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -314,6 +344,8 @@ func (this *QPrintPreviewDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPrintPreviewDialog that was directly constructed.
 func (this *QPrintPreviewDialog) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -327,6 +359,7 @@ func (this *QPrintPreviewDialog) IsSignalConnected(signal *qt.QMetaMethod) bool 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPrintPreviewDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -353,6 +386,7 @@ func miqt_exec_callback_QPrintPreviewDialog_setVisible(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Done(result int) {
+	defer runtime.KeepAlive(this)
 
 	C.QPrintPreviewDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -379,6 +413,7 @@ func miqt_exec_callback_QPrintPreviewDialog_done(self *C.QPrintPreviewDialog, cb
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -400,12 +435,14 @@ func miqt_exec_callback_QPrintPreviewDialog_sizeHint(self *C.QPrintPreviewDialog
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPrintPreviewDialog_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -427,12 +464,14 @@ func miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(self *C.QPrintPrevie
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPrintPreviewDialog_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Open() {
+	defer runtime.KeepAlive(this)
 
 	C.QPrintPreviewDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -456,6 +495,7 @@ func miqt_exec_callback_QPrintPreviewDialog_open(self *C.QPrintPreviewDialog, cb
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Exec() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPrintPreviewDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -481,6 +521,7 @@ func miqt_exec_callback_QPrintPreviewDialog_exec(self *C.QPrintPreviewDialog, cb
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Accept() {
+	defer runtime.KeepAlive(this)
 
 	C.QPrintPreviewDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -504,6 +545,7 @@ func miqt_exec_callback_QPrintPreviewDialog_accept(self *C.QPrintPreviewDialog, 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Reject() {
+	defer runtime.KeepAlive(this)
 
 	C.QPrintPreviewDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -527,6 +569,8 @@ func miqt_exec_callback_QPrintPreviewDialog_reject(self *C.QPrintPreviewDialog, 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -553,6 +597,8 @@ func miqt_exec_callback_QPrintPreviewDialog_keyPressEvent(self *C.QPrintPreviewD
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_CloseEvent(param1 *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(param1.UnsafePointer()))
 
@@ -579,6 +625,8 @@ func miqt_exec_callback_QPrintPreviewDialog_closeEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ShowEvent(param1 *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(param1.UnsafePointer()))
 
@@ -605,6 +653,8 @@ func miqt_exec_callback_QPrintPreviewDialog_showEvent(self *C.QPrintPreviewDialo
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
 
@@ -631,6 +681,8 @@ func miqt_exec_callback_QPrintPreviewDialog_resizeEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ContextMenuEvent(param1 *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(param1.UnsafePointer()))
 
@@ -657,6 +709,9 @@ func miqt_exec_callback_QPrintPreviewDialog_contextMenuEvent(self *C.QPrintPrevi
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QPrintPreviewDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
@@ -687,6 +742,7 @@ func miqt_exec_callback_QPrintPreviewDialog_eventFilter(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPrintPreviewDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -712,6 +768,7 @@ func miqt_exec_callback_QPrintPreviewDialog_devType(self *C.QPrintPreviewDialog,
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPrintPreviewDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -740,6 +797,7 @@ func miqt_exec_callback_QPrintPreviewDialog_heightForWidth(self *C.QPrintPreview
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPrintPreviewDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -765,6 +823,7 @@ func miqt_exec_callback_QPrintPreviewDialog_hasHeightForWidth(self *C.QPrintPrev
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -784,12 +843,15 @@ func miqt_exec_callback_QPrintPreviewDialog_paintEngine(self *C.QPrintPreviewDia
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPrintPreviewDialog_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -818,6 +880,8 @@ func miqt_exec_callback_QPrintPreviewDialog_event(self *C.QPrintPreviewDialog, c
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -844,6 +908,8 @@ func miqt_exec_callback_QPrintPreviewDialog_mousePressEvent(self *C.QPrintPrevie
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -870,6 +936,8 @@ func miqt_exec_callback_QPrintPreviewDialog_mouseReleaseEvent(self *C.QPrintPrev
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -896,6 +964,8 @@ func miqt_exec_callback_QPrintPreviewDialog_mouseDoubleClickEvent(self *C.QPrint
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -922,6 +992,8 @@ func miqt_exec_callback_QPrintPreviewDialog_mouseMoveEvent(self *C.QPrintPreview
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -948,6 +1020,8 @@ func miqt_exec_callback_QPrintPreviewDialog_wheelEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -974,6 +1048,8 @@ func miqt_exec_callback_QPrintPreviewDialog_keyReleaseEvent(self *C.QPrintPrevie
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1000,6 +1076,8 @@ func miqt_exec_callback_QPrintPreviewDialog_focusInEvent(self *C.QPrintPreviewDi
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1026,6 +1104,8 @@ func miqt_exec_callback_QPrintPreviewDialog_focusOutEvent(self *C.QPrintPreviewD
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1052,6 +1132,8 @@ func miqt_exec_callback_QPrintPreviewDialog_enterEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1078,6 +1160,8 @@ func miqt_exec_callback_QPrintPreviewDialog_leaveEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -1104,6 +1188,8 @@ func miqt_exec_callback_QPrintPreviewDialog_paintEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1130,6 +1216,8 @@ func miqt_exec_callback_QPrintPreviewDialog_moveEvent(self *C.QPrintPreviewDialo
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1156,6 +1244,8 @@ func miqt_exec_callback_QPrintPreviewDialog_tabletEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1182,6 +1272,8 @@ func miqt_exec_callback_QPrintPreviewDialog_actionEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1208,6 +1300,8 @@ func miqt_exec_callback_QPrintPreviewDialog_dragEnterEvent(self *C.QPrintPreview
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1234,6 +1328,8 @@ func miqt_exec_callback_QPrintPreviewDialog_dragMoveEvent(self *C.QPrintPreviewD
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1260,6 +1356,8 @@ func miqt_exec_callback_QPrintPreviewDialog_dragLeaveEvent(self *C.QPrintPreview
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1286,6 +1384,8 @@ func miqt_exec_callback_QPrintPreviewDialog_dropEvent(self *C.QPrintPreviewDialo
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1312,6 +1412,7 @@ func miqt_exec_callback_QPrintPreviewDialog_hideEvent(self *C.QPrintPreviewDialo
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1353,6 +1454,8 @@ func miqt_exec_callback_QPrintPreviewDialog_nativeEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1379,6 +1482,7 @@ func miqt_exec_callback_QPrintPreviewDialog_changeEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPrintPreviewDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1407,6 +1511,8 @@ func miqt_exec_callback_QPrintPreviewDialog_metric(self *C.QPrintPreviewDialog, 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPrintPreviewDialog_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1433,6 +1539,8 @@ func miqt_exec_callback_QPrintPreviewDialog_initPainter(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1455,12 +1563,14 @@ func miqt_exec_callback_QPrintPreviewDialog_redirected(self *C.QPrintPreviewDial
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1480,12 +1590,15 @@ func miqt_exec_callback_QPrintPreviewDialog_sharedPainter(self *C.QPrintPreviewD
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPrintPreviewDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1512,6 +1625,7 @@ func miqt_exec_callback_QPrintPreviewDialog_inputMethodEvent(self *C.QPrintPrevi
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1536,12 +1650,14 @@ func miqt_exec_callback_QPrintPreviewDialog_inputMethodQuery(self *C.QPrintPrevi
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QPrintPreviewDialog_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPrintPreviewDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1570,6 +1686,8 @@ func miqt_exec_callback_QPrintPreviewDialog_focusNextPrevChild(self *C.QPrintPre
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1596,6 +1714,8 @@ func miqt_exec_callback_QPrintPreviewDialog_timerEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1622,6 +1742,8 @@ func miqt_exec_callback_QPrintPreviewDialog_childEvent(self *C.QPrintPreviewDial
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPrintPreviewDialog_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1648,6 +1770,8 @@ func miqt_exec_callback_QPrintPreviewDialog_customEvent(self *C.QPrintPreviewDia
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPrintPreviewDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1674,6 +1798,8 @@ func miqt_exec_callback_QPrintPreviewDialog_connectNotify(self *C.QPrintPreviewD
 }
 
 func (this *QPrintPreviewDialog) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPrintPreviewDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1711,8 +1837,9 @@ func (this *QPrintPreviewDialog) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPrintPreviewDialog{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPrintPreviewDialog) {
-		C.QPrintPreviewDialog_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPrintPreviewDialog_delete((*C.QPrintPreviewDialog)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

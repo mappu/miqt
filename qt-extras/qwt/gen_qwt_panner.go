@@ -17,8 +17,14 @@ import (
 
 type QwtPanner struct {
 	h  *C.QwtPanner
-	gc *[1]*C.QwtPanner
+	gc *[1]unsafe.Pointer
 	*qt.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPanner) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPanner) cPointer() *C.QwtPanner {
@@ -54,15 +60,18 @@ func UnsafeNewQwtPanner(h unsafe.Pointer) *QwtPanner {
 
 // NewQwtPanner constructs a new QwtPanner object.
 func NewQwtPanner(parent *qt.QWidget) *QwtPanner {
+	defer runtime.KeepAlive(parent)
 
 	return newQwtPanner(C.QwtPanner_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QwtPanner) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtPanner_metaObject(this.h)))
 }
 
 func (this *QwtPanner) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtPanner_metacast(this.h, param1_Cstring))
@@ -87,56 +96,72 @@ func QwtPanner_TrUtf8(s string) string {
 }
 
 func (this *QwtPanner) SetEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QwtPanner) IsEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPanner_isEnabled(this.h))
 }
 
 func (this *QwtPanner) SetMouseButton(param1 qt.MouseButton) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setMouseButton(this.h, (C.int)(param1))
 }
 
 func (this *QwtPanner) GetMouseButton(button *qt.MouseButton, param2 *qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_getMouseButton(this.h, (*C.int)(unsafe.Pointer(button)), (*C.int)(unsafe.Pointer(param2)))
 }
 
 func (this *QwtPanner) SetAbortKey(key int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setAbortKey(this.h, (C.int)(key))
 }
 
 func (this *QwtPanner) GetAbortKey(key *int, param2 *qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_getAbortKey(this.h, (*C.int)(unsafe.Pointer(key)), (*C.int)(unsafe.Pointer(param2)))
 }
 
 func (this *QwtPanner) SetCursor(cursor *qt.QCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QwtPanner_setCursor(this.h, (*C.QCursor)(cursor.UnsafePointer()))
 }
 
 func (this *QwtPanner) Cursor() *qt.QCursor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQCursor(unsafe.Pointer(C.QwtPanner_cursor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPanner) SetOrientations(orientations qt.Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setOrientations(this.h, (C.int)(orientations))
 }
 
 func (this *QwtPanner) Orientations() qt.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtPanner_orientations(this.h))
 }
 
 func (this *QwtPanner) IsOrientationEnabled(param1 qt.Orientation) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPanner_isOrientationEnabled(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPanner) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtPanner_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtPanner) Panned(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_panned(this.h, (C.int)(dx), (C.int)(dy))
 }
 func (this *QwtPanner) OnPanned(slot func(dx int, dy int)) {
@@ -159,6 +184,7 @@ func miqt_exec_callback_QwtPanner_panned(cb C.intptr_t, dx C.int, dy C.int) {
 }
 
 func (this *QwtPanner) Moved(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_moved(this.h, (C.int)(dx), (C.int)(dy))
 }
 func (this *QwtPanner) OnMoved(slot func(dx int, dy int)) {
@@ -225,15 +251,18 @@ func QwtPanner_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QwtPanner) SetMouseButton2(param1 qt.MouseButton, param2 qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setMouseButton2(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 func (this *QwtPanner) SetAbortKey2(key int, param2 qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtPanner_setAbortKey2(this.h, (C.int)(key), (C.int)(param2))
 }
 
 // UpdateMicroFocus can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPanner_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -246,6 +275,7 @@ func (this *QwtPanner) UpdateMicroFocus() {
 
 // Create can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPanner_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -258,6 +288,7 @@ func (this *QwtPanner) Create() {
 
 // Destroy can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPanner_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -270,6 +301,7 @@ func (this *QwtPanner) Destroy() {
 
 // FocusNextChild can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtPanner_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -284,6 +316,7 @@ func (this *QwtPanner) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtPanner_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -298,6 +331,7 @@ func (this *QwtPanner) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPanner_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -312,6 +346,7 @@ func (this *QwtPanner) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPanner_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -326,6 +361,7 @@ func (this *QwtPanner) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -342,6 +378,8 @@ func (this *QwtPanner) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPanner that was directly constructed.
 func (this *QwtPanner) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtPanner_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -355,6 +393,9 @@ func (this *QwtPanner) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPanner) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPanner_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
@@ -385,6 +426,8 @@ func miqt_exec_callback_QwtPanner_eventFilter(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -411,6 +454,8 @@ func miqt_exec_callback_QwtPanner_widgetMousePressEvent(self *C.QwtPanner, cb C.
 }
 
 func (this *QwtPanner) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -437,6 +482,8 @@ func miqt_exec_callback_QwtPanner_widgetMouseReleaseEvent(self *C.QwtPanner, cb 
 }
 
 func (this *QwtPanner) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -463,6 +510,8 @@ func miqt_exec_callback_QwtPanner_widgetMouseMoveEvent(self *C.QwtPanner, cb C.i
 }
 
 func (this *QwtPanner) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -489,6 +538,8 @@ func miqt_exec_callback_QwtPanner_widgetKeyPressEvent(self *C.QwtPanner, cb C.in
 }
 
 func (this *QwtPanner) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -515,6 +566,8 @@ func miqt_exec_callback_QwtPanner_widgetKeyReleaseEvent(self *C.QwtPanner, cb C.
 }
 
 func (this *QwtPanner) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
 
@@ -541,6 +594,7 @@ func miqt_exec_callback_QwtPanner_paintEvent(self *C.QwtPanner, cb C.intptr_t, p
 }
 
 func (this *QwtPanner) callVirtualBase_ContentsMask() *qt.QBitmap {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQBitmap(unsafe.Pointer(C.QwtPanner_virtualbase_contentsMask(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -562,12 +616,14 @@ func miqt_exec_callback_QwtPanner_contentsMask(self *C.QwtPanner, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_ContentsMask)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QBitmap)(virtualReturn.UnsafePointer())
+	return C.QwtPanner_virtualreturncopy_QBitmap((*C.QBitmap)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPanner) callVirtualBase_Grab() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtPanner_virtualbase_grab(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -589,12 +645,14 @@ func miqt_exec_callback_QwtPanner_grab(self *C.QwtPanner, cb C.intptr_t) *C.QPix
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_Grab)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPixmap)(virtualReturn.UnsafePointer())
+	return C.QwtPanner_virtualreturncopy_QPixmap((*C.QPixmap)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPanner) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtPanner_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -620,6 +678,7 @@ func miqt_exec_callback_QwtPanner_devType(self *C.QwtPanner, cb C.intptr_t) C.in
 }
 
 func (this *QwtPanner) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPanner_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -646,6 +705,7 @@ func miqt_exec_callback_QwtPanner_setVisible(self *C.QwtPanner, cb C.intptr_t, v
 }
 
 func (this *QwtPanner) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPanner_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -667,12 +727,14 @@ func miqt_exec_callback_QwtPanner_sizeHint(self *C.QwtPanner, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtPanner_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPanner) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPanner_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -694,12 +756,14 @@ func miqt_exec_callback_QwtPanner_minimumSizeHint(self *C.QwtPanner, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtPanner_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPanner) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtPanner_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -728,6 +792,7 @@ func miqt_exec_callback_QwtPanner_heightForWidth(self *C.QwtPanner, cb C.intptr_
 }
 
 func (this *QwtPanner) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtPanner_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -753,6 +818,7 @@ func miqt_exec_callback_QwtPanner_hasHeightForWidth(self *C.QwtPanner, cb C.intp
 }
 
 func (this *QwtPanner) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtPanner_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -772,12 +838,15 @@ func miqt_exec_callback_QwtPanner_paintEngine(self *C.QwtPanner, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtPanner) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPanner_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -806,6 +875,8 @@ func miqt_exec_callback_QwtPanner_event(self *C.QwtPanner, cb C.intptr_t, event 
 }
 
 func (this *QwtPanner) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -832,6 +903,8 @@ func miqt_exec_callback_QwtPanner_mousePressEvent(self *C.QwtPanner, cb C.intptr
 }
 
 func (this *QwtPanner) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -858,6 +931,8 @@ func miqt_exec_callback_QwtPanner_mouseReleaseEvent(self *C.QwtPanner, cb C.intp
 }
 
 func (this *QwtPanner) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -884,6 +959,8 @@ func miqt_exec_callback_QwtPanner_mouseDoubleClickEvent(self *C.QwtPanner, cb C.
 }
 
 func (this *QwtPanner) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -910,6 +987,8 @@ func miqt_exec_callback_QwtPanner_mouseMoveEvent(self *C.QwtPanner, cb C.intptr_
 }
 
 func (this *QwtPanner) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -936,6 +1015,8 @@ func miqt_exec_callback_QwtPanner_wheelEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -962,6 +1043,8 @@ func miqt_exec_callback_QwtPanner_keyPressEvent(self *C.QwtPanner, cb C.intptr_t
 }
 
 func (this *QwtPanner) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -988,6 +1071,8 @@ func miqt_exec_callback_QwtPanner_keyReleaseEvent(self *C.QwtPanner, cb C.intptr
 }
 
 func (this *QwtPanner) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1014,6 +1099,8 @@ func miqt_exec_callback_QwtPanner_focusInEvent(self *C.QwtPanner, cb C.intptr_t,
 }
 
 func (this *QwtPanner) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1040,6 +1127,8 @@ func miqt_exec_callback_QwtPanner_focusOutEvent(self *C.QwtPanner, cb C.intptr_t
 }
 
 func (this *QwtPanner) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1066,6 +1155,8 @@ func miqt_exec_callback_QwtPanner_enterEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1092,6 +1183,8 @@ func miqt_exec_callback_QwtPanner_leaveEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1118,6 +1211,8 @@ func miqt_exec_callback_QwtPanner_moveEvent(self *C.QwtPanner, cb C.intptr_t, ev
 }
 
 func (this *QwtPanner) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -1144,6 +1239,8 @@ func miqt_exec_callback_QwtPanner_resizeEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1170,6 +1267,8 @@ func miqt_exec_callback_QwtPanner_closeEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1196,6 +1295,8 @@ func miqt_exec_callback_QwtPanner_contextMenuEvent(self *C.QwtPanner, cb C.intpt
 }
 
 func (this *QwtPanner) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1222,6 +1323,8 @@ func miqt_exec_callback_QwtPanner_tabletEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1248,6 +1351,8 @@ func miqt_exec_callback_QwtPanner_actionEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1274,6 +1379,8 @@ func miqt_exec_callback_QwtPanner_dragEnterEvent(self *C.QwtPanner, cb C.intptr_
 }
 
 func (this *QwtPanner) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1300,6 +1407,8 @@ func miqt_exec_callback_QwtPanner_dragMoveEvent(self *C.QwtPanner, cb C.intptr_t
 }
 
 func (this *QwtPanner) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1326,6 +1435,8 @@ func miqt_exec_callback_QwtPanner_dragLeaveEvent(self *C.QwtPanner, cb C.intptr_
 }
 
 func (this *QwtPanner) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1352,6 +1463,8 @@ func miqt_exec_callback_QwtPanner_dropEvent(self *C.QwtPanner, cb C.intptr_t, ev
 }
 
 func (this *QwtPanner) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1378,6 +1491,8 @@ func miqt_exec_callback_QwtPanner_showEvent(self *C.QwtPanner, cb C.intptr_t, ev
 }
 
 func (this *QwtPanner) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1404,6 +1519,7 @@ func miqt_exec_callback_QwtPanner_hideEvent(self *C.QwtPanner, cb C.intptr_t, ev
 }
 
 func (this *QwtPanner) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1445,6 +1561,8 @@ func miqt_exec_callback_QwtPanner_nativeEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1471,6 +1589,7 @@ func miqt_exec_callback_QwtPanner_changeEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtPanner_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1499,6 +1618,8 @@ func miqt_exec_callback_QwtPanner_metric(self *C.QwtPanner, cb C.intptr_t, param
 }
 
 func (this *QwtPanner) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtPanner_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1525,6 +1646,8 @@ func miqt_exec_callback_QwtPanner_initPainter(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtPanner_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1547,12 +1670,14 @@ func miqt_exec_callback_QwtPanner_redirected(self *C.QwtPanner, cb C.intptr_t, o
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtPanner) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtPanner_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1572,12 +1697,15 @@ func miqt_exec_callback_QwtPanner_sharedPainter(self *C.QwtPanner, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtPanner) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPanner_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1604,6 +1732,7 @@ func miqt_exec_callback_QwtPanner_inputMethodEvent(self *C.QwtPanner, cb C.intpt
 }
 
 func (this *QwtPanner) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtPanner_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1628,12 +1757,14 @@ func miqt_exec_callback_QwtPanner_inputMethodQuery(self *C.QwtPanner, cb C.intpt
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QwtPanner{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QwtPanner_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPanner) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtPanner_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1662,6 +1793,8 @@ func miqt_exec_callback_QwtPanner_focusNextPrevChild(self *C.QwtPanner, cb C.int
 }
 
 func (this *QwtPanner) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1688,6 +1821,8 @@ func miqt_exec_callback_QwtPanner_timerEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1714,6 +1849,8 @@ func miqt_exec_callback_QwtPanner_childEvent(self *C.QwtPanner, cb C.intptr_t, e
 }
 
 func (this *QwtPanner) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPanner_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1740,6 +1877,8 @@ func miqt_exec_callback_QwtPanner_customEvent(self *C.QwtPanner, cb C.intptr_t, 
 }
 
 func (this *QwtPanner) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtPanner_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1766,6 +1905,8 @@ func miqt_exec_callback_QwtPanner_connectNotify(self *C.QwtPanner, cb C.intptr_t
 }
 
 func (this *QwtPanner) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtPanner_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1803,8 +1944,9 @@ func (this *QwtPanner) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPanner{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPanner) {
-		C.QwtPanner_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPanner_delete((*C.QwtPanner)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -157,6 +157,8 @@ bool QsciLexerVerilog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerVerilog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerVerilog_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerVerilog_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerVerilog_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerVerilog_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

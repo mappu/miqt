@@ -17,8 +17,14 @@ import (
 
 type QAudioListener struct {
 	h  *C.QAudioListener
-	gc *[1]*C.QAudioListener
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioListener) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioListener) cPointer() *C.QAudioListener {
@@ -54,36 +60,45 @@ func UnsafeNewQAudioListener(h unsafe.Pointer) *QAudioListener {
 
 // NewQAudioListener constructs a new QAudioListener object.
 func NewQAudioListener(engine *QAudioEngine) *QAudioListener {
+	defer runtime.KeepAlive(engine)
 
 	return newQAudioListener(C.QAudioListener_new(engine.cPointer()))
 }
 
 func (this *QAudioListener) SetPosition(pos qt6.QVector3D) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QAudioListener_setPosition(this.h, (*C.QVector3D)(pos.UnsafePointer()))
 }
 
 func (this *QAudioListener) Position() *qt6.QVector3D {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioListener_position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioListener) SetRotation(q *qt6.QQuaternion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(q)
 	C.QAudioListener_setRotation(this.h, (*C.QQuaternion)(q.UnsafePointer()))
 }
 
 func (this *QAudioListener) Rotation() *qt6.QQuaternion {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(C.QAudioListener_rotation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioListener) Engine() *QAudioEngine {
+	defer runtime.KeepAlive(this)
 	return newQAudioEngine(C.QAudioListener_engine(this.h))
 }
 
 // Sender can only be called from a QAudioListener that was directly constructed.
 func (this *QAudioListener) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAudioListener_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -98,6 +113,7 @@ func (this *QAudioListener) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAudioListener that was directly constructed.
 func (this *QAudioListener) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioListener_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -112,6 +128,7 @@ func (this *QAudioListener) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioListener that was directly constructed.
 func (this *QAudioListener) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -128,6 +145,8 @@ func (this *QAudioListener) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioListener that was directly constructed.
 func (this *QAudioListener) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAudioListener_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -141,6 +160,8 @@ func (this *QAudioListener) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAudioListener) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioListener_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -169,6 +190,9 @@ func miqt_exec_callback_QAudioListener_event(self *C.QAudioListener, cb C.intptr
 }
 
 func (this *QAudioListener) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioListener_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -199,6 +223,8 @@ func miqt_exec_callback_QAudioListener_eventFilter(self *C.QAudioListener, cb C.
 }
 
 func (this *QAudioListener) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioListener_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -225,6 +251,8 @@ func miqt_exec_callback_QAudioListener_timerEvent(self *C.QAudioListener, cb C.i
 }
 
 func (this *QAudioListener) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioListener_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -251,6 +279,8 @@ func miqt_exec_callback_QAudioListener_childEvent(self *C.QAudioListener, cb C.i
 }
 
 func (this *QAudioListener) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioListener_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -277,6 +307,8 @@ func miqt_exec_callback_QAudioListener_customEvent(self *C.QAudioListener, cb C.
 }
 
 func (this *QAudioListener) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioListener_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -303,6 +335,8 @@ func miqt_exec_callback_QAudioListener_connectNotify(self *C.QAudioListener, cb 
 }
 
 func (this *QAudioListener) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioListener_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -340,8 +374,9 @@ func (this *QAudioListener) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioListener{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioListener) {
-		C.QAudioListener_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioListener_delete((*C.QAudioListener)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

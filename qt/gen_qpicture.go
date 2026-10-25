@@ -16,8 +16,15 @@ import (
 
 type QPicture struct {
 	h  *C.QPicture
-	gc *[1]*C.QPicture
+	gc *[1]unsafe.Pointer
 	*QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPicture) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QPicture) cPointer() *C.QPicture {
@@ -59,6 +66,7 @@ func NewQPicture() *QPicture {
 
 // NewQPicture2 constructs a new QPicture object.
 func NewQPicture2(param1 *QPicture) *QPicture {
+	defer runtime.KeepAlive(param1)
 
 	return newQPicture(C.QPicture_new2(param1.cPointer()))
 }
@@ -70,37 +78,47 @@ func NewQPicture3(formatVersion int) *QPicture {
 }
 
 func (this *QPicture) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPicture_isNull(this.h))
 }
 
 func (this *QPicture) DevType() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPicture_devType(this.h))
 }
 
 func (this *QPicture) Size() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QPicture_size(this.h))
 }
 
 func (this *QPicture) Data() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QPicture_data(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPicture) SetData(data string, size uint) {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	C.QPicture_setData(this.h, data_Cstring, (C.uint)(size))
 }
 
 func (this *QPicture) Play(p *QPainter) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	return (bool)(C.QPicture_play(this.h, p.cPointer()))
 }
 
 func (this *QPicture) Load(dev *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_load(this.h, dev.cPointer()))
 }
 
 func (this *QPicture) LoadWithFileName(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -109,10 +127,13 @@ func (this *QPicture) LoadWithFileName(fileName string) bool {
 }
 
 func (this *QPicture) Save(dev *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_save(this.h, dev.cPointer()))
 }
 
 func (this *QPicture) SaveWithFileName(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -121,28 +142,37 @@ func (this *QPicture) SaveWithFileName(fileName string) bool {
 }
 
 func (this *QPicture) BoundingRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QPicture_boundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPicture) SetBoundingRect(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QPicture_setBoundingRect(this.h, r.cPointer())
 }
 
 func (this *QPicture) OperatorAssign(p *QPicture) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	C.QPicture_operatorAssign(this.h, p.cPointer())
 }
 
 func (this *QPicture) Swap(other *QPicture) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPicture_swap(this.h, other.cPointer())
 }
 
 func (this *QPicture) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QPicture_detach(this.h)
 }
 
 func (this *QPicture) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPicture_isDetached(this.h))
 }
 
@@ -208,16 +238,20 @@ func QPicture_OutputFormatList() []string {
 }
 
 func (this *QPicture) PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return newQPaintEngine(C.QPicture_paintEngine(this.h))
 }
 
 func (this *QPicture) Load2(dev *QIODevice, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dev)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPicture_load2(this.h, dev.cPointer(), format_Cstring))
 }
 
 func (this *QPicture) Load3(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -228,12 +262,15 @@ func (this *QPicture) Load3(fileName string, format string) bool {
 }
 
 func (this *QPicture) Save2(dev *QIODevice, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dev)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPicture_save2(this.h, dev.cPointer(), format_Cstring))
 }
 
 func (this *QPicture) Save3(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -244,6 +281,7 @@ func (this *QPicture) Save3(fileName string, format string) bool {
 }
 
 func (this *QPicture) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPicture_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -269,6 +307,7 @@ func miqt_exec_callback_QPicture_devType(self *C.QPicture, cb C.intptr_t) C.int 
 }
 
 func (this *QPicture) callVirtualBase_SetData(data string, size uint) {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -300,6 +339,7 @@ func miqt_exec_callback_QPicture_setData(self *C.QPicture, cb C.intptr_t, data *
 }
 
 func (this *QPicture) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QPicture_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -319,12 +359,14 @@ func miqt_exec_callback_QPicture_paintEngine(self *C.QPicture, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QPicture{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPicture) callVirtualBase_Metric(m QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPicture_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(m)))
 
@@ -353,6 +395,8 @@ func miqt_exec_callback_QPicture_metric(self *C.QPicture, cb C.intptr_t, m C.int
 }
 
 func (this *QPicture) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPicture_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -379,6 +423,8 @@ func miqt_exec_callback_QPicture_initPainter(self *C.QPicture, cb C.intptr_t, pa
 }
 
 func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPicture_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -401,12 +447,14 @@ func miqt_exec_callback_QPicture_redirected(self *C.QPicture, cb C.intptr_t, off
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPicture{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPicture) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QPicture_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -426,6 +474,7 @@ func miqt_exec_callback_QPicture_sharedPainter(self *C.QPicture, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QPicture{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -443,15 +492,22 @@ func (this *QPicture) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPicture{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPicture) {
-		C.QPicture_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPicture_delete((*C.QPicture)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPictureIO struct {
 	h  *C.QPictureIO
-	gc *[1]*C.QPictureIO
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPictureIO) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPictureIO) cPointer() *C.QPictureIO {
@@ -490,6 +546,7 @@ func NewQPictureIO() *QPictureIO {
 
 // NewQPictureIO2 constructs a new QPictureIO object.
 func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
+	defer runtime.KeepAlive(ioDevice)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 
@@ -509,23 +566,30 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 }
 
 func (this *QPictureIO) Picture() *QPicture {
-	return newQPicture(C.QPictureIO_picture(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPicture(C.QPictureIO_picture(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPictureIO) Status() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPictureIO_status(this.h))
 }
 
 func (this *QPictureIO) Format() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QPictureIO_format(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
+	defer runtime.KeepAlive(this)
 	return newQIODevice(C.QPictureIO_ioDevice(this.h))
 }
 
 func (this *QPictureIO) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPictureIO_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -533,10 +597,12 @@ func (this *QPictureIO) FileName() string {
 }
 
 func (this *QPictureIO) Quality() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPictureIO_quality(this.h))
 }
 
 func (this *QPictureIO) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPictureIO_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -544,33 +610,42 @@ func (this *QPictureIO) Description() string {
 }
 
 func (this *QPictureIO) Parameters() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QPictureIO_parameters(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) Gamma() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QPictureIO_gamma(this.h))
 }
 
 func (this *QPictureIO) SetPicture(picture *QPicture) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(picture)
 	C.QPictureIO_setPicture(this.h, picture.cPointer())
 }
 
 func (this *QPictureIO) SetStatus(status int) {
+	defer runtime.KeepAlive(this)
 	C.QPictureIO_setStatus(this.h, (C.int)(status))
 }
 
 func (this *QPictureIO) SetFormat(format string) {
+	defer runtime.KeepAlive(this)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	C.QPictureIO_setFormat(this.h, format_Cstring)
 }
 
 func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iODevice)
 	C.QPictureIO_setIODevice(this.h, iODevice.cPointer())
 }
 
 func (this *QPictureIO) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -579,10 +654,12 @@ func (this *QPictureIO) SetFileName(fileName string) {
 }
 
 func (this *QPictureIO) SetQuality(quality int) {
+	defer runtime.KeepAlive(this)
 	C.QPictureIO_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QPictureIO) SetDescription(description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -591,20 +668,24 @@ func (this *QPictureIO) SetDescription(description string) {
 }
 
 func (this *QPictureIO) SetParameters(parameters string) {
+	defer runtime.KeepAlive(this)
 	parameters_Cstring := C.CString(parameters)
 	defer C.free(unsafe.Pointer(parameters_Cstring))
 	C.QPictureIO_setParameters(this.h, parameters_Cstring)
 }
 
 func (this *QPictureIO) SetGamma(gamma float32) {
+	defer runtime.KeepAlive(this)
 	C.QPictureIO_setGamma(this.h, (C.float)(gamma))
 }
 
 func (this *QPictureIO) Read() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPictureIO_read(this.h))
 }
 
 func (this *QPictureIO) Write() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPictureIO_write(this.h))
 }
 
@@ -620,6 +701,7 @@ func QPictureIO_PictureFormat(fileName string) []byte {
 }
 
 func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
+	defer runtime.KeepAlive(param1)
 	var _bytearray C.struct_miqt_string = C.QPictureIO_pictureFormatWithQIODevice(param1.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -664,8 +746,9 @@ func (this *QPictureIO) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPictureIO{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPictureIO) {
-		C.QPictureIO_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPictureIO_delete((*C.QPictureIO)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -15,7 +15,13 @@ import (
 
 type QMessageAuthenticationCode struct {
 	h  *C.QMessageAuthenticationCode
-	gc *[1]*C.QMessageAuthenticationCode
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMessageAuthenticationCode) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMessageAuthenticationCode) cPointer() *C.QMessageAuthenticationCode {
@@ -66,10 +72,12 @@ func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []
 }
 
 func (this *QMessageAuthenticationCode) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QMessageAuthenticationCode_reset(this.h)
 }
 
 func (this *QMessageAuthenticationCode) SetKey(key []byte) {
+	defer runtime.KeepAlive(this)
 	key_alias := C.struct_miqt_string{}
 	if len(key) > 0 {
 		key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
@@ -81,12 +89,14 @@ func (this *QMessageAuthenticationCode) SetKey(key []byte) {
 }
 
 func (this *QMessageAuthenticationCode) AddData(data string, length int64) {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	C.QMessageAuthenticationCode_addData(this.h, data_Cstring, (C.ptrdiff_t)(length))
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -98,10 +108,13 @@ func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	return (bool)(C.QMessageAuthenticationCode_addDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QMessageAuthenticationCode) Result() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_result(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -141,8 +154,9 @@ func (this *QMessageAuthenticationCode) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMessageAuthenticationCode{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMessageAuthenticationCode) {
-		C.QMessageAuthenticationCode_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMessageAuthenticationCode_delete((*C.QMessageAuthenticationCode)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

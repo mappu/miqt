@@ -22,8 +22,15 @@ const (
 
 type QGraphicsProxyWidget struct {
 	h  *C.QGraphicsProxyWidget
-	gc *[1]*C.QGraphicsProxyWidget
+	gc *[1]unsafe.Pointer
 	*QGraphicsWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsProxyWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsWidget.miqtSetGC(gc)
 }
 
 func (this *QGraphicsProxyWidget) cPointer() *C.QGraphicsProxyWidget {
@@ -65,21 +72,25 @@ func NewQGraphicsProxyWidget() *QGraphicsProxyWidget {
 
 // NewQGraphicsProxyWidget2 constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget2(parent *QGraphicsItem) *QGraphicsProxyWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsProxyWidget(C.QGraphicsProxyWidget_new2(parent.cPointer()))
 }
 
 // NewQGraphicsProxyWidget3 constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsProxyWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsProxyWidget(C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags)))
 }
 
 func (this *QGraphicsProxyWidget) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsProxyWidget_metaObject(this.h))
 }
 
 func (this *QGraphicsProxyWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsProxyWidget_metacast(this.h, param1_Cstring))
@@ -104,32 +115,46 @@ func QGraphicsProxyWidget_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QGraphicsProxyWidget_setWidget(this.h, widget.cPointer())
 }
 
 func (this *QGraphicsProxyWidget) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QGraphicsProxyWidget_widget(this.h))
 }
 
 func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQRectF(C.QGraphicsProxyWidget_subWidgetRect(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsProxyWidget) SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsProxyWidget_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsProxyWidget) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 	C.QGraphicsProxyWidget_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
 func (this *QGraphicsProxyWidget) Type() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsProxyWidget_type(this.h))
 }
 
 func (this *QGraphicsProxyWidget) CreateProxyForChildWidget(child *QWidget) *QGraphicsProxyWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 	return newQGraphicsProxyWidget(C.QGraphicsProxyWidget_createProxyForChildWidget(this.h, child.cPointer()))
 }
 
@@ -179,6 +204,8 @@ func QGraphicsProxyWidget_TrUtf83(s string, c string, n int) string {
 
 // NewProxyWidget can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) NewProxyWidget(param1 *QWidget) *QGraphicsProxyWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQGraphicsProxyWidget(C.QGraphicsProxyWidget_protectedbase_newProxyWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
@@ -193,6 +220,7 @@ func (this *QGraphicsProxyWidget) NewProxyWidget(param1 *QWidget) *QGraphicsProx
 
 // UpdateMicroFocus can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -205,6 +233,7 @@ func (this *QGraphicsProxyWidget) UpdateMicroFocus() {
 
 // Sender can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsProxyWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -219,6 +248,7 @@ func (this *QGraphicsProxyWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsProxyWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -233,6 +263,7 @@ func (this *QGraphicsProxyWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -249,6 +280,8 @@ func (this *QGraphicsProxyWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsProxyWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -263,6 +296,7 @@ func (this *QGraphicsProxyWidget) IsSignalConnected(signal *QMetaMethod) bool {
 
 // AddToIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) AddToIndex() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -275,6 +309,7 @@ func (this *QGraphicsProxyWidget) AddToIndex() {
 
 // RemoveFromIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) RemoveFromIndex() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -287,6 +322,7 @@ func (this *QGraphicsProxyWidget) RemoveFromIndex() {
 
 // PrepareGeometryChange can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) PrepareGeometryChange() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -299,6 +335,8 @@ func (this *QGraphicsProxyWidget) PrepareGeometryChange() {
 
 // SetGraphicsItem can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) SetGraphicsItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
@@ -311,6 +349,7 @@ func (this *QGraphicsProxyWidget) SetGraphicsItem(item *QGraphicsItem) {
 
 // SetOwnedByLayout can only be called from a QGraphicsProxyWidget that was directly constructed.
 func (this *QGraphicsProxyWidget) SetOwnedByLayout(ownedByLayout bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsProxyWidget_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
@@ -322,6 +361,8 @@ func (this *QGraphicsProxyWidget) SetOwnedByLayout(ownedByLayout bool) {
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsProxyWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
@@ -348,6 +389,10 @@ func miqt_exec_callback_QGraphicsProxyWidget_setGeometry(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsProxyWidget_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -378,6 +423,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_paint(self *C.QGraphicsProxyWidget,
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Type() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsProxyWidget_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -403,6 +449,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_type(self *C.QGraphicsProxyWidget, 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	_goptr := newQVariant(C.QGraphicsProxyWidget_virtualbase_itemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -429,12 +477,15 @@ func miqt_exec_callback_QGraphicsProxyWidget_itemChange(self *C.QGraphicsProxyWi
 	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -463,6 +514,9 @@ func miqt_exec_callback_QGraphicsProxyWidget_event(self *C.QGraphicsProxyWidget,
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -493,6 +547,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_eventFilter(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -519,6 +575,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_showEvent(self *C.QGraphicsProxyWid
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -545,6 +603,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_hideEvent(self *C.QGraphicsProxyWid
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ContextMenuEvent(event *QGraphicsSceneContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -571,6 +631,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_contextMenuEvent(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_DragEnterEvent(event *QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -597,6 +659,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_dragEnterEvent(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_DragLeaveEvent(event *QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -623,6 +687,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_dragLeaveEvent(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_DragMoveEvent(event *QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -649,6 +715,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_dragMoveEvent(self *C.QGraphicsProx
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_DropEvent(event *QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -675,6 +743,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_dropEvent(self *C.QGraphicsProxyWid
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_HoverEnterEvent(event *QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_hoverEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -701,6 +771,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_hoverEnterEvent(self *C.QGraphicsPr
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_HoverLeaveEvent(event *QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_hoverLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -727,6 +799,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_hoverLeaveEvent(self *C.QGraphicsPr
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_HoverMoveEvent(event *QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_hoverMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -753,6 +827,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_hoverMoveEvent(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_GrabMouseEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_grabMouseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -779,6 +855,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_grabMouseEvent(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_UngrabMouseEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_ungrabMouseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -805,6 +883,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_ungrabMouseEvent(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_MouseMoveEvent(event *QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -831,6 +911,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_mouseMoveEvent(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_MousePressEvent(event *QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -857,6 +939,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_mousePressEvent(self *C.QGraphicsPr
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_MouseReleaseEvent(event *QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -883,6 +967,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_mouseReleaseEvent(self *C.QGraphics
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_MouseDoubleClickEvent(event *QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -909,6 +995,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_mouseDoubleClickEvent(self *C.QGrap
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_WheelEvent(event *QGraphicsSceneWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -935,6 +1023,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_wheelEvent(self *C.QGraphicsProxyWi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -961,6 +1051,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_keyPressEvent(self *C.QGraphicsProx
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -987,6 +1079,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_keyReleaseEvent(self *C.QGraphicsPr
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1013,6 +1107,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_focusInEvent(self *C.QGraphicsProxy
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1039,6 +1135,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_focusOutEvent(self *C.QGraphicsProx
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1067,6 +1164,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_focusNextPrevChild(self *C.QGraphic
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QGraphicsProxyWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1091,12 +1189,15 @@ func miqt_exec_callback_QGraphicsProxyWidget_inputMethodQuery(self *C.QGraphicsP
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1123,6 +1224,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_inputMethodEvent(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 
 	_goptr := newQSizeF(C.QGraphicsProxyWidget_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1149,12 +1252,15 @@ func miqt_exec_callback_QGraphicsProxyWidget_sizeHint(self *C.QGraphicsProxyWidg
 	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QSizeF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ResizeEvent(event *QGraphicsSceneResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1181,6 +1287,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_resizeEvent(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsProxyWidget_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
@@ -1213,6 +1320,10 @@ func miqt_exec_callback_QGraphicsProxyWidget_getContentsMargins(self *C.QGraphic
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_PaintWindowFrame(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsProxyWidget_virtualbase_paintWindowFrame(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -1243,6 +1354,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_paintWindowFrame(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_BoundingRect() *QRectF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRectF(C.QGraphicsProxyWidget_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1264,12 +1376,14 @@ func miqt_exec_callback_QGraphicsProxyWidget_boundingRect(self *C.QGraphicsProxy
 	}
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Shape() *QPainterPath {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsProxyWidget_virtualbase_shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1291,12 +1405,15 @@ func miqt_exec_callback_QGraphicsProxyWidget_shape(self *C.QGraphicsProxyWidget,
 	}
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_Shape)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QPainterPath(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_InitStyleOption(option *QStyleOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QGraphicsProxyWidget_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -1323,6 +1440,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_initStyleOption(self *C.QGraphicsPr
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsProxyWidget_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
@@ -1346,6 +1464,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_updateGeometry(self *C.QGraphicsPro
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_PropertyChange(propertyName string, value *QVariant) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
 	propertyName_ms.len = C.size_t(len(propertyName))
@@ -1378,12 +1498,15 @@ func miqt_exec_callback_QGraphicsProxyWidget_propertyChange(self *C.QGraphicsPro
 	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_PropertyChange, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SceneEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_sceneEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1412,6 +1535,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_sceneEvent(self *C.QGraphicsProxyWi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_WindowFrameEvent(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_windowFrameEvent(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -1440,6 +1565,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_windowFrameEvent(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_WindowFrameSectionAt(pos *QPointF) WindowFrameSection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 
 	return (WindowFrameSection)(C.QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), pos.cPointer()))
 
@@ -1468,6 +1595,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(self *C.QGraph
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ChangeEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1494,6 +1623,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_changeEvent(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1520,6 +1651,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_closeEvent(self *C.QGraphicsProxyWi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_MoveEvent(event *QGraphicsSceneMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1546,6 +1679,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_moveEvent(self *C.QGraphicsProxyWid
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_PolishEvent() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsProxyWidget_virtualbase_polishEvent(unsafe.Pointer(this.h))
 
@@ -1569,6 +1703,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_polishEvent(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_GrabKeyboardEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_grabKeyboardEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1595,6 +1731,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_grabKeyboardEvent(self *C.QGraphics
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_UngrabKeyboardEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_ungrabKeyboardEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1621,6 +1759,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_ungrabKeyboardEvent(self *C.QGraphi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1647,6 +1787,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_timerEvent(self *C.QGraphicsProxyWi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1673,6 +1815,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_childEvent(self *C.QGraphicsProxyWi
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsProxyWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1699,6 +1843,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_customEvent(self *C.QGraphicsProxyW
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsProxyWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1725,6 +1871,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_connectNotify(self *C.QGraphicsProx
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsProxyWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1751,6 +1899,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_disconnectNotify(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Advance(phase int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsProxyWidget_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
 
@@ -1777,6 +1926,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_advance(self *C.QGraphicsProxyWidge
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Contains(point *QPointF) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
 
@@ -1805,6 +1956,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_contains(self *C.QGraphicsProxyWidg
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_CollidesWithItem(other *QGraphicsItem, mode ItemSelectionMode) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_collidesWithItem(unsafe.Pointer(this.h), other.cPointer(), (C.int)(mode)))
 
@@ -1835,6 +1988,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_collidesWithItem(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_CollidesWithPath(path *QPainterPath, mode ItemSelectionMode) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_collidesWithPath(unsafe.Pointer(this.h), path.cPointer(), (C.int)(mode)))
 
@@ -1865,6 +2020,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_collidesWithPath(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_IsObscuredBy(item *QGraphicsItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_isObscuredBy(unsafe.Pointer(this.h), item.cPointer()))
 
@@ -1893,6 +2050,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_isObscuredBy(self *C.QGraphicsProxy
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_OpaqueArea() *QPainterPath {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsProxyWidget_virtualbase_opaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1914,12 +2072,16 @@ func miqt_exec_callback_QGraphicsProxyWidget_opaqueArea(self *C.QGraphicsProxyWi
 	}
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_OpaqueArea)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QPainterPath(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SceneEventFilter(watched *QGraphicsItem, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_sceneEventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1950,6 +2112,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_sceneEventFilter(self *C.QGraphicsP
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SupportsExtension(extension QGraphicsItem__Extension) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsProxyWidget_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -1978,6 +2141,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_supportsExtension(self *C.QGraphics
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_SetExtension(extension QGraphicsItem__Extension, variant *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(variant)
 
 	C.QGraphicsProxyWidget_virtualbase_setExtension(unsafe.Pointer(this.h), (C.int)(extension), variant.cPointer())
 
@@ -2006,6 +2171,8 @@ func miqt_exec_callback_QGraphicsProxyWidget_setExtension(self *C.QGraphicsProxy
 }
 
 func (this *QGraphicsProxyWidget) callVirtualBase_Extension(variant *QVariant) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(variant)
 
 	_goptr := newQVariant(C.QGraphicsProxyWidget_virtualbase_extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2030,8 +2197,9 @@ func miqt_exec_callback_QGraphicsProxyWidget_extension(self *C.QGraphicsProxyWid
 	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_Extension, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsProxyWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
@@ -2047,8 +2215,9 @@ func (this *QGraphicsProxyWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsProxyWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsProxyWidget) {
-		C.QGraphicsProxyWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsProxyWidget_delete((*C.QGraphicsProxyWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

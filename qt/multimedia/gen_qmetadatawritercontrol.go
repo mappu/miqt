@@ -17,8 +17,15 @@ import (
 
 type QMetaDataWriterControl struct {
 	h  *C.QMetaDataWriterControl
-	gc *[1]*C.QMetaDataWriterControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMetaDataWriterControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMetaDataWriterControl) cPointer() *C.QMetaDataWriterControl {
@@ -53,10 +60,12 @@ func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer) *QMetaDataWriterControl {
 }
 
 func (this *QMetaDataWriterControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaDataWriterControl_metaObject(this.h)))
 }
 
 func (this *QMetaDataWriterControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMetaDataWriterControl_metacast(this.h, param1_Cstring))
@@ -81,14 +90,17 @@ func QMetaDataWriterControl_TrUtf8(s string) string {
 }
 
 func (this *QMetaDataWriterControl) IsWritable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaDataWriterControl_isWritable(this.h))
 }
 
 func (this *QMetaDataWriterControl) IsMetaDataAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaDataWriterControl_isMetaDataAvailable(this.h))
 }
 
 func (this *QMetaDataWriterControl) MetaData(key string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -99,6 +111,8 @@ func (this *QMetaDataWriterControl) MetaData(key string) *qt.QVariant {
 }
 
 func (this *QMetaDataWriterControl) SetMetaData(key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -107,6 +121,7 @@ func (this *QMetaDataWriterControl) SetMetaData(key string, value *qt.QVariant) 
 }
 
 func (this *QMetaDataWriterControl) AvailableMetaData() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMetaDataWriterControl_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -120,6 +135,7 @@ func (this *QMetaDataWriterControl) AvailableMetaData() []string {
 }
 
 func (this *QMetaDataWriterControl) MetaDataChanged() {
+	defer runtime.KeepAlive(this)
 	C.QMetaDataWriterControl_metaDataChanged(this.h)
 }
 func (this *QMetaDataWriterControl) OnMetaDataChanged(slot func()) {
@@ -137,6 +153,8 @@ func miqt_exec_callback_QMetaDataWriterControl_metaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QMetaDataWriterControl) MetaDataChanged2(key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -165,6 +183,7 @@ func miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2(cb C.intptr_t, k
 }
 
 func (this *QMetaDataWriterControl) WritableChanged(writable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMetaDataWriterControl_writableChanged(this.h, (C.bool)(writable))
 }
 func (this *QMetaDataWriterControl) OnWritableChanged(slot func(writable bool)) {
@@ -185,6 +204,7 @@ func miqt_exec_callback_QMetaDataWriterControl_writableChanged(cb C.intptr_t, wr
 }
 
 func (this *QMetaDataWriterControl) MetaDataAvailableChanged(available bool) {
+	defer runtime.KeepAlive(this)
 	C.QMetaDataWriterControl_metaDataAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMetaDataWriterControl) OnMetaDataAvailableChanged(slot func(available bool)) {
@@ -260,8 +280,9 @@ func (this *QMetaDataWriterControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMetaDataWriterControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaDataWriterControl) {
-		C.QMetaDataWriterControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMetaDataWriterControl_delete((*C.QMetaDataWriterControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

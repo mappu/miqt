@@ -271,7 +271,9 @@ public:
 		QAbstractSocket::SocketOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QUdpSocket_socketOption(this, handle__socketOption, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QUdpSocket_virtualbase_socketOption(void* self, int option);
@@ -1324,6 +1326,10 @@ bool QUdpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QUdpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQUdpSocket*>(self)->QUdpSocket::disconnectNotify(*signal);
+}
+
+QVariant* QUdpSocket_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QUdpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state) {

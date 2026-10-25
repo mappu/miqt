@@ -17,8 +17,15 @@ import (
 
 type QsciLexerJava struct {
 	h  *C.QsciLexerJava
-	gc *[1]*C.QsciLexerJava
+	gc *[1]unsafe.Pointer
 	*QsciLexerCPP
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciLexerJava) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QsciLexerCPP.miqtSetGC(gc)
 }
 
 func (this *QsciLexerJava) cPointer() *C.QsciLexerJava {
@@ -60,15 +67,18 @@ func NewQsciLexerJava() *QsciLexerJava {
 
 // NewQsciLexerJava2 constructs a new QsciLexerJava object.
 func NewQsciLexerJava2(parent *qt.QObject) *QsciLexerJava {
+	defer runtime.KeepAlive(parent)
 
 	return newQsciLexerJava(C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJava) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerJava_metaObject(this.h)))
 }
 
 func (this *QsciLexerJava) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciLexerJava_metacast(this.h, param1_Cstring))
@@ -93,11 +103,13 @@ func QsciLexerJava_TrUtf8(s string) string {
 }
 
 func (this *QsciLexerJava) Language() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerJava_language(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerJava) Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerJava_keywords(this.h, (C.int)(set))
 	return C.GoString(_ret)
 }
@@ -148,6 +160,8 @@ func QsciLexerJava_TrUtf83(s string, c string, n int) string {
 
 // ReadProperties can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) ReadProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -166,6 +180,8 @@ func (this *QsciLexerJava) ReadProperties(qs *qt.QSettings, prefix string) bool 
 
 // WriteProperties can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) WriteProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -184,6 +200,7 @@ func (this *QsciLexerJava) WriteProperties(qs *qt.QSettings, prefix string) bool
 
 // Sender can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciLexerJava_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -198,6 +215,7 @@ func (this *QsciLexerJava) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciLexerJava_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -212,6 +230,7 @@ func (this *QsciLexerJava) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -228,6 +247,8 @@ func (this *QsciLexerJava) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciLexerJava that was directly constructed.
 func (this *QsciLexerJava) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciLexerJava_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -241,6 +262,7 @@ func (this *QsciLexerJava) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetFoldAtElse(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -267,6 +289,7 @@ func miqt_exec_callback_QsciLexerJava_setFoldAtElse(self *C.QsciLexerJava, cb C.
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetFoldComments(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -293,6 +316,7 @@ func miqt_exec_callback_QsciLexerJava_setFoldComments(self *C.QsciLexerJava, cb 
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetFoldCompact(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -319,6 +343,7 @@ func miqt_exec_callback_QsciLexerJava_setFoldCompact(self *C.QsciLexerJava, cb C
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetFoldPreprocessor(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -345,6 +370,7 @@ func miqt_exec_callback_QsciLexerJava_setFoldPreprocessor(self *C.QsciLexerJava,
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetStylePreprocessor(style bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
 
@@ -391,6 +417,7 @@ func miqt_exec_callback_QsciLexerJava_language(self *C.QsciLexerJava, cb C.intpt
 }
 
 func (this *QsciLexerJava) callVirtualBase_Lexer() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -418,6 +445,7 @@ func miqt_exec_callback_QsciLexerJava_lexer(self *C.QsciLexerJava, cb C.intptr_t
 }
 
 func (this *QsciLexerJava) callVirtualBase_LexerId() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
@@ -443,6 +471,7 @@ func miqt_exec_callback_QsciLexerJava_lexerId(self *C.QsciLexerJava, cb C.intptr
 }
 
 func (this *QsciLexerJava) callVirtualBase_AutoCompletionFillups() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -470,6 +499,7 @@ func miqt_exec_callback_QsciLexerJava_autoCompletionFillups(self *C.QsciLexerJav
 }
 
 func (this *QsciLexerJava) callVirtualBase_AutoCompletionWordSeparators() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QsciLexerJava_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -513,6 +543,7 @@ func miqt_exec_callback_QsciLexerJava_autoCompletionWordSeparators(self *C.QsciL
 }
 
 func (this *QsciLexerJava) callVirtualBase_BlockEnd(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -543,6 +574,7 @@ func miqt_exec_callback_QsciLexerJava_blockEnd(self *C.QsciLexerJava, cb C.intpt
 }
 
 func (this *QsciLexerJava) callVirtualBase_BlockLookback() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
@@ -568,6 +600,7 @@ func miqt_exec_callback_QsciLexerJava_blockLookback(self *C.QsciLexerJava, cb C.
 }
 
 func (this *QsciLexerJava) callVirtualBase_BlockStart(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -598,6 +631,7 @@ func miqt_exec_callback_QsciLexerJava_blockStart(self *C.QsciLexerJava, cb C.int
 }
 
 func (this *QsciLexerJava) callVirtualBase_BlockStartKeyword(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -628,6 +662,7 @@ func miqt_exec_callback_QsciLexerJava_blockStartKeyword(self *C.QsciLexerJava, c
 }
 
 func (this *QsciLexerJava) callVirtualBase_BraceStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
@@ -653,6 +688,7 @@ func miqt_exec_callback_QsciLexerJava_braceStyle(self *C.QsciLexerJava, cb C.int
 }
 
 func (this *QsciLexerJava) callVirtualBase_CaseSensitive() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJava_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
@@ -678,6 +714,7 @@ func miqt_exec_callback_QsciLexerJava_caseSensitive(self *C.QsciLexerJava, cb C.
 }
 
 func (this *QsciLexerJava) callVirtualBase_Color(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJava_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -702,12 +739,14 @@ func miqt_exec_callback_QsciLexerJava_color(self *C.QsciLexerJava, cb C.intptr_t
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_Color, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_EolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJava_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -736,6 +775,7 @@ func miqt_exec_callback_QsciLexerJava_eolFill(self *C.QsciLexerJava, cb C.intptr
 }
 
 func (this *QsciLexerJava) callVirtualBase_Font(style int) *qt.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerJava_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -760,12 +800,14 @@ func miqt_exec_callback_QsciLexerJava_font(self *C.QsciLexerJava, cb C.intptr_t,
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_Font, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_IndentationGuideView() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
@@ -791,6 +833,7 @@ func miqt_exec_callback_QsciLexerJava_indentationGuideView(self *C.QsciLexerJava
 }
 
 func (this *QsciLexerJava) callVirtualBase_Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
@@ -821,6 +864,7 @@ func miqt_exec_callback_QsciLexerJava_keywords(self *C.QsciLexerJava, cb C.intpt
 }
 
 func (this *QsciLexerJava) callVirtualBase_DefaultStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
@@ -871,6 +915,7 @@ func miqt_exec_callback_QsciLexerJava_description(self *C.QsciLexerJava, cb C.in
 }
 
 func (this *QsciLexerJava) callVirtualBase_Paper(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJava_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -895,12 +940,14 @@ func miqt_exec_callback_QsciLexerJava_paper(self *C.QsciLexerJava, cb C.intptr_t
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_Paper, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJava_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -925,12 +972,14 @@ func miqt_exec_callback_QsciLexerJava_defaultColorWithStyle(self *C.QsciLexerJav
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_DefaultColorWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_DefaultEolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJava_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -959,6 +1008,7 @@ func miqt_exec_callback_QsciLexerJava_defaultEolFill(self *C.QsciLexerJava, cb C
 }
 
 func (this *QsciLexerJava) callVirtualBase_DefaultFontWithStyle(style int) *qt.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerJava_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -983,12 +1033,14 @@ func miqt_exec_callback_QsciLexerJava_defaultFontWithStyle(self *C.QsciLexerJava
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_DefaultFontWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJava_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1013,12 +1065,15 @@ func miqt_exec_callback_QsciLexerJava_defaultPaperWithStyle(self *C.QsciLexerJav
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJava{h: self}).callVirtualBase_DefaultPaperWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJava_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetEditor(editor *QsciScintilla) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QsciLexerJava_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1045,6 +1100,7 @@ func miqt_exec_callback_QsciLexerJava_setEditor(self *C.QsciLexerJava, cb C.intp
 }
 
 func (this *QsciLexerJava) callVirtualBase_RefreshProperties() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
@@ -1068,6 +1124,7 @@ func miqt_exec_callback_QsciLexerJava_refreshProperties(self *C.QsciLexerJava, c
 }
 
 func (this *QsciLexerJava) callVirtualBase_StyleBitsNeeded() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJava_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
@@ -1093,6 +1150,7 @@ func miqt_exec_callback_QsciLexerJava_styleBitsNeeded(self *C.QsciLexerJava, cb 
 }
 
 func (this *QsciLexerJava) callVirtualBase_WordCharacters() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJava_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -1120,6 +1178,7 @@ func miqt_exec_callback_QsciLexerJava_wordCharacters(self *C.QsciLexerJava, cb C
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
@@ -1146,6 +1205,8 @@ func miqt_exec_callback_QsciLexerJava_setAutoIndentStyle(self *C.QsciLexerJava, 
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetColor(c *qt.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerJava_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1174,6 +1235,7 @@ func miqt_exec_callback_QsciLexerJava_setColor(self *C.QsciLexerJava, cb C.intpt
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetEolFill(eoffill bool, style int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJava_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
@@ -1202,6 +1264,8 @@ func miqt_exec_callback_QsciLexerJava_setEolFill(self *C.QsciLexerJava, cb C.int
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetFont(f *qt.QFont, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 
 	C.QsciLexerJava_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 
@@ -1230,6 +1294,8 @@ func miqt_exec_callback_QsciLexerJava_setFont(self *C.QsciLexerJava, cb C.intptr
 }
 
 func (this *QsciLexerJava) callVirtualBase_SetPaper(c *qt.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerJava_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1258,6 +1324,8 @@ func miqt_exec_callback_QsciLexerJava_setPaper(self *C.QsciLexerJava, cb C.intpt
 }
 
 func (this *QsciLexerJava) callVirtualBase_ReadProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1295,6 +1363,8 @@ func miqt_exec_callback_QsciLexerJava_readProperties(self *C.QsciLexerJava, cb C
 }
 
 func (this *QsciLexerJava) callVirtualBase_WriteProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1332,6 +1402,8 @@ func miqt_exec_callback_QsciLexerJava_writeProperties(self *C.QsciLexerJava, cb 
 }
 
 func (this *QsciLexerJava) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerJava_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1360,6 +1432,9 @@ func miqt_exec_callback_QsciLexerJava_event(self *C.QsciLexerJava, cb C.intptr_t
 }
 
 func (this *QsciLexerJava) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerJava_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1390,6 +1465,8 @@ func miqt_exec_callback_QsciLexerJava_eventFilter(self *C.QsciLexerJava, cb C.in
 }
 
 func (this *QsciLexerJava) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJava_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1416,6 +1493,8 @@ func miqt_exec_callback_QsciLexerJava_timerEvent(self *C.QsciLexerJava, cb C.int
 }
 
 func (this *QsciLexerJava) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJava_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1442,6 +1521,8 @@ func miqt_exec_callback_QsciLexerJava_childEvent(self *C.QsciLexerJava, cb C.int
 }
 
 func (this *QsciLexerJava) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJava_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1468,6 +1549,8 @@ func miqt_exec_callback_QsciLexerJava_customEvent(self *C.QsciLexerJava, cb C.in
 }
 
 func (this *QsciLexerJava) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerJava_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1494,6 +1577,8 @@ func miqt_exec_callback_QsciLexerJava_connectNotify(self *C.QsciLexerJava, cb C.
 }
 
 func (this *QsciLexerJava) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerJava_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1531,8 +1616,9 @@ func (this *QsciLexerJava) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciLexerJava{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciLexerJava) {
-		C.QsciLexerJava_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciLexerJava_delete((*C.QsciLexerJava)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

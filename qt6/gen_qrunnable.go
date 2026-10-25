@@ -16,7 +16,13 @@ import (
 
 type QRunnable struct {
 	h  *C.QRunnable
-	gc *[1]*C.QRunnable
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRunnable) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRunnable) cPointer() *C.QRunnable {
@@ -54,14 +60,17 @@ func NewQRunnable() *QRunnable {
 }
 
 func (this *QRunnable) Run() {
+	defer runtime.KeepAlive(this)
 	C.QRunnable_run(this.h)
 }
 
 func (this *QRunnable) AutoDelete() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRunnable_autoDelete(this.h))
 }
 
 func (this *QRunnable) SetAutoDelete(autoDelete bool) {
+	defer runtime.KeepAlive(this)
 	C.QRunnable_setAutoDelete(this.h, (C.bool)(autoDelete))
 }
 func (this *QRunnable) OnRun(slot func()) {
@@ -94,8 +103,9 @@ func (this *QRunnable) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRunnable{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRunnable) {
-		C.QRunnable_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRunnable_delete((*C.QRunnable)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

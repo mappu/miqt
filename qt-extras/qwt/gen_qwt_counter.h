@@ -221,6 +221,8 @@ bool QwtCounter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtCounter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtCounter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtCounter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtCounter_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtCounter_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtCounter_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QwtCounter_protectedbase_create(bool* _dynamic_cast_ok, void* self);

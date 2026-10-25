@@ -27,8 +27,15 @@ const (
 
 type QBoxLayout struct {
 	h  *C.QBoxLayout
-	gc *[1]*C.QBoxLayout
+	gc *[1]unsafe.Pointer
 	*QLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBoxLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLayout.miqtSetGC(gc)
 }
 
 func (this *QBoxLayout) cPointer() *C.QBoxLayout {
@@ -70,15 +77,18 @@ func NewQBoxLayout(param1 QBoxLayout__Direction) *QBoxLayout {
 
 // NewQBoxLayout2 constructs a new QBoxLayout object.
 func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQBoxLayout(C.QBoxLayout_new2((C.int)(param1), parent.cPointer()))
 }
 
 func (this *QBoxLayout) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QBoxLayout_metaObject(this.h))
 }
 
 func (this *QBoxLayout) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBoxLayout_metacast(this.h, param1_Cstring))
@@ -103,140 +113,184 @@ func QBoxLayout_TrUtf8(s string) string {
 }
 
 func (this *QBoxLayout) Direction() QBoxLayout__Direction {
+	defer runtime.KeepAlive(this)
 	return (QBoxLayout__Direction)(C.QBoxLayout_direction(this.h))
 }
 
 func (this *QBoxLayout) SetDirection(direction QBoxLayout__Direction) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_setDirection(this.h, (C.int)(direction))
 }
 
 func (this *QBoxLayout) AddSpacing(size int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_addSpacing(this.h, (C.int)(size))
 }
 
 func (this *QBoxLayout) AddStretch() {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_addStretch(this.h)
 }
 
 func (this *QBoxLayout) AddSpacerItem(spacerItem *QSpacerItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(spacerItem)
 	C.QBoxLayout_addSpacerItem(this.h, spacerItem.cPointer())
 }
 
 func (this *QBoxLayout) AddWidget(param1 *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBoxLayout_addWidget(this.h, param1.cPointer())
 }
 
 func (this *QBoxLayout) AddLayout(layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QBoxLayout_addLayout(this.h, layout.cPointer())
 }
 
 func (this *QBoxLayout) AddStrut(param1 int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_addStrut(this.h, (C.int)(param1))
 }
 
 func (this *QBoxLayout) AddItem(param1 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBoxLayout_addItem(this.h, param1.cPointer())
 }
 
 func (this *QBoxLayout) InsertSpacing(index int, size int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_insertSpacing(this.h, (C.int)(index), (C.int)(size))
 }
 
 func (this *QBoxLayout) InsertStretch(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_insertStretch(this.h, (C.int)(index))
 }
 
 func (this *QBoxLayout) InsertSpacerItem(index int, spacerItem *QSpacerItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(spacerItem)
 	C.QBoxLayout_insertSpacerItem(this.h, (C.int)(index), spacerItem.cPointer())
 }
 
 func (this *QBoxLayout) InsertWidget(index int, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QBoxLayout_insertWidget(this.h, (C.int)(index), widget.cPointer())
 }
 
 func (this *QBoxLayout) InsertLayout(index int, layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QBoxLayout_insertLayout(this.h, (C.int)(index), layout.cPointer())
 }
 
 func (this *QBoxLayout) InsertItem(index int, param2 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QBoxLayout_insertItem(this.h, (C.int)(index), param2.cPointer())
 }
 
 func (this *QBoxLayout) Spacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxLayout_spacing(this.h))
 }
 
 func (this *QBoxLayout) SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QBoxLayout) SetStretchFactor(w *QWidget, stretch int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	return (bool)(C.QBoxLayout_setStretchFactor(this.h, w.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QBoxLayout) SetStretchFactor2(l *QLayout, stretch int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(l)
 	return (bool)(C.QBoxLayout_setStretchFactor2(this.h, l.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QBoxLayout) SetStretch(index int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_setStretch(this.h, (C.int)(index), (C.int)(stretch))
 }
 
 func (this *QBoxLayout) Stretch(index int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxLayout_stretch(this.h, (C.int)(index)))
 }
 
 func (this *QBoxLayout) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QBoxLayout_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxLayout) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QBoxLayout_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxLayout) MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QBoxLayout_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxLayout) HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBoxLayout_hasHeightForWidth(this.h))
 }
 
 func (this *QBoxLayout) HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxLayout_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxLayout_minimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QBoxLayout_expandingDirections(this.h))
 }
 
 func (this *QBoxLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_invalidate(this.h)
 }
 
 func (this *QBoxLayout) ItemAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QBoxLayout_itemAt(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) TakeAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QBoxLayout_takeAt(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxLayout_count(this.h))
 }
 
 func (this *QBoxLayout) SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 	C.QBoxLayout_setGeometry(this.h, geometry.cPointer())
 }
 
@@ -285,39 +339,55 @@ func QBoxLayout_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QBoxLayout) AddStretchWithStretch(stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_addStretchWithStretch(this.h, (C.int)(stretch))
 }
 
 func (this *QBoxLayout) AddWidget2(param1 *QWidget, stretch int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBoxLayout_addWidget2(this.h, param1.cPointer(), (C.int)(stretch))
 }
 
 func (this *QBoxLayout) AddWidget3(param1 *QWidget, stretch int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBoxLayout_addWidget3(this.h, param1.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
 func (this *QBoxLayout) AddLayout2(layout *QLayout, stretch int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QBoxLayout_addLayout2(this.h, layout.cPointer(), (C.int)(stretch))
 }
 
 func (this *QBoxLayout) InsertStretch2(index int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QBoxLayout_insertStretch2(this.h, (C.int)(index), (C.int)(stretch))
 }
 
 func (this *QBoxLayout) InsertWidget2(index int, widget *QWidget, stretch int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QBoxLayout_insertWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
 }
 
 func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QBoxLayout_insertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
 func (this *QBoxLayout) InsertLayout2(index int, layout *QLayout, stretch int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QBoxLayout_insertLayout2(this.h, (C.int)(index), layout.cPointer(), (C.int)(stretch))
 }
 
 // WidgetEvent can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) WidgetEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -330,6 +400,8 @@ func (this *QBoxLayout) WidgetEvent(param1 *QEvent) {
 
 // AddChildLayout can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) AddChildLayout(l *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(l)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
@@ -342,6 +414,8 @@ func (this *QBoxLayout) AddChildLayout(l *QLayout) {
 
 // AddChildWidget can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) AddChildWidget(w *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
@@ -354,6 +428,8 @@ func (this *QBoxLayout) AddChildWidget(w *QWidget) {
 
 // AdoptLayout can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) AdoptLayout(layout *QLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
@@ -368,6 +444,8 @@ func (this *QBoxLayout) AdoptLayout(layout *QLayout) bool {
 
 // AlignmentRect can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) AlignmentRect(param1 *QRect) QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRect(C.QBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
@@ -384,6 +462,7 @@ func (this *QBoxLayout) AlignmentRect(param1 *QRect) QRect {
 
 // Sender can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -398,6 +477,7 @@ func (this *QBoxLayout) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -412,6 +492,7 @@ func (this *QBoxLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -428,6 +509,8 @@ func (this *QBoxLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBoxLayout that was directly constructed.
 func (this *QBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -441,6 +524,8 @@ func (this *QBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QBoxLayout_virtualbase_addItem(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -467,6 +552,7 @@ func miqt_exec_callback_QBoxLayout_addItem(self *C.QBoxLayout, cb C.intptr_t, pa
 }
 
 func (this *QBoxLayout) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QBoxLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -488,12 +574,14 @@ func miqt_exec_callback_QBoxLayout_sizeHint(self *C.QBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QBoxLayout) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QBoxLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -515,12 +603,14 @@ func miqt_exec_callback_QBoxLayout_minimumSize(self *C.QBoxLayout, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QBoxLayout) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QBoxLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -542,12 +632,14 @@ func miqt_exec_callback_QBoxLayout_maximumSize(self *C.QBoxLayout, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QBoxLayout) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBoxLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -573,6 +665,7 @@ func miqt_exec_callback_QBoxLayout_hasHeightForWidth(self *C.QBoxLayout, cb C.in
 }
 
 func (this *QBoxLayout) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QBoxLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -601,6 +694,7 @@ func miqt_exec_callback_QBoxLayout_heightForWidth(self *C.QBoxLayout, cb C.intpt
 }
 
 func (this *QBoxLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QBoxLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -629,6 +723,7 @@ func miqt_exec_callback_QBoxLayout_minimumHeightForWidth(self *C.QBoxLayout, cb 
 }
 
 func (this *QBoxLayout) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QBoxLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -654,6 +749,7 @@ func miqt_exec_callback_QBoxLayout_expandingDirections(self *C.QBoxLayout, cb C.
 }
 
 func (this *QBoxLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QBoxLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -677,6 +773,7 @@ func miqt_exec_callback_QBoxLayout_invalidate(self *C.QBoxLayout, cb C.intptr_t)
 }
 
 func (this *QBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QBoxLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -699,12 +796,14 @@ func miqt_exec_callback_QBoxLayout_itemAt(self *C.QBoxLayout, cb C.intptr_t, par
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_ItemAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QBoxLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -727,12 +826,14 @@ func miqt_exec_callback_QBoxLayout_takeAt(self *C.QBoxLayout, cb C.intptr_t, par
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_TakeAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBoxLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QBoxLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -758,6 +859,8 @@ func miqt_exec_callback_QBoxLayout_count(self *C.QBoxLayout, cb C.intptr_t) C.in
 }
 
 func (this *QBoxLayout) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QBoxLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -784,6 +887,7 @@ func miqt_exec_callback_QBoxLayout_setGeometry(self *C.QBoxLayout, cb C.intptr_t
 }
 
 func (this *QBoxLayout) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QBoxLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -805,12 +909,15 @@ func miqt_exec_callback_QBoxLayout_geometry(self *C.QBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QBoxLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QBoxLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (int)(C.QBoxLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -839,6 +946,7 @@ func miqt_exec_callback_QBoxLayout_indexOf(self *C.QBoxLayout, cb C.intptr_t, pa
 }
 
 func (this *QBoxLayout) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBoxLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -864,6 +972,7 @@ func miqt_exec_callback_QBoxLayout_isEmpty(self *C.QBoxLayout, cb C.intptr_t) C.
 }
 
 func (this *QBoxLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QBoxLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -889,6 +998,7 @@ func miqt_exec_callback_QBoxLayout_controlTypes(self *C.QBoxLayout, cb C.intptr_
 }
 
 func (this *QBoxLayout) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QBoxLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -908,12 +1018,15 @@ func miqt_exec_callback_QBoxLayout_layout(self *C.QBoxLayout, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBoxLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QBoxLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -940,6 +1053,8 @@ func miqt_exec_callback_QBoxLayout_childEvent(self *C.QBoxLayout, cb C.intptr_t,
 }
 
 func (this *QBoxLayout) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -968,6 +1083,9 @@ func miqt_exec_callback_QBoxLayout_event(self *C.QBoxLayout, cb C.intptr_t, even
 }
 
 func (this *QBoxLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -998,6 +1116,8 @@ func miqt_exec_callback_QBoxLayout_eventFilter(self *C.QBoxLayout, cb C.intptr_t
 }
 
 func (this *QBoxLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1024,6 +1144,8 @@ func miqt_exec_callback_QBoxLayout_timerEvent(self *C.QBoxLayout, cb C.intptr_t,
 }
 
 func (this *QBoxLayout) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1050,6 +1172,8 @@ func miqt_exec_callback_QBoxLayout_customEvent(self *C.QBoxLayout, cb C.intptr_t
 }
 
 func (this *QBoxLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1076,6 +1200,8 @@ func miqt_exec_callback_QBoxLayout_connectNotify(self *C.QBoxLayout, cb C.intptr
 }
 
 func (this *QBoxLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1102,6 +1228,7 @@ func miqt_exec_callback_QBoxLayout_disconnectNotify(self *C.QBoxLayout, cb C.int
 }
 
 func (this *QBoxLayout) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QBoxLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -1121,12 +1248,14 @@ func miqt_exec_callback_QBoxLayout_widget(self *C.QBoxLayout, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBoxLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QBoxLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -1146,6 +1275,7 @@ func miqt_exec_callback_QBoxLayout_spacerItem(self *C.QBoxLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1163,16 +1293,24 @@ func (this *QBoxLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBoxLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxLayout) {
-		C.QBoxLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBoxLayout_delete((*C.QBoxLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHBoxLayout struct {
 	h  *C.QHBoxLayout
-	gc *[1]*C.QHBoxLayout
+	gc *[1]unsafe.Pointer
 	*QBoxLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHBoxLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QBoxLayout.miqtSetGC(gc)
 }
 
 func (this *QHBoxLayout) cPointer() *C.QHBoxLayout {
@@ -1208,6 +1346,7 @@ func UnsafeNewQHBoxLayout(h unsafe.Pointer) *QHBoxLayout {
 
 // NewQHBoxLayout constructs a new QHBoxLayout object.
 func NewQHBoxLayout(parent *QWidget) *QHBoxLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQHBoxLayout(C.QHBoxLayout_new(parent.cPointer()))
 }
@@ -1219,10 +1358,12 @@ func NewQHBoxLayout2() *QHBoxLayout {
 }
 
 func (this *QHBoxLayout) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QHBoxLayout_metaObject(this.h))
 }
 
 func (this *QHBoxLayout) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHBoxLayout_metacast(this.h, param1_Cstring))
@@ -1292,6 +1433,8 @@ func QHBoxLayout_TrUtf83(s string, c string, n int) string {
 
 // WidgetEvent can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) WidgetEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -1304,6 +1447,8 @@ func (this *QHBoxLayout) WidgetEvent(param1 *QEvent) {
 
 // AddChildLayout can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) AddChildLayout(l *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(l)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
@@ -1316,6 +1461,8 @@ func (this *QHBoxLayout) AddChildLayout(l *QLayout) {
 
 // AddChildWidget can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) AddChildWidget(w *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
@@ -1328,6 +1475,8 @@ func (this *QHBoxLayout) AddChildWidget(w *QWidget) {
 
 // AdoptLayout can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) AdoptLayout(layout *QLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
@@ -1342,6 +1491,8 @@ func (this *QHBoxLayout) AdoptLayout(layout *QLayout) bool {
 
 // AlignmentRect can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) AlignmentRect(param1 *QRect) QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRect(C.QHBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
@@ -1358,6 +1509,7 @@ func (this *QHBoxLayout) AlignmentRect(param1 *QRect) QRect {
 
 // Sender can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QHBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1372,6 +1524,7 @@ func (this *QHBoxLayout) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1386,6 +1539,7 @@ func (this *QHBoxLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1402,6 +1556,8 @@ func (this *QHBoxLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHBoxLayout that was directly constructed.
 func (this *QHBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1415,6 +1571,8 @@ func (this *QHBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QHBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QHBoxLayout_virtualbase_addItem(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1441,6 +1599,7 @@ func miqt_exec_callback_QHBoxLayout_addItem(self *C.QHBoxLayout, cb C.intptr_t, 
 }
 
 func (this *QHBoxLayout) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHBoxLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1462,12 +1621,14 @@ func miqt_exec_callback_QHBoxLayout_sizeHint(self *C.QHBoxLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHBoxLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1489,12 +1650,14 @@ func miqt_exec_callback_QHBoxLayout_minimumSize(self *C.QHBoxLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHBoxLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1516,12 +1679,14 @@ func miqt_exec_callback_QHBoxLayout_maximumSize(self *C.QHBoxLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHBoxLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1547,6 +1712,7 @@ func miqt_exec_callback_QHBoxLayout_hasHeightForWidth(self *C.QHBoxLayout, cb C.
 }
 
 func (this *QHBoxLayout) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHBoxLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1575,6 +1741,7 @@ func miqt_exec_callback_QHBoxLayout_heightForWidth(self *C.QHBoxLayout, cb C.int
 }
 
 func (this *QHBoxLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHBoxLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1603,6 +1770,7 @@ func miqt_exec_callback_QHBoxLayout_minimumHeightForWidth(self *C.QHBoxLayout, c
 }
 
 func (this *QHBoxLayout) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QHBoxLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -1628,6 +1796,7 @@ func miqt_exec_callback_QHBoxLayout_expandingDirections(self *C.QHBoxLayout, cb 
 }
 
 func (this *QHBoxLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QHBoxLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -1651,6 +1820,7 @@ func miqt_exec_callback_QHBoxLayout_invalidate(self *C.QHBoxLayout, cb C.intptr_
 }
 
 func (this *QHBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QHBoxLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1673,12 +1843,14 @@ func miqt_exec_callback_QHBoxLayout_itemAt(self *C.QHBoxLayout, cb C.intptr_t, p
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_ItemAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QHBoxLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1701,12 +1873,14 @@ func miqt_exec_callback_QHBoxLayout_takeAt(self *C.QHBoxLayout, cb C.intptr_t, p
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_TakeAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHBoxLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -1732,6 +1906,8 @@ func miqt_exec_callback_QHBoxLayout_count(self *C.QHBoxLayout, cb C.intptr_t) C.
 }
 
 func (this *QHBoxLayout) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QHBoxLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -1758,6 +1934,7 @@ func miqt_exec_callback_QHBoxLayout_setGeometry(self *C.QHBoxLayout, cb C.intptr
 }
 
 func (this *QHBoxLayout) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QHBoxLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1779,12 +1956,15 @@ func miqt_exec_callback_QHBoxLayout_geometry(self *C.QHBoxLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHBoxLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (int)(C.QHBoxLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -1813,6 +1993,7 @@ func miqt_exec_callback_QHBoxLayout_indexOf(self *C.QHBoxLayout, cb C.intptr_t, 
 }
 
 func (this *QHBoxLayout) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHBoxLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -1838,6 +2019,7 @@ func miqt_exec_callback_QHBoxLayout_isEmpty(self *C.QHBoxLayout, cb C.intptr_t) 
 }
 
 func (this *QHBoxLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QHBoxLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -1863,6 +2045,7 @@ func miqt_exec_callback_QHBoxLayout_controlTypes(self *C.QHBoxLayout, cb C.intpt
 }
 
 func (this *QHBoxLayout) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QHBoxLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -1882,12 +2065,15 @@ func miqt_exec_callback_QHBoxLayout_layout(self *C.QHBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHBoxLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1914,6 +2100,8 @@ func miqt_exec_callback_QHBoxLayout_childEvent(self *C.QHBoxLayout, cb C.intptr_
 }
 
 func (this *QHBoxLayout) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHBoxLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1942,6 +2130,9 @@ func miqt_exec_callback_QHBoxLayout_event(self *C.QHBoxLayout, cb C.intptr_t, ev
 }
 
 func (this *QHBoxLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHBoxLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1972,6 +2163,8 @@ func miqt_exec_callback_QHBoxLayout_eventFilter(self *C.QHBoxLayout, cb C.intptr
 }
 
 func (this *QHBoxLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHBoxLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1998,6 +2191,8 @@ func miqt_exec_callback_QHBoxLayout_timerEvent(self *C.QHBoxLayout, cb C.intptr_
 }
 
 func (this *QHBoxLayout) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHBoxLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2024,6 +2219,8 @@ func miqt_exec_callback_QHBoxLayout_customEvent(self *C.QHBoxLayout, cb C.intptr
 }
 
 func (this *QHBoxLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHBoxLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2050,6 +2247,8 @@ func miqt_exec_callback_QHBoxLayout_connectNotify(self *C.QHBoxLayout, cb C.intp
 }
 
 func (this *QHBoxLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHBoxLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2076,6 +2275,7 @@ func miqt_exec_callback_QHBoxLayout_disconnectNotify(self *C.QHBoxLayout, cb C.i
 }
 
 func (this *QHBoxLayout) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QHBoxLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -2095,12 +2295,14 @@ func miqt_exec_callback_QHBoxLayout_widget(self *C.QHBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHBoxLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QHBoxLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -2120,6 +2322,7 @@ func miqt_exec_callback_QHBoxLayout_spacerItem(self *C.QHBoxLayout, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -2137,16 +2340,24 @@ func (this *QHBoxLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHBoxLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHBoxLayout) {
-		C.QHBoxLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHBoxLayout_delete((*C.QHBoxLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QVBoxLayout struct {
 	h  *C.QVBoxLayout
-	gc *[1]*C.QVBoxLayout
+	gc *[1]unsafe.Pointer
 	*QBoxLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVBoxLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QBoxLayout.miqtSetGC(gc)
 }
 
 func (this *QVBoxLayout) cPointer() *C.QVBoxLayout {
@@ -2182,6 +2393,7 @@ func UnsafeNewQVBoxLayout(h unsafe.Pointer) *QVBoxLayout {
 
 // NewQVBoxLayout constructs a new QVBoxLayout object.
 func NewQVBoxLayout(parent *QWidget) *QVBoxLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQVBoxLayout(C.QVBoxLayout_new(parent.cPointer()))
 }
@@ -2193,10 +2405,12 @@ func NewQVBoxLayout2() *QVBoxLayout {
 }
 
 func (this *QVBoxLayout) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QVBoxLayout_metaObject(this.h))
 }
 
 func (this *QVBoxLayout) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVBoxLayout_metacast(this.h, param1_Cstring))
@@ -2266,6 +2480,8 @@ func QVBoxLayout_TrUtf83(s string, c string, n int) string {
 
 // WidgetEvent can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) WidgetEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -2278,6 +2494,8 @@ func (this *QVBoxLayout) WidgetEvent(param1 *QEvent) {
 
 // AddChildLayout can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) AddChildLayout(l *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(l)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
@@ -2290,6 +2508,8 @@ func (this *QVBoxLayout) AddChildLayout(l *QLayout) {
 
 // AddChildWidget can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) AddChildWidget(w *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
@@ -2302,6 +2522,8 @@ func (this *QVBoxLayout) AddChildWidget(w *QWidget) {
 
 // AdoptLayout can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) AdoptLayout(layout *QLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
@@ -2316,6 +2538,8 @@ func (this *QVBoxLayout) AdoptLayout(layout *QLayout) bool {
 
 // AlignmentRect can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) AlignmentRect(param1 *QRect) QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRect(C.QVBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
@@ -2332,6 +2556,7 @@ func (this *QVBoxLayout) AlignmentRect(param1 *QRect) QRect {
 
 // Sender can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QVBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2346,6 +2571,7 @@ func (this *QVBoxLayout) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2360,6 +2586,7 @@ func (this *QVBoxLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2376,6 +2603,8 @@ func (this *QVBoxLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVBoxLayout that was directly constructed.
 func (this *QVBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -2389,6 +2618,8 @@ func (this *QVBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QVBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QVBoxLayout_virtualbase_addItem(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2415,6 +2646,7 @@ func miqt_exec_callback_QVBoxLayout_addItem(self *C.QVBoxLayout, cb C.intptr_t, 
 }
 
 func (this *QVBoxLayout) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QVBoxLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2436,12 +2668,14 @@ func miqt_exec_callback_QVBoxLayout_sizeHint(self *C.QVBoxLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QVBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QVBoxLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2463,12 +2697,14 @@ func miqt_exec_callback_QVBoxLayout_minimumSize(self *C.QVBoxLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QVBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QVBoxLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2490,12 +2726,14 @@ func miqt_exec_callback_QVBoxLayout_maximumSize(self *C.QVBoxLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QVBoxLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QVBoxLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2521,6 +2759,7 @@ func miqt_exec_callback_QVBoxLayout_hasHeightForWidth(self *C.QVBoxLayout, cb C.
 }
 
 func (this *QVBoxLayout) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVBoxLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2549,6 +2788,7 @@ func miqt_exec_callback_QVBoxLayout_heightForWidth(self *C.QVBoxLayout, cb C.int
 }
 
 func (this *QVBoxLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVBoxLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2577,6 +2817,7 @@ func miqt_exec_callback_QVBoxLayout_minimumHeightForWidth(self *C.QVBoxLayout, c
 }
 
 func (this *QVBoxLayout) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QVBoxLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -2602,6 +2843,7 @@ func miqt_exec_callback_QVBoxLayout_expandingDirections(self *C.QVBoxLayout, cb 
 }
 
 func (this *QVBoxLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QVBoxLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -2625,6 +2867,7 @@ func miqt_exec_callback_QVBoxLayout_invalidate(self *C.QVBoxLayout, cb C.intptr_
 }
 
 func (this *QVBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QVBoxLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2647,12 +2890,14 @@ func miqt_exec_callback_QVBoxLayout_itemAt(self *C.QVBoxLayout, cb C.intptr_t, p
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_ItemAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QVBoxLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2675,12 +2920,14 @@ func miqt_exec_callback_QVBoxLayout_takeAt(self *C.QVBoxLayout, cb C.intptr_t, p
 	slotval1 := (int)(param1)
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_TakeAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVBoxLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -2706,6 +2953,8 @@ func miqt_exec_callback_QVBoxLayout_count(self *C.QVBoxLayout, cb C.intptr_t) C.
 }
 
 func (this *QVBoxLayout) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QVBoxLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -2732,6 +2981,7 @@ func miqt_exec_callback_QVBoxLayout_setGeometry(self *C.QVBoxLayout, cb C.intptr
 }
 
 func (this *QVBoxLayout) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QVBoxLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2753,12 +3003,15 @@ func miqt_exec_callback_QVBoxLayout_geometry(self *C.QVBoxLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QVBoxLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (int)(C.QVBoxLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -2787,6 +3040,7 @@ func miqt_exec_callback_QVBoxLayout_indexOf(self *C.QVBoxLayout, cb C.intptr_t, 
 }
 
 func (this *QVBoxLayout) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QVBoxLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -2812,6 +3066,7 @@ func miqt_exec_callback_QVBoxLayout_isEmpty(self *C.QVBoxLayout, cb C.intptr_t) 
 }
 
 func (this *QVBoxLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QVBoxLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -2837,6 +3092,7 @@ func miqt_exec_callback_QVBoxLayout_controlTypes(self *C.QVBoxLayout, cb C.intpt
 }
 
 func (this *QVBoxLayout) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QVBoxLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -2856,12 +3112,15 @@ func miqt_exec_callback_QVBoxLayout_layout(self *C.QVBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QVBoxLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -2888,6 +3147,8 @@ func miqt_exec_callback_QVBoxLayout_childEvent(self *C.QVBoxLayout, cb C.intptr_
 }
 
 func (this *QVBoxLayout) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVBoxLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2916,6 +3177,9 @@ func miqt_exec_callback_QVBoxLayout_event(self *C.QVBoxLayout, cb C.intptr_t, ev
 }
 
 func (this *QVBoxLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVBoxLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2946,6 +3210,8 @@ func miqt_exec_callback_QVBoxLayout_eventFilter(self *C.QVBoxLayout, cb C.intptr
 }
 
 func (this *QVBoxLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVBoxLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2972,6 +3238,8 @@ func miqt_exec_callback_QVBoxLayout_timerEvent(self *C.QVBoxLayout, cb C.intptr_
 }
 
 func (this *QVBoxLayout) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVBoxLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2998,6 +3266,8 @@ func miqt_exec_callback_QVBoxLayout_customEvent(self *C.QVBoxLayout, cb C.intptr
 }
 
 func (this *QVBoxLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVBoxLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3024,6 +3294,8 @@ func miqt_exec_callback_QVBoxLayout_connectNotify(self *C.QVBoxLayout, cb C.intp
 }
 
 func (this *QVBoxLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVBoxLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3050,6 +3322,7 @@ func miqt_exec_callback_QVBoxLayout_disconnectNotify(self *C.QVBoxLayout, cb C.i
 }
 
 func (this *QVBoxLayout) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QVBoxLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -3069,12 +3342,14 @@ func miqt_exec_callback_QVBoxLayout_widget(self *C.QVBoxLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QVBoxLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QVBoxLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -3094,6 +3369,7 @@ func miqt_exec_callback_QVBoxLayout_spacerItem(self *C.QVBoxLayout, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -3111,8 +3387,9 @@ func (this *QVBoxLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVBoxLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVBoxLayout) {
-		C.QVBoxLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVBoxLayout_delete((*C.QVBoxLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

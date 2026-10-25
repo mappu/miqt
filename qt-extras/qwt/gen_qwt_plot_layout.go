@@ -28,7 +28,13 @@ const (
 
 type QwtPlotLayout struct {
 	h  *C.QwtPlotLayout
-	gc *[1]*C.QwtPlotLayout
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPlotLayout) cPointer() *C.QwtPlotLayout {
@@ -66,107 +72,135 @@ func NewQwtPlotLayout() *QwtPlotLayout {
 }
 
 func (this *QwtPlotLayout) SetCanvasMargin(margin int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setCanvasMargin(this.h, (C.int)(margin))
 }
 
 func (this *QwtPlotLayout) CanvasMargin(axisId int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotLayout_canvasMargin(this.h, (C.int)(axisId)))
 }
 
 func (this *QwtPlotLayout) SetAlignCanvasToScales(alignCanvasToScales bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setAlignCanvasToScales(this.h, (C.bool)(alignCanvasToScales))
 }
 
 func (this *QwtPlotLayout) SetAlignCanvasToScale(axisId int, param2 bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setAlignCanvasToScale(this.h, (C.int)(axisId), (C.bool)(param2))
 }
 
 func (this *QwtPlotLayout) AlignCanvasToScale(axisId int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotLayout_alignCanvasToScale(this.h, (C.int)(axisId)))
 }
 
 func (this *QwtPlotLayout) SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QwtPlotLayout) Spacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotLayout_spacing(this.h))
 }
 
 func (this *QwtPlotLayout) SetLegendPosition(pos QwtPlot__LegendPosition, ratio float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setLegendPosition(this.h, (C.int)(pos), (C.double)(ratio))
 }
 
 func (this *QwtPlotLayout) SetLegendPositionWithPos(pos QwtPlot__LegendPosition) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setLegendPositionWithPos(this.h, (C.int)(pos))
 }
 
 func (this *QwtPlotLayout) LegendPosition() QwtPlot__LegendPosition {
+	defer runtime.KeepAlive(this)
 	return (QwtPlot__LegendPosition)(C.QwtPlotLayout_legendPosition(this.h))
 }
 
 func (this *QwtPlotLayout) SetLegendRatio(ratio float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setLegendRatio(this.h, (C.double)(ratio))
 }
 
 func (this *QwtPlotLayout) LegendRatio() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotLayout_legendRatio(this.h))
 }
 
 func (this *QwtPlotLayout) MinimumSizeHint(param1 *QwtPlot) *qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotLayout_minimumSizeHint(this.h, param1.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) Activate(param1 *QwtPlot, plotRect *qt.QRectF, options QwtPlotLayout__Option) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(plotRect)
 	C.QwtPlotLayout_activate(this.h, param1.cPointer(), (*C.QRectF)(plotRect.UnsafePointer()), (C.int)(options))
 }
 
 func (this *QwtPlotLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_invalidate(this.h)
 }
 
 func (this *QwtPlotLayout) TitleRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_titleRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) FooterRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_footerRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) LegendRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_legendRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) ScaleRect(axis int) *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_scaleRect(this.h, (C.int)(axis))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) CanvasRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_canvasRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotLayout) OperatorAssign(param1 *QwtPlotLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotLayout_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtPlotLayout) SetCanvasMargin2(margin int, axis int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotLayout_setCanvasMargin2(this.h, (C.int)(margin), (C.int)(axis))
 }
 
 // SetTitleRect can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) SetTitleRect(titleRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(titleRect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_setTitleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(titleRect.UnsafePointer()))
@@ -179,6 +213,8 @@ func (this *QwtPlotLayout) SetTitleRect(titleRect *qt.QRectF) {
 
 // SetFooterRect can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) SetFooterRect(footerRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(footerRect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_setFooterRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(footerRect.UnsafePointer()))
@@ -191,6 +227,8 @@ func (this *QwtPlotLayout) SetFooterRect(footerRect *qt.QRectF) {
 
 // SetLegendRect can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) SetLegendRect(legendRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(legendRect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_setLegendRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(legendRect.UnsafePointer()))
@@ -203,6 +241,8 @@ func (this *QwtPlotLayout) SetLegendRect(legendRect *qt.QRectF) {
 
 // SetScaleRect can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) SetScaleRect(axis int, param2 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_setScaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(axis), (*C.QRectF)(param2.UnsafePointer()))
@@ -215,6 +255,8 @@ func (this *QwtPlotLayout) SetScaleRect(axis int, param2 *qt.QRectF) {
 
 // SetCanvasRect can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) SetCanvasRect(canvasRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(canvasRect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_setCanvasRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(canvasRect.UnsafePointer()))
@@ -227,6 +269,8 @@ func (this *QwtPlotLayout) SetCanvasRect(canvasRect *qt.QRectF) {
 
 // LayoutLegend can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) LayoutLegend(options QwtPlotLayout__Option, param2 *qt.QRectF) qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_protectedbase_layoutLegend(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(options), (*C.QRectF)(param2.UnsafePointer()))))
@@ -243,6 +287,9 @@ func (this *QwtPlotLayout) LayoutLegend(options QwtPlotLayout__Option, param2 *q
 
 // AlignLegend can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) AlignLegend(canvasRect *qt.QRectF, legendRect *qt.QRectF) qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(canvasRect)
+	defer runtime.KeepAlive(legendRect)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotLayout_protectedbase_alignLegend(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(canvasRect.UnsafePointer()), (*C.QRectF)(legendRect.UnsafePointer()))))
@@ -259,6 +306,8 @@ func (this *QwtPlotLayout) AlignLegend(canvasRect *qt.QRectF, legendRect *qt.QRe
 
 // ExpandLineBreaks can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) ExpandLineBreaks(options QwtPlotLayout__Option, rect *qt.QRectF, dimTitle *int, dimFooter *int, dimAxes *int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_expandLineBreaks(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(options), (*C.QRectF)(rect.UnsafePointer()), (*C.int)(unsafe.Pointer(dimTitle)), (*C.int)(unsafe.Pointer(dimFooter)), (*C.int)(unsafe.Pointer(dimAxes)))
@@ -271,6 +320,9 @@ func (this *QwtPlotLayout) ExpandLineBreaks(options QwtPlotLayout__Option, rect 
 
 // AlignScales can only be called from a QwtPlotLayout that was directly constructed.
 func (this *QwtPlotLayout) AlignScales(options QwtPlotLayout__Option, canvasRect *qt.QRectF, scaleRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(canvasRect)
+	defer runtime.KeepAlive(scaleRect)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtPlotLayout_protectedbase_alignScales(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(options), (*C.QRectF)(canvasRect.UnsafePointer()), (*C.QRectF)(scaleRect.UnsafePointer()))
@@ -282,6 +334,8 @@ func (this *QwtPlotLayout) AlignScales(options QwtPlotLayout__Option, canvasRect
 }
 
 func (this *QwtPlotLayout) callVirtualBase_MinimumSizeHint(param1 *QwtPlot) *qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotLayout_virtualbase_minimumSizeHint(unsafe.Pointer(this.h), param1.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -306,12 +360,16 @@ func miqt_exec_callback_QwtPlotLayout_minimumSizeHint(self *C.QwtPlotLayout, cb 
 	slotval1 := newQwtPlot(param1)
 
 	virtualReturn := gofunc((&QwtPlotLayout{h: self}).callVirtualBase_MinimumSizeHint, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtPlotLayout_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlotLayout) callVirtualBase_Activate(param1 *QwtPlot, plotRect *qt.QRectF, options QwtPlotLayout__Option) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(plotRect)
 
 	C.QwtPlotLayout_virtualbase_activate(unsafe.Pointer(this.h), param1.cPointer(), (*C.QRectF)(plotRect.UnsafePointer()), (C.int)(options))
 
@@ -342,6 +400,7 @@ func miqt_exec_callback_QwtPlotLayout_activate(self *C.QwtPlotLayout, cb C.intpt
 }
 
 func (this *QwtPlotLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -376,8 +435,9 @@ func (this *QwtPlotLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotLayout) {
-		C.QwtPlotLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotLayout_delete((*C.QwtPlotLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

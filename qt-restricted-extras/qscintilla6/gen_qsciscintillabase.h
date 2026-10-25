@@ -339,6 +339,8 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QsciScintillaBase_virtualreturncopy_QVariant(QVariant* src);
+QSize* QsciScintillaBase_virtualreturncopy_QSize(QSize* src);
 
 void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
 struct miqt_string QsciScintillaBase_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);

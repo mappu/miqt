@@ -419,7 +419,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(this, handle__sizeMetrics);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -892,6 +894,10 @@ bool QwtNullPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot
 
 QPainter* QwtNullPaintDevice_virtualbase_sharedPainter(const void* self) {
 	return static_cast<const MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::sharedPainter();
+}
+
+QSize* QwtNullPaintDevice_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QwtNullPaintDevice_delete(QwtNullPaintDevice* self) {

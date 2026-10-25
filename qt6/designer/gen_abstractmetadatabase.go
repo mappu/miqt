@@ -17,7 +17,13 @@ import (
 
 type QDesignerMetaDataBaseItemInterface struct {
 	h  *C.QDesignerMetaDataBaseItemInterface
-	gc *[1]*C.QDesignerMetaDataBaseItemInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerMetaDataBaseItemInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) cPointer() *C.QDesignerMetaDataBaseItemInterface {
@@ -55,6 +61,7 @@ func NewQDesignerMetaDataBaseItemInterface() *QDesignerMetaDataBaseItemInterface
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerMetaDataBaseItemInterface_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -62,6 +69,7 @@ func (this *QDesignerMetaDataBaseItemInterface) Name() string {
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) SetName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -70,6 +78,7 @@ func (this *QDesignerMetaDataBaseItemInterface) SetName(name string) {
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) TabOrder() []*qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerMetaDataBaseItemInterface_tabOrder(this.h)
 	_ret := make([]*qt6.QWidget, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -80,6 +89,8 @@ func (this *QDesignerMetaDataBaseItemInterface) TabOrder() []*qt6.QWidget {
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) SetTabOrder(tabOrder []*qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tabOrder)
 	tabOrder_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(tabOrder))))
 	defer C.free(unsafe.Pointer(tabOrder_CArray_ptr))
 	tabOrder_CArray := unsafe.Slice(tabOrder_CArray_ptr, len(tabOrder))
@@ -91,10 +102,12 @@ func (this *QDesignerMetaDataBaseItemInterface) SetTabOrder(tabOrder []*qt6.QWid
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) Enabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerMetaDataBaseItemInterface_enabled(this.h))
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) SetEnabled(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerMetaDataBaseItemInterface_setEnabled(this.h, (C.bool)(b))
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnName(slot func() string) {
@@ -157,6 +170,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_tabOrder(self *C.QDes
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
@@ -245,16 +259,23 @@ func (this *QDesignerMetaDataBaseItemInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerMetaDataBaseItemInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMetaDataBaseItemInterface) {
-		C.QDesignerMetaDataBaseItemInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerMetaDataBaseItemInterface_delete((*C.QDesignerMetaDataBaseItemInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDesignerMetaDataBaseInterface struct {
 	h  *C.QDesignerMetaDataBaseInterface
-	gc *[1]*C.QDesignerMetaDataBaseInterface
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerMetaDataBaseInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerMetaDataBaseInterface) cPointer() *C.QDesignerMetaDataBaseInterface {
@@ -296,15 +317,18 @@ func NewQDesignerMetaDataBaseInterface() *QDesignerMetaDataBaseInterface {
 
 // NewQDesignerMetaDataBaseInterface2 constructs a new QDesignerMetaDataBaseInterface object.
 func NewQDesignerMetaDataBaseInterface2(parent *qt6.QObject) *QDesignerMetaDataBaseInterface {
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerMetaDataBaseInterface(C.QDesignerMetaDataBaseInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerMetaDataBaseInterface) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerMetaDataBaseInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerMetaDataBaseInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerMetaDataBaseInterface_metacast(this.h, param1_Cstring))
@@ -320,18 +344,25 @@ func QDesignerMetaDataBaseInterface_Tr(s string) string {
 }
 
 func (this *QDesignerMetaDataBaseInterface) Item(object *qt6.QObject) *QDesignerMetaDataBaseItemInterface {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	return newQDesignerMetaDataBaseItemInterface(C.QDesignerMetaDataBaseInterface_item(this.h, (*C.QObject)(object.UnsafePointer())))
 }
 
 func (this *QDesignerMetaDataBaseInterface) Add(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QDesignerMetaDataBaseInterface_add(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QDesignerMetaDataBaseInterface) Remove(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QDesignerMetaDataBaseInterface_remove(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QDesignerMetaDataBaseInterface) Objects() []*qt6.QObject {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerMetaDataBaseInterface_objects(this.h)
 	_ret := make([]*qt6.QObject, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -342,10 +373,12 @@ func (this *QDesignerMetaDataBaseInterface) Objects() []*qt6.QObject {
 }
 
 func (this *QDesignerMetaDataBaseInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerMetaDataBaseInterface_core(this.h))
 }
 
 func (this *QDesignerMetaDataBaseInterface) Changed() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerMetaDataBaseInterface_changed(this.h)
 }
 func (this *QDesignerMetaDataBaseInterface) OnChanged(slot func()) {
@@ -386,6 +419,7 @@ func QDesignerMetaDataBaseInterface_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QDesignerMetaDataBaseInterface that was directly constructed.
 func (this *QDesignerMetaDataBaseInterface) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDesignerMetaDataBaseInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -400,6 +434,7 @@ func (this *QDesignerMetaDataBaseInterface) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerMetaDataBaseInterface that was directly constructed.
 func (this *QDesignerMetaDataBaseInterface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerMetaDataBaseInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -414,6 +449,7 @@ func (this *QDesignerMetaDataBaseInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerMetaDataBaseInterface that was directly constructed.
 func (this *QDesignerMetaDataBaseInterface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -430,6 +466,8 @@ func (this *QDesignerMetaDataBaseInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerMetaDataBaseInterface that was directly constructed.
 func (this *QDesignerMetaDataBaseInterface) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerMetaDataBaseInterface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -459,6 +497,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_item(self *C.QDesignerMet
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(object))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -518,6 +557,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_objects(self *C.QDesigner
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QObject)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
@@ -543,12 +583,15 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_core(self *C.QDesignerMet
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerMetaDataBaseInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -577,6 +620,9 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_event(self *C.QDesignerMe
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerMetaDataBaseInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -607,6 +653,8 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_eventFilter(self *C.QDesi
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerMetaDataBaseInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -633,6 +681,8 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_timerEvent(self *C.QDesig
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerMetaDataBaseInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -659,6 +709,8 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_childEvent(self *C.QDesig
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerMetaDataBaseInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -685,6 +737,8 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_customEvent(self *C.QDesi
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerMetaDataBaseInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -711,6 +765,8 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_connectNotify(self *C.QDe
 }
 
 func (this *QDesignerMetaDataBaseInterface) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerMetaDataBaseInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -748,8 +804,9 @@ func (this *QDesignerMetaDataBaseInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerMetaDataBaseInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMetaDataBaseInterface) {
-		C.QDesignerMetaDataBaseInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerMetaDataBaseInterface_delete((*C.QDesignerMetaDataBaseInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

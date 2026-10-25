@@ -29,8 +29,15 @@ const (
 
 type QwtPlotRasterItem struct {
 	h  *C.QwtPlotRasterItem
-	gc *[1]*C.QwtPlotRasterItem
+	gc *[1]unsafe.Pointer
 	*QwtPlotItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotRasterItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotRasterItem) cPointer() *C.QwtPlotRasterItem {
@@ -65,52 +72,64 @@ func UnsafeNewQwtPlotRasterItem(h unsafe.Pointer) *QwtPlotRasterItem {
 }
 
 func (this *QwtPlotRasterItem) SetPaintAttribute(param1 QwtPlotRasterItem__PaintAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotRasterItem_setPaintAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtPlotRasterItem) TestPaintAttribute(param1 QwtPlotRasterItem__PaintAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotRasterItem_testPaintAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotRasterItem) SetAlpha(alpha int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotRasterItem_setAlpha(this.h, (C.int)(alpha))
 }
 
 func (this *QwtPlotRasterItem) Alpha() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotRasterItem_alpha(this.h))
 }
 
 func (this *QwtPlotRasterItem) SetCachePolicy(cachePolicy QwtPlotRasterItem__CachePolicy) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotRasterItem_setCachePolicy(this.h, (C.int)(cachePolicy))
 }
 
 func (this *QwtPlotRasterItem) CachePolicy() QwtPlotRasterItem__CachePolicy {
+	defer runtime.KeepAlive(this)
 	return (QwtPlotRasterItem__CachePolicy)(C.QwtPlotRasterItem_cachePolicy(this.h))
 }
 
 func (this *QwtPlotRasterItem) InvalidateCache() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotRasterItem_invalidateCache(this.h)
 }
 
 func (this *QwtPlotRasterItem) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotRasterItem_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotRasterItem) Interval(param1 qt.Axis) *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtPlotRasterItem_interval(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotRasterItem) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotRasterItem_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotRasterItem) SetPaintAttribute2(param1 QwtPlotRasterItem__PaintAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotRasterItem_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
@@ -126,8 +145,9 @@ func (this *QwtPlotRasterItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotRasterItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotRasterItem) {
-		C.QwtPlotRasterItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotRasterItem_delete((*C.QwtPlotRasterItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

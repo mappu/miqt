@@ -310,6 +310,8 @@ bool QMessageBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QMessageBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QMessageBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QMessageBox_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QMessageBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

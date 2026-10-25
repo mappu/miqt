@@ -17,8 +17,15 @@ import (
 
 type QBoxPlotSeries struct {
 	h  *C.QBoxPlotSeries
-	gc *[1]*C.QBoxPlotSeries
+	gc *[1]unsafe.Pointer
 	*QAbstractSeries
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBoxPlotSeries) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractSeries.miqtSetGC(gc)
 }
 
 func (this *QBoxPlotSeries) cPointer() *C.QBoxPlotSeries {
@@ -60,15 +67,18 @@ func NewQBoxPlotSeries() *QBoxPlotSeries {
 
 // NewQBoxPlotSeries2 constructs a new QBoxPlotSeries object.
 func NewQBoxPlotSeries2(parent *qt6.QObject) *QBoxPlotSeries {
+	defer runtime.KeepAlive(parent)
 
 	return newQBoxPlotSeries(C.QBoxPlotSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QBoxPlotSeries) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxPlotSeries_metaObject(this.h)))
 }
 
 func (this *QBoxPlotSeries) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBoxPlotSeries_metacast(this.h, param1_Cstring))
@@ -84,18 +94,26 @@ func QBoxPlotSeries_Tr(s string) string {
 }
 
 func (this *QBoxPlotSeries) Append(box *QBoxSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(box)
 	return (bool)(C.QBoxPlotSeries_append(this.h, box.cPointer()))
 }
 
 func (this *QBoxPlotSeries) Remove(box *QBoxSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(box)
 	return (bool)(C.QBoxPlotSeries_remove(this.h, box.cPointer()))
 }
 
 func (this *QBoxPlotSeries) Take(box *QBoxSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(box)
 	return (bool)(C.QBoxPlotSeries_take(this.h, box.cPointer()))
 }
 
 func (this *QBoxPlotSeries) AppendWithBoxes(boxes []*QBoxSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxes)
 	boxes_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(boxes))))
 	defer C.free(unsafe.Pointer(boxes_CArray_ptr))
 	boxes_CArray := unsafe.Slice(boxes_CArray_ptr, len(boxes))
@@ -107,14 +125,18 @@ func (this *QBoxPlotSeries) AppendWithBoxes(boxes []*QBoxSet) bool {
 }
 
 func (this *QBoxPlotSeries) Insert(index int, box *QBoxSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(box)
 	return (bool)(C.QBoxPlotSeries_insert(this.h, (C.int)(index), box.cPointer()))
 }
 
 func (this *QBoxPlotSeries) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxPlotSeries_count(this.h))
 }
 
 func (this *QBoxPlotSeries) BoxSets() []*QBoxSet {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QBoxPlotSeries_boxSets(this.h)
 	_ret := make([]*QBoxSet, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QBoxSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -125,50 +147,64 @@ func (this *QBoxPlotSeries) BoxSets() []*QBoxSet {
 }
 
 func (this *QBoxPlotSeries) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_clear(this.h)
 }
 
 func (this *QBoxPlotSeries) Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QBoxPlotSeries_type(this.h))
 }
 
 func (this *QBoxPlotSeries) SetBoxOutlineVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_setBoxOutlineVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QBoxPlotSeries) BoxOutlineVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBoxPlotSeries_boxOutlineVisible(this.h))
 }
 
 func (this *QBoxPlotSeries) SetBoxWidth(width float64) {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_setBoxWidth(this.h, (C.double)(width))
 }
 
 func (this *QBoxPlotSeries) BoxWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QBoxPlotSeries_boxWidth(this.h))
 }
 
 func (this *QBoxPlotSeries) SetBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QBoxPlotSeries_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QBoxPlotSeries) Brush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QBoxPlotSeries_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxPlotSeries) SetPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QBoxPlotSeries_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QBoxPlotSeries) Pen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QBoxPlotSeries_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxPlotSeries) Clicked(boxset *QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxset)
 	C.QBoxPlotSeries_clicked(this.h, boxset.cPointer())
 }
 func (this *QBoxPlotSeries) OnClicked(slot func(boxset *QBoxSet)) {
@@ -189,6 +225,8 @@ func miqt_exec_callback_QBoxPlotSeries_clicked(cb C.intptr_t, boxset *C.QBoxSet)
 }
 
 func (this *QBoxPlotSeries) Hovered(status bool, boxset *QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxset)
 	C.QBoxPlotSeries_hovered(this.h, (C.bool)(status), boxset.cPointer())
 }
 func (this *QBoxPlotSeries) OnHovered(slot func(status bool, boxset *QBoxSet)) {
@@ -211,6 +249,8 @@ func miqt_exec_callback_QBoxPlotSeries_hovered(cb C.intptr_t, status C.bool, box
 }
 
 func (this *QBoxPlotSeries) Pressed(boxset *QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxset)
 	C.QBoxPlotSeries_pressed(this.h, boxset.cPointer())
 }
 func (this *QBoxPlotSeries) OnPressed(slot func(boxset *QBoxSet)) {
@@ -231,6 +271,8 @@ func miqt_exec_callback_QBoxPlotSeries_pressed(cb C.intptr_t, boxset *C.QBoxSet)
 }
 
 func (this *QBoxPlotSeries) Released(boxset *QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxset)
 	C.QBoxPlotSeries_released(this.h, boxset.cPointer())
 }
 func (this *QBoxPlotSeries) OnReleased(slot func(boxset *QBoxSet)) {
@@ -251,6 +293,8 @@ func miqt_exec_callback_QBoxPlotSeries_released(cb C.intptr_t, boxset *C.QBoxSet
 }
 
 func (this *QBoxPlotSeries) DoubleClicked(boxset *QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boxset)
 	C.QBoxPlotSeries_doubleClicked(this.h, boxset.cPointer())
 }
 func (this *QBoxPlotSeries) OnDoubleClicked(slot func(boxset *QBoxSet)) {
@@ -271,6 +315,7 @@ func miqt_exec_callback_QBoxPlotSeries_doubleClicked(cb C.intptr_t, boxset *C.QB
 }
 
 func (this *QBoxPlotSeries) CountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_countChanged(this.h)
 }
 func (this *QBoxPlotSeries) OnCountChanged(slot func()) {
@@ -288,6 +333,7 @@ func miqt_exec_callback_QBoxPlotSeries_countChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxPlotSeries) PenChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_penChanged(this.h)
 }
 func (this *QBoxPlotSeries) OnPenChanged(slot func()) {
@@ -305,6 +351,7 @@ func miqt_exec_callback_QBoxPlotSeries_penChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxPlotSeries) BrushChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_brushChanged(this.h)
 }
 func (this *QBoxPlotSeries) OnBrushChanged(slot func()) {
@@ -322,6 +369,7 @@ func miqt_exec_callback_QBoxPlotSeries_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxPlotSeries) BoxOutlineVisibilityChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_boxOutlineVisibilityChanged(this.h)
 }
 func (this *QBoxPlotSeries) OnBoxOutlineVisibilityChanged(slot func()) {
@@ -339,6 +387,7 @@ func miqt_exec_callback_QBoxPlotSeries_boxOutlineVisibilityChanged(cb C.intptr_t
 }
 
 func (this *QBoxPlotSeries) BoxWidthChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBoxPlotSeries_boxWidthChanged(this.h)
 }
 func (this *QBoxPlotSeries) OnBoxWidthChanged(slot func()) {
@@ -356,6 +405,8 @@ func miqt_exec_callback_QBoxPlotSeries_boxWidthChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxPlotSeries) BoxsetsAdded(sets []*QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -389,6 +440,8 @@ func miqt_exec_callback_QBoxPlotSeries_boxsetsAdded(cb C.intptr_t, sets C.struct
 }
 
 func (this *QBoxPlotSeries) BoxsetsRemoved(sets []*QBoxSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QBoxSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -445,6 +498,7 @@ func QBoxPlotSeries_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QBoxPlotSeries that was directly constructed.
 func (this *QBoxPlotSeries) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QBoxPlotSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -459,6 +513,7 @@ func (this *QBoxPlotSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QBoxPlotSeries that was directly constructed.
 func (this *QBoxPlotSeries) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBoxPlotSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -473,6 +528,7 @@ func (this *QBoxPlotSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBoxPlotSeries that was directly constructed.
 func (this *QBoxPlotSeries) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -489,6 +545,8 @@ func (this *QBoxPlotSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBoxPlotSeries that was directly constructed.
 func (this *QBoxPlotSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBoxPlotSeries_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -502,6 +560,7 @@ func (this *QBoxPlotSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QBoxPlotSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -527,6 +586,8 @@ func miqt_exec_callback_QBoxPlotSeries_type(self *C.QBoxPlotSeries, cb C.intptr_
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxPlotSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -555,6 +616,9 @@ func miqt_exec_callback_QBoxPlotSeries_event(self *C.QBoxPlotSeries, cb C.intptr
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxPlotSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -585,6 +649,8 @@ func miqt_exec_callback_QBoxPlotSeries_eventFilter(self *C.QBoxPlotSeries, cb C.
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -611,6 +677,8 @@ func miqt_exec_callback_QBoxPlotSeries_timerEvent(self *C.QBoxPlotSeries, cb C.i
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -637,6 +705,8 @@ func miqt_exec_callback_QBoxPlotSeries_childEvent(self *C.QBoxPlotSeries, cb C.i
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -663,6 +733,8 @@ func miqt_exec_callback_QBoxPlotSeries_customEvent(self *C.QBoxPlotSeries, cb C.
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxPlotSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -689,6 +761,8 @@ func miqt_exec_callback_QBoxPlotSeries_connectNotify(self *C.QBoxPlotSeries, cb 
 }
 
 func (this *QBoxPlotSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxPlotSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -726,8 +800,9 @@ func (this *QBoxPlotSeries) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBoxPlotSeries{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxPlotSeries) {
-		C.QBoxPlotSeries_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBoxPlotSeries_delete((*C.QBoxPlotSeries)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

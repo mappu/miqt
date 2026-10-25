@@ -545,7 +545,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -558,7 +560,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsItem_virtualbase_shape(const void* self);
@@ -645,7 +649,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsItem_virtualbase_opaqueArea(const void* self);
@@ -1032,7 +1038,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -1052,7 +1060,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -1108,7 +1118,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -2373,6 +2385,18 @@ QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* varian
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsItem*>(self)->QGraphicsItem::extension(*variant));
 }
 
+QRectF* QGraphicsItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsItem*>( (QGraphicsItem*)(self) );
 	if (self_cast == nullptr) {
@@ -2578,7 +2602,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsObject_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -2591,7 +2617,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsObject_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsObject_virtualbase_shape(const void* self);
@@ -2678,7 +2706,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsObject_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsObject_virtualbase_opaqueArea(const void* self);
@@ -3065,7 +3095,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsObject_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsObject_virtualbase_inputMethodQuery(const void* self, int query);
@@ -3085,7 +3117,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsObject_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsObject_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -3141,7 +3175,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsObject_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* variant);
@@ -3923,6 +3959,18 @@ QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* vari
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsObject*>(self)->QGraphicsObject::extension(*variant));
 }
 
+QRectF* QGraphicsObject_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsObject_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsObject_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsObject_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsObject* self_cast = dynamic_cast<MiqtVirtualQGraphicsObject*>( (QGraphicsObject*)(self) );
 	if (self_cast == nullptr) {
@@ -4049,7 +4097,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QAbstractGraphicsShapeItem_virtualbase_opaqueArea(const void* self);
@@ -4081,7 +4131,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -4094,7 +4146,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QAbstractGraphicsShapeItem_virtualbase_shape(const void* self);
@@ -4537,7 +4591,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QAbstractGraphicsShapeItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -4557,7 +4613,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QAbstractGraphicsShapeItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -4613,7 +4671,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QAbstractGraphicsShapeItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -5143,6 +5203,18 @@ QVariant* QAbstractGraphicsShapeItem_virtualbase_extension(const void* self, QVa
 	return new QVariant(static_cast<const MiqtVirtualQAbstractGraphicsShapeItem*>(self)->QAbstractGraphicsShapeItem::extension(*variant));
 }
 
+QPainterPath* QAbstractGraphicsShapeItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QRectF* QAbstractGraphicsShapeItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QVariant* QAbstractGraphicsShapeItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QAbstractGraphicsShapeItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQAbstractGraphicsShapeItem* self_cast = dynamic_cast<MiqtVirtualQAbstractGraphicsShapeItem*>( (QAbstractGraphicsShapeItem*)(self) );
 	if (self_cast == nullptr) {
@@ -5211,7 +5283,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPathItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsPathItem_virtualbase_boundingRect(const void* self);
@@ -5226,7 +5300,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPathItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPathItem_virtualbase_shape(const void* self);
@@ -5294,7 +5370,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPathItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPathItem_virtualbase_opaqueArea(const void* self);
@@ -5365,7 +5443,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPathItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPathItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -5776,7 +5856,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPathItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPathItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -5796,7 +5878,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPathItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -6354,6 +6438,18 @@ QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::itemChange(static_cast<MiqtVirtualQGraphicsPathItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsPathItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsPathItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsPathItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsPathItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsPathItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsPathItem*>( (QGraphicsPathItem*)(self) );
 	if (self_cast == nullptr) {
@@ -6424,7 +6520,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsRectItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsRectItem_virtualbase_boundingRect(const void* self);
@@ -6439,7 +6537,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsRectItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsRectItem_virtualbase_shape(const void* self);
@@ -6507,7 +6607,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsRectItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsRectItem_virtualbase_opaqueArea(const void* self);
@@ -6578,7 +6680,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsRectItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsRectItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -6989,7 +7093,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsRectItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsRectItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -7009,7 +7115,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsRectItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -7579,6 +7687,18 @@ QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::itemChange(static_cast<MiqtVirtualQGraphicsRectItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsRectItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsRectItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsRectItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsRectItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsRectItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsRectItem*>( (QGraphicsRectItem*)(self) );
 	if (self_cast == nullptr) {
@@ -7649,7 +7769,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsEllipseItem_virtualbase_boundingRect(const void* self);
@@ -7664,7 +7786,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsEllipseItem_virtualbase_shape(const void* self);
@@ -7732,7 +7856,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsEllipseItem_virtualbase_opaqueArea(const void* self);
@@ -7803,7 +7929,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsEllipseItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -8214,7 +8342,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsEllipseItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -8234,7 +8364,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -8820,6 +8952,18 @@ QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QV
 	return new QVariant(static_cast<MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::itemChange(static_cast<MiqtVirtualQGraphicsEllipseItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsEllipseItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsEllipseItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsEllipseItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsEllipseItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsEllipseItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsEllipseItem*>( (QGraphicsEllipseItem*)(self) );
 	if (self_cast == nullptr) {
@@ -8886,7 +9030,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsPolygonItem_virtualbase_boundingRect(const void* self);
@@ -8901,7 +9047,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPolygonItem_virtualbase_shape(const void* self);
@@ -8969,7 +9117,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPolygonItem_virtualbase_opaqueArea(const void* self);
@@ -9040,7 +9190,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPolygonItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -9451,7 +9603,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPolygonItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -9471,7 +9625,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -10022,6 +10178,18 @@ QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QV
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::itemChange(static_cast<MiqtVirtualQGraphicsPolygonItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsPolygonItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsPolygonItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsPolygonItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsPolygonItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsPolygonItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsPolygonItem*>( (QGraphicsPolygonItem*)(self) );
 	if (self_cast == nullptr) {
@@ -10092,7 +10260,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsLineItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsLineItem_virtualbase_boundingRect(const void* self);
@@ -10107,7 +10277,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsLineItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsLineItem_virtualbase_shape(const void* self);
@@ -10175,7 +10347,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsLineItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsLineItem_virtualbase_opaqueArea(const void* self);
@@ -10246,7 +10420,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsLineItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsLineItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -10657,7 +10833,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsLineItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsLineItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -10677,7 +10855,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsLineItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -11255,6 +11435,18 @@ QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::itemChange(static_cast<MiqtVirtualQGraphicsLineItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsLineItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsLineItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsLineItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsLineItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsLineItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLineItem*>( (QGraphicsLineItem*)(self) );
 	if (self_cast == nullptr) {
@@ -11323,7 +11515,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsPixmapItem_virtualbase_boundingRect(const void* self);
@@ -11338,7 +11532,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPixmapItem_virtualbase_shape(const void* self);
@@ -11406,7 +11602,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsPixmapItem_virtualbase_opaqueArea(const void* self);
@@ -11477,7 +11675,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPixmapItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -11888,7 +12088,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPixmapItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -11908,7 +12110,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -12496,6 +12700,18 @@ QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVa
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::itemChange(static_cast<MiqtVirtualQGraphicsPixmapItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsPixmapItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsPixmapItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsPixmapItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsPixmapItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsPixmapItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsPixmapItem*>( (QGraphicsPixmapItem*)(self) );
 	if (self_cast == nullptr) {
@@ -12564,7 +12780,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsTextItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsTextItem_virtualbase_boundingRect(const void* self);
@@ -12579,7 +12797,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsTextItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsTextItem_virtualbase_shape(const void* self);
@@ -12647,7 +12867,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsTextItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsTextItem_virtualbase_opaqueArea(const void* self);
@@ -12984,7 +13206,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsTextItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsTextItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -13040,7 +13264,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsTextItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsTextItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -13271,7 +13497,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsTextItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -14106,6 +14334,18 @@ QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::itemChange(static_cast<MiqtVirtualQGraphicsTextItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsTextItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsTextItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsTextItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsTextItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsTextItem*>( (QGraphicsTextItem*)(self) );
 	if (self_cast == nullptr) {
@@ -14218,7 +14458,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self);
@@ -14233,7 +14475,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsSimpleTextItem_virtualbase_shape(const void* self);
@@ -14301,7 +14545,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsSimpleTextItem_virtualbase_opaqueArea(const void* self);
@@ -14372,7 +14618,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsSimpleTextItem_virtualbase_extension(const void* self, QVariant* variant);
@@ -14783,7 +15031,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsSimpleTextItem_virtualbase_inputMethodQuery(const void* self, int query);
@@ -14803,7 +15053,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -15379,6 +15631,18 @@ QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change,
 	return new QVariant(static_cast<MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::itemChange(static_cast<MiqtVirtualQGraphicsSimpleTextItem::GraphicsItemChange>(change), *value));
 }
 
+QRectF* QGraphicsSimpleTextItem_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsSimpleTextItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsSimpleTextItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QGraphicsSimpleTextItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsSimpleTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSimpleTextItem*>( (QGraphicsSimpleTextItem*)(self) );
 	if (self_cast == nullptr) {
@@ -15445,7 +15709,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsItemGroup_virtualbase_boundingRect(const void* self);
@@ -15495,7 +15761,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsItemGroup_virtualbase_opaqueArea(const void* self);
@@ -15542,7 +15810,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QGraphicsItemGroup_virtualbase_shape(const void* self);
@@ -15954,7 +16224,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItemGroup_virtualbase_inputMethodQuery(const void* self, int query);
@@ -15974,7 +16246,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItemGroup_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -16030,7 +16304,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant);
@@ -16570,6 +16846,18 @@ bool QGraphicsItemGroup_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant) {
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::extension(*variant));
+}
+
+QRectF* QGraphicsItemGroup_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QGraphicsItemGroup_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QVariant* QGraphicsItemGroup_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QGraphicsItemGroup_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

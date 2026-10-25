@@ -313,6 +313,8 @@ bool QWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSurfaceFormat* QWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src);
+QSize* QWindow_virtualreturncopy_QSize(QSize* src);
 
 QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

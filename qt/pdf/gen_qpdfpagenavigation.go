@@ -17,8 +17,14 @@ import (
 
 type QPdfPageNavigation struct {
 	h  *C.QPdfPageNavigation
-	gc *[1]*C.QPdfPageNavigation
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfPageNavigation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfPageNavigation) cPointer() *C.QPdfPageNavigation {
@@ -60,15 +66,18 @@ func NewQPdfPageNavigation() *QPdfPageNavigation {
 
 // NewQPdfPageNavigation2 constructs a new QPdfPageNavigation object.
 func NewQPdfPageNavigation2(parent *qt.QObject) *QPdfPageNavigation {
+	defer runtime.KeepAlive(parent)
 
 	return newQPdfPageNavigation(C.QPdfPageNavigation_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPdfPageNavigation) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfPageNavigation_metaObject(this.h)))
 }
 
 func (this *QPdfPageNavigation) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfPageNavigation_metacast(this.h, param1_Cstring))
@@ -93,42 +102,54 @@ func QPdfPageNavigation_TrUtf8(s string) string {
 }
 
 func (this *QPdfPageNavigation) Document() *QPdfDocument {
+	defer runtime.KeepAlive(this)
 	return newQPdfDocument(C.QPdfPageNavigation_document(this.h))
 }
 
 func (this *QPdfPageNavigation) SetDocument(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfPageNavigation_setDocument(this.h, document.cPointer())
 }
 
 func (this *QPdfPageNavigation) CurrentPage() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfPageNavigation_currentPage(this.h))
 }
 
 func (this *QPdfPageNavigation) SetCurrentPage(currentPage int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_setCurrentPage(this.h, (C.int)(currentPage))
 }
 
 func (this *QPdfPageNavigation) PageCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfPageNavigation_pageCount(this.h))
 }
 
 func (this *QPdfPageNavigation) CanGoToPreviousPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfPageNavigation_canGoToPreviousPage(this.h))
 }
 
 func (this *QPdfPageNavigation) CanGoToNextPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfPageNavigation_canGoToNextPage(this.h))
 }
 
 func (this *QPdfPageNavigation) GoToPreviousPage() {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_goToPreviousPage(this.h)
 }
 
 func (this *QPdfPageNavigation) GoToNextPage() {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_goToNextPage(this.h)
 }
 
 func (this *QPdfPageNavigation) DocumentChanged(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfPageNavigation_documentChanged(this.h, document.cPointer())
 }
 func (this *QPdfPageNavigation) OnDocumentChanged(slot func(document *QPdfDocument)) {
@@ -149,6 +170,7 @@ func miqt_exec_callback_QPdfPageNavigation_documentChanged(cb C.intptr_t, docume
 }
 
 func (this *QPdfPageNavigation) CurrentPageChanged(currentPage int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_currentPageChanged(this.h, (C.int)(currentPage))
 }
 func (this *QPdfPageNavigation) OnCurrentPageChanged(slot func(currentPage int)) {
@@ -169,6 +191,7 @@ func miqt_exec_callback_QPdfPageNavigation_currentPageChanged(cb C.intptr_t, cur
 }
 
 func (this *QPdfPageNavigation) PageCountChanged(pageCount int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_pageCountChanged(this.h, (C.int)(pageCount))
 }
 func (this *QPdfPageNavigation) OnPageCountChanged(slot func(pageCount int)) {
@@ -189,6 +212,7 @@ func miqt_exec_callback_QPdfPageNavigation_pageCountChanged(cb C.intptr_t, pageC
 }
 
 func (this *QPdfPageNavigation) CanGoToPreviousPageChanged(canGo bool) {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_canGoToPreviousPageChanged(this.h, (C.bool)(canGo))
 }
 func (this *QPdfPageNavigation) OnCanGoToPreviousPageChanged(slot func(canGo bool)) {
@@ -209,6 +233,7 @@ func miqt_exec_callback_QPdfPageNavigation_canGoToPreviousPageChanged(cb C.intpt
 }
 
 func (this *QPdfPageNavigation) CanGoToNextPageChanged(canGo bool) {
+	defer runtime.KeepAlive(this)
 	C.QPdfPageNavigation_canGoToNextPageChanged(this.h, (C.bool)(canGo))
 }
 func (this *QPdfPageNavigation) OnCanGoToNextPageChanged(slot func(canGo bool)) {
@@ -274,6 +299,7 @@ func QPdfPageNavigation_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QPdfPageNavigation that was directly constructed.
 func (this *QPdfPageNavigation) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QPdfPageNavigation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -288,6 +314,7 @@ func (this *QPdfPageNavigation) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QPdfPageNavigation that was directly constructed.
 func (this *QPdfPageNavigation) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfPageNavigation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -302,6 +329,7 @@ func (this *QPdfPageNavigation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfPageNavigation that was directly constructed.
 func (this *QPdfPageNavigation) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -318,6 +346,8 @@ func (this *QPdfPageNavigation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfPageNavigation that was directly constructed.
 func (this *QPdfPageNavigation) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfPageNavigation_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -331,6 +361,8 @@ func (this *QPdfPageNavigation) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfPageNavigation_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -359,6 +391,9 @@ func miqt_exec_callback_QPdfPageNavigation_event(self *C.QPdfPageNavigation, cb 
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfPageNavigation_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -389,6 +424,8 @@ func miqt_exec_callback_QPdfPageNavigation_eventFilter(self *C.QPdfPageNavigatio
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfPageNavigation_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -415,6 +452,8 @@ func miqt_exec_callback_QPdfPageNavigation_timerEvent(self *C.QPdfPageNavigation
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfPageNavigation_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -441,6 +480,8 @@ func miqt_exec_callback_QPdfPageNavigation_childEvent(self *C.QPdfPageNavigation
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfPageNavigation_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -467,6 +508,8 @@ func miqt_exec_callback_QPdfPageNavigation_customEvent(self *C.QPdfPageNavigatio
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfPageNavigation_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -493,6 +536,8 @@ func miqt_exec_callback_QPdfPageNavigation_connectNotify(self *C.QPdfPageNavigat
 }
 
 func (this *QPdfPageNavigation) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfPageNavigation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -530,8 +575,9 @@ func (this *QPdfPageNavigation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfPageNavigation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfPageNavigation) {
-		C.QPdfPageNavigation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfPageNavigation_delete((*C.QPdfPageNavigation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

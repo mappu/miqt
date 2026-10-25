@@ -10,11 +10,19 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt/network"
+	"runtime"
 	"unsafe"
 )
 
 type QWebEngineClientCertificateStore struct {
-	h *C.QWebEngineClientCertificateStore
+	h  *C.QWebEngineClientCertificateStore
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineClientCertificateStore) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineClientCertificateStore) cPointer() *C.QWebEngineClientCertificateStore {
@@ -46,10 +54,14 @@ func UnsafeNewQWebEngineClientCertificateStore(h unsafe.Pointer) *QWebEngineClie
 }
 
 func (this *QWebEngineClientCertificateStore) Add(certificate *network.QSslCertificate, privateKey *network.QSslKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificate)
+	defer runtime.KeepAlive(privateKey)
 	C.QWebEngineClientCertificateStore_add(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()), (*C.QSslKey)(privateKey.UnsafePointer()))
 }
 
 func (this *QWebEngineClientCertificateStore) Certificates() []network.QSslCertificate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateStore_certificates(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -62,9 +74,12 @@ func (this *QWebEngineClientCertificateStore) Certificates() []network.QSslCerti
 }
 
 func (this *QWebEngineClientCertificateStore) Remove(certificate *network.QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificate)
 	C.QWebEngineClientCertificateStore_remove(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()))
 }
 
 func (this *QWebEngineClientCertificateStore) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineClientCertificateStore_clear(this.h)
 }

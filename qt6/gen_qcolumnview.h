@@ -330,6 +330,11 @@ bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QColumnView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QSize* QColumnView_virtualreturncopy_QSize(QSize* src);
+QRect* QColumnView_virtualreturncopy_QRect(QRect* src);
+QRegion* QColumnView_virtualreturncopy_QRegion(QRegion* src);
+QVariant* QColumnView_virtualreturncopy_QVariant(QVariant* src);
 
 void QColumnView_protectedbase_initializeColumn(bool* _dynamic_cast_ok, const void* self, QAbstractItemView* column);
 int QColumnView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);

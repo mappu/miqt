@@ -15,7 +15,13 @@ import (
 
 type QWebEngineScriptCollection struct {
 	h  *C.QWebEngineScriptCollection
-	gc *[1]*C.QWebEngineScriptCollection
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineScriptCollection) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineScriptCollection) cPointer() *C.QWebEngineScriptCollection {
@@ -47,22 +53,28 @@ func UnsafeNewQWebEngineScriptCollection(h unsafe.Pointer) *QWebEngineScriptColl
 }
 
 func (this *QWebEngineScriptCollection) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineScriptCollection_isEmpty(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineScriptCollection_count(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Size() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineScriptCollection_size(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Contains(value *QWebEngineScript) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QWebEngineScriptCollection_contains(this.h, value.cPointer()))
 }
 
 func (this *QWebEngineScriptCollection) FindScript(name string) *QWebEngineScript {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -73,6 +85,7 @@ func (this *QWebEngineScriptCollection) FindScript(name string) *QWebEngineScrip
 }
 
 func (this *QWebEngineScriptCollection) FindScripts(name string) []QWebEngineScript {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -89,10 +102,14 @@ func (this *QWebEngineScriptCollection) FindScripts(name string) []QWebEngineScr
 }
 
 func (this *QWebEngineScriptCollection) Insert(param1 *QWebEngineScript) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebEngineScriptCollection_insert(this.h, param1.cPointer())
 }
 
 func (this *QWebEngineScriptCollection) InsertWithList(list []QWebEngineScript) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(list)
 	list_CArray_ptr := (**C.QWebEngineScript)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -104,14 +121,18 @@ func (this *QWebEngineScriptCollection) InsertWithList(list []QWebEngineScript) 
 }
 
 func (this *QWebEngineScriptCollection) Remove(param1 *QWebEngineScript) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWebEngineScriptCollection_remove(this.h, param1.cPointer()))
 }
 
 func (this *QWebEngineScriptCollection) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineScriptCollection_clear(this.h)
 }
 
 func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_toList(this.h)
 	_ret := make([]QWebEngineScript, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebEngineScript)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -135,8 +156,9 @@ func (this *QWebEngineScriptCollection) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineScriptCollection{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineScriptCollection) {
-		C.QWebEngineScriptCollection_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineScriptCollection_delete((*C.QWebEngineScriptCollection)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

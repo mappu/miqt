@@ -109,7 +109,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsScene_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGraphicsScene_virtualbase_inputMethodQuery(const void* self, int query);
@@ -1729,6 +1731,10 @@ bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGraphicsScene*>(self)->QGraphicsScene::disconnectNotify(*signal);
+}
+
+QVariant* QGraphicsScene_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

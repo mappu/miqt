@@ -56,7 +56,13 @@ const (
 
 type QSizePolicy struct {
 	h  *C.QSizePolicy
-	gc *[1]*C.QSizePolicy
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSizePolicy) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSizePolicy) cPointer() *C.QSizePolicy {
@@ -101,6 +107,7 @@ func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Polic
 
 // NewQSizePolicy3 constructs a new QSizePolicy object.
 func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
+	defer runtime.KeepAlive(param1)
 
 	return newQSizePolicy(C.QSizePolicy_new3(param1.cPointer()))
 }
@@ -112,98 +119,124 @@ func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Polic
 }
 
 func (this *QSizePolicy) HorizontalPolicy() QSizePolicy__Policy {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__Policy)(C.QSizePolicy_horizontalPolicy(this.h))
 }
 
 func (this *QSizePolicy) VerticalPolicy() QSizePolicy__Policy {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__Policy)(C.QSizePolicy_verticalPolicy(this.h))
 }
 
 func (this *QSizePolicy) ControlType() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__ControlType)(C.QSizePolicy_controlType(this.h))
 }
 
 func (this *QSizePolicy) SetHorizontalPolicy(d QSizePolicy__Policy) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setHorizontalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetVerticalPolicy(d QSizePolicy__Policy) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setVerticalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setControlType(this.h, (C.int)(typeVal))
 }
 
 func (this *QSizePolicy) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QSizePolicy_expandingDirections(this.h))
 }
 
 func (this *QSizePolicy) SetHeightForWidth(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setHeightForWidth(this.h, (C.bool)(b))
 }
 
 func (this *QSizePolicy) HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSizePolicy_hasHeightForWidth(this.h))
 }
 
 func (this *QSizePolicy) SetWidthForHeight(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setWidthForHeight(this.h, (C.bool)(b))
 }
 
 func (this *QSizePolicy) HasWidthForHeight() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSizePolicy_hasWidthForHeight(this.h))
 }
 
 func (this *QSizePolicy) OperatorEqual(s *QSizePolicy) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	return (bool)(C.QSizePolicy_operatorEqual(this.h, s.cPointer()))
 }
 
 func (this *QSizePolicy) OperatorNotEqual(s *QSizePolicy) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	return (bool)(C.QSizePolicy_operatorNotEqual(this.h, s.cPointer()))
 }
 
 func (this *QSizePolicy) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QSizePolicy_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizePolicy) HorizontalStretch() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSizePolicy_horizontalStretch(this.h))
 }
 
 func (this *QSizePolicy) VerticalStretch() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSizePolicy_verticalStretch(this.h))
 }
 
 func (this *QSizePolicy) SetHorizontalStretch(stretchFactor int) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setHorizontalStretch(this.h, (C.int)(stretchFactor))
 }
 
 func (this *QSizePolicy) SetVerticalStretch(stretchFactor int) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setVerticalStretch(this.h, (C.int)(stretchFactor))
 }
 
 func (this *QSizePolicy) RetainSizeWhenHidden() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSizePolicy_retainSizeWhenHidden(this.h))
 }
 
 func (this *QSizePolicy) SetRetainSizeWhenHidden(retainSize bool) {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_setRetainSizeWhenHidden(this.h, (C.bool)(retainSize))
 }
 
 func (this *QSizePolicy) Transpose() {
+	defer runtime.KeepAlive(this)
 	C.QSizePolicy_transpose(this.h)
 }
 
 func (this *QSizePolicy) Transposed() *QSizePolicy {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizePolicy(C.QSizePolicy_transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizePolicy) OperatorAssign(param1 *QSizePolicy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QSizePolicy_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -219,8 +252,9 @@ func (this *QSizePolicy) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSizePolicy{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSizePolicy) {
-		C.QSizePolicy_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSizePolicy_delete((*C.QSizePolicy)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

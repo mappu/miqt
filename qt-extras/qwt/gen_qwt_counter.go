@@ -26,8 +26,14 @@ const (
 
 type QwtCounter struct {
 	h  *C.QwtCounter
-	gc *[1]*C.QwtCounter
+	gc *[1]unsafe.Pointer
 	*qt.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCounter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtCounter) cPointer() *C.QwtCounter {
@@ -63,6 +69,7 @@ func UnsafeNewQwtCounter(h unsafe.Pointer) *QwtCounter {
 
 // NewQwtCounter constructs a new QwtCounter object.
 func NewQwtCounter(parent *qt.QWidget) *QwtCounter {
+	defer runtime.KeepAlive(parent)
 
 	return newQwtCounter(C.QwtCounter_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -74,10 +81,12 @@ func NewQwtCounter2() *QwtCounter {
 }
 
 func (this *QwtCounter) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtCounter_metaObject(this.h)))
 }
 
 func (this *QwtCounter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtCounter_metacast(this.h, param1_Cstring))
@@ -102,112 +111,139 @@ func QwtCounter_TrUtf8(s string) string {
 }
 
 func (this *QwtCounter) SetValid(valid bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setValid(this.h, (C.bool)(valid))
 }
 
 func (this *QwtCounter) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtCounter_isValid(this.h))
 }
 
 func (this *QwtCounter) SetWrapping(wrapping bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setWrapping(this.h, (C.bool)(wrapping))
 }
 
 func (this *QwtCounter) Wrapping() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtCounter_wrapping(this.h))
 }
 
 func (this *QwtCounter) IsReadOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtCounter_isReadOnly(this.h))
 }
 
 func (this *QwtCounter) SetReadOnly(readOnly bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setReadOnly(this.h, (C.bool)(readOnly))
 }
 
 func (this *QwtCounter) SetNumButtons(numButtons int) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setNumButtons(this.h, (C.int)(numButtons))
 }
 
 func (this *QwtCounter) NumButtons() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtCounter_numButtons(this.h))
 }
 
 func (this *QwtCounter) SetIncSteps(param1 QwtCounter__Button, numSteps int) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setIncSteps(this.h, (C.int)(param1), (C.int)(numSteps))
 }
 
 func (this *QwtCounter) IncSteps(param1 QwtCounter__Button) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtCounter_incSteps(this.h, (C.int)(param1)))
 }
 
 func (this *QwtCounter) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtCounter) SingleStep() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtCounter_singleStep(this.h))
 }
 
 func (this *QwtCounter) SetSingleStep(stepSize float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setSingleStep(this.h, (C.double)(stepSize))
 }
 
 func (this *QwtCounter) SetRange(min float64, max float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setRange(this.h, (C.double)(min), (C.double)(max))
 }
 
 func (this *QwtCounter) Minimum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtCounter_minimum(this.h))
 }
 
 func (this *QwtCounter) SetMinimum(minimum float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setMinimum(this.h, (C.double)(minimum))
 }
 
 func (this *QwtCounter) Maximum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtCounter_maximum(this.h))
 }
 
 func (this *QwtCounter) SetMaximum(maximum float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setMaximum(this.h, (C.double)(maximum))
 }
 
 func (this *QwtCounter) SetStepButton1(nSteps int) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setStepButton1(this.h, (C.int)(nSteps))
 }
 
 func (this *QwtCounter) StepButton1() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtCounter_stepButton1(this.h))
 }
 
 func (this *QwtCounter) SetStepButton2(nSteps int) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setStepButton2(this.h, (C.int)(nSteps))
 }
 
 func (this *QwtCounter) StepButton2() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtCounter_stepButton2(this.h))
 }
 
 func (this *QwtCounter) SetStepButton3(nSteps int) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setStepButton3(this.h, (C.int)(nSteps))
 }
 
 func (this *QwtCounter) StepButton3() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtCounter_stepButton3(this.h))
 }
 
 func (this *QwtCounter) Value() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtCounter_value(this.h))
 }
 
 func (this *QwtCounter) SetValue(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_setValue(this.h, (C.double)(value))
 }
 
 func (this *QwtCounter) ButtonReleased(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_buttonReleased(this.h, (C.double)(value))
 }
 func (this *QwtCounter) OnButtonReleased(slot func(value float64)) {
@@ -228,6 +264,7 @@ func miqt_exec_callback_QwtCounter_buttonReleased(cb C.intptr_t, value C.double)
 }
 
 func (this *QwtCounter) ValueChanged(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtCounter_valueChanged(this.h, (C.double)(value))
 }
 func (this *QwtCounter) OnValueChanged(slot func(value float64)) {
@@ -293,6 +330,7 @@ func QwtCounter_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCounter_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -305,6 +343,7 @@ func (this *QwtCounter) UpdateMicroFocus() {
 
 // Create can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCounter_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -317,6 +356,7 @@ func (this *QwtCounter) Create() {
 
 // Destroy can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCounter_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -329,6 +369,7 @@ func (this *QwtCounter) Destroy() {
 
 // FocusNextChild can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtCounter_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -343,6 +384,7 @@ func (this *QwtCounter) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtCounter_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -357,6 +399,7 @@ func (this *QwtCounter) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtCounter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -371,6 +414,7 @@ func (this *QwtCounter) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtCounter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -385,6 +429,7 @@ func (this *QwtCounter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -401,6 +446,8 @@ func (this *QwtCounter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtCounter that was directly constructed.
 func (this *QwtCounter) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtCounter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -414,6 +461,7 @@ func (this *QwtCounter) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtCounter) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -435,12 +483,15 @@ func miqt_exec_callback_QwtCounter_sizeHint(self *C.QwtCounter, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtCounter_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtCounter) callVirtualBase_Event(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QwtCounter_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -469,6 +520,8 @@ func miqt_exec_callback_QwtCounter_event(self *C.QwtCounter, cb C.intptr_t, para
 }
 
 func (this *QwtCounter) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCounter_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
 
@@ -495,6 +548,8 @@ func miqt_exec_callback_QwtCounter_wheelEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCounter_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -521,6 +576,7 @@ func miqt_exec_callback_QwtCounter_keyPressEvent(self *C.QwtCounter, cb C.intptr
 }
 
 func (this *QwtCounter) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCounter_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -546,6 +602,7 @@ func miqt_exec_callback_QwtCounter_devType(self *C.QwtCounter, cb C.intptr_t) C.
 }
 
 func (this *QwtCounter) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtCounter_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -572,6 +629,7 @@ func miqt_exec_callback_QwtCounter_setVisible(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -593,12 +651,14 @@ func miqt_exec_callback_QwtCounter_minimumSizeHint(self *C.QwtCounter, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtCounter_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtCounter) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCounter_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -627,6 +687,7 @@ func miqt_exec_callback_QwtCounter_heightForWidth(self *C.QwtCounter, cb C.intpt
 }
 
 func (this *QwtCounter) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtCounter_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -652,6 +713,7 @@ func miqt_exec_callback_QwtCounter_hasHeightForWidth(self *C.QwtCounter, cb C.in
 }
 
 func (this *QwtCounter) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtCounter_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -671,12 +733,15 @@ func miqt_exec_callback_QwtCounter_paintEngine(self *C.QwtCounter, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtCounter) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -703,6 +768,8 @@ func miqt_exec_callback_QwtCounter_mousePressEvent(self *C.QwtCounter, cb C.intp
 }
 
 func (this *QwtCounter) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -729,6 +796,8 @@ func miqt_exec_callback_QwtCounter_mouseReleaseEvent(self *C.QwtCounter, cb C.in
 }
 
 func (this *QwtCounter) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -755,6 +824,8 @@ func miqt_exec_callback_QwtCounter_mouseDoubleClickEvent(self *C.QwtCounter, cb 
 }
 
 func (this *QwtCounter) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -781,6 +852,8 @@ func miqt_exec_callback_QwtCounter_mouseMoveEvent(self *C.QwtCounter, cb C.intpt
 }
 
 func (this *QwtCounter) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -807,6 +880,8 @@ func miqt_exec_callback_QwtCounter_keyReleaseEvent(self *C.QwtCounter, cb C.intp
 }
 
 func (this *QwtCounter) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -833,6 +908,8 @@ func miqt_exec_callback_QwtCounter_focusInEvent(self *C.QwtCounter, cb C.intptr_
 }
 
 func (this *QwtCounter) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -859,6 +936,8 @@ func miqt_exec_callback_QwtCounter_focusOutEvent(self *C.QwtCounter, cb C.intptr
 }
 
 func (this *QwtCounter) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -885,6 +964,8 @@ func miqt_exec_callback_QwtCounter_enterEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -911,6 +992,8 @@ func miqt_exec_callback_QwtCounter_leaveEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -937,6 +1020,8 @@ func miqt_exec_callback_QwtCounter_paintEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -963,6 +1048,8 @@ func miqt_exec_callback_QwtCounter_moveEvent(self *C.QwtCounter, cb C.intptr_t, 
 }
 
 func (this *QwtCounter) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -989,6 +1076,8 @@ func miqt_exec_callback_QwtCounter_resizeEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1015,6 +1104,8 @@ func miqt_exec_callback_QwtCounter_closeEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1041,6 +1132,8 @@ func miqt_exec_callback_QwtCounter_contextMenuEvent(self *C.QwtCounter, cb C.int
 }
 
 func (this *QwtCounter) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1067,6 +1160,8 @@ func miqt_exec_callback_QwtCounter_tabletEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1093,6 +1188,8 @@ func miqt_exec_callback_QwtCounter_actionEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1119,6 +1216,8 @@ func miqt_exec_callback_QwtCounter_dragEnterEvent(self *C.QwtCounter, cb C.intpt
 }
 
 func (this *QwtCounter) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1145,6 +1244,8 @@ func miqt_exec_callback_QwtCounter_dragMoveEvent(self *C.QwtCounter, cb C.intptr
 }
 
 func (this *QwtCounter) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1171,6 +1272,8 @@ func miqt_exec_callback_QwtCounter_dragLeaveEvent(self *C.QwtCounter, cb C.intpt
 }
 
 func (this *QwtCounter) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1197,6 +1300,8 @@ func miqt_exec_callback_QwtCounter_dropEvent(self *C.QwtCounter, cb C.intptr_t, 
 }
 
 func (this *QwtCounter) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1223,6 +1328,8 @@ func miqt_exec_callback_QwtCounter_showEvent(self *C.QwtCounter, cb C.intptr_t, 
 }
 
 func (this *QwtCounter) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1249,6 +1356,7 @@ func miqt_exec_callback_QwtCounter_hideEvent(self *C.QwtCounter, cb C.intptr_t, 
 }
 
 func (this *QwtCounter) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1290,6 +1398,8 @@ func miqt_exec_callback_QwtCounter_nativeEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCounter_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1316,6 +1426,7 @@ func miqt_exec_callback_QwtCounter_changeEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCounter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1344,6 +1455,8 @@ func miqt_exec_callback_QwtCounter_metric(self *C.QwtCounter, cb C.intptr_t, par
 }
 
 func (this *QwtCounter) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtCounter_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1370,6 +1483,8 @@ func miqt_exec_callback_QwtCounter_initPainter(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtCounter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1392,12 +1507,14 @@ func miqt_exec_callback_QwtCounter_redirected(self *C.QwtCounter, cb C.intptr_t,
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtCounter) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtCounter_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1417,12 +1534,15 @@ func miqt_exec_callback_QwtCounter_sharedPainter(self *C.QwtCounter, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtCounter) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCounter_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1449,6 +1569,7 @@ func miqt_exec_callback_QwtCounter_inputMethodEvent(self *C.QwtCounter, cb C.int
 }
 
 func (this *QwtCounter) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtCounter_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1473,12 +1594,14 @@ func miqt_exec_callback_QwtCounter_inputMethodQuery(self *C.QwtCounter, cb C.int
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QwtCounter_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtCounter) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtCounter_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1507,6 +1630,9 @@ func miqt_exec_callback_QwtCounter_focusNextPrevChild(self *C.QwtCounter, cb C.i
 }
 
 func (this *QwtCounter) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtCounter_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1537,6 +1663,8 @@ func miqt_exec_callback_QwtCounter_eventFilter(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1563,6 +1691,8 @@ func miqt_exec_callback_QwtCounter_timerEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1589,6 +1719,8 @@ func miqt_exec_callback_QwtCounter_childEvent(self *C.QwtCounter, cb C.intptr_t,
 }
 
 func (this *QwtCounter) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtCounter_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1615,6 +1747,8 @@ func miqt_exec_callback_QwtCounter_customEvent(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtCounter_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1641,6 +1775,8 @@ func miqt_exec_callback_QwtCounter_connectNotify(self *C.QwtCounter, cb C.intptr
 }
 
 func (this *QwtCounter) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtCounter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1678,8 +1814,9 @@ func (this *QwtCounter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCounter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCounter) {
-		C.QwtCounter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCounter_delete((*C.QwtCounter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

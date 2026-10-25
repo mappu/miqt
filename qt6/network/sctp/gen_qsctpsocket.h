@@ -134,6 +134,7 @@ bool QSctpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSctpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QSctpSocket_virtualreturncopy_QVariant(QVariant* src);
 
 void QSctpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QSctpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);

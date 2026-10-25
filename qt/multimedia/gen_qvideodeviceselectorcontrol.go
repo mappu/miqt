@@ -17,8 +17,15 @@ import (
 
 type QVideoDeviceSelectorControl struct {
 	h  *C.QVideoDeviceSelectorControl
-	gc *[1]*C.QVideoDeviceSelectorControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoDeviceSelectorControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QVideoDeviceSelectorControl) cPointer() *C.QVideoDeviceSelectorControl {
@@ -53,10 +60,12 @@ func UnsafeNewQVideoDeviceSelectorControl(h unsafe.Pointer) *QVideoDeviceSelecto
 }
 
 func (this *QVideoDeviceSelectorControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoDeviceSelectorControl_metaObject(this.h)))
 }
 
 func (this *QVideoDeviceSelectorControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoDeviceSelectorControl_metacast(this.h, param1_Cstring))
@@ -81,10 +90,12 @@ func QVideoDeviceSelectorControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoDeviceSelectorControl) DeviceCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoDeviceSelectorControl_deviceCount(this.h))
 }
 
 func (this *QVideoDeviceSelectorControl) DeviceName(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVideoDeviceSelectorControl_deviceName(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -92,6 +103,7 @@ func (this *QVideoDeviceSelectorControl) DeviceName(index int) string {
 }
 
 func (this *QVideoDeviceSelectorControl) DeviceDescription(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVideoDeviceSelectorControl_deviceDescription(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -99,18 +111,22 @@ func (this *QVideoDeviceSelectorControl) DeviceDescription(index int) string {
 }
 
 func (this *QVideoDeviceSelectorControl) DefaultDevice() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoDeviceSelectorControl_defaultDevice(this.h))
 }
 
 func (this *QVideoDeviceSelectorControl) SelectedDevice() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoDeviceSelectorControl_selectedDevice(this.h))
 }
 
 func (this *QVideoDeviceSelectorControl) SetSelectedDevice(index int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoDeviceSelectorControl_setSelectedDevice(this.h, (C.int)(index))
 }
 
 func (this *QVideoDeviceSelectorControl) SelectedDeviceChanged(index int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoDeviceSelectorControl_selectedDeviceChanged(this.h, (C.int)(index))
 }
 func (this *QVideoDeviceSelectorControl) OnSelectedDeviceChanged(slot func(index int)) {
@@ -131,6 +147,7 @@ func miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(cb C.i
 }
 
 func (this *QVideoDeviceSelectorControl) SelectedDeviceChangedWithName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -158,6 +175,7 @@ func miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithNam
 }
 
 func (this *QVideoDeviceSelectorControl) DevicesChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVideoDeviceSelectorControl_devicesChanged(this.h)
 }
 func (this *QVideoDeviceSelectorControl) OnDevicesChanged(slot func()) {
@@ -230,8 +248,9 @@ func (this *QVideoDeviceSelectorControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoDeviceSelectorControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoDeviceSelectorControl) {
-		C.QVideoDeviceSelectorControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoDeviceSelectorControl_delete((*C.QVideoDeviceSelectorControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

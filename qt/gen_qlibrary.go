@@ -26,8 +26,15 @@ const (
 
 type QLibrary struct {
 	h  *C.QLibrary
-	gc *[1]*C.QLibrary
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLibrary) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QLibrary) cPointer() *C.QLibrary {
@@ -103,12 +110,14 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 
 // NewQLibrary5 constructs a new QLibrary object.
 func NewQLibrary5(parent *QObject) *QLibrary {
+	defer runtime.KeepAlive(parent)
 
 	return newQLibrary(C.QLibrary_new5(parent.cPointer()))
 }
 
 // NewQLibrary6 constructs a new QLibrary object.
 func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
+	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -119,6 +128,7 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 
 // NewQLibrary7 constructs a new QLibrary object.
 func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
+	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -129,6 +139,7 @@ func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 
 // NewQLibrary8 constructs a new QLibrary object.
 func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
+	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -142,10 +153,12 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QLibrary_metaObject(this.h))
 }
 
 func (this *QLibrary) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLibrary_metacast(this.h, param1_Cstring))
@@ -170,14 +183,17 @@ func QLibrary_TrUtf8(s string) string {
 }
 
 func (this *QLibrary) Load() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLibrary_load(this.h))
 }
 
 func (this *QLibrary) Unload() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLibrary_unload(this.h))
 }
 
 func (this *QLibrary) IsLoaded() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLibrary_isLoaded(this.h))
 }
 
@@ -190,6 +206,7 @@ func QLibrary_IsLibrary(fileName string) bool {
 }
 
 func (this *QLibrary) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -198,6 +215,7 @@ func (this *QLibrary) SetFileName(fileName string) {
 }
 
 func (this *QLibrary) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLibrary_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -205,6 +223,7 @@ func (this *QLibrary) FileName() string {
 }
 
 func (this *QLibrary) SetFileNameAndVersion(fileName string, verNum int) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -213,6 +232,7 @@ func (this *QLibrary) SetFileNameAndVersion(fileName string, verNum int) {
 }
 
 func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -225,6 +245,7 @@ func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
 }
 
 func (this *QLibrary) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLibrary_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -232,10 +253,12 @@ func (this *QLibrary) ErrorString() string {
 }
 
 func (this *QLibrary) SetLoadHints(hints QLibrary__LoadHint) {
+	defer runtime.KeepAlive(this)
 	C.QLibrary_setLoadHints(this.h, (C.int)(hints))
 }
 
 func (this *QLibrary) LoadHints() QLibrary__LoadHint {
+	defer runtime.KeepAlive(this)
 	return (QLibrary__LoadHint)(C.QLibrary_loadHints(this.h))
 }
 
@@ -285,6 +308,7 @@ func QLibrary_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QLibrary that was directly constructed.
 func (this *QLibrary) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QLibrary_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -299,6 +323,7 @@ func (this *QLibrary) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QLibrary that was directly constructed.
 func (this *QLibrary) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QLibrary_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -313,6 +338,7 @@ func (this *QLibrary) SenderSignalIndex() int {
 
 // Receivers can only be called from a QLibrary that was directly constructed.
 func (this *QLibrary) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -329,6 +355,8 @@ func (this *QLibrary) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QLibrary that was directly constructed.
 func (this *QLibrary) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QLibrary_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -342,6 +370,8 @@ func (this *QLibrary) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QLibrary) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLibrary_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -370,6 +400,9 @@ func miqt_exec_callback_QLibrary_event(self *C.QLibrary, cb C.intptr_t, event *C
 }
 
 func (this *QLibrary) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLibrary_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -400,6 +433,8 @@ func miqt_exec_callback_QLibrary_eventFilter(self *C.QLibrary, cb C.intptr_t, wa
 }
 
 func (this *QLibrary) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLibrary_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -426,6 +461,8 @@ func miqt_exec_callback_QLibrary_timerEvent(self *C.QLibrary, cb C.intptr_t, eve
 }
 
 func (this *QLibrary) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLibrary_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -452,6 +489,8 @@ func miqt_exec_callback_QLibrary_childEvent(self *C.QLibrary, cb C.intptr_t, eve
 }
 
 func (this *QLibrary) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLibrary_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -478,6 +517,8 @@ func miqt_exec_callback_QLibrary_customEvent(self *C.QLibrary, cb C.intptr_t, ev
 }
 
 func (this *QLibrary) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QLibrary_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -504,6 +545,8 @@ func miqt_exec_callback_QLibrary_connectNotify(self *C.QLibrary, cb C.intptr_t, 
 }
 
 func (this *QLibrary) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QLibrary_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -541,8 +584,9 @@ func (this *QLibrary) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLibrary{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLibrary) {
-		C.QLibrary_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLibrary_delete((*C.QLibrary)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

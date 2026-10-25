@@ -707,6 +707,8 @@ bool QsciScintilla_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintilla_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QsciScintilla_virtualreturncopy_QVariant(QVariant* src);
+QSize* QsciScintilla_virtualreturncopy_QSize(QSize* src);
 
 void QsciScintilla_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
 struct miqt_string QsciScintilla_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);

@@ -105,8 +105,14 @@ const (
 
 type QAbstractSocket struct {
 	h  *C.QAbstractSocket
-	gc *[1]*C.QAbstractSocket
+	gc *[1]unsafe.Pointer
 	*qt6.QIODevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractSocket) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractSocket) cPointer() *C.QAbstractSocket {
@@ -142,15 +148,18 @@ func UnsafeNewQAbstractSocket(h unsafe.Pointer) *QAbstractSocket {
 
 // NewQAbstractSocket constructs a new QAbstractSocket object.
 func NewQAbstractSocket(socketType QAbstractSocket__SocketType, parent *qt6.QObject) *QAbstractSocket {
+	defer runtime.KeepAlive(parent)
 
 	return newQAbstractSocket(C.QAbstractSocket_new((C.int)(socketType), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAbstractSocket) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSocket_metaObject(this.h)))
 }
 
 func (this *QAbstractSocket) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractSocket_metacast(this.h, param1_Cstring))
@@ -166,26 +175,33 @@ func QAbstractSocket_Tr(s string) string {
 }
 
 func (this *QAbstractSocket) Resume() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_resume(this.h)
 }
 
 func (this *QAbstractSocket) PauseMode() QAbstractSocket__PauseMode {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__PauseMode)(C.QAbstractSocket_pauseMode(this.h))
 }
 
 func (this *QAbstractSocket) SetPauseMode(pauseMode QAbstractSocket__PauseMode) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_setPauseMode(this.h, (C.int)(pauseMode))
 }
 
 func (this *QAbstractSocket) Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QAbstractSocket_bind(this.h, address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 }
 
 func (this *QAbstractSocket) Bind2() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_bind2(this.h))
 }
 
 func (this *QAbstractSocket) ConnectToHost(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -194,46 +210,57 @@ func (this *QAbstractSocket) ConnectToHost(hostName string, port uint16, mode qt
 }
 
 func (this *QAbstractSocket) ConnectToHost2(address *QHostAddress, port uint16) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	C.QAbstractSocket_connectToHost2(this.h, address.cPointer(), (C.ushort)(port))
 }
 
 func (this *QAbstractSocket) DisconnectFromHost() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_disconnectFromHost(this.h)
 }
 
 func (this *QAbstractSocket) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_isValid(this.h))
 }
 
 func (this *QAbstractSocket) BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractSocket_bytesAvailable(this.h))
 }
 
 func (this *QAbstractSocket) BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractSocket_bytesToWrite(this.h))
 }
 
 func (this *QAbstractSocket) LocalPort() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QAbstractSocket_localPort(this.h))
 }
 
 func (this *QAbstractSocket) LocalAddress() *QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QAbstractSocket_localAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) PeerPort() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QAbstractSocket_peerPort(this.h))
 }
 
 func (this *QAbstractSocket) PeerAddress() *QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QAbstractSocket_peerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) PeerName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractSocket_peerName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -241,86 +268,108 @@ func (this *QAbstractSocket) PeerName() string {
 }
 
 func (this *QAbstractSocket) ReadBufferSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractSocket_readBufferSize(this.h))
 }
 
 func (this *QAbstractSocket) SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QAbstractSocket) Abort() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_abort(this.h)
 }
 
 func (this *QAbstractSocket) SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QAbstractSocket_socketDescriptor(this.h))
 }
 
 func (this *QAbstractSocket) SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 }
 
 func (this *QAbstractSocket) SetSocketOption(option QAbstractSocket__SocketOption, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QAbstractSocket_setSocketOption(this.h, (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QAbstractSocket) SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_socketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) SocketType() QAbstractSocket__SocketType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__SocketType)(C.QAbstractSocket_socketType(this.h))
 }
 
 func (this *QAbstractSocket) State() QAbstractSocket__SocketState {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__SocketState)(C.QAbstractSocket_state(this.h))
 }
 
 func (this *QAbstractSocket) Error() QAbstractSocket__SocketError {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__SocketError)(C.QAbstractSocket_error(this.h))
 }
 
 func (this *QAbstractSocket) Close() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_close(this.h)
 }
 
 func (this *QAbstractSocket) IsSequential() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_isSequential(this.h))
 }
 
 func (this *QAbstractSocket) Flush() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_flush(this.h))
 }
 
 func (this *QAbstractSocket) WaitForConnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_waitForConnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForDisconnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_waitForDisconnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) SetProxy(networkProxy *QNetworkProxy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(networkProxy)
 	C.QAbstractSocket_setProxy(this.h, networkProxy.cPointer())
 }
 
 func (this *QAbstractSocket) Proxy() *QNetworkProxy {
+	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkProxy(C.QAbstractSocket_proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) ProtocolTag() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractSocket_protocolTag(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -328,6 +377,7 @@ func (this *QAbstractSocket) ProtocolTag() string {
 }
 
 func (this *QAbstractSocket) SetProtocolTag(tag string) {
+	defer runtime.KeepAlive(this)
 	tag_ms := C.struct_miqt_string{}
 	tag_ms.data = C.CString(tag)
 	tag_ms.len = C.size_t(len(tag))
@@ -336,6 +386,7 @@ func (this *QAbstractSocket) SetProtocolTag(tag string) {
 }
 
 func (this *QAbstractSocket) HostFound() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_hostFound(this.h)
 }
 func (this *QAbstractSocket) OnHostFound(slot func()) {
@@ -353,6 +404,7 @@ func miqt_exec_callback_QAbstractSocket_hostFound(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) Connected() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_connected(this.h)
 }
 func (this *QAbstractSocket) OnConnected(slot func()) {
@@ -370,6 +422,7 @@ func miqt_exec_callback_QAbstractSocket_connected(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) Disconnected() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_disconnected(this.h)
 }
 func (this *QAbstractSocket) OnDisconnected(slot func()) {
@@ -387,6 +440,7 @@ func miqt_exec_callback_QAbstractSocket_disconnected(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) StateChanged(param1 QAbstractSocket__SocketState) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_stateChanged(this.h, (C.int)(param1))
 }
 func (this *QAbstractSocket) OnStateChanged(slot func(param1 QAbstractSocket__SocketState)) {
@@ -407,6 +461,7 @@ func miqt_exec_callback_QAbstractSocket_stateChanged(cb C.intptr_t, param1 C.int
 }
 
 func (this *QAbstractSocket) ErrorOccurred(param1 QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractSocket_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QAbstractSocket) OnErrorOccurred(slot func(param1 QAbstractSocket__SocketError)) {
@@ -427,6 +482,9 @@ func miqt_exec_callback_QAbstractSocket_errorOccurred(cb C.intptr_t, param1 C.in
 }
 
 func (this *QAbstractSocket) ProxyAuthenticationRequired(proxy *QNetworkProxy, authenticator *QAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(proxy)
+	defer runtime.KeepAlive(authenticator)
 	C.QAbstractSocket_proxyAuthenticationRequired(this.h, proxy.cPointer(), authenticator.cPointer())
 }
 func (this *QAbstractSocket) OnProxyAuthenticationRequired(slot func(proxy *QNetworkProxy, authenticator *QAuthenticator)) {
@@ -471,19 +529,24 @@ func QAbstractSocket_Tr3(s string, c string, n int) string {
 }
 
 func (this *QAbstractSocket) BindWithPort(port uint16) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_bindWithPort(this.h, (C.ushort)(port)))
 }
 
 func (this *QAbstractSocket) Bind3(port uint16, mode QAbstractSocket__BindFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSocket_bind3(this.h, (C.ushort)(port), (C.int)(mode)))
 }
 
 func (this *QAbstractSocket) ConnectToHost3(address *QHostAddress, port uint16, mode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	C.QAbstractSocket_connectToHost3(this.h, address.cPointer(), (C.ushort)(port), (C.int)(mode))
 }
 
 // SetSocketState can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetSocketState(state QAbstractSocket__SocketState) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setSocketState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -496,6 +559,7 @@ func (this *QAbstractSocket) SetSocketState(state QAbstractSocket__SocketState) 
 
 // SetSocketError can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetSocketError(socketError QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setSocketError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(socketError))
@@ -508,6 +572,7 @@ func (this *QAbstractSocket) SetSocketError(socketError QAbstractSocket__SocketE
 
 // SetLocalPort can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetLocalPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -520,6 +585,8 @@ func (this *QAbstractSocket) SetLocalPort(port uint16) {
 
 // SetLocalAddress can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetLocalAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setLocalAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -532,6 +599,7 @@ func (this *QAbstractSocket) SetLocalAddress(address *QHostAddress) {
 
 // SetPeerPort can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetPeerPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -544,6 +612,8 @@ func (this *QAbstractSocket) SetPeerPort(port uint16) {
 
 // SetPeerAddress can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetPeerAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setPeerAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -556,6 +626,7 @@ func (this *QAbstractSocket) SetPeerAddress(address *QHostAddress) {
 
 // SetPeerName can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetPeerName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -572,6 +643,7 @@ func (this *QAbstractSocket) SetPeerName(name string) {
 
 // SetOpenMode can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -584,6 +656,7 @@ func (this *QAbstractSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFla
 
 // SetErrorString can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -600,6 +673,7 @@ func (this *QAbstractSocket) SetErrorString(errorString string) {
 
 // Sender can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAbstractSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -614,6 +688,7 @@ func (this *QAbstractSocket) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -628,6 +703,7 @@ func (this *QAbstractSocket) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -644,6 +720,8 @@ func (this *QAbstractSocket) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractSocket that was directly constructed.
 func (this *QAbstractSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -657,6 +735,7 @@ func (this *QAbstractSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAbstractSocket) callVirtualBase_Resume() {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractSocket_virtualbase_resume(unsafe.Pointer(this.h))
 
@@ -680,6 +759,8 @@ func miqt_exec_callback_QAbstractSocket_resume(self *C.QAbstractSocket, cb C.int
 }
 
 func (this *QAbstractSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	return (bool)(C.QAbstractSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 
@@ -712,6 +793,7 @@ func miqt_exec_callback_QAbstractSocket_bind(self *C.QAbstractSocket, cb C.intpt
 }
 
 func (this *QAbstractSocket) callVirtualBase_ConnectToHost(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -750,6 +832,7 @@ func miqt_exec_callback_QAbstractSocket_connectToHost(self *C.QAbstractSocket, c
 }
 
 func (this *QAbstractSocket) callVirtualBase_DisconnectFromHost() {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractSocket_virtualbase_disconnectFromHost(unsafe.Pointer(this.h))
 
@@ -773,6 +856,7 @@ func miqt_exec_callback_QAbstractSocket_disconnectFromHost(self *C.QAbstractSock
 }
 
 func (this *QAbstractSocket) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAbstractSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -798,6 +882,7 @@ func miqt_exec_callback_QAbstractSocket_bytesAvailable(self *C.QAbstractSocket, 
 }
 
 func (this *QAbstractSocket) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAbstractSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -823,6 +908,7 @@ func miqt_exec_callback_QAbstractSocket_bytesToWrite(self *C.QAbstractSocket, cb
 }
 
 func (this *QAbstractSocket) callVirtualBase_SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractSocket_virtualbase_setReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
 
@@ -849,6 +935,7 @@ func miqt_exec_callback_QAbstractSocket_setReadBufferSize(self *C.QAbstractSocke
 }
 
 func (this *QAbstractSocket) callVirtualBase_SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 
 	return (uintptr)(C.QAbstractSocket_virtualbase_socketDescriptor(unsafe.Pointer(this.h)))
 
@@ -874,6 +961,7 @@ func miqt_exec_callback_QAbstractSocket_socketDescriptor(self *C.QAbstractSocket
 }
 
 func (this *QAbstractSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_setSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
@@ -906,6 +994,8 @@ func miqt_exec_callback_QAbstractSocket_setSocketDescriptor(self *C.QAbstractSoc
 }
 
 func (this *QAbstractSocket) callVirtualBase_SetSocketOption(option QAbstractSocket__SocketOption, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QAbstractSocket_virtualbase_setSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 
@@ -934,6 +1024,7 @@ func miqt_exec_callback_QAbstractSocket_setSocketOption(self *C.QAbstractSocket,
 }
 
 func (this *QAbstractSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_virtualbase_socketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -958,12 +1049,14 @@ func miqt_exec_callback_QAbstractSocket_socketOption(self *C.QAbstractSocket, cb
 	slotval1 := (QAbstractSocket__SocketOption)(option)
 
 	virtualReturn := gofunc((&QAbstractSocket{h: self}).callVirtualBase_SocketOption, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QAbstractSocket_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QAbstractSocket) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractSocket_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -987,6 +1080,7 @@ func miqt_exec_callback_QAbstractSocket_close(self *C.QAbstractSocket, cb C.intp
 }
 
 func (this *QAbstractSocket) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -1012,6 +1106,7 @@ func miqt_exec_callback_QAbstractSocket_isSequential(self *C.QAbstractSocket, cb
 }
 
 func (this *QAbstractSocket) callVirtualBase_WaitForConnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_waitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1040,6 +1135,7 @@ func miqt_exec_callback_QAbstractSocket_waitForConnected(self *C.QAbstractSocket
 }
 
 func (this *QAbstractSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1068,6 +1164,7 @@ func miqt_exec_callback_QAbstractSocket_waitForReadyRead(self *C.QAbstractSocket
 }
 
 func (this *QAbstractSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1096,6 +1193,7 @@ func miqt_exec_callback_QAbstractSocket_waitForBytesWritten(self *C.QAbstractSoc
 }
 
 func (this *QAbstractSocket) callVirtualBase_WaitForDisconnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_waitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1124,6 +1222,7 @@ func miqt_exec_callback_QAbstractSocket_waitForDisconnected(self *C.QAbstractSoc
 }
 
 func (this *QAbstractSocket) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1157,6 +1256,7 @@ func miqt_exec_callback_QAbstractSocket_readData(self *C.QAbstractSocket, cb C.i
 }
 
 func (this *QAbstractSocket) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1190,6 +1290,7 @@ func miqt_exec_callback_QAbstractSocket_readLineData(self *C.QAbstractSocket, cb
 }
 
 func (this *QAbstractSocket) callVirtualBase_SkipData(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAbstractSocket_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
@@ -1218,6 +1319,7 @@ func miqt_exec_callback_QAbstractSocket_skipData(self *C.QAbstractSocket, cb C.i
 }
 
 func (this *QAbstractSocket) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1251,6 +1353,7 @@ func miqt_exec_callback_QAbstractSocket_writeData(self *C.QAbstractSocket, cb C.
 }
 
 func (this *QAbstractSocket) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
@@ -1279,6 +1382,7 @@ func miqt_exec_callback_QAbstractSocket_open(self *C.QAbstractSocket, cb C.intpt
 }
 
 func (this *QAbstractSocket) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAbstractSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -1304,6 +1408,7 @@ func miqt_exec_callback_QAbstractSocket_pos(self *C.QAbstractSocket, cb C.intptr
 }
 
 func (this *QAbstractSocket) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAbstractSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -1329,6 +1434,7 @@ func miqt_exec_callback_QAbstractSocket_size(self *C.QAbstractSocket, cb C.intpt
 }
 
 func (this *QAbstractSocket) callVirtualBase_Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -1357,6 +1463,7 @@ func miqt_exec_callback_QAbstractSocket_seek(self *C.QAbstractSocket, cb C.intpt
 }
 
 func (this *QAbstractSocket) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -1382,6 +1489,7 @@ func miqt_exec_callback_QAbstractSocket_atEnd(self *C.QAbstractSocket, cb C.intp
 }
 
 func (this *QAbstractSocket) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -1407,6 +1515,7 @@ func miqt_exec_callback_QAbstractSocket_reset(self *C.QAbstractSocket, cb C.intp
 }
 
 func (this *QAbstractSocket) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -1432,6 +1541,8 @@ func miqt_exec_callback_QAbstractSocket_canReadLine(self *C.QAbstractSocket, cb 
 }
 
 func (this *QAbstractSocket) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1460,6 +1571,9 @@ func miqt_exec_callback_QAbstractSocket_event(self *C.QAbstractSocket, cb C.intp
 }
 
 func (this *QAbstractSocket) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1490,6 +1604,8 @@ func miqt_exec_callback_QAbstractSocket_eventFilter(self *C.QAbstractSocket, cb 
 }
 
 func (this *QAbstractSocket) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1516,6 +1632,8 @@ func miqt_exec_callback_QAbstractSocket_timerEvent(self *C.QAbstractSocket, cb C
 }
 
 func (this *QAbstractSocket) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1542,6 +1660,8 @@ func miqt_exec_callback_QAbstractSocket_childEvent(self *C.QAbstractSocket, cb C
 }
 
 func (this *QAbstractSocket) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1568,6 +1688,8 @@ func miqt_exec_callback_QAbstractSocket_customEvent(self *C.QAbstractSocket, cb 
 }
 
 func (this *QAbstractSocket) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1594,6 +1716,8 @@ func miqt_exec_callback_QAbstractSocket_connectNotify(self *C.QAbstractSocket, c
 }
 
 func (this *QAbstractSocket) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1631,8 +1755,9 @@ func (this *QAbstractSocket) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractSocket{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractSocket) {
-		C.QAbstractSocket_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractSocket_delete((*C.QAbstractSocket)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

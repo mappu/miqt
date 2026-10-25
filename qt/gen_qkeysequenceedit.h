@@ -203,6 +203,8 @@ bool QKeySequenceEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QKeySequenceEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QKeySequenceEdit_virtualreturncopy_QSize(QSize* src);
+QVariant* QKeySequenceEdit_virtualreturncopy_QVariant(QVariant* src);
 
 void QKeySequenceEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QKeySequenceEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);

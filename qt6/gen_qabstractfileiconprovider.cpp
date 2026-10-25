@@ -39,7 +39,9 @@ public:
 		QAbstractFileIconProvider::IconType param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_icon(this, handle__icon, sigval1);
-		return *callback_return_value;
+		QIcon callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QIcon* QAbstractFileIconProvider_virtualbase_icon(const void* self, int param1);
@@ -57,7 +59,9 @@ public:
 		// Cast returned reference into pointer
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&param1_ret);
 		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_iconWithQFileInfo(this, handle__iconWithQFileInfo, sigval1);
-		return *callback_return_value;
+		QIcon callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QIcon* QAbstractFileIconProvider_virtualbase_iconWithQFileInfo(const void* self, QFileInfo* param1);
@@ -225,6 +229,10 @@ bool QAbstractFileIconProvider_override_virtual_options(void* self, intptr_t slo
 int QAbstractFileIconProvider_virtualbase_options(const void* self) {
 	MiqtVirtualQAbstractFileIconProvider::Options _ret = static_cast<const MiqtVirtualQAbstractFileIconProvider*>(self)->QAbstractFileIconProvider::options();
 	return static_cast<int>(_ret);
+}
+
+QIcon* QAbstractFileIconProvider_virtualreturncopy_QIcon(QIcon* src) {
+	return new QIcon(*src);
 }
 
 void QAbstractFileIconProvider_delete(QAbstractFileIconProvider* self) {

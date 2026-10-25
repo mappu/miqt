@@ -17,8 +17,14 @@ import (
 
 type QSvgGenerator struct {
 	h  *C.QSvgGenerator
-	gc *[1]*C.QSvgGenerator
+	gc *[1]unsafe.Pointer
 	*qt.QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSvgGenerator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSvgGenerator) cPointer() *C.QSvgGenerator {
@@ -59,6 +65,7 @@ func NewQSvgGenerator() *QSvgGenerator {
 }
 
 func (this *QSvgGenerator) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSvgGenerator_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -66,6 +73,7 @@ func (this *QSvgGenerator) Title() string {
 }
 
 func (this *QSvgGenerator) SetTitle(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -74,6 +82,7 @@ func (this *QSvgGenerator) SetTitle(title string) {
 }
 
 func (this *QSvgGenerator) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSvgGenerator_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -81,6 +90,7 @@ func (this *QSvgGenerator) Description() string {
 }
 
 func (this *QSvgGenerator) SetDescription(description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -89,36 +99,46 @@ func (this *QSvgGenerator) SetDescription(description string) {
 }
 
 func (this *QSvgGenerator) Size() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgGenerator_size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgGenerator) SetSize(size *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QSvgGenerator_setSize(this.h, (*C.QSize)(size.UnsafePointer()))
 }
 
 func (this *QSvgGenerator) ViewBox() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QSvgGenerator_viewBox(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgGenerator) ViewBoxF() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QSvgGenerator_viewBoxF(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgGenerator) SetViewBox(viewBox *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewBox)
 	C.QSvgGenerator_setViewBox(this.h, (*C.QRect)(viewBox.UnsafePointer()))
 }
 
 func (this *QSvgGenerator) SetViewBoxWithViewBox(viewBox *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewBox)
 	C.QSvgGenerator_setViewBoxWithViewBox(this.h, (*C.QRectF)(viewBox.UnsafePointer()))
 }
 
 func (this *QSvgGenerator) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSvgGenerator_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -126,6 +146,7 @@ func (this *QSvgGenerator) FileName() string {
 }
 
 func (this *QSvgGenerator) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -134,22 +155,28 @@ func (this *QSvgGenerator) SetFileName(fileName string) {
 }
 
 func (this *QSvgGenerator) OutputDevice() *qt.QIODevice {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QSvgGenerator_outputDevice(this.h)))
 }
 
 func (this *QSvgGenerator) SetOutputDevice(outputDevice *qt.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(outputDevice)
 	C.QSvgGenerator_setOutputDevice(this.h, (*C.QIODevice)(outputDevice.UnsafePointer()))
 }
 
 func (this *QSvgGenerator) SetResolution(dpi int) {
+	defer runtime.KeepAlive(this)
 	C.QSvgGenerator_setResolution(this.h, (C.int)(dpi))
 }
 
 func (this *QSvgGenerator) Resolution() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSvgGenerator_resolution(this.h))
 }
 
 func (this *QSvgGenerator) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QSvgGenerator_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -169,12 +196,14 @@ func miqt_exec_callback_QSvgGenerator_paintEngine(self *C.QSvgGenerator, cb C.in
 	}
 
 	virtualReturn := gofunc((&QSvgGenerator{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSvgGenerator) callVirtualBase_Metric(metric qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSvgGenerator_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(metric)))
 
@@ -203,6 +232,7 @@ func miqt_exec_callback_QSvgGenerator_metric(self *C.QSvgGenerator, cb C.intptr_
 }
 
 func (this *QSvgGenerator) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSvgGenerator_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -228,6 +258,8 @@ func miqt_exec_callback_QSvgGenerator_devType(self *C.QSvgGenerator, cb C.intptr
 }
 
 func (this *QSvgGenerator) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QSvgGenerator_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -254,6 +286,8 @@ func miqt_exec_callback_QSvgGenerator_initPainter(self *C.QSvgGenerator, cb C.in
 }
 
 func (this *QSvgGenerator) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgGenerator_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -276,12 +310,14 @@ func miqt_exec_callback_QSvgGenerator_redirected(self *C.QSvgGenerator, cb C.int
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QSvgGenerator{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSvgGenerator) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QSvgGenerator_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -301,6 +337,7 @@ func miqt_exec_callback_QSvgGenerator_sharedPainter(self *C.QSvgGenerator, cb C.
 	}
 
 	virtualReturn := gofunc((&QSvgGenerator{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
@@ -318,8 +355,9 @@ func (this *QSvgGenerator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSvgGenerator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSvgGenerator) {
-		C.QSvgGenerator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSvgGenerator_delete((*C.QSvgGenerator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

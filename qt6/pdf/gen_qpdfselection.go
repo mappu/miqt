@@ -16,7 +16,13 @@ import (
 
 type QPdfSelection struct {
 	h  *C.QPdfSelection
-	gc *[1]*C.QPdfSelection
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfSelection) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfSelection) cPointer() *C.QPdfSelection {
@@ -49,23 +55,30 @@ func UnsafeNewQPdfSelection(h unsafe.Pointer) *QPdfSelection {
 
 // NewQPdfSelection constructs a new QPdfSelection object.
 func NewQPdfSelection(other *QPdfSelection) *QPdfSelection {
+	defer runtime.KeepAlive(other)
 
 	return newQPdfSelection(C.QPdfSelection_new(other.cPointer()))
 }
 
 func (this *QPdfSelection) OperatorAssign(other *QPdfSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfSelection_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPdfSelection) Swap(other *QPdfSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfSelection_swap(this.h, other.cPointer())
 }
 
 func (this *QPdfSelection) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfSelection_isValid(this.h))
 }
 
 func (this *QPdfSelection) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfSelection_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -73,24 +86,29 @@ func (this *QPdfSelection) Text() string {
 }
 
 func (this *QPdfSelection) BoundingRectangle() *qt6.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QPdfSelection_boundingRectangle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfSelection) StartIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfSelection_startIndex(this.h))
 }
 
 func (this *QPdfSelection) EndIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfSelection_endIndex(this.h))
 }
 
 func (this *QPdfSelection) CopyToClipboard() {
+	defer runtime.KeepAlive(this)
 	C.QPdfSelection_copyToClipboard(this.h)
 }
 
 func (this *QPdfSelection) CopyToClipboardWithMode(mode qt6.QClipboard__Mode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfSelection_copyToClipboardWithMode(this.h, (C.int)(mode))
 }
 
@@ -106,8 +124,9 @@ func (this *QPdfSelection) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfSelection{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfSelection) {
-		C.QPdfSelection_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfSelection_delete((*C.QPdfSelection)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

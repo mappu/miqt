@@ -16,8 +16,15 @@ import (
 
 type QThreadPool struct {
 	h  *C.QThreadPool
-	gc *[1]*C.QThreadPool
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QThreadPool) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QThreadPool) cPointer() *C.QThreadPool {
@@ -59,15 +66,18 @@ func NewQThreadPool() *QThreadPool {
 
 // NewQThreadPool2 constructs a new QThreadPool object.
 func NewQThreadPool2(parent *QObject) *QThreadPool {
+	defer runtime.KeepAlive(parent)
 
 	return newQThreadPool(C.QThreadPool_new2(parent.cPointer()))
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QThreadPool_metaObject(this.h))
 }
 
 func (this *QThreadPool) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QThreadPool_metacast(this.h, param1_Cstring))
@@ -87,74 +97,97 @@ func QThreadPool_GlobalInstance() *QThreadPool {
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	C.QThreadPool_start(this.h, runnable.cPointer())
 }
 
 func (this *QThreadPool) TryStart(runnable *QRunnable) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	return (bool)(C.QThreadPool_tryStart(this.h, runnable.cPointer()))
 }
 
 func (this *QThreadPool) StartOnReservedThread(runnable *QRunnable) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	C.QThreadPool_startOnReservedThread(this.h, runnable.cPointer())
 }
 
 func (this *QThreadPool) ExpiryTimeout() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QThreadPool_expiryTimeout(this.h))
 }
 
 func (this *QThreadPool) SetExpiryTimeout(expiryTimeout int) {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_setExpiryTimeout(this.h, (C.int)(expiryTimeout))
 }
 
 func (this *QThreadPool) MaxThreadCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QThreadPool_maxThreadCount(this.h))
 }
 
 func (this *QThreadPool) SetMaxThreadCount(maxThreadCount int) {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_setMaxThreadCount(this.h, (C.int)(maxThreadCount))
 }
 
 func (this *QThreadPool) ActiveThreadCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QThreadPool_activeThreadCount(this.h))
 }
 
 func (this *QThreadPool) SetStackSize(stackSize uint) {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_setStackSize(this.h, (C.uint)(stackSize))
 }
 
 func (this *QThreadPool) StackSize() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QThreadPool_stackSize(this.h))
 }
 
 func (this *QThreadPool) SetThreadPriority(priority QThread__Priority) {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_setThreadPriority(this.h, (C.int)(priority))
 }
 
 func (this *QThreadPool) ThreadPriority() QThread__Priority {
+	defer runtime.KeepAlive(this)
 	return (QThread__Priority)(C.QThreadPool_threadPriority(this.h))
 }
 
 func (this *QThreadPool) ReserveThread() {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_reserveThread(this.h)
 }
 
 func (this *QThreadPool) ReleaseThread() {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_releaseThread(this.h)
 }
 
 func (this *QThreadPool) WaitForDone() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QThreadPool_waitForDone(this.h))
 }
 
 func (this *QThreadPool) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QThreadPool_clear(this.h)
 }
 
 func (this *QThreadPool) Contains(thread *QThread) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thread)
 	return (bool)(C.QThreadPool_contains(this.h, thread.cPointer()))
 }
 
 func (this *QThreadPool) TryTake(runnable *QRunnable) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	return (bool)(C.QThreadPool_tryTake(this.h, runnable.cPointer()))
 }
 
@@ -181,15 +214,19 @@ func QThreadPool_Tr3(s string, c string, n int) string {
 }
 
 func (this *QThreadPool) Start2(runnable *QRunnable, priority int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	C.QThreadPool_start2(this.h, runnable.cPointer(), (C.int)(priority))
 }
 
 func (this *QThreadPool) WaitForDoneWithMsecs(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QThreadPool_waitForDoneWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // Sender can only be called from a QThreadPool that was directly constructed.
 func (this *QThreadPool) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QThreadPool_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -204,6 +241,7 @@ func (this *QThreadPool) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QThreadPool that was directly constructed.
 func (this *QThreadPool) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QThreadPool_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -218,6 +256,7 @@ func (this *QThreadPool) SenderSignalIndex() int {
 
 // Receivers can only be called from a QThreadPool that was directly constructed.
 func (this *QThreadPool) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -234,6 +273,8 @@ func (this *QThreadPool) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QThreadPool that was directly constructed.
 func (this *QThreadPool) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QThreadPool_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -247,6 +288,8 @@ func (this *QThreadPool) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QThreadPool) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QThreadPool_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -275,6 +318,9 @@ func miqt_exec_callback_QThreadPool_event(self *C.QThreadPool, cb C.intptr_t, ev
 }
 
 func (this *QThreadPool) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QThreadPool_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -305,6 +351,8 @@ func miqt_exec_callback_QThreadPool_eventFilter(self *C.QThreadPool, cb C.intptr
 }
 
 func (this *QThreadPool) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QThreadPool_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -331,6 +379,8 @@ func miqt_exec_callback_QThreadPool_timerEvent(self *C.QThreadPool, cb C.intptr_
 }
 
 func (this *QThreadPool) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QThreadPool_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -357,6 +407,8 @@ func miqt_exec_callback_QThreadPool_childEvent(self *C.QThreadPool, cb C.intptr_
 }
 
 func (this *QThreadPool) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QThreadPool_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -383,6 +435,8 @@ func miqt_exec_callback_QThreadPool_customEvent(self *C.QThreadPool, cb C.intptr
 }
 
 func (this *QThreadPool) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QThreadPool_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -409,6 +463,8 @@ func miqt_exec_callback_QThreadPool_connectNotify(self *C.QThreadPool, cb C.intp
 }
 
 func (this *QThreadPool) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QThreadPool_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -446,8 +502,9 @@ func (this *QThreadPool) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QThreadPool{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QThreadPool) {
-		C.QThreadPool_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QThreadPool_delete((*C.QThreadPool)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

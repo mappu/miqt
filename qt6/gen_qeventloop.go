@@ -29,8 +29,15 @@ const (
 
 type QEventLoop struct {
 	h  *C.QEventLoop
-	gc *[1]*C.QEventLoop
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEventLoop) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QEventLoop) cPointer() *C.QEventLoop {
@@ -72,15 +79,18 @@ func NewQEventLoop() *QEventLoop {
 
 // NewQEventLoop2 constructs a new QEventLoop object.
 func NewQEventLoop2(parent *QObject) *QEventLoop {
+	defer runtime.KeepAlive(parent)
 
 	return newQEventLoop(C.QEventLoop_new2(parent.cPointer()))
 }
 
 func (this *QEventLoop) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QEventLoop_metaObject(this.h))
 }
 
 func (this *QEventLoop) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QEventLoop_metacast(this.h, param1_Cstring))
@@ -96,34 +106,43 @@ func QEventLoop_Tr(s string) string {
 }
 
 func (this *QEventLoop) ProcessEvents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QEventLoop_processEvents(this.h))
 }
 
 func (this *QEventLoop) ProcessEvents2(flags QEventLoop__ProcessEventsFlag, maximumTime int) {
+	defer runtime.KeepAlive(this)
 	C.QEventLoop_processEvents2(this.h, (C.int)(flags), (C.int)(maximumTime))
 }
 
 func (this *QEventLoop) Exec() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEventLoop_exec(this.h))
 }
 
 func (this *QEventLoop) IsRunning() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QEventLoop_isRunning(this.h))
 }
 
 func (this *QEventLoop) WakeUp() {
+	defer runtime.KeepAlive(this)
 	C.QEventLoop_wakeUp(this.h)
 }
 
 func (this *QEventLoop) Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	return (bool)(C.QEventLoop_event(this.h, event.cPointer()))
 }
 
 func (this *QEventLoop) Exit() {
+	defer runtime.KeepAlive(this)
 	C.QEventLoop_exit(this.h)
 }
 
 func (this *QEventLoop) Quit() {
+	defer runtime.KeepAlive(this)
 	C.QEventLoop_quit(this.h)
 }
 
@@ -150,19 +169,23 @@ func QEventLoop_Tr3(s string, c string, n int) string {
 }
 
 func (this *QEventLoop) ProcessEventsWithFlags(flags QEventLoop__ProcessEventsFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QEventLoop_processEventsWithFlags(this.h, (C.int)(flags)))
 }
 
 func (this *QEventLoop) ExecWithFlags(flags QEventLoop__ProcessEventsFlag) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEventLoop_execWithFlags(this.h, (C.int)(flags)))
 }
 
 func (this *QEventLoop) ExitWithReturnCode(returnCode int) {
+	defer runtime.KeepAlive(this)
 	C.QEventLoop_exitWithReturnCode(this.h, (C.int)(returnCode))
 }
 
 // Sender can only be called from a QEventLoop that was directly constructed.
 func (this *QEventLoop) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QEventLoop_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -177,6 +200,7 @@ func (this *QEventLoop) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QEventLoop that was directly constructed.
 func (this *QEventLoop) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QEventLoop_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -191,6 +215,7 @@ func (this *QEventLoop) SenderSignalIndex() int {
 
 // Receivers can only be called from a QEventLoop that was directly constructed.
 func (this *QEventLoop) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -207,6 +232,8 @@ func (this *QEventLoop) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QEventLoop that was directly constructed.
 func (this *QEventLoop) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QEventLoop_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -220,6 +247,8 @@ func (this *QEventLoop) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QEventLoop) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QEventLoop_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -248,6 +277,9 @@ func miqt_exec_callback_QEventLoop_event(self *C.QEventLoop, cb C.intptr_t, even
 }
 
 func (this *QEventLoop) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QEventLoop_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -278,6 +310,8 @@ func miqt_exec_callback_QEventLoop_eventFilter(self *C.QEventLoop, cb C.intptr_t
 }
 
 func (this *QEventLoop) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventLoop_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -304,6 +338,8 @@ func miqt_exec_callback_QEventLoop_timerEvent(self *C.QEventLoop, cb C.intptr_t,
 }
 
 func (this *QEventLoop) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventLoop_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -330,6 +366,8 @@ func miqt_exec_callback_QEventLoop_childEvent(self *C.QEventLoop, cb C.intptr_t,
 }
 
 func (this *QEventLoop) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventLoop_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -356,6 +394,8 @@ func miqt_exec_callback_QEventLoop_customEvent(self *C.QEventLoop, cb C.intptr_t
 }
 
 func (this *QEventLoop) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QEventLoop_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -382,6 +422,8 @@ func miqt_exec_callback_QEventLoop_connectNotify(self *C.QEventLoop, cb C.intptr
 }
 
 func (this *QEventLoop) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QEventLoop_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -419,15 +461,22 @@ func (this *QEventLoop) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEventLoop{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEventLoop) {
-		C.QEventLoop_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEventLoop_delete((*C.QEventLoop)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QEventLoopLocker struct {
 	h  *C.QEventLoopLocker
-	gc *[1]*C.QEventLoopLocker
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEventLoopLocker) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QEventLoopLocker) cPointer() *C.QEventLoopLocker {
@@ -466,12 +515,14 @@ func NewQEventLoopLocker() *QEventLoopLocker {
 
 // NewQEventLoopLocker2 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker2(loop *QEventLoop) *QEventLoopLocker {
+	defer runtime.KeepAlive(loop)
 
 	return newQEventLoopLocker(C.QEventLoopLocker_new2(loop.cPointer()))
 }
 
 // NewQEventLoopLocker3 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker3(thread *QThread) *QEventLoopLocker {
+	defer runtime.KeepAlive(thread)
 
 	return newQEventLoopLocker(C.QEventLoopLocker_new3(thread.cPointer()))
 }
@@ -488,8 +539,9 @@ func (this *QEventLoopLocker) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEventLoopLocker{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEventLoopLocker) {
-		C.QEventLoopLocker_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEventLoopLocker_delete((*C.QEventLoopLocker)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -37,8 +37,14 @@ const (
 
 type QGeoPositionInfoSource struct {
 	h  *C.QGeoPositionInfoSource
-	gc *[1]*C.QGeoPositionInfoSource
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoPositionInfoSource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoPositionInfoSource) cPointer() *C.QGeoPositionInfoSource {
@@ -74,15 +80,18 @@ func UnsafeNewQGeoPositionInfoSource(h unsafe.Pointer) *QGeoPositionInfoSource {
 
 // NewQGeoPositionInfoSource constructs a new QGeoPositionInfoSource object.
 func NewQGeoPositionInfoSource(parent *qt6.QObject) *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(parent)
 
 	return newQGeoPositionInfoSource(C.QGeoPositionInfoSource_new((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QGeoPositionInfoSource) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QGeoPositionInfoSource_metaObject(this.h)))
 }
 
 func (this *QGeoPositionInfoSource) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGeoPositionInfoSource_metacast(this.h, param1_Cstring))
@@ -98,36 +107,44 @@ func QGeoPositionInfoSource_Tr(s string) string {
 }
 
 func (this *QGeoPositionInfoSource) SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_setUpdateInterval(this.h, (C.int)(msec))
 }
 
 func (this *QGeoPositionInfoSource) UpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGeoPositionInfoSource_updateInterval(this.h))
 }
 
 func (this *QGeoPositionInfoSource) SetPreferredPositioningMethods(methods QGeoPositionInfoSource__PositioningMethod) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_setPreferredPositioningMethods(this.h, (C.int)(methods))
 }
 
 func (this *QGeoPositionInfoSource) PreferredPositioningMethods() QGeoPositionInfoSource__PositioningMethod {
+	defer runtime.KeepAlive(this)
 	return (QGeoPositionInfoSource__PositioningMethod)(C.QGeoPositionInfoSource_preferredPositioningMethods(this.h))
 }
 
 func (this *QGeoPositionInfoSource) LastKnownPosition(fromSatellitePositioningMethodsOnly bool) *QGeoPositionInfo {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoPositionInfo(C.QGeoPositionInfoSource_lastKnownPosition(this.h, (C.bool)(fromSatellitePositioningMethodsOnly)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoPositionInfoSource) SupportedPositioningMethods() QGeoPositionInfoSource__PositioningMethod {
+	defer runtime.KeepAlive(this)
 	return (QGeoPositionInfoSource__PositioningMethod)(C.QGeoPositionInfoSource_supportedPositioningMethods(this.h))
 }
 
 func (this *QGeoPositionInfoSource) MinimumUpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGeoPositionInfoSource_minimumUpdateInterval(this.h))
 }
 
 func (this *QGeoPositionInfoSource) SourceName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoPositionInfoSource_sourceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -135,6 +152,8 @@ func (this *QGeoPositionInfoSource) SourceName() string {
 }
 
 func (this *QGeoPositionInfoSource) SetBackendProperty(name string, value *qt6.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -143,6 +162,7 @@ func (this *QGeoPositionInfoSource) SetBackendProperty(name string, value *qt6.Q
 }
 
 func (this *QGeoPositionInfoSource) BackendProperty(name string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -153,10 +173,13 @@ func (this *QGeoPositionInfoSource) BackendProperty(name string) *qt6.QVariant {
 }
 
 func QGeoPositionInfoSource_CreateDefaultSource(parent *qt6.QObject) *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(parent)
 	return newQGeoPositionInfoSource(C.QGeoPositionInfoSource_createDefaultSource((*C.QObject)(parent.UnsafePointer())))
 }
 
 func QGeoPositionInfoSource_CreateDefaultSource2(parameters map[string]qt6.QVariant, parent *qt6.QObject) *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(parameters)
+	defer runtime.KeepAlive(parent)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
 	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
@@ -182,6 +205,7 @@ func QGeoPositionInfoSource_CreateDefaultSource2(parameters map[string]qt6.QVari
 }
 
 func QGeoPositionInfoSource_CreateSource(sourceName string, parent *qt6.QObject) *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(parent)
 	sourceName_ms := C.struct_miqt_string{}
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
@@ -190,6 +214,8 @@ func QGeoPositionInfoSource_CreateSource(sourceName string, parent *qt6.QObject)
 }
 
 func QGeoPositionInfoSource_CreateSource2(sourceName string, parameters map[string]qt6.QVariant, parent *qt6.QObject) *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(parameters)
+	defer runtime.KeepAlive(parent)
 	sourceName_ms := C.struct_miqt_string{}
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
@@ -232,22 +258,28 @@ func QGeoPositionInfoSource_AvailableSources() []string {
 }
 
 func (this *QGeoPositionInfoSource) Error() QGeoPositionInfoSource__Error {
+	defer runtime.KeepAlive(this)
 	return (QGeoPositionInfoSource__Error)(C.QGeoPositionInfoSource_error(this.h))
 }
 
 func (this *QGeoPositionInfoSource) StartUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_startUpdates(this.h)
 }
 
 func (this *QGeoPositionInfoSource) StopUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_stopUpdates(this.h)
 }
 
 func (this *QGeoPositionInfoSource) RequestUpdate(timeout int) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_requestUpdate(this.h, (C.int)(timeout))
 }
 
 func (this *QGeoPositionInfoSource) PositionUpdated(update *QGeoPositionInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(update)
 	C.QGeoPositionInfoSource_positionUpdated(this.h, update.cPointer())
 }
 func (this *QGeoPositionInfoSource) OnPositionUpdated(slot func(update *QGeoPositionInfo)) {
@@ -268,6 +300,7 @@ func miqt_exec_callback_QGeoPositionInfoSource_positionUpdated(cb C.intptr_t, up
 }
 
 func (this *QGeoPositionInfoSource) ErrorOccurred(param1 QGeoPositionInfoSource__Error) {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QGeoPositionInfoSource) OnErrorOccurred(slot func(param1 QGeoPositionInfoSource__Error)) {
@@ -288,6 +321,7 @@ func miqt_exec_callback_QGeoPositionInfoSource_errorOccurred(cb C.intptr_t, para
 }
 
 func (this *QGeoPositionInfoSource) SupportedPositioningMethodsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QGeoPositionInfoSource_supportedPositioningMethodsChanged(this.h)
 }
 func (this *QGeoPositionInfoSource) OnSupportedPositioningMethodsChanged(slot func()) {
@@ -328,6 +362,7 @@ func QGeoPositionInfoSource_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QGeoPositionInfoSource that was directly constructed.
 func (this *QGeoPositionInfoSource) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QGeoPositionInfoSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -342,6 +377,7 @@ func (this *QGeoPositionInfoSource) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QGeoPositionInfoSource that was directly constructed.
 func (this *QGeoPositionInfoSource) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGeoPositionInfoSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -356,6 +392,7 @@ func (this *QGeoPositionInfoSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGeoPositionInfoSource that was directly constructed.
 func (this *QGeoPositionInfoSource) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -372,6 +409,8 @@ func (this *QGeoPositionInfoSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGeoPositionInfoSource that was directly constructed.
 func (this *QGeoPositionInfoSource) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGeoPositionInfoSource_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -385,6 +424,7 @@ func (this *QGeoPositionInfoSource) IsSignalConnected(signal *qt6.QMetaMethod) b
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGeoPositionInfoSource_virtualbase_setUpdateInterval(unsafe.Pointer(this.h), (C.int)(msec))
 
@@ -411,6 +451,7 @@ func miqt_exec_callback_QGeoPositionInfoSource_setUpdateInterval(self *C.QGeoPos
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_SetPreferredPositioningMethods(methods QGeoPositionInfoSource__PositioningMethod) {
+	defer runtime.KeepAlive(this)
 
 	C.QGeoPositionInfoSource_virtualbase_setPreferredPositioningMethods(unsafe.Pointer(this.h), (C.int)(methods))
 
@@ -453,8 +494,9 @@ func miqt_exec_callback_QGeoPositionInfoSource_lastKnownPosition(self *C.QGeoPos
 	slotval1 := (bool)(fromSatellitePositioningMethodsOnly)
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGeoPositionInfoSource_virtualreturncopy_QGeoPositionInfo(virtualReturn.cPointer())
 
 }
 func (this *QGeoPositionInfoSource) OnSupportedPositioningMethods(slot func() QGeoPositionInfoSource__PositioningMethod) {
@@ -497,6 +539,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_minimumUpdateInterval(self *C.QGe
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_SetBackendProperty(name string, value *qt6.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -533,6 +577,7 @@ func miqt_exec_callback_QGeoPositionInfoSource_setBackendProperty(self *C.QGeoPo
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_BackendProperty(name string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -564,8 +609,9 @@ func miqt_exec_callback_QGeoPositionInfoSource_backendProperty(self *C.QGeoPosit
 	slotval1 := name_ret
 
 	virtualReturn := gofunc((&QGeoPositionInfoSource{h: self}).callVirtualBase_BackendProperty, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGeoPositionInfoSource_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 func (this *QGeoPositionInfoSource) OnError(slot func() QGeoPositionInfoSource__Error) {
@@ -643,6 +689,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_requestUpdate(self *C.QGeoPositio
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoPositionInfoSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -671,6 +719,9 @@ func miqt_exec_callback_QGeoPositionInfoSource_event(self *C.QGeoPositionInfoSou
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoPositionInfoSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -701,6 +752,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_eventFilter(self *C.QGeoPositionI
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoPositionInfoSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -727,6 +780,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_timerEvent(self *C.QGeoPositionIn
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoPositionInfoSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -753,6 +808,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_childEvent(self *C.QGeoPositionIn
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoPositionInfoSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -779,6 +836,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_customEvent(self *C.QGeoPositionI
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoPositionInfoSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -805,6 +864,8 @@ func miqt_exec_callback_QGeoPositionInfoSource_connectNotify(self *C.QGeoPositio
 }
 
 func (this *QGeoPositionInfoSource) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoPositionInfoSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -842,8 +903,9 @@ func (this *QGeoPositionInfoSource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoPositionInfoSource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPositionInfoSource) {
-		C.QGeoPositionInfoSource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoPositionInfoSource_delete((*C.QGeoPositionInfoSource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

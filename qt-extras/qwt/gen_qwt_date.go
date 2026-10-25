@@ -42,7 +42,13 @@ const (
 
 type QwtDate struct {
 	h  *C.QwtDate
-	gc *[1]*C.QwtDate
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtDate) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtDate) cPointer() *C.QwtDate {
@@ -92,16 +98,19 @@ func QwtDate_ToDateTime(value float64) *qt.QDateTime {
 }
 
 func QwtDate_ToDouble(param1 *qt.QDateTime) float64 {
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QwtDate_toDouble((*C.QDateTime)(param1.UnsafePointer())))
 }
 
 func QwtDate_Ceil(param1 *qt.QDateTime, param2 QwtDate__IntervalType) *qt.QDateTime {
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QwtDate_ceil((*C.QDateTime)(param1.UnsafePointer()), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QwtDate_Floor(param1 *qt.QDateTime, param2 QwtDate__IntervalType) *qt.QDateTime {
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QwtDate_floor((*C.QDateTime)(param1.UnsafePointer()), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -114,14 +123,17 @@ func QwtDate_DateOfWeek0(year int, param2 QwtDate__Week0Type) *qt.QDate {
 }
 
 func QwtDate_WeekNumber(param1 *qt.QDate, param2 QwtDate__Week0Type) int {
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtDate_weekNumber((*C.QDate)(param1.UnsafePointer()), (C.int)(param2)))
 }
 
 func QwtDate_UtcOffset(param1 *qt.QDateTime) int {
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtDate_utcOffset((*C.QDateTime)(param1.UnsafePointer())))
 }
 
 func QwtDate_ToString(param1 *qt.QDateTime, format string, param3 QwtDate__Week0Type) string {
+	defer runtime.KeepAlive(param1)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -150,8 +162,9 @@ func (this *QwtDate) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtDate{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDate) {
-		C.QwtDate_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtDate_delete((*C.QwtDate)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

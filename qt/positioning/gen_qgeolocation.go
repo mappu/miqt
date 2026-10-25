@@ -16,7 +16,13 @@ import (
 
 type QGeoLocation struct {
 	h  *C.QGeoLocation
-	gc *[1]*C.QGeoLocation
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoLocation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoLocation) cPointer() *C.QGeoLocation {
@@ -55,53 +61,70 @@ func NewQGeoLocation() *QGeoLocation {
 
 // NewQGeoLocation2 constructs a new QGeoLocation object.
 func NewQGeoLocation2(other *QGeoLocation) *QGeoLocation {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoLocation(C.QGeoLocation_new2(other.cPointer()))
 }
 
 func (this *QGeoLocation) OperatorAssign(other *QGeoLocation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGeoLocation_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGeoLocation) OperatorEqual(other *QGeoLocation) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoLocation_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoLocation) OperatorNotEqual(other *QGeoLocation) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoLocation_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoLocation) Address() *QGeoAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoAddress(C.QGeoLocation_address(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoLocation) SetAddress(address *QGeoAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	C.QGeoLocation_setAddress(this.h, address.cPointer())
 }
 
 func (this *QGeoLocation) Coordinate() *QGeoCoordinate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoCoordinate(C.QGeoLocation_coordinate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoLocation) SetCoordinate(position *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(position)
 	C.QGeoLocation_setCoordinate(this.h, position.cPointer())
 }
 
 func (this *QGeoLocation) BoundingBox() *QGeoRectangle {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoRectangle(C.QGeoLocation_boundingBox(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoLocation) SetBoundingBox(box *QGeoRectangle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(box)
 	C.QGeoLocation_setBoundingBox(this.h, box.cPointer())
 }
 
 func (this *QGeoLocation) ExtendedAttributes() map[string]qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QGeoLocation_extendedAttributes(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -121,6 +144,8 @@ func (this *QGeoLocation) ExtendedAttributes() map[string]qt.QVariant {
 }
 
 func (this *QGeoLocation) SetExtendedAttributes(data map[string]qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	data_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(data))))
 	defer C.free(unsafe.Pointer(data_Keys_CArray_ptr))
 	data_Keys_CArray := unsafe.Slice(data_Keys_CArray_ptr, len(data))
@@ -146,6 +171,7 @@ func (this *QGeoLocation) SetExtendedAttributes(data map[string]qt.QVariant) {
 }
 
 func (this *QGeoLocation) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoLocation_isEmpty(this.h))
 }
 
@@ -161,8 +187,9 @@ func (this *QGeoLocation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoLocation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoLocation) {
-		C.QGeoLocation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoLocation_delete((*C.QGeoLocation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

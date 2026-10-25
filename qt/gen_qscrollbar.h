@@ -206,6 +206,8 @@ bool QScrollBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QScrollBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QScrollBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QScrollBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option);
 void QScrollBar_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);

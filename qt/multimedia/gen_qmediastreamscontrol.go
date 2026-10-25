@@ -27,8 +27,15 @@ const (
 
 type QMediaStreamsControl struct {
 	h  *C.QMediaStreamsControl
-	gc *[1]*C.QMediaStreamsControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaStreamsControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMediaStreamsControl) cPointer() *C.QMediaStreamsControl {
@@ -63,10 +70,12 @@ func UnsafeNewQMediaStreamsControl(h unsafe.Pointer) *QMediaStreamsControl {
 }
 
 func (this *QMediaStreamsControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaStreamsControl_metaObject(this.h)))
 }
 
 func (this *QMediaStreamsControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaStreamsControl_metacast(this.h, param1_Cstring))
@@ -91,14 +100,17 @@ func QMediaStreamsControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaStreamsControl) StreamCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaStreamsControl_streamCount(this.h))
 }
 
 func (this *QMediaStreamsControl) StreamType(streamNumber int) QMediaStreamsControl__StreamType {
+	defer runtime.KeepAlive(this)
 	return (QMediaStreamsControl__StreamType)(C.QMediaStreamsControl_streamType(this.h, (C.int)(streamNumber)))
 }
 
 func (this *QMediaStreamsControl) MetaData(streamNumber int, key string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -109,14 +121,17 @@ func (this *QMediaStreamsControl) MetaData(streamNumber int, key string) *qt.QVa
 }
 
 func (this *QMediaStreamsControl) IsActive(streamNumber int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaStreamsControl_isActive(this.h, (C.int)(streamNumber)))
 }
 
 func (this *QMediaStreamsControl) SetActive(streamNumber int, state bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaStreamsControl_setActive(this.h, (C.int)(streamNumber), (C.bool)(state))
 }
 
 func (this *QMediaStreamsControl) StreamsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QMediaStreamsControl_streamsChanged(this.h)
 }
 func (this *QMediaStreamsControl) OnStreamsChanged(slot func()) {
@@ -134,6 +149,7 @@ func miqt_exec_callback_QMediaStreamsControl_streamsChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaStreamsControl) ActiveStreamsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QMediaStreamsControl_activeStreamsChanged(this.h)
 }
 func (this *QMediaStreamsControl) OnActiveStreamsChanged(slot func()) {
@@ -206,8 +222,9 @@ func (this *QMediaStreamsControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaStreamsControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaStreamsControl) {
-		C.QMediaStreamsControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaStreamsControl_delete((*C.QMediaStreamsControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

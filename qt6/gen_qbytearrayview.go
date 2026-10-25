@@ -15,7 +15,13 @@ import (
 
 type QByteArrayView struct {
 	h  *C.QByteArrayView
-	gc *[1]*C.QByteArrayView
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QByteArrayView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QByteArrayView) cPointer() *C.QByteArrayView {
@@ -54,11 +60,13 @@ func NewQByteArrayView() *QByteArrayView {
 
 // NewQByteArrayView2 constructs a new QByteArrayView object.
 func NewQByteArrayView2(param1 *QByteArrayView) *QByteArrayView {
+	defer runtime.KeepAlive(param1)
 
 	return newQByteArrayView(C.QByteArrayView_new2(param1.cPointer()))
 }
 
 func (this *QByteArrayView) ToByteArray() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QByteArrayView_toByteArray(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -66,308 +74,390 @@ func (this *QByteArrayView) ToByteArray() []byte {
 }
 
 func (this *QByteArrayView) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_size(this.h))
 }
 
 func (this *QByteArrayView) Data() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_data(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) ConstData() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_constData(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) OperatorSubscript(n int64) int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_operatorSubscript(this.h, (C.ptrdiff_t)(n)))
 }
 
 func (this *QByteArrayView) At(n int64) int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_at(this.h, (C.ptrdiff_t)(n)))
 }
 
 func (this *QByteArrayView) First(n int64) *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_first(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Last(n int64) *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_last(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced(pos int64) *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_sliced(this.h, (C.ptrdiff_t)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced2(pos int64, n int64) *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Chopped(lenVal int64) *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_chopped(this.h, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Truncate(n int64) {
+	defer runtime.KeepAlive(this)
 	C.QByteArrayView_truncate(this.h, (C.ptrdiff_t)(n))
 }
 
 func (this *QByteArrayView) Chop(n int64) {
+	defer runtime.KeepAlive(this)
 	C.QByteArrayView_chop(this.h, (C.ptrdiff_t)(n))
 }
 
 func (this *QByteArrayView) Trimmed() *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QByteArrayView_trimmed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) ToShort() int16 {
+	defer runtime.KeepAlive(this)
 	return (int16)(C.QByteArrayView_toShort(this.h))
 }
 
 func (this *QByteArrayView) ToUShort() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QByteArrayView_toUShort(this.h))
 }
 
 func (this *QByteArrayView) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QByteArrayView_toInt(this.h))
 }
 
 func (this *QByteArrayView) ToUInt() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QByteArrayView_toUInt(this.h))
 }
 
 func (this *QByteArrayView) ToLong() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLong(this.h))
 }
 
 func (this *QByteArrayView) ToULong() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULong(this.h))
 }
 
 func (this *QByteArrayView) ToLongLong() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLongLong(this.h))
 }
 
 func (this *QByteArrayView) ToULongLong() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULongLong(this.h))
 }
 
 func (this *QByteArrayView) ToFloat() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QByteArrayView_toFloat(this.h))
 }
 
 func (this *QByteArrayView) ToDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QByteArrayView_toDouble(this.h))
 }
 
 func (this *QByteArrayView) StartsWith(other QByteArrayView) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QByteArrayView_startsWith(this.h, other.cPointer()))
 }
 
 func (this *QByteArrayView) StartsWithWithChar(c int8) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_startsWithWithChar(this.h, (C.char)(c)))
 }
 
 func (this *QByteArrayView) EndsWith(other QByteArrayView) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QByteArrayView_endsWith(this.h, other.cPointer()))
 }
 
 func (this *QByteArrayView) EndsWithWithChar(c int8) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_endsWithWithChar(this.h, (C.char)(c)))
 }
 
 func (this *QByteArrayView) IndexOf(a QByteArrayView) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int64)(C.QByteArrayView_indexOf(this.h, a.cPointer()))
 }
 
 func (this *QByteArrayView) IndexOfWithCh(ch int8) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_indexOfWithCh(this.h, (C.char)(ch)))
 }
 
 func (this *QByteArrayView) Contains(a QByteArrayView) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (bool)(C.QByteArrayView_contains(this.h, a.cPointer()))
 }
 
 func (this *QByteArrayView) ContainsWithChar(c int8) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_containsWithChar(this.h, (C.char)(c)))
 }
 
 func (this *QByteArrayView) LastIndexOf(a QByteArrayView) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int64)(C.QByteArrayView_lastIndexOf(this.h, a.cPointer()))
 }
 
 func (this *QByteArrayView) LastIndexOf2(a QByteArrayView, from int64) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int64)(C.QByteArrayView_lastIndexOf2(this.h, a.cPointer(), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayView) LastIndexOfWithCh(ch int8) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_lastIndexOfWithCh(this.h, (C.char)(ch)))
 }
 
 func (this *QByteArrayView) Count(a QByteArrayView) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int64)(C.QByteArrayView_count(this.h, a.cPointer()))
 }
 
 func (this *QByteArrayView) CountWithCh(ch int8) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_countWithCh(this.h, (C.char)(ch)))
 }
 
 func (this *QByteArrayView) Compare(a QByteArrayView) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int)(C.QByteArrayView_compare(this.h, a.cPointer()))
 }
 
 func (this *QByteArrayView) IsValidUtf8() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_isValidUtf8(this.h))
 }
 
 func (this *QByteArrayView) Begin() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_begin(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) End() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_end(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) Cbegin() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_cbegin(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) Cend() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QByteArrayView_cend(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QByteArrayView) Empty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_empty(this.h))
 }
 
 func (this *QByteArrayView) Front() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_front(this.h))
 }
 
 func (this *QByteArrayView) Back() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_back(this.h))
 }
 
 func (this *QByteArrayView) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_isNull(this.h))
 }
 
 func (this *QByteArrayView) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QByteArrayView_isEmpty(this.h))
 }
 
 func (this *QByteArrayView) Length() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_length(this.h))
 }
 
 func (this *QByteArrayView) First2() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_first2(this.h))
 }
 
 func (this *QByteArrayView) Last2() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QByteArrayView_last2(this.h))
 }
 
 func (this *QByteArrayView) ToShortWithOk(ok *bool) int16 {
+	defer runtime.KeepAlive(this)
 	return (int16)(C.QByteArrayView_toShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToShort2(ok *bool, base int) int16 {
+	defer runtime.KeepAlive(this)
 	return (int16)(C.QByteArrayView_toShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToUShortWithOk(ok *bool) uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QByteArrayView_toUShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToUShort2(ok *bool, base int) uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QByteArrayView_toUShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToIntWithOk(ok *bool) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QByteArrayView_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToInt2(ok *bool, base int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QByteArrayView_toInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToUIntWithOk(ok *bool) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QByteArrayView_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToUInt2(ok *bool, base int) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QByteArrayView_toUInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToLongWithOk(ok *bool) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToLong2(ok *bool, base int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToULongWithOk(ok *bool) uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToULong2(ok *bool, base int) uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToLongLongWithOk(ok *bool) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToLongLong2(ok *bool, base int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_toLongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToULongLongWithOk(ok *bool) uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToULongLong2(ok *bool, base int) uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QByteArrayView_toULongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
 func (this *QByteArrayView) ToFloatWithOk(ok *bool) float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QByteArrayView_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToDoubleWithOk(ok *bool) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QByteArrayView_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) IndexOf2(a QByteArrayView, from int64) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int64)(C.QByteArrayView_indexOf2(this.h, a.cPointer(), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayView) IndexOf3(ch int8, from int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_indexOf3(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayView) LastIndexOf3(ch int8, from int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QByteArrayView_lastIndexOf3(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayView) Compare2(a QByteArrayView, cs CaseSensitivity) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(a)
 	return (int)(C.QByteArrayView_compare2(this.h, a.cPointer(), (C.int)(cs)))
 }
 
@@ -383,8 +473,9 @@ func (this *QByteArrayView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QByteArrayView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QByteArrayView) {
-		C.QByteArrayView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QByteArrayView_delete((*C.QByteArrayView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

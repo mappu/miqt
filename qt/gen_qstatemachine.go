@@ -33,8 +33,15 @@ const (
 
 type QStateMachine struct {
 	h  *C.QStateMachine
-	gc *[1]*C.QStateMachine
+	gc *[1]unsafe.Pointer
 	*QState
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStateMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QState.miqtSetGC(gc)
 }
 
 func (this *QStateMachine) cPointer() *C.QStateMachine {
@@ -82,21 +89,25 @@ func NewQStateMachine2(childMode QState__ChildMode) *QStateMachine {
 
 // NewQStateMachine3 constructs a new QStateMachine object.
 func NewQStateMachine3(parent *QObject) *QStateMachine {
+	defer runtime.KeepAlive(parent)
 
 	return newQStateMachine(C.QStateMachine_new3(parent.cPointer()))
 }
 
 // NewQStateMachine4 constructs a new QStateMachine object.
 func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMachine {
+	defer runtime.KeepAlive(parent)
 
 	return newQStateMachine(C.QStateMachine_new4((C.int)(childMode), parent.cPointer()))
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStateMachine_metaObject(this.h))
 }
 
 func (this *QStateMachine) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStateMachine_metacast(this.h, param1_Cstring))
@@ -121,18 +132,24 @@ func QStateMachine_TrUtf8(s string) string {
 }
 
 func (this *QStateMachine) AddState(state *QAbstractState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 	C.QStateMachine_addState(this.h, state.cPointer())
 }
 
 func (this *QStateMachine) RemoveState(state *QAbstractState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 	C.QStateMachine_removeState(this.h, state.cPointer())
 }
 
 func (this *QStateMachine) Error() QStateMachine__Error {
+	defer runtime.KeepAlive(this)
 	return (QStateMachine__Error)(C.QStateMachine_error(this.h))
 }
 
 func (this *QStateMachine) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStateMachine_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -140,26 +157,33 @@ func (this *QStateMachine) ErrorString() string {
 }
 
 func (this *QStateMachine) ClearError() {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_clearError(this.h)
 }
 
 func (this *QStateMachine) IsRunning() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStateMachine_isRunning(this.h))
 }
 
 func (this *QStateMachine) IsAnimated() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStateMachine_isAnimated(this.h))
 }
 
 func (this *QStateMachine) SetAnimated(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_setAnimated(this.h, (C.bool)(enabled))
 }
 
 func (this *QStateMachine) AddDefaultAnimation(animation *QAbstractAnimation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	C.QStateMachine_addDefaultAnimation(this.h, animation.cPointer())
 }
 
 func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStateMachine_defaultAnimations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractAnimation)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -170,30 +194,40 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 }
 
 func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	C.QStateMachine_removeDefaultAnimation(this.h, animation.cPointer())
 }
 
 func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
+	defer runtime.KeepAlive(this)
 	return (QState__RestorePolicy)(C.QStateMachine_globalRestorePolicy(this.h))
 }
 
 func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_setGlobalRestorePolicy(this.h, (C.int)(restorePolicy))
 }
 
 func (this *QStateMachine) PostEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	C.QStateMachine_postEvent(this.h, event.cPointer())
 }
 
 func (this *QStateMachine) PostDelayedEvent(event *QEvent, delay int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	return (int)(C.QStateMachine_postDelayedEvent(this.h, event.cPointer(), (C.int)(delay)))
 }
 
 func (this *QStateMachine) CancelDelayedEvent(id int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStateMachine_cancelDelayedEvent(this.h, (C.int)(id)))
 }
 
 func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStateMachine_configuration(this.h)
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractState)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -206,26 +240,35 @@ func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 }
 
 func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 	return (bool)(C.QStateMachine_eventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
 func (this *QStateMachine) PostDelayedEvent2(event *QEvent, delay Milliseconds) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	return (int)(C.QStateMachine_postDelayedEvent2(this.h, event.cPointer(), (C.int64_t)(delay)))
 }
 
 func (this *QStateMachine) Start() {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_start(this.h)
 }
 
 func (this *QStateMachine) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_stop(this.h)
 }
 
 func (this *QStateMachine) SetRunning(running bool) {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_setRunning(this.h, (C.bool)(running))
 }
 
 func (this *QStateMachine) RunningChanged(running bool) {
+	defer runtime.KeepAlive(this)
 	C.QStateMachine_runningChanged(this.h, (C.bool)(running))
 }
 func (this *QStateMachine) OnRunningChanged(slot func(running bool)) {
@@ -290,11 +333,14 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 	C.QStateMachine_postEvent2(this.h, event.cPointer(), (C.int)(priority))
 }
 
 // Sender can only be called from a QStateMachine that was directly constructed.
 func (this *QStateMachine) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStateMachine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -309,6 +355,7 @@ func (this *QStateMachine) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStateMachine that was directly constructed.
 func (this *QStateMachine) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStateMachine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -323,6 +370,7 @@ func (this *QStateMachine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStateMachine that was directly constructed.
 func (this *QStateMachine) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -339,6 +387,8 @@ func (this *QStateMachine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStateMachine that was directly constructed.
 func (this *QStateMachine) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStateMachine_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -352,6 +402,9 @@ func (this *QStateMachine) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStateMachine) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStateMachine_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -382,6 +435,8 @@ func miqt_exec_callback_QStateMachine_eventFilter(self *C.QStateMachine, cb C.in
 }
 
 func (this *QStateMachine) callVirtualBase_OnEntry(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_onEntry(unsafe.Pointer(this.h), event.cPointer())
 
@@ -408,6 +463,8 @@ func miqt_exec_callback_QStateMachine_onEntry(self *C.QStateMachine, cb C.intptr
 }
 
 func (this *QStateMachine) callVirtualBase_OnExit(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_onExit(unsafe.Pointer(this.h), event.cPointer())
 
@@ -434,6 +491,8 @@ func miqt_exec_callback_QStateMachine_onExit(self *C.QStateMachine, cb C.intptr_
 }
 
 func (this *QStateMachine) callVirtualBase_BeginSelectTransitions(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_beginSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
@@ -460,6 +519,8 @@ func miqt_exec_callback_QStateMachine_beginSelectTransitions(self *C.QStateMachi
 }
 
 func (this *QStateMachine) callVirtualBase_EndSelectTransitions(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_endSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
@@ -486,6 +547,8 @@ func miqt_exec_callback_QStateMachine_endSelectTransitions(self *C.QStateMachine
 }
 
 func (this *QStateMachine) callVirtualBase_BeginMicrostep(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_beginMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
@@ -512,6 +575,8 @@ func miqt_exec_callback_QStateMachine_beginMicrostep(self *C.QStateMachine, cb C
 }
 
 func (this *QStateMachine) callVirtualBase_EndMicrostep(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_endMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
@@ -538,6 +603,8 @@ func miqt_exec_callback_QStateMachine_endMicrostep(self *C.QStateMachine, cb C.i
 }
 
 func (this *QStateMachine) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QStateMachine_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -566,6 +633,8 @@ func miqt_exec_callback_QStateMachine_event(self *C.QStateMachine, cb C.intptr_t
 }
 
 func (this *QStateMachine) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -592,6 +661,8 @@ func miqt_exec_callback_QStateMachine_timerEvent(self *C.QStateMachine, cb C.int
 }
 
 func (this *QStateMachine) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -618,6 +689,8 @@ func miqt_exec_callback_QStateMachine_childEvent(self *C.QStateMachine, cb C.int
 }
 
 func (this *QStateMachine) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStateMachine_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -644,6 +717,8 @@ func miqt_exec_callback_QStateMachine_customEvent(self *C.QStateMachine, cb C.in
 }
 
 func (this *QStateMachine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStateMachine_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -670,6 +745,8 @@ func miqt_exec_callback_QStateMachine_connectNotify(self *C.QStateMachine, cb C.
 }
 
 func (this *QStateMachine) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStateMachine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -734,16 +811,24 @@ func (this *QStateMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStateMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine) {
-		C.QStateMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStateMachine_delete((*C.QStateMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStateMachine__SignalEvent struct {
 	h  *C.QStateMachine__SignalEvent
-	gc *[1]*C.QStateMachine__SignalEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStateMachine__SignalEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QStateMachine__SignalEvent) cPointer() *C.QStateMachine__SignalEvent {
@@ -779,6 +864,8 @@ func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer) *QStateMachine__Signa
 
 // NewQStateMachine__SignalEvent constructs a new QStateMachine::SignalEvent object.
 func NewQStateMachine__SignalEvent(sender *QObject, signalIndex int, arguments []QVariant) *QStateMachine__SignalEvent {
+	defer runtime.KeepAlive(sender)
+	defer runtime.KeepAlive(arguments)
 	arguments_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
 	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
@@ -792,19 +879,23 @@ func NewQStateMachine__SignalEvent(sender *QObject, signalIndex int, arguments [
 
 // NewQStateMachine__SignalEvent2 constructs a new QStateMachine::SignalEvent object.
 func NewQStateMachine__SignalEvent2(param1 *QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+	defer runtime.KeepAlive(param1)
 
 	return newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new2(param1.cPointer()))
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QStateMachine__SignalEvent_sender(this.h))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStateMachine__SignalEvent_signalIndex(this.h))
 }
 
 func (this *QStateMachine__SignalEvent) Arguments() []QVariant {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStateMachine__SignalEvent_arguments(this.h)
 	_ret := make([]QVariant, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -817,6 +908,8 @@ func (this *QStateMachine__SignalEvent) Arguments() []QVariant {
 }
 
 func (this *QStateMachine__SignalEvent) OperatorAssign(param1 *QStateMachine__SignalEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStateMachine__SignalEvent_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -832,16 +925,24 @@ func (this *QStateMachine__SignalEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStateMachine__SignalEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine__SignalEvent) {
-		C.QStateMachine__SignalEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStateMachine__SignalEvent_delete((*C.QStateMachine__SignalEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStateMachine__WrappedEvent struct {
 	h  *C.QStateMachine__WrappedEvent
-	gc *[1]*C.QStateMachine__WrappedEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStateMachine__WrappedEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QStateMachine__WrappedEvent) cPointer() *C.QStateMachine__WrappedEvent {
@@ -877,25 +978,32 @@ func UnsafeNewQStateMachine__WrappedEvent(h unsafe.Pointer) *QStateMachine__Wrap
 
 // NewQStateMachine__WrappedEvent constructs a new QStateMachine::WrappedEvent object.
 func NewQStateMachine__WrappedEvent(object *QObject, event *QEvent) *QStateMachine__WrappedEvent {
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return newQStateMachine__WrappedEvent(C.QStateMachine__WrappedEvent_new(object.cPointer(), event.cPointer()))
 }
 
 // NewQStateMachine__WrappedEvent2 constructs a new QStateMachine::WrappedEvent object.
 func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
+	defer runtime.KeepAlive(param1)
 
 	return newQStateMachine__WrappedEvent(C.QStateMachine__WrappedEvent_new2(param1.cPointer()))
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QStateMachine__WrappedEvent_object(this.h))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
+	defer runtime.KeepAlive(this)
 	return newQEvent(C.QStateMachine__WrappedEvent_event(this.h))
 }
 
 func (this *QStateMachine__WrappedEvent) OperatorAssign(param1 *QStateMachine__WrappedEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStateMachine__WrappedEvent_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -911,8 +1019,9 @@ func (this *QStateMachine__WrappedEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStateMachine__WrappedEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStateMachine__WrappedEvent) {
-		C.QStateMachine__WrappedEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStateMachine__WrappedEvent_delete((*C.QStateMachine__WrappedEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,15 @@ import (
 
 type QwtPlotZoomer struct {
 	h  *C.QwtPlotZoomer
-	gc *[1]*C.QwtPlotZoomer
+	gc *[1]unsafe.Pointer
 	*QwtPlotPicker
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotZoomer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotPicker.miqtSetGC(gc)
 }
 
 func (this *QwtPlotZoomer) cPointer() *C.QwtPlotZoomer {
@@ -54,33 +61,39 @@ func UnsafeNewQwtPlotZoomer(h unsafe.Pointer) *QwtPlotZoomer {
 
 // NewQwtPlotZoomer constructs a new QwtPlotZoomer object.
 func NewQwtPlotZoomer(param1 *qt.QWidget) *QwtPlotZoomer {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPlotZoomer(C.QwtPlotZoomer_new((*C.QWidget)(param1.UnsafePointer())))
 }
 
 // NewQwtPlotZoomer2 constructs a new QwtPlotZoomer object.
 func NewQwtPlotZoomer2(xAxis int, yAxis int, param3 *qt.QWidget) *QwtPlotZoomer {
+	defer runtime.KeepAlive(param3)
 
 	return newQwtPlotZoomer(C.QwtPlotZoomer_new2((C.int)(xAxis), (C.int)(yAxis), (*C.QWidget)(param3.UnsafePointer())))
 }
 
 // NewQwtPlotZoomer3 constructs a new QwtPlotZoomer object.
 func NewQwtPlotZoomer3(param1 *qt.QWidget, doReplot bool) *QwtPlotZoomer {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPlotZoomer(C.QwtPlotZoomer_new3((*C.QWidget)(param1.UnsafePointer()), (C.bool)(doReplot)))
 }
 
 // NewQwtPlotZoomer4 constructs a new QwtPlotZoomer object.
 func NewQwtPlotZoomer4(xAxis int, yAxis int, param3 *qt.QWidget, doReplot bool) *QwtPlotZoomer {
+	defer runtime.KeepAlive(param3)
 
 	return newQwtPlotZoomer(C.QwtPlotZoomer_new4((C.int)(xAxis), (C.int)(yAxis), (*C.QWidget)(param3.UnsafePointer()), (C.bool)(doReplot)))
 }
 
 func (this *QwtPlotZoomer) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtPlotZoomer_metaObject(this.h)))
 }
 
 func (this *QwtPlotZoomer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtPlotZoomer_metacast(this.h, param1_Cstring))
@@ -105,58 +118,75 @@ func QwtPlotZoomer_TrUtf8(s string) string {
 }
 
 func (this *QwtPlotZoomer) SetZoomBase(doReplot bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotZoomer_setZoomBase(this.h, (C.bool)(doReplot))
 }
 
 func (this *QwtPlotZoomer) SetZoomBaseWithZoomBase(zoomBase *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(zoomBase)
 	C.QwtPlotZoomer_setZoomBaseWithZoomBase(this.h, (*C.QRectF)(zoomBase.UnsafePointer()))
 }
 
 func (this *QwtPlotZoomer) ZoomBase() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_zoomBase(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotZoomer) ZoomRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_zoomRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotZoomer) SetAxis(xAxis int, yAxis int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotZoomer_setAxis(this.h, (C.int)(xAxis), (C.int)(yAxis))
 }
 
 func (this *QwtPlotZoomer) SetMaxStackDepth(maxStackDepth int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotZoomer_setMaxStackDepth(this.h, (C.int)(maxStackDepth))
 }
 
 func (this *QwtPlotZoomer) MaxStackDepth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotZoomer_maxStackDepth(this.h))
 }
 
 func (this *QwtPlotZoomer) ZoomRectIndex() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtPlotZoomer_zoomRectIndex(this.h))
 }
 
 func (this *QwtPlotZoomer) MoveBy(dx float64, dy float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotZoomer_moveBy(this.h, (C.double)(dx), (C.double)(dy))
 }
 
 func (this *QwtPlotZoomer) MoveTo(param1 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotZoomer_moveTo(this.h, (*C.QPointF)(param1.UnsafePointer()))
 }
 
 func (this *QwtPlotZoomer) Zoom(param1 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotZoomer_zoom(this.h, (*C.QRectF)(param1.UnsafePointer()))
 }
 
 func (this *QwtPlotZoomer) ZoomWithOffset(offset int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotZoomer_zoomWithOffset(this.h, (C.int)(offset))
 }
 
 func (this *QwtPlotZoomer) Zoomed(rect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QwtPlotZoomer_zoomed(this.h, (*C.QRectF)(rect.UnsafePointer()))
 }
 func (this *QwtPlotZoomer) OnZoomed(slot func(rect *qt.QRectF)) {
@@ -222,6 +252,7 @@ func QwtPlotZoomer_TrUtf83(s string, c string, n int) string {
 
 // ScaleRect can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) ScaleRect() qt.QRectF {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -238,6 +269,8 @@ func (this *QwtPlotZoomer) ScaleRect() qt.QRectF {
 
 // InvTransform can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) InvTransform(param1 *qt.QRect) qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_invTransform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
@@ -254,6 +287,8 @@ func (this *QwtPlotZoomer) InvTransform(param1 *qt.QRect) qt.QRectF {
 
 // Transform can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) Transform(param1 *qt.QRectF) qt.QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_transform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
@@ -270,6 +305,7 @@ func (this *QwtPlotZoomer) Transform(param1 *qt.QRectF) qt.QRect {
 
 // RubberBandOverlay can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) RubberBandOverlay() *QwtWidgetOverlay {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPlotZoomer_protectedbase_rubberBandOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -284,6 +320,7 @@ func (this *QwtPlotZoomer) RubberBandOverlay() *QwtWidgetOverlay {
 
 // TrackerOverlay can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) TrackerOverlay() *QwtWidgetOverlay {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPlotZoomer_protectedbase_trackerOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -298,6 +335,7 @@ func (this *QwtPlotZoomer) TrackerOverlay() *QwtWidgetOverlay {
 
 // Sender can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -312,6 +350,7 @@ func (this *QwtPlotZoomer) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPlotZoomer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -326,6 +365,7 @@ func (this *QwtPlotZoomer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -342,6 +382,8 @@ func (this *QwtPlotZoomer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPlotZoomer that was directly constructed.
 func (this *QwtPlotZoomer) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtPlotZoomer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -355,6 +397,7 @@ func (this *QwtPlotZoomer) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_SetZoomBase(doReplot bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_setZoomBase(unsafe.Pointer(this.h), (C.bool)(doReplot))
 
@@ -381,6 +424,8 @@ func miqt_exec_callback_QwtPlotZoomer_setZoomBase(self *C.QwtPlotZoomer, cb C.in
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_SetZoomBaseWithZoomBase(zoomBase *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(zoomBase)
 
 	C.QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(unsafe.Pointer(this.h), (*C.QRectF)(zoomBase.UnsafePointer()))
 
@@ -407,6 +452,7 @@ func miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(self *C.QwtPlotZoo
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_SetAxis(xAxis int, yAxis int) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_setAxis(unsafe.Pointer(this.h), (C.int)(xAxis), (C.int)(yAxis))
 
@@ -435,6 +481,8 @@ func miqt_exec_callback_QwtPlotZoomer_setAxis(self *C.QwtPlotZoomer, cb C.intptr
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_MoveTo(param1 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_moveTo(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()))
 
@@ -461,6 +509,8 @@ func miqt_exec_callback_QwtPlotZoomer_moveTo(self *C.QwtPlotZoomer, cb C.intptr_
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Zoom(param1 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_zoom(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
 
@@ -487,6 +537,7 @@ func miqt_exec_callback_QwtPlotZoomer_zoom(self *C.QwtPlotZoomer, cb C.intptr_t,
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_ZoomWithOffset(offset int) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_zoomWithOffset(unsafe.Pointer(this.h), (C.int)(offset))
 
@@ -513,6 +564,7 @@ func miqt_exec_callback_QwtPlotZoomer_zoomWithOffset(self *C.QwtPlotZoomer, cb C
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Rescale() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_rescale(unsafe.Pointer(this.h))
 
@@ -536,6 +588,7 @@ func miqt_exec_callback_QwtPlotZoomer_rescale(self *C.QwtPlotZoomer, cb C.intptr
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_MinZoomSize() *qt.QSizeF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_minZoomSize(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -557,12 +610,15 @@ func miqt_exec_callback_QwtPlotZoomer_minZoomSize(self *C.QwtPlotZoomer, cb C.in
 	}
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_MinZoomSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSizeF)(virtualReturn.UnsafePointer())
+	return C.QwtPlotZoomer_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -589,6 +645,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetMouseReleaseEvent(self *C.QwtPlotZoo
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -615,6 +673,7 @@ func miqt_exec_callback_QwtPlotZoomer_widgetKeyPressEvent(self *C.QwtPlotZoomer,
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Begin() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_begin(unsafe.Pointer(this.h))
 
@@ -638,6 +697,7 @@ func miqt_exec_callback_QwtPlotZoomer_begin(self *C.QwtPlotZoomer, cb C.intptr_t
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_End(ok bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtPlotZoomer_virtualbase_end(unsafe.Pointer(this.h), (C.bool)(ok)))
 
@@ -666,6 +726,8 @@ func miqt_exec_callback_QwtPlotZoomer_end(self *C.QwtPlotZoomer, cb C.intptr_t, 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_TrackerText(param1 *qt.QPoint) *QwtText {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerText(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -690,12 +752,15 @@ func miqt_exec_callback_QwtPlotZoomer_trackerText(self *C.QwtPlotZoomer, cb C.in
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerText, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtPlotZoomer_virtualreturncopy_QwtText(virtualReturn.cPointer())
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_TrackerTextF(param1 *qt.QPointF) *QwtText {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerTextF(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -720,12 +785,15 @@ func miqt_exec_callback_QwtPlotZoomer_trackerTextF(self *C.QwtPlotZoomer, cb C.i
 	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerTextF, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtPlotZoomer_virtualreturncopy_QwtText(virtualReturn.cPointer())
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Move(param1 *qt.QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_move(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
 
@@ -752,6 +820,8 @@ func miqt_exec_callback_QwtPlotZoomer_move(self *C.QwtPlotZoomer, cb C.intptr_t,
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Append(param1 *qt.QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_append(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
 
@@ -778,6 +848,9 @@ func miqt_exec_callback_QwtPlotZoomer_append(self *C.QwtPlotZoomer, cb C.intptr_
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotZoomer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
@@ -808,6 +881,7 @@ func miqt_exec_callback_QwtPlotZoomer_eventFilter(self *C.QwtPlotZoomer, cb C.in
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_PickArea() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_pickArea(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -829,12 +903,15 @@ func miqt_exec_callback_QwtPlotZoomer_pickArea(self *C.QwtPlotZoomer, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_PickArea)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPainterPath)(virtualReturn.UnsafePointer())
+	return C.QwtPlotZoomer_virtualreturncopy_QPainterPath((*C.QPainterPath)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_DrawRubberBand(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_drawRubberBand(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -861,6 +938,8 @@ func miqt_exec_callback_QwtPlotZoomer_drawRubberBand(self *C.QwtPlotZoomer, cb C
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_DrawTracker(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_drawTracker(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -887,6 +966,7 @@ func miqt_exec_callback_QwtPlotZoomer_drawTracker(self *C.QwtPlotZoomer, cb C.in
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_RubberBandMask() *qt.QRegion {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_rubberBandMask(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -908,12 +988,15 @@ func miqt_exec_callback_QwtPlotZoomer_rubberBandMask(self *C.QwtPlotZoomer, cb C
 	}
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_RubberBandMask)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRegion)(virtualReturn.UnsafePointer())
+	return C.QwtPlotZoomer_virtualreturncopy_QRegion((*C.QRegion)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_TrackerRect(param1 *qt.QFont) *qt.QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -938,12 +1021,15 @@ func miqt_exec_callback_QwtPlotZoomer_trackerRect(self *C.QwtPlotZoomer, cb C.in
 	slotval1 := qt.UnsafeNewQFont(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerRect, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRect)(virtualReturn.UnsafePointer())
+	return C.QwtPlotZoomer_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Transition(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_transition(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -970,6 +1056,7 @@ func miqt_exec_callback_QwtPlotZoomer_transition(self *C.QwtPlotZoomer, cb C.int
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Remove() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_remove(unsafe.Pointer(this.h))
 
@@ -993,6 +1080,7 @@ func miqt_exec_callback_QwtPlotZoomer_remove(self *C.QwtPlotZoomer, cb C.intptr_
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -1016,6 +1104,8 @@ func miqt_exec_callback_QwtPlotZoomer_reset(self *C.QwtPlotZoomer, cb C.intptr_t
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -1042,6 +1132,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetMousePressEvent(self *C.QwtPlotZoome
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetMouseDoubleClickEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetMouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -1068,6 +1160,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetMouseDoubleClickEvent(self *C.QwtPlo
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -1094,6 +1188,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetMouseMoveEvent(self *C.QwtPlotZoomer
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetWheelEvent(param1 *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetWheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
 
@@ -1120,6 +1216,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetWheelEvent(self *C.QwtPlotZoomer, cb
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -1146,6 +1244,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetKeyReleaseEvent(self *C.QwtPlotZoome
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetEnterEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetEnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1172,6 +1272,8 @@ func miqt_exec_callback_QwtPlotZoomer_widgetEnterEvent(self *C.QwtPlotZoomer, cb
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_WidgetLeaveEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotZoomer_virtualbase_widgetLeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1198,6 +1300,9 @@ func miqt_exec_callback_QwtPlotZoomer_widgetLeaveEvent(self *C.QwtPlotZoomer, cb
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_StretchSelection(oldSize *qt.QSize, newSize *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(oldSize)
+	defer runtime.KeepAlive(newSize)
 
 	C.QwtPlotZoomer_virtualbase_stretchSelection(unsafe.Pointer(this.h), (*C.QSize)(oldSize.UnsafePointer()), (*C.QSize)(newSize.UnsafePointer()))
 
@@ -1226,6 +1331,7 @@ func miqt_exec_callback_QwtPlotZoomer_stretchSelection(self *C.QwtPlotZoomer, cb
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_UpdateDisplay() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtPlotZoomer_virtualbase_updateDisplay(unsafe.Pointer(this.h))
 
@@ -1249,6 +1355,8 @@ func miqt_exec_callback_QwtPlotZoomer_updateDisplay(self *C.QwtPlotZoomer, cb C.
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPlotZoomer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1277,6 +1385,8 @@ func miqt_exec_callback_QwtPlotZoomer_event(self *C.QwtPlotZoomer, cb C.intptr_t
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPlotZoomer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1303,6 +1413,8 @@ func miqt_exec_callback_QwtPlotZoomer_timerEvent(self *C.QwtPlotZoomer, cb C.int
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPlotZoomer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1329,6 +1441,8 @@ func miqt_exec_callback_QwtPlotZoomer_childEvent(self *C.QwtPlotZoomer, cb C.int
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtPlotZoomer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1355,6 +1469,8 @@ func miqt_exec_callback_QwtPlotZoomer_customEvent(self *C.QwtPlotZoomer, cb C.in
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotZoomer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1381,6 +1497,8 @@ func miqt_exec_callback_QwtPlotZoomer_connectNotify(self *C.QwtPlotZoomer, cb C.
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotZoomer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1407,6 +1525,9 @@ func miqt_exec_callback_QwtPlotZoomer_disconnectNotify(self *C.QwtPlotZoomer, cb
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_MouseMatch2(param1 *QwtEventPattern__MousePattern, param2 *qt.QMouseEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotZoomer_virtualbase_mouseMatch2(unsafe.Pointer(this.h), param1.cPointer(), (*C.QMouseEvent)(param2.UnsafePointer())))
 
@@ -1437,6 +1558,9 @@ func miqt_exec_callback_QwtPlotZoomer_mouseMatch2(self *C.QwtPlotZoomer, cb C.in
 }
 
 func (this *QwtPlotZoomer) callVirtualBase_KeyMatch2(param1 *QwtEventPattern__KeyPattern, param2 *qt.QKeyEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotZoomer_virtualbase_keyMatch2(unsafe.Pointer(this.h), param1.cPointer(), (*C.QKeyEvent)(param2.UnsafePointer())))
 
@@ -1478,8 +1602,9 @@ func (this *QwtPlotZoomer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotZoomer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotZoomer) {
-		C.QwtPlotZoomer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotZoomer_delete((*C.QwtPlotZoomer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

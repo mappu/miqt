@@ -17,7 +17,13 @@ import (
 
 type QDesignerOptionsPageInterface struct {
 	h  *C.QDesignerOptionsPageInterface
-	gc *[1]*C.QDesignerOptionsPageInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerOptionsPageInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerOptionsPageInterface) cPointer() *C.QDesignerOptionsPageInterface {
@@ -55,6 +61,7 @@ func NewQDesignerOptionsPageInterface() *QDesignerOptionsPageInterface {
 }
 
 func (this *QDesignerOptionsPageInterface) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerOptionsPageInterface_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -62,14 +69,18 @@ func (this *QDesignerOptionsPageInterface) Name() string {
 }
 
 func (this *QDesignerOptionsPageInterface) CreatePage(parent *qt6.QWidget) *qt6.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerOptionsPageInterface_createPage(this.h, (*C.QWidget)(parent.UnsafePointer()))))
 }
 
 func (this *QDesignerOptionsPageInterface) Apply() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerOptionsPageInterface_apply(this.h)
 }
 
 func (this *QDesignerOptionsPageInterface) Finish() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerOptionsPageInterface_finish(this.h)
 }
 func (this *QDesignerOptionsPageInterface) OnName(slot func() string) {
@@ -112,6 +123,7 @@ func miqt_exec_callback_QDesignerOptionsPageInterface_createPage(self *C.QDesign
 	slotval1 := qt6.UnsafeNewQWidget(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -163,8 +175,9 @@ func (this *QDesignerOptionsPageInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerOptionsPageInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerOptionsPageInterface) {
-		C.QDesignerOptionsPageInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerOptionsPageInterface_delete((*C.QDesignerOptionsPageInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

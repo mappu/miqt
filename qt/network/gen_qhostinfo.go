@@ -23,7 +23,13 @@ const (
 
 type QHostInfo struct {
 	h  *C.QHostInfo
-	gc *[1]*C.QHostInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHostInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHostInfo) cPointer() *C.QHostInfo {
@@ -62,6 +68,7 @@ func NewQHostInfo() *QHostInfo {
 
 // NewQHostInfo2 constructs a new QHostInfo object.
 func NewQHostInfo2(d *QHostInfo) *QHostInfo {
+	defer runtime.KeepAlive(d)
 
 	return newQHostInfo(C.QHostInfo_new2(d.cPointer()))
 }
@@ -73,14 +80,19 @@ func NewQHostInfo3(lookupId int) *QHostInfo {
 }
 
 func (this *QHostInfo) OperatorAssign(d *QHostInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(d)
 	C.QHostInfo_operatorAssign(this.h, d.cPointer())
 }
 
 func (this *QHostInfo) Swap(other *QHostInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHostInfo_swap(this.h, other.cPointer())
 }
 
 func (this *QHostInfo) HostName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHostInfo_hostName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -88,6 +100,7 @@ func (this *QHostInfo) HostName() string {
 }
 
 func (this *QHostInfo) SetHostName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -96,6 +109,7 @@ func (this *QHostInfo) SetHostName(name string) {
 }
 
 func (this *QHostInfo) Addresses() []QHostAddress {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QHostInfo_addresses(this.h)
 	_ret := make([]QHostAddress, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QHostAddress)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -108,6 +122,8 @@ func (this *QHostInfo) Addresses() []QHostAddress {
 }
 
 func (this *QHostInfo) SetAddresses(addresses []QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(addresses)
 	addresses_CArray_ptr := (**C.QHostAddress)(C.malloc(C.size_t(8 * len(addresses))))
 	defer C.free(unsafe.Pointer(addresses_CArray_ptr))
 	addresses_CArray := unsafe.Slice(addresses_CArray_ptr, len(addresses))
@@ -119,14 +135,17 @@ func (this *QHostInfo) SetAddresses(addresses []QHostAddress) {
 }
 
 func (this *QHostInfo) Error() QHostInfo__HostInfoError {
+	defer runtime.KeepAlive(this)
 	return (QHostInfo__HostInfoError)(C.QHostInfo_error(this.h))
 }
 
 func (this *QHostInfo) SetError(error QHostInfo__HostInfoError) {
+	defer runtime.KeepAlive(this)
 	C.QHostInfo_setError(this.h, (C.int)(error))
 }
 
 func (this *QHostInfo) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHostInfo_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -134,6 +153,7 @@ func (this *QHostInfo) ErrorString() string {
 }
 
 func (this *QHostInfo) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -142,10 +162,12 @@ func (this *QHostInfo) SetErrorString(errorString string) {
 }
 
 func (this *QHostInfo) SetLookupId(id int) {
+	defer runtime.KeepAlive(this)
 	C.QHostInfo_setLookupId(this.h, (C.int)(id))
 }
 
 func (this *QHostInfo) LookupId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHostInfo_lookupId(this.h))
 }
 
@@ -189,8 +211,9 @@ func (this *QHostInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHostInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHostInfo) {
-		C.QHostInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHostInfo_delete((*C.QHostInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

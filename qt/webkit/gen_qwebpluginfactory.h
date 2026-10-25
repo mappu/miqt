@@ -99,6 +99,7 @@ bool QWebPluginFactory_override_virtual_connectNotify(void* self, intptr_t slot)
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QWebPluginFactory__Plugin* QWebPluginFactory_virtualreturncopy_QWebPluginFactory__Plugin(QWebPluginFactory__Plugin* src);
 
 QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebPluginFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

@@ -16,8 +16,15 @@ import (
 
 type QRadioButton struct {
 	h  *C.QRadioButton
-	gc *[1]*C.QRadioButton
+	gc *[1]unsafe.Pointer
 	*QAbstractButton
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRadioButton) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractButton.miqtSetGC(gc)
 }
 
 func (this *QRadioButton) cPointer() *C.QRadioButton {
@@ -53,6 +60,7 @@ func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
 
 // NewQRadioButton constructs a new QRadioButton object.
 func NewQRadioButton(parent *QWidget) *QRadioButton {
+	defer runtime.KeepAlive(parent)
 
 	return newQRadioButton(C.QRadioButton_new(parent.cPointer()))
 }
@@ -75,6 +83,7 @@ func NewQRadioButton3(text string) *QRadioButton {
 
 // NewQRadioButton4 constructs a new QRadioButton object.
 func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
+	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -84,10 +93,12 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QRadioButton_metaObject(this.h))
 }
 
 func (this *QRadioButton) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRadioButton_metacast(this.h, param1_Cstring))
@@ -103,12 +114,14 @@ func QRadioButton_Tr(s string) string {
 }
 
 func (this *QRadioButton) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QRadioButton_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRadioButton) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QRadioButton_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -138,6 +151,7 @@ func QRadioButton_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRadioButton_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -150,6 +164,7 @@ func (this *QRadioButton) UpdateMicroFocus() {
 
 // Create can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRadioButton_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -162,6 +177,7 @@ func (this *QRadioButton) Create() {
 
 // Destroy can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRadioButton_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -174,6 +190,7 @@ func (this *QRadioButton) Destroy() {
 
 // FocusNextChild can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRadioButton_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -188,6 +205,7 @@ func (this *QRadioButton) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRadioButton_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -202,6 +220,7 @@ func (this *QRadioButton) FocusPreviousChild() bool {
 
 // Sender can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QRadioButton_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -216,6 +235,7 @@ func (this *QRadioButton) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRadioButton_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -230,6 +250,7 @@ func (this *QRadioButton) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -246,6 +267,8 @@ func (this *QRadioButton) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRadioButton that was directly constructed.
 func (this *QRadioButton) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRadioButton_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -259,6 +282,7 @@ func (this *QRadioButton) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QRadioButton) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QRadioButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -280,12 +304,14 @@ func miqt_exec_callback_QRadioButton_sizeHint(self *C.QRadioButton, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRadioButton_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QRadioButton) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QRadioButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -307,12 +333,15 @@ func miqt_exec_callback_QRadioButton_minimumSizeHint(self *C.QRadioButton, cb C.
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRadioButton_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QRadioButton) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QRadioButton_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -341,6 +370,8 @@ func miqt_exec_callback_QRadioButton_event(self *C.QRadioButton, cb C.intptr_t, 
 }
 
 func (this *QRadioButton) callVirtualBase_HitButton(param1 *QPoint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QRadioButton_virtualbase_hitButton(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -369,6 +400,8 @@ func miqt_exec_callback_QRadioButton_hitButton(self *C.QRadioButton, cb C.intptr
 }
 
 func (this *QRadioButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRadioButton_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -395,6 +428,8 @@ func miqt_exec_callback_QRadioButton_paintEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRadioButton_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -421,6 +456,8 @@ func miqt_exec_callback_QRadioButton_mouseMoveEvent(self *C.QRadioButton, cb C.i
 }
 
 func (this *QRadioButton) callVirtualBase_InitStyleOption(button *QStyleOptionButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 
 	C.QRadioButton_virtualbase_initStyleOption(unsafe.Pointer(this.h), button.cPointer())
 
@@ -447,6 +484,7 @@ func miqt_exec_callback_QRadioButton_initStyleOption(self *C.QRadioButton, cb C.
 }
 
 func (this *QRadioButton) callVirtualBase_CheckStateSet() {
+	defer runtime.KeepAlive(this)
 
 	C.QRadioButton_virtualbase_checkStateSet(unsafe.Pointer(this.h))
 
@@ -470,6 +508,7 @@ func miqt_exec_callback_QRadioButton_checkStateSet(self *C.QRadioButton, cb C.in
 }
 
 func (this *QRadioButton) callVirtualBase_NextCheckState() {
+	defer runtime.KeepAlive(this)
 
 	C.QRadioButton_virtualbase_nextCheckState(unsafe.Pointer(this.h))
 
@@ -493,6 +532,8 @@ func miqt_exec_callback_QRadioButton_nextCheckState(self *C.QRadioButton, cb C.i
 }
 
 func (this *QRadioButton) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -519,6 +560,8 @@ func miqt_exec_callback_QRadioButton_keyPressEvent(self *C.QRadioButton, cb C.in
 }
 
 func (this *QRadioButton) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -545,6 +588,8 @@ func miqt_exec_callback_QRadioButton_keyReleaseEvent(self *C.QRadioButton, cb C.
 }
 
 func (this *QRadioButton) callVirtualBase_MousePressEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -571,6 +616,8 @@ func miqt_exec_callback_QRadioButton_mousePressEvent(self *C.QRadioButton, cb C.
 }
 
 func (this *QRadioButton) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -597,6 +644,8 @@ func miqt_exec_callback_QRadioButton_mouseReleaseEvent(self *C.QRadioButton, cb 
 }
 
 func (this *QRadioButton) callVirtualBase_FocusInEvent(e *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -623,6 +672,8 @@ func miqt_exec_callback_QRadioButton_focusInEvent(self *C.QRadioButton, cb C.int
 }
 
 func (this *QRadioButton) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -649,6 +700,8 @@ func miqt_exec_callback_QRadioButton_focusOutEvent(self *C.QRadioButton, cb C.in
 }
 
 func (this *QRadioButton) callVirtualBase_ChangeEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -675,6 +728,8 @@ func miqt_exec_callback_QRadioButton_changeEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_TimerEvent(e *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QRadioButton_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -701,6 +756,7 @@ func miqt_exec_callback_QRadioButton_timerEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRadioButton_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -726,6 +782,7 @@ func miqt_exec_callback_QRadioButton_devType(self *C.QRadioButton, cb C.intptr_t
 }
 
 func (this *QRadioButton) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QRadioButton_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -752,6 +809,7 @@ func miqt_exec_callback_QRadioButton_setVisible(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRadioButton_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -780,6 +838,7 @@ func miqt_exec_callback_QRadioButton_heightForWidth(self *C.QRadioButton, cb C.i
 }
 
 func (this *QRadioButton) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QRadioButton_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -805,6 +864,7 @@ func miqt_exec_callback_QRadioButton_hasHeightForWidth(self *C.QRadioButton, cb 
 }
 
 func (this *QRadioButton) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QRadioButton_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -824,12 +884,15 @@ func miqt_exec_callback_QRadioButton_paintEngine(self *C.QRadioButton, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRadioButton) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -856,6 +919,8 @@ func miqt_exec_callback_QRadioButton_mouseDoubleClickEvent(self *C.QRadioButton,
 }
 
 func (this *QRadioButton) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -882,6 +947,8 @@ func miqt_exec_callback_QRadioButton_wheelEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -908,6 +975,8 @@ func miqt_exec_callback_QRadioButton_enterEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -934,6 +1003,8 @@ func miqt_exec_callback_QRadioButton_leaveEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -960,6 +1031,8 @@ func miqt_exec_callback_QRadioButton_moveEvent(self *C.QRadioButton, cb C.intptr
 }
 
 func (this *QRadioButton) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -986,6 +1059,8 @@ func miqt_exec_callback_QRadioButton_resizeEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1012,6 +1087,8 @@ func miqt_exec_callback_QRadioButton_closeEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1038,6 +1115,8 @@ func miqt_exec_callback_QRadioButton_contextMenuEvent(self *C.QRadioButton, cb C
 }
 
 func (this *QRadioButton) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1064,6 +1143,8 @@ func miqt_exec_callback_QRadioButton_tabletEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1090,6 +1171,8 @@ func miqt_exec_callback_QRadioButton_actionEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1116,6 +1199,8 @@ func miqt_exec_callback_QRadioButton_dragEnterEvent(self *C.QRadioButton, cb C.i
 }
 
 func (this *QRadioButton) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1142,6 +1227,8 @@ func miqt_exec_callback_QRadioButton_dragMoveEvent(self *C.QRadioButton, cb C.in
 }
 
 func (this *QRadioButton) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1168,6 +1255,8 @@ func miqt_exec_callback_QRadioButton_dragLeaveEvent(self *C.QRadioButton, cb C.i
 }
 
 func (this *QRadioButton) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1194,6 +1283,8 @@ func miqt_exec_callback_QRadioButton_dropEvent(self *C.QRadioButton, cb C.intptr
 }
 
 func (this *QRadioButton) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1220,6 +1311,8 @@ func miqt_exec_callback_QRadioButton_showEvent(self *C.QRadioButton, cb C.intptr
 }
 
 func (this *QRadioButton) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1246,6 +1339,7 @@ func miqt_exec_callback_QRadioButton_hideEvent(self *C.QRadioButton, cb C.intptr
 }
 
 func (this *QRadioButton) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1287,6 +1381,7 @@ func miqt_exec_callback_QRadioButton_nativeEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRadioButton_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1315,6 +1410,8 @@ func miqt_exec_callback_QRadioButton_metric(self *C.QRadioButton, cb C.intptr_t,
 }
 
 func (this *QRadioButton) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QRadioButton_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1341,6 +1438,8 @@ func miqt_exec_callback_QRadioButton_initPainter(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QRadioButton_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1363,12 +1462,14 @@ func miqt_exec_callback_QRadioButton_redirected(self *C.QRadioButton, cb C.intpt
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRadioButton) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QRadioButton_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1388,12 +1489,15 @@ func miqt_exec_callback_QRadioButton_sharedPainter(self *C.QRadioButton, cb C.in
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRadioButton) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRadioButton_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1420,6 +1524,7 @@ func miqt_exec_callback_QRadioButton_inputMethodEvent(self *C.QRadioButton, cb C
 }
 
 func (this *QRadioButton) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QRadioButton_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1444,12 +1549,14 @@ func miqt_exec_callback_QRadioButton_inputMethodQuery(self *C.QRadioButton, cb C
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRadioButton_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QRadioButton) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QRadioButton_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1478,6 +1585,9 @@ func miqt_exec_callback_QRadioButton_focusNextPrevChild(self *C.QRadioButton, cb
 }
 
 func (this *QRadioButton) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRadioButton_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1508,6 +1618,8 @@ func miqt_exec_callback_QRadioButton_eventFilter(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1534,6 +1646,8 @@ func miqt_exec_callback_QRadioButton_childEvent(self *C.QRadioButton, cb C.intpt
 }
 
 func (this *QRadioButton) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRadioButton_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1560,6 +1674,8 @@ func miqt_exec_callback_QRadioButton_customEvent(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRadioButton_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1586,6 +1702,8 @@ func miqt_exec_callback_QRadioButton_connectNotify(self *C.QRadioButton, cb C.in
 }
 
 func (this *QRadioButton) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRadioButton_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1623,8 +1741,9 @@ func (this *QRadioButton) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRadioButton{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRadioButton) {
-		C.QRadioButton_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRadioButton_delete((*C.QRadioButton)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

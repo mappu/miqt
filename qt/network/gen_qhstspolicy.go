@@ -22,7 +22,13 @@ const (
 
 type QHstsPolicy struct {
 	h  *C.QHstsPolicy
-	gc *[1]*C.QHstsPolicy
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHstsPolicy) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHstsPolicy) cPointer() *C.QHstsPolicy {
@@ -61,6 +67,7 @@ func NewQHstsPolicy() *QHstsPolicy {
 
 // NewQHstsPolicy2 constructs a new QHstsPolicy object.
 func NewQHstsPolicy2(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host string) *QHstsPolicy {
+	defer runtime.KeepAlive(expiry)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -71,12 +78,14 @@ func NewQHstsPolicy2(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host s
 
 // NewQHstsPolicy3 constructs a new QHstsPolicy object.
 func NewQHstsPolicy3(rhs *QHstsPolicy) *QHstsPolicy {
+	defer runtime.KeepAlive(rhs)
 
 	return newQHstsPolicy(C.QHstsPolicy_new3(rhs.cPointer()))
 }
 
 // NewQHstsPolicy4 constructs a new QHstsPolicy object.
 func NewQHstsPolicy4(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host string, mode qt.QUrl__ParsingMode) *QHstsPolicy {
+	defer runtime.KeepAlive(expiry)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -86,14 +95,19 @@ func NewQHstsPolicy4(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host s
 }
 
 func (this *QHstsPolicy) OperatorAssign(rhs *QHstsPolicy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rhs)
 	C.QHstsPolicy_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QHstsPolicy) Swap(other *QHstsPolicy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHstsPolicy_swap(this.h, other.cPointer())
 }
 
 func (this *QHstsPolicy) SetHost(host string) {
+	defer runtime.KeepAlive(this)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -102,6 +116,7 @@ func (this *QHstsPolicy) SetHost(host string) {
 }
 
 func (this *QHstsPolicy) Host() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHstsPolicy_host(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -109,28 +124,35 @@ func (this *QHstsPolicy) Host() string {
 }
 
 func (this *QHstsPolicy) SetExpiry(expiry *qt.QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expiry)
 	C.QHstsPolicy_setExpiry(this.h, (*C.QDateTime)(expiry.UnsafePointer()))
 }
 
 func (this *QHstsPolicy) Expiry() *qt.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QHstsPolicy_expiry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHstsPolicy) SetIncludesSubDomains(include bool) {
+	defer runtime.KeepAlive(this)
 	C.QHstsPolicy_setIncludesSubDomains(this.h, (C.bool)(include))
 }
 
 func (this *QHstsPolicy) IncludesSubDomains() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHstsPolicy_includesSubDomains(this.h))
 }
 
 func (this *QHstsPolicy) IsExpired() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHstsPolicy_isExpired(this.h))
 }
 
 func (this *QHstsPolicy) SetHost2(host string, mode qt.QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -139,6 +161,7 @@ func (this *QHstsPolicy) SetHost2(host string, mode qt.QUrl__ParsingMode) {
 }
 
 func (this *QHstsPolicy) HostWithOptions(options qt.QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHstsPolicy_hostWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -157,8 +180,9 @@ func (this *QHstsPolicy) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHstsPolicy{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHstsPolicy) {
-		C.QHstsPolicy_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHstsPolicy_delete((*C.QHstsPolicy)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

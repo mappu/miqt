@@ -16,8 +16,15 @@ import (
 
 type QGraphicsItemAnimation struct {
 	h  *C.QGraphicsItemAnimation
-	gc *[1]*C.QGraphicsItemAnimation
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsItemAnimation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QGraphicsItemAnimation) cPointer() *C.QGraphicsItemAnimation {
@@ -59,15 +66,18 @@ func NewQGraphicsItemAnimation() *QGraphicsItemAnimation {
 
 // NewQGraphicsItemAnimation2 constructs a new QGraphicsItemAnimation object.
 func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsItemAnimation(C.QGraphicsItemAnimation_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsItemAnimation_metaObject(this.h))
 }
 
 func (this *QGraphicsItemAnimation) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsItemAnimation_metacast(this.h, param1_Cstring))
@@ -83,22 +93,29 @@ func QGraphicsItemAnimation_Tr(s string) string {
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsItem(C.QGraphicsItemAnimation_item(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsItemAnimation_setItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
+	defer runtime.KeepAlive(this)
 	return newQTimeLine(C.QGraphicsItemAnimation_timeLine(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(timeLine)
 	C.QGraphicsItemAnimation_setTimeLine(this.h, timeLine.cPointer())
 }
 
 func (this *QGraphicsItemAnimation) PosAt(step float64) *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QGraphicsItemAnimation_posAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -108,6 +125,7 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 	First  float64
 	Second QPointF
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsItemAnimation_posList(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -133,16 +151,20 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 }
 
 func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QGraphicsItemAnimation_setPosAt(this.h, (C.double)(step), pos.cPointer())
 }
 
 func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QGraphicsItemAnimation_transformAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItemAnimation) RotationAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_rotationAt(this.h, (C.double)(step)))
 }
 
@@ -150,6 +172,7 @@ func (this *QGraphicsItemAnimation) RotationList() []struct {
 	First  float64
 	Second float64
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsItemAnimation_rotationList(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -173,14 +196,17 @@ func (this *QGraphicsItemAnimation) RotationList() []struct {
 }
 
 func (this *QGraphicsItemAnimation) SetRotationAt(step float64, angle float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_setRotationAt(this.h, (C.double)(step), (C.double)(angle))
 }
 
 func (this *QGraphicsItemAnimation) XTranslationAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_xTranslationAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) YTranslationAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_yTranslationAt(this.h, (C.double)(step)))
 }
 
@@ -188,6 +214,7 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 	First  float64
 	Second QPointF
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsItemAnimation_translationList(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -213,14 +240,17 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 }
 
 func (this *QGraphicsItemAnimation) SetTranslationAt(step float64, dx float64, dy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_setTranslationAt(this.h, (C.double)(step), (C.double)(dx), (C.double)(dy))
 }
 
 func (this *QGraphicsItemAnimation) VerticalScaleAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_verticalScaleAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) HorizontalScaleAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_horizontalScaleAt(this.h, (C.double)(step)))
 }
 
@@ -228,6 +258,7 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 	First  float64
 	Second QPointF
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsItemAnimation_scaleList(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -253,14 +284,17 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 }
 
 func (this *QGraphicsItemAnimation) SetScaleAt(step float64, sx float64, sy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_setScaleAt(this.h, (C.double)(step), (C.double)(sx), (C.double)(sy))
 }
 
 func (this *QGraphicsItemAnimation) VerticalShearAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_verticalShearAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) HorizontalShearAt(step float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsItemAnimation_horizontalShearAt(this.h, (C.double)(step)))
 }
 
@@ -268,6 +302,7 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 	First  float64
 	Second QPointF
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsItemAnimation_shearList(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -293,14 +328,17 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 }
 
 func (this *QGraphicsItemAnimation) SetShearAt(step float64, sh float64, sv float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_setShearAt(this.h, (C.double)(step), (C.double)(sh), (C.double)(sv))
 }
 
 func (this *QGraphicsItemAnimation) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_clear(this.h)
 }
 
 func (this *QGraphicsItemAnimation) SetStep(x float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsItemAnimation_setStep(this.h, (C.double)(x))
 }
 
@@ -328,6 +366,7 @@ func QGraphicsItemAnimation_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QGraphicsItemAnimation that was directly constructed.
 func (this *QGraphicsItemAnimation) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsItemAnimation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -342,6 +381,7 @@ func (this *QGraphicsItemAnimation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsItemAnimation that was directly constructed.
 func (this *QGraphicsItemAnimation) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsItemAnimation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -356,6 +396,7 @@ func (this *QGraphicsItemAnimation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsItemAnimation that was directly constructed.
 func (this *QGraphicsItemAnimation) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -372,6 +413,8 @@ func (this *QGraphicsItemAnimation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsItemAnimation that was directly constructed.
 func (this *QGraphicsItemAnimation) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsItemAnimation_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -385,6 +428,7 @@ func (this *QGraphicsItemAnimation) IsSignalConnected(signal *QMetaMethod) bool 
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_BeforeAnimationStep(step float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsItemAnimation_virtualbase_beforeAnimationStep(unsafe.Pointer(this.h), (C.double)(step))
 
@@ -411,6 +455,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_beforeAnimationStep(self *C.QGrap
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_AfterAnimationStep(step float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsItemAnimation_virtualbase_afterAnimationStep(unsafe.Pointer(this.h), (C.double)(step))
 
@@ -437,6 +482,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_afterAnimationStep(self *C.QGraph
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsItemAnimation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -465,6 +512,9 @@ func miqt_exec_callback_QGraphicsItemAnimation_event(self *C.QGraphicsItemAnimat
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsItemAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -495,6 +545,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_eventFilter(self *C.QGraphicsItem
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsItemAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -521,6 +573,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_timerEvent(self *C.QGraphicsItemA
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsItemAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -547,6 +601,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_childEvent(self *C.QGraphicsItemA
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsItemAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -573,6 +629,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_customEvent(self *C.QGraphicsItem
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsItemAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -599,6 +657,8 @@ func miqt_exec_callback_QGraphicsItemAnimation_connectNotify(self *C.QGraphicsIt
 }
 
 func (this *QGraphicsItemAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsItemAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -636,8 +696,9 @@ func (this *QGraphicsItemAnimation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsItemAnimation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsItemAnimation) {
-		C.QGraphicsItemAnimation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsItemAnimation_delete((*C.QGraphicsItemAnimation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

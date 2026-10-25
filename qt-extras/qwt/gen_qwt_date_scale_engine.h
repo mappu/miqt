@@ -57,6 +57,8 @@ bool QwtDateScaleEngine_override_virtual_intervalType(void* self, intptr_t slot)
 int QwtDateScaleEngine_virtualbase_intervalType(const void* self, QDateTime* param1, QDateTime* param2, int maxSteps);
 bool QwtDateScaleEngine_override_virtual_alignDate(void* self, intptr_t slot);
 QDateTime* QwtDateScaleEngine_virtualbase_alignDate(const void* self, QDateTime* param1, double stepSize, int param3, bool up);
+QwtScaleDiv* QwtDateScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src);
+QDateTime* QwtDateScaleEngine_virtualreturncopy_QDateTime(QDateTime* src);
 
 QwtInterval* QwtDateScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize);
 void QwtDateScaleEngine_protectedbase_buildTicks(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize, int maxMinorSteps, struct miqt_array /* of double */  ticks);

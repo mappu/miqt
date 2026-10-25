@@ -42,7 +42,13 @@ const (
 
 type QJsonParseError struct {
 	h  *C.QJsonParseError
-	gc *[1]*C.QJsonParseError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJsonParseError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJsonParseError) cPointer() *C.QJsonParseError {
@@ -80,6 +86,7 @@ func NewQJsonParseError() *QJsonParseError {
 }
 
 func (this *QJsonParseError) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJsonParseError_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -87,18 +94,22 @@ func (this *QJsonParseError) ErrorString() string {
 }
 
 func (this *QJsonParseError) Offset() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonParseError_offset(this.h))
 }
 
 func (this *QJsonParseError) SetOffset(offset int) {
+	defer runtime.KeepAlive(this)
 	C.QJsonParseError_setOffset(this.h, (C.int)(offset))
 }
 
 func (this *QJsonParseError) Error() QJsonParseError__ParseError {
+	defer runtime.KeepAlive(this)
 	return (QJsonParseError__ParseError)(C.QJsonParseError_error(this.h))
 }
 
 func (this *QJsonParseError) SetError(error QJsonParseError__ParseError) {
+	defer runtime.KeepAlive(this)
 	C.QJsonParseError_setError(this.h, (C.int)(error))
 }
 
@@ -114,15 +125,22 @@ func (this *QJsonParseError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJsonParseError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonParseError) {
-		C.QJsonParseError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJsonParseError_delete((*C.QJsonParseError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QJsonDocument struct {
 	h  *C.QJsonDocument
-	gc *[1]*C.QJsonDocument
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJsonDocument) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJsonDocument) cPointer() *C.QJsonDocument {
@@ -161,37 +179,46 @@ func NewQJsonDocument() *QJsonDocument {
 
 // NewQJsonDocument2 constructs a new QJsonDocument object.
 func NewQJsonDocument2(object *QJsonObject) *QJsonDocument {
+	defer runtime.KeepAlive(object)
 
 	return newQJsonDocument(C.QJsonDocument_new2(object.cPointer()))
 }
 
 // NewQJsonDocument3 constructs a new QJsonDocument object.
 func NewQJsonDocument3(array *QJsonArray) *QJsonDocument {
+	defer runtime.KeepAlive(array)
 
 	return newQJsonDocument(C.QJsonDocument_new3(array.cPointer()))
 }
 
 // NewQJsonDocument4 constructs a new QJsonDocument object.
 func NewQJsonDocument4(other *QJsonDocument) *QJsonDocument {
+	defer runtime.KeepAlive(other)
 
 	return newQJsonDocument(C.QJsonDocument_new4(other.cPointer()))
 }
 
 func (this *QJsonDocument) OperatorAssign(other *QJsonDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QJsonDocument_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QJsonDocument) Swap(other *QJsonDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QJsonDocument_swap(this.h, other.cPointer())
 }
 
 func QJsonDocument_FromVariant(variant *QVariant) *QJsonDocument {
+	defer runtime.KeepAlive(variant)
 	_goptr := newQJsonDocument(C.QJsonDocument_fromVariant(variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) ToVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QJsonDocument_toVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -211,6 +238,7 @@ func QJsonDocument_FromJson(json []byte) *QJsonDocument {
 }
 
 func (this *QJsonDocument) ToJson() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QJsonDocument_toJson(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -218,38 +246,48 @@ func (this *QJsonDocument) ToJson() []byte {
 }
 
 func (this *QJsonDocument) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonDocument_isEmpty(this.h))
 }
 
 func (this *QJsonDocument) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonDocument_isArray(this.h))
 }
 
 func (this *QJsonDocument) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonDocument_isObject(this.h))
 }
 
 func (this *QJsonDocument) Object() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QJsonDocument_object(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) Array() *QJsonArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonArray(C.QJsonDocument_array(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) SetObject(object *QJsonObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QJsonDocument_setObject(this.h, object.cPointer())
 }
 
 func (this *QJsonDocument) SetArray(array *QJsonArray) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(array)
 	C.QJsonDocument_setArray(this.h, array.cPointer())
 }
 
 func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -260,24 +298,31 @@ func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
 }
 
 func (this *QJsonDocument) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonDocument_operatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) OperatorEqual(other *QJsonDocument) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonDocument_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) OperatorNotEqual(other *QJsonDocument) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonDocument_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonDocument_isNull(this.h))
 }
 
 func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument {
+	defer runtime.KeepAlive(error)
 	json_alias := C.struct_miqt_string{}
 	if len(json) > 0 {
 		json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
@@ -291,6 +336,7 @@ func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument
 }
 
 func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QJsonDocument_toJsonWithFormat(this.h, (C.int)(format))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -309,8 +355,9 @@ func (this *QJsonDocument) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJsonDocument{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonDocument) {
-		C.QJsonDocument_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJsonDocument_delete((*C.QJsonDocument)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

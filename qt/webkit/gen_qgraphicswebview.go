@@ -18,8 +18,14 @@ import (
 
 type QGraphicsWebView struct {
 	h  *C.QGraphicsWebView
-	gc *[1]*C.QGraphicsWebView
+	gc *[1]unsafe.Pointer
 	*qt.QGraphicsWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsWebView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGraphicsWebView) cPointer() *C.QGraphicsWebView {
@@ -61,15 +67,18 @@ func NewQGraphicsWebView() *QGraphicsWebView {
 
 // NewQGraphicsWebView2 constructs a new QGraphicsWebView object.
 func NewQGraphicsWebView2(parent *qt.QGraphicsItem) *QGraphicsWebView {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsWebView(C.QGraphicsWebView_new2((*C.QGraphicsItem)(parent.UnsafePointer())))
 }
 
 func (this *QGraphicsWebView) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsWebView_metaObject(this.h)))
 }
 
 func (this *QGraphicsWebView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsWebView_metacast(this.h, param1_Cstring))
@@ -94,24 +103,31 @@ func QGraphicsWebView_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWebView) Page() *QWebPage {
+	defer runtime.KeepAlive(this)
 	return newQWebPage(C.QGraphicsWebView_page(this.h))
 }
 
 func (this *QGraphicsWebView) SetPage(page *QWebPage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(page)
 	C.QGraphicsWebView_setPage(this.h, page.cPointer())
 }
 
 func (this *QGraphicsWebView) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QGraphicsWebView_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) SetUrl(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QGraphicsWebView_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QGraphicsWebView) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGraphicsWebView_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -119,32 +135,41 @@ func (this *QGraphicsWebView) Title() string {
 }
 
 func (this *QGraphicsWebView) Icon() *qt.QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QGraphicsWebView_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) ZoomFactor() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsWebView_zoomFactor(this.h))
 }
 
 func (this *QGraphicsWebView) SetZoomFactor(zoomFactor float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setZoomFactor(this.h, (C.double)(zoomFactor))
 }
 
 func (this *QGraphicsWebView) IsModified() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsWebView_isModified(this.h))
 }
 
 func (this *QGraphicsWebView) Load(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QGraphicsWebView_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QGraphicsWebView) LoadWithRequest(request *network.QNetworkRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	C.QGraphicsWebView_loadWithRequest(this.h, (*C.QNetworkRequest)(request.UnsafePointer()))
 }
 
 func (this *QGraphicsWebView) SetHtml(html string) {
+	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -153,6 +178,7 @@ func (this *QGraphicsWebView) SetHtml(html string) {
 }
 
 func (this *QGraphicsWebView) SetContent(data []byte) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -164,22 +190,27 @@ func (this *QGraphicsWebView) SetContent(data []byte) {
 }
 
 func (this *QGraphicsWebView) History() *QWebHistory {
+	defer runtime.KeepAlive(this)
 	return newQWebHistory(C.QGraphicsWebView_history(this.h))
 }
 
 func (this *QGraphicsWebView) Settings() *QWebSettings {
+	defer runtime.KeepAlive(this)
 	return newQWebSettings(C.QGraphicsWebView_settings(this.h))
 }
 
 func (this *QGraphicsWebView) PageAction(action QWebPage__WebAction) *qt.QAction {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QGraphicsWebView_pageAction(this.h, (C.int)(action))))
 }
 
 func (this *QGraphicsWebView) TriggerPageAction(action QWebPage__WebAction) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_triggerPageAction(this.h, (C.int)(action))
 }
 
 func (this *QGraphicsWebView) FindText(subString string) bool {
+	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -188,84 +219,110 @@ func (this *QGraphicsWebView) FindText(subString string) bool {
 }
 
 func (this *QGraphicsWebView) ResizesToContents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsWebView_resizesToContents(this.h))
 }
 
 func (this *QGraphicsWebView) SetResizesToContents(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setResizesToContents(this.h, (C.bool)(enabled))
 }
 
 func (this *QGraphicsWebView) IsTiledBackingStoreFrozen() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsWebView_isTiledBackingStoreFrozen(this.h))
 }
 
 func (this *QGraphicsWebView) SetTiledBackingStoreFrozen(frozen bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setTiledBackingStoreFrozen(this.h, (C.bool)(frozen))
 }
 
 func (this *QGraphicsWebView) SetGeometry(rect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsWebView_setGeometry(this.h, (*C.QRectF)(rect.UnsafePointer()))
 }
 
 func (this *QGraphicsWebView) UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_updateGeometry(this.h)
 }
 
 func (this *QGraphicsWebView) Paint(param1 *qt.QPainter, options *qt.QStyleOptionGraphicsItem, widget *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(options)
+	defer runtime.KeepAlive(widget)
 	C.QGraphicsWebView_paint(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(options.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QGraphicsWebView) ItemChange(change qt.QGraphicsItem__GraphicsItemChange, value *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_itemChange(this.h, (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) Event(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QGraphicsWebView_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
 func (this *QGraphicsWebView) SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_sizeHint(this.h, (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_inputMethodQuery(this.h, (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) RenderHints() qt.QPainter__RenderHint {
+	defer runtime.KeepAlive(this)
 	return (qt.QPainter__RenderHint)(C.QGraphicsWebView_renderHints(this.h))
 }
 
 func (this *QGraphicsWebView) SetRenderHints(renderHints qt.QPainter__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setRenderHints(this.h, (C.int)(renderHints))
 }
 
 func (this *QGraphicsWebView) SetRenderHint(param1 qt.QPainter__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setRenderHint(this.h, (C.int)(param1))
 }
 
 func (this *QGraphicsWebView) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_stop(this.h)
 }
 
 func (this *QGraphicsWebView) Back() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_back(this.h)
 }
 
 func (this *QGraphicsWebView) Forward() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_forward(this.h)
 }
 
 func (this *QGraphicsWebView) Reload() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_reload(this.h)
 }
 
 func (this *QGraphicsWebView) LoadStarted() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_loadStarted(this.h)
 }
 func (this *QGraphicsWebView) OnLoadStarted(slot func()) {
@@ -283,6 +340,7 @@ func miqt_exec_callback_QGraphicsWebView_loadStarted(cb C.intptr_t) {
 }
 
 func (this *QGraphicsWebView) LoadFinished(param1 bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_loadFinished(this.h, (C.bool)(param1))
 }
 func (this *QGraphicsWebView) OnLoadFinished(slot func(param1 bool)) {
@@ -303,6 +361,7 @@ func miqt_exec_callback_QGraphicsWebView_loadFinished(cb C.intptr_t, param1 C.bo
 }
 
 func (this *QGraphicsWebView) LoadProgress(progress int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_loadProgress(this.h, (C.int)(progress))
 }
 func (this *QGraphicsWebView) OnLoadProgress(slot func(progress int)) {
@@ -323,6 +382,8 @@ func miqt_exec_callback_QGraphicsWebView_loadProgress(cb C.intptr_t, progress C.
 }
 
 func (this *QGraphicsWebView) UrlChanged(param1 *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QGraphicsWebView_urlChanged(this.h, (*C.QUrl)(param1.UnsafePointer()))
 }
 func (this *QGraphicsWebView) OnUrlChanged(slot func(param1 *qt.QUrl)) {
@@ -343,6 +404,7 @@ func miqt_exec_callback_QGraphicsWebView_urlChanged(cb C.intptr_t, param1 *C.QUr
 }
 
 func (this *QGraphicsWebView) TitleChanged(param1 string) {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -370,6 +432,7 @@ func miqt_exec_callback_QGraphicsWebView_titleChanged(cb C.intptr_t, param1 C.st
 }
 
 func (this *QGraphicsWebView) IconChanged() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_iconChanged(this.h)
 }
 func (this *QGraphicsWebView) OnIconChanged(slot func()) {
@@ -387,6 +450,7 @@ func miqt_exec_callback_QGraphicsWebView_iconChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsWebView) StatusBarMessage(message string) {
+	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -414,6 +478,8 @@ func miqt_exec_callback_QGraphicsWebView_statusBarMessage(cb C.intptr_t, message
 }
 
 func (this *QGraphicsWebView) LinkClicked(param1 *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QGraphicsWebView_linkClicked(this.h, (*C.QUrl)(param1.UnsafePointer()))
 }
 func (this *QGraphicsWebView) OnLinkClicked(slot func(param1 *qt.QUrl)) {
@@ -478,10 +544,14 @@ func QGraphicsWebView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsWebView) Load2(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	C.QGraphicsWebView_load2(this.h, (*C.QNetworkRequest)(request.UnsafePointer()), (C.int)(operation))
 }
 
 func (this *QGraphicsWebView) Load3(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation, body []byte) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	body_alias := C.struct_miqt_string{}
 	if len(body) > 0 {
 		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
@@ -493,6 +563,8 @@ func (this *QGraphicsWebView) Load3(request *network.QNetworkRequest, operation 
 }
 
 func (this *QGraphicsWebView) SetHtml2(html string, baseUrl *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseUrl)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -501,6 +573,7 @@ func (this *QGraphicsWebView) SetHtml2(html string, baseUrl *qt.QUrl) {
 }
 
 func (this *QGraphicsWebView) SetContent2(data []byte, mimeType string) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -516,6 +589,8 @@ func (this *QGraphicsWebView) SetContent2(data []byte, mimeType string) {
 }
 
 func (this *QGraphicsWebView) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseUrl)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -531,10 +606,12 @@ func (this *QGraphicsWebView) SetContent3(data []byte, mimeType string, baseUrl 
 }
 
 func (this *QGraphicsWebView) TriggerPageAction2(action QWebPage__WebAction, checked bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_triggerPageAction2(this.h, (C.int)(action), (C.bool)(checked))
 }
 
 func (this *QGraphicsWebView) FindText2(subString string, options QWebPage__FindFlag) bool {
+	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -543,11 +620,13 @@ func (this *QGraphicsWebView) FindText2(subString string, options QWebPage__Find
 }
 
 func (this *QGraphicsWebView) SetRenderHint2(param1 qt.QPainter__RenderHint, enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsWebView_setRenderHint2(this.h, (C.int)(param1), (C.bool)(enabled))
 }
 
 // UpdateMicroFocus can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -560,6 +639,7 @@ func (this *QGraphicsWebView) UpdateMicroFocus() {
 
 // Sender can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QGraphicsWebView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -574,6 +654,7 @@ func (this *QGraphicsWebView) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsWebView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -588,6 +669,7 @@ func (this *QGraphicsWebView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -604,6 +686,8 @@ func (this *QGraphicsWebView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsWebView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -618,6 +702,7 @@ func (this *QGraphicsWebView) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 // AddToIndex can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) AddToIndex() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -630,6 +715,7 @@ func (this *QGraphicsWebView) AddToIndex() {
 
 // RemoveFromIndex can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) RemoveFromIndex() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -642,6 +728,7 @@ func (this *QGraphicsWebView) RemoveFromIndex() {
 
 // PrepareGeometryChange can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) PrepareGeometryChange() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -654,6 +741,8 @@ func (this *QGraphicsWebView) PrepareGeometryChange() {
 
 // SetGraphicsItem can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) SetGraphicsItem(item *qt.QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QGraphicsItem)(item.UnsafePointer()))
@@ -666,6 +755,7 @@ func (this *QGraphicsWebView) SetGraphicsItem(item *qt.QGraphicsItem) {
 
 // SetOwnedByLayout can only be called from a QGraphicsWebView that was directly constructed.
 func (this *QGraphicsWebView) SetOwnedByLayout(ownedByLayout bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsWebView_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
@@ -677,6 +767,8 @@ func (this *QGraphicsWebView) SetOwnedByLayout(ownedByLayout bool) {
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SetGeometry(rect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsWebView_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRectF)(rect.UnsafePointer()))
 
@@ -703,6 +795,7 @@ func miqt_exec_callback_QGraphicsWebView_setGeometry(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsWebView_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
@@ -726,6 +819,10 @@ func miqt_exec_callback_QGraphicsWebView_updateGeometry(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Paint(param1 *qt.QPainter, options *qt.QStyleOptionGraphicsItem, widget *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(options)
+	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsWebView_virtualbase_paint(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(options.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -756,6 +853,8 @@ func miqt_exec_callback_QGraphicsWebView_paint(self *C.QGraphicsWebView, cb C.in
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ItemChange(change qt.QGraphicsItem__GraphicsItemChange, value *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_itemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -782,12 +881,15 @@ func miqt_exec_callback_QGraphicsWebView_itemChange(self *C.QGraphicsWebView, cb
 	slotval2 := qt.UnsafeNewQVariant(unsafe.Pointer(value))
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Event(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -816,6 +918,8 @@ func miqt_exec_callback_QGraphicsWebView_event(self *C.QGraphicsWebView, cb C.in
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -842,12 +946,14 @@ func miqt_exec_callback_QGraphicsWebView_sizeHint(self *C.QGraphicsWebView, cb C
 	slotval2 := qt.UnsafeNewQSizeF(unsafe.Pointer(constraint))
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSizeF)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -872,12 +978,15 @@ func miqt_exec_callback_QGraphicsWebView_inputMethodQuery(self *C.QGraphicsWebVi
 	slotval1 := (qt.InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_MousePressEvent(param1 *qt.QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(param1.UnsafePointer()))
 
@@ -904,6 +1013,8 @@ func miqt_exec_callback_QGraphicsWebView_mousePressEvent(self *C.QGraphicsWebVie
 }
 
 func (this *QGraphicsWebView) callVirtualBase_MouseDoubleClickEvent(param1 *qt.QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(param1.UnsafePointer()))
 
@@ -930,6 +1041,8 @@ func miqt_exec_callback_QGraphicsWebView_mouseDoubleClickEvent(self *C.QGraphics
 }
 
 func (this *QGraphicsWebView) callVirtualBase_MouseReleaseEvent(param1 *qt.QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(param1.UnsafePointer()))
 
@@ -956,6 +1069,8 @@ func miqt_exec_callback_QGraphicsWebView_mouseReleaseEvent(self *C.QGraphicsWebV
 }
 
 func (this *QGraphicsWebView) callVirtualBase_MouseMoveEvent(param1 *qt.QGraphicsSceneMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(param1.UnsafePointer()))
 
@@ -982,6 +1097,8 @@ func miqt_exec_callback_QGraphicsWebView_mouseMoveEvent(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_HoverMoveEvent(param1 *qt.QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_hoverMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(param1.UnsafePointer()))
 
@@ -1008,6 +1125,8 @@ func miqt_exec_callback_QGraphicsWebView_hoverMoveEvent(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_HoverLeaveEvent(param1 *qt.QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_hoverLeaveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(param1.UnsafePointer()))
 
@@ -1034,6 +1153,8 @@ func miqt_exec_callback_QGraphicsWebView_hoverLeaveEvent(self *C.QGraphicsWebVie
 }
 
 func (this *QGraphicsWebView) callVirtualBase_WheelEvent(param1 *qt.QGraphicsSceneWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneWheelEvent)(param1.UnsafePointer()))
 
@@ -1060,6 +1181,8 @@ func miqt_exec_callback_QGraphicsWebView_wheelEvent(self *C.QGraphicsWebView, cb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -1086,6 +1209,8 @@ func miqt_exec_callback_QGraphicsWebView_keyPressEvent(self *C.QGraphicsWebView,
 }
 
 func (this *QGraphicsWebView) callVirtualBase_KeyReleaseEvent(param1 *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -1112,6 +1237,8 @@ func miqt_exec_callback_QGraphicsWebView_keyReleaseEvent(self *C.QGraphicsWebVie
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ContextMenuEvent(param1 *qt.QGraphicsSceneContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneContextMenuEvent)(param1.UnsafePointer()))
 
@@ -1138,6 +1265,8 @@ func miqt_exec_callback_QGraphicsWebView_contextMenuEvent(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_DragEnterEvent(param1 *qt.QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(param1.UnsafePointer()))
 
@@ -1164,6 +1293,8 @@ func miqt_exec_callback_QGraphicsWebView_dragEnterEvent(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_DragLeaveEvent(param1 *qt.QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(param1.UnsafePointer()))
 
@@ -1190,6 +1321,8 @@ func miqt_exec_callback_QGraphicsWebView_dragLeaveEvent(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_DragMoveEvent(param1 *qt.QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(param1.UnsafePointer()))
 
@@ -1216,6 +1349,8 @@ func miqt_exec_callback_QGraphicsWebView_dragMoveEvent(self *C.QGraphicsWebView,
 }
 
 func (this *QGraphicsWebView) callVirtualBase_DropEvent(param1 *qt.QGraphicsSceneDragDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(param1.UnsafePointer()))
 
@@ -1242,6 +1377,8 @@ func miqt_exec_callback_QGraphicsWebView_dropEvent(self *C.QGraphicsWebView, cb 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_FocusInEvent(param1 *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(param1.UnsafePointer()))
 
@@ -1268,6 +1405,8 @@ func miqt_exec_callback_QGraphicsWebView_focusInEvent(self *C.QGraphicsWebView, 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_FocusOutEvent(param1 *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(param1.UnsafePointer()))
 
@@ -1294,6 +1433,8 @@ func miqt_exec_callback_QGraphicsWebView_focusOutEvent(self *C.QGraphicsWebView,
 }
 
 func (this *QGraphicsWebView) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsWebView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1320,6 +1461,7 @@ func miqt_exec_callback_QGraphicsWebView_inputMethodEvent(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1348,6 +1490,8 @@ func miqt_exec_callback_QGraphicsWebView_focusNextPrevChild(self *C.QGraphicsWeb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SceneEvent(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_sceneEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -1376,6 +1520,7 @@ func miqt_exec_callback_QGraphicsWebView_sceneEvent(self *C.QGraphicsWebView, cb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsWebView_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
@@ -1408,6 +1553,7 @@ func miqt_exec_callback_QGraphicsWebView_getContentsMargins(self *C.QGraphicsWeb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Type() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsWebView_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -1433,6 +1579,10 @@ func miqt_exec_callback_QGraphicsWebView_type(self *C.QGraphicsWebView, cb C.int
 }
 
 func (this *QGraphicsWebView) callVirtualBase_PaintWindowFrame(painter *qt.QPainter, option *qt.QStyleOptionGraphicsItem, widget *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsWebView_virtualbase_paintWindowFrame(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(option.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -1463,6 +1613,7 @@ func miqt_exec_callback_QGraphicsWebView_paintWindowFrame(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1484,12 +1635,14 @@ func miqt_exec_callback_QGraphicsWebView_boundingRect(self *C.QGraphicsWebView, 
 	}
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Shape() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsWebView_virtualbase_shape(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1511,12 +1664,15 @@ func miqt_exec_callback_QGraphicsWebView_shape(self *C.QGraphicsWebView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Shape)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPainterPath)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QPainterPath((*C.QPainterPath)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_InitStyleOption(option *qt.QStyleOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QGraphicsWebView_virtualbase_initStyleOption(unsafe.Pointer(this.h), (*C.QStyleOption)(option.UnsafePointer()))
 
@@ -1543,6 +1699,8 @@ func miqt_exec_callback_QGraphicsWebView_initStyleOption(self *C.QGraphicsWebVie
 }
 
 func (this *QGraphicsWebView) callVirtualBase_PropertyChange(propertyName string, value *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
 	propertyName_ms.len = C.size_t(len(propertyName))
@@ -1575,12 +1733,15 @@ func miqt_exec_callback_QGraphicsWebView_propertyChange(self *C.QGraphicsWebView
 	slotval2 := qt.UnsafeNewQVariant(unsafe.Pointer(value))
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_PropertyChange, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_WindowFrameEvent(e *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_windowFrameEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -1609,6 +1770,8 @@ func miqt_exec_callback_QGraphicsWebView_windowFrameEvent(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_WindowFrameSectionAt(pos *qt.QPointF) qt.WindowFrameSection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 
 	return (qt.WindowFrameSection)(C.QGraphicsWebView_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), (*C.QPointF)(pos.UnsafePointer())))
 
@@ -1637,6 +1800,8 @@ func miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(self *C.QGraphicsW
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ChangeEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1663,6 +1828,8 @@ func miqt_exec_callback_QGraphicsWebView_changeEvent(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1689,6 +1856,8 @@ func miqt_exec_callback_QGraphicsWebView_closeEvent(self *C.QGraphicsWebView, cb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1715,6 +1884,8 @@ func miqt_exec_callback_QGraphicsWebView_hideEvent(self *C.QGraphicsWebView, cb 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_MoveEvent(event *qt.QGraphicsSceneMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMoveEvent)(event.UnsafePointer()))
 
@@ -1741,6 +1912,7 @@ func miqt_exec_callback_QGraphicsWebView_moveEvent(self *C.QGraphicsWebView, cb 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_PolishEvent() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsWebView_virtualbase_polishEvent(unsafe.Pointer(this.h))
 
@@ -1764,6 +1936,8 @@ func miqt_exec_callback_QGraphicsWebView_polishEvent(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ResizeEvent(event *qt.QGraphicsSceneResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneResizeEvent)(event.UnsafePointer()))
 
@@ -1790,6 +1964,8 @@ func miqt_exec_callback_QGraphicsWebView_resizeEvent(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1816,6 +1992,8 @@ func miqt_exec_callback_QGraphicsWebView_showEvent(self *C.QGraphicsWebView, cb 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_GrabMouseEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_grabMouseEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1842,6 +2020,8 @@ func miqt_exec_callback_QGraphicsWebView_grabMouseEvent(self *C.QGraphicsWebView
 }
 
 func (this *QGraphicsWebView) callVirtualBase_UngrabMouseEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_ungrabMouseEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1868,6 +2048,8 @@ func miqt_exec_callback_QGraphicsWebView_ungrabMouseEvent(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_GrabKeyboardEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_grabKeyboardEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1894,6 +2076,8 @@ func miqt_exec_callback_QGraphicsWebView_grabKeyboardEvent(self *C.QGraphicsWebV
 }
 
 func (this *QGraphicsWebView) callVirtualBase_UngrabKeyboardEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_ungrabKeyboardEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1920,6 +2104,9 @@ func miqt_exec_callback_QGraphicsWebView_ungrabKeyboardEvent(self *C.QGraphicsWe
 }
 
 func (this *QGraphicsWebView) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1950,6 +2137,8 @@ func miqt_exec_callback_QGraphicsWebView_eventFilter(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1976,6 +2165,8 @@ func miqt_exec_callback_QGraphicsWebView_timerEvent(self *C.QGraphicsWebView, cb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -2002,6 +2193,8 @@ func miqt_exec_callback_QGraphicsWebView_childEvent(self *C.QGraphicsWebView, cb
 }
 
 func (this *QGraphicsWebView) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2028,6 +2221,8 @@ func miqt_exec_callback_QGraphicsWebView_customEvent(self *C.QGraphicsWebView, c
 }
 
 func (this *QGraphicsWebView) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsWebView_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2054,6 +2249,8 @@ func miqt_exec_callback_QGraphicsWebView_connectNotify(self *C.QGraphicsWebView,
 }
 
 func (this *QGraphicsWebView) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsWebView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2080,6 +2277,7 @@ func miqt_exec_callback_QGraphicsWebView_disconnectNotify(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Advance(phase int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsWebView_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
 
@@ -2106,6 +2304,8 @@ func miqt_exec_callback_QGraphicsWebView_advance(self *C.QGraphicsWebView, cb C.
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Contains(point *qt.QPointF) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
 
@@ -2134,6 +2334,8 @@ func miqt_exec_callback_QGraphicsWebView_contains(self *C.QGraphicsWebView, cb C
 }
 
 func (this *QGraphicsWebView) callVirtualBase_CollidesWithItem(other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_collidesWithItem(unsafe.Pointer(this.h), (*C.QGraphicsItem)(other.UnsafePointer()), (C.int)(mode)))
 
@@ -2164,6 +2366,8 @@ func miqt_exec_callback_QGraphicsWebView_collidesWithItem(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_CollidesWithPath(path *qt.QPainterPath, mode qt.ItemSelectionMode) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_collidesWithPath(unsafe.Pointer(this.h), (*C.QPainterPath)(path.UnsafePointer()), (C.int)(mode)))
 
@@ -2194,6 +2398,8 @@ func miqt_exec_callback_QGraphicsWebView_collidesWithPath(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_IsObscuredBy(item *qt.QGraphicsItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_isObscuredBy(unsafe.Pointer(this.h), (*C.QGraphicsItem)(item.UnsafePointer())))
 
@@ -2222,6 +2428,7 @@ func miqt_exec_callback_QGraphicsWebView_isObscuredBy(self *C.QGraphicsWebView, 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_OpaqueArea() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsWebView_virtualbase_opaqueArea(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2243,12 +2450,16 @@ func miqt_exec_callback_QGraphicsWebView_opaqueArea(self *C.QGraphicsWebView, cb
 	}
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_OpaqueArea)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPainterPath)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QPainterPath((*C.QPainterPath)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SceneEventFilter(watched *qt.QGraphicsItem, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_sceneEventFilter(unsafe.Pointer(this.h), (*C.QGraphicsItem)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2279,6 +2490,8 @@ func miqt_exec_callback_QGraphicsWebView_sceneEventFilter(self *C.QGraphicsWebVi
 }
 
 func (this *QGraphicsWebView) callVirtualBase_HoverEnterEvent(event *qt.QGraphicsSceneHoverEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsWebView_virtualbase_hoverEnterEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(event.UnsafePointer()))
 
@@ -2305,6 +2518,7 @@ func miqt_exec_callback_QGraphicsWebView_hoverEnterEvent(self *C.QGraphicsWebVie
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SupportsExtension(extension qt.QGraphicsItem__Extension) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsWebView_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -2333,6 +2547,8 @@ func miqt_exec_callback_QGraphicsWebView_supportsExtension(self *C.QGraphicsWebV
 }
 
 func (this *QGraphicsWebView) callVirtualBase_SetExtension(extension qt.QGraphicsItem__Extension, variant *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(variant)
 
 	C.QGraphicsWebView_virtualbase_setExtension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(variant.UnsafePointer()))
 
@@ -2361,6 +2577,8 @@ func miqt_exec_callback_QGraphicsWebView_setExtension(self *C.QGraphicsWebView, 
 }
 
 func (this *QGraphicsWebView) callVirtualBase_Extension(variant *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(variant)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_extension(unsafe.Pointer(this.h), (*C.QVariant)(variant.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2385,8 +2603,9 @@ func miqt_exec_callback_QGraphicsWebView_extension(self *C.QGraphicsWebView, cb 
 	slotval1 := qt.UnsafeNewQVariant(unsafe.Pointer(variant))
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Extension, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGraphicsWebView_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -2402,8 +2621,9 @@ func (this *QGraphicsWebView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsWebView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsWebView) {
-		C.QGraphicsWebView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsWebView_delete((*C.QGraphicsWebView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

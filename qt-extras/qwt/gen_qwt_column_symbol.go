@@ -42,7 +42,13 @@ const (
 
 type QwtColumnRect struct {
 	h  *C.QwtColumnRect
-	gc *[1]*C.QwtColumnRect
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtColumnRect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtColumnRect) cPointer() *C.QwtColumnRect {
@@ -80,40 +86,50 @@ func NewQwtColumnRect() *QwtColumnRect {
 }
 
 func (this *QwtColumnRect) ToRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtColumnRect_toRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtColumnRect) Orientation() qt.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtColumnRect_orientation(this.h))
 }
 
 func (this *QwtColumnRect) HInterval() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	hInterval_goptr := newQwtInterval(C.QwtColumnRect_hInterval(this.h))
 	hInterval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return hInterval_goptr
 }
 
 func (this *QwtColumnRect) SetHInterval(hInterval QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(hInterval)
 	C.QwtColumnRect_setHInterval(this.h, hInterval.cPointer())
 }
 
 func (this *QwtColumnRect) VInterval() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	vInterval_goptr := newQwtInterval(C.QwtColumnRect_vInterval(this.h))
 	vInterval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return vInterval_goptr
 }
 
 func (this *QwtColumnRect) SetVInterval(vInterval QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(vInterval)
 	C.QwtColumnRect_setVInterval(this.h, vInterval.cPointer())
 }
 
 func (this *QwtColumnRect) Direction() QwtColumnRect__Direction {
+	defer runtime.KeepAlive(this)
 	return (QwtColumnRect__Direction)(C.QwtColumnRect_direction(this.h))
 }
 
 func (this *QwtColumnRect) SetDirection(direction QwtColumnRect__Direction) {
+	defer runtime.KeepAlive(this)
 	C.QwtColumnRect_setDirection(this.h, (C.int)(direction))
 }
 
@@ -129,15 +145,22 @@ func (this *QwtColumnRect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtColumnRect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColumnRect) {
-		C.QwtColumnRect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtColumnRect_delete((*C.QwtColumnRect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtColumnSymbol struct {
 	h  *C.QwtColumnSymbol
-	gc *[1]*C.QwtColumnSymbol
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtColumnSymbol) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtColumnSymbol) cPointer() *C.QwtColumnSymbol {
@@ -181,47 +204,64 @@ func NewQwtColumnSymbol2(param1 QwtColumnSymbol__Style) *QwtColumnSymbol {
 }
 
 func (this *QwtColumnSymbol) SetFrameStyle(frameStyle QwtColumnSymbol__FrameStyle) {
+	defer runtime.KeepAlive(this)
 	C.QwtColumnSymbol_setFrameStyle(this.h, (C.int)(frameStyle))
 }
 
 func (this *QwtColumnSymbol) FrameStyle() QwtColumnSymbol__FrameStyle {
+	defer runtime.KeepAlive(this)
 	return (QwtColumnSymbol__FrameStyle)(C.QwtColumnSymbol_frameStyle(this.h))
 }
 
 func (this *QwtColumnSymbol) SetLineWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QwtColumnSymbol_setLineWidth(this.h, (C.int)(width))
 }
 
 func (this *QwtColumnSymbol) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtColumnSymbol_lineWidth(this.h))
 }
 
 func (this *QwtColumnSymbol) SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QwtColumnSymbol_setPalette(this.h, (*C.QPalette)(palette.UnsafePointer()))
 }
 
 func (this *QwtColumnSymbol) Palette() *qt.QPalette {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtColumnSymbol_palette(this.h)))
 }
 
 func (this *QwtColumnSymbol) SetStyle(style QwtColumnSymbol__Style) {
+	defer runtime.KeepAlive(this)
 	C.QwtColumnSymbol_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QwtColumnSymbol) Style() QwtColumnSymbol__Style {
+	defer runtime.KeepAlive(this)
 	return (QwtColumnSymbol__Style)(C.QwtColumnSymbol_style(this.h))
 }
 
 func (this *QwtColumnSymbol) Draw(param1 *qt.QPainter, param2 *QwtColumnRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtColumnSymbol_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), param2.cPointer())
 }
 
 func (this *QwtColumnSymbol) OperatorAssign(param1 *QwtColumnSymbol) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtColumnSymbol_operatorAssign(this.h, param1.cPointer())
 }
 
 // DrawBox can only be called from a QwtColumnSymbol that was directly constructed.
 func (this *QwtColumnSymbol) DrawBox(param1 *qt.QPainter, param2 *QwtColumnRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtColumnSymbol_protectedbase_drawBox(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), param2.cPointer())
@@ -233,6 +273,9 @@ func (this *QwtColumnSymbol) DrawBox(param1 *qt.QPainter, param2 *QwtColumnRect)
 }
 
 func (this *QwtColumnSymbol) callVirtualBase_Draw(param1 *qt.QPainter, param2 *QwtColumnRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtColumnSymbol_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), param2.cPointer())
 
@@ -272,8 +315,9 @@ func (this *QwtColumnSymbol) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtColumnSymbol{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColumnSymbol) {
-		C.QwtColumnSymbol_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtColumnSymbol_delete((*C.QwtColumnSymbol)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

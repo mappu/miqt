@@ -16,8 +16,15 @@ import (
 
 type QSyntaxHighlighter struct {
 	h  *C.QSyntaxHighlighter
-	gc *[1]*C.QSyntaxHighlighter
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSyntaxHighlighter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QSyntaxHighlighter) cPointer() *C.QSyntaxHighlighter {
@@ -53,21 +60,25 @@ func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
 
 // NewQSyntaxHighlighter constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter(parent *QObject) *QSyntaxHighlighter {
+	defer runtime.KeepAlive(parent)
 
 	return newQSyntaxHighlighter(C.QSyntaxHighlighter_new(parent.cPointer()))
 }
 
 // NewQSyntaxHighlighter2 constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter2(parent *QTextDocument) *QSyntaxHighlighter {
+	defer runtime.KeepAlive(parent)
 
 	return newQSyntaxHighlighter(C.QSyntaxHighlighter_new2(parent.cPointer()))
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSyntaxHighlighter_metaObject(this.h))
 }
 
 func (this *QSyntaxHighlighter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSyntaxHighlighter_metacast(this.h, param1_Cstring))
@@ -83,18 +94,24 @@ func QSyntaxHighlighter_Tr(s string) string {
 }
 
 func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(doc)
 	C.QSyntaxHighlighter_setDocument(this.h, doc.cPointer())
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
+	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QSyntaxHighlighter_document(this.h))
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {
+	defer runtime.KeepAlive(this)
 	C.QSyntaxHighlighter_rehighlight(this.h)
 }
 
 func (this *QSyntaxHighlighter) RehighlightBlock(block *QTextBlock) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(block)
 	C.QSyntaxHighlighter_rehighlightBlock(this.h, block.cPointer())
 }
 
@@ -122,6 +139,8 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 
 // SetFormat can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SetFormat(start int, count int, format *QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSyntaxHighlighter_protectedbase_setFormat(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), format.cPointer())
@@ -134,6 +153,8 @@ func (this *QSyntaxHighlighter) SetFormat(start int, count int, format *QTextCha
 
 // SetFormat2 can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SetFormat2(start int, count int, color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSyntaxHighlighter_protectedbase_setFormat2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), color.cPointer())
@@ -146,6 +167,8 @@ func (this *QSyntaxHighlighter) SetFormat2(start int, count int, color *QColor) 
 
 // SetFormat3 can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SetFormat3(start int, count int, font *QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSyntaxHighlighter_protectedbase_setFormat3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), font.cPointer())
@@ -158,6 +181,7 @@ func (this *QSyntaxHighlighter) SetFormat3(start int, count int, font *QFont) {
 
 // Format can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) Format(pos int) QTextCharFormat {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQTextCharFormat(C.QSyntaxHighlighter_protectedbase_format(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
@@ -174,6 +198,7 @@ func (this *QSyntaxHighlighter) Format(pos int) QTextCharFormat {
 
 // PreviousBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) PreviousBlockState() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_previousBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -188,6 +213,7 @@ func (this *QSyntaxHighlighter) PreviousBlockState() int {
 
 // CurrentBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) CurrentBlockState() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_currentBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -202,6 +228,7 @@ func (this *QSyntaxHighlighter) CurrentBlockState() int {
 
 // SetCurrentBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SetCurrentBlockState(newState int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSyntaxHighlighter_protectedbase_setCurrentBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(newState))
@@ -214,6 +241,8 @@ func (this *QSyntaxHighlighter) SetCurrentBlockState(newState int) {
 
 // SetCurrentBlockUserData can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SetCurrentBlockUserData(data *QTextBlockUserData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSyntaxHighlighter_protectedbase_setCurrentBlockUserData(&_dynamic_cast_ok, unsafe.Pointer(this.h), data.cPointer())
@@ -226,6 +255,7 @@ func (this *QSyntaxHighlighter) SetCurrentBlockUserData(data *QTextBlockUserData
 
 // CurrentBlockUserData can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) CurrentBlockUserData() *QTextBlockUserData {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQTextBlockUserData(C.QSyntaxHighlighter_protectedbase_currentBlockUserData(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -240,6 +270,7 @@ func (this *QSyntaxHighlighter) CurrentBlockUserData() *QTextBlockUserData {
 
 // CurrentBlock can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) CurrentBlock() QTextBlock {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQTextBlock(C.QSyntaxHighlighter_protectedbase_currentBlock(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -256,6 +287,7 @@ func (this *QSyntaxHighlighter) CurrentBlock() QTextBlock {
 
 // Sender can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSyntaxHighlighter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -270,6 +302,7 @@ func (this *QSyntaxHighlighter) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -284,6 +317,7 @@ func (this *QSyntaxHighlighter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -300,6 +334,8 @@ func (this *QSyntaxHighlighter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSyntaxHighlighter that was directly constructed.
 func (this *QSyntaxHighlighter) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSyntaxHighlighter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -336,6 +372,8 @@ func miqt_exec_callback_QSyntaxHighlighter_highlightBlock(self *C.QSyntaxHighlig
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSyntaxHighlighter_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -364,6 +402,9 @@ func miqt_exec_callback_QSyntaxHighlighter_event(self *C.QSyntaxHighlighter, cb 
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSyntaxHighlighter_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -394,6 +435,8 @@ func miqt_exec_callback_QSyntaxHighlighter_eventFilter(self *C.QSyntaxHighlighte
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSyntaxHighlighter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -420,6 +463,8 @@ func miqt_exec_callback_QSyntaxHighlighter_timerEvent(self *C.QSyntaxHighlighter
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSyntaxHighlighter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -446,6 +491,8 @@ func miqt_exec_callback_QSyntaxHighlighter_childEvent(self *C.QSyntaxHighlighter
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSyntaxHighlighter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -472,6 +519,8 @@ func miqt_exec_callback_QSyntaxHighlighter_customEvent(self *C.QSyntaxHighlighte
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSyntaxHighlighter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -498,6 +547,8 @@ func miqt_exec_callback_QSyntaxHighlighter_connectNotify(self *C.QSyntaxHighligh
 }
 
 func (this *QSyntaxHighlighter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSyntaxHighlighter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -535,8 +586,9 @@ func (this *QSyntaxHighlighter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSyntaxHighlighter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSyntaxHighlighter) {
-		C.QSyntaxHighlighter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSyntaxHighlighter_delete((*C.QSyntaxHighlighter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

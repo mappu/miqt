@@ -25,8 +25,14 @@ const (
 
 type QWebEngineNewWindowRequest struct {
 	h  *C.QWebEngineNewWindowRequest
-	gc *[1]*C.QWebEngineNewWindowRequest
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineNewWindowRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineNewWindowRequest) cPointer() *C.QWebEngineNewWindowRequest {
@@ -61,10 +67,12 @@ func UnsafeNewQWebEngineNewWindowRequest(h unsafe.Pointer) *QWebEngineNewWindowR
 }
 
 func (this *QWebEngineNewWindowRequest) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNewWindowRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNewWindowRequest) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineNewWindowRequest_metacast(this.h, param1_Cstring))
@@ -80,26 +88,32 @@ func QWebEngineNewWindowRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineNewWindowRequest) Destination() QWebEngineNewWindowRequest__DestinationType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineNewWindowRequest__DestinationType)(C.QWebEngineNewWindowRequest_destination(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedGeometry() *qt6.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedGeometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) IsUserInitiated() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineNewWindowRequest_isUserInitiated(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) OpenIn(param1 *QWebEnginePage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebEngineNewWindowRequest_openIn(this.h, param1.cPointer())
 }
 
@@ -137,8 +151,9 @@ func (this *QWebEngineNewWindowRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineNewWindowRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineNewWindowRequest) {
-		C.QWebEngineNewWindowRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineNewWindowRequest_delete((*C.QWebEngineNewWindowRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

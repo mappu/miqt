@@ -198,6 +198,8 @@ bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QWebInspector_virtualreturncopy_QSize(QSize* src);
+QVariant* QWebInspector_virtualreturncopy_QVariant(QVariant* src);
 
 void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebInspector_protectedbase_create(bool* _dynamic_cast_ok, void* self);

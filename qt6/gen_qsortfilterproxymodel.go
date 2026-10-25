@@ -16,8 +16,15 @@ import (
 
 type QSortFilterProxyModel struct {
 	h  *C.QSortFilterProxyModel
-	gc *[1]*C.QSortFilterProxyModel
+	gc *[1]unsafe.Pointer
 	*QAbstractProxyModel
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSortFilterProxyModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractProxyModel.miqtSetGC(gc)
 }
 
 func (this *QSortFilterProxyModel) cPointer() *C.QSortFilterProxyModel {
@@ -59,15 +66,18 @@ func NewQSortFilterProxyModel() *QSortFilterProxyModel {
 
 // NewQSortFilterProxyModel2 constructs a new QSortFilterProxyModel object.
 func NewQSortFilterProxyModel2(parent *QObject) *QSortFilterProxyModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQSortFilterProxyModel(C.QSortFilterProxyModel_new2(parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSortFilterProxyModel_metaObject(this.h))
 }
 
 func (this *QSortFilterProxyModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSortFilterProxyModel_metacast(this.h, param1_Cstring))
@@ -83,120 +93,152 @@ func QSortFilterProxyModel_Tr(s string) string {
 }
 
 func (this *QSortFilterProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceModel)
 	C.QSortFilterProxyModel_setSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QSortFilterProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(proxyIndex)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceIndex)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(proxySelection)
 	_goptr := newQItemSelection(C.QSortFilterProxyModel_mapSelectionToSource(this.h, proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceSelection)
 	_goptr := newQItemSelection(C.QSortFilterProxyModel_mapSelectionFromSource(this.h, sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterRegularExpression() *QRegularExpression {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpression(C.QSortFilterProxyModel_filterRegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterKeyColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSortFilterProxyModel_filterKeyColumn(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterKeyColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setFilterKeyColumn(this.h, (C.int)(column))
 }
 
 func (this *QSortFilterProxyModel) FilterCaseSensitivity() CaseSensitivity {
+	defer runtime.KeepAlive(this)
 	return (CaseSensitivity)(C.QSortFilterProxyModel_filterCaseSensitivity(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterCaseSensitivity(cs CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setFilterCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivity() CaseSensitivity {
+	defer runtime.KeepAlive(this)
 	return (CaseSensitivity)(C.QSortFilterProxyModel_sortCaseSensitivity(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortCaseSensitivity(cs CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setSortCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) IsSortLocaleAware() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSortFilterProxyModel_isSortLocaleAware(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortLocaleAware(on bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setSortLocaleAware(this.h, (C.bool)(on))
 }
 
 func (this *QSortFilterProxyModel) SortColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSortFilterProxyModel_sortColumn(this.h))
 }
 
 func (this *QSortFilterProxyModel) SortOrder() SortOrder {
+	defer runtime.KeepAlive(this)
 	return (SortOrder)(C.QSortFilterProxyModel_sortOrder(this.h))
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilter() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSortFilterProxyModel_dynamicSortFilter(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetDynamicSortFilter(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setDynamicSortFilter(this.h, (C.bool)(enable))
 }
 
 func (this *QSortFilterProxyModel) SortRole() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSortFilterProxyModel_sortRole(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortRole(role int) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setSortRole(this.h, (C.int)(role))
 }
 
 func (this *QSortFilterProxyModel) FilterRole() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSortFilterProxyModel_filterRole(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRole(role int) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setFilterRole(this.h, (C.int)(role))
 }
 
 func (this *QSortFilterProxyModel) IsRecursiveFilteringEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSortFilterProxyModel_isRecursiveFilteringEnabled(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetRecursiveFilteringEnabled(recursive bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setRecursiveFilteringEnabled(this.h, (C.bool)(recursive))
 }
 
 func (this *QSortFilterProxyModel) AutoAcceptChildRows() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSortFilterProxyModel_autoAcceptChildRows(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetAutoAcceptChildRows(accept bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_setAutoAcceptChildRows(this.h, (C.bool)(accept))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
+	defer runtime.KeepAlive(this)
 	pattern_ms := C.struct_miqt_string{}
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
@@ -205,10 +247,13 @@ func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpressionWithRegularExpression(regularExpression *QRegularExpression) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(regularExpression)
 	C.QSortFilterProxyModel_setFilterRegularExpressionWithRegularExpression(this.h, regularExpression.cPointer())
 }
 
 func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
+	defer runtime.KeepAlive(this)
 	pattern_ms := C.struct_miqt_string{}
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
@@ -217,6 +262,7 @@ func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
 }
 
 func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
+	defer runtime.KeepAlive(this)
 	pattern_ms := C.struct_miqt_string{}
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
@@ -225,60 +271,83 @@ func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
 }
 
 func (this *QSortFilterProxyModel) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_invalidate(this.h)
 }
 
 func (this *QSortFilterProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QSortFilterProxyModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QSortFilterProxyModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QSortFilterProxyModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QSortFilterProxyModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QSortFilterProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QSortFilterProxyModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QSortFilterProxyModel_setHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -290,44 +359,66 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) InsertRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_insertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_removeColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) FetchMore(parent *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	C.QSortFilterProxyModel_fetchMore(this.h, parent.cPointer())
 }
 
 func (this *QSortFilterProxyModel) CanFetchMore(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSortFilterProxyModel_canFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QSortFilterProxyModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Buddy(index *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -340,16 +431,20 @@ func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QV
 }
 
 func (this *QSortFilterProxyModel) Span(index *QModelIndex) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QSortFilterProxyModel_span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QSortFilterProxyModel) MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -363,10 +458,12 @@ func (this *QSortFilterProxyModel) MimeTypes() []string {
 }
 
 func (this *QSortFilterProxyModel) SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QSortFilterProxyModel_supportedDropActions(this.h))
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilterChanged(dynamicSortFilter bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_dynamicSortFilterChanged(this.h, (C.bool)(dynamicSortFilter))
 }
 func (this *QSortFilterProxyModel) OnDynamicSortFilterChanged(slot func(dynamicSortFilter bool)) {
@@ -387,6 +484,7 @@ func miqt_exec_callback_QSortFilterProxyModel_dynamicSortFilterChanged(cb C.intp
 }
 
 func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensitivity CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_filterCaseSensitivityChanged(this.h, (C.int)(filterCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnFilterCaseSensitivityChanged(slot func(filterCaseSensitivity CaseSensitivity)) {
@@ -407,6 +505,7 @@ func miqt_exec_callback_QSortFilterProxyModel_filterCaseSensitivityChanged(cb C.
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivity CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_sortCaseSensitivityChanged(this.h, (C.int)(sortCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnSortCaseSensitivityChanged(slot func(sortCaseSensitivity CaseSensitivity)) {
@@ -427,6 +526,7 @@ func miqt_exec_callback_QSortFilterProxyModel_sortCaseSensitivityChanged(cb C.in
 }
 
 func (this *QSortFilterProxyModel) SortLocaleAwareChanged(sortLocaleAware bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_sortLocaleAwareChanged(this.h, (C.bool)(sortLocaleAware))
 }
 func (this *QSortFilterProxyModel) OnSortLocaleAwareChanged(slot func(sortLocaleAware bool)) {
@@ -447,6 +547,7 @@ func miqt_exec_callback_QSortFilterProxyModel_sortLocaleAwareChanged(cb C.intptr
 }
 
 func (this *QSortFilterProxyModel) SortRoleChanged(sortRole int) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_sortRoleChanged(this.h, (C.int)(sortRole))
 }
 func (this *QSortFilterProxyModel) OnSortRoleChanged(slot func(sortRole int)) {
@@ -467,6 +568,7 @@ func miqt_exec_callback_QSortFilterProxyModel_sortRoleChanged(cb C.intptr_t, sor
 }
 
 func (this *QSortFilterProxyModel) FilterRoleChanged(filterRole int) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_filterRoleChanged(this.h, (C.int)(filterRole))
 }
 func (this *QSortFilterProxyModel) OnFilterRoleChanged(slot func(filterRole int)) {
@@ -487,6 +589,7 @@ func miqt_exec_callback_QSortFilterProxyModel_filterRoleChanged(cb C.intptr_t, f
 }
 
 func (this *QSortFilterProxyModel) RecursiveFilteringEnabledChanged(recursiveFilteringEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_recursiveFilteringEnabledChanged(this.h, (C.bool)(recursiveFilteringEnabled))
 }
 func (this *QSortFilterProxyModel) OnRecursiveFilteringEnabledChanged(slot func(recursiveFilteringEnabled bool)) {
@@ -507,6 +610,7 @@ func miqt_exec_callback_QSortFilterProxyModel_recursiveFilteringEnabledChanged(c
 }
 
 func (this *QSortFilterProxyModel) AutoAcceptChildRowsChanged(autoAcceptChildRows bool) {
+	defer runtime.KeepAlive(this)
 	C.QSortFilterProxyModel_autoAcceptChildRowsChanged(this.h, (C.bool)(autoAcceptChildRows))
 }
 func (this *QSortFilterProxyModel) OnAutoAcceptChildRowsChanged(slot func(autoAcceptChildRows bool)) {
@@ -550,6 +654,7 @@ func QSortFilterProxyModel_Tr3(s string, c string, n int) string {
 
 // InvalidateFilter can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) InvalidateFilter() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_invalidateFilter(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -562,6 +667,7 @@ func (this *QSortFilterProxyModel) InvalidateFilter() {
 
 // InvalidateRowsFilter can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) InvalidateRowsFilter() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_invalidateRowsFilter(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -574,6 +680,7 @@ func (this *QSortFilterProxyModel) InvalidateRowsFilter() {
 
 // InvalidateColumnsFilter can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) InvalidateColumnsFilter() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_invalidateColumnsFilter(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -586,6 +693,7 @@ func (this *QSortFilterProxyModel) InvalidateColumnsFilter() {
 
 // CreateSourceIndex can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) CreateSourceIndex(row int, col int, internalPtr unsafe.Pointer) QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_protectedbase_createSourceIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(col), internalPtr))
@@ -602,6 +710,7 @@ func (this *QSortFilterProxyModel) CreateSourceIndex(row int, col int, internalP
 
 // CreateIndex can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) CreateIndex(row int, column int) QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -618,6 +727,9 @@ func (this *QSortFilterProxyModel) CreateIndex(row int, column int) QModelIndex 
 
 // EncodeData can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
+	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -637,6 +749,9 @@ func (this *QSortFilterProxyModel) EncodeData(indexes []QModelIndex, stream *QDa
 
 // DecodeData can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSortFilterProxyModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer(), stream.cPointer()))
@@ -651,6 +766,8 @@ func (this *QSortFilterProxyModel) DecodeData(row int, column int, parent *QMode
 
 // BeginInsertRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -663,6 +780,7 @@ func (this *QSortFilterProxyModel) BeginInsertRows(parent *QModelIndex, first in
 
 // EndInsertRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndInsertRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -675,6 +793,8 @@ func (this *QSortFilterProxyModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -687,6 +807,7 @@ func (this *QSortFilterProxyModel) BeginRemoveRows(parent *QModelIndex, first in
 
 // EndRemoveRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndRemoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -699,6 +820,9 @@ func (this *QSortFilterProxyModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSortFilterProxyModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationRow)))
@@ -713,6 +837,7 @@ func (this *QSortFilterProxyModel) BeginMoveRows(sourceParent *QModelIndex, sour
 
 // EndMoveRows can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndMoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -725,6 +850,8 @@ func (this *QSortFilterProxyModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -737,6 +864,7 @@ func (this *QSortFilterProxyModel) BeginInsertColumns(parent *QModelIndex, first
 
 // EndInsertColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndInsertColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -749,6 +877,8 @@ func (this *QSortFilterProxyModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -761,6 +891,7 @@ func (this *QSortFilterProxyModel) BeginRemoveColumns(parent *QModelIndex, first
 
 // EndRemoveColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndRemoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -773,6 +904,9 @@ func (this *QSortFilterProxyModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSortFilterProxyModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationColumn)))
@@ -787,6 +921,7 @@ func (this *QSortFilterProxyModel) BeginMoveColumns(sourceParent *QModelIndex, s
 
 // EndMoveColumns can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndMoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -799,6 +934,7 @@ func (this *QSortFilterProxyModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) BeginResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -811,6 +947,7 @@ func (this *QSortFilterProxyModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) EndResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -823,6 +960,9 @@ func (this *QSortFilterProxyModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSortFilterProxyModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), from.cPointer(), to.cPointer())
@@ -835,6 +975,9 @@ func (this *QSortFilterProxyModel) ChangePersistentIndex(from *QModelIndex, to *
 
 // ChangePersistentIndexList can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
@@ -861,6 +1004,7 @@ func (this *QSortFilterProxyModel) ChangePersistentIndexList(from []QModelIndex,
 
 // PersistentIndexList can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) PersistentIndexList() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -883,6 +1027,7 @@ func (this *QSortFilterProxyModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSortFilterProxyModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -897,6 +1042,7 @@ func (this *QSortFilterProxyModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSortFilterProxyModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -911,6 +1057,7 @@ func (this *QSortFilterProxyModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -927,6 +1074,8 @@ func (this *QSortFilterProxyModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSortFilterProxyModel that was directly constructed.
 func (this *QSortFilterProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSortFilterProxyModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -940,6 +1089,8 @@ func (this *QSortFilterProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetSourceModel(sourceModel *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceModel)
 
 	C.QSortFilterProxyModel_virtualbase_setSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
 
@@ -966,6 +1117,8 @@ func miqt_exec_callback_QSortFilterProxyModel_setSourceModel(self *C.QSortFilter
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapToSource(proxyIndex *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(proxyIndex)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_mapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -990,12 +1143,15 @@ func miqt_exec_callback_QSortFilterProxyModel_mapToSource(self *C.QSortFilterPro
 	slotval1 := newQModelIndex(proxyIndex)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapToSource, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceIndex)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_mapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1020,12 +1176,15 @@ func miqt_exec_callback_QSortFilterProxyModel_mapFromSource(self *C.QSortFilterP
 	slotval1 := newQModelIndex(sourceIndex)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapFromSource, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(proxySelection)
 
 	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_mapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1050,12 +1209,15 @@ func miqt_exec_callback_QSortFilterProxyModel_mapSelectionToSource(self *C.QSort
 	slotval1 := newQItemSelection(proxySelection)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QItemSelection(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceSelection)
 
 	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_mapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1080,12 +1242,15 @@ func miqt_exec_callback_QSortFilterProxyModel_mapSelectionFromSource(self *C.QSo
 	slotval1 := newQItemSelection(sourceSelection)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QItemSelection(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_FilterAcceptsRow(source_row int, source_parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source_parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_filterAcceptsRow(unsafe.Pointer(this.h), (C.int)(source_row), source_parent.cPointer()))
 
@@ -1116,6 +1281,8 @@ func miqt_exec_callback_QSortFilterProxyModel_filterAcceptsRow(self *C.QSortFilt
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_FilterAcceptsColumn(source_column int, source_parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source_parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_filterAcceptsColumn(unsafe.Pointer(this.h), (C.int)(source_column), source_parent.cPointer()))
 
@@ -1146,6 +1313,9 @@ func miqt_exec_callback_QSortFilterProxyModel_filterAcceptsColumn(self *C.QSortF
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_LessThan(source_left *QModelIndex, source_right *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source_left)
+	defer runtime.KeepAlive(source_right)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_lessThan(unsafe.Pointer(this.h), source_left.cPointer(), source_right.cPointer()))
 
@@ -1176,6 +1346,8 @@ func miqt_exec_callback_QSortFilterProxyModel_lessThan(self *C.QSortFilterProxyM
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1204,12 +1376,15 @@ func miqt_exec_callback_QSortFilterProxyModel_index(self *C.QSortFilterProxyMode
 	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1234,12 +1409,15 @@ func miqt_exec_callback_QSortFilterProxyModel_parent(self *C.QSortFilterProxyMod
 	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Parent, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1268,12 +1446,15 @@ func miqt_exec_callback_QSortFilterProxyModel_sibling(self *C.QSortFilterProxyMo
 	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QSortFilterProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1302,6 +1483,8 @@ func miqt_exec_callback_QSortFilterProxyModel_rowCount(self *C.QSortFilterProxyM
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QSortFilterProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1330,6 +1513,8 @@ func miqt_exec_callback_QSortFilterProxyModel_columnCount(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1358,6 +1543,8 @@ func miqt_exec_callback_QSortFilterProxyModel_hasChildren(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1384,12 +1571,16 @@ func miqt_exec_callback_QSortFilterProxyModel_data(self *C.QSortFilterProxyModel
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
 
@@ -1422,6 +1613,7 @@ func miqt_exec_callback_QSortFilterProxyModel_setData(self *C.QSortFilterProxyMo
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1450,12 +1642,15 @@ func miqt_exec_callback_QSortFilterProxyModel_headerData(self *C.QSortFilterProx
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_HeaderData, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 
@@ -1490,6 +1685,8 @@ func miqt_exec_callback_QSortFilterProxyModel_setHeaderData(self *C.QSortFilterP
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -1527,12 +1724,16 @@ func miqt_exec_callback_QSortFilterProxyModel_mimeData(self *C.QSortFilterProxyM
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -1569,6 +1770,8 @@ func miqt_exec_callback_QSortFilterProxyModel_dropMimeData(self *C.QSortFilterPr
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -1601,6 +1804,8 @@ func miqt_exec_callback_QSortFilterProxyModel_insertRows(self *C.QSortFilterProx
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -1633,6 +1838,8 @@ func miqt_exec_callback_QSortFilterProxyModel_insertColumns(self *C.QSortFilterP
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -1665,6 +1872,8 @@ func miqt_exec_callback_QSortFilterProxyModel_removeRows(self *C.QSortFilterProx
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -1697,6 +1906,8 @@ func miqt_exec_callback_QSortFilterProxyModel_removeColumns(self *C.QSortFilterP
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QSortFilterProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
 
@@ -1723,6 +1934,8 @@ func miqt_exec_callback_QSortFilterProxyModel_fetchMore(self *C.QSortFilterProxy
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1751,6 +1964,8 @@ func miqt_exec_callback_QSortFilterProxyModel_canFetchMore(self *C.QSortFilterPr
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QSortFilterProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1779,6 +1994,8 @@ func miqt_exec_callback_QSortFilterProxyModel_flags(self *C.QSortFilterProxyMode
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1803,12 +2020,16 @@ func miqt_exec_callback_QSortFilterProxyModel_buddy(self *C.QSortFilterProxyMode
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Buddy, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 
 	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -1847,10 +2068,11 @@ func miqt_exec_callback_QSortFilterProxyModel_match(self *C.QSortFilterProxyMode
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QSortFilterProxyModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1859,6 +2081,8 @@ func miqt_exec_callback_QSortFilterProxyModel_match(self *C.QSortFilterProxyMode
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QSortFilterProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1883,12 +2107,14 @@ func miqt_exec_callback_QSortFilterProxyModel_span(self *C.QSortFilterProxyModel
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Span, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSortFilterProxyModel_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QSortFilterProxyModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1917,6 +2143,7 @@ func miqt_exec_callback_QSortFilterProxyModel_sort(self *C.QSortFilterProxyModel
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1960,6 +2187,7 @@ func miqt_exec_callback_QSortFilterProxyModel_mimeTypes(self *C.QSortFilterProxy
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QSortFilterProxyModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1985,6 +2213,7 @@ func miqt_exec_callback_QSortFilterProxyModel_supportedDropActions(self *C.QSort
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Submit() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -2010,6 +2239,7 @@ func miqt_exec_callback_QSortFilterProxyModel_submit(self *C.QSortFilterProxyMod
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Revert() {
+	defer runtime.KeepAlive(this)
 
 	C.QSortFilterProxyModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -2033,6 +2263,8 @@ func miqt_exec_callback_QSortFilterProxyModel_revert(self *C.QSortFilterProxyMod
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -2068,6 +2300,7 @@ func miqt_exec_callback_QSortFilterProxyModel_itemData(self *C.QSortFilterProxyM
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_ItemData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
 	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -2075,7 +2308,7 @@ func miqt_exec_callback_QSortFilterProxyModel_itemData(self *C.QSortFilterProxyM
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
-		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v.cPointer()
+		virtualReturn_Values_CArray[virtualReturn_ctr] = C.QSortFilterProxyModel_virtualreturncopy_QVariant(virtualReturn_v.cPointer())
 		virtualReturn_ctr++
 	}
 	virtualReturn_mm := C.struct_miqt_map{
@@ -2089,6 +2322,9 @@ func miqt_exec_callback_QSortFilterProxyModel_itemData(self *C.QSortFilterProxyM
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -2149,6 +2385,8 @@ func miqt_exec_callback_QSortFilterProxyModel_setItemData(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -2177,6 +2415,9 @@ func miqt_exec_callback_QSortFilterProxyModel_clearItemData(self *C.QSortFilterP
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -2213,6 +2454,7 @@ func miqt_exec_callback_QSortFilterProxyModel_canDropMimeData(self *C.QSortFilte
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_SupportedDragActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QSortFilterProxyModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -2238,6 +2480,7 @@ func miqt_exec_callback_QSortFilterProxyModel_supportedDragActions(self *C.QSort
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -2298,6 +2541,9 @@ func miqt_exec_callback_QSortFilterProxyModel_roleNames(self *C.QSortFilterProxy
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -2334,6 +2580,9 @@ func miqt_exec_callback_QSortFilterProxyModel_moveRows(self *C.QSortFilterProxyM
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -2370,6 +2619,9 @@ func miqt_exec_callback_QSortFilterProxyModel_moveColumns(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roleDataSpan)
 
 	C.QSortFilterProxyModel_virtualbase_multiData(unsafe.Pointer(this.h), index.cPointer(), roleDataSpan.cPointer())
 
@@ -2400,6 +2652,7 @@ func miqt_exec_callback_QSortFilterProxyModel_multiData(self *C.QSortFilterProxy
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ResetInternalData() {
+	defer runtime.KeepAlive(this)
 
 	C.QSortFilterProxyModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -2423,6 +2676,8 @@ func miqt_exec_callback_QSortFilterProxyModel_resetInternalData(self *C.QSortFil
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2451,6 +2706,9 @@ func miqt_exec_callback_QSortFilterProxyModel_event(self *C.QSortFilterProxyMode
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSortFilterProxyModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2481,6 +2739,8 @@ func miqt_exec_callback_QSortFilterProxyModel_eventFilter(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSortFilterProxyModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2507,6 +2767,8 @@ func miqt_exec_callback_QSortFilterProxyModel_timerEvent(self *C.QSortFilterProx
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSortFilterProxyModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2533,6 +2795,8 @@ func miqt_exec_callback_QSortFilterProxyModel_childEvent(self *C.QSortFilterProx
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSortFilterProxyModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2559,6 +2823,8 @@ func miqt_exec_callback_QSortFilterProxyModel_customEvent(self *C.QSortFilterPro
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSortFilterProxyModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2585,6 +2851,8 @@ func miqt_exec_callback_QSortFilterProxyModel_connectNotify(self *C.QSortFilterP
 }
 
 func (this *QSortFilterProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSortFilterProxyModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2622,8 +2890,9 @@ func (this *QSortFilterProxyModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSortFilterProxyModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSortFilterProxyModel) {
-		C.QSortFilterProxyModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSortFilterProxyModel_delete((*C.QSortFilterProxyModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

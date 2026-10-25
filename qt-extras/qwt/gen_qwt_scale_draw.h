@@ -80,6 +80,7 @@ bool QwtScaleDraw_override_virtual_draw(void* self, intptr_t slot);
 void QwtScaleDraw_virtualbase_draw(const void* self, QPainter* param1, QPalette* param2);
 bool QwtScaleDraw_override_virtual_label(void* self, intptr_t slot);
 QwtText* QwtScaleDraw_virtualbase_label(const void* self, double param1);
+QwtText* QwtScaleDraw_virtualreturncopy_QwtText(QwtText* src);
 
 QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2);
 void QwtScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);

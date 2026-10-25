@@ -51,7 +51,13 @@ const (
 
 type QwtSymbol struct {
 	h  *C.QwtSymbol
-	gc *[1]*C.QwtSymbol
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSymbol) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtSymbol) cPointer() *C.QwtSymbol {
@@ -90,12 +96,18 @@ func NewQwtSymbol() *QwtSymbol {
 
 // NewQwtSymbol2 constructs a new QwtSymbol object.
 func NewQwtSymbol2(param1 QwtSymbol__Style, param2 *qt.QBrush, param3 *qt.QPen, param4 *qt.QSize) *QwtSymbol {
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
+	defer runtime.KeepAlive(param4)
 
 	return newQwtSymbol(C.QwtSymbol_new2((C.int)(param1), (*C.QBrush)(param2.UnsafePointer()), (*C.QPen)(param3.UnsafePointer()), (*C.QSize)(param4.UnsafePointer())))
 }
 
 // NewQwtSymbol3 constructs a new QwtSymbol object.
 func NewQwtSymbol3(param1 *qt.QPainterPath, param2 *qt.QBrush, param3 *qt.QPen) *QwtSymbol {
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	return newQwtSymbol(C.QwtSymbol_new3((*C.QPainterPath)(param1.UnsafePointer()), (*C.QBrush)(param2.UnsafePointer()), (*C.QPen)(param3.UnsafePointer())))
 }
@@ -107,100 +119,135 @@ func NewQwtSymbol4(param1 QwtSymbol__Style) *QwtSymbol {
 }
 
 func (this *QwtSymbol) SetCachePolicy(cachePolicy QwtSymbol__CachePolicy) {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_setCachePolicy(this.h, (C.int)(cachePolicy))
 }
 
 func (this *QwtSymbol) CachePolicy() QwtSymbol__CachePolicy {
+	defer runtime.KeepAlive(this)
 	return (QwtSymbol__CachePolicy)(C.QwtSymbol_cachePolicy(this.h))
 }
 
 func (this *QwtSymbol) SetSize(size *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QwtSymbol_setSize(this.h, (*C.QSize)(size.UnsafePointer()))
 }
 
 func (this *QwtSymbol) SetSizeWithWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_setSizeWithWidth(this.h, (C.int)(width))
 }
 
 func (this *QwtSymbol) Size() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQSize(unsafe.Pointer(C.QwtSymbol_size(this.h)))
 }
 
 func (this *QwtSymbol) SetPinPoint(pos *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QwtSymbol_setPinPoint(this.h, (*C.QPointF)(pos.UnsafePointer()))
 }
 
 func (this *QwtSymbol) PinPoint() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtSymbol_pinPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSymbol) SetPinPointEnabled(pinPointEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_setPinPointEnabled(this.h, (C.bool)(pinPointEnabled))
 }
 
 func (this *QwtSymbol) IsPinPointEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtSymbol_isPinPointEnabled(this.h))
 }
 
 func (this *QwtSymbol) SetColor(color *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QwtSymbol_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QwtSymbol) SetBrush(brush *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QwtSymbol_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QwtSymbol) Brush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtSymbol_brush(this.h)))
 }
 
 func (this *QwtSymbol) SetPen(param1 *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtSymbol_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
 }
 
 func (this *QwtSymbol) SetPenWithPen(pen *qt.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QwtSymbol_setPenWithPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QwtSymbol) Pen() *qt.QPen {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPen(unsafe.Pointer(C.QwtSymbol_pen(this.h)))
 }
 
 func (this *QwtSymbol) SetStyle(style QwtSymbol__Style) {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QwtSymbol) Style() QwtSymbol__Style {
+	defer runtime.KeepAlive(this)
 	return (QwtSymbol__Style)(C.QwtSymbol_style(this.h))
 }
 
 func (this *QwtSymbol) SetPath(path *qt.QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	C.QwtSymbol_setPath(this.h, (*C.QPainterPath)(path.UnsafePointer()))
 }
 
 func (this *QwtSymbol) Path() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtSymbol_path(this.h)))
 }
 
 func (this *QwtSymbol) SetPixmap(pixmap *qt.QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QwtSymbol_setPixmap(this.h, (*C.QPixmap)(pixmap.UnsafePointer()))
 }
 
 func (this *QwtSymbol) Pixmap() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtSymbol_pixmap(this.h)))
 }
 
 func (this *QwtSymbol) SetGraphic(graphic *QwtGraphic) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(graphic)
 	C.QwtSymbol_setGraphic(this.h, graphic.cPointer())
 }
 
 func (this *QwtSymbol) Graphic() *QwtGraphic {
-	return newQwtGraphic(C.QwtSymbol_graphic(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtGraphic(C.QwtSymbol_graphic(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtSymbol) SetSvgDocument(svgDocument []byte) {
+	defer runtime.KeepAlive(this)
 	svgDocument_alias := C.struct_miqt_string{}
 	if len(svgDocument) > 0 {
 		svgDocument_alias.data = (*C.char)(unsafe.Pointer(&svgDocument[0]))
@@ -212,44 +259,64 @@ func (this *QwtSymbol) SetSvgDocument(svgDocument []byte) {
 }
 
 func (this *QwtSymbol) DrawSymbol(param1 *qt.QPainter, param2 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtSymbol_drawSymbol(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
 }
 
 func (this *QwtSymbol) DrawSymbol2(param1 *qt.QPainter, param2 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtSymbol_drawSymbol2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()))
 }
 
 func (this *QwtSymbol) DrawSymbols2(param1 *qt.QPainter, param2 *qt.QPointF, numPoints int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtSymbol_drawSymbols2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(numPoints))
 }
 
 func (this *QwtSymbol) BoundingRect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtSymbol_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSymbol) InvalidateCache() {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_invalidateCache(this.h)
 }
 
 func (this *QwtSymbol) SetSize2(width int, height int) {
+	defer runtime.KeepAlive(this)
 	C.QwtSymbol_setSize2(this.h, (C.int)(width), (C.int)(height))
 }
 
 func (this *QwtSymbol) SetPinPoint2(pos *qt.QPointF, enable bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QwtSymbol_setPinPoint2(this.h, (*C.QPointF)(pos.UnsafePointer()), (C.bool)(enable))
 }
 
 func (this *QwtSymbol) SetPen2(param1 *qt.QColor, width float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtSymbol_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
 }
 
 func (this *QwtSymbol) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtSymbol_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
 }
 
 func (this *QwtSymbol) callVirtualBase_SetColor(color *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 
 	C.QwtSymbol_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(color.UnsafePointer()))
 
@@ -276,6 +343,7 @@ func miqt_exec_callback_QwtSymbol_setColor(self *C.QwtSymbol, cb C.intptr_t, col
 }
 
 func (this *QwtSymbol) callVirtualBase_BoundingRect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtSymbol_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -297,12 +365,16 @@ func miqt_exec_callback_QwtSymbol_boundingRect(self *C.QwtSymbol, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QwtSymbol{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRect)(virtualReturn.UnsafePointer())
+	return C.QwtSymbol_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtSymbol) callVirtualBase_RenderSymbols(param1 *qt.QPainter, param2 *qt.QPointF, numPoints int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtSymbol_virtualbase_renderSymbols(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(numPoints))
 
@@ -344,8 +416,9 @@ func (this *QwtSymbol) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSymbol{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSymbol) {
-		C.QwtSymbol_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSymbol_delete((*C.QwtSymbol)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

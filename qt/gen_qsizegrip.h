@@ -198,6 +198,8 @@ bool QSizeGrip_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSizeGrip_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSizeGrip_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QSizeGrip_virtualreturncopy_QSize(QSize* src);
+QVariant* QSizeGrip_virtualreturncopy_QVariant(QVariant* src);
 
 void QSizeGrip_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QSizeGrip_protectedbase_create(bool* _dynamic_cast_ok, void* self);

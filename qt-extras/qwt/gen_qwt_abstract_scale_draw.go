@@ -25,7 +25,13 @@ const (
 
 type QwtAbstractScaleDraw struct {
 	h  *C.QwtAbstractScaleDraw
-	gc *[1]*C.QwtAbstractScaleDraw
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtAbstractScaleDraw) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtAbstractScaleDraw) cPointer() *C.QwtAbstractScaleDraw {
@@ -63,81 +69,107 @@ func NewQwtAbstractScaleDraw() *QwtAbstractScaleDraw {
 }
 
 func (this *QwtAbstractScaleDraw) SetScaleDiv(scaleDiv *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scaleDiv)
 	C.QwtAbstractScaleDraw_setScaleDiv(this.h, scaleDiv.cPointer())
 }
 
 func (this *QwtAbstractScaleDraw) ScaleDiv() *QwtScaleDiv {
-	return newQwtScaleDiv(C.QwtAbstractScaleDraw_scaleDiv(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtScaleDiv(C.QwtAbstractScaleDraw_scaleDiv(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtAbstractScaleDraw) SetTransformation(transformation *QwtTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transformation)
 	C.QwtAbstractScaleDraw_setTransformation(this.h, transformation.cPointer())
 }
 
 func (this *QwtAbstractScaleDraw) EnableComponent(param1 QwtAbstractScaleDraw__ScaleComponent) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_enableComponent(this.h, (C.int)(param1))
 }
 
 func (this *QwtAbstractScaleDraw) HasComponent(param1 QwtAbstractScaleDraw__ScaleComponent) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtAbstractScaleDraw_hasComponent(this.h, (C.int)(param1)))
 }
 
 func (this *QwtAbstractScaleDraw) SetTickLength(param1 QwtScaleDiv__TickType, length float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_setTickLength(this.h, (C.int)(param1), (C.double)(length))
 }
 
 func (this *QwtAbstractScaleDraw) TickLength(param1 QwtScaleDiv__TickType) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtAbstractScaleDraw_tickLength(this.h, (C.int)(param1)))
 }
 
 func (this *QwtAbstractScaleDraw) MaxTickLength() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtAbstractScaleDraw_maxTickLength(this.h))
 }
 
 func (this *QwtAbstractScaleDraw) SetSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QwtAbstractScaleDraw) Spacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtAbstractScaleDraw_spacing(this.h))
 }
 
 func (this *QwtAbstractScaleDraw) SetPenWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_setPenWidth(this.h, (C.int)(width))
 }
 
 func (this *QwtAbstractScaleDraw) PenWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtAbstractScaleDraw_penWidth(this.h))
 }
 
 func (this *QwtAbstractScaleDraw) Draw(param1 *qt.QPainter, param2 *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtAbstractScaleDraw_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()))
 }
 
 func (this *QwtAbstractScaleDraw) Label(param1 float64) *QwtText {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtText(C.QwtAbstractScaleDraw_label(this.h, (C.double)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtAbstractScaleDraw) Extent(font *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	return (float64)(C.QwtAbstractScaleDraw_extent(this.h, (*C.QFont)(font.UnsafePointer())))
 }
 
 func (this *QwtAbstractScaleDraw) SetMinimumExtent(minimumExtent float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_setMinimumExtent(this.h, (C.double)(minimumExtent))
 }
 
 func (this *QwtAbstractScaleDraw) MinimumExtent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtAbstractScaleDraw_minimumExtent(this.h))
 }
 
 func (this *QwtAbstractScaleDraw) EnableComponent2(param1 QwtAbstractScaleDraw__ScaleComponent, enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtAbstractScaleDraw_enableComponent2(this.h, (C.int)(param1), (C.bool)(enable))
 }
 
 // InvalidateCache can only be called from a QwtAbstractScaleDraw that was directly constructed.
 func (this *QwtAbstractScaleDraw) InvalidateCache() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtAbstractScaleDraw_protectedbase_invalidateCache(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -150,6 +182,8 @@ func (this *QwtAbstractScaleDraw) InvalidateCache() {
 
 // TickLabel can only be called from a QwtAbstractScaleDraw that was directly constructed.
 func (this *QwtAbstractScaleDraw) TickLabel(param1 *qt.QFont, value float64) *QwtText {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtText(C.QwtAbstractScaleDraw_protectedbase_tickLabel(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
@@ -163,6 +197,9 @@ func (this *QwtAbstractScaleDraw) TickLabel(param1 *qt.QFont, value float64) *Qw
 }
 
 func (this *QwtAbstractScaleDraw) callVirtualBase_Draw(param1 *qt.QPainter, param2 *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtAbstractScaleDraw_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()))
 
@@ -191,6 +228,7 @@ func miqt_exec_callback_QwtAbstractScaleDraw_draw(self *C.QwtAbstractScaleDraw, 
 }
 
 func (this *QwtAbstractScaleDraw) callVirtualBase_Label(param1 float64) *QwtText {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtText(C.QwtAbstractScaleDraw_virtualbase_label(unsafe.Pointer(this.h), (C.double)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -215,8 +253,9 @@ func miqt_exec_callback_QwtAbstractScaleDraw_label(self *C.QwtAbstractScaleDraw,
 	slotval1 := (float64)(param1)
 
 	virtualReturn := gofunc((&QwtAbstractScaleDraw{h: self}).callVirtualBase_Label, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtAbstractScaleDraw_virtualreturncopy_QwtText(virtualReturn.cPointer())
 
 }
 func (this *QwtAbstractScaleDraw) OnExtent(slot func(font *qt.QFont) float64) {
@@ -320,8 +359,9 @@ func (this *QwtAbstractScaleDraw) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtAbstractScaleDraw{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtAbstractScaleDraw) {
-		C.QwtAbstractScaleDraw_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtAbstractScaleDraw_delete((*C.QwtAbstractScaleDraw)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -562,7 +562,13 @@ const (
 
 type QStyleOption struct {
 	h  *C.QStyleOption
-	gc *[1]*C.QStyleOption
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOption) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStyleOption) cPointer() *C.QStyleOption {
@@ -601,6 +607,7 @@ func NewQStyleOption() *QStyleOption {
 
 // NewQStyleOption2 constructs a new QStyleOption object.
 func NewQStyleOption2(other *QStyleOption) *QStyleOption {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOption(C.QStyleOption_new2(other.cPointer()))
 }
@@ -618,80 +625,104 @@ func NewQStyleOption4(version int, typeVal int) *QStyleOption {
 }
 
 func (this *QStyleOption) Version() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOption_version(this.h))
 }
 
 func (this *QStyleOption) SetVersion(version int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOption_setVersion(this.h, (C.int)(version))
 }
 
 func (this *QStyleOption) Type() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOption_type(this.h))
 }
 
 func (this *QStyleOption) SetType(typeVal int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOption_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QStyleOption) State() QStyle__StateFlag {
+	defer runtime.KeepAlive(this)
 	return (QStyle__StateFlag)(C.QStyleOption_state(this.h))
 }
 
 func (this *QStyleOption) SetState(state QStyle__StateFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOption_setState(this.h, (C.int)(state))
 }
 
 func (this *QStyleOption) Direction() LayoutDirection {
+	defer runtime.KeepAlive(this)
 	return (LayoutDirection)(C.QStyleOption_direction(this.h))
 }
 
 func (this *QStyleOption) SetDirection(direction LayoutDirection) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOption_setDirection(this.h, (C.int)(direction))
 }
 
 func (this *QStyleOption) Rect() *QRect {
+	defer runtime.KeepAlive(this)
 	rect_goptr := newQRect(C.QStyleOption_rect(this.h))
 	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return rect_goptr
 }
 
 func (this *QStyleOption) SetRect(rect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QStyleOption_setRect(this.h, rect.cPointer())
 }
 
 func (this *QStyleOption) FontMetrics() *QFontMetrics {
+	defer runtime.KeepAlive(this)
 	fontMetrics_goptr := newQFontMetrics(C.QStyleOption_fontMetrics(this.h))
 	fontMetrics_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return fontMetrics_goptr
 }
 
 func (this *QStyleOption) SetFontMetrics(fontMetrics QFontMetrics) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fontMetrics)
 	C.QStyleOption_setFontMetrics(this.h, fontMetrics.cPointer())
 }
 
 func (this *QStyleOption) Palette() *QPalette {
+	defer runtime.KeepAlive(this)
 	palette_goptr := newQPalette(C.QStyleOption_palette(this.h))
 	palette_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return palette_goptr
 }
 
 func (this *QStyleOption) SetPalette(palette QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QStyleOption_setPalette(this.h, palette.cPointer())
 }
 
 func (this *QStyleOption) StyleObject() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QStyleOption_styleObject(this.h))
 }
 
 func (this *QStyleOption) SetStyleObject(styleObject *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(styleObject)
 	C.QStyleOption_setStyleObject(this.h, styleObject.cPointer())
 }
 
 func (this *QStyleOption) InitFrom(w *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	C.QStyleOption_initFrom(this.h, w.cPointer())
 }
 
 func (this *QStyleOption) OperatorAssign(other *QStyleOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QStyleOption_operatorAssign(this.h, other.cPointer())
 }
 
@@ -707,16 +738,24 @@ func (this *QStyleOption) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOption{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOption) {
-		C.QStyleOption_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOption_delete((*C.QStyleOption)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionFocusRect struct {
 	h  *C.QStyleOptionFocusRect
-	gc *[1]*C.QStyleOptionFocusRect
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionFocusRect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionFocusRect) cPointer() *C.QStyleOptionFocusRect {
@@ -758,21 +797,27 @@ func NewQStyleOptionFocusRect() *QStyleOptionFocusRect {
 
 // NewQStyleOptionFocusRect2 constructs a new QStyleOptionFocusRect object.
 func NewQStyleOptionFocusRect2(other *QStyleOptionFocusRect) *QStyleOptionFocusRect {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionFocusRect) BackgroundColor() *QColor {
+	defer runtime.KeepAlive(this)
 	backgroundColor_goptr := newQColor(C.QStyleOptionFocusRect_backgroundColor(this.h))
 	backgroundColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return backgroundColor_goptr
 }
 
 func (this *QStyleOptionFocusRect) SetBackgroundColor(backgroundColor QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(backgroundColor)
 	C.QStyleOptionFocusRect_setBackgroundColor(this.h, backgroundColor.cPointer())
 }
 
 func (this *QStyleOptionFocusRect) OperatorAssign(param1 *QStyleOptionFocusRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionFocusRect_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -788,16 +833,24 @@ func (this *QStyleOptionFocusRect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionFocusRect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionFocusRect) {
-		C.QStyleOptionFocusRect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionFocusRect_delete((*C.QStyleOptionFocusRect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionFrame struct {
 	h  *C.QStyleOptionFrame
-	gc *[1]*C.QStyleOptionFrame
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionFrame) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionFrame) cPointer() *C.QStyleOptionFrame {
@@ -839,43 +892,54 @@ func NewQStyleOptionFrame() *QStyleOptionFrame {
 
 // NewQStyleOptionFrame2 constructs a new QStyleOptionFrame object.
 func NewQStyleOptionFrame2(other *QStyleOptionFrame) *QStyleOptionFrame {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionFrame(C.QStyleOptionFrame_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionFrame) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionFrame_lineWidth(this.h))
 }
 
 func (this *QStyleOptionFrame) SetLineWidth(lineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionFrame_setLineWidth(this.h, (C.int)(lineWidth))
 }
 
 func (this *QStyleOptionFrame) MidLineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionFrame_midLineWidth(this.h))
 }
 
 func (this *QStyleOptionFrame) SetMidLineWidth(midLineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionFrame_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
 func (this *QStyleOptionFrame) Features() QStyleOptionFrame__FrameFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionFrame__FrameFeature)(C.QStyleOptionFrame_features(this.h))
 }
 
 func (this *QStyleOptionFrame) SetFeatures(features QStyleOptionFrame__FrameFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionFrame_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionFrame) FrameShape() QFrame__Shape {
+	defer runtime.KeepAlive(this)
 	return (QFrame__Shape)(C.QStyleOptionFrame_frameShape(this.h))
 }
 
 func (this *QStyleOptionFrame) SetFrameShape(frameShape QFrame__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionFrame_setFrameShape(this.h, (C.int)(frameShape))
 }
 
 func (this *QStyleOptionFrame) OperatorAssign(param1 *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionFrame_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -891,16 +955,24 @@ func (this *QStyleOptionFrame) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionFrame{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionFrame) {
-		C.QStyleOptionFrame_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionFrame_delete((*C.QStyleOptionFrame)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionTabWidgetFrame struct {
 	h  *C.QStyleOptionTabWidgetFrame
-	gc *[1]*C.QStyleOptionTabWidgetFrame
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionTabWidgetFrame) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionTabWidgetFrame) cPointer() *C.QStyleOptionTabWidgetFrame {
@@ -942,85 +1014,109 @@ func NewQStyleOptionTabWidgetFrame() *QStyleOptionTabWidgetFrame {
 
 // NewQStyleOptionTabWidgetFrame2 constructs a new QStyleOptionTabWidgetFrame object.
 func NewQStyleOptionTabWidgetFrame2(other *QStyleOptionTabWidgetFrame) *QStyleOptionTabWidgetFrame {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionTabWidgetFrame(C.QStyleOptionTabWidgetFrame_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionTabWidgetFrame) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionTabWidgetFrame_lineWidth(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetLineWidth(lineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTabWidgetFrame_setLineWidth(this.h, (C.int)(lineWidth))
 }
 
 func (this *QStyleOptionTabWidgetFrame) MidLineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionTabWidgetFrame_midLineWidth(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetMidLineWidth(midLineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTabWidgetFrame_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
 func (this *QStyleOptionTabWidgetFrame) Shape() QTabBar__Shape {
+	defer runtime.KeepAlive(this)
 	return (QTabBar__Shape)(C.QStyleOptionTabWidgetFrame_shape(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetShape(shape QTabBar__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTabWidgetFrame_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QStyleOptionTabWidgetFrame) TabBarSize() *QSize {
+	defer runtime.KeepAlive(this)
 	tabBarSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_tabBarSize(this.h))
 	tabBarSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return tabBarSize_goptr
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetTabBarSize(tabBarSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tabBarSize)
 	C.QStyleOptionTabWidgetFrame_setTabBarSize(this.h, tabBarSize.cPointer())
 }
 
 func (this *QStyleOptionTabWidgetFrame) RightCornerWidgetSize() *QSize {
+	defer runtime.KeepAlive(this)
 	rightCornerWidgetSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_rightCornerWidgetSize(this.h))
 	rightCornerWidgetSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return rightCornerWidgetSize_goptr
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetRightCornerWidgetSize(rightCornerWidgetSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rightCornerWidgetSize)
 	C.QStyleOptionTabWidgetFrame_setRightCornerWidgetSize(this.h, rightCornerWidgetSize.cPointer())
 }
 
 func (this *QStyleOptionTabWidgetFrame) LeftCornerWidgetSize() *QSize {
+	defer runtime.KeepAlive(this)
 	leftCornerWidgetSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_leftCornerWidgetSize(this.h))
 	leftCornerWidgetSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return leftCornerWidgetSize_goptr
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetLeftCornerWidgetSize(leftCornerWidgetSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(leftCornerWidgetSize)
 	C.QStyleOptionTabWidgetFrame_setLeftCornerWidgetSize(this.h, leftCornerWidgetSize.cPointer())
 }
 
 func (this *QStyleOptionTabWidgetFrame) TabBarRect() *QRect {
+	defer runtime.KeepAlive(this)
 	tabBarRect_goptr := newQRect(C.QStyleOptionTabWidgetFrame_tabBarRect(this.h))
 	tabBarRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return tabBarRect_goptr
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetTabBarRect(tabBarRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tabBarRect)
 	C.QStyleOptionTabWidgetFrame_setTabBarRect(this.h, tabBarRect.cPointer())
 }
 
 func (this *QStyleOptionTabWidgetFrame) SelectedTabRect() *QRect {
+	defer runtime.KeepAlive(this)
 	selectedTabRect_goptr := newQRect(C.QStyleOptionTabWidgetFrame_selectedTabRect(this.h))
 	selectedTabRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return selectedTabRect_goptr
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetSelectedTabRect(selectedTabRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectedTabRect)
 	C.QStyleOptionTabWidgetFrame_setSelectedTabRect(this.h, selectedTabRect.cPointer())
 }
 
 func (this *QStyleOptionTabWidgetFrame) OperatorAssign(param1 *QStyleOptionTabWidgetFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionTabWidgetFrame_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1036,16 +1132,24 @@ func (this *QStyleOptionTabWidgetFrame) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionTabWidgetFrame{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTabWidgetFrame) {
-		C.QStyleOptionTabWidgetFrame_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionTabWidgetFrame_delete((*C.QStyleOptionTabWidgetFrame)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionTabBarBase struct {
 	h  *C.QStyleOptionTabBarBase
-	gc *[1]*C.QStyleOptionTabBarBase
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionTabBarBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionTabBarBase) cPointer() *C.QStyleOptionTabBarBase {
@@ -1087,47 +1191,60 @@ func NewQStyleOptionTabBarBase() *QStyleOptionTabBarBase {
 
 // NewQStyleOptionTabBarBase2 constructs a new QStyleOptionTabBarBase object.
 func NewQStyleOptionTabBarBase2(other *QStyleOptionTabBarBase) *QStyleOptionTabBarBase {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionTabBarBase(C.QStyleOptionTabBarBase_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionTabBarBase) Shape() QTabBar__Shape {
+	defer runtime.KeepAlive(this)
 	return (QTabBar__Shape)(C.QStyleOptionTabBarBase_shape(this.h))
 }
 
 func (this *QStyleOptionTabBarBase) SetShape(shape QTabBar__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTabBarBase_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QStyleOptionTabBarBase) TabBarRect() *QRect {
+	defer runtime.KeepAlive(this)
 	tabBarRect_goptr := newQRect(C.QStyleOptionTabBarBase_tabBarRect(this.h))
 	tabBarRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return tabBarRect_goptr
 }
 
 func (this *QStyleOptionTabBarBase) SetTabBarRect(tabBarRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tabBarRect)
 	C.QStyleOptionTabBarBase_setTabBarRect(this.h, tabBarRect.cPointer())
 }
 
 func (this *QStyleOptionTabBarBase) SelectedTabRect() *QRect {
+	defer runtime.KeepAlive(this)
 	selectedTabRect_goptr := newQRect(C.QStyleOptionTabBarBase_selectedTabRect(this.h))
 	selectedTabRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return selectedTabRect_goptr
 }
 
 func (this *QStyleOptionTabBarBase) SetSelectedTabRect(selectedTabRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectedTabRect)
 	C.QStyleOptionTabBarBase_setSelectedTabRect(this.h, selectedTabRect.cPointer())
 }
 
 func (this *QStyleOptionTabBarBase) DocumentMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionTabBarBase_documentMode(this.h))
 }
 
 func (this *QStyleOptionTabBarBase) SetDocumentMode(documentMode bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTabBarBase_setDocumentMode(this.h, (C.bool)(documentMode))
 }
 
 func (this *QStyleOptionTabBarBase) OperatorAssign(param1 *QStyleOptionTabBarBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionTabBarBase_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1143,16 +1260,24 @@ func (this *QStyleOptionTabBarBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionTabBarBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTabBarBase) {
-		C.QStyleOptionTabBarBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionTabBarBase_delete((*C.QStyleOptionTabBarBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionHeader struct {
 	h  *C.QStyleOptionHeader
-	gc *[1]*C.QStyleOptionHeader
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionHeader) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionHeader) cPointer() *C.QStyleOptionHeader {
@@ -1194,19 +1319,23 @@ func NewQStyleOptionHeader() *QStyleOptionHeader {
 
 // NewQStyleOptionHeader2 constructs a new QStyleOptionHeader object.
 func NewQStyleOptionHeader2(other *QStyleOptionHeader) *QStyleOptionHeader {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionHeader(C.QStyleOptionHeader_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionHeader) Section() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionHeader_section(this.h))
 }
 
 func (this *QStyleOptionHeader) SetSection(section int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setSection(this.h, (C.int)(section))
 }
 
 func (this *QStyleOptionHeader) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionHeader_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -1214,6 +1343,7 @@ func (this *QStyleOptionHeader) Text() string {
 }
 
 func (this *QStyleOptionHeader) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1222,64 +1352,81 @@ func (this *QStyleOptionHeader) SetText(text string) {
 }
 
 func (this *QStyleOptionHeader) TextAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionHeader_textAlignment(this.h))
 }
 
 func (this *QStyleOptionHeader) SetTextAlignment(textAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStyleOptionHeader) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionHeader_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionHeader) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionHeader_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionHeader) IconAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionHeader_iconAlignment(this.h))
 }
 
 func (this *QStyleOptionHeader) SetIconAlignment(iconAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setIconAlignment(this.h, (C.int)(iconAlignment))
 }
 
 func (this *QStyleOptionHeader) Position() QStyleOptionHeader__SectionPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionHeader__SectionPosition)(C.QStyleOptionHeader_position(this.h))
 }
 
 func (this *QStyleOptionHeader) SetPosition(position QStyleOptionHeader__SectionPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setPosition(this.h, (C.int)(position))
 }
 
 func (this *QStyleOptionHeader) SelectedPosition() QStyleOptionHeader__SelectedPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionHeader__SelectedPosition)(C.QStyleOptionHeader_selectedPosition(this.h))
 }
 
 func (this *QStyleOptionHeader) SetSelectedPosition(selectedPosition QStyleOptionHeader__SelectedPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setSelectedPosition(this.h, (C.int)(selectedPosition))
 }
 
 func (this *QStyleOptionHeader) SortIndicator() QStyleOptionHeader__SortIndicator {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionHeader__SortIndicator)(C.QStyleOptionHeader_sortIndicator(this.h))
 }
 
 func (this *QStyleOptionHeader) SetSortIndicator(sortIndicator QStyleOptionHeader__SortIndicator) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setSortIndicator(this.h, (C.int)(sortIndicator))
 }
 
 func (this *QStyleOptionHeader) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QStyleOptionHeader_orientation(this.h))
 }
 
 func (this *QStyleOptionHeader) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeader_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QStyleOptionHeader) OperatorAssign(param1 *QStyleOptionHeader) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionHeader_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1295,16 +1442,24 @@ func (this *QStyleOptionHeader) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionHeader{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionHeader) {
-		C.QStyleOptionHeader_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionHeader_delete((*C.QStyleOptionHeader)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionHeaderV2 struct {
 	h  *C.QStyleOptionHeaderV2
-	gc *[1]*C.QStyleOptionHeaderV2
+	gc *[1]unsafe.Pointer
 	*QStyleOptionHeader
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionHeaderV2) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionHeader.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionHeaderV2) cPointer() *C.QStyleOptionHeaderV2 {
@@ -1346,35 +1501,44 @@ func NewQStyleOptionHeaderV2() *QStyleOptionHeaderV2 {
 
 // NewQStyleOptionHeaderV22 constructs a new QStyleOptionHeaderV2 object.
 func NewQStyleOptionHeaderV22(other *QStyleOptionHeaderV2) *QStyleOptionHeaderV2 {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionHeaderV2(C.QStyleOptionHeaderV2_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionHeaderV2) OperatorAssign(param1 *QStyleOptionHeaderV2) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionHeaderV2_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QStyleOptionHeaderV2) TextElideMode() TextElideMode {
+	defer runtime.KeepAlive(this)
 	return (TextElideMode)(C.QStyleOptionHeaderV2_textElideMode(this.h))
 }
 
 func (this *QStyleOptionHeaderV2) SetTextElideMode(textElideMode TextElideMode) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeaderV2_setTextElideMode(this.h, (C.int)(textElideMode))
 }
 
 func (this *QStyleOptionHeaderV2) IsSectionDragTarget() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionHeaderV2_isSectionDragTarget(this.h))
 }
 
 func (this *QStyleOptionHeaderV2) SetIsSectionDragTarget(isSectionDragTarget bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeaderV2_setIsSectionDragTarget(this.h, (C.bool)(isSectionDragTarget))
 }
 
 func (this *QStyleOptionHeaderV2) Unused() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionHeaderV2_unused(this.h))
 }
 
 func (this *QStyleOptionHeaderV2) SetUnused(unused int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionHeaderV2_setUnused(this.h, (C.int)(unused))
 }
 
@@ -1390,16 +1554,24 @@ func (this *QStyleOptionHeaderV2) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionHeaderV2{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionHeaderV2) {
-		C.QStyleOptionHeaderV2_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionHeaderV2_delete((*C.QStyleOptionHeaderV2)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionButton struct {
 	h  *C.QStyleOptionButton
-	gc *[1]*C.QStyleOptionButton
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionButton) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionButton) cPointer() *C.QStyleOptionButton {
@@ -1441,19 +1613,23 @@ func NewQStyleOptionButton() *QStyleOptionButton {
 
 // NewQStyleOptionButton2 constructs a new QStyleOptionButton object.
 func NewQStyleOptionButton2(other *QStyleOptionButton) *QStyleOptionButton {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionButton(C.QStyleOptionButton_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionButton) Features() QStyleOptionButton__ButtonFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionButton__ButtonFeature)(C.QStyleOptionButton_features(this.h))
 }
 
 func (this *QStyleOptionButton) SetFeatures(features QStyleOptionButton__ButtonFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionButton_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionButton) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionButton_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -1461,6 +1637,7 @@ func (this *QStyleOptionButton) Text() string {
 }
 
 func (this *QStyleOptionButton) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1469,26 +1646,34 @@ func (this *QStyleOptionButton) SetText(text string) {
 }
 
 func (this *QStyleOptionButton) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionButton_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionButton) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionButton_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionButton) IconSize() *QSize {
+	defer runtime.KeepAlive(this)
 	iconSize_goptr := newQSize(C.QStyleOptionButton_iconSize(this.h))
 	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return iconSize_goptr
 }
 
 func (this *QStyleOptionButton) SetIconSize(iconSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iconSize)
 	C.QStyleOptionButton_setIconSize(this.h, iconSize.cPointer())
 }
 
 func (this *QStyleOptionButton) OperatorAssign(param1 *QStyleOptionButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionButton_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1504,16 +1689,24 @@ func (this *QStyleOptionButton) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionButton{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionButton) {
-		C.QStyleOptionButton_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionButton_delete((*C.QStyleOptionButton)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionTab struct {
 	h  *C.QStyleOptionTab
-	gc *[1]*C.QStyleOptionTab
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionTab) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionTab) cPointer() *C.QStyleOptionTab {
@@ -1555,19 +1748,23 @@ func NewQStyleOptionTab() *QStyleOptionTab {
 
 // NewQStyleOptionTab2 constructs a new QStyleOptionTab object.
 func NewQStyleOptionTab2(other *QStyleOptionTab) *QStyleOptionTab {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionTab(C.QStyleOptionTab_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionTab) Shape() QTabBar__Shape {
+	defer runtime.KeepAlive(this)
 	return (QTabBar__Shape)(C.QStyleOptionTab_shape(this.h))
 }
 
 func (this *QStyleOptionTab) SetShape(shape QTabBar__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QStyleOptionTab) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionTab_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -1575,6 +1772,7 @@ func (this *QStyleOptionTab) Text() string {
 }
 
 func (this *QStyleOptionTab) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1583,102 +1781,130 @@ func (this *QStyleOptionTab) SetText(text string) {
 }
 
 func (this *QStyleOptionTab) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionTab_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionTab) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionTab_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionTab) Row() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionTab_row(this.h))
 }
 
 func (this *QStyleOptionTab) SetRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setRow(this.h, (C.int)(row))
 }
 
 func (this *QStyleOptionTab) Position() QStyleOptionTab__TabPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionTab__TabPosition)(C.QStyleOptionTab_position(this.h))
 }
 
 func (this *QStyleOptionTab) SetPosition(position QStyleOptionTab__TabPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setPosition(this.h, (C.int)(position))
 }
 
 func (this *QStyleOptionTab) SelectedPosition() QStyleOptionTab__SelectedPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionTab__SelectedPosition)(C.QStyleOptionTab_selectedPosition(this.h))
 }
 
 func (this *QStyleOptionTab) SetSelectedPosition(selectedPosition QStyleOptionTab__SelectedPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setSelectedPosition(this.h, (C.int)(selectedPosition))
 }
 
 func (this *QStyleOptionTab) CornerWidgets() QStyleOptionTab__CornerWidget {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionTab__CornerWidget)(C.QStyleOptionTab_cornerWidgets(this.h))
 }
 
 func (this *QStyleOptionTab) SetCornerWidgets(cornerWidgets QStyleOptionTab__CornerWidget) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setCornerWidgets(this.h, (C.int)(cornerWidgets))
 }
 
 func (this *QStyleOptionTab) IconSize() *QSize {
+	defer runtime.KeepAlive(this)
 	iconSize_goptr := newQSize(C.QStyleOptionTab_iconSize(this.h))
 	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return iconSize_goptr
 }
 
 func (this *QStyleOptionTab) SetIconSize(iconSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iconSize)
 	C.QStyleOptionTab_setIconSize(this.h, iconSize.cPointer())
 }
 
 func (this *QStyleOptionTab) DocumentMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionTab_documentMode(this.h))
 }
 
 func (this *QStyleOptionTab) SetDocumentMode(documentMode bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setDocumentMode(this.h, (C.bool)(documentMode))
 }
 
 func (this *QStyleOptionTab) LeftButtonSize() *QSize {
+	defer runtime.KeepAlive(this)
 	leftButtonSize_goptr := newQSize(C.QStyleOptionTab_leftButtonSize(this.h))
 	leftButtonSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return leftButtonSize_goptr
 }
 
 func (this *QStyleOptionTab) SetLeftButtonSize(leftButtonSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(leftButtonSize)
 	C.QStyleOptionTab_setLeftButtonSize(this.h, leftButtonSize.cPointer())
 }
 
 func (this *QStyleOptionTab) RightButtonSize() *QSize {
+	defer runtime.KeepAlive(this)
 	rightButtonSize_goptr := newQSize(C.QStyleOptionTab_rightButtonSize(this.h))
 	rightButtonSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return rightButtonSize_goptr
 }
 
 func (this *QStyleOptionTab) SetRightButtonSize(rightButtonSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rightButtonSize)
 	C.QStyleOptionTab_setRightButtonSize(this.h, rightButtonSize.cPointer())
 }
 
 func (this *QStyleOptionTab) Features() QStyleOptionTab__TabFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionTab__TabFeature)(C.QStyleOptionTab_features(this.h))
 }
 
 func (this *QStyleOptionTab) SetFeatures(features QStyleOptionTab__TabFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionTab) TabIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionTab_tabIndex(this.h))
 }
 
 func (this *QStyleOptionTab) SetTabIndex(tabIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTab_setTabIndex(this.h, (C.int)(tabIndex))
 }
 
 func (this *QStyleOptionTab) OperatorAssign(param1 *QStyleOptionTab) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionTab_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1694,16 +1920,24 @@ func (this *QStyleOptionTab) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionTab{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTab) {
-		C.QStyleOptionTab_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionTab_delete((*C.QStyleOptionTab)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionToolBar struct {
 	h  *C.QStyleOptionToolBar
-	gc *[1]*C.QStyleOptionToolBar
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionToolBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionToolBar) cPointer() *C.QStyleOptionToolBar {
@@ -1745,59 +1979,74 @@ func NewQStyleOptionToolBar() *QStyleOptionToolBar {
 
 // NewQStyleOptionToolBar2 constructs a new QStyleOptionToolBar object.
 func NewQStyleOptionToolBar2(other *QStyleOptionToolBar) *QStyleOptionToolBar {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionToolBar(C.QStyleOptionToolBar_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionToolBar) PositionOfLine() QStyleOptionToolBar__ToolBarPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolBar__ToolBarPosition)(C.QStyleOptionToolBar_positionOfLine(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetPositionOfLine(positionOfLine QStyleOptionToolBar__ToolBarPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setPositionOfLine(this.h, (C.int)(positionOfLine))
 }
 
 func (this *QStyleOptionToolBar) PositionWithinLine() QStyleOptionToolBar__ToolBarPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolBar__ToolBarPosition)(C.QStyleOptionToolBar_positionWithinLine(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetPositionWithinLine(positionWithinLine QStyleOptionToolBar__ToolBarPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setPositionWithinLine(this.h, (C.int)(positionWithinLine))
 }
 
 func (this *QStyleOptionToolBar) ToolBarArea() ToolBarArea {
+	defer runtime.KeepAlive(this)
 	return (ToolBarArea)(C.QStyleOptionToolBar_toolBarArea(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetToolBarArea(toolBarArea ToolBarArea) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setToolBarArea(this.h, (C.int)(toolBarArea))
 }
 
 func (this *QStyleOptionToolBar) Features() QStyleOptionToolBar__ToolBarFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolBar__ToolBarFeature)(C.QStyleOptionToolBar_features(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetFeatures(features QStyleOptionToolBar__ToolBarFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionToolBar) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionToolBar_lineWidth(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetLineWidth(lineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setLineWidth(this.h, (C.int)(lineWidth))
 }
 
 func (this *QStyleOptionToolBar) MidLineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionToolBar_midLineWidth(this.h))
 }
 
 func (this *QStyleOptionToolBar) SetMidLineWidth(midLineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBar_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
 func (this *QStyleOptionToolBar) OperatorAssign(param1 *QStyleOptionToolBar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionToolBar_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1813,16 +2062,24 @@ func (this *QStyleOptionToolBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionToolBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolBar) {
-		C.QStyleOptionToolBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionToolBar_delete((*C.QStyleOptionToolBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionProgressBar struct {
 	h  *C.QStyleOptionProgressBar
-	gc *[1]*C.QStyleOptionProgressBar
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionProgressBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionProgressBar) cPointer() *C.QStyleOptionProgressBar {
@@ -1864,35 +2121,43 @@ func NewQStyleOptionProgressBar() *QStyleOptionProgressBar {
 
 // NewQStyleOptionProgressBar2 constructs a new QStyleOptionProgressBar object.
 func NewQStyleOptionProgressBar2(other *QStyleOptionProgressBar) *QStyleOptionProgressBar {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionProgressBar(C.QStyleOptionProgressBar_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionProgressBar) Minimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionProgressBar_minimum(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetMinimum(minimum int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QStyleOptionProgressBar) Maximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionProgressBar_maximum(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetMaximum(maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QStyleOptionProgressBar) Progress() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionProgressBar_progress(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetProgress(progress int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setProgress(this.h, (C.int)(progress))
 }
 
 func (this *QStyleOptionProgressBar) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionProgressBar_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -1900,6 +2165,7 @@ func (this *QStyleOptionProgressBar) Text() string {
 }
 
 func (this *QStyleOptionProgressBar) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1908,38 +2174,48 @@ func (this *QStyleOptionProgressBar) SetText(text string) {
 }
 
 func (this *QStyleOptionProgressBar) TextAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionProgressBar_textAlignment(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetTextAlignment(textAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStyleOptionProgressBar) TextVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionProgressBar_textVisible(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetTextVisible(textVisible bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setTextVisible(this.h, (C.bool)(textVisible))
 }
 
 func (this *QStyleOptionProgressBar) InvertedAppearance() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionProgressBar_invertedAppearance(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetInvertedAppearance(invertedAppearance bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setInvertedAppearance(this.h, (C.bool)(invertedAppearance))
 }
 
 func (this *QStyleOptionProgressBar) BottomToTop() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionProgressBar_bottomToTop(this.h))
 }
 
 func (this *QStyleOptionProgressBar) SetBottomToTop(bottomToTop bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionProgressBar_setBottomToTop(this.h, (C.bool)(bottomToTop))
 }
 
 func (this *QStyleOptionProgressBar) OperatorAssign(param1 *QStyleOptionProgressBar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionProgressBar_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1955,16 +2231,24 @@ func (this *QStyleOptionProgressBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionProgressBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionProgressBar) {
-		C.QStyleOptionProgressBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionProgressBar_delete((*C.QStyleOptionProgressBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionMenuItem struct {
 	h  *C.QStyleOptionMenuItem
-	gc *[1]*C.QStyleOptionMenuItem
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionMenuItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionMenuItem) cPointer() *C.QStyleOptionMenuItem {
@@ -2006,53 +2290,66 @@ func NewQStyleOptionMenuItem() *QStyleOptionMenuItem {
 
 // NewQStyleOptionMenuItem2 constructs a new QStyleOptionMenuItem object.
 func NewQStyleOptionMenuItem2(other *QStyleOptionMenuItem) *QStyleOptionMenuItem {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionMenuItem(C.QStyleOptionMenuItem_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionMenuItem) MenuItemType() QStyleOptionMenuItem__MenuItemType {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionMenuItem__MenuItemType)(C.QStyleOptionMenuItem_menuItemType(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetMenuItemType(menuItemType QStyleOptionMenuItem__MenuItemType) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setMenuItemType(this.h, (C.int)(menuItemType))
 }
 
 func (this *QStyleOptionMenuItem) CheckType() QStyleOptionMenuItem__CheckType {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionMenuItem__CheckType)(C.QStyleOptionMenuItem_checkType(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetCheckType(checkType QStyleOptionMenuItem__CheckType) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setCheckType(this.h, (C.int)(checkType))
 }
 
 func (this *QStyleOptionMenuItem) Checked() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionMenuItem_checked(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetChecked(checked bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setChecked(this.h, (C.bool)(checked))
 }
 
 func (this *QStyleOptionMenuItem) MenuHasCheckableItems() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionMenuItem_menuHasCheckableItems(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetMenuHasCheckableItems(menuHasCheckableItems bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setMenuHasCheckableItems(this.h, (C.bool)(menuHasCheckableItems))
 }
 
 func (this *QStyleOptionMenuItem) MenuRect() *QRect {
+	defer runtime.KeepAlive(this)
 	menuRect_goptr := newQRect(C.QStyleOptionMenuItem_menuRect(this.h))
 	menuRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return menuRect_goptr
 }
 
 func (this *QStyleOptionMenuItem) SetMenuRect(menuRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(menuRect)
 	C.QStyleOptionMenuItem_setMenuRect(this.h, menuRect.cPointer())
 }
 
 func (this *QStyleOptionMenuItem) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionMenuItem_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -2060,6 +2357,7 @@ func (this *QStyleOptionMenuItem) Text() string {
 }
 
 func (this *QStyleOptionMenuItem) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2068,42 +2366,54 @@ func (this *QStyleOptionMenuItem) SetText(text string) {
 }
 
 func (this *QStyleOptionMenuItem) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionMenuItem_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionMenuItem) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionMenuItem_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionMenuItem) MaxIconWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionMenuItem_maxIconWidth(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetMaxIconWidth(maxIconWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setMaxIconWidth(this.h, (C.int)(maxIconWidth))
 }
 
 func (this *QStyleOptionMenuItem) ReservedShortcutWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionMenuItem_reservedShortcutWidth(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetReservedShortcutWidth(reservedShortcutWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionMenuItem_setReservedShortcutWidth(this.h, (C.int)(reservedShortcutWidth))
 }
 
 func (this *QStyleOptionMenuItem) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	font_goptr := newQFont(C.QStyleOptionMenuItem_font(this.h))
 	font_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return font_goptr
 }
 
 func (this *QStyleOptionMenuItem) SetFont(font QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QStyleOptionMenuItem_setFont(this.h, font.cPointer())
 }
 
 func (this *QStyleOptionMenuItem) OperatorAssign(param1 *QStyleOptionMenuItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionMenuItem_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2119,16 +2429,24 @@ func (this *QStyleOptionMenuItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionMenuItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionMenuItem) {
-		C.QStyleOptionMenuItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionMenuItem_delete((*C.QStyleOptionMenuItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionDockWidget struct {
 	h  *C.QStyleOptionDockWidget
-	gc *[1]*C.QStyleOptionDockWidget
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionDockWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionDockWidget) cPointer() *C.QStyleOptionDockWidget {
@@ -2170,11 +2488,13 @@ func NewQStyleOptionDockWidget() *QStyleOptionDockWidget {
 
 // NewQStyleOptionDockWidget2 constructs a new QStyleOptionDockWidget object.
 func NewQStyleOptionDockWidget2(other *QStyleOptionDockWidget) *QStyleOptionDockWidget {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionDockWidget(C.QStyleOptionDockWidget_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionDockWidget) Title() string {
+	defer runtime.KeepAlive(this)
 	var title_ms C.struct_miqt_string = C.QStyleOptionDockWidget_title(this.h)
 	title_ret := C.GoStringN(title_ms.data, C.int(int64(title_ms.len)))
 	C.free(unsafe.Pointer(title_ms.data))
@@ -2182,6 +2502,7 @@ func (this *QStyleOptionDockWidget) Title() string {
 }
 
 func (this *QStyleOptionDockWidget) SetTitle(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -2190,38 +2511,48 @@ func (this *QStyleOptionDockWidget) SetTitle(title string) {
 }
 
 func (this *QStyleOptionDockWidget) Closable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionDockWidget_closable(this.h))
 }
 
 func (this *QStyleOptionDockWidget) SetClosable(closable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionDockWidget_setClosable(this.h, (C.bool)(closable))
 }
 
 func (this *QStyleOptionDockWidget) Movable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionDockWidget_movable(this.h))
 }
 
 func (this *QStyleOptionDockWidget) SetMovable(movable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionDockWidget_setMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QStyleOptionDockWidget) Floatable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionDockWidget_floatable(this.h))
 }
 
 func (this *QStyleOptionDockWidget) SetFloatable(floatable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionDockWidget_setFloatable(this.h, (C.bool)(floatable))
 }
 
 func (this *QStyleOptionDockWidget) VerticalTitleBar() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionDockWidget_verticalTitleBar(this.h))
 }
 
 func (this *QStyleOptionDockWidget) SetVerticalTitleBar(verticalTitleBar bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionDockWidget_setVerticalTitleBar(this.h, (C.bool)(verticalTitleBar))
 }
 
 func (this *QStyleOptionDockWidget) OperatorAssign(param1 *QStyleOptionDockWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionDockWidget_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2237,16 +2568,24 @@ func (this *QStyleOptionDockWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionDockWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionDockWidget) {
-		C.QStyleOptionDockWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionDockWidget_delete((*C.QStyleOptionDockWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionViewItem struct {
 	h  *C.QStyleOptionViewItem
-	gc *[1]*C.QStyleOptionViewItem
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionViewItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionViewItem) cPointer() *C.QStyleOptionViewItem {
@@ -2288,125 +2627,159 @@ func NewQStyleOptionViewItem() *QStyleOptionViewItem {
 
 // NewQStyleOptionViewItem2 constructs a new QStyleOptionViewItem object.
 func NewQStyleOptionViewItem2(other *QStyleOptionViewItem) *QStyleOptionViewItem {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionViewItem(C.QStyleOptionViewItem_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionViewItem) DisplayAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionViewItem_displayAlignment(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetDisplayAlignment(displayAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setDisplayAlignment(this.h, (C.int)(displayAlignment))
 }
 
 func (this *QStyleOptionViewItem) DecorationAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionViewItem_decorationAlignment(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetDecorationAlignment(decorationAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setDecorationAlignment(this.h, (C.int)(decorationAlignment))
 }
 
 func (this *QStyleOptionViewItem) TextElideMode() TextElideMode {
+	defer runtime.KeepAlive(this)
 	return (TextElideMode)(C.QStyleOptionViewItem_textElideMode(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetTextElideMode(textElideMode TextElideMode) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setTextElideMode(this.h, (C.int)(textElideMode))
 }
 
 func (this *QStyleOptionViewItem) DecorationPosition() QStyleOptionViewItem__Position {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionViewItem__Position)(C.QStyleOptionViewItem_decorationPosition(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetDecorationPosition(decorationPosition QStyleOptionViewItem__Position) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setDecorationPosition(this.h, (C.int)(decorationPosition))
 }
 
 func (this *QStyleOptionViewItem) DecorationSize() *QSize {
+	defer runtime.KeepAlive(this)
 	decorationSize_goptr := newQSize(C.QStyleOptionViewItem_decorationSize(this.h))
 	decorationSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return decorationSize_goptr
 }
 
 func (this *QStyleOptionViewItem) SetDecorationSize(decorationSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(decorationSize)
 	C.QStyleOptionViewItem_setDecorationSize(this.h, decorationSize.cPointer())
 }
 
 func (this *QStyleOptionViewItem) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	font_goptr := newQFont(C.QStyleOptionViewItem_font(this.h))
 	font_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return font_goptr
 }
 
 func (this *QStyleOptionViewItem) SetFont(font QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QStyleOptionViewItem_setFont(this.h, font.cPointer())
 }
 
 func (this *QStyleOptionViewItem) ShowDecorationSelected() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionViewItem_showDecorationSelected(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetShowDecorationSelected(showDecorationSelected bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setShowDecorationSelected(this.h, (C.bool)(showDecorationSelected))
 }
 
 func (this *QStyleOptionViewItem) Features() QStyleOptionViewItem__ViewItemFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionViewItem__ViewItemFeature)(C.QStyleOptionViewItem_features(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetFeatures(features QStyleOptionViewItem__ViewItemFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionViewItem) Locale() *QLocale {
+	defer runtime.KeepAlive(this)
 	locale_goptr := newQLocale(C.QStyleOptionViewItem_locale(this.h))
 	locale_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return locale_goptr
 }
 
 func (this *QStyleOptionViewItem) SetLocale(locale QLocale) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	C.QStyleOptionViewItem_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QStyleOptionViewItem) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QStyleOptionViewItem_widget(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QStyleOptionViewItem_setWidget(this.h, widget.cPointer())
 }
 
 func (this *QStyleOptionViewItem) Index() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	index_goptr := newQModelIndex(C.QStyleOptionViewItem_index(this.h))
 	index_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return index_goptr
 }
 
 func (this *QStyleOptionViewItem) SetIndex(index QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QStyleOptionViewItem_setIndex(this.h, index.cPointer())
 }
 
 func (this *QStyleOptionViewItem) CheckState() CheckState {
+	defer runtime.KeepAlive(this)
 	return (CheckState)(C.QStyleOptionViewItem_checkState(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetCheckState(checkState CheckState) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setCheckState(this.h, (C.int)(checkState))
 }
 
 func (this *QStyleOptionViewItem) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionViewItem_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionViewItem) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionViewItem_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionViewItem) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionViewItem_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -2414,6 +2787,7 @@ func (this *QStyleOptionViewItem) Text() string {
 }
 
 func (this *QStyleOptionViewItem) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2422,24 +2796,31 @@ func (this *QStyleOptionViewItem) SetText(text string) {
 }
 
 func (this *QStyleOptionViewItem) ViewItemPosition() QStyleOptionViewItem__ViewItemPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionViewItem__ViewItemPosition)(C.QStyleOptionViewItem_viewItemPosition(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetViewItemPosition(viewItemPosition QStyleOptionViewItem__ViewItemPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionViewItem_setViewItemPosition(this.h, (C.int)(viewItemPosition))
 }
 
 func (this *QStyleOptionViewItem) BackgroundBrush() *QBrush {
+	defer runtime.KeepAlive(this)
 	backgroundBrush_goptr := newQBrush(C.QStyleOptionViewItem_backgroundBrush(this.h))
 	backgroundBrush_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return backgroundBrush_goptr
 }
 
 func (this *QStyleOptionViewItem) SetBackgroundBrush(backgroundBrush QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(backgroundBrush)
 	C.QStyleOptionViewItem_setBackgroundBrush(this.h, backgroundBrush.cPointer())
 }
 
 func (this *QStyleOptionViewItem) OperatorAssign(param1 *QStyleOptionViewItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionViewItem_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2455,16 +2836,24 @@ func (this *QStyleOptionViewItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionViewItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionViewItem) {
-		C.QStyleOptionViewItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionViewItem_delete((*C.QStyleOptionViewItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionToolBox struct {
 	h  *C.QStyleOptionToolBox
-	gc *[1]*C.QStyleOptionToolBox
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionToolBox) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionToolBox) cPointer() *C.QStyleOptionToolBox {
@@ -2506,11 +2895,13 @@ func NewQStyleOptionToolBox() *QStyleOptionToolBox {
 
 // NewQStyleOptionToolBox2 constructs a new QStyleOptionToolBox object.
 func NewQStyleOptionToolBox2(other *QStyleOptionToolBox) *QStyleOptionToolBox {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionToolBox(C.QStyleOptionToolBox_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionToolBox) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionToolBox_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -2518,6 +2909,7 @@ func (this *QStyleOptionToolBox) Text() string {
 }
 
 func (this *QStyleOptionToolBox) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2526,32 +2918,41 @@ func (this *QStyleOptionToolBox) SetText(text string) {
 }
 
 func (this *QStyleOptionToolBox) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionToolBox_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionToolBox) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionToolBox_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionToolBox) Position() QStyleOptionToolBox__TabPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolBox__TabPosition)(C.QStyleOptionToolBox_position(this.h))
 }
 
 func (this *QStyleOptionToolBox) SetPosition(position QStyleOptionToolBox__TabPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBox_setPosition(this.h, (C.int)(position))
 }
 
 func (this *QStyleOptionToolBox) SelectedPosition() QStyleOptionToolBox__SelectedPosition {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolBox__SelectedPosition)(C.QStyleOptionToolBox_selectedPosition(this.h))
 }
 
 func (this *QStyleOptionToolBox) SetSelectedPosition(selectedPosition QStyleOptionToolBox__SelectedPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolBox_setSelectedPosition(this.h, (C.int)(selectedPosition))
 }
 
 func (this *QStyleOptionToolBox) OperatorAssign(param1 *QStyleOptionToolBox) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionToolBox_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2567,16 +2968,24 @@ func (this *QStyleOptionToolBox) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionToolBox{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolBox) {
-		C.QStyleOptionToolBox_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionToolBox_delete((*C.QStyleOptionToolBox)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionRubberBand struct {
 	h  *C.QStyleOptionRubberBand
-	gc *[1]*C.QStyleOptionRubberBand
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionRubberBand) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionRubberBand) cPointer() *C.QStyleOptionRubberBand {
@@ -2618,27 +3027,34 @@ func NewQStyleOptionRubberBand() *QStyleOptionRubberBand {
 
 // NewQStyleOptionRubberBand2 constructs a new QStyleOptionRubberBand object.
 func NewQStyleOptionRubberBand2(other *QStyleOptionRubberBand) *QStyleOptionRubberBand {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionRubberBand(C.QStyleOptionRubberBand_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionRubberBand) Shape() QRubberBand__Shape {
+	defer runtime.KeepAlive(this)
 	return (QRubberBand__Shape)(C.QStyleOptionRubberBand_shape(this.h))
 }
 
 func (this *QStyleOptionRubberBand) SetShape(shape QRubberBand__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionRubberBand_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QStyleOptionRubberBand) Opaque() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionRubberBand_opaque(this.h))
 }
 
 func (this *QStyleOptionRubberBand) SetOpaque(opaque bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionRubberBand_setOpaque(this.h, (C.bool)(opaque))
 }
 
 func (this *QStyleOptionRubberBand) OperatorAssign(param1 *QStyleOptionRubberBand) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionRubberBand_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2654,16 +3070,24 @@ func (this *QStyleOptionRubberBand) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionRubberBand{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionRubberBand) {
-		C.QStyleOptionRubberBand_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionRubberBand_delete((*C.QStyleOptionRubberBand)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionComplex struct {
 	h  *C.QStyleOptionComplex
-	gc *[1]*C.QStyleOptionComplex
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionComplex) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionComplex) cPointer() *C.QStyleOptionComplex {
@@ -2705,6 +3129,7 @@ func NewQStyleOptionComplex() *QStyleOptionComplex {
 
 // NewQStyleOptionComplex2 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex2(other *QStyleOptionComplex) *QStyleOptionComplex {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionComplex(C.QStyleOptionComplex_new2(other.cPointer()))
 }
@@ -2722,22 +3147,28 @@ func NewQStyleOptionComplex4(version int, typeVal int) *QStyleOptionComplex {
 }
 
 func (this *QStyleOptionComplex) SubControls() QStyle__SubControl {
+	defer runtime.KeepAlive(this)
 	return (QStyle__SubControl)(C.QStyleOptionComplex_subControls(this.h))
 }
 
 func (this *QStyleOptionComplex) SetSubControls(subControls QStyle__SubControl) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionComplex_setSubControls(this.h, (C.int)(subControls))
 }
 
 func (this *QStyleOptionComplex) ActiveSubControls() QStyle__SubControl {
+	defer runtime.KeepAlive(this)
 	return (QStyle__SubControl)(C.QStyleOptionComplex_activeSubControls(this.h))
 }
 
 func (this *QStyleOptionComplex) SetActiveSubControls(activeSubControls QStyle__SubControl) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionComplex_setActiveSubControls(this.h, (C.int)(activeSubControls))
 }
 
 func (this *QStyleOptionComplex) OperatorAssign(param1 *QStyleOptionComplex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionComplex_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2753,16 +3184,24 @@ func (this *QStyleOptionComplex) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionComplex{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionComplex) {
-		C.QStyleOptionComplex_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionComplex_delete((*C.QStyleOptionComplex)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionSlider struct {
 	h  *C.QStyleOptionSlider
-	gc *[1]*C.QStyleOptionSlider
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionSlider) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionSlider) cPointer() *C.QStyleOptionSlider {
@@ -2804,115 +3243,144 @@ func NewQStyleOptionSlider() *QStyleOptionSlider {
 
 // NewQStyleOptionSlider2 constructs a new QStyleOptionSlider object.
 func NewQStyleOptionSlider2(other *QStyleOptionSlider) *QStyleOptionSlider {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionSlider(C.QStyleOptionSlider_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionSlider) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QStyleOptionSlider_orientation(this.h))
 }
 
 func (this *QStyleOptionSlider) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QStyleOptionSlider) Minimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_minimum(this.h))
 }
 
 func (this *QStyleOptionSlider) SetMinimum(minimum int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QStyleOptionSlider) Maximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_maximum(this.h))
 }
 
 func (this *QStyleOptionSlider) SetMaximum(maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QStyleOptionSlider) TickPosition() QSlider__TickPosition {
+	defer runtime.KeepAlive(this)
 	return (QSlider__TickPosition)(C.QStyleOptionSlider_tickPosition(this.h))
 }
 
 func (this *QStyleOptionSlider) SetTickPosition(tickPosition QSlider__TickPosition) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setTickPosition(this.h, (C.int)(tickPosition))
 }
 
 func (this *QStyleOptionSlider) TickInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_tickInterval(this.h))
 }
 
 func (this *QStyleOptionSlider) SetTickInterval(tickInterval int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setTickInterval(this.h, (C.int)(tickInterval))
 }
 
 func (this *QStyleOptionSlider) UpsideDown() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionSlider_upsideDown(this.h))
 }
 
 func (this *QStyleOptionSlider) SetUpsideDown(upsideDown bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setUpsideDown(this.h, (C.bool)(upsideDown))
 }
 
 func (this *QStyleOptionSlider) SliderPosition() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_sliderPosition(this.h))
 }
 
 func (this *QStyleOptionSlider) SetSliderPosition(sliderPosition int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setSliderPosition(this.h, (C.int)(sliderPosition))
 }
 
 func (this *QStyleOptionSlider) SliderValue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_sliderValue(this.h))
 }
 
 func (this *QStyleOptionSlider) SetSliderValue(sliderValue int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setSliderValue(this.h, (C.int)(sliderValue))
 }
 
 func (this *QStyleOptionSlider) SingleStep() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_singleStep(this.h))
 }
 
 func (this *QStyleOptionSlider) SetSingleStep(singleStep int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setSingleStep(this.h, (C.int)(singleStep))
 }
 
 func (this *QStyleOptionSlider) PageStep() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionSlider_pageStep(this.h))
 }
 
 func (this *QStyleOptionSlider) SetPageStep(pageStep int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setPageStep(this.h, (C.int)(pageStep))
 }
 
 func (this *QStyleOptionSlider) NotchTarget() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QStyleOptionSlider_notchTarget(this.h))
 }
 
 func (this *QStyleOptionSlider) SetNotchTarget(notchTarget float64) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setNotchTarget(this.h, (C.double)(notchTarget))
 }
 
 func (this *QStyleOptionSlider) DialWrapping() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionSlider_dialWrapping(this.h))
 }
 
 func (this *QStyleOptionSlider) SetDialWrapping(dialWrapping bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setDialWrapping(this.h, (C.bool)(dialWrapping))
 }
 
 func (this *QStyleOptionSlider) KeyboardModifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QStyleOptionSlider_keyboardModifiers(this.h))
 }
 
 func (this *QStyleOptionSlider) SetKeyboardModifiers(keyboardModifiers KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSlider_setKeyboardModifiers(this.h, (C.int)(keyboardModifiers))
 }
 
 func (this *QStyleOptionSlider) OperatorAssign(param1 *QStyleOptionSlider) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionSlider_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -2928,16 +3396,24 @@ func (this *QStyleOptionSlider) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionSlider{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSlider) {
-		C.QStyleOptionSlider_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionSlider_delete((*C.QStyleOptionSlider)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionSpinBox struct {
 	h  *C.QStyleOptionSpinBox
-	gc *[1]*C.QStyleOptionSpinBox
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionSpinBox) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionSpinBox) cPointer() *C.QStyleOptionSpinBox {
@@ -2979,35 +3455,44 @@ func NewQStyleOptionSpinBox() *QStyleOptionSpinBox {
 
 // NewQStyleOptionSpinBox2 constructs a new QStyleOptionSpinBox object.
 func NewQStyleOptionSpinBox2(other *QStyleOptionSpinBox) *QStyleOptionSpinBox {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionSpinBox(C.QStyleOptionSpinBox_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSpinBox__ButtonSymbols)(C.QStyleOptionSpinBox_buttonSymbols(this.h))
 }
 
 func (this *QStyleOptionSpinBox) SetButtonSymbols(buttonSymbols QAbstractSpinBox__ButtonSymbols) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSpinBox_setButtonSymbols(this.h, (C.int)(buttonSymbols))
 }
 
 func (this *QStyleOptionSpinBox) StepEnabled() QAbstractSpinBox__StepEnabledFlag {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSpinBox__StepEnabledFlag)(C.QStyleOptionSpinBox_stepEnabled(this.h))
 }
 
 func (this *QStyleOptionSpinBox) SetStepEnabled(stepEnabled QAbstractSpinBox__StepEnabledFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSpinBox_setStepEnabled(this.h, (C.int)(stepEnabled))
 }
 
 func (this *QStyleOptionSpinBox) Frame() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionSpinBox_frame(this.h))
 }
 
 func (this *QStyleOptionSpinBox) SetFrame(frame bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSpinBox_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QStyleOptionSpinBox) OperatorAssign(param1 *QStyleOptionSpinBox) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionSpinBox_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3023,16 +3508,24 @@ func (this *QStyleOptionSpinBox) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionSpinBox{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSpinBox) {
-		C.QStyleOptionSpinBox_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionSpinBox_delete((*C.QStyleOptionSpinBox)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionToolButton struct {
 	h  *C.QStyleOptionToolButton
-	gc *[1]*C.QStyleOptionToolButton
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionToolButton) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionToolButton) cPointer() *C.QStyleOptionToolButton {
@@ -3074,39 +3567,49 @@ func NewQStyleOptionToolButton() *QStyleOptionToolButton {
 
 // NewQStyleOptionToolButton2 constructs a new QStyleOptionToolButton object.
 func NewQStyleOptionToolButton2(other *QStyleOptionToolButton) *QStyleOptionToolButton {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionToolButton(C.QStyleOptionToolButton_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionToolButton) Features() QStyleOptionToolButton__ToolButtonFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionToolButton__ToolButtonFeature)(C.QStyleOptionToolButton_features(this.h))
 }
 
 func (this *QStyleOptionToolButton) SetFeatures(features QStyleOptionToolButton__ToolButtonFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolButton_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionToolButton) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionToolButton_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionToolButton) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionToolButton_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionToolButton) IconSize() *QSize {
+	defer runtime.KeepAlive(this)
 	iconSize_goptr := newQSize(C.QStyleOptionToolButton_iconSize(this.h))
 	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return iconSize_goptr
 }
 
 func (this *QStyleOptionToolButton) SetIconSize(iconSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iconSize)
 	C.QStyleOptionToolButton_setIconSize(this.h, iconSize.cPointer())
 }
 
 func (this *QStyleOptionToolButton) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionToolButton_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -3114,6 +3617,7 @@ func (this *QStyleOptionToolButton) Text() string {
 }
 
 func (this *QStyleOptionToolButton) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -3122,42 +3626,54 @@ func (this *QStyleOptionToolButton) SetText(text string) {
 }
 
 func (this *QStyleOptionToolButton) ArrowType() ArrowType {
+	defer runtime.KeepAlive(this)
 	return (ArrowType)(C.QStyleOptionToolButton_arrowType(this.h))
 }
 
 func (this *QStyleOptionToolButton) SetArrowType(arrowType ArrowType) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolButton_setArrowType(this.h, (C.int)(arrowType))
 }
 
 func (this *QStyleOptionToolButton) ToolButtonStyle() ToolButtonStyle {
+	defer runtime.KeepAlive(this)
 	return (ToolButtonStyle)(C.QStyleOptionToolButton_toolButtonStyle(this.h))
 }
 
 func (this *QStyleOptionToolButton) SetToolButtonStyle(toolButtonStyle ToolButtonStyle) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionToolButton_setToolButtonStyle(this.h, (C.int)(toolButtonStyle))
 }
 
 func (this *QStyleOptionToolButton) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	pos_goptr := newQPoint(C.QStyleOptionToolButton_pos(this.h))
 	pos_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return pos_goptr
 }
 
 func (this *QStyleOptionToolButton) SetPos(pos QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QStyleOptionToolButton_setPos(this.h, pos.cPointer())
 }
 
 func (this *QStyleOptionToolButton) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	font_goptr := newQFont(C.QStyleOptionToolButton_font(this.h))
 	font_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return font_goptr
 }
 
 func (this *QStyleOptionToolButton) SetFont(font QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QStyleOptionToolButton_setFont(this.h, font.cPointer())
 }
 
 func (this *QStyleOptionToolButton) OperatorAssign(param1 *QStyleOptionToolButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionToolButton_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3173,16 +3689,24 @@ func (this *QStyleOptionToolButton) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionToolButton{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolButton) {
-		C.QStyleOptionToolButton_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionToolButton_delete((*C.QStyleOptionToolButton)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionComboBox struct {
 	h  *C.QStyleOptionComboBox
-	gc *[1]*C.QStyleOptionComboBox
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionComboBox) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionComboBox) cPointer() *C.QStyleOptionComboBox {
@@ -3224,37 +3748,46 @@ func NewQStyleOptionComboBox() *QStyleOptionComboBox {
 
 // NewQStyleOptionComboBox2 constructs a new QStyleOptionComboBox object.
 func NewQStyleOptionComboBox2(other *QStyleOptionComboBox) *QStyleOptionComboBox {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionComboBox(C.QStyleOptionComboBox_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionComboBox) Editable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionComboBox_editable(this.h))
 }
 
 func (this *QStyleOptionComboBox) SetEditable(editable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionComboBox_setEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QStyleOptionComboBox) PopupRect() *QRect {
+	defer runtime.KeepAlive(this)
 	popupRect_goptr := newQRect(C.QStyleOptionComboBox_popupRect(this.h))
 	popupRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return popupRect_goptr
 }
 
 func (this *QStyleOptionComboBox) SetPopupRect(popupRect QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(popupRect)
 	C.QStyleOptionComboBox_setPopupRect(this.h, popupRect.cPointer())
 }
 
 func (this *QStyleOptionComboBox) Frame() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleOptionComboBox_frame(this.h))
 }
 
 func (this *QStyleOptionComboBox) SetFrame(frame bool) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionComboBox_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QStyleOptionComboBox) CurrentText() string {
+	defer runtime.KeepAlive(this)
 	var currentText_ms C.struct_miqt_string = C.QStyleOptionComboBox_currentText(this.h)
 	currentText_ret := C.GoStringN(currentText_ms.data, C.int(int64(currentText_ms.len)))
 	C.free(unsafe.Pointer(currentText_ms.data))
@@ -3262,6 +3795,7 @@ func (this *QStyleOptionComboBox) CurrentText() string {
 }
 
 func (this *QStyleOptionComboBox) SetCurrentText(currentText string) {
+	defer runtime.KeepAlive(this)
 	currentText_ms := C.struct_miqt_string{}
 	currentText_ms.data = C.CString(currentText)
 	currentText_ms.len = C.size_t(len(currentText))
@@ -3270,34 +3804,44 @@ func (this *QStyleOptionComboBox) SetCurrentText(currentText string) {
 }
 
 func (this *QStyleOptionComboBox) CurrentIcon() *QIcon {
+	defer runtime.KeepAlive(this)
 	currentIcon_goptr := newQIcon(C.QStyleOptionComboBox_currentIcon(this.h))
 	currentIcon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return currentIcon_goptr
 }
 
 func (this *QStyleOptionComboBox) SetCurrentIcon(currentIcon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(currentIcon)
 	C.QStyleOptionComboBox_setCurrentIcon(this.h, currentIcon.cPointer())
 }
 
 func (this *QStyleOptionComboBox) IconSize() *QSize {
+	defer runtime.KeepAlive(this)
 	iconSize_goptr := newQSize(C.QStyleOptionComboBox_iconSize(this.h))
 	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return iconSize_goptr
 }
 
 func (this *QStyleOptionComboBox) SetIconSize(iconSize QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iconSize)
 	C.QStyleOptionComboBox_setIconSize(this.h, iconSize.cPointer())
 }
 
 func (this *QStyleOptionComboBox) TextAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionComboBox_textAlignment(this.h))
 }
 
 func (this *QStyleOptionComboBox) SetTextAlignment(textAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionComboBox_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStyleOptionComboBox) OperatorAssign(param1 *QStyleOptionComboBox) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionComboBox_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3313,16 +3857,24 @@ func (this *QStyleOptionComboBox) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionComboBox{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionComboBox) {
-		C.QStyleOptionComboBox_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionComboBox_delete((*C.QStyleOptionComboBox)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionTitleBar struct {
 	h  *C.QStyleOptionTitleBar
-	gc *[1]*C.QStyleOptionTitleBar
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionTitleBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionTitleBar) cPointer() *C.QStyleOptionTitleBar {
@@ -3364,11 +3916,13 @@ func NewQStyleOptionTitleBar() *QStyleOptionTitleBar {
 
 // NewQStyleOptionTitleBar2 constructs a new QStyleOptionTitleBar object.
 func NewQStyleOptionTitleBar2(other *QStyleOptionTitleBar) *QStyleOptionTitleBar {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionTitleBar(C.QStyleOptionTitleBar_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionTitleBar) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionTitleBar_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -3376,6 +3930,7 @@ func (this *QStyleOptionTitleBar) Text() string {
 }
 
 func (this *QStyleOptionTitleBar) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -3384,32 +3939,41 @@ func (this *QStyleOptionTitleBar) SetText(text string) {
 }
 
 func (this *QStyleOptionTitleBar) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	icon_goptr := newQIcon(C.QStyleOptionTitleBar_icon(this.h))
 	icon_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return icon_goptr
 }
 
 func (this *QStyleOptionTitleBar) SetIcon(icon QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStyleOptionTitleBar_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStyleOptionTitleBar) TitleBarState() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionTitleBar_titleBarState(this.h))
 }
 
 func (this *QStyleOptionTitleBar) SetTitleBarState(titleBarState int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTitleBar_setTitleBarState(this.h, (C.int)(titleBarState))
 }
 
 func (this *QStyleOptionTitleBar) TitleBarFlags() WindowType {
+	defer runtime.KeepAlive(this)
 	return (WindowType)(C.QStyleOptionTitleBar_titleBarFlags(this.h))
 }
 
 func (this *QStyleOptionTitleBar) SetTitleBarFlags(titleBarFlags WindowType) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionTitleBar_setTitleBarFlags(this.h, (C.int)(titleBarFlags))
 }
 
 func (this *QStyleOptionTitleBar) OperatorAssign(param1 *QStyleOptionTitleBar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionTitleBar_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3425,16 +3989,24 @@ func (this *QStyleOptionTitleBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionTitleBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTitleBar) {
-		C.QStyleOptionTitleBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionTitleBar_delete((*C.QStyleOptionTitleBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionGroupBox struct {
 	h  *C.QStyleOptionGroupBox
-	gc *[1]*C.QStyleOptionGroupBox
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionGroupBox) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionGroupBox) cPointer() *C.QStyleOptionGroupBox {
@@ -3476,19 +4048,23 @@ func NewQStyleOptionGroupBox() *QStyleOptionGroupBox {
 
 // NewQStyleOptionGroupBox2 constructs a new QStyleOptionGroupBox object.
 func NewQStyleOptionGroupBox2(other *QStyleOptionGroupBox) *QStyleOptionGroupBox {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionGroupBox(C.QStyleOptionGroupBox_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionGroupBox) Features() QStyleOptionFrame__FrameFeature {
+	defer runtime.KeepAlive(this)
 	return (QStyleOptionFrame__FrameFeature)(C.QStyleOptionGroupBox_features(this.h))
 }
 
 func (this *QStyleOptionGroupBox) SetFeatures(features QStyleOptionFrame__FrameFeature) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionGroupBox_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QStyleOptionGroupBox) Text() string {
+	defer runtime.KeepAlive(this)
 	var text_ms C.struct_miqt_string = C.QStyleOptionGroupBox_text(this.h)
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -3496,6 +4072,7 @@ func (this *QStyleOptionGroupBox) Text() string {
 }
 
 func (this *QStyleOptionGroupBox) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -3504,40 +4081,51 @@ func (this *QStyleOptionGroupBox) SetText(text string) {
 }
 
 func (this *QStyleOptionGroupBox) TextAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStyleOptionGroupBox_textAlignment(this.h))
 }
 
 func (this *QStyleOptionGroupBox) SetTextAlignment(textAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionGroupBox_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStyleOptionGroupBox) TextColor() *QColor {
+	defer runtime.KeepAlive(this)
 	textColor_goptr := newQColor(C.QStyleOptionGroupBox_textColor(this.h))
 	textColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return textColor_goptr
 }
 
 func (this *QStyleOptionGroupBox) SetTextColor(textColor QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textColor)
 	C.QStyleOptionGroupBox_setTextColor(this.h, textColor.cPointer())
 }
 
 func (this *QStyleOptionGroupBox) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionGroupBox_lineWidth(this.h))
 }
 
 func (this *QStyleOptionGroupBox) SetLineWidth(lineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionGroupBox_setLineWidth(this.h, (C.int)(lineWidth))
 }
 
 func (this *QStyleOptionGroupBox) MidLineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleOptionGroupBox_midLineWidth(this.h))
 }
 
 func (this *QStyleOptionGroupBox) SetMidLineWidth(midLineWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionGroupBox_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
 func (this *QStyleOptionGroupBox) OperatorAssign(param1 *QStyleOptionGroupBox) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionGroupBox_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3553,16 +4141,24 @@ func (this *QStyleOptionGroupBox) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionGroupBox{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionGroupBox) {
-		C.QStyleOptionGroupBox_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionGroupBox_delete((*C.QStyleOptionGroupBox)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionSizeGrip struct {
 	h  *C.QStyleOptionSizeGrip
-	gc *[1]*C.QStyleOptionSizeGrip
+	gc *[1]unsafe.Pointer
 	*QStyleOptionComplex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionSizeGrip) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOptionComplex.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionSizeGrip) cPointer() *C.QStyleOptionSizeGrip {
@@ -3604,19 +4200,24 @@ func NewQStyleOptionSizeGrip() *QStyleOptionSizeGrip {
 
 // NewQStyleOptionSizeGrip2 constructs a new QStyleOptionSizeGrip object.
 func NewQStyleOptionSizeGrip2(other *QStyleOptionSizeGrip) *QStyleOptionSizeGrip {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionSizeGrip(C.QStyleOptionSizeGrip_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionSizeGrip) Corner() Corner {
+	defer runtime.KeepAlive(this)
 	return (Corner)(C.QStyleOptionSizeGrip_corner(this.h))
 }
 
 func (this *QStyleOptionSizeGrip) SetCorner(corner Corner) {
+	defer runtime.KeepAlive(this)
 	C.QStyleOptionSizeGrip_setCorner(this.h, (C.int)(corner))
 }
 
 func (this *QStyleOptionSizeGrip) OperatorAssign(param1 *QStyleOptionSizeGrip) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionSizeGrip_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3632,16 +4233,24 @@ func (this *QStyleOptionSizeGrip) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionSizeGrip{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSizeGrip) {
-		C.QStyleOptionSizeGrip_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionSizeGrip_delete((*C.QStyleOptionSizeGrip)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleOptionGraphicsItem struct {
 	h  *C.QStyleOptionGraphicsItem
-	gc *[1]*C.QStyleOptionGraphicsItem
+	gc *[1]unsafe.Pointer
 	*QStyleOption
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleOptionGraphicsItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleOption.miqtSetGC(gc)
 }
 
 func (this *QStyleOptionGraphicsItem) cPointer() *C.QStyleOptionGraphicsItem {
@@ -3683,25 +4292,32 @@ func NewQStyleOptionGraphicsItem() *QStyleOptionGraphicsItem {
 
 // NewQStyleOptionGraphicsItem2 constructs a new QStyleOptionGraphicsItem object.
 func NewQStyleOptionGraphicsItem2(other *QStyleOptionGraphicsItem) *QStyleOptionGraphicsItem {
+	defer runtime.KeepAlive(other)
 
 	return newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new2(other.cPointer()))
 }
 
 func (this *QStyleOptionGraphicsItem) ExposedRect() *QRectF {
+	defer runtime.KeepAlive(this)
 	exposedRect_goptr := newQRectF(C.QStyleOptionGraphicsItem_exposedRect(this.h))
 	exposedRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return exposedRect_goptr
 }
 
 func (this *QStyleOptionGraphicsItem) SetExposedRect(exposedRect QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exposedRect)
 	C.QStyleOptionGraphicsItem_setExposedRect(this.h, exposedRect.cPointer())
 }
 
 func (this *QStyleOptionGraphicsItem) OperatorAssign(param1 *QStyleOptionGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleOptionGraphicsItem_operatorAssign(this.h, param1.cPointer())
 }
 
 func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransform) float64 {
+	defer runtime.KeepAlive(worldTransform)
 	return (float64)(C.QStyleOptionGraphicsItem_levelOfDetailFromTransform(worldTransform.cPointer()))
 }
 
@@ -3717,15 +4333,22 @@ func (this *QStyleOptionGraphicsItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleOptionGraphicsItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionGraphicsItem) {
-		C.QStyleOptionGraphicsItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleOptionGraphicsItem_delete((*C.QStyleOptionGraphicsItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleHintReturn struct {
 	h  *C.QStyleHintReturn
-	gc *[1]*C.QStyleHintReturn
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleHintReturn) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStyleHintReturn) cPointer() *C.QStyleHintReturn {
@@ -3764,6 +4387,7 @@ func NewQStyleHintReturn() *QStyleHintReturn {
 
 // NewQStyleHintReturn2 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn2(param1 *QStyleHintReturn) *QStyleHintReturn {
+	defer runtime.KeepAlive(param1)
 
 	return newQStyleHintReturn(C.QStyleHintReturn_new2(param1.cPointer()))
 }
@@ -3781,22 +4405,28 @@ func NewQStyleHintReturn4(version int, typeVal int) *QStyleHintReturn {
 }
 
 func (this *QStyleHintReturn) Version() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHintReturn_version(this.h))
 }
 
 func (this *QStyleHintReturn) SetVersion(version int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleHintReturn_setVersion(this.h, (C.int)(version))
 }
 
 func (this *QStyleHintReturn) Type() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHintReturn_type(this.h))
 }
 
 func (this *QStyleHintReturn) SetType(typeVal int) {
+	defer runtime.KeepAlive(this)
 	C.QStyleHintReturn_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QStyleHintReturn) OperatorAssign(param1 *QStyleHintReturn) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleHintReturn_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3812,16 +4442,24 @@ func (this *QStyleHintReturn) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleHintReturn{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturn) {
-		C.QStyleHintReturn_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleHintReturn_delete((*C.QStyleHintReturn)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleHintReturnMask struct {
 	h  *C.QStyleHintReturnMask
-	gc *[1]*C.QStyleHintReturnMask
+	gc *[1]unsafe.Pointer
 	*QStyleHintReturn
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleHintReturnMask) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleHintReturn.miqtSetGC(gc)
 }
 
 func (this *QStyleHintReturnMask) cPointer() *C.QStyleHintReturnMask {
@@ -3863,21 +4501,27 @@ func NewQStyleHintReturnMask() *QStyleHintReturnMask {
 
 // NewQStyleHintReturnMask2 constructs a new QStyleHintReturnMask object.
 func NewQStyleHintReturnMask2(param1 *QStyleHintReturnMask) *QStyleHintReturnMask {
+	defer runtime.KeepAlive(param1)
 
 	return newQStyleHintReturnMask(C.QStyleHintReturnMask_new2(param1.cPointer()))
 }
 
 func (this *QStyleHintReturnMask) Region() *QRegion {
+	defer runtime.KeepAlive(this)
 	region_goptr := newQRegion(C.QStyleHintReturnMask_region(this.h))
 	region_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return region_goptr
 }
 
 func (this *QStyleHintReturnMask) SetRegion(region QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 	C.QStyleHintReturnMask_setRegion(this.h, region.cPointer())
 }
 
 func (this *QStyleHintReturnMask) OperatorAssign(param1 *QStyleHintReturnMask) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleHintReturnMask_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3893,16 +4537,24 @@ func (this *QStyleHintReturnMask) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleHintReturnMask{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturnMask) {
-		C.QStyleHintReturnMask_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleHintReturnMask_delete((*C.QStyleHintReturnMask)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStyleHintReturnVariant struct {
 	h  *C.QStyleHintReturnVariant
-	gc *[1]*C.QStyleHintReturnVariant
+	gc *[1]unsafe.Pointer
 	*QStyleHintReturn
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStyleHintReturnVariant) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStyleHintReturn.miqtSetGC(gc)
 }
 
 func (this *QStyleHintReturnVariant) cPointer() *C.QStyleHintReturnVariant {
@@ -3944,21 +4596,27 @@ func NewQStyleHintReturnVariant() *QStyleHintReturnVariant {
 
 // NewQStyleHintReturnVariant2 constructs a new QStyleHintReturnVariant object.
 func NewQStyleHintReturnVariant2(param1 *QStyleHintReturnVariant) *QStyleHintReturnVariant {
+	defer runtime.KeepAlive(param1)
 
 	return newQStyleHintReturnVariant(C.QStyleHintReturnVariant_new2(param1.cPointer()))
 }
 
 func (this *QStyleHintReturnVariant) Variant() *QVariant {
+	defer runtime.KeepAlive(this)
 	variant_goptr := newQVariant(C.QStyleHintReturnVariant_variant(this.h))
 	variant_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return variant_goptr
 }
 
 func (this *QStyleHintReturnVariant) SetVariant(variant QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(variant)
 	C.QStyleHintReturnVariant_setVariant(this.h, variant.cPointer())
 }
 
 func (this *QStyleHintReturnVariant) OperatorAssign(param1 *QStyleHintReturnVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QStyleHintReturnVariant_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -3974,8 +4632,9 @@ func (this *QStyleHintReturnVariant) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStyleHintReturnVariant{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturnVariant) {
-		C.QStyleHintReturnVariant_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStyleHintReturnVariant_delete((*C.QStyleHintReturnVariant)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

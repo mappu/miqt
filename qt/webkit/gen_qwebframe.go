@@ -36,7 +36,13 @@ const (
 
 type QWebHitTestResult struct {
 	h  *C.QWebHitTestResult
-	gc *[1]*C.QWebHitTestResult
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebHitTestResult) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebHitTestResult) cPointer() *C.QWebHitTestResult {
@@ -75,37 +81,45 @@ func NewQWebHitTestResult() *QWebHitTestResult {
 
 // NewQWebHitTestResult2 constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult2(other *QWebHitTestResult) *QWebHitTestResult {
+	defer runtime.KeepAlive(other)
 
 	return newQWebHitTestResult(C.QWebHitTestResult_new2(other.cPointer()))
 }
 
 func (this *QWebHitTestResult) OperatorAssign(other *QWebHitTestResult) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebHitTestResult_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebHitTestResult) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebHitTestResult_isNull(this.h))
 }
 
 func (this *QWebHitTestResult) Pos() *qt.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebHitTestResult_pos(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) BoundingRect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebHitTestResult_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) EnclosingBlockElement() *QWebElement {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebElement(C.QWebHitTestResult_enclosingBlockElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebHitTestResult_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -113,6 +127,7 @@ func (this *QWebHitTestResult) Title() string {
 }
 
 func (this *QWebHitTestResult) LinkText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebHitTestResult_linkText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -120,18 +135,21 @@ func (this *QWebHitTestResult) LinkText() string {
 }
 
 func (this *QWebHitTestResult) LinkUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_linkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) LinkTitle() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_linkTitle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) LinkTitleString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebHitTestResult_linkTitleString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -139,16 +157,19 @@ func (this *QWebHitTestResult) LinkTitleString() string {
 }
 
 func (this *QWebHitTestResult) LinkTargetFrame() *QWebFrame {
+	defer runtime.KeepAlive(this)
 	return newQWebFrame(C.QWebHitTestResult_linkTargetFrame(this.h))
 }
 
 func (this *QWebHitTestResult) LinkElement() *QWebElement {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebElement(C.QWebHitTestResult_linkElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) AlternateText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebHitTestResult_alternateText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -156,38 +177,45 @@ func (this *QWebHitTestResult) AlternateText() string {
 }
 
 func (this *QWebHitTestResult) ImageUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_imageUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) Pixmap() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebHitTestResult_pixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) MediaUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_mediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) IsContentEditable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebHitTestResult_isContentEditable(this.h))
 }
 
 func (this *QWebHitTestResult) IsContentSelected() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebHitTestResult_isContentSelected(this.h))
 }
 
 func (this *QWebHitTestResult) Element() *QWebElement {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebElement(C.QWebHitTestResult_element(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) Frame() *QWebFrame {
+	defer runtime.KeepAlive(this)
 	return newQWebFrame(C.QWebHitTestResult_frame(this.h))
 }
 
@@ -203,15 +231,23 @@ func (this *QWebHitTestResult) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebHitTestResult{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebHitTestResult) {
-		C.QWebHitTestResult_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebHitTestResult_delete((*C.QWebHitTestResult)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebFrame struct {
-	h *C.QWebFrame
+	h  *C.QWebFrame
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebFrame) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebFrame) cPointer() *C.QWebFrame {
@@ -246,10 +282,12 @@ func UnsafeNewQWebFrame(h unsafe.Pointer) *QWebFrame {
 }
 
 func (this *QWebFrame) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebFrame_metaObject(this.h)))
 }
 
 func (this *QWebFrame) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebFrame_metacast(this.h, param1_Cstring))
@@ -274,18 +312,24 @@ func QWebFrame_TrUtf8(s string) string {
 }
 
 func (this *QWebFrame) Page() *QWebPage {
+	defer runtime.KeepAlive(this)
 	return newQWebPage(C.QWebFrame_page(this.h))
 }
 
 func (this *QWebFrame) Load(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebFrame_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebFrame) LoadWithRequest(request *network.QNetworkRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	C.QWebFrame_loadWithRequest(this.h, (*C.QNetworkRequest)(request.UnsafePointer()))
 }
 
 func (this *QWebFrame) SetHtml(html string) {
+	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -294,6 +338,7 @@ func (this *QWebFrame) SetHtml(html string) {
 }
 
 func (this *QWebFrame) SetContent(data []byte) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -305,6 +350,8 @@ func (this *QWebFrame) SetContent(data []byte) {
 }
 
 func (this *QWebFrame) AddToJavaScriptWindowObject(name string, object *qt.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -313,6 +360,7 @@ func (this *QWebFrame) AddToJavaScriptWindowObject(name string, object *qt.QObje
 }
 
 func (this *QWebFrame) ToHtml() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebFrame_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -320,6 +368,7 @@ func (this *QWebFrame) ToHtml() string {
 }
 
 func (this *QWebFrame) ToPlainText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebFrame_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -327,6 +376,7 @@ func (this *QWebFrame) ToPlainText() string {
 }
 
 func (this *QWebFrame) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebFrame_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -334,34 +384,41 @@ func (this *QWebFrame) Title() string {
 }
 
 func (this *QWebFrame) SetUrl(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebFrame_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebFrame) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) RequestedUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) BaseUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_baseUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Icon() *qt.QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebFrame_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) FrameName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebFrame_frameName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -369,10 +426,12 @@ func (this *QWebFrame) FrameName() string {
 }
 
 func (this *QWebFrame) ParentFrame() *QWebFrame {
+	defer runtime.KeepAlive(this)
 	return newQWebFrame(C.QWebFrame_parentFrame(this.h))
 }
 
 func (this *QWebFrame) ChildFrames() []*QWebFrame {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebFrame_childFrames(this.h)
 	_ret := make([]*QWebFrame, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebFrame)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -383,50 +442,62 @@ func (this *QWebFrame) ChildFrames() []*QWebFrame {
 }
 
 func (this *QWebFrame) ScrollBarPolicy(orientation qt.Orientation) qt.ScrollBarPolicy {
+	defer runtime.KeepAlive(this)
 	return (qt.ScrollBarPolicy)(C.QWebFrame_scrollBarPolicy(this.h, (C.int)(orientation)))
 }
 
 func (this *QWebFrame) SetScrollBarPolicy(orientation qt.Orientation, policy qt.ScrollBarPolicy) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_setScrollBarPolicy(this.h, (C.int)(orientation), (C.int)(policy))
 }
 
 func (this *QWebFrame) SetScrollBarValue(orientation qt.Orientation, value int) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_setScrollBarValue(this.h, (C.int)(orientation), (C.int)(value))
 }
 
 func (this *QWebFrame) ScrollBarValue(orientation qt.Orientation) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebFrame_scrollBarValue(this.h, (C.int)(orientation)))
 }
 
 func (this *QWebFrame) ScrollBarMinimum(orientation qt.Orientation) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebFrame_scrollBarMinimum(this.h, (C.int)(orientation)))
 }
 
 func (this *QWebFrame) ScrollBarMaximum(orientation qt.Orientation) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebFrame_scrollBarMaximum(this.h, (C.int)(orientation)))
 }
 
 func (this *QWebFrame) ScrollBarGeometry(orientation qt.Orientation) *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_scrollBarGeometry(this.h, (C.int)(orientation))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Scroll(param1 int, param2 int) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_scroll(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 func (this *QWebFrame) ScrollPosition() *qt.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_scrollPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) SetScrollPosition(pos *qt.QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QWebFrame_setScrollPosition(this.h, (*C.QPoint)(pos.UnsafePointer()))
 }
 
 func (this *QWebFrame) ScrollToAnchor(anchor string) {
+	defer runtime.KeepAlive(this)
 	anchor_ms := C.struct_miqt_string{}
 	anchor_ms.data = C.CString(anchor)
 	anchor_ms.len = C.size_t(len(anchor))
@@ -435,68 +506,84 @@ func (this *QWebFrame) ScrollToAnchor(anchor string) {
 }
 
 func (this *QWebFrame) Render(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebFrame_render(this.h, (*C.QPainter)(param1.UnsafePointer()))
 }
 
 func (this *QWebFrame) Render2(param1 *qt.QPainter, layer QWebFrame__RenderLayer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebFrame_render2(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(layer))
 }
 
 func (this *QWebFrame) SetTextSizeMultiplier(factor float64) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_setTextSizeMultiplier(this.h, (C.double)(factor))
 }
 
 func (this *QWebFrame) TextSizeMultiplier() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QWebFrame_textSizeMultiplier(this.h))
 }
 
 func (this *QWebFrame) ZoomFactor() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QWebFrame_zoomFactor(this.h))
 }
 
 func (this *QWebFrame) SetZoomFactor(factor float64) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_setZoomFactor(this.h, (C.double)(factor))
 }
 
 func (this *QWebFrame) HasFocus() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebFrame_hasFocus(this.h))
 }
 
 func (this *QWebFrame) SetFocus() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_setFocus(this.h)
 }
 
 func (this *QWebFrame) Pos() *qt.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_pos(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Geometry() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_geometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) ContentsSize() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebFrame_contentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) DocumentElement() *QWebElement {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebElement(C.QWebFrame_documentElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) OwnerElement() *QWebElement {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebElement(C.QWebFrame_ownerElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) FindAllElements(selectorQuery string) *QWebElementCollection {
+	defer runtime.KeepAlive(this)
 	selectorQuery_ms := C.struct_miqt_string{}
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
@@ -507,6 +594,7 @@ func (this *QWebFrame) FindAllElements(selectorQuery string) *QWebElementCollect
 }
 
 func (this *QWebFrame) FindFirstElement(selectorQuery string) *QWebElement {
+	defer runtime.KeepAlive(this)
 	selectorQuery_ms := C.struct_miqt_string{}
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
@@ -517,22 +605,28 @@ func (this *QWebFrame) FindFirstElement(selectorQuery string) *QWebElement {
 }
 
 func (this *QWebFrame) HitTestContent(pos *qt.QPoint) *QWebHitTestResult {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	_goptr := newQWebHitTestResult(C.QWebFrame_hitTestContent(this.h, (*C.QPoint)(pos.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Event(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWebFrame_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
 func (this *QWebFrame) SecurityOrigin() *QWebSecurityOrigin {
+	defer runtime.KeepAlive(this)
 	_goptr := newQWebSecurityOrigin(C.QWebFrame_securityOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) EvaluateJavaScript(scriptSource string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	scriptSource_ms := C.struct_miqt_string{}
 	scriptSource_ms.data = C.CString(scriptSource)
 	scriptSource_ms.len = C.size_t(len(scriptSource))
@@ -543,10 +637,13 @@ func (this *QWebFrame) EvaluateJavaScript(scriptSource string) *qt.QVariant {
 }
 
 func (this *QWebFrame) Print(printer *printsupport.QPrinter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(printer)
 	C.QWebFrame_print(this.h, (*C.QPrinter)(printer.UnsafePointer()))
 }
 
 func (this *QWebFrame) JavaScriptWindowObjectCleared() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_javaScriptWindowObjectCleared(this.h)
 }
 func (this *QWebFrame) OnJavaScriptWindowObjectCleared(slot func()) {
@@ -564,6 +661,7 @@ func miqt_exec_callback_QWebFrame_javaScriptWindowObjectCleared(cb C.intptr_t) {
 }
 
 func (this *QWebFrame) ProvisionalLoad() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_provisionalLoad(this.h)
 }
 func (this *QWebFrame) OnProvisionalLoad(slot func()) {
@@ -581,6 +679,7 @@ func miqt_exec_callback_QWebFrame_provisionalLoad(cb C.intptr_t) {
 }
 
 func (this *QWebFrame) TitleChanged(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -608,6 +707,8 @@ func miqt_exec_callback_QWebFrame_titleChanged(cb C.intptr_t, title C.struct_miq
 }
 
 func (this *QWebFrame) UrlChanged(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebFrame_urlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 func (this *QWebFrame) OnUrlChanged(slot func(url *qt.QUrl)) {
@@ -628,6 +729,7 @@ func miqt_exec_callback_QWebFrame_urlChanged(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QWebFrame) InitialLayoutCompleted() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_initialLayoutCompleted(this.h)
 }
 func (this *QWebFrame) OnInitialLayoutCompleted(slot func()) {
@@ -645,6 +747,7 @@ func miqt_exec_callback_QWebFrame_initialLayoutCompleted(cb C.intptr_t) {
 }
 
 func (this *QWebFrame) IconChanged() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_iconChanged(this.h)
 }
 func (this *QWebFrame) OnIconChanged(slot func()) {
@@ -662,6 +765,8 @@ func miqt_exec_callback_QWebFrame_iconChanged(cb C.intptr_t) {
 }
 
 func (this *QWebFrame) ContentsSizeChanged(size *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QWebFrame_contentsSizeChanged(this.h, (*C.QSize)(size.UnsafePointer()))
 }
 func (this *QWebFrame) OnContentsSizeChanged(slot func(size *qt.QSize)) {
@@ -682,6 +787,7 @@ func miqt_exec_callback_QWebFrame_contentsSizeChanged(cb C.intptr_t, size *C.QSi
 }
 
 func (this *QWebFrame) LoadStarted() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_loadStarted(this.h)
 }
 func (this *QWebFrame) OnLoadStarted(slot func()) {
@@ -699,6 +805,7 @@ func miqt_exec_callback_QWebFrame_loadStarted(cb C.intptr_t) {
 }
 
 func (this *QWebFrame) LoadFinished(ok bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_loadFinished(this.h, (C.bool)(ok))
 }
 func (this *QWebFrame) OnLoadFinished(slot func(ok bool)) {
@@ -719,6 +826,7 @@ func miqt_exec_callback_QWebFrame_loadFinished(cb C.intptr_t, ok C.bool) {
 }
 
 func (this *QWebFrame) PageChanged() {
+	defer runtime.KeepAlive(this)
 	C.QWebFrame_pageChanged(this.h)
 }
 func (this *QWebFrame) OnPageChanged(slot func()) {
@@ -780,10 +888,14 @@ func QWebFrame_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWebFrame) Load2(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	C.QWebFrame_load2(this.h, (*C.QNetworkRequest)(request.UnsafePointer()), (C.int)(operation))
 }
 
 func (this *QWebFrame) Load3(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation, body []byte) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(request)
 	body_alias := C.struct_miqt_string{}
 	if len(body) > 0 {
 		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
@@ -795,6 +907,8 @@ func (this *QWebFrame) Load3(request *network.QNetworkRequest, operation network
 }
 
 func (this *QWebFrame) SetHtml2(html string, baseUrl *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseUrl)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -803,6 +917,7 @@ func (this *QWebFrame) SetHtml2(html string, baseUrl *qt.QUrl) {
 }
 
 func (this *QWebFrame) SetContent2(data []byte, mimeType string) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -818,6 +933,8 @@ func (this *QWebFrame) SetContent2(data []byte, mimeType string) {
 }
 
 func (this *QWebFrame) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseUrl)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -833,6 +950,8 @@ func (this *QWebFrame) SetContent3(data []byte, mimeType string, baseUrl *qt.QUr
 }
 
 func (this *QWebFrame) AddToJavaScriptWindowObject2(name string, object *qt.QObject, ownership QWebFrame__ValueOwnership) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -841,9 +960,15 @@ func (this *QWebFrame) AddToJavaScriptWindowObject2(name string, object *qt.QObj
 }
 
 func (this *QWebFrame) Render3(param1 *qt.QPainter, clip *qt.QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(clip)
 	C.QWebFrame_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRegion)(clip.UnsafePointer()))
 }
 
 func (this *QWebFrame) Render4(param1 *qt.QPainter, layer QWebFrame__RenderLayer, clip *qt.QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(clip)
 	C.QWebFrame_render4(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(layer), (*C.QRegion)(clip.UnsafePointer()))
 }

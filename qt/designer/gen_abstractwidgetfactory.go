@@ -17,8 +17,14 @@ import (
 
 type QDesignerWidgetFactoryInterface struct {
 	h  *C.QDesignerWidgetFactoryInterface
-	gc *[1]*C.QDesignerWidgetFactoryInterface
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerWidgetFactoryInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerWidgetFactoryInterface) cPointer() *C.QDesignerWidgetFactoryInterface {
@@ -60,15 +66,18 @@ func NewQDesignerWidgetFactoryInterface() *QDesignerWidgetFactoryInterface {
 
 // NewQDesignerWidgetFactoryInterface2 constructs a new QDesignerWidgetFactoryInterface object.
 func NewQDesignerWidgetFactoryInterface2(parent *qt.QObject) *QDesignerWidgetFactoryInterface {
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerWidgetFactoryInterface(C.QDesignerWidgetFactoryInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerWidgetFactoryInterface) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerWidgetFactoryInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerWidgetFactoryInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerWidgetFactoryInterface_metacast(this.h, param1_Cstring))
@@ -93,18 +102,25 @@ func QDesignerWidgetFactoryInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerWidgetFactoryInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerWidgetFactoryInterface_core(this.h))
 }
 
 func (this *QDesignerWidgetFactoryInterface) ContainerOfWidget(w *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerWidgetFactoryInterface_containerOfWidget(this.h, (*C.QWidget)(w.UnsafePointer()))))
 }
 
 func (this *QDesignerWidgetFactoryInterface) WidgetOfContainer(w *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerWidgetFactoryInterface_widgetOfContainer(this.h, (*C.QWidget)(w.UnsafePointer()))))
 }
 
 func (this *QDesignerWidgetFactoryInterface) CreateWidget(name string, parentWidget *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parentWidget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -113,14 +129,21 @@ func (this *QDesignerWidgetFactoryInterface) CreateWidget(name string, parentWid
 }
 
 func (this *QDesignerWidgetFactoryInterface) CreateLayout(widget *qt.QWidget, layout *qt.QLayout, typeVal int) *qt.QLayout {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
+	defer runtime.KeepAlive(layout)
 	return qt.UnsafeNewQLayout(unsafe.Pointer(C.QDesignerWidgetFactoryInterface_createLayout(this.h, (*C.QWidget)(widget.UnsafePointer()), (*C.QLayout)(layout.UnsafePointer()), (C.int)(typeVal))))
 }
 
 func (this *QDesignerWidgetFactoryInterface) IsPassiveInteractor(widget *qt.QWidget) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return (bool)(C.QDesignerWidgetFactoryInterface_isPassiveInteractor(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 
 func (this *QDesignerWidgetFactoryInterface) Initialize(object *qt.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QDesignerWidgetFactoryInterface_initialize(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
@@ -170,6 +193,7 @@ func QDesignerWidgetFactoryInterface_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QDesignerWidgetFactoryInterface that was directly constructed.
 func (this *QDesignerWidgetFactoryInterface) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerWidgetFactoryInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -184,6 +208,7 @@ func (this *QDesignerWidgetFactoryInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerWidgetFactoryInterface that was directly constructed.
 func (this *QDesignerWidgetFactoryInterface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerWidgetFactoryInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -198,6 +223,7 @@ func (this *QDesignerWidgetFactoryInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerWidgetFactoryInterface that was directly constructed.
 func (this *QDesignerWidgetFactoryInterface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -214,6 +240,8 @@ func (this *QDesignerWidgetFactoryInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerWidgetFactoryInterface that was directly constructed.
 func (this *QDesignerWidgetFactoryInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerWidgetFactoryInterface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -240,6 +268,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_core(self *C.QDesignerWi
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -262,6 +291,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_containerOfWidget(self *
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(w))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -284,6 +314,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_widgetOfContainer(self *
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(w))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -310,6 +341,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_createWidget(self *C.QDe
 	slotval2 := qt.UnsafeNewQWidget(unsafe.Pointer(parentWidget))
 
 	virtualReturn := gofunc(slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -336,6 +368,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_createLayout(self *C.QDe
 	slotval3 := (int)(typeVal)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QLayout)(virtualReturn.UnsafePointer())
 
@@ -384,6 +417,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_initialize(self *C.QDesi
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetFactoryInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -412,6 +447,9 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_event(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetFactoryInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -442,6 +480,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_eventFilter(self *C.QDes
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetFactoryInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -468,6 +508,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_timerEvent(self *C.QDesi
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetFactoryInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -494,6 +536,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_childEvent(self *C.QDesi
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetFactoryInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -520,6 +564,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_customEvent(self *C.QDes
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetFactoryInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -546,6 +592,8 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_connectNotify(self *C.QD
 }
 
 func (this *QDesignerWidgetFactoryInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetFactoryInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -583,8 +631,9 @@ func (this *QDesignerWidgetFactoryInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerWidgetFactoryInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerWidgetFactoryInterface) {
-		C.QDesignerWidgetFactoryInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerWidgetFactoryInterface_delete((*C.QDesignerWidgetFactoryInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

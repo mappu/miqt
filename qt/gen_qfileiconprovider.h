@@ -37,6 +37,7 @@ bool QFileIconProvider_override_virtual_iconWithInfo(void* self, intptr_t slot);
 QIcon* QFileIconProvider_virtualbase_iconWithInfo(const void* self, QFileInfo* info);
 bool QFileIconProvider_override_virtual_type(void* self, intptr_t slot);
 struct miqt_string QFileIconProvider_virtualbase_type(const void* self, QFileInfo* info);
+QIcon* QFileIconProvider_virtualreturncopy_QIcon(QIcon* src);
 
 void QFileIconProvider_delete(QFileIconProvider* self);
 

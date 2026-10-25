@@ -118,7 +118,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_index(this, handle__index, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
@@ -136,7 +138,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceIndex_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapFromSource(this, handle__mapFromSource, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_mapFromSource(const void* self, QModelIndex* sourceIndex);
@@ -154,7 +158,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapToSource(this, handle__mapToSource, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_mapToSource(const void* self, QModelIndex* proxyIndex);
@@ -172,7 +178,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_parent(this, handle__parent, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_parent(const void* self, QModelIndex* child);
@@ -209,7 +217,9 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QIdentityProxyModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
@@ -252,7 +262,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
@@ -270,7 +282,9 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(this, handle__mapSelectionFromSource, sigval1);
-		return *callback_return_value;
+		QItemSelection callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QItemSelection* QIdentityProxyModel_virtualbase_mapSelectionFromSource(const void* self, QItemSelection* selection);
@@ -288,7 +302,9 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(this, handle__mapSelectionToSource, sigval1);
-		return *callback_return_value;
+		QItemSelection callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QItemSelection* QIdentityProxyModel_virtualbase_mapSelectionToSource(const void* self, QItemSelection* selection);
@@ -318,6 +334,10 @@ public:
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -515,7 +535,9 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_data(this, handle__data, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QIdentityProxyModel_virtualbase_data(const void* self, QModelIndex* proxyIndex, int role);
@@ -539,6 +561,12 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = *(callback_return_value_varr[i]);
 		}
+		QVariant** callback_return_value_free_varr = static_cast<QVariant**>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_varr[i];
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -652,7 +680,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_buddy(this, handle__buddy, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QIdentityProxyModel_virtualbase_buddy(const void* self, QModelIndex* index);
@@ -726,7 +756,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QSize* callback_return_value = miqt_exec_callback_QIdentityProxyModel_span(this, handle__span, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QIdentityProxyModel_virtualbase_span(const void* self, QModelIndex* index);
@@ -872,6 +904,12 @@ public:
 			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
 		}
+		struct miqt_string* callback_return_value_free_varr = static_cast<struct miqt_string*>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_varr[i].data);
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -1913,6 +1951,22 @@ bool QIdentityProxyModel_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQIdentityProxyModel*>(self)->QIdentityProxyModel::disconnectNotify(*signal);
+}
+
+QModelIndex* QIdentityProxyModel_virtualreturncopy_QModelIndex(QModelIndex* src) {
+	return new QModelIndex(*src);
+}
+
+QVariant* QIdentityProxyModel_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QItemSelection* QIdentityProxyModel_virtualreturncopy_QItemSelection(QItemSelection* src) {
+	return new QItemSelection(*src);
+}
+
+QSize* QIdentityProxyModel_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QIdentityProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {

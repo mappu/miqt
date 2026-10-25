@@ -220,6 +220,10 @@ bool QwtPlotPanner_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtPlotPanner_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtPlotPanner_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtPlotPanner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QBitmap* QwtPlotPanner_virtualreturncopy_QBitmap(QBitmap* src);
+QPixmap* QwtPlotPanner_virtualreturncopy_QPixmap(QPixmap* src);
+QSize* QwtPlotPanner_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtPlotPanner_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtPlotPanner_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QwtPlotPanner_protectedbase_create(bool* _dynamic_cast_ok, void* self);

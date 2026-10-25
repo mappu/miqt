@@ -132,8 +132,15 @@ const (
 
 type QsciLexerHTML struct {
 	h  *C.QsciLexerHTML
-	gc *[1]*C.QsciLexerHTML
+	gc *[1]unsafe.Pointer
 	*QsciLexer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciLexerHTML) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QsciLexer.miqtSetGC(gc)
 }
 
 func (this *QsciLexerHTML) cPointer() *C.QsciLexerHTML {
@@ -175,15 +182,18 @@ func NewQsciLexerHTML() *QsciLexerHTML {
 
 // NewQsciLexerHTML2 constructs a new QsciLexerHTML object.
 func NewQsciLexerHTML2(parent *qt.QObject) *QsciLexerHTML {
+	defer runtime.KeepAlive(parent)
 
 	return newQsciLexerHTML(C.QsciLexerHTML_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerHTML) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerHTML_metaObject(this.h)))
 }
 
 func (this *QsciLexerHTML) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciLexerHTML_metacast(this.h, param1_Cstring))
@@ -208,53 +218,63 @@ func QsciLexerHTML_TrUtf8(s string) string {
 }
 
 func (this *QsciLexerHTML) Language() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerHTML_language(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerHTML) Lexer() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerHTML_lexer(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerHTML) AutoCompletionFillups() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerHTML_autoCompletionFillups(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerHTML) WordCharacters() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerHTML_wordCharacters(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerHTML) DefaultColor(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_defaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerHTML) DefaultEolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_defaultEolFill(this.h, (C.int)(style)))
 }
 
 func (this *QsciLexerHTML) DefaultFont(style int) *qt.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerHTML_defaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerHTML) DefaultPaper(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_defaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerHTML) Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerHTML_keywords(this.h, (C.int)(set))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerHTML) Description(style int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciLexerHTML_description(this.h, (C.int)(style))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -262,62 +282,77 @@ func (this *QsciLexerHTML) Description(style int) string {
 }
 
 func (this *QsciLexerHTML) RefreshProperties() {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_refreshProperties(this.h)
 }
 
 func (this *QsciLexerHTML) CaseSensitiveTags() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_caseSensitiveTags(this.h))
 }
 
 func (this *QsciLexerHTML) SetDjangoTemplates(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setDjangoTemplates(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciLexerHTML) DjangoTemplates() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_djangoTemplates(this.h))
 }
 
 func (this *QsciLexerHTML) FoldCompact() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_foldCompact(this.h))
 }
 
 func (this *QsciLexerHTML) FoldPreprocessor() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_foldPreprocessor(this.h))
 }
 
 func (this *QsciLexerHTML) SetFoldScriptComments(fold bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setFoldScriptComments(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerHTML) FoldScriptComments() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_foldScriptComments(this.h))
 }
 
 func (this *QsciLexerHTML) SetFoldScriptHeredocs(fold bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setFoldScriptHeredocs(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerHTML) FoldScriptHeredocs() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_foldScriptHeredocs(this.h))
 }
 
 func (this *QsciLexerHTML) SetMakoTemplates(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setMakoTemplates(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciLexerHTML) MakoTemplates() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerHTML_makoTemplates(this.h))
 }
 
 func (this *QsciLexerHTML) SetFoldCompact(fold bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setFoldCompact(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerHTML) SetFoldPreprocessor(fold bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setFoldPreprocessor(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerHTML) SetCaseSensitiveTags(sens bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciLexerHTML_setCaseSensitiveTags(this.h, (C.bool)(sens))
 }
 
@@ -367,6 +402,8 @@ func QsciLexerHTML_TrUtf83(s string, c string, n int) string {
 
 // ReadProperties can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) ReadProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -385,6 +422,8 @@ func (this *QsciLexerHTML) ReadProperties(qs *qt.QSettings, prefix string) bool 
 
 // WriteProperties can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) WriteProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -403,6 +442,7 @@ func (this *QsciLexerHTML) WriteProperties(qs *qt.QSettings, prefix string) bool
 
 // Sender can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciLexerHTML_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -417,6 +457,7 @@ func (this *QsciLexerHTML) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciLexerHTML_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -431,6 +472,7 @@ func (this *QsciLexerHTML) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -447,6 +489,8 @@ func (this *QsciLexerHTML) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciLexerHTML that was directly constructed.
 func (this *QsciLexerHTML) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciLexerHTML_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -460,6 +504,7 @@ func (this *QsciLexerHTML) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetFoldCompact(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_setFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -486,6 +531,7 @@ func miqt_exec_callback_QsciLexerHTML_setFoldCompact(self *C.QsciLexerHTML, cb C
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetFoldPreprocessor(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_setFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -512,6 +558,7 @@ func miqt_exec_callback_QsciLexerHTML_setFoldPreprocessor(self *C.QsciLexerHTML,
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetCaseSensitiveTags(sens bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_setCaseSensitiveTags(unsafe.Pointer(this.h), (C.bool)(sens))
 
@@ -558,6 +605,7 @@ func miqt_exec_callback_QsciLexerHTML_language(self *C.QsciLexerHTML, cb C.intpt
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Lexer() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -585,6 +633,7 @@ func miqt_exec_callback_QsciLexerHTML_lexer(self *C.QsciLexerHTML, cb C.intptr_t
 }
 
 func (this *QsciLexerHTML) callVirtualBase_LexerId() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
@@ -610,6 +659,7 @@ func miqt_exec_callback_QsciLexerHTML_lexerId(self *C.QsciLexerHTML, cb C.intptr
 }
 
 func (this *QsciLexerHTML) callVirtualBase_AutoCompletionFillups() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -637,6 +687,7 @@ func miqt_exec_callback_QsciLexerHTML_autoCompletionFillups(self *C.QsciLexerHTM
 }
 
 func (this *QsciLexerHTML) callVirtualBase_AutoCompletionWordSeparators() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QsciLexerHTML_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -680,6 +731,7 @@ func miqt_exec_callback_QsciLexerHTML_autoCompletionWordSeparators(self *C.QsciL
 }
 
 func (this *QsciLexerHTML) callVirtualBase_BlockEnd(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -710,6 +762,7 @@ func miqt_exec_callback_QsciLexerHTML_blockEnd(self *C.QsciLexerHTML, cb C.intpt
 }
 
 func (this *QsciLexerHTML) callVirtualBase_BlockLookback() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
@@ -735,6 +788,7 @@ func miqt_exec_callback_QsciLexerHTML_blockLookback(self *C.QsciLexerHTML, cb C.
 }
 
 func (this *QsciLexerHTML) callVirtualBase_BlockStart(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -765,6 +819,7 @@ func miqt_exec_callback_QsciLexerHTML_blockStart(self *C.QsciLexerHTML, cb C.int
 }
 
 func (this *QsciLexerHTML) callVirtualBase_BlockStartKeyword(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -795,6 +850,7 @@ func miqt_exec_callback_QsciLexerHTML_blockStartKeyword(self *C.QsciLexerHTML, c
 }
 
 func (this *QsciLexerHTML) callVirtualBase_BraceStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
@@ -820,6 +876,7 @@ func miqt_exec_callback_QsciLexerHTML_braceStyle(self *C.QsciLexerHTML, cb C.int
 }
 
 func (this *QsciLexerHTML) callVirtualBase_CaseSensitive() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerHTML_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
@@ -845,6 +902,7 @@ func miqt_exec_callback_QsciLexerHTML_caseSensitive(self *C.QsciLexerHTML, cb C.
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Color(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -869,12 +927,14 @@ func miqt_exec_callback_QsciLexerHTML_color(self *C.QsciLexerHTML, cb C.intptr_t
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_Color, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_EolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerHTML_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -903,6 +963,7 @@ func miqt_exec_callback_QsciLexerHTML_eolFill(self *C.QsciLexerHTML, cb C.intptr
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Font(style int) *qt.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerHTML_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -927,12 +988,14 @@ func miqt_exec_callback_QsciLexerHTML_font(self *C.QsciLexerHTML, cb C.intptr_t,
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_Font, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_IndentationGuideView() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
@@ -958,6 +1021,7 @@ func miqt_exec_callback_QsciLexerHTML_indentationGuideView(self *C.QsciLexerHTML
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
@@ -988,6 +1052,7 @@ func miqt_exec_callback_QsciLexerHTML_keywords(self *C.QsciLexerHTML, cb C.intpt
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DefaultStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
@@ -1038,6 +1103,7 @@ func miqt_exec_callback_QsciLexerHTML_description(self *C.QsciLexerHTML, cb C.in
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Paper(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1062,12 +1128,14 @@ func miqt_exec_callback_QsciLexerHTML_paper(self *C.QsciLexerHTML, cb C.intptr_t
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_Paper, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1092,12 +1160,14 @@ func miqt_exec_callback_QsciLexerHTML_defaultColorWithStyle(self *C.QsciLexerHTM
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_DefaultColorWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DefaultEolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerHTML_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -1126,6 +1196,7 @@ func miqt_exec_callback_QsciLexerHTML_defaultEolFill(self *C.QsciLexerHTML, cb C
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DefaultFontWithStyle(style int) *qt.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerHTML_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1150,12 +1221,14 @@ func miqt_exec_callback_QsciLexerHTML_defaultFontWithStyle(self *C.QsciLexerHTML
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_DefaultFontWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerHTML_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1180,12 +1253,15 @@ func miqt_exec_callback_QsciLexerHTML_defaultPaperWithStyle(self *C.QsciLexerHTM
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerHTML{h: self}).callVirtualBase_DefaultPaperWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerHTML_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetEditor(editor *QsciScintilla) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QsciLexerHTML_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1212,6 +1288,7 @@ func miqt_exec_callback_QsciLexerHTML_setEditor(self *C.QsciLexerHTML, cb C.intp
 }
 
 func (this *QsciLexerHTML) callVirtualBase_RefreshProperties() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
@@ -1235,6 +1312,7 @@ func miqt_exec_callback_QsciLexerHTML_refreshProperties(self *C.QsciLexerHTML, c
 }
 
 func (this *QsciLexerHTML) callVirtualBase_StyleBitsNeeded() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerHTML_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
@@ -1260,6 +1338,7 @@ func miqt_exec_callback_QsciLexerHTML_styleBitsNeeded(self *C.QsciLexerHTML, cb 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_WordCharacters() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerHTML_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -1287,6 +1366,7 @@ func miqt_exec_callback_QsciLexerHTML_wordCharacters(self *C.QsciLexerHTML, cb C
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
@@ -1313,6 +1393,8 @@ func miqt_exec_callback_QsciLexerHTML_setAutoIndentStyle(self *C.QsciLexerHTML, 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetColor(c *qt.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerHTML_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1341,6 +1423,7 @@ func miqt_exec_callback_QsciLexerHTML_setColor(self *C.QsciLexerHTML, cb C.intpt
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetEolFill(eoffill bool, style int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerHTML_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
@@ -1369,6 +1452,8 @@ func miqt_exec_callback_QsciLexerHTML_setEolFill(self *C.QsciLexerHTML, cb C.int
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetFont(f *qt.QFont, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 
 	C.QsciLexerHTML_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 
@@ -1397,6 +1482,8 @@ func miqt_exec_callback_QsciLexerHTML_setFont(self *C.QsciLexerHTML, cb C.intptr
 }
 
 func (this *QsciLexerHTML) callVirtualBase_SetPaper(c *qt.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerHTML_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1425,6 +1512,8 @@ func miqt_exec_callback_QsciLexerHTML_setPaper(self *C.QsciLexerHTML, cb C.intpt
 }
 
 func (this *QsciLexerHTML) callVirtualBase_ReadProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1462,6 +1551,8 @@ func miqt_exec_callback_QsciLexerHTML_readProperties(self *C.QsciLexerHTML, cb C
 }
 
 func (this *QsciLexerHTML) callVirtualBase_WriteProperties(qs *qt.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1499,6 +1590,8 @@ func miqt_exec_callback_QsciLexerHTML_writeProperties(self *C.QsciLexerHTML, cb 
 }
 
 func (this *QsciLexerHTML) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerHTML_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1527,6 +1620,9 @@ func miqt_exec_callback_QsciLexerHTML_event(self *C.QsciLexerHTML, cb C.intptr_t
 }
 
 func (this *QsciLexerHTML) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerHTML_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1557,6 +1653,8 @@ func miqt_exec_callback_QsciLexerHTML_eventFilter(self *C.QsciLexerHTML, cb C.in
 }
 
 func (this *QsciLexerHTML) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerHTML_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1583,6 +1681,8 @@ func miqt_exec_callback_QsciLexerHTML_timerEvent(self *C.QsciLexerHTML, cb C.int
 }
 
 func (this *QsciLexerHTML) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerHTML_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1609,6 +1709,8 @@ func miqt_exec_callback_QsciLexerHTML_childEvent(self *C.QsciLexerHTML, cb C.int
 }
 
 func (this *QsciLexerHTML) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerHTML_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1635,6 +1737,8 @@ func miqt_exec_callback_QsciLexerHTML_customEvent(self *C.QsciLexerHTML, cb C.in
 }
 
 func (this *QsciLexerHTML) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerHTML_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1661,6 +1765,8 @@ func miqt_exec_callback_QsciLexerHTML_connectNotify(self *C.QsciLexerHTML, cb C.
 }
 
 func (this *QsciLexerHTML) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerHTML_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1698,8 +1804,9 @@ func (this *QsciLexerHTML) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciLexerHTML{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciLexerHTML) {
-		C.QsciLexerHTML_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciLexerHTML_delete((*C.QsciLexerHTML)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

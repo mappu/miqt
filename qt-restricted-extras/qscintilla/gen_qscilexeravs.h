@@ -153,6 +153,8 @@ bool QsciLexerAVS_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerAVS_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerAVS_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerAVS_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerAVS_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerAVS_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerAVS_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerAVS_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

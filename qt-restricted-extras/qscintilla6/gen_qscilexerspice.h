@@ -140,6 +140,8 @@ bool QsciLexerSpice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerSpice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerSpice_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerSpice_virtualreturncopy_QFont(QFont* src);
 
 QObject* QsciLexerSpice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerSpice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

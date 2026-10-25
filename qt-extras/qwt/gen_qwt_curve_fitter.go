@@ -23,7 +23,13 @@ const (
 
 type QwtCurveFitter struct {
 	h  *C.QwtCurveFitter
-	gc *[1]*C.QwtCurveFitter
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCurveFitter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtCurveFitter) cPointer() *C.QwtCurveFitter {
@@ -66,16 +72,24 @@ func (this *QwtCurveFitter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCurveFitter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCurveFitter) {
-		C.QwtCurveFitter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCurveFitter_delete((*C.QwtCurveFitter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtSplineCurveFitter struct {
 	h  *C.QwtSplineCurveFitter
-	gc *[1]*C.QwtSplineCurveFitter
+	gc *[1]unsafe.Pointer
 	*QwtCurveFitter
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSplineCurveFitter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtCurveFitter.miqtSetGC(gc)
 }
 
 func (this *QwtSplineCurveFitter) cPointer() *C.QwtSplineCurveFitter {
@@ -116,30 +130,42 @@ func NewQwtSplineCurveFitter() *QwtSplineCurveFitter {
 }
 
 func (this *QwtSplineCurveFitter) SetFitMode(fitMode QwtSplineCurveFitter__FitMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtSplineCurveFitter_setFitMode(this.h, (C.int)(fitMode))
 }
 
 func (this *QwtSplineCurveFitter) FitMode() QwtSplineCurveFitter__FitMode {
+	defer runtime.KeepAlive(this)
 	return (QwtSplineCurveFitter__FitMode)(C.QwtSplineCurveFitter_fitMode(this.h))
 }
 
 func (this *QwtSplineCurveFitter) SetSpline(spline *QwtSpline) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(spline)
 	C.QwtSplineCurveFitter_setSpline(this.h, spline.cPointer())
 }
 
 func (this *QwtSplineCurveFitter) Spline() *QwtSpline {
-	return newQwtSpline(C.QwtSplineCurveFitter_spline(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtSpline(C.QwtSplineCurveFitter_spline(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtSplineCurveFitter) Spline2() *QwtSpline {
-	return newQwtSpline(C.QwtSplineCurveFitter_spline2(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtSpline(C.QwtSplineCurveFitter_spline2(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtSplineCurveFitter) SetSplineSize(splineSize int) {
+	defer runtime.KeepAlive(this)
 	C.QwtSplineCurveFitter_setSplineSize(this.h, (C.int)(splineSize))
 }
 
 func (this *QwtSplineCurveFitter) SplineSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtSplineCurveFitter_splineSize(this.h))
 }
 
@@ -155,16 +181,24 @@ func (this *QwtSplineCurveFitter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSplineCurveFitter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSplineCurveFitter) {
-		C.QwtSplineCurveFitter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSplineCurveFitter_delete((*C.QwtSplineCurveFitter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtWeedingCurveFitter struct {
 	h  *C.QwtWeedingCurveFitter
-	gc *[1]*C.QwtWeedingCurveFitter
+	gc *[1]unsafe.Pointer
 	*QwtCurveFitter
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtWeedingCurveFitter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtCurveFitter.miqtSetGC(gc)
 }
 
 func (this *QwtWeedingCurveFitter) cPointer() *C.QwtWeedingCurveFitter {
@@ -211,18 +245,22 @@ func NewQwtWeedingCurveFitter2(tolerance float64) *QwtWeedingCurveFitter {
 }
 
 func (this *QwtWeedingCurveFitter) SetTolerance(tolerance float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtWeedingCurveFitter_setTolerance(this.h, (C.double)(tolerance))
 }
 
 func (this *QwtWeedingCurveFitter) Tolerance() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWeedingCurveFitter_tolerance(this.h))
 }
 
 func (this *QwtWeedingCurveFitter) SetChunkSize(chunkSize uint) {
+	defer runtime.KeepAlive(this)
 	C.QwtWeedingCurveFitter_setChunkSize(this.h, (C.uint)(chunkSize))
 }
 
 func (this *QwtWeedingCurveFitter) ChunkSize() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtWeedingCurveFitter_chunkSize(this.h))
 }
 
@@ -238,8 +276,9 @@ func (this *QwtWeedingCurveFitter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtWeedingCurveFitter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtWeedingCurveFitter) {
-		C.QwtWeedingCurveFitter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtWeedingCurveFitter_delete((*C.QwtWeedingCurveFitter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -24,7 +24,13 @@ const (
 
 type QElapsedTimer struct {
 	h  *C.QElapsedTimer
-	gc *[1]*C.QElapsedTimer
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QElapsedTimer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
@@ -70,42 +76,54 @@ func QElapsedTimer_IsMonotonic() bool {
 }
 
 func (this *QElapsedTimer) Start() {
+	defer runtime.KeepAlive(this)
 	C.QElapsedTimer_start(this.h)
 }
 
 func (this *QElapsedTimer) Restart() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QElapsedTimer_restart(this.h))
 }
 
 func (this *QElapsedTimer) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QElapsedTimer_invalidate(this.h)
 }
 
 func (this *QElapsedTimer) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QElapsedTimer_isValid(this.h))
 }
 
 func (this *QElapsedTimer) NsecsElapsed() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QElapsedTimer_nsecsElapsed(this.h))
 }
 
 func (this *QElapsedTimer) Elapsed() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QElapsedTimer_elapsed(this.h))
 }
 
 func (this *QElapsedTimer) HasExpired(timeout int64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QElapsedTimer_hasExpired(this.h, (C.longlong)(timeout)))
 }
 
 func (this *QElapsedTimer) MsecsSinceReference() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QElapsedTimer_msecsSinceReference(this.h))
 }
 
 func (this *QElapsedTimer) MsecsTo(other *QElapsedTimer) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (int64)(C.QElapsedTimer_msecsTo(this.h, other.cPointer()))
 }
 
 func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (int64)(C.QElapsedTimer_secsTo(this.h, other.cPointer()))
 }
 
@@ -121,8 +139,9 @@ func (this *QElapsedTimer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QElapsedTimer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QElapsedTimer) {
-		C.QElapsedTimer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QElapsedTimer_delete((*C.QElapsedTimer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

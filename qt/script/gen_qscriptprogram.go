@@ -15,7 +15,13 @@ import (
 
 type QScriptProgram struct {
 	h  *C.QScriptProgram
-	gc *[1]*C.QScriptProgram
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptProgram) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptProgram) cPointer() *C.QScriptProgram {
@@ -64,6 +70,7 @@ func NewQScriptProgram2(sourceCode string) *QScriptProgram {
 
 // NewQScriptProgram3 constructs a new QScriptProgram object.
 func NewQScriptProgram3(other *QScriptProgram) *QScriptProgram {
+	defer runtime.KeepAlive(other)
 
 	return newQScriptProgram(C.QScriptProgram_new3(other.cPointer()))
 }
@@ -97,14 +104,18 @@ func NewQScriptProgram5(sourceCode string, fileName string, firstLineNumber int)
 }
 
 func (this *QScriptProgram) OperatorAssign(other *QScriptProgram) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QScriptProgram_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptProgram) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptProgram_isNull(this.h))
 }
 
 func (this *QScriptProgram) SourceCode() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptProgram_sourceCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -112,6 +123,7 @@ func (this *QScriptProgram) SourceCode() string {
 }
 
 func (this *QScriptProgram) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptProgram_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -119,14 +131,19 @@ func (this *QScriptProgram) FileName() string {
 }
 
 func (this *QScriptProgram) FirstLineNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptProgram_firstLineNumber(this.h))
 }
 
 func (this *QScriptProgram) OperatorEqual(other *QScriptProgram) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptProgram_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptProgram) OperatorNotEqual(other *QScriptProgram) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptProgram_operatorNotEqual(this.h, other.cPointer()))
 }
 
@@ -142,8 +159,9 @@ func (this *QScriptProgram) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptProgram{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptProgram) {
-		C.QScriptProgram_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptProgram_delete((*C.QScriptProgram)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

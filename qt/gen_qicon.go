@@ -31,7 +31,13 @@ const (
 
 type QIcon struct {
 	h  *C.QIcon
-	gc *[1]*C.QIcon
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIcon) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QIcon) cPointer() *C.QIcon {
@@ -70,12 +76,14 @@ func NewQIcon() *QIcon {
 
 // NewQIcon2 constructs a new QIcon object.
 func NewQIcon2(pixmap *QPixmap) *QIcon {
+	defer runtime.KeepAlive(pixmap)
 
 	return newQIcon(C.QIcon_new2(pixmap.cPointer()))
 }
 
 // NewQIcon3 constructs a new QIcon object.
 func NewQIcon3(other *QIcon) *QIcon {
+	defer runtime.KeepAlive(other)
 
 	return newQIcon(C.QIcon_new3(other.cPointer()))
 }
@@ -92,61 +100,80 @@ func NewQIcon4(fileName string) *QIcon {
 
 // NewQIcon5 constructs a new QIcon object.
 func NewQIcon5(engine *QIconEngine) *QIcon {
+	defer runtime.KeepAlive(engine)
 
 	return newQIcon(C.QIcon_new5(engine.cPointer()))
 }
 
 func (this *QIcon) OperatorAssign(other *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QIcon_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QIcon) Swap(other *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QIcon_swap(this.h, other.cPointer())
 }
 
 func (this *QIcon) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QIcon_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap(size *QSize) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap(this.h, size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap2(w int, h int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmap2(this.h, (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) PixmapWithExtent(extent int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmapWithExtent(this.h, (C.int)(extent)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap3(window *QWindow, size *QSize) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap3(this.h, window.cPointer(), size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize(size *QSize) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize(this.h, size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize2(window *QWindow, size *QSize) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize2(this.h, window.cPointer(), size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QIcon_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -154,34 +181,46 @@ func (this *QIcon) Name() string {
 }
 
 func (this *QIcon) Paint(painter *QPainter, rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QIcon_paint(this.h, painter.cPointer(), rect.cPointer())
 }
 
 func (this *QIcon) Paint2(painter *QPainter, x int, y int, w int, h int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QIcon_paint2(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
 func (this *QIcon) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIcon_isNull(this.h))
 }
 
 func (this *QIcon) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIcon_isDetached(this.h))
 }
 
 func (this *QIcon) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QIcon_detach(this.h)
 }
 
 func (this *QIcon) CacheKey() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIcon_cacheKey(this.h))
 }
 
 func (this *QIcon) AddPixmap(pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QIcon_addPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QIcon) AddFile(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -190,6 +229,7 @@ func (this *QIcon) AddFile(fileName string) {
 }
 
 func (this *QIcon) AvailableSizes() []QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QIcon_availableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -202,10 +242,12 @@ func (this *QIcon) AvailableSizes() []QSize {
 }
 
 func (this *QIcon) SetIsMask(isMask bool) {
+	defer runtime.KeepAlive(this)
 	C.QIcon_setIsMask(this.h, (C.bool)(isMask))
 }
 
 func (this *QIcon) IsMask() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIcon_isMask(this.h))
 }
 
@@ -220,6 +262,7 @@ func QIcon_FromTheme(name string) *QIcon {
 }
 
 func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
+	defer runtime.KeepAlive(fallback)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -324,110 +367,155 @@ func QIcon_SetFallbackThemeName(name string) {
 }
 
 func (this *QIcon) Pixmap4(size *QSize, mode QIcon__Mode) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap4(this.h, size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap5(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap5(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap6(w int, h int, mode QIcon__Mode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmap6(this.h, (C.int)(w), (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap7(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmap7(this.h, (C.int)(w), (C.int)(h), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap8(extent int, mode QIcon__Mode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmap8(this.h, (C.int)(extent), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap9(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QIcon_pixmap9(this.h, (C.int)(extent), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap10(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap10(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap11(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap11(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize3(size *QSize, mode QIcon__Mode) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize3(this.h, size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize4(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize4(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize5(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize5(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) ActualSize6(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize6(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QIcon_paint3(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment))
 }
 
 func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment AlignmentFlag, mode QIcon__Mode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QIcon_paint4(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode))
 }
 
 func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment AlignmentFlag, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QIcon_paint5(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIcon) Paint6(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QIcon_paint6(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment))
 }
 
 func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag, mode QIcon__Mode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QIcon_paint7(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode))
 }
 
 func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QIcon_paint8(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIcon) AddPixmap2(pixmap *QPixmap, mode QIcon__Mode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QIcon_addPixmap2(this.h, pixmap.cPointer(), (C.int)(mode))
 }
 
 func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QIcon_addPixmap3(this.h, pixmap.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIcon) AddFile2(fileName string, size *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -436,6 +524,8 @@ func (this *QIcon) AddFile2(fileName string, size *QSize) {
 }
 
 func (this *QIcon) AddFile3(fileName string, size *QSize, mode QIcon__Mode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -444,6 +534,8 @@ func (this *QIcon) AddFile3(fileName string, size *QSize, mode QIcon__Mode) {
 }
 
 func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -452,6 +544,7 @@ func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, stat
 }
 
 func (this *QIcon) AvailableSizesWithMode(mode QIcon__Mode) []QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QIcon_availableSizesWithMode(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -464,6 +557,7 @@ func (this *QIcon) AvailableSizesWithMode(mode QIcon__Mode) []QSize {
 }
 
 func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QIcon_availableSizes2(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -487,8 +581,9 @@ func (this *QIcon) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIcon{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIcon) {
-		C.QIcon_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIcon_delete((*C.QIcon)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

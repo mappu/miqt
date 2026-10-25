@@ -16,8 +16,15 @@ import (
 
 type QBitmap struct {
 	h  *C.QBitmap
-	gc *[1]*C.QBitmap
+	gc *[1]unsafe.Pointer
 	*QPixmap
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBitmap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPixmap.miqtSetGC(gc)
 }
 
 func (this *QBitmap) cPointer() *C.QBitmap {
@@ -59,6 +66,7 @@ func NewQBitmap() *QBitmap {
 
 // NewQBitmap2 constructs a new QBitmap object.
 func NewQBitmap2(param1 *QPixmap) *QBitmap {
+	defer runtime.KeepAlive(param1)
 
 	return newQBitmap(C.QBitmap_new2(param1.cPointer()))
 }
@@ -71,6 +79,7 @@ func NewQBitmap3(w int, h int) *QBitmap {
 
 // NewQBitmap4 constructs a new QBitmap object.
 func NewQBitmap4(param1 *QSize) *QBitmap {
+	defer runtime.KeepAlive(param1)
 
 	return newQBitmap(C.QBitmap_new4(param1.cPointer()))
 }
@@ -87,6 +96,7 @@ func NewQBitmap5(fileName string) *QBitmap {
 
 // NewQBitmap6 constructs a new QBitmap object.
 func NewQBitmap6(other *QBitmap) *QBitmap {
+	defer runtime.KeepAlive(other)
 
 	return newQBitmap(C.QBitmap_new6(other.cPointer()))
 }
@@ -104,64 +114,81 @@ func NewQBitmap7(fileName string, format string) *QBitmap {
 }
 
 func (this *QBitmap) OperatorAssign(other *QBitmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QBitmap_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QBitmap) OperatorAssignWithQPixmap(param1 *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QBitmap_operatorAssignWithQPixmap(this.h, param1.cPointer())
 }
 
 func (this *QBitmap) Swap(other *QBitmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QBitmap_swap(this.h, other.cPointer())
 }
 
 func (this *QBitmap) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QBitmap_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QBitmap_clear(this.h)
 }
 
 func QBitmap_FromImage(image *QImage) *QBitmap {
+	defer runtime.KeepAlive(image)
 	_goptr := newQBitmap(C.QBitmap_fromImage(image.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
+	defer runtime.KeepAlive(size)
 	_goptr := newQBitmap(C.QBitmap_fromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) Transformed(param1 *QMatrix) *QBitmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQBitmap(C.QBitmap_transformed(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) TransformedWithMatrix(matrix *QTransform) *QBitmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	_goptr := newQBitmap(C.QBitmap_transformedWithMatrix(this.h, matrix.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromImage2(image *QImage, flags ImageConversionFlag) *QBitmap {
+	defer runtime.KeepAlive(image)
 	_goptr := newQBitmap(C.QBitmap_fromImage2(image.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData2(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
+	defer runtime.KeepAlive(size)
 	_goptr := newQBitmap(C.QBitmap_fromData2(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QBitmap_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -187,6 +214,7 @@ func miqt_exec_callback_QBitmap_devType(self *C.QBitmap, cb C.intptr_t) C.int {
 }
 
 func (this *QBitmap) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QBitmap_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -206,12 +234,14 @@ func miqt_exec_callback_QBitmap_paintEngine(self *C.QBitmap, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QBitmap{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBitmap) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QBitmap_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -240,6 +270,8 @@ func miqt_exec_callback_QBitmap_metric(self *C.QBitmap, cb C.intptr_t, param1 C.
 }
 
 func (this *QBitmap) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QBitmap_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -266,6 +298,8 @@ func miqt_exec_callback_QBitmap_initPainter(self *C.QBitmap, cb C.intptr_t, pain
 }
 
 func (this *QBitmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QBitmap_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -288,12 +322,14 @@ func miqt_exec_callback_QBitmap_redirected(self *C.QBitmap, cb C.intptr_t, offse
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QBitmap{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBitmap) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QBitmap_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -313,6 +349,7 @@ func miqt_exec_callback_QBitmap_sharedPainter(self *C.QBitmap, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QBitmap{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -330,8 +367,9 @@ func (this *QBitmap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBitmap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBitmap) {
-		C.QBitmap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBitmap_delete((*C.QBitmap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

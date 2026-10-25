@@ -17,8 +17,15 @@ import (
 
 type QPieSeries struct {
 	h  *C.QPieSeries
-	gc *[1]*C.QPieSeries
+	gc *[1]unsafe.Pointer
 	*QAbstractSeries
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPieSeries) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractSeries.miqtSetGC(gc)
 }
 
 func (this *QPieSeries) cPointer() *C.QPieSeries {
@@ -60,15 +67,18 @@ func NewQPieSeries() *QPieSeries {
 
 // NewQPieSeries2 constructs a new QPieSeries object.
 func NewQPieSeries2(parent *qt6.QObject) *QPieSeries {
+	defer runtime.KeepAlive(parent)
 
 	return newQPieSeries(C.QPieSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPieSeries) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPieSeries_metaObject(this.h)))
 }
 
 func (this *QPieSeries) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPieSeries_metacast(this.h, param1_Cstring))
@@ -84,14 +94,19 @@ func QPieSeries_Tr(s string) string {
 }
 
 func (this *QPieSeries) Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QPieSeries_type(this.h))
 }
 
 func (this *QPieSeries) Append(slice *QPieSlice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	return (bool)(C.QPieSeries_append(this.h, slice.cPointer()))
 }
 
 func (this *QPieSeries) AppendWithSlices(slices []*QPieSlice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slices)
 	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
 	defer C.free(unsafe.Pointer(slices_CArray_ptr))
 	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
@@ -103,10 +118,15 @@ func (this *QPieSeries) AppendWithSlices(slices []*QPieSlice) bool {
 }
 
 func (this *QPieSeries) OperatorShiftLeft(slice *QPieSlice) *QPieSeries {
-	return newQPieSeries(C.QPieSeries_operatorShiftLeft(this.h, slice.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
+	_ret := newQPieSeries(C.QPieSeries_operatorShiftLeft(this.h, slice.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPieSeries) Append2(label string, value float64) *QPieSlice {
+	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -115,22 +135,30 @@ func (this *QPieSeries) Append2(label string, value float64) *QPieSlice {
 }
 
 func (this *QPieSeries) Insert(index int, slice *QPieSlice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	return (bool)(C.QPieSeries_insert(this.h, (C.int)(index), slice.cPointer()))
 }
 
 func (this *QPieSeries) Remove(slice *QPieSlice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	return (bool)(C.QPieSeries_remove(this.h, slice.cPointer()))
 }
 
 func (this *QPieSeries) Take(slice *QPieSlice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	return (bool)(C.QPieSeries_take(this.h, slice.cPointer()))
 }
 
 func (this *QPieSeries) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_clear(this.h)
 }
 
 func (this *QPieSeries) Slices() []*QPieSlice {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPieSeries_slices(this.h)
 	_ret := make([]*QPieSlice, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QPieSlice)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -141,74 +169,93 @@ func (this *QPieSeries) Slices() []*QPieSlice {
 }
 
 func (this *QPieSeries) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPieSeries_count(this.h))
 }
 
 func (this *QPieSeries) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPieSeries_isEmpty(this.h))
 }
 
 func (this *QPieSeries) Sum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_sum(this.h))
 }
 
 func (this *QPieSeries) SetHoleSize(holeSize float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setHoleSize(this.h, (C.double)(holeSize))
 }
 
 func (this *QPieSeries) HoleSize() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_holeSize(this.h))
 }
 
 func (this *QPieSeries) SetHorizontalPosition(relativePosition float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setHorizontalPosition(this.h, (C.double)(relativePosition))
 }
 
 func (this *QPieSeries) HorizontalPosition() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_horizontalPosition(this.h))
 }
 
 func (this *QPieSeries) SetVerticalPosition(relativePosition float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setVerticalPosition(this.h, (C.double)(relativePosition))
 }
 
 func (this *QPieSeries) VerticalPosition() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_verticalPosition(this.h))
 }
 
 func (this *QPieSeries) SetPieSize(relativeSize float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setPieSize(this.h, (C.double)(relativeSize))
 }
 
 func (this *QPieSeries) PieSize() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_pieSize(this.h))
 }
 
 func (this *QPieSeries) SetPieStartAngle(startAngle float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setPieStartAngle(this.h, (C.double)(startAngle))
 }
 
 func (this *QPieSeries) PieStartAngle() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_pieStartAngle(this.h))
 }
 
 func (this *QPieSeries) SetPieEndAngle(endAngle float64) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setPieEndAngle(this.h, (C.double)(endAngle))
 }
 
 func (this *QPieSeries) PieEndAngle() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSeries_pieEndAngle(this.h))
 }
 
 func (this *QPieSeries) SetLabelsVisible() {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setLabelsVisible(this.h)
 }
 
 func (this *QPieSeries) SetLabelsPosition(position QPieSlice__LabelPosition) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setLabelsPosition(this.h, (C.int)(position))
 }
 
 func (this *QPieSeries) Added(slices []*QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slices)
 	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
 	defer C.free(unsafe.Pointer(slices_CArray_ptr))
 	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
@@ -242,6 +289,8 @@ func miqt_exec_callback_QPieSeries_added(cb C.intptr_t, slices C.struct_miqt_arr
 }
 
 func (this *QPieSeries) Removed(slices []*QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slices)
 	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
 	defer C.free(unsafe.Pointer(slices_CArray_ptr))
 	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
@@ -275,6 +324,8 @@ func miqt_exec_callback_QPieSeries_removed(cb C.intptr_t, slices C.struct_miqt_a
 }
 
 func (this *QPieSeries) Clicked(slice *QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	C.QPieSeries_clicked(this.h, slice.cPointer())
 }
 func (this *QPieSeries) OnClicked(slot func(slice *QPieSlice)) {
@@ -295,6 +346,8 @@ func miqt_exec_callback_QPieSeries_clicked(cb C.intptr_t, slice *C.QPieSlice) {
 }
 
 func (this *QPieSeries) Hovered(slice *QPieSlice, state bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	C.QPieSeries_hovered(this.h, slice.cPointer(), (C.bool)(state))
 }
 func (this *QPieSeries) OnHovered(slot func(slice *QPieSlice, state bool)) {
@@ -317,6 +370,8 @@ func miqt_exec_callback_QPieSeries_hovered(cb C.intptr_t, slice *C.QPieSlice, st
 }
 
 func (this *QPieSeries) Pressed(slice *QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	C.QPieSeries_pressed(this.h, slice.cPointer())
 }
 func (this *QPieSeries) OnPressed(slot func(slice *QPieSlice)) {
@@ -337,6 +392,8 @@ func miqt_exec_callback_QPieSeries_pressed(cb C.intptr_t, slice *C.QPieSlice) {
 }
 
 func (this *QPieSeries) Released(slice *QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	C.QPieSeries_released(this.h, slice.cPointer())
 }
 func (this *QPieSeries) OnReleased(slot func(slice *QPieSlice)) {
@@ -357,6 +414,8 @@ func miqt_exec_callback_QPieSeries_released(cb C.intptr_t, slice *C.QPieSlice) {
 }
 
 func (this *QPieSeries) DoubleClicked(slice *QPieSlice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(slice)
 	C.QPieSeries_doubleClicked(this.h, slice.cPointer())
 }
 func (this *QPieSeries) OnDoubleClicked(slot func(slice *QPieSlice)) {
@@ -377,6 +436,7 @@ func miqt_exec_callback_QPieSeries_doubleClicked(cb C.intptr_t, slice *C.QPieSli
 }
 
 func (this *QPieSeries) CountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_countChanged(this.h)
 }
 func (this *QPieSeries) OnCountChanged(slot func()) {
@@ -394,6 +454,7 @@ func miqt_exec_callback_QPieSeries_countChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSeries) SumChanged() {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_sumChanged(this.h)
 }
 func (this *QPieSeries) OnSumChanged(slot func()) {
@@ -433,11 +494,13 @@ func QPieSeries_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPieSeries) SetLabelsVisibleWithVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QPieSeries_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 // Sender can only be called from a QPieSeries that was directly constructed.
 func (this *QPieSeries) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPieSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -452,6 +515,7 @@ func (this *QPieSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QPieSeries that was directly constructed.
 func (this *QPieSeries) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPieSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -466,6 +530,7 @@ func (this *QPieSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPieSeries that was directly constructed.
 func (this *QPieSeries) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -482,6 +547,8 @@ func (this *QPieSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPieSeries that was directly constructed.
 func (this *QPieSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPieSeries_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -495,6 +562,7 @@ func (this *QPieSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QPieSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QPieSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -520,6 +588,8 @@ func miqt_exec_callback_QPieSeries_type(self *C.QPieSeries, cb C.intptr_t) C.int
 }
 
 func (this *QPieSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -548,6 +618,9 @@ func miqt_exec_callback_QPieSeries_event(self *C.QPieSeries, cb C.intptr_t, even
 }
 
 func (this *QPieSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -578,6 +651,8 @@ func miqt_exec_callback_QPieSeries_eventFilter(self *C.QPieSeries, cb C.intptr_t
 }
 
 func (this *QPieSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -604,6 +679,8 @@ func miqt_exec_callback_QPieSeries_timerEvent(self *C.QPieSeries, cb C.intptr_t,
 }
 
 func (this *QPieSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -630,6 +707,8 @@ func miqt_exec_callback_QPieSeries_childEvent(self *C.QPieSeries, cb C.intptr_t,
 }
 
 func (this *QPieSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -656,6 +735,8 @@ func miqt_exec_callback_QPieSeries_customEvent(self *C.QPieSeries, cb C.intptr_t
 }
 
 func (this *QPieSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPieSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -682,6 +763,8 @@ func miqt_exec_callback_QPieSeries_connectNotify(self *C.QPieSeries, cb C.intptr
 }
 
 func (this *QPieSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPieSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -719,8 +802,9 @@ func (this *QPieSeries) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPieSeries{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPieSeries) {
-		C.QPieSeries_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPieSeries_delete((*C.QPieSeries)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

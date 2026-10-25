@@ -16,9 +16,17 @@ import (
 
 type QPdfWriter struct {
 	h  *C.QPdfWriter
-	gc *[1]*C.QPdfWriter
+	gc *[1]unsafe.Pointer
 	*QObject
 	*QPagedPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfWriter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
+	this.QPagedPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QPdfWriter) cPointer() *C.QPdfWriter {
@@ -66,15 +74,18 @@ func NewQPdfWriter(filename string) *QPdfWriter {
 
 // NewQPdfWriter2 constructs a new QPdfWriter object.
 func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
+	defer runtime.KeepAlive(device)
 
 	return newQPdfWriter(C.QPdfWriter_new2(device.cPointer()))
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPdfWriter_metaObject(this.h))
 }
 
 func (this *QPdfWriter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfWriter_metacast(this.h, param1_Cstring))
@@ -90,14 +101,17 @@ func QPdfWriter_Tr(s string) string {
 }
 
 func (this *QPdfWriter) SetPdfVersion(version QPagedPaintDevice__PdfVersion) {
+	defer runtime.KeepAlive(this)
 	C.QPdfWriter_setPdfVersion(this.h, (C.int)(version))
 }
 
 func (this *QPdfWriter) PdfVersion() QPagedPaintDevice__PdfVersion {
+	defer runtime.KeepAlive(this)
 	return (QPagedPaintDevice__PdfVersion)(C.QPdfWriter_pdfVersion(this.h))
 }
 
 func (this *QPdfWriter) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfWriter_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -105,6 +119,7 @@ func (this *QPdfWriter) Title() string {
 }
 
 func (this *QPdfWriter) SetTitle(title string) {
+	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -113,6 +128,7 @@ func (this *QPdfWriter) SetTitle(title string) {
 }
 
 func (this *QPdfWriter) Creator() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfWriter_creator(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -120,6 +136,7 @@ func (this *QPdfWriter) Creator() string {
 }
 
 func (this *QPdfWriter) SetCreator(creator string) {
+	defer runtime.KeepAlive(this)
 	creator_ms := C.struct_miqt_string{}
 	creator_ms.data = C.CString(creator)
 	creator_ms.len = C.size_t(len(creator))
@@ -128,18 +145,22 @@ func (this *QPdfWriter) SetCreator(creator string) {
 }
 
 func (this *QPdfWriter) NewPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfWriter_newPage(this.h))
 }
 
 func (this *QPdfWriter) SetResolution(resolution int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfWriter_setResolution(this.h, (C.int)(resolution))
 }
 
 func (this *QPdfWriter) Resolution() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfWriter_resolution(this.h))
 }
 
 func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata []byte) {
+	defer runtime.KeepAlive(this)
 	xmpMetadata_alias := C.struct_miqt_string{}
 	if len(xmpMetadata) > 0 {
 		xmpMetadata_alias.data = (*C.char)(unsafe.Pointer(&xmpMetadata[0]))
@@ -151,6 +172,7 @@ func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata []byte) {
 }
 
 func (this *QPdfWriter) DocumentXmpMetadata() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QPdfWriter_documentXmpMetadata(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -158,6 +180,7 @@ func (this *QPdfWriter) DocumentXmpMetadata() []byte {
 }
 
 func (this *QPdfWriter) AddFileAttachment(fileName string, data []byte) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -195,6 +218,7 @@ func QPdfWriter_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPdfWriter) AddFileAttachment2(fileName string, data []byte, mimeType string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -215,6 +239,7 @@ func (this *QPdfWriter) AddFileAttachment2(fileName string, data []byte, mimeTyp
 
 // Sender can only be called from a QPdfWriter that was directly constructed.
 func (this *QPdfWriter) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPdfWriter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -229,6 +254,7 @@ func (this *QPdfWriter) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPdfWriter that was directly constructed.
 func (this *QPdfWriter) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfWriter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -243,6 +269,7 @@ func (this *QPdfWriter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfWriter that was directly constructed.
 func (this *QPdfWriter) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -259,6 +286,8 @@ func (this *QPdfWriter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfWriter that was directly constructed.
 func (this *QPdfWriter) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfWriter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -272,6 +301,7 @@ func (this *QPdfWriter) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPdfWriter) callVirtualBase_NewPage() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfWriter_virtualbase_newPage(unsafe.Pointer(this.h)))
 
@@ -297,6 +327,7 @@ func miqt_exec_callback_QPdfWriter_newPage(self *C.QPdfWriter, cb C.intptr_t) C.
 }
 
 func (this *QPdfWriter) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QPdfWriter_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -316,12 +347,14 @@ func miqt_exec_callback_QPdfWriter_paintEngine(self *C.QPdfWriter, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPdfWriter) callVirtualBase_Metric(id QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPdfWriter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(id)))
 
@@ -350,6 +383,8 @@ func miqt_exec_callback_QPdfWriter_metric(self *C.QPdfWriter, cb C.intptr_t, id 
 }
 
 func (this *QPdfWriter) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfWriter_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -378,6 +413,9 @@ func miqt_exec_callback_QPdfWriter_event(self *C.QPdfWriter, cb C.intptr_t, even
 }
 
 func (this *QPdfWriter) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfWriter_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -408,6 +446,8 @@ func miqt_exec_callback_QPdfWriter_eventFilter(self *C.QPdfWriter, cb C.intptr_t
 }
 
 func (this *QPdfWriter) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfWriter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -434,6 +474,8 @@ func miqt_exec_callback_QPdfWriter_timerEvent(self *C.QPdfWriter, cb C.intptr_t,
 }
 
 func (this *QPdfWriter) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfWriter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -460,6 +502,8 @@ func miqt_exec_callback_QPdfWriter_childEvent(self *C.QPdfWriter, cb C.intptr_t,
 }
 
 func (this *QPdfWriter) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfWriter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -486,6 +530,8 @@ func miqt_exec_callback_QPdfWriter_customEvent(self *C.QPdfWriter, cb C.intptr_t
 }
 
 func (this *QPdfWriter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfWriter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -512,6 +558,8 @@ func miqt_exec_callback_QPdfWriter_connectNotify(self *C.QPdfWriter, cb C.intptr
 }
 
 func (this *QPdfWriter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfWriter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -538,6 +586,8 @@ func miqt_exec_callback_QPdfWriter_disconnectNotify(self *C.QPdfWriter, cb C.int
 }
 
 func (this *QPdfWriter) callVirtualBase_SetPageLayout(pageLayout *QPageLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageLayout)
 
 	return (bool)(C.QPdfWriter_virtualbase_setPageLayout(unsafe.Pointer(this.h), pageLayout.cPointer()))
 
@@ -566,6 +616,8 @@ func miqt_exec_callback_QPdfWriter_setPageLayout(self *C.QPdfWriter, cb C.intptr
 }
 
 func (this *QPdfWriter) callVirtualBase_SetPageSize(pageSize *QPageSize) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageSize)
 
 	return (bool)(C.QPdfWriter_virtualbase_setPageSize(unsafe.Pointer(this.h), pageSize.cPointer()))
 
@@ -594,6 +646,7 @@ func miqt_exec_callback_QPdfWriter_setPageSize(self *C.QPdfWriter, cb C.intptr_t
 }
 
 func (this *QPdfWriter) callVirtualBase_SetPageOrientation(orientation QPageLayout__Orientation) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfWriter_virtualbase_setPageOrientation(unsafe.Pointer(this.h), (C.int)(orientation)))
 
@@ -622,6 +675,8 @@ func miqt_exec_callback_QPdfWriter_setPageOrientation(self *C.QPdfWriter, cb C.i
 }
 
 func (this *QPdfWriter) callVirtualBase_SetPageMargins(margins *QMarginsF, units QPageLayout__Unit) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 
 	return (bool)(C.QPdfWriter_virtualbase_setPageMargins(unsafe.Pointer(this.h), margins.cPointer(), (C.int)(units)))
 
@@ -652,6 +707,8 @@ func miqt_exec_callback_QPdfWriter_setPageMargins(self *C.QPdfWriter, cb C.intpt
 }
 
 func (this *QPdfWriter) callVirtualBase_SetPageRanges(ranges *QPageRanges) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ranges)
 
 	C.QPdfWriter_virtualbase_setPageRanges(unsafe.Pointer(this.h), ranges.cPointer())
 
@@ -678,6 +735,7 @@ func miqt_exec_callback_QPdfWriter_setPageRanges(self *C.QPdfWriter, cb C.intptr
 }
 
 func (this *QPdfWriter) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPdfWriter_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -703,6 +761,8 @@ func miqt_exec_callback_QPdfWriter_devType(self *C.QPdfWriter, cb C.intptr_t) C.
 }
 
 func (this *QPdfWriter) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPdfWriter_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -729,6 +789,8 @@ func miqt_exec_callback_QPdfWriter_initPainter(self *C.QPdfWriter, cb C.intptr_t
 }
 
 func (this *QPdfWriter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPdfWriter_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -751,12 +813,14 @@ func miqt_exec_callback_QPdfWriter_redirected(self *C.QPdfWriter, cb C.intptr_t,
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPdfWriter) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QPdfWriter_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -776,6 +840,7 @@ func miqt_exec_callback_QPdfWriter_sharedPainter(self *C.QPdfWriter, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -793,8 +858,9 @@ func (this *QPdfWriter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfWriter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfWriter) {
-		C.QPdfWriter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfWriter_delete((*C.QPdfWriter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

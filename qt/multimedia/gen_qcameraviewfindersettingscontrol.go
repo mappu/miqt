@@ -27,8 +27,15 @@ const (
 
 type QCameraViewfinderSettingsControl struct {
 	h  *C.QCameraViewfinderSettingsControl
-	gc *[1]*C.QCameraViewfinderSettingsControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraViewfinderSettingsControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraViewfinderSettingsControl) cPointer() *C.QCameraViewfinderSettingsControl {
@@ -63,10 +70,12 @@ func UnsafeNewQCameraViewfinderSettingsControl(h unsafe.Pointer) *QCameraViewfin
 }
 
 func (this *QCameraViewfinderSettingsControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl_metacast(this.h, param1_Cstring))
@@ -91,16 +100,20 @@ func QCameraViewfinderSettingsControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinderSettingsControl) IsViewfinderParameterSupported(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraViewfinderSettingsControl_isViewfinderParameterSupported(this.h, (C.int)(parameter)))
 }
 
 func (this *QCameraViewfinderSettingsControl) ViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinderSettingsControl_viewfinderParameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl) SetViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QCameraViewfinderSettingsControl_setViewfinderParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
 }
 
@@ -160,16 +173,24 @@ func (this *QCameraViewfinderSettingsControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraViewfinderSettingsControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraViewfinderSettingsControl) {
-		C.QCameraViewfinderSettingsControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraViewfinderSettingsControl_delete((*C.QCameraViewfinderSettingsControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCameraViewfinderSettingsControl2 struct {
 	h  *C.QCameraViewfinderSettingsControl2
-	gc *[1]*C.QCameraViewfinderSettingsControl2
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraViewfinderSettingsControl2) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraViewfinderSettingsControl2) cPointer() *C.QCameraViewfinderSettingsControl2 {
@@ -204,10 +225,12 @@ func UnsafeNewQCameraViewfinderSettingsControl2(h unsafe.Pointer) *QCameraViewfi
 }
 
 func (this *QCameraViewfinderSettingsControl2) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl2_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl2) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl2_metacast(this.h, param1_Cstring))
@@ -232,6 +255,7 @@ func QCameraViewfinderSettingsControl2_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []QCameraViewfinderSettings {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraViewfinderSettingsControl2_supportedViewfinderSettings(this.h)
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -244,12 +268,15 @@ func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []Q
 }
 
 func (this *QCameraViewfinderSettingsControl2) ViewfinderSettings() *QCameraViewfinderSettings {
+	defer runtime.KeepAlive(this)
 	_goptr := newQCameraViewfinderSettings(C.QCameraViewfinderSettingsControl2_viewfinderSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl2) SetViewfinderSettings(settings *QCameraViewfinderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	C.QCameraViewfinderSettingsControl2_setViewfinderSettings(this.h, settings.cPointer())
 }
 
@@ -309,8 +336,9 @@ func (this *QCameraViewfinderSettingsControl2) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraViewfinderSettingsControl2{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraViewfinderSettingsControl2) {
-		C.QCameraViewfinderSettingsControl2_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraViewfinderSettingsControl2_delete((*C.QCameraViewfinderSettingsControl2)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

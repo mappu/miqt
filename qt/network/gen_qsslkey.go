@@ -16,7 +16,13 @@ import (
 
 type QSslKey struct {
 	h  *C.QSslKey
-	gc *[1]*C.QSslKey
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslKey) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslKey) cPointer() *C.QSslKey {
@@ -68,6 +74,7 @@ func NewQSslKey2(encoded []byte, algorithm QSsl__KeyAlgorithm) *QSslKey {
 
 // NewQSslKey3 constructs a new QSslKey object.
 func NewQSslKey3(device *qt.QIODevice, algorithm QSsl__KeyAlgorithm) *QSslKey {
+	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new3((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm)))
 }
@@ -80,6 +87,7 @@ func NewQSslKey4(handle unsafe.Pointer) *QSslKey {
 
 // NewQSslKey5 constructs a new QSslKey object.
 func NewQSslKey5(other *QSslKey) *QSslKey {
+	defer runtime.KeepAlive(other)
 
 	return newQSslKey(C.QSslKey_new5(other.cPointer()))
 }
@@ -132,18 +140,21 @@ func NewQSslKey8(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__Enco
 
 // NewQSslKey9 constructs a new QSslKey object.
 func NewQSslKey9(device *qt.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat) *QSslKey {
+	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new9((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm), (C.int)(format)))
 }
 
 // NewQSslKey10 constructs a new QSslKey object.
 func NewQSslKey10(device *qt.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType) *QSslKey {
+	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new10((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm), (C.int)(format), (C.int)(typeVal)))
 }
 
 // NewQSslKey11 constructs a new QSslKey object.
 func NewQSslKey11(device *qt.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType, passPhrase []byte) *QSslKey {
+	defer runtime.KeepAlive(device)
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -162,34 +173,44 @@ func NewQSslKey12(handle unsafe.Pointer, typeVal QSsl__KeyType) *QSslKey {
 }
 
 func (this *QSslKey) OperatorAssign(other *QSslKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslKey_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslKey) Swap(other *QSslKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslKey_swap(this.h, other.cPointer())
 }
 
 func (this *QSslKey) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslKey_isNull(this.h))
 }
 
 func (this *QSslKey) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QSslKey_clear(this.h)
 }
 
 func (this *QSslKey) Length() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSslKey_length(this.h))
 }
 
 func (this *QSslKey) Type() QSsl__KeyType {
+	defer runtime.KeepAlive(this)
 	return (QSsl__KeyType)(C.QSslKey_type(this.h))
 }
 
 func (this *QSslKey) Algorithm() QSsl__KeyAlgorithm {
+	defer runtime.KeepAlive(this)
 	return (QSsl__KeyAlgorithm)(C.QSslKey_algorithm(this.h))
 }
 
 func (this *QSslKey) ToPem() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QSslKey_toPem(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -197,6 +218,7 @@ func (this *QSslKey) ToPem() []byte {
 }
 
 func (this *QSslKey) ToDer() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QSslKey_toDer(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -204,18 +226,24 @@ func (this *QSslKey) ToDer() []byte {
 }
 
 func (this *QSslKey) Handle() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QSslKey_handle(this.h))
 }
 
 func (this *QSslKey) OperatorEqual(key *QSslKey) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(key)
 	return (bool)(C.QSslKey_operatorEqual(this.h, key.cPointer()))
 }
 
 func (this *QSslKey) OperatorNotEqual(key *QSslKey) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(key)
 	return (bool)(C.QSslKey_operatorNotEqual(this.h, key.cPointer()))
 }
 
 func (this *QSslKey) ToPemWithPassPhrase(passPhrase []byte) []byte {
+	defer runtime.KeepAlive(this)
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -230,6 +258,7 @@ func (this *QSslKey) ToPemWithPassPhrase(passPhrase []byte) []byte {
 }
 
 func (this *QSslKey) ToDerWithPassPhrase(passPhrase []byte) []byte {
+	defer runtime.KeepAlive(this)
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -255,8 +284,9 @@ func (this *QSslKey) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslKey{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslKey) {
-		C.QSslKey_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslKey_delete((*C.QSslKey)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

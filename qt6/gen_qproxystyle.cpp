@@ -212,7 +212,9 @@ public:
 		QSize* sigval3 = const_cast<QSize*>(&size_ret);
 		QWidget* sigval4 = (QWidget*) widget;
 		QSize* callback_return_value = miqt_exec_callback_QProxyStyle_sizeFromContents(this, handle__sizeFromContents, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QProxyStyle_virtualbase_sizeFromContents(const void* self, int type, QStyleOption* option, QSize* size, QWidget* widget);
@@ -231,7 +233,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 		QRect* callback_return_value = miqt_exec_callback_QProxyStyle_subElementRect(this, handle__subElementRect, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QProxyStyle_virtualbase_subElementRect(const void* self, int element, QStyleOption* option, QWidget* widget);
@@ -252,7 +256,9 @@ public:
 		int sigval3 = static_cast<int>(sc_ret);
 		QWidget* sigval4 = (QWidget*) widget;
 		QRect* callback_return_value = miqt_exec_callback_QProxyStyle_subControlRect(this, handle__subControlRect, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QProxyStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* widget);
@@ -283,7 +289,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval5 = text_ms;
 		QRect* callback_return_value = miqt_exec_callback_QProxyStyle_itemTextRect(this, handle__itemTextRect, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QProxyStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text);
@@ -305,7 +313,9 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval3 = const_cast<QPixmap*>(&pixmap_ret);
 		QRect* callback_return_value = miqt_exec_callback_QProxyStyle_itemPixmapRect(this, handle__itemPixmapRect, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QProxyStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap);
@@ -408,7 +418,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 		QIcon* callback_return_value = miqt_exec_callback_QProxyStyle_standardIcon(this, handle__standardIcon, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QIcon callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QIcon* QProxyStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* option, QWidget* widget);
@@ -427,7 +439,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) opt;
 		QWidget* sigval3 = (QWidget*) widget;
 		QPixmap* callback_return_value = miqt_exec_callback_QProxyStyle_standardPixmap(this, handle__standardPixmap, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QProxyStyle_virtualbase_standardPixmap(const void* self, int standardPixmap, QStyleOption* opt, QWidget* widget);
@@ -448,7 +462,9 @@ public:
 		QPixmap* sigval2 = const_cast<QPixmap*>(&pixmap_ret);
 		QStyleOption* sigval3 = (QStyleOption*) opt;
 		QPixmap* callback_return_value = miqt_exec_callback_QProxyStyle_generatedIconPixmap(this, handle__generatedIconPixmap, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QProxyStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt);
@@ -463,7 +479,9 @@ public:
 		}
 
 		QPalette* callback_return_value = miqt_exec_callback_QProxyStyle_standardPalette(this, handle__standardPalette);
-		return *callback_return_value;
+		QPalette callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPalette* QProxyStyle_virtualbase_standardPalette(const void* self);
@@ -1266,6 +1284,26 @@ bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQProxyStyle*>(self)->QProxyStyle::disconnectNotify(*signal);
+}
+
+QSize* QProxyStyle_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QProxyStyle_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QIcon* QProxyStyle_virtualreturncopy_QIcon(QIcon* src) {
+	return new QIcon(*src);
+}
+
+QPixmap* QProxyStyle_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
+}
+
+QPalette* QProxyStyle_virtualreturncopy_QPalette(QPalette* src) {
+	return new QPalette(*src);
 }
 
 QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

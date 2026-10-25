@@ -893,7 +893,13 @@ const (
 
 type QLocale struct {
 	h  *C.QLocale
-	gc *[1]*C.QLocale
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLocale) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLocale) cPointer() *C.QLocale {
@@ -954,6 +960,7 @@ func NewQLocale4(language QLocale__Language, script QLocale__Script, country QLo
 
 // NewQLocale5 constructs a new QLocale object.
 func NewQLocale5(other *QLocale) *QLocale {
+	defer runtime.KeepAlive(other)
 
 	return newQLocale(C.QLocale_new5(other.cPointer()))
 }
@@ -965,26 +972,34 @@ func NewQLocale6(language QLocale__Language, country QLocale__Country) *QLocale 
 }
 
 func (this *QLocale) OperatorAssign(other *QLocale) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QLocale_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QLocale) Swap(other *QLocale) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QLocale_swap(this.h, other.cPointer())
 }
 
 func (this *QLocale) Language() QLocale__Language {
+	defer runtime.KeepAlive(this)
 	return (QLocale__Language)(C.QLocale_language(this.h))
 }
 
 func (this *QLocale) Script() QLocale__Script {
+	defer runtime.KeepAlive(this)
 	return (QLocale__Script)(C.QLocale_script(this.h))
 }
 
 func (this *QLocale) Country() QLocale__Country {
+	defer runtime.KeepAlive(this)
 	return (QLocale__Country)(C.QLocale_country(this.h))
 }
 
 func (this *QLocale) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -992,6 +1007,7 @@ func (this *QLocale) Name() string {
 }
 
 func (this *QLocale) Bcp47Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_bcp47Name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -999,6 +1015,7 @@ func (this *QLocale) Bcp47Name() string {
 }
 
 func (this *QLocale) NativeLanguageName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_nativeLanguageName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1006,6 +1023,7 @@ func (this *QLocale) NativeLanguageName() string {
 }
 
 func (this *QLocale) NativeCountryName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_nativeCountryName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1013,6 +1031,7 @@ func (this *QLocale) NativeCountryName() string {
 }
 
 func (this *QLocale) ToShort(s string) int16 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1021,6 +1040,7 @@ func (this *QLocale) ToShort(s string) int16 {
 }
 
 func (this *QLocale) ToUShort(s string) uint16 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1029,6 +1049,7 @@ func (this *QLocale) ToUShort(s string) uint16 {
 }
 
 func (this *QLocale) ToInt(s string) int {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1037,6 +1058,7 @@ func (this *QLocale) ToInt(s string) int {
 }
 
 func (this *QLocale) ToUInt(s string) uint {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1045,6 +1067,7 @@ func (this *QLocale) ToUInt(s string) uint {
 }
 
 func (this *QLocale) ToLong(s string) int64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1053,6 +1076,7 @@ func (this *QLocale) ToLong(s string) int64 {
 }
 
 func (this *QLocale) ToULong(s string) uint64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1061,6 +1085,7 @@ func (this *QLocale) ToULong(s string) uint64 {
 }
 
 func (this *QLocale) ToLongLong(s string) int64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1069,6 +1094,7 @@ func (this *QLocale) ToLongLong(s string) int64 {
 }
 
 func (this *QLocale) ToULongLong(s string) uint64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1077,6 +1103,7 @@ func (this *QLocale) ToULongLong(s string) uint64 {
 }
 
 func (this *QLocale) ToFloat(s string) float32 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1085,6 +1112,7 @@ func (this *QLocale) ToFloat(s string) float32 {
 }
 
 func (this *QLocale) ToDouble(s string) float64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1093,6 +1121,7 @@ func (this *QLocale) ToDouble(s string) float64 {
 }
 
 func (this *QLocale) ToString(i int64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toString(this.h, (C.longlong)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1100,6 +1129,7 @@ func (this *QLocale) ToString(i int64) string {
 }
 
 func (this *QLocale) ToStringWithQulonglong(i uint64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithQulonglong(this.h, (C.ulonglong)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1107,6 +1137,7 @@ func (this *QLocale) ToStringWithQulonglong(i uint64) string {
 }
 
 func (this *QLocale) ToStringWithLong(i int64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithLong(this.h, (C.long)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1114,6 +1145,7 @@ func (this *QLocale) ToStringWithLong(i int64) string {
 }
 
 func (this *QLocale) ToStringWithUlong(i uint64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithUlong(this.h, (C.ulong)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1121,6 +1153,7 @@ func (this *QLocale) ToStringWithUlong(i uint64) string {
 }
 
 func (this *QLocale) ToStringWithShort(i int16) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithShort(this.h, (C.short)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1128,6 +1161,7 @@ func (this *QLocale) ToStringWithShort(i int16) string {
 }
 
 func (this *QLocale) ToStringWithUshort(i uint16) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithUshort(this.h, (C.ushort)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1135,6 +1169,7 @@ func (this *QLocale) ToStringWithUshort(i uint16) string {
 }
 
 func (this *QLocale) ToStringWithInt(i int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithInt(this.h, (C.int)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1142,6 +1177,7 @@ func (this *QLocale) ToStringWithInt(i int) string {
 }
 
 func (this *QLocale) ToStringWithUint(i uint) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithUint(this.h, (C.uint)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1149,6 +1185,7 @@ func (this *QLocale) ToStringWithUint(i uint) string {
 }
 
 func (this *QLocale) ToStringWithDouble(i float64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithDouble(this.h, (C.double)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1156,6 +1193,7 @@ func (this *QLocale) ToStringWithDouble(i float64) string {
 }
 
 func (this *QLocale) ToStringWithFloat(i float32) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithFloat(this.h, (C.float)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1163,6 +1201,8 @@ func (this *QLocale) ToStringWithFloat(i float32) string {
 }
 
 func (this *QLocale) ToString2(date *QDate, formatStr string) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	formatStr_ms := C.struct_miqt_string{}
 	formatStr_ms.data = C.CString(formatStr)
 	formatStr_ms.len = C.size_t(len(formatStr))
@@ -1174,6 +1214,8 @@ func (this *QLocale) ToString2(date *QDate, formatStr string) string {
 }
 
 func (this *QLocale) ToString3(time *QTime, formatStr string) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(time)
 	formatStr_ms := C.struct_miqt_string{}
 	formatStr_ms.data = C.CString(formatStr)
 	formatStr_ms.len = C.size_t(len(formatStr))
@@ -1185,6 +1227,8 @@ func (this *QLocale) ToString3(time *QTime, formatStr string) string {
 }
 
 func (this *QLocale) ToString4(dateTime *QDateTime, format string) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -1196,6 +1240,8 @@ func (this *QLocale) ToString4(dateTime *QDateTime, format string) string {
 }
 
 func (this *QLocale) ToStringWithDate(date *QDate) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithDate(this.h, date.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1203,6 +1249,8 @@ func (this *QLocale) ToStringWithDate(date *QDate) string {
 }
 
 func (this *QLocale) ToStringWithTime(time *QTime) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(time)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithTime(this.h, time.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1210,6 +1258,8 @@ func (this *QLocale) ToStringWithTime(time *QTime) string {
 }
 
 func (this *QLocale) ToStringWithDateTime(dateTime *QDateTime) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
 	var _ms C.struct_miqt_string = C.QLocale_toStringWithDateTime(this.h, dateTime.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1217,6 +1267,9 @@ func (this *QLocale) ToStringWithDateTime(dateTime *QDateTime) string {
 }
 
 func (this *QLocale) ToString9(date *QDate, format QLocale__FormatType, cal QCalendar) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
+	defer runtime.KeepAlive(cal)
 	var _ms C.struct_miqt_string = C.QLocale_toString9(this.h, date.cPointer(), (C.int)(format), cal.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1224,6 +1277,9 @@ func (this *QLocale) ToString9(date *QDate, format QLocale__FormatType, cal QCal
 }
 
 func (this *QLocale) ToString10(dateTime *QDateTime, format QLocale__FormatType, cal QCalendar) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
+	defer runtime.KeepAlive(cal)
 	var _ms C.struct_miqt_string = C.QLocale_toString10(this.h, dateTime.cPointer(), (C.int)(format), cal.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1231,6 +1287,7 @@ func (this *QLocale) ToString10(dateTime *QDateTime, format QLocale__FormatType,
 }
 
 func (this *QLocale) DateFormat() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dateFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1238,6 +1295,7 @@ func (this *QLocale) DateFormat() string {
 }
 
 func (this *QLocale) TimeFormat() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_timeFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1245,6 +1303,7 @@ func (this *QLocale) TimeFormat() string {
 }
 
 func (this *QLocale) DateTimeFormat() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dateTimeFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1252,6 +1311,7 @@ func (this *QLocale) DateTimeFormat() string {
 }
 
 func (this *QLocale) ToDate(stringVal string) *QDate {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1262,6 +1322,7 @@ func (this *QLocale) ToDate(stringVal string) *QDate {
 }
 
 func (this *QLocale) ToTime(stringVal string) *QTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1272,6 +1333,7 @@ func (this *QLocale) ToTime(stringVal string) *QTime {
 }
 
 func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1282,6 +1344,7 @@ func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
 }
 
 func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1296,6 +1359,7 @@ func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
 }
 
 func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1310,6 +1374,7 @@ func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
 }
 
 func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1324,6 +1389,8 @@ func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
 }
 
 func (this *QLocale) ToDate3(stringVal string, format QLocale__FormatType, cal QCalendar) *QDate {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1334,6 +1401,8 @@ func (this *QLocale) ToDate3(stringVal string, format QLocale__FormatType, cal Q
 }
 
 func (this *QLocale) ToDateTime3(stringVal string, format QLocale__FormatType, cal QCalendar) *QDateTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1344,6 +1413,8 @@ func (this *QLocale) ToDateTime3(stringVal string, format QLocale__FormatType, c
 }
 
 func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QDate {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1358,6 +1429,8 @@ func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QD
 }
 
 func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar) *QDateTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1372,6 +1445,8 @@ func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar)
 }
 
 func (this *QLocale) ToTime3(stringVal string, format QLocale__FormatType, cal QCalendar) *QTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1382,6 +1457,8 @@ func (this *QLocale) ToTime3(stringVal string, format QLocale__FormatType, cal Q
 }
 
 func (this *QLocale) ToTime4(stringVal string, format string, cal QCalendar) *QTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cal)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1396,48 +1473,56 @@ func (this *QLocale) ToTime4(stringVal string, format string, cal QCalendar) *QT
 }
 
 func (this *QLocale) DecimalPoint() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_decimalPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) GroupSeparator() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_groupSeparator(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) Percent() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_percent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) ZeroDigit() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_zeroDigit(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) NegativeSign() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_negativeSign(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) PositiveSign() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_positiveSign(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) Exponential() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QLocale_exponential(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) MonthName(param1 int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_monthName(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1445,6 +1530,7 @@ func (this *QLocale) MonthName(param1 int) string {
 }
 
 func (this *QLocale) StandaloneMonthName(param1 int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_standaloneMonthName(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1452,6 +1538,7 @@ func (this *QLocale) StandaloneMonthName(param1 int) string {
 }
 
 func (this *QLocale) DayName(param1 int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dayName(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1459,6 +1546,7 @@ func (this *QLocale) DayName(param1 int) string {
 }
 
 func (this *QLocale) StandaloneDayName(param1 int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_standaloneDayName(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1466,10 +1554,12 @@ func (this *QLocale) StandaloneDayName(param1 int) string {
 }
 
 func (this *QLocale) FirstDayOfWeek() DayOfWeek {
+	defer runtime.KeepAlive(this)
 	return (DayOfWeek)(C.QLocale_firstDayOfWeek(this.h))
 }
 
 func (this *QLocale) Weekdays() []DayOfWeek {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QLocale_weekdays(this.h)
 	_ret := make([]DayOfWeek, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1480,6 +1570,7 @@ func (this *QLocale) Weekdays() []DayOfWeek {
 }
 
 func (this *QLocale) AmText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_amText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1487,6 +1578,7 @@ func (this *QLocale) AmText() string {
 }
 
 func (this *QLocale) PmText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_pmText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1494,20 +1586,24 @@ func (this *QLocale) PmText() string {
 }
 
 func (this *QLocale) MeasurementSystem() QLocale__MeasurementSystem {
+	defer runtime.KeepAlive(this)
 	return (QLocale__MeasurementSystem)(C.QLocale_measurementSystem(this.h))
 }
 
 func (this *QLocale) Collation() *QLocale {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QLocale_collation(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) TextDirection() LayoutDirection {
+	defer runtime.KeepAlive(this)
 	return (LayoutDirection)(C.QLocale_textDirection(this.h))
 }
 
 func (this *QLocale) ToUpper(str string) string {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -1519,6 +1615,7 @@ func (this *QLocale) ToUpper(str string) string {
 }
 
 func (this *QLocale) ToLower(str string) string {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -1530,6 +1627,7 @@ func (this *QLocale) ToLower(str string) string {
 }
 
 func (this *QLocale) CurrencySymbol() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_currencySymbol(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1537,6 +1635,7 @@ func (this *QLocale) CurrencySymbol() string {
 }
 
 func (this *QLocale) ToCurrencyString(param1 int64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString(this.h, (C.longlong)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1544,6 +1643,7 @@ func (this *QLocale) ToCurrencyString(param1 int64) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithQulonglong(this.h, (C.ulonglong)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1551,6 +1651,7 @@ func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithShort(param1 int16) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithShort(this.h, (C.short)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1558,6 +1659,7 @@ func (this *QLocale) ToCurrencyStringWithShort(param1 int16) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithUshort(param1 uint16) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUshort(this.h, (C.ushort)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1565,6 +1667,7 @@ func (this *QLocale) ToCurrencyStringWithUshort(param1 uint16) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithInt(param1 int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithInt(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1572,6 +1675,7 @@ func (this *QLocale) ToCurrencyStringWithInt(param1 int) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithUint(param1 uint) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUint(this.h, (C.uint)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1579,6 +1683,7 @@ func (this *QLocale) ToCurrencyStringWithUint(param1 uint) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithDouble(param1 float64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithDouble(this.h, (C.double)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1586,6 +1691,7 @@ func (this *QLocale) ToCurrencyStringWithDouble(param1 float64) string {
 }
 
 func (this *QLocale) ToCurrencyString2(param1 float64, symbol string, precision int) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -1597,6 +1703,7 @@ func (this *QLocale) ToCurrencyString2(param1 float64, symbol string, precision 
 }
 
 func (this *QLocale) ToCurrencyStringWithFloat(i float32) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithFloat(this.h, (C.float)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1604,6 +1711,7 @@ func (this *QLocale) ToCurrencyStringWithFloat(i float32) string {
 }
 
 func (this *QLocale) ToCurrencyString3(i float32, symbol string, precision int) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -1615,6 +1723,7 @@ func (this *QLocale) ToCurrencyString3(i float32, symbol string, precision int) 
 }
 
 func (this *QLocale) FormattedDataSize(bytes int64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSize(this.h, (C.longlong)(bytes))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1622,6 +1731,7 @@ func (this *QLocale) FormattedDataSize(bytes int64) string {
 }
 
 func (this *QLocale) FormattedDataSizeWithBytes(bytes int64) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSizeWithBytes(this.h, (C.longlong)(bytes))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1629,6 +1739,7 @@ func (this *QLocale) FormattedDataSizeWithBytes(bytes int64) string {
 }
 
 func (this *QLocale) UiLanguages() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QLocale_uiLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1642,10 +1753,14 @@ func (this *QLocale) UiLanguages() []string {
 }
 
 func (this *QLocale) OperatorEqual(other *QLocale) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QLocale_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QLocale) OperatorNotEqual(other *QLocale) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QLocale_operatorNotEqual(this.h, other.cPointer()))
 }
 
@@ -1671,6 +1786,7 @@ func QLocale_ScriptToString(script QLocale__Script) string {
 }
 
 func QLocale_SetDefault(locale *QLocale) {
+	defer runtime.KeepAlive(locale)
 	C.QLocale_setDefault(locale.cPointer())
 }
 
@@ -1709,14 +1825,17 @@ func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
 }
 
 func (this *QLocale) SetNumberOptions(options QLocale__NumberOption) {
+	defer runtime.KeepAlive(this)
 	C.QLocale_setNumberOptions(this.h, (C.int)(options))
 }
 
 func (this *QLocale) NumberOptions() QLocale__NumberOption {
+	defer runtime.KeepAlive(this)
 	return (QLocale__NumberOption)(C.QLocale_numberOptions(this.h))
 }
 
 func (this *QLocale) QuoteString(str string) string {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -1728,6 +1847,7 @@ func (this *QLocale) QuoteString(str string) string {
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
+	defer runtime.KeepAlive(this)
 	strl_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray_ptr))
 	strl_CArray := unsafe.Slice(strl_CArray_ptr, len(strl))
@@ -1746,6 +1866,7 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 }
 
 func (this *QLocale) ToShort2(s string, ok *bool) int16 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1754,6 +1875,7 @@ func (this *QLocale) ToShort2(s string, ok *bool) int16 {
 }
 
 func (this *QLocale) ToUShort2(s string, ok *bool) uint16 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1762,6 +1884,7 @@ func (this *QLocale) ToUShort2(s string, ok *bool) uint16 {
 }
 
 func (this *QLocale) ToInt2(s string, ok *bool) int {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1770,6 +1893,7 @@ func (this *QLocale) ToInt2(s string, ok *bool) int {
 }
 
 func (this *QLocale) ToUInt2(s string, ok *bool) uint {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1778,6 +1902,7 @@ func (this *QLocale) ToUInt2(s string, ok *bool) uint {
 }
 
 func (this *QLocale) ToLong2(s string, ok *bool) int64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1786,6 +1911,7 @@ func (this *QLocale) ToLong2(s string, ok *bool) int64 {
 }
 
 func (this *QLocale) ToULong2(s string, ok *bool) uint64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1794,6 +1920,7 @@ func (this *QLocale) ToULong2(s string, ok *bool) uint64 {
 }
 
 func (this *QLocale) ToLongLong2(s string, ok *bool) int64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1802,6 +1929,7 @@ func (this *QLocale) ToLongLong2(s string, ok *bool) int64 {
 }
 
 func (this *QLocale) ToULongLong2(s string, ok *bool) uint64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1810,6 +1938,7 @@ func (this *QLocale) ToULongLong2(s string, ok *bool) uint64 {
 }
 
 func (this *QLocale) ToFloat2(s string, ok *bool) float32 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1818,6 +1947,7 @@ func (this *QLocale) ToFloat2(s string, ok *bool) float32 {
 }
 
 func (this *QLocale) ToDouble2(s string, ok *bool) float64 {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1826,6 +1956,7 @@ func (this *QLocale) ToDouble2(s string, ok *bool) float64 {
 }
 
 func (this *QLocale) ToString12(i float64, f int8) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toString12(this.h, (C.double)(i), (C.char)(f))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1833,6 +1964,7 @@ func (this *QLocale) ToString12(i float64, f int8) string {
 }
 
 func (this *QLocale) ToString13(i float64, f int8, prec int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toString13(this.h, (C.double)(i), (C.char)(f), (C.int)(prec))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1840,6 +1972,7 @@ func (this *QLocale) ToString13(i float64, f int8, prec int) string {
 }
 
 func (this *QLocale) ToString14(i float32, f int8) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toString14(this.h, (C.float)(i), (C.char)(f))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1847,6 +1980,7 @@ func (this *QLocale) ToString14(i float32, f int8) string {
 }
 
 func (this *QLocale) ToString15(i float32, f int8, prec int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_toString15(this.h, (C.float)(i), (C.char)(f), (C.int)(prec))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1854,6 +1988,8 @@ func (this *QLocale) ToString15(i float32, f int8, prec int) string {
 }
 
 func (this *QLocale) ToString16(date *QDate, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	var _ms C.struct_miqt_string = C.QLocale_toString16(this.h, date.cPointer(), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1861,6 +1997,8 @@ func (this *QLocale) ToString16(date *QDate, format QLocale__FormatType) string 
 }
 
 func (this *QLocale) ToString17(time *QTime, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(time)
 	var _ms C.struct_miqt_string = C.QLocale_toString17(this.h, time.cPointer(), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1868,6 +2006,8 @@ func (this *QLocale) ToString17(time *QTime, format QLocale__FormatType) string 
 }
 
 func (this *QLocale) ToString18(dateTime *QDateTime, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
 	var _ms C.struct_miqt_string = C.QLocale_toString18(this.h, dateTime.cPointer(), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1875,6 +2015,7 @@ func (this *QLocale) ToString18(dateTime *QDateTime, format QLocale__FormatType)
 }
 
 func (this *QLocale) DateFormatWithFormat(format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dateFormatWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1882,6 +2023,7 @@ func (this *QLocale) DateFormatWithFormat(format QLocale__FormatType) string {
 }
 
 func (this *QLocale) TimeFormatWithFormat(format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_timeFormatWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1889,6 +2031,7 @@ func (this *QLocale) TimeFormatWithFormat(format QLocale__FormatType) string {
 }
 
 func (this *QLocale) DateTimeFormatWithFormat(format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dateTimeFormatWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1896,6 +2039,7 @@ func (this *QLocale) DateTimeFormatWithFormat(format QLocale__FormatType) string
 }
 
 func (this *QLocale) ToDate5(stringVal string, param2 QLocale__FormatType) *QDate {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1906,6 +2050,7 @@ func (this *QLocale) ToDate5(stringVal string, param2 QLocale__FormatType) *QDat
 }
 
 func (this *QLocale) ToTime5(stringVal string, param2 QLocale__FormatType) *QTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1916,6 +2061,7 @@ func (this *QLocale) ToTime5(stringVal string, param2 QLocale__FormatType) *QTim
 }
 
 func (this *QLocale) ToDateTime5(stringVal string, format QLocale__FormatType) *QDateTime {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1926,6 +2072,7 @@ func (this *QLocale) ToDateTime5(stringVal string, format QLocale__FormatType) *
 }
 
 func (this *QLocale) MonthName2(param1 int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_monthName2(this.h, (C.int)(param1), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1933,6 +2080,7 @@ func (this *QLocale) MonthName2(param1 int, format QLocale__FormatType) string {
 }
 
 func (this *QLocale) StandaloneMonthName2(param1 int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_standaloneMonthName2(this.h, (C.int)(param1), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1940,6 +2088,7 @@ func (this *QLocale) StandaloneMonthName2(param1 int, format QLocale__FormatType
 }
 
 func (this *QLocale) DayName2(param1 int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_dayName2(this.h, (C.int)(param1), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1947,6 +2096,7 @@ func (this *QLocale) DayName2(param1 int, format QLocale__FormatType) string {
 }
 
 func (this *QLocale) StandaloneDayName2(param1 int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_standaloneDayName2(this.h, (C.int)(param1), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1954,6 +2104,7 @@ func (this *QLocale) StandaloneDayName2(param1 int, format QLocale__FormatType) 
 }
 
 func (this *QLocale) CurrencySymbolWithQLocaleCurrencySymbolFormat(param1 QLocale__CurrencySymbolFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_currencySymbolWithQLocaleCurrencySymbolFormat(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1961,6 +2112,7 @@ func (this *QLocale) CurrencySymbolWithQLocaleCurrencySymbolFormat(param1 QLocal
 }
 
 func (this *QLocale) ToCurrencyString4(param1 int64, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -1972,6 +2124,7 @@ func (this *QLocale) ToCurrencyString4(param1 int64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString5(param1 uint64, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -1983,6 +2136,7 @@ func (this *QLocale) ToCurrencyString5(param1 uint64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString6(param1 int16, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -1994,6 +2148,7 @@ func (this *QLocale) ToCurrencyString6(param1 int16, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString7(param1 uint16, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -2005,6 +2160,7 @@ func (this *QLocale) ToCurrencyString7(param1 uint16, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString8(param1 int, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -2016,6 +2172,7 @@ func (this *QLocale) ToCurrencyString8(param1 int, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString9(param1 uint, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -2027,6 +2184,7 @@ func (this *QLocale) ToCurrencyString9(param1 uint, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString10(param1 float64, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -2038,6 +2196,7 @@ func (this *QLocale) ToCurrencyString10(param1 float64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString11(i float32, symbol string) string {
+	defer runtime.KeepAlive(this)
 	symbol_ms := C.struct_miqt_string{}
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
@@ -2049,6 +2208,7 @@ func (this *QLocale) ToCurrencyString11(i float32, symbol string) string {
 }
 
 func (this *QLocale) FormattedDataSize2(bytes int64, precision int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSize2(this.h, (C.longlong)(bytes), (C.int)(precision))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2056,6 +2216,7 @@ func (this *QLocale) FormattedDataSize2(bytes int64, precision int) string {
 }
 
 func (this *QLocale) FormattedDataSize3(bytes int64, precision int, format QLocale__DataSizeFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSize3(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2063,6 +2224,7 @@ func (this *QLocale) FormattedDataSize3(bytes int64, precision int, format QLoca
 }
 
 func (this *QLocale) FormattedDataSize4(bytes int64, precision int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSize4(this.h, (C.longlong)(bytes), (C.int)(precision))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2070,6 +2232,7 @@ func (this *QLocale) FormattedDataSize4(bytes int64, precision int) string {
 }
 
 func (this *QLocale) FormattedDataSize5(bytes int64, precision int, format QLocale__DataSizeFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocale_formattedDataSize5(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2077,6 +2240,7 @@ func (this *QLocale) FormattedDataSize5(bytes int64, precision int, format QLoca
 }
 
 func (this *QLocale) QuoteString2(str string, style QLocale__QuotationStyle) string {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -2099,8 +2263,9 @@ func (this *QLocale) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLocale{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLocale) {
-		C.QLocale_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLocale_delete((*C.QLocale)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

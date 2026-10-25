@@ -216,6 +216,8 @@ bool QPrintDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QPrintDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QPrintDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QPrintDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QPrintDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

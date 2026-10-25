@@ -16,8 +16,15 @@ import (
 
 type QwtPlotScaleItem struct {
 	h  *C.QwtPlotScaleItem
-	gc *[1]*C.QwtPlotScaleItem
+	gc *[1]unsafe.Pointer
 	*QwtPlotItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotScaleItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotScaleItem) cPointer() *C.QwtPlotScaleItem {
@@ -70,78 +77,104 @@ func NewQwtPlotScaleItem3(param1 QwtScaleDraw__Alignment, pos float64) *QwtPlotS
 }
 
 func (this *QwtPlotScaleItem) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotScaleItem_rtti(this.h))
 }
 
 func (this *QwtPlotScaleItem) SetScaleDiv(scaleDiv *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scaleDiv)
 	C.QwtPlotScaleItem_setScaleDiv(this.h, scaleDiv.cPointer())
 }
 
 func (this *QwtPlotScaleItem) ScaleDiv() *QwtScaleDiv {
-	return newQwtScaleDiv(C.QwtPlotScaleItem_scaleDiv(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtScaleDiv(C.QwtPlotScaleItem_scaleDiv(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtPlotScaleItem) SetScaleDivFromAxis(on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotScaleItem_setScaleDivFromAxis(this.h, (C.bool)(on))
 }
 
 func (this *QwtPlotScaleItem) IsScaleDivFromAxis() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotScaleItem_isScaleDivFromAxis(this.h))
 }
 
 func (this *QwtPlotScaleItem) SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QwtPlotScaleItem_setPalette(this.h, (*C.QPalette)(palette.UnsafePointer()))
 }
 
 func (this *QwtPlotScaleItem) Palette() *qt.QPalette {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtPlotScaleItem_palette(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotScaleItem) SetFont(font *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QwtPlotScaleItem_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QwtPlotScaleItem) Font() *qt.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QwtPlotScaleItem_font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotScaleItem) SetScaleDraw(scaleDraw *QwtScaleDraw) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scaleDraw)
 	C.QwtPlotScaleItem_setScaleDraw(this.h, scaleDraw.cPointer())
 }
 
 func (this *QwtPlotScaleItem) ScaleDraw() *QwtScaleDraw {
+	defer runtime.KeepAlive(this)
 	return newQwtScaleDraw(C.QwtPlotScaleItem_scaleDraw(this.h))
 }
 
 func (this *QwtPlotScaleItem) ScaleDraw2() *QwtScaleDraw {
+	defer runtime.KeepAlive(this)
 	return newQwtScaleDraw(C.QwtPlotScaleItem_scaleDraw2(this.h))
 }
 
 func (this *QwtPlotScaleItem) SetPosition(pos float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotScaleItem_setPosition(this.h, (C.double)(pos))
 }
 
 func (this *QwtPlotScaleItem) Position() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotScaleItem_position(this.h))
 }
 
 func (this *QwtPlotScaleItem) SetBorderDistance(borderDistance int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotScaleItem_setBorderDistance(this.h, (C.int)(borderDistance))
 }
 
 func (this *QwtPlotScaleItem) BorderDistance() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotScaleItem_borderDistance(this.h))
 }
 
 func (this *QwtPlotScaleItem) SetAlignment(alignment QwtScaleDraw__Alignment) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotScaleItem_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QwtPlotScaleItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtPlotScaleItem_updateScaleDiv(this.h, param1.cPointer(), param2.cPointer())
 }
 
@@ -157,8 +190,9 @@ func (this *QwtPlotScaleItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotScaleItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotScaleItem) {
-		C.QwtPlotScaleItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotScaleItem_delete((*C.QwtPlotScaleItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

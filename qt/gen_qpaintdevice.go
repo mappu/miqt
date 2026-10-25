@@ -32,7 +32,13 @@ const (
 
 type QPaintDevice struct {
 	h  *C.QPaintDevice
-	gc *[1]*C.QPaintDevice
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPaintDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPaintDevice) cPointer() *C.QPaintDevice {
@@ -64,62 +70,77 @@ func UnsafeNewQPaintDevice(h unsafe.Pointer) *QPaintDevice {
 }
 
 func (this *QPaintDevice) DevType() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_devType(this.h))
 }
 
 func (this *QPaintDevice) PaintingActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintDevice_paintingActive(this.h))
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return newQPaintEngine(C.QPaintDevice_paintEngine(this.h))
 }
 
 func (this *QPaintDevice) Width() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_width(this.h))
 }
 
 func (this *QPaintDevice) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_height(this.h))
 }
 
 func (this *QPaintDevice) WidthMM() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_widthMM(this.h))
 }
 
 func (this *QPaintDevice) HeightMM() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_heightMM(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_logicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_logicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_physicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_physicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatio() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_devicePixelRatio(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatioF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPaintDevice_devicePixelRatioF(this.h))
 }
 
 func (this *QPaintDevice) ColorCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_colorCount(this.h))
 }
 
 func (this *QPaintDevice) Depth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPaintDevice_depth(this.h))
 }
 
@@ -139,8 +160,9 @@ func (this *QPaintDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPaintDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintDevice) {
-		C.QPaintDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPaintDevice_delete((*C.QPaintDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

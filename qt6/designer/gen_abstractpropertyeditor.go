@@ -17,8 +17,14 @@ import (
 
 type QDesignerPropertyEditorInterface struct {
 	h  *C.QDesignerPropertyEditorInterface
-	gc *[1]*C.QDesignerPropertyEditorInterface
+	gc *[1]unsafe.Pointer
 	*qt6.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerPropertyEditorInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerPropertyEditorInterface) cPointer() *C.QDesignerPropertyEditorInterface {
@@ -54,21 +60,25 @@ func UnsafeNewQDesignerPropertyEditorInterface(h unsafe.Pointer) *QDesignerPrope
 
 // NewQDesignerPropertyEditorInterface constructs a new QDesignerPropertyEditorInterface object.
 func NewQDesignerPropertyEditorInterface(parent *qt6.QWidget) *QDesignerPropertyEditorInterface {
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerPropertyEditorInterface(C.QDesignerPropertyEditorInterface_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQDesignerPropertyEditorInterface2 constructs a new QDesignerPropertyEditorInterface object.
 func NewQDesignerPropertyEditorInterface2(parent *qt6.QWidget, flags qt6.WindowType) *QDesignerPropertyEditorInterface {
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerPropertyEditorInterface(C.QDesignerPropertyEditorInterface_new2((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QDesignerPropertyEditorInterface) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerPropertyEditorInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerPropertyEditorInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerPropertyEditorInterface_metacast(this.h, param1_Cstring))
@@ -84,18 +94,22 @@ func QDesignerPropertyEditorInterface_Tr(s string) string {
 }
 
 func (this *QDesignerPropertyEditorInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerPropertyEditorInterface_core(this.h))
 }
 
 func (this *QDesignerPropertyEditorInterface) IsReadOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerPropertyEditorInterface_isReadOnly(this.h))
 }
 
 func (this *QDesignerPropertyEditorInterface) Object() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QDesignerPropertyEditorInterface_object(this.h)))
 }
 
 func (this *QDesignerPropertyEditorInterface) CurrentPropertyName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerPropertyEditorInterface_currentPropertyName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -103,6 +117,8 @@ func (this *QDesignerPropertyEditorInterface) CurrentPropertyName() string {
 }
 
 func (this *QDesignerPropertyEditorInterface) PropertyChanged(name string, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -131,10 +147,14 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_propertyChanged(cb C.in
 }
 
 func (this *QDesignerPropertyEditorInterface) SetObject(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QDesignerPropertyEditorInterface_setObject(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QDesignerPropertyEditorInterface) SetPropertyValue(name string, value *qt6.QVariant, changed bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -143,6 +163,7 @@ func (this *QDesignerPropertyEditorInterface) SetPropertyValue(name string, valu
 }
 
 func (this *QDesignerPropertyEditorInterface) SetReadOnly(readOnly bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerPropertyEditorInterface_setReadOnly(this.h, (C.bool)(readOnly))
 }
 
@@ -170,6 +191,7 @@ func QDesignerPropertyEditorInterface_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerPropertyEditorInterface_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -182,6 +204,7 @@ func (this *QDesignerPropertyEditorInterface) UpdateMicroFocus() {
 
 // Create can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerPropertyEditorInterface_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -194,6 +217,7 @@ func (this *QDesignerPropertyEditorInterface) Create() {
 
 // Destroy can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerPropertyEditorInterface_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -206,6 +230,7 @@ func (this *QDesignerPropertyEditorInterface) Destroy() {
 
 // FocusNextChild can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerPropertyEditorInterface_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -220,6 +245,7 @@ func (this *QDesignerPropertyEditorInterface) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerPropertyEditorInterface_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -234,6 +260,7 @@ func (this *QDesignerPropertyEditorInterface) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDesignerPropertyEditorInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -248,6 +275,7 @@ func (this *QDesignerPropertyEditorInterface) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerPropertyEditorInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -262,6 +290,7 @@ func (this *QDesignerPropertyEditorInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -278,6 +307,8 @@ func (this *QDesignerPropertyEditorInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerPropertyEditorInterface that was directly constructed.
 func (this *QDesignerPropertyEditorInterface) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerPropertyEditorInterface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -291,6 +322,7 @@ func (this *QDesignerPropertyEditorInterface) IsSignalConnected(signal *qt6.QMet
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 
 	return newQDesignerFormEditorInterface(C.QDesignerPropertyEditorInterface_virtualbase_core(unsafe.Pointer(this.h)))
 
@@ -310,6 +342,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_core(self *C.QDesignerP
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_Core)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -348,6 +381,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_object(self *C.QDesigne
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QObject)(virtualReturn.UnsafePointer())
 
@@ -442,6 +476,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_setReadOnly(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerPropertyEditorInterface_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -467,6 +502,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_devType(self *C.QDesign
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -493,6 +529,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_setVisible(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_SizeHint() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -514,12 +551,14 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_sizeHint(self *C.QDesig
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QDesignerPropertyEditorInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -541,12 +580,14 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_minimumSizeHint(self *C
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QDesignerPropertyEditorInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerPropertyEditorInterface_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -575,6 +616,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_heightForWidth(self *C.
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerPropertyEditorInterface_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -600,6 +642,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_hasHeightForWidth(self 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -619,12 +662,15 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_paintEngine(self *C.QDe
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerPropertyEditorInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -653,6 +699,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_event(self *C.QDesigner
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MousePressEvent(event *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -679,6 +727,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_mousePressEvent(self *C
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MouseReleaseEvent(event *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -705,6 +755,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_mouseReleaseEvent(self 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MouseDoubleClickEvent(event *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -731,6 +783,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_mouseDoubleClickEvent(s
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MouseMoveEvent(event *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -757,6 +811,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_mouseMoveEvent(self *C.
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_WheelEvent(event *qt6.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -783,6 +839,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_wheelEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -809,6 +867,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_keyPressEvent(self *C.Q
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -835,6 +895,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_keyReleaseEvent(self *C
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -861,6 +923,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_focusInEvent(self *C.QD
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -887,6 +951,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_focusOutEvent(self *C.Q
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEnterEvent)(event.UnsafePointer()))
 
@@ -913,6 +979,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_enterEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -939,6 +1007,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_leaveEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -965,6 +1035,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_paintEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -991,6 +1063,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_moveEvent(self *C.QDesi
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -1017,6 +1091,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_resizeEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_CloseEvent(event *qt6.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1043,6 +1119,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_closeEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ContextMenuEvent(event *qt6.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1069,6 +1147,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_contextMenuEvent(self *
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_TabletEvent(event *qt6.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1095,6 +1175,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_tabletEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ActionEvent(event *qt6.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1121,6 +1203,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_actionEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DragEnterEvent(event *qt6.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1147,6 +1231,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_dragEnterEvent(self *C.
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DragMoveEvent(event *qt6.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1173,6 +1259,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_dragMoveEvent(self *C.Q
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DragLeaveEvent(event *qt6.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1199,6 +1287,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_dragLeaveEvent(self *C.
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DropEvent(event *qt6.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1225,6 +1315,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_dropEvent(self *C.QDesi
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ShowEvent(event *qt6.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1251,6 +1343,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_showEvent(self *C.QDesi
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_HideEvent(event *qt6.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1277,6 +1371,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_hideEvent(self *C.QDesi
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1318,6 +1413,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_nativeEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1344,6 +1441,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_changeEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerPropertyEditorInterface_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1372,6 +1470,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_metric(self *C.QDesigne
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_InitPainter(painter *qt6.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1398,6 +1498,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_initPainter(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1420,12 +1522,14 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_redirected(self *C.QDes
 	slotval1 := qt6.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_SharedPainter() *qt6.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1445,12 +1549,15 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_sharedPainter(self *C.Q
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_InputMethodEvent(param1 *qt6.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1477,6 +1584,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_inputMethodEvent(self *
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_InputMethodQuery(param1 qt6.InputMethodQuery) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1501,12 +1609,14 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_inputMethodQuery(self *
 	slotval1 := (qt6.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QDesignerPropertyEditorInterface_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerPropertyEditorInterface_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1535,6 +1645,9 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_focusNextPrevChild(self
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerPropertyEditorInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1565,6 +1678,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_eventFilter(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1591,6 +1706,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_timerEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1617,6 +1734,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_childEvent(self *C.QDes
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1643,6 +1762,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_customEvent(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1669,6 +1790,8 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_connectNotify(self *C.Q
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerPropertyEditorInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1706,8 +1829,9 @@ func (this *QDesignerPropertyEditorInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerPropertyEditorInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerPropertyEditorInterface) {
-		C.QDesignerPropertyEditorInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerPropertyEditorInterface_delete((*C.QDesignerPropertyEditorInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

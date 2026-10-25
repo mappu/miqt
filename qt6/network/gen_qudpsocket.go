@@ -17,8 +17,15 @@ import (
 
 type QUdpSocket struct {
 	h  *C.QUdpSocket
-	gc *[1]*C.QUdpSocket
+	gc *[1]unsafe.Pointer
 	*QAbstractSocket
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUdpSocket) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractSocket.miqtSetGC(gc)
 }
 
 func (this *QUdpSocket) cPointer() *C.QUdpSocket {
@@ -60,15 +67,18 @@ func NewQUdpSocket() *QUdpSocket {
 
 // NewQUdpSocket2 constructs a new QUdpSocket object.
 func NewQUdpSocket2(parent *qt6.QObject) *QUdpSocket {
+	defer runtime.KeepAlive(parent)
 
 	return newQUdpSocket(C.QUdpSocket_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QUdpSocket) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QUdpSocket_metaObject(this.h)))
 }
 
 func (this *QUdpSocket) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QUdpSocket_metacast(this.h, param1_Cstring))
@@ -84,66 +94,90 @@ func QUdpSocket_Tr(s string) string {
 }
 
 func (this *QUdpSocket) Bind(addr QHostAddress__SpecialAddress) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUdpSocket_bind(this.h, (C.int)(addr)))
 }
 
 func (this *QUdpSocket) JoinMulticastGroup(groupAddress *QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(groupAddress)
 	return (bool)(C.QUdpSocket_joinMulticastGroup(this.h, groupAddress.cPointer()))
 }
 
 func (this *QUdpSocket) JoinMulticastGroup2(groupAddress *QHostAddress, iface *QNetworkInterface) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(groupAddress)
+	defer runtime.KeepAlive(iface)
 	return (bool)(C.QUdpSocket_joinMulticastGroup2(this.h, groupAddress.cPointer(), iface.cPointer()))
 }
 
 func (this *QUdpSocket) LeaveMulticastGroup(groupAddress *QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(groupAddress)
 	return (bool)(C.QUdpSocket_leaveMulticastGroup(this.h, groupAddress.cPointer()))
 }
 
 func (this *QUdpSocket) LeaveMulticastGroup2(groupAddress *QHostAddress, iface *QNetworkInterface) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(groupAddress)
+	defer runtime.KeepAlive(iface)
 	return (bool)(C.QUdpSocket_leaveMulticastGroup2(this.h, groupAddress.cPointer(), iface.cPointer()))
 }
 
 func (this *QUdpSocket) MulticastInterface() *QNetworkInterface {
+	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkInterface(C.QUdpSocket_multicastInterface(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUdpSocket) SetMulticastInterface(iface *QNetworkInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iface)
 	C.QUdpSocket_setMulticastInterface(this.h, iface.cPointer())
 }
 
 func (this *QUdpSocket) HasPendingDatagrams() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUdpSocket_hasPendingDatagrams(this.h))
 }
 
 func (this *QUdpSocket) PendingDatagramSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QUdpSocket_pendingDatagramSize(this.h))
 }
 
 func (this *QUdpSocket) ReceiveDatagram() *QNetworkDatagram {
+	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagram(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUdpSocket) ReadDatagram(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QUdpSocket_readDatagram(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QUdpSocket) WriteDatagram(datagram *QNetworkDatagram) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(datagram)
 	return (int64)(C.QUdpSocket_writeDatagram(this.h, datagram.cPointer()))
 }
 
 func (this *QUdpSocket) WriteDatagram2(data string, lenVal int64, host *QHostAddress, port uint16) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(host)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QUdpSocket_writeDatagram2(this.h, data_Cstring, (C.longlong)(lenVal), host.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QUdpSocket) WriteDatagram3(datagram []byte, host *QHostAddress, port uint16) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(host)
 	datagram_alias := C.struct_miqt_string{}
 	if len(datagram) > 0 {
 		datagram_alias.data = (*C.char)(unsafe.Pointer(&datagram[0]))
@@ -177,26 +211,33 @@ func QUdpSocket_Tr3(s string, c string, n int) string {
 }
 
 func (this *QUdpSocket) Bind2(addr QHostAddress__SpecialAddress, port uint16) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUdpSocket_bind2(this.h, (C.int)(addr), (C.ushort)(port)))
 }
 
 func (this *QUdpSocket) Bind3(addr QHostAddress__SpecialAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUdpSocket_bind3(this.h, (C.int)(addr), (C.ushort)(port), (C.int)(mode)))
 }
 
 func (this *QUdpSocket) ReceiveDatagramWithMaxSize(maxSize int64) *QNetworkDatagram {
+	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagramWithMaxSize(this.h, (C.longlong)(maxSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUdpSocket) ReadDatagram2(data string, maxlen int64, host *QHostAddress) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(host)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QUdpSocket_readDatagram2(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer()))
 }
 
 func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddress, port *uint16) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(host)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QUdpSocket_readDatagram3(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer(), (*C.ushort)(unsafe.Pointer(port))))
@@ -204,6 +245,7 @@ func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddr
 
 // SetSocketState can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetSocketState(state QAbstractSocket__SocketState) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setSocketState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -216,6 +258,7 @@ func (this *QUdpSocket) SetSocketState(state QAbstractSocket__SocketState) {
 
 // SetSocketError can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetSocketError(socketError QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setSocketError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(socketError))
@@ -228,6 +271,7 @@ func (this *QUdpSocket) SetSocketError(socketError QAbstractSocket__SocketError)
 
 // SetLocalPort can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetLocalPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -240,6 +284,8 @@ func (this *QUdpSocket) SetLocalPort(port uint16) {
 
 // SetLocalAddress can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetLocalAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setLocalAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -252,6 +298,7 @@ func (this *QUdpSocket) SetLocalAddress(address *QHostAddress) {
 
 // SetPeerPort can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetPeerPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -264,6 +311,8 @@ func (this *QUdpSocket) SetPeerPort(port uint16) {
 
 // SetPeerAddress can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetPeerAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setPeerAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -276,6 +325,7 @@ func (this *QUdpSocket) SetPeerAddress(address *QHostAddress) {
 
 // SetPeerName can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetPeerName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -292,6 +342,7 @@ func (this *QUdpSocket) SetPeerName(name string) {
 
 // SetOpenMode can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUdpSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -304,6 +355,7 @@ func (this *QUdpSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
 
 // SetErrorString can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -320,6 +372,7 @@ func (this *QUdpSocket) SetErrorString(errorString string) {
 
 // Sender can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QUdpSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -334,6 +387,7 @@ func (this *QUdpSocket) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUdpSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -348,6 +402,7 @@ func (this *QUdpSocket) SenderSignalIndex() int {
 
 // Receivers can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -364,6 +419,8 @@ func (this *QUdpSocket) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QUdpSocket that was directly constructed.
 func (this *QUdpSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QUdpSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -377,6 +434,7 @@ func (this *QUdpSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QUdpSocket) callVirtualBase_Resume() {
+	defer runtime.KeepAlive(this)
 
 	C.QUdpSocket_virtualbase_resume(unsafe.Pointer(this.h))
 
@@ -400,6 +458,8 @@ func miqt_exec_callback_QUdpSocket_resume(self *C.QUdpSocket, cb C.intptr_t) {
 }
 
 func (this *QUdpSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	return (bool)(C.QUdpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 
@@ -432,6 +492,7 @@ func miqt_exec_callback_QUdpSocket_bind(self *C.QUdpSocket, cb C.intptr_t, addre
 }
 
 func (this *QUdpSocket) callVirtualBase_ConnectToHost(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -470,6 +531,7 @@ func miqt_exec_callback_QUdpSocket_connectToHost(self *C.QUdpSocket, cb C.intptr
 }
 
 func (this *QUdpSocket) callVirtualBase_DisconnectFromHost() {
+	defer runtime.KeepAlive(this)
 
 	C.QUdpSocket_virtualbase_disconnectFromHost(unsafe.Pointer(this.h))
 
@@ -493,6 +555,7 @@ func miqt_exec_callback_QUdpSocket_disconnectFromHost(self *C.QUdpSocket, cb C.i
 }
 
 func (this *QUdpSocket) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QUdpSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -518,6 +581,7 @@ func miqt_exec_callback_QUdpSocket_bytesAvailable(self *C.QUdpSocket, cb C.intpt
 }
 
 func (this *QUdpSocket) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QUdpSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -543,6 +607,7 @@ func miqt_exec_callback_QUdpSocket_bytesToWrite(self *C.QUdpSocket, cb C.intptr_
 }
 
 func (this *QUdpSocket) callVirtualBase_SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 
 	C.QUdpSocket_virtualbase_setReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
 
@@ -569,6 +634,7 @@ func miqt_exec_callback_QUdpSocket_setReadBufferSize(self *C.QUdpSocket, cb C.in
 }
 
 func (this *QUdpSocket) callVirtualBase_SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 
 	return (uintptr)(C.QUdpSocket_virtualbase_socketDescriptor(unsafe.Pointer(this.h)))
 
@@ -594,6 +660,7 @@ func miqt_exec_callback_QUdpSocket_socketDescriptor(self *C.QUdpSocket, cb C.int
 }
 
 func (this *QUdpSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_setSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
@@ -626,6 +693,8 @@ func miqt_exec_callback_QUdpSocket_setSocketDescriptor(self *C.QUdpSocket, cb C.
 }
 
 func (this *QUdpSocket) callVirtualBase_SetSocketOption(option QAbstractSocket__SocketOption, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QUdpSocket_virtualbase_setSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 
@@ -654,6 +723,7 @@ func miqt_exec_callback_QUdpSocket_setSocketOption(self *C.QUdpSocket, cb C.intp
 }
 
 func (this *QUdpSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QUdpSocket_virtualbase_socketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -678,12 +748,14 @@ func miqt_exec_callback_QUdpSocket_socketOption(self *C.QUdpSocket, cb C.intptr_
 	slotval1 := (QAbstractSocket__SocketOption)(option)
 
 	virtualReturn := gofunc((&QUdpSocket{h: self}).callVirtualBase_SocketOption, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QUdpSocket_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QUdpSocket) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QUdpSocket_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -707,6 +779,7 @@ func miqt_exec_callback_QUdpSocket_close(self *C.QUdpSocket, cb C.intptr_t) {
 }
 
 func (this *QUdpSocket) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -732,6 +805,7 @@ func miqt_exec_callback_QUdpSocket_isSequential(self *C.QUdpSocket, cb C.intptr_
 }
 
 func (this *QUdpSocket) callVirtualBase_WaitForConnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_waitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -760,6 +834,7 @@ func miqt_exec_callback_QUdpSocket_waitForConnected(self *C.QUdpSocket, cb C.int
 }
 
 func (this *QUdpSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -788,6 +863,7 @@ func miqt_exec_callback_QUdpSocket_waitForReadyRead(self *C.QUdpSocket, cb C.int
 }
 
 func (this *QUdpSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -816,6 +892,7 @@ func miqt_exec_callback_QUdpSocket_waitForBytesWritten(self *C.QUdpSocket, cb C.
 }
 
 func (this *QUdpSocket) callVirtualBase_WaitForDisconnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_waitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -844,6 +921,7 @@ func miqt_exec_callback_QUdpSocket_waitForDisconnected(self *C.QUdpSocket, cb C.
 }
 
 func (this *QUdpSocket) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -877,6 +955,7 @@ func miqt_exec_callback_QUdpSocket_readData(self *C.QUdpSocket, cb C.intptr_t, d
 }
 
 func (this *QUdpSocket) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -910,6 +989,7 @@ func miqt_exec_callback_QUdpSocket_readLineData(self *C.QUdpSocket, cb C.intptr_
 }
 
 func (this *QUdpSocket) callVirtualBase_SkipData(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QUdpSocket_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
@@ -938,6 +1018,7 @@ func miqt_exec_callback_QUdpSocket_skipData(self *C.QUdpSocket, cb C.intptr_t, m
 }
 
 func (this *QUdpSocket) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -971,6 +1052,7 @@ func miqt_exec_callback_QUdpSocket_writeData(self *C.QUdpSocket, cb C.intptr_t, 
 }
 
 func (this *QUdpSocket) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
@@ -999,6 +1081,7 @@ func miqt_exec_callback_QUdpSocket_open(self *C.QUdpSocket, cb C.intptr_t, mode 
 }
 
 func (this *QUdpSocket) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QUdpSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -1024,6 +1107,7 @@ func miqt_exec_callback_QUdpSocket_pos(self *C.QUdpSocket, cb C.intptr_t) C.long
 }
 
 func (this *QUdpSocket) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QUdpSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -1049,6 +1133,7 @@ func miqt_exec_callback_QUdpSocket_size(self *C.QUdpSocket, cb C.intptr_t) C.lon
 }
 
 func (this *QUdpSocket) callVirtualBase_Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -1077,6 +1162,7 @@ func miqt_exec_callback_QUdpSocket_seek(self *C.QUdpSocket, cb C.intptr_t, pos C
 }
 
 func (this *QUdpSocket) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -1102,6 +1188,7 @@ func miqt_exec_callback_QUdpSocket_atEnd(self *C.QUdpSocket, cb C.intptr_t) C.bo
 }
 
 func (this *QUdpSocket) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -1127,6 +1214,7 @@ func miqt_exec_callback_QUdpSocket_reset(self *C.QUdpSocket, cb C.intptr_t) C.bo
 }
 
 func (this *QUdpSocket) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUdpSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -1152,6 +1240,8 @@ func miqt_exec_callback_QUdpSocket_canReadLine(self *C.QUdpSocket, cb C.intptr_t
 }
 
 func (this *QUdpSocket) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUdpSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1180,6 +1270,9 @@ func miqt_exec_callback_QUdpSocket_event(self *C.QUdpSocket, cb C.intptr_t, even
 }
 
 func (this *QUdpSocket) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUdpSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1210,6 +1303,8 @@ func miqt_exec_callback_QUdpSocket_eventFilter(self *C.QUdpSocket, cb C.intptr_t
 }
 
 func (this *QUdpSocket) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUdpSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1236,6 +1331,8 @@ func miqt_exec_callback_QUdpSocket_timerEvent(self *C.QUdpSocket, cb C.intptr_t,
 }
 
 func (this *QUdpSocket) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUdpSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1262,6 +1359,8 @@ func miqt_exec_callback_QUdpSocket_childEvent(self *C.QUdpSocket, cb C.intptr_t,
 }
 
 func (this *QUdpSocket) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUdpSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1288,6 +1387,8 @@ func miqt_exec_callback_QUdpSocket_customEvent(self *C.QUdpSocket, cb C.intptr_t
 }
 
 func (this *QUdpSocket) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QUdpSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1314,6 +1415,8 @@ func miqt_exec_callback_QUdpSocket_connectNotify(self *C.QUdpSocket, cb C.intptr
 }
 
 func (this *QUdpSocket) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QUdpSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1351,8 +1454,9 @@ func (this *QUdpSocket) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUdpSocket{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUdpSocket) {
-		C.QUdpSocket_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUdpSocket_delete((*C.QUdpSocket)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

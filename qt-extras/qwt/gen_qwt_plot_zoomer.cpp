@@ -222,7 +222,9 @@ public:
 		}
 
 		QSizeF* callback_return_value = miqt_exec_callback_QwtPlotZoomer_minZoomSize(this, handle__minZoomSize);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QwtPlotZoomer_virtualbase_minZoomSize(const void* self);
@@ -306,7 +308,9 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerText(this, handle__trackerText, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtPlotZoomer_virtualbase_trackerText(const void* self, QPoint* param1);
@@ -324,7 +328,9 @@ public:
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerTextF(this, handle__trackerTextF, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtPlotZoomer_virtualbase_trackerTextF(const void* self, QPointF* param1);
@@ -394,7 +400,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QwtPlotZoomer_pickArea(this, handle__pickArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QwtPlotZoomer_virtualbase_pickArea(const void* self);
@@ -443,7 +451,9 @@ public:
 		}
 
 		QRegion* callback_return_value = miqt_exec_callback_QwtPlotZoomer_rubberBandMask(this, handle__rubberBandMask);
-		return *callback_return_value;
+		QRegion callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRegion* QwtPlotZoomer_virtualbase_rubberBandMask(const void* self);
@@ -461,7 +471,9 @@ public:
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
 		QRect* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerRect(this, handle__trackerRect, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtPlotZoomer_virtualbase_trackerRect(const void* self, QFont* param1);
@@ -1569,6 +1581,26 @@ bool QwtPlotZoomer_override_virtual_keyMatch2(void* self, intptr_t slot) {
 
 bool QwtPlotZoomer_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2) {
 	return static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::keyMatch(*param1, param2);
+}
+
+QSizeF* QwtPlotZoomer_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
+QwtText* QwtPlotZoomer_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
+}
+
+QPainterPath* QwtPlotZoomer_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QRegion* QwtPlotZoomer_virtualreturncopy_QRegion(QRegion* src) {
+	return new QRegion(*src);
+}
+
+QRect* QwtPlotZoomer_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 QRectF* QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {

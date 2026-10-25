@@ -35,7 +35,13 @@ const (
 
 type QTextBoundaryFinder struct {
 	h  *C.QTextBoundaryFinder
-	gc *[1]*C.QTextBoundaryFinder
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextBoundaryFinder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextBoundaryFinder) cPointer() *C.QTextBoundaryFinder {
@@ -74,6 +80,7 @@ func NewQTextBoundaryFinder() *QTextBoundaryFinder {
 
 // NewQTextBoundaryFinder2 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
+	defer runtime.KeepAlive(other)
 
 	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new2(other.cPointer()))
 }
@@ -90,35 +97,43 @@ func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVa
 
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64) *QTextBoundaryFinder {
+	defer runtime.KeepAlive(chars)
 
 	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length)))
 }
 
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte) *QTextBoundaryFinder {
+	defer runtime.KeepAlive(chars)
 
 	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer))))
 }
 
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte, bufferSize int64) *QTextBoundaryFinder {
+	defer runtime.KeepAlive(chars)
 
 	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize)))
 }
 
 func (this *QTextBoundaryFinder) OperatorAssign(other *QTextBoundaryFinder) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QTextBoundaryFinder_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QTextBoundaryFinder) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBoundaryFinder_isValid(this.h))
 }
 
 func (this *QTextBoundaryFinder) Type() QTextBoundaryFinder__BoundaryType {
+	defer runtime.KeepAlive(this)
 	return (QTextBoundaryFinder__BoundaryType)(C.QTextBoundaryFinder_type(this.h))
 }
 
 func (this *QTextBoundaryFinder) String() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextBoundaryFinder_string(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -126,34 +141,42 @@ func (this *QTextBoundaryFinder) String() string {
 }
 
 func (this *QTextBoundaryFinder) ToStart() {
+	defer runtime.KeepAlive(this)
 	C.QTextBoundaryFinder_toStart(this.h)
 }
 
 func (this *QTextBoundaryFinder) ToEnd() {
+	defer runtime.KeepAlive(this)
 	C.QTextBoundaryFinder_toEnd(this.h)
 }
 
 func (this *QTextBoundaryFinder) Position() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QTextBoundaryFinder_position(this.h))
 }
 
 func (this *QTextBoundaryFinder) SetPosition(position int64) {
+	defer runtime.KeepAlive(this)
 	C.QTextBoundaryFinder_setPosition(this.h, (C.ptrdiff_t)(position))
 }
 
 func (this *QTextBoundaryFinder) ToNextBoundary() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QTextBoundaryFinder_toNextBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) ToPreviousBoundary() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QTextBoundaryFinder_toPreviousBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) IsAtBoundary() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBoundaryFinder_isAtBoundary(this.h))
 }
 
 func (this *QTextBoundaryFinder) BoundaryReasons() QTextBoundaryFinder__BoundaryReason {
+	defer runtime.KeepAlive(this)
 	return (QTextBoundaryFinder__BoundaryReason)(C.QTextBoundaryFinder_boundaryReasons(this.h))
 }
 
@@ -169,8 +192,9 @@ func (this *QTextBoundaryFinder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextBoundaryFinder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBoundaryFinder) {
-		C.QTextBoundaryFinder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextBoundaryFinder_delete((*C.QTextBoundaryFinder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

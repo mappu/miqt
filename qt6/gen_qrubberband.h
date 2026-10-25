@@ -207,6 +207,8 @@ bool QRubberBand_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRubberBand_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRubberBand_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QRubberBand_virtualreturncopy_QSize(QSize* src);
+QVariant* QRubberBand_virtualreturncopy_QVariant(QVariant* src);
 
 void QRubberBand_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QRubberBand_protectedbase_create(bool* _dynamic_cast_ok, void* self);

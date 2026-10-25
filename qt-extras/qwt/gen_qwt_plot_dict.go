@@ -15,7 +15,13 @@ import (
 
 type QwtPlotDict struct {
 	h  *C.QwtPlotDict
-	gc *[1]*C.QwtPlotDict
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotDict) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPlotDict) cPointer() *C.QwtPlotDict {
@@ -53,14 +59,17 @@ func NewQwtPlotDict() *QwtPlotDict {
 }
 
 func (this *QwtPlotDict) SetAutoDelete(autoDelete bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotDict_setAutoDelete(this.h, (C.bool)(autoDelete))
 }
 
 func (this *QwtPlotDict) AutoDelete() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotDict_autoDelete(this.h))
 }
 
 func (this *QwtPlotDict) ItemList() []*QwtPlotItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtPlotDict_itemList(this.h)
 	_ret := make([]*QwtPlotItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtPlotItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -71,6 +80,7 @@ func (this *QwtPlotDict) ItemList() []*QwtPlotItem {
 }
 
 func (this *QwtPlotDict) ItemListWithRtti(rtti int) []*QwtPlotItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtPlotDict_itemListWithRtti(this.h, (C.int)(rtti))
 	_ret := make([]*QwtPlotItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtPlotItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -81,18 +91,23 @@ func (this *QwtPlotDict) ItemListWithRtti(rtti int) []*QwtPlotItem {
 }
 
 func (this *QwtPlotDict) DetachItems() {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotDict_detachItems(this.h)
 }
 
 func (this *QwtPlotDict) OperatorAssign(param1 *QwtPlotDict) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotDict_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtPlotDict) DetachItemsWithRtti(rtti int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotDict_detachItemsWithRtti(this.h, (C.int)(rtti))
 }
 
 func (this *QwtPlotDict) DetachItems2(rtti int, autoDelete bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotDict_detachItems2(this.h, (C.int)(rtti), (C.bool)(autoDelete))
 }
 
@@ -108,8 +123,9 @@ func (this *QwtPlotDict) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotDict{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotDict) {
-		C.QwtPlotDict_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotDict_delete((*C.QwtPlotDict)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -35,7 +35,13 @@ const (
 
 type QLibraryInfo struct {
 	h  *C.QLibraryInfo
-	gc *[1]*C.QLibraryInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLibraryInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLibraryInfo) cPointer() *C.QLibraryInfo {
@@ -137,8 +143,9 @@ func (this *QLibraryInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLibraryInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLibraryInfo) {
-		C.QLibraryInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLibraryInfo_delete((*C.QLibraryInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

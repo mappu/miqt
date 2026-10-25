@@ -15,7 +15,13 @@ import (
 
 type QDesignerMemberSheetExtension struct {
 	h  *C.QDesignerMemberSheetExtension
-	gc *[1]*C.QDesignerMemberSheetExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerMemberSheetExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerMemberSheetExtension) cPointer() *C.QDesignerMemberSheetExtension {
@@ -47,10 +53,12 @@ func UnsafeNewQDesignerMemberSheetExtension(h unsafe.Pointer) *QDesignerMemberSh
 }
 
 func (this *QDesignerMemberSheetExtension) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerMemberSheetExtension_count(this.h))
 }
 
 func (this *QDesignerMemberSheetExtension) IndexOf(name string) int {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -59,6 +67,7 @@ func (this *QDesignerMemberSheetExtension) IndexOf(name string) int {
 }
 
 func (this *QDesignerMemberSheetExtension) MemberName(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerMemberSheetExtension_memberName(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -66,6 +75,7 @@ func (this *QDesignerMemberSheetExtension) MemberName(index int) string {
 }
 
 func (this *QDesignerMemberSheetExtension) MemberGroup(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerMemberSheetExtension_memberGroup(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -73,6 +83,7 @@ func (this *QDesignerMemberSheetExtension) MemberGroup(index int) string {
 }
 
 func (this *QDesignerMemberSheetExtension) SetMemberGroup(index int, group string) {
+	defer runtime.KeepAlive(this)
 	group_ms := C.struct_miqt_string{}
 	group_ms.data = C.CString(group)
 	group_ms.len = C.size_t(len(group))
@@ -81,26 +92,32 @@ func (this *QDesignerMemberSheetExtension) SetMemberGroup(index int, group strin
 }
 
 func (this *QDesignerMemberSheetExtension) IsVisible(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerMemberSheetExtension_isVisible(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerMemberSheetExtension) SetVisible(index int, b bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerMemberSheetExtension_setVisible(this.h, (C.int)(index), (C.bool)(b))
 }
 
 func (this *QDesignerMemberSheetExtension) IsSignal(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerMemberSheetExtension_isSignal(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerMemberSheetExtension) IsSlot(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerMemberSheetExtension_isSlot(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerMemberSheetExtension) InheritedFromWidget(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerMemberSheetExtension_inheritedFromWidget(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerMemberSheetExtension) DeclaredInClass(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerMemberSheetExtension_declaredInClass(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,6 +125,7 @@ func (this *QDesignerMemberSheetExtension) DeclaredInClass(index int) string {
 }
 
 func (this *QDesignerMemberSheetExtension) Signature(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerMemberSheetExtension_signature(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -115,6 +133,7 @@ func (this *QDesignerMemberSheetExtension) Signature(index int) string {
 }
 
 func (this *QDesignerMemberSheetExtension) ParameterTypes(index int) [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerMemberSheetExtension_parameterTypes(this.h, (C.int)(index))
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -128,6 +147,7 @@ func (this *QDesignerMemberSheetExtension) ParameterTypes(index int) [][]byte {
 }
 
 func (this *QDesignerMemberSheetExtension) ParameterNames(index int) [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerMemberSheetExtension_parameterNames(this.h, (C.int)(index))
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -141,6 +161,8 @@ func (this *QDesignerMemberSheetExtension) ParameterNames(index int) [][]byte {
 }
 
 func (this *QDesignerMemberSheetExtension) OperatorAssign(param1 *QDesignerMemberSheetExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerMemberSheetExtension_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -156,8 +178,9 @@ func (this *QDesignerMemberSheetExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerMemberSheetExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMemberSheetExtension) {
-		C.QDesignerMemberSheetExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerMemberSheetExtension_delete((*C.QDesignerMemberSheetExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

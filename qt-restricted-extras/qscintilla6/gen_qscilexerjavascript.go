@@ -17,8 +17,15 @@ import (
 
 type QsciLexerJavaScript struct {
 	h  *C.QsciLexerJavaScript
-	gc *[1]*C.QsciLexerJavaScript
+	gc *[1]unsafe.Pointer
 	*QsciLexerCPP
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciLexerJavaScript) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QsciLexerCPP.miqtSetGC(gc)
 }
 
 func (this *QsciLexerJavaScript) cPointer() *C.QsciLexerJavaScript {
@@ -60,15 +67,18 @@ func NewQsciLexerJavaScript() *QsciLexerJavaScript {
 
 // NewQsciLexerJavaScript2 constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript2(parent *qt6.QObject) *QsciLexerJavaScript {
+	defer runtime.KeepAlive(parent)
 
 	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJavaScript) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerJavaScript_metaObject(this.h)))
 }
 
 func (this *QsciLexerJavaScript) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciLexerJavaScript_metacast(this.h, param1_Cstring))
@@ -84,38 +94,45 @@ func QsciLexerJavaScript_Tr(s string) string {
 }
 
 func (this *QsciLexerJavaScript) Language() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerJavaScript_language(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerJavaScript) DefaultColor(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_defaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerJavaScript) DefaultEolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerJavaScript_defaultEolFill(this.h, (C.int)(style)))
 }
 
 func (this *QsciLexerJavaScript) DefaultFont(style int) *qt6.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerJavaScript_defaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerJavaScript) DefaultPaper(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_defaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerJavaScript) Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerJavaScript_keywords(this.h, (C.int)(set))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerJavaScript) Description(style int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciLexerJavaScript_description(this.h, (C.int)(style))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -146,6 +163,8 @@ func QsciLexerJavaScript_Tr3(s string, c string, n int) string {
 
 // ReadProperties can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) ReadProperties(qs *qt6.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -164,6 +183,8 @@ func (this *QsciLexerJavaScript) ReadProperties(qs *qt6.QSettings, prefix string
 
 // WriteProperties can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) WriteProperties(qs *qt6.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -182,6 +203,7 @@ func (this *QsciLexerJavaScript) WriteProperties(qs *qt6.QSettings, prefix strin
 
 // Sender can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QsciLexerJavaScript_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -196,6 +218,7 @@ func (this *QsciLexerJavaScript) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciLexerJavaScript_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -210,6 +233,7 @@ func (this *QsciLexerJavaScript) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -226,6 +250,8 @@ func (this *QsciLexerJavaScript) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciLexerJavaScript that was directly constructed.
 func (this *QsciLexerJavaScript) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciLexerJavaScript_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -239,6 +265,7 @@ func (this *QsciLexerJavaScript) IsSignalConnected(signal *qt6.QMetaMethod) bool
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetFoldAtElse(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -265,6 +292,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setFoldAtElse(self *C.QsciLexerJavaS
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetFoldComments(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -291,6 +319,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setFoldComments(self *C.QsciLexerJav
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetFoldCompact(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -317,6 +346,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setFoldCompact(self *C.QsciLexerJava
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetFoldPreprocessor(fold bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -343,6 +373,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setFoldPreprocessor(self *C.QsciLexe
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetStylePreprocessor(style bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
 
@@ -389,6 +420,7 @@ func miqt_exec_callback_QsciLexerJavaScript_language(self *C.QsciLexerJavaScript
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Lexer() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -416,6 +448,7 @@ func miqt_exec_callback_QsciLexerJavaScript_lexer(self *C.QsciLexerJavaScript, c
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_LexerId() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
@@ -441,6 +474,7 @@ func miqt_exec_callback_QsciLexerJavaScript_lexerId(self *C.QsciLexerJavaScript,
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_AutoCompletionFillups() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -468,6 +502,7 @@ func miqt_exec_callback_QsciLexerJavaScript_autoCompletionFillups(self *C.QsciLe
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_AutoCompletionWordSeparators() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QsciLexerJavaScript_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -511,6 +546,7 @@ func miqt_exec_callback_QsciLexerJavaScript_autoCompletionWordSeparators(self *C
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_BlockEnd(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -541,6 +577,7 @@ func miqt_exec_callback_QsciLexerJavaScript_blockEnd(self *C.QsciLexerJavaScript
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_BlockLookback() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
@@ -566,6 +603,7 @@ func miqt_exec_callback_QsciLexerJavaScript_blockLookback(self *C.QsciLexerJavaS
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_BlockStart(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -596,6 +634,7 @@ func miqt_exec_callback_QsciLexerJavaScript_blockStart(self *C.QsciLexerJavaScri
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_BlockStartKeyword(style *int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -626,6 +665,7 @@ func miqt_exec_callback_QsciLexerJavaScript_blockStartKeyword(self *C.QsciLexerJ
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_BraceStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
@@ -651,6 +691,7 @@ func miqt_exec_callback_QsciLexerJavaScript_braceStyle(self *C.QsciLexerJavaScri
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_CaseSensitive() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJavaScript_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
@@ -676,6 +717,7 @@ func miqt_exec_callback_QsciLexerJavaScript_caseSensitive(self *C.QsciLexerJavaS
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Color(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -700,12 +742,14 @@ func miqt_exec_callback_QsciLexerJavaScript_color(self *C.QsciLexerJavaScript, c
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_Color, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_EolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJavaScript_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -734,6 +778,7 @@ func miqt_exec_callback_QsciLexerJavaScript_eolFill(self *C.QsciLexerJavaScript,
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Font(style int) *qt6.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -758,12 +803,14 @@ func miqt_exec_callback_QsciLexerJavaScript_font(self *C.QsciLexerJavaScript, cb
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_Font, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_IndentationGuideView() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
@@ -789,6 +836,7 @@ func miqt_exec_callback_QsciLexerJavaScript_indentationGuideView(self *C.QsciLex
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Keywords(set int) string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
@@ -819,6 +867,7 @@ func miqt_exec_callback_QsciLexerJavaScript_keywords(self *C.QsciLexerJavaScript
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DefaultStyle() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
@@ -869,6 +918,7 @@ func miqt_exec_callback_QsciLexerJavaScript_description(self *C.QsciLexerJavaScr
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Paper(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -893,12 +943,14 @@ func miqt_exec_callback_QsciLexerJavaScript_paper(self *C.QsciLexerJavaScript, c
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_Paper, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DefaultColorWithStyle(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -923,12 +975,14 @@ func miqt_exec_callback_QsciLexerJavaScript_defaultColorWithStyle(self *C.QsciLe
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_DefaultColorWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DefaultEolFill(style int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerJavaScript_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -957,6 +1011,7 @@ func miqt_exec_callback_QsciLexerJavaScript_defaultEolFill(self *C.QsciLexerJava
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DefaultFontWithStyle(style int) *qt6.QFont {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -981,12 +1036,14 @@ func miqt_exec_callback_QsciLexerJavaScript_defaultFontWithStyle(self *C.QsciLex
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_DefaultFontWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QFont)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QFont((*C.QFont)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DefaultPaperWithStyle(style int) *qt6.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerJavaScript_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1011,12 +1068,15 @@ func miqt_exec_callback_QsciLexerJavaScript_defaultPaperWithStyle(self *C.QsciLe
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_DefaultPaperWithStyle, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QsciLexerJavaScript_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetEditor(editor *QsciScintilla) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QsciLexerJavaScript_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1043,6 +1103,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setEditor(self *C.QsciLexerJavaScrip
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_RefreshProperties() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
@@ -1066,6 +1127,7 @@ func miqt_exec_callback_QsciLexerJavaScript_refreshProperties(self *C.QsciLexerJ
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_StyleBitsNeeded() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerJavaScript_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
@@ -1091,6 +1153,7 @@ func miqt_exec_callback_QsciLexerJavaScript_styleBitsNeeded(self *C.QsciLexerJav
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_WordCharacters() string {
+	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerJavaScript_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -1118,6 +1181,7 @@ func miqt_exec_callback_QsciLexerJavaScript_wordCharacters(self *C.QsciLexerJava
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
@@ -1144,6 +1208,8 @@ func miqt_exec_callback_QsciLexerJavaScript_setAutoIndentStyle(self *C.QsciLexer
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetColor(c *qt6.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerJavaScript_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1172,6 +1238,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setColor(self *C.QsciLexerJavaScript
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetEolFill(eoffill bool, style int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciLexerJavaScript_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
@@ -1200,6 +1267,8 @@ func miqt_exec_callback_QsciLexerJavaScript_setEolFill(self *C.QsciLexerJavaScri
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetFont(f *qt6.QFont, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 
 	C.QsciLexerJavaScript_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 
@@ -1228,6 +1297,8 @@ func miqt_exec_callback_QsciLexerJavaScript_setFont(self *C.QsciLexerJavaScript,
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_SetPaper(c *qt6.QColor, style int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciLexerJavaScript_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
@@ -1256,6 +1327,8 @@ func miqt_exec_callback_QsciLexerJavaScript_setPaper(self *C.QsciLexerJavaScript
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_ReadProperties(qs *qt6.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1293,6 +1366,8 @@ func miqt_exec_callback_QsciLexerJavaScript_readProperties(self *C.QsciLexerJava
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_WriteProperties(qs *qt6.QSettings, prefix string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1330,6 +1405,8 @@ func miqt_exec_callback_QsciLexerJavaScript_writeProperties(self *C.QsciLexerJav
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerJavaScript_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1358,6 +1435,9 @@ func miqt_exec_callback_QsciLexerJavaScript_event(self *C.QsciLexerJavaScript, c
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerJavaScript_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1388,6 +1468,8 @@ func miqt_exec_callback_QsciLexerJavaScript_eventFilter(self *C.QsciLexerJavaScr
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJavaScript_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1414,6 +1496,8 @@ func miqt_exec_callback_QsciLexerJavaScript_timerEvent(self *C.QsciLexerJavaScri
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJavaScript_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1440,6 +1524,8 @@ func miqt_exec_callback_QsciLexerJavaScript_childEvent(self *C.QsciLexerJavaScri
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciLexerJavaScript_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1466,6 +1552,8 @@ func miqt_exec_callback_QsciLexerJavaScript_customEvent(self *C.QsciLexerJavaScr
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerJavaScript_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1492,6 +1580,8 @@ func miqt_exec_callback_QsciLexerJavaScript_connectNotify(self *C.QsciLexerJavaS
 }
 
 func (this *QsciLexerJavaScript) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerJavaScript_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1529,8 +1619,9 @@ func (this *QsciLexerJavaScript) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciLexerJavaScript{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciLexerJavaScript) {
-		C.QsciLexerJavaScript_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciLexerJavaScript_delete((*C.QsciLexerJavaScript)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

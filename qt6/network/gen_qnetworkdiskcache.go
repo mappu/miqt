@@ -17,8 +17,15 @@ import (
 
 type QNetworkDiskCache struct {
 	h  *C.QNetworkDiskCache
-	gc *[1]*C.QNetworkDiskCache
+	gc *[1]unsafe.Pointer
 	*QAbstractNetworkCache
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkDiskCache) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractNetworkCache.miqtSetGC(gc)
 }
 
 func (this *QNetworkDiskCache) cPointer() *C.QNetworkDiskCache {
@@ -60,15 +67,18 @@ func NewQNetworkDiskCache() *QNetworkDiskCache {
 
 // NewQNetworkDiskCache2 constructs a new QNetworkDiskCache object.
 func NewQNetworkDiskCache2(parent *qt6.QObject) *QNetworkDiskCache {
+	defer runtime.KeepAlive(parent)
 
 	return newQNetworkDiskCache(C.QNetworkDiskCache_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkDiskCache) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkDiskCache_metaObject(this.h)))
 }
 
 func (this *QNetworkDiskCache) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkDiskCache_metacast(this.h, param1_Cstring))
@@ -84,6 +94,7 @@ func QNetworkDiskCache_Tr(s string) string {
 }
 
 func (this *QNetworkDiskCache) CacheDirectory() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkDiskCache_cacheDirectory(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -91,6 +102,7 @@ func (this *QNetworkDiskCache) CacheDirectory() string {
 }
 
 func (this *QNetworkDiskCache) SetCacheDirectory(cacheDir string) {
+	defer runtime.KeepAlive(this)
 	cacheDir_ms := C.struct_miqt_string{}
 	cacheDir_ms.data = C.CString(cacheDir)
 	cacheDir_ms.len = C.size_t(len(cacheDir))
@@ -99,44 +111,60 @@ func (this *QNetworkDiskCache) SetCacheDirectory(cacheDir string) {
 }
 
 func (this *QNetworkDiskCache) MaximumCacheSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QNetworkDiskCache_maximumCacheSize(this.h))
 }
 
 func (this *QNetworkDiskCache) SetMaximumCacheSize(size int64) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkDiskCache_setMaximumCacheSize(this.h, (C.longlong)(size))
 }
 
 func (this *QNetworkDiskCache) CacheSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QNetworkDiskCache_cacheSize(this.h))
 }
 
 func (this *QNetworkDiskCache) MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_metaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDiskCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 	C.QNetworkDiskCache_updateMetaData(this.h, metaData.cPointer())
 }
 
 func (this *QNetworkDiskCache) Data(url *qt6.QUrl) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QNetworkDiskCache) Remove(url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QNetworkDiskCache_remove(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QNetworkDiskCache) Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QNetworkDiskCache) Insert(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QNetworkDiskCache_insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QNetworkDiskCache) FileMetaData(fileName string) *QNetworkCacheMetaData {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -147,6 +175,7 @@ func (this *QNetworkDiskCache) FileMetaData(fileName string) *QNetworkCacheMetaD
 }
 
 func (this *QNetworkDiskCache) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QNetworkDiskCache_clear(this.h)
 }
 
@@ -174,6 +203,7 @@ func QNetworkDiskCache_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QNetworkDiskCache that was directly constructed.
 func (this *QNetworkDiskCache) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QNetworkDiskCache_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -188,6 +218,7 @@ func (this *QNetworkDiskCache) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QNetworkDiskCache that was directly constructed.
 func (this *QNetworkDiskCache) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNetworkDiskCache_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -202,6 +233,7 @@ func (this *QNetworkDiskCache) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNetworkDiskCache that was directly constructed.
 func (this *QNetworkDiskCache) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -218,6 +250,8 @@ func (this *QNetworkDiskCache) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNetworkDiskCache that was directly constructed.
 func (this *QNetworkDiskCache) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QNetworkDiskCache_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -231,6 +265,7 @@ func (this *QNetworkDiskCache) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_CacheSize() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QNetworkDiskCache_virtualbase_cacheSize(unsafe.Pointer(this.h)))
 
@@ -256,6 +291,8 @@ func miqt_exec_callback_QNetworkDiskCache_cacheSize(self *C.QNetworkDiskCache, c
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 
 	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_virtualbase_metaData(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -280,12 +317,15 @@ func miqt_exec_callback_QNetworkDiskCache_metaData(self *C.QNetworkDiskCache, cb
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
 
 	virtualReturn := gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_MetaData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QNetworkDiskCache_virtualreturncopy_QNetworkCacheMetaData(virtualReturn.cPointer())
 
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_UpdateMetaData(metaData *QNetworkCacheMetaData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 
 	C.QNetworkDiskCache_virtualbase_updateMetaData(unsafe.Pointer(this.h), metaData.cPointer())
 
@@ -312,6 +352,8 @@ func miqt_exec_callback_QNetworkDiskCache_updateMetaData(self *C.QNetworkDiskCac
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Data(url *qt6.QUrl) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))))
 
@@ -334,12 +376,15 @@ func miqt_exec_callback_QNetworkDiskCache_data(self *C.QNetworkDiskCache, cb C.i
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
 
 	virtualReturn := gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_Data, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QIODevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Remove(url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 
 	return (bool)(C.QNetworkDiskCache_virtualbase_remove(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 
@@ -368,6 +413,8 @@ func miqt_exec_callback_QNetworkDiskCache_remove(self *C.QNetworkDiskCache, cb C
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_prepare(unsafe.Pointer(this.h), metaData.cPointer())))
 
@@ -390,12 +437,15 @@ func miqt_exec_callback_QNetworkDiskCache_prepare(self *C.QNetworkDiskCache, cb 
 	slotval1 := newQNetworkCacheMetaData(metaData)
 
 	virtualReturn := gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_Prepare, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QIODevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Insert(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 
 	C.QNetworkDiskCache_virtualbase_insert(unsafe.Pointer(this.h), (*C.QIODevice)(device.UnsafePointer()))
 
@@ -422,6 +472,7 @@ func miqt_exec_callback_QNetworkDiskCache_insert(self *C.QNetworkDiskCache, cb C
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Clear() {
+	defer runtime.KeepAlive(this)
 
 	C.QNetworkDiskCache_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -445,6 +496,7 @@ func miqt_exec_callback_QNetworkDiskCache_clear(self *C.QNetworkDiskCache, cb C.
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Expire() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QNetworkDiskCache_virtualbase_expire(unsafe.Pointer(this.h)))
 
@@ -470,6 +522,8 @@ func miqt_exec_callback_QNetworkDiskCache_expire(self *C.QNetworkDiskCache, cb C
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkDiskCache_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -498,6 +552,9 @@ func miqt_exec_callback_QNetworkDiskCache_event(self *C.QNetworkDiskCache, cb C.
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkDiskCache_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -528,6 +585,8 @@ func miqt_exec_callback_QNetworkDiskCache_eventFilter(self *C.QNetworkDiskCache,
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkDiskCache_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -554,6 +613,8 @@ func miqt_exec_callback_QNetworkDiskCache_timerEvent(self *C.QNetworkDiskCache, 
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkDiskCache_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -580,6 +641,8 @@ func miqt_exec_callback_QNetworkDiskCache_childEvent(self *C.QNetworkDiskCache, 
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkDiskCache_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -606,6 +669,8 @@ func miqt_exec_callback_QNetworkDiskCache_customEvent(self *C.QNetworkDiskCache,
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNetworkDiskCache_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -632,6 +697,8 @@ func miqt_exec_callback_QNetworkDiskCache_connectNotify(self *C.QNetworkDiskCach
 }
 
 func (this *QNetworkDiskCache) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNetworkDiskCache_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -669,8 +736,9 @@ func (this *QNetworkDiskCache) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkDiskCache{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkDiskCache) {
-		C.QNetworkDiskCache_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkDiskCache_delete((*C.QNetworkDiskCache)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

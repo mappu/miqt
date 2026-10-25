@@ -15,7 +15,13 @@ import (
 
 type QDesignerPromotionInterface struct {
 	h  *C.QDesignerPromotionInterface
-	gc *[1]*C.QDesignerPromotionInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerPromotionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerPromotionInterface) cPointer() *C.QDesignerPromotionInterface {
@@ -47,6 +53,7 @@ func UnsafeNewQDesignerPromotionInterface(h unsafe.Pointer) *QDesignerPromotionI
 }
 
 func (this *QDesignerPromotionInterface) PromotedClasses() []QDesignerPromotionInterface__PromotedClass {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerPromotionInterface_promotedClasses(this.h)
 	_ret := make([]QDesignerPromotionInterface__PromotedClass, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDesignerPromotionInterface__PromotedClass)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -59,6 +66,7 @@ func (this *QDesignerPromotionInterface) PromotedClasses() []QDesignerPromotionI
 }
 
 func (this *QDesignerPromotionInterface) ReferencedPromotedClassNames() map[string]struct{} {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerPromotionInterface_referencedPromotedClassNames(this.h)
 	_ret := make(map[string]struct{}, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -73,6 +81,7 @@ func (this *QDesignerPromotionInterface) ReferencedPromotedClassNames() map[stri
 }
 
 func (this *QDesignerPromotionInterface) PromotionBaseClasses() []*QDesignerWidgetDataBaseItemInterface {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerPromotionInterface_promotionBaseClasses(this.h)
 	_ret := make([]*QDesignerWidgetDataBaseItemInterface, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDesignerWidgetDataBaseItemInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -94,15 +103,22 @@ func (this *QDesignerPromotionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerPromotionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerPromotionInterface) {
-		C.QDesignerPromotionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerPromotionInterface_delete((*C.QDesignerPromotionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDesignerPromotionInterface__PromotedClass struct {
 	h  *C.QDesignerPromotionInterface__PromotedClass
-	gc *[1]*C.QDesignerPromotionInterface__PromotedClass
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerPromotionInterface__PromotedClass) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerPromotionInterface__PromotedClass) cPointer() *C.QDesignerPromotionInterface__PromotedClass {
@@ -134,18 +150,24 @@ func UnsafeNewQDesignerPromotionInterface__PromotedClass(h unsafe.Pointer) *QDes
 }
 
 func (this *QDesignerPromotionInterface__PromotedClass) BaseItem() *QDesignerWidgetDataBaseItemInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetDataBaseItemInterface(C.QDesignerPromotionInterface__PromotedClass_baseItem(this.h))
 }
 
 func (this *QDesignerPromotionInterface__PromotedClass) SetBaseItem(baseItem *QDesignerWidgetDataBaseItemInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseItem)
 	C.QDesignerPromotionInterface__PromotedClass_setBaseItem(this.h, baseItem.cPointer())
 }
 
 func (this *QDesignerPromotionInterface__PromotedClass) PromotedItem() *QDesignerWidgetDataBaseItemInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetDataBaseItemInterface(C.QDesignerPromotionInterface__PromotedClass_promotedItem(this.h))
 }
 
 func (this *QDesignerPromotionInterface__PromotedClass) SetPromotedItem(promotedItem *QDesignerWidgetDataBaseItemInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(promotedItem)
 	C.QDesignerPromotionInterface__PromotedClass_setPromotedItem(this.h, promotedItem.cPointer())
 }
 
@@ -161,8 +183,9 @@ func (this *QDesignerPromotionInterface__PromotedClass) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerPromotionInterface__PromotedClass{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerPromotionInterface__PromotedClass) {
-		C.QDesignerPromotionInterface__PromotedClass_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerPromotionInterface__PromotedClass_delete((*C.QDesignerPromotionInterface__PromotedClass)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

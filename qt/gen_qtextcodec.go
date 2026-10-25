@@ -23,7 +23,14 @@ const (
 )
 
 type QTextCodec struct {
-	h *C.QTextCodec
+	h  *C.QTextCodec
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextCodec) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextCodec) cPointer() *C.QTextCodec {
@@ -103,6 +110,7 @@ func QTextCodec_CodecForLocale() *QTextCodec {
 }
 
 func QTextCodec_SetCodecForLocale(c *QTextCodec) {
+	defer runtime.KeepAlive(c)
 	C.QTextCodec_setCodecForLocale(c.cPointer())
 }
 
@@ -118,6 +126,7 @@ func QTextCodec_CodecForHtml(ba []byte) *QTextCodec {
 }
 
 func QTextCodec_CodecForHtml2(ba []byte, defaultCodec *QTextCodec) *QTextCodec {
+	defer runtime.KeepAlive(defaultCodec)
 	ba_alias := C.struct_miqt_string{}
 	if len(ba) > 0 {
 		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
@@ -140,6 +149,7 @@ func QTextCodec_CodecForUtfText(ba []byte) *QTextCodec {
 }
 
 func QTextCodec_CodecForUtfText2(ba []byte, defaultCodec *QTextCodec) *QTextCodec {
+	defer runtime.KeepAlive(defaultCodec)
 	ba_alias := C.struct_miqt_string{}
 	if len(ba) > 0 {
 		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
@@ -151,10 +161,13 @@ func QTextCodec_CodecForUtfText2(ba []byte, defaultCodec *QTextCodec) *QTextCode
 }
 
 func (this *QTextCodec) CanEncode(param1 QChar) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QTextCodec_canEncode(this.h, param1.cPointer()))
 }
 
 func (this *QTextCodec) CanEncodeWithQString(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -163,6 +176,7 @@ func (this *QTextCodec) CanEncodeWithQString(param1 string) bool {
 }
 
 func (this *QTextCodec) ToUnicode(param1 []byte) string {
+	defer runtime.KeepAlive(this)
 	param1_alias := C.struct_miqt_string{}
 	if len(param1) > 0 {
 		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
@@ -177,6 +191,7 @@ func (this *QTextCodec) ToUnicode(param1 []byte) string {
 }
 
 func (this *QTextCodec) ToUnicodeWithChars(chars string) string {
+	defer runtime.KeepAlive(this)
 	chars_Cstring := C.CString(chars)
 	defer C.free(unsafe.Pointer(chars_Cstring))
 	var _ms C.struct_miqt_string = C.QTextCodec_toUnicodeWithChars(this.h, chars_Cstring)
@@ -186,6 +201,7 @@ func (this *QTextCodec) ToUnicodeWithChars(chars string) string {
 }
 
 func (this *QTextCodec) FromUnicode(uc string) []byte {
+	defer runtime.KeepAlive(this)
 	uc_ms := C.struct_miqt_string{}
 	uc_ms.data = C.CString(uc)
 	uc_ms.len = C.size_t(len(uc))
@@ -197,6 +213,7 @@ func (this *QTextCodec) FromUnicode(uc string) []byte {
 }
 
 func (this *QTextCodec) ToUnicode2(in string, length int) string {
+	defer runtime.KeepAlive(this)
 	in_Cstring := C.CString(in)
 	defer C.free(unsafe.Pointer(in_Cstring))
 	var _ms C.struct_miqt_string = C.QTextCodec_toUnicode2(this.h, in_Cstring, (C.int)(length))
@@ -206,6 +223,8 @@ func (this *QTextCodec) ToUnicode2(in string, length int) string {
 }
 
 func (this *QTextCodec) FromUnicode2(in *QChar, length int) []byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 	var _bytearray C.struct_miqt_string = C.QTextCodec_fromUnicode2(this.h, in.cPointer(), (C.int)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -213,14 +232,17 @@ func (this *QTextCodec) FromUnicode2(in *QChar, length int) []byte {
 }
 
 func (this *QTextCodec) MakeDecoder() *QTextDecoder {
+	defer runtime.KeepAlive(this)
 	return newQTextDecoder(C.QTextCodec_makeDecoder(this.h))
 }
 
 func (this *QTextCodec) MakeEncoder() *QTextEncoder {
+	defer runtime.KeepAlive(this)
 	return newQTextEncoder(C.QTextCodec_makeEncoder(this.h))
 }
 
 func (this *QTextCodec) Name() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QTextCodec_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -228,6 +250,7 @@ func (this *QTextCodec) Name() []byte {
 }
 
 func (this *QTextCodec) Aliases() [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextCodec_aliases(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -241,10 +264,13 @@ func (this *QTextCodec) Aliases() [][]byte {
 }
 
 func (this *QTextCodec) MibEnum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextCodec_mibEnum(this.h))
 }
 
 func (this *QTextCodec) ToUnicode3(in string, length int, state *QTextCodec__ConverterState) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 	in_Cstring := C.CString(in)
 	defer C.free(unsafe.Pointer(in_Cstring))
 	var _ms C.struct_miqt_string = C.QTextCodec_toUnicode3(this.h, in_Cstring, (C.int)(length), state.cPointer())
@@ -254,6 +280,9 @@ func (this *QTextCodec) ToUnicode3(in string, length int, state *QTextCodec__Con
 }
 
 func (this *QTextCodec) FromUnicode3(in *QChar, length int, state *QTextCodec__ConverterState) []byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
+	defer runtime.KeepAlive(state)
 	var _bytearray C.struct_miqt_string = C.QTextCodec_fromUnicode3(this.h, in.cPointer(), (C.int)(length), state.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -261,16 +290,24 @@ func (this *QTextCodec) FromUnicode3(in *QChar, length int, state *QTextCodec__C
 }
 
 func (this *QTextCodec) MakeDecoderWithFlags(flags QTextCodec__ConversionFlag) *QTextDecoder {
+	defer runtime.KeepAlive(this)
 	return newQTextDecoder(C.QTextCodec_makeDecoderWithFlags(this.h, (C.int)(flags)))
 }
 
 func (this *QTextCodec) MakeEncoderWithFlags(flags QTextCodec__ConversionFlag) *QTextEncoder {
+	defer runtime.KeepAlive(this)
 	return newQTextEncoder(C.QTextCodec_makeEncoderWithFlags(this.h, (C.int)(flags)))
 }
 
 type QTextEncoder struct {
 	h  *C.QTextEncoder
-	gc *[1]*C.QTextEncoder
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextEncoder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextEncoder) cPointer() *C.QTextEncoder {
@@ -303,17 +340,20 @@ func UnsafeNewQTextEncoder(h unsafe.Pointer) *QTextEncoder {
 
 // NewQTextEncoder constructs a new QTextEncoder object.
 func NewQTextEncoder(codec *QTextCodec) *QTextEncoder {
+	defer runtime.KeepAlive(codec)
 
 	return newQTextEncoder(C.QTextEncoder_new(codec.cPointer()))
 }
 
 // NewQTextEncoder2 constructs a new QTextEncoder object.
 func NewQTextEncoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextEncoder {
+	defer runtime.KeepAlive(codec)
 
 	return newQTextEncoder(C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags)))
 }
 
 func (this *QTextEncoder) FromUnicode(str string) []byte {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -325,6 +365,8 @@ func (this *QTextEncoder) FromUnicode(str string) []byte {
 }
 
 func (this *QTextEncoder) FromUnicode2(uc *QChar, lenVal int) []byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(uc)
 	var _bytearray C.struct_miqt_string = C.QTextEncoder_fromUnicode2(this.h, uc.cPointer(), (C.int)(lenVal))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -332,6 +374,7 @@ func (this *QTextEncoder) FromUnicode2(uc *QChar, lenVal int) []byte {
 }
 
 func (this *QTextEncoder) HasFailure() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEncoder_hasFailure(this.h))
 }
 
@@ -347,15 +390,22 @@ func (this *QTextEncoder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextEncoder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextEncoder) {
-		C.QTextEncoder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextEncoder_delete((*C.QTextEncoder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextDecoder struct {
 	h  *C.QTextDecoder
-	gc *[1]*C.QTextDecoder
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextDecoder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextDecoder) cPointer() *C.QTextDecoder {
@@ -388,17 +438,20 @@ func UnsafeNewQTextDecoder(h unsafe.Pointer) *QTextDecoder {
 
 // NewQTextDecoder constructs a new QTextDecoder object.
 func NewQTextDecoder(codec *QTextCodec) *QTextDecoder {
+	defer runtime.KeepAlive(codec)
 
 	return newQTextDecoder(C.QTextDecoder_new(codec.cPointer()))
 }
 
 // NewQTextDecoder2 constructs a new QTextDecoder object.
 func NewQTextDecoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextDecoder {
+	defer runtime.KeepAlive(codec)
 
 	return newQTextDecoder(C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags)))
 }
 
 func (this *QTextDecoder) ToUnicode(chars string, lenVal int) string {
+	defer runtime.KeepAlive(this)
 	chars_Cstring := C.CString(chars)
 	defer C.free(unsafe.Pointer(chars_Cstring))
 	var _ms C.struct_miqt_string = C.QTextDecoder_toUnicode(this.h, chars_Cstring, (C.int)(lenVal))
@@ -408,6 +461,7 @@ func (this *QTextDecoder) ToUnicode(chars string, lenVal int) string {
 }
 
 func (this *QTextDecoder) ToUnicodeWithBa(ba []byte) string {
+	defer runtime.KeepAlive(this)
 	ba_alias := C.struct_miqt_string{}
 	if len(ba) > 0 {
 		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
@@ -422,10 +476,12 @@ func (this *QTextDecoder) ToUnicodeWithBa(ba []byte) string {
 }
 
 func (this *QTextDecoder) HasFailure() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDecoder_hasFailure(this.h))
 }
 
 func (this *QTextDecoder) NeedsMoreData() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDecoder_needsMoreData(this.h))
 }
 
@@ -441,15 +497,22 @@ func (this *QTextDecoder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextDecoder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextDecoder) {
-		C.QTextDecoder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextDecoder_delete((*C.QTextDecoder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextCodec__ConverterState struct {
 	h  *C.QTextCodec__ConverterState
-	gc *[1]*C.QTextCodec__ConverterState
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextCodec__ConverterState) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextCodec__ConverterState) cPointer() *C.QTextCodec__ConverterState {
@@ -493,26 +556,32 @@ func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__C
 }
 
 func (this *QTextCodec__ConverterState) Flags() QTextCodec__ConversionFlag {
+	defer runtime.KeepAlive(this)
 	return (QTextCodec__ConversionFlag)(C.QTextCodec__ConverterState_flags(this.h))
 }
 
 func (this *QTextCodec__ConverterState) SetFlags(flags QTextCodec__ConversionFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTextCodec__ConverterState_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextCodec__ConverterState) RemainingChars() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextCodec__ConverterState_remainingChars(this.h))
 }
 
 func (this *QTextCodec__ConverterState) SetRemainingChars(remainingChars int) {
+	defer runtime.KeepAlive(this)
 	C.QTextCodec__ConverterState_setRemainingChars(this.h, (C.int)(remainingChars))
 }
 
 func (this *QTextCodec__ConverterState) InvalidChars() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextCodec__ConverterState_invalidChars(this.h))
 }
 
 func (this *QTextCodec__ConverterState) SetInvalidChars(invalidChars int) {
+	defer runtime.KeepAlive(this)
 	C.QTextCodec__ConverterState_setInvalidChars(this.h, (C.int)(invalidChars))
 }
 
@@ -528,8 +597,9 @@ func (this *QTextCodec__ConverterState) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextCodec__ConverterState{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextCodec__ConverterState) {
-		C.QTextCodec__ConverterState_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextCodec__ConverterState_delete((*C.QTextCodec__ConverterState)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

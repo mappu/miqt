@@ -17,8 +17,14 @@ import (
 
 type QMaskGenerator struct {
 	h  *C.QMaskGenerator
-	gc *[1]*C.QMaskGenerator
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMaskGenerator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMaskGenerator) cPointer() *C.QMaskGenerator {
@@ -60,20 +66,24 @@ func NewQMaskGenerator() *QMaskGenerator {
 
 // NewQMaskGenerator2 constructs a new QMaskGenerator object.
 func NewQMaskGenerator2(parent *qt.QObject) *QMaskGenerator {
+	defer runtime.KeepAlive(parent)
 
 	return newQMaskGenerator(C.QMaskGenerator_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QMaskGenerator) Seed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMaskGenerator_seed(this.h))
 }
 
 func (this *QMaskGenerator) NextMask() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QMaskGenerator_nextMask(this.h))
 }
 
 // Sender can only be called from a QMaskGenerator that was directly constructed.
 func (this *QMaskGenerator) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMaskGenerator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -88,6 +98,7 @@ func (this *QMaskGenerator) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QMaskGenerator that was directly constructed.
 func (this *QMaskGenerator) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMaskGenerator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -102,6 +113,7 @@ func (this *QMaskGenerator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMaskGenerator that was directly constructed.
 func (this *QMaskGenerator) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -118,6 +130,8 @@ func (this *QMaskGenerator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMaskGenerator that was directly constructed.
 func (this *QMaskGenerator) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMaskGenerator_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -169,6 +183,8 @@ func miqt_exec_callback_QMaskGenerator_nextMask(self *C.QMaskGenerator, cb C.int
 }
 
 func (this *QMaskGenerator) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMaskGenerator_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -197,6 +213,9 @@ func miqt_exec_callback_QMaskGenerator_event(self *C.QMaskGenerator, cb C.intptr
 }
 
 func (this *QMaskGenerator) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMaskGenerator_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -227,6 +246,8 @@ func miqt_exec_callback_QMaskGenerator_eventFilter(self *C.QMaskGenerator, cb C.
 }
 
 func (this *QMaskGenerator) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMaskGenerator_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -253,6 +274,8 @@ func miqt_exec_callback_QMaskGenerator_timerEvent(self *C.QMaskGenerator, cb C.i
 }
 
 func (this *QMaskGenerator) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMaskGenerator_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -279,6 +302,8 @@ func miqt_exec_callback_QMaskGenerator_childEvent(self *C.QMaskGenerator, cb C.i
 }
 
 func (this *QMaskGenerator) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMaskGenerator_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -305,6 +330,8 @@ func miqt_exec_callback_QMaskGenerator_customEvent(self *C.QMaskGenerator, cb C.
 }
 
 func (this *QMaskGenerator) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMaskGenerator_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -331,6 +358,8 @@ func miqt_exec_callback_QMaskGenerator_connectNotify(self *C.QMaskGenerator, cb 
 }
 
 func (this *QMaskGenerator) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMaskGenerator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -368,8 +397,9 @@ func (this *QMaskGenerator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMaskGenerator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMaskGenerator) {
-		C.QMaskGenerator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMaskGenerator_delete((*C.QMaskGenerator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

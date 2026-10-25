@@ -228,6 +228,8 @@ bool QColorDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QColorDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QColorDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QColorDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QColorDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

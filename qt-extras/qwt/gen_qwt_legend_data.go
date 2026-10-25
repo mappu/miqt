@@ -33,7 +33,13 @@ const (
 
 type QwtLegendData struct {
 	h  *C.QwtLegendData
-	gc *[1]*C.QwtLegendData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtLegendData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtLegendData) cPointer() *C.QwtLegendData {
@@ -72,11 +78,14 @@ func NewQwtLegendData() *QwtLegendData {
 
 // NewQwtLegendData2 constructs a new QwtLegendData object.
 func NewQwtLegendData2(param1 *QwtLegendData) *QwtLegendData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtLegendData(C.QwtLegendData_new2(param1.cPointer()))
 }
 
 func (this *QwtLegendData) SetValues(values map[int]qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(values)
 	values_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_Keys_CArray_ptr))
 	values_Keys_CArray := unsafe.Slice(values_Keys_CArray_ptr, len(values))
@@ -98,6 +107,7 @@ func (this *QwtLegendData) SetValues(values map[int]qt.QVariant) {
 }
 
 func (this *QwtLegendData) Values() map[int]qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QwtLegendData_values(this.h)
 	_ret := make(map[int]qt.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -115,40 +125,50 @@ func (this *QwtLegendData) Values() map[int]qt.QVariant {
 }
 
 func (this *QwtLegendData) SetValue(role int, param2 *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QwtLegendData_setValue(this.h, (C.int)(role), (*C.QVariant)(param2.UnsafePointer()))
 }
 
 func (this *QwtLegendData) Value(role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtLegendData_value(this.h, (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLegendData) HasRole(role int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtLegendData_hasRole(this.h, (C.int)(role)))
 }
 
 func (this *QwtLegendData) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtLegendData_isValid(this.h))
 }
 
 func (this *QwtLegendData) Icon() *QwtGraphic {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtGraphic(C.QwtLegendData_icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLegendData) Title() *QwtText {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtText(C.QwtLegendData_title(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLegendData) Mode() QwtLegendData__Mode {
+	defer runtime.KeepAlive(this)
 	return (QwtLegendData__Mode)(C.QwtLegendData_mode(this.h))
 }
 
 func (this *QwtLegendData) OperatorAssign(param1 *QwtLegendData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtLegendData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -164,8 +184,9 @@ func (this *QwtLegendData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtLegendData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLegendData) {
-		C.QwtLegendData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtLegendData_delete((*C.QwtLegendData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

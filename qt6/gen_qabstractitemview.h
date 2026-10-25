@@ -429,6 +429,11 @@ bool QAbstractItemView_override_virtual_connectNotify(void* self, intptr_t slot)
 void QAbstractItemView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QAbstractItemView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QAbstractItemView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QAbstractItemView_virtualreturncopy_QVariant(QVariant* src);
+QRegion* QAbstractItemView_virtualreturncopy_QRegion(QRegion* src);
+QSize* QAbstractItemView_virtualreturncopy_QSize(QSize* src);
 
 int QAbstractItemView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
 void QAbstractItemView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);

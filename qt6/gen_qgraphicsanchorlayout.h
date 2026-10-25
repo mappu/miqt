@@ -94,6 +94,7 @@ bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e);
 bool QGraphicsAnchorLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsAnchorLayout_virtualbase_isEmpty(const void* self);
+QSizeF* QGraphicsAnchorLayout_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

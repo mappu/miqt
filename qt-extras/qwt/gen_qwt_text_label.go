@@ -17,8 +17,14 @@ import (
 
 type QwtTextLabel struct {
 	h  *C.QwtTextLabel
-	gc *[1]*C.QwtTextLabel
+	gc *[1]unsafe.Pointer
 	*qt.QFrame
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtTextLabel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtTextLabel) cPointer() *C.QwtTextLabel {
@@ -54,6 +60,7 @@ func UnsafeNewQwtTextLabel(h unsafe.Pointer) *QwtTextLabel {
 
 // NewQwtTextLabel constructs a new QwtTextLabel object.
 func NewQwtTextLabel(parent *qt.QWidget) *QwtTextLabel {
+	defer runtime.KeepAlive(parent)
 
 	return newQwtTextLabel(C.QwtTextLabel_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -66,21 +73,26 @@ func NewQwtTextLabel2() *QwtTextLabel {
 
 // NewQwtTextLabel3 constructs a new QwtTextLabel object.
 func NewQwtTextLabel3(param1 *QwtText) *QwtTextLabel {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtTextLabel(C.QwtTextLabel_new3(param1.cPointer()))
 }
 
 // NewQwtTextLabel4 constructs a new QwtTextLabel object.
 func NewQwtTextLabel4(param1 *QwtText, parent *qt.QWidget) *QwtTextLabel {
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(parent)
 
 	return newQwtTextLabel(C.QwtTextLabel_new4(param1.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QwtTextLabel) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtTextLabel_metaObject(this.h)))
 }
 
 func (this *QwtTextLabel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtTextLabel_metacast(this.h, param1_Cstring))
@@ -105,6 +117,7 @@ func QwtTextLabel_TrUtf8(s string) string {
 }
 
 func (this *QwtTextLabel) SetPlainText(plainText string) {
+	defer runtime.KeepAlive(this)
 	plainText_ms := C.struct_miqt_string{}
 	plainText_ms.data = C.CString(plainText)
 	plainText_ms.len = C.size_t(len(plainText))
@@ -113,6 +126,7 @@ func (this *QwtTextLabel) SetPlainText(plainText string) {
 }
 
 func (this *QwtTextLabel) PlainText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QwtTextLabel_plainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -120,6 +134,7 @@ func (this *QwtTextLabel) PlainText() string {
 }
 
 func (this *QwtTextLabel) SetText(param1 string) {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -128,56 +143,73 @@ func (this *QwtTextLabel) SetText(param1 string) {
 }
 
 func (this *QwtTextLabel) SetTextWithText(text *QwtText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(text)
 	C.QwtTextLabel_setTextWithText(this.h, text.cPointer())
 }
 
 func (this *QwtTextLabel) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QwtTextLabel_clear(this.h)
 }
 
 func (this *QwtTextLabel) Text() *QwtText {
-	return newQwtText(C.QwtTextLabel_text(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtText(C.QwtTextLabel_text(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtTextLabel) Indent() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtTextLabel_indent(this.h))
 }
 
 func (this *QwtTextLabel) SetIndent(indent int) {
+	defer runtime.KeepAlive(this)
 	C.QwtTextLabel_setIndent(this.h, (C.int)(indent))
 }
 
 func (this *QwtTextLabel) Margin() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtTextLabel_margin(this.h))
 }
 
 func (this *QwtTextLabel) SetMargin(margin int) {
+	defer runtime.KeepAlive(this)
 	C.QwtTextLabel_setMargin(this.h, (C.int)(margin))
 }
 
 func (this *QwtTextLabel) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtTextLabel) MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_minimumSizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtTextLabel) HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtTextLabel_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QwtTextLabel) TextRect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtTextLabel_textRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtTextLabel) DrawText(param1 *qt.QPainter, param2 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtTextLabel_drawText(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
 }
 
@@ -226,6 +258,7 @@ func QwtTextLabel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QwtTextLabel) SetText2(param1 string, textFormat QwtText__TextFormat) {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -235,6 +268,8 @@ func (this *QwtTextLabel) SetText2(param1 string, textFormat QwtText__TextFormat
 
 // DrawFrame can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) DrawFrame(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtTextLabel_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -247,6 +282,8 @@ func (this *QwtTextLabel) DrawFrame(param1 *qt.QPainter) {
 
 // InitStyleOption can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) InitStyleOption(option *qt.QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtTextLabel_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QStyleOptionFrame)(option.UnsafePointer()))
@@ -259,6 +296,7 @@ func (this *QwtTextLabel) InitStyleOption(option *qt.QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtTextLabel_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -271,6 +309,7 @@ func (this *QwtTextLabel) UpdateMicroFocus() {
 
 // Create can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtTextLabel_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -283,6 +322,7 @@ func (this *QwtTextLabel) Create() {
 
 // Destroy can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtTextLabel_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -295,6 +335,7 @@ func (this *QwtTextLabel) Destroy() {
 
 // FocusNextChild can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtTextLabel_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -309,6 +350,7 @@ func (this *QwtTextLabel) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtTextLabel_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -323,6 +365,7 @@ func (this *QwtTextLabel) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtTextLabel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -337,6 +380,7 @@ func (this *QwtTextLabel) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtTextLabel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -351,6 +395,7 @@ func (this *QwtTextLabel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -367,6 +412,8 @@ func (this *QwtTextLabel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtTextLabel that was directly constructed.
 func (this *QwtTextLabel) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtTextLabel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -380,6 +427,8 @@ func (this *QwtTextLabel) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtTextLabel) callVirtualBase_SetTextWithText(text *QwtText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(text)
 
 	C.QwtTextLabel_virtualbase_setTextWithText(unsafe.Pointer(this.h), text.cPointer())
 
@@ -406,6 +455,7 @@ func miqt_exec_callback_QwtTextLabel_setTextWithText(self *C.QwtTextLabel, cb C.
 }
 
 func (this *QwtTextLabel) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -427,12 +477,14 @@ func miqt_exec_callback_QwtTextLabel_sizeHint(self *C.QwtTextLabel, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtTextLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -454,12 +506,14 @@ func miqt_exec_callback_QwtTextLabel_minimumSizeHint(self *C.QwtTextLabel, cb C.
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtTextLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtTextLabel_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -488,6 +542,9 @@ func miqt_exec_callback_QwtTextLabel_heightForWidth(self *C.QwtTextLabel, cb C.i
 }
 
 func (this *QwtTextLabel) callVirtualBase_DrawText(param1 *qt.QPainter, param2 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtTextLabel_virtualbase_drawText(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
 
@@ -516,6 +573,8 @@ func miqt_exec_callback_QwtTextLabel_drawText(self *C.QwtTextLabel, cb C.intptr_
 }
 
 func (this *QwtTextLabel) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtTextLabel_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
 
@@ -542,6 +601,8 @@ func miqt_exec_callback_QwtTextLabel_paintEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_DrawContents(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtTextLabel_virtualbase_drawContents(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -568,6 +629,8 @@ func miqt_exec_callback_QwtTextLabel_drawContents(self *C.QwtTextLabel, cb C.int
 }
 
 func (this *QwtTextLabel) callVirtualBase_Event(e *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QwtTextLabel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -596,6 +659,8 @@ func miqt_exec_callback_QwtTextLabel_event(self *C.QwtTextLabel, cb C.intptr_t, 
 }
 
 func (this *QwtTextLabel) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtTextLabel_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -622,6 +687,7 @@ func miqt_exec_callback_QwtTextLabel_changeEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtTextLabel_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -647,6 +713,7 @@ func miqt_exec_callback_QwtTextLabel_devType(self *C.QwtTextLabel, cb C.intptr_t
 }
 
 func (this *QwtTextLabel) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtTextLabel_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -673,6 +740,7 @@ func miqt_exec_callback_QwtTextLabel_setVisible(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtTextLabel_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -698,6 +766,7 @@ func miqt_exec_callback_QwtTextLabel_hasHeightForWidth(self *C.QwtTextLabel, cb 
 }
 
 func (this *QwtTextLabel) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtTextLabel_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -717,12 +786,15 @@ func miqt_exec_callback_QwtTextLabel_paintEngine(self *C.QwtTextLabel, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -749,6 +821,8 @@ func miqt_exec_callback_QwtTextLabel_mousePressEvent(self *C.QwtTextLabel, cb C.
 }
 
 func (this *QwtTextLabel) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -775,6 +849,8 @@ func miqt_exec_callback_QwtTextLabel_mouseReleaseEvent(self *C.QwtTextLabel, cb 
 }
 
 func (this *QwtTextLabel) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -801,6 +877,8 @@ func miqt_exec_callback_QwtTextLabel_mouseDoubleClickEvent(self *C.QwtTextLabel,
 }
 
 func (this *QwtTextLabel) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -827,6 +905,8 @@ func miqt_exec_callback_QwtTextLabel_mouseMoveEvent(self *C.QwtTextLabel, cb C.i
 }
 
 func (this *QwtTextLabel) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -853,6 +933,8 @@ func miqt_exec_callback_QwtTextLabel_wheelEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -879,6 +961,8 @@ func miqt_exec_callback_QwtTextLabel_keyPressEvent(self *C.QwtTextLabel, cb C.in
 }
 
 func (this *QwtTextLabel) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -905,6 +989,8 @@ func miqt_exec_callback_QwtTextLabel_keyReleaseEvent(self *C.QwtTextLabel, cb C.
 }
 
 func (this *QwtTextLabel) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -931,6 +1017,8 @@ func miqt_exec_callback_QwtTextLabel_focusInEvent(self *C.QwtTextLabel, cb C.int
 }
 
 func (this *QwtTextLabel) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -957,6 +1045,8 @@ func miqt_exec_callback_QwtTextLabel_focusOutEvent(self *C.QwtTextLabel, cb C.in
 }
 
 func (this *QwtTextLabel) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -983,6 +1073,8 @@ func miqt_exec_callback_QwtTextLabel_enterEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1009,6 +1101,8 @@ func miqt_exec_callback_QwtTextLabel_leaveEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1035,6 +1129,8 @@ func miqt_exec_callback_QwtTextLabel_moveEvent(self *C.QwtTextLabel, cb C.intptr
 }
 
 func (this *QwtTextLabel) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -1061,6 +1157,8 @@ func miqt_exec_callback_QwtTextLabel_resizeEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1087,6 +1185,8 @@ func miqt_exec_callback_QwtTextLabel_closeEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1113,6 +1213,8 @@ func miqt_exec_callback_QwtTextLabel_contextMenuEvent(self *C.QwtTextLabel, cb C
 }
 
 func (this *QwtTextLabel) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1139,6 +1241,8 @@ func miqt_exec_callback_QwtTextLabel_tabletEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1165,6 +1269,8 @@ func miqt_exec_callback_QwtTextLabel_actionEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1191,6 +1297,8 @@ func miqt_exec_callback_QwtTextLabel_dragEnterEvent(self *C.QwtTextLabel, cb C.i
 }
 
 func (this *QwtTextLabel) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1217,6 +1325,8 @@ func miqt_exec_callback_QwtTextLabel_dragMoveEvent(self *C.QwtTextLabel, cb C.in
 }
 
 func (this *QwtTextLabel) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1243,6 +1353,8 @@ func miqt_exec_callback_QwtTextLabel_dragLeaveEvent(self *C.QwtTextLabel, cb C.i
 }
 
 func (this *QwtTextLabel) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1269,6 +1381,8 @@ func miqt_exec_callback_QwtTextLabel_dropEvent(self *C.QwtTextLabel, cb C.intptr
 }
 
 func (this *QwtTextLabel) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1295,6 +1409,8 @@ func miqt_exec_callback_QwtTextLabel_showEvent(self *C.QwtTextLabel, cb C.intptr
 }
 
 func (this *QwtTextLabel) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1321,6 +1437,7 @@ func miqt_exec_callback_QwtTextLabel_hideEvent(self *C.QwtTextLabel, cb C.intptr
 }
 
 func (this *QwtTextLabel) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1362,6 +1479,7 @@ func miqt_exec_callback_QwtTextLabel_nativeEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtTextLabel_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1390,6 +1508,8 @@ func miqt_exec_callback_QwtTextLabel_metric(self *C.QwtTextLabel, cb C.intptr_t,
 }
 
 func (this *QwtTextLabel) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtTextLabel_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1416,6 +1536,8 @@ func miqt_exec_callback_QwtTextLabel_initPainter(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtTextLabel_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1438,12 +1560,14 @@ func miqt_exec_callback_QwtTextLabel_redirected(self *C.QwtTextLabel, cb C.intpt
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtTextLabel_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1463,12 +1587,15 @@ func miqt_exec_callback_QwtTextLabel_sharedPainter(self *C.QwtTextLabel, cb C.in
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtTextLabel_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1495,6 +1622,7 @@ func miqt_exec_callback_QwtTextLabel_inputMethodEvent(self *C.QwtTextLabel, cb C
 }
 
 func (this *QwtTextLabel) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtTextLabel_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1519,12 +1647,14 @@ func miqt_exec_callback_QwtTextLabel_inputMethodQuery(self *C.QwtTextLabel, cb C
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QwtTextLabel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtTextLabel) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtTextLabel_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1553,6 +1683,9 @@ func miqt_exec_callback_QwtTextLabel_focusNextPrevChild(self *C.QwtTextLabel, cb
 }
 
 func (this *QwtTextLabel) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtTextLabel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1583,6 +1716,8 @@ func miqt_exec_callback_QwtTextLabel_eventFilter(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1609,6 +1744,8 @@ func miqt_exec_callback_QwtTextLabel_timerEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1635,6 +1772,8 @@ func miqt_exec_callback_QwtTextLabel_childEvent(self *C.QwtTextLabel, cb C.intpt
 }
 
 func (this *QwtTextLabel) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtTextLabel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1661,6 +1800,8 @@ func miqt_exec_callback_QwtTextLabel_customEvent(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtTextLabel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1687,6 +1828,8 @@ func miqt_exec_callback_QwtTextLabel_connectNotify(self *C.QwtTextLabel, cb C.in
 }
 
 func (this *QwtTextLabel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtTextLabel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1724,8 +1867,9 @@ func (this *QwtTextLabel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtTextLabel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTextLabel) {
-		C.QwtTextLabel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtTextLabel_delete((*C.QwtTextLabel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

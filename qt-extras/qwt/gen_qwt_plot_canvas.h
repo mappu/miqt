@@ -222,6 +222,8 @@ bool QwtPlotCanvas_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtPlotCanvas_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtPlotCanvas_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtPlotCanvas_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtPlotCanvas_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtPlotCanvas_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtPlotCanvas_protectedbase_updateStyleSheetInfo(bool* _dynamic_cast_ok, void* self);
 void QwtPlotCanvas_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);

@@ -151,7 +151,9 @@ public:
 		qreal progress_ret = progress;
 		double sigval3 = static_cast<double>(progress_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPropertyAnimation_interpolated(this, handle__interpolated, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPropertyAnimation_virtualbase_interpolated(const void* self, QVariant* from, QVariant* to, double progress);
@@ -552,6 +554,10 @@ bool QPropertyAnimation_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPropertyAnimation*>(self)->QPropertyAnimation::disconnectNotify(*signal);
+}
+
+QVariant* QPropertyAnimation_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QPropertyAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

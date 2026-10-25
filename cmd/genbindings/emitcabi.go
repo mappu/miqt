@@ -275,10 +275,15 @@ func makeNamePrefix(in string) string {
 // emitCABI2CppFreeReturn frees the malloc'd C memory of a CABI value that a Go
 // virtual-override callback returned and handed to C++ (the Go side no longer
 // defer-frees it — that was a use-after-free). Mirrors the heap-allocating cases
-// of emitCABI2CppForwarding; emits nothing for value/pointer types.
+// of emitCABI2CppForwarding; emits nothing for pointer types.
+// Qt value types returned by value are a heap copy made by the Go side (see
+// cabiVirtualReturnCopyName), so they are deleted here.
 func emitCABI2CppFreeReturn(p CppParameter, varname, indent string) string {
 	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.ParameterType == "QAnyStringView" {
 		return indent + "free(" + varname + ".data);\n"
+	}
+	if p.isValueClassType() {
+		return indent + "delete " + varname + ";\n"
 	}
 	if listType, _, ok := p.QListOf(); ok {
 		np := makeNamePrefix(varname) + "_free"
@@ -298,10 +303,93 @@ func emitCABI2CppFreeReturn(p CppParameter, varname, indent string) string {
 		s += indent + "free(" + varname + ".data);\n"
 		return s
 	}
-	// QMap/QPair and value/pointer types: no malloc'd top-level buffer is handed
-	// across for virtual returns in practice; leave a no-op rather than risk a
-	// wrong free.
+	if kType, vType, _, ok := p.QMapOf(); ok {
+		return emitCABI2CppFreeReturnKeysValues(kType, vType, varname, varname+".len", indent)
+	}
+	if kType, vType, ok := p.QPairOf(); ok {
+		return emitCABI2CppFreeReturnKeysValues(kType, vType, varname, "1", indent)
+	}
+	// Pointer types: nothing was allocated for us
 	return ""
+}
+
+// emitCABI2CppFreeReturnKeysValues frees the keys and values arrays of a
+// miqt_map (QMap or QPair) returned by a Go virtual-override callback, and
+// anything each element owns.
+func emitCABI2CppFreeReturnKeysValues(kType, vType CppParameter, varname, length, indent string) string {
+	np := makeNamePrefix(varname) + "_free"
+	innerK := emitCABI2CppFreeReturn(kType, np+"_karr[i]", indent+"\t")
+	innerV := emitCABI2CppFreeReturn(vType, np+"_varr[i]", indent+"\t")
+	s := ""
+	if innerK != "" {
+		s += indent + kType.RenderTypeCabi() + "* " + np + "_karr = static_cast<" + kType.RenderTypeCabi() + "*>(" + varname + ".keys);\n"
+	}
+	if innerV != "" {
+		s += indent + vType.RenderTypeCabi() + "* " + np + "_varr = static_cast<" + vType.RenderTypeCabi() + "*>(" + varname + ".values);\n"
+	}
+	if innerK != "" || innerV != "" {
+		s += indent + "for(size_t i = 0; i < " + length + "; ++i) {\n"
+		s += innerK
+		s += innerV
+		s += indent + "}\n"
+	}
+	s += indent + "free(" + varname + ".keys);\n"
+	s += indent + "free(" + varname + ".values);\n"
+	return s
+}
+
+// isValueClassType reports whether p is a Qt class passed by value, which the
+// CABI carries as a pointer to a heap copy.
+func (p CppParameter) isValueClassType() bool {
+	if p.Pointer || p.ByRef || p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+		return false
+	}
+	_, ok := KnownClassnames[p.ParameterType]
+	return ok
+}
+
+// valueClassTypes returns the Qt classes held by value in p, either directly
+// or as a QList/QMap/QPair element.
+func (p CppParameter) valueClassTypes() []CppParameter {
+	if p.isValueClassType() {
+		return []CppParameter{p}
+	}
+	if t, _, ok := p.QListOf(); ok {
+		return t.valueClassTypes()
+	}
+	if kType, vType, _, ok := p.QMapOf(); ok {
+		return append(kType.valueClassTypes(), vType.valueClassTypes()...)
+	}
+	if kType, vType, ok := p.QPairOf(); ok {
+		return append(kType.valueClassTypes(), vType.valueClassTypes()...)
+	}
+	return nil
+}
+
+// virtualReturnCopyTypes returns the distinct Qt classes that c's virtual
+// methods return by value, for which a cabiVirtualReturnCopyName helper is
+// emitted.
+func virtualReturnCopyTypes(c CppClass) []CppParameter {
+	var ret []CppParameter
+	seen := map[string]struct{}{}
+	for _, m := range c.VirtualMethods() {
+		for _, t := range m.ReturnType.valueClassTypes() {
+			if _, ok := seen[t.ParameterType]; ok {
+				continue
+			}
+			seen[t.ParameterType] = struct{}{}
+			ret = append(ret, t)
+		}
+	}
+	return ret
+}
+
+// cabiVirtualReturnCopyName is a helper that makes a heap copy of a Qt value
+// type. A Go virtual-override callback returns such a copy, so that C++ owns
+// it after the callback returns: the Go object it was copied from may be
+// deleted by its finalizer as soon as the callback returns.
+func cabiVirtualReturnCopyName(c CppClass, t CppParameter) string {
+	return cabiClassName(c.ClassName) + "_virtualreturncopy_" + cabiClassName(t.ParameterType)
 }
 
 // isConstCharPointer reports whether p is a `const char*`.
@@ -959,6 +1047,9 @@ extern "C" {
 
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiVirtualBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
 		}
+		for _, t := range virtualReturnCopyTypes(c) {
+			ret.WriteString(fmt.Sprintf("%s %s(%s src);\n", t.RenderTypeCabi(), cabiVirtualReturnCopyName(c, t), t.RenderTypeCabi()))
+		}
 		if len(virtualMethods) > 0 {
 			ret.WriteString("\n")
 
@@ -1152,6 +1243,14 @@ extern "C" {
 							returnTransformP = "\t\tconst char* callback_return_value_stored = " + storageVarname + ".insert(std::string(callback_return_value)).first->c_str();\n"
 							returnFree = "\t\tfree(const_cast<char*>(callback_return_value));\n"
 							returnTransformF = "callback_return_value_stored"
+						}
+
+						if returnParam.isValueClassType() {
+							// The Go callback hands us a heap copy that we own (the
+							// Go object it came from may already be deleted by its
+							// finalizer). Copy it into the return value, then delete it.
+							returnTransformP += "\t\t" + m.ReturnType.RenderTypeQtCpp() + " callback_return_value_ret = " + returnTransformF + ";\n"
+							returnTransformF = "callback_return_value_ret"
 						}
 					}
 
@@ -1531,6 +1630,15 @@ extern "C" {
 					)
 
 				}
+			}
+
+			for _, t := range virtualReturnCopyTypes(c) {
+				ret.WriteString(
+					t.RenderTypeCabi() + " " + cabiVirtualReturnCopyName(c, t) + "(" + t.RenderTypeCabi() + " src) {\n" +
+						"\treturn new " + cabiClassName(t.ParameterType) + "(*src);\n" +
+						"}\n" +
+						"\n",
+				)
 			}
 
 			for _, m := range protectedMethods {

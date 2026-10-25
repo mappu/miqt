@@ -17,8 +17,14 @@ import (
 
 type QBarSet struct {
 	h  *C.QBarSet
-	gc *[1]*C.QBarSet
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBarSet) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBarSet) cPointer() *C.QBarSet {
@@ -64,6 +70,7 @@ func NewQBarSet(label string) *QBarSet {
 
 // NewQBarSet2 constructs a new QBarSet object.
 func NewQBarSet2(label string, parent *qt6.QObject) *QBarSet {
+	defer runtime.KeepAlive(parent)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -73,10 +80,12 @@ func NewQBarSet2(label string, parent *qt6.QObject) *QBarSet {
 }
 
 func (this *QBarSet) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QBarSet_metaObject(this.h)))
 }
 
 func (this *QBarSet) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBarSet_metacast(this.h, param1_Cstring))
@@ -92,6 +101,7 @@ func QBarSet_Tr(s string) string {
 }
 
 func (this *QBarSet) SetLabel(label string) {
+	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -100,6 +110,7 @@ func (this *QBarSet) SetLabel(label string) {
 }
 
 func (this *QBarSet) Label() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QBarSet_label(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -107,10 +118,12 @@ func (this *QBarSet) Label() string {
 }
 
 func (this *QBarSet) Append(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_append(this.h, (C.double)(value))
 }
 
 func (this *QBarSet) AppendWithValues(values []float64) {
+	defer runtime.KeepAlive(this)
 	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_CArray_ptr))
 	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
@@ -122,142 +135,183 @@ func (this *QBarSet) AppendWithValues(values []float64) {
 }
 
 func (this *QBarSet) OperatorShiftLeft(value *float64) *QBarSet {
-	return newQBarSet(C.QBarSet_operatorShiftLeft(this.h, (*C.double)(unsafe.Pointer(value))))
+	defer runtime.KeepAlive(this)
+	_ret := newQBarSet(C.QBarSet_operatorShiftLeft(this.h, (*C.double)(unsafe.Pointer(value))))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QBarSet) Insert(index int, value float64) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_insert(this.h, (C.int)(index), (C.double)(value))
 }
 
 func (this *QBarSet) Remove(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_remove(this.h, (C.int)(index))
 }
 
 func (this *QBarSet) Replace(index int, value float64) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_replace(this.h, (C.int)(index), (C.double)(value))
 }
 
 func (this *QBarSet) At(index int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QBarSet_at(this.h, (C.int)(index)))
 }
 
 func (this *QBarSet) OperatorSubscript(index int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QBarSet_operatorSubscript(this.h, (C.int)(index)))
 }
 
 func (this *QBarSet) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBarSet_count(this.h))
 }
 
 func (this *QBarSet) Sum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QBarSet_sum(this.h))
 }
 
 func (this *QBarSet) SetPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QBarSet_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QBarSet) Pen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QBarSet_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QBarSet_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QBarSet) Brush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QBarSet_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetLabelBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QBarSet_setLabelBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QBarSet) LabelBrush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QBarSet_labelBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetLabelFont(font *qt6.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QBarSet_setLabelFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QBarSet) LabelFont() *qt6.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QBarSet_labelFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) Color() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QBarSet) BorderColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_borderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetBorderColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QBarSet) LabelColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_labelColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetLabelColor(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QBarSet) SelectedColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_selectedColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBarSet) SetSelectedColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_setSelectedColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QBarSet) IsBarSelected(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBarSet_isBarSelected(this.h, (C.int)(index)))
 }
 
 func (this *QBarSet) SelectBar(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_selectBar(this.h, (C.int)(index))
 }
 
 func (this *QBarSet) DeselectBar(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_deselectBar(this.h, (C.int)(index))
 }
 
 func (this *QBarSet) SetBarSelected(index int, selected bool) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_setBarSelected(this.h, (C.int)(index), (C.bool)(selected))
 }
 
 func (this *QBarSet) SelectAllBars() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_selectAllBars(this.h)
 }
 
 func (this *QBarSet) DeselectAllBars() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_deselectAllBars(this.h)
 }
 
 func (this *QBarSet) SelectBars(indexes []int) {
+	defer runtime.KeepAlive(this)
 	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -269,6 +323,7 @@ func (this *QBarSet) SelectBars(indexes []int) {
 }
 
 func (this *QBarSet) DeselectBars(indexes []int) {
+	defer runtime.KeepAlive(this)
 	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -280,6 +335,7 @@ func (this *QBarSet) DeselectBars(indexes []int) {
 }
 
 func (this *QBarSet) ToggleSelection(indexes []int) {
+	defer runtime.KeepAlive(this)
 	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -291,6 +347,7 @@ func (this *QBarSet) ToggleSelection(indexes []int) {
 }
 
 func (this *QBarSet) SelectedBars() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QBarSet_selectedBars(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -301,6 +358,7 @@ func (this *QBarSet) SelectedBars() []int {
 }
 
 func (this *QBarSet) Clicked(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_clicked(this.h, (C.int)(index))
 }
 func (this *QBarSet) OnClicked(slot func(index int)) {
@@ -321,6 +379,7 @@ func miqt_exec_callback_QBarSet_clicked(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) Hovered(status bool, index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_hovered(this.h, (C.bool)(status), (C.int)(index))
 }
 func (this *QBarSet) OnHovered(slot func(status bool, index int)) {
@@ -343,6 +402,7 @@ func miqt_exec_callback_QBarSet_hovered(cb C.intptr_t, status C.bool, index C.in
 }
 
 func (this *QBarSet) Pressed(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_pressed(this.h, (C.int)(index))
 }
 func (this *QBarSet) OnPressed(slot func(index int)) {
@@ -363,6 +423,7 @@ func miqt_exec_callback_QBarSet_pressed(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) Released(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_released(this.h, (C.int)(index))
 }
 func (this *QBarSet) OnReleased(slot func(index int)) {
@@ -383,6 +444,7 @@ func miqt_exec_callback_QBarSet_released(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) DoubleClicked(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_doubleClicked(this.h, (C.int)(index))
 }
 func (this *QBarSet) OnDoubleClicked(slot func(index int)) {
@@ -403,6 +465,7 @@ func miqt_exec_callback_QBarSet_doubleClicked(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) PenChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_penChanged(this.h)
 }
 func (this *QBarSet) OnPenChanged(slot func()) {
@@ -420,6 +483,7 @@ func miqt_exec_callback_QBarSet_penChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) BrushChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_brushChanged(this.h)
 }
 func (this *QBarSet) OnBrushChanged(slot func()) {
@@ -437,6 +501,7 @@ func miqt_exec_callback_QBarSet_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) LabelChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_labelChanged(this.h)
 }
 func (this *QBarSet) OnLabelChanged(slot func()) {
@@ -454,6 +519,7 @@ func miqt_exec_callback_QBarSet_labelChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) LabelBrushChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_labelBrushChanged(this.h)
 }
 func (this *QBarSet) OnLabelBrushChanged(slot func()) {
@@ -471,6 +537,7 @@ func miqt_exec_callback_QBarSet_labelBrushChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) LabelFontChanged() {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_labelFontChanged(this.h)
 }
 func (this *QBarSet) OnLabelFontChanged(slot func()) {
@@ -488,6 +555,8 @@ func miqt_exec_callback_QBarSet_labelFontChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) ColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QBarSet) OnColorChanged(slot func(color qt6.QColor)) {
@@ -510,6 +579,8 @@ func miqt_exec_callback_QBarSet_colorChanged(cb C.intptr_t, color *C.QColor) {
 }
 
 func (this *QBarSet) BorderColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QBarSet) OnBorderColorChanged(slot func(color qt6.QColor)) {
@@ -532,6 +603,8 @@ func miqt_exec_callback_QBarSet_borderColorChanged(cb C.intptr_t, color *C.QColo
 }
 
 func (this *QBarSet) LabelColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_labelColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QBarSet) OnLabelColorChanged(slot func(color qt6.QColor)) {
@@ -554,6 +627,8 @@ func miqt_exec_callback_QBarSet_labelColorChanged(cb C.intptr_t, color *C.QColor
 }
 
 func (this *QBarSet) SelectedColorChanged(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBarSet_selectedColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QBarSet) OnSelectedColorChanged(slot func(color *qt6.QColor)) {
@@ -574,6 +649,7 @@ func miqt_exec_callback_QBarSet_selectedColorChanged(cb C.intptr_t, color *C.QCo
 }
 
 func (this *QBarSet) ValuesAdded(index int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_valuesAdded(this.h, (C.int)(index), (C.int)(count))
 }
 func (this *QBarSet) OnValuesAdded(slot func(index int, count int)) {
@@ -596,6 +672,7 @@ func miqt_exec_callback_QBarSet_valuesAdded(cb C.intptr_t, index C.int, count C.
 }
 
 func (this *QBarSet) ValuesRemoved(index int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_valuesRemoved(this.h, (C.int)(index), (C.int)(count))
 }
 func (this *QBarSet) OnValuesRemoved(slot func(index int, count int)) {
@@ -618,6 +695,7 @@ func miqt_exec_callback_QBarSet_valuesRemoved(cb C.intptr_t, index C.int, count 
 }
 
 func (this *QBarSet) ValueChanged(index int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_valueChanged(this.h, (C.int)(index))
 }
 func (this *QBarSet) OnValueChanged(slot func(index int)) {
@@ -638,6 +716,7 @@ func miqt_exec_callback_QBarSet_valueChanged(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) SelectedBarsChanged(indexes []int) {
+	defer runtime.KeepAlive(this)
 	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -693,11 +772,13 @@ func QBarSet_Tr3(s string, c string, n int) string {
 }
 
 func (this *QBarSet) Remove2(index int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QBarSet_remove2(this.h, (C.int)(index), (C.int)(count))
 }
 
 // Sender can only be called from a QBarSet that was directly constructed.
 func (this *QBarSet) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QBarSet_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -712,6 +793,7 @@ func (this *QBarSet) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QBarSet that was directly constructed.
 func (this *QBarSet) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBarSet_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -726,6 +808,7 @@ func (this *QBarSet) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBarSet that was directly constructed.
 func (this *QBarSet) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -742,6 +825,8 @@ func (this *QBarSet) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBarSet that was directly constructed.
 func (this *QBarSet) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBarSet_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -755,6 +840,8 @@ func (this *QBarSet) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QBarSet) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBarSet_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -783,6 +870,9 @@ func miqt_exec_callback_QBarSet_event(self *C.QBarSet, cb C.intptr_t, event *C.Q
 }
 
 func (this *QBarSet) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBarSet_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -813,6 +903,8 @@ func miqt_exec_callback_QBarSet_eventFilter(self *C.QBarSet, cb C.intptr_t, watc
 }
 
 func (this *QBarSet) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBarSet_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -839,6 +931,8 @@ func miqt_exec_callback_QBarSet_timerEvent(self *C.QBarSet, cb C.intptr_t, event
 }
 
 func (this *QBarSet) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBarSet_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -865,6 +959,8 @@ func miqt_exec_callback_QBarSet_childEvent(self *C.QBarSet, cb C.intptr_t, event
 }
 
 func (this *QBarSet) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBarSet_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -891,6 +987,8 @@ func miqt_exec_callback_QBarSet_customEvent(self *C.QBarSet, cb C.intptr_t, even
 }
 
 func (this *QBarSet) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBarSet_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -917,6 +1015,8 @@ func miqt_exec_callback_QBarSet_connectNotify(self *C.QBarSet, cb C.intptr_t, si
 }
 
 func (this *QBarSet) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBarSet_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -954,8 +1054,9 @@ func (this *QBarSet) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBarSet{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBarSet) {
-		C.QBarSet_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBarSet_delete((*C.QBarSet)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

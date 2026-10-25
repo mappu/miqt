@@ -54,7 +54,13 @@ const (
 
 type QPalette struct {
 	h  *C.QPalette
-	gc *[1]*C.QPalette
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPalette) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPalette) cPointer() *C.QPalette {
@@ -93,6 +99,7 @@ func NewQPalette() *QPalette {
 
 // NewQPalette2 constructs a new QPalette object.
 func NewQPalette2(button *QColor) *QPalette {
+	defer runtime.KeepAlive(button)
 
 	return newQPalette(C.QPalette_new2(button.cPointer()))
 }
@@ -105,201 +112,330 @@ func NewQPalette3(button GlobalColor) *QPalette {
 
 // NewQPalette4 constructs a new QPalette object.
 func NewQPalette4(button *QColor, window *QColor) *QPalette {
+	defer runtime.KeepAlive(button)
+	defer runtime.KeepAlive(window)
 
 	return newQPalette(C.QPalette_new4(button.cPointer(), window.cPointer()))
 }
 
 // NewQPalette5 constructs a new QPalette object.
 func NewQPalette5(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) *QPalette {
+	defer runtime.KeepAlive(windowText)
+	defer runtime.KeepAlive(button)
+	defer runtime.KeepAlive(light)
+	defer runtime.KeepAlive(dark)
+	defer runtime.KeepAlive(mid)
+	defer runtime.KeepAlive(text)
+	defer runtime.KeepAlive(bright_text)
+	defer runtime.KeepAlive(base)
+	defer runtime.KeepAlive(window)
 
 	return newQPalette(C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer()))
 }
 
 // NewQPalette6 constructs a new QPalette object.
 func NewQPalette6(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
+	defer runtime.KeepAlive(windowText)
+	defer runtime.KeepAlive(window)
+	defer runtime.KeepAlive(light)
+	defer runtime.KeepAlive(dark)
+	defer runtime.KeepAlive(mid)
+	defer runtime.KeepAlive(text)
+	defer runtime.KeepAlive(base)
 
 	return newQPalette(C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer()))
 }
 
 // NewQPalette7 constructs a new QPalette object.
 func NewQPalette7(palette *QPalette) *QPalette {
+	defer runtime.KeepAlive(palette)
 
 	return newQPalette(C.QPalette_new7(palette.cPointer()))
 }
 
 func (this *QPalette) OperatorAssign(palette *QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QPalette_operatorAssign(this.h, palette.cPointer())
 }
 
 func (this *QPalette) Swap(other *QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPalette_swap(this.h, other.cPointer())
 }
 
 func (this *QPalette) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QPalette_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
+	defer runtime.KeepAlive(this)
 	return (QPalette__ColorGroup)(C.QPalette_currentColorGroup(this.h))
 }
 
 func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
 	C.QPalette_setCurrentColorGroup(this.h, (C.int)(cg))
 }
 
 func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
-	return newQColor(C.QPalette_color(this.h, (C.int)(cg), (C.int)(cr)))
+	defer runtime.KeepAlive(this)
+	_ret := newQColor(C.QPalette_color(this.h, (C.int)(cg), (C.int)(cr)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
-	return newQBrush(C.QPalette_brush(this.h, (C.int)(cg), (C.int)(cr)))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_brush(this.h, (C.int)(cg), (C.int)(cr)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QPalette_setColor(this.h, (C.int)(cg), (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetColor2(cr QPalette__ColorRole, color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QPalette_setColor2(this.h, (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QPalette_setBrush(this.h, (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) IsBrushSet(cg QPalette__ColorGroup, cr QPalette__ColorRole) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPalette_isBrushSet(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) SetBrush2(cg QPalette__ColorGroup, cr QPalette__ColorRole, brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QPalette_setBrush2(this.h, (C.int)(cg), (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) SetColorGroup(cr QPalette__ColorGroup, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(windowText)
+	defer runtime.KeepAlive(button)
+	defer runtime.KeepAlive(light)
+	defer runtime.KeepAlive(dark)
+	defer runtime.KeepAlive(mid)
+	defer runtime.KeepAlive(text)
+	defer runtime.KeepAlive(bright_text)
+	defer runtime.KeepAlive(base)
+	defer runtime.KeepAlive(window)
 	C.QPalette_setColorGroup(this.h, (C.int)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
 }
 
 func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPalette_isEqual(this.h, (C.int)(cr1), (C.int)(cr2)))
 }
 
 func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
-	return newQColor(C.QPalette_colorWithCr(this.h, (C.int)(cr)))
+	defer runtime.KeepAlive(this)
+	_ret := newQColor(C.QPalette_colorWithCr(this.h, (C.int)(cr)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
-	return newQBrush(C.QPalette_brushWithCr(this.h, (C.int)(cr)))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_brushWithCr(this.h, (C.int)(cr)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) WindowText() *QBrush {
-	return newQBrush(C.QPalette_windowText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_windowText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Button() *QBrush {
-	return newQBrush(C.QPalette_button(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_button(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Light() *QBrush {
-	return newQBrush(C.QPalette_light(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_light(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Dark() *QBrush {
-	return newQBrush(C.QPalette_dark(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_dark(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Mid() *QBrush {
-	return newQBrush(C.QPalette_mid(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_mid(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Text() *QBrush {
-	return newQBrush(C.QPalette_text(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_text(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Base() *QBrush {
-	return newQBrush(C.QPalette_base(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_base(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) AlternateBase() *QBrush {
-	return newQBrush(C.QPalette_alternateBase(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_alternateBase(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) ToolTipBase() *QBrush {
-	return newQBrush(C.QPalette_toolTipBase(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_toolTipBase(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) ToolTipText() *QBrush {
-	return newQBrush(C.QPalette_toolTipText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_toolTipText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Window() *QBrush {
-	return newQBrush(C.QPalette_window(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_window(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Midlight() *QBrush {
-	return newQBrush(C.QPalette_midlight(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_midlight(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) BrightText() *QBrush {
-	return newQBrush(C.QPalette_brightText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_brightText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) ButtonText() *QBrush {
-	return newQBrush(C.QPalette_buttonText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_buttonText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Shadow() *QBrush {
-	return newQBrush(C.QPalette_shadow(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_shadow(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Highlight() *QBrush {
-	return newQBrush(C.QPalette_highlight(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_highlight(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) HighlightedText() *QBrush {
-	return newQBrush(C.QPalette_highlightedText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_highlightedText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) Link() *QBrush {
-	return newQBrush(C.QPalette_link(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_link(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) LinkVisited() *QBrush {
-	return newQBrush(C.QPalette_linkVisited(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_linkVisited(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) PlaceholderText() *QBrush {
-	return newQBrush(C.QPalette_placeholderText(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQBrush(C.QPalette_placeholderText(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPalette) OperatorEqual(p *QPalette) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	return (bool)(C.QPalette_operatorEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) OperatorNotEqual(p *QPalette) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	return (bool)(C.QPalette_operatorNotEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) IsCopyOf(p *QPalette) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	return (bool)(C.QPalette_isCopyOf(this.h, p.cPointer()))
 }
 
 func (this *QPalette) CacheKey() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QPalette_cacheKey(this.h))
 }
 
 func (this *QPalette) Resolve(other *QPalette) *QPalette {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	_goptr := newQPalette(C.QPalette_resolve(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPalette) ResolveMask() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QPalette_resolveMask(this.h))
 }
 
 func (this *QPalette) SetResolveMask(mask uint64) {
+	defer runtime.KeepAlive(this)
 	C.QPalette_setResolveMask(this.h, (C.ulonglong)(mask))
 }
 
@@ -315,8 +451,9 @@ func (this *QPalette) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPalette{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPalette) {
-		C.QPalette_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPalette_delete((*C.QPalette)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

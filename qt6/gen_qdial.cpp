@@ -115,7 +115,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDial_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDial_virtualbase_sizeHint(const void* self);
@@ -130,7 +132,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDial_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDial_virtualbase_minimumSizeHint(const void* self);
@@ -824,7 +828,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDial_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QDial_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1723,6 +1729,14 @@ bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDial*>(self)->QDial::disconnectNotify(*signal);
+}
+
+QSize* QDial_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QDial_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action) {

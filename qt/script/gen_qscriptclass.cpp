@@ -77,7 +77,9 @@ public:
 		uint id_ret = id;
 		unsigned int sigval3 = static_cast<unsigned int>(id_ret);
 		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_property(this, handle__property, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QScriptValue callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QScriptValue* QScriptClass_virtualbase_property(void* self, QScriptValue* object, QScriptString* name, unsigned int id);
@@ -160,7 +162,9 @@ public:
 		}
 
 		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_prototype(this, handle__prototype);
-		return *callback_return_value;
+		QScriptValue callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QScriptValue* QScriptClass_virtualbase_prototype(const void* self);
@@ -214,7 +218,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&argument_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QScriptClass_extension(this, handle__extension, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument);
@@ -407,6 +413,14 @@ bool QScriptClass_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument) {
 	return new QVariant(static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::extension(static_cast<MiqtVirtualQScriptClass::Extension>(extension), *argument));
+}
+
+QScriptValue* QScriptClass_virtualreturncopy_QScriptValue(QScriptValue* src) {
+	return new QScriptValue(*src);
+}
+
+QVariant* QScriptClass_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QScriptClass_delete(QScriptClass* self) {

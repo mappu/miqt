@@ -15,8 +15,15 @@ import (
 
 type QStringEncoder struct {
 	h  *C.QStringEncoder
-	gc *[1]*C.QStringEncoder
+	gc *[1]unsafe.Pointer
 	*QStringConverter
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringEncoder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStringConverter.miqtSetGC(gc)
 }
 
 func (this *QStringEncoder) cPointer() *C.QStringEncoder {
@@ -85,6 +92,7 @@ func NewQStringEncoder5(name string, flags QStringConverterBase__Flag) *QStringE
 }
 
 func (this *QStringEncoder) RequiredSpace(inputLength int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QStringEncoder_requiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
 }
 
@@ -100,16 +108,24 @@ func (this *QStringEncoder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStringEncoder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStringEncoder) {
-		C.QStringEncoder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStringEncoder_delete((*C.QStringEncoder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStringDecoder struct {
 	h  *C.QStringDecoder
-	gc *[1]*C.QStringDecoder
+	gc *[1]unsafe.Pointer
 	*QStringConverter
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringDecoder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QStringConverter.miqtSetGC(gc)
 }
 
 func (this *QStringDecoder) cPointer() *C.QStringDecoder {
@@ -178,14 +194,19 @@ func NewQStringDecoder5(name string, f QStringConverterBase__Flag) *QStringDecod
 }
 
 func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QStringDecoder_requiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
 }
 
 func (this *QStringDecoder) AppendToBuffer(out *QChar, ba QByteArrayView) *QChar {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
+	defer runtime.KeepAlive(ba)
 	return newQChar(C.QStringDecoder_appendToBuffer(this.h, out.cPointer(), ba.cPointer()))
 }
 
 func QStringDecoder_DecoderForHtml(data QByteArrayView) *QStringDecoder {
+	defer runtime.KeepAlive(data)
 	_goptr := newQStringDecoder(C.QStringDecoder_decoderForHtml(data.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -203,8 +224,9 @@ func (this *QStringDecoder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStringDecoder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStringDecoder) {
-		C.QStringDecoder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStringDecoder_delete((*C.QStringDecoder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

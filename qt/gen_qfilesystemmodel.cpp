@@ -101,7 +101,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_index(this, handle__index, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
@@ -119,7 +121,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_parent(this, handle__parent, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QFileSystemModel_virtualbase_parent(const void* self, QModelIndex* child);
@@ -139,7 +143,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QFileSystemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
@@ -249,7 +255,9 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_data(this, handle__data, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QFileSystemModel_virtualbase_data(const void* self, QModelIndex* index, int role);
@@ -290,7 +298,9 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QFileSystemModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
@@ -496,6 +506,12 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = *(callback_return_value_varr[i]);
 		}
+		QVariant** callback_return_value_free_varr = static_cast<QVariant**>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_varr[i];
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -713,7 +729,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_buddy(this, handle__buddy, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QFileSystemModel_virtualbase_buddy(const void* self, QModelIndex* index);
@@ -744,6 +762,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -763,7 +785,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QSize* callback_return_value = miqt_exec_callback_QFileSystemModel_span(this, handle__span, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QFileSystemModel_virtualbase_span(const void* self, QModelIndex* index);
@@ -786,6 +810,12 @@ public:
 			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
 		}
+		struct miqt_string* callback_return_value_free_varr = static_cast<struct miqt_string*>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_varr[i].data);
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -2040,6 +2070,18 @@ bool QFileSystemModel_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::disconnectNotify(*signal);
+}
+
+QModelIndex* QFileSystemModel_virtualreturncopy_QModelIndex(QModelIndex* src) {
+	return new QModelIndex(*src);
+}
+
+QVariant* QFileSystemModel_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QSize* QFileSystemModel_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QFileSystemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {

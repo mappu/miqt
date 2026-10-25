@@ -27,8 +27,14 @@ const (
 
 type QWebEngineUrlRequestJob struct {
 	h  *C.QWebEngineUrlRequestJob
-	gc *[1]*C.QWebEngineUrlRequestJob
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineUrlRequestJob) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineUrlRequestJob) cPointer() *C.QWebEngineUrlRequestJob {
@@ -63,10 +69,12 @@ func UnsafeNewQWebEngineUrlRequestJob(h unsafe.Pointer) *QWebEngineUrlRequestJob
 }
 
 func (this *QWebEngineUrlRequestJob) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlRequestJob_metaObject(this.h)))
 }
 
 func (this *QWebEngineUrlRequestJob) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineUrlRequestJob_metacast(this.h, param1_Cstring))
@@ -82,12 +90,14 @@ func QWebEngineUrlRequestJob_Tr(s string) string {
 }
 
 func (this *QWebEngineUrlRequestJob) RequestUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_requestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestJob_requestMethod(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -95,12 +105,15 @@ func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
 }
 
 func (this *QWebEngineUrlRequestJob) Initiator() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	contentType_alias := C.struct_miqt_string{}
 	if len(contentType) > 0 {
 		contentType_alias.data = (*C.char)(unsafe.Pointer(&contentType[0]))
@@ -112,10 +125,13 @@ func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt6.QIODe
 }
 
 func (this *QWebEngineUrlRequestJob) Fail(error QWebEngineUrlRequestJob__Error) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlRequestJob_fail(this.h, (C.int)(error))
 }
 
 func (this *QWebEngineUrlRequestJob) Redirect(url *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebEngineUrlRequestJob_redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
@@ -153,8 +169,9 @@ func (this *QWebEngineUrlRequestJob) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineUrlRequestJob{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineUrlRequestJob) {
-		C.QWebEngineUrlRequestJob_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineUrlRequestJob_delete((*C.QWebEngineUrlRequestJob)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

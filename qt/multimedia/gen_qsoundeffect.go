@@ -32,8 +32,14 @@ const (
 
 type QSoundEffect struct {
 	h  *C.QSoundEffect
-	gc *[1]*C.QSoundEffect
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSoundEffect) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSoundEffect) cPointer() *C.QSoundEffect {
@@ -75,27 +81,33 @@ func NewQSoundEffect() *QSoundEffect {
 
 // NewQSoundEffect2 constructs a new QSoundEffect object.
 func NewQSoundEffect2(audioDevice *QAudioDeviceInfo) *QSoundEffect {
+	defer runtime.KeepAlive(audioDevice)
 
 	return newQSoundEffect(C.QSoundEffect_new2(audioDevice.cPointer()))
 }
 
 // NewQSoundEffect3 constructs a new QSoundEffect object.
 func NewQSoundEffect3(parent *qt.QObject) *QSoundEffect {
+	defer runtime.KeepAlive(parent)
 
 	return newQSoundEffect(C.QSoundEffect_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQSoundEffect4 constructs a new QSoundEffect object.
 func NewQSoundEffect4(audioDevice *QAudioDeviceInfo, parent *qt.QObject) *QSoundEffect {
+	defer runtime.KeepAlive(audioDevice)
+	defer runtime.KeepAlive(parent)
 
 	return newQSoundEffect(C.QSoundEffect_new4(audioDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSoundEffect) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSoundEffect_metaObject(this.h)))
 }
 
 func (this *QSoundEffect) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSoundEffect_metacast(this.h, param1_Cstring))
@@ -133,56 +145,70 @@ func QSoundEffect_SupportedMimeTypes() []string {
 }
 
 func (this *QSoundEffect) Source() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QSoundEffect_source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSoundEffect) SetSource(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QSoundEffect_setSource(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QSoundEffect) LoopCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSoundEffect_loopCount(this.h))
 }
 
 func (this *QSoundEffect) LoopsRemaining() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSoundEffect_loopsRemaining(this.h))
 }
 
 func (this *QSoundEffect) SetLoopCount(loopCount int) {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_setLoopCount(this.h, (C.int)(loopCount))
 }
 
 func (this *QSoundEffect) Volume() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QSoundEffect_volume(this.h))
 }
 
 func (this *QSoundEffect) SetVolume(volume float64) {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QSoundEffect) IsMuted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSoundEffect_isMuted(this.h))
 }
 
 func (this *QSoundEffect) SetMuted(muted bool) {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QSoundEffect) IsLoaded() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSoundEffect_isLoaded(this.h))
 }
 
 func (this *QSoundEffect) IsPlaying() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSoundEffect_isPlaying(this.h))
 }
 
 func (this *QSoundEffect) Status() QSoundEffect__Status {
+	defer runtime.KeepAlive(this)
 	return (QSoundEffect__Status)(C.QSoundEffect_status(this.h))
 }
 
 func (this *QSoundEffect) Category() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSoundEffect_category(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -190,6 +216,7 @@ func (this *QSoundEffect) Category() string {
 }
 
 func (this *QSoundEffect) SetCategory(category string) {
+	defer runtime.KeepAlive(this)
 	category_ms := C.struct_miqt_string{}
 	category_ms.data = C.CString(category)
 	category_ms.len = C.size_t(len(category))
@@ -198,6 +225,7 @@ func (this *QSoundEffect) SetCategory(category string) {
 }
 
 func (this *QSoundEffect) SourceChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_sourceChanged(this.h)
 }
 func (this *QSoundEffect) OnSourceChanged(slot func()) {
@@ -215,6 +243,7 @@ func miqt_exec_callback_QSoundEffect_sourceChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) LoopCountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_loopCountChanged(this.h)
 }
 func (this *QSoundEffect) OnLoopCountChanged(slot func()) {
@@ -232,6 +261,7 @@ func miqt_exec_callback_QSoundEffect_loopCountChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) LoopsRemainingChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_loopsRemainingChanged(this.h)
 }
 func (this *QSoundEffect) OnLoopsRemainingChanged(slot func()) {
@@ -249,6 +279,7 @@ func miqt_exec_callback_QSoundEffect_loopsRemainingChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) VolumeChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_volumeChanged(this.h)
 }
 func (this *QSoundEffect) OnVolumeChanged(slot func()) {
@@ -266,6 +297,7 @@ func miqt_exec_callback_QSoundEffect_volumeChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) MutedChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_mutedChanged(this.h)
 }
 func (this *QSoundEffect) OnMutedChanged(slot func()) {
@@ -283,6 +315,7 @@ func miqt_exec_callback_QSoundEffect_mutedChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) LoadedChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_loadedChanged(this.h)
 }
 func (this *QSoundEffect) OnLoadedChanged(slot func()) {
@@ -300,6 +333,7 @@ func miqt_exec_callback_QSoundEffect_loadedChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) PlayingChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_playingChanged(this.h)
 }
 func (this *QSoundEffect) OnPlayingChanged(slot func()) {
@@ -317,6 +351,7 @@ func miqt_exec_callback_QSoundEffect_playingChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) StatusChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_statusChanged(this.h)
 }
 func (this *QSoundEffect) OnStatusChanged(slot func()) {
@@ -334,6 +369,7 @@ func miqt_exec_callback_QSoundEffect_statusChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) CategoryChanged() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_categoryChanged(this.h)
 }
 func (this *QSoundEffect) OnCategoryChanged(slot func()) {
@@ -351,10 +387,12 @@ func miqt_exec_callback_QSoundEffect_categoryChanged(cb C.intptr_t) {
 }
 
 func (this *QSoundEffect) Play() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_play(this.h)
 }
 
 func (this *QSoundEffect) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QSoundEffect_stop(this.h)
 }
 
@@ -404,6 +442,7 @@ func QSoundEffect_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QSoundEffect that was directly constructed.
 func (this *QSoundEffect) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSoundEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -418,6 +457,7 @@ func (this *QSoundEffect) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSoundEffect that was directly constructed.
 func (this *QSoundEffect) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSoundEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -432,6 +472,7 @@ func (this *QSoundEffect) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSoundEffect that was directly constructed.
 func (this *QSoundEffect) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -448,6 +489,8 @@ func (this *QSoundEffect) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSoundEffect that was directly constructed.
 func (this *QSoundEffect) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSoundEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -461,6 +504,8 @@ func (this *QSoundEffect) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QSoundEffect) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSoundEffect_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -489,6 +534,9 @@ func miqt_exec_callback_QSoundEffect_event(self *C.QSoundEffect, cb C.intptr_t, 
 }
 
 func (this *QSoundEffect) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSoundEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -519,6 +567,8 @@ func miqt_exec_callback_QSoundEffect_eventFilter(self *C.QSoundEffect, cb C.intp
 }
 
 func (this *QSoundEffect) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSoundEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -545,6 +595,8 @@ func miqt_exec_callback_QSoundEffect_timerEvent(self *C.QSoundEffect, cb C.intpt
 }
 
 func (this *QSoundEffect) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSoundEffect_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -571,6 +623,8 @@ func miqt_exec_callback_QSoundEffect_childEvent(self *C.QSoundEffect, cb C.intpt
 }
 
 func (this *QSoundEffect) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSoundEffect_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -597,6 +651,8 @@ func miqt_exec_callback_QSoundEffect_customEvent(self *C.QSoundEffect, cb C.intp
 }
 
 func (this *QSoundEffect) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSoundEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -623,6 +679,8 @@ func miqt_exec_callback_QSoundEffect_connectNotify(self *C.QSoundEffect, cb C.in
 }
 
 func (this *QSoundEffect) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSoundEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -660,8 +718,9 @@ func (this *QSoundEffect) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSoundEffect{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSoundEffect) {
-		C.QSoundEffect_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSoundEffect_delete((*C.QSoundEffect)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

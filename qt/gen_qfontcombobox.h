@@ -208,6 +208,8 @@ bool QFontComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QFontComboBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QFontComboBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QFontComboBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionComboBox* option);
 void QFontComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

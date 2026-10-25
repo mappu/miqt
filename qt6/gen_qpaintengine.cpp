@@ -455,7 +455,9 @@ public:
 		}
 
 		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_coordinateOffset(this, handle__coordinateOffset);
-		return *callback_return_value;
+		QPoint callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self);
@@ -484,7 +486,9 @@ public:
 
 		QSize* sigval1 = new QSize(size);
 		QPixmap* callback_return_value = miqt_exec_callback_QPaintEngine_createPixmap(this, handle__createPixmap, sigval1);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size);
@@ -502,7 +506,9 @@ public:
 		Qt::ImageConversionFlags flags_ret = flags;
 		int sigval2 = static_cast<int>(flags_ret);
 		QPixmap* callback_return_value = miqt_exec_callback_QPaintEngine_createPixmapFromImage(this, handle__createPixmapFromImage, sigval1, sigval2);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags);
@@ -956,6 +962,14 @@ bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t sl
 
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags) {
 	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
+}
+
+QPoint* QPaintEngine_virtualreturncopy_QPoint(QPoint* src) {
+	return new QPoint(*src);
+}
+
+QPixmap* QPaintEngine_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
 }
 
 void QPaintEngine_delete(QPaintEngine* self) {

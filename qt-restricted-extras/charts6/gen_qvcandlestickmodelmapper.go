@@ -17,8 +17,15 @@ import (
 
 type QVCandlestickModelMapper struct {
 	h  *C.QVCandlestickModelMapper
-	gc *[1]*C.QVCandlestickModelMapper
+	gc *[1]unsafe.Pointer
 	*QCandlestickModelMapper
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVCandlestickModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QCandlestickModelMapper.miqtSetGC(gc)
 }
 
 func (this *QVCandlestickModelMapper) cPointer() *C.QVCandlestickModelMapper {
@@ -60,15 +67,18 @@ func NewQVCandlestickModelMapper() *QVCandlestickModelMapper {
 
 // NewQVCandlestickModelMapper2 constructs a new QVCandlestickModelMapper object.
 func NewQVCandlestickModelMapper2(parent *qt6.QObject) *QVCandlestickModelMapper {
+	defer runtime.KeepAlive(parent)
 
 	return newQVCandlestickModelMapper(C.QVCandlestickModelMapper_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QVCandlestickModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QVCandlestickModelMapper_metaObject(this.h)))
 }
 
 func (this *QVCandlestickModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVCandlestickModelMapper_metacast(this.h, param1_Cstring))
@@ -84,66 +94,82 @@ func QVCandlestickModelMapper_Tr(s string) string {
 }
 
 func (this *QVCandlestickModelMapper) Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt6.Orientation)(C.QVCandlestickModelMapper_orientation(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetTimestampRow(timestampRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setTimestampRow(this.h, (C.int)(timestampRow))
 }
 
 func (this *QVCandlestickModelMapper) TimestampRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_timestampRow(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetOpenRow(openRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setOpenRow(this.h, (C.int)(openRow))
 }
 
 func (this *QVCandlestickModelMapper) OpenRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_openRow(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetHighRow(highRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setHighRow(this.h, (C.int)(highRow))
 }
 
 func (this *QVCandlestickModelMapper) HighRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_highRow(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetLowRow(lowRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setLowRow(this.h, (C.int)(lowRow))
 }
 
 func (this *QVCandlestickModelMapper) LowRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_lowRow(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetCloseRow(closeRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setCloseRow(this.h, (C.int)(closeRow))
 }
 
 func (this *QVCandlestickModelMapper) CloseRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_closeRow(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetFirstSetColumn(firstSetColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setFirstSetColumn(this.h, (C.int)(firstSetColumn))
 }
 
 func (this *QVCandlestickModelMapper) FirstSetColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_firstSetColumn(this.h))
 }
 
 func (this *QVCandlestickModelMapper) SetLastSetColumn(lastSetColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_setLastSetColumn(this.h, (C.int)(lastSetColumn))
 }
 
 func (this *QVCandlestickModelMapper) LastSetColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVCandlestickModelMapper_lastSetColumn(this.h))
 }
 
 func (this *QVCandlestickModelMapper) TimestampRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_timestampRowChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnTimestampRowChanged(slot func()) {
@@ -161,6 +187,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_timestampRowChanged(cb C.intptr
 }
 
 func (this *QVCandlestickModelMapper) OpenRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_openRowChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnOpenRowChanged(slot func()) {
@@ -178,6 +205,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_openRowChanged(cb C.intptr_t) {
 }
 
 func (this *QVCandlestickModelMapper) HighRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_highRowChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnHighRowChanged(slot func()) {
@@ -195,6 +223,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_highRowChanged(cb C.intptr_t) {
 }
 
 func (this *QVCandlestickModelMapper) LowRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_lowRowChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnLowRowChanged(slot func()) {
@@ -212,6 +241,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_lowRowChanged(cb C.intptr_t) {
 }
 
 func (this *QVCandlestickModelMapper) CloseRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_closeRowChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnCloseRowChanged(slot func()) {
@@ -229,6 +259,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_closeRowChanged(cb C.intptr_t) 
 }
 
 func (this *QVCandlestickModelMapper) FirstSetColumnChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_firstSetColumnChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnFirstSetColumnChanged(slot func()) {
@@ -246,6 +277,7 @@ func miqt_exec_callback_QVCandlestickModelMapper_firstSetColumnChanged(cb C.intp
 }
 
 func (this *QVCandlestickModelMapper) LastSetColumnChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVCandlestickModelMapper_lastSetColumnChanged(this.h)
 }
 func (this *QVCandlestickModelMapper) OnLastSetColumnChanged(slot func()) {
@@ -286,6 +318,7 @@ func QVCandlestickModelMapper_Tr3(s string, c string, n int) string {
 
 // SetTimestamp can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetTimestamp(timestamp int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setTimestamp(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(timestamp))
@@ -298,6 +331,7 @@ func (this *QVCandlestickModelMapper) SetTimestamp(timestamp int) {
 
 // Timestamp can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Timestamp() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_timestamp(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -312,6 +346,7 @@ func (this *QVCandlestickModelMapper) Timestamp() int {
 
 // SetOpen can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetOpen(open int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setOpen(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(open))
@@ -324,6 +359,7 @@ func (this *QVCandlestickModelMapper) SetOpen(open int) {
 
 // Open can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Open() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_open(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -338,6 +374,7 @@ func (this *QVCandlestickModelMapper) Open() int {
 
 // SetHigh can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetHigh(high int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setHigh(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(high))
@@ -350,6 +387,7 @@ func (this *QVCandlestickModelMapper) SetHigh(high int) {
 
 // High can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) High() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_high(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -364,6 +402,7 @@ func (this *QVCandlestickModelMapper) High() int {
 
 // SetLow can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetLow(low int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setLow(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(low))
@@ -376,6 +415,7 @@ func (this *QVCandlestickModelMapper) SetLow(low int) {
 
 // Low can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Low() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_low(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -390,6 +430,7 @@ func (this *QVCandlestickModelMapper) Low() int {
 
 // SetClose can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetClose(close int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setClose(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(close))
@@ -402,6 +443,7 @@ func (this *QVCandlestickModelMapper) SetClose(close int) {
 
 // Close can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Close() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_close(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -416,6 +458,7 @@ func (this *QVCandlestickModelMapper) Close() int {
 
 // SetFirstSetSection can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetFirstSetSection(firstSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setFirstSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(firstSetSection))
@@ -428,6 +471,7 @@ func (this *QVCandlestickModelMapper) SetFirstSetSection(firstSetSection int) {
 
 // FirstSetSection can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) FirstSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_firstSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -442,6 +486,7 @@ func (this *QVCandlestickModelMapper) FirstSetSection() int {
 
 // SetLastSetSection can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SetLastSetSection(lastSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVCandlestickModelMapper_protectedbase_setLastSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(lastSetSection))
@@ -454,6 +499,7 @@ func (this *QVCandlestickModelMapper) SetLastSetSection(lastSetSection int) {
 
 // LastSetSection can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) LastSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_lastSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -468,6 +514,7 @@ func (this *QVCandlestickModelMapper) LastSetSection() int {
 
 // Sender can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QVCandlestickModelMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -482,6 +529,7 @@ func (this *QVCandlestickModelMapper) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVCandlestickModelMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -496,6 +544,7 @@ func (this *QVCandlestickModelMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -512,6 +561,8 @@ func (this *QVCandlestickModelMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVCandlestickModelMapper that was directly constructed.
 func (this *QVCandlestickModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVCandlestickModelMapper_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -525,6 +576,7 @@ func (this *QVCandlestickModelMapper) IsSignalConnected(signal *qt6.QMetaMethod)
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (qt6.Orientation)(C.QVCandlestickModelMapper_virtualbase_orientation(unsafe.Pointer(this.h)))
 
@@ -550,6 +602,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_orientation(self *C.QVCandlesti
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVCandlestickModelMapper_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -578,6 +632,9 @@ func miqt_exec_callback_QVCandlestickModelMapper_event(self *C.QVCandlestickMode
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVCandlestickModelMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -608,6 +665,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_eventFilter(self *C.QVCandlesti
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVCandlestickModelMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -634,6 +693,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_timerEvent(self *C.QVCandlestic
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVCandlestickModelMapper_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -660,6 +721,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_childEvent(self *C.QVCandlestic
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVCandlestickModelMapper_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -686,6 +749,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_customEvent(self *C.QVCandlesti
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVCandlestickModelMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -712,6 +777,8 @@ func miqt_exec_callback_QVCandlestickModelMapper_connectNotify(self *C.QVCandles
 }
 
 func (this *QVCandlestickModelMapper) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVCandlestickModelMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -749,8 +816,9 @@ func (this *QVCandlestickModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVCandlestickModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVCandlestickModelMapper) {
-		C.QVCandlestickModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVCandlestickModelMapper_delete((*C.QVCandlestickModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

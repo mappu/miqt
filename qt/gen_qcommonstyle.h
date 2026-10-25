@@ -149,6 +149,11 @@ bool QCommonStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QCommonStyle_virtualreturncopy_QRect(QRect* src);
+QSize* QCommonStyle_virtualreturncopy_QSize(QSize* src);
+QIcon* QCommonStyle_virtualreturncopy_QIcon(QIcon* src);
+QPixmap* QCommonStyle_virtualreturncopy_QPixmap(QPixmap* src);
+QPalette* QCommonStyle_virtualreturncopy_QPalette(QPalette* src);
 
 QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCommonStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

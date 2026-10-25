@@ -16,8 +16,14 @@ import (
 
 type QMediaService struct {
 	h  *C.QMediaService
-	gc *[1]*C.QMediaService
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaService) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaService) cPointer() *C.QMediaService {
@@ -52,10 +58,12 @@ func UnsafeNewQMediaService(h unsafe.Pointer) *QMediaService {
 }
 
 func (this *QMediaService) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaService_metaObject(this.h)))
 }
 
 func (this *QMediaService) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaService_metacast(this.h, param1_Cstring))
@@ -80,12 +88,15 @@ func QMediaService_TrUtf8(s string) string {
 }
 
 func (this *QMediaService) RequestControl(name string) *QMediaControl {
+	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	return newQMediaControl(C.QMediaService_requestControl(this.h, name_Cstring))
 }
 
 func (this *QMediaService) ReleaseControl(control *QMediaControl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(control)
 	C.QMediaService_releaseControl(this.h, control.cPointer())
 }
 
@@ -145,8 +156,9 @@ func (this *QMediaService) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaService{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaService) {
-		C.QMediaService_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaService_delete((*C.QMediaService)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

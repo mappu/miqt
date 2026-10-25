@@ -27,7 +27,13 @@ const (
 
 type QOperatingSystemVersion struct {
 	h  *C.QOperatingSystemVersion
-	gc *[1]*C.QOperatingSystemVersion
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QOperatingSystemVersion) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QOperatingSystemVersion) cPointer() *C.QOperatingSystemVersion {
@@ -87,26 +93,32 @@ func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_majorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_minorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MicroVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_microVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) SegmentCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_segmentCount(this.h))
 }
 
 func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
+	defer runtime.KeepAlive(this)
 	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_type(this.h))
 }
 
 func (this *QOperatingSystemVersion) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QOperatingSystemVersion_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -125,8 +137,9 @@ func (this *QOperatingSystemVersion) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QOperatingSystemVersion{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOperatingSystemVersion) {
-		C.QOperatingSystemVersion_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QOperatingSystemVersion_delete((*C.QOperatingSystemVersion)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

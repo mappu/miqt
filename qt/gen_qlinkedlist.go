@@ -15,7 +15,13 @@ import (
 
 type QLinkedListData struct {
 	h  *C.QLinkedListData
-	gc *[1]*C.QLinkedListData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLinkedListData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLinkedListData) cPointer() *C.QLinkedListData {
@@ -53,34 +59,44 @@ func NewQLinkedListData() *QLinkedListData {
 }
 
 func (this *QLinkedListData) N() *QLinkedListData {
+	defer runtime.KeepAlive(this)
 	return newQLinkedListData(C.QLinkedListData_n(this.h))
 }
 
 func (this *QLinkedListData) SetN(n *QLinkedListData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(n)
 	C.QLinkedListData_setN(this.h, n.cPointer())
 }
 
 func (this *QLinkedListData) P() *QLinkedListData {
+	defer runtime.KeepAlive(this)
 	return newQLinkedListData(C.QLinkedListData_p(this.h))
 }
 
 func (this *QLinkedListData) SetP(p *QLinkedListData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	C.QLinkedListData_setP(this.h, p.cPointer())
 }
 
 func (this *QLinkedListData) Size() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QLinkedListData_size(this.h))
 }
 
 func (this *QLinkedListData) SetSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QLinkedListData_setSize(this.h, (C.int)(size))
 }
 
 func (this *QLinkedListData) Sharable() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QLinkedListData_sharable(this.h))
 }
 
 func (this *QLinkedListData) SetSharable(sharable uint) {
+	defer runtime.KeepAlive(this)
 	C.QLinkedListData_setSharable(this.h, (C.uint)(sharable))
 }
 
@@ -96,8 +112,9 @@ func (this *QLinkedListData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLinkedListData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLinkedListData) {
-		C.QLinkedListData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLinkedListData_delete((*C.QLinkedListData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -39,7 +39,13 @@ const (
 
 type QOperatingSystemVersionBase struct {
 	h  *C.QOperatingSystemVersionBase
-	gc *[1]*C.QOperatingSystemVersionBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QOperatingSystemVersionBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QOperatingSystemVersionBase) cPointer() *C.QOperatingSystemVersionBase {
@@ -78,6 +84,7 @@ func NewQOperatingSystemVersionBase(osType QOperatingSystemVersionBase__OSType, 
 
 // NewQOperatingSystemVersionBase2 constructs a new QOperatingSystemVersionBase object.
 func NewQOperatingSystemVersionBase2(param1 *QOperatingSystemVersionBase) *QOperatingSystemVersionBase {
+	defer runtime.KeepAlive(param1)
 
 	return newQOperatingSystemVersionBase(C.QOperatingSystemVersionBase_new2(param1.cPointer()))
 }
@@ -101,6 +108,7 @@ func QOperatingSystemVersionBase_Current() *QOperatingSystemVersionBase {
 }
 
 func QOperatingSystemVersionBase_Name(osversion QOperatingSystemVersionBase) string {
+	defer runtime.KeepAlive(osversion)
 	var _ms C.struct_miqt_string = C.QOperatingSystemVersionBase_name(osversion.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -112,32 +120,39 @@ func QOperatingSystemVersionBase_CurrentType() QOperatingSystemVersionBase__OSTy
 }
 
 func (this *QOperatingSystemVersionBase) Version() *QVersionNumber {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVersionNumber(C.QOperatingSystemVersionBase_version(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOperatingSystemVersionBase) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersionBase_majorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersionBase) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersionBase_minorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersionBase) MicroVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersionBase_microVersion(this.h))
 }
 
 func (this *QOperatingSystemVersionBase) SegmentCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersionBase_segmentCount(this.h))
 }
 
 func (this *QOperatingSystemVersionBase) Type() QOperatingSystemVersionBase__OSType {
+	defer runtime.KeepAlive(this)
 	return (QOperatingSystemVersionBase__OSType)(C.QOperatingSystemVersionBase_type(this.h))
 }
 
 func (this *QOperatingSystemVersionBase) Name2() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QOperatingSystemVersionBase_name2(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -156,16 +171,24 @@ func (this *QOperatingSystemVersionBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QOperatingSystemVersionBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOperatingSystemVersionBase) {
-		C.QOperatingSystemVersionBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QOperatingSystemVersionBase_delete((*C.QOperatingSystemVersionBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QOperatingSystemVersion struct {
 	h  *C.QOperatingSystemVersion
-	gc *[1]*C.QOperatingSystemVersion
+	gc *[1]unsafe.Pointer
 	*QOperatingSystemVersionBase
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QOperatingSystemVersion) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QOperatingSystemVersionBase.miqtSetGC(gc)
 }
 
 func (this *QOperatingSystemVersion) cPointer() *C.QOperatingSystemVersion {
@@ -201,6 +224,7 @@ func UnsafeNewQOperatingSystemVersion(h unsafe.Pointer) *QOperatingSystemVersion
 
 // NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion(osversion *QOperatingSystemVersionBase) *QOperatingSystemVersion {
+	defer runtime.KeepAlive(osversion)
 
 	return newQOperatingSystemVersion(C.QOperatingSystemVersion_new(osversion.cPointer()))
 }
@@ -213,6 +237,7 @@ func NewQOperatingSystemVersion2(osType QOperatingSystemVersion__OSType, vmajor 
 
 // NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion3(param1 *QOperatingSystemVersion) *QOperatingSystemVersion {
+	defer runtime.KeepAlive(param1)
 
 	return newQOperatingSystemVersion(C.QOperatingSystemVersion_new3(param1.cPointer()))
 }
@@ -240,32 +265,39 @@ func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
 }
 
 func (this *QOperatingSystemVersion) Version() *QVersionNumber {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVersionNumber(C.QOperatingSystemVersion_version(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_majorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_minorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MicroVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_microVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) SegmentCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QOperatingSystemVersion_segmentCount(this.h))
 }
 
 func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
+	defer runtime.KeepAlive(this)
 	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_type(this.h))
 }
 
 func (this *QOperatingSystemVersion) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QOperatingSystemVersion_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -284,8 +316,9 @@ func (this *QOperatingSystemVersion) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QOperatingSystemVersion{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOperatingSystemVersion) {
-		C.QOperatingSystemVersion_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QOperatingSystemVersion_delete((*C.QOperatingSystemVersion)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,15 @@ import (
 
 type QVBarModelMapper struct {
 	h  *C.QVBarModelMapper
-	gc *[1]*C.QVBarModelMapper
+	gc *[1]unsafe.Pointer
 	*QBarModelMapper
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVBarModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QBarModelMapper.miqtSetGC(gc)
 }
 
 func (this *QVBarModelMapper) cPointer() *C.QVBarModelMapper {
@@ -60,15 +67,18 @@ func NewQVBarModelMapper() *QVBarModelMapper {
 
 // NewQVBarModelMapper2 constructs a new QVBarModelMapper object.
 func NewQVBarModelMapper2(parent *qt6.QObject) *QVBarModelMapper {
+	defer runtime.KeepAlive(parent)
 
 	return newQVBarModelMapper(C.QVBarModelMapper_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QVBarModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QVBarModelMapper_metaObject(this.h)))
 }
 
 func (this *QVBarModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVBarModelMapper_metacast(this.h, param1_Cstring))
@@ -84,54 +94,69 @@ func QVBarModelMapper_Tr(s string) string {
 }
 
 func (this *QVBarModelMapper) Model() *qt6.QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QVBarModelMapper_model(this.h)))
 }
 
 func (this *QVBarModelMapper) SetModel(model *qt6.QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QVBarModelMapper_setModel(this.h, (*C.QAbstractItemModel)(model.UnsafePointer()))
 }
 
 func (this *QVBarModelMapper) Series() *QAbstractBarSeries {
+	defer runtime.KeepAlive(this)
 	return newQAbstractBarSeries(C.QVBarModelMapper_series(this.h))
 }
 
 func (this *QVBarModelMapper) SetSeries(series *QAbstractBarSeries) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(series)
 	C.QVBarModelMapper_setSeries(this.h, series.cPointer())
 }
 
 func (this *QVBarModelMapper) FirstBarSetColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVBarModelMapper_firstBarSetColumn(this.h))
 }
 
 func (this *QVBarModelMapper) SetFirstBarSetColumn(firstBarSetColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_setFirstBarSetColumn(this.h, (C.int)(firstBarSetColumn))
 }
 
 func (this *QVBarModelMapper) LastBarSetColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVBarModelMapper_lastBarSetColumn(this.h))
 }
 
 func (this *QVBarModelMapper) SetLastBarSetColumn(lastBarSetColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_setLastBarSetColumn(this.h, (C.int)(lastBarSetColumn))
 }
 
 func (this *QVBarModelMapper) FirstRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVBarModelMapper_firstRow(this.h))
 }
 
 func (this *QVBarModelMapper) SetFirstRow(firstRow int) {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_setFirstRow(this.h, (C.int)(firstRow))
 }
 
 func (this *QVBarModelMapper) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVBarModelMapper_rowCount(this.h))
 }
 
 func (this *QVBarModelMapper) SetRowCount(rowCount int) {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_setRowCount(this.h, (C.int)(rowCount))
 }
 
 func (this *QVBarModelMapper) SeriesReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_seriesReplaced(this.h)
 }
 func (this *QVBarModelMapper) OnSeriesReplaced(slot func()) {
@@ -149,6 +174,7 @@ func miqt_exec_callback_QVBarModelMapper_seriesReplaced(cb C.intptr_t) {
 }
 
 func (this *QVBarModelMapper) ModelReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_modelReplaced(this.h)
 }
 func (this *QVBarModelMapper) OnModelReplaced(slot func()) {
@@ -166,6 +192,7 @@ func miqt_exec_callback_QVBarModelMapper_modelReplaced(cb C.intptr_t) {
 }
 
 func (this *QVBarModelMapper) FirstBarSetColumnChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_firstBarSetColumnChanged(this.h)
 }
 func (this *QVBarModelMapper) OnFirstBarSetColumnChanged(slot func()) {
@@ -183,6 +210,7 @@ func miqt_exec_callback_QVBarModelMapper_firstBarSetColumnChanged(cb C.intptr_t)
 }
 
 func (this *QVBarModelMapper) LastBarSetColumnChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_lastBarSetColumnChanged(this.h)
 }
 func (this *QVBarModelMapper) OnLastBarSetColumnChanged(slot func()) {
@@ -200,6 +228,7 @@ func miqt_exec_callback_QVBarModelMapper_lastBarSetColumnChanged(cb C.intptr_t) 
 }
 
 func (this *QVBarModelMapper) FirstRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_firstRowChanged(this.h)
 }
 func (this *QVBarModelMapper) OnFirstRowChanged(slot func()) {
@@ -217,6 +246,7 @@ func miqt_exec_callback_QVBarModelMapper_firstRowChanged(cb C.intptr_t) {
 }
 
 func (this *QVBarModelMapper) RowCountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QVBarModelMapper_rowCountChanged(this.h)
 }
 func (this *QVBarModelMapper) OnRowCountChanged(slot func()) {
@@ -257,6 +287,7 @@ func QVBarModelMapper_Tr3(s string, c string, n int) string {
 
 // First can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) First() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBarModelMapper_protectedbase_first(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -271,6 +302,7 @@ func (this *QVBarModelMapper) First() int {
 
 // SetFirst can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SetFirst(first int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBarModelMapper_protectedbase_setFirst(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(first))
@@ -283,6 +315,7 @@ func (this *QVBarModelMapper) SetFirst(first int) {
 
 // Count can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) Count() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBarModelMapper_protectedbase_count(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -297,6 +330,7 @@ func (this *QVBarModelMapper) Count() int {
 
 // SetCount can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SetCount(count int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBarModelMapper_protectedbase_setCount(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(count))
@@ -309,6 +343,7 @@ func (this *QVBarModelMapper) SetCount(count int) {
 
 // FirstBarSetSection can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) FirstBarSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBarModelMapper_protectedbase_firstBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -323,6 +358,7 @@ func (this *QVBarModelMapper) FirstBarSetSection() int {
 
 // SetFirstBarSetSection can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SetFirstBarSetSection(firstBarSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBarModelMapper_protectedbase_setFirstBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(firstBarSetSection))
@@ -335,6 +371,7 @@ func (this *QVBarModelMapper) SetFirstBarSetSection(firstBarSetSection int) {
 
 // LastBarSetSection can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) LastBarSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBarModelMapper_protectedbase_lastBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -349,6 +386,7 @@ func (this *QVBarModelMapper) LastBarSetSection() int {
 
 // SetLastBarSetSection can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SetLastBarSetSection(lastBarSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBarModelMapper_protectedbase_setLastBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(lastBarSetSection))
@@ -361,6 +399,7 @@ func (this *QVBarModelMapper) SetLastBarSetSection(lastBarSetSection int) {
 
 // Orientation can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (qt6.Orientation)(C.QVBarModelMapper_protectedbase_orientation(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,6 +414,7 @@ func (this *QVBarModelMapper) Orientation() qt6.Orientation {
 
 // SetOrientation can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SetOrientation(orientation qt6.Orientation) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QVBarModelMapper_protectedbase_setOrientation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(orientation))
@@ -387,6 +427,7 @@ func (this *QVBarModelMapper) SetOrientation(orientation qt6.Orientation) {
 
 // Sender can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QVBarModelMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -401,6 +442,7 @@ func (this *QVBarModelMapper) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVBarModelMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -415,6 +457,7 @@ func (this *QVBarModelMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -431,6 +474,8 @@ func (this *QVBarModelMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVBarModelMapper that was directly constructed.
 func (this *QVBarModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVBarModelMapper_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -444,6 +489,8 @@ func (this *QVBarModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QVBarModelMapper) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVBarModelMapper_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -472,6 +519,9 @@ func miqt_exec_callback_QVBarModelMapper_event(self *C.QVBarModelMapper, cb C.in
 }
 
 func (this *QVBarModelMapper) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVBarModelMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -502,6 +552,8 @@ func miqt_exec_callback_QVBarModelMapper_eventFilter(self *C.QVBarModelMapper, c
 }
 
 func (this *QVBarModelMapper) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVBarModelMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -528,6 +580,8 @@ func miqt_exec_callback_QVBarModelMapper_timerEvent(self *C.QVBarModelMapper, cb
 }
 
 func (this *QVBarModelMapper) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVBarModelMapper_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -554,6 +608,8 @@ func miqt_exec_callback_QVBarModelMapper_childEvent(self *C.QVBarModelMapper, cb
 }
 
 func (this *QVBarModelMapper) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVBarModelMapper_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -580,6 +636,8 @@ func miqt_exec_callback_QVBarModelMapper_customEvent(self *C.QVBarModelMapper, c
 }
 
 func (this *QVBarModelMapper) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVBarModelMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -606,6 +664,8 @@ func miqt_exec_callback_QVBarModelMapper_connectNotify(self *C.QVBarModelMapper,
 }
 
 func (this *QVBarModelMapper) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVBarModelMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -643,8 +703,9 @@ func (this *QVBarModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVBarModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVBarModelMapper) {
-		C.QVBarModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVBarModelMapper_delete((*C.QVBarModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

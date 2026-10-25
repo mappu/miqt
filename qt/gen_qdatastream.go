@@ -76,7 +76,13 @@ const (
 
 type QDataStream struct {
 	h  *C.QDataStream
-	gc *[1]*C.QDataStream
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDataStream) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDataStream) cPointer() *C.QDataStream {
@@ -115,6 +121,7 @@ func NewQDataStream() *QDataStream {
 
 // NewQDataStream2 constructs a new QDataStream object.
 func NewQDataStream2(param1 *QIODevice) *QDataStream {
+	defer runtime.KeepAlive(param1)
 
 	return newQDataStream(C.QDataStream_new2(param1.cPointer()))
 }
@@ -133,198 +140,247 @@ func NewQDataStream3(param1 []byte) *QDataStream {
 }
 
 func (this *QDataStream) Device() *QIODevice {
+	defer runtime.KeepAlive(this)
 	return newQIODevice(C.QDataStream_device(this.h))
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QDataStream_setDevice(this.h, device.cPointer())
 }
 
 func (this *QDataStream) UnsetDevice() {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_unsetDevice(this.h)
 }
 
 func (this *QDataStream) AtEnd() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDataStream_atEnd(this.h))
 }
 
 func (this *QDataStream) Status() QDataStream__Status {
+	defer runtime.KeepAlive(this)
 	return (QDataStream__Status)(C.QDataStream_status(this.h))
 }
 
 func (this *QDataStream) SetStatus(status QDataStream__Status) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_setStatus(this.h, (C.int)(status))
 }
 
 func (this *QDataStream) ResetStatus() {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_resetStatus(this.h)
 }
 
 func (this *QDataStream) FloatingPointPrecision() QDataStream__FloatingPointPrecision {
+	defer runtime.KeepAlive(this)
 	return (QDataStream__FloatingPointPrecision)(C.QDataStream_floatingPointPrecision(this.h))
 }
 
 func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__FloatingPointPrecision) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_setFloatingPointPrecision(this.h, (C.int)(precision))
 }
 
 func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
+	defer runtime.KeepAlive(this)
 	return (QDataStream__ByteOrder)(C.QDataStream_byteOrder(this.h))
 }
 
 func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_setByteOrder(this.h, (C.int)(byteOrder))
 }
 
 func (this *QDataStream) Version() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDataStream_version(this.h))
 }
 
 func (this *QDataStream) SetVersion(version int) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_setVersion(this.h, (C.int)(version))
 }
 
 func (this *QDataStream) OperatorShiftRight(i *int8) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRight(this.h, (*C.schar)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQuint8(i *byte) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQuint8(this.h, (*C.uchar)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQint16(i *int16) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQint16(this.h, (*C.short)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQuint16(i *uint16) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQuint16(this.h, (*C.ushort)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQint32(i *int) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQint32(this.h, (*C.int)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQuint32(i *uint) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQuint32(this.h, (*C.uint)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQint64(i *int64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQint64(this.h, (*C.longlong)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQuint64(i *uint64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithQuint64(this.h, (*C.ulonglong)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithBool(i *bool) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithBool(this.h, (*C.bool)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithFloat(f *float32) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithFloat(this.h, (*C.float)(unsafe.Pointer(f)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithDouble(f *float64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftRightWithDouble(this.h, (*C.double)(unsafe.Pointer(f)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithStr(str string) {
+	defer runtime.KeepAlive(this)
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	C.QDataStream_operatorShiftRightWithStr(this.h, str_Cstring)
 }
 
 func (this *QDataStream) OperatorShiftLeft(i int8) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeft(this.h, (C.schar)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQuint8(i byte) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQuint8(this.h, (C.uchar)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQint16(i int16) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQint16(this.h, (C.short)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQuint16(i uint16) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQuint16(this.h, (C.ushort)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQint32(i int) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQint32(this.h, (C.int)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQuint32(i uint) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQuint32(this.h, (C.uint)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQint64(i int64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQint64(this.h, (C.longlong)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQuint64(i uint64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithQuint64(this.h, (C.ulonglong)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithBool(i bool) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithBool(this.h, (C.bool)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithFloat(f float32) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithFloat(this.h, (C.float)(f))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithDouble(f float64) {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_operatorShiftLeftWithDouble(this.h, (C.double)(f))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
+	defer runtime.KeepAlive(this)
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
 	C.QDataStream_operatorShiftLeftWithStr(this.h, str_Cstring)
 }
 
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return newQDataStream(C.QDataStream_readBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal))))
+	_ret := newQDataStream(C.QDataStream_readBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal))))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (int)(C.QDataStream_readRawData(this.h, param1_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) WriteBytes(param1 string, lenVal uint) {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	C.QDataStream_writeBytes(this.h, param1_Cstring, (C.uint)(lenVal))
 }
 
 func (this *QDataStream) WriteRawData(param1 string, lenVal int) int {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (int)(C.QDataStream_writeRawData(this.h, param1_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) SkipRawData(lenVal int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDataStream_skipRawData(this.h, (C.int)(lenVal)))
 }
 
 func (this *QDataStream) StartTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_startTransaction(this.h)
 }
 
 func (this *QDataStream) CommitTransaction() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDataStream_commitTransaction(this.h))
 }
 
 func (this *QDataStream) RollbackTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_rollbackTransaction(this.h)
 }
 
 func (this *QDataStream) AbortTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QDataStream_abortTransaction(this.h)
 }
 
@@ -340,8 +396,9 @@ func (this *QDataStream) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDataStream{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDataStream) {
-		C.QDataStream_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDataStream_delete((*C.QDataStream)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

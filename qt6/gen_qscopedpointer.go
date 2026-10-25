@@ -15,7 +15,13 @@ import (
 
 type QScopedPointerPodDeleter struct {
 	h  *C.QScopedPointerPodDeleter
-	gc *[1]*C.QScopedPointerPodDeleter
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScopedPointerPodDeleter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScopedPointerPodDeleter) cPointer() *C.QScopedPointerPodDeleter {
@@ -51,6 +57,7 @@ func QScopedPointerPodDeleter_Cleanup(pointer unsafe.Pointer) {
 }
 
 func (this *QScopedPointerPodDeleter) OperatorCall(pointer unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 	C.QScopedPointerPodDeleter_operatorCall(this.h, pointer)
 }
 
@@ -66,8 +73,9 @@ func (this *QScopedPointerPodDeleter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScopedPointerPodDeleter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScopedPointerPodDeleter) {
-		C.QScopedPointerPodDeleter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScopedPointerPodDeleter_delete((*C.QScopedPointerPodDeleter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

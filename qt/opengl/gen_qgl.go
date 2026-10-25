@@ -93,7 +93,13 @@ const (
 
 type QGLFormat struct {
 	h  *C.QGLFormat
-	gc *[1]*C.QGLFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGLFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGLFormat) cPointer() *C.QGLFormat {
@@ -138,6 +144,7 @@ func NewQGLFormat2(options QGL__FormatOption) *QGLFormat {
 
 // NewQGLFormat3 constructs a new QGLFormat object.
 func NewQGLFormat3(other *QGLFormat) *QGLFormat {
+	defer runtime.KeepAlive(other)
 
 	return newQGLFormat(C.QGLFormat_new3(other.cPointer()))
 }
@@ -149,174 +156,218 @@ func NewQGLFormat4(options QGL__FormatOption, plane int) *QGLFormat {
 }
 
 func (this *QGLFormat) OperatorAssign(other *QGLFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGLFormat_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGLFormat) SetDepthBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setDepthBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) DepthBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_depthBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetAccumBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setAccumBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) AccumBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_accumBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetRedBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setRedBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) RedBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_redBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetGreenBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setGreenBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) GreenBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_greenBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetBlueBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setBlueBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) BlueBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_blueBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetAlphaBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setAlphaBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) AlphaBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_alphaBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetStencilBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setStencilBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QGLFormat) StencilBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_stencilBufferSize(this.h))
 }
 
 func (this *QGLFormat) SetSampleBuffers(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setSampleBuffers(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) SampleBuffers() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_sampleBuffers(this.h))
 }
 
 func (this *QGLFormat) SetSamples(numSamples int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setSamples(this.h, (C.int)(numSamples))
 }
 
 func (this *QGLFormat) Samples() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_samples(this.h))
 }
 
 func (this *QGLFormat) SetSwapInterval(interval int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setSwapInterval(this.h, (C.int)(interval))
 }
 
 func (this *QGLFormat) SwapInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_swapInterval(this.h))
 }
 
 func (this *QGLFormat) DoubleBuffer() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_doubleBuffer(this.h))
 }
 
 func (this *QGLFormat) SetDoubleBuffer(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setDoubleBuffer(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Depth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_depth(this.h))
 }
 
 func (this *QGLFormat) SetDepth(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setDepth(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Rgba() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_rgba(this.h))
 }
 
 func (this *QGLFormat) SetRgba(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setRgba(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Alpha() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_alpha(this.h))
 }
 
 func (this *QGLFormat) SetAlpha(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setAlpha(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Accum() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_accum(this.h))
 }
 
 func (this *QGLFormat) SetAccum(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setAccum(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Stencil() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_stencil(this.h))
 }
 
 func (this *QGLFormat) SetStencil(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setStencil(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Stereo() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_stereo(this.h))
 }
 
 func (this *QGLFormat) SetStereo(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setStereo(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) DirectRendering() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_directRendering(this.h))
 }
 
 func (this *QGLFormat) SetDirectRendering(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setDirectRendering(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) HasOverlay() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_hasOverlay(this.h))
 }
 
 func (this *QGLFormat) SetOverlay(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setOverlay(this.h, (C.bool)(enable))
 }
 
 func (this *QGLFormat) Plane() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_plane(this.h))
 }
 
 func (this *QGLFormat) SetPlane(plane int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setPlane(this.h, (C.int)(plane))
 }
 
 func (this *QGLFormat) SetOption(opt QGL__FormatOption) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setOption(this.h, (C.int)(opt))
 }
 
 func (this *QGLFormat) TestOption(opt QGL__FormatOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLFormat_testOption(this.h, (C.int)(opt)))
 }
 
@@ -327,6 +378,7 @@ func QGLFormat_DefaultFormat() *QGLFormat {
 }
 
 func QGLFormat_SetDefaultFormat(f *QGLFormat) {
+	defer runtime.KeepAlive(f)
 	C.QGLFormat_setDefaultFormat(f.cPointer())
 }
 
@@ -337,6 +389,7 @@ func QGLFormat_DefaultOverlayFormat() *QGLFormat {
 }
 
 func QGLFormat_SetDefaultOverlayFormat(f *QGLFormat) {
+	defer runtime.KeepAlive(f)
 	C.QGLFormat_setDefaultOverlayFormat(f.cPointer())
 }
 
@@ -349,22 +402,27 @@ func QGLFormat_HasOpenGLOverlays() bool {
 }
 
 func (this *QGLFormat) SetVersion(major int, minor int) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setVersion(this.h, (C.int)(major), (C.int)(minor))
 }
 
 func (this *QGLFormat) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_majorVersion(this.h))
 }
 
 func (this *QGLFormat) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGLFormat_minorVersion(this.h))
 }
 
 func (this *QGLFormat) SetProfile(profile QGLFormat__OpenGLContextProfile) {
+	defer runtime.KeepAlive(this)
 	C.QGLFormat_setProfile(this.h, (C.int)(profile))
 }
 
 func (this *QGLFormat) Profile() QGLFormat__OpenGLContextProfile {
+	defer runtime.KeepAlive(this)
 	return (QGLFormat__OpenGLContextProfile)(C.QGLFormat_profile(this.h))
 }
 
@@ -373,12 +431,14 @@ func QGLFormat_OpenGLVersionFlags() QGLFormat__OpenGLVersionFlag {
 }
 
 func QGLFormat_FromSurfaceFormat(format *qt.QSurfaceFormat) *QGLFormat {
+	defer runtime.KeepAlive(format)
 	_goptr := newQGLFormat(C.QGLFormat_fromSurfaceFormat((*C.QSurfaceFormat)(format.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QGLFormat_ToSurfaceFormat(format *QGLFormat) *qt.QSurfaceFormat {
+	defer runtime.KeepAlive(format)
 	_goptr := qt.UnsafeNewQSurfaceFormat(unsafe.Pointer(C.QGLFormat_toSurfaceFormat(format.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -396,15 +456,22 @@ func (this *QGLFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGLFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLFormat) {
-		C.QGLFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGLFormat_delete((*C.QGLFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGLContext struct {
 	h  *C.QGLContext
-	gc *[1]*C.QGLContext
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGLContext) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGLContext) cPointer() *C.QGLContext {
@@ -437,65 +504,84 @@ func UnsafeNewQGLContext(h unsafe.Pointer) *QGLContext {
 
 // NewQGLContext constructs a new QGLContext object.
 func NewQGLContext(format *QGLFormat, device *qt.QPaintDevice) *QGLContext {
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(device)
 
 	return newQGLContext(C.QGLContext_new(format.cPointer(), (*C.QPaintDevice)(device.UnsafePointer())))
 }
 
 // NewQGLContext2 constructs a new QGLContext object.
 func NewQGLContext2(format *QGLFormat) *QGLContext {
+	defer runtime.KeepAlive(format)
 
 	return newQGLContext(C.QGLContext_new2(format.cPointer()))
 }
 
 func (this *QGLContext) Create(shareContext *QGLContext) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(shareContext)
 	return (bool)(C.QGLContext_create(this.h, shareContext.cPointer()))
 }
 
 func (this *QGLContext) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLContext_isValid(this.h))
 }
 
 func (this *QGLContext) IsSharing() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLContext_isSharing(this.h))
 }
 
 func (this *QGLContext) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QGLContext_reset(this.h)
 }
 
 func QGLContext_AreSharing(context1 *QGLContext, context2 *QGLContext) bool {
+	defer runtime.KeepAlive(context1)
+	defer runtime.KeepAlive(context2)
 	return (bool)(C.QGLContext_areSharing(context1.cPointer(), context2.cPointer()))
 }
 
 func (this *QGLContext) Format() *QGLFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGLFormat(C.QGLContext_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLContext) RequestedFormat() *QGLFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGLFormat(C.QGLContext_requestedFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLContext) SetFormat(format *QGLFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QGLContext_setFormat(this.h, format.cPointer())
 }
 
 func (this *QGLContext) MoveToThread(thread *qt.QThread) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thread)
 	C.QGLContext_moveToThread(this.h, (*C.QThread)(thread.UnsafePointer()))
 }
 
 func (this *QGLContext) MakeCurrent() {
+	defer runtime.KeepAlive(this)
 	C.QGLContext_makeCurrent(this.h)
 }
 
 func (this *QGLContext) DoneCurrent() {
+	defer runtime.KeepAlive(this)
 	C.QGLContext_doneCurrent(this.h)
 }
 
 func (this *QGLContext) SwapBuffers() {
+	defer runtime.KeepAlive(this)
 	C.QGLContext_swapBuffers(this.h)
 }
 
@@ -508,10 +594,12 @@ func QGLContext_TextureCacheLimit() int {
 }
 
 func (this *QGLContext) Device() *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QGLContext_device(this.h)))
 }
 
 func (this *QGLContext) OverlayTransparentColor() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QGLContext_overlayTransparentColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -523,6 +611,7 @@ func QGLContext_CurrentContext() *QGLContext {
 
 // DeviceIsPixmap can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) DeviceIsPixmap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLContext_protectedbase_deviceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -537,6 +626,7 @@ func (this *QGLContext) DeviceIsPixmap() bool {
 
 // WindowCreated can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) WindowCreated() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLContext_protectedbase_windowCreated(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -551,6 +641,7 @@ func (this *QGLContext) WindowCreated() bool {
 
 // SetWindowCreated can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) SetWindowCreated(on bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLContext_protectedbase_setWindowCreated(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(on))
@@ -563,6 +654,7 @@ func (this *QGLContext) SetWindowCreated(on bool) {
 
 // Initialized can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) Initialized() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLContext_protectedbase_initialized(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -577,6 +669,7 @@ func (this *QGLContext) Initialized() bool {
 
 // SetInitialized can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) SetInitialized(on bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLContext_protectedbase_setInitialized(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(on))
@@ -589,6 +682,8 @@ func (this *QGLContext) SetInitialized(on bool) {
 
 // ColorIndex can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) ColorIndex(c *qt.QColor) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (uint)(C.QGLContext_protectedbase_colorIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer())))
@@ -603,6 +698,7 @@ func (this *QGLContext) ColorIndex(c *qt.QColor) uint {
 
 // SetValid can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) SetValid(valid bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLContext_protectedbase_setValid(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(valid))
@@ -615,6 +711,8 @@ func (this *QGLContext) SetValid(valid bool) {
 
 // SetDevice can only be called from a QGLContext that was directly constructed.
 func (this *QGLContext) SetDevice(pDev *qt.QPaintDevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pDev)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLContext_protectedbase_setDevice(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPaintDevice)(pDev.UnsafePointer()))
@@ -626,6 +724,8 @@ func (this *QGLContext) SetDevice(pDev *qt.QPaintDevice) {
 }
 
 func (this *QGLContext) callVirtualBase_Create(shareContext *QGLContext) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(shareContext)
 
 	return (bool)(C.QGLContext_virtualbase_create(unsafe.Pointer(this.h), shareContext.cPointer()))
 
@@ -654,6 +754,7 @@ func miqt_exec_callback_QGLContext_create(self *C.QGLContext, cb C.intptr_t, sha
 }
 
 func (this *QGLContext) callVirtualBase_MakeCurrent() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLContext_virtualbase_makeCurrent(unsafe.Pointer(this.h))
 
@@ -677,6 +778,7 @@ func miqt_exec_callback_QGLContext_makeCurrent(self *C.QGLContext, cb C.intptr_t
 }
 
 func (this *QGLContext) callVirtualBase_DoneCurrent() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLContext_virtualbase_doneCurrent(unsafe.Pointer(this.h))
 
@@ -700,6 +802,7 @@ func miqt_exec_callback_QGLContext_doneCurrent(self *C.QGLContext, cb C.intptr_t
 }
 
 func (this *QGLContext) callVirtualBase_SwapBuffers() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLContext_virtualbase_swapBuffers(unsafe.Pointer(this.h))
 
@@ -723,6 +826,8 @@ func miqt_exec_callback_QGLContext_swapBuffers(self *C.QGLContext, cb C.intptr_t
 }
 
 func (this *QGLContext) callVirtualBase_ChooseContext(shareContext *QGLContext) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(shareContext)
 
 	return (bool)(C.QGLContext_virtualbase_chooseContext(unsafe.Pointer(this.h), shareContext.cPointer()))
 
@@ -762,16 +867,23 @@ func (this *QGLContext) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGLContext{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLContext) {
-		C.QGLContext_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGLContext_delete((*C.QGLContext)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGLWidget struct {
 	h  *C.QGLWidget
-	gc *[1]*C.QGLWidget
+	gc *[1]unsafe.Pointer
 	*qt.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGLWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGLWidget) cPointer() *C.QGLWidget {
@@ -807,6 +919,7 @@ func UnsafeNewQGLWidget(h unsafe.Pointer) *QGLWidget {
 
 // NewQGLWidget constructs a new QGLWidget object.
 func NewQGLWidget(parent *qt.QWidget) *QGLWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQGLWidget(C.QGLWidget_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -819,69 +932,93 @@ func NewQGLWidget2() *QGLWidget {
 
 // NewQGLWidget3 constructs a new QGLWidget object.
 func NewQGLWidget3(context *QGLContext) *QGLWidget {
+	defer runtime.KeepAlive(context)
 
 	return newQGLWidget(C.QGLWidget_new3(context.cPointer()))
 }
 
 // NewQGLWidget4 constructs a new QGLWidget object.
 func NewQGLWidget4(format *QGLFormat) *QGLWidget {
+	defer runtime.KeepAlive(format)
 
 	return newQGLWidget(C.QGLWidget_new4(format.cPointer()))
 }
 
 // NewQGLWidget5 constructs a new QGLWidget object.
 func NewQGLWidget5(parent *qt.QWidget, shareWidget *QGLWidget) *QGLWidget {
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new5((*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer()))
 }
 
 // NewQGLWidget6 constructs a new QGLWidget object.
 func NewQGLWidget6(parent *qt.QWidget, shareWidget *QGLWidget, f qt.WindowType) *QGLWidget {
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new6((*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer(), (C.int)(f)))
 }
 
 // NewQGLWidget7 constructs a new QGLWidget object.
 func NewQGLWidget7(context *QGLContext, parent *qt.QWidget) *QGLWidget {
+	defer runtime.KeepAlive(context)
+	defer runtime.KeepAlive(parent)
 
 	return newQGLWidget(C.QGLWidget_new7(context.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQGLWidget8 constructs a new QGLWidget object.
 func NewQGLWidget8(context *QGLContext, parent *qt.QWidget, shareWidget *QGLWidget) *QGLWidget {
+	defer runtime.KeepAlive(context)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new8(context.cPointer(), (*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer()))
 }
 
 // NewQGLWidget9 constructs a new QGLWidget object.
 func NewQGLWidget9(context *QGLContext, parent *qt.QWidget, shareWidget *QGLWidget, f qt.WindowType) *QGLWidget {
+	defer runtime.KeepAlive(context)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new9(context.cPointer(), (*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer(), (C.int)(f)))
 }
 
 // NewQGLWidget10 constructs a new QGLWidget object.
 func NewQGLWidget10(format *QGLFormat, parent *qt.QWidget) *QGLWidget {
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(parent)
 
 	return newQGLWidget(C.QGLWidget_new10(format.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQGLWidget11 constructs a new QGLWidget object.
 func NewQGLWidget11(format *QGLFormat, parent *qt.QWidget, shareWidget *QGLWidget) *QGLWidget {
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new11(format.cPointer(), (*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer()))
 }
 
 // NewQGLWidget12 constructs a new QGLWidget object.
 func NewQGLWidget12(format *QGLFormat, parent *qt.QWidget, shareWidget *QGLWidget, f qt.WindowType) *QGLWidget {
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(shareWidget)
 
 	return newQGLWidget(C.QGLWidget_new12(format.cPointer(), (*C.QWidget)(parent.UnsafePointer()), shareWidget.cPointer(), (C.int)(f)))
 }
 
 func (this *QGLWidget) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QGLWidget_metaObject(this.h)))
 }
 
 func (this *QGLWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGLWidget_metacast(this.h, param1_Cstring))
@@ -906,82 +1043,104 @@ func QGLWidget_TrUtf8(s string) string {
 }
 
 func (this *QGLWidget) QglColor(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QGLWidget_qglColor(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QGLWidget) QglClearColor(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QGLWidget_qglClearColor(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QGLWidget) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLWidget_isValid(this.h))
 }
 
 func (this *QGLWidget) IsSharing() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLWidget_isSharing(this.h))
 }
 
 func (this *QGLWidget) MakeCurrent() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_makeCurrent(this.h)
 }
 
 func (this *QGLWidget) DoneCurrent() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_doneCurrent(this.h)
 }
 
 func (this *QGLWidget) DoubleBuffer() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGLWidget_doubleBuffer(this.h))
 }
 
 func (this *QGLWidget) SwapBuffers() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_swapBuffers(this.h)
 }
 
 func (this *QGLWidget) Format() *QGLFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGLFormat(C.QGLWidget_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) SetFormat(format *QGLFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QGLWidget_setFormat(this.h, format.cPointer())
 }
 
 func (this *QGLWidget) Context() *QGLContext {
+	defer runtime.KeepAlive(this)
 	return newQGLContext(C.QGLWidget_context(this.h))
 }
 
 func (this *QGLWidget) SetContext(context *QGLContext) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(context)
 	C.QGLWidget_setContext(this.h, context.cPointer())
 }
 
 func (this *QGLWidget) RenderPixmap() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QGLWidget_renderPixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) GrabFrameBuffer() *qt.QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QGLWidget_grabFrameBuffer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) MakeOverlayCurrent() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_makeOverlayCurrent(this.h)
 }
 
 func (this *QGLWidget) OverlayContext() *QGLContext {
+	defer runtime.KeepAlive(this)
 	return newQGLContext(C.QGLWidget_overlayContext(this.h))
 }
 
 func QGLWidget_ConvertToGLFormat(img *qt.QImage) *qt.QImage {
+	defer runtime.KeepAlive(img)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QGLWidget_convertToGLFormat((*C.QImage)(img.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) RenderText(x int, y int, str string) {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -990,6 +1149,7 @@ func (this *QGLWidget) RenderText(x int, y int, str string) {
 }
 
 func (this *QGLWidget) RenderText2(x float64, y float64, z float64, str string) {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -998,14 +1158,17 @@ func (this *QGLWidget) RenderText2(x float64, y float64, z float64, str string) 
 }
 
 func (this *QGLWidget) PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QGLWidget_paintEngine(this.h)))
 }
 
 func (this *QGLWidget) UpdateGL() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_updateGL(this.h)
 }
 
 func (this *QGLWidget) UpdateOverlayGL() {
+	defer runtime.KeepAlive(this)
 	C.QGLWidget_updateOverlayGL(this.h)
 }
 
@@ -1054,38 +1217,50 @@ func QGLWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGLWidget) SetContext2(context *QGLContext, shareContext *QGLContext) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(context)
+	defer runtime.KeepAlive(shareContext)
 	C.QGLWidget_setContext2(this.h, context.cPointer(), shareContext.cPointer())
 }
 
 func (this *QGLWidget) SetContext3(context *QGLContext, shareContext *QGLContext, deleteOldContext bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(context)
+	defer runtime.KeepAlive(shareContext)
 	C.QGLWidget_setContext3(this.h, context.cPointer(), shareContext.cPointer(), (C.bool)(deleteOldContext))
 }
 
 func (this *QGLWidget) RenderPixmapWithInt(w int) *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QGLWidget_renderPixmapWithInt(this.h, (C.int)(w))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) RenderPixmap2(w int, h int) *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QGLWidget_renderPixmap2(this.h, (C.int)(w), (C.int)(h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) RenderPixmap3(w int, h int, useContext bool) *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QGLWidget_renderPixmap3(this.h, (C.int)(w), (C.int)(h), (C.bool)(useContext))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) GrabFrameBufferWithWithAlpha(withAlpha bool) *qt.QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QGLWidget_grabFrameBufferWithWithAlpha(this.h, (C.bool)(withAlpha))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGLWidget) RenderText3(x int, y int, str string, fnt *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fnt)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -1094,6 +1269,8 @@ func (this *QGLWidget) RenderText3(x int, y int, str string, fnt *qt.QFont) {
 }
 
 func (this *QGLWidget) RenderText4(x float64, y float64, z float64, str string, fnt *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fnt)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -1103,6 +1280,7 @@ func (this *QGLWidget) RenderText4(x float64, y float64, z float64, str string, 
 
 // SetAutoBufferSwap can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) SetAutoBufferSwap(on bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLWidget_protectedbase_setAutoBufferSwap(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(on))
@@ -1115,6 +1293,7 @@ func (this *QGLWidget) SetAutoBufferSwap(on bool) {
 
 // AutoBufferSwap can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) AutoBufferSwap() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLWidget_protectedbase_autoBufferSwap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1129,6 +1308,7 @@ func (this *QGLWidget) AutoBufferSwap() bool {
 
 // UpdateMicroFocus can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1141,6 +1321,7 @@ func (this *QGLWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1153,6 +1334,7 @@ func (this *QGLWidget) Create() {
 
 // Destroy can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGLWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1165,6 +1347,7 @@ func (this *QGLWidget) Destroy() {
 
 // FocusNextChild can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1179,6 +1362,7 @@ func (this *QGLWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1193,6 +1377,7 @@ func (this *QGLWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QGLWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1207,6 +1392,7 @@ func (this *QGLWidget) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGLWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1221,6 +1407,7 @@ func (this *QGLWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1237,6 +1424,8 @@ func (this *QGLWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGLWidget that was directly constructed.
 func (this *QGLWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGLWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -1250,6 +1439,7 @@ func (this *QGLWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QGLWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QGLWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1269,12 +1459,14 @@ func miqt_exec_callback_QGLWidget_paintEngine(self *C.QGLWidget, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QGLWidget) callVirtualBase_UpdateGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_updateGL(unsafe.Pointer(this.h))
 
@@ -1298,6 +1490,7 @@ func miqt_exec_callback_QGLWidget_updateGL(self *C.QGLWidget, cb C.intptr_t) {
 }
 
 func (this *QGLWidget) callVirtualBase_UpdateOverlayGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_updateOverlayGL(unsafe.Pointer(this.h))
 
@@ -1321,6 +1514,8 @@ func miqt_exec_callback_QGLWidget_updateOverlayGL(self *C.QGLWidget, cb C.intptr
 }
 
 func (this *QGLWidget) callVirtualBase_Event(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QGLWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -1349,6 +1544,7 @@ func miqt_exec_callback_QGLWidget_event(self *C.QGLWidget, cb C.intptr_t, param1
 }
 
 func (this *QGLWidget) callVirtualBase_InitializeGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_initializeGL(unsafe.Pointer(this.h))
 
@@ -1372,6 +1568,7 @@ func miqt_exec_callback_QGLWidget_initializeGL(self *C.QGLWidget, cb C.intptr_t)
 }
 
 func (this *QGLWidget) callVirtualBase_ResizeGL(w int, h int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_resizeGL(unsafe.Pointer(this.h), (C.int)(w), (C.int)(h))
 
@@ -1400,6 +1597,7 @@ func miqt_exec_callback_QGLWidget_resizeGL(self *C.QGLWidget, cb C.intptr_t, w C
 }
 
 func (this *QGLWidget) callVirtualBase_PaintGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_paintGL(unsafe.Pointer(this.h))
 
@@ -1423,6 +1621,7 @@ func miqt_exec_callback_QGLWidget_paintGL(self *C.QGLWidget, cb C.intptr_t) {
 }
 
 func (this *QGLWidget) callVirtualBase_InitializeOverlayGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_initializeOverlayGL(unsafe.Pointer(this.h))
 
@@ -1446,6 +1645,7 @@ func miqt_exec_callback_QGLWidget_initializeOverlayGL(self *C.QGLWidget, cb C.in
 }
 
 func (this *QGLWidget) callVirtualBase_ResizeOverlayGL(w int, h int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_resizeOverlayGL(unsafe.Pointer(this.h), (C.int)(w), (C.int)(h))
 
@@ -1474,6 +1674,7 @@ func miqt_exec_callback_QGLWidget_resizeOverlayGL(self *C.QGLWidget, cb C.intptr
 }
 
 func (this *QGLWidget) callVirtualBase_PaintOverlayGL() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_paintOverlayGL(unsafe.Pointer(this.h))
 
@@ -1497,6 +1698,8 @@ func miqt_exec_callback_QGLWidget_paintOverlayGL(self *C.QGLWidget, cb C.intptr_
 }
 
 func (this *QGLWidget) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGLWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
 
@@ -1523,6 +1726,8 @@ func miqt_exec_callback_QGLWidget_paintEvent(self *C.QGLWidget, cb C.intptr_t, p
 }
 
 func (this *QGLWidget) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGLWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
 
@@ -1549,6 +1754,7 @@ func miqt_exec_callback_QGLWidget_resizeEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_GlInit() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_glInit(unsafe.Pointer(this.h))
 
@@ -1572,6 +1778,7 @@ func miqt_exec_callback_QGLWidget_glInit(self *C.QGLWidget, cb C.intptr_t) {
 }
 
 func (this *QGLWidget) callVirtualBase_GlDraw() {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_glDraw(unsafe.Pointer(this.h))
 
@@ -1595,6 +1802,7 @@ func miqt_exec_callback_QGLWidget_glDraw(self *C.QGLWidget, cb C.intptr_t) {
 }
 
 func (this *QGLWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGLWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1620,6 +1828,7 @@ func miqt_exec_callback_QGLWidget_devType(self *C.QGLWidget, cb C.intptr_t) C.in
 }
 
 func (this *QGLWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QGLWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1646,6 +1855,7 @@ func miqt_exec_callback_QGLWidget_setVisible(self *C.QGLWidget, cb C.intptr_t, v
 }
 
 func (this *QGLWidget) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QGLWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1667,12 +1877,14 @@ func miqt_exec_callback_QGLWidget_sizeHint(self *C.QGLWidget, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QGLWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGLWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QGLWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1694,12 +1906,14 @@ func miqt_exec_callback_QGLWidget_minimumSizeHint(self *C.QGLWidget, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QGLWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGLWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGLWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1728,6 +1942,7 @@ func miqt_exec_callback_QGLWidget_heightForWidth(self *C.QGLWidget, cb C.intptr_
 }
 
 func (this *QGLWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGLWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1753,6 +1968,8 @@ func miqt_exec_callback_QGLWidget_hasHeightForWidth(self *C.QGLWidget, cb C.intp
 }
 
 func (this *QGLWidget) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -1779,6 +1996,8 @@ func miqt_exec_callback_QGLWidget_mousePressEvent(self *C.QGLWidget, cb C.intptr
 }
 
 func (this *QGLWidget) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -1805,6 +2024,8 @@ func miqt_exec_callback_QGLWidget_mouseReleaseEvent(self *C.QGLWidget, cb C.intp
 }
 
 func (this *QGLWidget) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -1831,6 +2052,8 @@ func miqt_exec_callback_QGLWidget_mouseDoubleClickEvent(self *C.QGLWidget, cb C.
 }
 
 func (this *QGLWidget) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -1857,6 +2080,8 @@ func miqt_exec_callback_QGLWidget_mouseMoveEvent(self *C.QGLWidget, cb C.intptr_
 }
 
 func (this *QGLWidget) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -1883,6 +2108,8 @@ func miqt_exec_callback_QGLWidget_wheelEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -1909,6 +2136,8 @@ func miqt_exec_callback_QGLWidget_keyPressEvent(self *C.QGLWidget, cb C.intptr_t
 }
 
 func (this *QGLWidget) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -1935,6 +2164,8 @@ func miqt_exec_callback_QGLWidget_keyReleaseEvent(self *C.QGLWidget, cb C.intptr
 }
 
 func (this *QGLWidget) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1961,6 +2192,8 @@ func miqt_exec_callback_QGLWidget_focusInEvent(self *C.QGLWidget, cb C.intptr_t,
 }
 
 func (this *QGLWidget) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1987,6 +2220,8 @@ func miqt_exec_callback_QGLWidget_focusOutEvent(self *C.QGLWidget, cb C.intptr_t
 }
 
 func (this *QGLWidget) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2013,6 +2248,8 @@ func miqt_exec_callback_QGLWidget_enterEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2039,6 +2276,8 @@ func miqt_exec_callback_QGLWidget_leaveEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -2065,6 +2304,8 @@ func miqt_exec_callback_QGLWidget_moveEvent(self *C.QGLWidget, cb C.intptr_t, ev
 }
 
 func (this *QGLWidget) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -2091,6 +2332,8 @@ func miqt_exec_callback_QGLWidget_closeEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -2117,6 +2360,8 @@ func miqt_exec_callback_QGLWidget_contextMenuEvent(self *C.QGLWidget, cb C.intpt
 }
 
 func (this *QGLWidget) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -2143,6 +2388,8 @@ func miqt_exec_callback_QGLWidget_tabletEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -2169,6 +2416,8 @@ func miqt_exec_callback_QGLWidget_actionEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -2195,6 +2444,8 @@ func miqt_exec_callback_QGLWidget_dragEnterEvent(self *C.QGLWidget, cb C.intptr_
 }
 
 func (this *QGLWidget) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -2221,6 +2472,8 @@ func miqt_exec_callback_QGLWidget_dragMoveEvent(self *C.QGLWidget, cb C.intptr_t
 }
 
 func (this *QGLWidget) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -2247,6 +2500,8 @@ func miqt_exec_callback_QGLWidget_dragLeaveEvent(self *C.QGLWidget, cb C.intptr_
 }
 
 func (this *QGLWidget) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -2273,6 +2528,8 @@ func miqt_exec_callback_QGLWidget_dropEvent(self *C.QGLWidget, cb C.intptr_t, ev
 }
 
 func (this *QGLWidget) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -2299,6 +2556,8 @@ func miqt_exec_callback_QGLWidget_showEvent(self *C.QGLWidget, cb C.intptr_t, ev
 }
 
 func (this *QGLWidget) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -2325,6 +2584,7 @@ func miqt_exec_callback_QGLWidget_hideEvent(self *C.QGLWidget, cb C.intptr_t, ev
 }
 
 func (this *QGLWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2366,6 +2626,8 @@ func miqt_exec_callback_QGLWidget_nativeEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGLWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -2392,6 +2654,7 @@ func miqt_exec_callback_QGLWidget_changeEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGLWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2420,6 +2683,8 @@ func miqt_exec_callback_QGLWidget_metric(self *C.QGLWidget, cb C.intptr_t, param
 }
 
 func (this *QGLWidget) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGLWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -2446,6 +2711,8 @@ func miqt_exec_callback_QGLWidget_initPainter(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QGLWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -2468,12 +2735,14 @@ func miqt_exec_callback_QGLWidget_redirected(self *C.QGLWidget, cb C.intptr_t, o
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QGLWidget) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QGLWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -2493,12 +2762,15 @@ func miqt_exec_callback_QGLWidget_sharedPainter(self *C.QGLWidget, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QGLWidget) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGLWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -2525,6 +2797,7 @@ func miqt_exec_callback_QGLWidget_inputMethodEvent(self *C.QGLWidget, cb C.intpt
 }
 
 func (this *QGLWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGLWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2549,12 +2822,14 @@ func miqt_exec_callback_QGLWidget_inputMethodQuery(self *C.QGLWidget, cb C.intpt
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QGLWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QGLWidget_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QGLWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGLWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2583,6 +2858,9 @@ func miqt_exec_callback_QGLWidget_focusNextPrevChild(self *C.QGLWidget, cb C.int
 }
 
 func (this *QGLWidget) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGLWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2613,6 +2891,8 @@ func miqt_exec_callback_QGLWidget_eventFilter(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -2639,6 +2919,8 @@ func miqt_exec_callback_QGLWidget_timerEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -2665,6 +2947,8 @@ func miqt_exec_callback_QGLWidget_childEvent(self *C.QGLWidget, cb C.intptr_t, e
 }
 
 func (this *QGLWidget) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGLWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2691,6 +2975,8 @@ func miqt_exec_callback_QGLWidget_customEvent(self *C.QGLWidget, cb C.intptr_t, 
 }
 
 func (this *QGLWidget) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGLWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2717,6 +3003,8 @@ func miqt_exec_callback_QGLWidget_connectNotify(self *C.QGLWidget, cb C.intptr_t
 }
 
 func (this *QGLWidget) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGLWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2754,8 +3042,9 @@ func (this *QGLWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGLWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGLWidget) {
-		C.QGLWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGLWidget_delete((*C.QGLWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

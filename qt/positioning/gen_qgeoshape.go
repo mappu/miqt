@@ -25,7 +25,13 @@ const (
 
 type QGeoShape struct {
 	h  *C.QGeoShape
-	gc *[1]*C.QGeoShape
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoShape) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoShape) cPointer() *C.QGeoShape {
@@ -64,55 +70,72 @@ func NewQGeoShape() *QGeoShape {
 
 // NewQGeoShape2 constructs a new QGeoShape object.
 func NewQGeoShape2(other *QGeoShape) *QGeoShape {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoShape(C.QGeoShape_new2(other.cPointer()))
 }
 
 func (this *QGeoShape) Type() QGeoShape__ShapeType {
+	defer runtime.KeepAlive(this)
 	return (QGeoShape__ShapeType)(C.QGeoShape_type(this.h))
 }
 
 func (this *QGeoShape) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoShape_isValid(this.h))
 }
 
 func (this *QGeoShape) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoShape_isEmpty(this.h))
 }
 
 func (this *QGeoShape) Contains(coordinate *QGeoCoordinate) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	return (bool)(C.QGeoShape_contains(this.h, coordinate.cPointer()))
 }
 
 func (this *QGeoShape) BoundingGeoRectangle() *QGeoRectangle {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoRectangle(C.QGeoShape_boundingGeoRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoShape) Center() *QGeoCoordinate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoCoordinate(C.QGeoShape_center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoShape) ExtendShape(coordinate *QGeoCoordinate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(coordinate)
 	C.QGeoShape_extendShape(this.h, coordinate.cPointer())
 }
 
 func (this *QGeoShape) OperatorEqual(other *QGeoShape) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoShape_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoShape) OperatorNotEqual(other *QGeoShape) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoShape_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoShape) OperatorAssign(other *QGeoShape) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGeoShape_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGeoShape) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoShape_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -131,8 +154,9 @@ func (this *QGeoShape) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoShape{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoShape) {
-		C.QGeoShape_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoShape_delete((*C.QGeoShape)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

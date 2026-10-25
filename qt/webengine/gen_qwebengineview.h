@@ -262,6 +262,8 @@ bool QWebEngineView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QWebEngineView_virtualreturncopy_QSize(QSize* src);
+QVariant* QWebEngineView_virtualreturncopy_QVariant(QVariant* src);
 
 void QWebEngineView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebEngineView_protectedbase_create(bool* _dynamic_cast_ok, void* self);

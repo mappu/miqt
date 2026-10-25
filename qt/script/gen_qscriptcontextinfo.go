@@ -24,7 +24,13 @@ const (
 
 type QScriptContextInfo struct {
 	h  *C.QScriptContextInfo
-	gc *[1]*C.QScriptContextInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptContextInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptContextInfo) cPointer() *C.QScriptContextInfo {
@@ -57,12 +63,14 @@ func UnsafeNewQScriptContextInfo(h unsafe.Pointer) *QScriptContextInfo {
 
 // NewQScriptContextInfo constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo(context *QScriptContext) *QScriptContextInfo {
+	defer runtime.KeepAlive(context)
 
 	return newQScriptContextInfo(C.QScriptContextInfo_new(context.cPointer()))
 }
 
 // NewQScriptContextInfo2 constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo2(other *QScriptContextInfo) *QScriptContextInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQScriptContextInfo(C.QScriptContextInfo_new2(other.cPointer()))
 }
@@ -74,18 +82,23 @@ func NewQScriptContextInfo3() *QScriptContextInfo {
 }
 
 func (this *QScriptContextInfo) OperatorAssign(other *QScriptContextInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QScriptContextInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptContextInfo) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptContextInfo_isNull(this.h))
 }
 
 func (this *QScriptContextInfo) ScriptId() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QScriptContextInfo_scriptId(this.h))
 }
 
 func (this *QScriptContextInfo) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptContextInfo_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -93,14 +106,17 @@ func (this *QScriptContextInfo) FileName() string {
 }
 
 func (this *QScriptContextInfo) LineNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContextInfo_lineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) ColumnNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContextInfo_columnNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptContextInfo_functionName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,10 +124,12 @@ func (this *QScriptContextInfo) FunctionName() string {
 }
 
 func (this *QScriptContextInfo) FunctionType() QScriptContextInfo__FunctionType {
+	defer runtime.KeepAlive(this)
 	return (QScriptContextInfo__FunctionType)(C.QScriptContextInfo_functionType(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionParameterNames() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QScriptContextInfo_functionParameterNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -125,22 +143,29 @@ func (this *QScriptContextInfo) FunctionParameterNames() []string {
 }
 
 func (this *QScriptContextInfo) FunctionStartLineNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContextInfo_functionStartLineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionEndLineNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContextInfo_functionEndLineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionMetaIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContextInfo_functionMetaIndex(this.h))
 }
 
 func (this *QScriptContextInfo) OperatorEqual(other *QScriptContextInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptContextInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptContextInfo) OperatorNotEqual(other *QScriptContextInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptContextInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
@@ -156,8 +181,9 @@ func (this *QScriptContextInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptContextInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptContextInfo) {
-		C.QScriptContextInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptContextInfo_delete((*C.QScriptContextInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

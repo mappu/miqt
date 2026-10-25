@@ -129,7 +129,9 @@ public:
 
 		double sigval1 = param1;
 		QwtText* callback_return_value = miqt_exec_callback_QwtRoundScaleDraw_label(this, handle__label, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtRoundScaleDraw_virtualbase_label(const void* self, double param1);
@@ -257,6 +259,10 @@ bool QwtRoundScaleDraw_override_virtual_label(void* self, intptr_t slot) {
 
 QwtText* QwtRoundScaleDraw_virtualbase_label(const void* self, double param1) {
 	return new QwtText(static_cast<const MiqtVirtualQwtRoundScaleDraw*>(self)->QwtRoundScaleDraw::label(static_cast<double>(param1)));
+}
+
+QwtText* QwtRoundScaleDraw_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
 }
 
 void QwtRoundScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self) {

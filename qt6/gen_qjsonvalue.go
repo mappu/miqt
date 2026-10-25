@@ -27,7 +27,13 @@ const (
 
 type QJsonValue struct {
 	h  *C.QJsonValue
-	gc *[1]*C.QJsonValue
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJsonValue) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJsonValue) cPointer() *C.QJsonValue {
@@ -108,18 +114,21 @@ func NewQJsonValue7(s string) *QJsonValue {
 
 // NewQJsonValue8 constructs a new QJsonValue object.
 func NewQJsonValue8(a *QJsonArray) *QJsonValue {
+	defer runtime.KeepAlive(a)
 
 	return newQJsonValue(C.QJsonValue_new8(a.cPointer()))
 }
 
 // NewQJsonValue9 constructs a new QJsonValue object.
 func NewQJsonValue9(o *QJsonObject) *QJsonValue {
+	defer runtime.KeepAlive(o)
 
 	return newQJsonValue(C.QJsonValue_new9(o.cPointer()))
 }
 
 // NewQJsonValue10 constructs a new QJsonValue object.
 func NewQJsonValue10(other *QJsonValue) *QJsonValue {
+	defer runtime.KeepAlive(other)
 
 	return newQJsonValue(C.QJsonValue_new10(other.cPointer()))
 }
@@ -131,74 +140,93 @@ func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
 }
 
 func (this *QJsonValue) OperatorAssign(other *QJsonValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QJsonValue_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QJsonValue) Swap(other *QJsonValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QJsonValue_swap(this.h, other.cPointer())
 }
 
 func QJsonValue_FromVariant(variant *QVariant) *QJsonValue {
+	defer runtime.KeepAlive(variant)
 	_goptr := newQJsonValue(C.QJsonValue_fromVariant(variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QJsonValue_toVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) Type() QJsonValue__Type {
+	defer runtime.KeepAlive(this)
 	return (QJsonValue__Type)(C.QJsonValue_type(this.h))
 }
 
 func (this *QJsonValue) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isNull(this.h))
 }
 
 func (this *QJsonValue) IsBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isBool(this.h))
 }
 
 func (this *QJsonValue) IsDouble() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isDouble(this.h))
 }
 
 func (this *QJsonValue) IsString() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isString(this.h))
 }
 
 func (this *QJsonValue) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isArray(this.h))
 }
 
 func (this *QJsonValue) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isObject(this.h))
 }
 
 func (this *QJsonValue) IsUndefined() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_isUndefined(this.h))
 }
 
 func (this *QJsonValue) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_toBool(this.h))
 }
 
 func (this *QJsonValue) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValue_toInt(this.h))
 }
 
 func (this *QJsonValue) ToInteger() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValue_toInteger(this.h))
 }
 
 func (this *QJsonValue) ToDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValue_toDouble(this.h))
 }
 
 func (this *QJsonValue) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJsonValue_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -206,6 +234,7 @@ func (this *QJsonValue) ToString() string {
 }
 
 func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
+	defer runtime.KeepAlive(this)
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
@@ -217,30 +246,37 @@ func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
 }
 
 func (this *QJsonValue) ToArray() *QJsonArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonArray(C.QJsonValue_toArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToArrayWithDefaultValue(defaultValue *QJsonArray) *QJsonArray {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(defaultValue)
 	_goptr := newQJsonArray(C.QJsonValue_toArrayWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObject() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QJsonValue_toObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJsonObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(defaultValue)
 	_goptr := newQJsonObject(C.QJsonValue_toObjectWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -251,32 +287,41 @@ func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
 }
 
 func (this *QJsonValue) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonValue_operatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) OperatorEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValue_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValue) OperatorNotEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValue_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValue) ToBoolWithDefaultValue(defaultValue bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValue_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QJsonValue) ToIntWithDefaultValue(defaultValue int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValue_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
 func (this *QJsonValue) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValue_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
 func (this *QJsonValue) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValue_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
@@ -292,15 +337,22 @@ func (this *QJsonValue) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJsonValue{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValue) {
-		C.QJsonValue_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJsonValue_delete((*C.QJsonValue)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QJsonValueConstRef struct {
 	h  *C.QJsonValueConstRef
-	gc *[1]*C.QJsonValueConstRef
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJsonValueConstRef) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJsonValueConstRef) cPointer() *C.QJsonValueConstRef {
@@ -333,71 +385,87 @@ func UnsafeNewQJsonValueConstRef(h unsafe.Pointer) *QJsonValueConstRef {
 
 // NewQJsonValueConstRef constructs a new QJsonValueConstRef object.
 func NewQJsonValueConstRef(param1 *QJsonValueConstRef) *QJsonValueConstRef {
+	defer runtime.KeepAlive(param1)
 
 	return newQJsonValueConstRef(C.QJsonValueConstRef_new(param1.cPointer()))
 }
 
 func (this *QJsonValueConstRef) ToQJsonValue() *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonValueConstRef_ToQJsonValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) ToVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QJsonValueConstRef_toVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) Type() QJsonValue__Type {
+	defer runtime.KeepAlive(this)
 	return (QJsonValue__Type)(C.QJsonValueConstRef_type(this.h))
 }
 
 func (this *QJsonValueConstRef) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isNull(this.h))
 }
 
 func (this *QJsonValueConstRef) IsBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isBool(this.h))
 }
 
 func (this *QJsonValueConstRef) IsDouble() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isDouble(this.h))
 }
 
 func (this *QJsonValueConstRef) IsString() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isString(this.h))
 }
 
 func (this *QJsonValueConstRef) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isArray(this.h))
 }
 
 func (this *QJsonValueConstRef) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isObject(this.h))
 }
 
 func (this *QJsonValueConstRef) IsUndefined() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_isUndefined(this.h))
 }
 
 func (this *QJsonValueConstRef) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_toBool(this.h))
 }
 
 func (this *QJsonValueConstRef) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValueConstRef_toInt(this.h))
 }
 
 func (this *QJsonValueConstRef) ToInteger() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValueConstRef_toInteger(this.h))
 }
 
 func (this *QJsonValueConstRef) ToDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValueConstRef_toDouble(this.h))
 }
 
 func (this *QJsonValueConstRef) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJsonValueConstRef_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -405,48 +473,60 @@ func (this *QJsonValueConstRef) ToString() string {
 }
 
 func (this *QJsonValueConstRef) ToArray() *QJsonArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonArray(C.QJsonValueConstRef_toArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) ToObject() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QJsonValueConstRef_toObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonValueConstRef_operatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) OperatorEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValueConstRef_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValueConstRef) OperatorNotEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValueConstRef_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValueConstRef) ToBoolWithDefaultValue(defaultValue bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueConstRef_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QJsonValueConstRef) ToIntWithDefaultValue(defaultValue int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValueConstRef_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
 func (this *QJsonValueConstRef) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValueConstRef_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
 func (this *QJsonValueConstRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValueConstRef_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
 func (this *QJsonValueConstRef) ToStringWithDefaultValue(defaultValue string) string {
+	defer runtime.KeepAlive(this)
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
@@ -469,16 +549,24 @@ func (this *QJsonValueConstRef) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJsonValueConstRef{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValueConstRef) {
-		C.QJsonValueConstRef_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJsonValueConstRef_delete((*C.QJsonValueConstRef)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QJsonValueRef struct {
 	h  *C.QJsonValueRef
-	gc *[1]*C.QJsonValueRef
+	gc *[1]unsafe.Pointer
 	*QJsonValueConstRef
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJsonValueRef) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QJsonValueConstRef.miqtSetGC(gc)
 }
 
 func (this *QJsonValueRef) cPointer() *C.QJsonValueRef {
@@ -514,91 +602,113 @@ func UnsafeNewQJsonValueRef(h unsafe.Pointer) *QJsonValueRef {
 
 // NewQJsonValueRef constructs a new QJsonValueRef object.
 func NewQJsonValueRef(param1 *QJsonValueRef) *QJsonValueRef {
+	defer runtime.KeepAlive(param1)
 
 	return newQJsonValueRef(C.QJsonValueRef_new(param1.cPointer()))
 }
 
 // NewQJsonValueRef2 constructs a new QJsonValueRef object.
 func NewQJsonValueRef2(array *QJsonArray, idx int64) *QJsonValueRef {
+	defer runtime.KeepAlive(array)
 
 	return newQJsonValueRef(C.QJsonValueRef_new2(array.cPointer(), (C.ptrdiff_t)(idx)))
 }
 
 // NewQJsonValueRef3 constructs a new QJsonValueRef object.
 func NewQJsonValueRef3(object *QJsonObject, idx int64) *QJsonValueRef {
+	defer runtime.KeepAlive(object)
 
 	return newQJsonValueRef(C.QJsonValueRef_new3(object.cPointer(), (C.ptrdiff_t)(idx)))
 }
 
 func (this *QJsonValueRef) OperatorAssign(val *QJsonValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(val)
 	C.QJsonValueRef_operatorAssign(this.h, val.cPointer())
 }
 
 func (this *QJsonValueRef) OperatorAssignWithVal(val *QJsonValueRef) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(val)
 	C.QJsonValueRef_operatorAssignWithVal(this.h, val.cPointer())
 }
 
 func (this *QJsonValueRef) ToQJsonValue() *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonValueRef_ToQJsonValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) ToVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QJsonValueRef_toVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) Type() QJsonValue__Type {
+	defer runtime.KeepAlive(this)
 	return (QJsonValue__Type)(C.QJsonValueRef_type(this.h))
 }
 
 func (this *QJsonValueRef) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isNull(this.h))
 }
 
 func (this *QJsonValueRef) IsBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isBool(this.h))
 }
 
 func (this *QJsonValueRef) IsDouble() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isDouble(this.h))
 }
 
 func (this *QJsonValueRef) IsString() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isString(this.h))
 }
 
 func (this *QJsonValueRef) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isArray(this.h))
 }
 
 func (this *QJsonValueRef) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isObject(this.h))
 }
 
 func (this *QJsonValueRef) IsUndefined() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_isUndefined(this.h))
 }
 
 func (this *QJsonValueRef) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_toBool(this.h))
 }
 
 func (this *QJsonValueRef) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValueRef_toInt(this.h))
 }
 
 func (this *QJsonValueRef) ToInteger() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValueRef_toInteger(this.h))
 }
 
 func (this *QJsonValueRef) ToDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValueRef_toDouble(this.h))
 }
 
 func (this *QJsonValueRef) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJsonValueRef_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -606,48 +716,60 @@ func (this *QJsonValueRef) ToString() string {
 }
 
 func (this *QJsonValueRef) ToArray() *QJsonArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonArray(C.QJsonValueRef_toArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) ToObject() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QJsonValueRef_toObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QJsonValueRef_operatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) OperatorEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValueRef_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJsonValueRef_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValueRef) ToBoolWithDefaultValue(defaultValue bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJsonValueRef_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToIntWithDefaultValue(defaultValue int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJsonValueRef_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QJsonValueRef_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJsonValueRef_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
+	defer runtime.KeepAlive(this)
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
@@ -670,8 +792,9 @@ func (this *QJsonValueRef) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJsonValueRef{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValueRef) {
-		C.QJsonValueRef_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJsonValueRef_delete((*C.QJsonValueRef)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -57,7 +57,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QwtRasterData_pixelHint(this, handle__pixelHint, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtRasterData_virtualbase_pixelHint(const void* self, QRectF* param1);
@@ -211,6 +213,10 @@ bool QwtRasterData_override_virtual_value(void* self, intptr_t slot) {
 
 	self_cast->handle__value = slot;
 	return true;
+}
+
+QRectF* QwtRasterData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 void QwtRasterData_delete(QwtRasterData* self) {

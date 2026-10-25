@@ -33,7 +33,13 @@ const (
 
 type QColor struct {
 	h  *C.QColor
-	gc *[1]*C.QColor
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QColor) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QColor) cPointer() *C.QColor {
@@ -90,6 +96,7 @@ func NewQColor4(rgb uint) *QColor {
 
 // NewQColor5 constructs a new QColor object.
 func NewQColor5(rgba64 QRgba64) *QColor {
+	defer runtime.KeepAlive(rgba64)
 
 	return newQColor(C.QColor_new5(rgba64.cPointer()))
 }
@@ -120,6 +127,7 @@ func NewQColor8(spec QColor__Spec) *QColor {
 
 // NewQColor9 constructs a new QColor object.
 func NewQColor9(color *QColor) *QColor {
+	defer runtime.KeepAlive(color)
 
 	return newQColor(C.QColor_new9(color.cPointer()))
 }
@@ -143,18 +151,23 @@ func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, 
 }
 
 func (this *QColor) OperatorAssign(param1 *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QColor_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QColor) OperatorAssignWithColor(color GlobalColor) {
+	defer runtime.KeepAlive(this)
 	C.QColor_operatorAssignWithColor(this.h, (C.int)(color))
 }
 
 func (this *QColor) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QColor_isValid(this.h))
 }
 
 func (this *QColor) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QColor_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -162,6 +175,7 @@ func (this *QColor) Name() string {
 }
 
 func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QColor_nameWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -169,6 +183,7 @@ func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
 }
 
 func (this *QColor) SetNamedColor(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -190,298 +205,370 @@ func QColor_ColorNames() []string {
 }
 
 func (this *QColor) Spec() QColor__Spec {
+	defer runtime.KeepAlive(this)
 	return (QColor__Spec)(C.QColor_spec(this.h))
 }
 
 func (this *QColor) Alpha() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_alpha(this.h))
 }
 
 func (this *QColor) SetAlpha(alpha int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setAlpha(this.h, (C.int)(alpha))
 }
 
 func (this *QColor) AlphaF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_alphaF(this.h))
 }
 
 func (this *QColor) SetAlphaF(alpha float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setAlphaF(this.h, (C.double)(alpha))
 }
 
 func (this *QColor) Red() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_red(this.h))
 }
 
 func (this *QColor) Green() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_green(this.h))
 }
 
 func (this *QColor) Blue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_blue(this.h))
 }
 
 func (this *QColor) SetRed(red int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRed(this.h, (C.int)(red))
 }
 
 func (this *QColor) SetGreen(green int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setGreen(this.h, (C.int)(green))
 }
 
 func (this *QColor) SetBlue(blue int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setBlue(this.h, (C.int)(blue))
 }
 
 func (this *QColor) RedF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_redF(this.h))
 }
 
 func (this *QColor) GreenF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_greenF(this.h))
 }
 
 func (this *QColor) BlueF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_blueF(this.h))
 }
 
 func (this *QColor) SetRedF(red float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRedF(this.h, (C.double)(red))
 }
 
 func (this *QColor) SetGreenF(green float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setGreenF(this.h, (C.double)(green))
 }
 
 func (this *QColor) SetBlueF(blue float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setBlueF(this.h, (C.double)(blue))
 }
 
 func (this *QColor) GetRgb(r *int, g *int, b *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getRgb(this.h, (*C.int)(unsafe.Pointer(r)), (*C.int)(unsafe.Pointer(g)), (*C.int)(unsafe.Pointer(b)))
 }
 
 func (this *QColor) SetRgb(r int, g int, b int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgb(this.h, (C.int)(r), (C.int)(g), (C.int)(b))
 }
 
 func (this *QColor) GetRgbF(r *float64, g *float64, b *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getRgbF(this.h, (*C.double)(unsafe.Pointer(r)), (*C.double)(unsafe.Pointer(g)), (*C.double)(unsafe.Pointer(b)))
 }
 
 func (this *QColor) SetRgbF(r float64, g float64, b float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgbF(this.h, (C.double)(r), (C.double)(g), (C.double)(b))
 }
 
 func (this *QColor) Rgba64() *QRgba64 {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRgba64(C.QColor_rgba64(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) SetRgba64(rgba QRgba64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rgba)
 	C.QColor_setRgba64(this.h, rgba.cPointer())
 }
 
 func (this *QColor) Rgba() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QColor_rgba(this.h))
 }
 
 func (this *QColor) SetRgba(rgba uint) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgba(this.h, (C.uint)(rgba))
 }
 
 func (this *QColor) Rgb() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QColor_rgb(this.h))
 }
 
 func (this *QColor) SetRgbWithRgb(rgb uint) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgbWithRgb(this.h, (C.uint)(rgb))
 }
 
 func (this *QColor) Hue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_hue(this.h))
 }
 
 func (this *QColor) Saturation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_saturation(this.h))
 }
 
 func (this *QColor) HsvHue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_hsvHue(this.h))
 }
 
 func (this *QColor) HsvSaturation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_hsvSaturation(this.h))
 }
 
 func (this *QColor) Value() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_value(this.h))
 }
 
 func (this *QColor) HueF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_hueF(this.h))
 }
 
 func (this *QColor) SaturationF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_saturationF(this.h))
 }
 
 func (this *QColor) HsvHueF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_hsvHueF(this.h))
 }
 
 func (this *QColor) HsvSaturationF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_hsvSaturationF(this.h))
 }
 
 func (this *QColor) ValueF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_valueF(this.h))
 }
 
 func (this *QColor) GetHsv(h *int, s *int, v *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsv(this.h, (*C.int)(unsafe.Pointer(h)), (*C.int)(unsafe.Pointer(s)), (*C.int)(unsafe.Pointer(v)))
 }
 
 func (this *QColor) SetHsv(h int, s int, v int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsv(this.h, (C.int)(h), (C.int)(s), (C.int)(v))
 }
 
 func (this *QColor) GetHsvF(h *float64, s *float64, v *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsvF(this.h, (*C.double)(unsafe.Pointer(h)), (*C.double)(unsafe.Pointer(s)), (*C.double)(unsafe.Pointer(v)))
 }
 
 func (this *QColor) SetHsvF(h float64, s float64, v float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsvF(this.h, (C.double)(h), (C.double)(s), (C.double)(v))
 }
 
 func (this *QColor) Cyan() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_cyan(this.h))
 }
 
 func (this *QColor) Magenta() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_magenta(this.h))
 }
 
 func (this *QColor) Yellow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_yellow(this.h))
 }
 
 func (this *QColor) Black() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_black(this.h))
 }
 
 func (this *QColor) CyanF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_cyanF(this.h))
 }
 
 func (this *QColor) MagentaF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_magentaF(this.h))
 }
 
 func (this *QColor) YellowF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_yellowF(this.h))
 }
 
 func (this *QColor) BlackF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_blackF(this.h))
 }
 
 func (this *QColor) GetCmyk(c *int, m *int, y *int, k *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmyk(this.h, (*C.int)(unsafe.Pointer(c)), (*C.int)(unsafe.Pointer(m)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(k)))
 }
 
 func (this *QColor) GetCmyk2(c *int, m *int, y *int, k *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmyk2(this.h, (*C.int)(unsafe.Pointer(c)), (*C.int)(unsafe.Pointer(m)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(k)))
 }
 
 func (this *QColor) SetCmyk(c int, m int, y int, k int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setCmyk(this.h, (C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k))
 }
 
 func (this *QColor) GetCmykF(c *float64, m *float64, y *float64, k *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmykF(this.h, (*C.double)(unsafe.Pointer(c)), (*C.double)(unsafe.Pointer(m)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(k)))
 }
 
 func (this *QColor) GetCmykF2(c *float64, m *float64, y *float64, k *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmykF2(this.h, (*C.double)(unsafe.Pointer(c)), (*C.double)(unsafe.Pointer(m)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(k)))
 }
 
 func (this *QColor) SetCmykF(c float64, m float64, y float64, k float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setCmykF(this.h, (C.double)(c), (C.double)(m), (C.double)(y), (C.double)(k))
 }
 
 func (this *QColor) HslHue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_hslHue(this.h))
 }
 
 func (this *QColor) HslSaturation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_hslSaturation(this.h))
 }
 
 func (this *QColor) Lightness() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColor_lightness(this.h))
 }
 
 func (this *QColor) HslHueF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_hslHueF(this.h))
 }
 
 func (this *QColor) HslSaturationF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_hslSaturationF(this.h))
 }
 
 func (this *QColor) LightnessF() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QColor_lightnessF(this.h))
 }
 
 func (this *QColor) GetHsl(h *int, s *int, l *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsl(this.h, (*C.int)(unsafe.Pointer(h)), (*C.int)(unsafe.Pointer(s)), (*C.int)(unsafe.Pointer(l)))
 }
 
 func (this *QColor) SetHsl(h int, s int, l int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsl(this.h, (C.int)(h), (C.int)(s), (C.int)(l))
 }
 
 func (this *QColor) GetHslF(h *float64, s *float64, l *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHslF(this.h, (*C.double)(unsafe.Pointer(h)), (*C.double)(unsafe.Pointer(s)), (*C.double)(unsafe.Pointer(l)))
 }
 
 func (this *QColor) SetHslF(h float64, s float64, l float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHslF(this.h, (C.double)(h), (C.double)(s), (C.double)(l))
 }
 
 func (this *QColor) ToRgb() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_toRgb(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToHsv() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_toHsv(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToCmyk() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_toCmyk(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToHsl() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_toHsl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToExtendedRgb() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_toExtendedRgb(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ConvertTo(colorSpec QColor__Spec) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_convertTo(this.h, (C.int)(colorSpec)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -518,6 +605,7 @@ func QColor_FromRgba64(r uint16, g uint16, b uint16) *QColor {
 }
 
 func QColor_FromRgba64WithRgba(rgba QRgba64) *QColor {
+	defer runtime.KeepAlive(rgba)
 	_goptr := newQColor(C.QColor_fromRgba64WithRgba(rgba.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -560,38 +648,47 @@ func QColor_FromHslF(h float64, s float64, l float64) *QColor {
 }
 
 func (this *QColor) Light() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_light(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Dark() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_dark(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Lighter() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_lighter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Darker() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_darker(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) OperatorEqual(c *QColor) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	return (bool)(C.QColor_operatorEqual(this.h, c.cPointer()))
 }
 
 func (this *QColor) OperatorNotEqual(c *QColor) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	return (bool)(C.QColor_operatorNotEqual(this.h, c.cPointer()))
 }
 
 func (this *QColor) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QColor_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -606,74 +703,92 @@ func QColor_IsValidColor(name string) bool {
 }
 
 func (this *QColor) GetRgb2(r *int, g *int, b *int, a *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getRgb2(this.h, (*C.int)(unsafe.Pointer(r)), (*C.int)(unsafe.Pointer(g)), (*C.int)(unsafe.Pointer(b)), (*C.int)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetRgb2(r int, g int, b int, a int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgb2(this.h, (C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a))
 }
 
 func (this *QColor) GetRgbF2(r *float64, g *float64, b *float64, a *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getRgbF2(this.h, (*C.double)(unsafe.Pointer(r)), (*C.double)(unsafe.Pointer(g)), (*C.double)(unsafe.Pointer(b)), (*C.double)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetRgbF2(r float64, g float64, b float64, a float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setRgbF2(this.h, (C.double)(r), (C.double)(g), (C.double)(b), (C.double)(a))
 }
 
 func (this *QColor) GetHsv2(h *int, s *int, v *int, a *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsv2(this.h, (*C.int)(unsafe.Pointer(h)), (*C.int)(unsafe.Pointer(s)), (*C.int)(unsafe.Pointer(v)), (*C.int)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetHsv2(h int, s int, v int, a int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsv2(this.h, (C.int)(h), (C.int)(s), (C.int)(v), (C.int)(a))
 }
 
 func (this *QColor) GetHsvF2(h *float64, s *float64, v *float64, a *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsvF2(this.h, (*C.double)(unsafe.Pointer(h)), (*C.double)(unsafe.Pointer(s)), (*C.double)(unsafe.Pointer(v)), (*C.double)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetHsvF2(h float64, s float64, v float64, a float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsvF2(this.h, (C.double)(h), (C.double)(s), (C.double)(v), (C.double)(a))
 }
 
 func (this *QColor) GetCmyk3(c *int, m *int, y *int, k *int, a *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmyk3(this.h, (*C.int)(unsafe.Pointer(c)), (*C.int)(unsafe.Pointer(m)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(k)), (*C.int)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) GetCmyk4(c *int, m *int, y *int, k *int, a *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmyk4(this.h, (*C.int)(unsafe.Pointer(c)), (*C.int)(unsafe.Pointer(m)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(k)), (*C.int)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetCmyk2(c int, m int, y int, k int, a int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setCmyk2(this.h, (C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k), (C.int)(a))
 }
 
 func (this *QColor) GetCmykF3(c *float64, m *float64, y *float64, k *float64, a *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmykF3(this.h, (*C.double)(unsafe.Pointer(c)), (*C.double)(unsafe.Pointer(m)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(k)), (*C.double)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) GetCmykF4(c *float64, m *float64, y *float64, k *float64, a *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getCmykF4(this.h, (*C.double)(unsafe.Pointer(c)), (*C.double)(unsafe.Pointer(m)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(k)), (*C.double)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetCmykF2(c float64, m float64, y float64, k float64, a float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setCmykF2(this.h, (C.double)(c), (C.double)(m), (C.double)(y), (C.double)(k), (C.double)(a))
 }
 
 func (this *QColor) GetHsl2(h *int, s *int, l *int, a *int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHsl2(this.h, (*C.int)(unsafe.Pointer(h)), (*C.int)(unsafe.Pointer(s)), (*C.int)(unsafe.Pointer(l)), (*C.int)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetHsl2(h int, s int, l int, a int) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHsl2(this.h, (C.int)(h), (C.int)(s), (C.int)(l), (C.int)(a))
 }
 
 func (this *QColor) GetHslF2(h *float64, s *float64, l *float64, a *float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_getHslF2(this.h, (*C.double)(unsafe.Pointer(h)), (*C.double)(unsafe.Pointer(s)), (*C.double)(unsafe.Pointer(l)), (*C.double)(unsafe.Pointer(a)))
 }
 
 func (this *QColor) SetHslF2(h float64, s float64, l float64, a float64) {
+	defer runtime.KeepAlive(this)
 	C.QColor_setHslF2(this.h, (C.double)(h), (C.double)(s), (C.double)(l), (C.double)(a))
 }
 
@@ -732,24 +847,28 @@ func QColor_FromHslF2(h float64, s float64, l float64, a float64) *QColor {
 }
 
 func (this *QColor) LightWithInt(f int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_lightWithInt(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) DarkWithInt(f int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_darkWithInt(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) LighterWithInt(f int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_lighterWithInt(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) DarkerWithInt(f int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColor_darkerWithInt(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -767,8 +886,9 @@ func (this *QColor) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QColor{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColor) {
-		C.QColor_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QColor_delete((*C.QColor)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -255,6 +255,8 @@ bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QLabel_virtualreturncopy_QSize(QSize* src);
+QVariant* QLabel_virtualreturncopy_QVariant(QVariant* src);
 
 void QLabel_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QLabel_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);

@@ -51,8 +51,15 @@ const (
 
 type QInputDevice struct {
 	h  *C.QInputDevice
-	gc *[1]*C.QInputDevice
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QInputDevice) cPointer() *C.QInputDevice {
@@ -104,6 +111,7 @@ func NewQInputDevice2(name string, systemId int64, typeVal QInputDevice__DeviceT
 
 // NewQInputDevice3 constructs a new QInputDevice object.
 func NewQInputDevice3(parent *QObject) *QInputDevice {
+	defer runtime.KeepAlive(parent)
 
 	return newQInputDevice(C.QInputDevice_new3(parent.cPointer()))
 }
@@ -124,6 +132,7 @@ func NewQInputDevice4(name string, systemId int64, typeVal QInputDevice__DeviceT
 
 // NewQInputDevice5 constructs a new QInputDevice object.
 func NewQInputDevice5(name string, systemId int64, typeVal QInputDevice__DeviceType, seatName string, parent *QObject) *QInputDevice {
+	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -137,10 +146,12 @@ func NewQInputDevice5(name string, systemId int64, typeVal QInputDevice__DeviceT
 }
 
 func (this *QInputDevice) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QInputDevice_metaObject(this.h))
 }
 
 func (this *QInputDevice) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QInputDevice_metacast(this.h, param1_Cstring))
@@ -156,6 +167,7 @@ func QInputDevice_Tr(s string) string {
 }
 
 func (this *QInputDevice) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDevice_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -163,22 +175,27 @@ func (this *QInputDevice) Name() string {
 }
 
 func (this *QInputDevice) Type() QInputDevice__DeviceType {
+	defer runtime.KeepAlive(this)
 	return (QInputDevice__DeviceType)(C.QInputDevice_type(this.h))
 }
 
 func (this *QInputDevice) Capabilities() QInputDevice__Capability {
+	defer runtime.KeepAlive(this)
 	return (QInputDevice__Capability)(C.QInputDevice_capabilities(this.h))
 }
 
 func (this *QInputDevice) HasCapability(cap QInputDevice__Capability) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QInputDevice_hasCapability(this.h, (C.int)(cap)))
 }
 
 func (this *QInputDevice) SystemId() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QInputDevice_systemId(this.h))
 }
 
 func (this *QInputDevice) SeatName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDevice_seatName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -186,6 +203,7 @@ func (this *QInputDevice) SeatName() string {
 }
 
 func (this *QInputDevice) AvailableVirtualGeometry() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QInputDevice_availableVirtualGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -219,10 +237,14 @@ func QInputDevice_PrimaryKeyboard() *QInputDevice {
 }
 
 func (this *QInputDevice) OperatorEqual(other *QInputDevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QInputDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QInputDevice) AvailableVirtualGeometryChanged(area QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(area)
 	C.QInputDevice_availableVirtualGeometryChanged(this.h, area.cPointer())
 }
 func (this *QInputDevice) OnAvailableVirtualGeometryChanged(slot func(area QRect)) {
@@ -276,6 +298,7 @@ func QInputDevice_PrimaryKeyboardWithSeatName(seatName string) *QInputDevice {
 
 // Sender can only be called from a QInputDevice that was directly constructed.
 func (this *QInputDevice) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QInputDevice_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -290,6 +313,7 @@ func (this *QInputDevice) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QInputDevice that was directly constructed.
 func (this *QInputDevice) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QInputDevice_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -304,6 +328,7 @@ func (this *QInputDevice) SenderSignalIndex() int {
 
 // Receivers can only be called from a QInputDevice that was directly constructed.
 func (this *QInputDevice) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -320,6 +345,8 @@ func (this *QInputDevice) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QInputDevice that was directly constructed.
 func (this *QInputDevice) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QInputDevice_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -333,6 +360,8 @@ func (this *QInputDevice) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QInputDevice) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QInputDevice_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -361,6 +390,9 @@ func miqt_exec_callback_QInputDevice_event(self *C.QInputDevice, cb C.intptr_t, 
 }
 
 func (this *QInputDevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QInputDevice_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -391,6 +423,8 @@ func miqt_exec_callback_QInputDevice_eventFilter(self *C.QInputDevice, cb C.intp
 }
 
 func (this *QInputDevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDevice_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -417,6 +451,8 @@ func miqt_exec_callback_QInputDevice_timerEvent(self *C.QInputDevice, cb C.intpt
 }
 
 func (this *QInputDevice) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDevice_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -443,6 +479,8 @@ func miqt_exec_callback_QInputDevice_childEvent(self *C.QInputDevice, cb C.intpt
 }
 
 func (this *QInputDevice) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDevice_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -469,6 +507,8 @@ func miqt_exec_callback_QInputDevice_customEvent(self *C.QInputDevice, cb C.intp
 }
 
 func (this *QInputDevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QInputDevice_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -495,6 +535,8 @@ func miqt_exec_callback_QInputDevice_connectNotify(self *C.QInputDevice, cb C.in
 }
 
 func (this *QInputDevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QInputDevice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -532,8 +574,9 @@ func (this *QInputDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputDevice) {
-		C.QInputDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputDevice_delete((*C.QInputDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

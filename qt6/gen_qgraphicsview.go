@@ -57,8 +57,15 @@ const (
 
 type QGraphicsView struct {
 	h  *C.QGraphicsView
-	gc *[1]*C.QGraphicsView
+	gc *[1]unsafe.Pointer
 	*QAbstractScrollArea
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractScrollArea.miqtSetGC(gc)
 }
 
 func (this *QGraphicsView) cPointer() *C.QGraphicsView {
@@ -94,6 +101,7 @@ func UnsafeNewQGraphicsView(h unsafe.Pointer) *QGraphicsView {
 
 // NewQGraphicsView constructs a new QGraphicsView object.
 func NewQGraphicsView(parent *QWidget) *QGraphicsView {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsView(C.QGraphicsView_new(parent.cPointer()))
 }
@@ -106,21 +114,26 @@ func NewQGraphicsView2() *QGraphicsView {
 
 // NewQGraphicsView3 constructs a new QGraphicsView object.
 func NewQGraphicsView3(scene *QGraphicsScene) *QGraphicsView {
+	defer runtime.KeepAlive(scene)
 
 	return newQGraphicsView(C.QGraphicsView_new3(scene.cPointer()))
 }
 
 // NewQGraphicsView4 constructs a new QGraphicsView object.
 func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
+	defer runtime.KeepAlive(scene)
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsView(C.QGraphicsView_new4(scene.cPointer(), parent.cPointer()))
 }
 
 func (this *QGraphicsView) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsView_metaObject(this.h))
 }
 
 func (this *QGraphicsView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsView_metacast(this.h, param1_Cstring))
@@ -136,212 +149,272 @@ func QGraphicsView_Tr(s string) string {
 }
 
 func (this *QGraphicsView) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QGraphicsView_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) RenderHints() QPainter__RenderHint {
+	defer runtime.KeepAlive(this)
 	return (QPainter__RenderHint)(C.QGraphicsView_renderHints(this.h))
 }
 
 func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setRenderHint(this.h, (C.int)(hint))
 }
 
 func (this *QGraphicsView) SetRenderHints(hints QPainter__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setRenderHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsView) Alignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QGraphicsView_alignment(this.h))
 }
 
 func (this *QGraphicsView) SetAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QGraphicsView) TransformationAnchor() QGraphicsView__ViewportAnchor {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__ViewportAnchor)(C.QGraphicsView_transformationAnchor(this.h))
 }
 
 func (this *QGraphicsView) SetTransformationAnchor(anchor QGraphicsView__ViewportAnchor) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setTransformationAnchor(this.h, (C.int)(anchor))
 }
 
 func (this *QGraphicsView) ResizeAnchor() QGraphicsView__ViewportAnchor {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__ViewportAnchor)(C.QGraphicsView_resizeAnchor(this.h))
 }
 
 func (this *QGraphicsView) SetResizeAnchor(anchor QGraphicsView__ViewportAnchor) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setResizeAnchor(this.h, (C.int)(anchor))
 }
 
 func (this *QGraphicsView) ViewportUpdateMode() QGraphicsView__ViewportUpdateMode {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__ViewportUpdateMode)(C.QGraphicsView_viewportUpdateMode(this.h))
 }
 
 func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpdateMode) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setViewportUpdateMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) OptimizationFlags() QGraphicsView__OptimizationFlag {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__OptimizationFlag)(C.QGraphicsView_optimizationFlags(this.h))
 }
 
 func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setOptimizationFlag(this.h, (C.int)(flag))
 }
 
 func (this *QGraphicsView) SetOptimizationFlags(flags QGraphicsView__OptimizationFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setOptimizationFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGraphicsView) DragMode() QGraphicsView__DragMode {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__DragMode)(C.QGraphicsView_dragMode(this.h))
 }
 
 func (this *QGraphicsView) SetDragMode(mode QGraphicsView__DragMode) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setDragMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) RubberBandSelectionMode() ItemSelectionMode {
+	defer runtime.KeepAlive(this)
 	return (ItemSelectionMode)(C.QGraphicsView_rubberBandSelectionMode(this.h))
 }
 
 func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setRubberBandSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) RubberBandRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QGraphicsView_rubberBandRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) CacheMode() QGraphicsView__CacheModeFlag {
+	defer runtime.KeepAlive(this)
 	return (QGraphicsView__CacheModeFlag)(C.QGraphicsView_cacheMode(this.h))
 }
 
 func (this *QGraphicsView) SetCacheMode(mode QGraphicsView__CacheModeFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setCacheMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) ResetCachedContent() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_resetCachedContent(this.h)
 }
 
 func (this *QGraphicsView) IsInteractive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsView_isInteractive(this.h))
 }
 
 func (this *QGraphicsView) SetInteractive(allowed bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setInteractive(this.h, (C.bool)(allowed))
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsScene(C.QGraphicsView_scene(this.h))
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scene)
 	C.QGraphicsView_setScene(this.h, scene.cPointer())
 }
 
 func (this *QGraphicsView) SceneRect() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QGraphicsView_sceneRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) SetSceneRect(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_setSceneRect(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsView) SetSceneRect2(x float64, y float64, w float64, h float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setSceneRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsView) Transform() *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QGraphicsView_transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) ViewportTransform() *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QGraphicsView_viewportTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) IsTransformed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsView_isTransformed(this.h))
 }
 
 func (this *QGraphicsView) SetTransform(matrix *QTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	C.QGraphicsView_setTransform(this.h, matrix.cPointer())
 }
 
 func (this *QGraphicsView) ResetTransform() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_resetTransform(this.h)
 }
 
 func (this *QGraphicsView) Rotate(angle float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_rotate(this.h, (C.double)(angle))
 }
 
 func (this *QGraphicsView) Scale(sx float64, sy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_scale(this.h, (C.double)(sx), (C.double)(sy))
 }
 
 func (this *QGraphicsView) Shear(sh float64, sv float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_shear(this.h, (C.double)(sh), (C.double)(sv))
 }
 
 func (this *QGraphicsView) Translate(dx float64, dy float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_translate(this.h, (C.double)(dx), (C.double)(dy))
 }
 
 func (this *QGraphicsView) CenterOn(pos *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QGraphicsView_centerOn(this.h, pos.cPointer())
 }
 
 func (this *QGraphicsView) CenterOn2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_centerOn2(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QGraphicsView) CenterOnWithItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_centerOnWithItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsView) EnsureVisible(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_ensureVisible(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsView) EnsureVisible2(x float64, y float64, w float64, h float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_ensureVisible2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsView) EnsureVisibleWithItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_ensureVisibleWithItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsView) FitInView(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_fitInView(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsView) FitInView2(x float64, y float64, w float64, h float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_fitInView2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsView) FitInViewWithItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_fitInViewWithItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsView) Render(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 	C.QGraphicsView_render(this.h, painter.cPointer())
 }
 
 func (this *QGraphicsView) Items() []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -352,6 +425,8 @@ func (this *QGraphicsView) Items() []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPos(this.h, pos.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -362,6 +437,7 @@ func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items2(this.h, (C.int)(x), (C.int)(y))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -372,6 +448,8 @@ func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithRect(this.h, rect.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -382,6 +460,7 @@ func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -392,6 +471,8 @@ func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPath(this.h, path.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -402,76 +483,98 @@ func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 }
 
 func (this *QGraphicsView) ItemAt(pos *QPoint) *QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	return newQGraphicsItem(C.QGraphicsView_itemAt(this.h, pos.cPointer()))
 }
 
 func (this *QGraphicsView) ItemAt2(x int, y int) *QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsItem(C.QGraphicsView_itemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QGraphicsView) MapToScene(point *QPoint) *QPointF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	_goptr := newQPointF(C.QGraphicsView_mapToScene(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) MapToSceneWithPath(path *QPainterPath) *QPainterPath {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	_goptr := newQPainterPath(C.QGraphicsView_mapToSceneWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) MapFromScene(point *QPointF) *QPoint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	_goptr := newQPoint(C.QGraphicsView_mapFromScene(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) MapFromSceneWithPath(path *QPainterPath) *QPainterPath {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	_goptr := newQPainterPath(C.QGraphicsView_mapFromSceneWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) MapToScene2(x int, y int) *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QGraphicsView_mapToScene2(this.h, (C.int)(x), (C.int)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) MapFromScene2(x float64, y float64) *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QGraphicsView_mapFromScene2(this.h, (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QGraphicsView_inputMethodQuery(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) BackgroundBrush() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QGraphicsView_backgroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) SetBackgroundBrush(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QGraphicsView_setBackgroundBrush(this.h, brush.cPointer())
 }
 
 func (this *QGraphicsView) ForegroundBrush() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QGraphicsView_foregroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsView) SetForegroundBrush(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QGraphicsView_setForegroundBrush(this.h, brush.cPointer())
 }
 
 func (this *QGraphicsView) UpdateScene(rects []QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rects)
 	rects_CArray_ptr := (**C.QRectF)(C.malloc(C.size_t(8 * len(rects))))
 	defer C.free(unsafe.Pointer(rects_CArray_ptr))
 	rects_CArray := unsafe.Slice(rects_CArray_ptr, len(rects))
@@ -483,14 +586,21 @@ func (this *QGraphicsView) UpdateScene(rects []QRectF) {
 }
 
 func (this *QGraphicsView) InvalidateScene() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_invalidateScene(this.h)
 }
 
 func (this *QGraphicsView) UpdateSceneRect(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_updateSceneRect(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsView) RubberBandChanged(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewportRect)
+	defer runtime.KeepAlive(fromScenePoint)
+	defer runtime.KeepAlive(toScenePoint)
 	C.QGraphicsView_rubberBandChanged(this.h, viewportRect.cPointer(), fromScenePoint.cPointer(), toScenePoint.cPointer())
 }
 func (this *QGraphicsView) OnRubberBandChanged(slot func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF)) {
@@ -543,66 +653,98 @@ func QGraphicsView_Tr3(s string, c string, n int) string {
 }
 
 func (this *QGraphicsView) SetRenderHint2(hint QPainter__RenderHint, enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setRenderHint2(this.h, (C.int)(hint), (C.bool)(enabled))
 }
 
 func (this *QGraphicsView) SetOptimizationFlag2(flag QGraphicsView__OptimizationFlag, enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_setOptimizationFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
 func (this *QGraphicsView) SetTransform2(matrix *QTransform, combine bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	C.QGraphicsView_setTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
 }
 
 func (this *QGraphicsView) EnsureVisible3(rect *QRectF, xmargin int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_ensureVisible3(this.h, rect.cPointer(), (C.int)(xmargin))
 }
 
 func (this *QGraphicsView) EnsureVisible4(rect *QRectF, xmargin int, ymargin int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_ensureVisible4(this.h, rect.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsView) EnsureVisible5(x float64, y float64, w float64, h float64, xmargin int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_ensureVisible5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(xmargin))
 }
 
 func (this *QGraphicsView) EnsureVisible6(x float64, y float64, w float64, h float64, xmargin int, ymargin int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_ensureVisible6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsView) EnsureVisible7(item *QGraphicsItem, xmargin int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_ensureVisible7(this.h, item.cPointer(), (C.int)(xmargin))
 }
 
 func (this *QGraphicsView) EnsureVisible8(item *QGraphicsItem, xmargin int, ymargin int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_ensureVisible8(this.h, item.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsView) FitInView3(rect *QRectF, aspectRadioMode AspectRatioMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_fitInView3(this.h, rect.cPointer(), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) FitInView4(x float64, y float64, w float64, h float64, aspectRadioMode AspectRatioMode) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsView_fitInView4(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) FitInView5(item *QGraphicsItem, aspectRadioMode AspectRatioMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsView_fitInView5(this.h, item.cPointer(), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) Render2(painter *QPainter, target *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(target)
 	C.QGraphicsView_render2(this.h, painter.cPointer(), target.cPointer())
 }
 
 func (this *QGraphicsView) Render3(painter *QPainter, target *QRectF, source *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(target)
+	defer runtime.KeepAlive(source)
 	C.QGraphicsView_render3(this.h, painter.cPointer(), target.cPointer(), source.cPointer())
 }
 
 func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QRect, aspectRatioMode AspectRatioMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(target)
+	defer runtime.KeepAlive(source)
 	C.QGraphicsView_render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.int)(aspectRatioMode))
 }
 
 func (this *QGraphicsView) Items4(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items4(this.h, rect.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -613,6 +755,7 @@ func (this *QGraphicsView) Items4(rect *QRect, mode ItemSelectionMode) []*QGraph
 }
 
 func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelectionMode) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -623,6 +766,8 @@ func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelection
 }
 
 func (this *QGraphicsView) Items7(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	var _ma C.struct_miqt_array = C.QGraphicsView_items7(this.h, path.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -633,15 +778,20 @@ func (this *QGraphicsView) Items7(path *QPainterPath, mode ItemSelectionMode) []
 }
 
 func (this *QGraphicsView) InvalidateSceneWithRect(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_invalidateSceneWithRect(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene__SceneLayer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsView_invalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
 // SetViewportMargins can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -654,6 +804,7 @@ func (this *QGraphicsView) SetViewportMargins(left int, top int, right int, bott
 
 // ViewportMargins can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QGraphicsView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -670,6 +821,8 @@ func (this *QGraphicsView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -682,6 +835,7 @@ func (this *QGraphicsView) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -694,6 +848,7 @@ func (this *QGraphicsView) UpdateMicroFocus() {
 
 // Create can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -706,6 +861,7 @@ func (this *QGraphicsView) Create() {
 
 // Destroy can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -718,6 +874,7 @@ func (this *QGraphicsView) Destroy() {
 
 // FocusNextChild can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -732,6 +889,7 @@ func (this *QGraphicsView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -746,6 +904,7 @@ func (this *QGraphicsView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -760,6 +919,7 @@ func (this *QGraphicsView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -774,6 +934,7 @@ func (this *QGraphicsView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -790,6 +951,8 @@ func (this *QGraphicsView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsView that was directly constructed.
 func (this *QGraphicsView) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGraphicsView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -803,6 +966,7 @@ func (this *QGraphicsView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGraphicsView) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QGraphicsView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -824,12 +988,14 @@ func miqt_exec_callback_QGraphicsView_sizeHint(self *C.QGraphicsView, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QGraphicsView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -854,12 +1020,15 @@ func miqt_exec_callback_QGraphicsView_inputMethodQuery(self *C.QGraphicsView, cb
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsView_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsView) callVirtualBase_SetupViewport(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsView_virtualbase_setupViewport(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -886,6 +1055,8 @@ func miqt_exec_callback_QGraphicsView_setupViewport(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsView_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -914,6 +1085,8 @@ func miqt_exec_callback_QGraphicsView_event(self *C.QGraphicsView, cb C.intptr_t
 }
 
 func (this *QGraphicsView) callVirtualBase_ViewportEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -942,6 +1115,8 @@ func miqt_exec_callback_QGraphicsView_viewportEvent(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -968,6 +1143,8 @@ func miqt_exec_callback_QGraphicsView_contextMenuEvent(self *C.QGraphicsView, cb
 }
 
 func (this *QGraphicsView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -994,6 +1171,8 @@ func miqt_exec_callback_QGraphicsView_dragEnterEvent(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1020,6 +1199,8 @@ func miqt_exec_callback_QGraphicsView_dragLeaveEvent(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1046,6 +1227,8 @@ func miqt_exec_callback_QGraphicsView_dragMoveEvent(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1072,6 +1255,8 @@ func miqt_exec_callback_QGraphicsView_dropEvent(self *C.QGraphicsView, cb C.intp
 }
 
 func (this *QGraphicsView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1098,6 +1283,7 @@ func miqt_exec_callback_QGraphicsView_focusInEvent(self *C.QGraphicsView, cb C.i
 }
 
 func (this *QGraphicsView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1126,6 +1312,8 @@ func miqt_exec_callback_QGraphicsView_focusNextPrevChild(self *C.QGraphicsView, 
 }
 
 func (this *QGraphicsView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1152,6 +1340,8 @@ func miqt_exec_callback_QGraphicsView_focusOutEvent(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1178,6 +1368,8 @@ func miqt_exec_callback_QGraphicsView_keyPressEvent(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1204,6 +1396,8 @@ func miqt_exec_callback_QGraphicsView_keyReleaseEvent(self *C.QGraphicsView, cb 
 }
 
 func (this *QGraphicsView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1230,6 +1424,8 @@ func miqt_exec_callback_QGraphicsView_mouseDoubleClickEvent(self *C.QGraphicsVie
 }
 
 func (this *QGraphicsView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1256,6 +1452,8 @@ func miqt_exec_callback_QGraphicsView_mousePressEvent(self *C.QGraphicsView, cb 
 }
 
 func (this *QGraphicsView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1282,6 +1480,8 @@ func miqt_exec_callback_QGraphicsView_mouseMoveEvent(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1308,6 +1508,8 @@ func miqt_exec_callback_QGraphicsView_mouseReleaseEvent(self *C.QGraphicsView, c
 }
 
 func (this *QGraphicsView) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1334,6 +1536,8 @@ func miqt_exec_callback_QGraphicsView_wheelEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1360,6 +1564,8 @@ func miqt_exec_callback_QGraphicsView_paintEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1386,6 +1592,7 @@ func miqt_exec_callback_QGraphicsView_resizeEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1414,6 +1621,8 @@ func miqt_exec_callback_QGraphicsView_scrollContentsBy(self *C.QGraphicsView, cb
 }
 
 func (this *QGraphicsView) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1440,6 +1649,8 @@ func miqt_exec_callback_QGraphicsView_showEvent(self *C.QGraphicsView, cb C.intp
 }
 
 func (this *QGraphicsView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1466,6 +1677,9 @@ func miqt_exec_callback_QGraphicsView_inputMethodEvent(self *C.QGraphicsView, cb
 }
 
 func (this *QGraphicsView) callVirtualBase_DrawBackground(painter *QPainter, rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsView_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
 
@@ -1494,6 +1708,9 @@ func miqt_exec_callback_QGraphicsView_drawBackground(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_DrawForeground(painter *QPainter, rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsView_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
 
@@ -1522,6 +1739,7 @@ func miqt_exec_callback_QGraphicsView_drawForeground(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QGraphicsView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1543,12 +1761,16 @@ func miqt_exec_callback_QGraphicsView_minimumSizeHint(self *C.QGraphicsView, cb 
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsView) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QGraphicsView_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -1579,6 +1801,7 @@ func miqt_exec_callback_QGraphicsView_eventFilter(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QGraphicsView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1600,12 +1823,15 @@ func miqt_exec_callback_QGraphicsView_viewportSizeHint(self *C.QGraphicsView, cb
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsView) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QGraphicsView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1632,6 +1858,8 @@ func miqt_exec_callback_QGraphicsView_changeEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QGraphicsView_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -1658,6 +1886,7 @@ func miqt_exec_callback_QGraphicsView_initStyleOption(self *C.QGraphicsView, cb 
 }
 
 func (this *QGraphicsView) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1683,6 +1912,7 @@ func miqt_exec_callback_QGraphicsView_devType(self *C.QGraphicsView, cb C.intptr
 }
 
 func (this *QGraphicsView) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1709,6 +1939,7 @@ func miqt_exec_callback_QGraphicsView_setVisible(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1737,6 +1968,7 @@ func miqt_exec_callback_QGraphicsView_heightForWidth(self *C.QGraphicsView, cb C
 }
 
 func (this *QGraphicsView) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1762,6 +1994,7 @@ func miqt_exec_callback_QGraphicsView_hasHeightForWidth(self *C.QGraphicsView, c
 }
 
 func (this *QGraphicsView) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QGraphicsView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1781,12 +2014,15 @@ func miqt_exec_callback_QGraphicsView_paintEngine(self *C.QGraphicsView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsView) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1813,6 +2049,8 @@ func miqt_exec_callback_QGraphicsView_enterEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1839,6 +2077,8 @@ func miqt_exec_callback_QGraphicsView_leaveEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1865,6 +2105,8 @@ func miqt_exec_callback_QGraphicsView_moveEvent(self *C.QGraphicsView, cb C.intp
 }
 
 func (this *QGraphicsView) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1891,6 +2133,8 @@ func miqt_exec_callback_QGraphicsView_closeEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1917,6 +2161,8 @@ func miqt_exec_callback_QGraphicsView_tabletEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1943,6 +2189,8 @@ func miqt_exec_callback_QGraphicsView_actionEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1969,6 +2217,7 @@ func miqt_exec_callback_QGraphicsView_hideEvent(self *C.QGraphicsView, cb C.intp
 }
 
 func (this *QGraphicsView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2010,6 +2259,7 @@ func miqt_exec_callback_QGraphicsView_nativeEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2038,6 +2288,8 @@ func miqt_exec_callback_QGraphicsView_metric(self *C.QGraphicsView, cb C.intptr_
 }
 
 func (this *QGraphicsView) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QGraphicsView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2064,6 +2316,8 @@ func miqt_exec_callback_QGraphicsView_initPainter(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QGraphicsView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2086,12 +2340,14 @@ func miqt_exec_callback_QGraphicsView_redirected(self *C.QGraphicsView, cb C.int
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsView) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QGraphicsView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2111,12 +2367,15 @@ func miqt_exec_callback_QGraphicsView_sharedPainter(self *C.QGraphicsView, cb C.
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsView) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2143,6 +2402,8 @@ func miqt_exec_callback_QGraphicsView_timerEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2169,6 +2430,8 @@ func miqt_exec_callback_QGraphicsView_childEvent(self *C.QGraphicsView, cb C.int
 }
 
 func (this *QGraphicsView) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGraphicsView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2195,6 +2458,8 @@ func miqt_exec_callback_QGraphicsView_customEvent(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2221,6 +2486,8 @@ func miqt_exec_callback_QGraphicsView_connectNotify(self *C.QGraphicsView, cb C.
 }
 
 func (this *QGraphicsView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2258,8 +2525,9 @@ func (this *QGraphicsView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsView) {
-		C.QGraphicsView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsView_delete((*C.QGraphicsView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

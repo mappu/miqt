@@ -77,6 +77,7 @@ bool QDesignerLayoutDecorationExtension_override_virtual_findItemAt2(void* self,
 int QDesignerLayoutDecorationExtension_virtualbase_findItemAt2(const void* self, int row, int column);
 bool QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(void* self, intptr_t slot);
 void QDesignerLayoutDecorationExtension_virtualbase_adjustIndicator(void* self, QPoint* pos, int index);
+QRect* QDesignerLayoutDecorationExtension_virtualreturncopy_QRect(QRect* src);
 
 void QDesignerLayoutDecorationExtension_delete(QDesignerLayoutDecorationExtension* self);
 

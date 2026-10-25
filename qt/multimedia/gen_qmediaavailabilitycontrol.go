@@ -17,8 +17,15 @@ import (
 
 type QMediaAvailabilityControl struct {
 	h  *C.QMediaAvailabilityControl
-	gc *[1]*C.QMediaAvailabilityControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaAvailabilityControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMediaAvailabilityControl) cPointer() *C.QMediaAvailabilityControl {
@@ -53,10 +60,12 @@ func UnsafeNewQMediaAvailabilityControl(h unsafe.Pointer) *QMediaAvailabilityCon
 }
 
 func (this *QMediaAvailabilityControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAvailabilityControl_metaObject(this.h)))
 }
 
 func (this *QMediaAvailabilityControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaAvailabilityControl_metacast(this.h, param1_Cstring))
@@ -81,10 +90,12 @@ func QMediaAvailabilityControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaAvailabilityControl) Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QMediaAvailabilityControl_availability(this.h))
 }
 
 func (this *QMediaAvailabilityControl) AvailabilityChanged(availability QMultimedia__AvailabilityStatus) {
+	defer runtime.KeepAlive(this)
 	C.QMediaAvailabilityControl_availabilityChanged(this.h, (C.int)(availability))
 }
 func (this *QMediaAvailabilityControl) OnAvailabilityChanged(slot func(availability QMultimedia__AvailabilityStatus)) {
@@ -160,8 +171,9 @@ func (this *QMediaAvailabilityControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaAvailabilityControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaAvailabilityControl) {
-		C.QMediaAvailabilityControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaAvailabilityControl_delete((*C.QMediaAvailabilityControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

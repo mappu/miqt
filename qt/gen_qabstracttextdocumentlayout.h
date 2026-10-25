@@ -148,6 +148,8 @@ bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intp
 void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSizeF* QAbstractTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src);
+QRectF* QAbstractTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src);
 
 int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos);
 QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos);

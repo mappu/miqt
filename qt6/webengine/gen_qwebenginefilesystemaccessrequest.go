@@ -30,7 +30,13 @@ const (
 
 type QWebEngineFileSystemAccessRequest struct {
 	h  *C.QWebEngineFileSystemAccessRequest
-	gc *[1]*C.QWebEngineFileSystemAccessRequest
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineFileSystemAccessRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineFileSystemAccessRequest) cPointer() *C.QWebEngineFileSystemAccessRequest {
@@ -63,43 +69,54 @@ func UnsafeNewQWebEngineFileSystemAccessRequest(h unsafe.Pointer) *QWebEngineFil
 
 // NewQWebEngineFileSystemAccessRequest constructs a new QWebEngineFileSystemAccessRequest object.
 func NewQWebEngineFileSystemAccessRequest(other *QWebEngineFileSystemAccessRequest) *QWebEngineFileSystemAccessRequest {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineFileSystemAccessRequest(C.QWebEngineFileSystemAccessRequest_new(other.cPointer()))
 }
 
 func (this *QWebEngineFileSystemAccessRequest) OperatorAssign(other *QWebEngineFileSystemAccessRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineFileSystemAccessRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Swap(other *QWebEngineFileSystemAccessRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineFileSystemAccessRequest_swap(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Accept() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineFileSystemAccessRequest_accept(this.h)
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Reject() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineFileSystemAccessRequest_reject(this.h)
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Origin() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineFileSystemAccessRequest) FilePath() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_filePath(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineFileSystemAccessRequest) HandleType() QWebEngineFileSystemAccessRequest__HandleType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineFileSystemAccessRequest__HandleType)(C.QWebEngineFileSystemAccessRequest_handleType(this.h))
 }
 
 func (this *QWebEngineFileSystemAccessRequest) AccessFlags() QWebEngineFileSystemAccessRequest__AccessFlag {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineFileSystemAccessRequest__AccessFlag)(C.QWebEngineFileSystemAccessRequest_accessFlags(this.h))
 }
 
@@ -115,8 +132,9 @@ func (this *QWebEngineFileSystemAccessRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineFileSystemAccessRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineFileSystemAccessRequest) {
-		C.QWebEngineFileSystemAccessRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineFileSystemAccessRequest_delete((*C.QWebEngineFileSystemAccessRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -83,6 +83,7 @@ bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e);
 bool QGraphicsLinearLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsLinearLayout_virtualbase_isEmpty(const void* self);
+QSizeF* QGraphicsLinearLayout_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsLinearLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

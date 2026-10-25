@@ -43,7 +43,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtPointArrayData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtPointArrayData_virtualbase_boundingRect(const void* self);
@@ -74,7 +76,9 @@ public:
 
 		size_t sigval1 = index;
 		QPointF* callback_return_value = miqt_exec_callback_QwtPointArrayData_sample(this, handle__sample, sigval1);
-		return *callback_return_value;
+		QPointF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPointF* QwtPointArrayData_virtualbase_sample(const void* self, size_t index);
@@ -185,6 +189,14 @@ QPointF* QwtPointArrayData_virtualbase_sample(const void* self, size_t index) {
 	return new QPointF(static_cast<const MiqtVirtualQwtPointArrayData*>(self)->QwtPointArrayData::sample(static_cast<size_t>(index)));
 }
 
+QRectF* QwtPointArrayData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPointF* QwtPointArrayData_virtualreturncopy_QPointF(QPointF* src) {
+	return new QPointF(*src);
+}
+
 void QwtPointArrayData_delete(QwtPointArrayData* self) {
 	delete self;
 }
@@ -207,7 +219,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtCPointerData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtCPointerData_virtualbase_boundingRect(const void* self);
@@ -238,7 +252,9 @@ public:
 
 		size_t sigval1 = index;
 		QPointF* callback_return_value = miqt_exec_callback_QwtCPointerData_sample(this, handle__sample, sigval1);
-		return *callback_return_value;
+		QPointF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPointF* QwtCPointerData_virtualbase_sample(const void* self, size_t index);
@@ -315,6 +331,14 @@ QPointF* QwtCPointerData_virtualbase_sample(const void* self, size_t index) {
 	return new QPointF(static_cast<const MiqtVirtualQwtCPointerData*>(self)->QwtCPointerData::sample(static_cast<size_t>(index)));
 }
 
+QRectF* QwtCPointerData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPointF* QwtCPointerData_virtualreturncopy_QPointF(QPointF* src) {
+	return new QPointF(*src);
+}
+
 void QwtCPointerData_delete(QwtCPointerData* self) {
 	delete self;
 }
@@ -353,7 +377,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QwtSyntheticPointData_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtSyntheticPointData_virtualbase_boundingRect(const void* self);
@@ -369,7 +395,9 @@ public:
 
 		size_t sigval1 = index;
 		QPointF* callback_return_value = miqt_exec_callback_QwtSyntheticPointData_sample(this, handle__sample, sigval1);
-		return *callback_return_value;
+		QPointF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPointF* QwtSyntheticPointData_virtualbase_sample(const void* self, size_t index);
@@ -556,6 +584,14 @@ bool QwtSyntheticPointData_override_virtual_setRectOfInterest(void* self, intptr
 
 void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, QRectF* rectOfInterest) {
 	static_cast<MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::setRectOfInterest(*rectOfInterest);
+}
+
+QRectF* QwtSyntheticPointData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPointF* QwtSyntheticPointData_virtualreturncopy_QPointF(QPointF* src) {
+	return new QPointF(*src);
 }
 
 void QwtSyntheticPointData_delete(QwtSyntheticPointData* self) {

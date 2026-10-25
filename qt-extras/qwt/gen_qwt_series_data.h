@@ -46,6 +46,7 @@ QRectF* QwtPointSeriesData_boundingRect(const QwtPointSeriesData* self);
 
 bool QwtPointSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QwtPointSeriesData_virtualbase_boundingRect(const void* self);
+QRectF* QwtPointSeriesData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtPointSeriesData_delete(QwtPointSeriesData* self);
 
@@ -55,6 +56,7 @@ QRectF* QwtPoint3DSeriesData_boundingRect(const QwtPoint3DSeriesData* self);
 
 bool QwtPoint3DSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QwtPoint3DSeriesData_virtualbase_boundingRect(const void* self);
+QRectF* QwtPoint3DSeriesData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtPoint3DSeriesData_delete(QwtPoint3DSeriesData* self);
 
@@ -64,6 +66,7 @@ QRectF* QwtIntervalSeriesData_boundingRect(const QwtIntervalSeriesData* self);
 
 bool QwtIntervalSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QwtIntervalSeriesData_virtualbase_boundingRect(const void* self);
+QRectF* QwtIntervalSeriesData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtIntervalSeriesData_delete(QwtIntervalSeriesData* self);
 
@@ -73,6 +76,7 @@ QRectF* QwtSetSeriesData_boundingRect(const QwtSetSeriesData* self);
 
 bool QwtSetSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QwtSetSeriesData_virtualbase_boundingRect(const void* self);
+QRectF* QwtSetSeriesData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtSetSeriesData_delete(QwtSetSeriesData* self);
 
@@ -82,6 +86,7 @@ QRectF* QwtTradingChartData_boundingRect(const QwtTradingChartData* self);
 
 bool QwtTradingChartData_override_virtual_boundingRect(void* self, intptr_t slot);
 QRectF* QwtTradingChartData_virtualbase_boundingRect(const void* self);
+QRectF* QwtTradingChartData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtTradingChartData_delete(QwtTradingChartData* self);
 

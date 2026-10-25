@@ -382,6 +382,8 @@ bool QGLWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGLWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGLWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGLWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QGLWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QGLWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QGLWidget_protectedbase_setAutoBufferSwap(bool* _dynamic_cast_ok, void* self, bool on);
 bool QGLWidget_protectedbase_autoBufferSwap(bool* _dynamic_cast_ok, const void* self);

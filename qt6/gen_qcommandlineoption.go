@@ -22,7 +22,13 @@ const (
 
 type QCommandLineOption struct {
 	h  *C.QCommandLineOption
-	gc *[1]*C.QCommandLineOption
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCommandLineOption) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCommandLineOption) cPointer() *C.QCommandLineOption {
@@ -117,6 +123,7 @@ func NewQCommandLineOption4(names []string, description string) *QCommandLineOpt
 
 // NewQCommandLineOption5 constructs a new QCommandLineOption object.
 func NewQCommandLineOption5(other *QCommandLineOption) *QCommandLineOption {
+	defer runtime.KeepAlive(other)
 
 	return newQCommandLineOption(C.QCommandLineOption_new5(other.cPointer()))
 }
@@ -216,14 +223,19 @@ func NewQCommandLineOption9(names []string, description string, valueName string
 }
 
 func (this *QCommandLineOption) OperatorAssign(other *QCommandLineOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCommandLineOption_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCommandLineOption) Swap(other *QCommandLineOption) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCommandLineOption_swap(this.h, other.cPointer())
 }
 
 func (this *QCommandLineOption) Names() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCommandLineOption_names(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -237,6 +249,7 @@ func (this *QCommandLineOption) Names() []string {
 }
 
 func (this *QCommandLineOption) SetValueName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -245,6 +258,7 @@ func (this *QCommandLineOption) SetValueName(name string) {
 }
 
 func (this *QCommandLineOption) ValueName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCommandLineOption_valueName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -252,6 +266,7 @@ func (this *QCommandLineOption) ValueName() string {
 }
 
 func (this *QCommandLineOption) SetDescription(description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -260,6 +275,7 @@ func (this *QCommandLineOption) SetDescription(description string) {
 }
 
 func (this *QCommandLineOption) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCommandLineOption_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -267,6 +283,7 @@ func (this *QCommandLineOption) Description() string {
 }
 
 func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
+	defer runtime.KeepAlive(this)
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
@@ -275,6 +292,7 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
+	defer runtime.KeepAlive(this)
 	defaultValues_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(defaultValues))))
 	defer C.free(unsafe.Pointer(defaultValues_CArray_ptr))
 	defaultValues_CArray := unsafe.Slice(defaultValues_CArray_ptr, len(defaultValues))
@@ -290,6 +308,7 @@ func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 }
 
 func (this *QCommandLineOption) DefaultValues() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCommandLineOption_defaultValues(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -303,10 +322,12 @@ func (this *QCommandLineOption) DefaultValues() []string {
 }
 
 func (this *QCommandLineOption) Flags() QCommandLineOption__Flag {
+	defer runtime.KeepAlive(this)
 	return (QCommandLineOption__Flag)(C.QCommandLineOption_flags(this.h))
 }
 
 func (this *QCommandLineOption) SetFlags(aflags QCommandLineOption__Flag) {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineOption_setFlags(this.h, (C.int)(aflags))
 }
 
@@ -322,8 +343,9 @@ func (this *QCommandLineOption) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCommandLineOption{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCommandLineOption) {
-		C.QCommandLineOption_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCommandLineOption_delete((*C.QCommandLineOption)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

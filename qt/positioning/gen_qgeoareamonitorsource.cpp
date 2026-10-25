@@ -174,6 +174,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QGeoAreaMonitorInfo** callback_return_value_free_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -196,6 +200,10 @@ public:
 		QGeoAreaMonitorInfo** callback_return_value_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QGeoAreaMonitorInfo** callback_return_value_free_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -759,6 +767,10 @@ bool QGeoAreaMonitorSource_override_virtual_disconnectNotify(void* self, intptr_
 
 void QGeoAreaMonitorSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGeoAreaMonitorSource*>(self)->QGeoAreaMonitorSource::disconnectNotify(*signal);
+}
+
+QGeoAreaMonitorInfo* QGeoAreaMonitorSource_virtualreturncopy_QGeoAreaMonitorInfo(QGeoAreaMonitorInfo* src) {
+	return new QGeoAreaMonitorInfo(*src);
 }
 
 QObject* QGeoAreaMonitorSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

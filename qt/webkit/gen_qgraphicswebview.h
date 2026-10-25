@@ -315,6 +315,10 @@ bool QGraphicsWebView_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsWebView_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* variant);
+QVariant* QGraphicsWebView_virtualreturncopy_QVariant(QVariant* src);
+QSizeF* QGraphicsWebView_virtualreturncopy_QSizeF(QSizeF* src);
+QRectF* QGraphicsWebView_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsWebView_virtualreturncopy_QPainterPath(QPainterPath* src);
 
 void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

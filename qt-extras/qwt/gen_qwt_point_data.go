@@ -17,7 +17,13 @@ import (
 
 type QwtPointArrayData struct {
 	h  *C.QwtPointArrayData
-	gc *[1]*C.QwtPointArrayData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPointArrayData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPointArrayData) cPointer() *C.QwtPointArrayData {
@@ -76,27 +82,32 @@ func NewQwtPointArrayData2(x *float64, y *float64, size uint64) *QwtPointArrayDa
 
 // NewQwtPointArrayData3 constructs a new QwtPointArrayData object.
 func NewQwtPointArrayData3(param1 *QwtPointArrayData) *QwtPointArrayData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPointArrayData(C.QwtPointArrayData_new3(param1.cPointer()))
 }
 
 func (this *QwtPointArrayData) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointArrayData_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPointArrayData) Size() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QwtPointArrayData_size(this.h))
 }
 
 func (this *QwtPointArrayData) Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPointArrayData_sample(this.h, (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPointArrayData) XData() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtPointArrayData_xData(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -107,6 +118,7 @@ func (this *QwtPointArrayData) XData() []float64 {
 }
 
 func (this *QwtPointArrayData) YData() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtPointArrayData_yData(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -117,6 +129,7 @@ func (this *QwtPointArrayData) YData() []float64 {
 }
 
 func (this *QwtPointArrayData) callVirtualBase_BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointArrayData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -138,12 +151,14 @@ func miqt_exec_callback_QwtPointArrayData_boundingRect(self *C.QwtPointArrayData
 	}
 
 	virtualReturn := gofunc((&QwtPointArrayData{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QwtPointArrayData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPointArrayData) callVirtualBase_Size() uint64 {
+	defer runtime.KeepAlive(this)
 
 	return (uint64)(C.QwtPointArrayData_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -169,6 +184,7 @@ func miqt_exec_callback_QwtPointArrayData_size(self *C.QwtPointArrayData, cb C.i
 }
 
 func (this *QwtPointArrayData) callVirtualBase_Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPointArrayData_virtualbase_sample(unsafe.Pointer(this.h), (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -193,8 +209,9 @@ func miqt_exec_callback_QwtPointArrayData_sample(self *C.QwtPointArrayData, cb C
 	slotval1 := (uint64)(index)
 
 	virtualReturn := gofunc((&QwtPointArrayData{h: self}).callVirtualBase_Sample, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPointF)(virtualReturn.UnsafePointer())
+	return C.QwtPointArrayData_virtualreturncopy_QPointF((*C.QPointF)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -210,15 +227,22 @@ func (this *QwtPointArrayData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPointArrayData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPointArrayData) {
-		C.QwtPointArrayData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPointArrayData_delete((*C.QwtPointArrayData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtCPointerData struct {
 	h  *C.QwtCPointerData
-	gc *[1]*C.QwtCPointerData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCPointerData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtCPointerData) cPointer() *C.QwtCPointerData {
@@ -257,35 +281,42 @@ func NewQwtCPointerData(x *float64, y *float64, size uint64) *QwtCPointerData {
 
 // NewQwtCPointerData2 constructs a new QwtCPointerData object.
 func NewQwtCPointerData2(param1 *QwtCPointerData) *QwtCPointerData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtCPointerData(C.QwtCPointerData_new2(param1.cPointer()))
 }
 
 func (this *QwtCPointerData) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtCPointerData_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtCPointerData) Size() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QwtCPointerData_size(this.h))
 }
 
 func (this *QwtCPointerData) Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtCPointerData_sample(this.h, (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtCPointerData) XData() *float64 {
+	defer runtime.KeepAlive(this)
 	return (*float64)(unsafe.Pointer(C.QwtCPointerData_xData(this.h)))
 }
 
 func (this *QwtCPointerData) YData() *float64 {
+	defer runtime.KeepAlive(this)
 	return (*float64)(unsafe.Pointer(C.QwtCPointerData_yData(this.h)))
 }
 
 func (this *QwtCPointerData) callVirtualBase_BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtCPointerData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -307,12 +338,14 @@ func miqt_exec_callback_QwtCPointerData_boundingRect(self *C.QwtCPointerData, cb
 	}
 
 	virtualReturn := gofunc((&QwtCPointerData{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QwtCPointerData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtCPointerData) callVirtualBase_Size() uint64 {
+	defer runtime.KeepAlive(this)
 
 	return (uint64)(C.QwtCPointerData_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -338,6 +371,7 @@ func miqt_exec_callback_QwtCPointerData_size(self *C.QwtCPointerData, cb C.intpt
 }
 
 func (this *QwtCPointerData) callVirtualBase_Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtCPointerData_virtualbase_sample(unsafe.Pointer(this.h), (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -362,8 +396,9 @@ func miqt_exec_callback_QwtCPointerData_sample(self *C.QwtCPointerData, cb C.int
 	slotval1 := (uint64)(index)
 
 	virtualReturn := gofunc((&QwtCPointerData{h: self}).callVirtualBase_Sample, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPointF)(virtualReturn.UnsafePointer())
+	return C.QwtCPointerData_virtualreturncopy_QPointF((*C.QPointF)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -379,15 +414,22 @@ func (this *QwtCPointerData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCPointerData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCPointerData) {
-		C.QwtCPointerData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCPointerData_delete((*C.QwtCPointerData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtSyntheticPointData struct {
 	h  *C.QwtSyntheticPointData
-	gc *[1]*C.QwtSyntheticPointData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSyntheticPointData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtSyntheticPointData) cPointer() *C.QwtSyntheticPointData {
@@ -426,65 +468,80 @@ func NewQwtSyntheticPointData(size uint64) *QwtSyntheticPointData {
 
 // NewQwtSyntheticPointData2 constructs a new QwtSyntheticPointData object.
 func NewQwtSyntheticPointData2(param1 *QwtSyntheticPointData) *QwtSyntheticPointData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtSyntheticPointData(C.QwtSyntheticPointData_new2(param1.cPointer()))
 }
 
 // NewQwtSyntheticPointData3 constructs a new QwtSyntheticPointData object.
 func NewQwtSyntheticPointData3(size uint64, param2 *QwtInterval) *QwtSyntheticPointData {
+	defer runtime.KeepAlive(param2)
 
 	return newQwtSyntheticPointData(C.QwtSyntheticPointData_new3((C.size_t)(size), param2.cPointer()))
 }
 
 func (this *QwtSyntheticPointData) SetSize(size uint64) {
+	defer runtime.KeepAlive(this)
 	C.QwtSyntheticPointData_setSize(this.h, (C.size_t)(size))
 }
 
 func (this *QwtSyntheticPointData) Size() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QwtSyntheticPointData_size(this.h))
 }
 
 func (this *QwtSyntheticPointData) SetInterval(interval *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 	C.QwtSyntheticPointData_setInterval(this.h, interval.cPointer())
 }
 
 func (this *QwtSyntheticPointData) Interval() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtSyntheticPointData_interval(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSyntheticPointData) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtSyntheticPointData_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSyntheticPointData) Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtSyntheticPointData_sample(this.h, (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSyntheticPointData) Y(x float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSyntheticPointData_y(this.h, (C.double)(x)))
 }
 
 func (this *QwtSyntheticPointData) X(index uint) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSyntheticPointData_x(this.h, (C.uint)(index)))
 }
 
 func (this *QwtSyntheticPointData) SetRectOfInterest(rectOfInterest *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rectOfInterest)
 	C.QwtSyntheticPointData_setRectOfInterest(this.h, (*C.QRectF)(rectOfInterest.UnsafePointer()))
 }
 
 func (this *QwtSyntheticPointData) RectOfInterest() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtSyntheticPointData_rectOfInterest(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtSyntheticPointData) callVirtualBase_Size() uint64 {
+	defer runtime.KeepAlive(this)
 
 	return (uint64)(C.QwtSyntheticPointData_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -510,6 +567,7 @@ func miqt_exec_callback_QwtSyntheticPointData_size(self *C.QwtSyntheticPointData
 }
 
 func (this *QwtSyntheticPointData) callVirtualBase_BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtSyntheticPointData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -531,12 +589,14 @@ func miqt_exec_callback_QwtSyntheticPointData_boundingRect(self *C.QwtSyntheticP
 	}
 
 	virtualReturn := gofunc((&QwtSyntheticPointData{h: self}).callVirtualBase_BoundingRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QwtSyntheticPointData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtSyntheticPointData) callVirtualBase_Sample(index uint64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtSyntheticPointData_virtualbase_sample(unsafe.Pointer(this.h), (C.size_t)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -561,8 +621,9 @@ func miqt_exec_callback_QwtSyntheticPointData_sample(self *C.QwtSyntheticPointDa
 	slotval1 := (uint64)(index)
 
 	virtualReturn := gofunc((&QwtSyntheticPointData{h: self}).callVirtualBase_Sample, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QPointF)(virtualReturn.UnsafePointer())
+	return C.QwtSyntheticPointData_virtualreturncopy_QPointF((*C.QPointF)(virtualReturn.UnsafePointer()))
 
 }
 func (this *QwtSyntheticPointData) OnY(slot func(x float64) float64) {
@@ -589,6 +650,7 @@ func miqt_exec_callback_QwtSyntheticPointData_y(self *C.QwtSyntheticPointData, c
 }
 
 func (this *QwtSyntheticPointData) callVirtualBase_X(index uint) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtSyntheticPointData_virtualbase_x(unsafe.Pointer(this.h), (C.uint)(index)))
 
@@ -617,6 +679,8 @@ func miqt_exec_callback_QwtSyntheticPointData_x(self *C.QwtSyntheticPointData, c
 }
 
 func (this *QwtSyntheticPointData) callVirtualBase_SetRectOfInterest(rectOfInterest *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rectOfInterest)
 
 	C.QwtSyntheticPointData_virtualbase_setRectOfInterest(unsafe.Pointer(this.h), (*C.QRectF)(rectOfInterest.UnsafePointer()))
 
@@ -654,8 +718,9 @@ func (this *QwtSyntheticPointData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSyntheticPointData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSyntheticPointData) {
-		C.QwtSyntheticPointData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSyntheticPointData_delete((*C.QwtSyntheticPointData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

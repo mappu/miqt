@@ -225,6 +225,8 @@ bool QFontDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QFontDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QFontDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QFontDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QFontDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

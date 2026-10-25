@@ -135,7 +135,9 @@ public:
 		memcpy(name_ms.data, name_b.data(), name_ms.len);
 		struct miqt_string sigval1 = name_ms;
 		QVariant* callback_return_value = miqt_exec_callback_QGeoSatelliteInfoSource_backendProperty(this, handle__backendProperty, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGeoSatelliteInfoSource_virtualbase_backendProperty(const void* self, struct miqt_string name);
@@ -714,6 +716,10 @@ bool QGeoSatelliteInfoSource_override_virtual_disconnectNotify(void* self, intpt
 
 void QGeoSatelliteInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGeoSatelliteInfoSource*>(self)->QGeoSatelliteInfoSource::disconnectNotify(*signal);
+}
+
+QVariant* QGeoSatelliteInfoSource_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QGeoSatelliteInfoSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

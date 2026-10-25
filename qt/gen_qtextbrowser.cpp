@@ -144,7 +144,9 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&name_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTextBrowser_loadResource(this, handle__loadResource, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTextBrowser_virtualbase_loadResource(void* self, int type, QUrl* name);
@@ -378,7 +380,9 @@ public:
 		Qt::InputMethodQuery property_ret = property;
 		int sigval1 = static_cast<int>(property_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTextBrowser_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTextBrowser_virtualbase_inputMethodQuery(const void* self, int property);
@@ -716,7 +720,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTextBrowser_virtualbase_minimumSizeHint(const void* self);
@@ -731,7 +737,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTextBrowser_virtualbase_sizeHint(const void* self);
@@ -796,7 +804,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_viewportSizeHint(this, handle__viewportSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTextBrowser_virtualbase_viewportSizeHint(const void* self);
@@ -2325,6 +2335,14 @@ bool QTextBrowser_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTextBrowser*>(self)->QTextBrowser::disconnectNotify(*signal);
+}
+
+QVariant* QTextBrowser_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QSize* QTextBrowser_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QTextBrowser_protectedbase_doSetSource(bool* _dynamic_cast_ok, void* self, QUrl* name) {

@@ -158,6 +158,8 @@ bool QBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QBoxLayout_virtualbase_widget(const void* self);
 bool QBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self);
+QSize* QBoxLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QBoxLayout_virtualreturncopy_QRect(QRect* src);
 
 void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
@@ -240,6 +242,8 @@ bool QHBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QHBoxLayout_virtualbase_widget(const void* self);
 bool QHBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self);
+QSize* QHBoxLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QHBoxLayout_virtualreturncopy_QRect(QRect* src);
 
 void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QHBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
@@ -322,6 +326,8 @@ bool QVBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QVBoxLayout_virtualbase_widget(const void* self);
 bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self);
+QSize* QVBoxLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QVBoxLayout_virtualreturncopy_QRect(QRect* src);
 
 void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QVBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);

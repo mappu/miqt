@@ -17,8 +17,15 @@ import (
 
 type QAudioDecoderControl struct {
 	h  *C.QAudioDecoderControl
-	gc *[1]*C.QAudioDecoderControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioDecoderControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QAudioDecoderControl) cPointer() *C.QAudioDecoderControl {
@@ -53,10 +60,12 @@ func UnsafeNewQAudioDecoderControl(h unsafe.Pointer) *QAudioDecoderControl {
 }
 
 func (this *QAudioDecoderControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioDecoderControl_metaObject(this.h)))
 }
 
 func (this *QAudioDecoderControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioDecoderControl_metacast(this.h, param1_Cstring))
@@ -81,10 +90,12 @@ func QAudioDecoderControl_TrUtf8(s string) string {
 }
 
 func (this *QAudioDecoderControl) State() QAudioDecoder__State {
+	defer runtime.KeepAlive(this)
 	return (QAudioDecoder__State)(C.QAudioDecoderControl_state(this.h))
 }
 
 func (this *QAudioDecoderControl) SourceFilename() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioDecoderControl_sourceFilename(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -92,6 +103,7 @@ func (this *QAudioDecoderControl) SourceFilename() string {
 }
 
 func (this *QAudioDecoderControl) SetSourceFilename(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -100,50 +112,63 @@ func (this *QAudioDecoderControl) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoderControl) SourceDevice() *qt.QIODevice {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_sourceDevice(this.h)))
 }
 
 func (this *QAudioDecoderControl) SetSourceDevice(device *qt.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QAudioDecoderControl_setSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioDecoderControl) Start() {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_start(this.h)
 }
 
 func (this *QAudioDecoderControl) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_stop(this.h)
 }
 
 func (this *QAudioDecoderControl) AudioFormat() *QAudioFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAudioDecoderControl_audioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoderControl) SetAudioFormat(format *QAudioFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QAudioDecoderControl_setAudioFormat(this.h, format.cPointer())
 }
 
 func (this *QAudioDecoderControl) Read() *QAudioBuffer {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioBuffer(C.QAudioDecoderControl_read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoderControl) BufferAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioDecoderControl_bufferAvailable(this.h))
 }
 
 func (this *QAudioDecoderControl) Position() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioDecoderControl_position(this.h))
 }
 
 func (this *QAudioDecoderControl) Duration() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioDecoderControl_duration(this.h))
 }
 
 func (this *QAudioDecoderControl) StateChanged(newState QAudioDecoder__State) {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_stateChanged(this.h, (C.int)(newState))
 }
 func (this *QAudioDecoderControl) OnStateChanged(slot func(newState QAudioDecoder__State)) {
@@ -164,6 +189,8 @@ func miqt_exec_callback_QAudioDecoderControl_stateChanged(cb C.intptr_t, newStat
 }
 
 func (this *QAudioDecoderControl) FormatChanged(format *QAudioFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QAudioDecoderControl_formatChanged(this.h, format.cPointer())
 }
 func (this *QAudioDecoderControl) OnFormatChanged(slot func(format *QAudioFormat)) {
@@ -184,6 +211,7 @@ func miqt_exec_callback_QAudioDecoderControl_formatChanged(cb C.intptr_t, format
 }
 
 func (this *QAudioDecoderControl) SourceChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_sourceChanged(this.h)
 }
 func (this *QAudioDecoderControl) OnSourceChanged(slot func()) {
@@ -201,6 +229,7 @@ func miqt_exec_callback_QAudioDecoderControl_sourceChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoderControl) Error(error int, errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -230,6 +259,7 @@ func miqt_exec_callback_QAudioDecoderControl_error(cb C.intptr_t, error C.int, e
 }
 
 func (this *QAudioDecoderControl) BufferReady() {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_bufferReady(this.h)
 }
 func (this *QAudioDecoderControl) OnBufferReady(slot func()) {
@@ -247,6 +277,7 @@ func miqt_exec_callback_QAudioDecoderControl_bufferReady(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoderControl) BufferAvailableChanged(available bool) {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_bufferAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QAudioDecoderControl) OnBufferAvailableChanged(slot func(available bool)) {
@@ -267,6 +298,7 @@ func miqt_exec_callback_QAudioDecoderControl_bufferAvailableChanged(cb C.intptr_
 }
 
 func (this *QAudioDecoderControl) Finished() {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_finished(this.h)
 }
 func (this *QAudioDecoderControl) OnFinished(slot func()) {
@@ -284,6 +316,7 @@ func miqt_exec_callback_QAudioDecoderControl_finished(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoderControl) PositionChanged(position int64) {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_positionChanged(this.h, (C.longlong)(position))
 }
 func (this *QAudioDecoderControl) OnPositionChanged(slot func(position int64)) {
@@ -304,6 +337,7 @@ func miqt_exec_callback_QAudioDecoderControl_positionChanged(cb C.intptr_t, posi
 }
 
 func (this *QAudioDecoderControl) DurationChanged(duration int64) {
+	defer runtime.KeepAlive(this)
 	C.QAudioDecoderControl_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QAudioDecoderControl) OnDurationChanged(slot func(duration int64)) {
@@ -379,8 +413,9 @@ func (this *QAudioDecoderControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioDecoderControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioDecoderControl) {
-		C.QAudioDecoderControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioDecoderControl_delete((*C.QAudioDecoderControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

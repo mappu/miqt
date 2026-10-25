@@ -217,6 +217,8 @@ bool QCheckBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCheckBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QCheckBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QCheckBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QCheckBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QCheckBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);

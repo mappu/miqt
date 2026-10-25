@@ -23,7 +23,13 @@ const (
 
 type QWebEngineHttpRequest struct {
 	h  *C.QWebEngineHttpRequest
-	gc *[1]*C.QWebEngineHttpRequest
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineHttpRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineHttpRequest) cPointer() *C.QWebEngineHttpRequest {
@@ -62,27 +68,33 @@ func NewQWebEngineHttpRequest() *QWebEngineHttpRequest {
 
 // NewQWebEngineHttpRequest2 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest2(other *QWebEngineHttpRequest) *QWebEngineHttpRequest {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new2(other.cPointer()))
 }
 
 // NewQWebEngineHttpRequest3 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest3(url *qt.QUrl) *QWebEngineHttpRequest {
+	defer runtime.KeepAlive(url)
 
 	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQWebEngineHttpRequest4 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest4(url *qt.QUrl, method *QWebEngineHttpRequest__Method) *QWebEngineHttpRequest {
+	defer runtime.KeepAlive(url)
 
 	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
 }
 
 func (this *QWebEngineHttpRequest) OperatorAssign(other *QWebEngineHttpRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineHttpRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func QWebEngineHttpRequest_PostRequest(url *qt.QUrl, postData map[string]string) *QWebEngineHttpRequest {
+	defer runtime.KeepAlive(url)
 	postData_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(postData))))
 	defer C.free(unsafe.Pointer(postData_Keys_CArray_ptr))
 	postData_Keys_CArray := unsafe.Slice(postData_Keys_CArray_ptr, len(postData))
@@ -114,36 +126,48 @@ func QWebEngineHttpRequest_PostRequest(url *qt.QUrl, postData map[string]string)
 }
 
 func (this *QWebEngineHttpRequest) Swap(other *QWebEngineHttpRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineHttpRequest_swap(this.h, other.cPointer())
 }
 
 func (this *QWebEngineHttpRequest) OperatorEqual(other *QWebEngineHttpRequest) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QWebEngineHttpRequest_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineHttpRequest) OperatorNotEqual(other *QWebEngineHttpRequest) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QWebEngineHttpRequest_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineHttpRequest) Method() QWebEngineHttpRequest__Method {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineHttpRequest__Method)(C.QWebEngineHttpRequest_method(this.h))
 }
 
 func (this *QWebEngineHttpRequest) SetMethod(method QWebEngineHttpRequest__Method) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineHttpRequest_setMethod(this.h, (C.int)(method))
 }
 
 func (this *QWebEngineHttpRequest) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHttpRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHttpRequest) SetUrl(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebEngineHttpRequest_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineHttpRequest) PostData() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_postData(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -151,6 +175,7 @@ func (this *QWebEngineHttpRequest) PostData() []byte {
 }
 
 func (this *QWebEngineHttpRequest) SetPostData(postData []byte) {
+	defer runtime.KeepAlive(this)
 	postData_alias := C.struct_miqt_string{}
 	if len(postData) > 0 {
 		postData_alias.data = (*C.char)(unsafe.Pointer(&postData[0]))
@@ -162,6 +187,7 @@ func (this *QWebEngineHttpRequest) SetPostData(postData []byte) {
 }
 
 func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -173,6 +199,7 @@ func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
 }
 
 func (this *QWebEngineHttpRequest) Headers() [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineHttpRequest_headers(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -186,6 +213,7 @@ func (this *QWebEngineHttpRequest) Headers() [][]byte {
 }
 
 func (this *QWebEngineHttpRequest) Header(headerName []byte) []byte {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -200,6 +228,7 @@ func (this *QWebEngineHttpRequest) Header(headerName []byte) []byte {
 }
 
 func (this *QWebEngineHttpRequest) SetHeader(headerName []byte, value []byte) {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -218,6 +247,7 @@ func (this *QWebEngineHttpRequest) SetHeader(headerName []byte, value []byte) {
 }
 
 func (this *QWebEngineHttpRequest) UnsetHeader(headerName []byte) {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -240,8 +270,9 @@ func (this *QWebEngineHttpRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineHttpRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineHttpRequest) {
-		C.QWebEngineHttpRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineHttpRequest_delete((*C.QWebEngineHttpRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

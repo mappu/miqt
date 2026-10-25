@@ -60,7 +60,13 @@ const (
 
 type QNetworkConfiguration struct {
 	h  *C.QNetworkConfiguration
-	gc *[1]*C.QNetworkConfiguration
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkConfiguration) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkConfiguration) cPointer() *C.QNetworkConfiguration {
@@ -99,47 +105,62 @@ func NewQNetworkConfiguration() *QNetworkConfiguration {
 
 // NewQNetworkConfiguration2 constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration2(other *QNetworkConfiguration) *QNetworkConfiguration {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkConfiguration(C.QNetworkConfiguration_new2(other.cPointer()))
 }
 
 func (this *QNetworkConfiguration) OperatorAssign(other *QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkConfiguration_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkConfiguration) Swap(other *QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkConfiguration_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkConfiguration) OperatorEqual(other *QNetworkConfiguration) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkConfiguration_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkConfiguration) OperatorNotEqual(other *QNetworkConfiguration) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkConfiguration_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkConfiguration) State() QNetworkConfiguration__StateFlag {
+	defer runtime.KeepAlive(this)
 	return (QNetworkConfiguration__StateFlag)(C.QNetworkConfiguration_state(this.h))
 }
 
 func (this *QNetworkConfiguration) Type() QNetworkConfiguration__Type {
+	defer runtime.KeepAlive(this)
 	return (QNetworkConfiguration__Type)(C.QNetworkConfiguration_type(this.h))
 }
 
 func (this *QNetworkConfiguration) Purpose() QNetworkConfiguration__Purpose {
+	defer runtime.KeepAlive(this)
 	return (QNetworkConfiguration__Purpose)(C.QNetworkConfiguration_purpose(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerType() QNetworkConfiguration__BearerType {
+	defer runtime.KeepAlive(this)
 	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_bearerType(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerTypeFamily() QNetworkConfiguration__BearerType {
+	defer runtime.KeepAlive(this)
 	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_bearerTypeFamily(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerTypeName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkConfiguration_bearerTypeName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -147,6 +168,7 @@ func (this *QNetworkConfiguration) BearerTypeName() string {
 }
 
 func (this *QNetworkConfiguration) Identifier() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkConfiguration_identifier(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -154,10 +176,12 @@ func (this *QNetworkConfiguration) Identifier() string {
 }
 
 func (this *QNetworkConfiguration) IsRoamingAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkConfiguration_isRoamingAvailable(this.h))
 }
 
 func (this *QNetworkConfiguration) Children() []QNetworkConfiguration {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkConfiguration_children(this.h)
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -170,6 +194,7 @@ func (this *QNetworkConfiguration) Children() []QNetworkConfiguration {
 }
 
 func (this *QNetworkConfiguration) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkConfiguration_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -177,14 +202,17 @@ func (this *QNetworkConfiguration) Name() string {
 }
 
 func (this *QNetworkConfiguration) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkConfiguration_isValid(this.h))
 }
 
 func (this *QNetworkConfiguration) ConnectTimeout() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkConfiguration_connectTimeout(this.h))
 }
 
 func (this *QNetworkConfiguration) SetConnectTimeout(timeout int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkConfiguration_setConnectTimeout(this.h, (C.int)(timeout)))
 }
 
@@ -200,8 +228,9 @@ func (this *QNetworkConfiguration) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkConfiguration{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkConfiguration) {
-		C.QNetworkConfiguration_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkConfiguration_delete((*C.QNetworkConfiguration)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

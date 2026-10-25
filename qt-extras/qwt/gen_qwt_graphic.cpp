@@ -60,7 +60,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtGraphic_sizeMetrics(this, handle__sizeMetrics);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtGraphic_virtualbase_sizeMetrics(const void* self);
@@ -754,6 +756,10 @@ bool QwtGraphic_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QwtGraphic_virtualbase_sharedPainter(const void* self) {
 	return static_cast<const MiqtVirtualQwtGraphic*>(self)->QwtGraphic::sharedPainter();
+}
+
+QSize* QwtGraphic_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QwtGraphic_delete(QwtGraphic* self) {

@@ -25,8 +25,15 @@ const (
 
 type QwtPlotHistogram struct {
 	h  *C.QwtPlotHistogram
-	gc *[1]*C.QwtPlotHistogram
+	gc *[1]unsafe.Pointer
 	*QwtPlotSeriesItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotHistogram) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotSeriesItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotHistogram) cPointer() *C.QwtPlotHistogram {
@@ -68,6 +75,7 @@ func NewQwtPlotHistogram() *QwtPlotHistogram {
 
 // NewQwtPlotHistogram2 constructs a new QwtPlotHistogram object.
 func NewQwtPlotHistogram2(title *QwtText) *QwtPlotHistogram {
+	defer runtime.KeepAlive(title)
 
 	return newQwtPlotHistogram(C.QwtPlotHistogram_new2(title.cPointer()))
 }
@@ -83,30 +91,41 @@ func NewQwtPlotHistogram3(title string) *QwtPlotHistogram {
 }
 
 func (this *QwtPlotHistogram) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotHistogram_rtti(this.h))
 }
 
 func (this *QwtPlotHistogram) SetPen(param1 *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotHistogram_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
 }
 
 func (this *QwtPlotHistogram) SetPenWithPen(pen *qt.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QwtPlotHistogram_setPenWithPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QwtPlotHistogram) Pen() *qt.QPen {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPlotHistogram_pen(this.h)))
 }
 
 func (this *QwtPlotHistogram) SetBrush(brush *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QwtPlotHistogram_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QwtPlotHistogram) Brush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtPlotHistogram_brush(this.h)))
 }
 
 func (this *QwtPlotHistogram) SetSamples(samples []QwtIntervalSample) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(samples)
 	samples_CArray_ptr := (**C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
@@ -118,46 +137,60 @@ func (this *QwtPlotHistogram) SetSamples(samples []QwtIntervalSample) {
 }
 
 func (this *QwtPlotHistogram) SetBaseline(baseline float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotHistogram_setBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QwtPlotHistogram) Baseline() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotHistogram_baseline(this.h))
 }
 
 func (this *QwtPlotHistogram) SetStyle(style QwtPlotHistogram__HistogramStyle) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotHistogram_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QwtPlotHistogram) Style() QwtPlotHistogram__HistogramStyle {
+	defer runtime.KeepAlive(this)
 	return (QwtPlotHistogram__HistogramStyle)(C.QwtPlotHistogram_style(this.h))
 }
 
 func (this *QwtPlotHistogram) SetSymbol(symbol *QwtColumnSymbol) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(symbol)
 	C.QwtPlotHistogram_setSymbol(this.h, symbol.cPointer())
 }
 
 func (this *QwtPlotHistogram) Symbol() *QwtColumnSymbol {
+	defer runtime.KeepAlive(this)
 	return newQwtColumnSymbol(C.QwtPlotHistogram_symbol(this.h))
 }
 
 func (this *QwtPlotHistogram) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotHistogram_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotHistogram) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	_goptr := newQwtGraphic(C.QwtPlotHistogram_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotHistogram) SetPen2(param1 *qt.QColor, width float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotHistogram_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
 }
 
 func (this *QwtPlotHistogram) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotHistogram_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
 }
 
@@ -173,8 +206,9 @@ func (this *QwtPlotHistogram) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotHistogram{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotHistogram) {
-		C.QwtPlotHistogram_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotHistogram_delete((*C.QwtPlotHistogram)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

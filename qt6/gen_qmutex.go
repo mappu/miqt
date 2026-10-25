@@ -15,7 +15,13 @@ import (
 
 type QBasicMutex struct {
 	h  *C.QBasicMutex
-	gc *[1]*C.QBasicMutex
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBasicMutex) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBasicMutex) cPointer() *C.QBasicMutex {
@@ -53,18 +59,22 @@ func NewQBasicMutex() *QBasicMutex {
 }
 
 func (this *QBasicMutex) Lock() {
+	defer runtime.KeepAlive(this)
 	C.QBasicMutex_lock(this.h)
 }
 
 func (this *QBasicMutex) Unlock() {
+	defer runtime.KeepAlive(this)
 	C.QBasicMutex_unlock(this.h)
 }
 
 func (this *QBasicMutex) TryLock() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBasicMutex_tryLock(this.h))
 }
 
 func (this *QBasicMutex) TryLock2() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBasicMutex_tryLock2(this.h))
 }
 
@@ -80,16 +90,24 @@ func (this *QBasicMutex) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBasicMutex{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBasicMutex) {
-		C.QBasicMutex_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBasicMutex_delete((*C.QBasicMutex)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMutex struct {
 	h  *C.QMutex
-	gc *[1]*C.QMutex
+	gc *[1]unsafe.Pointer
 	*QBasicMutex
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMutex) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QBasicMutex.miqtSetGC(gc)
 }
 
 func (this *QMutex) cPointer() *C.QMutex {
@@ -130,10 +148,12 @@ func NewQMutex() *QMutex {
 }
 
 func (this *QMutex) TryLock() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMutex_tryLock(this.h))
 }
 
 func (this *QMutex) TryLockWithTimeout(timeout int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMutex_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
@@ -149,15 +169,22 @@ func (this *QMutex) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMutex{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMutex) {
-		C.QMutex_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMutex_delete((*C.QMutex)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QRecursiveMutex struct {
 	h  *C.QRecursiveMutex
-	gc *[1]*C.QRecursiveMutex
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRecursiveMutex) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
@@ -195,22 +222,27 @@ func NewQRecursiveMutex() *QRecursiveMutex {
 }
 
 func (this *QRecursiveMutex) Lock() {
+	defer runtime.KeepAlive(this)
 	C.QRecursiveMutex_lock(this.h)
 }
 
 func (this *QRecursiveMutex) TryLock() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRecursiveMutex_tryLock(this.h))
 }
 
 func (this *QRecursiveMutex) Unlock() {
+	defer runtime.KeepAlive(this)
 	C.QRecursiveMutex_unlock(this.h)
 }
 
 func (this *QRecursiveMutex) TryLock2() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRecursiveMutex_tryLock2(this.h))
 }
 
 func (this *QRecursiveMutex) TryLockWithTimeout(timeout int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRecursiveMutex_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
@@ -226,8 +258,9 @@ func (this *QRecursiveMutex) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRecursiveMutex{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRecursiveMutex) {
-		C.QRecursiveMutex_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRecursiveMutex_delete((*C.QRecursiveMutex)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

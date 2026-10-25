@@ -33,7 +33,13 @@ const (
 
 type QScriptContext struct {
 	h  *C.QScriptContext
-	gc *[1]*C.QScriptContext
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptContext) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptContext) cPointer() *C.QScriptContext {
@@ -65,40 +71,48 @@ func UnsafeNewQScriptContext(h unsafe.Pointer) *QScriptContext {
 }
 
 func (this *QScriptContext) ParentContext() *QScriptContext {
+	defer runtime.KeepAlive(this)
 	return newQScriptContext(C.QScriptContext_parentContext(this.h))
 }
 
 func (this *QScriptContext) Engine() *QScriptEngine {
+	defer runtime.KeepAlive(this)
 	return newQScriptEngine(C.QScriptContext_engine(this.h))
 }
 
 func (this *QScriptContext) State() QScriptContext__ExecutionState {
+	defer runtime.KeepAlive(this)
 	return (QScriptContext__ExecutionState)(C.QScriptContext_state(this.h))
 }
 
 func (this *QScriptContext) Callee() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_callee(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ArgumentCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptContext_argumentCount(this.h))
 }
 
 func (this *QScriptContext) Argument(index int) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_argument(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ArgumentsObject() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_argumentsObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ScopeChain() []QScriptValue {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QScriptContext_scopeChain(this.h)
 	_ret := make([]QScriptValue, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QScriptValue)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -111,56 +125,72 @@ func (this *QScriptContext) ScopeChain() []QScriptValue {
 }
 
 func (this *QScriptContext) PushScope(object *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QScriptContext_pushScope(this.h, object.cPointer())
 }
 
 func (this *QScriptContext) PopScope() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_popScope(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ReturnValue() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_returnValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) SetReturnValue(result *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(result)
 	C.QScriptContext_setReturnValue(this.h, result.cPointer())
 }
 
 func (this *QScriptContext) ActivationObject() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_activationObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) SetActivationObject(activation *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(activation)
 	C.QScriptContext_setActivationObject(this.h, activation.cPointer())
 }
 
 func (this *QScriptContext) ThisObject() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptContext_thisObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) SetThisObject(thisObject *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thisObject)
 	C.QScriptContext_setThisObject(this.h, thisObject.cPointer())
 }
 
 func (this *QScriptContext) IsCalledAsConstructor() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptContext_isCalledAsConstructor(this.h))
 }
 
 func (this *QScriptContext) ThrowValue(value *QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	_goptr := newQScriptValue(C.QScriptContext_throwValue(this.h, value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ThrowError(error QScriptContext__Error, text string) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -171,6 +201,7 @@ func (this *QScriptContext) ThrowError(error QScriptContext__Error, text string)
 }
 
 func (this *QScriptContext) ThrowErrorWithText(text string) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -181,6 +212,7 @@ func (this *QScriptContext) ThrowErrorWithText(text string) *QScriptValue {
 }
 
 func (this *QScriptContext) Backtrace() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QScriptContext_backtrace(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -194,6 +226,7 @@ func (this *QScriptContext) Backtrace() []string {
 }
 
 func (this *QScriptContext) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptContext_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -212,8 +245,9 @@ func (this *QScriptContext) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptContext{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptContext) {
-		C.QScriptContext_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptContext_delete((*C.QScriptContext)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

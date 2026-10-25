@@ -233,6 +233,8 @@ bool QToolButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QToolButton_virtualreturncopy_QSize(QSize* src);
+QVariant* QToolButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QToolButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QToolButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);

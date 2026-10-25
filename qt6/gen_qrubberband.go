@@ -23,8 +23,15 @@ const (
 
 type QRubberBand struct {
 	h  *C.QRubberBand
-	gc *[1]*C.QRubberBand
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRubberBand) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QRubberBand) cPointer() *C.QRubberBand {
@@ -66,15 +73,18 @@ func NewQRubberBand(param1 QRubberBand__Shape) *QRubberBand {
 
 // NewQRubberBand2 constructs a new QRubberBand object.
 func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
+	defer runtime.KeepAlive(param2)
 
 	return newQRubberBand(C.QRubberBand_new2((C.int)(param1), param2.cPointer()))
 }
 
 func (this *QRubberBand) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QRubberBand_metaObject(this.h))
 }
 
 func (this *QRubberBand) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRubberBand_metacast(this.h, param1_Cstring))
@@ -90,30 +100,40 @@ func QRubberBand_Tr(s string) string {
 }
 
 func (this *QRubberBand) Shape() QRubberBand__Shape {
+	defer runtime.KeepAlive(this)
 	return (QRubberBand__Shape)(C.QRubberBand_shape(this.h))
 }
 
 func (this *QRubberBand) SetGeometry(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QRubberBand_setGeometry(this.h, r.cPointer())
 }
 
 func (this *QRubberBand) SetGeometry2(x int, y int, w int, h int) {
+	defer runtime.KeepAlive(this)
 	C.QRubberBand_setGeometry2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
 func (this *QRubberBand) Move(x int, y int) {
+	defer runtime.KeepAlive(this)
 	C.QRubberBand_move(this.h, (C.int)(x), (C.int)(y))
 }
 
 func (this *QRubberBand) MoveWithQPoint(p *QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	C.QRubberBand_moveWithQPoint(this.h, p.cPointer())
 }
 
 func (this *QRubberBand) Resize(w int, h int) {
+	defer runtime.KeepAlive(this)
 	C.QRubberBand_resize(this.h, (C.int)(w), (C.int)(h))
 }
 
 func (this *QRubberBand) ResizeWithQSize(s *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	C.QRubberBand_resizeWithQSize(this.h, s.cPointer())
 }
 
@@ -141,6 +161,7 @@ func QRubberBand_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRubberBand_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -153,6 +174,7 @@ func (this *QRubberBand) UpdateMicroFocus() {
 
 // Create can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRubberBand_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -165,6 +187,7 @@ func (this *QRubberBand) Create() {
 
 // Destroy can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QRubberBand_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -177,6 +200,7 @@ func (this *QRubberBand) Destroy() {
 
 // FocusNextChild can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRubberBand_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -191,6 +215,7 @@ func (this *QRubberBand) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRubberBand_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -205,6 +230,7 @@ func (this *QRubberBand) FocusPreviousChild() bool {
 
 // Sender can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QRubberBand_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -219,6 +245,7 @@ func (this *QRubberBand) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRubberBand_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -233,6 +260,7 @@ func (this *QRubberBand) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -249,6 +277,8 @@ func (this *QRubberBand) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRubberBand that was directly constructed.
 func (this *QRubberBand) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QRubberBand_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -262,6 +292,8 @@ func (this *QRubberBand) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QRubberBand) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QRubberBand_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -290,6 +322,8 @@ func miqt_exec_callback_QRubberBand_event(self *C.QRubberBand, cb C.intptr_t, e 
 }
 
 func (this *QRubberBand) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -316,6 +350,8 @@ func miqt_exec_callback_QRubberBand_paintEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -342,6 +378,8 @@ func miqt_exec_callback_QRubberBand_changeEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -368,6 +406,8 @@ func miqt_exec_callback_QRubberBand_showEvent(self *C.QRubberBand, cb C.intptr_t
 }
 
 func (this *QRubberBand) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -394,6 +434,8 @@ func miqt_exec_callback_QRubberBand_resizeEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_MoveEvent(param1 *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_moveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -420,6 +462,8 @@ func miqt_exec_callback_QRubberBand_moveEvent(self *C.QRubberBand, cb C.intptr_t
 }
 
 func (this *QRubberBand) callVirtualBase_InitStyleOption(option *QStyleOptionRubberBand) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QRubberBand_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -446,6 +490,7 @@ func miqt_exec_callback_QRubberBand_initStyleOption(self *C.QRubberBand, cb C.in
 }
 
 func (this *QRubberBand) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRubberBand_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -471,6 +516,7 @@ func miqt_exec_callback_QRubberBand_devType(self *C.QRubberBand, cb C.intptr_t) 
 }
 
 func (this *QRubberBand) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QRubberBand_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -497,6 +543,7 @@ func miqt_exec_callback_QRubberBand_setVisible(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QRubberBand_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -518,12 +565,14 @@ func miqt_exec_callback_QRubberBand_sizeHint(self *C.QRubberBand, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRubberBand_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QRubberBand) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QRubberBand_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -545,12 +594,14 @@ func miqt_exec_callback_QRubberBand_minimumSizeHint(self *C.QRubberBand, cb C.in
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRubberBand_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QRubberBand) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRubberBand_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -579,6 +630,7 @@ func miqt_exec_callback_QRubberBand_heightForWidth(self *C.QRubberBand, cb C.int
 }
 
 func (this *QRubberBand) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QRubberBand_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -604,6 +656,7 @@ func miqt_exec_callback_QRubberBand_hasHeightForWidth(self *C.QRubberBand, cb C.
 }
 
 func (this *QRubberBand) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QRubberBand_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -623,12 +676,15 @@ func miqt_exec_callback_QRubberBand_paintEngine(self *C.QRubberBand, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRubberBand) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -655,6 +711,8 @@ func miqt_exec_callback_QRubberBand_mousePressEvent(self *C.QRubberBand, cb C.in
 }
 
 func (this *QRubberBand) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -681,6 +739,8 @@ func miqt_exec_callback_QRubberBand_mouseReleaseEvent(self *C.QRubberBand, cb C.
 }
 
 func (this *QRubberBand) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -707,6 +767,8 @@ func miqt_exec_callback_QRubberBand_mouseDoubleClickEvent(self *C.QRubberBand, c
 }
 
 func (this *QRubberBand) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -733,6 +795,8 @@ func miqt_exec_callback_QRubberBand_mouseMoveEvent(self *C.QRubberBand, cb C.int
 }
 
 func (this *QRubberBand) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -759,6 +823,8 @@ func miqt_exec_callback_QRubberBand_wheelEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -785,6 +851,8 @@ func miqt_exec_callback_QRubberBand_keyPressEvent(self *C.QRubberBand, cb C.intp
 }
 
 func (this *QRubberBand) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -811,6 +879,8 @@ func miqt_exec_callback_QRubberBand_keyReleaseEvent(self *C.QRubberBand, cb C.in
 }
 
 func (this *QRubberBand) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -837,6 +907,8 @@ func miqt_exec_callback_QRubberBand_focusInEvent(self *C.QRubberBand, cb C.intpt
 }
 
 func (this *QRubberBand) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -863,6 +935,8 @@ func miqt_exec_callback_QRubberBand_focusOutEvent(self *C.QRubberBand, cb C.intp
 }
 
 func (this *QRubberBand) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -889,6 +963,8 @@ func miqt_exec_callback_QRubberBand_enterEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -915,6 +991,8 @@ func miqt_exec_callback_QRubberBand_leaveEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -941,6 +1019,8 @@ func miqt_exec_callback_QRubberBand_closeEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -967,6 +1047,8 @@ func miqt_exec_callback_QRubberBand_contextMenuEvent(self *C.QRubberBand, cb C.i
 }
 
 func (this *QRubberBand) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -993,6 +1075,8 @@ func miqt_exec_callback_QRubberBand_tabletEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1019,6 +1103,8 @@ func miqt_exec_callback_QRubberBand_actionEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1045,6 +1131,8 @@ func miqt_exec_callback_QRubberBand_dragEnterEvent(self *C.QRubberBand, cb C.int
 }
 
 func (this *QRubberBand) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1071,6 +1159,8 @@ func miqt_exec_callback_QRubberBand_dragMoveEvent(self *C.QRubberBand, cb C.intp
 }
 
 func (this *QRubberBand) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1097,6 +1187,8 @@ func miqt_exec_callback_QRubberBand_dragLeaveEvent(self *C.QRubberBand, cb C.int
 }
 
 func (this *QRubberBand) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1123,6 +1215,8 @@ func miqt_exec_callback_QRubberBand_dropEvent(self *C.QRubberBand, cb C.intptr_t
 }
 
 func (this *QRubberBand) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1149,6 +1243,7 @@ func miqt_exec_callback_QRubberBand_hideEvent(self *C.QRubberBand, cb C.intptr_t
 }
 
 func (this *QRubberBand) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1190,6 +1285,7 @@ func miqt_exec_callback_QRubberBand_nativeEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRubberBand_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1218,6 +1314,8 @@ func miqt_exec_callback_QRubberBand_metric(self *C.QRubberBand, cb C.intptr_t, p
 }
 
 func (this *QRubberBand) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QRubberBand_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1244,6 +1342,8 @@ func miqt_exec_callback_QRubberBand_initPainter(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QRubberBand_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1266,12 +1366,14 @@ func miqt_exec_callback_QRubberBand_redirected(self *C.QRubberBand, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRubberBand) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QRubberBand_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1291,12 +1393,15 @@ func miqt_exec_callback_QRubberBand_sharedPainter(self *C.QRubberBand, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRubberBand) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QRubberBand_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1323,6 +1428,7 @@ func miqt_exec_callback_QRubberBand_inputMethodEvent(self *C.QRubberBand, cb C.i
 }
 
 func (this *QRubberBand) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QRubberBand_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1347,12 +1453,14 @@ func miqt_exec_callback_QRubberBand_inputMethodQuery(self *C.QRubberBand, cb C.i
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QRubberBand_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QRubberBand) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QRubberBand_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1381,6 +1489,9 @@ func miqt_exec_callback_QRubberBand_focusNextPrevChild(self *C.QRubberBand, cb C
 }
 
 func (this *QRubberBand) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRubberBand_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1411,6 +1522,8 @@ func miqt_exec_callback_QRubberBand_eventFilter(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1437,6 +1550,8 @@ func miqt_exec_callback_QRubberBand_timerEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1463,6 +1578,8 @@ func miqt_exec_callback_QRubberBand_childEvent(self *C.QRubberBand, cb C.intptr_
 }
 
 func (this *QRubberBand) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QRubberBand_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1489,6 +1606,8 @@ func miqt_exec_callback_QRubberBand_customEvent(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRubberBand_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1515,6 +1634,8 @@ func miqt_exec_callback_QRubberBand_connectNotify(self *C.QRubberBand, cb C.intp
 }
 
 func (this *QRubberBand) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QRubberBand_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1552,8 +1673,9 @@ func (this *QRubberBand) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRubberBand{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRubberBand) {
-		C.QRubberBand_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRubberBand_delete((*C.QRubberBand)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

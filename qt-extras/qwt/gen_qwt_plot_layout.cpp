@@ -32,7 +32,9 @@ public:
 
 		QwtPlot* sigval1 = (QwtPlot*) param1;
 		QSize* callback_return_value = miqt_exec_callback_QwtPlotLayout_minimumSizeHint(this, handle__minimumSizeHint, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtPlotLayout_virtualbase_minimumSizeHint(const void* self, QwtPlot* param1);
@@ -220,6 +222,10 @@ bool QwtPlotLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QwtPlotLayout_virtualbase_invalidate(void* self) {
 	static_cast<MiqtVirtualQwtPlotLayout*>(self)->QwtPlotLayout::invalidate();
+}
+
+QSize* QwtPlotLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QwtPlotLayout_protectedbase_setTitleRect(bool* _dynamic_cast_ok, void* self, QRectF* titleRect) {

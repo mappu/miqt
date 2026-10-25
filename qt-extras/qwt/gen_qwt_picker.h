@@ -208,6 +208,10 @@ bool QwtPicker_override_virtual_mouseMatch2(void* self, intptr_t slot);
 bool QwtPicker_virtualbase_mouseMatch2(const void* self, QwtEventPattern__MousePattern* param1, QMouseEvent* param2);
 bool QwtPicker_override_virtual_keyMatch2(void* self, intptr_t slot);
 bool QwtPicker_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2);
+QPainterPath* QwtPicker_virtualreturncopy_QPainterPath(QPainterPath* src);
+QRegion* QwtPicker_virtualreturncopy_QRegion(QRegion* src);
+QwtText* QwtPicker_virtualreturncopy_QwtText(QwtText* src);
+QRect* QwtPicker_virtualreturncopy_QRect(QRect* src);
 
 QwtWidgetOverlay* QwtPicker_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self);
 QwtWidgetOverlay* QwtPicker_protectedbase_trackerOverlay(bool* _dynamic_cast_ok, const void* self);

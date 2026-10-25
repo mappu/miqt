@@ -34,7 +34,13 @@ const (
 
 type QSystemSemaphore struct {
 	h  *C.QSystemSemaphore
-	gc *[1]*C.QSystemSemaphore
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSystemSemaphore) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSystemSemaphore) cPointer() *C.QSystemSemaphore {
@@ -96,6 +102,7 @@ func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__A
 }
 
 func (this *QSystemSemaphore) SetKey(key string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -104,6 +111,7 @@ func (this *QSystemSemaphore) SetKey(key string) {
 }
 
 func (this *QSystemSemaphore) Key() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSystemSemaphore_key(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -111,18 +119,22 @@ func (this *QSystemSemaphore) Key() string {
 }
 
 func (this *QSystemSemaphore) Acquire() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSystemSemaphore_acquire(this.h))
 }
 
 func (this *QSystemSemaphore) Release() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSystemSemaphore_release(this.h))
 }
 
 func (this *QSystemSemaphore) Error() QSystemSemaphore__SystemSemaphoreError {
+	defer runtime.KeepAlive(this)
 	return (QSystemSemaphore__SystemSemaphoreError)(C.QSystemSemaphore_error(this.h))
 }
 
 func (this *QSystemSemaphore) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSystemSemaphore_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -130,6 +142,7 @@ func (this *QSystemSemaphore) ErrorString() string {
 }
 
 func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -138,6 +151,7 @@ func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
 }
 
 func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystemSemaphore__AccessMode) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -146,6 +160,7 @@ func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystem
 }
 
 func (this *QSystemSemaphore) ReleaseWithInt(n int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSystemSemaphore_releaseWithInt(this.h, (C.int)(n)))
 }
 
@@ -161,8 +176,9 @@ func (this *QSystemSemaphore) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSystemSemaphore{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSystemSemaphore) {
-		C.QSystemSemaphore_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSystemSemaphore_delete((*C.QSystemSemaphore)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

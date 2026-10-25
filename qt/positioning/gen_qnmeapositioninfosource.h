@@ -100,6 +100,7 @@ bool QNmeaPositionInfoSource_override_virtual_connectNotify(void* self, intptr_t
 void QNmeaPositionInfoSource_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNmeaPositionInfoSource_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNmeaPositionInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QGeoPositionInfo* QNmeaPositionInfoSource_virtualreturncopy_QGeoPositionInfo(QGeoPositionInfo* src);
 
 QObject* QNmeaPositionInfoSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QNmeaPositionInfoSource_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

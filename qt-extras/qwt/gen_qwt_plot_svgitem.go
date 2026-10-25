@@ -16,8 +16,15 @@ import (
 
 type QwtPlotSvgItem struct {
 	h  *C.QwtPlotSvgItem
-	gc *[1]*C.QwtPlotSvgItem
+	gc *[1]unsafe.Pointer
 	*QwtPlotItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotSvgItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotSvgItem) cPointer() *C.QwtPlotSvgItem {
@@ -59,6 +66,7 @@ func NewQwtPlotSvgItem() *QwtPlotSvgItem {
 
 // NewQwtPlotSvgItem2 constructs a new QwtPlotSvgItem object.
 func NewQwtPlotSvgItem2(title *QwtText) *QwtPlotSvgItem {
+	defer runtime.KeepAlive(title)
 
 	return newQwtPlotSvgItem(C.QwtPlotSvgItem_new2(title.cPointer()))
 }
@@ -74,6 +82,8 @@ func NewQwtPlotSvgItem3(title string) *QwtPlotSvgItem {
 }
 
 func (this *QwtPlotSvgItem) LoadFile(param1 *qt.QRectF, fileName string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -82,6 +92,8 @@ func (this *QwtPlotSvgItem) LoadFile(param1 *qt.QRectF, fileName string) bool {
 }
 
 func (this *QwtPlotSvgItem) LoadData(param1 *qt.QRectF, param2 []byte) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_alias := C.struct_miqt_string{}
 	if len(param2) > 0 {
 		param2_alias.data = (*C.char)(unsafe.Pointer(&param2[0]))
@@ -93,12 +105,14 @@ func (this *QwtPlotSvgItem) LoadData(param1 *qt.QRectF, param2 []byte) bool {
 }
 
 func (this *QwtPlotSvgItem) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotSvgItem_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotSvgItem) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotSvgItem_rtti(this.h))
 }
 
@@ -114,8 +128,9 @@ func (this *QwtPlotSvgItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotSvgItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotSvgItem) {
-		C.QwtPlotSvgItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotSvgItem_delete((*C.QwtPlotSvgItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

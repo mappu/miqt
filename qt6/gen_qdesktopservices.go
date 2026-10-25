@@ -15,7 +15,13 @@ import (
 
 type QDesktopServices struct {
 	h  *C.QDesktopServices
-	gc *[1]*C.QDesktopServices
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesktopServices) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesktopServices) cPointer() *C.QDesktopServices {
@@ -47,10 +53,12 @@ func UnsafeNewQDesktopServices(h unsafe.Pointer) *QDesktopServices {
 }
 
 func QDesktopServices_OpenUrl(url *QUrl) bool {
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QDesktopServices_openUrl(url.cPointer()))
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {
+	defer runtime.KeepAlive(receiver)
 	scheme_ms := C.struct_miqt_string{}
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))
@@ -80,8 +88,9 @@ func (this *QDesktopServices) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesktopServices{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesktopServices) {
-		C.QDesktopServices_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesktopServices_delete((*C.QDesktopServices)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

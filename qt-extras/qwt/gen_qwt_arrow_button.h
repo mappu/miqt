@@ -210,6 +210,9 @@ bool QwtArrowButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtArrowButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtArrowButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtArrowButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtArrowButton_virtualreturncopy_QSize(QSize* src);
+QRect* QwtArrowButton_virtualreturncopy_QRect(QRect* src);
+QVariant* QwtArrowButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtArrowButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option);
 void QwtArrowButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

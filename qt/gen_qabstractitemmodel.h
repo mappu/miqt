@@ -258,6 +258,9 @@ bool QAbstractItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QAbstractItemModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QAbstractItemModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QAbstractItemModel_virtualreturncopy_QSize(QSize* src);
 
 void QAbstractItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QAbstractItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
@@ -398,6 +401,9 @@ bool QAbstractTableModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractTableModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractTableModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QAbstractTableModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QAbstractTableModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QAbstractTableModel_virtualreturncopy_QSize(QSize* src);
 
 void QAbstractTableModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QAbstractTableModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
@@ -519,6 +525,9 @@ bool QAbstractListModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractListModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QAbstractListModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QAbstractListModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QAbstractListModel_virtualreturncopy_QSize(QSize* src);
 
 void QAbstractListModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QAbstractListModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);

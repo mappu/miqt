@@ -58,7 +58,13 @@ const (
 
 type QSurfaceFormat struct {
 	h  *C.QSurfaceFormat
-	gc *[1]*C.QSurfaceFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSurfaceFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSurfaceFormat) cPointer() *C.QSurfaceFormat {
@@ -103,111 +109,139 @@ func NewQSurfaceFormat2(options QSurfaceFormat__FormatOption) *QSurfaceFormat {
 
 // NewQSurfaceFormat3 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat3(other *QSurfaceFormat) *QSurfaceFormat {
+	defer runtime.KeepAlive(other)
 
 	return newQSurfaceFormat(C.QSurfaceFormat_new3(other.cPointer()))
 }
 
 func (this *QSurfaceFormat) OperatorAssign(other *QSurfaceFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSurfaceFormat_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSurfaceFormat) SetDepthBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setDepthBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) DepthBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_depthBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetStencilBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setStencilBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) StencilBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_stencilBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetRedBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setRedBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) RedBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_redBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetGreenBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setGreenBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) GreenBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_greenBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetBlueBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setBlueBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) BlueBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_blueBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetAlphaBufferSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setAlphaBufferSize(this.h, (C.int)(size))
 }
 
 func (this *QSurfaceFormat) AlphaBufferSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_alphaBufferSize(this.h))
 }
 
 func (this *QSurfaceFormat) SetSamples(numSamples int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setSamples(this.h, (C.int)(numSamples))
 }
 
 func (this *QSurfaceFormat) Samples() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_samples(this.h))
 }
 
 func (this *QSurfaceFormat) SetSwapBehavior(behavior QSurfaceFormat__SwapBehavior) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setSwapBehavior(this.h, (C.int)(behavior))
 }
 
 func (this *QSurfaceFormat) SwapBehavior() QSurfaceFormat__SwapBehavior {
+	defer runtime.KeepAlive(this)
 	return (QSurfaceFormat__SwapBehavior)(C.QSurfaceFormat_swapBehavior(this.h))
 }
 
 func (this *QSurfaceFormat) HasAlpha() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSurfaceFormat_hasAlpha(this.h))
 }
 
 func (this *QSurfaceFormat) SetProfile(profile QSurfaceFormat__OpenGLContextProfile) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setProfile(this.h, (C.int)(profile))
 }
 
 func (this *QSurfaceFormat) Profile() QSurfaceFormat__OpenGLContextProfile {
+	defer runtime.KeepAlive(this)
 	return (QSurfaceFormat__OpenGLContextProfile)(C.QSurfaceFormat_profile(this.h))
 }
 
 func (this *QSurfaceFormat) SetRenderableType(typeVal QSurfaceFormat__RenderableType) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setRenderableType(this.h, (C.int)(typeVal))
 }
 
 func (this *QSurfaceFormat) RenderableType() QSurfaceFormat__RenderableType {
+	defer runtime.KeepAlive(this)
 	return (QSurfaceFormat__RenderableType)(C.QSurfaceFormat_renderableType(this.h))
 }
 
 func (this *QSurfaceFormat) SetMajorVersion(majorVersion int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setMajorVersion(this.h, (C.int)(majorVersion))
 }
 
 func (this *QSurfaceFormat) MajorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_majorVersion(this.h))
 }
 
 func (this *QSurfaceFormat) SetMinorVersion(minorVersion int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setMinorVersion(this.h, (C.int)(minorVersion))
 }
 
 func (this *QSurfaceFormat) MinorVersion() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_minorVersion(this.h))
 }
 
@@ -215,6 +249,7 @@ func (this *QSurfaceFormat) Version() struct {
 	First  int
 	Second int
 } {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QSurfaceFormat_version(this.h)
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
@@ -229,54 +264,70 @@ func (this *QSurfaceFormat) Version() struct {
 }
 
 func (this *QSurfaceFormat) SetVersion(major int, minor int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setVersion(this.h, (C.int)(major), (C.int)(minor))
 }
 
 func (this *QSurfaceFormat) Stereo() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSurfaceFormat_stereo(this.h))
 }
 
 func (this *QSurfaceFormat) SetStereo(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setStereo(this.h, (C.bool)(enable))
 }
 
 func (this *QSurfaceFormat) SetOptions(options QSurfaceFormat__FormatOption) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QSurfaceFormat) SetOption(option QSurfaceFormat__FormatOption) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setOption(this.h, (C.int)(option))
 }
 
 func (this *QSurfaceFormat) TestOption(option QSurfaceFormat__FormatOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSurfaceFormat_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QSurfaceFormat) Options() QSurfaceFormat__FormatOption {
+	defer runtime.KeepAlive(this)
 	return (QSurfaceFormat__FormatOption)(C.QSurfaceFormat_options(this.h))
 }
 
 func (this *QSurfaceFormat) SwapInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSurfaceFormat_swapInterval(this.h))
 }
 
 func (this *QSurfaceFormat) SetSwapInterval(interval int) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setSwapInterval(this.h, (C.int)(interval))
 }
 
 func (this *QSurfaceFormat) ColorSpace() *QColorSpace {
-	return newQColorSpace(C.QSurfaceFormat_colorSpace(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQColorSpace(C.QSurfaceFormat_colorSpace(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QSurfaceFormat) SetColorSpace(colorSpace *QColorSpace) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(colorSpace)
 	C.QSurfaceFormat_setColorSpace(this.h, colorSpace.cPointer())
 }
 
 func (this *QSurfaceFormat) SetColorSpaceWithColorSpace(colorSpace QSurfaceFormat__ColorSpace) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setColorSpaceWithColorSpace(this.h, (C.int)(colorSpace))
 }
 
 func QSurfaceFormat_SetDefaultFormat(format *QSurfaceFormat) {
+	defer runtime.KeepAlive(format)
 	C.QSurfaceFormat_setDefaultFormat(format.cPointer())
 }
 
@@ -287,6 +338,7 @@ func QSurfaceFormat_DefaultFormat() *QSurfaceFormat {
 }
 
 func (this *QSurfaceFormat) SetOption2(option QSurfaceFormat__FormatOption, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QSurfaceFormat_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
@@ -302,8 +354,9 @@ func (this *QSurfaceFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSurfaceFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSurfaceFormat) {
-		C.QSurfaceFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSurfaceFormat_delete((*C.QSurfaceFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

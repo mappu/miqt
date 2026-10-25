@@ -15,8 +15,15 @@ import (
 
 type QSqlIndex struct {
 	h  *C.QSqlIndex
-	gc *[1]*C.QSqlIndex
+	gc *[1]unsafe.Pointer
 	*QSqlRecord
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlIndex) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSqlRecord.miqtSetGC(gc)
 }
 
 func (this *QSqlIndex) cPointer() *C.QSqlIndex {
@@ -58,6 +65,7 @@ func NewQSqlIndex() *QSqlIndex {
 
 // NewQSqlIndex2 constructs a new QSqlIndex object.
 func NewQSqlIndex2(other *QSqlIndex) *QSqlIndex {
+	defer runtime.KeepAlive(other)
 
 	return newQSqlIndex(C.QSqlIndex_new2(other.cPointer()))
 }
@@ -87,10 +95,13 @@ func NewQSqlIndex4(cursorName string, name string) *QSqlIndex {
 }
 
 func (this *QSqlIndex) OperatorAssign(other *QSqlIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlIndex_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSqlIndex) SetCursorName(cursorName string) {
+	defer runtime.KeepAlive(this)
 	cursorName_ms := C.struct_miqt_string{}
 	cursorName_ms.data = C.CString(cursorName)
 	cursorName_ms.len = C.size_t(len(cursorName))
@@ -99,6 +110,7 @@ func (this *QSqlIndex) SetCursorName(cursorName string) {
 }
 
 func (this *QSqlIndex) CursorName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlIndex_cursorName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -106,6 +118,7 @@ func (this *QSqlIndex) CursorName() string {
 }
 
 func (this *QSqlIndex) SetName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -114,6 +127,7 @@ func (this *QSqlIndex) SetName(name string) {
 }
 
 func (this *QSqlIndex) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlIndex_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -121,18 +135,24 @@ func (this *QSqlIndex) Name() string {
 }
 
 func (this *QSqlIndex) Append(field *QSqlField) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	C.QSqlIndex_append(this.h, field.cPointer())
 }
 
 func (this *QSqlIndex) Append2(field *QSqlField, desc bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	C.QSqlIndex_append2(this.h, field.cPointer(), (C.bool)(desc))
 }
 
 func (this *QSqlIndex) IsDescending(i int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlIndex_isDescending(this.h, (C.int)(i)))
 }
 
 func (this *QSqlIndex) SetDescending(i int, desc bool) {
+	defer runtime.KeepAlive(this)
 	C.QSqlIndex_setDescending(this.h, (C.int)(i), (C.bool)(desc))
 }
 
@@ -148,8 +168,9 @@ func (this *QSqlIndex) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlIndex{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlIndex) {
-		C.QSqlIndex_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlIndex_delete((*C.QSqlIndex)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

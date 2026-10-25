@@ -16,7 +16,13 @@ import (
 
 type QPrinterInfo struct {
 	h  *C.QPrinterInfo
-	gc *[1]*C.QPrinterInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPrinterInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPrinterInfo) cPointer() *C.QPrinterInfo {
@@ -55,21 +61,26 @@ func NewQPrinterInfo() *QPrinterInfo {
 
 // NewQPrinterInfo2 constructs a new QPrinterInfo object.
 func NewQPrinterInfo2(other *QPrinterInfo) *QPrinterInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQPrinterInfo(C.QPrinterInfo_new2(other.cPointer()))
 }
 
 // NewQPrinterInfo3 constructs a new QPrinterInfo object.
 func NewQPrinterInfo3(printer *QPrinter) *QPrinterInfo {
+	defer runtime.KeepAlive(printer)
 
 	return newQPrinterInfo(C.QPrinterInfo_new3(printer.cPointer()))
 }
 
 func (this *QPrinterInfo) OperatorAssign(other *QPrinterInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPrinterInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPrinterInfo) PrinterName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPrinterInfo_printerName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -77,6 +88,7 @@ func (this *QPrinterInfo) PrinterName() string {
 }
 
 func (this *QPrinterInfo) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPrinterInfo_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -84,6 +96,7 @@ func (this *QPrinterInfo) Description() string {
 }
 
 func (this *QPrinterInfo) Location() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPrinterInfo_location(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -91,6 +104,7 @@ func (this *QPrinterInfo) Location() string {
 }
 
 func (this *QPrinterInfo) MakeAndModel() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPrinterInfo_makeAndModel(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -98,22 +112,27 @@ func (this *QPrinterInfo) MakeAndModel() string {
 }
 
 func (this *QPrinterInfo) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrinterInfo_isNull(this.h))
 }
 
 func (this *QPrinterInfo) IsDefault() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrinterInfo_isDefault(this.h))
 }
 
 func (this *QPrinterInfo) IsRemote() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrinterInfo_isRemote(this.h))
 }
 
 func (this *QPrinterInfo) State() QPrinter__PrinterState {
+	defer runtime.KeepAlive(this)
 	return (QPrinter__PrinterState)(C.QPrinterInfo_state(this.h))
 }
 
 func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPrinterInfo_supportedPageSizes(this.h)
 	_ret := make([]qt6.QPageSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QPageSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -126,28 +145,33 @@ func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
 }
 
 func (this *QPrinterInfo) DefaultPageSize() *qt6.QPageSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_defaultPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinterInfo) SupportsCustomPageSizes() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrinterInfo_supportsCustomPageSizes(this.h))
 }
 
 func (this *QPrinterInfo) MinimumPhysicalPageSize() *qt6.QPageSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_minimumPhysicalPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinterInfo) MaximumPhysicalPageSize() *qt6.QPageSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_maximumPhysicalPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinterInfo) SupportedResolutions() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPrinterInfo_supportedResolutions(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -158,10 +182,12 @@ func (this *QPrinterInfo) SupportedResolutions() []int {
 }
 
 func (this *QPrinterInfo) DefaultDuplexMode() QPrinter__DuplexMode {
+	defer runtime.KeepAlive(this)
 	return (QPrinter__DuplexMode)(C.QPrinterInfo_defaultDuplexMode(this.h))
 }
 
 func (this *QPrinterInfo) SupportedDuplexModes() []QPrinter__DuplexMode {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPrinterInfo_supportedDuplexModes(this.h)
 	_ret := make([]QPrinter__DuplexMode, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -172,10 +198,12 @@ func (this *QPrinterInfo) SupportedDuplexModes() []QPrinter__DuplexMode {
 }
 
 func (this *QPrinterInfo) DefaultColorMode() QPrinter__ColorMode {
+	defer runtime.KeepAlive(this)
 	return (QPrinter__ColorMode)(C.QPrinterInfo_defaultColorMode(this.h))
 }
 
 func (this *QPrinterInfo) SupportedColorModes() []QPrinter__ColorMode {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPrinterInfo_supportedColorModes(this.h)
 	_ret := make([]QPrinter__ColorMode, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -245,8 +273,9 @@ func (this *QPrinterInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPrinterInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPrinterInfo) {
-		C.QPrinterInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPrinterInfo_delete((*C.QPrinterInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

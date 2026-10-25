@@ -155,6 +155,9 @@ bool QPdfBookmarkModel_override_virtual_connectNotify(void* self, intptr_t slot)
 void QPdfBookmarkModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfBookmarkModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfBookmarkModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QPdfBookmarkModel_virtualreturncopy_QVariant(QVariant* src);
+QModelIndex* QPdfBookmarkModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QSize* QPdfBookmarkModel_virtualreturncopy_QSize(QSize* src);
 
 QModelIndex* QPdfBookmarkModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QPdfBookmarkModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);

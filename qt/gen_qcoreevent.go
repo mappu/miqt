@@ -192,7 +192,13 @@ const (
 
 type QEvent struct {
 	h  *C.QEvent
-	gc *[1]*C.QEvent
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QEvent) cPointer() *C.QEvent {
@@ -231,35 +237,44 @@ func NewQEvent(typeVal QEvent__Type) *QEvent {
 
 // NewQEvent2 constructs a new QEvent object.
 func NewQEvent2(other *QEvent) *QEvent {
+	defer runtime.KeepAlive(other)
 
 	return newQEvent(C.QEvent_new2(other.cPointer()))
 }
 
 func (this *QEvent) OperatorAssign(other *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QEvent_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QEvent) Type() QEvent__Type {
+	defer runtime.KeepAlive(this)
 	return (QEvent__Type)(C.QEvent_type(this.h))
 }
 
 func (this *QEvent) Spontaneous() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QEvent_spontaneous(this.h))
 }
 
 func (this *QEvent) SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 	C.QEvent_setAccepted(this.h, (C.bool)(accepted))
 }
 
 func (this *QEvent) IsAccepted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QEvent_isAccepted(this.h))
 }
 
 func (this *QEvent) Accept() {
+	defer runtime.KeepAlive(this)
 	C.QEvent_accept(this.h)
 }
 
 func (this *QEvent) Ignore() {
+	defer runtime.KeepAlive(this)
 	C.QEvent_ignore(this.h)
 }
 
@@ -283,16 +298,24 @@ func (this *QEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEvent) {
-		C.QEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEvent_delete((*C.QEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTimerEvent struct {
 	h  *C.QTimerEvent
-	gc *[1]*C.QTimerEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTimerEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QTimerEvent) cPointer() *C.QTimerEvent {
@@ -334,15 +357,19 @@ func NewQTimerEvent(timerId int) *QTimerEvent {
 
 // NewQTimerEvent2 constructs a new QTimerEvent object.
 func NewQTimerEvent2(param1 *QTimerEvent) *QTimerEvent {
+	defer runtime.KeepAlive(param1)
 
 	return newQTimerEvent(C.QTimerEvent_new2(param1.cPointer()))
 }
 
 func (this *QTimerEvent) TimerId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimerEvent_timerId(this.h))
 }
 
 func (this *QTimerEvent) OperatorAssign(param1 *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QTimerEvent_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -358,16 +385,24 @@ func (this *QTimerEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTimerEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimerEvent) {
-		C.QTimerEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTimerEvent_delete((*C.QTimerEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QChildEvent struct {
 	h  *C.QChildEvent
-	gc *[1]*C.QChildEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QChildEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QChildEvent) cPointer() *C.QChildEvent {
@@ -403,33 +438,41 @@ func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
+	defer runtime.KeepAlive(child)
 
 	return newQChildEvent(C.QChildEvent_new((C.int)(typeVal), child.cPointer()))
 }
 
 // NewQChildEvent2 constructs a new QChildEvent object.
 func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
+	defer runtime.KeepAlive(param1)
 
 	return newQChildEvent(C.QChildEvent_new2(param1.cPointer()))
 }
 
 func (this *QChildEvent) Child() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QChildEvent_child(this.h))
 }
 
 func (this *QChildEvent) Added() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChildEvent_added(this.h))
 }
 
 func (this *QChildEvent) Polished() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChildEvent_polished(this.h))
 }
 
 func (this *QChildEvent) Removed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChildEvent_removed(this.h))
 }
 
 func (this *QChildEvent) OperatorAssign(param1 *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QChildEvent_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -445,16 +488,24 @@ func (this *QChildEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QChildEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QChildEvent) {
-		C.QChildEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QChildEvent_delete((*C.QChildEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDynamicPropertyChangeEvent struct {
 	h  *C.QDynamicPropertyChangeEvent
-	gc *[1]*C.QDynamicPropertyChangeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDynamicPropertyChangeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QDynamicPropertyChangeEvent) cPointer() *C.QDynamicPropertyChangeEvent {
@@ -503,11 +554,13 @@ func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
 
 // NewQDynamicPropertyChangeEvent2 constructs a new QDynamicPropertyChangeEvent object.
 func NewQDynamicPropertyChangeEvent2(param1 *QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
+	defer runtime.KeepAlive(param1)
 
 	return newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_new2(param1.cPointer()))
 }
 
 func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QDynamicPropertyChangeEvent_propertyName(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -515,6 +568,8 @@ func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
 }
 
 func (this *QDynamicPropertyChangeEvent) OperatorAssign(param1 *QDynamicPropertyChangeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDynamicPropertyChangeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -530,8 +585,9 @@ func (this *QDynamicPropertyChangeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDynamicPropertyChangeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDynamicPropertyChangeEvent) {
-		C.QDynamicPropertyChangeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDynamicPropertyChangeEvent_delete((*C.QDynamicPropertyChangeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

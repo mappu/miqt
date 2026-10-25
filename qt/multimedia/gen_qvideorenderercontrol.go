@@ -16,8 +16,15 @@ import (
 
 type QVideoRendererControl struct {
 	h  *C.QVideoRendererControl
-	gc *[1]*C.QVideoRendererControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoRendererControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QVideoRendererControl) cPointer() *C.QVideoRendererControl {
@@ -52,10 +59,12 @@ func UnsafeNewQVideoRendererControl(h unsafe.Pointer) *QVideoRendererControl {
 }
 
 func (this *QVideoRendererControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoRendererControl_metaObject(this.h)))
 }
 
 func (this *QVideoRendererControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoRendererControl_metacast(this.h, param1_Cstring))
@@ -80,10 +89,13 @@ func QVideoRendererControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoRendererControl) Surface() *QAbstractVideoSurface {
+	defer runtime.KeepAlive(this)
 	return newQAbstractVideoSurface(C.QVideoRendererControl_surface(this.h))
 }
 
 func (this *QVideoRendererControl) SetSurface(surface *QAbstractVideoSurface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(surface)
 	C.QVideoRendererControl_setSurface(this.h, surface.cPointer())
 }
 
@@ -143,8 +155,9 @@ func (this *QVideoRendererControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoRendererControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoRendererControl) {
-		C.QVideoRendererControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoRendererControl_delete((*C.QVideoRendererControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

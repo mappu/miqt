@@ -38,7 +38,13 @@ const (
 
 type QIPv6Address struct {
 	h  *C.QIPv6Address
-	gc *[1]*C.QIPv6Address
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIPv6Address) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QIPv6Address) cPointer() *C.QIPv6Address {
@@ -70,6 +76,7 @@ func UnsafeNewQIPv6Address(h unsafe.Pointer) *QIPv6Address {
 }
 
 func (this *QIPv6Address) OperatorSubscript(index int) byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QIPv6Address_operatorSubscript(this.h, (C.int)(index)))
 }
 
@@ -85,15 +92,22 @@ func (this *QIPv6Address) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIPv6Address{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIPv6Address) {
-		C.QIPv6Address_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIPv6Address_delete((*C.QIPv6Address)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHostAddress struct {
 	h  *C.QHostAddress
-	gc *[1]*C.QHostAddress
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHostAddress) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHostAddress) cPointer() *C.QHostAddress {
@@ -150,6 +164,7 @@ func NewQHostAddress4(ip6Addr *byte) *QHostAddress {
 
 // NewQHostAddress5 constructs a new QHostAddress object.
 func NewQHostAddress5(ip6Addr *QIPv6Address) *QHostAddress {
+	defer runtime.KeepAlive(ip6Addr)
 
 	return newQHostAddress(C.QHostAddress_new5(ip6Addr.cPointer()))
 }
@@ -166,6 +181,7 @@ func NewQHostAddress6(address string) *QHostAddress {
 
 // NewQHostAddress7 constructs a new QHostAddress object.
 func NewQHostAddress7(copyVal *QHostAddress) *QHostAddress {
+	defer runtime.KeepAlive(copyVal)
 
 	return newQHostAddress(C.QHostAddress_new7(copyVal.cPointer()))
 }
@@ -177,10 +193,13 @@ func NewQHostAddress8(address QHostAddress__SpecialAddress) *QHostAddress {
 }
 
 func (this *QHostAddress) OperatorAssign(other *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHostAddress_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QHostAddress) OperatorAssignWithAddress(address string) {
+	defer runtime.KeepAlive(this)
 	address_ms := C.struct_miqt_string{}
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
@@ -189,30 +208,39 @@ func (this *QHostAddress) OperatorAssignWithAddress(address string) {
 }
 
 func (this *QHostAddress) OperatorAssign2(address QHostAddress__SpecialAddress) {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_operatorAssign2(this.h, (C.int)(address))
 }
 
 func (this *QHostAddress) Swap(other *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHostAddress_swap(this.h, other.cPointer())
 }
 
 func (this *QHostAddress) SetAddress(ip4Addr uint) {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_setAddress(this.h, (C.uint)(ip4Addr))
 }
 
 func (this *QHostAddress) SetAddressWithIp6Addr(ip6Addr *byte) {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_setAddressWithIp6Addr(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
 }
 
 func (this *QHostAddress) SetAddress2(ip6Addr *byte) {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_setAddress2(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
 }
 
 func (this *QHostAddress) SetAddress3(ip6Addr *QIPv6Address) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ip6Addr)
 	C.QHostAddress_setAddress3(this.h, ip6Addr.cPointer())
 }
 
 func (this *QHostAddress) SetAddress4(address string) bool {
+	defer runtime.KeepAlive(this)
 	address_ms := C.struct_miqt_string{}
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
@@ -221,28 +249,34 @@ func (this *QHostAddress) SetAddress4(address string) bool {
 }
 
 func (this *QHostAddress) SetAddress5(address QHostAddress__SpecialAddress) {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_setAddress5(this.h, (C.int)(address))
 }
 
 func (this *QHostAddress) Protocol() QAbstractSocket__NetworkLayerProtocol {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__NetworkLayerProtocol)(C.QHostAddress_protocol(this.h))
 }
 
 func (this *QHostAddress) ToIPv4Address() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QHostAddress_toIPv4Address(this.h))
 }
 
 func (this *QHostAddress) ToIPv4AddressWithOk(ok *bool) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QHostAddress_toIPv4AddressWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QHostAddress) ToIPv6Address() *QIPv6Address {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIPv6Address(C.QHostAddress_toIPv6Address(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHostAddress) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHostAddress_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -250,6 +284,7 @@ func (this *QHostAddress) ToString() string {
 }
 
 func (this *QHostAddress) ScopeId() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QHostAddress_scopeId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -257,6 +292,7 @@ func (this *QHostAddress) ScopeId() string {
 }
 
 func (this *QHostAddress) SetScopeId(id string) {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -265,34 +301,46 @@ func (this *QHostAddress) SetScopeId(id string) {
 }
 
 func (this *QHostAddress) IsEqual(address *QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QHostAddress_isEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorEqual(address *QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QHostAddress_operatorEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorEqualWithAddress(address QHostAddress__SpecialAddress) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_operatorEqualWithAddress(this.h, (C.int)(address)))
 }
 
 func (this *QHostAddress) OperatorNotEqual(address *QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QHostAddress_operatorNotEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorNotEqualWithAddress(address QHostAddress__SpecialAddress) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_operatorNotEqualWithAddress(this.h, (C.int)(address)))
 }
 
 func (this *QHostAddress) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isNull(this.h))
 }
 
 func (this *QHostAddress) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QHostAddress_clear(this.h)
 }
 
 func (this *QHostAddress) IsInSubnet(subnet *QHostAddress, netmask int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(subnet)
 	return (bool)(C.QHostAddress_isInSubnet(this.h, subnet.cPointer(), (C.int)(netmask)))
 }
 
@@ -300,6 +348,8 @@ func (this *QHostAddress) IsInSubnetWithSubnet(subnet struct {
 	First  QHostAddress
 	Second int
 }) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(subnet)
 	subnet_First_CArray := (*[0xffff]*C.QHostAddress)(C.malloc(C.size_t(8)))
 	defer C.free(unsafe.Pointer(subnet_First_CArray))
 	subnet_Second_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
@@ -315,30 +365,37 @@ func (this *QHostAddress) IsInSubnetWithSubnet(subnet struct {
 }
 
 func (this *QHostAddress) IsLoopback() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isLoopback(this.h))
 }
 
 func (this *QHostAddress) IsGlobal() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isGlobal(this.h))
 }
 
 func (this *QHostAddress) IsLinkLocal() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isLinkLocal(this.h))
 }
 
 func (this *QHostAddress) IsSiteLocal() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isSiteLocal(this.h))
 }
 
 func (this *QHostAddress) IsUniqueLocalUnicast() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isUniqueLocalUnicast(this.h))
 }
 
 func (this *QHostAddress) IsMulticast() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isMulticast(this.h))
 }
 
 func (this *QHostAddress) IsBroadcast() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHostAddress_isBroadcast(this.h))
 }
 
@@ -366,6 +423,8 @@ func QHostAddress_ParseSubnet(subnet string) struct {
 }
 
 func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__ConversionModeFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QHostAddress_isEqual2(this.h, address.cPointer(), (C.int)(mode)))
 }
 
@@ -381,8 +440,9 @@ func (this *QHostAddress) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHostAddress{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHostAddress) {
-		C.QHostAddress_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHostAddress_delete((*C.QHostAddress)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -120,7 +120,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self);
@@ -151,7 +153,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QCommandLinkButton_virtualbase_minimumSizeHint(const void* self);
@@ -843,7 +847,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QCommandLinkButton_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QCommandLinkButton_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1789,6 +1795,14 @@ bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::disconnectNotify(*signal);
+}
+
+QSize* QCommandLinkButton_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QCommandLinkButton_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QCommandLinkButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option) {

@@ -26,7 +26,13 @@ const (
 
 type QwtPainterCommand struct {
 	h  *C.QwtPainterCommand
-	gc *[1]*C.QwtPainterCommand
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPainterCommand) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPainterCommand) cPointer() *C.QwtPainterCommand {
@@ -65,61 +71,78 @@ func NewQwtPainterCommand() *QwtPainterCommand {
 
 // NewQwtPainterCommand2 constructs a new QwtPainterCommand object.
 func NewQwtPainterCommand2(param1 *qt.QPainterPath) *QwtPainterCommand {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPainterCommand(C.QwtPainterCommand_new2((*C.QPainterPath)(param1.UnsafePointer())))
 }
 
 // NewQwtPainterCommand3 constructs a new QwtPainterCommand object.
 func NewQwtPainterCommand3(rect *qt.QRectF, param2 *qt.QPixmap, subRect *qt.QRectF) *QwtPainterCommand {
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(subRect)
 
 	return newQwtPainterCommand(C.QwtPainterCommand_new3((*C.QRectF)(rect.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(subRect.UnsafePointer())))
 }
 
 // NewQwtPainterCommand4 constructs a new QwtPainterCommand object.
 func NewQwtPainterCommand4(rect *qt.QRectF, param2 *qt.QImage, subRect *qt.QRectF, param4 qt.ImageConversionFlag) *QwtPainterCommand {
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(subRect)
 
 	return newQwtPainterCommand(C.QwtPainterCommand_new4((*C.QRectF)(rect.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(subRect.UnsafePointer()), (C.int)(param4)))
 }
 
 // NewQwtPainterCommand5 constructs a new QwtPainterCommand object.
 func NewQwtPainterCommand5(param1 *qt.QPaintEngineState) *QwtPainterCommand {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPainterCommand(C.QwtPainterCommand_new5((*C.QPaintEngineState)(param1.UnsafePointer())))
 }
 
 func (this *QwtPainterCommand) Type() QwtPainterCommand__Type {
+	defer runtime.KeepAlive(this)
 	return (QwtPainterCommand__Type)(C.QwtPainterCommand_type(this.h))
 }
 
 func (this *QwtPainterCommand) Path() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPainterCommand_path(this.h)))
 }
 
 func (this *QwtPainterCommand) Path2() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPainterCommand_path2(this.h)))
 }
 
 func (this *QwtPainterCommand) PixmapData() *QwtPainterCommand__PixmapData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand_pixmapData(this.h))
 }
 
 func (this *QwtPainterCommand) PixmapData2() *QwtPainterCommand__PixmapData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand_pixmapData2(this.h))
 }
 
 func (this *QwtPainterCommand) ImageData() *QwtPainterCommand__ImageData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__ImageData(C.QwtPainterCommand_imageData(this.h))
 }
 
 func (this *QwtPainterCommand) ImageData2() *QwtPainterCommand__ImageData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__ImageData(C.QwtPainterCommand_imageData2(this.h))
 }
 
 func (this *QwtPainterCommand) StateData() *QwtPainterCommand__StateData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__StateData(C.QwtPainterCommand_stateData(this.h))
 }
 
 func (this *QwtPainterCommand) StateData2() *QwtPainterCommand__StateData {
+	defer runtime.KeepAlive(this)
 	return newQwtPainterCommand__StateData(C.QwtPainterCommand_stateData2(this.h))
 }
 
@@ -135,15 +158,22 @@ func (this *QwtPainterCommand) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPainterCommand{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand) {
-		C.QwtPainterCommand_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPainterCommand_delete((*C.QwtPainterCommand)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPainterCommand__PixmapData struct {
 	h  *C.QwtPainterCommand__PixmapData
-	gc *[1]*C.QwtPainterCommand__PixmapData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPainterCommand__PixmapData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPainterCommand__PixmapData) cPointer() *C.QwtPainterCommand__PixmapData {
@@ -176,6 +206,7 @@ func UnsafeNewQwtPainterCommand__PixmapData(h unsafe.Pointer) *QwtPainterCommand
 
 // NewQwtPainterCommand__PixmapData constructs a new QwtPainterCommand::PixmapData object.
 func NewQwtPainterCommand__PixmapData(param1 *QwtPainterCommand__PixmapData) *QwtPainterCommand__PixmapData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand__PixmapData_new(param1.cPointer()))
 }
@@ -187,36 +218,47 @@ func NewQwtPainterCommand__PixmapData2() *QwtPainterCommand__PixmapData {
 }
 
 func (this *QwtPainterCommand__PixmapData) Rect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	rect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__PixmapData_rect(this.h)))
 	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return rect_goptr
 }
 
 func (this *QwtPainterCommand__PixmapData) SetRect(rect qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QwtPainterCommand__PixmapData_setRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__PixmapData) Pixmap() *qt.QPixmap {
+	defer runtime.KeepAlive(this)
 	pixmap_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtPainterCommand__PixmapData_pixmap(this.h)))
 	pixmap_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return pixmap_goptr
 }
 
 func (this *QwtPainterCommand__PixmapData) SetPixmap(pixmap qt.QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QwtPainterCommand__PixmapData_setPixmap(this.h, (*C.QPixmap)(pixmap.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__PixmapData) SubRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	subRect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__PixmapData_subRect(this.h)))
 	subRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return subRect_goptr
 }
 
 func (this *QwtPainterCommand__PixmapData) SetSubRect(subRect qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(subRect)
 	C.QwtPainterCommand__PixmapData_setSubRect(this.h, (*C.QRectF)(subRect.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__PixmapData) OperatorAssign(param1 *QwtPainterCommand__PixmapData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPainterCommand__PixmapData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -232,15 +274,22 @@ func (this *QwtPainterCommand__PixmapData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPainterCommand__PixmapData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__PixmapData) {
-		C.QwtPainterCommand__PixmapData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPainterCommand__PixmapData_delete((*C.QwtPainterCommand__PixmapData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPainterCommand__ImageData struct {
 	h  *C.QwtPainterCommand__ImageData
-	gc *[1]*C.QwtPainterCommand__ImageData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPainterCommand__ImageData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPainterCommand__ImageData) cPointer() *C.QwtPainterCommand__ImageData {
@@ -273,6 +322,7 @@ func UnsafeNewQwtPainterCommand__ImageData(h unsafe.Pointer) *QwtPainterCommand_
 
 // NewQwtPainterCommand__ImageData constructs a new QwtPainterCommand::ImageData object.
 func NewQwtPainterCommand__ImageData(param1 *QwtPainterCommand__ImageData) *QwtPainterCommand__ImageData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPainterCommand__ImageData(C.QwtPainterCommand__ImageData_new(param1.cPointer()))
 }
@@ -284,44 +334,57 @@ func NewQwtPainterCommand__ImageData2() *QwtPainterCommand__ImageData {
 }
 
 func (this *QwtPainterCommand__ImageData) Rect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	rect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__ImageData_rect(this.h)))
 	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return rect_goptr
 }
 
 func (this *QwtPainterCommand__ImageData) SetRect(rect qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QwtPainterCommand__ImageData_setRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__ImageData) Image() *qt.QImage {
+	defer runtime.KeepAlive(this)
 	image_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtPainterCommand__ImageData_image(this.h)))
 	image_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return image_goptr
 }
 
 func (this *QwtPainterCommand__ImageData) SetImage(image qt.QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 	C.QwtPainterCommand__ImageData_setImage(this.h, (*C.QImage)(image.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__ImageData) SubRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	subRect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__ImageData_subRect(this.h)))
 	subRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return subRect_goptr
 }
 
 func (this *QwtPainterCommand__ImageData) SetSubRect(subRect qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(subRect)
 	C.QwtPainterCommand__ImageData_setSubRect(this.h, (*C.QRectF)(subRect.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__ImageData) Flags() qt.ImageConversionFlag {
+	defer runtime.KeepAlive(this)
 	return (qt.ImageConversionFlag)(C.QwtPainterCommand__ImageData_flags(this.h))
 }
 
 func (this *QwtPainterCommand__ImageData) SetFlags(flags qt.ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__ImageData_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QwtPainterCommand__ImageData) OperatorAssign(param1 *QwtPainterCommand__ImageData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPainterCommand__ImageData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -337,15 +400,22 @@ func (this *QwtPainterCommand__ImageData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPainterCommand__ImageData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__ImageData) {
-		C.QwtPainterCommand__ImageData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPainterCommand__ImageData_delete((*C.QwtPainterCommand__ImageData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPainterCommand__StateData struct {
 	h  *C.QwtPainterCommand__StateData
-	gc *[1]*C.QwtPainterCommand__StateData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPainterCommand__StateData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPainterCommand__StateData) cPointer() *C.QwtPainterCommand__StateData {
@@ -378,6 +448,7 @@ func UnsafeNewQwtPainterCommand__StateData(h unsafe.Pointer) *QwtPainterCommand_
 
 // NewQwtPainterCommand__StateData constructs a new QwtPainterCommand::StateData object.
 func NewQwtPainterCommand__StateData(param1 *QwtPainterCommand__StateData) *QwtPainterCommand__StateData {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPainterCommand__StateData(C.QwtPainterCommand__StateData_new(param1.cPointer()))
 }
@@ -389,152 +460,195 @@ func NewQwtPainterCommand__StateData2() *QwtPainterCommand__StateData {
 }
 
 func (this *QwtPainterCommand__StateData) Flags() qt.QPaintEngine__DirtyFlag {
+	defer runtime.KeepAlive(this)
 	return (qt.QPaintEngine__DirtyFlag)(C.QwtPainterCommand__StateData_flags(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetFlags(flags qt.QPaintEngine__DirtyFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QwtPainterCommand__StateData) Pen() *qt.QPen {
+	defer runtime.KeepAlive(this)
 	pen_goptr := qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPainterCommand__StateData_pen(this.h)))
 	pen_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return pen_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetPen(pen qt.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QwtPainterCommand__StateData_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) Brush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	brush_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtPainterCommand__StateData_brush(this.h)))
 	brush_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return brush_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetBrush(brush qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QwtPainterCommand__StateData_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) BrushOrigin() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	brushOrigin_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPainterCommand__StateData_brushOrigin(this.h)))
 	brushOrigin_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return brushOrigin_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetBrushOrigin(brushOrigin qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brushOrigin)
 	C.QwtPainterCommand__StateData_setBrushOrigin(this.h, (*C.QPointF)(brushOrigin.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) BackgroundBrush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	backgroundBrush_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtPainterCommand__StateData_backgroundBrush(this.h)))
 	backgroundBrush_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return backgroundBrush_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetBackgroundBrush(backgroundBrush qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(backgroundBrush)
 	C.QwtPainterCommand__StateData_setBackgroundBrush(this.h, (*C.QBrush)(backgroundBrush.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) BackgroundMode() qt.BGMode {
+	defer runtime.KeepAlive(this)
 	return (qt.BGMode)(C.QwtPainterCommand__StateData_backgroundMode(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetBackgroundMode(backgroundMode qt.BGMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setBackgroundMode(this.h, (C.int)(backgroundMode))
 }
 
 func (this *QwtPainterCommand__StateData) Font() *qt.QFont {
+	defer runtime.KeepAlive(this)
 	font_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QwtPainterCommand__StateData_font(this.h)))
 	font_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return font_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetFont(font qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QwtPainterCommand__StateData_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) Matrix() *qt.QMatrix {
+	defer runtime.KeepAlive(this)
 	matrix_goptr := qt.UnsafeNewQMatrix(unsafe.Pointer(C.QwtPainterCommand__StateData_matrix(this.h)))
 	matrix_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return matrix_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetMatrix(matrix qt.QMatrix) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	C.QwtPainterCommand__StateData_setMatrix(this.h, (*C.QMatrix)(matrix.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) Transform() *qt.QTransform {
+	defer runtime.KeepAlive(this)
 	transform_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtPainterCommand__StateData_transform(this.h)))
 	transform_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return transform_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetTransform(transform qt.QTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transform)
 	C.QwtPainterCommand__StateData_setTransform(this.h, (*C.QTransform)(transform.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) ClipOperation() qt.ClipOperation {
+	defer runtime.KeepAlive(this)
 	return (qt.ClipOperation)(C.QwtPainterCommand__StateData_clipOperation(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetClipOperation(clipOperation qt.ClipOperation) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setClipOperation(this.h, (C.int)(clipOperation))
 }
 
 func (this *QwtPainterCommand__StateData) ClipRegion() *qt.QRegion {
+	defer runtime.KeepAlive(this)
 	clipRegion_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPainterCommand__StateData_clipRegion(this.h)))
 	clipRegion_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return clipRegion_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetClipRegion(clipRegion qt.QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(clipRegion)
 	C.QwtPainterCommand__StateData_setClipRegion(this.h, (*C.QRegion)(clipRegion.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) ClipPath() *qt.QPainterPath {
+	defer runtime.KeepAlive(this)
 	clipPath_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPainterCommand__StateData_clipPath(this.h)))
 	clipPath_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return clipPath_goptr
 }
 
 func (this *QwtPainterCommand__StateData) SetClipPath(clipPath qt.QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(clipPath)
 	C.QwtPainterCommand__StateData_setClipPath(this.h, (*C.QPainterPath)(clipPath.UnsafePointer()))
 }
 
 func (this *QwtPainterCommand__StateData) IsClipEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPainterCommand__StateData_isClipEnabled(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetIsClipEnabled(isClipEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setIsClipEnabled(this.h, (C.bool)(isClipEnabled))
 }
 
 func (this *QwtPainterCommand__StateData) RenderHints() qt.QPainter__RenderHint {
+	defer runtime.KeepAlive(this)
 	return (qt.QPainter__RenderHint)(C.QwtPainterCommand__StateData_renderHints(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetRenderHints(renderHints qt.QPainter__RenderHint) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setRenderHints(this.h, (C.int)(renderHints))
 }
 
 func (this *QwtPainterCommand__StateData) CompositionMode() qt.QPainter__CompositionMode {
+	defer runtime.KeepAlive(this)
 	return (qt.QPainter__CompositionMode)(C.QwtPainterCommand__StateData_compositionMode(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetCompositionMode(compositionMode qt.QPainter__CompositionMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setCompositionMode(this.h, (C.int)(compositionMode))
 }
 
 func (this *QwtPainterCommand__StateData) Opacity() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPainterCommand__StateData_opacity(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetOpacity(opacity float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPainterCommand__StateData_setOpacity(this.h, (C.double)(opacity))
 }
 
 func (this *QwtPainterCommand__StateData) OperatorAssign(param1 *QwtPainterCommand__StateData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPainterCommand__StateData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -550,8 +664,9 @@ func (this *QwtPainterCommand__StateData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPainterCommand__StateData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPainterCommand__StateData) {
-		C.QwtPainterCommand__StateData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPainterCommand__StateData_delete((*C.QwtPainterCommand__StateData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -59,7 +59,9 @@ public:
 		int sigval4 = maxMinorSteps;
 		double sigval5 = stepSize;
 		QwtScaleDiv* callback_return_value = miqt_exec_callback_QwtDateScaleEngine_divideScale(this, handle__divideScale, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QwtScaleDiv callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtScaleDiv* QwtDateScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
@@ -103,7 +105,9 @@ public:
 		int sigval3 = static_cast<int>(param3_ret);
 		bool sigval4 = up;
 		QDateTime* callback_return_value = miqt_exec_callback_QwtDateScaleEngine_alignDate(this, handle__alignDate, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QDateTime callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QDateTime* QwtDateScaleEngine_virtualbase_alignDate(const void* self, QDateTime* param1, double stepSize, int param3, bool up);
@@ -245,6 +249,14 @@ bool QwtDateScaleEngine_override_virtual_alignDate(void* self, intptr_t slot) {
 
 QDateTime* QwtDateScaleEngine_virtualbase_alignDate(const void* self, QDateTime* param1, double stepSize, int param3, bool up) {
 	return new QDateTime(static_cast<const MiqtVirtualQwtDateScaleEngine*>(self)->QwtDateScaleEngine::alignDate(*param1, static_cast<double>(stepSize), static_cast<QwtDate::IntervalType>(param3), up));
+}
+
+QwtScaleDiv* QwtDateScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src) {
+	return new QwtScaleDiv(*src);
+}
+
+QDateTime* QwtDateScaleEngine_virtualreturncopy_QDateTime(QDateTime* src) {
+	return new QDateTime(*src);
 }
 
 QwtInterval* QwtDateScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize) {

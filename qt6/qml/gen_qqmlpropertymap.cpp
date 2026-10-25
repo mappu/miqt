@@ -60,7 +60,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&input_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QQmlPropertyMap_updateValue(this, handle__updateValue, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QQmlPropertyMap_virtualbase_updateValue(void* self, struct miqt_string key, QVariant* input);
@@ -460,6 +462,10 @@ bool QQmlPropertyMap_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQQmlPropertyMap*>(self)->QQmlPropertyMap::disconnectNotify(*signal);
+}
+
+QVariant* QQmlPropertyMap_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QQmlPropertyMap_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

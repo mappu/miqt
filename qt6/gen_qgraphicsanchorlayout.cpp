@@ -210,7 +210,9 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
@@ -505,6 +507,10 @@ bool QGraphicsAnchorLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGraphicsAnchorLayout_virtualbase_isEmpty(const void* self) {
 	return static_cast<const MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::isEmpty();
+}
+
+QSizeF* QGraphicsAnchorLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
 }
 
 void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

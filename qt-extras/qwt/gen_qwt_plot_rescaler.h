@@ -94,6 +94,7 @@ bool QwtPlotRescaler_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtPlotRescaler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtPlotRescaler_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtPlotRescaler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QwtInterval* QwtPlotRescaler_virtualreturncopy_QwtInterval(QwtInterval* src);
 
 int QwtPlotRescaler_protectedbase_orientation(bool* _dynamic_cast_ok, const void* self, int axis);
 QwtInterval* QwtPlotRescaler_protectedbase_interval(bool* _dynamic_cast_ok, const void* self, int axis);

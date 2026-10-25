@@ -17,8 +17,14 @@ import (
 
 type QAudioSink struct {
 	h  *C.QAudioSink
-	gc *[1]*C.QAudioSink
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioSink) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioSink) cPointer() *C.QAudioSink {
@@ -60,39 +66,50 @@ func NewQAudioSink() *QAudioSink {
 
 // NewQAudioSink2 constructs a new QAudioSink object.
 func NewQAudioSink2(audioDeviceInfo *QAudioDevice) *QAudioSink {
+	defer runtime.KeepAlive(audioDeviceInfo)
 
 	return newQAudioSink(C.QAudioSink_new2(audioDeviceInfo.cPointer()))
 }
 
 // NewQAudioSink3 constructs a new QAudioSink object.
 func NewQAudioSink3(format *QAudioFormat) *QAudioSink {
+	defer runtime.KeepAlive(format)
 
 	return newQAudioSink(C.QAudioSink_new3(format.cPointer()))
 }
 
 // NewQAudioSink4 constructs a new QAudioSink object.
 func NewQAudioSink4(format *QAudioFormat, parent *qt6.QObject) *QAudioSink {
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(parent)
 
 	return newQAudioSink(C.QAudioSink_new4(format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQAudioSink5 constructs a new QAudioSink object.
 func NewQAudioSink5(audioDeviceInfo *QAudioDevice, format *QAudioFormat) *QAudioSink {
+	defer runtime.KeepAlive(audioDeviceInfo)
+	defer runtime.KeepAlive(format)
 
 	return newQAudioSink(C.QAudioSink_new5(audioDeviceInfo.cPointer(), format.cPointer()))
 }
 
 // NewQAudioSink6 constructs a new QAudioSink object.
 func NewQAudioSink6(audioDeviceInfo *QAudioDevice, format *QAudioFormat, parent *qt6.QObject) *QAudioSink {
+	defer runtime.KeepAlive(audioDeviceInfo)
+	defer runtime.KeepAlive(format)
+	defer runtime.KeepAlive(parent)
 
 	return newQAudioSink(C.QAudioSink_new6(audioDeviceInfo.cPointer(), format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioSink) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioSink_metaObject(this.h)))
 }
 
 func (this *QAudioSink) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioSink_metacast(this.h, param1_Cstring))
@@ -108,76 +125,95 @@ func QAudioSink_Tr(s string) string {
 }
 
 func (this *QAudioSink) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioSink_isNull(this.h))
 }
 
 func (this *QAudioSink) Format() *QAudioFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAudioSink_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioSink) Start(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QAudioSink_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioSink) Start2() *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioSink_start2(this.h)))
 }
 
 func (this *QAudioSink) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_stop(this.h)
 }
 
 func (this *QAudioSink) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_reset(this.h)
 }
 
 func (this *QAudioSink) Suspend() {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_suspend(this.h)
 }
 
 func (this *QAudioSink) Resume() {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_resume(this.h)
 }
 
 func (this *QAudioSink) SetBufferSize(bytes int64) {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_setBufferSize(this.h, (C.ptrdiff_t)(bytes))
 }
 
 func (this *QAudioSink) BufferSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSink_bufferSize(this.h))
 }
 
 func (this *QAudioSink) BytesFree() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSink_bytesFree(this.h))
 }
 
 func (this *QAudioSink) ProcessedUSecs() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSink_processedUSecs(this.h))
 }
 
 func (this *QAudioSink) ElapsedUSecs() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSink_elapsedUSecs(this.h))
 }
 
 func (this *QAudioSink) Error() QAudio__Error {
+	defer runtime.KeepAlive(this)
 	return (QAudio__Error)(C.QAudioSink_error(this.h))
 }
 
 func (this *QAudioSink) State() QAudio__State {
+	defer runtime.KeepAlive(this)
 	return (QAudio__State)(C.QAudioSink_state(this.h))
 }
 
 func (this *QAudioSink) SetVolume(volume float64) {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAudioSink) Volume() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QAudioSink_volume(this.h))
 }
 
 func (this *QAudioSink) StateChanged(state QAudio__State) {
+	defer runtime.KeepAlive(this)
 	C.QAudioSink_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAudioSink) OnStateChanged(slot func(state QAudio__State)) {
@@ -221,6 +257,7 @@ func QAudioSink_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QAudioSink that was directly constructed.
 func (this *QAudioSink) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAudioSink_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -235,6 +272,7 @@ func (this *QAudioSink) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAudioSink that was directly constructed.
 func (this *QAudioSink) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioSink_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -249,6 +287,7 @@ func (this *QAudioSink) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioSink that was directly constructed.
 func (this *QAudioSink) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -265,6 +304,8 @@ func (this *QAudioSink) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioSink that was directly constructed.
 func (this *QAudioSink) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAudioSink_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -278,6 +319,8 @@ func (this *QAudioSink) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAudioSink) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioSink_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -306,6 +349,9 @@ func miqt_exec_callback_QAudioSink_event(self *C.QAudioSink, cb C.intptr_t, even
 }
 
 func (this *QAudioSink) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioSink_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -336,6 +382,8 @@ func miqt_exec_callback_QAudioSink_eventFilter(self *C.QAudioSink, cb C.intptr_t
 }
 
 func (this *QAudioSink) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioSink_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -362,6 +410,8 @@ func miqt_exec_callback_QAudioSink_timerEvent(self *C.QAudioSink, cb C.intptr_t,
 }
 
 func (this *QAudioSink) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioSink_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -388,6 +438,8 @@ func miqt_exec_callback_QAudioSink_childEvent(self *C.QAudioSink, cb C.intptr_t,
 }
 
 func (this *QAudioSink) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioSink_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -414,6 +466,8 @@ func miqt_exec_callback_QAudioSink_customEvent(self *C.QAudioSink, cb C.intptr_t
 }
 
 func (this *QAudioSink) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioSink_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -440,6 +494,8 @@ func miqt_exec_callback_QAudioSink_connectNotify(self *C.QAudioSink, cb C.intptr
 }
 
 func (this *QAudioSink) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioSink_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -477,8 +533,9 @@ func (this *QAudioSink) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioSink{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioSink) {
-		C.QAudioSink_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioSink_delete((*C.QAudioSink)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

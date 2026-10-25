@@ -184,7 +184,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QBoxLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QBoxLayout_virtualbase_sizeHint(const void* self);
@@ -199,7 +201,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QBoxLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QBoxLayout_virtualbase_minimumSize(const void* self);
@@ -214,7 +218,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QBoxLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QBoxLayout_virtualbase_maximumSize(const void* self);
@@ -373,7 +379,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QBoxLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QBoxLayout_virtualbase_geometry(const void* self);
@@ -1263,6 +1271,14 @@ QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQBoxLayout*>(self)->QBoxLayout::spacerItem();
 }
 
+QSize* QBoxLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QBoxLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
 void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQBoxLayout* self_cast = dynamic_cast<MiqtVirtualQBoxLayout*>( (QBoxLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1433,7 +1449,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QHBoxLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QHBoxLayout_virtualbase_sizeHint(const void* self);
@@ -1448,7 +1466,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QHBoxLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QHBoxLayout_virtualbase_minimumSize(const void* self);
@@ -1463,7 +1483,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QHBoxLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QHBoxLayout_virtualbase_maximumSize(const void* self);
@@ -1622,7 +1644,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QHBoxLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QHBoxLayout_virtualbase_geometry(const void* self);
@@ -2346,6 +2370,14 @@ QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQHBoxLayout*>(self)->QHBoxLayout::spacerItem();
 }
 
+QSize* QHBoxLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QHBoxLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
 void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQHBoxLayout* self_cast = dynamic_cast<MiqtVirtualQHBoxLayout*>( (QHBoxLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -2516,7 +2548,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QVBoxLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QVBoxLayout_virtualbase_sizeHint(const void* self);
@@ -2531,7 +2565,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QVBoxLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QVBoxLayout_virtualbase_minimumSize(const void* self);
@@ -2546,7 +2582,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QVBoxLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QVBoxLayout_virtualbase_maximumSize(const void* self);
@@ -2705,7 +2743,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QVBoxLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QVBoxLayout_virtualbase_geometry(const void* self);
@@ -3427,6 +3467,14 @@ bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQVBoxLayout*>(self)->QVBoxLayout::spacerItem();
+}
+
+QSize* QVBoxLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QVBoxLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {

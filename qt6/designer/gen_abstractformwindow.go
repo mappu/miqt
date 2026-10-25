@@ -34,8 +34,14 @@ const (
 
 type QDesignerFormWindowInterface struct {
 	h  *C.QDesignerFormWindowInterface
-	gc *[1]*C.QDesignerFormWindowInterface
+	gc *[1]unsafe.Pointer
 	*qt6.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerFormWindowInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerFormWindowInterface) cPointer() *C.QDesignerFormWindowInterface {
@@ -70,10 +76,12 @@ func UnsafeNewQDesignerFormWindowInterface(h unsafe.Pointer) *QDesignerFormWindo
 }
 
 func (this *QDesignerFormWindowInterface) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerFormWindowInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerFormWindowInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerFormWindowInterface_metacast(this.h, param1_Cstring))
@@ -89,6 +97,7 @@ func QDesignerFormWindowInterface_Tr(s string) string {
 }
 
 func (this *QDesignerFormWindowInterface) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -96,12 +105,14 @@ func (this *QDesignerFormWindowInterface) FileName() string {
 }
 
 func (this *QDesignerFormWindowInterface) AbsoluteDir() *qt6.QDir {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDir(unsafe.Pointer(C.QDesignerFormWindowInterface_absoluteDir(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerFormWindowInterface) Contents() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_contents(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -109,6 +120,7 @@ func (this *QDesignerFormWindowInterface) Contents() string {
 }
 
 func (this *QDesignerFormWindowInterface) CheckContents() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_checkContents(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -122,14 +134,17 @@ func (this *QDesignerFormWindowInterface) CheckContents() []string {
 }
 
 func (this *QDesignerFormWindowInterface) Features() QDesignerFormWindowInterface__FeatureFlag {
+	defer runtime.KeepAlive(this)
 	return (QDesignerFormWindowInterface__FeatureFlag)(C.QDesignerFormWindowInterface_features(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) HasFeature(f QDesignerFormWindowInterface__FeatureFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerFormWindowInterface_hasFeature(this.h, (C.int)(f)))
 }
 
 func (this *QDesignerFormWindowInterface) Author() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_author(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -137,6 +152,7 @@ func (this *QDesignerFormWindowInterface) Author() string {
 }
 
 func (this *QDesignerFormWindowInterface) SetAuthor(author string) {
+	defer runtime.KeepAlive(this)
 	author_ms := C.struct_miqt_string{}
 	author_ms.data = C.CString(author)
 	author_ms.len = C.size_t(len(author))
@@ -145,6 +161,7 @@ func (this *QDesignerFormWindowInterface) SetAuthor(author string) {
 }
 
 func (this *QDesignerFormWindowInterface) Comment() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_comment(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -152,6 +169,7 @@ func (this *QDesignerFormWindowInterface) Comment() string {
 }
 
 func (this *QDesignerFormWindowInterface) SetComment(comment string) {
+	defer runtime.KeepAlive(this)
 	comment_ms := C.struct_miqt_string{}
 	comment_ms.data = C.CString(comment)
 	comment_ms.len = C.size_t(len(comment))
@@ -160,14 +178,17 @@ func (this *QDesignerFormWindowInterface) SetComment(comment string) {
 }
 
 func (this *QDesignerFormWindowInterface) LayoutDefault(margin *int, spacing *int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_layoutDefault(this.h, (*C.int)(unsafe.Pointer(margin)), (*C.int)(unsafe.Pointer(spacing)))
 }
 
 func (this *QDesignerFormWindowInterface) SetLayoutDefault(margin int, spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_setLayoutDefault(this.h, (C.int)(margin), (C.int)(spacing))
 }
 
 func (this *QDesignerFormWindowInterface) SetLayoutFunction(margin string, spacing string) {
+	defer runtime.KeepAlive(this)
 	margin_ms := C.struct_miqt_string{}
 	margin_ms.data = C.CString(margin)
 	margin_ms.len = C.size_t(len(margin))
@@ -180,6 +201,7 @@ func (this *QDesignerFormWindowInterface) SetLayoutFunction(margin string, spaci
 }
 
 func (this *QDesignerFormWindowInterface) PixmapFunction() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_pixmapFunction(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -187,6 +209,7 @@ func (this *QDesignerFormWindowInterface) PixmapFunction() string {
 }
 
 func (this *QDesignerFormWindowInterface) SetPixmapFunction(pixmapFunction string) {
+	defer runtime.KeepAlive(this)
 	pixmapFunction_ms := C.struct_miqt_string{}
 	pixmapFunction_ms.data = C.CString(pixmapFunction)
 	pixmapFunction_ms.len = C.size_t(len(pixmapFunction))
@@ -195,6 +218,7 @@ func (this *QDesignerFormWindowInterface) SetPixmapFunction(pixmapFunction strin
 }
 
 func (this *QDesignerFormWindowInterface) ExportMacro() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormWindowInterface_exportMacro(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -202,6 +226,7 @@ func (this *QDesignerFormWindowInterface) ExportMacro() string {
 }
 
 func (this *QDesignerFormWindowInterface) SetExportMacro(exportMacro string) {
+	defer runtime.KeepAlive(this)
 	exportMacro_ms := C.struct_miqt_string{}
 	exportMacro_ms.data = C.CString(exportMacro)
 	exportMacro_ms.len = C.size_t(len(exportMacro))
@@ -210,6 +235,7 @@ func (this *QDesignerFormWindowInterface) SetExportMacro(exportMacro string) {
 }
 
 func (this *QDesignerFormWindowInterface) IncludeHints() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_includeHints(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -223,6 +249,7 @@ func (this *QDesignerFormWindowInterface) IncludeHints() []string {
 }
 
 func (this *QDesignerFormWindowInterface) SetIncludeHints(includeHints []string) {
+	defer runtime.KeepAlive(this)
 	includeHints_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(includeHints))))
 	defer C.free(unsafe.Pointer(includeHints_CArray_ptr))
 	includeHints_CArray := unsafe.Slice(includeHints_CArray_ptr, len(includeHints))
@@ -238,14 +265,17 @@ func (this *QDesignerFormWindowInterface) SetIncludeHints(includeHints []string)
 }
 
 func (this *QDesignerFormWindowInterface) ResourceFileSaveMode() QDesignerFormWindowInterface__ResourceFileSaveMode {
+	defer runtime.KeepAlive(this)
 	return (QDesignerFormWindowInterface__ResourceFileSaveMode)(C.QDesignerFormWindowInterface_resourceFileSaveMode(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) SetResourceFileSaveMode(behaviour QDesignerFormWindowInterface__ResourceFileSaveMode) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_setResourceFileSaveMode(this.h, (C.int)(behaviour))
 }
 
 func (this *QDesignerFormWindowInterface) ActiveResourceFilePaths() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_activeResourceFilePaths(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -259,72 +289,92 @@ func (this *QDesignerFormWindowInterface) ActiveResourceFilePaths() []string {
 }
 
 func (this *QDesignerFormWindowInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerFormWindowInterface_core(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) Cursor() *QDesignerFormWindowCursorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowCursorInterface(C.QDesignerFormWindowInterface_cursor(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) ToolCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowInterface_toolCount(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) CurrentTool() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowInterface_currentTool(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) SetCurrentTool(index int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_setCurrentTool(this.h, (C.int)(index))
 }
 
 func (this *QDesignerFormWindowInterface) Tool(index int) *QDesignerFormWindowToolInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowToolInterface(C.QDesignerFormWindowInterface_tool(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerFormWindowInterface) RegisterTool(tool *QDesignerFormWindowToolInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(tool)
 	C.QDesignerFormWindowInterface_registerTool(this.h, tool.cPointer())
 }
 
 func (this *QDesignerFormWindowInterface) Grid() *qt6.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QDesignerFormWindowInterface_grid(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerFormWindowInterface) MainContainer() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowInterface_mainContainer(this.h)))
 }
 
 func (this *QDesignerFormWindowInterface) SetMainContainer(mainContainer *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mainContainer)
 	C.QDesignerFormWindowInterface_setMainContainer(this.h, (*C.QWidget)(mainContainer.UnsafePointer()))
 }
 
 func (this *QDesignerFormWindowInterface) FormContainer() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowInterface_formContainer(this.h)))
 }
 
 func (this *QDesignerFormWindowInterface) IsManaged(widget *qt6.QWidget) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return (bool)(C.QDesignerFormWindowInterface_isManaged(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 
 func (this *QDesignerFormWindowInterface) IsDirty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerFormWindowInterface_isDirty(this.h))
 }
 
 func QDesignerFormWindowInterface_FindFormWindow(w *qt6.QWidget) *QDesignerFormWindowInterface {
+	defer runtime.KeepAlive(w)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowInterface_findFormWindow((*C.QWidget)(w.UnsafePointer())))
 }
 
 func QDesignerFormWindowInterface_FindFormWindowWithObj(obj *qt6.QObject) *QDesignerFormWindowInterface {
+	defer runtime.KeepAlive(obj)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowInterface_findFormWindowWithObj((*C.QObject)(obj.UnsafePointer())))
 }
 
 func (this *QDesignerFormWindowInterface) CommandHistory() *qt6.QUndoStack {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQUndoStack(unsafe.Pointer(C.QDesignerFormWindowInterface_commandHistory(this.h)))
 }
 
 func (this *QDesignerFormWindowInterface) BeginCommand(description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -333,10 +383,13 @@ func (this *QDesignerFormWindowInterface) BeginCommand(description string) {
 }
 
 func (this *QDesignerFormWindowInterface) EndCommand() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_endCommand(this.h)
 }
 
 func (this *QDesignerFormWindowInterface) SimplifySelection(widgets []*qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widgets)
 	widgets_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(widgets))))
 	defer C.free(unsafe.Pointer(widgets_CArray_ptr))
 	widgets_CArray := unsafe.Slice(widgets_CArray_ptr, len(widgets))
@@ -348,10 +401,12 @@ func (this *QDesignerFormWindowInterface) SimplifySelection(widgets []*qt6.QWidg
 }
 
 func (this *QDesignerFormWindowInterface) EmitSelectionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_emitSelectionChanged(this.h)
 }
 
 func (this *QDesignerFormWindowInterface) ResourceFiles() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_resourceFiles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -365,6 +420,7 @@ func (this *QDesignerFormWindowInterface) ResourceFiles() []string {
 }
 
 func (this *QDesignerFormWindowInterface) AddResourceFile(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -373,6 +429,7 @@ func (this *QDesignerFormWindowInterface) AddResourceFile(path string) {
 }
 
 func (this *QDesignerFormWindowInterface) RemoveResourceFile(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -381,38 +438,52 @@ func (this *QDesignerFormWindowInterface) RemoveResourceFile(path string) {
 }
 
 func (this *QDesignerFormWindowInterface) EnsureUniqueObjectName(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QDesignerFormWindowInterface_ensureUniqueObjectName(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QDesignerFormWindowInterface) ManageWidget(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_manageWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QDesignerFormWindowInterface) UnmanageWidget(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_unmanageWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QDesignerFormWindowInterface) SetFeatures(f QDesignerFormWindowInterface__FeatureFlag) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_setFeatures(this.h, (C.int)(f))
 }
 
 func (this *QDesignerFormWindowInterface) SetDirty(dirty bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_setDirty(this.h, (C.bool)(dirty))
 }
 
 func (this *QDesignerFormWindowInterface) ClearSelection(changePropertyDisplay bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_clearSelection(this.h, (C.bool)(changePropertyDisplay))
 }
 
 func (this *QDesignerFormWindowInterface) SelectWidget(w *qt6.QWidget, selectVal bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	C.QDesignerFormWindowInterface_selectWidget(this.h, (*C.QWidget)(w.UnsafePointer()), (C.bool)(selectVal))
 }
 
 func (this *QDesignerFormWindowInterface) SetGrid(grid *qt6.QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(grid)
 	C.QDesignerFormWindowInterface_setGrid(this.h, (*C.QPoint)(grid.UnsafePointer()))
 }
 
 func (this *QDesignerFormWindowInterface) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -421,6 +492,7 @@ func (this *QDesignerFormWindowInterface) SetFileName(fileName string) {
 }
 
 func (this *QDesignerFormWindowInterface) SetContentsWithContents(contents string) bool {
+	defer runtime.KeepAlive(this)
 	contents_ms := C.struct_miqt_string{}
 	contents_ms.data = C.CString(contents)
 	contents_ms.len = C.size_t(len(contents))
@@ -429,10 +501,12 @@ func (this *QDesignerFormWindowInterface) SetContentsWithContents(contents strin
 }
 
 func (this *QDesignerFormWindowInterface) EditWidgets() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_editWidgets(this.h)
 }
 
 func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths(paths []string) {
+	defer runtime.KeepAlive(this)
 	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray_ptr))
 	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
@@ -448,6 +522,8 @@ func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths(paths []stri
 }
 
 func (this *QDesignerFormWindowInterface) MainContainerChanged(mainContainer *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mainContainer)
 	C.QDesignerFormWindowInterface_mainContainerChanged(this.h, (*C.QWidget)(mainContainer.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnMainContainerChanged(slot func(mainContainer *qt6.QWidget)) {
@@ -468,6 +544,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_mainContainerChanged(cb C.i
 }
 
 func (this *QDesignerFormWindowInterface) ToolChanged(toolIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_toolChanged(this.h, (C.int)(toolIndex))
 }
 func (this *QDesignerFormWindowInterface) OnToolChanged(slot func(toolIndex int)) {
@@ -488,6 +565,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_toolChanged(cb C.intptr_t, 
 }
 
 func (this *QDesignerFormWindowInterface) FileNameChanged(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -515,6 +593,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_fileNameChanged(cb C.intptr
 }
 
 func (this *QDesignerFormWindowInterface) FeatureChanged(f QDesignerFormWindowInterface__FeatureFlag) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_featureChanged(this.h, (C.int)(f))
 }
 func (this *QDesignerFormWindowInterface) OnFeatureChanged(slot func(f QDesignerFormWindowInterface__FeatureFlag)) {
@@ -535,6 +614,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_featureChanged(cb C.intptr_
 }
 
 func (this *QDesignerFormWindowInterface) SelectionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_selectionChanged(this.h)
 }
 func (this *QDesignerFormWindowInterface) OnSelectionChanged(slot func()) {
@@ -552,6 +632,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_selectionChanged(cb C.intpt
 }
 
 func (this *QDesignerFormWindowInterface) GeometryChanged() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_geometryChanged(this.h)
 }
 func (this *QDesignerFormWindowInterface) OnGeometryChanged(slot func()) {
@@ -569,6 +650,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_geometryChanged(cb C.intptr
 }
 
 func (this *QDesignerFormWindowInterface) ResourceFilesChanged() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_resourceFilesChanged(this.h)
 }
 func (this *QDesignerFormWindowInterface) OnResourceFilesChanged(slot func()) {
@@ -586,6 +668,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_resourceFilesChanged(cb C.i
 }
 
 func (this *QDesignerFormWindowInterface) WidgetManaged(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_widgetManaged(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnWidgetManaged(slot func(widget *qt6.QWidget)) {
@@ -606,6 +690,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_widgetManaged(cb C.intptr_t
 }
 
 func (this *QDesignerFormWindowInterface) WidgetUnmanaged(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_widgetUnmanaged(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnWidgetUnmanaged(slot func(widget *qt6.QWidget)) {
@@ -626,6 +712,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_widgetUnmanaged(cb C.intptr
 }
 
 func (this *QDesignerFormWindowInterface) AboutToUnmanageWidget(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_aboutToUnmanageWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnAboutToUnmanageWidget(slot func(widget *qt6.QWidget)) {
@@ -646,6 +734,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_aboutToUnmanageWidget(cb C.
 }
 
 func (this *QDesignerFormWindowInterface) Activated(widget *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerFormWindowInterface_activated(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnActivated(slot func(widget *qt6.QWidget)) {
@@ -666,6 +756,7 @@ func miqt_exec_callback_QDesignerFormWindowInterface_activated(cb C.intptr_t, wi
 }
 
 func (this *QDesignerFormWindowInterface) Changed() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowInterface_changed(this.h)
 }
 func (this *QDesignerFormWindowInterface) OnChanged(slot func()) {
@@ -683,6 +774,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_changed(cb C.intptr_t) {
 }
 
 func (this *QDesignerFormWindowInterface) WidgetRemoved(w *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 	C.QDesignerFormWindowInterface_widgetRemoved(this.h, (*C.QWidget)(w.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnWidgetRemoved(slot func(w *qt6.QWidget)) {
@@ -703,6 +796,8 @@ func miqt_exec_callback_QDesignerFormWindowInterface_widgetRemoved(cb C.intptr_t
 }
 
 func (this *QDesignerFormWindowInterface) ObjectRemoved(o *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(o)
 	C.QDesignerFormWindowInterface_objectRemoved(this.h, (*C.QObject)(o.UnsafePointer()))
 }
 func (this *QDesignerFormWindowInterface) OnObjectRemoved(slot func(o *qt6.QObject)) {
@@ -745,6 +840,7 @@ func QDesignerFormWindowInterface_Tr3(s string, c string, n int) string {
 }
 
 func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths2(paths []string, errorCount *int) {
+	defer runtime.KeepAlive(this)
 	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray_ptr))
 	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
@@ -771,8 +867,9 @@ func (this *QDesignerFormWindowInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerFormWindowInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormWindowInterface) {
-		C.QDesignerFormWindowInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerFormWindowInterface_delete((*C.QDesignerFormWindowInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

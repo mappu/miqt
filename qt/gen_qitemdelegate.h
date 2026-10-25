@@ -132,6 +132,7 @@ bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QItemDelegate_virtualreturncopy_QSize(QSize* src);
 
 void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint);

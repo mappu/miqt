@@ -253,7 +253,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&argument_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QScriptEngineAgent_extension(this, handle__extension, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument);
@@ -468,6 +470,10 @@ bool QScriptEngineAgent_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument) {
 	return new QVariant(static_cast<MiqtVirtualQScriptEngineAgent*>(self)->QScriptEngineAgent::extension(static_cast<MiqtVirtualQScriptEngineAgent::Extension>(extension), *argument));
+}
+
+QVariant* QScriptEngineAgent_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QScriptEngineAgent_delete(QScriptEngineAgent* self) {

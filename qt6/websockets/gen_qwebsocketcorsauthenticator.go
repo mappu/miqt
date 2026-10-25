@@ -15,7 +15,13 @@ import (
 
 type QWebSocketCorsAuthenticator struct {
 	h  *C.QWebSocketCorsAuthenticator
-	gc *[1]*C.QWebSocketCorsAuthenticator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSocketCorsAuthenticator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSocketCorsAuthenticator) cPointer() *C.QWebSocketCorsAuthenticator {
@@ -58,19 +64,25 @@ func NewQWebSocketCorsAuthenticator(origin string) *QWebSocketCorsAuthenticator 
 
 // NewQWebSocketCorsAuthenticator2 constructs a new QWebSocketCorsAuthenticator object.
 func NewQWebSocketCorsAuthenticator2(other *QWebSocketCorsAuthenticator) *QWebSocketCorsAuthenticator {
+	defer runtime.KeepAlive(other)
 
 	return newQWebSocketCorsAuthenticator(C.QWebSocketCorsAuthenticator_new2(other.cPointer()))
 }
 
 func (this *QWebSocketCorsAuthenticator) Swap(other *QWebSocketCorsAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebSocketCorsAuthenticator_swap(this.h, other.cPointer())
 }
 
 func (this *QWebSocketCorsAuthenticator) OperatorAssign(other *QWebSocketCorsAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebSocketCorsAuthenticator_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebSocketCorsAuthenticator) Origin() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSocketCorsAuthenticator_origin(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -78,10 +90,12 @@ func (this *QWebSocketCorsAuthenticator) Origin() string {
 }
 
 func (this *QWebSocketCorsAuthenticator) SetAllowed(allowed bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketCorsAuthenticator_setAllowed(this.h, (C.bool)(allowed))
 }
 
 func (this *QWebSocketCorsAuthenticator) Allowed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketCorsAuthenticator_allowed(this.h))
 }
 
@@ -97,8 +111,9 @@ func (this *QWebSocketCorsAuthenticator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSocketCorsAuthenticator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSocketCorsAuthenticator) {
-		C.QWebSocketCorsAuthenticator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSocketCorsAuthenticator_delete((*C.QWebSocketCorsAuthenticator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

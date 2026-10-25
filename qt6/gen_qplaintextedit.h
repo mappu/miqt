@@ -383,6 +383,8 @@ bool QPlainTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QPlainTextEdit_virtualreturncopy_QVariant(QVariant* src);
+QSize* QPlainTextEdit_virtualreturncopy_QSize(QSize* src);
 
 QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_ok, const void* self);
 QPointF* QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self);
@@ -458,6 +460,8 @@ bool QPlainTextDocumentLayout_override_virtual_connectNotify(void* self, intptr_
 void QPlainTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSizeF* QPlainTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src);
+QRectF* QPlainTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src);
 
 int QPlainTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos);
 QTextCharFormat* QPlainTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos);

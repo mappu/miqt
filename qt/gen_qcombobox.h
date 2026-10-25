@@ -326,6 +326,8 @@ bool QComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QComboBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QComboBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QComboBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionComboBox* option);
 void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

@@ -23,7 +23,13 @@ const (
 
 type QDirIterator struct {
 	h  *C.QDirIterator
-	gc *[1]*C.QDirIterator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDirIterator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDirIterator) cPointer() *C.QDirIterator {
@@ -56,6 +62,7 @@ func UnsafeNewQDirIterator(h unsafe.Pointer) *QDirIterator {
 
 // NewQDirIterator constructs a new QDirIterator object.
 func NewQDirIterator(dir *QDir) *QDirIterator {
+	defer runtime.KeepAlive(dir)
 
 	return newQDirIterator(C.QDirIterator_new(dir.cPointer()))
 }
@@ -103,6 +110,7 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 
 // NewQDirIterator5 constructs a new QDirIterator object.
 func NewQDirIterator5(dir *QDir, flags QDirIterator__IteratorFlag) *QDirIterator {
+	defer runtime.KeepAlive(dir)
 
 	return newQDirIterator(C.QDirIterator_new5(dir.cPointer(), (C.int)(flags)))
 }
@@ -170,6 +178,7 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 }
 
 func (this *QDirIterator) Next() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDirIterator_next(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -177,16 +186,19 @@ func (this *QDirIterator) Next() string {
 }
 
 func (this *QDirIterator) NextFileInfo() *QFileInfo {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFileInfo(C.QDirIterator_nextFileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirIterator) HasNext() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDirIterator_hasNext(this.h))
 }
 
 func (this *QDirIterator) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDirIterator_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -194,6 +206,7 @@ func (this *QDirIterator) FileName() string {
 }
 
 func (this *QDirIterator) FilePath() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDirIterator_filePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -201,12 +214,14 @@ func (this *QDirIterator) FilePath() string {
 }
 
 func (this *QDirIterator) FileInfo() *QFileInfo {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFileInfo(C.QDirIterator_fileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirIterator) Path() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDirIterator_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -225,8 +240,9 @@ func (this *QDirIterator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDirIterator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDirIterator) {
-		C.QDirIterator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDirIterator_delete((*C.QDirIterator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

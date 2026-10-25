@@ -174,7 +174,9 @@ public:
 		memcpy(tableName_ms.data, tableName_b.data(), tableName_ms.len);
 		struct miqt_string sigval1 = tableName_ms;
 		QSqlIndex* callback_return_value = miqt_exec_callback_QSqlDriver_primaryIndex(this, handle__primaryIndex, sigval1);
-		return *callback_return_value;
+		QSqlIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSqlIndex* QSqlDriver_virtualbase_primaryIndex(const void* self, struct miqt_string tableName);
@@ -197,7 +199,9 @@ public:
 		memcpy(tableName_ms.data, tableName_b.data(), tableName_ms.len);
 		struct miqt_string sigval1 = tableName_ms;
 		QSqlRecord* callback_return_value = miqt_exec_callback_QSqlDriver_record(this, handle__record, sigval1);
-		return *callback_return_value;
+		QSqlRecord callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSqlRecord* QSqlDriver_virtualbase_record(const void* self, struct miqt_string tableName);
@@ -291,7 +295,9 @@ public:
 		}
 
 		QVariant* callback_return_value = miqt_exec_callback_QSqlDriver_handle(this, handle__handle);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QSqlDriver_virtualbase_handle(const void* self);
@@ -1505,6 +1511,18 @@ bool QSqlDriver_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSqlDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSqlDriver*>(self)->QSqlDriver::disconnectNotify(*signal);
+}
+
+QSqlIndex* QSqlDriver_virtualreturncopy_QSqlIndex(QSqlIndex* src) {
+	return new QSqlIndex(*src);
+}
+
+QSqlRecord* QSqlDriver_virtualreturncopy_QSqlRecord(QSqlRecord* src) {
+	return new QSqlRecord(*src);
+}
+
+QVariant* QSqlDriver_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QSqlDriver_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

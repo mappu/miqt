@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -78,7 +79,14 @@ const (
 )
 
 type QWebEngineSettings struct {
-	h *C.QWebEngineSettings
+	h  *C.QWebEngineSettings
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineSettings) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineSettings) cPointer() *C.QWebEngineSettings {
@@ -118,6 +126,7 @@ func QWebEngineSettings_DefaultSettings() *QWebEngineSettings {
 }
 
 func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFamily, family string) {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -126,6 +135,7 @@ func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFami
 }
 
 func (this *QWebEngineSettings) FontFamily(which QWebEngineSettings__FontFamily) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineSettings_fontFamily(this.h, (C.int)(which))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -133,34 +143,42 @@ func (this *QWebEngineSettings) FontFamily(which QWebEngineSettings__FontFamily)
 }
 
 func (this *QWebEngineSettings) ResetFontFamily(which QWebEngineSettings__FontFamily) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_resetFontFamily(this.h, (C.int)(which))
 }
 
 func (this *QWebEngineSettings) SetFontSize(typeVal QWebEngineSettings__FontSize, size int) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_setFontSize(this.h, (C.int)(typeVal), (C.int)(size))
 }
 
 func (this *QWebEngineSettings) FontSize(typeVal QWebEngineSettings__FontSize) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineSettings_fontSize(this.h, (C.int)(typeVal)))
 }
 
 func (this *QWebEngineSettings) ResetFontSize(typeVal QWebEngineSettings__FontSize) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_resetFontSize(this.h, (C.int)(typeVal))
 }
 
 func (this *QWebEngineSettings) SetAttribute(attr QWebEngineSettings__WebAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_setAttribute(this.h, (C.int)(attr), (C.bool)(on))
 }
 
 func (this *QWebEngineSettings) TestAttribute(attr QWebEngineSettings__WebAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineSettings_testAttribute(this.h, (C.int)(attr)))
 }
 
 func (this *QWebEngineSettings) ResetAttribute(attr QWebEngineSettings__WebAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_resetAttribute(this.h, (C.int)(attr))
 }
 
 func (this *QWebEngineSettings) SetDefaultTextEncoding(encoding string) {
+	defer runtime.KeepAlive(this)
 	encoding_ms := C.struct_miqt_string{}
 	encoding_ms.data = C.CString(encoding)
 	encoding_ms.len = C.size_t(len(encoding))
@@ -169,6 +187,7 @@ func (this *QWebEngineSettings) SetDefaultTextEncoding(encoding string) {
 }
 
 func (this *QWebEngineSettings) DefaultTextEncoding() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineSettings_defaultTextEncoding(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -176,13 +195,16 @@ func (this *QWebEngineSettings) DefaultTextEncoding() string {
 }
 
 func (this *QWebEngineSettings) UnknownUrlSchemePolicy() QWebEngineSettings__UnknownUrlSchemePolicy {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineSettings__UnknownUrlSchemePolicy)(C.QWebEngineSettings_unknownUrlSchemePolicy(this.h))
 }
 
 func (this *QWebEngineSettings) SetUnknownUrlSchemePolicy(policy QWebEngineSettings__UnknownUrlSchemePolicy) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_setUnknownUrlSchemePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWebEngineSettings) ResetUnknownUrlSchemePolicy() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineSettings_resetUnknownUrlSchemePolicy(this.h)
 }

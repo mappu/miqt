@@ -120,6 +120,8 @@ bool QDesignerWidgetDataBaseItemInterface_override_virtual_setDefaultPropertyVal
 void QDesignerWidgetDataBaseItemInterface_virtualbase_setDefaultPropertyValues(void* self, struct miqt_array /* of QVariant* */  list);
 bool QDesignerWidgetDataBaseItemInterface_override_virtual_defaultPropertyValues(void* self, intptr_t slot);
 struct miqt_array /* of QVariant* */  QDesignerWidgetDataBaseItemInterface_virtualbase_defaultPropertyValues(const void* self);
+QIcon* QDesignerWidgetDataBaseItemInterface_virtualreturncopy_QIcon(QIcon* src);
+QVariant* QDesignerWidgetDataBaseItemInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerWidgetDataBaseItemInterface_delete(QDesignerWidgetDataBaseItemInterface* self);
 

@@ -111,7 +111,9 @@ public:
 		// Cast returned reference into pointer
 		QSize* sigval3 = const_cast<QSize*>(&newSize_ret);
 		QwtInterval* callback_return_value = miqt_exec_callback_QwtPlotRescaler_expandScale(this, handle__expandScale, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QwtInterval callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, QSize* oldSize, QSize* newSize);
@@ -133,7 +135,9 @@ public:
 		// Cast returned reference into pointer
 		QSize* sigval3 = const_cast<QSize*>(&size_ret);
 		QwtInterval* callback_return_value = miqt_exec_callback_QwtPlotRescaler_syncScale(this, handle__syncScale, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QwtInterval callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, QSize* size);
@@ -534,6 +538,10 @@ bool QwtPlotRescaler_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QwtPlotRescaler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::disconnectNotify(*signal);
+}
+
+QwtInterval* QwtPlotRescaler_virtualreturncopy_QwtInterval(QwtInterval* src) {
+	return new QwtInterval(*src);
 }
 
 int QwtPlotRescaler_protectedbase_orientation(bool* _dynamic_cast_ok, const void* self, int axis) {

@@ -104,6 +104,7 @@ bool QGeoAreaMonitorSource_override_virtual_connectNotify(void* self, intptr_t s
 void QGeoAreaMonitorSource_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGeoAreaMonitorSource_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGeoAreaMonitorSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QGeoAreaMonitorInfo* QGeoAreaMonitorSource_virtualreturncopy_QGeoAreaMonitorInfo(QGeoAreaMonitorInfo* src);
 
 QObject* QGeoAreaMonitorSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGeoAreaMonitorSource_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

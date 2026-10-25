@@ -17,8 +17,15 @@ import (
 
 type QCameraZoomControl struct {
 	h  *C.QCameraZoomControl
-	gc *[1]*C.QCameraZoomControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraZoomControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraZoomControl) cPointer() *C.QCameraZoomControl {
@@ -53,10 +60,12 @@ func UnsafeNewQCameraZoomControl(h unsafe.Pointer) *QCameraZoomControl {
 }
 
 func (this *QCameraZoomControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraZoomControl_metaObject(this.h)))
 }
 
 func (this *QCameraZoomControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraZoomControl_metacast(this.h, param1_Cstring))
@@ -81,34 +90,42 @@ func QCameraZoomControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraZoomControl) MaximumOpticalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_maximumOpticalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) MaximumDigitalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_maximumDigitalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) RequestedOpticalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_requestedOpticalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) RequestedDigitalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_requestedDigitalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) CurrentOpticalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_currentOpticalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) CurrentDigitalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraZoomControl_currentDigitalZoom(this.h))
 }
 
 func (this *QCameraZoomControl) ZoomTo(optical float64, digital float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_zoomTo(this.h, (C.double)(optical), (C.double)(digital))
 }
 
 func (this *QCameraZoomControl) MaximumOpticalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_maximumOpticalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraZoomControl) OnMaximumOpticalZoomChanged(slot func(param1 float64)) {
@@ -129,6 +146,7 @@ func miqt_exec_callback_QCameraZoomControl_maximumOpticalZoomChanged(cb C.intptr
 }
 
 func (this *QCameraZoomControl) MaximumDigitalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_maximumDigitalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraZoomControl) OnMaximumDigitalZoomChanged(slot func(param1 float64)) {
@@ -149,6 +167,7 @@ func miqt_exec_callback_QCameraZoomControl_maximumDigitalZoomChanged(cb C.intptr
 }
 
 func (this *QCameraZoomControl) RequestedOpticalZoomChanged(opticalZoom float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_requestedOpticalZoomChanged(this.h, (C.double)(opticalZoom))
 }
 func (this *QCameraZoomControl) OnRequestedOpticalZoomChanged(slot func(opticalZoom float64)) {
@@ -169,6 +188,7 @@ func miqt_exec_callback_QCameraZoomControl_requestedOpticalZoomChanged(cb C.intp
 }
 
 func (this *QCameraZoomControl) RequestedDigitalZoomChanged(digitalZoom float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_requestedDigitalZoomChanged(this.h, (C.double)(digitalZoom))
 }
 func (this *QCameraZoomControl) OnRequestedDigitalZoomChanged(slot func(digitalZoom float64)) {
@@ -189,6 +209,7 @@ func miqt_exec_callback_QCameraZoomControl_requestedDigitalZoomChanged(cb C.intp
 }
 
 func (this *QCameraZoomControl) CurrentOpticalZoomChanged(opticalZoom float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_currentOpticalZoomChanged(this.h, (C.double)(opticalZoom))
 }
 func (this *QCameraZoomControl) OnCurrentOpticalZoomChanged(slot func(opticalZoom float64)) {
@@ -209,6 +230,7 @@ func miqt_exec_callback_QCameraZoomControl_currentOpticalZoomChanged(cb C.intptr
 }
 
 func (this *QCameraZoomControl) CurrentDigitalZoomChanged(digitalZoom float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraZoomControl_currentDigitalZoomChanged(this.h, (C.double)(digitalZoom))
 }
 func (this *QCameraZoomControl) OnCurrentDigitalZoomChanged(slot func(digitalZoom float64)) {
@@ -284,8 +306,9 @@ func (this *QCameraZoomControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraZoomControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraZoomControl) {
-		C.QCameraZoomControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraZoomControl_delete((*C.QCameraZoomControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

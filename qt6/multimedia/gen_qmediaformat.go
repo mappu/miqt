@@ -86,7 +86,13 @@ const (
 
 type QMediaFormat struct {
 	h  *C.QMediaFormat
-	gc *[1]*C.QMediaFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaFormat) cPointer() *C.QMediaFormat {
@@ -125,6 +131,7 @@ func NewQMediaFormat() *QMediaFormat {
 
 // NewQMediaFormat2 constructs a new QMediaFormat object.
 func NewQMediaFormat2(other *QMediaFormat) *QMediaFormat {
+	defer runtime.KeepAlive(other)
 
 	return newQMediaFormat(C.QMediaFormat_new2(other.cPointer()))
 }
@@ -136,48 +143,61 @@ func NewQMediaFormat3(format QMediaFormat__FileFormat) *QMediaFormat {
 }
 
 func (this *QMediaFormat) OperatorAssign(other *QMediaFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMediaFormat_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMediaFormat) Swap(other *QMediaFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMediaFormat_swap(this.h, other.cPointer())
 }
 
 func (this *QMediaFormat) FileFormat() QMediaFormat__FileFormat {
+	defer runtime.KeepAlive(this)
 	return (QMediaFormat__FileFormat)(C.QMediaFormat_fileFormat(this.h))
 }
 
 func (this *QMediaFormat) SetFileFormat(f QMediaFormat__FileFormat) {
+	defer runtime.KeepAlive(this)
 	C.QMediaFormat_setFileFormat(this.h, (C.int)(f))
 }
 
 func (this *QMediaFormat) SetVideoCodec(codec QMediaFormat__VideoCodec) {
+	defer runtime.KeepAlive(this)
 	C.QMediaFormat_setVideoCodec(this.h, (C.int)(codec))
 }
 
 func (this *QMediaFormat) VideoCodec() QMediaFormat__VideoCodec {
+	defer runtime.KeepAlive(this)
 	return (QMediaFormat__VideoCodec)(C.QMediaFormat_videoCodec(this.h))
 }
 
 func (this *QMediaFormat) SetAudioCodec(codec QMediaFormat__AudioCodec) {
+	defer runtime.KeepAlive(this)
 	C.QMediaFormat_setAudioCodec(this.h, (C.int)(codec))
 }
 
 func (this *QMediaFormat) AudioCodec() QMediaFormat__AudioCodec {
+	defer runtime.KeepAlive(this)
 	return (QMediaFormat__AudioCodec)(C.QMediaFormat_audioCodec(this.h))
 }
 
 func (this *QMediaFormat) IsSupported(mode QMediaFormat__ConversionMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaFormat_isSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QMediaFormat) MimeType() *qt6.QMimeType {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQMimeType(unsafe.Pointer(C.QMediaFormat_mimeType(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaFormat) SupportedFileFormats(m QMediaFormat__ConversionMode) []QMediaFormat__FileFormat {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedFileFormats(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__FileFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -188,6 +208,7 @@ func (this *QMediaFormat) SupportedFileFormats(m QMediaFormat__ConversionMode) [
 }
 
 func (this *QMediaFormat) SupportedVideoCodecs(m QMediaFormat__ConversionMode) []QMediaFormat__VideoCodec {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedVideoCodecs(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__VideoCodec, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -198,6 +219,7 @@ func (this *QMediaFormat) SupportedVideoCodecs(m QMediaFormat__ConversionMode) [
 }
 
 func (this *QMediaFormat) SupportedAudioCodecs(m QMediaFormat__ConversionMode) []QMediaFormat__AudioCodec {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaFormat_supportedAudioCodecs(this.h, (C.int)(m))
 	_ret := make([]QMediaFormat__AudioCodec, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -250,14 +272,19 @@ func QMediaFormat_VideoCodecDescription(codec QMediaFormat__VideoCodec) string {
 }
 
 func (this *QMediaFormat) OperatorEqual(other *QMediaFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaFormat_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaFormat) OperatorNotEqual(other *QMediaFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaFormat_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaFormat) ResolveForEncoding(flags QMediaFormat__ResolveFlags) {
+	defer runtime.KeepAlive(this)
 	C.QMediaFormat_resolveForEncoding(this.h, (C.int)(flags))
 }
 
@@ -273,8 +300,9 @@ func (this *QMediaFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaFormat) {
-		C.QMediaFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaFormat_delete((*C.QMediaFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

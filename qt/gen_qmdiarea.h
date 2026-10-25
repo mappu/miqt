@@ -255,6 +255,8 @@ bool QMdiArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMdiArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QMdiArea_virtualreturncopy_QSize(QSize* src);
+QVariant* QMdiArea_virtualreturncopy_QVariant(QVariant* src);
 
 void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);

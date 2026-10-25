@@ -15,7 +15,13 @@ import (
 
 type qfloat16 struct {
 	h  *C.qfloat16
-	gc *[1]*C.qfloat16
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *qfloat16) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *qfloat16) cPointer() *C.qfloat16 {
@@ -59,22 +65,27 @@ func Newqfloat162(f float32) *qfloat16 {
 }
 
 func (this *qfloat16) IsInf() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.qfloat16_isInf(this.h))
 }
 
 func (this *qfloat16) IsNaN() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.qfloat16_isNaN(this.h))
 }
 
 func (this *qfloat16) IsFinite() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.qfloat16_isFinite(this.h))
 }
 
 func (this *qfloat16) FpClassify() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.qfloat16_fpClassify(this.h))
 }
 
 func (this *qfloat16) IsNormal() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.qfloat16_isNormal(this.h))
 }
 
@@ -90,8 +101,9 @@ func (this *qfloat16) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.qfloat16{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.qfloat16) {
-		C.qfloat16_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.qfloat16_delete((*C.qfloat16)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

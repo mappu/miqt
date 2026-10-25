@@ -16,8 +16,15 @@ import (
 
 type QVariantAnimation struct {
 	h  *C.QVariantAnimation
-	gc *[1]*C.QVariantAnimation
+	gc *[1]unsafe.Pointer
 	*QAbstractAnimation
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVariantAnimation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractAnimation.miqtSetGC(gc)
 }
 
 func (this *QVariantAnimation) cPointer() *C.QVariantAnimation {
@@ -59,15 +66,18 @@ func NewQVariantAnimation() *QVariantAnimation {
 
 // NewQVariantAnimation2 constructs a new QVariantAnimation object.
 func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
+	defer runtime.KeepAlive(parent)
 
 	return newQVariantAnimation(C.QVariantAnimation_new2(parent.cPointer()))
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QVariantAnimation_metaObject(this.h))
 }
 
 func (this *QVariantAnimation) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVariantAnimation_metacast(this.h, param1_Cstring))
@@ -92,32 +102,41 @@ func QVariantAnimation_TrUtf8(s string) string {
 }
 
 func (this *QVariantAnimation) StartValue() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QVariantAnimation_startValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariantAnimation) SetStartValue(value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QVariantAnimation_setStartValue(this.h, value.cPointer())
 }
 
 func (this *QVariantAnimation) EndValue() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QVariantAnimation_endValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariantAnimation) SetEndValue(value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QVariantAnimation_setEndValue(this.h, value.cPointer())
 }
 
 func (this *QVariantAnimation) KeyValueAt(step float64) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QVariantAnimation_keyValueAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariantAnimation) SetKeyValueAt(step float64, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QVariantAnimation_setKeyValueAt(this.h, (C.double)(step), value.cPointer())
 }
 
@@ -125,6 +144,7 @@ func (this *QVariantAnimation) KeyValues() []struct {
 	First  float64
 	Second QVariant
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QVariantAnimation_keyValues(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -153,6 +173,8 @@ func (this *QVariantAnimation) SetKeyValues(values []struct {
 	First  float64
 	Second QVariant
 }) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(values)
 	values_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_CArray_ptr))
 	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
@@ -175,30 +197,38 @@ func (this *QVariantAnimation) SetKeyValues(values []struct {
 }
 
 func (this *QVariantAnimation) CurrentValue() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QVariantAnimation_currentValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariantAnimation) Duration() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVariantAnimation_duration(this.h))
 }
 
 func (this *QVariantAnimation) SetDuration(msecs int) {
+	defer runtime.KeepAlive(this)
 	C.QVariantAnimation_setDuration(this.h, (C.int)(msecs))
 }
 
 func (this *QVariantAnimation) EasingCurve() *QEasingCurve {
+	defer runtime.KeepAlive(this)
 	_goptr := newQEasingCurve(C.QVariantAnimation_easingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariantAnimation) SetEasingCurve(easing *QEasingCurve) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(easing)
 	C.QVariantAnimation_setEasingCurve(this.h, easing.cPointer())
 }
 
 func (this *QVariantAnimation) ValueChanged(value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QVariantAnimation_valueChanged(this.h, value.cPointer())
 }
 func (this *QVariantAnimation) OnValueChanged(slot func(value *QVariant)) {
@@ -264,6 +294,7 @@ func QVariantAnimation_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QVariantAnimation that was directly constructed.
 func (this *QVariantAnimation) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QVariantAnimation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -278,6 +309,7 @@ func (this *QVariantAnimation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QVariantAnimation that was directly constructed.
 func (this *QVariantAnimation) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVariantAnimation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -292,6 +324,7 @@ func (this *QVariantAnimation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVariantAnimation that was directly constructed.
 func (this *QVariantAnimation) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -308,6 +341,8 @@ func (this *QVariantAnimation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVariantAnimation that was directly constructed.
 func (this *QVariantAnimation) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QVariantAnimation_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -321,6 +356,7 @@ func (this *QVariantAnimation) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QVariantAnimation) callVirtualBase_Duration() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QVariantAnimation_virtualbase_duration(unsafe.Pointer(this.h)))
 
@@ -346,6 +382,8 @@ func miqt_exec_callback_QVariantAnimation_duration(self *C.QVariantAnimation, cb
 }
 
 func (this *QVariantAnimation) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVariantAnimation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -374,6 +412,7 @@ func miqt_exec_callback_QVariantAnimation_event(self *C.QVariantAnimation, cb C.
 }
 
 func (this *QVariantAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
+	defer runtime.KeepAlive(this)
 
 	C.QVariantAnimation_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -400,6 +439,7 @@ func miqt_exec_callback_QVariantAnimation_updateCurrentTime(self *C.QVariantAnim
 }
 
 func (this *QVariantAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+	defer runtime.KeepAlive(this)
 
 	C.QVariantAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -428,6 +468,8 @@ func miqt_exec_callback_QVariantAnimation_updateState(self *C.QVariantAnimation,
 }
 
 func (this *QVariantAnimation) callVirtualBase_UpdateCurrentValue(value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QVariantAnimation_virtualbase_updateCurrentValue(unsafe.Pointer(this.h), value.cPointer())
 
@@ -454,6 +496,9 @@ func miqt_exec_callback_QVariantAnimation_updateCurrentValue(self *C.QVariantAni
 }
 
 func (this *QVariantAnimation) callVirtualBase_Interpolated(from *QVariant, to *QVariant, progress float64) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	_goptr := newQVariant(C.QVariantAnimation_virtualbase_interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -482,12 +527,14 @@ func miqt_exec_callback_QVariantAnimation_interpolated(self *C.QVariantAnimation
 	slotval3 := (float64)(progress)
 
 	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Interpolated, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QVariantAnimation_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QVariantAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+	defer runtime.KeepAlive(this)
 
 	C.QVariantAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -514,6 +561,9 @@ func miqt_exec_callback_QVariantAnimation_updateDirection(self *C.QVariantAnimat
 }
 
 func (this *QVariantAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVariantAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -544,6 +594,8 @@ func miqt_exec_callback_QVariantAnimation_eventFilter(self *C.QVariantAnimation,
 }
 
 func (this *QVariantAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVariantAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -570,6 +622,8 @@ func miqt_exec_callback_QVariantAnimation_timerEvent(self *C.QVariantAnimation, 
 }
 
 func (this *QVariantAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVariantAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -596,6 +650,8 @@ func miqt_exec_callback_QVariantAnimation_childEvent(self *C.QVariantAnimation, 
 }
 
 func (this *QVariantAnimation) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QVariantAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -622,6 +678,8 @@ func miqt_exec_callback_QVariantAnimation_customEvent(self *C.QVariantAnimation,
 }
 
 func (this *QVariantAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVariantAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -648,6 +706,8 @@ func miqt_exec_callback_QVariantAnimation_connectNotify(self *C.QVariantAnimatio
 }
 
 func (this *QVariantAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QVariantAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -685,8 +745,9 @@ func (this *QVariantAnimation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVariantAnimation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariantAnimation) {
-		C.QVariantAnimation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVariantAnimation_delete((*C.QVariantAnimation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

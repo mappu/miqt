@@ -193,6 +193,9 @@ bool QwtWidgetOverlay_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtWidgetOverlay_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtWidgetOverlay_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtWidgetOverlay_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRegion* QwtWidgetOverlay_virtualreturncopy_QRegion(QRegion* src);
+QSize* QwtWidgetOverlay_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtWidgetOverlay_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtWidgetOverlay_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QwtWidgetOverlay_protectedbase_create(bool* _dynamic_cast_ok, void* self);

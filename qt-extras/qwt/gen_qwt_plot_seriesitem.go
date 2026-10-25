@@ -16,9 +16,17 @@ import (
 
 type QwtPlotSeriesItem struct {
 	h  *C.QwtPlotSeriesItem
-	gc *[1]*C.QwtPlotSeriesItem
+	gc *[1]unsafe.Pointer
 	*QwtPlotItem
 	*QwtAbstractSeriesStore
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotSeriesItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotItem.miqtSetGC(gc)
+	this.QwtAbstractSeriesStore.miqtSetGC(gc)
 }
 
 func (this *QwtPlotSeriesItem) cPointer() *C.QwtPlotSeriesItem {
@@ -55,20 +63,26 @@ func UnsafeNewQwtPlotSeriesItem(h unsafe.Pointer) *QwtPlotSeriesItem {
 }
 
 func (this *QwtPlotSeriesItem) SetOrientation(orientation qt.Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotSeriesItem_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QwtPlotSeriesItem) Orientation() qt.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtPlotSeriesItem_orientation(this.h))
 }
 
 func (this *QwtPlotSeriesItem) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotSeriesItem_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotSeriesItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtPlotSeriesItem_updateScaleDiv(this.h, param1.cPointer(), param2.cPointer())
 }
 
@@ -84,8 +98,9 @@ func (this *QwtPlotSeriesItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotSeriesItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotSeriesItem) {
-		C.QwtPlotSeriesItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotSeriesItem_delete((*C.QwtPlotSeriesItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

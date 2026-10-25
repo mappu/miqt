@@ -62,6 +62,7 @@ bool QScriptEngineAgent_override_virtual_supportsExtension(void* self, intptr_t 
 bool QScriptEngineAgent_virtualbase_supportsExtension(const void* self, int extension);
 bool QScriptEngineAgent_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument);
+QVariant* QScriptEngineAgent_virtualreturncopy_QVariant(QVariant* src);
 
 void QScriptEngineAgent_delete(QScriptEngineAgent* self);
 

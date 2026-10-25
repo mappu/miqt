@@ -197,6 +197,8 @@ bool QDesignerObjectInspectorInterface_override_virtual_connectNotify(void* self
 void QDesignerObjectInspectorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerObjectInspectorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerObjectInspectorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDesignerObjectInspectorInterface_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesignerObjectInspectorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerObjectInspectorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesignerObjectInspectorInterface_protectedbase_create(bool* _dynamic_cast_ok, void* self);

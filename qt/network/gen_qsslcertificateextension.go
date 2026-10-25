@@ -16,7 +16,13 @@ import (
 
 type QSslCertificateExtension struct {
 	h  *C.QSslCertificateExtension
-	gc *[1]*C.QSslCertificateExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslCertificateExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslCertificateExtension) cPointer() *C.QSslCertificateExtension {
@@ -55,19 +61,25 @@ func NewQSslCertificateExtension() *QSslCertificateExtension {
 
 // NewQSslCertificateExtension2 constructs a new QSslCertificateExtension object.
 func NewQSslCertificateExtension2(other *QSslCertificateExtension) *QSslCertificateExtension {
+	defer runtime.KeepAlive(other)
 
 	return newQSslCertificateExtension(C.QSslCertificateExtension_new2(other.cPointer()))
 }
 
 func (this *QSslCertificateExtension) OperatorAssign(other *QSslCertificateExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslCertificateExtension_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslCertificateExtension) Swap(other *QSslCertificateExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslCertificateExtension_swap(this.h, other.cPointer())
 }
 
 func (this *QSslCertificateExtension) Oid() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCertificateExtension_oid(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -75,6 +87,7 @@ func (this *QSslCertificateExtension) Oid() string {
 }
 
 func (this *QSslCertificateExtension) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslCertificateExtension_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -82,16 +95,19 @@ func (this *QSslCertificateExtension) Name() string {
 }
 
 func (this *QSslCertificateExtension) Value() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSslCertificateExtension_value(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslCertificateExtension) IsCritical() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslCertificateExtension_isCritical(this.h))
 }
 
 func (this *QSslCertificateExtension) IsSupported() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslCertificateExtension_isSupported(this.h))
 }
 
@@ -107,8 +123,9 @@ func (this *QSslCertificateExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslCertificateExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslCertificateExtension) {
-		C.QSslCertificateExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslCertificateExtension_delete((*C.QSslCertificateExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

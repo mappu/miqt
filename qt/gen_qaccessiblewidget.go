@@ -9,13 +9,23 @@ package qt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
 type QAccessibleWidget struct {
-	h *C.QAccessibleWidget
+	h  *C.QAccessibleWidget
+	gc *[1]unsafe.Pointer
 	*QAccessibleObject
 	*QAccessibleActionInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessibleWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAccessibleObject.miqtSetGC(gc)
+	this.QAccessibleActionInterface.miqtSetGC(gc)
 }
 
 func (this *QAccessibleWidget) cPointer() *C.QAccessibleWidget {
@@ -53,18 +63,21 @@ func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
 
 // NewQAccessibleWidget constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
+	defer runtime.KeepAlive(o)
 
 	return newQAccessibleWidget(C.QAccessibleWidget_new(o.cPointer()))
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
+	defer runtime.KeepAlive(o)
 
 	return newQAccessibleWidget(C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r)))
 }
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
+	defer runtime.KeepAlive(o)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -74,18 +87,23 @@ func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAcces
 }
 
 func (this *QAccessibleWidget) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAccessibleWidget_isValid(this.h))
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
+	defer runtime.KeepAlive(this)
 	return newQWindow(C.QAccessibleWidget_window(this.h))
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAccessibleWidget_childCount(this.h))
 }
 
 func (this *QAccessibleWidget) IndexOfChild(child *QAccessibleInterface) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 	return (int)(C.QAccessibleWidget_indexOfChild(this.h, child.cPointer()))
 }
 
@@ -93,6 +111,7 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 	First  *QAccessibleInterface
 	Second QAccessible__RelationFlag
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAccessibleWidget_relations(this.h, (C.int)(match))
 	_ret := make([]struct {
 		First  *QAccessibleInterface
@@ -116,24 +135,29 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 }
 
 func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleWidget_focusChild(this.h))
 }
 
 func (this *QAccessibleWidget) Rect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QAccessibleWidget_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleWidget_parent(this.h))
 }
 
 func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleWidget_child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAccessibleWidget_text(this.h, (C.int)(t))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -141,32 +165,38 @@ func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
 }
 
 func (this *QAccessibleWidget) Role() QAccessible__Role {
+	defer runtime.KeepAlive(this)
 	return (QAccessible__Role)(C.QAccessibleWidget_role(this.h))
 }
 
 func (this *QAccessibleWidget) State() *QAccessible__State {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAccessible__State(C.QAccessibleWidget_state(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) ForegroundColor() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QAccessibleWidget_foregroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) BackgroundColor() *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QAccessibleWidget_backgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QAccessibleWidget_interfaceCast(this.h, (C.int)(t)))
 }
 
 func (this *QAccessibleWidget) ActionNames() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAccessibleWidget_actionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -180,6 +210,7 @@ func (this *QAccessibleWidget) ActionNames() []string {
 }
 
 func (this *QAccessibleWidget) DoAction(actionName string) {
+	defer runtime.KeepAlive(this)
 	actionName_ms := C.struct_miqt_string{}
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
@@ -188,6 +219,7 @@ func (this *QAccessibleWidget) DoAction(actionName string) {
 }
 
 func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string {
+	defer runtime.KeepAlive(this)
 	actionName_ms := C.struct_miqt_string{}
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))

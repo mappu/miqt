@@ -15,7 +15,13 @@ import (
 
 type QWhatsThis struct {
 	h  *C.QWhatsThis
-	gc *[1]*C.QWhatsThis
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWhatsThis) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWhatsThis) cPointer() *C.QWhatsThis {
@@ -59,6 +65,7 @@ func QWhatsThis_LeaveWhatsThisMode() {
 }
 
 func QWhatsThis_ShowText(pos *QPoint, text string) {
+	defer runtime.KeepAlive(pos)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -75,6 +82,8 @@ func QWhatsThis_CreateAction() *QAction {
 }
 
 func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(w)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -83,6 +92,7 @@ func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateActionWithParent(parent *QObject) *QAction {
+	defer runtime.KeepAlive(parent)
 	return newQAction(C.QWhatsThis_createActionWithParent(parent.cPointer()))
 }
 
@@ -98,8 +108,9 @@ func (this *QWhatsThis) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWhatsThis{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWhatsThis) {
-		C.QWhatsThis_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWhatsThis_delete((*C.QWhatsThis)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

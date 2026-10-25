@@ -23,7 +23,13 @@ const (
 
 type QTableWidgetSelectionRange struct {
 	h  *C.QTableWidgetSelectionRange
-	gc *[1]*C.QTableWidgetSelectionRange
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTableWidgetSelectionRange) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTableWidgetSelectionRange) cPointer() *C.QTableWidgetSelectionRange {
@@ -67,26 +73,32 @@ func NewQTableWidgetSelectionRange2(top int, left int, bottom int, right int) *Q
 }
 
 func (this *QTableWidgetSelectionRange) TopRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_topRow(this.h))
 }
 
 func (this *QTableWidgetSelectionRange) BottomRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_bottomRow(this.h))
 }
 
 func (this *QTableWidgetSelectionRange) LeftColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_leftColumn(this.h))
 }
 
 func (this *QTableWidgetSelectionRange) RightColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_rightColumn(this.h))
 }
 
 func (this *QTableWidgetSelectionRange) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_rowCount(this.h))
 }
 
 func (this *QTableWidgetSelectionRange) ColumnCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetSelectionRange_columnCount(this.h))
 }
 
@@ -102,15 +114,22 @@ func (this *QTableWidgetSelectionRange) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTableWidgetSelectionRange{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidgetSelectionRange) {
-		C.QTableWidgetSelectionRange_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTableWidgetSelectionRange_delete((*C.QTableWidgetSelectionRange)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTableWidgetItem struct {
 	h  *C.QTableWidgetItem
-	gc *[1]*C.QTableWidgetItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTableWidgetItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTableWidgetItem) cPointer() *C.QTableWidgetItem {
@@ -159,6 +178,7 @@ func NewQTableWidgetItem2(text string) *QTableWidgetItem {
 
 // NewQTableWidgetItem3 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -169,6 +189,7 @@ func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
 
 // NewQTableWidgetItem4 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem4(other *QTableWidgetItem) *QTableWidgetItem {
+	defer runtime.KeepAlive(other)
 
 	return newQTableWidgetItem(C.QTableWidgetItem_new4(other.cPointer()))
 }
@@ -191,6 +212,7 @@ func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
 
 // NewQTableWidgetItem7 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetItem {
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -200,38 +222,47 @@ func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetIt
 }
 
 func (this *QTableWidgetItem) Clone() *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidgetItem_clone(this.h))
 }
 
 func (this *QTableWidgetItem) TableWidget() *QTableWidget {
+	defer runtime.KeepAlive(this)
 	return newQTableWidget(C.QTableWidgetItem_tableWidget(this.h))
 }
 
 func (this *QTableWidgetItem) Row() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetItem_row(this.h))
 }
 
 func (this *QTableWidgetItem) Column() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetItem_column(this.h))
 }
 
 func (this *QTableWidgetItem) SetSelected(selectVal bool) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setSelected(this.h, (C.bool)(selectVal))
 }
 
 func (this *QTableWidgetItem) IsSelected() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTableWidgetItem_isSelected(this.h))
 }
 
 func (this *QTableWidgetItem) Flags() ItemFlag {
+	defer runtime.KeepAlive(this)
 	return (ItemFlag)(C.QTableWidgetItem_flags(this.h))
 }
 
 func (this *QTableWidgetItem) SetFlags(flags ItemFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTableWidgetItem) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTableWidgetItem_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -239,6 +270,7 @@ func (this *QTableWidgetItem) Text() string {
 }
 
 func (this *QTableWidgetItem) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -247,16 +279,20 @@ func (this *QTableWidgetItem) SetText(text string) {
 }
 
 func (this *QTableWidgetItem) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QTableWidgetItem_icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetIcon(icon *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QTableWidgetItem_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QTableWidgetItem) StatusTip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTableWidgetItem_statusTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -264,6 +300,7 @@ func (this *QTableWidgetItem) StatusTip() string {
 }
 
 func (this *QTableWidgetItem) SetStatusTip(statusTip string) {
+	defer runtime.KeepAlive(this)
 	statusTip_ms := C.struct_miqt_string{}
 	statusTip_ms.data = C.CString(statusTip)
 	statusTip_ms.len = C.size_t(len(statusTip))
@@ -272,6 +309,7 @@ func (this *QTableWidgetItem) SetStatusTip(statusTip string) {
 }
 
 func (this *QTableWidgetItem) ToolTip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTableWidgetItem_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -279,6 +317,7 @@ func (this *QTableWidgetItem) ToolTip() string {
 }
 
 func (this *QTableWidgetItem) SetToolTip(toolTip string) {
+	defer runtime.KeepAlive(this)
 	toolTip_ms := C.struct_miqt_string{}
 	toolTip_ms.data = C.CString(toolTip)
 	toolTip_ms.len = C.size_t(len(toolTip))
@@ -287,6 +326,7 @@ func (this *QTableWidgetItem) SetToolTip(toolTip string) {
 }
 
 func (this *QTableWidgetItem) WhatsThis() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTableWidgetItem_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -294,6 +334,7 @@ func (this *QTableWidgetItem) WhatsThis() string {
 }
 
 func (this *QTableWidgetItem) SetWhatsThis(whatsThis string) {
+	defer runtime.KeepAlive(this)
 	whatsThis_ms := C.struct_miqt_string{}
 	whatsThis_ms.data = C.CString(whatsThis)
 	whatsThis_ms.len = C.size_t(len(whatsThis))
@@ -302,100 +343,131 @@ func (this *QTableWidgetItem) SetWhatsThis(whatsThis string) {
 }
 
 func (this *QTableWidgetItem) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QTableWidgetItem_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetFont(font *QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QTableWidgetItem_setFont(this.h, font.cPointer())
 }
 
 func (this *QTableWidgetItem) TextAlignment() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetItem_textAlignment(this.h))
 }
 
 func (this *QTableWidgetItem) SetTextAlignment(alignment int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setTextAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTableWidgetItem) SetTextAlignmentWithAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setTextAlignmentWithAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTableWidgetItem) SetTextAlignment2(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setTextAlignment2(this.h, (C.int)(alignment))
 }
 
 func (this *QTableWidgetItem) Background() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QTableWidgetItem_background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetBackground(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QTableWidgetItem_setBackground(this.h, brush.cPointer())
 }
 
 func (this *QTableWidgetItem) Foreground() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QTableWidgetItem_foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetForeground(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QTableWidgetItem_setForeground(this.h, brush.cPointer())
 }
 
 func (this *QTableWidgetItem) CheckState() CheckState {
+	defer runtime.KeepAlive(this)
 	return (CheckState)(C.QTableWidgetItem_checkState(this.h))
 }
 
 func (this *QTableWidgetItem) SetCheckState(state CheckState) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidgetItem_setCheckState(this.h, (C.int)(state))
 }
 
 func (this *QTableWidgetItem) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QTableWidgetItem_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetSizeHint(size *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QTableWidgetItem_setSizeHint(this.h, size.cPointer())
 }
 
 func (this *QTableWidgetItem) Data(role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QTableWidgetItem_data(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidgetItem) SetData(role int, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QTableWidgetItem_setData(this.h, (C.int)(role), value.cPointer())
 }
 
 func (this *QTableWidgetItem) OperatorLesser(other *QTableWidgetItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QTableWidgetItem_operatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QTableWidgetItem) Read(in *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 	C.QTableWidgetItem_read(this.h, in.cPointer())
 }
 
 func (this *QTableWidgetItem) Write(out *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 	C.QTableWidgetItem_write(this.h, out.cPointer())
 }
 
 func (this *QTableWidgetItem) OperatorAssign(other *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QTableWidgetItem_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QTableWidgetItem) Type() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidgetItem_type(this.h))
 }
 
 func (this *QTableWidgetItem) callVirtualBase_Clone() *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 
 	return newQTableWidgetItem(C.QTableWidgetItem_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -415,12 +487,14 @@ func miqt_exec_callback_QTableWidgetItem_clone(self *C.QTableWidgetItem, cb C.in
 	}
 
 	virtualReturn := gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidgetItem) callVirtualBase_Data(role int) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTableWidgetItem_virtualbase_data(unsafe.Pointer(this.h), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -445,12 +519,15 @@ func miqt_exec_callback_QTableWidgetItem_data(self *C.QTableWidgetItem, cb C.int
 	slotval1 := (int)(role)
 
 	virtualReturn := gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Data, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidgetItem_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidgetItem) callVirtualBase_SetData(role int, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QTableWidgetItem_virtualbase_setData(unsafe.Pointer(this.h), (C.int)(role), value.cPointer())
 
@@ -479,6 +556,8 @@ func miqt_exec_callback_QTableWidgetItem_setData(self *C.QTableWidgetItem, cb C.
 }
 
 func (this *QTableWidgetItem) callVirtualBase_OperatorLesser(other *QTableWidgetItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QTableWidgetItem_virtualbase_operatorLesser(unsafe.Pointer(this.h), other.cPointer()))
 
@@ -507,6 +586,8 @@ func miqt_exec_callback_QTableWidgetItem_operatorLesser(self *C.QTableWidgetItem
 }
 
 func (this *QTableWidgetItem) callVirtualBase_Read(in *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 
 	C.QTableWidgetItem_virtualbase_read(unsafe.Pointer(this.h), in.cPointer())
 
@@ -533,6 +614,8 @@ func miqt_exec_callback_QTableWidgetItem_read(self *C.QTableWidgetItem, cb C.int
 }
 
 func (this *QTableWidgetItem) callVirtualBase_Write(out *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 
 	C.QTableWidgetItem_virtualbase_write(unsafe.Pointer(this.h), out.cPointer())
 
@@ -570,16 +653,24 @@ func (this *QTableWidgetItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTableWidgetItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidgetItem) {
-		C.QTableWidgetItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTableWidgetItem_delete((*C.QTableWidgetItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTableWidget struct {
 	h  *C.QTableWidget
-	gc *[1]*C.QTableWidget
+	gc *[1]unsafe.Pointer
 	*QTableView
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTableWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QTableView.miqtSetGC(gc)
 }
 
 func (this *QTableWidget) cPointer() *C.QTableWidget {
@@ -615,6 +706,7 @@ func UnsafeNewQTableWidget(h unsafe.Pointer) *QTableWidget {
 
 // NewQTableWidget constructs a new QTableWidget object.
 func NewQTableWidget(parent *QWidget) *QTableWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQTableWidget(C.QTableWidget_new(parent.cPointer()))
 }
@@ -633,15 +725,18 @@ func NewQTableWidget3(rows int, columns int) *QTableWidget {
 
 // NewQTableWidget4 constructs a new QTableWidget object.
 func NewQTableWidget4(rows int, columns int, parent *QWidget) *QTableWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQTableWidget(C.QTableWidget_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
 }
 
 func (this *QTableWidget) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTableWidget_metaObject(this.h))
 }
 
 func (this *QTableWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTableWidget_metacast(this.h, param1_Cstring))
@@ -657,42 +752,56 @@ func QTableWidget_Tr(s string) string {
 }
 
 func (this *QTableWidget) SetRowCount(rows int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_setRowCount(this.h, (C.int)(rows))
 }
 
 func (this *QTableWidget) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_rowCount(this.h))
 }
 
 func (this *QTableWidget) SetColumnCount(columns int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_setColumnCount(this.h, (C.int)(columns))
 }
 
 func (this *QTableWidget) ColumnCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_columnCount(this.h))
 }
 
 func (this *QTableWidget) Row(item *QTableWidgetItem) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (int)(C.QTableWidget_row(this.h, item.cPointer()))
 }
 
 func (this *QTableWidget) Column(item *QTableWidgetItem) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (int)(C.QTableWidget_column(this.h, item.cPointer()))
 }
 
 func (this *QTableWidget) Item(row int, column int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_item(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableWidget) SetItem(row int, column int, item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setItem(this.h, (C.int)(row), (C.int)(column), item.cPointer())
 }
 
 func (this *QTableWidget) TakeItem(row int, column int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_takeItem(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableWidget) Items(data *QMimeData) []*QTableWidgetItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	var _ma C.struct_miqt_array = C.QTableWidget_items(this.h, data.cPointer())
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -703,40 +812,53 @@ func (this *QTableWidget) Items(data *QMimeData) []*QTableWidgetItem {
 }
 
 func (this *QTableWidget) IndexFromItem(item *QTableWidgetItem) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	_goptr := newQModelIndex(C.QTableWidget_indexFromItem(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidget) ItemFromIndex(index *QModelIndex) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return newQTableWidgetItem(C.QTableWidget_itemFromIndex(this.h, index.cPointer()))
 }
 
 func (this *QTableWidget) VerticalHeaderItem(row int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_verticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QTableWidget) SetVerticalHeaderItem(row int, item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setVerticalHeaderItem(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QTableWidget) TakeVerticalHeaderItem(row int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_takeVerticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QTableWidget) HorizontalHeaderItem(column int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_horizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QTableWidget) SetHorizontalHeaderItem(column int, item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setHorizontalHeaderItem(this.h, (C.int)(column), item.cPointer())
 }
 
 func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_takeHorizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
+	defer runtime.KeepAlive(this)
 	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray_ptr))
 	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
@@ -752,6 +874,7 @@ func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
+	defer runtime.KeepAlive(this)
 	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray_ptr))
 	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
@@ -767,78 +890,105 @@ func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
 }
 
 func (this *QTableWidget) CurrentRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_currentRow(this.h))
 }
 
 func (this *QTableWidget) CurrentColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_currentColumn(this.h))
 }
 
 func (this *QTableWidget) CurrentItem() *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_currentItem(this.h))
 }
 
 func (this *QTableWidget) SetCurrentItem(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setCurrentItem(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) SetCurrentItem2(item *QTableWidgetItem, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setCurrentItem2(this.h, item.cPointer(), (C.int)(command))
 }
 
 func (this *QTableWidget) SetCurrentCell(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_setCurrentCell(this.h, (C.int)(row), (C.int)(column))
 }
 
 func (this *QTableWidget) SetCurrentCell2(row int, column int, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_setCurrentCell2(this.h, (C.int)(row), (C.int)(column), (C.int)(command))
 }
 
 func (this *QTableWidget) SortItems(column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_sortItems(this.h, (C.int)(column))
 }
 
 func (this *QTableWidget) SetSortingEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_setSortingEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QTableWidget) IsSortingEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTableWidget_isSortingEnabled(this.h))
 }
 
 func (this *QTableWidget) EditItem(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_editItem(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) OpenPersistentEditor(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_openPersistentEditor(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) ClosePersistentEditor(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_closePersistentEditor(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) IsPersistentEditorOpen(item *QTableWidgetItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (bool)(C.QTableWidget_isPersistentEditorOpen(this.h, item.cPointer()))
 }
 
 func (this *QTableWidget) CellWidget(row int, column int) *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QTableWidget_cellWidget(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableWidget) SetCellWidget(row int, column int, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QTableWidget_setCellWidget(this.h, (C.int)(row), (C.int)(column), widget.cPointer())
 }
 
 func (this *QTableWidget) RemoveCellWidget(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_removeCellWidget(this.h, (C.int)(row), (C.int)(column))
 }
 
 func (this *QTableWidget) SetRangeSelected(rangeVal *QTableWidgetSelectionRange, selectVal bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rangeVal)
 	C.QTableWidget_setRangeSelected(this.h, rangeVal.cPointer(), (C.bool)(selectVal))
 }
 
 func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTableWidget_selectedRanges(this.h)
 	_ret := make([]QTableWidgetSelectionRange, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTableWidgetSelectionRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -851,6 +1001,7 @@ func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
 }
 
 func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTableWidget_selectedItems(this.h)
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTableWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -861,6 +1012,7 @@ func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
 }
 
 func (this *QTableWidget) FindItems(text string, flags MatchFlag) []*QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -875,64 +1027,84 @@ func (this *QTableWidget) FindItems(text string, flags MatchFlag) []*QTableWidge
 }
 
 func (this *QTableWidget) VisualRow(logicalRow int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_visualRow(this.h, (C.int)(logicalRow)))
 }
 
 func (this *QTableWidget) VisualColumn(logicalColumn int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTableWidget_visualColumn(this.h, (C.int)(logicalColumn)))
 }
 
 func (this *QTableWidget) ItemAt(p *QPoint) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	return newQTableWidgetItem(C.QTableWidget_itemAt(this.h, p.cPointer()))
 }
 
 func (this *QTableWidget) ItemAt2(x int, y int) *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_itemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QTableWidget) VisualItemRect(item *QTableWidgetItem) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	_goptr := newQRect(C.QTableWidget_visualItemRect(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTableWidget) ItemPrototype() *QTableWidgetItem {
+	defer runtime.KeepAlive(this)
 	return newQTableWidgetItem(C.QTableWidget_itemPrototype(this.h))
 }
 
 func (this *QTableWidget) SetItemPrototype(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_setItemPrototype(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) ScrollToItem(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_scrollToItem(this.h, item.cPointer())
 }
 
 func (this *QTableWidget) InsertRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_insertRow(this.h, (C.int)(row))
 }
 
 func (this *QTableWidget) InsertColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_insertColumn(this.h, (C.int)(column))
 }
 
 func (this *QTableWidget) RemoveRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_removeRow(this.h, (C.int)(row))
 }
 
 func (this *QTableWidget) RemoveColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_removeColumn(this.h, (C.int)(column))
 }
 
 func (this *QTableWidget) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_clear(this.h)
 }
 
 func (this *QTableWidget) ClearContents() {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_clearContents(this.h)
 }
 
 func (this *QTableWidget) ItemPressed(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemPressed(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemPressed(slot func(item *QTableWidgetItem)) {
@@ -953,6 +1125,8 @@ func miqt_exec_callback_QTableWidget_itemPressed(cb C.intptr_t, item *C.QTableWi
 }
 
 func (this *QTableWidget) ItemClicked(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemClicked(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemClicked(slot func(item *QTableWidgetItem)) {
@@ -973,6 +1147,8 @@ func miqt_exec_callback_QTableWidget_itemClicked(cb C.intptr_t, item *C.QTableWi
 }
 
 func (this *QTableWidget) ItemDoubleClicked(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemDoubleClicked(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemDoubleClicked(slot func(item *QTableWidgetItem)) {
@@ -993,6 +1169,8 @@ func miqt_exec_callback_QTableWidget_itemDoubleClicked(cb C.intptr_t, item *C.QT
 }
 
 func (this *QTableWidget) ItemActivated(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemActivated(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemActivated(slot func(item *QTableWidgetItem)) {
@@ -1013,6 +1191,8 @@ func miqt_exec_callback_QTableWidget_itemActivated(cb C.intptr_t, item *C.QTable
 }
 
 func (this *QTableWidget) ItemEntered(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemEntered(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemEntered(slot func(item *QTableWidgetItem)) {
@@ -1033,6 +1213,8 @@ func miqt_exec_callback_QTableWidget_itemEntered(cb C.intptr_t, item *C.QTableWi
 }
 
 func (this *QTableWidget) ItemChanged(item *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_itemChanged(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemChanged(slot func(item *QTableWidgetItem)) {
@@ -1053,6 +1235,9 @@ func miqt_exec_callback_QTableWidget_itemChanged(cb C.intptr_t, item *C.QTableWi
 }
 
 func (this *QTableWidget) CurrentItemChanged(current *QTableWidgetItem, previous *QTableWidgetItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 	C.QTableWidget_currentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QTableWidget) OnCurrentItemChanged(slot func(current *QTableWidgetItem, previous *QTableWidgetItem)) {
@@ -1075,6 +1260,7 @@ func miqt_exec_callback_QTableWidget_currentItemChanged(cb C.intptr_t, current *
 }
 
 func (this *QTableWidget) ItemSelectionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_itemSelectionChanged(this.h)
 }
 func (this *QTableWidget) OnItemSelectionChanged(slot func()) {
@@ -1092,6 +1278,7 @@ func miqt_exec_callback_QTableWidget_itemSelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QTableWidget) CellPressed(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellPressed(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellPressed(slot func(row int, column int)) {
@@ -1114,6 +1301,7 @@ func miqt_exec_callback_QTableWidget_cellPressed(cb C.intptr_t, row C.int, colum
 }
 
 func (this *QTableWidget) CellClicked(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellClicked(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellClicked(slot func(row int, column int)) {
@@ -1136,6 +1324,7 @@ func miqt_exec_callback_QTableWidget_cellClicked(cb C.intptr_t, row C.int, colum
 }
 
 func (this *QTableWidget) CellDoubleClicked(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellDoubleClicked(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellDoubleClicked(slot func(row int, column int)) {
@@ -1158,6 +1347,7 @@ func miqt_exec_callback_QTableWidget_cellDoubleClicked(cb C.intptr_t, row C.int,
 }
 
 func (this *QTableWidget) CellActivated(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellActivated(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellActivated(slot func(row int, column int)) {
@@ -1180,6 +1370,7 @@ func miqt_exec_callback_QTableWidget_cellActivated(cb C.intptr_t, row C.int, col
 }
 
 func (this *QTableWidget) CellEntered(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellEntered(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellEntered(slot func(row int, column int)) {
@@ -1202,6 +1393,7 @@ func miqt_exec_callback_QTableWidget_cellEntered(cb C.intptr_t, row C.int, colum
 }
 
 func (this *QTableWidget) CellChanged(row int, column int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_cellChanged(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellChanged(slot func(row int, column int)) {
@@ -1224,6 +1416,7 @@ func miqt_exec_callback_QTableWidget_cellChanged(cb C.intptr_t, row C.int, colum
 }
 
 func (this *QTableWidget) CurrentCellChanged(currentRow int, currentColumn int, previousRow int, previousColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_currentCellChanged(this.h, (C.int)(currentRow), (C.int)(currentColumn), (C.int)(previousRow), (C.int)(previousColumn))
 }
 func (this *QTableWidget) OnCurrentCellChanged(slot func(currentRow int, currentColumn int, previousRow int, previousColumn int)) {
@@ -1272,15 +1465,19 @@ func QTableWidget_Tr3(s string, c string, n int) string {
 }
 
 func (this *QTableWidget) SortItems2(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QTableWidget_sortItems2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QTableWidget_scrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
 // RowMoved can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) RowMoved(row int, oldIndex int, newIndex int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_rowMoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(oldIndex), (C.int)(newIndex))
@@ -1293,6 +1490,7 @@ func (this *QTableWidget) RowMoved(row int, oldIndex int, newIndex int) {
 
 // ColumnMoved can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ColumnMoved(column int, oldIndex int, newIndex int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_columnMoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(column), (C.int)(oldIndex), (C.int)(newIndex))
@@ -1305,6 +1503,7 @@ func (this *QTableWidget) ColumnMoved(column int, oldIndex int, newIndex int) {
 
 // RowResized can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) RowResized(row int, oldHeight int, newHeight int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_rowResized(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(oldHeight), (C.int)(newHeight))
@@ -1317,6 +1516,7 @@ func (this *QTableWidget) RowResized(row int, oldHeight int, newHeight int) {
 
 // ColumnResized can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ColumnResized(column int, oldWidth int, newWidth int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_columnResized(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(column), (C.int)(oldWidth), (C.int)(newWidth))
@@ -1329,6 +1529,7 @@ func (this *QTableWidget) ColumnResized(column int, oldWidth int, newWidth int) 
 
 // RowCountChanged can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) RowCountChanged(oldCount int, newCount int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_rowCountChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(oldCount), (C.int)(newCount))
@@ -1341,6 +1542,7 @@ func (this *QTableWidget) RowCountChanged(oldCount int, newCount int) {
 
 // ColumnCountChanged can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ColumnCountChanged(oldCount int, newCount int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_columnCountChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(oldCount), (C.int)(newCount))
@@ -1353,6 +1555,7 @@ func (this *QTableWidget) ColumnCountChanged(oldCount int, newCount int) {
 
 // State can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) State() QAbstractItemView__State {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QTableWidget_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1367,6 +1570,7 @@ func (this *QTableWidget) State() QAbstractItemView__State {
 
 // SetState can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) SetState(state QAbstractItemView__State) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -1379,6 +1583,7 @@ func (this *QTableWidget) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ScheduleDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1391,6 +1596,7 @@ func (this *QTableWidget) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ExecuteDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1403,6 +1609,8 @@ func (this *QTableWidget) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) SetDirtyRegion(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
@@ -1415,6 +1623,7 @@ func (this *QTableWidget) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ScrollDirtyRegion(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -1427,6 +1636,7 @@ func (this *QTableWidget) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) DirtyRegionOffset() QPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QTableWidget_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1443,6 +1653,7 @@ func (this *QTableWidget) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) StartAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1455,6 +1666,7 @@ func (this *QTableWidget) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) StopAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1467,6 +1679,7 @@ func (this *QTableWidget) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) DoAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1479,6 +1692,7 @@ func (this *QTableWidget) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QTableWidget_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1493,6 +1707,7 @@ func (this *QTableWidget) DropIndicatorPosition() QAbstractItemView__DropIndicat
 
 // SetViewportMargins can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -1505,6 +1720,7 @@ func (this *QTableWidget) SetViewportMargins(left int, top int, right int, botto
 
 // ViewportMargins can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QTableWidget_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1521,6 +1737,8 @@ func (this *QTableWidget) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -1533,6 +1751,7 @@ func (this *QTableWidget) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1545,6 +1764,7 @@ func (this *QTableWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1557,6 +1777,7 @@ func (this *QTableWidget) Create() {
 
 // Destroy can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTableWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1569,6 +1790,7 @@ func (this *QTableWidget) Destroy() {
 
 // FocusNextChild can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTableWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1583,6 +1805,7 @@ func (this *QTableWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTableWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1597,6 +1820,7 @@ func (this *QTableWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTableWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1611,6 +1835,7 @@ func (this *QTableWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTableWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1625,6 +1850,7 @@ func (this *QTableWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1641,6 +1867,8 @@ func (this *QTableWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTableWidget that was directly constructed.
 func (this *QTableWidget) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTableWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1654,6 +1882,8 @@ func (this *QTableWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTableWidget) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QTableWidget_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -1682,6 +1912,7 @@ func miqt_exec_callback_QTableWidget_event(self *C.QTableWidget, cb C.intptr_t, 
 }
 
 func (this *QTableWidget) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1725,6 +1956,8 @@ func miqt_exec_callback_QTableWidget_mimeTypes(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_MimeData(items []*QTableWidgetItem) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QTableWidgetItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -1760,12 +1993,15 @@ func miqt_exec_callback_QTableWidget_mimeData(self *C.QTableWidget, cb C.intptr_
 	slotval1 := items_ret
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidget) callVirtualBase_DropMimeData(row int, column int, data *QMimeData, action DropAction) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 
 	return (bool)(C.QTableWidget_virtualbase_dropMimeData(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), data.cPointer(), (C.int)(action)))
 
@@ -1800,6 +2036,7 @@ func miqt_exec_callback_QTableWidget_dropMimeData(self *C.QTableWidget, cb C.int
 }
 
 func (this *QTableWidget) callVirtualBase_SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QTableWidget_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1825,6 +2062,8 @@ func miqt_exec_callback_QTableWidget_supportedDropActions(self *C.QTableWidget, 
 }
 
 func (this *QTableWidget) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1851,6 +2090,8 @@ func miqt_exec_callback_QTableWidget_dropEvent(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QTableWidget_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
@@ -1877,6 +2118,8 @@ func miqt_exec_callback_QTableWidget_setRootIndex(self *C.QTableWidget, cb C.int
 }
 
 func (this *QTableWidget) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectionModel)
 
 	C.QTableWidget_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1903,6 +2146,7 @@ func miqt_exec_callback_QTableWidget_setSelectionModel(self *C.QTableWidget, cb 
 }
 
 func (this *QTableWidget) callVirtualBase_DoItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -1926,6 +2170,8 @@ func miqt_exec_callback_QTableWidget_doItemsLayout(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QTableWidget_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1950,12 +2196,15 @@ func miqt_exec_callback_QTableWidget_visualRect(self *C.QTableWidget, cb C.intpt
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_VisualRect, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QTableWidget_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
@@ -1984,6 +2233,8 @@ func miqt_exec_callback_QTableWidget_scrollTo(self *C.QTableWidget, cb C.intptr_
 }
 
 func (this *QTableWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 
 	_goptr := newQModelIndex(C.QTableWidget_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2008,12 +2259,14 @@ func miqt_exec_callback_QTableWidget_indexAt(self *C.QTableWidget, cb C.intptr_t
 	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_IndexAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -2042,6 +2295,8 @@ func miqt_exec_callback_QTableWidget_scrollContentsBy(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_InitViewItemOption(option *QStyleOptionViewItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QTableWidget_virtualbase_initViewItemOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -2068,6 +2323,8 @@ func miqt_exec_callback_QTableWidget_initViewItemOption(self *C.QTableWidget, cb
 }
 
 func (this *QTableWidget) callVirtualBase_PaintEvent(e *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QTableWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -2094,6 +2351,8 @@ func miqt_exec_callback_QTableWidget_paintEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2120,6 +2379,7 @@ func miqt_exec_callback_QTableWidget_timerEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_HorizontalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -2145,6 +2405,7 @@ func miqt_exec_callback_QTableWidget_horizontalOffset(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_VerticalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -2170,6 +2431,7 @@ func miqt_exec_callback_QTableWidget_verticalOffset(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QTableWidget_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2196,12 +2458,15 @@ func miqt_exec_callback_QTableWidget_moveCursor(self *C.QTableWidget, cb C.intpt
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QTableWidget_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
@@ -2230,6 +2495,8 @@ func miqt_exec_callback_QTableWidget_setSelection(self *C.QTableWidget, cb C.int
 }
 
 func (this *QTableWidget) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QTableWidget_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2254,12 +2521,14 @@ func miqt_exec_callback_QTableWidget_visualRegionForSelection(self *C.QTableWidg
 	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QRegion(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2287,10 +2556,11 @@ func miqt_exec_callback_QTableWidget_selectedIndexes(self *C.QTableWidget, cb C.
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SelectedIndexes)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2299,6 +2569,7 @@ func miqt_exec_callback_QTableWidget_selectedIndexes(self *C.QTableWidget, cb C.
 }
 
 func (this *QTableWidget) callVirtualBase_UpdateGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -2322,6 +2593,7 @@ func miqt_exec_callback_QTableWidget_updateGeometries(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTableWidget_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2343,12 +2615,14 @@ func miqt_exec_callback_QTableWidget_viewportSizeHint(self *C.QTableWidget, cb C
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_SizeHintForRow(row int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -2377,6 +2651,7 @@ func miqt_exec_callback_QTableWidget_sizeHintForRow(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_SizeHintForColumn(column int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -2405,6 +2680,7 @@ func miqt_exec_callback_QTableWidget_sizeHintForColumn(self *C.QTableWidget, cb 
 }
 
 func (this *QTableWidget) callVirtualBase_VerticalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2431,6 +2707,7 @@ func miqt_exec_callback_QTableWidget_verticalScrollbarAction(self *C.QTableWidge
 }
 
 func (this *QTableWidget) callVirtualBase_HorizontalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2457,6 +2734,8 @@ func miqt_exec_callback_QTableWidget_horizontalScrollbarAction(self *C.QTableWid
 }
 
 func (this *QTableWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QTableWidget_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -2485,6 +2764,9 @@ func miqt_exec_callback_QTableWidget_isIndexHidden(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selected)
+	defer runtime.KeepAlive(deselected)
 
 	C.QTableWidget_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
@@ -2513,6 +2795,9 @@ func miqt_exec_callback_QTableWidget_selectionChanged(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 
 	C.QTableWidget_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
@@ -2541,6 +2826,7 @@ func miqt_exec_callback_QTableWidget_currentChanged(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_KeyboardSearch(search string) {
+	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -2574,6 +2860,8 @@ func miqt_exec_callback_QTableWidget_keyboardSearch(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return newQAbstractItemDelegate(C.QTableWidget_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -2596,12 +2884,14 @@ func miqt_exec_callback_QTableWidget_itemDelegateForIndex(self *C.QTableWidget, 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidget) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTableWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2626,12 +2916,14 @@ func miqt_exec_callback_QTableWidget_inputMethodQuery(self *C.QTableWidget, cb C
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -2655,6 +2947,7 @@ func miqt_exec_callback_QTableWidget_reset(self *C.QTableWidget, cb C.intptr_t) 
 }
 
 func (this *QTableWidget) callVirtualBase_SelectAll() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -2678,6 +2971,9 @@ func miqt_exec_callback_QTableWidget_selectAll(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -2721,6 +3017,8 @@ func miqt_exec_callback_QTableWidget_dataChanged(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QTableWidget_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -2751,6 +3049,8 @@ func miqt_exec_callback_QTableWidget_rowsInserted(self *C.QTableWidget, cb C.int
 }
 
 func (this *QTableWidget) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QTableWidget_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -2781,6 +3081,7 @@ func miqt_exec_callback_QTableWidget_rowsAboutToBeRemoved(self *C.QTableWidget, 
 }
 
 func (this *QTableWidget) callVirtualBase_UpdateEditorData() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -2804,6 +3105,7 @@ func miqt_exec_callback_QTableWidget_updateEditorData(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_UpdateEditorGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -2827,6 +3129,7 @@ func miqt_exec_callback_QTableWidget_updateEditorGeometries(self *C.QTableWidget
 }
 
 func (this *QTableWidget) callVirtualBase_VerticalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2853,6 +3156,7 @@ func miqt_exec_callback_QTableWidget_verticalScrollbarValueChanged(self *C.QTabl
 }
 
 func (this *QTableWidget) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2879,6 +3183,8 @@ func miqt_exec_callback_QTableWidget_horizontalScrollbarValueChanged(self *C.QTa
 }
 
 func (this *QTableWidget) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QTableWidget_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -2907,6 +3213,8 @@ func miqt_exec_callback_QTableWidget_closeEditor(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_CommitData(editor *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QTableWidget_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2933,6 +3241,8 @@ func miqt_exec_callback_QTableWidget_commitData(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_EditorDestroyed(editor *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QTableWidget_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2959,6 +3269,9 @@ func miqt_exec_callback_QTableWidget_editorDestroyed(self *C.QTableWidget, cb C.
 }
 
 func (this *QTableWidget) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTableWidget_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
@@ -2991,6 +3304,9 @@ func miqt_exec_callback_QTableWidget_edit2(self *C.QTableWidget, cb C.intptr_t, 
 }
 
 func (this *QTableWidget) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (QItemSelectionModel__SelectionFlag)(C.QTableWidget_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
@@ -3021,6 +3337,7 @@ func miqt_exec_callback_QTableWidget_selectionCommand(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_StartDrag(supportedActions DropAction) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -3047,6 +3364,7 @@ func miqt_exec_callback_QTableWidget_startDrag(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTableWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -3075,6 +3393,8 @@ func miqt_exec_callback_QTableWidget_focusNextPrevChild(self *C.QTableWidget, cb
 }
 
 func (this *QTableWidget) callVirtualBase_ViewportEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTableWidget_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -3103,6 +3423,8 @@ func miqt_exec_callback_QTableWidget_viewportEvent(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3129,6 +3451,8 @@ func miqt_exec_callback_QTableWidget_mousePressEvent(self *C.QTableWidget, cb C.
 }
 
 func (this *QTableWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3155,6 +3479,8 @@ func miqt_exec_callback_QTableWidget_mouseMoveEvent(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3181,6 +3507,8 @@ func miqt_exec_callback_QTableWidget_mouseReleaseEvent(self *C.QTableWidget, cb 
 }
 
 func (this *QTableWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3207,6 +3535,8 @@ func miqt_exec_callback_QTableWidget_mouseDoubleClickEvent(self *C.QTableWidget,
 }
 
 func (this *QTableWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3233,6 +3563,8 @@ func miqt_exec_callback_QTableWidget_dragEnterEvent(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3259,6 +3591,8 @@ func miqt_exec_callback_QTableWidget_dragMoveEvent(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3285,6 +3619,8 @@ func miqt_exec_callback_QTableWidget_dragLeaveEvent(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3311,6 +3647,8 @@ func miqt_exec_callback_QTableWidget_focusInEvent(self *C.QTableWidget, cb C.int
 }
 
 func (this *QTableWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3337,6 +3675,8 @@ func miqt_exec_callback_QTableWidget_focusOutEvent(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3363,6 +3703,8 @@ func miqt_exec_callback_QTableWidget_keyPressEvent(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3389,6 +3731,8 @@ func miqt_exec_callback_QTableWidget_resizeEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3415,6 +3759,9 @@ func miqt_exec_callback_QTableWidget_inputMethodEvent(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTableWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -3445,6 +3792,7 @@ func miqt_exec_callback_QTableWidget_eventFilter(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTableWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3466,12 +3814,14 @@ func miqt_exec_callback_QTableWidget_minimumSizeHint(self *C.QTableWidget, cb C.
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTableWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3493,12 +3843,15 @@ func miqt_exec_callback_QTableWidget_sizeHint(self *C.QTableWidget, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTableWidget) callVirtualBase_SetupViewport(viewport *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QTableWidget_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -3525,6 +3878,8 @@ func miqt_exec_callback_QTableWidget_setupViewport(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTableWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3551,6 +3906,8 @@ func miqt_exec_callback_QTableWidget_wheelEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTableWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3577,6 +3934,8 @@ func miqt_exec_callback_QTableWidget_contextMenuEvent(self *C.QTableWidget, cb C
 }
 
 func (this *QTableWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTableWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -3603,6 +3962,8 @@ func miqt_exec_callback_QTableWidget_changeEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QTableWidget_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -3629,6 +3990,7 @@ func miqt_exec_callback_QTableWidget_initStyleOption(self *C.QTableWidget, cb C.
 }
 
 func (this *QTableWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -3654,6 +4016,7 @@ func miqt_exec_callback_QTableWidget_devType(self *C.QTableWidget, cb C.intptr_t
 }
 
 func (this *QTableWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QTableWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -3680,6 +4043,7 @@ func miqt_exec_callback_QTableWidget_setVisible(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3708,6 +4072,7 @@ func miqt_exec_callback_QTableWidget_heightForWidth(self *C.QTableWidget, cb C.i
 }
 
 func (this *QTableWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTableWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -3733,6 +4098,7 @@ func miqt_exec_callback_QTableWidget_hasHeightForWidth(self *C.QTableWidget, cb 
 }
 
 func (this *QTableWidget) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTableWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -3752,12 +4118,15 @@ func miqt_exec_callback_QTableWidget_paintEngine(self *C.QTableWidget, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3784,6 +4153,8 @@ func miqt_exec_callback_QTableWidget_keyReleaseEvent(self *C.QTableWidget, cb C.
 }
 
 func (this *QTableWidget) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3810,6 +4181,8 @@ func miqt_exec_callback_QTableWidget_enterEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3836,6 +4209,8 @@ func miqt_exec_callback_QTableWidget_leaveEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3862,6 +4237,8 @@ func miqt_exec_callback_QTableWidget_moveEvent(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3888,6 +4265,8 @@ func miqt_exec_callback_QTableWidget_closeEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3914,6 +4293,8 @@ func miqt_exec_callback_QTableWidget_tabletEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3940,6 +4321,8 @@ func miqt_exec_callback_QTableWidget_actionEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3966,6 +4349,8 @@ func miqt_exec_callback_QTableWidget_showEvent(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3992,6 +4377,7 @@ func miqt_exec_callback_QTableWidget_hideEvent(self *C.QTableWidget, cb C.intptr
 }
 
 func (this *QTableWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -4033,6 +4419,7 @@ func miqt_exec_callback_QTableWidget_nativeEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTableWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -4061,6 +4448,8 @@ func miqt_exec_callback_QTableWidget_metric(self *C.QTableWidget, cb C.intptr_t,
 }
 
 func (this *QTableWidget) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QTableWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -4087,6 +4476,8 @@ func miqt_exec_callback_QTableWidget_initPainter(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTableWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -4109,12 +4500,14 @@ func miqt_exec_callback_QTableWidget_redirected(self *C.QTableWidget, cb C.intpt
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidget) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTableWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -4134,12 +4527,15 @@ func miqt_exec_callback_QTableWidget_sharedPainter(self *C.QTableWidget, cb C.in
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTableWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -4166,6 +4562,8 @@ func miqt_exec_callback_QTableWidget_childEvent(self *C.QTableWidget, cb C.intpt
 }
 
 func (this *QTableWidget) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTableWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -4192,6 +4590,8 @@ func miqt_exec_callback_QTableWidget_customEvent(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTableWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -4218,6 +4618,8 @@ func miqt_exec_callback_QTableWidget_connectNotify(self *C.QTableWidget, cb C.in
 }
 
 func (this *QTableWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTableWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -4255,8 +4657,9 @@ func (this *QTableWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTableWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTableWidget) {
-		C.QTableWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTableWidget_delete((*C.QTableWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

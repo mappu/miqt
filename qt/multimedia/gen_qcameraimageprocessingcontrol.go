@@ -35,8 +35,15 @@ const (
 
 type QCameraImageProcessingControl struct {
 	h  *C.QCameraImageProcessingControl
-	gc *[1]*C.QCameraImageProcessingControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraImageProcessingControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraImageProcessingControl) cPointer() *C.QCameraImageProcessingControl {
@@ -71,10 +78,12 @@ func UnsafeNewQCameraImageProcessingControl(h unsafe.Pointer) *QCameraImageProce
 }
 
 func (this *QCameraImageProcessingControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessingControl_metaObject(this.h)))
 }
 
 func (this *QCameraImageProcessingControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraImageProcessingControl_metacast(this.h, param1_Cstring))
@@ -99,20 +108,26 @@ func QCameraImageProcessingControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraImageProcessingControl) IsParameterSupported(param1 QCameraImageProcessingControl__ProcessingParameter) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraImageProcessingControl_isParameterSupported(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraImageProcessingControl) IsParameterValueSupported(parameter QCameraImageProcessingControl__ProcessingParameter, value *qt.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QCameraImageProcessingControl_isParameterValueSupported(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
 }
 
 func (this *QCameraImageProcessingControl) Parameter(parameter QCameraImageProcessingControl__ProcessingParameter) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraImageProcessingControl_parameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraImageProcessingControl) SetParameter(parameter QCameraImageProcessingControl__ProcessingParameter, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QCameraImageProcessingControl_setParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
 }
 
@@ -172,8 +187,9 @@ func (this *QCameraImageProcessingControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraImageProcessingControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraImageProcessingControl) {
-		C.QCameraImageProcessingControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraImageProcessingControl_delete((*C.QCameraImageProcessingControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -167,7 +167,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitter_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QSplitter_virtualbase_sizeHint(const void* self);
@@ -182,7 +184,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitter_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QSplitter_virtualbase_minimumSizeHint(const void* self);
@@ -873,7 +877,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QSplitter_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QSplitter_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1889,6 +1895,14 @@ void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::disconnectNotify(*signal);
 }
 
+QSize* QSplitter_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QSplitter_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index) {
 	MiqtVirtualQSplitter* self_cast = dynamic_cast<MiqtVirtualQSplitter*>( (QSplitter*)(self) );
 	if (self_cast == nullptr) {
@@ -2053,7 +2067,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QSplitterHandle_virtualbase_sizeHint(const void* self);
@@ -2201,7 +2217,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self);
@@ -2710,7 +2728,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QSplitterHandle_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QSplitterHandle_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -3578,6 +3598,14 @@ bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::disconnectNotify(*signal);
+}
+
+QSize* QSplitterHandle_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QSplitterHandle_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p) {

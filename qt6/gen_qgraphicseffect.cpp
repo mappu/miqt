@@ -111,7 +111,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
@@ -506,6 +508,10 @@ void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	static_cast<MiqtVirtualQGraphicsEffect*>(self)->QGraphicsEffect::disconnectNotify(*signal);
 }
 
+QRectF* QGraphicsEffect_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -691,7 +697,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
@@ -1083,6 +1091,10 @@ void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMetho
 	static_cast<MiqtVirtualQGraphicsColorizeEffect*>(self)->QGraphicsColorizeEffect::disconnectNotify(*signal);
 }
 
+QRectF* QGraphicsColorizeEffect_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -1207,7 +1219,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
@@ -1620,6 +1634,10 @@ void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	static_cast<MiqtVirtualQGraphicsBlurEffect*>(self)->QGraphicsBlurEffect::disconnectNotify(*signal);
 }
 
+QRectF* QGraphicsBlurEffect_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -1744,7 +1762,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
@@ -2204,6 +2224,10 @@ void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMet
 	static_cast<MiqtVirtualQGraphicsDropShadowEffect*>(self)->QGraphicsDropShadowEffect::disconnectNotify(*signal);
 }
 
+QRectF* QGraphicsDropShadowEffect_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
 void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -2345,7 +2369,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
@@ -2735,6 +2761,10 @@ bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr
 
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGraphicsOpacityEffect*>(self)->QGraphicsOpacityEffect::disconnectNotify(*signal);
+}
+
+QRectF* QGraphicsOpacityEffect_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {

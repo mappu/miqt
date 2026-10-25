@@ -185,6 +185,10 @@ bool QwtPlotPicker_override_virtual_mouseMatch2(void* self, intptr_t slot);
 bool QwtPlotPicker_virtualbase_mouseMatch2(const void* self, QwtEventPattern__MousePattern* param1, QMouseEvent* param2);
 bool QwtPlotPicker_override_virtual_keyMatch2(void* self, intptr_t slot);
 bool QwtPlotPicker_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2);
+QwtText* QwtPlotPicker_virtualreturncopy_QwtText(QwtText* src);
+QPainterPath* QwtPlotPicker_virtualreturncopy_QPainterPath(QPainterPath* src);
+QRegion* QwtPlotPicker_virtualreturncopy_QRegion(QRegion* src);
+QRect* QwtPlotPicker_virtualreturncopy_QRect(QRect* src);
 
 QRectF* QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
 QRectF* QwtPlotPicker_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1);

@@ -38,7 +38,13 @@ const (
 
 type QPdfDocumentRenderOptions struct {
 	h  *C.QPdfDocumentRenderOptions
-	gc *[1]*C.QPdfDocumentRenderOptions
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfDocumentRenderOptions) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfDocumentRenderOptions) cPointer() *C.QPdfDocumentRenderOptions {
@@ -77,43 +83,54 @@ func NewQPdfDocumentRenderOptions() *QPdfDocumentRenderOptions {
 
 // NewQPdfDocumentRenderOptions2 constructs a new QPdfDocumentRenderOptions object.
 func NewQPdfDocumentRenderOptions2(param1 *QPdfDocumentRenderOptions) *QPdfDocumentRenderOptions {
+	defer runtime.KeepAlive(param1)
 
 	return newQPdfDocumentRenderOptions(C.QPdfDocumentRenderOptions_new2(param1.cPointer()))
 }
 
 func (this *QPdfDocumentRenderOptions) Rotation() QPdfDocumentRenderOptions__Rotation {
+	defer runtime.KeepAlive(this)
 	return (QPdfDocumentRenderOptions__Rotation)(C.QPdfDocumentRenderOptions_rotation(this.h))
 }
 
 func (this *QPdfDocumentRenderOptions) SetRotation(r QPdfDocumentRenderOptions__Rotation) {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocumentRenderOptions_setRotation(this.h, (C.int)(r))
 }
 
 func (this *QPdfDocumentRenderOptions) RenderFlags() QPdfDocumentRenderOptions__RenderFlag {
+	defer runtime.KeepAlive(this)
 	return (QPdfDocumentRenderOptions__RenderFlag)(C.QPdfDocumentRenderOptions_renderFlags(this.h))
 }
 
 func (this *QPdfDocumentRenderOptions) SetRenderFlags(r QPdfDocumentRenderOptions__RenderFlag) {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocumentRenderOptions_setRenderFlags(this.h, (C.int)(r))
 }
 
 func (this *QPdfDocumentRenderOptions) ScaledClipRect() *qt6.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QPdfDocumentRenderOptions_scaledClipRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocumentRenderOptions) SetScaledClipRect(r *qt6.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QPdfDocumentRenderOptions_setScaledClipRect(this.h, (*C.QRect)(r.UnsafePointer()))
 }
 
 func (this *QPdfDocumentRenderOptions) ScaledSize() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPdfDocumentRenderOptions_scaledSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocumentRenderOptions) SetScaledSize(s *qt6.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	C.QPdfDocumentRenderOptions_setScaledSize(this.h, (*C.QSize)(s.UnsafePointer()))
 }
 
@@ -129,8 +146,9 @@ func (this *QPdfDocumentRenderOptions) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfDocumentRenderOptions{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfDocumentRenderOptions) {
-		C.QPdfDocumentRenderOptions_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfDocumentRenderOptions_delete((*C.QPdfDocumentRenderOptions)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

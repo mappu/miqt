@@ -15,7 +15,13 @@ import (
 
 type QJSNumberCoercion struct {
 	h  *C.QJSNumberCoercion
-	gc *[1]*C.QJSNumberCoercion
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJSNumberCoercion) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJSNumberCoercion) cPointer() *C.QJSNumberCoercion {
@@ -48,6 +54,7 @@ func UnsafeNewQJSNumberCoercion(h unsafe.Pointer) *QJSNumberCoercion {
 
 // NewQJSNumberCoercion constructs a new QJSNumberCoercion object.
 func NewQJSNumberCoercion(param1 *QJSNumberCoercion) *QJSNumberCoercion {
+	defer runtime.KeepAlive(param1)
 
 	return newQJSNumberCoercion(C.QJSNumberCoercion_new(param1.cPointer()))
 }
@@ -76,8 +83,9 @@ func (this *QJSNumberCoercion) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJSNumberCoercion{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSNumberCoercion) {
-		C.QJSNumberCoercion_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJSNumberCoercion_delete((*C.QJSNumberCoercion)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

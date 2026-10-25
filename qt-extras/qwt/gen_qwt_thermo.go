@@ -33,8 +33,15 @@ const (
 
 type QwtThermo struct {
 	h  *C.QwtThermo
-	gc *[1]*C.QwtThermo
+	gc *[1]unsafe.Pointer
 	*QwtAbstractScale
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtThermo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtAbstractScale.miqtSetGC(gc)
 }
 
 func (this *QwtThermo) cPointer() *C.QwtThermo {
@@ -70,6 +77,7 @@ func UnsafeNewQwtThermo(h unsafe.Pointer) *QwtThermo {
 
 // NewQwtThermo constructs a new QwtThermo object.
 func NewQwtThermo(parent *qt.QWidget) *QwtThermo {
+	defer runtime.KeepAlive(parent)
 
 	return newQwtThermo(C.QwtThermo_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -81,10 +89,12 @@ func NewQwtThermo2() *QwtThermo {
 }
 
 func (this *QwtThermo) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtThermo_metaObject(this.h)))
 }
 
 func (this *QwtThermo) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtThermo_metacast(this.h, param1_Cstring))
@@ -109,142 +119,179 @@ func QwtThermo_TrUtf8(s string) string {
 }
 
 func (this *QwtThermo) SetOrientation(orientation qt.Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QwtThermo) Orientation() qt.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtThermo_orientation(this.h))
 }
 
 func (this *QwtThermo) SetScalePosition(scalePosition QwtThermo__ScalePosition) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setScalePosition(this.h, (C.int)(scalePosition))
 }
 
 func (this *QwtThermo) ScalePosition() QwtThermo__ScalePosition {
+	defer runtime.KeepAlive(this)
 	return (QwtThermo__ScalePosition)(C.QwtThermo_scalePosition(this.h))
 }
 
 func (this *QwtThermo) SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QwtThermo) Spacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtThermo_spacing(this.h))
 }
 
 func (this *QwtThermo) SetBorderWidth(borderWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setBorderWidth(this.h, (C.int)(borderWidth))
 }
 
 func (this *QwtThermo) BorderWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtThermo_borderWidth(this.h))
 }
 
 func (this *QwtThermo) SetOriginMode(originMode QwtThermo__OriginMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setOriginMode(this.h, (C.int)(originMode))
 }
 
 func (this *QwtThermo) OriginMode() QwtThermo__OriginMode {
+	defer runtime.KeepAlive(this)
 	return (QwtThermo__OriginMode)(C.QwtThermo_originMode(this.h))
 }
 
 func (this *QwtThermo) SetOrigin(origin float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setOrigin(this.h, (C.double)(origin))
 }
 
 func (this *QwtThermo) Origin() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtThermo_origin(this.h))
 }
 
 func (this *QwtThermo) SetFillBrush(fillBrush *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fillBrush)
 	C.QwtThermo_setFillBrush(this.h, (*C.QBrush)(fillBrush.UnsafePointer()))
 }
 
 func (this *QwtThermo) FillBrush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtThermo_fillBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtThermo) SetAlarmBrush(alarmBrush *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(alarmBrush)
 	C.QwtThermo_setAlarmBrush(this.h, (*C.QBrush)(alarmBrush.UnsafePointer()))
 }
 
 func (this *QwtThermo) AlarmBrush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtThermo_alarmBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtThermo) SetAlarmLevel(alarmLevel float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setAlarmLevel(this.h, (C.double)(alarmLevel))
 }
 
 func (this *QwtThermo) AlarmLevel() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtThermo_alarmLevel(this.h))
 }
 
 func (this *QwtThermo) SetAlarmEnabled(alarmEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setAlarmEnabled(this.h, (C.bool)(alarmEnabled))
 }
 
 func (this *QwtThermo) AlarmEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtThermo_alarmEnabled(this.h))
 }
 
 func (this *QwtThermo) SetColorMap(colorMap *QwtColorMap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(colorMap)
 	C.QwtThermo_setColorMap(this.h, colorMap.cPointer())
 }
 
 func (this *QwtThermo) ColorMap() *QwtColorMap {
+	defer runtime.KeepAlive(this)
 	return newQwtColorMap(C.QwtThermo_colorMap(this.h))
 }
 
 func (this *QwtThermo) ColorMap2() *QwtColorMap {
+	defer runtime.KeepAlive(this)
 	return newQwtColorMap(C.QwtThermo_colorMap2(this.h))
 }
 
 func (this *QwtThermo) SetPipeWidth(pipeWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setPipeWidth(this.h, (C.int)(pipeWidth))
 }
 
 func (this *QwtThermo) PipeWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtThermo_pipeWidth(this.h))
 }
 
 func (this *QwtThermo) SetRangeFlags(rangeFlags QwtInterval__BorderFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setRangeFlags(this.h, (C.int)(rangeFlags))
 }
 
 func (this *QwtThermo) RangeFlags() QwtInterval__BorderFlag {
+	defer runtime.KeepAlive(this)
 	return (QwtInterval__BorderFlag)(C.QwtThermo_rangeFlags(this.h))
 }
 
 func (this *QwtThermo) Value() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtThermo_value(this.h))
 }
 
 func (this *QwtThermo) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtThermo) MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_minimumSizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtThermo) SetScaleDraw(scaleDraw *QwtScaleDraw) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scaleDraw)
 	C.QwtThermo_setScaleDraw(this.h, scaleDraw.cPointer())
 }
 
 func (this *QwtThermo) ScaleDraw() *QwtScaleDraw {
+	defer runtime.KeepAlive(this)
 	return newQwtScaleDraw(C.QwtThermo_scaleDraw(this.h))
 }
 
 func (this *QwtThermo) SetValue(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtThermo_setValue(this.h, (C.double)(value))
 }
 
@@ -294,6 +341,7 @@ func QwtThermo_TrUtf83(s string, c string, n int) string {
 
 // ScaleDraw2 can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) ScaleDraw2() *QwtScaleDraw {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtScaleDraw(C.QwtThermo_protectedbase_scaleDraw2(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -308,6 +356,7 @@ func (this *QwtThermo) ScaleDraw2() *QwtScaleDraw {
 
 // PipeRect can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) PipeRect() qt.QRect {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_pipeRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -324,6 +373,8 @@ func (this *QwtThermo) PipeRect() qt.QRect {
 
 // FillRect can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) FillRect(param1 *qt.QRect) qt.QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_fillRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
@@ -340,6 +391,8 @@ func (this *QwtThermo) FillRect(param1 *qt.QRect) qt.QRect {
 
 // AlarmRect can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) AlarmRect(param1 *qt.QRect) qt.QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_alarmRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
@@ -356,6 +409,7 @@ func (this *QwtThermo) AlarmRect(param1 *qt.QRect) qt.QRect {
 
 // Rescale can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) Rescale(lowerBound float64, upperBound float64, stepSize float64) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtThermo_protectedbase_rescale(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(lowerBound), (C.double)(upperBound), (C.double)(stepSize))
@@ -368,6 +422,8 @@ func (this *QwtThermo) Rescale(lowerBound float64, upperBound float64, stepSize 
 
 // SetAbstractScaleDraw can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScaleDraw) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(abstractScaleDraw)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtThermo_protectedbase_setAbstractScaleDraw(&_dynamic_cast_ok, unsafe.Pointer(this.h), abstractScaleDraw.cPointer())
@@ -380,6 +436,7 @@ func (this *QwtThermo) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScaleD
 
 // AbstractScaleDraw can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) AbstractScaleDraw() *QwtAbstractScaleDraw {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtAbstractScaleDraw(C.QwtThermo_protectedbase_abstractScaleDraw(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -394,6 +451,7 @@ func (this *QwtThermo) AbstractScaleDraw() *QwtAbstractScaleDraw {
 
 // UpdateMicroFocus can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtThermo_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -406,6 +464,7 @@ func (this *QwtThermo) UpdateMicroFocus() {
 
 // Create can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtThermo_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -418,6 +477,7 @@ func (this *QwtThermo) Create() {
 
 // Destroy can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtThermo_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -430,6 +490,7 @@ func (this *QwtThermo) Destroy() {
 
 // FocusNextChild can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtThermo_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -444,6 +505,7 @@ func (this *QwtThermo) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtThermo_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -458,6 +520,7 @@ func (this *QwtThermo) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtThermo_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -472,6 +535,7 @@ func (this *QwtThermo) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtThermo_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -486,6 +550,7 @@ func (this *QwtThermo) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -502,6 +567,8 @@ func (this *QwtThermo) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtThermo that was directly constructed.
 func (this *QwtThermo) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtThermo_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -515,6 +582,7 @@ func (this *QwtThermo) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtThermo) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -536,12 +604,14 @@ func miqt_exec_callback_QwtThermo_sizeHint(self *C.QwtThermo, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtThermo_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtThermo) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -563,12 +633,14 @@ func miqt_exec_callback_QwtThermo_minimumSizeHint(self *C.QwtThermo, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtThermo_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtThermo) callVirtualBase_SetValue(value float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtThermo_virtualbase_setValue(unsafe.Pointer(this.h), (C.double)(value))
 
@@ -595,6 +667,9 @@ func miqt_exec_callback_QwtThermo_setValue(self *C.QwtThermo, cb C.intptr_t, val
 }
 
 func (this *QwtThermo) callVirtualBase_DrawLiquid(param1 *qt.QPainter, param2 *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtThermo_virtualbase_drawLiquid(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRect)(param2.UnsafePointer()))
 
@@ -623,6 +698,7 @@ func miqt_exec_callback_QwtThermo_drawLiquid(self *C.QwtThermo, cb C.intptr_t, p
 }
 
 func (this *QwtThermo) callVirtualBase_ScaleChange() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtThermo_virtualbase_scaleChange(unsafe.Pointer(this.h))
 
@@ -646,6 +722,8 @@ func miqt_exec_callback_QwtThermo_scaleChange(self *C.QwtThermo, cb C.intptr_t) 
 }
 
 func (this *QwtThermo) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtThermo_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
 
@@ -672,6 +750,8 @@ func miqt_exec_callback_QwtThermo_paintEvent(self *C.QwtThermo, cb C.intptr_t, p
 }
 
 func (this *QwtThermo) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtThermo_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
 
@@ -698,6 +778,8 @@ func miqt_exec_callback_QwtThermo_resizeEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtThermo_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -724,6 +806,7 @@ func miqt_exec_callback_QwtThermo_changeEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtThermo_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -749,6 +832,7 @@ func miqt_exec_callback_QwtThermo_devType(self *C.QwtThermo, cb C.intptr_t) C.in
 }
 
 func (this *QwtThermo) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtThermo_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -775,6 +859,7 @@ func miqt_exec_callback_QwtThermo_setVisible(self *C.QwtThermo, cb C.intptr_t, v
 }
 
 func (this *QwtThermo) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtThermo_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -803,6 +888,7 @@ func miqt_exec_callback_QwtThermo_heightForWidth(self *C.QwtThermo, cb C.intptr_
 }
 
 func (this *QwtThermo) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtThermo_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -828,6 +914,7 @@ func miqt_exec_callback_QwtThermo_hasHeightForWidth(self *C.QwtThermo, cb C.intp
 }
 
 func (this *QwtThermo) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtThermo_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -847,12 +934,15 @@ func miqt_exec_callback_QwtThermo_paintEngine(self *C.QwtThermo, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtThermo) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtThermo_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -881,6 +971,8 @@ func miqt_exec_callback_QwtThermo_event(self *C.QwtThermo, cb C.intptr_t, event 
 }
 
 func (this *QwtThermo) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -907,6 +999,8 @@ func miqt_exec_callback_QwtThermo_mousePressEvent(self *C.QwtThermo, cb C.intptr
 }
 
 func (this *QwtThermo) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -933,6 +1027,8 @@ func miqt_exec_callback_QwtThermo_mouseReleaseEvent(self *C.QwtThermo, cb C.intp
 }
 
 func (this *QwtThermo) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -959,6 +1055,8 @@ func miqt_exec_callback_QwtThermo_mouseDoubleClickEvent(self *C.QwtThermo, cb C.
 }
 
 func (this *QwtThermo) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -985,6 +1083,8 @@ func miqt_exec_callback_QwtThermo_mouseMoveEvent(self *C.QwtThermo, cb C.intptr_
 }
 
 func (this *QwtThermo) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -1011,6 +1111,8 @@ func miqt_exec_callback_QwtThermo_wheelEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -1037,6 +1139,8 @@ func miqt_exec_callback_QwtThermo_keyPressEvent(self *C.QwtThermo, cb C.intptr_t
 }
 
 func (this *QwtThermo) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -1063,6 +1167,8 @@ func miqt_exec_callback_QwtThermo_keyReleaseEvent(self *C.QwtThermo, cb C.intptr
 }
 
 func (this *QwtThermo) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1089,6 +1195,8 @@ func miqt_exec_callback_QwtThermo_focusInEvent(self *C.QwtThermo, cb C.intptr_t,
 }
 
 func (this *QwtThermo) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1115,6 +1223,8 @@ func miqt_exec_callback_QwtThermo_focusOutEvent(self *C.QwtThermo, cb C.intptr_t
 }
 
 func (this *QwtThermo) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1141,6 +1251,8 @@ func miqt_exec_callback_QwtThermo_enterEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1167,6 +1279,8 @@ func miqt_exec_callback_QwtThermo_leaveEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1193,6 +1307,8 @@ func miqt_exec_callback_QwtThermo_moveEvent(self *C.QwtThermo, cb C.intptr_t, ev
 }
 
 func (this *QwtThermo) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1219,6 +1335,8 @@ func miqt_exec_callback_QwtThermo_closeEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -1245,6 +1363,8 @@ func miqt_exec_callback_QwtThermo_contextMenuEvent(self *C.QwtThermo, cb C.intpt
 }
 
 func (this *QwtThermo) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1271,6 +1391,8 @@ func miqt_exec_callback_QwtThermo_tabletEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1297,6 +1419,8 @@ func miqt_exec_callback_QwtThermo_actionEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1323,6 +1447,8 @@ func miqt_exec_callback_QwtThermo_dragEnterEvent(self *C.QwtThermo, cb C.intptr_
 }
 
 func (this *QwtThermo) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1349,6 +1475,8 @@ func miqt_exec_callback_QwtThermo_dragMoveEvent(self *C.QwtThermo, cb C.intptr_t
 }
 
 func (this *QwtThermo) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1375,6 +1503,8 @@ func miqt_exec_callback_QwtThermo_dragLeaveEvent(self *C.QwtThermo, cb C.intptr_
 }
 
 func (this *QwtThermo) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1401,6 +1531,8 @@ func miqt_exec_callback_QwtThermo_dropEvent(self *C.QwtThermo, cb C.intptr_t, ev
 }
 
 func (this *QwtThermo) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1427,6 +1559,8 @@ func miqt_exec_callback_QwtThermo_showEvent(self *C.QwtThermo, cb C.intptr_t, ev
 }
 
 func (this *QwtThermo) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1453,6 +1587,7 @@ func miqt_exec_callback_QwtThermo_hideEvent(self *C.QwtThermo, cb C.intptr_t, ev
 }
 
 func (this *QwtThermo) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1494,6 +1629,7 @@ func miqt_exec_callback_QwtThermo_nativeEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtThermo_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1522,6 +1658,8 @@ func miqt_exec_callback_QwtThermo_metric(self *C.QwtThermo, cb C.intptr_t, param
 }
 
 func (this *QwtThermo) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtThermo_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1548,6 +1686,8 @@ func miqt_exec_callback_QwtThermo_initPainter(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtThermo_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1570,12 +1710,14 @@ func miqt_exec_callback_QwtThermo_redirected(self *C.QwtThermo, cb C.intptr_t, o
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtThermo) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtThermo_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1595,12 +1737,15 @@ func miqt_exec_callback_QwtThermo_sharedPainter(self *C.QwtThermo, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtThermo) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtThermo_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1627,6 +1772,7 @@ func miqt_exec_callback_QwtThermo_inputMethodEvent(self *C.QwtThermo, cb C.intpt
 }
 
 func (this *QwtThermo) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtThermo_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1651,12 +1797,14 @@ func miqt_exec_callback_QwtThermo_inputMethodQuery(self *C.QwtThermo, cb C.intpt
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QwtThermo_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtThermo) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtThermo_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1685,6 +1833,9 @@ func miqt_exec_callback_QwtThermo_focusNextPrevChild(self *C.QwtThermo, cb C.int
 }
 
 func (this *QwtThermo) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtThermo_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1715,6 +1866,8 @@ func miqt_exec_callback_QwtThermo_eventFilter(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1741,6 +1894,8 @@ func miqt_exec_callback_QwtThermo_timerEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1767,6 +1922,8 @@ func miqt_exec_callback_QwtThermo_childEvent(self *C.QwtThermo, cb C.intptr_t, e
 }
 
 func (this *QwtThermo) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QwtThermo_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1793,6 +1950,8 @@ func miqt_exec_callback_QwtThermo_customEvent(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtThermo_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1819,6 +1978,8 @@ func miqt_exec_callback_QwtThermo_connectNotify(self *C.QwtThermo, cb C.intptr_t
 }
 
 func (this *QwtThermo) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QwtThermo_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1856,8 +2017,9 @@ func (this *QwtThermo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtThermo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtThermo) {
-		C.QwtThermo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtThermo_delete((*C.QwtThermo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -16,7 +16,13 @@ import (
 
 type QNetworkCacheMetaData struct {
 	h  *C.QNetworkCacheMetaData
-	gc *[1]*C.QNetworkCacheMetaData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkCacheMetaData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkCacheMetaData) cPointer() *C.QNetworkCacheMetaData {
@@ -55,37 +61,50 @@ func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) OperatorAssign(other *QNetworkCacheMetaData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkCacheMetaData_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkCacheMetaData) Swap(other *QNetworkCacheMetaData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkCacheMetaData_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkCacheMetaData) OperatorEqual(other *QNetworkCacheMetaData) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkCacheMetaData_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) OperatorNotEqual(other *QNetworkCacheMetaData) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkCacheMetaData_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkCacheMetaData_isValid(this.h))
 }
 
 func (this *QNetworkCacheMetaData) Url() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkCacheMetaData_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetUrl(url *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QNetworkCacheMetaData_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
@@ -93,6 +112,7 @@ func (this *QNetworkCacheMetaData) RawHeaders() []struct {
 	First  []byte
 	Second []byte
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkCacheMetaData_rawHeaders(this.h)
 	_ret := make([]struct {
 		First  []byte
@@ -123,6 +143,7 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 	First  []byte
 	Second []byte
 }) {
+	defer runtime.KeepAlive(this)
 	headers_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(headers))))
 	defer C.free(unsafe.Pointer(headers_CArray_ptr))
 	headers_CArray := unsafe.Slice(headers_CArray_ptr, len(headers))
@@ -159,34 +180,43 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 }
 
 func (this *QNetworkCacheMetaData) LastModified() *qt6.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_lastModified(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetLastModified(dateTime *qt6.QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
 	C.QNetworkCacheMetaData_setLastModified(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
 }
 
 func (this *QNetworkCacheMetaData) ExpirationDate() *qt6.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_expirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetExpirationDate(dateTime *qt6.QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dateTime)
 	C.QNetworkCacheMetaData_setExpirationDate(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
 }
 
 func (this *QNetworkCacheMetaData) SaveToDisk() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkCacheMetaData_saveToDisk(this.h))
 }
 
 func (this *QNetworkCacheMetaData) SetSaveToDisk(allow bool) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkCacheMetaData_setSaveToDisk(this.h, (C.bool)(allow))
 }
 
 func (this *QNetworkCacheMetaData) Attributes() map[QNetworkRequest__Attribute]qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QNetworkCacheMetaData_attributes(this.h)
 	_ret := make(map[QNetworkRequest__Attribute]qt6.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -204,6 +234,8 @@ func (this *QNetworkCacheMetaData) Attributes() map[QNetworkRequest__Attribute]q
 }
 
 func (this *QNetworkCacheMetaData) SetAttributes(attributes map[QNetworkRequest__Attribute]qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(attributes)
 	attributes_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_Keys_CArray_ptr))
 	attributes_Keys_CArray := unsafe.Slice(attributes_Keys_CArray_ptr, len(attributes))
@@ -236,16 +268,23 @@ func (this *QNetworkCacheMetaData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkCacheMetaData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkCacheMetaData) {
-		C.QNetworkCacheMetaData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkCacheMetaData_delete((*C.QNetworkCacheMetaData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractNetworkCache struct {
 	h  *C.QAbstractNetworkCache
-	gc *[1]*C.QAbstractNetworkCache
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractNetworkCache) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractNetworkCache) cPointer() *C.QAbstractNetworkCache {
@@ -280,10 +319,12 @@ func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractNetworkCache_metaObject(this.h)))
 }
 
 func (this *QAbstractNetworkCache) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractNetworkCache_metacast(this.h, param1_Cstring))
@@ -299,36 +340,50 @@ func QAbstractNetworkCache_Tr(s string) string {
 }
 
 func (this *QAbstractNetworkCache) MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_metaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 	C.QAbstractNetworkCache_updateMetaData(this.h, metaData.cPointer())
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt6.QUrl) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QAbstractNetworkCache_remove(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QAbstractNetworkCache) CacheSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractNetworkCache_cacheSize(this.h))
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaData)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QAbstractNetworkCache_insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractNetworkCache) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractNetworkCache_clear(this.h)
 }
 
@@ -366,8 +421,9 @@ func (this *QAbstractNetworkCache) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractNetworkCache{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractNetworkCache) {
-		C.QAbstractNetworkCache_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractNetworkCache_delete((*C.QAbstractNetworkCache)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

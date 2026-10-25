@@ -177,6 +177,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QGeoAreaMonitorInfo** callback_return_value_free_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -199,6 +203,10 @@ public:
 		QGeoAreaMonitorInfo** callback_return_value_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QGeoAreaMonitorInfo** callback_return_value_free_arr = static_cast<QGeoAreaMonitorInfo**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -248,7 +256,9 @@ public:
 		memcpy(name_ms.data, name_b.data(), name_ms.len);
 		struct miqt_string sigval1 = name_ms;
 		QVariant* callback_return_value = miqt_exec_callback_QGeoAreaMonitorSource_backendProperty(this, handle__backendProperty, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGeoAreaMonitorSource_virtualbase_backendProperty(const void* self, struct miqt_string name);
@@ -818,6 +828,14 @@ bool QGeoAreaMonitorSource_override_virtual_disconnectNotify(void* self, intptr_
 
 void QGeoAreaMonitorSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGeoAreaMonitorSource*>(self)->QGeoAreaMonitorSource::disconnectNotify(*signal);
+}
+
+QGeoAreaMonitorInfo* QGeoAreaMonitorSource_virtualreturncopy_QGeoAreaMonitorInfo(QGeoAreaMonitorInfo* src) {
+	return new QGeoAreaMonitorInfo(*src);
+}
+
+QVariant* QGeoAreaMonitorSource_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QGeoAreaMonitorSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

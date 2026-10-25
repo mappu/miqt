@@ -16,7 +16,13 @@ import (
 
 type QDesignerLanguageExtension struct {
 	h  *C.QDesignerLanguageExtension
-	gc *[1]*C.QDesignerLanguageExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerLanguageExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerLanguageExtension) cPointer() *C.QDesignerLanguageExtension {
@@ -48,6 +54,7 @@ func UnsafeNewQDesignerLanguageExtension(h unsafe.Pointer) *QDesignerLanguageExt
 }
 
 func (this *QDesignerLanguageExtension) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerLanguageExtension_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -55,18 +62,27 @@ func (this *QDesignerLanguageExtension) Name() string {
 }
 
 func (this *QDesignerLanguageExtension) CreateFormWindowSettingsDialog(formWindow *QDesignerFormWindowInterface, parentWidget *qt.QWidget) *qt.QDialog {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
+	defer runtime.KeepAlive(parentWidget)
 	return qt.UnsafeNewQDialog(unsafe.Pointer(C.QDesignerLanguageExtension_createFormWindowSettingsDialog(this.h, formWindow.cPointer(), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
 func (this *QDesignerLanguageExtension) CreateResourceBrowser(parentWidget *qt.QWidget) *QDesignerResourceBrowserInterface {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parentWidget)
 	return newQDesignerResourceBrowserInterface(C.QDesignerLanguageExtension_createResourceBrowser(this.h, (*C.QWidget)(parentWidget.UnsafePointer())))
 }
 
 func (this *QDesignerLanguageExtension) CreatePromotionDialog(formEditor *QDesignerFormEditorInterface, parentWidget *qt.QWidget) *qt.QDialog {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formEditor)
+	defer runtime.KeepAlive(parentWidget)
 	return qt.UnsafeNewQDialog(unsafe.Pointer(C.QDesignerLanguageExtension_createPromotionDialog(this.h, formEditor.cPointer(), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
 func (this *QDesignerLanguageExtension) IsLanguageResource(path string) bool {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -75,6 +91,8 @@ func (this *QDesignerLanguageExtension) IsLanguageResource(path string) bool {
 }
 
 func (this *QDesignerLanguageExtension) ClassNameOf(object *qt.QObject) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	var _ms C.struct_miqt_string = C.QDesignerLanguageExtension_classNameOf(this.h, (*C.QObject)(object.UnsafePointer()))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -82,6 +100,7 @@ func (this *QDesignerLanguageExtension) ClassNameOf(object *qt.QObject) string {
 }
 
 func (this *QDesignerLanguageExtension) SignalMatchesSlot(signal string, slot string) bool {
+	defer runtime.KeepAlive(this)
 	signal_ms := C.struct_miqt_string{}
 	signal_ms.data = C.CString(signal)
 	signal_ms.len = C.size_t(len(signal))
@@ -94,6 +113,7 @@ func (this *QDesignerLanguageExtension) SignalMatchesSlot(signal string, slot st
 }
 
 func (this *QDesignerLanguageExtension) WidgetBoxContents() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerLanguageExtension_widgetBoxContents(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -101,6 +121,7 @@ func (this *QDesignerLanguageExtension) WidgetBoxContents() string {
 }
 
 func (this *QDesignerLanguageExtension) UiExtension() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerLanguageExtension_uiExtension(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,6 +129,8 @@ func (this *QDesignerLanguageExtension) UiExtension() string {
 }
 
 func (this *QDesignerLanguageExtension) OperatorAssign(param1 *QDesignerLanguageExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerLanguageExtension_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -123,8 +146,9 @@ func (this *QDesignerLanguageExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerLanguageExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerLanguageExtension) {
-		C.QDesignerLanguageExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerLanguageExtension_delete((*C.QDesignerLanguageExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

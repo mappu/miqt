@@ -15,7 +15,13 @@ import (
 
 type QSqlDriverCreatorBase struct {
 	h  *C.QSqlDriverCreatorBase
-	gc *[1]*C.QSqlDriverCreatorBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlDriverCreatorBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlDriverCreatorBase) cPointer() *C.QSqlDriverCreatorBase {
@@ -47,10 +53,13 @@ func UnsafeNewQSqlDriverCreatorBase(h unsafe.Pointer) *QSqlDriverCreatorBase {
 }
 
 func (this *QSqlDriverCreatorBase) CreateObject() *QSqlDriver {
+	defer runtime.KeepAlive(this)
 	return newQSqlDriver(C.QSqlDriverCreatorBase_createObject(this.h))
 }
 
 func (this *QSqlDriverCreatorBase) OperatorAssign(param1 *QSqlDriverCreatorBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QSqlDriverCreatorBase_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -66,15 +75,22 @@ func (this *QSqlDriverCreatorBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlDriverCreatorBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlDriverCreatorBase) {
-		C.QSqlDriverCreatorBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlDriverCreatorBase_delete((*C.QSqlDriverCreatorBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QSqlDatabase struct {
 	h  *C.QSqlDatabase
-	gc *[1]*C.QSqlDatabase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlDatabase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlDatabase) cPointer() *C.QSqlDatabase {
@@ -113,19 +129,24 @@ func NewQSqlDatabase() *QSqlDatabase {
 
 // NewQSqlDatabase2 constructs a new QSqlDatabase object.
 func NewQSqlDatabase2(other *QSqlDatabase) *QSqlDatabase {
+	defer runtime.KeepAlive(other)
 
 	return newQSqlDatabase(C.QSqlDatabase_new2(other.cPointer()))
 }
 
 func (this *QSqlDatabase) OperatorAssign(other *QSqlDatabase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlDatabase_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSqlDatabase) Open() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_open(this.h))
 }
 
 func (this *QSqlDatabase) Open2(user string, password string) bool {
+	defer runtime.KeepAlive(this)
 	user_ms := C.struct_miqt_string{}
 	user_ms.data = C.CString(user)
 	user_ms.len = C.size_t(len(user))
@@ -138,18 +159,22 @@ func (this *QSqlDatabase) Open2(user string, password string) bool {
 }
 
 func (this *QSqlDatabase) Close() {
+	defer runtime.KeepAlive(this)
 	C.QSqlDatabase_close(this.h)
 }
 
 func (this *QSqlDatabase) IsOpen() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_isOpen(this.h))
 }
 
 func (this *QSqlDatabase) IsOpenError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_isOpenError(this.h))
 }
 
 func (this *QSqlDatabase) Tables() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSqlDatabase_tables(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -163,6 +188,7 @@ func (this *QSqlDatabase) Tables() []string {
 }
 
 func (this *QSqlDatabase) PrimaryIndex(tablename string) *QSqlIndex {
+	defer runtime.KeepAlive(this)
 	tablename_ms := C.struct_miqt_string{}
 	tablename_ms.data = C.CString(tablename)
 	tablename_ms.len = C.size_t(len(tablename))
@@ -173,6 +199,7 @@ func (this *QSqlDatabase) PrimaryIndex(tablename string) *QSqlIndex {
 }
 
 func (this *QSqlDatabase) Record(tablename string) *QSqlRecord {
+	defer runtime.KeepAlive(this)
 	tablename_ms := C.struct_miqt_string{}
 	tablename_ms.data = C.CString(tablename)
 	tablename_ms.len = C.size_t(len(tablename))
@@ -183,34 +210,41 @@ func (this *QSqlDatabase) Record(tablename string) *QSqlRecord {
 }
 
 func (this *QSqlDatabase) Exec() *QSqlQuery {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSqlQuery(C.QSqlDatabase_exec(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlDatabase) LastError() *QSqlError {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSqlError(C.QSqlDatabase_lastError(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlDatabase) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_isValid(this.h))
 }
 
 func (this *QSqlDatabase) Transaction() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_transaction(this.h))
 }
 
 func (this *QSqlDatabase) Commit() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_commit(this.h))
 }
 
 func (this *QSqlDatabase) Rollback() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDatabase_rollback(this.h))
 }
 
 func (this *QSqlDatabase) SetDatabaseName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -219,6 +253,7 @@ func (this *QSqlDatabase) SetDatabaseName(name string) {
 }
 
 func (this *QSqlDatabase) SetUserName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -227,6 +262,7 @@ func (this *QSqlDatabase) SetUserName(name string) {
 }
 
 func (this *QSqlDatabase) SetPassword(password string) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -235,6 +271,7 @@ func (this *QSqlDatabase) SetPassword(password string) {
 }
 
 func (this *QSqlDatabase) SetHostName(host string) {
+	defer runtime.KeepAlive(this)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -243,14 +280,17 @@ func (this *QSqlDatabase) SetHostName(host string) {
 }
 
 func (this *QSqlDatabase) SetPort(p int) {
+	defer runtime.KeepAlive(this)
 	C.QSqlDatabase_setPort(this.h, (C.int)(p))
 }
 
 func (this *QSqlDatabase) SetConnectOptions() {
+	defer runtime.KeepAlive(this)
 	C.QSqlDatabase_setConnectOptions(this.h)
 }
 
 func (this *QSqlDatabase) DatabaseName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_databaseName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -258,6 +298,7 @@ func (this *QSqlDatabase) DatabaseName() string {
 }
 
 func (this *QSqlDatabase) UserName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_userName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -265,6 +306,7 @@ func (this *QSqlDatabase) UserName() string {
 }
 
 func (this *QSqlDatabase) Password() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -272,6 +314,7 @@ func (this *QSqlDatabase) Password() string {
 }
 
 func (this *QSqlDatabase) HostName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_hostName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -279,6 +322,7 @@ func (this *QSqlDatabase) HostName() string {
 }
 
 func (this *QSqlDatabase) DriverName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_driverName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -286,10 +330,12 @@ func (this *QSqlDatabase) DriverName() string {
 }
 
 func (this *QSqlDatabase) Port() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSqlDatabase_port(this.h))
 }
 
 func (this *QSqlDatabase) ConnectOptions() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_connectOptions(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -297,6 +343,7 @@ func (this *QSqlDatabase) ConnectOptions() string {
 }
 
 func (this *QSqlDatabase) ConnectionName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlDatabase_connectionName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -304,14 +351,17 @@ func (this *QSqlDatabase) ConnectionName() string {
 }
 
 func (this *QSqlDatabase) SetNumericalPrecisionPolicy(precisionPolicy QSql__NumericalPrecisionPolicy) {
+	defer runtime.KeepAlive(this)
 	C.QSqlDatabase_setNumericalPrecisionPolicy(this.h, (C.int)(precisionPolicy))
 }
 
 func (this *QSqlDatabase) NumericalPrecisionPolicy() QSql__NumericalPrecisionPolicy {
+	defer runtime.KeepAlive(this)
 	return (QSql__NumericalPrecisionPolicy)(C.QSqlDatabase_numericalPrecisionPolicy(this.h))
 }
 
 func (this *QSqlDatabase) Driver() *QSqlDriver {
+	defer runtime.KeepAlive(this)
 	return newQSqlDriver(C.QSqlDatabase_driver(this.h))
 }
 
@@ -326,12 +376,14 @@ func QSqlDatabase_AddDatabase(typeVal string) *QSqlDatabase {
 }
 
 func QSqlDatabase_AddDatabaseWithDriver(driver *QSqlDriver) *QSqlDatabase {
+	defer runtime.KeepAlive(driver)
 	_goptr := newQSqlDatabase(C.QSqlDatabase_addDatabaseWithDriver(driver.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QSqlDatabase_CloneDatabase(other *QSqlDatabase, connectionName string) *QSqlDatabase {
+	defer runtime.KeepAlive(other)
 	connectionName_ms := C.struct_miqt_string{}
 	connectionName_ms.data = C.CString(connectionName)
 	connectionName_ms.len = C.size_t(len(connectionName))
@@ -400,6 +452,7 @@ func QSqlDatabase_ConnectionNames() []string {
 }
 
 func QSqlDatabase_RegisterSqlDriver(name string, creator *QSqlDriverCreatorBase) {
+	defer runtime.KeepAlive(creator)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -416,6 +469,7 @@ func QSqlDatabase_IsDriverAvailable(name string) bool {
 }
 
 func (this *QSqlDatabase) TablesWithType(typeVal QSql__TableType) []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSqlDatabase_tablesWithType(this.h, (C.int)(typeVal))
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -429,6 +483,7 @@ func (this *QSqlDatabase) TablesWithType(typeVal QSql__TableType) []string {
 }
 
 func (this *QSqlDatabase) ExecWithQuery(query string) *QSqlQuery {
+	defer runtime.KeepAlive(this)
 	query_ms := C.struct_miqt_string{}
 	query_ms.data = C.CString(query)
 	query_ms.len = C.size_t(len(query))
@@ -439,6 +494,7 @@ func (this *QSqlDatabase) ExecWithQuery(query string) *QSqlQuery {
 }
 
 func (this *QSqlDatabase) SetConnectOptionsWithOptions(options string) {
+	defer runtime.KeepAlive(this)
 	options_ms := C.struct_miqt_string{}
 	options_ms.data = C.CString(options)
 	options_ms.len = C.size_t(len(options))
@@ -461,6 +517,7 @@ func QSqlDatabase_AddDatabase2(typeVal string, connectionName string) *QSqlDatab
 }
 
 func QSqlDatabase_AddDatabase3(driver *QSqlDriver, connectionName string) *QSqlDatabase {
+	defer runtime.KeepAlive(driver)
 	connectionName_ms := C.struct_miqt_string{}
 	connectionName_ms.data = C.CString(connectionName)
 	connectionName_ms.len = C.size_t(len(connectionName))
@@ -510,8 +567,9 @@ func (this *QSqlDatabase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlDatabase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlDatabase) {
-		C.QSqlDatabase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlDatabase_delete((*C.QSqlDatabase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

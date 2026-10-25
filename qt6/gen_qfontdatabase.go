@@ -65,7 +65,13 @@ const (
 
 type QFontDatabase struct {
 	h  *C.QFontDatabase
-	gc *[1]*C.QFontDatabase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFontDatabase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFontDatabase) cPointer() *C.QFontDatabase {
@@ -199,6 +205,7 @@ func QFontDatabase_SmoothSizes(family string, style string) []int {
 }
 
 func QFontDatabase_StyleString(font *QFont) string {
+	defer runtime.KeepAlive(font)
 	var _ms C.struct_miqt_string = C.QFontDatabase_styleString(font.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -206,6 +213,7 @@ func QFontDatabase_StyleString(font *QFont) string {
 }
 
 func QFontDatabase_StyleStringWithFontInfo(fontInfo *QFontInfo) string {
+	defer runtime.KeepAlive(fontInfo)
 	var _ms C.struct_miqt_string = C.QFontDatabase_styleStringWithFontInfo(fontInfo.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -461,8 +469,9 @@ func (this *QFontDatabase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFontDatabase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontDatabase) {
-		C.QFontDatabase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFontDatabase_delete((*C.QFontDatabase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

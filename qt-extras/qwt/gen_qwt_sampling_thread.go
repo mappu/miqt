@@ -16,8 +16,14 @@ import (
 
 type QwtSamplingThread struct {
 	h  *C.QwtSamplingThread
-	gc *[1]*C.QwtSamplingThread
+	gc *[1]unsafe.Pointer
 	*qt.QThread
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSamplingThread) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtSamplingThread) cPointer() *C.QwtSamplingThread {
@@ -52,10 +58,12 @@ func UnsafeNewQwtSamplingThread(h unsafe.Pointer) *QwtSamplingThread {
 }
 
 func (this *QwtSamplingThread) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtSamplingThread_metaObject(this.h)))
 }
 
 func (this *QwtSamplingThread) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtSamplingThread_metacast(this.h, param1_Cstring))
@@ -80,18 +88,22 @@ func QwtSamplingThread_TrUtf8(s string) string {
 }
 
 func (this *QwtSamplingThread) Interval() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSamplingThread_interval(this.h))
 }
 
 func (this *QwtSamplingThread) Elapsed() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSamplingThread_elapsed(this.h))
 }
 
 func (this *QwtSamplingThread) SetInterval(interval float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtSamplingThread_setInterval(this.h, (C.double)(interval))
 }
 
 func (this *QwtSamplingThread) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QwtSamplingThread_stop(this.h)
 }
 
@@ -151,8 +163,9 @@ func (this *QwtSamplingThread) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSamplingThread{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSamplingThread) {
-		C.QwtSamplingThread_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSamplingThread_delete((*C.QwtSamplingThread)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

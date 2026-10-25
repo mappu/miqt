@@ -324,6 +324,10 @@ bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* variant);
 bool QGraphicsWidget_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsWidget_virtualbase_isEmpty(const void* self);
+QRectF* QGraphicsWidget_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsWidget_virtualreturncopy_QPainterPath(QPainterPath* src);
+QSizeF* QGraphicsWidget_virtualreturncopy_QSizeF(QSizeF* src);
+QVariant* QGraphicsWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

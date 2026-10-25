@@ -16,8 +16,15 @@ import (
 
 type QCameraInfoControl struct {
 	h  *C.QCameraInfoControl
-	gc *[1]*C.QCameraInfoControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraInfoControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraInfoControl) cPointer() *C.QCameraInfoControl {
@@ -52,10 +59,12 @@ func UnsafeNewQCameraInfoControl(h unsafe.Pointer) *QCameraInfoControl {
 }
 
 func (this *QCameraInfoControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraInfoControl_metaObject(this.h)))
 }
 
 func (this *QCameraInfoControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraInfoControl_metacast(this.h, param1_Cstring))
@@ -80,6 +89,7 @@ func QCameraInfoControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraInfoControl) CameraPosition(deviceName string) QCamera__Position {
+	defer runtime.KeepAlive(this)
 	deviceName_ms := C.struct_miqt_string{}
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
@@ -88,6 +98,7 @@ func (this *QCameraInfoControl) CameraPosition(deviceName string) QCamera__Posit
 }
 
 func (this *QCameraInfoControl) CameraOrientation(deviceName string) int {
+	defer runtime.KeepAlive(this)
 	deviceName_ms := C.struct_miqt_string{}
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
@@ -151,8 +162,9 @@ func (this *QCameraInfoControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraInfoControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraInfoControl) {
-		C.QCameraInfoControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraInfoControl_delete((*C.QCameraInfoControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

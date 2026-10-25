@@ -65,7 +65,13 @@ const (
 
 type QFontDatabase struct {
 	h  *C.QFontDatabase
-	gc *[1]*C.QFontDatabase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFontDatabase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFontDatabase) cPointer() *C.QFontDatabase {
@@ -113,6 +119,7 @@ func QFontDatabase_StandardSizes() []int {
 }
 
 func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFontDatabase_writingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -123,6 +130,7 @@ func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
 }
 
 func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDatabase__WritingSystem {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -137,6 +145,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 }
 
 func (this *QFontDatabase) Families() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFontDatabase_families(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -150,6 +159,7 @@ func (this *QFontDatabase) Families() []string {
 }
 
 func (this *QFontDatabase) Styles(family string) []string {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -167,6 +177,7 @@ func (this *QFontDatabase) Styles(family string) []string {
 }
 
 func (this *QFontDatabase) PointSizes(family string) []int {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -181,6 +192,7 @@ func (this *QFontDatabase) PointSizes(family string) []int {
 }
 
 func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -199,6 +211,8 @@ func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
 }
 
 func (this *QFontDatabase) StyleString(font *QFont) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	var _ms C.struct_miqt_string = C.QFontDatabase_styleString(this.h, font.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -206,6 +220,8 @@ func (this *QFontDatabase) StyleString(font *QFont) string {
 }
 
 func (this *QFontDatabase) StyleStringWithFontInfo(fontInfo *QFontInfo) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fontInfo)
 	var _ms C.struct_miqt_string = C.QFontDatabase_styleStringWithFontInfo(this.h, fontInfo.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -213,6 +229,7 @@ func (this *QFontDatabase) StyleStringWithFontInfo(fontInfo *QFontInfo) string {
 }
 
 func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFont {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -227,6 +244,7 @@ func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFo
 }
 
 func (this *QFontDatabase) IsBitmapScalable(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -235,6 +253,7 @@ func (this *QFontDatabase) IsBitmapScalable(family string) bool {
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -243,6 +262,7 @@ func (this *QFontDatabase) IsSmoothlyScalable(family string) bool {
 }
 
 func (this *QFontDatabase) IsScalable(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -251,6 +271,7 @@ func (this *QFontDatabase) IsScalable(family string) bool {
 }
 
 func (this *QFontDatabase) IsFixedPitch(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -259,6 +280,7 @@ func (this *QFontDatabase) IsFixedPitch(family string) bool {
 }
 
 func (this *QFontDatabase) Italic(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -271,6 +293,7 @@ func (this *QFontDatabase) Italic(family string, style string) bool {
 }
 
 func (this *QFontDatabase) Bold(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -283,6 +306,7 @@ func (this *QFontDatabase) Bold(family string, style string) bool {
 }
 
 func (this *QFontDatabase) Weight(family string, style string) int {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -295,6 +319,7 @@ func (this *QFontDatabase) Weight(family string, style string) int {
 }
 
 func (this *QFontDatabase) HasFamily(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -303,6 +328,7 @@ func (this *QFontDatabase) HasFamily(family string) bool {
 }
 
 func (this *QFontDatabase) IsPrivateFamily(family string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -375,6 +401,7 @@ func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
 }
 
 func (this *QFontDatabase) FamiliesWithWritingSystem(writingSystem QFontDatabase__WritingSystem) []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFontDatabase_familiesWithWritingSystem(this.h, (C.int)(writingSystem))
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -388,6 +415,7 @@ func (this *QFontDatabase) FamiliesWithWritingSystem(writingSystem QFontDatabase
 }
 
 func (this *QFontDatabase) PointSizes2(family string, style string) []int {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -406,6 +434,7 @@ func (this *QFontDatabase) PointSizes2(family string, style string) []int {
 }
 
 func (this *QFontDatabase) IsBitmapScalable2(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -418,6 +447,7 @@ func (this *QFontDatabase) IsBitmapScalable2(family string, style string) bool {
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable2(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -430,6 +460,7 @@ func (this *QFontDatabase) IsSmoothlyScalable2(family string, style string) bool
 }
 
 func (this *QFontDatabase) IsScalable2(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -442,6 +473,7 @@ func (this *QFontDatabase) IsScalable2(family string, style string) bool {
 }
 
 func (this *QFontDatabase) IsFixedPitch2(family string, style string) bool {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -465,8 +497,9 @@ func (this *QFontDatabase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFontDatabase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontDatabase) {
-		C.QFontDatabase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFontDatabase_delete((*C.QFontDatabase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -78,6 +78,7 @@ bool QGraphicsLayoutItem_override_virtual_updateGeometry(void* self, intptr_t sl
 void QGraphicsLayoutItem_virtualbase_updateGeometry(void* self);
 bool QGraphicsLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayoutItem_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+QSizeF* QGraphicsLayoutItem_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsLayoutItem_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsLayoutItem_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);

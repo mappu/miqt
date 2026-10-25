@@ -16,8 +16,15 @@ import (
 
 type QButtonGroup struct {
 	h  *C.QButtonGroup
-	gc *[1]*C.QButtonGroup
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QButtonGroup) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QButtonGroup) cPointer() *C.QButtonGroup {
@@ -59,15 +66,18 @@ func NewQButtonGroup() *QButtonGroup {
 
 // NewQButtonGroup2 constructs a new QButtonGroup object.
 func NewQButtonGroup2(parent *QObject) *QButtonGroup {
+	defer runtime.KeepAlive(parent)
 
 	return newQButtonGroup(C.QButtonGroup_new2(parent.cPointer()))
 }
 
 func (this *QButtonGroup) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QButtonGroup_metaObject(this.h))
 }
 
 func (this *QButtonGroup) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QButtonGroup_metacast(this.h, param1_Cstring))
@@ -83,22 +93,29 @@ func QButtonGroup_Tr(s string) string {
 }
 
 func (this *QButtonGroup) SetExclusive(exclusive bool) {
+	defer runtime.KeepAlive(this)
 	C.QButtonGroup_setExclusive(this.h, (C.bool)(exclusive))
 }
 
 func (this *QButtonGroup) Exclusive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QButtonGroup_exclusive(this.h))
 }
 
 func (this *QButtonGroup) AddButton(param1 *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_addButton(this.h, param1.cPointer())
 }
 
 func (this *QButtonGroup) RemoveButton(param1 *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_removeButton(this.h, param1.cPointer())
 }
 
 func (this *QButtonGroup) Buttons() []*QAbstractButton {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QButtonGroup_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractButton)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -109,26 +126,35 @@ func (this *QButtonGroup) Buttons() []*QAbstractButton {
 }
 
 func (this *QButtonGroup) CheckedButton() *QAbstractButton {
+	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QButtonGroup_checkedButton(this.h))
 }
 
 func (this *QButtonGroup) Button(id int) *QAbstractButton {
+	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QButtonGroup_button(this.h, (C.int)(id)))
 }
 
 func (this *QButtonGroup) SetId(button *QAbstractButton, id int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QButtonGroup_setId(this.h, button.cPointer(), (C.int)(id))
 }
 
 func (this *QButtonGroup) Id(button *QAbstractButton) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	return (int)(C.QButtonGroup_id(this.h, button.cPointer()))
 }
 
 func (this *QButtonGroup) CheckedId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QButtonGroup_checkedId(this.h))
 }
 
 func (this *QButtonGroup) ButtonClicked(param1 *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_buttonClicked(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonClicked(slot func(param1 *QAbstractButton)) {
@@ -149,6 +175,8 @@ func miqt_exec_callback_QButtonGroup_buttonClicked(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) ButtonPressed(param1 *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_buttonPressed(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonPressed(slot func(param1 *QAbstractButton)) {
@@ -169,6 +197,8 @@ func miqt_exec_callback_QButtonGroup_buttonPressed(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) ButtonReleased(param1 *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_buttonReleased(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonReleased(slot func(param1 *QAbstractButton)) {
@@ -189,6 +219,8 @@ func miqt_exec_callback_QButtonGroup_buttonReleased(cb C.intptr_t, param1 *C.QAb
 }
 
 func (this *QButtonGroup) ButtonToggled(param1 *QAbstractButton, param2 bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_buttonToggled(this.h, param1.cPointer(), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnButtonToggled(slot func(param1 *QAbstractButton, param2 bool)) {
@@ -211,6 +243,7 @@ func miqt_exec_callback_QButtonGroup_buttonToggled(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) IdClicked(param1 int) {
+	defer runtime.KeepAlive(this)
 	C.QButtonGroup_idClicked(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdClicked(slot func(param1 int)) {
@@ -231,6 +264,7 @@ func miqt_exec_callback_QButtonGroup_idClicked(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdPressed(param1 int) {
+	defer runtime.KeepAlive(this)
 	C.QButtonGroup_idPressed(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdPressed(slot func(param1 int)) {
@@ -251,6 +285,7 @@ func miqt_exec_callback_QButtonGroup_idPressed(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdReleased(param1 int) {
+	defer runtime.KeepAlive(this)
 	C.QButtonGroup_idReleased(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdReleased(slot func(param1 int)) {
@@ -271,6 +306,7 @@ func miqt_exec_callback_QButtonGroup_idReleased(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdToggled(param1 int, param2 bool) {
+	defer runtime.KeepAlive(this)
 	C.QButtonGroup_idToggled(this.h, (C.int)(param1), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnIdToggled(slot func(param1 int, param2 bool)) {
@@ -315,11 +351,14 @@ func QButtonGroup_Tr3(s string, c string, n int) string {
 }
 
 func (this *QButtonGroup) AddButton2(param1 *QAbstractButton, id int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QButtonGroup_addButton2(this.h, param1.cPointer(), (C.int)(id))
 }
 
 // Sender can only be called from a QButtonGroup that was directly constructed.
 func (this *QButtonGroup) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QButtonGroup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -334,6 +373,7 @@ func (this *QButtonGroup) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QButtonGroup that was directly constructed.
 func (this *QButtonGroup) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QButtonGroup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -348,6 +388,7 @@ func (this *QButtonGroup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QButtonGroup that was directly constructed.
 func (this *QButtonGroup) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -364,6 +405,8 @@ func (this *QButtonGroup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QButtonGroup that was directly constructed.
 func (this *QButtonGroup) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QButtonGroup_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -377,6 +420,8 @@ func (this *QButtonGroup) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QButtonGroup) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QButtonGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -405,6 +450,9 @@ func miqt_exec_callback_QButtonGroup_event(self *C.QButtonGroup, cb C.intptr_t, 
 }
 
 func (this *QButtonGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QButtonGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -435,6 +483,8 @@ func miqt_exec_callback_QButtonGroup_eventFilter(self *C.QButtonGroup, cb C.intp
 }
 
 func (this *QButtonGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QButtonGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -461,6 +511,8 @@ func miqt_exec_callback_QButtonGroup_timerEvent(self *C.QButtonGroup, cb C.intpt
 }
 
 func (this *QButtonGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QButtonGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -487,6 +539,8 @@ func miqt_exec_callback_QButtonGroup_childEvent(self *C.QButtonGroup, cb C.intpt
 }
 
 func (this *QButtonGroup) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QButtonGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -513,6 +567,8 @@ func miqt_exec_callback_QButtonGroup_customEvent(self *C.QButtonGroup, cb C.intp
 }
 
 func (this *QButtonGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QButtonGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -539,6 +595,8 @@ func miqt_exec_callback_QButtonGroup_connectNotify(self *C.QButtonGroup, cb C.in
 }
 
 func (this *QButtonGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QButtonGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -576,8 +634,9 @@ func (this *QButtonGroup) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QButtonGroup{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QButtonGroup) {
-		C.QButtonGroup_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QButtonGroup_delete((*C.QButtonGroup)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -218,6 +218,8 @@ bool QGroupBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGroupBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGroupBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QGroupBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QGroupBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QGroupBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionGroupBox* option);
 void QGroupBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

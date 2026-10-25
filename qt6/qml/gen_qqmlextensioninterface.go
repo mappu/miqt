@@ -16,7 +16,13 @@ import (
 
 type QQmlTypesExtensionInterface struct {
 	h  *C.QQmlTypesExtensionInterface
-	gc *[1]*C.QQmlTypesExtensionInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlTypesExtensionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlTypesExtensionInterface) cPointer() *C.QQmlTypesExtensionInterface {
@@ -49,17 +55,21 @@ func UnsafeNewQQmlTypesExtensionInterface(h unsafe.Pointer) *QQmlTypesExtensionI
 
 // NewQQmlTypesExtensionInterface constructs a new QQmlTypesExtensionInterface object.
 func NewQQmlTypesExtensionInterface(param1 *QQmlTypesExtensionInterface) *QQmlTypesExtensionInterface {
+	defer runtime.KeepAlive(param1)
 
 	return newQQmlTypesExtensionInterface(C.QQmlTypesExtensionInterface_new(param1.cPointer()))
 }
 
 func (this *QQmlTypesExtensionInterface) RegisterTypes(uri string) {
+	defer runtime.KeepAlive(this)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlTypesExtensionInterface_registerTypes(this.h, uri_Cstring)
 }
 
 func (this *QQmlTypesExtensionInterface) OperatorAssign(param1 *QQmlTypesExtensionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlTypesExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlTypesExtensionInterface) OnRegisterTypes(slot func(uri string)) {
@@ -96,16 +106,24 @@ func (this *QQmlTypesExtensionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlTypesExtensionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlTypesExtensionInterface) {
-		C.QQmlTypesExtensionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlTypesExtensionInterface_delete((*C.QQmlTypesExtensionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QQmlExtensionInterface struct {
 	h  *C.QQmlExtensionInterface
-	gc *[1]*C.QQmlExtensionInterface
+	gc *[1]unsafe.Pointer
 	*QQmlTypesExtensionInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlExtensionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QQmlTypesExtensionInterface.miqtSetGC(gc)
 }
 
 func (this *QQmlExtensionInterface) cPointer() *C.QQmlExtensionInterface {
@@ -141,17 +159,22 @@ func UnsafeNewQQmlExtensionInterface(h unsafe.Pointer) *QQmlExtensionInterface {
 
 // NewQQmlExtensionInterface constructs a new QQmlExtensionInterface object.
 func NewQQmlExtensionInterface(param1 *QQmlExtensionInterface) *QQmlExtensionInterface {
+	defer runtime.KeepAlive(param1)
 
 	return newQQmlExtensionInterface(C.QQmlExtensionInterface_new(param1.cPointer()))
 }
 
 func (this *QQmlExtensionInterface) InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlExtensionInterface_initializeEngine(this.h, engine.cPointer(), uri_Cstring)
 }
 
 func (this *QQmlExtensionInterface) OperatorAssign(param1 *QQmlExtensionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlExtensionInterface) OnInitializeEngine(slot func(engine *QQmlEngine, uri string)) {
@@ -211,15 +234,22 @@ func (this *QQmlExtensionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlExtensionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlExtensionInterface) {
-		C.QQmlExtensionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlExtensionInterface_delete((*C.QQmlExtensionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QQmlEngineExtensionInterface struct {
 	h  *C.QQmlEngineExtensionInterface
-	gc *[1]*C.QQmlEngineExtensionInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlEngineExtensionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlEngineExtensionInterface) cPointer() *C.QQmlEngineExtensionInterface {
@@ -251,12 +281,16 @@ func UnsafeNewQQmlEngineExtensionInterface(h unsafe.Pointer) *QQmlEngineExtensio
 }
 
 func (this *QQmlEngineExtensionInterface) InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlEngineExtensionInterface_initializeEngine(this.h, engine.cPointer(), uri_Cstring)
 }
 
 func (this *QQmlEngineExtensionInterface) OperatorAssign(param1 *QQmlEngineExtensionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlEngineExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -272,8 +306,9 @@ func (this *QQmlEngineExtensionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlEngineExtensionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlEngineExtensionInterface) {
-		C.QQmlEngineExtensionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlEngineExtensionInterface_delete((*C.QQmlEngineExtensionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

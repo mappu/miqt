@@ -239,7 +239,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QRect* callback_return_value = miqt_exec_callback_QTableView_visualRect(this, handle__visualRect, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QTableView_virtualbase_visualRect(const void* self, QModelIndex* index);
@@ -278,7 +280,9 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_indexAt(this, handle__indexAt, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QTableView_virtualbase_indexAt(const void* self, QPoint* p);
@@ -311,7 +315,9 @@ public:
 		}
 
 		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QTableView_viewOptions(this, handle__viewOptions);
-		return *callback_return_value;
+		QStyleOptionViewItem callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QStyleOptionViewItem* QTableView_virtualbase_viewOptions(const void* self);
@@ -394,7 +400,9 @@ public:
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QTableView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers);
@@ -433,7 +441,9 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 		QRegion* callback_return_value = miqt_exec_callback_QTableView_visualRegionForSelection(this, handle__visualRegionForSelection, sigval1);
-		return *callback_return_value;
+		QRegion callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRegion* QTableView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection);
@@ -453,6 +463,10 @@ public:
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -486,7 +500,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTableView_viewportSizeHint(this, handle__viewportSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTableView_virtualbase_viewportSizeHint(const void* self);
@@ -655,7 +671,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTableView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTableView_virtualbase_inputMethodQuery(const void* self, int query);
@@ -1239,7 +1257,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTableView_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTableView_virtualbase_minimumSizeHint(const void* self);
@@ -1254,7 +1274,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTableView_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTableView_virtualbase_sizeHint(const void* self);
@@ -3300,6 +3322,30 @@ bool QTableView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTableView*>(self)->QTableView::disconnectNotify(*signal);
+}
+
+QRect* QTableView_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QModelIndex* QTableView_virtualreturncopy_QModelIndex(QModelIndex* src) {
+	return new QModelIndex(*src);
+}
+
+QStyleOptionViewItem* QTableView_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src) {
+	return new QStyleOptionViewItem(*src);
+}
+
+QRegion* QTableView_virtualreturncopy_QRegion(QRegion* src) {
+	return new QRegion(*src);
+}
+
+QSize* QTableView_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QTableView_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QTableView_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex) {

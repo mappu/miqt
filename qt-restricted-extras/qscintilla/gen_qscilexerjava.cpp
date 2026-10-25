@@ -382,7 +382,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJava_color(this, handle__color, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerJava_virtualbase_color(const void* self, int style);
@@ -414,7 +416,9 @@ public:
 
 		int sigval1 = style;
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerJava_font(this, handle__font, sigval1);
-		return *callback_return_value;
+		QFont callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QFont* QsciLexerJava_virtualbase_font(const void* self, int style);
@@ -497,7 +501,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJava_paper(this, handle__paper, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerJava_virtualbase_paper(const void* self, int style);
@@ -513,7 +519,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJava_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerJava_virtualbase_defaultColorWithStyle(const void* self, int style);
@@ -545,7 +553,9 @@ public:
 
 		int sigval1 = style;
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerJava_defaultFontWithStyle(this, handle__defaultFontWithStyle, sigval1);
-		return *callback_return_value;
+		QFont callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QFont* QsciLexerJava_virtualbase_defaultFontWithStyle(const void* self, int style);
@@ -561,7 +571,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJava_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerJava_virtualbase_defaultPaperWithStyle(const void* self, int style);
@@ -1658,6 +1670,14 @@ bool QsciLexerJava_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QsciLexerJava_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQsciLexerJava*>(self)->QsciLexerJava::disconnectNotify(*signal);
+}
+
+QColor* QsciLexerJava_virtualreturncopy_QColor(QColor* src) {
+	return new QColor(*src);
+}
+
+QFont* QsciLexerJava_virtualreturncopy_QFont(QFont* src) {
+	return new QFont(*src);
 }
 
 bool QsciLexerJava_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {

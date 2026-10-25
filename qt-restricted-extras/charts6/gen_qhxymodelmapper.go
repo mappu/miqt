@@ -17,8 +17,15 @@ import (
 
 type QHXYModelMapper struct {
 	h  *C.QHXYModelMapper
-	gc *[1]*C.QHXYModelMapper
+	gc *[1]unsafe.Pointer
 	*QXYModelMapper
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHXYModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QXYModelMapper.miqtSetGC(gc)
 }
 
 func (this *QHXYModelMapper) cPointer() *C.QHXYModelMapper {
@@ -60,15 +67,18 @@ func NewQHXYModelMapper() *QHXYModelMapper {
 
 // NewQHXYModelMapper2 constructs a new QHXYModelMapper object.
 func NewQHXYModelMapper2(parent *qt6.QObject) *QHXYModelMapper {
+	defer runtime.KeepAlive(parent)
 
 	return newQHXYModelMapper(C.QHXYModelMapper_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QHXYModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QHXYModelMapper_metaObject(this.h)))
 }
 
 func (this *QHXYModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHXYModelMapper_metacast(this.h, param1_Cstring))
@@ -84,54 +94,69 @@ func QHXYModelMapper_Tr(s string) string {
 }
 
 func (this *QHXYModelMapper) Model() *qt6.QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QHXYModelMapper_model(this.h)))
 }
 
 func (this *QHXYModelMapper) SetModel(model *qt6.QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QHXYModelMapper_setModel(this.h, (*C.QAbstractItemModel)(model.UnsafePointer()))
 }
 
 func (this *QHXYModelMapper) Series() *QXYSeries {
+	defer runtime.KeepAlive(this)
 	return newQXYSeries(C.QHXYModelMapper_series(this.h))
 }
 
 func (this *QHXYModelMapper) SetSeries(series *QXYSeries) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(series)
 	C.QHXYModelMapper_setSeries(this.h, series.cPointer())
 }
 
 func (this *QHXYModelMapper) XRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHXYModelMapper_xRow(this.h))
 }
 
 func (this *QHXYModelMapper) SetXRow(xRow int) {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_setXRow(this.h, (C.int)(xRow))
 }
 
 func (this *QHXYModelMapper) YRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHXYModelMapper_yRow(this.h))
 }
 
 func (this *QHXYModelMapper) SetYRow(yRow int) {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_setYRow(this.h, (C.int)(yRow))
 }
 
 func (this *QHXYModelMapper) FirstColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHXYModelMapper_firstColumn(this.h))
 }
 
 func (this *QHXYModelMapper) SetFirstColumn(firstColumn int) {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_setFirstColumn(this.h, (C.int)(firstColumn))
 }
 
 func (this *QHXYModelMapper) ColumnCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHXYModelMapper_columnCount(this.h))
 }
 
 func (this *QHXYModelMapper) SetColumnCount(columnCount int) {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_setColumnCount(this.h, (C.int)(columnCount))
 }
 
 func (this *QHXYModelMapper) SeriesReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_seriesReplaced(this.h)
 }
 func (this *QHXYModelMapper) OnSeriesReplaced(slot func()) {
@@ -149,6 +174,7 @@ func miqt_exec_callback_QHXYModelMapper_seriesReplaced(cb C.intptr_t) {
 }
 
 func (this *QHXYModelMapper) ModelReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_modelReplaced(this.h)
 }
 func (this *QHXYModelMapper) OnModelReplaced(slot func()) {
@@ -166,6 +192,7 @@ func miqt_exec_callback_QHXYModelMapper_modelReplaced(cb C.intptr_t) {
 }
 
 func (this *QHXYModelMapper) XRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_xRowChanged(this.h)
 }
 func (this *QHXYModelMapper) OnXRowChanged(slot func()) {
@@ -183,6 +210,7 @@ func miqt_exec_callback_QHXYModelMapper_xRowChanged(cb C.intptr_t) {
 }
 
 func (this *QHXYModelMapper) YRowChanged() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_yRowChanged(this.h)
 }
 func (this *QHXYModelMapper) OnYRowChanged(slot func()) {
@@ -200,6 +228,7 @@ func miqt_exec_callback_QHXYModelMapper_yRowChanged(cb C.intptr_t) {
 }
 
 func (this *QHXYModelMapper) FirstColumnChanged() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_firstColumnChanged(this.h)
 }
 func (this *QHXYModelMapper) OnFirstColumnChanged(slot func()) {
@@ -217,6 +246,7 @@ func miqt_exec_callback_QHXYModelMapper_firstColumnChanged(cb C.intptr_t) {
 }
 
 func (this *QHXYModelMapper) ColumnCountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QHXYModelMapper_columnCountChanged(this.h)
 }
 func (this *QHXYModelMapper) OnColumnCountChanged(slot func()) {
@@ -257,6 +287,7 @@ func QHXYModelMapper_Tr3(s string, c string, n int) string {
 
 // First can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) First() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHXYModelMapper_protectedbase_first(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -271,6 +302,7 @@ func (this *QHXYModelMapper) First() int {
 
 // SetFirst can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SetFirst(first int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHXYModelMapper_protectedbase_setFirst(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(first))
@@ -283,6 +315,7 @@ func (this *QHXYModelMapper) SetFirst(first int) {
 
 // Count can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) Count() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHXYModelMapper_protectedbase_count(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -297,6 +330,7 @@ func (this *QHXYModelMapper) Count() int {
 
 // SetCount can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SetCount(count int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHXYModelMapper_protectedbase_setCount(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(count))
@@ -309,6 +343,7 @@ func (this *QHXYModelMapper) SetCount(count int) {
 
 // Orientation can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (qt6.Orientation)(C.QHXYModelMapper_protectedbase_orientation(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -323,6 +358,7 @@ func (this *QHXYModelMapper) Orientation() qt6.Orientation {
 
 // SetOrientation can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SetOrientation(orientation qt6.Orientation) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHXYModelMapper_protectedbase_setOrientation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(orientation))
@@ -335,6 +371,7 @@ func (this *QHXYModelMapper) SetOrientation(orientation qt6.Orientation) {
 
 // XSection can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) XSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHXYModelMapper_protectedbase_xSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -349,6 +386,7 @@ func (this *QHXYModelMapper) XSection() int {
 
 // SetXSection can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SetXSection(xSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHXYModelMapper_protectedbase_setXSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(xSection))
@@ -361,6 +399,7 @@ func (this *QHXYModelMapper) SetXSection(xSection int) {
 
 // YSection can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) YSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHXYModelMapper_protectedbase_ySection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,6 +414,7 @@ func (this *QHXYModelMapper) YSection() int {
 
 // SetYSection can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SetYSection(ySection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHXYModelMapper_protectedbase_setYSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(ySection))
@@ -387,6 +427,7 @@ func (this *QHXYModelMapper) SetYSection(ySection int) {
 
 // Sender can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QHXYModelMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -401,6 +442,7 @@ func (this *QHXYModelMapper) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHXYModelMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -415,6 +457,7 @@ func (this *QHXYModelMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -431,6 +474,8 @@ func (this *QHXYModelMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHXYModelMapper that was directly constructed.
 func (this *QHXYModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHXYModelMapper_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -444,6 +489,8 @@ func (this *QHXYModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QHXYModelMapper) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHXYModelMapper_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -472,6 +519,9 @@ func miqt_exec_callback_QHXYModelMapper_event(self *C.QHXYModelMapper, cb C.intp
 }
 
 func (this *QHXYModelMapper) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHXYModelMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -502,6 +552,8 @@ func miqt_exec_callback_QHXYModelMapper_eventFilter(self *C.QHXYModelMapper, cb 
 }
 
 func (this *QHXYModelMapper) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHXYModelMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -528,6 +580,8 @@ func miqt_exec_callback_QHXYModelMapper_timerEvent(self *C.QHXYModelMapper, cb C
 }
 
 func (this *QHXYModelMapper) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHXYModelMapper_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -554,6 +608,8 @@ func miqt_exec_callback_QHXYModelMapper_childEvent(self *C.QHXYModelMapper, cb C
 }
 
 func (this *QHXYModelMapper) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHXYModelMapper_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -580,6 +636,8 @@ func miqt_exec_callback_QHXYModelMapper_customEvent(self *C.QHXYModelMapper, cb 
 }
 
 func (this *QHXYModelMapper) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHXYModelMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -606,6 +664,8 @@ func miqt_exec_callback_QHXYModelMapper_connectNotify(self *C.QHXYModelMapper, c
 }
 
 func (this *QHXYModelMapper) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHXYModelMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -643,8 +703,9 @@ func (this *QHXYModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHXYModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHXYModelMapper) {
-		C.QHXYModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHXYModelMapper_delete((*C.QHXYModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

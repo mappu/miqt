@@ -15,7 +15,13 @@ import (
 
 type QStringDataPtr struct {
 	h  *C.QStringDataPtr
-	gc *[1]*C.QStringDataPtr
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringDataPtr) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStringDataPtr) cPointer() *C.QStringDataPtr {
@@ -58,8 +64,9 @@ func (this *QStringDataPtr) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStringDataPtr{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStringDataPtr) {
-		C.QStringDataPtr_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStringDataPtr_delete((*C.QStringDataPtr)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

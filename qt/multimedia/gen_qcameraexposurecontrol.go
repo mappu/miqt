@@ -33,8 +33,15 @@ const (
 
 type QCameraExposureControl struct {
 	h  *C.QCameraExposureControl
-	gc *[1]*C.QCameraExposureControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraExposureControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraExposureControl) cPointer() *C.QCameraExposureControl {
@@ -69,10 +76,12 @@ func UnsafeNewQCameraExposureControl(h unsafe.Pointer) *QCameraExposureControl {
 }
 
 func (this *QCameraExposureControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraExposureControl_metaObject(this.h)))
 }
 
 func (this *QCameraExposureControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraExposureControl_metacast(this.h, param1_Cstring))
@@ -97,10 +106,12 @@ func QCameraExposureControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraExposureControl) IsParameterSupported(parameter QCameraExposureControl__ExposureParameter) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposureControl_isParameterSupported(this.h, (C.int)(parameter)))
 }
 
 func (this *QCameraExposureControl) SupportedParameterRange(parameter QCameraExposureControl__ExposureParameter, continuous *bool) []qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposureControl_supportedParameterRange(this.h, (C.int)(parameter), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QVariant, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -113,22 +124,27 @@ func (this *QCameraExposureControl) SupportedParameterRange(parameter QCameraExp
 }
 
 func (this *QCameraExposureControl) RequestedValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_requestedValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) ActualValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_actualValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) SetValue(parameter QCameraExposureControl__ExposureParameter, value *qt.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QCameraExposureControl_setValue(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
 }
 
 func (this *QCameraExposureControl) RequestedValueChanged(parameter int) {
+	defer runtime.KeepAlive(this)
 	C.QCameraExposureControl_requestedValueChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnRequestedValueChanged(slot func(parameter int)) {
@@ -149,6 +165,7 @@ func miqt_exec_callback_QCameraExposureControl_requestedValueChanged(cb C.intptr
 }
 
 func (this *QCameraExposureControl) ActualValueChanged(parameter int) {
+	defer runtime.KeepAlive(this)
 	C.QCameraExposureControl_actualValueChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnActualValueChanged(slot func(parameter int)) {
@@ -169,6 +186,7 @@ func miqt_exec_callback_QCameraExposureControl_actualValueChanged(cb C.intptr_t,
 }
 
 func (this *QCameraExposureControl) ParameterRangeChanged(parameter int) {
+	defer runtime.KeepAlive(this)
 	C.QCameraExposureControl_parameterRangeChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnParameterRangeChanged(slot func(parameter int)) {
@@ -244,8 +262,9 @@ func (this *QCameraExposureControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraExposureControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraExposureControl) {
-		C.QCameraExposureControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraExposureControl_delete((*C.QCameraExposureControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

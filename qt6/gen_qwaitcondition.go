@@ -15,7 +15,13 @@ import (
 
 type QWaitCondition struct {
 	h  *C.QWaitCondition
-	gc *[1]*C.QWaitCondition
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWaitCondition) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWaitCondition) cPointer() *C.QWaitCondition {
@@ -53,42 +59,60 @@ func NewQWaitCondition() *QWaitCondition {
 }
 
 func (this *QWaitCondition) Wait(lockedMutex *QMutex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedMutex)
 	return (bool)(C.QWaitCondition_wait(this.h, lockedMutex.cPointer()))
 }
 
 func (this *QWaitCondition) Wait2(lockedMutex *QMutex, time uint64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedMutex)
 	return (bool)(C.QWaitCondition_wait2(this.h, lockedMutex.cPointer(), (C.ulong)(time)))
 }
 
 func (this *QWaitCondition) WaitWithLockedReadWriteLock(lockedReadWriteLock *QReadWriteLock) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedReadWriteLock)
 	return (bool)(C.QWaitCondition_waitWithLockedReadWriteLock(this.h, lockedReadWriteLock.cPointer()))
 }
 
 func (this *QWaitCondition) Wait3(lockedReadWriteLock *QReadWriteLock, time uint64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedReadWriteLock)
 	return (bool)(C.QWaitCondition_wait3(this.h, lockedReadWriteLock.cPointer(), (C.ulong)(time)))
 }
 
 func (this *QWaitCondition) WakeOne() {
+	defer runtime.KeepAlive(this)
 	C.QWaitCondition_wakeOne(this.h)
 }
 
 func (this *QWaitCondition) WakeAll() {
+	defer runtime.KeepAlive(this)
 	C.QWaitCondition_wakeAll(this.h)
 }
 
 func (this *QWaitCondition) NotifyOne() {
+	defer runtime.KeepAlive(this)
 	C.QWaitCondition_notifyOne(this.h)
 }
 
 func (this *QWaitCondition) NotifyAll() {
+	defer runtime.KeepAlive(this)
 	C.QWaitCondition_notifyAll(this.h)
 }
 
 func (this *QWaitCondition) Wait4(lockedMutex *QMutex, deadline QDeadlineTimer) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedMutex)
+	defer runtime.KeepAlive(deadline)
 	return (bool)(C.QWaitCondition_wait4(this.h, lockedMutex.cPointer(), deadline.cPointer()))
 }
 
 func (this *QWaitCondition) Wait5(lockedReadWriteLock *QReadWriteLock, deadline QDeadlineTimer) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lockedReadWriteLock)
+	defer runtime.KeepAlive(deadline)
 	return (bool)(C.QWaitCondition_wait5(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer()))
 }
 
@@ -104,8 +128,9 @@ func (this *QWaitCondition) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWaitCondition{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWaitCondition) {
-		C.QWaitCondition_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWaitCondition_delete((*C.QWaitCondition)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -208,6 +208,8 @@ bool QwtAbstractLegend_override_virtual_connectNotify(void* self, intptr_t slot)
 void QwtAbstractLegend_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtAbstractLegend_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtAbstractLegend_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtAbstractLegend_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtAbstractLegend_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtAbstractLegend_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QwtAbstractLegend_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);

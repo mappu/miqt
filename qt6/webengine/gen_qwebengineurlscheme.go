@@ -43,7 +43,13 @@ const (
 
 type QWebEngineUrlScheme struct {
 	h  *C.QWebEngineUrlScheme
-	gc *[1]*C.QWebEngineUrlScheme
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineUrlScheme) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineUrlScheme) cPointer() *C.QWebEngineUrlScheme {
@@ -95,23 +101,31 @@ func NewQWebEngineUrlScheme2(name []byte) *QWebEngineUrlScheme {
 
 // NewQWebEngineUrlScheme3 constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme3(that *QWebEngineUrlScheme) *QWebEngineUrlScheme {
+	defer runtime.KeepAlive(that)
 
 	return newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new3(that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) OperatorAssign(that *QWebEngineUrlScheme) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(that)
 	C.QWebEngineUrlScheme_operatorAssign(this.h, that.cPointer())
 }
 
 func (this *QWebEngineUrlScheme) OperatorEqual(that *QWebEngineUrlScheme) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(that)
 	return (bool)(C.QWebEngineUrlScheme_operatorEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) OperatorNotEqual(that *QWebEngineUrlScheme) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(that)
 	return (bool)(C.QWebEngineUrlScheme_operatorNotEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) Name() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWebEngineUrlScheme_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -119,6 +133,7 @@ func (this *QWebEngineUrlScheme) Name() []byte {
 }
 
 func (this *QWebEngineUrlScheme) SetName(newValue []byte) {
+	defer runtime.KeepAlive(this)
 	newValue_alias := C.struct_miqt_string{}
 	if len(newValue) > 0 {
 		newValue_alias.data = (*C.char)(unsafe.Pointer(&newValue[0]))
@@ -130,30 +145,37 @@ func (this *QWebEngineUrlScheme) SetName(newValue []byte) {
 }
 
 func (this *QWebEngineUrlScheme) Syntax() QWebEngineUrlScheme__Syntax {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineUrlScheme__Syntax)(C.QWebEngineUrlScheme_syntax(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetSyntax(newValue QWebEngineUrlScheme__Syntax) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlScheme_setSyntax(this.h, (C.int)(newValue))
 }
 
 func (this *QWebEngineUrlScheme) DefaultPort() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineUrlScheme_defaultPort(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetDefaultPort(newValue int) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlScheme_setDefaultPort(this.h, (C.int)(newValue))
 }
 
 func (this *QWebEngineUrlScheme) Flags() QWebEngineUrlScheme__Flag {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineUrlScheme__Flag)(C.QWebEngineUrlScheme_flags(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetFlags(newValue QWebEngineUrlScheme__Flag) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlScheme_setFlags(this.h, (C.int)(newValue))
 }
 
 func QWebEngineUrlScheme_RegisterScheme(scheme *QWebEngineUrlScheme) {
+	defer runtime.KeepAlive(scheme)
 	C.QWebEngineUrlScheme_registerScheme(scheme.cPointer())
 }
 
@@ -182,8 +204,9 @@ func (this *QWebEngineUrlScheme) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineUrlScheme{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineUrlScheme) {
-		C.QWebEngineUrlScheme_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineUrlScheme_delete((*C.QWebEngineUrlScheme)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

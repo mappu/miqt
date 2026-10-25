@@ -46,7 +46,9 @@ public:
 
 		double sigval1 = param1;
 		QwtText* callback_return_value = miqt_exec_callback_QwtDateScaleDraw_label(this, handle__label, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtDateScaleDraw_virtualbase_label(const void* self, double param1);
@@ -369,6 +371,10 @@ bool QwtDateScaleDraw_override_virtual_draw(void* self, intptr_t slot) {
 
 void QwtDateScaleDraw_virtualbase_draw(const void* self, QPainter* param1, QPalette* param2) {
 	static_cast<const MiqtVirtualQwtDateScaleDraw*>(self)->QwtDateScaleDraw::draw(param1, *param2);
+}
+
+QwtText* QwtDateScaleDraw_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
 }
 
 QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2) {

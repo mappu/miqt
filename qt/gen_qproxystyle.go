@@ -16,8 +16,15 @@ import (
 
 type QProxyStyle struct {
 	h  *C.QProxyStyle
-	gc *[1]*C.QProxyStyle
+	gc *[1]unsafe.Pointer
 	*QCommonStyle
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QProxyStyle) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QCommonStyle.miqtSetGC(gc)
 }
 
 func (this *QProxyStyle) cPointer() *C.QProxyStyle {
@@ -69,15 +76,18 @@ func NewQProxyStyle2(key string) *QProxyStyle {
 
 // NewQProxyStyle3 constructs a new QProxyStyle object.
 func NewQProxyStyle3(style *QStyle) *QProxyStyle {
+	defer runtime.KeepAlive(style)
 
 	return newQProxyStyle(C.QProxyStyle_new3(style.cPointer()))
 }
 
 func (this *QProxyStyle) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QProxyStyle_metaObject(this.h))
 }
 
 func (this *QProxyStyle) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QProxyStyle_metacast(this.h, param1_Cstring))
@@ -102,26 +112,45 @@ func QProxyStyle_TrUtf8(s string) string {
 }
 
 func (this *QProxyStyle) BaseStyle() *QStyle {
+	defer runtime.KeepAlive(this)
 	return newQStyle(C.QProxyStyle_baseStyle(this.h))
 }
 
 func (this *QProxyStyle) SetBaseStyle(style *QStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(style)
 	C.QProxyStyle_setBaseStyle(this.h, style.cPointer())
 }
 
 func (this *QProxyStyle) DrawPrimitive(element QStyle__PrimitiveElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 	C.QProxyStyle_drawPrimitive(this.h, (C.int)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
 func (this *QProxyStyle) DrawControl(element QStyle__ControlElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 	C.QProxyStyle_drawControl(this.h, (C.int)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
 func (this *QProxyStyle) DrawComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 	C.QProxyStyle_drawComplexControl(this.h, (C.int)(control), option.cPointer(), painter.cPointer(), widget.cPointer())
 }
 
 func (this *QProxyStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(pal)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -130,28 +159,45 @@ func (this *QProxyStyle) DrawItemText(painter *QPainter, rect *QRect, flags int,
 }
 
 func (this *QProxyStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(pixmap)
 	C.QProxyStyle_drawItemPixmap(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), pixmap.cPointer())
 }
 
 func (this *QProxyStyle) SizeFromContents(typeVal QStyle__ContentsType, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(size)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQSize(C.QProxyStyle_sizeFromContents(this.h, (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) SubElementRect(element QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QProxyStyle_subElementRect(this.h, (C.int)(element), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(opt)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QProxyStyle_subControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fm)
+	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -162,68 +208,105 @@ func (this *QProxyStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, ena
 }
 
 func (this *QProxyStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pixmap)
 	_goptr := newQRect(C.QProxyStyle_itemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) HitTestComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) QStyle__SubControl {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(widget)
 	return (QStyle__SubControl)(C.QProxyStyle_hitTestComplexControl(this.h, (C.int)(control), option.cPointer(), pos.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) StyleHint(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
+	defer runtime.KeepAlive(returnData)
 	return (int)(C.QProxyStyle_styleHint(this.h, (C.int)(hint), option.cPointer(), widget.cPointer(), returnData.cPointer()))
 }
 
 func (this *QProxyStyle) PixelMetric(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 	return (int)(C.QProxyStyle_pixelMetric(this.h, (C.int)(metric), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 	return (int)(C.QProxyStyle_layoutSpacing(this.h, (C.int)(control1), (C.int)(control2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QProxyStyle) StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQIcon(C.QProxyStyle_standardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(opt)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQPixmap(C.QProxyStyle_standardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
+	defer runtime.KeepAlive(opt)
 	_goptr := newQPixmap(C.QProxyStyle_generatedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) StandardPalette() *QPalette {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPalette(C.QProxyStyle_standardPalette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) Polish(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QProxyStyle_polish(this.h, widget.cPointer())
 }
 
 func (this *QProxyStyle) PolishWithPal(pal *QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pal)
 	C.QProxyStyle_polishWithPal(this.h, pal.cPointer())
 }
 
 func (this *QProxyStyle) PolishWithApp(app *QApplication) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(app)
 	C.QProxyStyle_polishWithApp(this.h, app.cPointer())
 }
 
 func (this *QProxyStyle) Unpolish(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QProxyStyle_unpolish(this.h, widget.cPointer())
 }
 
 func (this *QProxyStyle) UnpolishWithApp(app *QApplication) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(app)
 	C.QProxyStyle_unpolishWithApp(this.h, app.cPointer())
 }
 
@@ -273,6 +356,7 @@ func QProxyStyle_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QProxyStyle that was directly constructed.
 func (this *QProxyStyle) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QProxyStyle_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -287,6 +371,7 @@ func (this *QProxyStyle) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QProxyStyle that was directly constructed.
 func (this *QProxyStyle) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QProxyStyle_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -301,6 +386,7 @@ func (this *QProxyStyle) SenderSignalIndex() int {
 
 // Receivers can only be called from a QProxyStyle that was directly constructed.
 func (this *QProxyStyle) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -317,6 +403,8 @@ func (this *QProxyStyle) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QProxyStyle that was directly constructed.
 func (this *QProxyStyle) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProxyStyle_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -330,6 +418,10 @@ func (this *QProxyStyle) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QProxyStyle) callVirtualBase_DrawPrimitive(element QStyle__PrimitiveElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 
 	C.QProxyStyle_virtualbase_drawPrimitive(unsafe.Pointer(this.h), (C.int)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 
@@ -362,6 +454,10 @@ func miqt_exec_callback_QProxyStyle_drawPrimitive(self *C.QProxyStyle, cb C.intp
 }
 
 func (this *QProxyStyle) callVirtualBase_DrawControl(element QStyle__ControlElement, option *QStyleOption, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 
 	C.QProxyStyle_virtualbase_drawControl(unsafe.Pointer(this.h), (C.int)(element), option.cPointer(), painter.cPointer(), widget.cPointer())
 
@@ -394,6 +490,10 @@ func miqt_exec_callback_QProxyStyle_drawControl(self *C.QProxyStyle, cb C.intptr
 }
 
 func (this *QProxyStyle) callVirtualBase_DrawComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, painter *QPainter, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(widget)
 
 	C.QProxyStyle_virtualbase_drawComplexControl(unsafe.Pointer(this.h), (C.int)(control), option.cPointer(), painter.cPointer(), widget.cPointer())
 
@@ -426,6 +526,10 @@ func miqt_exec_callback_QProxyStyle_drawComplexControl(self *C.QProxyStyle, cb C
 }
 
 func (this *QProxyStyle) callVirtualBase_DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(pal)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -470,6 +574,10 @@ func miqt_exec_callback_QProxyStyle_drawItemText(self *C.QProxyStyle, cb C.intpt
 }
 
 func (this *QProxyStyle) callVirtualBase_DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(pixmap)
 
 	C.QProxyStyle_virtualbase_drawItemPixmap(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), (C.int)(alignment), pixmap.cPointer())
 
@@ -502,6 +610,10 @@ func miqt_exec_callback_QProxyStyle_drawItemPixmap(self *C.QProxyStyle, cb C.int
 }
 
 func (this *QProxyStyle) callVirtualBase_SizeFromContents(typeVal QStyle__ContentsType, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(size)
+	defer runtime.KeepAlive(widget)
 
 	_goptr := newQSize(C.QProxyStyle_virtualbase_sizeFromContents(unsafe.Pointer(this.h), (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -532,12 +644,16 @@ func miqt_exec_callback_QProxyStyle_sizeFromContents(self *C.QProxyStyle, cb C.i
 	slotval4 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SizeFromContents, slotval1, slotval2, slotval3, slotval4)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_SubElementRect(element QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	_goptr := newQRect(C.QProxyStyle_virtualbase_subElementRect(unsafe.Pointer(this.h), (C.int)(element), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -566,12 +682,16 @@ func miqt_exec_callback_QProxyStyle_subElementRect(self *C.QProxyStyle, cb C.int
 	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SubElementRect, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(opt)
+	defer runtime.KeepAlive(widget)
 
 	_goptr := newQRect(C.QProxyStyle_virtualbase_subControlRect(unsafe.Pointer(this.h), (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -602,12 +722,16 @@ func miqt_exec_callback_QProxyStyle_subControlRect(self *C.QProxyStyle, cb C.int
 	slotval4 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SubControlRect, slotval1, slotval2, slotval3, slotval4)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fm)
+	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -647,12 +771,16 @@ func miqt_exec_callback_QProxyStyle_itemTextRect(self *C.QProxyStyle, cb C.intpt
 	slotval5 := text_ret
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_ItemTextRect, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pixmap)
 
 	_goptr := newQRect(C.QProxyStyle_virtualbase_itemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -681,12 +809,17 @@ func miqt_exec_callback_QProxyStyle_itemPixmapRect(self *C.QProxyStyle, cb C.int
 	slotval3 := newQPixmap(pixmap)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_ItemPixmapRect, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_HitTestComplexControl(control QStyle__ComplexControl, option *QStyleOptionComplex, pos *QPoint, widget *QWidget) QStyle__SubControl {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(widget)
 
 	return (QStyle__SubControl)(C.QProxyStyle_virtualbase_hitTestComplexControl(unsafe.Pointer(this.h), (C.int)(control), option.cPointer(), pos.cPointer(), widget.cPointer()))
 
@@ -721,6 +854,10 @@ func miqt_exec_callback_QProxyStyle_hitTestComplexControl(self *C.QProxyStyle, c
 }
 
 func (this *QProxyStyle) callVirtualBase_StyleHint(hint QStyle__StyleHint, option *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
+	defer runtime.KeepAlive(returnData)
 
 	return (int)(C.QProxyStyle_virtualbase_styleHint(unsafe.Pointer(this.h), (C.int)(hint), option.cPointer(), widget.cPointer(), returnData.cPointer()))
 
@@ -755,6 +892,9 @@ func miqt_exec_callback_QProxyStyle_styleHint(self *C.QProxyStyle, cb C.intptr_t
 }
 
 func (this *QProxyStyle) callVirtualBase_PixelMetric(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	return (int)(C.QProxyStyle_virtualbase_pixelMetric(unsafe.Pointer(this.h), (C.int)(metric), option.cPointer(), widget.cPointer()))
 
@@ -787,6 +927,9 @@ func miqt_exec_callback_QProxyStyle_pixelMetric(self *C.QProxyStyle, cb C.intptr
 }
 
 func (this *QProxyStyle) callVirtualBase_LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	return (int)(C.QProxyStyle_virtualbase_layoutSpacing(unsafe.Pointer(this.h), (C.int)(control1), (C.int)(control2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 
@@ -823,6 +966,9 @@ func miqt_exec_callback_QProxyStyle_layoutSpacing(self *C.QProxyStyle, cb C.intp
 }
 
 func (this *QProxyStyle) callVirtualBase_StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
+	defer runtime.KeepAlive(widget)
 
 	_goptr := newQIcon(C.QProxyStyle_virtualbase_standardIcon(unsafe.Pointer(this.h), (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -851,12 +997,16 @@ func miqt_exec_callback_QProxyStyle_standardIcon(self *C.QProxyStyle, cb C.intpt
 	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StandardIcon, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QIcon(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(opt)
+	defer runtime.KeepAlive(widget)
 
 	_goptr := newQPixmap(C.QProxyStyle_virtualbase_standardPixmap(unsafe.Pointer(this.h), (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -885,12 +1035,16 @@ func miqt_exec_callback_QProxyStyle_standardPixmap(self *C.QProxyStyle, cb C.int
 	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StandardPixmap, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QPixmap(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
+	defer runtime.KeepAlive(opt)
 
 	_goptr := newQPixmap(C.QProxyStyle_virtualbase_generatedIconPixmap(unsafe.Pointer(this.h), (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -919,12 +1073,14 @@ func miqt_exec_callback_QProxyStyle_generatedIconPixmap(self *C.QProxyStyle, cb 
 	slotval3 := newQStyleOption(opt)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_GeneratedIconPixmap, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QPixmap(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_StandardPalette() *QPalette {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQPalette(C.QProxyStyle_virtualbase_standardPalette(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -946,12 +1102,15 @@ func miqt_exec_callback_QProxyStyle_standardPalette(self *C.QProxyStyle, cb C.in
 	}
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StandardPalette)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProxyStyle_virtualreturncopy_QPalette(virtualReturn.cPointer())
 
 }
 
 func (this *QProxyStyle) callVirtualBase_Polish(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 
 	C.QProxyStyle_virtualbase_polish(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -978,6 +1137,8 @@ func miqt_exec_callback_QProxyStyle_polish(self *C.QProxyStyle, cb C.intptr_t, w
 }
 
 func (this *QProxyStyle) callVirtualBase_PolishWithPal(pal *QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pal)
 
 	C.QProxyStyle_virtualbase_polishWithPal(unsafe.Pointer(this.h), pal.cPointer())
 
@@ -1004,6 +1165,8 @@ func miqt_exec_callback_QProxyStyle_polishWithPal(self *C.QProxyStyle, cb C.intp
 }
 
 func (this *QProxyStyle) callVirtualBase_PolishWithApp(app *QApplication) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(app)
 
 	C.QProxyStyle_virtualbase_polishWithApp(unsafe.Pointer(this.h), app.cPointer())
 
@@ -1030,6 +1193,8 @@ func miqt_exec_callback_QProxyStyle_polishWithApp(self *C.QProxyStyle, cb C.intp
 }
 
 func (this *QProxyStyle) callVirtualBase_Unpolish(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 
 	C.QProxyStyle_virtualbase_unpolish(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -1056,6 +1221,8 @@ func miqt_exec_callback_QProxyStyle_unpolish(self *C.QProxyStyle, cb C.intptr_t,
 }
 
 func (this *QProxyStyle) callVirtualBase_UnpolishWithApp(app *QApplication) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(app)
 
 	C.QProxyStyle_virtualbase_unpolishWithApp(unsafe.Pointer(this.h), app.cPointer())
 
@@ -1082,6 +1249,8 @@ func miqt_exec_callback_QProxyStyle_unpolishWithApp(self *C.QProxyStyle, cb C.in
 }
 
 func (this *QProxyStyle) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QProxyStyle_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -1110,6 +1279,9 @@ func miqt_exec_callback_QProxyStyle_event(self *C.QProxyStyle, cb C.intptr_t, e 
 }
 
 func (this *QProxyStyle) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QProxyStyle_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1140,6 +1312,8 @@ func miqt_exec_callback_QProxyStyle_eventFilter(self *C.QProxyStyle, cb C.intptr
 }
 
 func (this *QProxyStyle) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProxyStyle_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1166,6 +1340,8 @@ func miqt_exec_callback_QProxyStyle_timerEvent(self *C.QProxyStyle, cb C.intptr_
 }
 
 func (this *QProxyStyle) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProxyStyle_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1192,6 +1368,8 @@ func miqt_exec_callback_QProxyStyle_childEvent(self *C.QProxyStyle, cb C.intptr_
 }
 
 func (this *QProxyStyle) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProxyStyle_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1218,6 +1396,8 @@ func miqt_exec_callback_QProxyStyle_customEvent(self *C.QProxyStyle, cb C.intptr
 }
 
 func (this *QProxyStyle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProxyStyle_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1244,6 +1424,8 @@ func miqt_exec_callback_QProxyStyle_connectNotify(self *C.QProxyStyle, cb C.intp
 }
 
 func (this *QProxyStyle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProxyStyle_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1281,8 +1463,9 @@ func (this *QProxyStyle) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QProxyStyle{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProxyStyle) {
-		C.QProxyStyle_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QProxyStyle_delete((*C.QProxyStyle)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -15,7 +15,13 @@ import (
 
 type QTextDocumentFragment struct {
 	h  *C.QTextDocumentFragment
-	gc *[1]*C.QTextDocumentFragment
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextDocumentFragment) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextDocumentFragment) cPointer() *C.QTextDocumentFragment {
@@ -54,31 +60,38 @@ func NewQTextDocumentFragment() *QTextDocumentFragment {
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
+	defer runtime.KeepAlive(document)
 
 	return newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
 }
 
 // NewQTextDocumentFragment3 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment3(rangeVal *QTextCursor) *QTextDocumentFragment {
+	defer runtime.KeepAlive(rangeVal)
 
 	return newQTextDocumentFragment(C.QTextDocumentFragment_new3(rangeVal.cPointer()))
 }
 
 // NewQTextDocumentFragment4 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragment {
+	defer runtime.KeepAlive(rhs)
 
 	return newQTextDocumentFragment(C.QTextDocumentFragment_new4(rhs.cPointer()))
 }
 
 func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rhs)
 	C.QTextDocumentFragment_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QTextDocumentFragment) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextDocumentFragment_isEmpty(this.h))
 }
 
 func (this *QTextDocumentFragment) ToPlainText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -86,6 +99,7 @@ func (this *QTextDocumentFragment) ToPlainText() string {
 }
 
 func (this *QTextDocumentFragment) ToRawText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toRawText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -93,6 +107,7 @@ func (this *QTextDocumentFragment) ToRawText() string {
 }
 
 func (this *QTextDocumentFragment) ToHtml() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -100,6 +115,7 @@ func (this *QTextDocumentFragment) ToHtml() string {
 }
 
 func (this *QTextDocumentFragment) ToMarkdown() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdown(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -137,6 +153,7 @@ func QTextDocumentFragment_FromMarkdown(markdown string) *QTextDocumentFragment 
 }
 
 func (this *QTextDocumentFragment) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -144,6 +161,7 @@ func (this *QTextDocumentFragment) ToMarkdownWithFeatures(features QTextDocument
 }
 
 func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocument) *QTextDocumentFragment {
+	defer runtime.KeepAlive(resourceProvider)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -175,8 +193,9 @@ func (this *QTextDocumentFragment) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextDocumentFragment{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextDocumentFragment) {
-		C.QTextDocumentFragment_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextDocumentFragment_delete((*C.QTextDocumentFragment)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

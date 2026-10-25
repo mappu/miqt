@@ -198,6 +198,8 @@ bool QDesignerResourceBrowserInterface_override_virtual_connectNotify(void* self
 void QDesignerResourceBrowserInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerResourceBrowserInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerResourceBrowserInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDesignerResourceBrowserInterface_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesignerResourceBrowserInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerResourceBrowserInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesignerResourceBrowserInterface_protectedbase_create(bool* _dynamic_cast_ok, void* self);

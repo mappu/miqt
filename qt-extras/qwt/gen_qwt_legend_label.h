@@ -233,6 +233,8 @@ bool QwtLegendLabel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtLegendLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtLegendLabel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtLegendLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtLegendLabel_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtLegendLabel_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtLegendLabel_protectedbase_setDown(bool* _dynamic_cast_ok, void* self, bool down);
 bool QwtLegendLabel_protectedbase_isDown(bool* _dynamic_cast_ok, const void* self);

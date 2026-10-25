@@ -15,7 +15,13 @@ import (
 
 type QGeoAddress struct {
 	h  *C.QGeoAddress
-	gc *[1]*C.QGeoAddress
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoAddress) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoAddress) cPointer() *C.QGeoAddress {
@@ -54,23 +60,31 @@ func NewQGeoAddress() *QGeoAddress {
 
 // NewQGeoAddress2 constructs a new QGeoAddress object.
 func NewQGeoAddress2(other *QGeoAddress) *QGeoAddress {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoAddress(C.QGeoAddress_new2(other.cPointer()))
 }
 
 func (this *QGeoAddress) OperatorAssign(other *QGeoAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGeoAddress_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGeoAddress) OperatorEqual(other *QGeoAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoAddress_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoAddress) OperatorNotEqual(other *QGeoAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoAddress_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoAddress) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -78,6 +92,7 @@ func (this *QGeoAddress) Text() string {
 }
 
 func (this *QGeoAddress) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -86,6 +101,7 @@ func (this *QGeoAddress) SetText(text string) {
 }
 
 func (this *QGeoAddress) Country() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_country(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -93,6 +109,7 @@ func (this *QGeoAddress) Country() string {
 }
 
 func (this *QGeoAddress) SetCountry(country string) {
+	defer runtime.KeepAlive(this)
 	country_ms := C.struct_miqt_string{}
 	country_ms.data = C.CString(country)
 	country_ms.len = C.size_t(len(country))
@@ -101,6 +118,7 @@ func (this *QGeoAddress) SetCountry(country string) {
 }
 
 func (this *QGeoAddress) CountryCode() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_countryCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,6 +126,7 @@ func (this *QGeoAddress) CountryCode() string {
 }
 
 func (this *QGeoAddress) SetCountryCode(countryCode string) {
+	defer runtime.KeepAlive(this)
 	countryCode_ms := C.struct_miqt_string{}
 	countryCode_ms.data = C.CString(countryCode)
 	countryCode_ms.len = C.size_t(len(countryCode))
@@ -116,6 +135,7 @@ func (this *QGeoAddress) SetCountryCode(countryCode string) {
 }
 
 func (this *QGeoAddress) State() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_state(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -123,6 +143,7 @@ func (this *QGeoAddress) State() string {
 }
 
 func (this *QGeoAddress) SetState(state string) {
+	defer runtime.KeepAlive(this)
 	state_ms := C.struct_miqt_string{}
 	state_ms.data = C.CString(state)
 	state_ms.len = C.size_t(len(state))
@@ -131,6 +152,7 @@ func (this *QGeoAddress) SetState(state string) {
 }
 
 func (this *QGeoAddress) County() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_county(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -138,6 +160,7 @@ func (this *QGeoAddress) County() string {
 }
 
 func (this *QGeoAddress) SetCounty(county string) {
+	defer runtime.KeepAlive(this)
 	county_ms := C.struct_miqt_string{}
 	county_ms.data = C.CString(county)
 	county_ms.len = C.size_t(len(county))
@@ -146,6 +169,7 @@ func (this *QGeoAddress) SetCounty(county string) {
 }
 
 func (this *QGeoAddress) City() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_city(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -153,6 +177,7 @@ func (this *QGeoAddress) City() string {
 }
 
 func (this *QGeoAddress) SetCity(city string) {
+	defer runtime.KeepAlive(this)
 	city_ms := C.struct_miqt_string{}
 	city_ms.data = C.CString(city)
 	city_ms.len = C.size_t(len(city))
@@ -161,6 +186,7 @@ func (this *QGeoAddress) SetCity(city string) {
 }
 
 func (this *QGeoAddress) District() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_district(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -168,6 +194,7 @@ func (this *QGeoAddress) District() string {
 }
 
 func (this *QGeoAddress) SetDistrict(district string) {
+	defer runtime.KeepAlive(this)
 	district_ms := C.struct_miqt_string{}
 	district_ms.data = C.CString(district)
 	district_ms.len = C.size_t(len(district))
@@ -176,6 +203,7 @@ func (this *QGeoAddress) SetDistrict(district string) {
 }
 
 func (this *QGeoAddress) PostalCode() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_postalCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -183,6 +211,7 @@ func (this *QGeoAddress) PostalCode() string {
 }
 
 func (this *QGeoAddress) SetPostalCode(postalCode string) {
+	defer runtime.KeepAlive(this)
 	postalCode_ms := C.struct_miqt_string{}
 	postalCode_ms.data = C.CString(postalCode)
 	postalCode_ms.len = C.size_t(len(postalCode))
@@ -191,6 +220,7 @@ func (this *QGeoAddress) SetPostalCode(postalCode string) {
 }
 
 func (this *QGeoAddress) Street() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAddress_street(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -198,6 +228,7 @@ func (this *QGeoAddress) Street() string {
 }
 
 func (this *QGeoAddress) SetStreet(street string) {
+	defer runtime.KeepAlive(this)
 	street_ms := C.struct_miqt_string{}
 	street_ms.data = C.CString(street)
 	street_ms.len = C.size_t(len(street))
@@ -206,14 +237,17 @@ func (this *QGeoAddress) SetStreet(street string) {
 }
 
 func (this *QGeoAddress) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoAddress_isEmpty(this.h))
 }
 
 func (this *QGeoAddress) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QGeoAddress_clear(this.h)
 }
 
 func (this *QGeoAddress) IsTextGenerated() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoAddress_isTextGenerated(this.h))
 }
 
@@ -229,8 +263,9 @@ func (this *QGeoAddress) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoAddress{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoAddress) {
-		C.QGeoAddress_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoAddress_delete((*C.QGeoAddress)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

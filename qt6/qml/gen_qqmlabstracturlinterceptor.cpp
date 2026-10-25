@@ -34,7 +34,9 @@ public:
 		QQmlAbstractUrlInterceptor::DataType type_ret = type;
 		int sigval2 = static_cast<int>(type_ret);
 		QUrl* callback_return_value = miqt_exec_callback_QQmlAbstractUrlInterceptor_intercept(this, handle__intercept, sigval1, sigval2);
-		return *callback_return_value;
+		QUrl callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 };
@@ -59,6 +61,10 @@ bool QQmlAbstractUrlInterceptor_override_virtual_intercept(void* self, intptr_t 
 
 	self_cast->handle__intercept = slot;
 	return true;
+}
+
+QUrl* QQmlAbstractUrlInterceptor_virtualreturncopy_QUrl(QUrl* src) {
+	return new QUrl(*src);
 }
 
 void QQmlAbstractUrlInterceptor_delete(QQmlAbstractUrlInterceptor* self) {

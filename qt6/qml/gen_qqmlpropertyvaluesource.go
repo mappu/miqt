@@ -16,7 +16,13 @@ import (
 
 type QQmlPropertyValueSource struct {
 	h  *C.QQmlPropertyValueSource
-	gc *[1]*C.QQmlPropertyValueSource
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlPropertyValueSource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlPropertyValueSource) cPointer() *C.QQmlPropertyValueSource {
@@ -54,10 +60,14 @@ func NewQQmlPropertyValueSource() *QQmlPropertyValueSource {
 }
 
 func (this *QQmlPropertyValueSource) SetTarget(target *QQmlProperty) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(target)
 	C.QQmlPropertyValueSource_setTarget(this.h, target.cPointer())
 }
 
 func (this *QQmlPropertyValueSource) OperatorAssign(param1 *QQmlPropertyValueSource) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlPropertyValueSource_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlPropertyValueSource) OnSetTarget(slot func(target *QQmlProperty)) {
@@ -93,8 +103,9 @@ func (this *QQmlPropertyValueSource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlPropertyValueSource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlPropertyValueSource) {
-		C.QQmlPropertyValueSource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlPropertyValueSource_delete((*C.QQmlPropertyValueSource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

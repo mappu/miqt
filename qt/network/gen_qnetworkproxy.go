@@ -51,7 +51,13 @@ const (
 
 type QNetworkProxyQuery struct {
 	h  *C.QNetworkProxyQuery
-	gc *[1]*C.QNetworkProxyQuery
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkProxyQuery) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkProxyQuery) cPointer() *C.QNetworkProxyQuery {
@@ -90,6 +96,7 @@ func NewQNetworkProxyQuery() *QNetworkProxyQuery {
 
 // NewQNetworkProxyQuery2 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery2(requestUrl *qt.QUrl) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(requestUrl)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new2((*C.QUrl)(requestUrl.UnsafePointer())))
 }
@@ -112,12 +119,15 @@ func NewQNetworkProxyQuery4(bindPort uint16) *QNetworkProxyQuery {
 
 // NewQNetworkProxyQuery5 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery5(networkConfiguration *QNetworkConfiguration, requestUrl *qt.QUrl) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
+	defer runtime.KeepAlive(requestUrl)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new5(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer())))
 }
 
 // NewQNetworkProxyQuery6 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery6(networkConfiguration *QNetworkConfiguration, hostname string, port int) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 	hostname_ms := C.struct_miqt_string{}
 	hostname_ms.data = C.CString(hostname)
 	hostname_ms.len = C.size_t(len(hostname))
@@ -128,18 +138,21 @@ func NewQNetworkProxyQuery6(networkConfiguration *QNetworkConfiguration, hostnam
 
 // NewQNetworkProxyQuery7 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery7(networkConfiguration *QNetworkConfiguration, bindPort uint16) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new7(networkConfiguration.cPointer(), (C.ushort)(bindPort)))
 }
 
 // NewQNetworkProxyQuery8 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery8(other *QNetworkProxyQuery) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new8(other.cPointer()))
 }
 
 // NewQNetworkProxyQuery9 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery9(requestUrl *qt.QUrl, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(requestUrl)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new9((*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
 }
@@ -194,12 +207,15 @@ func NewQNetworkProxyQuery13(bindPort uint16, protocolTag string, queryType QNet
 
 // NewQNetworkProxyQuery14 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery14(networkConfiguration *QNetworkConfiguration, requestUrl *qt.QUrl, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
+	defer runtime.KeepAlive(requestUrl)
 
 	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new14(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery15 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery15(networkConfiguration *QNetworkConfiguration, hostname string, port int, protocolTag string) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 	hostname_ms := C.struct_miqt_string{}
 	hostname_ms.data = C.CString(hostname)
 	hostname_ms.len = C.size_t(len(hostname))
@@ -214,6 +230,7 @@ func NewQNetworkProxyQuery15(networkConfiguration *QNetworkConfiguration, hostna
 
 // NewQNetworkProxyQuery16 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery16(networkConfiguration *QNetworkConfiguration, hostname string, port int, protocolTag string, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 	hostname_ms := C.struct_miqt_string{}
 	hostname_ms.data = C.CString(hostname)
 	hostname_ms.len = C.size_t(len(hostname))
@@ -228,6 +245,7 @@ func NewQNetworkProxyQuery16(networkConfiguration *QNetworkConfiguration, hostna
 
 // NewQNetworkProxyQuery17 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery17(networkConfiguration *QNetworkConfiguration, bindPort uint16, protocolTag string) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 	protocolTag_ms := C.struct_miqt_string{}
 	protocolTag_ms.data = C.CString(protocolTag)
 	protocolTag_ms.len = C.size_t(len(protocolTag))
@@ -238,6 +256,7 @@ func NewQNetworkProxyQuery17(networkConfiguration *QNetworkConfiguration, bindPo
 
 // NewQNetworkProxyQuery18 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery18(networkConfiguration *QNetworkConfiguration, bindPort uint16, protocolTag string, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
+	defer runtime.KeepAlive(networkConfiguration)
 	protocolTag_ms := C.struct_miqt_string{}
 	protocolTag_ms.data = C.CString(protocolTag)
 	protocolTag_ms.len = C.size_t(len(protocolTag))
@@ -247,38 +266,51 @@ func NewQNetworkProxyQuery18(networkConfiguration *QNetworkConfiguration, bindPo
 }
 
 func (this *QNetworkProxyQuery) OperatorAssign(other *QNetworkProxyQuery) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkProxyQuery_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkProxyQuery) Swap(other *QNetworkProxyQuery) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkProxyQuery_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkProxyQuery) OperatorEqual(other *QNetworkProxyQuery) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkProxyQuery_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkProxyQuery) OperatorNotEqual(other *QNetworkProxyQuery) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkProxyQuery_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkProxyQuery) QueryType() QNetworkProxyQuery__QueryType {
+	defer runtime.KeepAlive(this)
 	return (QNetworkProxyQuery__QueryType)(C.QNetworkProxyQuery_queryType(this.h))
 }
 
 func (this *QNetworkProxyQuery) SetQueryType(typeVal QNetworkProxyQuery__QueryType) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxyQuery_setQueryType(this.h, (C.int)(typeVal))
 }
 
 func (this *QNetworkProxyQuery) PeerPort() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkProxyQuery_peerPort(this.h))
 }
 
 func (this *QNetworkProxyQuery) SetPeerPort(port int) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxyQuery_setPeerPort(this.h, (C.int)(port))
 }
 
 func (this *QNetworkProxyQuery) PeerHostName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkProxyQuery_peerHostName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -286,6 +318,7 @@ func (this *QNetworkProxyQuery) PeerHostName() string {
 }
 
 func (this *QNetworkProxyQuery) SetPeerHostName(hostname string) {
+	defer runtime.KeepAlive(this)
 	hostname_ms := C.struct_miqt_string{}
 	hostname_ms.data = C.CString(hostname)
 	hostname_ms.len = C.size_t(len(hostname))
@@ -294,14 +327,17 @@ func (this *QNetworkProxyQuery) SetPeerHostName(hostname string) {
 }
 
 func (this *QNetworkProxyQuery) LocalPort() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkProxyQuery_localPort(this.h))
 }
 
 func (this *QNetworkProxyQuery) SetLocalPort(port int) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxyQuery_setLocalPort(this.h, (C.int)(port))
 }
 
 func (this *QNetworkProxyQuery) ProtocolTag() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkProxyQuery_protocolTag(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -309,6 +345,7 @@ func (this *QNetworkProxyQuery) ProtocolTag() string {
 }
 
 func (this *QNetworkProxyQuery) SetProtocolTag(protocolTag string) {
+	defer runtime.KeepAlive(this)
 	protocolTag_ms := C.struct_miqt_string{}
 	protocolTag_ms.data = C.CString(protocolTag)
 	protocolTag_ms.len = C.size_t(len(protocolTag))
@@ -317,22 +354,28 @@ func (this *QNetworkProxyQuery) SetProtocolTag(protocolTag string) {
 }
 
 func (this *QNetworkProxyQuery) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkProxyQuery_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkProxyQuery) SetUrl(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QNetworkProxyQuery_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QNetworkProxyQuery) NetworkConfiguration() *QNetworkConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkConfiguration(C.QNetworkProxyQuery_networkConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkProxyQuery) SetNetworkConfiguration(networkConfiguration *QNetworkConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(networkConfiguration)
 	C.QNetworkProxyQuery_setNetworkConfiguration(this.h, networkConfiguration.cPointer())
 }
 
@@ -348,15 +391,22 @@ func (this *QNetworkProxyQuery) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkProxyQuery{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxyQuery) {
-		C.QNetworkProxyQuery_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkProxyQuery_delete((*C.QNetworkProxyQuery)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QNetworkProxy struct {
 	h  *C.QNetworkProxy
-	gc *[1]*C.QNetworkProxy
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkProxy) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkProxy) cPointer() *C.QNetworkProxy {
@@ -401,6 +451,7 @@ func NewQNetworkProxy2(typeVal QNetworkProxy__ProxyType) *QNetworkProxy {
 
 // NewQNetworkProxy3 constructs a new QNetworkProxy object.
 func NewQNetworkProxy3(other *QNetworkProxy) *QNetworkProxy {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkProxy(C.QNetworkProxy_new3(other.cPointer()))
 }
@@ -458,46 +509,61 @@ func NewQNetworkProxy7(typeVal QNetworkProxy__ProxyType, hostName string, port u
 }
 
 func (this *QNetworkProxy) OperatorAssign(other *QNetworkProxy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkProxy_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkProxy) Swap(other *QNetworkProxy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkProxy_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkProxy) OperatorEqual(other *QNetworkProxy) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkProxy_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkProxy) OperatorNotEqual(other *QNetworkProxy) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkProxy_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkProxy) SetType(typeVal QNetworkProxy__ProxyType) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxy_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QNetworkProxy) Type() QNetworkProxy__ProxyType {
+	defer runtime.KeepAlive(this)
 	return (QNetworkProxy__ProxyType)(C.QNetworkProxy_type(this.h))
 }
 
 func (this *QNetworkProxy) SetCapabilities(capab QNetworkProxy__Capability) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxy_setCapabilities(this.h, (C.int)(capab))
 }
 
 func (this *QNetworkProxy) Capabilities() QNetworkProxy__Capability {
+	defer runtime.KeepAlive(this)
 	return (QNetworkProxy__Capability)(C.QNetworkProxy_capabilities(this.h))
 }
 
 func (this *QNetworkProxy) IsCachingProxy() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkProxy_isCachingProxy(this.h))
 }
 
 func (this *QNetworkProxy) IsTransparentProxy() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkProxy_isTransparentProxy(this.h))
 }
 
 func (this *QNetworkProxy) SetUser(userName string) {
+	defer runtime.KeepAlive(this)
 	userName_ms := C.struct_miqt_string{}
 	userName_ms.data = C.CString(userName)
 	userName_ms.len = C.size_t(len(userName))
@@ -506,6 +572,7 @@ func (this *QNetworkProxy) SetUser(userName string) {
 }
 
 func (this *QNetworkProxy) User() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkProxy_user(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -513,6 +580,7 @@ func (this *QNetworkProxy) User() string {
 }
 
 func (this *QNetworkProxy) SetPassword(password string) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -521,6 +589,7 @@ func (this *QNetworkProxy) SetPassword(password string) {
 }
 
 func (this *QNetworkProxy) Password() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkProxy_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -528,6 +597,7 @@ func (this *QNetworkProxy) Password() string {
 }
 
 func (this *QNetworkProxy) SetHostName(hostName string) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -536,6 +606,7 @@ func (this *QNetworkProxy) SetHostName(hostName string) {
 }
 
 func (this *QNetworkProxy) HostName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkProxy_hostName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -543,14 +614,17 @@ func (this *QNetworkProxy) HostName() string {
 }
 
 func (this *QNetworkProxy) SetPort(port uint16) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkProxy_setPort(this.h, (C.ushort)(port))
 }
 
 func (this *QNetworkProxy) Port() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QNetworkProxy_port(this.h))
 }
 
 func QNetworkProxy_SetApplicationProxy(proxy *QNetworkProxy) {
+	defer runtime.KeepAlive(proxy)
 	C.QNetworkProxy_setApplicationProxy(proxy.cPointer())
 }
 
@@ -561,16 +635,20 @@ func QNetworkProxy_ApplicationProxy() *QNetworkProxy {
 }
 
 func (this *QNetworkProxy) Header(header QNetworkRequest__KnownHeaders) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkProxy_header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkProxy) SetHeader(header QNetworkRequest__KnownHeaders, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QNetworkProxy_setHeader(this.h, (C.int)(header), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QNetworkProxy) HasRawHeader(headerName []byte) bool {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -582,6 +660,7 @@ func (this *QNetworkProxy) HasRawHeader(headerName []byte) bool {
 }
 
 func (this *QNetworkProxy) RawHeaderList() [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkProxy_rawHeaderList(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -595,6 +674,7 @@ func (this *QNetworkProxy) RawHeaderList() [][]byte {
 }
 
 func (this *QNetworkProxy) RawHeader(headerName []byte) []byte {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -609,6 +689,7 @@ func (this *QNetworkProxy) RawHeader(headerName []byte) []byte {
 }
 
 func (this *QNetworkProxy) SetRawHeader(headerName []byte, value []byte) {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -638,15 +719,22 @@ func (this *QNetworkProxy) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkProxy{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxy) {
-		C.QNetworkProxy_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkProxy_delete((*C.QNetworkProxy)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QNetworkProxyFactory struct {
 	h  *C.QNetworkProxyFactory
-	gc *[1]*C.QNetworkProxyFactory
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkProxyFactory) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkProxyFactory) cPointer() *C.QNetworkProxyFactory {
@@ -684,6 +772,8 @@ func NewQNetworkProxyFactory() *QNetworkProxyFactory {
 }
 
 func (this *QNetworkProxyFactory) QueryProxy(query *QNetworkProxyQuery) []QNetworkProxy {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(query)
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_queryProxy(this.h, query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -704,10 +794,12 @@ func QNetworkProxyFactory_SetUseSystemConfiguration(enable bool) {
 }
 
 func QNetworkProxyFactory_SetApplicationProxyFactory(factory *QNetworkProxyFactory) {
+	defer runtime.KeepAlive(factory)
 	C.QNetworkProxyFactory_setApplicationProxyFactory(factory.cPointer())
 }
 
 func QNetworkProxyFactory_ProxyForQuery(query *QNetworkProxyQuery) []QNetworkProxy {
+	defer runtime.KeepAlive(query)
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_proxyForQuery(query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -732,10 +824,13 @@ func QNetworkProxyFactory_SystemProxyForQuery() []QNetworkProxy {
 }
 
 func (this *QNetworkProxyFactory) OperatorAssign(param1 *QNetworkProxyFactory) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QNetworkProxyFactory_operatorAssign(this.h, param1.cPointer())
 }
 
 func QNetworkProxyFactory_SystemProxyForQueryWithQuery(query *QNetworkProxyQuery) []QNetworkProxy {
+	defer runtime.KeepAlive(query)
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_systemProxyForQueryWithQuery(query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -764,10 +859,11 @@ func miqt_exec_callback_QNetworkProxyFactory_queryProxy(self *C.QNetworkProxyFac
 	slotval1 := newQNetworkProxyQuery(query)
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QNetworkProxyFactory_virtualreturncopy_QNetworkProxy(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -787,8 +883,9 @@ func (this *QNetworkProxyFactory) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkProxyFactory{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxyFactory) {
-		C.QNetworkProxyFactory_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkProxyFactory_delete((*C.QNetworkProxyFactory)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

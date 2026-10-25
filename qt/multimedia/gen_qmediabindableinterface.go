@@ -15,7 +15,13 @@ import (
 
 type QMediaBindableInterface struct {
 	h  *C.QMediaBindableInterface
-	gc *[1]*C.QMediaBindableInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaBindableInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaBindableInterface) cPointer() *C.QMediaBindableInterface {
@@ -47,10 +53,13 @@ func UnsafeNewQMediaBindableInterface(h unsafe.Pointer) *QMediaBindableInterface
 }
 
 func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QMediaBindableInterface_mediaObject(this.h))
 }
 
 func (this *QMediaBindableInterface) OperatorAssign(param1 *QMediaBindableInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaBindableInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -66,8 +75,9 @@ func (this *QMediaBindableInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaBindableInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaBindableInterface) {
-		C.QMediaBindableInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaBindableInterface_delete((*C.QMediaBindableInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

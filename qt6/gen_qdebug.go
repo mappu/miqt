@@ -23,8 +23,15 @@ const (
 
 type QDebug struct {
 	h  *C.QDebug
-	gc *[1]*C.QDebug
+	gc *[1]unsafe.Pointer
 	*QIODeviceBase
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDebug) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QIODeviceBase.miqtSetGC(gc)
 }
 
 func (this *QDebug) cPointer() *C.QDebug {
@@ -60,139 +67,220 @@ func UnsafeNewQDebug(h unsafe.Pointer) *QDebug {
 
 // NewQDebug constructs a new QDebug object.
 func NewQDebug(device *QIODevice) *QDebug {
+	defer runtime.KeepAlive(device)
 
 	return newQDebug(C.QDebug_new(device.cPointer()))
 }
 
 // NewQDebug2 constructs a new QDebug object.
 func NewQDebug2(o *QDebug) *QDebug {
+	defer runtime.KeepAlive(o)
 
 	return newQDebug(C.QDebug_new2(o.cPointer()))
 }
 
 func (this *QDebug) OperatorAssign(other *QDebug) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QDebug_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDebug) Swap(other *QDebug) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QDebug_swap(this.h, other.cPointer())
 }
 
 func (this *QDebug) ResetFormat() *QDebug {
-	return newQDebug(C.QDebug_resetFormat(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_resetFormat(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) Space() *QDebug {
-	return newQDebug(C.QDebug_space(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_space(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) Nospace() *QDebug {
-	return newQDebug(C.QDebug_nospace(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_nospace(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) MaybeSpace() *QDebug {
-	return newQDebug(C.QDebug_maybeSpace(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_maybeSpace(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) Verbosity(verbosityLevel int) *QDebug {
-	return newQDebug(C.QDebug_verbosity(this.h, (C.int)(verbosityLevel)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_verbosity(this.h, (C.int)(verbosityLevel)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) Verbosity2() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDebug_verbosity2(this.h))
 }
 
 func (this *QDebug) SetVerbosity(verbosityLevel int) {
+	defer runtime.KeepAlive(this)
 	C.QDebug_setVerbosity(this.h, (C.int)(verbosityLevel))
 }
 
 func (this *QDebug) AutoInsertSpaces() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDebug_autoInsertSpaces(this.h))
 }
 
 func (this *QDebug) SetAutoInsertSpaces(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QDebug_setAutoInsertSpaces(this.h, (C.bool)(b))
 }
 
 func (this *QDebug) Quote() *QDebug {
-	return newQDebug(C.QDebug_quote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_quote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) Noquote() *QDebug {
-	return newQDebug(C.QDebug_noquote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_noquote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) MaybeQuote() *QDebug {
-	return newQDebug(C.QDebug_maybeQuote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_maybeQuote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeft(t QChar) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeft(this.h, t.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(t)
+	_ret := newQDebug(C.QDebug_operatorShiftLeft(this.h, t.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithBool(t bool) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithBool(this.h, (C.bool)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithBool(this.h, (C.bool)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithChar(t int8) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithChar(this.h, (C.char)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithChar(this.h, (C.char)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithShort(t int16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.short)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.short)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedshort(t uint16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithInt(t int) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithInt(this.h, (C.int)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithInt(this.h, (C.int)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedint(t uint) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedint(this.h, (C.uint)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithUnsignedint(this.h, (C.uint)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithLong(t int64) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithLong(this.h, (C.long)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithLong(this.h, (C.long)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedlong(t uint64) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithQint64(t int64) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithQint64(this.h, (C.longlong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQint64(this.h, (C.longlong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithQuint64(t uint64) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithFloat(t float32) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithFloat(this.h, (C.float)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithFloat(this.h, (C.float)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithDouble(t float64) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithDouble(this.h, (C.double)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithDouble(this.h, (C.double)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeft2(t string) *QDebug {
+	defer runtime.KeepAlive(this)
 	t_Cstring := C.CString(t)
 	defer C.free(unsafe.Pointer(t_Cstring))
-	return newQDebug(C.QDebug_operatorShiftLeft2(this.h, t_Cstring))
+	_ret := newQDebug(C.QDebug_operatorShiftLeft2(this.h, t_Cstring))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithQString(t string) *QDebug {
+	defer runtime.KeepAlive(this)
 	t_ms := C.struct_miqt_string{}
 	t_ms.data = C.CString(t)
 	t_ms.len = C.size_t(len(t))
 	defer C.free(unsafe.Pointer(t_ms.data))
-	return newQDebug(C.QDebug_operatorShiftLeftWithQString(this.h, t_ms))
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQString(this.h, t_ms))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithQByteArray(t []byte) *QDebug {
+	defer runtime.KeepAlive(this)
 	t_alias := C.struct_miqt_string{}
 	if len(t) > 0 {
 		t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
@@ -200,19 +288,31 @@ func (this *QDebug) OperatorShiftLeftWithQByteArray(t []byte) *QDebug {
 		t_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	t_alias.len = C.size_t(len(t))
-	return newQDebug(C.QDebug_operatorShiftLeftWithQByteArray(this.h, t_alias))
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQByteArray(this.h, t_alias))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithQByteArrayView(t QByteArrayView) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithQByteArrayView(this.h, t.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(t)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQByteArrayView(this.h, t.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithVoid(this.h, t))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithVoid(this.h, t))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QDebug) MaybeQuoteWithChar(c int8) *QDebug {
-	return newQDebug(C.QDebug_maybeQuoteWithChar(this.h, (C.char)(c)))
+	defer runtime.KeepAlive(this)
+	_ret := newQDebug(C.QDebug_maybeQuoteWithChar(this.h, (C.char)(c)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 // Delete this object from C++ memory.
@@ -227,15 +327,22 @@ func (this *QDebug) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDebug{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDebug) {
-		C.QDebug_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDebug_delete((*C.QDebug)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDebugStateSaver struct {
 	h  *C.QDebugStateSaver
-	gc *[1]*C.QDebugStateSaver
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDebugStateSaver) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDebugStateSaver) cPointer() *C.QDebugStateSaver {
@@ -268,6 +375,7 @@ func UnsafeNewQDebugStateSaver(h unsafe.Pointer) *QDebugStateSaver {
 
 // NewQDebugStateSaver constructs a new QDebugStateSaver object.
 func NewQDebugStateSaver(dbg *QDebug) *QDebugStateSaver {
+	defer runtime.KeepAlive(dbg)
 
 	return newQDebugStateSaver(C.QDebugStateSaver_new(dbg.cPointer()))
 }
@@ -284,15 +392,22 @@ func (this *QDebugStateSaver) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDebugStateSaver{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDebugStateSaver) {
-		C.QDebugStateSaver_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDebugStateSaver_delete((*C.QDebugStateSaver)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QNoDebug struct {
 	h  *C.QNoDebug
-	gc *[1]*C.QNoDebug
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNoDebug) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNoDebug) cPointer() *C.QNoDebug {
@@ -324,35 +439,59 @@ func UnsafeNewQNoDebug(h unsafe.Pointer) *QNoDebug {
 }
 
 func (this *QNoDebug) Space() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_space(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_space(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) Nospace() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_nospace(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_nospace(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) MaybeSpace() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_maybeSpace(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_maybeSpace(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) Quote() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_quote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_quote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) Noquote() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_noquote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_noquote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) MaybeQuote() *QNoDebug {
-	return newQNoDebug(C.QNoDebug_maybeQuote(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_maybeQuote(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) Verbosity(param1 int) *QNoDebug {
-	return newQNoDebug(C.QNoDebug_verbosity(this.h, (C.int)(param1)))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_verbosity(this.h, (C.int)(param1)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QNoDebug) MaybeQuoteWithChar(param1 int8) *QNoDebug {
-	return newQNoDebug(C.QNoDebug_maybeQuoteWithChar(this.h, (C.const_char)(param1)))
+	defer runtime.KeepAlive(this)
+	_ret := newQNoDebug(C.QNoDebug_maybeQuoteWithChar(this.h, (C.const_char)(param1)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 // Delete this object from C++ memory.
@@ -367,8 +506,9 @@ func (this *QNoDebug) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNoDebug{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNoDebug) {
-		C.QNoDebug_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNoDebug_delete((*C.QNoDebug)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

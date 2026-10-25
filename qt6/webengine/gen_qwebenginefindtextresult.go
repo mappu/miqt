@@ -15,7 +15,13 @@ import (
 
 type QWebEngineFindTextResult struct {
 	h  *C.QWebEngineFindTextResult
-	gc *[1]*C.QWebEngineFindTextResult
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineFindTextResult) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineFindTextResult) cPointer() *C.QWebEngineFindTextResult {
@@ -54,19 +60,24 @@ func NewQWebEngineFindTextResult() *QWebEngineFindTextResult {
 
 // NewQWebEngineFindTextResult2 constructs a new QWebEngineFindTextResult object.
 func NewQWebEngineFindTextResult2(other *QWebEngineFindTextResult) *QWebEngineFindTextResult {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new2(other.cPointer()))
 }
 
 func (this *QWebEngineFindTextResult) NumberOfMatches() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineFindTextResult_numberOfMatches(this.h))
 }
 
 func (this *QWebEngineFindTextResult) ActiveMatch() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineFindTextResult_activeMatch(this.h))
 }
 
 func (this *QWebEngineFindTextResult) OperatorAssign(other *QWebEngineFindTextResult) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineFindTextResult_operatorAssign(this.h, other.cPointer())
 }
 
@@ -82,8 +93,9 @@ func (this *QWebEngineFindTextResult) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineFindTextResult{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineFindTextResult) {
-		C.QWebEngineFindTextResult_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineFindTextResult_delete((*C.QWebEngineFindTextResult)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

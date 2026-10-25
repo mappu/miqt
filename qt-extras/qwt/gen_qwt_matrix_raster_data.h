@@ -51,6 +51,7 @@ bool QwtMatrixRasterData_override_virtual_initRaster(void* self, intptr_t slot);
 void QwtMatrixRasterData_virtualbase_initRaster(void* self, QRectF* param1, QSize* raster);
 bool QwtMatrixRasterData_override_virtual_discardRaster(void* self, intptr_t slot);
 void QwtMatrixRasterData_virtualbase_discardRaster(void* self);
+QRectF* QwtMatrixRasterData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtMatrixRasterData_delete(QwtMatrixRasterData* self);
 

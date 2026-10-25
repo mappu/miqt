@@ -206,6 +206,8 @@ bool QPageSetupDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPageSetupDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QPageSetupDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QPageSetupDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QPageSetupDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QPageSetupDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

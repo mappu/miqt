@@ -133,7 +133,9 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&name_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTextDocument_loadResource(this, handle__loadResource, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTextDocument_virtualbase_loadResource(void* self, int type, QUrl* name);
@@ -1088,6 +1090,10 @@ bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTextDocument*>(self)->QTextDocument::disconnectNotify(*signal);
+}
+
+QVariant* QTextDocument_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

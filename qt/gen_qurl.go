@@ -61,7 +61,13 @@ const (
 
 type QUrl struct {
 	h  *C.QUrl
-	gc *[1]*C.QUrl
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUrl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QUrl) cPointer() *C.QUrl {
@@ -100,6 +106,7 @@ func NewQUrl() *QUrl {
 
 // NewQUrl2 constructs a new QUrl object.
 func NewQUrl2(copyVal *QUrl) *QUrl {
+	defer runtime.KeepAlive(copyVal)
 
 	return newQUrl(C.QUrl_new2(copyVal.cPointer()))
 }
@@ -125,10 +132,13 @@ func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 }
 
 func (this *QUrl) OperatorAssign(copyVal *QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(copyVal)
 	C.QUrl_operatorAssign(this.h, copyVal.cPointer())
 }
 
 func (this *QUrl) OperatorAssignWithUrl(url string) {
+	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -137,10 +147,13 @@ func (this *QUrl) OperatorAssignWithUrl(url string) {
 }
 
 func (this *QUrl) Swap(other *QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QUrl_swap(this.h, other.cPointer())
 }
 
 func (this *QUrl) SetUrl(url string) {
+	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -149,6 +162,7 @@ func (this *QUrl) SetUrl(url string) {
 }
 
 func (this *QUrl) Url() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_url(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -156,6 +170,7 @@ func (this *QUrl) Url() string {
 }
 
 func (this *QUrl) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -163,6 +178,7 @@ func (this *QUrl) ToString() string {
 }
 
 func (this *QUrl) ToDisplayString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_toDisplayString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -170,6 +186,7 @@ func (this *QUrl) ToDisplayString() string {
 }
 
 func (this *QUrl) ToEncoded() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QUrl_toEncoded(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -214,10 +231,12 @@ func QUrl_FromUserInput2(userInput string, workingDirectory string) *QUrl {
 }
 
 func (this *QUrl) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_isValid(this.h))
 }
 
 func (this *QUrl) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -225,14 +244,17 @@ func (this *QUrl) ErrorString() string {
 }
 
 func (this *QUrl) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_isEmpty(this.h))
 }
 
 func (this *QUrl) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QUrl_clear(this.h)
 }
 
 func (this *QUrl) SetScheme(scheme string) {
+	defer runtime.KeepAlive(this)
 	scheme_ms := C.struct_miqt_string{}
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))
@@ -241,6 +263,7 @@ func (this *QUrl) SetScheme(scheme string) {
 }
 
 func (this *QUrl) Scheme() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_scheme(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -248,6 +271,7 @@ func (this *QUrl) Scheme() string {
 }
 
 func (this *QUrl) SetAuthority(authority string) {
+	defer runtime.KeepAlive(this)
 	authority_ms := C.struct_miqt_string{}
 	authority_ms.data = C.CString(authority)
 	authority_ms.len = C.size_t(len(authority))
@@ -256,6 +280,7 @@ func (this *QUrl) SetAuthority(authority string) {
 }
 
 func (this *QUrl) Authority() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_authority(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -263,6 +288,7 @@ func (this *QUrl) Authority() string {
 }
 
 func (this *QUrl) SetUserInfo(userInfo string) {
+	defer runtime.KeepAlive(this)
 	userInfo_ms := C.struct_miqt_string{}
 	userInfo_ms.data = C.CString(userInfo)
 	userInfo_ms.len = C.size_t(len(userInfo))
@@ -271,6 +297,7 @@ func (this *QUrl) SetUserInfo(userInfo string) {
 }
 
 func (this *QUrl) UserInfo() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_userInfo(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -278,6 +305,7 @@ func (this *QUrl) UserInfo() string {
 }
 
 func (this *QUrl) SetUserName(userName string) {
+	defer runtime.KeepAlive(this)
 	userName_ms := C.struct_miqt_string{}
 	userName_ms.data = C.CString(userName)
 	userName_ms.len = C.size_t(len(userName))
@@ -286,6 +314,7 @@ func (this *QUrl) SetUserName(userName string) {
 }
 
 func (this *QUrl) UserName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_userName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -293,6 +322,7 @@ func (this *QUrl) UserName() string {
 }
 
 func (this *QUrl) SetPassword(password string) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -301,6 +331,7 @@ func (this *QUrl) SetPassword(password string) {
 }
 
 func (this *QUrl) Password() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -308,6 +339,7 @@ func (this *QUrl) Password() string {
 }
 
 func (this *QUrl) SetHost(host string) {
+	defer runtime.KeepAlive(this)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -316,6 +348,7 @@ func (this *QUrl) SetHost(host string) {
 }
 
 func (this *QUrl) Host() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_host(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -323,6 +356,7 @@ func (this *QUrl) Host() string {
 }
 
 func (this *QUrl) TopLevelDomain() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_topLevelDomain(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -330,14 +364,17 @@ func (this *QUrl) TopLevelDomain() string {
 }
 
 func (this *QUrl) SetPort(port int) {
+	defer runtime.KeepAlive(this)
 	C.QUrl_setPort(this.h, (C.int)(port))
 }
 
 func (this *QUrl) Port() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QUrl_port(this.h))
 }
 
 func (this *QUrl) SetPath(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -346,6 +383,7 @@ func (this *QUrl) SetPath(path string) {
 }
 
 func (this *QUrl) Path() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -353,6 +391,7 @@ func (this *QUrl) Path() string {
 }
 
 func (this *QUrl) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -360,10 +399,12 @@ func (this *QUrl) FileName() string {
 }
 
 func (this *QUrl) HasQuery() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_hasQuery(this.h))
 }
 
 func (this *QUrl) SetQuery(query string) {
+	defer runtime.KeepAlive(this)
 	query_ms := C.struct_miqt_string{}
 	query_ms.data = C.CString(query)
 	query_ms.len = C.size_t(len(query))
@@ -372,10 +413,13 @@ func (this *QUrl) SetQuery(query string) {
 }
 
 func (this *QUrl) SetQueryWithQuery(query *QUrlQuery) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(query)
 	C.QUrl_setQueryWithQuery(this.h, query.cPointer())
 }
 
 func (this *QUrl) Query() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_query(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -383,10 +427,12 @@ func (this *QUrl) Query() string {
 }
 
 func (this *QUrl) HasFragment() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_hasFragment(this.h))
 }
 
 func (this *QUrl) Fragment() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_fragment(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -394,6 +440,7 @@ func (this *QUrl) Fragment() string {
 }
 
 func (this *QUrl) SetFragment(fragment string) {
+	defer runtime.KeepAlive(this)
 	fragment_ms := C.struct_miqt_string{}
 	fragment_ms.data = C.CString(fragment)
 	fragment_ms.len = C.size_t(len(fragment))
@@ -402,20 +449,26 @@ func (this *QUrl) SetFragment(fragment string) {
 }
 
 func (this *QUrl) Resolved(relative *QUrl) *QUrl {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(relative)
 	_goptr := newQUrl(C.QUrl_resolved(this.h, relative.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUrl) IsRelative() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_isRelative(this.h))
 }
 
 func (this *QUrl) IsParentOf(url *QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QUrl_isParentOf(this.h, url.cPointer()))
 }
 
 func (this *QUrl) IsLocalFile() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_isLocalFile(this.h))
 }
 
@@ -430,6 +483,7 @@ func QUrl_FromLocalFile(localfile string) *QUrl {
 }
 
 func (this *QUrl) ToLocalFile() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_toLocalFile(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -437,22 +491,30 @@ func (this *QUrl) ToLocalFile() string {
 }
 
 func (this *QUrl) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QUrl_detach(this.h)
 }
 
 func (this *QUrl) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUrl_isDetached(this.h))
 }
 
 func (this *QUrl) OperatorLesser(url *QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QUrl_operatorLesser(this.h, url.cPointer()))
 }
 
 func (this *QUrl) OperatorEqual(url *QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QUrl_operatorEqual(this.h, url.cPointer()))
 }
 
 func (this *QUrl) OperatorNotEqual(url *QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	return (bool)(C.QUrl_operatorNotEqual(this.h, url.cPointer()))
 }
 
@@ -520,6 +582,7 @@ func QUrl_IdnWhitelist() []string {
 }
 
 func QUrl_ToStringList(uris []QUrl) []string {
+	defer runtime.KeepAlive(uris)
 	uris_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray_ptr))
 	uris_CArray := unsafe.Slice(uris_CArray_ptr, len(uris))
@@ -578,6 +641,7 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 }
 
 func (this *QUrl) SetUrl2(url string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -613,6 +677,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options QUrl
 }
 
 func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	authority_ms := C.struct_miqt_string{}
 	authority_ms.data = C.CString(authority)
 	authority_ms.len = C.size_t(len(authority))
@@ -621,6 +686,7 @@ func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) AuthorityWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_authorityWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -628,6 +694,7 @@ func (this *QUrl) AuthorityWithOptions(options QUrl__ComponentFormattingOption) 
 }
 
 func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	userInfo_ms := C.struct_miqt_string{}
 	userInfo_ms.data = C.CString(userInfo)
 	userInfo_ms.len = C.size_t(len(userInfo))
@@ -636,6 +703,7 @@ func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) UserInfoWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_userInfoWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -643,6 +711,7 @@ func (this *QUrl) UserInfoWithOptions(options QUrl__ComponentFormattingOption) s
 }
 
 func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	userName_ms := C.struct_miqt_string{}
 	userName_ms.data = C.CString(userName)
 	userName_ms.len = C.size_t(len(userName))
@@ -651,6 +720,7 @@ func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) UserNameWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_userNameWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -658,6 +728,7 @@ func (this *QUrl) UserNameWithOptions(options QUrl__ComponentFormattingOption) s
 }
 
 func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -666,6 +737,7 @@ func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) PasswordWithQUrlComponentFormattingOptions(param1 QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_passwordWithQUrlComponentFormattingOptions(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -673,6 +745,7 @@ func (this *QUrl) PasswordWithQUrlComponentFormattingOptions(param1 QUrl__Compon
 }
 
 func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	host_ms := C.struct_miqt_string{}
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
@@ -681,6 +754,7 @@ func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) HostWithQUrlComponentFormattingOptions(param1 QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_hostWithQUrlComponentFormattingOptions(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -688,6 +762,7 @@ func (this *QUrl) HostWithQUrlComponentFormattingOptions(param1 QUrl__ComponentF
 }
 
 func (this *QUrl) TopLevelDomainWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_topLevelDomainWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -695,10 +770,12 @@ func (this *QUrl) TopLevelDomainWithOptions(options QUrl__ComponentFormattingOpt
 }
 
 func (this *QUrl) PortWithDefaultPort(defaultPort int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QUrl_portWithDefaultPort(this.h, (C.int)(defaultPort)))
 }
 
 func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -707,6 +784,7 @@ func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) PathWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_pathWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -714,6 +792,7 @@ func (this *QUrl) PathWithOptions(options QUrl__ComponentFormattingOption) strin
 }
 
 func (this *QUrl) FileNameWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_fileNameWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -721,6 +800,7 @@ func (this *QUrl) FileNameWithOptions(options QUrl__ComponentFormattingOption) s
 }
 
 func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	query_ms := C.struct_miqt_string{}
 	query_ms.data = C.CString(query)
 	query_ms.len = C.size_t(len(query))
@@ -729,6 +809,7 @@ func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) QueryWithQUrlComponentFormattingOptions(param1 QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_queryWithQUrlComponentFormattingOptions(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -736,6 +817,7 @@ func (this *QUrl) QueryWithQUrlComponentFormattingOptions(param1 QUrl__Component
 }
 
 func (this *QUrl) FragmentWithOptions(options QUrl__ComponentFormattingOption) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUrl_fragmentWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -743,6 +825,7 @@ func (this *QUrl) FragmentWithOptions(options QUrl__ComponentFormattingOption) s
 }
 
 func (this *QUrl) SetFragment2(fragment string, mode QUrl__ParsingMode) {
+	defer runtime.KeepAlive(this)
 	fragment_ms := C.struct_miqt_string{}
 	fragment_ms.data = C.CString(fragment)
 	fragment_ms.len = C.size_t(len(fragment))
@@ -828,8 +911,9 @@ func (this *QUrl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUrl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUrl) {
-		C.QUrl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUrl_delete((*C.QUrl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

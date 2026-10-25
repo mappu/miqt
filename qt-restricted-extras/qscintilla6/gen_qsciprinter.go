@@ -18,8 +18,14 @@ import (
 
 type QsciPrinter struct {
 	h  *C.QsciPrinter
-	gc *[1]*C.QsciPrinter
+	gc *[1]unsafe.Pointer
 	*printsupport.QPrinter
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciPrinter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QsciPrinter) cPointer() *C.QsciPrinter {
@@ -66,35 +72,50 @@ func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
 }
 
 func (this *QsciPrinter) FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(area)
 	C.QsciPrinter_formatPage(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 }
 
 func (this *QsciPrinter) Magnification() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciPrinter_magnification(this.h))
 }
 
 func (this *QsciPrinter) SetMagnification(magnification int) {
+	defer runtime.KeepAlive(this)
 	C.QsciPrinter_setMagnification(this.h, (C.int)(magnification))
 }
 
 func (this *QsciPrinter) PrintRange(qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qsb)
+	defer runtime.KeepAlive(painter)
 	return (int)(C.QsciPrinter_printRange(this.h, qsb.cPointer(), (*C.QPainter)(painter.UnsafePointer()), (C.int)(from), (C.int)(to)))
 }
 
 func (this *QsciPrinter) PrintRange2(qsb *QsciScintillaBase, from int, to int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qsb)
 	return (int)(C.QsciPrinter_printRange2(this.h, qsb.cPointer(), (C.int)(from), (C.int)(to)))
 }
 
 func (this *QsciPrinter) WrapMode() QsciScintilla__WrapMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__WrapMode)(C.QsciPrinter_wrapMode(this.h))
 }
 
 func (this *QsciPrinter) SetWrapMode(wmode QsciScintilla__WrapMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciPrinter_setWrapMode(this.h, (C.int)(wmode))
 }
 
 // SetEngines can only be called from a QsciPrinter that was directly constructed.
 func (this *QsciPrinter) SetEngines(printEngine *printsupport.QPrintEngine, paintEngine *qt6.QPaintEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(printEngine)
+	defer runtime.KeepAlive(paintEngine)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciPrinter_protectedbase_setEngines(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPrintEngine)(printEngine.UnsafePointer()), (*C.QPaintEngine)(paintEngine.UnsafePointer()))
@@ -106,6 +127,9 @@ func (this *QsciPrinter) SetEngines(printEngine *printsupport.QPrintEngine, pain
 }
 
 func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(area)
 
 	C.QsciPrinter_virtualbase_formatPage(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 
@@ -138,6 +162,7 @@ func miqt_exec_callback_QsciPrinter_formatPage(self *C.QsciPrinter, cb C.intptr_
 }
 
 func (this *QsciPrinter) callVirtualBase_SetMagnification(magnification int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciPrinter_virtualbase_setMagnification(unsafe.Pointer(this.h), (C.int)(magnification))
 
@@ -164,6 +189,9 @@ func miqt_exec_callback_QsciPrinter_setMagnification(self *C.QsciPrinter, cb C.i
 }
 
 func (this *QsciPrinter) callVirtualBase_PrintRange(qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qsb)
+	defer runtime.KeepAlive(painter)
 
 	return (int)(C.QsciPrinter_virtualbase_printRange(unsafe.Pointer(this.h), qsb.cPointer(), (*C.QPainter)(painter.UnsafePointer()), (C.int)(from), (C.int)(to)))
 
@@ -198,6 +226,8 @@ func miqt_exec_callback_QsciPrinter_printRange(self *C.QsciPrinter, cb C.intptr_
 }
 
 func (this *QsciPrinter) callVirtualBase_PrintRange2(qsb *QsciScintillaBase, from int, to int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(qsb)
 
 	return (int)(C.QsciPrinter_virtualbase_printRange2(unsafe.Pointer(this.h), qsb.cPointer(), (C.int)(from), (C.int)(to)))
 
@@ -230,6 +260,7 @@ func miqt_exec_callback_QsciPrinter_printRange2(self *C.QsciPrinter, cb C.intptr
 }
 
 func (this *QsciPrinter) callVirtualBase_SetWrapMode(wmode QsciScintilla__WrapMode) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciPrinter_virtualbase_setWrapMode(unsafe.Pointer(this.h), (C.int)(wmode))
 
@@ -256,6 +287,7 @@ func miqt_exec_callback_QsciPrinter_setWrapMode(self *C.QsciPrinter, cb C.intptr
 }
 
 func (this *QsciPrinter) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciPrinter_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -281,6 +313,7 @@ func miqt_exec_callback_QsciPrinter_devType(self *C.QsciPrinter, cb C.intptr_t) 
 }
 
 func (this *QsciPrinter) callVirtualBase_NewPage() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciPrinter_virtualbase_newPage(unsafe.Pointer(this.h)))
 
@@ -306,6 +339,7 @@ func miqt_exec_callback_QsciPrinter_newPage(self *C.QsciPrinter, cb C.intptr_t) 
 }
 
 func (this *QsciPrinter) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciPrinter_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -325,12 +359,14 @@ func miqt_exec_callback_QsciPrinter_paintEngine(self *C.QsciPrinter, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QsciPrinter{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciPrinter) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciPrinter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -359,6 +395,8 @@ func miqt_exec_callback_QsciPrinter_metric(self *C.QsciPrinter, cb C.intptr_t, p
 }
 
 func (this *QsciPrinter) callVirtualBase_SetPageLayout(pageLayout *qt6.QPageLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageLayout)
 
 	return (bool)(C.QsciPrinter_virtualbase_setPageLayout(unsafe.Pointer(this.h), (*C.QPageLayout)(pageLayout.UnsafePointer())))
 
@@ -387,6 +425,8 @@ func miqt_exec_callback_QsciPrinter_setPageLayout(self *C.QsciPrinter, cb C.intp
 }
 
 func (this *QsciPrinter) callVirtualBase_SetPageSize(pageSize *qt6.QPageSize) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pageSize)
 
 	return (bool)(C.QsciPrinter_virtualbase_setPageSize(unsafe.Pointer(this.h), (*C.QPageSize)(pageSize.UnsafePointer())))
 
@@ -415,6 +455,7 @@ func miqt_exec_callback_QsciPrinter_setPageSize(self *C.QsciPrinter, cb C.intptr
 }
 
 func (this *QsciPrinter) callVirtualBase_SetPageOrientation(orientation qt6.QPageLayout__Orientation) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciPrinter_virtualbase_setPageOrientation(unsafe.Pointer(this.h), (C.int)(orientation)))
 
@@ -443,6 +484,8 @@ func miqt_exec_callback_QsciPrinter_setPageOrientation(self *C.QsciPrinter, cb C
 }
 
 func (this *QsciPrinter) callVirtualBase_SetPageMargins(margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 
 	return (bool)(C.QsciPrinter_virtualbase_setPageMargins(unsafe.Pointer(this.h), (*C.QMarginsF)(margins.UnsafePointer()), (C.int)(units)))
 
@@ -473,6 +516,8 @@ func miqt_exec_callback_QsciPrinter_setPageMargins(self *C.QsciPrinter, cb C.int
 }
 
 func (this *QsciPrinter) callVirtualBase_SetPageRanges(ranges *qt6.QPageRanges) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ranges)
 
 	C.QsciPrinter_virtualbase_setPageRanges(unsafe.Pointer(this.h), (*C.QPageRanges)(ranges.UnsafePointer()))
 
@@ -499,6 +544,8 @@ func miqt_exec_callback_QsciPrinter_setPageRanges(self *C.QsciPrinter, cb C.intp
 }
 
 func (this *QsciPrinter) callVirtualBase_InitPainter(painter *qt6.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QsciPrinter_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -525,6 +572,8 @@ func miqt_exec_callback_QsciPrinter_initPainter(self *C.QsciPrinter, cb C.intptr
 }
 
 func (this *QsciPrinter) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciPrinter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -547,12 +596,14 @@ func miqt_exec_callback_QsciPrinter_redirected(self *C.QsciPrinter, cb C.intptr_
 	slotval1 := qt6.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QsciPrinter{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciPrinter) callVirtualBase_SharedPainter() *qt6.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QsciPrinter_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -572,6 +623,7 @@ func miqt_exec_callback_QsciPrinter_sharedPainter(self *C.QsciPrinter, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QsciPrinter{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
@@ -589,8 +641,9 @@ func (this *QsciPrinter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciPrinter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciPrinter) {
-		C.QsciPrinter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciPrinter_delete((*C.QsciPrinter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

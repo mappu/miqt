@@ -53,7 +53,13 @@ const (
 
 type QPrintEngine struct {
 	h  *C.QPrintEngine
-	gc *[1]*C.QPrintEngine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPrintEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPrintEngine) cPointer() *C.QPrintEngine {
@@ -85,32 +91,41 @@ func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
 }
 
 func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QPrintEngine_setProperty(this.h, (C.int)(key), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QPrintEngine_property(this.h, (C.int)(key))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrintEngine) NewPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrintEngine_newPage(this.h))
 }
 
 func (this *QPrintEngine) Abort() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPrintEngine_abort(this.h))
 }
 
 func (this *QPrintEngine) Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPrintEngine_metric(this.h, (C.int)(param1)))
 }
 
 func (this *QPrintEngine) PrinterState() QPrinter__PrinterState {
+	defer runtime.KeepAlive(this)
 	return (QPrinter__PrinterState)(C.QPrintEngine_printerState(this.h))
 }
 
 func (this *QPrintEngine) OperatorAssign(param1 *QPrintEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QPrintEngine_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -126,8 +141,9 @@ func (this *QPrintEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPrintEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPrintEngine) {
-		C.QPrintEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPrintEngine_delete((*C.QPrintEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

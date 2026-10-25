@@ -24,7 +24,13 @@ const (
 
 type QLockFile struct {
 	h  *C.QLockFile
-	gc *[1]*C.QLockFile
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLockFile) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLockFile) cPointer() *C.QLockFile {
@@ -66,38 +72,47 @@ func NewQLockFile(fileName string) *QLockFile {
 }
 
 func (this *QLockFile) Lock() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLockFile_lock(this.h))
 }
 
 func (this *QLockFile) TryLock() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLockFile_tryLock(this.h))
 }
 
 func (this *QLockFile) Unlock() {
+	defer runtime.KeepAlive(this)
 	C.QLockFile_unlock(this.h)
 }
 
 func (this *QLockFile) SetStaleLockTime(staleLockTime int) {
+	defer runtime.KeepAlive(this)
 	C.QLockFile_setStaleLockTime(this.h, (C.int)(staleLockTime))
 }
 
 func (this *QLockFile) StaleLockTime() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QLockFile_staleLockTime(this.h))
 }
 
 func (this *QLockFile) IsLocked() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLockFile_isLocked(this.h))
 }
 
 func (this *QLockFile) RemoveStaleLockFile() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLockFile_removeStaleLockFile(this.h))
 }
 
 func (this *QLockFile) Error() QLockFile__LockError {
+	defer runtime.KeepAlive(this)
 	return (QLockFile__LockError)(C.QLockFile_error(this.h))
 }
 
 func (this *QLockFile) TryLockWithTimeout(timeout int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLockFile_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
@@ -113,8 +128,9 @@ func (this *QLockFile) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLockFile{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLockFile) {
-		C.QLockFile_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLockFile_delete((*C.QLockFile)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

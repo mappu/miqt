@@ -215,6 +215,9 @@ bool QFileSystemModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFileSystemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QFileSystemModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QFileSystemModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QFileSystemModel_virtualreturncopy_QSize(QSize* src);
 
 QModelIndex* QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);

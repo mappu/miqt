@@ -81,7 +81,13 @@ const (
 
 type QVariant struct {
 	h  *C.QVariant
-	gc *[1]*C.QVariant
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVariant) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QVariant) cPointer() *C.QVariant {
@@ -120,12 +126,14 @@ func NewQVariant() *QVariant {
 
 // NewQVariant2 constructs a new QVariant object.
 func NewQVariant2(typeVal QMetaType) *QVariant {
+	defer runtime.KeepAlive(typeVal)
 
 	return newQVariant(C.QVariant_new2(typeVal.cPointer()))
 }
 
 // NewQVariant3 constructs a new QVariant object.
 func NewQVariant3(other *QVariant) *QVariant {
+	defer runtime.KeepAlive(other)
 
 	return newQVariant(C.QVariant_new3(other.cPointer()))
 }
@@ -195,6 +203,7 @@ func NewQVariant12(bytearray []byte) *QVariant {
 
 // NewQVariant13 constructs a new QVariant object.
 func NewQVariant13(bitarray *QBitArray) *QVariant {
+	defer runtime.KeepAlive(bitarray)
 
 	return newQVariant(C.QVariant_new13(bitarray.cPointer()))
 }
@@ -228,30 +237,35 @@ func NewQVariant15(stringlist []string) *QVariant {
 
 // NewQVariant16 constructs a new QVariant object.
 func NewQVariant16(qchar QChar) *QVariant {
+	defer runtime.KeepAlive(qchar)
 
 	return newQVariant(C.QVariant_new16(qchar.cPointer()))
 }
 
 // NewQVariant17 constructs a new QVariant object.
 func NewQVariant17(date QDate) *QVariant {
+	defer runtime.KeepAlive(date)
 
 	return newQVariant(C.QVariant_new17(date.cPointer()))
 }
 
 // NewQVariant18 constructs a new QVariant object.
 func NewQVariant18(time QTime) *QVariant {
+	defer runtime.KeepAlive(time)
 
 	return newQVariant(C.QVariant_new18(time.cPointer()))
 }
 
 // NewQVariant19 constructs a new QVariant object.
 func NewQVariant19(datetime *QDateTime) *QVariant {
+	defer runtime.KeepAlive(datetime)
 
 	return newQVariant(C.QVariant_new19(datetime.cPointer()))
 }
 
 // NewQVariant20 constructs a new QVariant object.
 func NewQVariant20(mapVal map[string]QVariant) *QVariant {
+	defer runtime.KeepAlive(mapVal)
 	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
 	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
 	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
@@ -279,6 +293,7 @@ func NewQVariant20(mapVal map[string]QVariant) *QVariant {
 
 // NewQVariant21 constructs a new QVariant object.
 func NewQVariant21(hash map[string]QVariant) *QVariant {
+	defer runtime.KeepAlive(hash)
 	hash_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
 	defer C.free(unsafe.Pointer(hash_Keys_CArray_ptr))
 	hash_Keys_CArray := unsafe.Slice(hash_Keys_CArray_ptr, len(hash))
@@ -306,114 +321,133 @@ func NewQVariant21(hash map[string]QVariant) *QVariant {
 
 // NewQVariant22 constructs a new QVariant object.
 func NewQVariant22(size *QSize) *QVariant {
+	defer runtime.KeepAlive(size)
 
 	return newQVariant(C.QVariant_new22(size.cPointer()))
 }
 
 // NewQVariant23 constructs a new QVariant object.
 func NewQVariant23(size *QSizeF) *QVariant {
+	defer runtime.KeepAlive(size)
 
 	return newQVariant(C.QVariant_new23(size.cPointer()))
 }
 
 // NewQVariant24 constructs a new QVariant object.
 func NewQVariant24(pt *QPoint) *QVariant {
+	defer runtime.KeepAlive(pt)
 
 	return newQVariant(C.QVariant_new24(pt.cPointer()))
 }
 
 // NewQVariant25 constructs a new QVariant object.
 func NewQVariant25(pt *QPointF) *QVariant {
+	defer runtime.KeepAlive(pt)
 
 	return newQVariant(C.QVariant_new25(pt.cPointer()))
 }
 
 // NewQVariant26 constructs a new QVariant object.
 func NewQVariant26(line *QLine) *QVariant {
+	defer runtime.KeepAlive(line)
 
 	return newQVariant(C.QVariant_new26(line.cPointer()))
 }
 
 // NewQVariant27 constructs a new QVariant object.
 func NewQVariant27(line *QLineF) *QVariant {
+	defer runtime.KeepAlive(line)
 
 	return newQVariant(C.QVariant_new27(line.cPointer()))
 }
 
 // NewQVariant28 constructs a new QVariant object.
 func NewQVariant28(rect *QRect) *QVariant {
+	defer runtime.KeepAlive(rect)
 
 	return newQVariant(C.QVariant_new28(rect.cPointer()))
 }
 
 // NewQVariant29 constructs a new QVariant object.
 func NewQVariant29(rect *QRectF) *QVariant {
+	defer runtime.KeepAlive(rect)
 
 	return newQVariant(C.QVariant_new29(rect.cPointer()))
 }
 
 // NewQVariant30 constructs a new QVariant object.
 func NewQVariant30(locale *QLocale) *QVariant {
+	defer runtime.KeepAlive(locale)
 
 	return newQVariant(C.QVariant_new30(locale.cPointer()))
 }
 
 // NewQVariant31 constructs a new QVariant object.
 func NewQVariant31(re *QRegularExpression) *QVariant {
+	defer runtime.KeepAlive(re)
 
 	return newQVariant(C.QVariant_new31(re.cPointer()))
 }
 
 // NewQVariant32 constructs a new QVariant object.
 func NewQVariant32(easing *QEasingCurve) *QVariant {
+	defer runtime.KeepAlive(easing)
 
 	return newQVariant(C.QVariant_new32(easing.cPointer()))
 }
 
 // NewQVariant33 constructs a new QVariant object.
 func NewQVariant33(uuid *QUuid) *QVariant {
+	defer runtime.KeepAlive(uuid)
 
 	return newQVariant(C.QVariant_new33(uuid.cPointer()))
 }
 
 // NewQVariant34 constructs a new QVariant object.
 func NewQVariant34(url *QUrl) *QVariant {
+	defer runtime.KeepAlive(url)
 
 	return newQVariant(C.QVariant_new34(url.cPointer()))
 }
 
 // NewQVariant35 constructs a new QVariant object.
 func NewQVariant35(jsonValue *QJsonValue) *QVariant {
+	defer runtime.KeepAlive(jsonValue)
 
 	return newQVariant(C.QVariant_new35(jsonValue.cPointer()))
 }
 
 // NewQVariant36 constructs a new QVariant object.
 func NewQVariant36(jsonObject *QJsonObject) *QVariant {
+	defer runtime.KeepAlive(jsonObject)
 
 	return newQVariant(C.QVariant_new36(jsonObject.cPointer()))
 }
 
 // NewQVariant37 constructs a new QVariant object.
 func NewQVariant37(jsonArray *QJsonArray) *QVariant {
+	defer runtime.KeepAlive(jsonArray)
 
 	return newQVariant(C.QVariant_new37(jsonArray.cPointer()))
 }
 
 // NewQVariant38 constructs a new QVariant object.
 func NewQVariant38(jsonDocument *QJsonDocument) *QVariant {
+	defer runtime.KeepAlive(jsonDocument)
 
 	return newQVariant(C.QVariant_new38(jsonDocument.cPointer()))
 }
 
 // NewQVariant39 constructs a new QVariant object.
 func NewQVariant39(modelIndex *QModelIndex) *QVariant {
+	defer runtime.KeepAlive(modelIndex)
 
 	return newQVariant(C.QVariant_new39(modelIndex.cPointer()))
 }
 
 // NewQVariant40 constructs a new QVariant object.
 func NewQVariant40(modelIndex *QPersistentModelIndex) *QVariant {
+	defer runtime.KeepAlive(modelIndex)
 
 	return newQVariant(C.QVariant_new40(modelIndex.cPointer()))
 }
@@ -426,12 +460,14 @@ func NewQVariant41(typeVal QVariant__Type) *QVariant {
 
 // NewQVariant42 constructs a new QVariant object.
 func NewQVariant42(typeVal QMetaType, copyVal unsafe.Pointer) *QVariant {
+	defer runtime.KeepAlive(typeVal)
 
 	return newQVariant(C.QVariant_new42(typeVal.cPointer(), copyVal))
 }
 
 // NewQVariant43 constructs a new QVariant object.
 func NewQVariant43(list []QVariant) *QVariant {
+	defer runtime.KeepAlive(list)
 	list_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -444,105 +480,135 @@ func NewQVariant43(list []QVariant) *QVariant {
 }
 
 func (this *QVariant) OperatorAssign(other *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QVariant_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QVariant) Swap(other *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QVariant_swap(this.h, other.cPointer())
 }
 
 func (this *QVariant) UserType() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVariant_userType(this.h))
 }
 
 func (this *QVariant) TypeId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVariant_typeId(this.h))
 }
 
 func (this *QVariant) TypeName() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QVariant_typeName(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QVariant) MetaType() *QMetaType {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMetaType(C.QVariant_metaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) CanConvert(targetType QMetaType) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(targetType)
 	return (bool)(C.QVariant_canConvert(this.h, targetType.cPointer()))
 }
 
 func (this *QVariant) Convert(typeVal QMetaType) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(typeVal)
 	return (bool)(C.QVariant_convert(this.h, typeVal.cPointer()))
 }
 
 func (this *QVariant) CanView(targetType QMetaType) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(targetType)
 	return (bool)(C.QVariant_canView(this.h, targetType.cPointer()))
 }
 
 func (this *QVariant) CanConvertWithTargetTypeId(targetTypeId int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_canConvertWithTargetTypeId(this.h, (C.int)(targetTypeId)))
 }
 
 func (this *QVariant) ConvertWithTargetTypeId(targetTypeId int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_convertWithTargetTypeId(this.h, (C.int)(targetTypeId)))
 }
 
 func (this *QVariant) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_isValid(this.h))
 }
 
 func (this *QVariant) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_isNull(this.h))
 }
 
 func (this *QVariant) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QVariant_clear(this.h)
 }
 
 func (this *QVariant) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QVariant_detach(this.h)
 }
 
 func (this *QVariant) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_isDetached(this.h))
 }
 
 func (this *QVariant) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVariant_toInt(this.h))
 }
 
 func (this *QVariant) ToUInt() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QVariant_toUInt(this.h))
 }
 
 func (this *QVariant) ToLongLong() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVariant_toLongLong(this.h))
 }
 
 func (this *QVariant) ToULongLong() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QVariant_toULongLong(this.h))
 }
 
 func (this *QVariant) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVariant_toBool(this.h))
 }
 
 func (this *QVariant) ToDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QVariant_toDouble(this.h))
 }
 
 func (this *QVariant) ToFloat() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QVariant_toFloat(this.h))
 }
 
 func (this *QVariant) ToReal() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QVariant_toReal(this.h))
 }
 
 func (this *QVariant) ToByteArray() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QVariant_toByteArray(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -550,12 +616,14 @@ func (this *QVariant) ToByteArray() []byte {
 }
 
 func (this *QVariant) ToBitArray() *QBitArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBitArray(C.QVariant_toBitArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVariant_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -563,6 +631,7 @@ func (this *QVariant) ToString() string {
 }
 
 func (this *QVariant) ToStringList() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QVariant_toStringList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -576,30 +645,35 @@ func (this *QVariant) ToStringList() []string {
 }
 
 func (this *QVariant) ToChar() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QVariant_toChar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToDate() *QDate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QVariant_toDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToTime() *QTime {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTime(C.QVariant_toTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToDateTime() *QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QVariant_toDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToList() []QVariant {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QVariant_toList(this.h)
 	_ret := make([]QVariant, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -612,6 +686,7 @@ func (this *QVariant) ToList() []QVariant {
 }
 
 func (this *QVariant) ToMap() map[string]QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QVariant_toMap(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -631,6 +706,7 @@ func (this *QVariant) ToMap() map[string]QVariant {
 }
 
 func (this *QVariant) ToHash() map[string]QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QVariant_toHash(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -650,128 +726,152 @@ func (this *QVariant) ToHash() map[string]QVariant {
 }
 
 func (this *QVariant) ToPoint() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QVariant_toPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToPointF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QVariant_toPointF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QVariant_toRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QVariant_toSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToSizeF() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QVariant_toSizeF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLine() *QLine {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLine(C.QVariant_toLine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLineF() *QLineF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLineF(C.QVariant_toLineF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRectF() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QVariant_toRectF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLocale() *QLocale {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QVariant_toLocale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRegularExpression() *QRegularExpression {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpression(C.QVariant_toRegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToEasingCurve() *QEasingCurve {
+	defer runtime.KeepAlive(this)
 	_goptr := newQEasingCurve(C.QVariant_toEasingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToUuid() *QUuid {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUuid(C.QVariant_toUuid(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToUrl() *QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUrl(C.QVariant_toUrl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonValue() *QJsonValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonValue(C.QVariant_toJsonValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonObject() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QVariant_toJsonObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonArray() *QJsonArray {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonArray(C.QVariant_toJsonArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonDocument() *QJsonDocument {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonDocument(C.QVariant_toJsonDocument(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToModelIndex() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QVariant_toModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToPersistentModelIndex() *QPersistentModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPersistentModelIndex(C.QVariant_toPersistentModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) Load(ds *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ds)
 	C.QVariant_load(this.h, ds.cPointer())
 }
 
 func (this *QVariant) Save(ds *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ds)
 	C.QVariant_save(this.h, ds.cPointer())
 }
 
 func (this *QVariant) Type() QVariant__Type {
+	defer runtime.KeepAlive(this)
 	return (QVariant__Type)(C.QVariant_type(this.h))
 }
 
@@ -787,52 +887,66 @@ func QVariant_NameToType(name string) QVariant__Type {
 }
 
 func (this *QVariant) Data() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QVariant_data(this.h))
 }
 
 func (this *QVariant) ConstData() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QVariant_constData(this.h))
 }
 
 func (this *QVariant) Data2() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QVariant_data2(this.h))
 }
 
 func (this *QVariant) SetValue(avalue *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(avalue)
 	C.QVariant_setValue(this.h, avalue.cPointer())
 }
 
 func QVariant_Compare(lhs *QVariant, rhs *QVariant) *QPartialOrdering {
+	defer runtime.KeepAlive(lhs)
+	defer runtime.KeepAlive(rhs)
 	_goptr := newQPartialOrdering(C.QVariant_compare(lhs.cPointer(), rhs.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToIntWithOk(ok *bool) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVariant_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToUIntWithOk(ok *bool) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QVariant_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToLongLongWithOk(ok *bool) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVariant_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToULongLongWithOk(ok *bool) uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QVariant_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToDoubleWithOk(ok *bool) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QVariant_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToFloatWithOk(ok *bool) float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QVariant_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToRealWithOk(ok *bool) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QVariant_toRealWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
@@ -848,8 +962,9 @@ func (this *QVariant) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVariant{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariant) {
-		C.QVariant_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVariant_delete((*C.QVariant)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

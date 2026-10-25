@@ -56,7 +56,9 @@ public:
 
 		double sigval1 = param1;
 		QwtText* callback_return_value = miqt_exec_callback_QwtAbstractScaleDraw_label(this, handle__label, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtAbstractScaleDraw_virtualbase_label(const void* self, double param1);
@@ -271,6 +273,10 @@ bool QwtAbstractScaleDraw_override_virtual_drawLabel(void* self, intptr_t slot) 
 
 	self_cast->handle__drawLabel = slot;
 	return true;
+}
+
+QwtText* QwtAbstractScaleDraw_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
 }
 
 void QwtAbstractScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self) {

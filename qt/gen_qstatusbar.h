@@ -209,6 +209,8 @@ bool QStatusBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStatusBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QStatusBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QStatusBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QStatusBar_protectedbase_reformat(bool* _dynamic_cast_ok, void* self);
 void QStatusBar_protectedbase_hideOrShow(bool* _dynamic_cast_ok, void* self);

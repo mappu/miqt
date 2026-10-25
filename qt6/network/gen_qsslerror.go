@@ -58,7 +58,13 @@ const (
 
 type QSslError struct {
 	h  *C.QSslError
-	gc *[1]*C.QSslError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslError) cPointer() *C.QSslError {
@@ -103,37 +109,49 @@ func NewQSslError2(error QSslError__SslError) *QSslError {
 
 // NewQSslError3 constructs a new QSslError object.
 func NewQSslError3(error QSslError__SslError, certificate *QSslCertificate) *QSslError {
+	defer runtime.KeepAlive(certificate)
 
 	return newQSslError(C.QSslError_new3((C.int)(error), certificate.cPointer()))
 }
 
 // NewQSslError4 constructs a new QSslError object.
 func NewQSslError4(other *QSslError) *QSslError {
+	defer runtime.KeepAlive(other)
 
 	return newQSslError(C.QSslError_new4(other.cPointer()))
 }
 
 func (this *QSslError) Swap(other *QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslError_swap(this.h, other.cPointer())
 }
 
 func (this *QSslError) OperatorAssign(other *QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslError) OperatorEqual(other *QSslError) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSslError_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslError) OperatorNotEqual(other *QSslError) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSslError_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslError) Error() QSslError__SslError {
+	defer runtime.KeepAlive(this)
 	return (QSslError__SslError)(C.QSslError_error(this.h))
 }
 
 func (this *QSslError) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslError_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -141,6 +159,7 @@ func (this *QSslError) ErrorString() string {
 }
 
 func (this *QSslError) Certificate() *QSslCertificate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCertificate(C.QSslError_certificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -158,8 +177,9 @@ func (this *QSslError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslError) {
-		C.QSslError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslError_delete((*C.QSslError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -328,7 +328,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerPerl_color(this, handle__color, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerPerl_virtualbase_color(const void* self, int style);
@@ -360,7 +362,9 @@ public:
 
 		int sigval1 = style;
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerPerl_font(this, handle__font, sigval1);
-		return *callback_return_value;
+		QFont callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QFont* QsciLexerPerl_virtualbase_font(const void* self, int style);
@@ -443,7 +447,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerPerl_paper(this, handle__paper, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerPerl_virtualbase_paper(const void* self, int style);
@@ -459,7 +465,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerPerl_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerPerl_virtualbase_defaultColorWithStyle(const void* self, int style);
@@ -491,7 +499,9 @@ public:
 
 		int sigval1 = style;
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerPerl_defaultFontWithStyle(this, handle__defaultFontWithStyle, sigval1);
-		return *callback_return_value;
+		QFont callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QFont* QsciLexerPerl_virtualbase_defaultFontWithStyle(const void* self, int style);
@@ -507,7 +517,9 @@ public:
 
 		int sigval1 = style;
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerPerl_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QsciLexerPerl_virtualbase_defaultPaperWithStyle(const void* self, int style);
@@ -1648,6 +1660,14 @@ bool QsciLexerPerl_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QsciLexerPerl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQsciLexerPerl*>(self)->QsciLexerPerl::disconnectNotify(*signal);
+}
+
+QColor* QsciLexerPerl_virtualreturncopy_QColor(QColor* src) {
+	return new QColor(*src);
+}
+
+QFont* QsciLexerPerl_virtualreturncopy_QFont(QFont* src) {
+	return new QFont(*src);
 }
 
 bool QsciLexerPerl_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {

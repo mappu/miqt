@@ -143,7 +143,9 @@ public:
 
 		int sigval1 = cat_idx;
 		QDesignerWidgetBoxInterface__Category* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_category(this, handle__category, sigval1);
-		return *callback_return_value;
+		QDesignerWidgetBoxInterface::Category callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -202,7 +204,9 @@ public:
 		int sigval1 = cat_idx;
 		int sigval2 = wgt_idx;
 		QDesignerWidgetBoxInterface__Widget* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_widget(this, handle__widget, sigval1, sigval2);
-		return *callback_return_value;
+		QDesignerWidgetBoxInterface::Widget callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -367,7 +371,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self);
@@ -382,7 +388,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self);
@@ -992,7 +1000,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QDesignerWidgetBoxInterface_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -2046,6 +2056,22 @@ bool QDesignerWidgetBoxInterface_override_virtual_disconnectNotify(void* self, i
 
 void QDesignerWidgetBoxInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesignerWidgetBoxInterface*>(self)->QDesignerWidgetBoxInterface::disconnectNotify(*signal);
+}
+
+QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Category(QDesignerWidgetBoxInterface__Category* src) {
+	return new QDesignerWidgetBoxInterface__Category(*src);
+}
+
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Widget(QDesignerWidgetBoxInterface__Widget* src) {
+	return new QDesignerWidgetBoxInterface__Widget(*src);
+}
+
+QSize* QDesignerWidgetBoxInterface_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QDesignerWidgetBoxInterface_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDesignerWidgetBoxInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

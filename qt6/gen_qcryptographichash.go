@@ -47,7 +47,13 @@ const (
 
 type QCryptographicHash struct {
 	h  *C.QCryptographicHash
-	gc *[1]*C.QCryptographicHash
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCryptographicHash) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCryptographicHash) cPointer() *C.QCryptographicHash {
@@ -85,24 +91,31 @@ func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographic
 }
 
 func (this *QCryptographicHash) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QCryptographicHash_reset(this.h)
 }
 
 func (this *QCryptographicHash) AddData(data string, length int64) {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	C.QCryptographicHash_addData(this.h, data_Cstring, (C.ptrdiff_t)(length))
 }
 
 func (this *QCryptographicHash) AddDataWithData(data QByteArrayView) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	C.QCryptographicHash_addDataWithData(this.h, data.cPointer())
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	return (bool)(C.QCryptographicHash_addDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QCryptographicHash) Result() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QCryptographicHash_result(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -110,12 +123,14 @@ func (this *QCryptographicHash) Result() []byte {
 }
 
 func (this *QCryptographicHash) ResultView() *QByteArrayView {
+	defer runtime.KeepAlive(this)
 	_goptr := newQByteArrayView(C.QCryptographicHash_resultView(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCryptographicHash_Hash(data QByteArrayView, method QCryptographicHash__Algorithm) []byte {
+	defer runtime.KeepAlive(data)
 	var _bytearray C.struct_miqt_string = C.QCryptographicHash_hash(data.cPointer(), (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -138,8 +153,9 @@ func (this *QCryptographicHash) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCryptographicHash{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCryptographicHash) {
-		C.QCryptographicHash_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCryptographicHash_delete((*C.QCryptographicHash)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

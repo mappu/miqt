@@ -75,7 +75,9 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
 		QNetworkCacheMetaData* callback_return_value = miqt_exec_callback_QNetworkDiskCache_metaData(this, handle__metaData, sigval1);
-		return *callback_return_value;
+		QNetworkCacheMetaData callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QNetworkCacheMetaData* QNetworkDiskCache_virtualbase_metaData(void* self, QUrl* url);
@@ -703,6 +705,10 @@ bool QNetworkDiskCache_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQNetworkDiskCache*>(self)->QNetworkDiskCache::disconnectNotify(*signal);
+}
+
+QNetworkCacheMetaData* QNetworkDiskCache_virtualreturncopy_QNetworkCacheMetaData(QNetworkCacheMetaData* src) {
+	return new QNetworkCacheMetaData(*src);
 }
 
 QObject* QNetworkDiskCache_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

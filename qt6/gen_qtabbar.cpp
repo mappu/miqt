@@ -126,7 +126,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTabBar_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTabBar_virtualbase_sizeHint(const void* self);
@@ -141,7 +143,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTabBar_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTabBar_virtualbase_minimumSizeHint(const void* self);
@@ -157,7 +161,9 @@ public:
 
 		int sigval1 = index;
 		QSize* callback_return_value = miqt_exec_callback_QTabBar_tabSizeHint(this, handle__tabSizeHint, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTabBar_virtualbase_tabSizeHint(const void* self, int index);
@@ -173,7 +179,9 @@ public:
 
 		int sigval1 = index;
 		QSize* callback_return_value = miqt_exec_callback_QTabBar_minimumTabSizeHint(this, handle__minimumTabSizeHint, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index);
@@ -900,7 +908,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTabBar_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTabBar_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -2139,6 +2149,14 @@ bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTabBar*>(self)->QTabBar::disconnectNotify(*signal);
+}
+
+QSize* QTabBar_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QTabBar_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

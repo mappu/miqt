@@ -16,8 +16,14 @@ import (
 
 type QXYModelMapper struct {
 	h  *C.QXYModelMapper
-	gc *[1]*C.QXYModelMapper
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QXYModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QXYModelMapper) cPointer() *C.QXYModelMapper {
@@ -52,10 +58,12 @@ func UnsafeNewQXYModelMapper(h unsafe.Pointer) *QXYModelMapper {
 }
 
 func (this *QXYModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QXYModelMapper_metaObject(this.h)))
 }
 
 func (this *QXYModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QXYModelMapper_metacast(this.h, param1_Cstring))
@@ -104,8 +112,9 @@ func (this *QXYModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QXYModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXYModelMapper) {
-		C.QXYModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QXYModelMapper_delete((*C.QXYModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

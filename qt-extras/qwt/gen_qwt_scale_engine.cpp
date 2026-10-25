@@ -77,7 +77,9 @@ public:
 		int sigval4 = maxMinorSteps;
 		double sigval5 = stepSize;
 		QwtScaleDiv* callback_return_value = miqt_exec_callback_QwtScaleEngine_divideScale(this, handle__divideScale, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QwtScaleDiv callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// Wrappers to allow calling protected methods:
@@ -189,6 +191,10 @@ bool QwtScaleEngine_override_virtual_divideScale(void* self, intptr_t slot) {
 	return true;
 }
 
+QwtScaleDiv* QwtScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src) {
+	return new QwtScaleDiv(*src);
+}
+
 bool QwtScaleEngine_protectedbase_contains(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double value) {
 	MiqtVirtualQwtScaleEngine* self_cast = dynamic_cast<MiqtVirtualQwtScaleEngine*>( (QwtScaleEngine*)(self) );
 	if (self_cast == nullptr) {
@@ -296,7 +302,9 @@ public:
 		int sigval4 = maxMinorSteps;
 		double sigval5 = stepSize;
 		QwtScaleDiv* callback_return_value = miqt_exec_callback_QwtLinearScaleEngine_divideScale(this, handle__divideScale, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QwtScaleDiv callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtScaleDiv* QwtLinearScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
@@ -366,6 +374,10 @@ bool QwtLinearScaleEngine_override_virtual_divideScale(void* self, intptr_t slot
 
 QwtScaleDiv* QwtLinearScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize) {
 	return new QwtScaleDiv(static_cast<const MiqtVirtualQwtLinearScaleEngine*>(self)->QwtLinearScaleEngine::divideScale(static_cast<double>(x1), static_cast<double>(x2), static_cast<int>(maxMajorSteps), static_cast<int>(maxMinorSteps), static_cast<double>(stepSize)));
+}
+
+QwtScaleDiv* QwtLinearScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src) {
+	return new QwtScaleDiv(*src);
 }
 
 QwtInterval* QwtLinearScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize) {
@@ -552,7 +564,9 @@ public:
 		int sigval4 = maxMinorSteps;
 		double sigval5 = stepSize;
 		QwtScaleDiv* callback_return_value = miqt_exec_callback_QwtLogScaleEngine_divideScale(this, handle__divideScale, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QwtScaleDiv callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtScaleDiv* QwtLogScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
@@ -622,6 +636,10 @@ bool QwtLogScaleEngine_override_virtual_divideScale(void* self, intptr_t slot) {
 
 QwtScaleDiv* QwtLogScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize) {
 	return new QwtScaleDiv(static_cast<const MiqtVirtualQwtLogScaleEngine*>(self)->QwtLogScaleEngine::divideScale(static_cast<double>(x1), static_cast<double>(x2), static_cast<int>(maxMajorSteps), static_cast<int>(maxMinorSteps), static_cast<double>(stepSize)));
+}
+
+QwtScaleDiv* QwtLogScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src) {
+	return new QwtScaleDiv(*src);
 }
 
 QwtInterval* QwtLogScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize) {

@@ -122,7 +122,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QLayout_virtualbase_geometry(const void* self);
@@ -166,7 +168,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QLayout_virtualbase_minimumSize(const void* self);
@@ -181,7 +185,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QLayout_virtualbase_maximumSize(const void* self);
@@ -474,7 +480,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -1213,6 +1221,14 @@ bool QLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQLayout*>(self)->QLayout::spacerItem();
+}
+
+QRect* QLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QSize* QLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {

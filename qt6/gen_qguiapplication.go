@@ -16,8 +16,15 @@ import (
 
 type QGuiApplication struct {
 	h  *C.QGuiApplication
-	gc *[1]*C.QGuiApplication
+	gc *[1]unsafe.Pointer
 	*QCoreApplication
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGuiApplication) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QCoreApplication.miqtSetGC(gc)
 }
 
 func (this *QGuiApplication) cPointer() *C.QGuiApplication {
@@ -82,10 +89,12 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 }
 
 func (this *QGuiApplication) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGuiApplication_metaObject(this.h))
 }
 
 func (this *QGuiApplication) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGuiApplication_metacast(this.h, param1_Cstring))
@@ -151,10 +160,12 @@ func QGuiApplication_TopLevelWindows() []*QWindow {
 }
 
 func QGuiApplication_TopLevelAt(pos *QPoint) *QWindow {
+	defer runtime.KeepAlive(pos)
 	return newQWindow(C.QGuiApplication_topLevelAt(pos.cPointer()))
 }
 
 func QGuiApplication_SetWindowIcon(icon *QIcon) {
+	defer runtime.KeepAlive(icon)
 	C.QGuiApplication_setWindowIcon(icon.cPointer())
 }
 
@@ -198,10 +209,12 @@ func QGuiApplication_Screens() []*QScreen {
 }
 
 func QGuiApplication_ScreenAt(point *QPoint) *QScreen {
+	defer runtime.KeepAlive(point)
 	return newQScreen(C.QGuiApplication_screenAt(point.cPointer()))
 }
 
 func (this *QGuiApplication) DevicePixelRatio() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGuiApplication_devicePixelRatio(this.h))
 }
 
@@ -210,10 +223,12 @@ func QGuiApplication_OverrideCursor() *QCursor {
 }
 
 func QGuiApplication_SetOverrideCursor(overrideCursor *QCursor) {
+	defer runtime.KeepAlive(overrideCursor)
 	C.QGuiApplication_setOverrideCursor(overrideCursor.cPointer())
 }
 
 func QGuiApplication_ChangeOverrideCursor(param1 *QCursor) {
+	defer runtime.KeepAlive(param1)
 	C.QGuiApplication_changeOverrideCursor(param1.cPointer())
 }
 
@@ -228,6 +243,7 @@ func QGuiApplication_Font() *QFont {
 }
 
 func QGuiApplication_SetFont(font *QFont) {
+	defer runtime.KeepAlive(font)
 	C.QGuiApplication_setFont(font.cPointer())
 }
 
@@ -242,6 +258,7 @@ func QGuiApplication_Palette() *QPalette {
 }
 
 func QGuiApplication_SetPalette(pal *QPalette) {
+	defer runtime.KeepAlive(pal)
 	C.QGuiApplication_setPalette(pal.cPointer())
 }
 
@@ -314,14 +331,19 @@ func QGuiApplication_Exec() int {
 }
 
 func (this *QGuiApplication) Notify(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	return (bool)(C.QGuiApplication_notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func (this *QGuiApplication) IsSessionRestored() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGuiApplication_isSessionRestored(this.h))
 }
 
 func (this *QGuiApplication) SessionId() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGuiApplication_sessionId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -329,6 +351,7 @@ func (this *QGuiApplication) SessionId() string {
 }
 
 func (this *QGuiApplication) SessionKey() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGuiApplication_sessionKey(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -336,6 +359,7 @@ func (this *QGuiApplication) SessionKey() string {
 }
 
 func (this *QGuiApplication) IsSavingSession() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGuiApplication_isSavingSession(this.h))
 }
 
@@ -344,6 +368,7 @@ func QGuiApplication_Sync() {
 }
 
 func (this *QGuiApplication) FontDatabaseChanged() {
+	defer runtime.KeepAlive(this)
 	C.QGuiApplication_fontDatabaseChanged(this.h)
 }
 func (this *QGuiApplication) OnFontDatabaseChanged(slot func()) {
@@ -361,6 +386,8 @@ func miqt_exec_callback_QGuiApplication_fontDatabaseChanged(cb C.intptr_t) {
 }
 
 func (this *QGuiApplication) ScreenAdded(screen *QScreen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(screen)
 	C.QGuiApplication_screenAdded(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnScreenAdded(slot func(screen *QScreen)) {
@@ -381,6 +408,8 @@ func miqt_exec_callback_QGuiApplication_screenAdded(cb C.intptr_t, screen *C.QSc
 }
 
 func (this *QGuiApplication) ScreenRemoved(screen *QScreen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(screen)
 	C.QGuiApplication_screenRemoved(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnScreenRemoved(slot func(screen *QScreen)) {
@@ -401,6 +430,8 @@ func miqt_exec_callback_QGuiApplication_screenRemoved(cb C.intptr_t, screen *C.Q
 }
 
 func (this *QGuiApplication) PrimaryScreenChanged(screen *QScreen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(screen)
 	C.QGuiApplication_primaryScreenChanged(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnPrimaryScreenChanged(slot func(screen *QScreen)) {
@@ -421,6 +452,7 @@ func miqt_exec_callback_QGuiApplication_primaryScreenChanged(cb C.intptr_t, scre
 }
 
 func (this *QGuiApplication) LastWindowClosed() {
+	defer runtime.KeepAlive(this)
 	C.QGuiApplication_lastWindowClosed(this.h)
 }
 func (this *QGuiApplication) OnLastWindowClosed(slot func()) {
@@ -438,6 +470,8 @@ func miqt_exec_callback_QGuiApplication_lastWindowClosed(cb C.intptr_t) {
 }
 
 func (this *QGuiApplication) FocusObjectChanged(focusObject *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(focusObject)
 	C.QGuiApplication_focusObjectChanged(this.h, focusObject.cPointer())
 }
 func (this *QGuiApplication) OnFocusObjectChanged(slot func(focusObject *QObject)) {
@@ -458,6 +492,8 @@ func miqt_exec_callback_QGuiApplication_focusObjectChanged(cb C.intptr_t, focusO
 }
 
 func (this *QGuiApplication) FocusWindowChanged(focusWindow *QWindow) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(focusWindow)
 	C.QGuiApplication_focusWindowChanged(this.h, focusWindow.cPointer())
 }
 func (this *QGuiApplication) OnFocusWindowChanged(slot func(focusWindow *QWindow)) {
@@ -478,6 +514,7 @@ func miqt_exec_callback_QGuiApplication_focusWindowChanged(cb C.intptr_t, focusW
 }
 
 func (this *QGuiApplication) ApplicationStateChanged(state ApplicationState) {
+	defer runtime.KeepAlive(this)
 	C.QGuiApplication_applicationStateChanged(this.h, (C.int)(state))
 }
 func (this *QGuiApplication) OnApplicationStateChanged(slot func(state ApplicationState)) {
@@ -498,6 +535,7 @@ func miqt_exec_callback_QGuiApplication_applicationStateChanged(cb C.intptr_t, s
 }
 
 func (this *QGuiApplication) LayoutDirectionChanged(direction LayoutDirection) {
+	defer runtime.KeepAlive(this)
 	C.QGuiApplication_layoutDirectionChanged(this.h, (C.int)(direction))
 }
 func (this *QGuiApplication) OnLayoutDirectionChanged(slot func(direction LayoutDirection)) {
@@ -518,6 +556,8 @@ func miqt_exec_callback_QGuiApplication_layoutDirectionChanged(cb C.intptr_t, di
 }
 
 func (this *QGuiApplication) CommitDataRequest(sessionManager *QSessionManager) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sessionManager)
 	C.QGuiApplication_commitDataRequest(this.h, sessionManager.cPointer())
 }
 func (this *QGuiApplication) OnCommitDataRequest(slot func(sessionManager *QSessionManager)) {
@@ -538,6 +578,8 @@ func miqt_exec_callback_QGuiApplication_commitDataRequest(cb C.intptr_t, session
 }
 
 func (this *QGuiApplication) SaveStateRequest(sessionManager *QSessionManager) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sessionManager)
 	C.QGuiApplication_saveStateRequest(this.h, sessionManager.cPointer())
 }
 func (this *QGuiApplication) OnSaveStateRequest(slot func(sessionManager *QSessionManager)) {
@@ -558,6 +600,7 @@ func miqt_exec_callback_QGuiApplication_saveStateRequest(cb C.intptr_t, sessionM
 }
 
 func (this *QGuiApplication) ApplicationDisplayNameChanged() {
+	defer runtime.KeepAlive(this)
 	C.QGuiApplication_applicationDisplayNameChanged(this.h)
 }
 func (this *QGuiApplication) OnApplicationDisplayNameChanged(slot func()) {
@@ -575,6 +618,8 @@ func miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged(cb C.intpt
 }
 
 func (this *QGuiApplication) PaletteChanged(pal *QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pal)
 	C.QGuiApplication_paletteChanged(this.h, pal.cPointer())
 }
 func (this *QGuiApplication) OnPaletteChanged(slot func(pal *QPalette)) {
@@ -595,6 +640,8 @@ func miqt_exec_callback_QGuiApplication_paletteChanged(cb C.intptr_t, pal *C.QPa
 }
 
 func (this *QGuiApplication) FontChanged(font *QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QGuiApplication_fontChanged(this.h, font.cPointer())
 }
 func (this *QGuiApplication) OnFontChanged(slot func(font *QFont)) {
@@ -638,6 +685,7 @@ func QGuiApplication_Tr3(s string, c string, n int) string {
 
 // ResolveInterface can only be called from a QGuiApplication that was directly constructed.
 func (this *QGuiApplication) ResolveInterface(name string, revision int) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
@@ -654,6 +702,7 @@ func (this *QGuiApplication) ResolveInterface(name string, revision int) unsafe.
 
 // Sender can only be called from a QGuiApplication that was directly constructed.
 func (this *QGuiApplication) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGuiApplication_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -668,6 +717,7 @@ func (this *QGuiApplication) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGuiApplication that was directly constructed.
 func (this *QGuiApplication) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGuiApplication_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -682,6 +732,7 @@ func (this *QGuiApplication) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGuiApplication that was directly constructed.
 func (this *QGuiApplication) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -698,6 +749,8 @@ func (this *QGuiApplication) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGuiApplication that was directly constructed.
 func (this *QGuiApplication) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGuiApplication_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -711,6 +764,9 @@ func (this *QGuiApplication) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGuiApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QGuiApplication_virtualbase_notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -741,6 +797,8 @@ func miqt_exec_callback_QGuiApplication_notify(self *C.QGuiApplication, cb C.int
 }
 
 func (this *QGuiApplication) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QGuiApplication_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -769,6 +827,9 @@ func miqt_exec_callback_QGuiApplication_event(self *C.QGuiApplication, cb C.intp
 }
 
 func (this *QGuiApplication) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGuiApplication_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -799,6 +860,8 @@ func miqt_exec_callback_QGuiApplication_eventFilter(self *C.QGuiApplication, cb 
 }
 
 func (this *QGuiApplication) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGuiApplication_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -825,6 +888,8 @@ func miqt_exec_callback_QGuiApplication_timerEvent(self *C.QGuiApplication, cb C
 }
 
 func (this *QGuiApplication) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGuiApplication_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -851,6 +916,8 @@ func miqt_exec_callback_QGuiApplication_childEvent(self *C.QGuiApplication, cb C
 }
 
 func (this *QGuiApplication) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGuiApplication_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -877,6 +944,8 @@ func miqt_exec_callback_QGuiApplication_customEvent(self *C.QGuiApplication, cb 
 }
 
 func (this *QGuiApplication) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGuiApplication_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -903,6 +972,8 @@ func miqt_exec_callback_QGuiApplication_connectNotify(self *C.QGuiApplication, c
 }
 
 func (this *QGuiApplication) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGuiApplication_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -940,8 +1011,9 @@ func (this *QGuiApplication) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGuiApplication{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGuiApplication) {
-		C.QGuiApplication_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGuiApplication_delete((*C.QGuiApplication)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

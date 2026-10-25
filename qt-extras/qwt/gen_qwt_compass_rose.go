@@ -17,7 +17,13 @@ import (
 
 type QwtCompassRose struct {
 	h  *C.QwtCompassRose
-	gc *[1]*C.QwtCompassRose
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCompassRose) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtCompassRose) cPointer() *C.QwtCompassRose {
@@ -50,27 +56,38 @@ func UnsafeNewQwtCompassRose(h unsafe.Pointer) *QwtCompassRose {
 
 // NewQwtCompassRose constructs a new QwtCompassRose object.
 func NewQwtCompassRose(param1 *QwtCompassRose) *QwtCompassRose {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtCompassRose(C.QwtCompassRose_new(param1.cPointer()))
 }
 
 func (this *QwtCompassRose) SetPalette(p *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	C.QwtCompassRose_setPalette(this.h, (*C.QPalette)(p.UnsafePointer()))
 }
 
 func (this *QwtCompassRose) Palette() *qt.QPalette {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtCompassRose_palette(this.h)))
 }
 
 func (this *QwtCompassRose) Draw(painter *qt.QPainter, center *qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 	C.QwtCompassRose_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(colorGroup))
 }
 
 func (this *QwtCompassRose) OperatorAssign(param1 *QwtCompassRose) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtCompassRose_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtCompassRose) callVirtualBase_SetPalette(p *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 
 	C.QwtCompassRose_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(p.UnsafePointer()))
 
@@ -136,16 +153,24 @@ func (this *QwtCompassRose) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCompassRose{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassRose) {
-		C.QwtCompassRose_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCompassRose_delete((*C.QwtCompassRose)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtSimpleCompassRose struct {
 	h  *C.QwtSimpleCompassRose
-	gc *[1]*C.QwtSimpleCompassRose
+	gc *[1]unsafe.Pointer
 	*QwtCompassRose
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSimpleCompassRose) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtCompassRose.miqtSetGC(gc)
 }
 
 func (this *QwtSimpleCompassRose) cPointer() *C.QwtSimpleCompassRose {
@@ -187,6 +212,7 @@ func NewQwtSimpleCompassRose() *QwtSimpleCompassRose {
 
 // NewQwtSimpleCompassRose2 constructs a new QwtSimpleCompassRose object.
 func NewQwtSimpleCompassRose2(param1 *QwtSimpleCompassRose) *QwtSimpleCompassRose {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new2(param1.cPointer()))
 }
@@ -204,50 +230,69 @@ func NewQwtSimpleCompassRose4(numThorns int, numThornLevels int) *QwtSimpleCompa
 }
 
 func (this *QwtSimpleCompassRose) SetWidth(width float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtSimpleCompassRose_setWidth(this.h, (C.double)(width))
 }
 
 func (this *QwtSimpleCompassRose) Width() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSimpleCompassRose_width(this.h))
 }
 
 func (this *QwtSimpleCompassRose) SetNumThorns(numThorns int) {
+	defer runtime.KeepAlive(this)
 	C.QwtSimpleCompassRose_setNumThorns(this.h, (C.int)(numThorns))
 }
 
 func (this *QwtSimpleCompassRose) NumThorns() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtSimpleCompassRose_numThorns(this.h))
 }
 
 func (this *QwtSimpleCompassRose) SetNumThornLevels(numThornLevels int) {
+	defer runtime.KeepAlive(this)
 	C.QwtSimpleCompassRose_setNumThornLevels(this.h, (C.int)(numThornLevels))
 }
 
 func (this *QwtSimpleCompassRose) NumThornLevels() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtSimpleCompassRose_numThornLevels(this.h))
 }
 
 func (this *QwtSimpleCompassRose) SetShrinkFactor(factor float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtSimpleCompassRose_setShrinkFactor(this.h, (C.double)(factor))
 }
 
 func (this *QwtSimpleCompassRose) ShrinkFactor() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSimpleCompassRose_shrinkFactor(this.h))
 }
 
 func (this *QwtSimpleCompassRose) Draw(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(center)
 	C.QwtSimpleCompassRose_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(param5))
 }
 
 func QwtSimpleCompassRose_DrawRose(param1 *qt.QPainter, param2 *qt.QPalette, center *qt.QPointF, radius float64, north float64, width float64, numThorns int, numThornLevels int, shrinkFactor float64) {
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(center)
 	C.QwtSimpleCompassRose_drawRose((*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.double)(width), (C.int)(numThorns), (C.int)(numThornLevels), (C.double)(shrinkFactor))
 }
 
 func (this *QwtSimpleCompassRose) OperatorAssign(param1 *QwtSimpleCompassRose) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtSimpleCompassRose_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtSimpleCompassRose) callVirtualBase_Draw(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(center)
 
 	C.QwtSimpleCompassRose_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(param5))
 
@@ -282,6 +327,8 @@ func miqt_exec_callback_QwtSimpleCompassRose_draw(self *C.QwtSimpleCompassRose, 
 }
 
 func (this *QwtSimpleCompassRose) callVirtualBase_SetPalette(p *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 
 	C.QwtSimpleCompassRose_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(p.UnsafePointer()))
 
@@ -319,8 +366,9 @@ func (this *QwtSimpleCompassRose) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSimpleCompassRose{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSimpleCompassRose) {
-		C.QwtSimpleCompassRose_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSimpleCompassRose_delete((*C.QwtSimpleCompassRose)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

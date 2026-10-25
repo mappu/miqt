@@ -175,6 +175,8 @@ bool QsciLexerPython_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerPython_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPython_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPython_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerPython_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerPython_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerPython_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerPython_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

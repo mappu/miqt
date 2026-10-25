@@ -117,6 +117,7 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQu
 
 bool QNetworkProxyFactory_override_virtual_queryProxy(void* self, intptr_t slot);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_virtualbase_queryProxy(void* self, QNetworkProxyQuery* query);
+QNetworkProxy* QNetworkProxyFactory_virtualreturncopy_QNetworkProxy(QNetworkProxy* src);
 
 void QNetworkProxyFactory_delete(QNetworkProxyFactory* self);
 

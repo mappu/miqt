@@ -197,6 +197,8 @@ bool QFocusFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFocusFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QFocusFrame_virtualreturncopy_QSize(QSize* src);
+QVariant* QFocusFrame_virtualreturncopy_QVariant(QVariant* src);
 
 void QFocusFrame_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QFocusFrame_protectedbase_create(bool* _dynamic_cast_ok, void* self);

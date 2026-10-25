@@ -23,7 +23,13 @@ const (
 
 type QDesignerDnDItemInterface struct {
 	h  *C.QDesignerDnDItemInterface
-	gc *[1]*C.QDesignerDnDItemInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerDnDItemInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerDnDItemInterface) cPointer() *C.QDesignerDnDItemInterface {
@@ -55,24 +61,29 @@ func UnsafeNewQDesignerDnDItemInterface(h unsafe.Pointer) *QDesignerDnDItemInter
 }
 
 func (this *QDesignerDnDItemInterface) Widget() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerDnDItemInterface_widget(this.h)))
 }
 
 func (this *QDesignerDnDItemInterface) Decoration() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerDnDItemInterface_decoration(this.h)))
 }
 
 func (this *QDesignerDnDItemInterface) HotSpot() *qt6.QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QDesignerDnDItemInterface_hotSpot(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerDnDItemInterface) Type() QDesignerDnDItemInterface__DropType {
+	defer runtime.KeepAlive(this)
 	return (QDesignerDnDItemInterface__DropType)(C.QDesignerDnDItemInterface_type(this.h))
 }
 
 func (this *QDesignerDnDItemInterface) Source() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerDnDItemInterface_source(this.h)))
 }
 
@@ -88,8 +99,9 @@ func (this *QDesignerDnDItemInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerDnDItemInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerDnDItemInterface) {
-		C.QDesignerDnDItemInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerDnDItemInterface_delete((*C.QDesignerDnDItemInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

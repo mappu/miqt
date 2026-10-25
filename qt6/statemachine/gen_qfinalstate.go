@@ -17,8 +17,15 @@ import (
 
 type QFinalState struct {
 	h  *C.QFinalState
-	gc *[1]*C.QFinalState
+	gc *[1]unsafe.Pointer
 	*QAbstractState
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFinalState) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractState.miqtSetGC(gc)
 }
 
 func (this *QFinalState) cPointer() *C.QFinalState {
@@ -60,15 +67,18 @@ func NewQFinalState() *QFinalState {
 
 // NewQFinalState2 constructs a new QFinalState object.
 func NewQFinalState2(parent *QState) *QFinalState {
+	defer runtime.KeepAlive(parent)
 
 	return newQFinalState(C.QFinalState_new2(parent.cPointer()))
 }
 
 func (this *QFinalState) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QFinalState_metaObject(this.h)))
 }
 
 func (this *QFinalState) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFinalState_metacast(this.h, param1_Cstring))
@@ -107,6 +117,7 @@ func QFinalState_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QFinalState that was directly constructed.
 func (this *QFinalState) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QFinalState_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -121,6 +132,7 @@ func (this *QFinalState) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QFinalState that was directly constructed.
 func (this *QFinalState) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFinalState_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -135,6 +147,7 @@ func (this *QFinalState) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFinalState that was directly constructed.
 func (this *QFinalState) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -151,6 +164,8 @@ func (this *QFinalState) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFinalState that was directly constructed.
 func (this *QFinalState) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFinalState_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -164,6 +179,8 @@ func (this *QFinalState) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QFinalState) callVirtualBase_OnEntry(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFinalState_virtualbase_onEntry(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -190,6 +207,8 @@ func miqt_exec_callback_QFinalState_onEntry(self *C.QFinalState, cb C.intptr_t, 
 }
 
 func (this *QFinalState) callVirtualBase_OnExit(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFinalState_virtualbase_onExit(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -216,6 +235,8 @@ func miqt_exec_callback_QFinalState_onExit(self *C.QFinalState, cb C.intptr_t, e
 }
 
 func (this *QFinalState) callVirtualBase_Event(e *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QFinalState_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -244,6 +265,9 @@ func miqt_exec_callback_QFinalState_event(self *C.QFinalState, cb C.intptr_t, e 
 }
 
 func (this *QFinalState) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFinalState_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -274,6 +298,8 @@ func miqt_exec_callback_QFinalState_eventFilter(self *C.QFinalState, cb C.intptr
 }
 
 func (this *QFinalState) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFinalState_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -300,6 +326,8 @@ func miqt_exec_callback_QFinalState_timerEvent(self *C.QFinalState, cb C.intptr_
 }
 
 func (this *QFinalState) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFinalState_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -326,6 +354,8 @@ func miqt_exec_callback_QFinalState_childEvent(self *C.QFinalState, cb C.intptr_
 }
 
 func (this *QFinalState) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFinalState_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -352,6 +382,8 @@ func miqt_exec_callback_QFinalState_customEvent(self *C.QFinalState, cb C.intptr
 }
 
 func (this *QFinalState) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFinalState_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -378,6 +410,8 @@ func miqt_exec_callback_QFinalState_connectNotify(self *C.QFinalState, cb C.intp
 }
 
 func (this *QFinalState) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFinalState_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -415,8 +449,9 @@ func (this *QFinalState) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFinalState{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFinalState) {
-		C.QFinalState_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFinalState_delete((*C.QFinalState)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

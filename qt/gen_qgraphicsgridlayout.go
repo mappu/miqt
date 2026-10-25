@@ -16,8 +16,15 @@ import (
 
 type QGraphicsGridLayout struct {
 	h  *C.QGraphicsGridLayout
-	gc *[1]*C.QGraphicsGridLayout
+	gc *[1]unsafe.Pointer
 	*QGraphicsLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsGridLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsLayout.miqtSetGC(gc)
 }
 
 func (this *QGraphicsGridLayout) cPointer() *C.QGraphicsGridLayout {
@@ -59,202 +66,261 @@ func NewQGraphicsGridLayout() *QGraphicsGridLayout {
 
 // NewQGraphicsGridLayout2 constructs a new QGraphicsGridLayout object.
 func NewQGraphicsGridLayout2(parent *QGraphicsLayoutItem) *QGraphicsGridLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsGridLayout(C.QGraphicsGridLayout_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsGridLayout) AddItem(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_addItem(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
 }
 
 func (this *QGraphicsGridLayout) AddItem2(item *QGraphicsLayoutItem, row int, column int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_addItem2(this.h, item.cPointer(), (C.int)(row), (C.int)(column))
 }
 
 func (this *QGraphicsGridLayout) SetHorizontalSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setHorizontalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsGridLayout) HorizontalSpacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_horizontalSpacing(this.h))
 }
 
 func (this *QGraphicsGridLayout) SetVerticalSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setVerticalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsGridLayout) VerticalSpacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_verticalSpacing(this.h))
 }
 
 func (this *QGraphicsGridLayout) SetSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsGridLayout) SetRowSpacing(row int, spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowSpacing(this.h, (C.int)(row), (C.double)(spacing))
 }
 
 func (this *QGraphicsGridLayout) RowSpacing(row int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_rowSpacing(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnSpacing(column int, spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnSpacing(this.h, (C.int)(column), (C.double)(spacing))
 }
 
 func (this *QGraphicsGridLayout) ColumnSpacing(column int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_columnSpacing(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetRowStretchFactor(row int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowStretchFactor(this.h, (C.int)(row), (C.int)(stretch))
 }
 
 func (this *QGraphicsGridLayout) RowStretchFactor(row int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsGridLayout_rowStretchFactor(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnStretchFactor(column int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnStretchFactor(this.h, (C.int)(column), (C.int)(stretch))
 }
 
 func (this *QGraphicsGridLayout) ColumnStretchFactor(column int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsGridLayout_columnStretchFactor(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetRowMinimumHeight(row int, height float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowMinimumHeight(this.h, (C.int)(row), (C.double)(height))
 }
 
 func (this *QGraphicsGridLayout) RowMinimumHeight(row int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_rowMinimumHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowPreferredHeight(row int, height float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowPreferredHeight(this.h, (C.int)(row), (C.double)(height))
 }
 
 func (this *QGraphicsGridLayout) RowPreferredHeight(row int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_rowPreferredHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowMaximumHeight(row int, height float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowMaximumHeight(this.h, (C.int)(row), (C.double)(height))
 }
 
 func (this *QGraphicsGridLayout) RowMaximumHeight(row int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_rowMaximumHeight(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetRowFixedHeight(row int, height float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowFixedHeight(this.h, (C.int)(row), (C.double)(height))
 }
 
 func (this *QGraphicsGridLayout) SetColumnMinimumWidth(column int, width float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnMinimumWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
 func (this *QGraphicsGridLayout) ColumnMinimumWidth(column int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_columnMinimumWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnPreferredWidth(column int, width float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnPreferredWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
 func (this *QGraphicsGridLayout) ColumnPreferredWidth(column int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_columnPreferredWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnMaximumWidth(column int, width float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnMaximumWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
 func (this *QGraphicsGridLayout) ColumnMaximumWidth(column int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsGridLayout_columnMaximumWidth(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnFixedWidth(column int, width float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnFixedWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
 func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setRowAlignment(this.h, (C.int)(row), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) RowAlignment(row int) AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QGraphicsGridLayout_rowAlignment(this.h, (C.int)(row)))
 }
 
 func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_setColumnAlignment(this.h, (C.int)(column), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) ColumnAlignment(column int) AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QGraphicsGridLayout_columnAlignment(this.h, (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_setAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) AlignmentFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (AlignmentFlag)(C.QGraphicsGridLayout_alignment(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsGridLayout) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsGridLayout_rowCount(this.h))
 }
 
 func (this *QGraphicsGridLayout) ColumnCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsGridLayout_columnCount(this.h))
 }
 
 func (this *QGraphicsGridLayout) ItemAt(row int, column int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_itemAt(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsGridLayout_count(this.h))
 }
 
 func (this *QGraphicsGridLayout) ItemAtWithIndex(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_itemAtWithIndex(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsGridLayout) RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_removeAt(this.h, (C.int)(index))
 }
 
 func (this *QGraphicsGridLayout) RemoveItem(item *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_removeItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsGridLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsGridLayout_invalidate(this.h)
 }
 
 func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsGridLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 	_goptr := newQSizeF(C.QGraphicsGridLayout_sizeHint(this.h, (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsGridLayout) AddItem3(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_addItem3(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsGridLayout_addItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 
 // AddChildLayoutItem can only be called from a QGraphicsGridLayout that was directly constructed.
 func (this *QGraphicsGridLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layoutItem)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsGridLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
@@ -267,6 +333,8 @@ func (this *QGraphicsGridLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutI
 
 // SetGraphicsItem can only be called from a QGraphicsGridLayout that was directly constructed.
 func (this *QGraphicsGridLayout) SetGraphicsItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsGridLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
@@ -279,6 +347,7 @@ func (this *QGraphicsGridLayout) SetGraphicsItem(item *QGraphicsItem) {
 
 // SetOwnedByLayout can only be called from a QGraphicsGridLayout that was directly constructed.
 func (this *QGraphicsGridLayout) SetOwnedByLayout(ownedByLayout bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsGridLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
@@ -290,6 +359,7 @@ func (this *QGraphicsGridLayout) SetOwnedByLayout(ownedByLayout bool) {
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsGridLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -315,6 +385,7 @@ func miqt_exec_callback_QGraphicsGridLayout_count(self *C.QGraphicsGridLayout, c
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_ItemAtWithIndex(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_virtualbase_itemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -337,12 +408,14 @@ func miqt_exec_callback_QGraphicsGridLayout_itemAtWithIndex(self *C.QGraphicsGri
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_ItemAtWithIndex, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsGridLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))
 
@@ -369,6 +442,7 @@ func miqt_exec_callback_QGraphicsGridLayout_removeAt(self *C.QGraphicsGridLayout
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsGridLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -392,6 +466,8 @@ func miqt_exec_callback_QGraphicsGridLayout_invalidate(self *C.QGraphicsGridLayo
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
@@ -418,6 +494,8 @@ func miqt_exec_callback_QGraphicsGridLayout_setGeometry(self *C.QGraphicsGridLay
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 
 	_goptr := newQSizeF(C.QGraphicsGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -444,12 +522,14 @@ func miqt_exec_callback_QGraphicsGridLayout_sizeHint(self *C.QGraphicsGridLayout
 	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsGridLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsGridLayout_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
@@ -482,6 +562,7 @@ func miqt_exec_callback_QGraphicsGridLayout_getContentsMargins(self *C.QGraphics
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsGridLayout_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
@@ -505,6 +586,8 @@ func miqt_exec_callback_QGraphicsGridLayout_updateGeometry(self *C.QGraphicsGrid
 }
 
 func (this *QGraphicsGridLayout) callVirtualBase_WidgetEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QGraphicsGridLayout_virtualbase_widgetEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -542,8 +625,9 @@ func (this *QGraphicsGridLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsGridLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsGridLayout) {
-		C.QGraphicsGridLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsGridLayout_delete((*C.QGraphicsGridLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

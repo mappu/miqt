@@ -242,6 +242,10 @@ bool QDesignerWidgetBoxInterface_override_virtual_connectNotify(void* self, intp
 void QDesignerWidgetBoxInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerWidgetBoxInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerWidgetBoxInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Category(QDesignerWidgetBoxInterface__Category* src);
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Widget(QDesignerWidgetBoxInterface__Widget* src);
+QSize* QDesignerWidgetBoxInterface_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesignerWidgetBoxInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerWidgetBoxInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesignerWidgetBoxInterface_protectedbase_create(bool* _dynamic_cast_ok, void* self);

@@ -255,6 +255,8 @@ bool QAbstractSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QAbstractSpinBox_virtualreturncopy_QSize(QSize* src);
+QVariant* QAbstractSpinBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractSpinBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option);
 QLineEdit* QAbstractSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);

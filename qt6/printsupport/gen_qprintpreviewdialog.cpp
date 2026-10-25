@@ -157,7 +157,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QPrintPreviewDialog_virtualbase_sizeHint(const void* self);
@@ -172,7 +174,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self);
@@ -877,7 +881,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPrintPreviewDialog_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1819,6 +1825,14 @@ bool QPrintPreviewDialog_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::disconnectNotify(*signal);
+}
+
+QSize* QPrintPreviewDialog_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QPrintPreviewDialog_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QPrintPreviewDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {

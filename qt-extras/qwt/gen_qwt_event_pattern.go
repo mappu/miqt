@@ -45,7 +45,13 @@ const (
 
 type QwtEventPattern struct {
 	h  *C.QwtEventPattern
-	gc *[1]*C.QwtEventPattern
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtEventPattern) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtEventPattern) cPointer() *C.QwtEventPattern {
@@ -84,27 +90,34 @@ func NewQwtEventPattern() *QwtEventPattern {
 
 // NewQwtEventPattern2 constructs a new QwtEventPattern object.
 func NewQwtEventPattern2(param1 *QwtEventPattern) *QwtEventPattern {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtEventPattern(C.QwtEventPattern_new2(param1.cPointer()))
 }
 
 func (this *QwtEventPattern) InitMousePattern(numButtons int) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_initMousePattern(this.h, (C.int)(numButtons))
 }
 
 func (this *QwtEventPattern) InitKeyPattern() {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_initKeyPattern(this.h)
 }
 
 func (this *QwtEventPattern) SetMousePattern(param1 QwtEventPattern__MousePatternCode, button qt.MouseButton) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_setMousePattern(this.h, (C.int)(param1), (C.int)(button))
 }
 
 func (this *QwtEventPattern) SetKeyPattern(param1 QwtEventPattern__KeyPatternCode, key int) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_setKeyPattern(this.h, (C.int)(param1), (C.int)(key))
 }
 
 func (this *QwtEventPattern) SetMousePatternWithMousePattern(mousePattern []QwtEventPattern__MousePattern) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mousePattern)
 	mousePattern_CArray_ptr := (**C.QwtEventPattern__MousePattern)(C.malloc(C.size_t(8 * len(mousePattern))))
 	defer C.free(unsafe.Pointer(mousePattern_CArray_ptr))
 	mousePattern_CArray := unsafe.Slice(mousePattern_CArray_ptr, len(mousePattern))
@@ -116,6 +129,8 @@ func (this *QwtEventPattern) SetMousePatternWithMousePattern(mousePattern []QwtE
 }
 
 func (this *QwtEventPattern) SetKeyPatternWithKeyPattern(keyPattern []QwtEventPattern__KeyPattern) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(keyPattern)
 	keyPattern_CArray_ptr := (**C.QwtEventPattern__KeyPattern)(C.malloc(C.size_t(8 * len(keyPattern))))
 	defer C.free(unsafe.Pointer(keyPattern_CArray_ptr))
 	keyPattern_CArray := unsafe.Slice(keyPattern_CArray_ptr, len(keyPattern))
@@ -127,6 +142,7 @@ func (this *QwtEventPattern) SetKeyPatternWithKeyPattern(keyPattern []QwtEventPa
 }
 
 func (this *QwtEventPattern) MousePattern() []QwtEventPattern__MousePattern {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtEventPattern_mousePattern(this.h)
 	_ret := make([]QwtEventPattern__MousePattern, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtEventPattern__MousePattern)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -139,6 +155,7 @@ func (this *QwtEventPattern) MousePattern() []QwtEventPattern__MousePattern {
 }
 
 func (this *QwtEventPattern) KeyPattern() []QwtEventPattern__KeyPattern {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtEventPattern_keyPattern(this.h)
 	_ret := make([]QwtEventPattern__KeyPattern, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtEventPattern__KeyPattern)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -151,6 +168,7 @@ func (this *QwtEventPattern) KeyPattern() []QwtEventPattern__KeyPattern {
 }
 
 func (this *QwtEventPattern) MousePattern2() []QwtEventPattern__MousePattern {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtEventPattern_mousePattern2(this.h)
 	_ret := make([]QwtEventPattern__MousePattern, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtEventPattern__MousePattern)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -163,6 +181,7 @@ func (this *QwtEventPattern) MousePattern2() []QwtEventPattern__MousePattern {
 }
 
 func (this *QwtEventPattern) KeyPattern2() []QwtEventPattern__KeyPattern {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtEventPattern_keyPattern2(this.h)
 	_ret := make([]QwtEventPattern__KeyPattern, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtEventPattern__KeyPattern)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -175,26 +194,37 @@ func (this *QwtEventPattern) KeyPattern2() []QwtEventPattern__KeyPattern {
 }
 
 func (this *QwtEventPattern) MouseMatch(param1 QwtEventPattern__MousePatternCode, param2 *qt.QMouseEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtEventPattern_mouseMatch(this.h, (C.int)(param1), (*C.QMouseEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtEventPattern) KeyMatch(param1 QwtEventPattern__KeyPatternCode, param2 *qt.QKeyEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtEventPattern_keyMatch(this.h, (C.int)(param1), (*C.QKeyEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtEventPattern) OperatorAssign(param1 *QwtEventPattern) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtEventPattern_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtEventPattern) SetMousePattern2(param1 QwtEventPattern__MousePatternCode, button qt.MouseButton, param3 qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_setMousePattern2(this.h, (C.int)(param1), (C.int)(button), (C.int)(param3))
 }
 
 func (this *QwtEventPattern) SetKeyPattern2(param1 QwtEventPattern__KeyPatternCode, key int, modifiers qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern_setKeyPattern2(this.h, (C.int)(param1), (C.int)(key), (C.int)(modifiers))
 }
 
 func (this *QwtEventPattern) callVirtualBase_MouseMatch2(param1 *QwtEventPattern__MousePattern, param2 *qt.QMouseEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtEventPattern_virtualbase_mouseMatch2(unsafe.Pointer(this.h), param1.cPointer(), (*C.QMouseEvent)(param2.UnsafePointer())))
 
@@ -225,6 +255,9 @@ func miqt_exec_callback_QwtEventPattern_mouseMatch2(self *C.QwtEventPattern, cb 
 }
 
 func (this *QwtEventPattern) callVirtualBase_KeyMatch2(param1 *QwtEventPattern__KeyPattern, param2 *qt.QKeyEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtEventPattern_virtualbase_keyMatch2(unsafe.Pointer(this.h), param1.cPointer(), (*C.QKeyEvent)(param2.UnsafePointer())))
 
@@ -266,15 +299,22 @@ func (this *QwtEventPattern) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtEventPattern{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtEventPattern) {
-		C.QwtEventPattern_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtEventPattern_delete((*C.QwtEventPattern)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtEventPattern__MousePattern struct {
 	h  *C.QwtEventPattern__MousePattern
-	gc *[1]*C.QwtEventPattern__MousePattern
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtEventPattern__MousePattern) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtEventPattern__MousePattern) cPointer() *C.QwtEventPattern__MousePattern {
@@ -313,6 +353,7 @@ func NewQwtEventPattern__MousePattern() *QwtEventPattern__MousePattern {
 
 // NewQwtEventPattern__MousePattern2 constructs a new QwtEventPattern::MousePattern object.
 func NewQwtEventPattern__MousePattern2(param1 *QwtEventPattern__MousePattern) *QwtEventPattern__MousePattern {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new2(param1.cPointer()))
 }
@@ -330,18 +371,22 @@ func NewQwtEventPattern__MousePattern4(btn qt.MouseButton, modifierCodes qt.Keyb
 }
 
 func (this *QwtEventPattern__MousePattern) Button() qt.MouseButton {
+	defer runtime.KeepAlive(this)
 	return (qt.MouseButton)(C.QwtEventPattern__MousePattern_button(this.h))
 }
 
 func (this *QwtEventPattern__MousePattern) SetButton(button qt.MouseButton) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern__MousePattern_setButton(this.h, (C.int)(button))
 }
 
 func (this *QwtEventPattern__MousePattern) Modifiers() qt.KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (qt.KeyboardModifier)(C.QwtEventPattern__MousePattern_modifiers(this.h))
 }
 
 func (this *QwtEventPattern__MousePattern) SetModifiers(modifiers qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern__MousePattern_setModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -357,15 +402,22 @@ func (this *QwtEventPattern__MousePattern) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtEventPattern__MousePattern{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtEventPattern__MousePattern) {
-		C.QwtEventPattern__MousePattern_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtEventPattern__MousePattern_delete((*C.QwtEventPattern__MousePattern)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtEventPattern__KeyPattern struct {
 	h  *C.QwtEventPattern__KeyPattern
-	gc *[1]*C.QwtEventPattern__KeyPattern
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtEventPattern__KeyPattern) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtEventPattern__KeyPattern) cPointer() *C.QwtEventPattern__KeyPattern {
@@ -404,6 +456,7 @@ func NewQwtEventPattern__KeyPattern() *QwtEventPattern__KeyPattern {
 
 // NewQwtEventPattern__KeyPattern2 constructs a new QwtEventPattern::KeyPattern object.
 func NewQwtEventPattern__KeyPattern2(param1 *QwtEventPattern__KeyPattern) *QwtEventPattern__KeyPattern {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new2(param1.cPointer()))
 }
@@ -421,18 +474,22 @@ func NewQwtEventPattern__KeyPattern4(keyCode int, modifierCodes qt.KeyboardModif
 }
 
 func (this *QwtEventPattern__KeyPattern) Key() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtEventPattern__KeyPattern_key(this.h))
 }
 
 func (this *QwtEventPattern__KeyPattern) SetKey(key int) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern__KeyPattern_setKey(this.h, (C.int)(key))
 }
 
 func (this *QwtEventPattern__KeyPattern) Modifiers() qt.KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (qt.KeyboardModifier)(C.QwtEventPattern__KeyPattern_modifiers(this.h))
 }
 
 func (this *QwtEventPattern__KeyPattern) SetModifiers(modifiers qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QwtEventPattern__KeyPattern_setModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -448,8 +505,9 @@ func (this *QwtEventPattern__KeyPattern) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtEventPattern__KeyPattern{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtEventPattern__KeyPattern) {
-		C.QwtEventPattern__KeyPattern_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtEventPattern__KeyPattern_delete((*C.QwtEventPattern__KeyPattern)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
