@@ -14,15 +14,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v6
 
-    # WARNING: This loads the cache but does not commit back any new changes to
-    # it unless the cache is invalidated in GitHub
-    # It will help to do that every time a new Qt library is added
-    - name: Cache clang ASTs
-      uses: actions/cache@v5
+    - name: Restore clang AST cache
+      id: ast-cache
+      uses: actions/cache/restore@v5
       with:
         path: cmd/genbindings/cachedir
-        key: linux64-clang-cache
-        
+        # Cache bust if genbindings changes or if the genbindings Dockerfile adds new libraries
+        key: clang-ast-cache-${{ hashFiles('cmd/genbindings/*.go', 'cmd/genbindings/go.mod', 'docker/genbindings.Dockerfile') }}
+        restore-keys: clang-ast-cache-
+
     - name: Run unit tests for cmd tasks
       run: make test-cmd
 
@@ -34,6 +34,14 @@ jobs:
     
     - name: Assert no changes
       run: git update-index --really-refresh && git diff-index HEAD
+
+    - name: Save clang AST cache
+      # save cache even on failure
+      if: always() && steps.ast-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v5
+      with:
+        path: cmd/genbindings/cachedir
+        key: clang-ast-cache-${{ hashFiles('cmd/genbindings/*.go', 'cmd/genbindings/go.mod', 'docker/genbindings.Dockerfile') }}
       
   miqt_buildall:
     runs-on: ubuntu-24.04
