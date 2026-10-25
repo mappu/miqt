@@ -37,6 +37,7 @@ You must also meet your Qt license obligations.
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
 - [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos
+- [ApeMail](https://github.com/nomad-software/apemail), ApeMail is a mail client, and only that, made to be quick, private and careful with your mail, however much of it you have.
 - [autoconfig](https://github.com/mappu/autoconfig), uses reflection to edit any Go struct with a Qt interface
 - [AyanDict](https://github.com/ilius/ayandict) - simple yet advanced multi-lingual dictionary using StarDict format
 - [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool
@@ -44,6 +45,7 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 - [excel-translator](https://github.com/lemos1235/excel-translator), A lightweight desktop utility for translating Xlsx/Docx files using various translation engines
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
+- [Prism](https://github.com/nomad-software/prism), A system monitor for reading CPU, Memory and Network status.
 - [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB and other databases
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
