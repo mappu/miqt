@@ -23,7 +23,13 @@ const (
 
 type QSqlResult struct {
 	h  *C.QSqlResult
-	gc *[1]*C.QSqlResult
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlResult) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlResult) cPointer() *C.QSqlResult {
@@ -55,6 +61,7 @@ func UnsafeNewQSqlResult(h unsafe.Pointer) *QSqlResult {
 }
 
 func (this *QSqlResult) Handle() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSqlResult_handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -72,8 +79,9 @@ func (this *QSqlResult) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlResult{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlResult) {
-		C.QSqlResult_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlResult_delete((*C.QSqlResult)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

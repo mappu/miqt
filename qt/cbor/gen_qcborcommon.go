@@ -76,7 +76,13 @@ const (
 
 type QCborError struct {
 	h  *C.QCborError
-	gc *[1]*C.QCborError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCborError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCborError) cPointer() *C.QCborError {
@@ -108,18 +114,22 @@ func UnsafeNewQCborError(h unsafe.Pointer) *QCborError {
 }
 
 func (this *QCborError) C() QCborError__Code {
+	defer runtime.KeepAlive(this)
 	return (QCborError__Code)(C.QCborError_c(this.h))
 }
 
 func (this *QCborError) SetC(c QCborError__Code) {
+	defer runtime.KeepAlive(this)
 	C.QCborError_setC(this.h, (C.int)(c))
 }
 
 func (this *QCborError) ToQCborError__Code() QCborError__Code {
+	defer runtime.KeepAlive(this)
 	return (QCborError__Code)(C.QCborError_ToQCborError__Code(this.h))
 }
 
 func (this *QCborError) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCborError_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -138,8 +148,9 @@ func (this *QCborError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCborError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborError) {
-		C.QCborError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCborError_delete((*C.QCborError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

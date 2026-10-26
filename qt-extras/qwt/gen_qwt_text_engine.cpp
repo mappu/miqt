@@ -86,7 +86,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
 		QSizeF* callback_return_value = miqt_exec_callback_QwtTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -249,6 +251,10 @@ bool QwtTextEngine_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
+QSizeF* QwtTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
 void QwtTextEngine_delete(QwtTextEngine* self) {
 	delete self;
 }
@@ -311,7 +317,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
 		QSizeF* callback_return_value = miqt_exec_callback_QwtPlainTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QwtPlainTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
@@ -517,6 +525,10 @@ void QwtPlainTextEngine_virtualbase_textMargins(const void* self, QFont* param1,
 	static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::textMargins(*param1, param2_QString, static_cast<double&>(*left), static_cast<double&>(*right), static_cast<double&>(*top), static_cast<double&>(*bottom));
 }
 
+QSizeF* QwtPlainTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
 void QwtPlainTextEngine_delete(QwtPlainTextEngine* self) {
 	delete self;
 }
@@ -579,7 +591,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
 		QSizeF* callback_return_value = miqt_exec_callback_QwtRichTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QwtRichTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
@@ -783,6 +797,10 @@ bool QwtRichTextEngine_override_virtual_textMargins(void* self, intptr_t slot) {
 void QwtRichTextEngine_virtualbase_textMargins(const void* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::textMargins(*param1, param2_QString, static_cast<double&>(*left), static_cast<double&>(*right), static_cast<double&>(*top), static_cast<double&>(*bottom));
+}
+
+QSizeF* QwtRichTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
 }
 
 void QwtRichTextEngine_delete(QwtRichTextEngine* self) {

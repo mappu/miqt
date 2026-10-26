@@ -97,7 +97,9 @@ public:
 
 		bool sigval1 = fromSatellitePositioningMethodsOnly;
 		QGeoPositionInfo* callback_return_value = miqt_exec_callback_QGeoPositionInfoSource_lastKnownPosition(this, handle__lastKnownPosition, sigval1);
-		return *callback_return_value;
+		QGeoPositionInfo callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -170,7 +172,9 @@ public:
 		memcpy(name_ms.data, name_b.data(), name_ms.len);
 		struct miqt_string sigval1 = name_ms;
 		QVariant* callback_return_value = miqt_exec_callback_QGeoPositionInfoSource_backendProperty(this, handle__backendProperty, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QGeoPositionInfoSource_virtualbase_backendProperty(const void* self, struct miqt_string name);
@@ -785,6 +789,14 @@ bool QGeoPositionInfoSource_override_virtual_disconnectNotify(void* self, intptr
 
 void QGeoPositionInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGeoPositionInfoSource*>(self)->QGeoPositionInfoSource::disconnectNotify(*signal);
+}
+
+QGeoPositionInfo* QGeoPositionInfoSource_virtualreturncopy_QGeoPositionInfo(QGeoPositionInfo* src) {
+	return new QGeoPositionInfo(*src);
+}
+
+QVariant* QGeoPositionInfoSource_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QGeoPositionInfoSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

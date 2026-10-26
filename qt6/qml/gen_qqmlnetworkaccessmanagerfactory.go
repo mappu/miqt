@@ -15,7 +15,13 @@ import (
 
 type QQmlNetworkAccessManagerFactory struct {
 	h  *C.QQmlNetworkAccessManagerFactory
-	gc *[1]*C.QQmlNetworkAccessManagerFactory
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlNetworkAccessManagerFactory) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlNetworkAccessManagerFactory) cPointer() *C.QQmlNetworkAccessManagerFactory {
@@ -47,6 +53,8 @@ func UnsafeNewQQmlNetworkAccessManagerFactory(h unsafe.Pointer) *QQmlNetworkAcce
 }
 
 func (this *QQmlNetworkAccessManagerFactory) OperatorAssign(param1 *QQmlNetworkAccessManagerFactory) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlNetworkAccessManagerFactory_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -62,8 +70,9 @@ func (this *QQmlNetworkAccessManagerFactory) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlNetworkAccessManagerFactory{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlNetworkAccessManagerFactory) {
-		C.QQmlNetworkAccessManagerFactory_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlNetworkAccessManagerFactory_delete((*C.QQmlNetworkAccessManagerFactory)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

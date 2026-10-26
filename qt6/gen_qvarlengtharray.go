@@ -9,11 +9,19 @@ package qt6
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
 type QVLABaseBase struct {
-	h *C.QVLABaseBase
+	h  *C.QVLABaseBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVLABaseBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QVLABaseBase) cPointer() *C.QVLABaseBase {
@@ -45,13 +53,16 @@ func UnsafeNewQVLABaseBase(h unsafe.Pointer) *QVLABaseBase {
 }
 
 func (this *QVLABaseBase) Capacity() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVLABaseBase_capacity(this.h))
 }
 
 func (this *QVLABaseBase) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVLABaseBase_size(this.h))
 }
 
 func (this *QVLABaseBase) Empty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVLABaseBase_empty(this.h))
 }

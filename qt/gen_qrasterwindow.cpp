@@ -192,7 +192,9 @@ public:
 		}
 
 		QSurfaceFormat* callback_return_value = miqt_exec_callback_QRasterWindow_format(this, handle__format);
-		return *callback_return_value;
+		QSurfaceFormat callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSurfaceFormat* QRasterWindow_virtualbase_format(const void* self);
@@ -207,7 +209,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QRasterWindow_size(this, handle__size);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QRasterWindow_virtualbase_size(const void* self);
@@ -1256,6 +1260,14 @@ bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 	return static_cast<const MiqtVirtualQRasterWindow*>(self)->QRasterWindow::sharedPainter();
+}
+
+QSurfaceFormat* QRasterWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
+	return new QSurfaceFormat(*src);
+}
+
+QSize* QRasterWindow_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 QObject* QRasterWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

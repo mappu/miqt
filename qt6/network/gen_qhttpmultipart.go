@@ -26,7 +26,13 @@ const (
 
 type QHttpPart struct {
 	h  *C.QHttpPart
-	gc *[1]*C.QHttpPart
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHttpPart) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHttpPart) cPointer() *C.QHttpPart {
@@ -65,31 +71,43 @@ func NewQHttpPart() *QHttpPart {
 
 // NewQHttpPart2 constructs a new QHttpPart object.
 func NewQHttpPart2(other *QHttpPart) *QHttpPart {
+	defer runtime.KeepAlive(other)
 
 	return newQHttpPart(C.QHttpPart_new2(other.cPointer()))
 }
 
 func (this *QHttpPart) OperatorAssign(other *QHttpPart) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHttpPart_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QHttpPart) Swap(other *QHttpPart) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHttpPart_swap(this.h, other.cPointer())
 }
 
 func (this *QHttpPart) OperatorEqual(other *QHttpPart) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QHttpPart_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QHttpPart) OperatorNotEqual(other *QHttpPart) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QHttpPart_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QHttpPart) SetHeader(header QNetworkRequest__KnownHeaders, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QHttpPart_setHeader(this.h, (C.int)(header), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QHttpPart) SetRawHeader(headerName []byte, headerValue []byte) {
+	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -108,6 +126,7 @@ func (this *QHttpPart) SetRawHeader(headerName []byte, headerValue []byte) {
 }
 
 func (this *QHttpPart) SetBody(body []byte) {
+	defer runtime.KeepAlive(this)
 	body_alias := C.struct_miqt_string{}
 	if len(body) > 0 {
 		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
@@ -119,6 +138,8 @@ func (this *QHttpPart) SetBody(body []byte) {
 }
 
 func (this *QHttpPart) SetBodyDevice(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QHttpPart_setBodyDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
@@ -134,16 +155,23 @@ func (this *QHttpPart) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHttpPart{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHttpPart) {
-		C.QHttpPart_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHttpPart_delete((*C.QHttpPart)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHttpMultiPart struct {
 	h  *C.QHttpMultiPart
-	gc *[1]*C.QHttpMultiPart
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHttpMultiPart) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHttpMultiPart) cPointer() *C.QHttpMultiPart {
@@ -191,21 +219,25 @@ func NewQHttpMultiPart2(contentType QHttpMultiPart__ContentType) *QHttpMultiPart
 
 // NewQHttpMultiPart3 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart3(parent *qt6.QObject) *QHttpMultiPart {
+	defer runtime.KeepAlive(parent)
 
 	return newQHttpMultiPart(C.QHttpMultiPart_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQHttpMultiPart4 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart4(contentType QHttpMultiPart__ContentType, parent *qt6.QObject) *QHttpMultiPart {
+	defer runtime.KeepAlive(parent)
 
 	return newQHttpMultiPart(C.QHttpMultiPart_new4((C.int)(contentType), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QHttpMultiPart) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QHttpMultiPart_metaObject(this.h)))
 }
 
 func (this *QHttpMultiPart) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHttpMultiPart_metacast(this.h, param1_Cstring))
@@ -221,14 +253,18 @@ func QHttpMultiPart_Tr(s string) string {
 }
 
 func (this *QHttpMultiPart) Append(httpPart *QHttpPart) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(httpPart)
 	C.QHttpMultiPart_append(this.h, httpPart.cPointer())
 }
 
 func (this *QHttpMultiPart) SetContentType(contentType QHttpMultiPart__ContentType) {
+	defer runtime.KeepAlive(this)
 	C.QHttpMultiPart_setContentType(this.h, (C.int)(contentType))
 }
 
 func (this *QHttpMultiPart) Boundary() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QHttpMultiPart_boundary(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -236,6 +272,7 @@ func (this *QHttpMultiPart) Boundary() []byte {
 }
 
 func (this *QHttpMultiPart) SetBoundary(boundary []byte) {
+	defer runtime.KeepAlive(this)
 	boundary_alias := C.struct_miqt_string{}
 	if len(boundary) > 0 {
 		boundary_alias.data = (*C.char)(unsafe.Pointer(&boundary[0]))
@@ -270,6 +307,7 @@ func QHttpMultiPart_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QHttpMultiPart that was directly constructed.
 func (this *QHttpMultiPart) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QHttpMultiPart_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -284,6 +322,7 @@ func (this *QHttpMultiPart) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QHttpMultiPart that was directly constructed.
 func (this *QHttpMultiPart) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHttpMultiPart_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -298,6 +337,7 @@ func (this *QHttpMultiPart) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHttpMultiPart that was directly constructed.
 func (this *QHttpMultiPart) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -314,6 +354,8 @@ func (this *QHttpMultiPart) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHttpMultiPart that was directly constructed.
 func (this *QHttpMultiPart) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHttpMultiPart_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -327,6 +369,8 @@ func (this *QHttpMultiPart) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QHttpMultiPart) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHttpMultiPart_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -355,6 +399,9 @@ func miqt_exec_callback_QHttpMultiPart_event(self *C.QHttpMultiPart, cb C.intptr
 }
 
 func (this *QHttpMultiPart) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHttpMultiPart_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -385,6 +432,8 @@ func miqt_exec_callback_QHttpMultiPart_eventFilter(self *C.QHttpMultiPart, cb C.
 }
 
 func (this *QHttpMultiPart) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHttpMultiPart_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -411,6 +460,8 @@ func miqt_exec_callback_QHttpMultiPart_timerEvent(self *C.QHttpMultiPart, cb C.i
 }
 
 func (this *QHttpMultiPart) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHttpMultiPart_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -437,6 +488,8 @@ func miqt_exec_callback_QHttpMultiPart_childEvent(self *C.QHttpMultiPart, cb C.i
 }
 
 func (this *QHttpMultiPart) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHttpMultiPart_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -463,6 +516,8 @@ func miqt_exec_callback_QHttpMultiPart_customEvent(self *C.QHttpMultiPart, cb C.
 }
 
 func (this *QHttpMultiPart) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHttpMultiPart_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -489,6 +544,8 @@ func miqt_exec_callback_QHttpMultiPart_connectNotify(self *C.QHttpMultiPart, cb 
 }
 
 func (this *QHttpMultiPart) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHttpMultiPart_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -526,8 +583,9 @@ func (this *QHttpMultiPart) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHttpMultiPart{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHttpMultiPart) {
-		C.QHttpMultiPart_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHttpMultiPart_delete((*C.QHttpMultiPart)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

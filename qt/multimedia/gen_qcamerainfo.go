@@ -15,7 +15,13 @@ import (
 
 type QCameraInfo struct {
 	h  *C.QCameraInfo
-	gc *[1]*C.QCameraInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCameraInfo) cPointer() *C.QCameraInfo {
@@ -54,12 +60,14 @@ func NewQCameraInfo() *QCameraInfo {
 
 // NewQCameraInfo2 constructs a new QCameraInfo object.
 func NewQCameraInfo2(camera *QCamera) *QCameraInfo {
+	defer runtime.KeepAlive(camera)
 
 	return newQCameraInfo(C.QCameraInfo_new2(camera.cPointer()))
 }
 
 // NewQCameraInfo3 constructs a new QCameraInfo object.
 func NewQCameraInfo3(other *QCameraInfo) *QCameraInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQCameraInfo(C.QCameraInfo_new3(other.cPointer()))
 }
@@ -78,22 +86,30 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 }
 
 func (this *QCameraInfo) OperatorAssign(other *QCameraInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCameraInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraInfo) OperatorEqual(other *QCameraInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QCameraInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraInfo) OperatorNotEqual(other *QCameraInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QCameraInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraInfo) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraInfo_isNull(this.h))
 }
 
 func (this *QCameraInfo) DeviceName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCameraInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -101,6 +117,7 @@ func (this *QCameraInfo) DeviceName() string {
 }
 
 func (this *QCameraInfo) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCameraInfo_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,10 +125,12 @@ func (this *QCameraInfo) Description() string {
 }
 
 func (this *QCameraInfo) Position() QCamera__Position {
+	defer runtime.KeepAlive(this)
 	return (QCamera__Position)(C.QCameraInfo_position(this.h))
 }
 
 func (this *QCameraInfo) Orientation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCameraInfo_orientation(this.h))
 }
 
@@ -157,8 +176,9 @@ func (this *QCameraInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraInfo) {
-		C.QCameraInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraInfo_delete((*C.QCameraInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

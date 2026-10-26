@@ -15,7 +15,13 @@ import (
 
 type QCollatorSortKey struct {
 	h  *C.QCollatorSortKey
-	gc *[1]*C.QCollatorSortKey
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCollatorSortKey) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCollatorSortKey) cPointer() *C.QCollatorSortKey {
@@ -48,19 +54,26 @@ func UnsafeNewQCollatorSortKey(h unsafe.Pointer) *QCollatorSortKey {
 
 // NewQCollatorSortKey constructs a new QCollatorSortKey object.
 func NewQCollatorSortKey(other *QCollatorSortKey) *QCollatorSortKey {
+	defer runtime.KeepAlive(other)
 
 	return newQCollatorSortKey(C.QCollatorSortKey_new(other.cPointer()))
 }
 
 func (this *QCollatorSortKey) OperatorAssign(other *QCollatorSortKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCollatorSortKey_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCollatorSortKey) Swap(other *QCollatorSortKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCollatorSortKey_swap(this.h, other.cPointer())
 }
 
 func (this *QCollatorSortKey) Compare(key *QCollatorSortKey) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(key)
 	return (int)(C.QCollatorSortKey_compare(this.h, key.cPointer()))
 }
 
@@ -76,15 +89,22 @@ func (this *QCollatorSortKey) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCollatorSortKey{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCollatorSortKey) {
-		C.QCollatorSortKey_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCollatorSortKey_delete((*C.QCollatorSortKey)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCollator struct {
 	h  *C.QCollator
-	gc *[1]*C.QCollator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCollator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCollator) cPointer() *C.QCollator {
@@ -123,59 +143,75 @@ func NewQCollator() *QCollator {
 
 // NewQCollator2 constructs a new QCollator object.
 func NewQCollator2(locale *QLocale) *QCollator {
+	defer runtime.KeepAlive(locale)
 
 	return newQCollator(C.QCollator_new2(locale.cPointer()))
 }
 
 // NewQCollator3 constructs a new QCollator object.
 func NewQCollator3(param1 *QCollator) *QCollator {
+	defer runtime.KeepAlive(param1)
 
 	return newQCollator(C.QCollator_new3(param1.cPointer()))
 }
 
 func (this *QCollator) OperatorAssign(param1 *QCollator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QCollator_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QCollator) Swap(other *QCollator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCollator_swap(this.h, other.cPointer())
 }
 
 func (this *QCollator) SetLocale(locale *QLocale) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	C.QCollator_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QCollator) Locale() *QLocale {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QCollator_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCollator) CaseSensitivity() CaseSensitivity {
+	defer runtime.KeepAlive(this)
 	return (CaseSensitivity)(C.QCollator_caseSensitivity(this.h))
 }
 
 func (this *QCollator) SetCaseSensitivity(cs CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QCollator_setCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QCollator) SetNumericMode(on bool) {
+	defer runtime.KeepAlive(this)
 	C.QCollator_setNumericMode(this.h, (C.bool)(on))
 }
 
 func (this *QCollator) NumericMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCollator_numericMode(this.h))
 }
 
 func (this *QCollator) SetIgnorePunctuation(on bool) {
+	defer runtime.KeepAlive(this)
 	C.QCollator_setIgnorePunctuation(this.h, (C.bool)(on))
 }
 
 func (this *QCollator) IgnorePunctuation() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCollator_ignorePunctuation(this.h))
 }
 
 func (this *QCollator) Compare(s1 string, s2 string) int {
+	defer runtime.KeepAlive(this)
 	s1_ms := C.struct_miqt_string{}
 	s1_ms.data = C.CString(s1)
 	s1_ms.len = C.size_t(len(s1))
@@ -188,10 +224,14 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 }
 
 func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s1)
+	defer runtime.KeepAlive(s2)
 	return (int)(C.QCollator_compare3(this.h, s1.cPointer(), (C.int)(len1), s2.cPointer(), (C.int)(len2)))
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
+	defer runtime.KeepAlive(this)
 	s1_ms := C.struct_miqt_string{}
 	s1_ms.data = C.CString(s1)
 	s1_ms.len = C.size_t(len(s1))
@@ -204,6 +244,7 @@ func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -225,8 +266,9 @@ func (this *QCollator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCollator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCollator) {
-		C.QCollator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCollator_delete((*C.QCollator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

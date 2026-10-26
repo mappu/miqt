@@ -36,7 +36,13 @@ const (
 
 type QwtPickerMachine struct {
 	h  *C.QwtPickerMachine
-	gc *[1]*C.QwtPickerMachine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPickerMachine) cPointer() *C.QwtPickerMachine {
@@ -75,11 +81,15 @@ func NewQwtPickerMachine(param1 QwtPickerMachine__SelectionType) *QwtPickerMachi
 
 // NewQwtPickerMachine2 constructs a new QwtPickerMachine object.
 func NewQwtPickerMachine2(param1 *QwtPickerMachine) *QwtPickerMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerMachine(C.QwtPickerMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -90,18 +100,22 @@ func (this *QwtPickerMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEv
 }
 
 func (this *QwtPickerMachine) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QwtPickerMachine_reset(this.h)
 }
 
 func (this *QwtPickerMachine) State() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPickerMachine_state(this.h))
 }
 
 func (this *QwtPickerMachine) SetState(state int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPickerMachine_setState(this.h, (C.int)(state))
 }
 
 func (this *QwtPickerMachine) SelectionType() QwtPickerMachine__SelectionType {
+	defer runtime.KeepAlive(this)
 	return (QwtPickerMachine__SelectionType)(C.QwtPickerMachine_selectionType(this.h))
 }
 func (this *QwtPickerMachine) OnTransition(slot func(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command) {
@@ -147,16 +161,24 @@ func (this *QwtPickerMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerMachine) {
-		C.QwtPickerMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerMachine_delete((*C.QwtPickerMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerTrackerMachine struct {
 	h  *C.QwtPickerTrackerMachine
-	gc *[1]*C.QwtPickerTrackerMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerTrackerMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerTrackerMachine) cPointer() *C.QwtPickerTrackerMachine {
@@ -198,11 +220,15 @@ func NewQwtPickerTrackerMachine() *QwtPickerTrackerMachine {
 
 // NewQwtPickerTrackerMachine2 constructs a new QwtPickerTrackerMachine object.
 func NewQwtPickerTrackerMachine2(param1 *QwtPickerTrackerMachine) *QwtPickerTrackerMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerTrackerMachine(C.QwtPickerTrackerMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerTrackerMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerTrackerMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -213,6 +239,9 @@ func (this *QwtPickerTrackerMachine) Transition(param1 *QwtEventPattern, param2 
 }
 
 func (this *QwtPickerTrackerMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerTrackerMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -266,16 +295,24 @@ func (this *QwtPickerTrackerMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerTrackerMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerTrackerMachine) {
-		C.QwtPickerTrackerMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerTrackerMachine_delete((*C.QwtPickerTrackerMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerClickPointMachine struct {
 	h  *C.QwtPickerClickPointMachine
-	gc *[1]*C.QwtPickerClickPointMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerClickPointMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerClickPointMachine) cPointer() *C.QwtPickerClickPointMachine {
@@ -317,11 +354,15 @@ func NewQwtPickerClickPointMachine() *QwtPickerClickPointMachine {
 
 // NewQwtPickerClickPointMachine2 constructs a new QwtPickerClickPointMachine object.
 func NewQwtPickerClickPointMachine2(param1 *QwtPickerClickPointMachine) *QwtPickerClickPointMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerClickPointMachine(C.QwtPickerClickPointMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerClickPointMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerClickPointMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -332,6 +373,9 @@ func (this *QwtPickerClickPointMachine) Transition(param1 *QwtEventPattern, para
 }
 
 func (this *QwtPickerClickPointMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerClickPointMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -385,16 +429,24 @@ func (this *QwtPickerClickPointMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerClickPointMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerClickPointMachine) {
-		C.QwtPickerClickPointMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerClickPointMachine_delete((*C.QwtPickerClickPointMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerDragPointMachine struct {
 	h  *C.QwtPickerDragPointMachine
-	gc *[1]*C.QwtPickerDragPointMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerDragPointMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerDragPointMachine) cPointer() *C.QwtPickerDragPointMachine {
@@ -436,11 +488,15 @@ func NewQwtPickerDragPointMachine() *QwtPickerDragPointMachine {
 
 // NewQwtPickerDragPointMachine2 constructs a new QwtPickerDragPointMachine object.
 func NewQwtPickerDragPointMachine2(param1 *QwtPickerDragPointMachine) *QwtPickerDragPointMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerDragPointMachine(C.QwtPickerDragPointMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerDragPointMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerDragPointMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -451,6 +507,9 @@ func (this *QwtPickerDragPointMachine) Transition(param1 *QwtEventPattern, param
 }
 
 func (this *QwtPickerDragPointMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragPointMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -504,16 +563,24 @@ func (this *QwtPickerDragPointMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerDragPointMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragPointMachine) {
-		C.QwtPickerDragPointMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerDragPointMachine_delete((*C.QwtPickerDragPointMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerClickRectMachine struct {
 	h  *C.QwtPickerClickRectMachine
-	gc *[1]*C.QwtPickerClickRectMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerClickRectMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerClickRectMachine) cPointer() *C.QwtPickerClickRectMachine {
@@ -555,11 +622,15 @@ func NewQwtPickerClickRectMachine() *QwtPickerClickRectMachine {
 
 // NewQwtPickerClickRectMachine2 constructs a new QwtPickerClickRectMachine object.
 func NewQwtPickerClickRectMachine2(param1 *QwtPickerClickRectMachine) *QwtPickerClickRectMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerClickRectMachine(C.QwtPickerClickRectMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerClickRectMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerClickRectMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -570,6 +641,9 @@ func (this *QwtPickerClickRectMachine) Transition(param1 *QwtEventPattern, param
 }
 
 func (this *QwtPickerClickRectMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerClickRectMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -623,16 +697,24 @@ func (this *QwtPickerClickRectMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerClickRectMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerClickRectMachine) {
-		C.QwtPickerClickRectMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerClickRectMachine_delete((*C.QwtPickerClickRectMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerDragRectMachine struct {
 	h  *C.QwtPickerDragRectMachine
-	gc *[1]*C.QwtPickerDragRectMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerDragRectMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerDragRectMachine) cPointer() *C.QwtPickerDragRectMachine {
@@ -674,11 +756,15 @@ func NewQwtPickerDragRectMachine() *QwtPickerDragRectMachine {
 
 // NewQwtPickerDragRectMachine2 constructs a new QwtPickerDragRectMachine object.
 func NewQwtPickerDragRectMachine2(param1 *QwtPickerDragRectMachine) *QwtPickerDragRectMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerDragRectMachine(C.QwtPickerDragRectMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerDragRectMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerDragRectMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -689,6 +775,9 @@ func (this *QwtPickerDragRectMachine) Transition(param1 *QwtEventPattern, param2
 }
 
 func (this *QwtPickerDragRectMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragRectMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -742,16 +831,24 @@ func (this *QwtPickerDragRectMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerDragRectMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragRectMachine) {
-		C.QwtPickerDragRectMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerDragRectMachine_delete((*C.QwtPickerDragRectMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerDragLineMachine struct {
 	h  *C.QwtPickerDragLineMachine
-	gc *[1]*C.QwtPickerDragLineMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerDragLineMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerDragLineMachine) cPointer() *C.QwtPickerDragLineMachine {
@@ -793,11 +890,15 @@ func NewQwtPickerDragLineMachine() *QwtPickerDragLineMachine {
 
 // NewQwtPickerDragLineMachine2 constructs a new QwtPickerDragLineMachine object.
 func NewQwtPickerDragLineMachine2(param1 *QwtPickerDragLineMachine) *QwtPickerDragLineMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerDragLineMachine(C.QwtPickerDragLineMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerDragLineMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerDragLineMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -808,6 +909,9 @@ func (this *QwtPickerDragLineMachine) Transition(param1 *QwtEventPattern, param2
 }
 
 func (this *QwtPickerDragLineMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerDragLineMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -861,16 +965,24 @@ func (this *QwtPickerDragLineMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerDragLineMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerDragLineMachine) {
-		C.QwtPickerDragLineMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerDragLineMachine_delete((*C.QwtPickerDragLineMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPickerPolygonMachine struct {
 	h  *C.QwtPickerPolygonMachine
-	gc *[1]*C.QwtPickerPolygonMachine
+	gc *[1]unsafe.Pointer
 	*QwtPickerMachine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPickerPolygonMachine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPickerMachine.miqtSetGC(gc)
 }
 
 func (this *QwtPickerPolygonMachine) cPointer() *C.QwtPickerPolygonMachine {
@@ -912,11 +1024,15 @@ func NewQwtPickerPolygonMachine() *QwtPickerPolygonMachine {
 
 // NewQwtPickerPolygonMachine2 constructs a new QwtPickerPolygonMachine object.
 func NewQwtPickerPolygonMachine2(param1 *QwtPickerPolygonMachine) *QwtPickerPolygonMachine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPickerPolygonMachine(C.QwtPickerPolygonMachine_new2(param1.cPointer()))
 }
 
 func (this *QwtPickerPolygonMachine) Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	var _ma C.struct_miqt_array = C.QwtPickerPolygonMachine_transition(this.h, param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -927,6 +1043,9 @@ func (this *QwtPickerPolygonMachine) Transition(param1 *QwtEventPattern, param2 
 }
 
 func (this *QwtPickerPolygonMachine) callVirtualBase_Transition(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _ma C.struct_miqt_array = C.QwtPickerPolygonMachine_virtualbase_transition(unsafe.Pointer(this.h), param1.cPointer(), (*C.QEvent)(param2.UnsafePointer()))
 	_ret := make([]QwtPickerMachine__Command, int(_ma.len))
@@ -980,8 +1099,9 @@ func (this *QwtPickerPolygonMachine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPickerPolygonMachine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPickerPolygonMachine) {
-		C.QwtPickerPolygonMachine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPickerPolygonMachine_delete((*C.QwtPickerPolygonMachine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

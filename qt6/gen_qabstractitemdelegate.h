@@ -109,6 +109,7 @@ bool QAbstractItemDelegate_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QAbstractItemDelegate_virtualreturncopy_QSize(QSize* src);
 
 QObject* QAbstractItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

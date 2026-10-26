@@ -33,8 +33,15 @@ const (
 
 type QFileSystemModel struct {
 	h  *C.QFileSystemModel
-	gc *[1]*C.QFileSystemModel
+	gc *[1]unsafe.Pointer
 	*QAbstractItemModel
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFileSystemModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractItemModel.miqtSetGC(gc)
 }
 
 func (this *QFileSystemModel) cPointer() *C.QFileSystemModel {
@@ -76,15 +83,18 @@ func NewQFileSystemModel() *QFileSystemModel {
 
 // NewQFileSystemModel2 constructs a new QFileSystemModel object.
 func NewQFileSystemModel2(parent *QObject) *QFileSystemModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQFileSystemModel(C.QFileSystemModel_new2(parent.cPointer()))
 }
 
 func (this *QFileSystemModel) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFileSystemModel_metaObject(this.h))
 }
 
 func (this *QFileSystemModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFileSystemModel_metacast(this.h, param1_Cstring))
@@ -100,6 +110,7 @@ func QFileSystemModel_Tr(s string) string {
 }
 
 func (this *QFileSystemModel) RootPathChanged(newPath string) {
+	defer runtime.KeepAlive(this)
 	newPath_ms := C.struct_miqt_string{}
 	newPath_ms.data = C.CString(newPath)
 	newPath_ms.len = C.size_t(len(newPath))
@@ -127,6 +138,7 @@ func miqt_exec_callback_QFileSystemModel_rootPathChanged(cb C.intptr_t, newPath 
 }
 
 func (this *QFileSystemModel) FileRenamed(path string, oldName string, newName string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -170,6 +182,7 @@ func miqt_exec_callback_QFileSystemModel_fileRenamed(cb C.intptr_t, path C.struc
 }
 
 func (this *QFileSystemModel) DirectoryLoaded(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -197,12 +210,15 @@ func miqt_exec_callback_QFileSystemModel_directoryLoaded(cb C.intptr_t, path C.s
 }
 
 func (this *QFileSystemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QFileSystemModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) IndexWithPath(path string) *QModelIndex {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -213,68 +229,93 @@ func (this *QFileSystemModel) IndexWithPath(path string) *QModelIndex {
 }
 
 func (this *QFileSystemModel) Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 	_goptr := newQModelIndex(C.QFileSystemModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QFileSystemModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QFileSystemModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) CanFetchMore(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QFileSystemModel_canFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) FetchMore(parent *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	C.QFileSystemModel_fetchMore(this.h, parent.cPointer())
 }
 
 func (this *QFileSystemModel) RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QFileSystemModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QFileSystemModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) MyComputer() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QFileSystemModel_myComputer(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QFileSystemModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QFileSystemModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QFileSystemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QFileSystemModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QFileSystemModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QFileSystemModel) MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFileSystemModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -288,6 +329,8 @@ func (this *QFileSystemModel) MimeTypes() []string {
 }
 
 func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -299,14 +342,19 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QFileSystemModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QFileSystemModel) SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QFileSystemModel_supportedDropActions(this.h))
 }
 
 func (this *QFileSystemModel) RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QFileSystemModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -324,6 +372,7 @@ func (this *QFileSystemModel) RoleNames() map[int][]byte {
 }
 
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -334,6 +383,7 @@ func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
 }
 
 func (this *QFileSystemModel) RootPath() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFileSystemModel_rootPath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -341,52 +391,65 @@ func (this *QFileSystemModel) RootPath() string {
 }
 
 func (this *QFileSystemModel) RootDirectory() *QDir {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDir(C.QFileSystemModel_rootDirectory(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) SetIconProvider(provider *QAbstractFileIconProvider) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(provider)
 	C.QFileSystemModel_setIconProvider(this.h, provider.cPointer())
 }
 
 func (this *QFileSystemModel) IconProvider() *QAbstractFileIconProvider {
+	defer runtime.KeepAlive(this)
 	return newQAbstractFileIconProvider(C.QFileSystemModel_iconProvider(this.h))
 }
 
 func (this *QFileSystemModel) SetFilter(filters QDir__Filter) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setFilter(this.h, (C.int)(filters))
 }
 
 func (this *QFileSystemModel) Filter() QDir__Filter {
+	defer runtime.KeepAlive(this)
 	return (QDir__Filter)(C.QFileSystemModel_filter(this.h))
 }
 
 func (this *QFileSystemModel) SetResolveSymlinks(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setResolveSymlinks(this.h, (C.bool)(enable))
 }
 
 func (this *QFileSystemModel) ResolveSymlinks() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileSystemModel_resolveSymlinks(this.h))
 }
 
 func (this *QFileSystemModel) SetReadOnly(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setReadOnly(this.h, (C.bool)(enable))
 }
 
 func (this *QFileSystemModel) IsReadOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileSystemModel_isReadOnly(this.h))
 }
 
 func (this *QFileSystemModel) SetNameFilterDisables(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setNameFilterDisables(this.h, (C.bool)(enable))
 }
 
 func (this *QFileSystemModel) NameFilterDisables() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileSystemModel_nameFilterDisables(this.h))
 }
 
 func (this *QFileSystemModel) SetNameFilters(filters []string) {
+	defer runtime.KeepAlive(this)
 	filters_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray_ptr))
 	filters_CArray := unsafe.Slice(filters_CArray_ptr, len(filters))
@@ -402,6 +465,7 @@ func (this *QFileSystemModel) SetNameFilters(filters []string) {
 }
 
 func (this *QFileSystemModel) NameFilters() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFileSystemModel_nameFilters(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -415,22 +479,28 @@ func (this *QFileSystemModel) NameFilters() []string {
 }
 
 func (this *QFileSystemModel) SetOption(option QFileSystemModel__Option) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setOption(this.h, (C.int)(option))
 }
 
 func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileSystemModel_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QFileSystemModel) SetOptions(options QFileSystemModel__Option) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QFileSystemModel) Options() QFileSystemModel__Option {
+	defer runtime.KeepAlive(this)
 	return (QFileSystemModel__Option)(C.QFileSystemModel_options(this.h))
 }
 
 func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	var _ms C.struct_miqt_string = C.QFileSystemModel_filePath(this.h, index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -438,14 +508,20 @@ func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) IsDir(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QFileSystemModel_isDir(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Size(index *QModelIndex) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (int64)(C.QFileSystemModel_size(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Type(index *QModelIndex) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	var _ms C.struct_miqt_string = C.QFileSystemModel_type(this.h, index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -453,12 +529,16 @@ func (this *QFileSystemModel) Type(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) LastModified(index *QModelIndex) *QDateTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQDateTime(C.QFileSystemModel_lastModified(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -469,10 +549,14 @@ func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelInd
 }
 
 func (this *QFileSystemModel) Rmdir(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QFileSystemModel_rmdir(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) FileName(index *QModelIndex) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	var _ms C.struct_miqt_string = C.QFileSystemModel_fileName(this.h, index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -480,22 +564,30 @@ func (this *QFileSystemModel) FileName(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) FileIcon(index *QModelIndex) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQIcon(C.QFileSystemModel_fileIcon(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Permissions(index *QModelIndex) QFileDevice__Permission {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (QFileDevice__Permission)(C.QFileSystemModel_permissions(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQFileInfo(C.QFileSystemModel_fileInfo(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Remove(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QFileSystemModel_remove(this.h, index.cPointer()))
 }
 
@@ -522,6 +614,7 @@ func QFileSystemModel_Tr3(s string, c string, n int) string {
 }
 
 func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -532,17 +625,20 @@ func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
 }
 
 func (this *QFileSystemModel) MyComputerWithRole(role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QFileSystemModel_myComputerWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QFileSystemModel_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // CreateIndex can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) CreateIndex(row int, column int) QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QFileSystemModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -559,6 +655,9 @@ func (this *QFileSystemModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
+	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -578,6 +677,9 @@ func (this *QFileSystemModel) EncodeData(indexes []QModelIndex, stream *QDataStr
 
 // DecodeData can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFileSystemModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer(), stream.cPointer()))
@@ -592,6 +694,8 @@ func (this *QFileSystemModel) DecodeData(row int, column int, parent *QModelInde
 
 // BeginInsertRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -604,6 +708,7 @@ func (this *QFileSystemModel) BeginInsertRows(parent *QModelIndex, first int, la
 
 // EndInsertRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndInsertRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -616,6 +721,8 @@ func (this *QFileSystemModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -628,6 +735,7 @@ func (this *QFileSystemModel) BeginRemoveRows(parent *QModelIndex, first int, la
 
 // EndRemoveRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndRemoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -640,6 +748,9 @@ func (this *QFileSystemModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFileSystemModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationRow)))
@@ -654,6 +765,7 @@ func (this *QFileSystemModel) BeginMoveRows(sourceParent *QModelIndex, sourceFir
 
 // EndMoveRows can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndMoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -666,6 +778,8 @@ func (this *QFileSystemModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -678,6 +792,7 @@ func (this *QFileSystemModel) BeginInsertColumns(parent *QModelIndex, first int,
 
 // EndInsertColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndInsertColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -690,6 +805,8 @@ func (this *QFileSystemModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -702,6 +819,7 @@ func (this *QFileSystemModel) BeginRemoveColumns(parent *QModelIndex, first int,
 
 // EndRemoveColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndRemoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -714,6 +832,9 @@ func (this *QFileSystemModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFileSystemModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationColumn)))
@@ -728,6 +849,7 @@ func (this *QFileSystemModel) BeginMoveColumns(sourceParent *QModelIndex, source
 
 // EndMoveColumns can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndMoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -740,6 +862,7 @@ func (this *QFileSystemModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) BeginResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -752,6 +875,7 @@ func (this *QFileSystemModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) EndResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -764,6 +888,9 @@ func (this *QFileSystemModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFileSystemModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), from.cPointer(), to.cPointer())
@@ -776,6 +903,9 @@ func (this *QFileSystemModel) ChangePersistentIndex(from *QModelIndex, to *QMode
 
 // ChangePersistentIndexList can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
@@ -802,6 +932,7 @@ func (this *QFileSystemModel) ChangePersistentIndexList(from []QModelIndex, to [
 
 // PersistentIndexList can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) PersistentIndexList() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QFileSystemModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -824,6 +955,7 @@ func (this *QFileSystemModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFileSystemModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -838,6 +970,7 @@ func (this *QFileSystemModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFileSystemModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -852,6 +985,7 @@ func (this *QFileSystemModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -868,6 +1002,8 @@ func (this *QFileSystemModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFileSystemModel that was directly constructed.
 func (this *QFileSystemModel) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFileSystemModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -881,6 +1017,8 @@ func (this *QFileSystemModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFileSystemModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -909,12 +1047,15 @@ func miqt_exec_callback_QFileSystemModel_index(self *C.QFileSystemModel, cb C.in
 	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 
 	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -939,12 +1080,15 @@ func miqt_exec_callback_QFileSystemModel_parent(self *C.QFileSystemModel, cb C.i
 	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Parent, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -973,12 +1117,15 @@ func miqt_exec_callback_QFileSystemModel_sibling(self *C.QFileSystemModel, cb C.
 	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1007,6 +1154,8 @@ func miqt_exec_callback_QFileSystemModel_hasChildren(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1035,6 +1184,8 @@ func miqt_exec_callback_QFileSystemModel_canFetchMore(self *C.QFileSystemModel, 
 }
 
 func (this *QFileSystemModel) callVirtualBase_FetchMore(parent *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QFileSystemModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
 
@@ -1061,6 +1212,8 @@ func miqt_exec_callback_QFileSystemModel_fetchMore(self *C.QFileSystemModel, cb 
 }
 
 func (this *QFileSystemModel) callVirtualBase_RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QFileSystemModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1089,6 +1242,8 @@ func miqt_exec_callback_QFileSystemModel_rowCount(self *C.QFileSystemModel, cb C
 }
 
 func (this *QFileSystemModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QFileSystemModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1117,6 +1272,8 @@ func miqt_exec_callback_QFileSystemModel_columnCount(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQVariant(C.QFileSystemModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1143,12 +1300,16 @@ func miqt_exec_callback_QFileSystemModel_data(self *C.QFileSystemModel, cb C.int
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QFileSystemModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
 
@@ -1181,6 +1342,7 @@ func miqt_exec_callback_QFileSystemModel_setData(self *C.QFileSystemModel, cb C.
 }
 
 func (this *QFileSystemModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QFileSystemModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1209,12 +1371,15 @@ func miqt_exec_callback_QFileSystemModel_headerData(self *C.QFileSystemModel, cb
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_HeaderData, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QFileSystemModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1243,6 +1408,7 @@ func miqt_exec_callback_QFileSystemModel_flags(self *C.QFileSystemModel, cb C.in
 }
 
 func (this *QFileSystemModel) callVirtualBase_Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QFileSystemModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1271,6 +1437,7 @@ func miqt_exec_callback_QFileSystemModel_sort(self *C.QFileSystemModel, cb C.int
 }
 
 func (this *QFileSystemModel) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QFileSystemModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1314,6 +1481,8 @@ func miqt_exec_callback_QFileSystemModel_mimeTypes(self *C.QFileSystemModel, cb 
 }
 
 func (this *QFileSystemModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -1351,12 +1520,16 @@ func miqt_exec_callback_QFileSystemModel_mimeData(self *C.QFileSystemModel, cb C
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -1393,6 +1566,7 @@ func miqt_exec_callback_QFileSystemModel_dropMimeData(self *C.QFileSystemModel, 
 }
 
 func (this *QFileSystemModel) callVirtualBase_SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QFileSystemModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1418,6 +1592,7 @@ func miqt_exec_callback_QFileSystemModel_supportedDropActions(self *C.QFileSyste
 }
 
 func (this *QFileSystemModel) callVirtualBase_RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QFileSystemModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -1478,6 +1653,8 @@ func miqt_exec_callback_QFileSystemModel_roleNames(self *C.QFileSystemModel, cb 
 }
 
 func (this *QFileSystemModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFileSystemModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1504,6 +1681,8 @@ func miqt_exec_callback_QFileSystemModel_timerEvent(self *C.QFileSystemModel, cb
 }
 
 func (this *QFileSystemModel) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFileSystemModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1532,6 +1711,8 @@ func miqt_exec_callback_QFileSystemModel_event(self *C.QFileSystemModel, cb C.in
 }
 
 func (this *QFileSystemModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QFileSystemModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 
@@ -1566,6 +1747,8 @@ func miqt_exec_callback_QFileSystemModel_setHeaderData(self *C.QFileSystemModel,
 }
 
 func (this *QFileSystemModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QFileSystemModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -1601,6 +1784,7 @@ func miqt_exec_callback_QFileSystemModel_itemData(self *C.QFileSystemModel, cb C
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_ItemData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
 	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1608,7 +1792,7 @@ func miqt_exec_callback_QFileSystemModel_itemData(self *C.QFileSystemModel, cb C
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
-		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v.cPointer()
+		virtualReturn_Values_CArray[virtualReturn_ctr] = C.QFileSystemModel_virtualreturncopy_QVariant(virtualReturn_v.cPointer())
 		virtualReturn_ctr++
 	}
 	virtualReturn_mm := C.struct_miqt_map{
@@ -1622,6 +1806,9 @@ func miqt_exec_callback_QFileSystemModel_itemData(self *C.QFileSystemModel, cb C
 }
 
 func (this *QFileSystemModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -1682,6 +1869,8 @@ func miqt_exec_callback_QFileSystemModel_setItemData(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QFileSystemModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1710,6 +1899,9 @@ func miqt_exec_callback_QFileSystemModel_clearItemData(self *C.QFileSystemModel,
 }
 
 func (this *QFileSystemModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -1746,6 +1938,7 @@ func miqt_exec_callback_QFileSystemModel_canDropMimeData(self *C.QFileSystemMode
 }
 
 func (this *QFileSystemModel) callVirtualBase_SupportedDragActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QFileSystemModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1771,6 +1964,8 @@ func miqt_exec_callback_QFileSystemModel_supportedDragActions(self *C.QFileSyste
 }
 
 func (this *QFileSystemModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -1803,6 +1998,8 @@ func miqt_exec_callback_QFileSystemModel_insertRows(self *C.QFileSystemModel, cb
 }
 
 func (this *QFileSystemModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -1835,6 +2032,8 @@ func miqt_exec_callback_QFileSystemModel_insertColumns(self *C.QFileSystemModel,
 }
 
 func (this *QFileSystemModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -1867,6 +2066,8 @@ func miqt_exec_callback_QFileSystemModel_removeRows(self *C.QFileSystemModel, cb
 }
 
 func (this *QFileSystemModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -1899,6 +2100,9 @@ func miqt_exec_callback_QFileSystemModel_removeColumns(self *C.QFileSystemModel,
 }
 
 func (this *QFileSystemModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -1935,6 +2139,9 @@ func miqt_exec_callback_QFileSystemModel_moveRows(self *C.QFileSystemModel, cb C
 }
 
 func (this *QFileSystemModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QFileSystemModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -1971,6 +2178,8 @@ func miqt_exec_callback_QFileSystemModel_moveColumns(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1995,12 +2204,16 @@ func miqt_exec_callback_QFileSystemModel_buddy(self *C.QFileSystemModel, cb C.in
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Buddy, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 
 	var _ma C.struct_miqt_array = C.QFileSystemModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2039,10 +2252,11 @@ func miqt_exec_callback_QFileSystemModel_match(self *C.QFileSystemModel, cb C.in
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QFileSystemModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2051,6 +2265,8 @@ func miqt_exec_callback_QFileSystemModel_match(self *C.QFileSystemModel, cb C.in
 }
 
 func (this *QFileSystemModel) callVirtualBase_Span(index *QModelIndex) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QFileSystemModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2075,12 +2291,16 @@ func miqt_exec_callback_QFileSystemModel_span(self *C.QFileSystemModel, cb C.int
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Span, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFileSystemModel_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFileSystemModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roleDataSpan)
 
 	C.QFileSystemModel_virtualbase_multiData(unsafe.Pointer(this.h), index.cPointer(), roleDataSpan.cPointer())
 
@@ -2111,6 +2331,7 @@ func miqt_exec_callback_QFileSystemModel_multiData(self *C.QFileSystemModel, cb 
 }
 
 func (this *QFileSystemModel) callVirtualBase_Submit() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFileSystemModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -2136,6 +2357,7 @@ func miqt_exec_callback_QFileSystemModel_submit(self *C.QFileSystemModel, cb C.i
 }
 
 func (this *QFileSystemModel) callVirtualBase_Revert() {
+	defer runtime.KeepAlive(this)
 
 	C.QFileSystemModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -2159,6 +2381,7 @@ func miqt_exec_callback_QFileSystemModel_revert(self *C.QFileSystemModel, cb C.i
 }
 
 func (this *QFileSystemModel) callVirtualBase_ResetInternalData() {
+	defer runtime.KeepAlive(this)
 
 	C.QFileSystemModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -2182,6 +2405,9 @@ func miqt_exec_callback_QFileSystemModel_resetInternalData(self *C.QFileSystemMo
 }
 
 func (this *QFileSystemModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFileSystemModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2212,6 +2438,8 @@ func miqt_exec_callback_QFileSystemModel_eventFilter(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFileSystemModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2238,6 +2466,8 @@ func miqt_exec_callback_QFileSystemModel_childEvent(self *C.QFileSystemModel, cb
 }
 
 func (this *QFileSystemModel) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFileSystemModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2264,6 +2494,8 @@ func miqt_exec_callback_QFileSystemModel_customEvent(self *C.QFileSystemModel, c
 }
 
 func (this *QFileSystemModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFileSystemModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2290,6 +2522,8 @@ func miqt_exec_callback_QFileSystemModel_connectNotify(self *C.QFileSystemModel,
 }
 
 func (this *QFileSystemModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFileSystemModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2327,8 +2561,9 @@ func (this *QFileSystemModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFileSystemModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileSystemModel) {
-		C.QFileSystemModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFileSystemModel_delete((*C.QFileSystemModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -34,8 +34,14 @@ const (
 
 type QGeoAreaMonitorSource struct {
 	h  *C.QGeoAreaMonitorSource
-	gc *[1]*C.QGeoAreaMonitorSource
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoAreaMonitorSource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoAreaMonitorSource) cPointer() *C.QGeoAreaMonitorSource {
@@ -71,15 +77,18 @@ func UnsafeNewQGeoAreaMonitorSource(h unsafe.Pointer) *QGeoAreaMonitorSource {
 
 // NewQGeoAreaMonitorSource constructs a new QGeoAreaMonitorSource object.
 func NewQGeoAreaMonitorSource(parent *qt.QObject) *QGeoAreaMonitorSource {
+	defer runtime.KeepAlive(parent)
 
 	return newQGeoAreaMonitorSource(C.QGeoAreaMonitorSource_new((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QGeoAreaMonitorSource) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QGeoAreaMonitorSource_metaObject(this.h)))
 }
 
 func (this *QGeoAreaMonitorSource) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGeoAreaMonitorSource_metacast(this.h, param1_Cstring))
@@ -104,10 +113,12 @@ func QGeoAreaMonitorSource_TrUtf8(s string) string {
 }
 
 func QGeoAreaMonitorSource_CreateDefaultSource(parent *qt.QObject) *QGeoAreaMonitorSource {
+	defer runtime.KeepAlive(parent)
 	return newQGeoAreaMonitorSource(C.QGeoAreaMonitorSource_createDefaultSource((*C.QObject)(parent.UnsafePointer())))
 }
 
 func QGeoAreaMonitorSource_CreateSource(sourceName string, parent *qt.QObject) *QGeoAreaMonitorSource {
+	defer runtime.KeepAlive(parent)
 	sourceName_ms := C.struct_miqt_string{}
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
@@ -129,14 +140,18 @@ func QGeoAreaMonitorSource_AvailableSources() []string {
 }
 
 func (this *QGeoAreaMonitorSource) SetPositionInfoSource(source *QGeoPositionInfoSource) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source)
 	C.QGeoAreaMonitorSource_setPositionInfoSource(this.h, source.cPointer())
 }
 
 func (this *QGeoAreaMonitorSource) PositionInfoSource() *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(this)
 	return newQGeoPositionInfoSource(C.QGeoAreaMonitorSource_positionInfoSource(this.h))
 }
 
 func (this *QGeoAreaMonitorSource) SourceName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAreaMonitorSource_sourceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -144,28 +159,37 @@ func (this *QGeoAreaMonitorSource) SourceName() string {
 }
 
 func (this *QGeoAreaMonitorSource) Error() QGeoAreaMonitorSource__Error {
+	defer runtime.KeepAlive(this)
 	return (QGeoAreaMonitorSource__Error)(C.QGeoAreaMonitorSource_error(this.h))
 }
 
 func (this *QGeoAreaMonitorSource) SupportedAreaMonitorFeatures() QGeoAreaMonitorSource__AreaMonitorFeature {
+	defer runtime.KeepAlive(this)
 	return (QGeoAreaMonitorSource__AreaMonitorFeature)(C.QGeoAreaMonitorSource_supportedAreaMonitorFeatures(this.h))
 }
 
 func (this *QGeoAreaMonitorSource) StartMonitoring(monitor *QGeoAreaMonitorInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
 	return (bool)(C.QGeoAreaMonitorSource_startMonitoring(this.h, monitor.cPointer()))
 }
 
 func (this *QGeoAreaMonitorSource) StopMonitoring(monitor *QGeoAreaMonitorInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
 	return (bool)(C.QGeoAreaMonitorSource_stopMonitoring(this.h, monitor.cPointer()))
 }
 
 func (this *QGeoAreaMonitorSource) RequestUpdate(monitor *QGeoAreaMonitorInfo, signal string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	return (bool)(C.QGeoAreaMonitorSource_requestUpdate(this.h, monitor.cPointer(), signal_Cstring))
 }
 
 func (this *QGeoAreaMonitorSource) ActiveMonitors() []QGeoAreaMonitorInfo {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGeoAreaMonitorSource_activeMonitors(this.h)
 	_ret := make([]QGeoAreaMonitorInfo, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGeoAreaMonitorInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -178,6 +202,8 @@ func (this *QGeoAreaMonitorSource) ActiveMonitors() []QGeoAreaMonitorInfo {
 }
 
 func (this *QGeoAreaMonitorSource) ActiveMonitorsWithLookupArea(lookupArea *QGeoShape) []QGeoAreaMonitorInfo {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lookupArea)
 	var _ma C.struct_miqt_array = C.QGeoAreaMonitorSource_activeMonitorsWithLookupArea(this.h, lookupArea.cPointer())
 	_ret := make([]QGeoAreaMonitorInfo, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGeoAreaMonitorInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -190,6 +216,9 @@ func (this *QGeoAreaMonitorSource) ActiveMonitorsWithLookupArea(lookupArea *QGeo
 }
 
 func (this *QGeoAreaMonitorSource) AreaEntered(monitor *QGeoAreaMonitorInfo, update *QGeoPositionInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
+	defer runtime.KeepAlive(update)
 	C.QGeoAreaMonitorSource_areaEntered(this.h, monitor.cPointer(), update.cPointer())
 }
 func (this *QGeoAreaMonitorSource) OnAreaEntered(slot func(monitor *QGeoAreaMonitorInfo, update *QGeoPositionInfo)) {
@@ -212,6 +241,9 @@ func miqt_exec_callback_QGeoAreaMonitorSource_areaEntered(cb C.intptr_t, monitor
 }
 
 func (this *QGeoAreaMonitorSource) AreaExited(monitor *QGeoAreaMonitorInfo, update *QGeoPositionInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
+	defer runtime.KeepAlive(update)
 	C.QGeoAreaMonitorSource_areaExited(this.h, monitor.cPointer(), update.cPointer())
 }
 func (this *QGeoAreaMonitorSource) OnAreaExited(slot func(monitor *QGeoAreaMonitorInfo, update *QGeoPositionInfo)) {
@@ -234,6 +266,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_areaExited(cb C.intptr_t, monitor 
 }
 
 func (this *QGeoAreaMonitorSource) MonitorExpired(monitor *QGeoAreaMonitorInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(monitor)
 	C.QGeoAreaMonitorSource_monitorExpired(this.h, monitor.cPointer())
 }
 func (this *QGeoAreaMonitorSource) OnMonitorExpired(slot func(monitor *QGeoAreaMonitorInfo)) {
@@ -254,6 +288,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_monitorExpired(cb C.intptr_t, moni
 }
 
 func (this *QGeoAreaMonitorSource) ErrorWithError(error QGeoAreaMonitorSource__Error) {
+	defer runtime.KeepAlive(this)
 	C.QGeoAreaMonitorSource_errorWithError(this.h, (C.int)(error))
 }
 func (this *QGeoAreaMonitorSource) OnErrorWithError(slot func(error QGeoAreaMonitorSource__Error)) {
@@ -319,6 +354,7 @@ func QGeoAreaMonitorSource_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QGeoAreaMonitorSource that was directly constructed.
 func (this *QGeoAreaMonitorSource) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QGeoAreaMonitorSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -333,6 +369,7 @@ func (this *QGeoAreaMonitorSource) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QGeoAreaMonitorSource that was directly constructed.
 func (this *QGeoAreaMonitorSource) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGeoAreaMonitorSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -347,6 +384,7 @@ func (this *QGeoAreaMonitorSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGeoAreaMonitorSource that was directly constructed.
 func (this *QGeoAreaMonitorSource) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -363,6 +401,8 @@ func (this *QGeoAreaMonitorSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGeoAreaMonitorSource that was directly constructed.
 func (this *QGeoAreaMonitorSource) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGeoAreaMonitorSource_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -376,6 +416,8 @@ func (this *QGeoAreaMonitorSource) IsSignalConnected(signal *qt.QMetaMethod) boo
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_SetPositionInfoSource(source *QGeoPositionInfoSource) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source)
 
 	C.QGeoAreaMonitorSource_virtualbase_setPositionInfoSource(unsafe.Pointer(this.h), source.cPointer())
 
@@ -402,6 +444,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_setPositionInfoSource(self *C.QGeo
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_PositionInfoSource() *QGeoPositionInfoSource {
+	defer runtime.KeepAlive(this)
 
 	return newQGeoPositionInfoSource(C.QGeoAreaMonitorSource_virtualbase_positionInfoSource(unsafe.Pointer(this.h)))
 
@@ -421,6 +464,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_positionInfoSource(self *C.QGeoAre
 	}
 
 	virtualReturn := gofunc((&QGeoAreaMonitorSource{h: self}).callVirtualBase_PositionInfoSource)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -547,10 +591,11 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitors(self *C.QGeoAreaMon
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QGeoAreaMonitorInfo)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QGeoAreaMonitorSource_virtualreturncopy_QGeoAreaMonitorInfo(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -575,10 +620,11 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitorsWithLookupArea(self 
 	slotval1 := newQGeoShape(lookupArea)
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QGeoAreaMonitorInfo)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QGeoAreaMonitorSource_virtualreturncopy_QGeoAreaMonitorInfo(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -587,6 +633,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitorsWithLookupArea(self 
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoAreaMonitorSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -615,6 +663,9 @@ func miqt_exec_callback_QGeoAreaMonitorSource_event(self *C.QGeoAreaMonitorSourc
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoAreaMonitorSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -645,6 +696,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_eventFilter(self *C.QGeoAreaMonito
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoAreaMonitorSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -671,6 +724,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_timerEvent(self *C.QGeoAreaMonitor
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoAreaMonitorSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -697,6 +752,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_childEvent(self *C.QGeoAreaMonitor
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoAreaMonitorSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -723,6 +780,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_customEvent(self *C.QGeoAreaMonito
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoAreaMonitorSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -749,6 +808,8 @@ func miqt_exec_callback_QGeoAreaMonitorSource_connectNotify(self *C.QGeoAreaMoni
 }
 
 func (this *QGeoAreaMonitorSource) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoAreaMonitorSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -786,8 +847,9 @@ func (this *QGeoAreaMonitorSource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoAreaMonitorSource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoAreaMonitorSource) {
-		C.QGeoAreaMonitorSource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoAreaMonitorSource_delete((*C.QGeoAreaMonitorSource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

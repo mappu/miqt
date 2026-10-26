@@ -27,7 +27,13 @@ const (
 
 type QFutureInterfaceBase struct {
 	h  *C.QFutureInterfaceBase
-	gc *[1]*C.QFutureInterfaceBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFutureInterfaceBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFutureInterfaceBase) cPointer() *C.QFutureInterfaceBase {
@@ -66,6 +72,7 @@ func NewQFutureInterfaceBase() *QFutureInterfaceBase {
 
 // NewQFutureInterfaceBase2 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase {
+	defer runtime.KeepAlive(other)
 
 	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new2(other.cPointer()))
 }
@@ -77,58 +84,74 @@ func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFuture
 }
 
 func (this *QFutureInterfaceBase) ReportStarted() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_reportStarted(this.h)
 }
 
 func (this *QFutureInterfaceBase) ReportFinished() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_reportFinished(this.h)
 }
 
 func (this *QFutureInterfaceBase) ReportCanceled() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_reportCanceled(this.h)
 }
 
 func (this *QFutureInterfaceBase) ReportResultsReady(beginIndex int, endIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_reportResultsReady(this.h, (C.int)(beginIndex), (C.int)(endIndex))
 }
 
 func (this *QFutureInterfaceBase) SetRunnable(runnable *QRunnable) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(runnable)
 	C.QFutureInterfaceBase_setRunnable(this.h, runnable.cPointer())
 }
 
 func (this *QFutureInterfaceBase) SetThreadPool(pool *QThreadPool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pool)
 	C.QFutureInterfaceBase_setThreadPool(this.h, pool.cPointer())
 }
 
 func (this *QFutureInterfaceBase) SetFilterMode(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setFilterMode(this.h, (C.bool)(enable))
 }
 
 func (this *QFutureInterfaceBase) SetProgressRange(minimum int, maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setProgressRange(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 
 func (this *QFutureInterfaceBase) ProgressMinimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureInterfaceBase_progressMinimum(this.h))
 }
 
 func (this *QFutureInterfaceBase) ProgressMaximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureInterfaceBase_progressMaximum(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsProgressUpdateNeeded() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isProgressUpdateNeeded(this.h))
 }
 
 func (this *QFutureInterfaceBase) SetProgressValue(progressValue int) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setProgressValue(this.h, (C.int)(progressValue))
 }
 
 func (this *QFutureInterfaceBase) ProgressValue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureInterfaceBase_progressValue(this.h))
 }
 
 func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, progressText string) {
+	defer runtime.KeepAlive(this)
 	progressText_ms := C.struct_miqt_string{}
 	progressText_ms.data = C.CString(progressText)
 	progressText_ms.len = C.size_t(len(progressText))
@@ -137,6 +160,7 @@ func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, pro
 }
 
 func (this *QFutureInterfaceBase) ProgressText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFutureInterfaceBase_progressText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -144,98 +168,127 @@ func (this *QFutureInterfaceBase) ProgressText() string {
 }
 
 func (this *QFutureInterfaceBase) SetExpectedResultCount(resultCount int) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setExpectedResultCount(this.h, (C.int)(resultCount))
 }
 
 func (this *QFutureInterfaceBase) ExpectedResultCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureInterfaceBase_expectedResultCount(this.h))
 }
 
 func (this *QFutureInterfaceBase) ResultCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureInterfaceBase_resultCount(this.h))
 }
 
 func (this *QFutureInterfaceBase) QueryState(state QFutureInterfaceBase__State) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_queryState(this.h, (C.int)(state)))
 }
 
 func (this *QFutureInterfaceBase) IsRunning() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isRunning(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsStarted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isStarted(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsCanceled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isCanceled(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsFinished() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isFinished(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsPaused() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isPaused(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsThrottled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isThrottled(this.h))
 }
 
 func (this *QFutureInterfaceBase) IsResultReadyAt(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_isResultReadyAt(this.h, (C.int)(index)))
 }
 
 func (this *QFutureInterfaceBase) Cancel() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_cancel(this.h)
 }
 
 func (this *QFutureInterfaceBase) SetPaused(paused bool) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QFutureInterfaceBase) TogglePaused() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_togglePaused(this.h)
 }
 
 func (this *QFutureInterfaceBase) SetThrottled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_setThrottled(this.h, (C.bool)(enable))
 }
 
 func (this *QFutureInterfaceBase) WaitForFinished() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_waitForFinished(this.h)
 }
 
 func (this *QFutureInterfaceBase) WaitForNextResult() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureInterfaceBase_waitForNextResult(this.h))
 }
 
 func (this *QFutureInterfaceBase) WaitForResult(resultIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_waitForResult(this.h, (C.int)(resultIndex))
 }
 
 func (this *QFutureInterfaceBase) WaitForResume() {
+	defer runtime.KeepAlive(this)
 	C.QFutureInterfaceBase_waitForResume(this.h)
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
+	defer runtime.KeepAlive(this)
 	return newQMutex(C.QFutureInterfaceBase_mutex(this.h))
 }
 
 func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
-	return newQMutex(C.QFutureInterfaceBase_mutexWithInt(this.h, (C.int)(param1)))
+	defer runtime.KeepAlive(this)
+	_ret := newQMutex(C.QFutureInterfaceBase_mutexWithInt(this.h, (C.int)(param1)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFutureInterfaceBase_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QFutureInterfaceBase) OperatorNotEqual(other *QFutureInterfaceBase) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFutureInterfaceBase_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QFutureInterfaceBase) OperatorAssign(other *QFutureInterfaceBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QFutureInterfaceBase_operatorAssign(this.h, other.cPointer())
 }
 
@@ -251,8 +304,9 @@ func (this *QFutureInterfaceBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFutureInterfaceBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFutureInterfaceBase) {
-		C.QFutureInterfaceBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFutureInterfaceBase_delete((*C.QFutureInterfaceBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

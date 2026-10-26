@@ -179,6 +179,9 @@ bool QGraphicsSvgItem_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsSvgItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant);
+QRectF* QGraphicsSvgItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsSvgItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsSvgItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsSvgItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsSvgItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

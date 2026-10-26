@@ -41,8 +41,14 @@ const (
 
 type QDtlsClientVerifier struct {
 	h  *C.QDtlsClientVerifier
-	gc *[1]*C.QDtlsClientVerifier
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDtlsClientVerifier) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDtlsClientVerifier) cPointer() *C.QDtlsClientVerifier {
@@ -84,15 +90,18 @@ func NewQDtlsClientVerifier() *QDtlsClientVerifier {
 
 // NewQDtlsClientVerifier2 constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier2(parent *qt6.QObject) *QDtlsClientVerifier {
+	defer runtime.KeepAlive(parent)
 
 	return newQDtlsClientVerifier(C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDtlsClientVerifier) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtlsClientVerifier_metaObject(this.h)))
 }
 
 func (this *QDtlsClientVerifier) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDtlsClientVerifier_metacast(this.h, param1_Cstring))
@@ -108,16 +117,22 @@ func QDtlsClientVerifier_Tr(s string) string {
 }
 
 func (this *QDtlsClientVerifier) SetCookieGeneratorParameters(params *QDtlsClientVerifier__GeneratorParameters) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(params)
 	return (bool)(C.QDtlsClientVerifier_setCookieGeneratorParameters(this.h, params.cPointer()))
 }
 
 func (this *QDtlsClientVerifier) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier_cookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtlsClientVerifier) VerifyClient(socket *network.QUdpSocket, dgram []byte, address *network.QHostAddress, port uint16) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
+	defer runtime.KeepAlive(address)
 	dgram_alias := C.struct_miqt_string{}
 	if len(dgram) > 0 {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
@@ -129,6 +144,7 @@ func (this *QDtlsClientVerifier) VerifyClient(socket *network.QUdpSocket, dgram 
 }
 
 func (this *QDtlsClientVerifier) VerifiedHello() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QDtlsClientVerifier_verifiedHello(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -136,10 +152,12 @@ func (this *QDtlsClientVerifier) VerifiedHello() []byte {
 }
 
 func (this *QDtlsClientVerifier) DtlsError() QDtlsError {
+	defer runtime.KeepAlive(this)
 	return (QDtlsError)(C.QDtlsClientVerifier_dtlsError(this.h))
 }
 
 func (this *QDtlsClientVerifier) DtlsErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_dtlsErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -170,6 +188,7 @@ func QDtlsClientVerifier_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QDtlsClientVerifier that was directly constructed.
 func (this *QDtlsClientVerifier) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDtlsClientVerifier_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -184,6 +203,7 @@ func (this *QDtlsClientVerifier) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDtlsClientVerifier that was directly constructed.
 func (this *QDtlsClientVerifier) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDtlsClientVerifier_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -198,6 +218,7 @@ func (this *QDtlsClientVerifier) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDtlsClientVerifier that was directly constructed.
 func (this *QDtlsClientVerifier) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -214,6 +235,8 @@ func (this *QDtlsClientVerifier) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDtlsClientVerifier that was directly constructed.
 func (this *QDtlsClientVerifier) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDtlsClientVerifier_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -227,6 +250,8 @@ func (this *QDtlsClientVerifier) IsSignalConnected(signal *qt6.QMetaMethod) bool
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDtlsClientVerifier_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -255,6 +280,9 @@ func miqt_exec_callback_QDtlsClientVerifier_event(self *C.QDtlsClientVerifier, c
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDtlsClientVerifier_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -285,6 +313,8 @@ func miqt_exec_callback_QDtlsClientVerifier_eventFilter(self *C.QDtlsClientVerif
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtlsClientVerifier_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -311,6 +341,8 @@ func miqt_exec_callback_QDtlsClientVerifier_timerEvent(self *C.QDtlsClientVerifi
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtlsClientVerifier_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -337,6 +369,8 @@ func miqt_exec_callback_QDtlsClientVerifier_childEvent(self *C.QDtlsClientVerifi
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtlsClientVerifier_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -363,6 +397,8 @@ func miqt_exec_callback_QDtlsClientVerifier_customEvent(self *C.QDtlsClientVerif
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDtlsClientVerifier_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -389,6 +425,8 @@ func miqt_exec_callback_QDtlsClientVerifier_connectNotify(self *C.QDtlsClientVer
 }
 
 func (this *QDtlsClientVerifier) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDtlsClientVerifier_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -426,16 +464,23 @@ func (this *QDtlsClientVerifier) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDtlsClientVerifier{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtlsClientVerifier) {
-		C.QDtlsClientVerifier_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDtlsClientVerifier_delete((*C.QDtlsClientVerifier)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDtls struct {
 	h  *C.QDtls
-	gc *[1]*C.QDtls
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDtls) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDtls) cPointer() *C.QDtls {
@@ -477,15 +522,18 @@ func NewQDtls(mode network.QSslSocket__SslMode) *QDtls {
 
 // NewQDtls2 constructs a new QDtls object.
 func NewQDtls2(mode network.QSslSocket__SslMode, parent *qt6.QObject) *QDtls {
+	defer runtime.KeepAlive(parent)
 
 	return newQDtls(C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDtls) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtls_metaObject(this.h)))
 }
 
 func (this *QDtls) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDtls_metacast(this.h, param1_Cstring))
@@ -501,10 +549,13 @@ func QDtls_Tr(s string) string {
 }
 
 func (this *QDtls) SetPeer(address *network.QHostAddress, port uint16) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QDtls_setPeer(this.h, (*C.QHostAddress)(address.UnsafePointer()), (C.ushort)(port)))
 }
 
 func (this *QDtls) SetPeerVerificationName(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -513,16 +564,19 @@ func (this *QDtls) SetPeerVerificationName(name string) bool {
 }
 
 func (this *QDtls) PeerAddress() *network.QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQHostAddress(unsafe.Pointer(C.QDtls_peerAddress(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) PeerPort() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QDtls_peerPort(this.h))
 }
 
 func (this *QDtls) PeerVerificationName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDtls_peerVerificationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -530,76 +584,101 @@ func (this *QDtls) PeerVerificationName() string {
 }
 
 func (this *QDtls) SslMode() network.QSslSocket__SslMode {
+	defer runtime.KeepAlive(this)
 	return (network.QSslSocket__SslMode)(C.QDtls_sslMode(this.h))
 }
 
 func (this *QDtls) SetMtuHint(mtuHint uint16) {
+	defer runtime.KeepAlive(this)
 	C.QDtls_setMtuHint(this.h, (C.ushort)(mtuHint))
 }
 
 func (this *QDtls) MtuHint() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QDtls_mtuHint(this.h))
 }
 
 func (this *QDtls) SetCookieGeneratorParameters(params *QDtlsClientVerifier__GeneratorParameters) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(params)
 	return (bool)(C.QDtls_setCookieGeneratorParameters(this.h, params.cPointer()))
 }
 
 func (this *QDtls) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtls_cookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) SetDtlsConfiguration(configuration *network.QSslConfiguration) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(configuration)
 	return (bool)(C.QDtls_setDtlsConfiguration(this.h, (*C.QSslConfiguration)(configuration.UnsafePointer())))
 }
 
 func (this *QDtls) DtlsConfiguration() *network.QSslConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQSslConfiguration(unsafe.Pointer(C.QDtls_dtlsConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) HandshakeState() QDtls__HandshakeState {
+	defer runtime.KeepAlive(this)
 	return (QDtls__HandshakeState)(C.QDtls_handshakeState(this.h))
 }
 
 func (this *QDtls) DoHandshake(socket *network.QUdpSocket) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	return (bool)(C.QDtls_doHandshake(this.h, (*C.QUdpSocket)(socket.UnsafePointer())))
 }
 
 func (this *QDtls) HandleTimeout(socket *network.QUdpSocket) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	return (bool)(C.QDtls_handleTimeout(this.h, (*C.QUdpSocket)(socket.UnsafePointer())))
 }
 
 func (this *QDtls) ResumeHandshake(socket *network.QUdpSocket) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	return (bool)(C.QDtls_resumeHandshake(this.h, (*C.QUdpSocket)(socket.UnsafePointer())))
 }
 
 func (this *QDtls) AbortHandshake(socket *network.QUdpSocket) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	return (bool)(C.QDtls_abortHandshake(this.h, (*C.QUdpSocket)(socket.UnsafePointer())))
 }
 
 func (this *QDtls) Shutdown(socket *network.QUdpSocket) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	return (bool)(C.QDtls_shutdown(this.h, (*C.QUdpSocket)(socket.UnsafePointer())))
 }
 
 func (this *QDtls) IsConnectionEncrypted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDtls_isConnectionEncrypted(this.h))
 }
 
 func (this *QDtls) SessionCipher() *network.QSslCipher {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQSslCipher(unsafe.Pointer(C.QDtls_sessionCipher(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) SessionProtocol() network.QSsl__SslProtocol {
+	defer runtime.KeepAlive(this)
 	return (network.QSsl__SslProtocol)(C.QDtls_sessionProtocol(this.h))
 }
 
 func (this *QDtls) WriteDatagramEncrypted(socket *network.QUdpSocket, dgram []byte) int64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	dgram_alias := C.struct_miqt_string{}
 	if len(dgram) > 0 {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
@@ -611,6 +690,8 @@ func (this *QDtls) WriteDatagramEncrypted(socket *network.QUdpSocket, dgram []by
 }
 
 func (this *QDtls) DecryptDatagram(socket *network.QUdpSocket, dgram []byte) []byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	dgram_alias := C.struct_miqt_string{}
 	if len(dgram) > 0 {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
@@ -625,10 +706,12 @@ func (this *QDtls) DecryptDatagram(socket *network.QUdpSocket, dgram []byte) []b
 }
 
 func (this *QDtls) DtlsError() QDtlsError {
+	defer runtime.KeepAlive(this)
 	return (QDtlsError)(C.QDtls_dtlsError(this.h))
 }
 
 func (this *QDtls) DtlsErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDtls_dtlsErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -636,6 +719,7 @@ func (this *QDtls) DtlsErrorString() string {
 }
 
 func (this *QDtls) PeerVerificationErrors() []network.QSslError {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDtls_peerVerificationErrors(this.h)
 	_ret := make([]network.QSslError, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -648,6 +732,8 @@ func (this *QDtls) PeerVerificationErrors() []network.QSslError {
 }
 
 func (this *QDtls) IgnoreVerificationErrors(errorsToIgnore []network.QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(errorsToIgnore)
 	errorsToIgnore_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errorsToIgnore))))
 	defer C.free(unsafe.Pointer(errorsToIgnore_CArray_ptr))
 	errorsToIgnore_CArray := unsafe.Slice(errorsToIgnore_CArray_ptr, len(errorsToIgnore))
@@ -659,6 +745,8 @@ func (this *QDtls) IgnoreVerificationErrors(errorsToIgnore []network.QSslError) 
 }
 
 func (this *QDtls) PskRequired(authenticator *network.QSslPreSharedKeyAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(authenticator)
 	C.QDtls_pskRequired(this.h, (*C.QSslPreSharedKeyAuthenticator)(authenticator.UnsafePointer()))
 }
 func (this *QDtls) OnPskRequired(slot func(authenticator *network.QSslPreSharedKeyAuthenticator)) {
@@ -679,6 +767,7 @@ func miqt_exec_callback_QDtls_pskRequired(cb C.intptr_t, authenticator *C.QSslPr
 }
 
 func (this *QDtls) HandshakeTimeout() {
+	defer runtime.KeepAlive(this)
 	C.QDtls_handshakeTimeout(this.h)
 }
 func (this *QDtls) OnHandshakeTimeout(slot func()) {
@@ -718,6 +807,8 @@ func QDtls_Tr3(s string, c string, n int) string {
 }
 
 func (this *QDtls) SetPeer2(address *network.QHostAddress, port uint16, verificationName string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	verificationName_ms := C.struct_miqt_string{}
 	verificationName_ms.data = C.CString(verificationName)
 	verificationName_ms.len = C.size_t(len(verificationName))
@@ -726,6 +817,8 @@ func (this *QDtls) SetPeer2(address *network.QHostAddress, port uint16, verifica
 }
 
 func (this *QDtls) DoHandshake2(socket *network.QUdpSocket, dgram []byte) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	dgram_alias := C.struct_miqt_string{}
 	if len(dgram) > 0 {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
@@ -738,6 +831,7 @@ func (this *QDtls) DoHandshake2(socket *network.QUdpSocket, dgram []byte) bool {
 
 // Sender can only be called from a QDtls that was directly constructed.
 func (this *QDtls) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDtls_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -752,6 +846,7 @@ func (this *QDtls) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDtls that was directly constructed.
 func (this *QDtls) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDtls_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -766,6 +861,7 @@ func (this *QDtls) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDtls that was directly constructed.
 func (this *QDtls) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -782,6 +878,8 @@ func (this *QDtls) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDtls that was directly constructed.
 func (this *QDtls) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDtls_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -795,6 +893,8 @@ func (this *QDtls) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QDtls) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDtls_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -823,6 +923,9 @@ func miqt_exec_callback_QDtls_event(self *C.QDtls, cb C.intptr_t, event *C.QEven
 }
 
 func (this *QDtls) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDtls_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -853,6 +956,8 @@ func miqt_exec_callback_QDtls_eventFilter(self *C.QDtls, cb C.intptr_t, watched 
 }
 
 func (this *QDtls) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtls_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -879,6 +984,8 @@ func miqt_exec_callback_QDtls_timerEvent(self *C.QDtls, cb C.intptr_t, event *C.
 }
 
 func (this *QDtls) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtls_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -905,6 +1012,8 @@ func miqt_exec_callback_QDtls_childEvent(self *C.QDtls, cb C.intptr_t, event *C.
 }
 
 func (this *QDtls) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDtls_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -931,6 +1040,8 @@ func miqt_exec_callback_QDtls_customEvent(self *C.QDtls, cb C.intptr_t, event *C
 }
 
 func (this *QDtls) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDtls_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -957,6 +1068,8 @@ func miqt_exec_callback_QDtls_connectNotify(self *C.QDtls, cb C.intptr_t, signal
 }
 
 func (this *QDtls) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDtls_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -994,15 +1107,22 @@ func (this *QDtls) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDtls{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtls) {
-		C.QDtls_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDtls_delete((*C.QDtls)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDtlsClientVerifier__GeneratorParameters struct {
 	h  *C.QDtlsClientVerifier__GeneratorParameters
-	gc *[1]*C.QDtlsClientVerifier__GeneratorParameters
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDtlsClientVerifier__GeneratorParameters) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) cPointer() *C.QDtlsClientVerifier__GeneratorParameters {
@@ -1054,19 +1174,23 @@ func NewQDtlsClientVerifier__GeneratorParameters2(a qt6.QCryptographicHash__Algo
 
 // NewQDtlsClientVerifier__GeneratorParameters3 constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__GeneratorParameters) *QDtlsClientVerifier__GeneratorParameters {
+	defer runtime.KeepAlive(param1)
 
 	return newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer()))
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) Hash() qt6.QCryptographicHash__Algorithm {
+	defer runtime.KeepAlive(this)
 	return (qt6.QCryptographicHash__Algorithm)(C.QDtlsClientVerifier__GeneratorParameters_hash(this.h))
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) SetHash(hash qt6.QCryptographicHash__Algorithm) {
+	defer runtime.KeepAlive(this)
 	C.QDtlsClientVerifier__GeneratorParameters_setHash(this.h, (C.int)(hash))
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) Secret() []byte {
+	defer runtime.KeepAlive(this)
 	var secret_bytearray C.struct_miqt_string = C.QDtlsClientVerifier__GeneratorParameters_secret(this.h)
 	secret_ret := C.GoBytes(unsafe.Pointer(secret_bytearray.data), C.int(int64(secret_bytearray.len)))
 	C.free(unsafe.Pointer(secret_bytearray.data))
@@ -1074,6 +1198,7 @@ func (this *QDtlsClientVerifier__GeneratorParameters) Secret() []byte {
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) SetSecret(secret []byte) {
+	defer runtime.KeepAlive(this)
 	secret_alias := C.struct_miqt_string{}
 	if len(secret) > 0 {
 		secret_alias.data = (*C.char)(unsafe.Pointer(&secret[0]))
@@ -1085,6 +1210,8 @@ func (this *QDtlsClientVerifier__GeneratorParameters) SetSecret(secret []byte) {
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDtlsClientVerifier__GeneratorParameters) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDtlsClientVerifier__GeneratorParameters_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1100,8 +1227,9 @@ func (this *QDtlsClientVerifier__GeneratorParameters) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDtlsClientVerifier__GeneratorParameters{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtlsClientVerifier__GeneratorParameters) {
-		C.QDtlsClientVerifier__GeneratorParameters_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDtlsClientVerifier__GeneratorParameters_delete((*C.QDtlsClientVerifier__GeneratorParameters)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

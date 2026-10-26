@@ -62,6 +62,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QNetworkCookie** callback_return_value_free_arr = static_cast<QNetworkCookie**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -618,6 +622,10 @@ bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::disconnectNotify(*signal);
+}
+
+QNetworkCookie* QNetworkCookieJar_virtualreturncopy_QNetworkCookie(QNetworkCookie* src) {
+	return new QNetworkCookie(*src);
 }
 
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self) {

@@ -146,6 +146,8 @@ bool QsciLexerYAML_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerYAML_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerYAML_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerYAML_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerYAML_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerYAML_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

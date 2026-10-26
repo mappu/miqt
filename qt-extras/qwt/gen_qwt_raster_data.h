@@ -44,6 +44,7 @@ bool QwtRasterData_override_virtual_discardRaster(void* self, intptr_t slot);
 void QwtRasterData_virtualbase_discardRaster(void* self);
 bool QwtRasterData_override_virtual_value(void* self, intptr_t slot);
 double QwtRasterData_virtualbase_value(const void* self, double x, double y);
+QRectF* QwtRasterData_virtualreturncopy_QRectF(QRectF* src);
 
 void QwtRasterData_delete(QwtRasterData* self);
 

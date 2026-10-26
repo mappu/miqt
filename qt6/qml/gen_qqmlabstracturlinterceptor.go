@@ -26,7 +26,13 @@ const (
 
 type QQmlAbstractUrlInterceptor struct {
 	h  *C.QQmlAbstractUrlInterceptor
-	gc *[1]*C.QQmlAbstractUrlInterceptor
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlAbstractUrlInterceptor) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlAbstractUrlInterceptor) cPointer() *C.QQmlAbstractUrlInterceptor {
@@ -64,12 +70,16 @@ func NewQQmlAbstractUrlInterceptor() *QQmlAbstractUrlInterceptor {
 }
 
 func (this *QQmlAbstractUrlInterceptor) Intercept(path *qt6.QUrl, typeVal QQmlAbstractUrlInterceptor__DataType) *qt6.QUrl {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlAbstractUrlInterceptor_intercept(this.h, (*C.QUrl)(path.UnsafePointer()), (C.int)(typeVal))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlAbstractUrlInterceptor) OperatorAssign(param1 *QQmlAbstractUrlInterceptor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlAbstractUrlInterceptor_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlAbstractUrlInterceptor) OnIntercept(slot func(path *qt6.QUrl, typeVal QQmlAbstractUrlInterceptor__DataType) *qt6.QUrl) {
@@ -92,8 +102,9 @@ func miqt_exec_callback_QQmlAbstractUrlInterceptor_intercept(self *C.QQmlAbstrac
 	slotval2 := (QQmlAbstractUrlInterceptor__DataType)(typeVal)
 
 	virtualReturn := gofunc(slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QUrl)(virtualReturn.UnsafePointer())
+	return C.QQmlAbstractUrlInterceptor_virtualreturncopy_QUrl((*C.QUrl)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -109,8 +120,9 @@ func (this *QQmlAbstractUrlInterceptor) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlAbstractUrlInterceptor{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlAbstractUrlInterceptor) {
-		C.QQmlAbstractUrlInterceptor_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlAbstractUrlInterceptor_delete((*C.QQmlAbstractUrlInterceptor)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -115,6 +115,7 @@ bool QStyledItemDelegate_override_virtual_connectNotify(void* self, intptr_t slo
 void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStyledItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QStyledItemDelegate_virtualreturncopy_QSize(QSize* src);
 
 QObject* QStyledItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QStyledItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

@@ -16,8 +16,15 @@ import (
 
 type QSizeGrip struct {
 	h  *C.QSizeGrip
-	gc *[1]*C.QSizeGrip
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSizeGrip) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QSizeGrip) cPointer() *C.QSizeGrip {
@@ -53,15 +60,18 @@ func UnsafeNewQSizeGrip(h unsafe.Pointer) *QSizeGrip {
 
 // NewQSizeGrip constructs a new QSizeGrip object.
 func NewQSizeGrip(parent *QWidget) *QSizeGrip {
+	defer runtime.KeepAlive(parent)
 
 	return newQSizeGrip(C.QSizeGrip_new(parent.cPointer()))
 }
 
 func (this *QSizeGrip) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSizeGrip_metaObject(this.h))
 }
 
 func (this *QSizeGrip) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSizeGrip_metacast(this.h, param1_Cstring))
@@ -77,12 +87,14 @@ func QSizeGrip_Tr(s string) string {
 }
 
 func (this *QSizeGrip) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSizeGrip_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeGrip) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QSizeGrip_setVisible(this.h, (C.bool)(visible))
 }
 
@@ -110,6 +122,7 @@ func QSizeGrip_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSizeGrip_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -122,6 +135,7 @@ func (this *QSizeGrip) UpdateMicroFocus() {
 
 // Create can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSizeGrip_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -134,6 +148,7 @@ func (this *QSizeGrip) Create() {
 
 // Destroy can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSizeGrip_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -146,6 +161,7 @@ func (this *QSizeGrip) Destroy() {
 
 // FocusNextChild can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSizeGrip_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -160,6 +176,7 @@ func (this *QSizeGrip) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSizeGrip_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -174,6 +191,7 @@ func (this *QSizeGrip) FocusPreviousChild() bool {
 
 // Sender can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSizeGrip_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -188,6 +206,7 @@ func (this *QSizeGrip) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSizeGrip_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -202,6 +221,7 @@ func (this *QSizeGrip) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -218,6 +238,8 @@ func (this *QSizeGrip) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSizeGrip that was directly constructed.
 func (this *QSizeGrip) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSizeGrip_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -231,6 +253,7 @@ func (this *QSizeGrip) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSizeGrip) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSizeGrip_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -252,12 +275,14 @@ func miqt_exec_callback_QSizeGrip_sizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSizeGrip_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSizeGrip) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QSizeGrip_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -284,6 +309,8 @@ func miqt_exec_callback_QSizeGrip_setVisible(self *C.QSizeGrip, cb C.intptr_t, v
 }
 
 func (this *QSizeGrip) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSizeGrip_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -310,6 +337,8 @@ func miqt_exec_callback_QSizeGrip_paintEvent(self *C.QSizeGrip, cb C.intptr_t, p
 }
 
 func (this *QSizeGrip) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSizeGrip_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -336,6 +365,8 @@ func miqt_exec_callback_QSizeGrip_mousePressEvent(self *C.QSizeGrip, cb C.intptr
 }
 
 func (this *QSizeGrip) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSizeGrip_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -362,6 +393,8 @@ func miqt_exec_callback_QSizeGrip_mouseMoveEvent(self *C.QSizeGrip, cb C.intptr_
 }
 
 func (this *QSizeGrip) callVirtualBase_MouseReleaseEvent(mouseEvent *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mouseEvent)
 
 	C.QSizeGrip_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), mouseEvent.cPointer())
 
@@ -388,6 +421,8 @@ func miqt_exec_callback_QSizeGrip_mouseReleaseEvent(self *C.QSizeGrip, cb C.intp
 }
 
 func (this *QSizeGrip) callVirtualBase_MoveEvent(moveEvent *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(moveEvent)
 
 	C.QSizeGrip_virtualbase_moveEvent(unsafe.Pointer(this.h), moveEvent.cPointer())
 
@@ -414,6 +449,8 @@ func miqt_exec_callback_QSizeGrip_moveEvent(self *C.QSizeGrip, cb C.intptr_t, mo
 }
 
 func (this *QSizeGrip) callVirtualBase_ShowEvent(showEvent *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(showEvent)
 
 	C.QSizeGrip_virtualbase_showEvent(unsafe.Pointer(this.h), showEvent.cPointer())
 
@@ -440,6 +477,8 @@ func miqt_exec_callback_QSizeGrip_showEvent(self *C.QSizeGrip, cb C.intptr_t, sh
 }
 
 func (this *QSizeGrip) callVirtualBase_HideEvent(hideEvent *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(hideEvent)
 
 	C.QSizeGrip_virtualbase_hideEvent(unsafe.Pointer(this.h), hideEvent.cPointer())
 
@@ -466,6 +505,9 @@ func miqt_exec_callback_QSizeGrip_hideEvent(self *C.QSizeGrip, cb C.intptr_t, hi
 }
 
 func (this *QSizeGrip) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QSizeGrip_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -496,6 +538,8 @@ func miqt_exec_callback_QSizeGrip_eventFilter(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QSizeGrip_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -524,6 +568,7 @@ func miqt_exec_callback_QSizeGrip_event(self *C.QSizeGrip, cb C.intptr_t, param1
 }
 
 func (this *QSizeGrip) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSizeGrip_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -549,6 +594,7 @@ func miqt_exec_callback_QSizeGrip_devType(self *C.QSizeGrip, cb C.intptr_t) C.in
 }
 
 func (this *QSizeGrip) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSizeGrip_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -570,12 +616,14 @@ func miqt_exec_callback_QSizeGrip_minimumSizeHint(self *C.QSizeGrip, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSizeGrip_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSizeGrip) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSizeGrip_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -604,6 +652,7 @@ func miqt_exec_callback_QSizeGrip_heightForWidth(self *C.QSizeGrip, cb C.intptr_
 }
 
 func (this *QSizeGrip) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSizeGrip_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -629,6 +678,7 @@ func miqt_exec_callback_QSizeGrip_hasHeightForWidth(self *C.QSizeGrip, cb C.intp
 }
 
 func (this *QSizeGrip) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QSizeGrip_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -648,12 +698,15 @@ func miqt_exec_callback_QSizeGrip_paintEngine(self *C.QSizeGrip, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSizeGrip) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -680,6 +733,8 @@ func miqt_exec_callback_QSizeGrip_mouseDoubleClickEvent(self *C.QSizeGrip, cb C.
 }
 
 func (this *QSizeGrip) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -706,6 +761,8 @@ func miqt_exec_callback_QSizeGrip_wheelEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -732,6 +789,8 @@ func miqt_exec_callback_QSizeGrip_keyPressEvent(self *C.QSizeGrip, cb C.intptr_t
 }
 
 func (this *QSizeGrip) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -758,6 +817,8 @@ func miqt_exec_callback_QSizeGrip_keyReleaseEvent(self *C.QSizeGrip, cb C.intptr
 }
 
 func (this *QSizeGrip) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -784,6 +845,8 @@ func miqt_exec_callback_QSizeGrip_focusInEvent(self *C.QSizeGrip, cb C.intptr_t,
 }
 
 func (this *QSizeGrip) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -810,6 +873,8 @@ func miqt_exec_callback_QSizeGrip_focusOutEvent(self *C.QSizeGrip, cb C.intptr_t
 }
 
 func (this *QSizeGrip) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -836,6 +901,8 @@ func miqt_exec_callback_QSizeGrip_enterEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -862,6 +929,8 @@ func miqt_exec_callback_QSizeGrip_leaveEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -888,6 +957,8 @@ func miqt_exec_callback_QSizeGrip_resizeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -914,6 +985,8 @@ func miqt_exec_callback_QSizeGrip_closeEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -940,6 +1013,8 @@ func miqt_exec_callback_QSizeGrip_contextMenuEvent(self *C.QSizeGrip, cb C.intpt
 }
 
 func (this *QSizeGrip) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -966,6 +1041,8 @@ func miqt_exec_callback_QSizeGrip_tabletEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -992,6 +1069,8 @@ func miqt_exec_callback_QSizeGrip_actionEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1018,6 +1097,8 @@ func miqt_exec_callback_QSizeGrip_dragEnterEvent(self *C.QSizeGrip, cb C.intptr_
 }
 
 func (this *QSizeGrip) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1044,6 +1125,8 @@ func miqt_exec_callback_QSizeGrip_dragMoveEvent(self *C.QSizeGrip, cb C.intptr_t
 }
 
 func (this *QSizeGrip) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1070,6 +1153,8 @@ func miqt_exec_callback_QSizeGrip_dragLeaveEvent(self *C.QSizeGrip, cb C.intptr_
 }
 
 func (this *QSizeGrip) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1096,6 +1181,7 @@ func miqt_exec_callback_QSizeGrip_dropEvent(self *C.QSizeGrip, cb C.intptr_t, ev
 }
 
 func (this *QSizeGrip) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1137,6 +1223,8 @@ func miqt_exec_callback_QSizeGrip_nativeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSizeGrip_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1163,6 +1251,7 @@ func miqt_exec_callback_QSizeGrip_changeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSizeGrip_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1191,6 +1280,8 @@ func miqt_exec_callback_QSizeGrip_metric(self *C.QSizeGrip, cb C.intptr_t, param
 }
 
 func (this *QSizeGrip) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QSizeGrip_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1217,6 +1308,8 @@ func miqt_exec_callback_QSizeGrip_initPainter(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSizeGrip_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1239,12 +1332,14 @@ func miqt_exec_callback_QSizeGrip_redirected(self *C.QSizeGrip, cb C.intptr_t, o
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSizeGrip) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QSizeGrip_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1264,12 +1359,15 @@ func miqt_exec_callback_QSizeGrip_sharedPainter(self *C.QSizeGrip, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSizeGrip) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSizeGrip_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1296,6 +1394,7 @@ func miqt_exec_callback_QSizeGrip_inputMethodEvent(self *C.QSizeGrip, cb C.intpt
 }
 
 func (this *QSizeGrip) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QSizeGrip_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1320,12 +1419,14 @@ func miqt_exec_callback_QSizeGrip_inputMethodQuery(self *C.QSizeGrip, cb C.intpt
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSizeGrip_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QSizeGrip) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSizeGrip_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1354,6 +1455,8 @@ func miqt_exec_callback_QSizeGrip_focusNextPrevChild(self *C.QSizeGrip, cb C.int
 }
 
 func (this *QSizeGrip) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1380,6 +1483,8 @@ func miqt_exec_callback_QSizeGrip_timerEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1406,6 +1511,8 @@ func miqt_exec_callback_QSizeGrip_childEvent(self *C.QSizeGrip, cb C.intptr_t, e
 }
 
 func (this *QSizeGrip) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSizeGrip_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1432,6 +1539,8 @@ func miqt_exec_callback_QSizeGrip_customEvent(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSizeGrip_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1458,6 +1567,8 @@ func miqt_exec_callback_QSizeGrip_connectNotify(self *C.QSizeGrip, cb C.intptr_t
 }
 
 func (this *QSizeGrip) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSizeGrip_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1495,8 +1606,9 @@ func (this *QSizeGrip) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSizeGrip{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSizeGrip) {
-		C.QSizeGrip_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSizeGrip_delete((*C.QSizeGrip)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

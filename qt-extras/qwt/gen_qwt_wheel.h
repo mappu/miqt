@@ -255,6 +255,8 @@ bool QwtWheel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtWheel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtWheel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtWheel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtWheel_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtWheel_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtWheel_protectedbase_stopFlying(bool* _dynamic_cast_ok, void* self);
 QRect* QwtWheel_protectedbase_wheelRect(bool* _dynamic_cast_ok, const void* self);

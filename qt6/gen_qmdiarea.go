@@ -37,8 +37,15 @@ const (
 
 type QMdiArea struct {
 	h  *C.QMdiArea
-	gc *[1]*C.QMdiArea
+	gc *[1]unsafe.Pointer
 	*QAbstractScrollArea
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMdiArea) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractScrollArea.miqtSetGC(gc)
 }
 
 func (this *QMdiArea) cPointer() *C.QMdiArea {
@@ -74,6 +81,7 @@ func UnsafeNewQMdiArea(h unsafe.Pointer) *QMdiArea {
 
 // NewQMdiArea constructs a new QMdiArea object.
 func NewQMdiArea(parent *QWidget) *QMdiArea {
+	defer runtime.KeepAlive(parent)
 
 	return newQMdiArea(C.QMdiArea_new(parent.cPointer()))
 }
@@ -85,10 +93,12 @@ func NewQMdiArea2() *QMdiArea {
 }
 
 func (this *QMdiArea) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMdiArea_metaObject(this.h))
 }
 
 func (this *QMdiArea) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMdiArea_metacast(this.h, param1_Cstring))
@@ -104,26 +114,31 @@ func QMdiArea_Tr(s string) string {
 }
 
 func (this *QMdiArea) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QMdiArea_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMdiArea) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QMdiArea_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMdiArea) CurrentSubWindow() *QMdiSubWindow {
+	defer runtime.KeepAlive(this)
 	return newQMdiSubWindow(C.QMdiArea_currentSubWindow(this.h))
 }
 
 func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
+	defer runtime.KeepAlive(this)
 	return newQMdiSubWindow(C.QMdiArea_activeSubWindow(this.h))
 }
 
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMdiArea_subWindowList(this.h)
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QMdiSubWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -134,88 +149,113 @@ func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
 }
 
 func (this *QMdiArea) AddSubWindow(widget *QWidget) *QMdiSubWindow {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return newQMdiSubWindow(C.QMdiArea_addSubWindow(this.h, widget.cPointer()))
 }
 
 func (this *QMdiArea) RemoveSubWindow(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QMdiArea_removeSubWindow(this.h, widget.cPointer())
 }
 
 func (this *QMdiArea) Background() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QMdiArea_background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMdiArea) SetBackground(background *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(background)
 	C.QMdiArea_setBackground(this.h, background.cPointer())
 }
 
 func (this *QMdiArea) ActivationOrder() QMdiArea__WindowOrder {
+	defer runtime.KeepAlive(this)
 	return (QMdiArea__WindowOrder)(C.QMdiArea_activationOrder(this.h))
 }
 
 func (this *QMdiArea) SetActivationOrder(order QMdiArea__WindowOrder) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setActivationOrder(this.h, (C.int)(order))
 }
 
 func (this *QMdiArea) SetOption(option QMdiArea__AreaOption) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setOption(this.h, (C.int)(option))
 }
 
 func (this *QMdiArea) TestOption(opton QMdiArea__AreaOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMdiArea_testOption(this.h, (C.int)(opton)))
 }
 
 func (this *QMdiArea) SetViewMode(mode QMdiArea__ViewMode) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setViewMode(this.h, (C.int)(mode))
 }
 
 func (this *QMdiArea) ViewMode() QMdiArea__ViewMode {
+	defer runtime.KeepAlive(this)
 	return (QMdiArea__ViewMode)(C.QMdiArea_viewMode(this.h))
 }
 
 func (this *QMdiArea) DocumentMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMdiArea_documentMode(this.h))
 }
 
 func (this *QMdiArea) SetDocumentMode(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setDocumentMode(this.h, (C.bool)(enabled))
 }
 
 func (this *QMdiArea) SetTabsClosable(closable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setTabsClosable(this.h, (C.bool)(closable))
 }
 
 func (this *QMdiArea) TabsClosable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMdiArea_tabsClosable(this.h))
 }
 
 func (this *QMdiArea) SetTabsMovable(movable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setTabsMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QMdiArea) TabsMovable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMdiArea_tabsMovable(this.h))
 }
 
 func (this *QMdiArea) SetTabShape(shape QTabWidget__TabShape) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setTabShape(this.h, (C.int)(shape))
 }
 
 func (this *QMdiArea) TabShape() QTabWidget__TabShape {
+	defer runtime.KeepAlive(this)
 	return (QTabWidget__TabShape)(C.QMdiArea_tabShape(this.h))
 }
 
 func (this *QMdiArea) SetTabPosition(position QTabWidget__TabPosition) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setTabPosition(this.h, (C.int)(position))
 }
 
 func (this *QMdiArea) TabPosition() QTabWidget__TabPosition {
+	defer runtime.KeepAlive(this)
 	return (QTabWidget__TabPosition)(C.QMdiArea_tabPosition(this.h))
 }
 
 func (this *QMdiArea) SubWindowActivated(param1 *QMdiSubWindow) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMdiArea_subWindowActivated(this.h, param1.cPointer())
 }
 func (this *QMdiArea) OnSubWindowActivated(slot func(param1 *QMdiSubWindow)) {
@@ -236,30 +276,38 @@ func miqt_exec_callback_QMdiArea_subWindowActivated(cb C.intptr_t, param1 *C.QMd
 }
 
 func (this *QMdiArea) SetActiveSubWindow(window *QMdiSubWindow) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(window)
 	C.QMdiArea_setActiveSubWindow(this.h, window.cPointer())
 }
 
 func (this *QMdiArea) TileSubWindows() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_tileSubWindows(this.h)
 }
 
 func (this *QMdiArea) CascadeSubWindows() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_cascadeSubWindows(this.h)
 }
 
 func (this *QMdiArea) CloseActiveSubWindow() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_closeActiveSubWindow(this.h)
 }
 
 func (this *QMdiArea) CloseAllSubWindows() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_closeAllSubWindows(this.h)
 }
 
 func (this *QMdiArea) ActivateNextSubWindow() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_activateNextSubWindow(this.h)
 }
 
 func (this *QMdiArea) ActivatePreviousSubWindow() {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_activatePreviousSubWindow(this.h)
 }
 
@@ -286,6 +334,7 @@ func QMdiArea_Tr3(s string, c string, n int) string {
 }
 
 func (this *QMdiArea) SubWindowListWithOrder(order QMdiArea__WindowOrder) []*QMdiSubWindow {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMdiArea_subWindowListWithOrder(this.h, (C.int)(order))
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QMdiSubWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -296,15 +345,19 @@ func (this *QMdiArea) SubWindowListWithOrder(order QMdiArea__WindowOrder) []*QMd
 }
 
 func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags WindowType) *QMdiSubWindow {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return newQMdiSubWindow(C.QMdiArea_addSubWindow2(this.h, widget.cPointer(), (C.int)(flags)))
 }
 
 func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QMdiArea_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // SetViewportMargins can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMdiArea_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -317,6 +370,7 @@ func (this *QMdiArea) SetViewportMargins(left int, top int, right int, bottom in
 
 // ViewportMargins can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QMdiArea_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -333,6 +387,8 @@ func (this *QMdiArea) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMdiArea_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -345,6 +401,7 @@ func (this *QMdiArea) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMdiArea_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -357,6 +414,7 @@ func (this *QMdiArea) UpdateMicroFocus() {
 
 // Create can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMdiArea_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -369,6 +427,7 @@ func (this *QMdiArea) Create() {
 
 // Destroy can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMdiArea_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -381,6 +440,7 @@ func (this *QMdiArea) Destroy() {
 
 // FocusNextChild can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMdiArea_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -395,6 +455,7 @@ func (this *QMdiArea) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMdiArea_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -409,6 +470,7 @@ func (this *QMdiArea) FocusPreviousChild() bool {
 
 // Sender can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMdiArea_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -423,6 +485,7 @@ func (this *QMdiArea) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMdiArea_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -437,6 +500,7 @@ func (this *QMdiArea) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -453,6 +517,8 @@ func (this *QMdiArea) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMdiArea that was directly constructed.
 func (this *QMdiArea) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMdiArea_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -466,6 +532,7 @@ func (this *QMdiArea) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMdiArea) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMdiArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -487,12 +554,14 @@ func miqt_exec_callback_QMdiArea_sizeHint(self *C.QMdiArea, cb C.intptr_t) *C.QS
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QMdiArea) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMdiArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -514,12 +583,15 @@ func miqt_exec_callback_QMdiArea_minimumSizeHint(self *C.QMdiArea, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QMdiArea) callVirtualBase_SetupViewport(viewport *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QMdiArea_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -546,6 +618,8 @@ func miqt_exec_callback_QMdiArea_setupViewport(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMdiArea_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -574,6 +648,9 @@ func miqt_exec_callback_QMdiArea_event(self *C.QMdiArea, cb C.intptr_t, event *C
 }
 
 func (this *QMdiArea) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMdiArea_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -604,6 +681,8 @@ func miqt_exec_callback_QMdiArea_eventFilter(self *C.QMdiArea, cb C.intptr_t, ob
 }
 
 func (this *QMdiArea) callVirtualBase_PaintEvent(paintEvent *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(paintEvent)
 
 	C.QMdiArea_virtualbase_paintEvent(unsafe.Pointer(this.h), paintEvent.cPointer())
 
@@ -630,6 +709,8 @@ func miqt_exec_callback_QMdiArea_paintEvent(self *C.QMdiArea, cb C.intptr_t, pai
 }
 
 func (this *QMdiArea) callVirtualBase_ChildEvent(childEvent *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(childEvent)
 
 	C.QMdiArea_virtualbase_childEvent(unsafe.Pointer(this.h), childEvent.cPointer())
 
@@ -656,6 +737,8 @@ func miqt_exec_callback_QMdiArea_childEvent(self *C.QMdiArea, cb C.intptr_t, chi
 }
 
 func (this *QMdiArea) callVirtualBase_ResizeEvent(resizeEvent *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(resizeEvent)
 
 	C.QMdiArea_virtualbase_resizeEvent(unsafe.Pointer(this.h), resizeEvent.cPointer())
 
@@ -682,6 +765,8 @@ func miqt_exec_callback_QMdiArea_resizeEvent(self *C.QMdiArea, cb C.intptr_t, re
 }
 
 func (this *QMdiArea) callVirtualBase_TimerEvent(timerEvent *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(timerEvent)
 
 	C.QMdiArea_virtualbase_timerEvent(unsafe.Pointer(this.h), timerEvent.cPointer())
 
@@ -708,6 +793,8 @@ func miqt_exec_callback_QMdiArea_timerEvent(self *C.QMdiArea, cb C.intptr_t, tim
 }
 
 func (this *QMdiArea) callVirtualBase_ShowEvent(showEvent *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(showEvent)
 
 	C.QMdiArea_virtualbase_showEvent(unsafe.Pointer(this.h), showEvent.cPointer())
 
@@ -734,6 +821,8 @@ func miqt_exec_callback_QMdiArea_showEvent(self *C.QMdiArea, cb C.intptr_t, show
 }
 
 func (this *QMdiArea) callVirtualBase_ViewportEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMdiArea_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -762,6 +851,7 @@ func miqt_exec_callback_QMdiArea_viewportEvent(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QMdiArea_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -790,6 +880,8 @@ func miqt_exec_callback_QMdiArea_scrollContentsBy(self *C.QMdiArea, cb C.intptr_
 }
 
 func (this *QMdiArea) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -816,6 +908,8 @@ func miqt_exec_callback_QMdiArea_mousePressEvent(self *C.QMdiArea, cb C.intptr_t
 }
 
 func (this *QMdiArea) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -842,6 +936,8 @@ func miqt_exec_callback_QMdiArea_mouseReleaseEvent(self *C.QMdiArea, cb C.intptr
 }
 
 func (this *QMdiArea) callVirtualBase_MouseDoubleClickEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -868,6 +964,8 @@ func miqt_exec_callback_QMdiArea_mouseDoubleClickEvent(self *C.QMdiArea, cb C.in
 }
 
 func (this *QMdiArea) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -894,6 +992,8 @@ func miqt_exec_callback_QMdiArea_mouseMoveEvent(self *C.QMdiArea, cb C.intptr_t,
 }
 
 func (this *QMdiArea) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -920,6 +1020,8 @@ func miqt_exec_callback_QMdiArea_wheelEvent(self *C.QMdiArea, cb C.intptr_t, par
 }
 
 func (this *QMdiArea) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -946,6 +1048,8 @@ func miqt_exec_callback_QMdiArea_contextMenuEvent(self *C.QMdiArea, cb C.intptr_
 }
 
 func (this *QMdiArea) callVirtualBase_DragEnterEvent(param1 *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -972,6 +1076,8 @@ func miqt_exec_callback_QMdiArea_dragEnterEvent(self *C.QMdiArea, cb C.intptr_t,
 }
 
 func (this *QMdiArea) callVirtualBase_DragMoveEvent(param1 *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -998,6 +1104,8 @@ func miqt_exec_callback_QMdiArea_dragMoveEvent(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_DragLeaveEvent(param1 *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1024,6 +1132,8 @@ func miqt_exec_callback_QMdiArea_dragLeaveEvent(self *C.QMdiArea, cb C.intptr_t,
 }
 
 func (this *QMdiArea) callVirtualBase_DropEvent(param1 *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_dropEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1050,6 +1160,8 @@ func miqt_exec_callback_QMdiArea_dropEvent(self *C.QMdiArea, cb C.intptr_t, para
 }
 
 func (this *QMdiArea) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1076,6 +1188,7 @@ func miqt_exec_callback_QMdiArea_keyPressEvent(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMdiArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1097,12 +1210,15 @@ func miqt_exec_callback_QMdiArea_viewportSizeHint(self *C.QMdiArea, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QMdiArea) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1129,6 +1245,8 @@ func miqt_exec_callback_QMdiArea_changeEvent(self *C.QMdiArea, cb C.intptr_t, pa
 }
 
 func (this *QMdiArea) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QMdiArea_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -1155,6 +1273,7 @@ func miqt_exec_callback_QMdiArea_initStyleOption(self *C.QMdiArea, cb C.intptr_t
 }
 
 func (this *QMdiArea) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMdiArea_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1180,6 +1299,7 @@ func miqt_exec_callback_QMdiArea_devType(self *C.QMdiArea, cb C.intptr_t) C.int 
 }
 
 func (this *QMdiArea) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QMdiArea_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1206,6 +1326,7 @@ func miqt_exec_callback_QMdiArea_setVisible(self *C.QMdiArea, cb C.intptr_t, vis
 }
 
 func (this *QMdiArea) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMdiArea_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1234,6 +1355,7 @@ func miqt_exec_callback_QMdiArea_heightForWidth(self *C.QMdiArea, cb C.intptr_t,
 }
 
 func (this *QMdiArea) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMdiArea_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1259,6 +1381,7 @@ func miqt_exec_callback_QMdiArea_hasHeightForWidth(self *C.QMdiArea, cb C.intptr
 }
 
 func (this *QMdiArea) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QMdiArea_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1278,12 +1401,15 @@ func miqt_exec_callback_QMdiArea_paintEngine(self *C.QMdiArea, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMdiArea) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1310,6 +1436,8 @@ func miqt_exec_callback_QMdiArea_keyReleaseEvent(self *C.QMdiArea, cb C.intptr_t
 }
 
 func (this *QMdiArea) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1336,6 +1464,8 @@ func miqt_exec_callback_QMdiArea_focusInEvent(self *C.QMdiArea, cb C.intptr_t, e
 }
 
 func (this *QMdiArea) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1362,6 +1492,8 @@ func miqt_exec_callback_QMdiArea_focusOutEvent(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1388,6 +1520,8 @@ func miqt_exec_callback_QMdiArea_enterEvent(self *C.QMdiArea, cb C.intptr_t, eve
 }
 
 func (this *QMdiArea) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1414,6 +1548,8 @@ func miqt_exec_callback_QMdiArea_leaveEvent(self *C.QMdiArea, cb C.intptr_t, eve
 }
 
 func (this *QMdiArea) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1440,6 +1576,8 @@ func miqt_exec_callback_QMdiArea_moveEvent(self *C.QMdiArea, cb C.intptr_t, even
 }
 
 func (this *QMdiArea) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1466,6 +1604,8 @@ func miqt_exec_callback_QMdiArea_closeEvent(self *C.QMdiArea, cb C.intptr_t, eve
 }
 
 func (this *QMdiArea) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1492,6 +1632,8 @@ func miqt_exec_callback_QMdiArea_tabletEvent(self *C.QMdiArea, cb C.intptr_t, ev
 }
 
 func (this *QMdiArea) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1518,6 +1660,8 @@ func miqt_exec_callback_QMdiArea_actionEvent(self *C.QMdiArea, cb C.intptr_t, ev
 }
 
 func (this *QMdiArea) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1544,6 +1688,7 @@ func miqt_exec_callback_QMdiArea_hideEvent(self *C.QMdiArea, cb C.intptr_t, even
 }
 
 func (this *QMdiArea) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1585,6 +1730,7 @@ func miqt_exec_callback_QMdiArea_nativeEvent(self *C.QMdiArea, cb C.intptr_t, ev
 }
 
 func (this *QMdiArea) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMdiArea_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1613,6 +1759,8 @@ func miqt_exec_callback_QMdiArea_metric(self *C.QMdiArea, cb C.intptr_t, param1 
 }
 
 func (this *QMdiArea) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QMdiArea_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1639,6 +1787,8 @@ func miqt_exec_callback_QMdiArea_initPainter(self *C.QMdiArea, cb C.intptr_t, pa
 }
 
 func (this *QMdiArea) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMdiArea_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1661,12 +1811,14 @@ func miqt_exec_callback_QMdiArea_redirected(self *C.QMdiArea, cb C.intptr_t, off
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMdiArea) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QMdiArea_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1686,12 +1838,15 @@ func miqt_exec_callback_QMdiArea_sharedPainter(self *C.QMdiArea, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMdiArea) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QMdiArea_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1718,6 +1873,7 @@ func miqt_exec_callback_QMdiArea_inputMethodEvent(self *C.QMdiArea, cb C.intptr_
 }
 
 func (this *QMdiArea) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QMdiArea_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1742,12 +1898,14 @@ func miqt_exec_callback_QMdiArea_inputMethodQuery(self *C.QMdiArea, cb C.intptr_
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QMdiArea_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QMdiArea) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMdiArea_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1776,6 +1934,8 @@ func miqt_exec_callback_QMdiArea_focusNextPrevChild(self *C.QMdiArea, cb C.intpt
 }
 
 func (this *QMdiArea) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMdiArea_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1802,6 +1962,8 @@ func miqt_exec_callback_QMdiArea_customEvent(self *C.QMdiArea, cb C.intptr_t, ev
 }
 
 func (this *QMdiArea) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMdiArea_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1828,6 +1990,8 @@ func miqt_exec_callback_QMdiArea_connectNotify(self *C.QMdiArea, cb C.intptr_t, 
 }
 
 func (this *QMdiArea) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMdiArea_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1865,8 +2029,9 @@ func (this *QMdiArea) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMdiArea{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMdiArea) {
-		C.QMdiArea_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMdiArea_delete((*C.QMdiArea)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

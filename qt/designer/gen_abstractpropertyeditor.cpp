@@ -260,7 +260,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDesignerPropertyEditorInterface_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDesignerPropertyEditorInterface_virtualbase_sizeHint(const void* self);
@@ -275,7 +277,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDesignerPropertyEditorInterface_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(const void* self);
@@ -884,7 +888,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDesignerPropertyEditorInterface_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QDesignerPropertyEditorInterface_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1898,6 +1904,14 @@ bool QDesignerPropertyEditorInterface_override_virtual_disconnectNotify(void* se
 
 void QDesignerPropertyEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesignerPropertyEditorInterface*>(self)->QDesignerPropertyEditorInterface::disconnectNotify(*signal);
+}
+
+QSize* QDesignerPropertyEditorInterface_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QDesignerPropertyEditorInterface_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDesignerPropertyEditorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

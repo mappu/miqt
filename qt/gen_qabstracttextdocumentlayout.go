@@ -16,8 +16,15 @@ import (
 
 type QAbstractTextDocumentLayout struct {
 	h  *C.QAbstractTextDocumentLayout
-	gc *[1]*C.QAbstractTextDocumentLayout
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractTextDocumentLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QAbstractTextDocumentLayout) cPointer() *C.QAbstractTextDocumentLayout {
@@ -53,15 +60,18 @@ func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer) *QAbstractTextDocume
 
 // NewQAbstractTextDocumentLayout constructs a new QAbstractTextDocumentLayout object.
 func NewQAbstractTextDocumentLayout(doc *QTextDocument) *QAbstractTextDocumentLayout {
+	defer runtime.KeepAlive(doc)
 
 	return newQAbstractTextDocumentLayout(C.QAbstractTextDocumentLayout_new(doc.cPointer()))
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractTextDocumentLayout_metaObject(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractTextDocumentLayout_metacast(this.h, param1_Cstring))
@@ -86,14 +96,21 @@ func QAbstractTextDocumentLayout_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(context)
 	C.QAbstractTextDocumentLayout_draw(this.h, painter.cPointer(), context.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	return (int)(C.QAbstractTextDocumentLayout_hitTest(this.h, point.cPointer(), (C.int)(accuracy)))
 }
 
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_anchorAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -101,6 +118,8 @@ func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
 }
 
 func (this *QAbstractTextDocumentLayout) ImageAt(pos *QPointF) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_imageAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,64 +127,83 @@ func (this *QAbstractTextDocumentLayout) ImageAt(pos *QPointF) string {
 }
 
 func (this *QAbstractTextDocumentLayout) FormatAt(pos *QPointF) *QTextFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	_goptr := newQTextFormat(C.QAbstractTextDocumentLayout_formatAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockWithMarkerAt(pos *QPointF) *QTextBlock {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	_goptr := newQTextBlock(C.QAbstractTextDocumentLayout_blockWithMarkerAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) PageCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractTextDocumentLayout_pageCount(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSize() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QAbstractTextDocumentLayout_documentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) FrameBoundingRect(frame *QTextFrame) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(frame)
 	_goptr := newQRectF(C.QAbstractTextDocumentLayout_frameBoundingRect(this.h, frame.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(block)
 	_goptr := newQRectF(C.QAbstractTextDocumentLayout_blockBoundingRect(this.h, block.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QAbstractTextDocumentLayout_setPaintDevice(this.h, device.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
+	defer runtime.KeepAlive(this)
 	return newQPaintDevice(C.QAbstractTextDocumentLayout_paintDevice(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
+	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QAbstractTextDocumentLayout_document(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(component)
 	C.QAbstractTextDocumentLayout_registerHandler(this.h, (C.int)(objectType), component.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractTextDocumentLayout_unregisterHandler(this.h, (C.int)(objectType))
 }
 
 func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
+	defer runtime.KeepAlive(this)
 	return newQTextObjectInterface(C.QAbstractTextDocumentLayout_handlerForObject(this.h, (C.int)(objectType)))
 }
 
 func (this *QAbstractTextDocumentLayout) Update() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractTextDocumentLayout_update(this.h)
 }
 func (this *QAbstractTextDocumentLayout) OnUpdate(slot func()) {
@@ -183,6 +221,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_update(cb C.intptr_t) {
 }
 
 func (this *QAbstractTextDocumentLayout) UpdateBlock(block *QTextBlock) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(block)
 	C.QAbstractTextDocumentLayout_updateBlock(this.h, block.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdateBlock(slot func(block *QTextBlock)) {
@@ -203,6 +243,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(cb C.intptr_t, b
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSizeChanged(newSize *QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newSize)
 	C.QAbstractTextDocumentLayout_documentSizeChanged(this.h, newSize.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentSizeChanged(slot func(newSize *QSizeF)) {
@@ -223,6 +265,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(cb C.int
 }
 
 func (this *QAbstractTextDocumentLayout) PageCountChanged(newPages int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractTextDocumentLayout_pageCountChanged(this.h, (C.int)(newPages))
 }
 func (this *QAbstractTextDocumentLayout) OnPageCountChanged(slot func(newPages int)) {
@@ -287,10 +330,14 @@ func QAbstractTextDocumentLayout_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractTextDocumentLayout) UnregisterHandler2(objectType int, component *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(component)
 	C.QAbstractTextDocumentLayout_unregisterHandler2(this.h, (C.int)(objectType), component.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) UpdateWithQRectF(param1 *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractTextDocumentLayout_updateWithQRectF(this.h, param1.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdateWithQRectF(slot func(param1 *QRectF)) {
@@ -312,6 +359,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(cb C.intptr
 
 // FormatIndex can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) FormatIndex(pos int) int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractTextDocumentLayout_protectedbase_formatIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
@@ -326,6 +374,7 @@ func (this *QAbstractTextDocumentLayout) FormatIndex(pos int) int {
 
 // Format can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) Format(pos int) QTextCharFormat {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQTextCharFormat(C.QAbstractTextDocumentLayout_protectedbase_format(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
@@ -342,6 +391,7 @@ func (this *QAbstractTextDocumentLayout) Format(pos int) QTextCharFormat {
 
 // Sender can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractTextDocumentLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -356,6 +406,7 @@ func (this *QAbstractTextDocumentLayout) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -370,6 +421,7 @@ func (this *QAbstractTextDocumentLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -386,6 +438,8 @@ func (this *QAbstractTextDocumentLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractTextDocumentLayout that was directly constructed.
 func (this *QAbstractTextDocumentLayout) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractTextDocumentLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -477,8 +531,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(self *C.QAbstra
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractTextDocumentLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
 
 }
 func (this *QAbstractTextDocumentLayout) OnFrameBoundingRect(slot func(frame *QTextFrame) *QRectF) {
@@ -499,8 +554,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(self *C.QA
 	slotval1 := newQTextFrame(frame)
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractTextDocumentLayout_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 func (this *QAbstractTextDocumentLayout) OnBlockBoundingRect(slot func(block *QTextBlock) *QRectF) {
@@ -521,8 +577,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(self *C.QA
 	slotval1 := newQTextBlock(block)
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractTextDocumentLayout_virtualreturncopy_QRectF(virtualReturn.cPointer())
 
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
@@ -551,6 +608,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged(self *C.QAbs
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ResizeInlineObject(item QTextInlineObject, posInDocument int, format *QTextFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
+	defer runtime.KeepAlive(format)
 
 	C.QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
@@ -583,6 +643,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject(self *C.Q
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_PositionInlineObject(item QTextInlineObject, posInDocument int, format *QTextFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
+	defer runtime.KeepAlive(format)
 
 	C.QAbstractTextDocumentLayout_virtualbase_positionInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
@@ -615,6 +678,11 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject(self *C
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_DrawInlineObject(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(format)
 
 	C.QAbstractTextDocumentLayout_virtualbase_drawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), object.cPointer(), (C.int)(posInDocument), format.cPointer())
 
@@ -651,6 +719,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(self *C.QAb
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -679,6 +749,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_event(self *C.QAbstractTextD
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -709,6 +782,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter(self *C.QAbstrac
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractTextDocumentLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -735,6 +810,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent(self *C.QAbstract
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractTextDocumentLayout_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -761,6 +838,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_childEvent(self *C.QAbstract
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractTextDocumentLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -787,6 +866,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_customEvent(self *C.QAbstrac
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTextDocumentLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -813,6 +894,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_connectNotify(self *C.QAbstr
 }
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTextDocumentLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -850,15 +933,22 @@ func (this *QAbstractTextDocumentLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractTextDocumentLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout) {
-		C.QAbstractTextDocumentLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractTextDocumentLayout_delete((*C.QAbstractTextDocumentLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextObjectInterface struct {
 	h  *C.QTextObjectInterface
-	gc *[1]*C.QTextObjectInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextObjectInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextObjectInterface) cPointer() *C.QTextObjectInterface {
@@ -890,16 +980,26 @@ func UnsafeNewQTextObjectInterface(h unsafe.Pointer) *QTextObjectInterface {
 }
 
 func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocument int, format *QTextFormat) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(doc)
+	defer runtime.KeepAlive(format)
 	_goptr := newQSizeF(C.QTextObjectInterface_intrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextObjectInterface) DrawObject(painter *QPainter, rect *QRectF, doc *QTextDocument, posInDocument int, format *QTextFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(doc)
+	defer runtime.KeepAlive(format)
 	C.QTextObjectInterface_drawObject(this.h, painter.cPointer(), rect.cPointer(), doc.cPointer(), (C.int)(posInDocument), format.cPointer())
 }
 
 func (this *QTextObjectInterface) OperatorAssign(param1 *QTextObjectInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QTextObjectInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -915,15 +1015,22 @@ func (this *QTextObjectInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextObjectInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextObjectInterface) {
-		C.QTextObjectInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextObjectInterface_delete((*C.QTextObjectInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractTextDocumentLayout__Selection struct {
 	h  *C.QAbstractTextDocumentLayout__Selection
-	gc *[1]*C.QAbstractTextDocumentLayout__Selection
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractTextDocumentLayout__Selection) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextDocumentLayout__Selection {
@@ -956,6 +1063,7 @@ func UnsafeNewQAbstractTextDocumentLayout__Selection(h unsafe.Pointer) *QAbstrac
 
 // NewQAbstractTextDocumentLayout__Selection constructs a new QAbstractTextDocumentLayout::Selection object.
 func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
+	defer runtime.KeepAlive(param1)
 
 	return newQAbstractTextDocumentLayout__Selection(C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer()))
 }
@@ -967,26 +1075,34 @@ func NewQAbstractTextDocumentLayout__Selection2() *QAbstractTextDocumentLayout__
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) Cursor() *QTextCursor {
+	defer runtime.KeepAlive(this)
 	cursor_goptr := newQTextCursor(C.QAbstractTextDocumentLayout__Selection_cursor(this.h))
 	cursor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return cursor_goptr
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) SetCursor(cursor QTextCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QAbstractTextDocumentLayout__Selection_setCursor(this.h, cursor.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) Format() *QTextCharFormat {
+	defer runtime.KeepAlive(this)
 	format_goptr := newQTextCharFormat(C.QAbstractTextDocumentLayout__Selection_format(this.h))
 	format_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return format_goptr
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) SetFormat(format QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QAbstractTextDocumentLayout__Selection_setFormat(this.h, format.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbstractTextDocumentLayout__Selection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractTextDocumentLayout__Selection_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1002,15 +1118,22 @@ func (this *QAbstractTextDocumentLayout__Selection) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractTextDocumentLayout__Selection{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout__Selection) {
-		C.QAbstractTextDocumentLayout__Selection_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractTextDocumentLayout__Selection_delete((*C.QAbstractTextDocumentLayout__Selection)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractTextDocumentLayout__PaintContext struct {
 	h  *C.QAbstractTextDocumentLayout__PaintContext
-	gc *[1]*C.QAbstractTextDocumentLayout__PaintContext
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractTextDocumentLayout__PaintContext) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTextDocumentLayout__PaintContext {
@@ -1049,39 +1172,49 @@ func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout
 
 // NewQAbstractTextDocumentLayout__PaintContext2 constructs a new QAbstractTextDocumentLayout::PaintContext object.
 func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
+	defer runtime.KeepAlive(param1)
 
 	return newQAbstractTextDocumentLayout__PaintContext(C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer()))
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) CursorPosition() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractTextDocumentLayout__PaintContext_cursorPosition(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) SetCursorPosition(cursorPosition int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractTextDocumentLayout__PaintContext_setCursorPosition(this.h, (C.int)(cursorPosition))
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) Palette() *QPalette {
+	defer runtime.KeepAlive(this)
 	palette_goptr := newQPalette(C.QAbstractTextDocumentLayout__PaintContext_palette(this.h))
 	palette_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return palette_goptr
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) SetPalette(palette QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QAbstractTextDocumentLayout__PaintContext_setPalette(this.h, palette.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) Clip() *QRectF {
+	defer runtime.KeepAlive(this)
 	clip_goptr := newQRectF(C.QAbstractTextDocumentLayout__PaintContext_clip(this.h))
 	clip_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return clip_goptr
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) SetClip(clip QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(clip)
 	C.QAbstractTextDocumentLayout__PaintContext_setClip(this.h, clip.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) Selections() []QAbstractTextDocumentLayout__Selection {
+	defer runtime.KeepAlive(this)
 	var selections_ma C.struct_miqt_array = C.QAbstractTextDocumentLayout__PaintContext_selections(this.h)
 	selections_ret := make([]QAbstractTextDocumentLayout__Selection, int(selections_ma.len))
 	selections_outCast := unsafe.Slice((**C.QAbstractTextDocumentLayout__Selection)(unsafe.Pointer(selections_ma.data)), int(selections_ma.len))
@@ -1094,6 +1227,8 @@ func (this *QAbstractTextDocumentLayout__PaintContext) Selections() []QAbstractT
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) SetSelections(selections []QAbstractTextDocumentLayout__Selection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selections)
 	selections_CArray_ptr := (**C.QAbstractTextDocumentLayout__Selection)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray_ptr))
 	selections_CArray := unsafe.Slice(selections_CArray_ptr, len(selections))
@@ -1105,6 +1240,8 @@ func (this *QAbstractTextDocumentLayout__PaintContext) SetSelections(selections 
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QAbstractTextDocumentLayout__PaintContext) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAbstractTextDocumentLayout__PaintContext_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1120,8 +1257,9 @@ func (this *QAbstractTextDocumentLayout__PaintContext) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractTextDocumentLayout__PaintContext{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTextDocumentLayout__PaintContext) {
-		C.QAbstractTextDocumentLayout__PaintContext_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractTextDocumentLayout__PaintContext_delete((*C.QAbstractTextDocumentLayout__PaintContext)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

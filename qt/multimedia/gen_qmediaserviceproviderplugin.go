@@ -35,7 +35,13 @@ const (
 
 type QMediaServiceProviderHint struct {
 	h  *C.QMediaServiceProviderHint
-	gc *[1]*C.QMediaServiceProviderHint
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceProviderHint) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceProviderHint) cPointer() *C.QMediaServiceProviderHint {
@@ -120,31 +126,41 @@ func NewQMediaServiceProviderHint5(features QMediaServiceProviderHint__Feature) 
 
 // NewQMediaServiceProviderHint6 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint6(other *QMediaServiceProviderHint) *QMediaServiceProviderHint {
+	defer runtime.KeepAlive(other)
 
 	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new6(other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) OperatorAssign(other *QMediaServiceProviderHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMediaServiceProviderHint_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMediaServiceProviderHint) OperatorEqual(other *QMediaServiceProviderHint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaServiceProviderHint_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) OperatorNotEqual(other *QMediaServiceProviderHint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaServiceProviderHint_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaServiceProviderHint_isNull(this.h))
 }
 
 func (this *QMediaServiceProviderHint) Type() QMediaServiceProviderHint__Type {
+	defer runtime.KeepAlive(this)
 	return (QMediaServiceProviderHint__Type)(C.QMediaServiceProviderHint_type(this.h))
 }
 
 func (this *QMediaServiceProviderHint) MimeType() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaServiceProviderHint_mimeType(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -152,6 +168,7 @@ func (this *QMediaServiceProviderHint) MimeType() string {
 }
 
 func (this *QMediaServiceProviderHint) Codecs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaServiceProviderHint_codecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -165,6 +182,7 @@ func (this *QMediaServiceProviderHint) Codecs() []string {
 }
 
 func (this *QMediaServiceProviderHint) Device() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QMediaServiceProviderHint_device(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -172,10 +190,12 @@ func (this *QMediaServiceProviderHint) Device() []byte {
 }
 
 func (this *QMediaServiceProviderHint) CameraPosition() QCamera__Position {
+	defer runtime.KeepAlive(this)
 	return (QCamera__Position)(C.QMediaServiceProviderHint_cameraPosition(this.h))
 }
 
 func (this *QMediaServiceProviderHint) Features() QMediaServiceProviderHint__Feature {
+	defer runtime.KeepAlive(this)
 	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceProviderHint_features(this.h))
 }
 
@@ -191,15 +211,22 @@ func (this *QMediaServiceProviderHint) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceProviderHint{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderHint) {
-		C.QMediaServiceProviderHint_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceProviderHint_delete((*C.QMediaServiceProviderHint)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceProviderFactoryInterface struct {
 	h  *C.QMediaServiceProviderFactoryInterface
-	gc *[1]*C.QMediaServiceProviderFactoryInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceProviderFactoryInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceProviderFactoryInterface) cPointer() *C.QMediaServiceProviderFactoryInterface {
@@ -231,6 +258,7 @@ func UnsafeNewQMediaServiceProviderFactoryInterface(h unsafe.Pointer) *QMediaSer
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaService {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -239,10 +267,14 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(service)
 	C.QMediaServiceProviderFactoryInterface_release(this.h, service.cPointer())
 }
 
 func (this *QMediaServiceProviderFactoryInterface) OperatorAssign(param1 *QMediaServiceProviderFactoryInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceProviderFactoryInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -258,15 +290,22 @@ func (this *QMediaServiceProviderFactoryInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceProviderFactoryInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderFactoryInterface) {
-		C.QMediaServiceProviderFactoryInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceProviderFactoryInterface_delete((*C.QMediaServiceProviderFactoryInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceSupportedFormatsInterface struct {
 	h  *C.QMediaServiceSupportedFormatsInterface
-	gc *[1]*C.QMediaServiceSupportedFormatsInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceSupportedFormatsInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) cPointer() *C.QMediaServiceSupportedFormatsInterface {
@@ -298,6 +337,7 @@ func UnsafeNewQMediaServiceSupportedFormatsInterface(h unsafe.Pointer) *QMediaSe
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, codecs []string) QMultimedia__SupportEstimate {
+	defer runtime.KeepAlive(this)
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
@@ -317,6 +357,7 @@ func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, 
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) SupportedMimeTypes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaServiceSupportedFormatsInterface_supportedMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -330,6 +371,8 @@ func (this *QMediaServiceSupportedFormatsInterface) SupportedMimeTypes() []strin
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) OperatorAssign(param1 *QMediaServiceSupportedFormatsInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceSupportedFormatsInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -345,15 +388,22 @@ func (this *QMediaServiceSupportedFormatsInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceSupportedFormatsInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceSupportedFormatsInterface) {
-		C.QMediaServiceSupportedFormatsInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceSupportedFormatsInterface_delete((*C.QMediaServiceSupportedFormatsInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceSupportedDevicesInterface struct {
 	h  *C.QMediaServiceSupportedDevicesInterface
-	gc *[1]*C.QMediaServiceSupportedDevicesInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceSupportedDevicesInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) cPointer() *C.QMediaServiceSupportedDevicesInterface {
@@ -385,6 +435,7 @@ func UnsafeNewQMediaServiceSupportedDevicesInterface(h unsafe.Pointer) *QMediaSe
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]byte {
+	defer runtime.KeepAlive(this)
 	service_alias := C.struct_miqt_string{}
 	if len(service) > 0 {
 		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
@@ -405,6 +456,7 @@ func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) DeviceDescription(service []byte, device []byte) string {
+	defer runtime.KeepAlive(this)
 	service_alias := C.struct_miqt_string{}
 	if len(service) > 0 {
 		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
@@ -426,6 +478,8 @@ func (this *QMediaServiceSupportedDevicesInterface) DeviceDescription(service []
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) OperatorAssign(param1 *QMediaServiceSupportedDevicesInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceSupportedDevicesInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -441,15 +495,22 @@ func (this *QMediaServiceSupportedDevicesInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceSupportedDevicesInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceSupportedDevicesInterface) {
-		C.QMediaServiceSupportedDevicesInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceSupportedDevicesInterface_delete((*C.QMediaServiceSupportedDevicesInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceDefaultDeviceInterface struct {
 	h  *C.QMediaServiceDefaultDeviceInterface
-	gc *[1]*C.QMediaServiceDefaultDeviceInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceDefaultDeviceInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) cPointer() *C.QMediaServiceDefaultDeviceInterface {
@@ -481,6 +542,7 @@ func UnsafeNewQMediaServiceDefaultDeviceInterface(h unsafe.Pointer) *QMediaServi
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) []byte {
+	defer runtime.KeepAlive(this)
 	service_alias := C.struct_miqt_string{}
 	if len(service) > 0 {
 		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
@@ -495,6 +557,8 @@ func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) [
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) OperatorAssign(param1 *QMediaServiceDefaultDeviceInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceDefaultDeviceInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -510,15 +574,22 @@ func (this *QMediaServiceDefaultDeviceInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceDefaultDeviceInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceDefaultDeviceInterface) {
-		C.QMediaServiceDefaultDeviceInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceDefaultDeviceInterface_delete((*C.QMediaServiceDefaultDeviceInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceCameraInfoInterface struct {
 	h  *C.QMediaServiceCameraInfoInterface
-	gc *[1]*C.QMediaServiceCameraInfoInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceCameraInfoInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceCameraInfoInterface) cPointer() *C.QMediaServiceCameraInfoInterface {
@@ -550,6 +621,7 @@ func UnsafeNewQMediaServiceCameraInfoInterface(h unsafe.Pointer) *QMediaServiceC
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCamera__Position {
+	defer runtime.KeepAlive(this)
 	device_alias := C.struct_miqt_string{}
 	if len(device) > 0 {
 		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
@@ -561,6 +633,7 @@ func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCam
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraOrientation(device []byte) int {
+	defer runtime.KeepAlive(this)
 	device_alias := C.struct_miqt_string{}
 	if len(device) > 0 {
 		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
@@ -572,6 +645,8 @@ func (this *QMediaServiceCameraInfoInterface) CameraOrientation(device []byte) i
 }
 
 func (this *QMediaServiceCameraInfoInterface) OperatorAssign(param1 *QMediaServiceCameraInfoInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceCameraInfoInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -587,15 +662,22 @@ func (this *QMediaServiceCameraInfoInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceCameraInfoInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceCameraInfoInterface) {
-		C.QMediaServiceCameraInfoInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceCameraInfoInterface_delete((*C.QMediaServiceCameraInfoInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceFeaturesInterface struct {
 	h  *C.QMediaServiceFeaturesInterface
-	gc *[1]*C.QMediaServiceFeaturesInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceFeaturesInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaServiceFeaturesInterface) cPointer() *C.QMediaServiceFeaturesInterface {
@@ -627,6 +709,7 @@ func UnsafeNewQMediaServiceFeaturesInterface(h unsafe.Pointer) *QMediaServiceFea
 }
 
 func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QMediaServiceProviderHint__Feature {
+	defer runtime.KeepAlive(this)
 	service_alias := C.struct_miqt_string{}
 	if len(service) > 0 {
 		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
@@ -638,6 +721,8 @@ func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QM
 }
 
 func (this *QMediaServiceFeaturesInterface) OperatorAssign(param1 *QMediaServiceFeaturesInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QMediaServiceFeaturesInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -653,17 +738,25 @@ func (this *QMediaServiceFeaturesInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceFeaturesInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceFeaturesInterface) {
-		C.QMediaServiceFeaturesInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceFeaturesInterface_delete((*C.QMediaServiceFeaturesInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMediaServiceProviderPlugin struct {
 	h  *C.QMediaServiceProviderPlugin
-	gc *[1]*C.QMediaServiceProviderPlugin
+	gc *[1]unsafe.Pointer
 	*qt.QObject
 	*QMediaServiceProviderFactoryInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaServiceProviderPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaServiceProviderFactoryInterface.miqtSetGC(gc)
 }
 
 func (this *QMediaServiceProviderPlugin) cPointer() *C.QMediaServiceProviderPlugin {
@@ -700,10 +793,12 @@ func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer) *QMediaServiceProvid
 }
 
 func (this *QMediaServiceProviderPlugin) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaServiceProviderPlugin_metaObject(this.h)))
 }
 
 func (this *QMediaServiceProviderPlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaServiceProviderPlugin_metacast(this.h, param1_Cstring))
@@ -728,6 +823,7 @@ func QMediaServiceProviderPlugin_TrUtf8(s string) string {
 }
 
 func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -736,6 +832,8 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(service)
 	C.QMediaServiceProviderPlugin_release(this.h, service.cPointer())
 }
 
@@ -795,8 +893,9 @@ func (this *QMediaServiceProviderPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaServiceProviderPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaServiceProviderPlugin) {
-		C.QMediaServiceProviderPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaServiceProviderPlugin_delete((*C.QMediaServiceProviderPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -23,7 +23,13 @@ const (
 
 type QwtPointMapper struct {
 	h  *C.QwtPointMapper
-	gc *[1]*C.QwtPointMapper
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPointMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPointMapper) cPointer() *C.QwtPointMapper {
@@ -61,32 +67,40 @@ func NewQwtPointMapper() *QwtPointMapper {
 }
 
 func (this *QwtPointMapper) SetFlags(flags QwtPointMapper__TransformationFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtPointMapper_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QwtPointMapper) Flags() QwtPointMapper__TransformationFlag {
+	defer runtime.KeepAlive(this)
 	return (QwtPointMapper__TransformationFlag)(C.QwtPointMapper_flags(this.h))
 }
 
 func (this *QwtPointMapper) SetFlag(param1 QwtPointMapper__TransformationFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtPointMapper_setFlag(this.h, (C.int)(param1))
 }
 
 func (this *QwtPointMapper) TestFlag(param1 QwtPointMapper__TransformationFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPointMapper_testFlag(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPointMapper) SetBoundingRect(boundingRect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(boundingRect)
 	C.QwtPointMapper_setBoundingRect(this.h, (*C.QRectF)(boundingRect.UnsafePointer()))
 }
 
 func (this *QwtPointMapper) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointMapper_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPointMapper) SetFlag2(param1 QwtPointMapper__TransformationFlag, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPointMapper_setFlag2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
@@ -102,8 +116,9 @@ func (this *QwtPointMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPointMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPointMapper) {
-		C.QwtPointMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPointMapper_delete((*C.QwtPointMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

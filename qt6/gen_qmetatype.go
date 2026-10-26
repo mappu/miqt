@@ -133,7 +133,13 @@ const (
 
 type QMetaType struct {
 	h  *C.QMetaType
-	gc *[1]*C.QMetaType
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMetaType) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -178,11 +184,13 @@ func NewQMetaType2() *QMetaType {
 
 // NewQMetaType3 constructs a new QMetaType object.
 func NewQMetaType3(param1 *QMetaType) *QMetaType {
+	defer runtime.KeepAlive(param1)
 
 	return newQMetaType(C.QMetaType_new3(param1.cPointer()))
 }
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, typeVal QMetaType) {
+	defer runtime.KeepAlive(typeVal)
 	normalizedTypeName_alias := C.struct_miqt_string{}
 	if len(normalizedTypeName) > 0 {
 		normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(&normalizedTypeName[0]))
@@ -248,107 +256,135 @@ func QMetaType_IsRegistered(typeVal int) bool {
 }
 
 func (this *QMetaType) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_isValid(this.h))
 }
 
 func (this *QMetaType) IsRegistered2() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_isRegistered2(this.h))
 }
 
 func (this *QMetaType) Id() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMetaType_id(this.h))
 }
 
 func (this *QMetaType) SizeOf2() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMetaType_sizeOf2(this.h))
 }
 
 func (this *QMetaType) AlignOf() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMetaType_alignOf(this.h))
 }
 
 func (this *QMetaType) Flags() QMetaType__TypeFlag {
+	defer runtime.KeepAlive(this)
 	return (QMetaType__TypeFlag)(C.QMetaType_flags(this.h))
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMetaType_metaObject(this.h))
 }
 
 func (this *QMetaType) Name() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QMetaType_name(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QMetaType) Create2() unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QMetaType_create2(this.h))
 }
 
 func (this *QMetaType) DestroyWithData(data unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 	C.QMetaType_destroyWithData(this.h, data)
 }
 
 func (this *QMetaType) ConstructWithWhere(where unsafe.Pointer) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QMetaType_constructWithWhere(this.h, where))
 }
 
 func (this *QMetaType) DestructWithData(data unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 	C.QMetaType_destructWithData(this.h, data)
 }
 
 func (this *QMetaType) Compare(lhs unsafe.Pointer, rhs unsafe.Pointer) *QPartialOrdering {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPartialOrdering(C.QMetaType_compare(this.h, lhs, rhs))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaType) Equals(lhs unsafe.Pointer, rhs unsafe.Pointer) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_equals(this.h, lhs, rhs))
 }
 
 func (this *QMetaType) IsEqualityComparable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_isEqualityComparable(this.h))
 }
 
 func (this *QMetaType) IsOrdered() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_isOrdered(this.h))
 }
 
 func (this *QMetaType) Save(stream *QDataStream, data unsafe.Pointer) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(stream)
 	return (bool)(C.QMetaType_save(this.h, stream.cPointer(), data))
 }
 
 func (this *QMetaType) Load(stream *QDataStream, data unsafe.Pointer) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(stream)
 	return (bool)(C.QMetaType_load(this.h, stream.cPointer(), data))
 }
 
 func (this *QMetaType) HasRegisteredDataStreamOperators() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_hasRegisteredDataStreamOperators(this.h))
 }
 
 func QMetaType_Save2(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
+	defer runtime.KeepAlive(stream)
 	return (bool)(C.QMetaType_save2(stream.cPointer(), (C.int)(typeVal), data))
 }
 
 func QMetaType_Load2(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
+	defer runtime.KeepAlive(stream)
 	return (bool)(C.QMetaType_load2(stream.cPointer(), (C.int)(typeVal), data))
 }
 
 func QMetaType_FromName(name QByteArrayView) *QMetaType {
+	defer runtime.KeepAlive(name)
 	_goptr := newQMetaType(C.QMetaType_fromName(name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaType) DebugStream(dbg *QDebug, rhs unsafe.Pointer) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dbg)
 	return (bool)(C.QMetaType_debugStream(this.h, dbg.cPointer(), rhs))
 }
 
 func (this *QMetaType) HasRegisteredDebugStreamOperator() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaType_hasRegisteredDebugStreamOperator(this.h))
 }
 
 func QMetaType_DebugStream2(dbg *QDebug, rhs unsafe.Pointer, typeId int) bool {
+	defer runtime.KeepAlive(dbg)
 	return (bool)(C.QMetaType_debugStream2(dbg.cPointer(), rhs, (C.int)(typeId)))
 }
 
@@ -357,18 +393,26 @@ func QMetaType_HasRegisteredDebugStreamOperatorWithTypeId(typeId int) bool {
 }
 
 func QMetaType_Convert(fromType QMetaType, from unsafe.Pointer, toType QMetaType, to unsafe.Pointer) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_convert(fromType.cPointer(), from, toType.cPointer(), to))
 }
 
 func QMetaType_CanConvert(fromType QMetaType, toType QMetaType) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_canConvert(fromType.cPointer(), toType.cPointer()))
 }
 
 func QMetaType_View(fromType QMetaType, from unsafe.Pointer, toType QMetaType, to unsafe.Pointer) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_view(fromType.cPointer(), from, toType.cPointer(), to))
 }
 
 func QMetaType_CanView(fromType QMetaType, toType QMetaType) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_canView(fromType.cPointer(), toType.cPointer()))
 }
 
@@ -385,22 +429,31 @@ func QMetaType_Equals2(lhs unsafe.Pointer, rhs unsafe.Pointer, typeId int, resul
 }
 
 func QMetaType_HasRegisteredConverterFunction(fromType QMetaType, toType QMetaType) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_hasRegisteredConverterFunction(fromType.cPointer(), toType.cPointer()))
 }
 
 func QMetaType_HasRegisteredMutableViewFunction(fromType QMetaType, toType QMetaType) bool {
+	defer runtime.KeepAlive(fromType)
+	defer runtime.KeepAlive(toType)
 	return (bool)(C.QMetaType_hasRegisteredMutableViewFunction(fromType.cPointer(), toType.cPointer()))
 }
 
 func QMetaType_UnregisterConverterFunction(from QMetaType, to QMetaType) {
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	C.QMetaType_unregisterConverterFunction(from.cPointer(), to.cPointer())
 }
 
 func QMetaType_UnregisterMutableViewFunction(from QMetaType, to QMetaType) {
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	C.QMetaType_unregisterMutableViewFunction(from.cPointer(), to.cPointer())
 }
 
 func QMetaType_UnregisterMetaType(typeVal QMetaType) {
+	defer runtime.KeepAlive(typeVal)
 	C.QMetaType_unregisterMetaType(typeVal.cPointer())
 }
 
@@ -409,14 +462,17 @@ func QMetaType_Create3(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
 }
 
 func (this *QMetaType) IdWithInt(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMetaType_idWithInt(this.h, (C.int)(param1)))
 }
 
 func (this *QMetaType) CreateWithCopy(copyVal unsafe.Pointer) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QMetaType_createWithCopy(this.h, copyVal))
 }
 
 func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.QMetaType_construct2(this.h, where, copyVal))
 }
 
@@ -432,8 +488,9 @@ func (this *QMetaType) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMetaType{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaType) {
-		C.QMetaType_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMetaType_delete((*C.QMetaType)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

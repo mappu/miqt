@@ -140,7 +140,9 @@ public:
 		memcpy(name_ms.data, name_b.data(), name_ms.len);
 		struct miqt_string sigval1 = name_ms;
 		QVariant* callback_return_value = miqt_exec_callback_QNmeaSatelliteInfoSource_backendProperty(this, handle__backendProperty, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QNmeaSatelliteInfoSource_virtualbase_backendProperty(const void* self, struct miqt_string name);
@@ -734,6 +736,10 @@ bool QNmeaSatelliteInfoSource_override_virtual_disconnectNotify(void* self, intp
 
 void QNmeaSatelliteInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQNmeaSatelliteInfoSource*>(self)->QNmeaSatelliteInfoSource::disconnectNotify(*signal);
+}
+
+QVariant* QNmeaSatelliteInfoSource_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QNmeaSatelliteInfoSource_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int satelliteError) {

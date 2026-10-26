@@ -34,7 +34,13 @@ const (
 
 type QTouchDevice struct {
 	h  *C.QTouchDevice
-	gc *[1]*C.QTouchDevice
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTouchDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTouchDevice) cPointer() *C.QTouchDevice {
@@ -82,6 +88,7 @@ func QTouchDevice_Devices() []*QTouchDevice {
 }
 
 func (this *QTouchDevice) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTouchDevice_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -89,18 +96,22 @@ func (this *QTouchDevice) Name() string {
 }
 
 func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
+	defer runtime.KeepAlive(this)
 	return (QTouchDevice__DeviceType)(C.QTouchDevice_type(this.h))
 }
 
 func (this *QTouchDevice) Capabilities() QTouchDevice__CapabilityFlag {
+	defer runtime.KeepAlive(this)
 	return (QTouchDevice__CapabilityFlag)(C.QTouchDevice_capabilities(this.h))
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTouchDevice_maximumTouchPoints(this.h))
 }
 
 func (this *QTouchDevice) SetName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -109,14 +120,17 @@ func (this *QTouchDevice) SetName(name string) {
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
+	defer runtime.KeepAlive(this)
 	C.QTouchDevice_setType(this.h, (C.int)(devType))
 }
 
 func (this *QTouchDevice) SetCapabilities(caps QTouchDevice__CapabilityFlag) {
+	defer runtime.KeepAlive(this)
 	C.QTouchDevice_setCapabilities(this.h, (C.int)(caps))
 }
 
 func (this *QTouchDevice) SetMaximumTouchPoints(max int) {
+	defer runtime.KeepAlive(this)
 	C.QTouchDevice_setMaximumTouchPoints(this.h, (C.int)(max))
 }
 
@@ -132,8 +146,9 @@ func (this *QTouchDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTouchDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTouchDevice) {
-		C.QTouchDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTouchDevice_delete((*C.QTouchDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

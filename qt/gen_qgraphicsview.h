@@ -350,6 +350,8 @@ bool QGraphicsView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QGraphicsView_virtualreturncopy_QSize(QSize* src);
+QVariant* QGraphicsView_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);

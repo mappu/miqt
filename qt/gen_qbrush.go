@@ -222,7 +222,13 @@ const (
 
 type QBrush struct {
 	h  *C.QBrush
-	gc *[1]*C.QBrush
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBrush) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBrush) cPointer() *C.QBrush {
@@ -267,6 +273,7 @@ func NewQBrush2(bs BrushStyle) *QBrush {
 
 // NewQBrush3 constructs a new QBrush object.
 func NewQBrush3(color *QColor) *QBrush {
+	defer runtime.KeepAlive(color)
 
 	return newQBrush(C.QBrush_new3(color.cPointer()))
 }
@@ -279,42 +286,50 @@ func NewQBrush4(color GlobalColor) *QBrush {
 
 // NewQBrush5 constructs a new QBrush object.
 func NewQBrush5(color *QColor, pixmap *QPixmap) *QBrush {
+	defer runtime.KeepAlive(color)
+	defer runtime.KeepAlive(pixmap)
 
 	return newQBrush(C.QBrush_new5(color.cPointer(), pixmap.cPointer()))
 }
 
 // NewQBrush6 constructs a new QBrush object.
 func NewQBrush6(color GlobalColor, pixmap *QPixmap) *QBrush {
+	defer runtime.KeepAlive(pixmap)
 
 	return newQBrush(C.QBrush_new6((C.int)(color), pixmap.cPointer()))
 }
 
 // NewQBrush7 constructs a new QBrush object.
 func NewQBrush7(pixmap *QPixmap) *QBrush {
+	defer runtime.KeepAlive(pixmap)
 
 	return newQBrush(C.QBrush_new7(pixmap.cPointer()))
 }
 
 // NewQBrush8 constructs a new QBrush object.
 func NewQBrush8(image *QImage) *QBrush {
+	defer runtime.KeepAlive(image)
 
 	return newQBrush(C.QBrush_new8(image.cPointer()))
 }
 
 // NewQBrush9 constructs a new QBrush object.
 func NewQBrush9(brush *QBrush) *QBrush {
+	defer runtime.KeepAlive(brush)
 
 	return newQBrush(C.QBrush_new9(brush.cPointer()))
 }
 
 // NewQBrush10 constructs a new QBrush object.
 func NewQBrush10(gradient *QGradient) *QBrush {
+	defer runtime.KeepAlive(gradient)
 
 	return newQBrush(C.QBrush_new10(gradient.cPointer()))
 }
 
 // NewQBrush11 constructs a new QBrush object.
 func NewQBrush11(color *QColor, bs BrushStyle) *QBrush {
+	defer runtime.KeepAlive(color)
 
 	return newQBrush(C.QBrush_new11(color.cPointer(), (C.int)(bs)))
 }
@@ -326,94 +341,128 @@ func NewQBrush12(color GlobalColor, bs BrushStyle) *QBrush {
 }
 
 func (this *QBrush) OperatorAssign(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QBrush_operatorAssign(this.h, brush.cPointer())
 }
 
 func (this *QBrush) Swap(other *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QBrush_swap(this.h, other.cPointer())
 }
 
 func (this *QBrush) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QBrush_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBrush) Style() BrushStyle {
+	defer runtime.KeepAlive(this)
 	return (BrushStyle)(C.QBrush_style(this.h))
 }
 
 func (this *QBrush) SetStyle(style BrushStyle) {
+	defer runtime.KeepAlive(this)
 	C.QBrush_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QBrush) Matrix() *QMatrix {
-	return newQMatrix(C.QBrush_matrix(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQMatrix(C.QBrush_matrix(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QBrush) SetMatrix(mat *QMatrix) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mat)
 	C.QBrush_setMatrix(this.h, mat.cPointer())
 }
 
 func (this *QBrush) Transform() *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QBrush_transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBrush) SetTransform(transform *QTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transform)
 	C.QBrush_setTransform(this.h, transform.cPointer())
 }
 
 func (this *QBrush) Texture() *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QBrush_texture(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBrush) SetTexture(pixmap *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QBrush_setTexture(this.h, pixmap.cPointer())
 }
 
 func (this *QBrush) TextureImage() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QBrush_textureImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBrush) SetTextureImage(image *QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 	C.QBrush_setTextureImage(this.h, image.cPointer())
 }
 
 func (this *QBrush) Color() *QColor {
-	return newQColor(C.QBrush_color(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQColor(C.QBrush_color(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QBrush) SetColor(color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QBrush_setColor(this.h, color.cPointer())
 }
 
 func (this *QBrush) SetColorWithColor(color GlobalColor) {
+	defer runtime.KeepAlive(this)
 	C.QBrush_setColorWithColor(this.h, (C.int)(color))
 }
 
 func (this *QBrush) Gradient() *QGradient {
+	defer runtime.KeepAlive(this)
 	return newQGradient(C.QBrush_gradient(this.h))
 }
 
 func (this *QBrush) IsOpaque() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBrush_isOpaque(this.h))
 }
 
 func (this *QBrush) OperatorEqual(b *QBrush) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(b)
 	return (bool)(C.QBrush_operatorEqual(this.h, b.cPointer()))
 }
 
 func (this *QBrush) OperatorNotEqual(b *QBrush) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(b)
 	return (bool)(C.QBrush_operatorNotEqual(this.h, b.cPointer()))
 }
 
 func (this *QBrush) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBrush_isDetached(this.h))
 }
 
@@ -429,15 +478,22 @@ func (this *QBrush) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBrush{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBrush) {
-		C.QBrush_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBrush_delete((*C.QBrush)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGradient struct {
 	h  *C.QGradient
-	gc *[1]*C.QGradient
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGradient) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGradient) cPointer() *C.QGradient {
@@ -482,23 +538,29 @@ func NewQGradient2(param1 QGradient__Preset) *QGradient {
 
 // NewQGradient3 constructs a new QGradient object.
 func NewQGradient3(param1 *QGradient) *QGradient {
+	defer runtime.KeepAlive(param1)
 
 	return newQGradient(C.QGradient_new3(param1.cPointer()))
 }
 
 func (this *QGradient) Type() QGradient__Type {
+	defer runtime.KeepAlive(this)
 	return (QGradient__Type)(C.QGradient_type(this.h))
 }
 
 func (this *QGradient) SetSpread(spread QGradient__Spread) {
+	defer runtime.KeepAlive(this)
 	C.QGradient_setSpread(this.h, (C.int)(spread))
 }
 
 func (this *QGradient) Spread() QGradient__Spread {
+	defer runtime.KeepAlive(this)
 	return (QGradient__Spread)(C.QGradient_spread(this.h))
 }
 
 func (this *QGradient) SetColorAt(pos float64, color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QGradient_setColorAt(this.h, (C.double)(pos), color.cPointer())
 }
 
@@ -506,6 +568,8 @@ func (this *QGradient) SetStops(stops []struct {
 	First  float64
 	Second QColor
 }) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(stops)
 	stops_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(stops))))
 	defer C.free(unsafe.Pointer(stops_CArray_ptr))
 	stops_CArray := unsafe.Slice(stops_CArray_ptr, len(stops))
@@ -531,6 +595,7 @@ func (this *QGradient) Stops() []struct {
 	First  float64
 	Second QColor
 } {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGradient_stops(this.h)
 	_ret := make([]struct {
 		First  float64
@@ -556,30 +621,40 @@ func (this *QGradient) Stops() []struct {
 }
 
 func (this *QGradient) CoordinateMode() QGradient__CoordinateMode {
+	defer runtime.KeepAlive(this)
 	return (QGradient__CoordinateMode)(C.QGradient_coordinateMode(this.h))
 }
 
 func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
+	defer runtime.KeepAlive(this)
 	C.QGradient_setCoordinateMode(this.h, (C.int)(mode))
 }
 
 func (this *QGradient) InterpolationMode() QGradient__InterpolationMode {
+	defer runtime.KeepAlive(this)
 	return (QGradient__InterpolationMode)(C.QGradient_interpolationMode(this.h))
 }
 
 func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
+	defer runtime.KeepAlive(this)
 	C.QGradient_setInterpolationMode(this.h, (C.int)(mode))
 }
 
 func (this *QGradient) OperatorEqual(gradient *QGradient) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(gradient)
 	return (bool)(C.QGradient_operatorEqual(this.h, gradient.cPointer()))
 }
 
 func (this *QGradient) OperatorNotEqual(other *QGradient) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGradient_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGradient) OperatorAssign(param1 *QGradient) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QGradient_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -595,16 +670,24 @@ func (this *QGradient) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGradient{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGradient) {
-		C.QGradient_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGradient_delete((*C.QGradient)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QLinearGradient struct {
 	h  *C.QLinearGradient
-	gc *[1]*C.QLinearGradient
+	gc *[1]unsafe.Pointer
 	*QGradient
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLinearGradient) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGradient.miqtSetGC(gc)
 }
 
 func (this *QLinearGradient) cPointer() *C.QLinearGradient {
@@ -646,6 +729,8 @@ func NewQLinearGradient() *QLinearGradient {
 
 // NewQLinearGradient2 constructs a new QLinearGradient object.
 func NewQLinearGradient2(start *QPointF, finalStop *QPointF) *QLinearGradient {
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(finalStop)
 
 	return newQLinearGradient(C.QLinearGradient_new2(start.cPointer(), finalStop.cPointer()))
 }
@@ -658,35 +743,44 @@ func NewQLinearGradient3(xStart float64, yStart float64, xFinalStop float64, yFi
 
 // NewQLinearGradient4 constructs a new QLinearGradient object.
 func NewQLinearGradient4(param1 *QLinearGradient) *QLinearGradient {
+	defer runtime.KeepAlive(param1)
 
 	return newQLinearGradient(C.QLinearGradient_new4(param1.cPointer()))
 }
 
 func (this *QLinearGradient) Start() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QLinearGradient_start(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLinearGradient) SetStart(start *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
 	C.QLinearGradient_setStart(this.h, start.cPointer())
 }
 
 func (this *QLinearGradient) SetStart2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QLinearGradient_setStart2(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QLinearGradient) FinalStop() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QLinearGradient_finalStop(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLinearGradient) SetFinalStop(stop *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(stop)
 	C.QLinearGradient_setFinalStop(this.h, stop.cPointer())
 }
 
 func (this *QLinearGradient) SetFinalStop2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QLinearGradient_setFinalStop2(this.h, (C.double)(x), (C.double)(y))
 }
 
@@ -702,16 +796,24 @@ func (this *QLinearGradient) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLinearGradient{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLinearGradient) {
-		C.QLinearGradient_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLinearGradient_delete((*C.QLinearGradient)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QRadialGradient struct {
 	h  *C.QRadialGradient
-	gc *[1]*C.QRadialGradient
+	gc *[1]unsafe.Pointer
 	*QGradient
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRadialGradient) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGradient.miqtSetGC(gc)
 }
 
 func (this *QRadialGradient) cPointer() *C.QRadialGradient {
@@ -753,6 +855,8 @@ func NewQRadialGradient() *QRadialGradient {
 
 // NewQRadialGradient2 constructs a new QRadialGradient object.
 func NewQRadialGradient2(center *QPointF, radius float64, focalPoint *QPointF) *QRadialGradient {
+	defer runtime.KeepAlive(center)
+	defer runtime.KeepAlive(focalPoint)
 
 	return newQRadialGradient(C.QRadialGradient_new2(center.cPointer(), (C.double)(radius), focalPoint.cPointer()))
 }
@@ -765,6 +869,7 @@ func NewQRadialGradient3(cx float64, cy float64, radius float64, fx float64, fy 
 
 // NewQRadialGradient4 constructs a new QRadialGradient object.
 func NewQRadialGradient4(center *QPointF, radius float64) *QRadialGradient {
+	defer runtime.KeepAlive(center)
 
 	return newQRadialGradient(C.QRadialGradient_new4(center.cPointer(), (C.double)(radius)))
 }
@@ -777,6 +882,8 @@ func NewQRadialGradient5(cx float64, cy float64, radius float64) *QRadialGradien
 
 // NewQRadialGradient6 constructs a new QRadialGradient object.
 func NewQRadialGradient6(center *QPointF, centerRadius float64, focalPoint *QPointF, focalRadius float64) *QRadialGradient {
+	defer runtime.KeepAlive(center)
+	defer runtime.KeepAlive(focalPoint)
 
 	return newQRadialGradient(C.QRadialGradient_new6(center.cPointer(), (C.double)(centerRadius), focalPoint.cPointer(), (C.double)(focalRadius)))
 }
@@ -789,59 +896,74 @@ func NewQRadialGradient7(cx float64, cy float64, centerRadius float64, fx float6
 
 // NewQRadialGradient8 constructs a new QRadialGradient object.
 func NewQRadialGradient8(param1 *QRadialGradient) *QRadialGradient {
+	defer runtime.KeepAlive(param1)
 
 	return newQRadialGradient(C.QRadialGradient_new8(param1.cPointer()))
 }
 
 func (this *QRadialGradient) Center() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QRadialGradient_center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRadialGradient) SetCenter(center *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(center)
 	C.QRadialGradient_setCenter(this.h, center.cPointer())
 }
 
 func (this *QRadialGradient) SetCenter2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QRadialGradient_setCenter2(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QRadialGradient) FocalPoint() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QRadialGradient_focalPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRadialGradient) SetFocalPoint(focalPoint *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(focalPoint)
 	C.QRadialGradient_setFocalPoint(this.h, focalPoint.cPointer())
 }
 
 func (this *QRadialGradient) SetFocalPoint2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QRadialGradient_setFocalPoint2(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QRadialGradient) Radius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QRadialGradient_radius(this.h))
 }
 
 func (this *QRadialGradient) SetRadius(radius float64) {
+	defer runtime.KeepAlive(this)
 	C.QRadialGradient_setRadius(this.h, (C.double)(radius))
 }
 
 func (this *QRadialGradient) CenterRadius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QRadialGradient_centerRadius(this.h))
 }
 
 func (this *QRadialGradient) SetCenterRadius(radius float64) {
+	defer runtime.KeepAlive(this)
 	C.QRadialGradient_setCenterRadius(this.h, (C.double)(radius))
 }
 
 func (this *QRadialGradient) FocalRadius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QRadialGradient_focalRadius(this.h))
 }
 
 func (this *QRadialGradient) SetFocalRadius(radius float64) {
+	defer runtime.KeepAlive(this)
 	C.QRadialGradient_setFocalRadius(this.h, (C.double)(radius))
 }
 
@@ -857,16 +979,24 @@ func (this *QRadialGradient) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRadialGradient{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRadialGradient) {
-		C.QRadialGradient_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRadialGradient_delete((*C.QRadialGradient)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QConicalGradient struct {
 	h  *C.QConicalGradient
-	gc *[1]*C.QConicalGradient
+	gc *[1]unsafe.Pointer
 	*QGradient
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QConicalGradient) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGradient.miqtSetGC(gc)
 }
 
 func (this *QConicalGradient) cPointer() *C.QConicalGradient {
@@ -908,6 +1038,7 @@ func NewQConicalGradient() *QConicalGradient {
 
 // NewQConicalGradient2 constructs a new QConicalGradient object.
 func NewQConicalGradient2(center *QPointF, startAngle float64) *QConicalGradient {
+	defer runtime.KeepAlive(center)
 
 	return newQConicalGradient(C.QConicalGradient_new2(center.cPointer(), (C.double)(startAngle)))
 }
@@ -920,29 +1051,36 @@ func NewQConicalGradient3(cx float64, cy float64, startAngle float64) *QConicalG
 
 // NewQConicalGradient4 constructs a new QConicalGradient object.
 func NewQConicalGradient4(param1 *QConicalGradient) *QConicalGradient {
+	defer runtime.KeepAlive(param1)
 
 	return newQConicalGradient(C.QConicalGradient_new4(param1.cPointer()))
 }
 
 func (this *QConicalGradient) Center() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QConicalGradient_center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QConicalGradient) SetCenter(center *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(center)
 	C.QConicalGradient_setCenter(this.h, center.cPointer())
 }
 
 func (this *QConicalGradient) SetCenter2(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QConicalGradient_setCenter2(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QConicalGradient) Angle() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QConicalGradient_angle(this.h))
 }
 
 func (this *QConicalGradient) SetAngle(angle float64) {
+	defer runtime.KeepAlive(this)
 	C.QConicalGradient_setAngle(this.h, (C.double)(angle))
 }
 
@@ -958,15 +1096,22 @@ func (this *QConicalGradient) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QConicalGradient{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QConicalGradient) {
-		C.QConicalGradient_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QConicalGradient_delete((*C.QConicalGradient)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QGradient__QGradientData struct {
 	h  *C.QGradient__QGradientData
-	gc *[1]*C.QGradient__QGradientData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGradient__QGradientData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGradient__QGradientData) cPointer() *C.QGradient__QGradientData {
@@ -999,11 +1144,14 @@ func UnsafeNewQGradient__QGradientData(h unsafe.Pointer) *QGradient__QGradientDa
 
 // NewQGradient__QGradientData constructs a new QGradient::QGradientData object.
 func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__QGradientData {
+	defer runtime.KeepAlive(param1)
 
 	return newQGradient__QGradientData(C.QGradient__QGradientData_new(param1.cPointer()))
 }
 
 func (this *QGradient__QGradientData) OperatorAssign(param1 *QGradient__QGradientData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QGradient__QGradientData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1019,8 +1167,9 @@ func (this *QGradient__QGradientData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGradient__QGradientData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGradient__QGradientData) {
-		C.QGradient__QGradientData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGradient__QGradientData_delete((*C.QGradient__QGradientData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

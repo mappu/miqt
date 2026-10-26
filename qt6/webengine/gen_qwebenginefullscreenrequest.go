@@ -16,7 +16,13 @@ import (
 
 type QWebEngineFullScreenRequest struct {
 	h  *C.QWebEngineFullScreenRequest
-	gc *[1]*C.QWebEngineFullScreenRequest
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineFullScreenRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineFullScreenRequest) cPointer() *C.QWebEngineFullScreenRequest {
@@ -49,27 +55,34 @@ func UnsafeNewQWebEngineFullScreenRequest(h unsafe.Pointer) *QWebEngineFullScree
 
 // NewQWebEngineFullScreenRequest constructs a new QWebEngineFullScreenRequest object.
 func NewQWebEngineFullScreenRequest(other *QWebEngineFullScreenRequest) *QWebEngineFullScreenRequest {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineFullScreenRequest(C.QWebEngineFullScreenRequest_new(other.cPointer()))
 }
 
 func (this *QWebEngineFullScreenRequest) OperatorAssign(other *QWebEngineFullScreenRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineFullScreenRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFullScreenRequest) Reject() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineFullScreenRequest_reject(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) Accept() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineFullScreenRequest_accept(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) ToggleOn() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineFullScreenRequest_toggleOn(this.h))
 }
 
 func (this *QWebEngineFullScreenRequest) Origin() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -87,8 +100,9 @@ func (this *QWebEngineFullScreenRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineFullScreenRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineFullScreenRequest) {
-		C.QWebEngineFullScreenRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineFullScreenRequest_delete((*C.QWebEngineFullScreenRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

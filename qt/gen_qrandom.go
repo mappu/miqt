@@ -15,7 +15,13 @@ import (
 
 type QRandomGenerator struct {
 	h  *C.QRandomGenerator
-	gc *[1]*C.QRandomGenerator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRandomGenerator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRandomGenerator) cPointer() *C.QRandomGenerator {
@@ -66,6 +72,7 @@ func NewQRandomGenerator3(begin *uint, end *uint) *QRandomGenerator {
 
 // NewQRandomGenerator4 constructs a new QRandomGenerator object.
 func NewQRandomGenerator4(other *QRandomGenerator) *QRandomGenerator {
+	defer runtime.KeepAlive(other)
 
 	return newQRandomGenerator(C.QRandomGenerator_new4(other.cPointer()))
 }
@@ -77,54 +84,68 @@ func NewQRandomGenerator5(seedValue uint) *QRandomGenerator {
 }
 
 func (this *QRandomGenerator) OperatorAssign(other *QRandomGenerator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QRandomGenerator_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QRandomGenerator) Generate() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QRandomGenerator_generate(this.h))
 }
 
 func (this *QRandomGenerator) Generate64() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QRandomGenerator_generate64(this.h))
 }
 
 func (this *QRandomGenerator) GenerateDouble() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QRandomGenerator_generateDouble(this.h))
 }
 
 func (this *QRandomGenerator) Bounded(highest float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QRandomGenerator_bounded(this.h, (C.double)(highest)))
 }
 
 func (this *QRandomGenerator) BoundedWithHighest(highest uint) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QRandomGenerator_boundedWithHighest(this.h, (C.uint)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded2(lowest uint, highest uint) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QRandomGenerator_bounded2(this.h, (C.uint)(lowest), (C.uint)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded3(highest int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QRandomGenerator_bounded3(this.h, (C.int)(highest)))
 }
 
 func (this *QRandomGenerator) Bounded4(lowest int, highest int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QRandomGenerator_bounded4(this.h, (C.int)(lowest), (C.int)(highest)))
 }
 
 func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
+	defer runtime.KeepAlive(this)
 	C.QRandomGenerator_generate2(this.h, (*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)))
 }
 
 func (this *QRandomGenerator) OperatorCall() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QRandomGenerator_operatorCall(this.h))
 }
 
 func (this *QRandomGenerator) Seed() {
+	defer runtime.KeepAlive(this)
 	C.QRandomGenerator_seed(this.h)
 }
 
 func (this *QRandomGenerator) Discard(z uint64) {
+	defer runtime.KeepAlive(this)
 	C.QRandomGenerator_discard(this.h, (C.ulonglong)(z))
 }
 
@@ -151,6 +172,7 @@ func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
 }
 
 func (this *QRandomGenerator) SeedWithQuint32(s uint) {
+	defer runtime.KeepAlive(this)
 	C.QRandomGenerator_seedWithQuint32(this.h, (C.uint)(s))
 }
 
@@ -166,16 +188,24 @@ func (this *QRandomGenerator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRandomGenerator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRandomGenerator) {
-		C.QRandomGenerator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRandomGenerator_delete((*C.QRandomGenerator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QRandomGenerator64 struct {
 	h  *C.QRandomGenerator64
-	gc *[1]*C.QRandomGenerator64
+	gc *[1]unsafe.Pointer
 	*QRandomGenerator
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRandomGenerator64) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QRandomGenerator.miqtSetGC(gc)
 }
 
 func (this *QRandomGenerator64) cPointer() *C.QRandomGenerator64 {
@@ -229,12 +259,14 @@ func NewQRandomGenerator643(begin *uint, end *uint) *QRandomGenerator64 {
 
 // NewQRandomGenerator644 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator644(other *QRandomGenerator) *QRandomGenerator64 {
+	defer runtime.KeepAlive(other)
 
 	return newQRandomGenerator64(C.QRandomGenerator64_new4(other.cPointer()))
 }
 
 // NewQRandomGenerator645 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator645(param1 *QRandomGenerator64) *QRandomGenerator64 {
+	defer runtime.KeepAlive(param1)
 
 	return newQRandomGenerator64(C.QRandomGenerator64_new5(param1.cPointer()))
 }
@@ -246,14 +278,17 @@ func NewQRandomGenerator646(seedValue uint) *QRandomGenerator64 {
 }
 
 func (this *QRandomGenerator64) Generate() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QRandomGenerator64_generate(this.h))
 }
 
 func (this *QRandomGenerator64) OperatorCall() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QRandomGenerator64_operatorCall(this.h))
 }
 
 func (this *QRandomGenerator64) Discard(z uint64) {
+	defer runtime.KeepAlive(this)
 	C.QRandomGenerator64_discard(this.h, (C.ulonglong)(z))
 }
 
@@ -280,6 +315,8 @@ func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {
 }
 
 func (this *QRandomGenerator64) OperatorAssign(param1 *QRandomGenerator64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QRandomGenerator64_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -295,8 +332,9 @@ func (this *QRandomGenerator64) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRandomGenerator64{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRandomGenerator64) {
-		C.QRandomGenerator64_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRandomGenerator64_delete((*C.QRandomGenerator64)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
@@ -39,7 +40,14 @@ const (
 )
 
 type QStringConverter struct {
-	h *C.QStringConverter
+	h  *C.QStringConverter
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringConverter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStringConverter) cPointer() *C.QStringConverter {
@@ -71,18 +79,22 @@ func UnsafeNewQStringConverter(h unsafe.Pointer) *QStringConverter {
 }
 
 func (this *QStringConverter) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStringConverter_isValid(this.h))
 }
 
 func (this *QStringConverter) ResetState() {
+	defer runtime.KeepAlive(this)
 	C.QStringConverter_resetState(this.h)
 }
 
 func (this *QStringConverter) HasError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStringConverter_hasError(this.h))
 }
 
 func (this *QStringConverter) Name() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QStringConverter_name(this.h)
 	return C.GoString(_ret)
 }

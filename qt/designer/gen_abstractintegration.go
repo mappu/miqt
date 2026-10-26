@@ -34,8 +34,14 @@ const (
 
 type QDesignerIntegrationInterface struct {
 	h  *C.QDesignerIntegrationInterface
-	gc *[1]*C.QDesignerIntegrationInterface
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerIntegrationInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerIntegrationInterface) cPointer() *C.QDesignerIntegrationInterface {
@@ -71,21 +77,26 @@ func UnsafeNewQDesignerIntegrationInterface(h unsafe.Pointer) *QDesignerIntegrat
 
 // NewQDesignerIntegrationInterface constructs a new QDesignerIntegrationInterface object.
 func NewQDesignerIntegrationInterface(core *QDesignerFormEditorInterface) *QDesignerIntegrationInterface {
+	defer runtime.KeepAlive(core)
 
 	return newQDesignerIntegrationInterface(C.QDesignerIntegrationInterface_new(core.cPointer()))
 }
 
 // NewQDesignerIntegrationInterface2 constructs a new QDesignerIntegrationInterface object.
 func NewQDesignerIntegrationInterface2(core *QDesignerFormEditorInterface, parent *qt.QObject) *QDesignerIntegrationInterface {
+	defer runtime.KeepAlive(core)
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerIntegrationInterface(C.QDesignerIntegrationInterface_new2(core.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerIntegrationInterface) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerIntegrationInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerIntegrationInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerIntegrationInterface_metacast(this.h, param1_Cstring))
@@ -110,18 +121,24 @@ func QDesignerIntegrationInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerIntegrationInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerIntegrationInterface_core(this.h))
 }
 
 func (this *QDesignerIntegrationInterface) ContainerWindow(widget *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerIntegrationInterface_containerWindow(this.h, (*C.QWidget)(widget.UnsafePointer()))))
 }
 
 func (this *QDesignerIntegrationInterface) CreateResourceBrowser(parent *qt.QWidget) *QDesignerResourceBrowserInterface {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return newQDesignerResourceBrowserInterface(C.QDesignerIntegrationInterface_createResourceBrowser(this.h, (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerIntegrationInterface) HeaderSuffix() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerIntegrationInterface_headerSuffix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -129,6 +146,7 @@ func (this *QDesignerIntegrationInterface) HeaderSuffix() string {
 }
 
 func (this *QDesignerIntegrationInterface) SetHeaderSuffix(headerSuffix string) {
+	defer runtime.KeepAlive(this)
 	headerSuffix_ms := C.struct_miqt_string{}
 	headerSuffix_ms.data = C.CString(headerSuffix)
 	headerSuffix_ms.len = C.size_t(len(headerSuffix))
@@ -137,30 +155,37 @@ func (this *QDesignerIntegrationInterface) SetHeaderSuffix(headerSuffix string) 
 }
 
 func (this *QDesignerIntegrationInterface) IsHeaderLowercase() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerIntegrationInterface_isHeaderLowercase(this.h))
 }
 
 func (this *QDesignerIntegrationInterface) SetHeaderLowercase(headerLowerCase bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegrationInterface_setHeaderLowercase(this.h, (C.bool)(headerLowerCase))
 }
 
 func (this *QDesignerIntegrationInterface) Features() QDesignerIntegrationInterface__FeatureFlag {
+	defer runtime.KeepAlive(this)
 	return (QDesignerIntegrationInterface__FeatureFlag)(C.QDesignerIntegrationInterface_features(this.h))
 }
 
 func (this *QDesignerIntegrationInterface) HasFeature(f QDesignerIntegrationInterface__FeatureFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerIntegrationInterface_hasFeature(this.h, (C.int)(f)))
 }
 
 func (this *QDesignerIntegrationInterface) ResourceFileWatcherBehaviour() QDesignerIntegrationInterface__ResourceFileWatcherBehaviour {
+	defer runtime.KeepAlive(this)
 	return (QDesignerIntegrationInterface__ResourceFileWatcherBehaviour)(C.QDesignerIntegrationInterface_resourceFileWatcherBehaviour(this.h))
 }
 
 func (this *QDesignerIntegrationInterface) SetResourceFileWatcherBehaviour(behaviour QDesignerIntegrationInterface__ResourceFileWatcherBehaviour) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegrationInterface_setResourceFileWatcherBehaviour(this.h, (C.int)(behaviour))
 }
 
 func (this *QDesignerIntegrationInterface) ContextHelpId() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerIntegrationInterface_contextHelpId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -168,6 +193,9 @@ func (this *QDesignerIntegrationInterface) ContextHelpId() string {
 }
 
 func (this *QDesignerIntegrationInterface) EmitObjectNameChanged(formWindow *QDesignerFormWindowInterface, object *qt.QObject, newName string, oldName string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
+	defer runtime.KeepAlive(object)
 	newName_ms := C.struct_miqt_string{}
 	newName_ms.data = C.CString(newName)
 	newName_ms.len = C.size_t(len(newName))
@@ -180,6 +208,7 @@ func (this *QDesignerIntegrationInterface) EmitObjectNameChanged(formWindow *QDe
 }
 
 func (this *QDesignerIntegrationInterface) EmitNavigateToSlot(objectName string, signalSignature string, parameterNames []string) {
+	defer runtime.KeepAlive(this)
 	objectName_ms := C.struct_miqt_string{}
 	objectName_ms.data = C.CString(objectName)
 	objectName_ms.len = C.size_t(len(objectName))
@@ -203,6 +232,7 @@ func (this *QDesignerIntegrationInterface) EmitNavigateToSlot(objectName string,
 }
 
 func (this *QDesignerIntegrationInterface) EmitNavigateToSlotWithSlotSignature(slotSignature string) {
+	defer runtime.KeepAlive(this)
 	slotSignature_ms := C.struct_miqt_string{}
 	slotSignature_ms.data = C.CString(slotSignature)
 	slotSignature_ms.len = C.size_t(len(slotSignature))
@@ -211,6 +241,7 @@ func (this *QDesignerIntegrationInterface) EmitNavigateToSlotWithSlotSignature(s
 }
 
 func (this *QDesignerIntegrationInterface) EmitHelpRequested(manual string, document string) {
+	defer runtime.KeepAlive(this)
 	manual_ms := C.struct_miqt_string{}
 	manual_ms.data = C.CString(manual)
 	manual_ms.len = C.size_t(len(manual))
@@ -223,6 +254,9 @@ func (this *QDesignerIntegrationInterface) EmitHelpRequested(manual string, docu
 }
 
 func (this *QDesignerIntegrationInterface) PropertyChanged(formWindow *QDesignerFormWindowInterface, name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -253,6 +287,9 @@ func miqt_exec_callback_QDesignerIntegrationInterface_propertyChanged(cb C.intpt
 }
 
 func (this *QDesignerIntegrationInterface) ObjectNameChanged(formWindow *QDesignerFormWindowInterface, object *qt.QObject, newName string, oldName string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
+	defer runtime.KeepAlive(object)
 	newName_ms := C.struct_miqt_string{}
 	newName_ms.data = C.CString(newName)
 	newName_ms.len = C.size_t(len(newName))
@@ -292,6 +329,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_objectNameChanged(cb C.int
 }
 
 func (this *QDesignerIntegrationInterface) HelpRequested(manual string, document string) {
+	defer runtime.KeepAlive(this)
 	manual_ms := C.struct_miqt_string{}
 	manual_ms.data = C.CString(manual)
 	manual_ms.len = C.size_t(len(manual))
@@ -327,6 +365,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_helpRequested(cb C.intptr_
 }
 
 func (this *QDesignerIntegrationInterface) NavigateToSlot(objectName string, signalSignature string, parameterNames []string) {
+	defer runtime.KeepAlive(this)
 	objectName_ms := C.struct_miqt_string{}
 	objectName_ms.data = C.CString(objectName)
 	objectName_ms.len = C.size_t(len(objectName))
@@ -383,6 +422,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_navigateToSlot(cb C.intptr
 }
 
 func (this *QDesignerIntegrationInterface) NavigateToSlotWithSlotSignature(slotSignature string) {
+	defer runtime.KeepAlive(this)
 	slotSignature_ms := C.struct_miqt_string{}
 	slotSignature_ms.data = C.CString(slotSignature)
 	slotSignature_ms.len = C.size_t(len(slotSignature))
@@ -410,10 +450,13 @@ func miqt_exec_callback_QDesignerIntegrationInterface_navigateToSlotWithSlotSign
 }
 
 func (this *QDesignerIntegrationInterface) SetFeatures(f QDesignerIntegrationInterface__FeatureFlag) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegrationInterface_setFeatures(this.h, (C.int)(f))
 }
 
 func (this *QDesignerIntegrationInterface) UpdateProperty(name string, value *qt.QVariant, enableSubPropertyHandling bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -422,6 +465,8 @@ func (this *QDesignerIntegrationInterface) UpdateProperty(name string, value *qt
 }
 
 func (this *QDesignerIntegrationInterface) UpdateProperty2(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -430,6 +475,7 @@ func (this *QDesignerIntegrationInterface) UpdateProperty2(name string, value *q
 }
 
 func (this *QDesignerIntegrationInterface) ResetProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -438,6 +484,8 @@ func (this *QDesignerIntegrationInterface) ResetProperty(name string) {
 }
 
 func (this *QDesignerIntegrationInterface) AddDynamicProperty(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -446,6 +494,7 @@ func (this *QDesignerIntegrationInterface) AddDynamicProperty(name string, value
 }
 
 func (this *QDesignerIntegrationInterface) RemoveDynamicProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -454,18 +503,24 @@ func (this *QDesignerIntegrationInterface) RemoveDynamicProperty(name string) {
 }
 
 func (this *QDesignerIntegrationInterface) UpdateActiveFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 	C.QDesignerIntegrationInterface_updateActiveFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerIntegrationInterface) SetupFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 	C.QDesignerIntegrationInterface_setupFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerIntegrationInterface) UpdateSelection() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegrationInterface_updateSelection(this.h)
 }
 
 func (this *QDesignerIntegrationInterface) UpdateCustomWidgetPlugins() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegrationInterface_updateCustomWidgetPlugins(this.h)
 }
 
@@ -515,6 +570,7 @@ func QDesignerIntegrationInterface_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QDesignerIntegrationInterface that was directly constructed.
 func (this *QDesignerIntegrationInterface) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerIntegrationInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -529,6 +585,7 @@ func (this *QDesignerIntegrationInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerIntegrationInterface that was directly constructed.
 func (this *QDesignerIntegrationInterface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerIntegrationInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -543,6 +600,7 @@ func (this *QDesignerIntegrationInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerIntegrationInterface that was directly constructed.
 func (this *QDesignerIntegrationInterface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -559,6 +617,8 @@ func (this *QDesignerIntegrationInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerIntegrationInterface that was directly constructed.
 func (this *QDesignerIntegrationInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerIntegrationInterface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -588,6 +648,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_containerWindow(self *C.QD
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -610,6 +671,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_createResourceBrowser(self
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -994,6 +1056,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_updateCustomWidgetPlugins(
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerIntegrationInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1022,6 +1086,9 @@ func miqt_exec_callback_QDesignerIntegrationInterface_event(self *C.QDesignerInt
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerIntegrationInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1052,6 +1119,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_eventFilter(self *C.QDesig
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegrationInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1078,6 +1147,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_timerEvent(self *C.QDesign
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegrationInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1104,6 +1175,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_childEvent(self *C.QDesign
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegrationInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1130,6 +1203,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_customEvent(self *C.QDesig
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerIntegrationInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1156,6 +1231,8 @@ func miqt_exec_callback_QDesignerIntegrationInterface_connectNotify(self *C.QDes
 }
 
 func (this *QDesignerIntegrationInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerIntegrationInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1193,16 +1270,24 @@ func (this *QDesignerIntegrationInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerIntegrationInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerIntegrationInterface) {
-		C.QDesignerIntegrationInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerIntegrationInterface_delete((*C.QDesignerIntegrationInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDesignerIntegration struct {
 	h  *C.QDesignerIntegration
-	gc *[1]*C.QDesignerIntegration
+	gc *[1]unsafe.Pointer
 	*QDesignerIntegrationInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerIntegration) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDesignerIntegrationInterface.miqtSetGC(gc)
 }
 
 func (this *QDesignerIntegration) cPointer() *C.QDesignerIntegration {
@@ -1238,21 +1323,26 @@ func UnsafeNewQDesignerIntegration(h unsafe.Pointer) *QDesignerIntegration {
 
 // NewQDesignerIntegration constructs a new QDesignerIntegration object.
 func NewQDesignerIntegration(core *QDesignerFormEditorInterface) *QDesignerIntegration {
+	defer runtime.KeepAlive(core)
 
 	return newQDesignerIntegration(C.QDesignerIntegration_new(core.cPointer()))
 }
 
 // NewQDesignerIntegration2 constructs a new QDesignerIntegration object.
 func NewQDesignerIntegration2(core *QDesignerFormEditorInterface, parent *qt.QObject) *QDesignerIntegration {
+	defer runtime.KeepAlive(core)
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerIntegration(C.QDesignerIntegration_new2(core.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerIntegration) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerIntegration_metaObject(this.h)))
 }
 
 func (this *QDesignerIntegration) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerIntegration_metacast(this.h, param1_Cstring))
@@ -1277,6 +1367,7 @@ func QDesignerIntegration_TrUtf8(s string) string {
 }
 
 func (this *QDesignerIntegration) HeaderSuffix() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerIntegration_headerSuffix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1284,6 +1375,7 @@ func (this *QDesignerIntegration) HeaderSuffix() string {
 }
 
 func (this *QDesignerIntegration) SetHeaderSuffix(headerSuffix string) {
+	defer runtime.KeepAlive(this)
 	headerSuffix_ms := C.struct_miqt_string{}
 	headerSuffix_ms.data = C.CString(headerSuffix)
 	headerSuffix_ms.len = C.size_t(len(headerSuffix))
@@ -1292,42 +1384,54 @@ func (this *QDesignerIntegration) SetHeaderSuffix(headerSuffix string) {
 }
 
 func (this *QDesignerIntegration) IsHeaderLowercase() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerIntegration_isHeaderLowercase(this.h))
 }
 
 func (this *QDesignerIntegration) SetHeaderLowercase(headerLowerCase bool) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegration_setHeaderLowercase(this.h, (C.bool)(headerLowerCase))
 }
 
 func (this *QDesignerIntegration) Features() QDesignerIntegrationInterface__FeatureFlag {
+	defer runtime.KeepAlive(this)
 	return (QDesignerIntegrationInterface__FeatureFlag)(C.QDesignerIntegration_features(this.h))
 }
 
 func (this *QDesignerIntegration) SetFeatures(f QDesignerIntegrationInterface__FeatureFlag) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegration_setFeatures(this.h, (C.int)(f))
 }
 
 func (this *QDesignerIntegration) ResourceFileWatcherBehaviour() QDesignerIntegrationInterface__ResourceFileWatcherBehaviour {
+	defer runtime.KeepAlive(this)
 	return (QDesignerIntegrationInterface__ResourceFileWatcherBehaviour)(C.QDesignerIntegration_resourceFileWatcherBehaviour(this.h))
 }
 
 func (this *QDesignerIntegration) SetResourceFileWatcherBehaviour(behaviour QDesignerIntegrationInterface__ResourceFileWatcherBehaviour) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegration_setResourceFileWatcherBehaviour(this.h, (C.int)(behaviour))
 }
 
 func (this *QDesignerIntegration) ContainerWindow(widget *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerIntegration_containerWindow(this.h, (*C.QWidget)(widget.UnsafePointer()))))
 }
 
 func QDesignerIntegration_InitializePlugins(formEditor *QDesignerFormEditorInterface) {
+	defer runtime.KeepAlive(formEditor)
 	C.QDesignerIntegration_initializePlugins(formEditor.cPointer())
 }
 
 func (this *QDesignerIntegration) CreateResourceBrowser(parent *qt.QWidget) *QDesignerResourceBrowserInterface {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return newQDesignerResourceBrowserInterface(C.QDesignerIntegration_createResourceBrowser(this.h, (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerIntegration) ContextHelpId() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerIntegration_contextHelpId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1335,6 +1439,8 @@ func (this *QDesignerIntegration) ContextHelpId() string {
 }
 
 func (this *QDesignerIntegration) UpdateProperty(name string, value *qt.QVariant, enableSubPropertyHandling bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1343,6 +1449,8 @@ func (this *QDesignerIntegration) UpdateProperty(name string, value *qt.QVariant
 }
 
 func (this *QDesignerIntegration) UpdateProperty2(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1351,6 +1459,7 @@ func (this *QDesignerIntegration) UpdateProperty2(name string, value *qt.QVarian
 }
 
 func (this *QDesignerIntegration) ResetProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1359,6 +1468,8 @@ func (this *QDesignerIntegration) ResetProperty(name string) {
 }
 
 func (this *QDesignerIntegration) AddDynamicProperty(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1367,6 +1478,7 @@ func (this *QDesignerIntegration) AddDynamicProperty(name string, value *qt.QVar
 }
 
 func (this *QDesignerIntegration) RemoveDynamicProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1375,18 +1487,24 @@ func (this *QDesignerIntegration) RemoveDynamicProperty(name string) {
 }
 
 func (this *QDesignerIntegration) UpdateActiveFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 	C.QDesignerIntegration_updateActiveFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerIntegration) SetupFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 	C.QDesignerIntegration_setupFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerIntegration) UpdateSelection() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegration_updateSelection(this.h)
 }
 
 func (this *QDesignerIntegration) UpdateCustomWidgetPlugins() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerIntegration_updateCustomWidgetPlugins(this.h)
 }
 
@@ -1436,6 +1554,7 @@ func QDesignerIntegration_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QDesignerIntegration that was directly constructed.
 func (this *QDesignerIntegration) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerIntegration_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1450,6 +1569,7 @@ func (this *QDesignerIntegration) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerIntegration that was directly constructed.
 func (this *QDesignerIntegration) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerIntegration_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1464,6 +1584,7 @@ func (this *QDesignerIntegration) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerIntegration that was directly constructed.
 func (this *QDesignerIntegration) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1480,6 +1601,8 @@ func (this *QDesignerIntegration) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerIntegration that was directly constructed.
 func (this *QDesignerIntegration) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerIntegration_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -1493,6 +1616,7 @@ func (this *QDesignerIntegration) IsSignalConnected(signal *qt.QMetaMethod) bool
 }
 
 func (this *QDesignerIntegration) callVirtualBase_HeaderSuffix() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QDesignerIntegration_virtualbase_headerSuffix(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -1523,6 +1647,7 @@ func miqt_exec_callback_QDesignerIntegration_headerSuffix(self *C.QDesignerInteg
 }
 
 func (this *QDesignerIntegration) callVirtualBase_SetHeaderSuffix(headerSuffix string) {
+	defer runtime.KeepAlive(this)
 	headerSuffix_ms := C.struct_miqt_string{}
 	headerSuffix_ms.data = C.CString(headerSuffix)
 	headerSuffix_ms.len = C.size_t(len(headerSuffix))
@@ -1556,6 +1681,7 @@ func miqt_exec_callback_QDesignerIntegration_setHeaderSuffix(self *C.QDesignerIn
 }
 
 func (this *QDesignerIntegration) callVirtualBase_IsHeaderLowercase() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerIntegration_virtualbase_isHeaderLowercase(unsafe.Pointer(this.h)))
 
@@ -1581,6 +1707,7 @@ func miqt_exec_callback_QDesignerIntegration_isHeaderLowercase(self *C.QDesigner
 }
 
 func (this *QDesignerIntegration) callVirtualBase_SetHeaderLowercase(headerLowerCase bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerIntegration_virtualbase_setHeaderLowercase(unsafe.Pointer(this.h), (C.bool)(headerLowerCase))
 
@@ -1607,6 +1734,7 @@ func miqt_exec_callback_QDesignerIntegration_setHeaderLowercase(self *C.QDesigne
 }
 
 func (this *QDesignerIntegration) callVirtualBase_Features() QDesignerIntegrationInterface__FeatureFlag {
+	defer runtime.KeepAlive(this)
 
 	return (QDesignerIntegrationInterface__FeatureFlag)(C.QDesignerIntegration_virtualbase_features(unsafe.Pointer(this.h)))
 
@@ -1632,6 +1760,7 @@ func miqt_exec_callback_QDesignerIntegration_features(self *C.QDesignerIntegrati
 }
 
 func (this *QDesignerIntegration) callVirtualBase_SetFeatures(f QDesignerIntegrationInterface__FeatureFlag) {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerIntegration_virtualbase_setFeatures(unsafe.Pointer(this.h), (C.int)(f))
 
@@ -1658,6 +1787,7 @@ func miqt_exec_callback_QDesignerIntegration_setFeatures(self *C.QDesignerIntegr
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ResourceFileWatcherBehaviour() QDesignerIntegrationInterface__ResourceFileWatcherBehaviour {
+	defer runtime.KeepAlive(this)
 
 	return (QDesignerIntegrationInterface__ResourceFileWatcherBehaviour)(C.QDesignerIntegration_virtualbase_resourceFileWatcherBehaviour(unsafe.Pointer(this.h)))
 
@@ -1683,6 +1813,7 @@ func miqt_exec_callback_QDesignerIntegration_resourceFileWatcherBehaviour(self *
 }
 
 func (this *QDesignerIntegration) callVirtualBase_SetResourceFileWatcherBehaviour(behaviour QDesignerIntegrationInterface__ResourceFileWatcherBehaviour) {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerIntegration_virtualbase_setResourceFileWatcherBehaviour(unsafe.Pointer(this.h), (C.int)(behaviour))
 
@@ -1709,6 +1840,8 @@ func miqt_exec_callback_QDesignerIntegration_setResourceFileWatcherBehaviour(sel
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ContainerWindow(widget *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerIntegration_virtualbase_containerWindow(unsafe.Pointer(this.h), (*C.QWidget)(widget.UnsafePointer()))))
 
@@ -1731,12 +1864,15 @@ func miqt_exec_callback_QDesignerIntegration_containerWindow(self *C.QDesignerIn
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	virtualReturn := gofunc((&QDesignerIntegration{h: self}).callVirtualBase_ContainerWindow, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QDesignerIntegration) callVirtualBase_CreateResourceBrowser(parent *qt.QWidget) *QDesignerResourceBrowserInterface {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerResourceBrowserInterface(C.QDesignerIntegration_virtualbase_createResourceBrowser(unsafe.Pointer(this.h), (*C.QWidget)(parent.UnsafePointer())))
 
@@ -1759,12 +1895,14 @@ func miqt_exec_callback_QDesignerIntegration_createResourceBrowser(self *C.QDesi
 	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc((&QDesignerIntegration{h: self}).callVirtualBase_CreateResourceBrowser, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ContextHelpId() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QDesignerIntegration_virtualbase_contextHelpId(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -1795,6 +1933,8 @@ func miqt_exec_callback_QDesignerIntegration_contextHelpId(self *C.QDesignerInte
 }
 
 func (this *QDesignerIntegration) callVirtualBase_UpdateProperty(name string, value *qt.QVariant, enableSubPropertyHandling bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1831,6 +1971,8 @@ func miqt_exec_callback_QDesignerIntegration_updateProperty(self *C.QDesignerInt
 }
 
 func (this *QDesignerIntegration) callVirtualBase_UpdateProperty2(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1865,6 +2007,7 @@ func miqt_exec_callback_QDesignerIntegration_updateProperty2(self *C.QDesignerIn
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ResetProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1898,6 +2041,8 @@ func miqt_exec_callback_QDesignerIntegration_resetProperty(self *C.QDesignerInte
 }
 
 func (this *QDesignerIntegration) callVirtualBase_AddDynamicProperty(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1932,6 +2077,7 @@ func miqt_exec_callback_QDesignerIntegration_addDynamicProperty(self *C.QDesigne
 }
 
 func (this *QDesignerIntegration) callVirtualBase_RemoveDynamicProperty(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1965,6 +2111,8 @@ func miqt_exec_callback_QDesignerIntegration_removeDynamicProperty(self *C.QDesi
 }
 
 func (this *QDesignerIntegration) callVirtualBase_UpdateActiveFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 
 	C.QDesignerIntegration_virtualbase_updateActiveFormWindow(unsafe.Pointer(this.h), formWindow.cPointer())
 
@@ -1991,6 +2139,8 @@ func miqt_exec_callback_QDesignerIntegration_updateActiveFormWindow(self *C.QDes
 }
 
 func (this *QDesignerIntegration) callVirtualBase_SetupFormWindow(formWindow *QDesignerFormWindowInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindow)
 
 	C.QDesignerIntegration_virtualbase_setupFormWindow(unsafe.Pointer(this.h), formWindow.cPointer())
 
@@ -2017,6 +2167,7 @@ func miqt_exec_callback_QDesignerIntegration_setupFormWindow(self *C.QDesignerIn
 }
 
 func (this *QDesignerIntegration) callVirtualBase_UpdateSelection() {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerIntegration_virtualbase_updateSelection(unsafe.Pointer(this.h))
 
@@ -2040,6 +2191,7 @@ func miqt_exec_callback_QDesignerIntegration_updateSelection(self *C.QDesignerIn
 }
 
 func (this *QDesignerIntegration) callVirtualBase_UpdateCustomWidgetPlugins() {
+	defer runtime.KeepAlive(this)
 
 	C.QDesignerIntegration_virtualbase_updateCustomWidgetPlugins(unsafe.Pointer(this.h))
 
@@ -2063,6 +2215,8 @@ func miqt_exec_callback_QDesignerIntegration_updateCustomWidgetPlugins(self *C.Q
 }
 
 func (this *QDesignerIntegration) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerIntegration_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2091,6 +2245,9 @@ func miqt_exec_callback_QDesignerIntegration_event(self *C.QDesignerIntegration,
 }
 
 func (this *QDesignerIntegration) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerIntegration_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2121,6 +2278,8 @@ func miqt_exec_callback_QDesignerIntegration_eventFilter(self *C.QDesignerIntegr
 }
 
 func (this *QDesignerIntegration) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegration_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -2147,6 +2306,8 @@ func miqt_exec_callback_QDesignerIntegration_timerEvent(self *C.QDesignerIntegra
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegration_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -2173,6 +2334,8 @@ func miqt_exec_callback_QDesignerIntegration_childEvent(self *C.QDesignerIntegra
 }
 
 func (this *QDesignerIntegration) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerIntegration_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2199,6 +2362,8 @@ func miqt_exec_callback_QDesignerIntegration_customEvent(self *C.QDesignerIntegr
 }
 
 func (this *QDesignerIntegration) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerIntegration_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2225,6 +2390,8 @@ func miqt_exec_callback_QDesignerIntegration_connectNotify(self *C.QDesignerInte
 }
 
 func (this *QDesignerIntegration) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerIntegration_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2262,8 +2429,9 @@ func (this *QDesignerIntegration) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerIntegration{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerIntegration) {
-		C.QDesignerIntegration_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerIntegration_delete((*C.QDesignerIntegration)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

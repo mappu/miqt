@@ -16,8 +16,14 @@ import (
 
 type QMediaControl struct {
 	h  *C.QMediaControl
-	gc *[1]*C.QMediaControl
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaControl) cPointer() *C.QMediaControl {
@@ -52,10 +58,12 @@ func UnsafeNewQMediaControl(h unsafe.Pointer) *QMediaControl {
 }
 
 func (this *QMediaControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaControl_metaObject(this.h)))
 }
 
 func (this *QMediaControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaControl_metacast(this.h, param1_Cstring))
@@ -135,8 +143,9 @@ func (this *QMediaControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaControl) {
-		C.QMediaControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaControl_delete((*C.QMediaControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -15,9 +15,17 @@ import (
 
 type QPaintDeviceWindow struct {
 	h  *C.QPaintDeviceWindow
-	gc *[1]*C.QPaintDeviceWindow
+	gc *[1]unsafe.Pointer
 	*QWindow
 	*QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPaintDeviceWindow) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWindow.miqtSetGC(gc)
+	this.QPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QPaintDeviceWindow) cPointer() *C.QPaintDeviceWindow {
@@ -54,10 +62,12 @@ func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPaintDeviceWindow_metaObject(this.h))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPaintDeviceWindow_metacast(this.h, param1_Cstring))
@@ -82,14 +92,19 @@ func QPaintDeviceWindow_TrUtf8(s string) string {
 }
 
 func (this *QPaintDeviceWindow) Update(rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QPaintDeviceWindow_update(this.h, rect.cPointer())
 }
 
 func (this *QPaintDeviceWindow) UpdateWithRegion(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 	C.QPaintDeviceWindow_updateWithRegion(this.h, region.cPointer())
 }
 
 func (this *QPaintDeviceWindow) Update2() {
+	defer runtime.KeepAlive(this)
 	C.QPaintDeviceWindow_update2(this.h)
 }
 
@@ -149,8 +164,9 @@ func (this *QPaintDeviceWindow) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPaintDeviceWindow{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintDeviceWindow) {
-		C.QPaintDeviceWindow_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPaintDeviceWindow_delete((*C.QPaintDeviceWindow)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

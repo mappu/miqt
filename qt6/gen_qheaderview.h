@@ -424,6 +424,11 @@ bool QHeaderView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHeaderView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QHeaderView_virtualreturncopy_QSize(QSize* src);
+QRect* QHeaderView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QHeaderView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QRegion* QHeaderView_virtualreturncopy_QRegion(QRegion* src);
+QVariant* QHeaderView_virtualreturncopy_QVariant(QVariant* src);
 
 void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex);
 void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* self);

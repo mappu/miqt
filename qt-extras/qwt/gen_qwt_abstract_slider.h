@@ -237,6 +237,8 @@ bool QwtAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot)
 void QwtAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtAbstractSlider_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtAbstractSlider_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtAbstractSlider_protectedbase_incrementValue(bool* _dynamic_cast_ok, void* self, int stepCount);
 double QwtAbstractSlider_protectedbase_incrementedValue(bool* _dynamic_cast_ok, const void* self, double value, int stepCount);

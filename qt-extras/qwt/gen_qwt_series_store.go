@@ -9,11 +9,19 @@ package qwt
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
 type QwtAbstractSeriesStore struct {
-	h *C.QwtAbstractSeriesStore
+	h  *C.QwtAbstractSeriesStore
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtAbstractSeriesStore) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtAbstractSeriesStore) cPointer() *C.QwtAbstractSeriesStore {
@@ -45,5 +53,7 @@ func UnsafeNewQwtAbstractSeriesStore(h unsafe.Pointer) *QwtAbstractSeriesStore {
 }
 
 func (this *QwtAbstractSeriesStore) OperatorAssign(param1 *QwtAbstractSeriesStore) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtAbstractSeriesStore_operatorAssign(this.h, param1.cPointer())
 }

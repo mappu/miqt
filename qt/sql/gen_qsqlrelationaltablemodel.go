@@ -24,7 +24,13 @@ const (
 
 type QSqlRelation struct {
 	h  *C.QSqlRelation
-	gc *[1]*C.QSqlRelation
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlRelation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlRelation) cPointer() *C.QSqlRelation {
@@ -81,15 +87,19 @@ func NewQSqlRelation2(aTableName string, indexCol string, displayCol string) *QS
 
 // NewQSqlRelation3 constructs a new QSqlRelation object.
 func NewQSqlRelation3(param1 *QSqlRelation) *QSqlRelation {
+	defer runtime.KeepAlive(param1)
 
 	return newQSqlRelation(C.QSqlRelation_new3(param1.cPointer()))
 }
 
 func (this *QSqlRelation) Swap(other *QSqlRelation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlRelation_swap(this.h, other.cPointer())
 }
 
 func (this *QSqlRelation) TableName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlRelation_tableName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -97,6 +107,7 @@ func (this *QSqlRelation) TableName() string {
 }
 
 func (this *QSqlRelation) IndexColumn() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlRelation_indexColumn(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,6 +115,7 @@ func (this *QSqlRelation) IndexColumn() string {
 }
 
 func (this *QSqlRelation) DisplayColumn() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlRelation_displayColumn(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -111,10 +123,13 @@ func (this *QSqlRelation) DisplayColumn() string {
 }
 
 func (this *QSqlRelation) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlRelation_isValid(this.h))
 }
 
 func (this *QSqlRelation) OperatorAssign(param1 *QSqlRelation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QSqlRelation_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -130,16 +145,24 @@ func (this *QSqlRelation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlRelation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlRelation) {
-		C.QSqlRelation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlRelation_delete((*C.QSqlRelation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QSqlRelationalTableModel struct {
 	h  *C.QSqlRelationalTableModel
-	gc *[1]*C.QSqlRelationalTableModel
+	gc *[1]unsafe.Pointer
 	*QSqlTableModel
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlRelationalTableModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSqlTableModel.miqtSetGC(gc)
 }
 
 func (this *QSqlRelationalTableModel) cPointer() *C.QSqlRelationalTableModel {
@@ -181,21 +204,26 @@ func NewQSqlRelationalTableModel() *QSqlRelationalTableModel {
 
 // NewQSqlRelationalTableModel2 constructs a new QSqlRelationalTableModel object.
 func NewQSqlRelationalTableModel2(parent *qt.QObject) *QSqlRelationalTableModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQSqlRelationalTableModel(C.QSqlRelationalTableModel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQSqlRelationalTableModel3 constructs a new QSqlRelationalTableModel object.
 func NewQSqlRelationalTableModel3(parent *qt.QObject, db QSqlDatabase) *QSqlRelationalTableModel {
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(db)
 
 	return newQSqlRelationalTableModel(C.QSqlRelationalTableModel_new3((*C.QObject)(parent.UnsafePointer()), db.cPointer()))
 }
 
 func (this *QSqlRelationalTableModel) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSqlRelationalTableModel_metaObject(this.h)))
 }
 
 func (this *QSqlRelationalTableModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSqlRelationalTableModel_metacast(this.h, param1_Cstring))
@@ -220,28 +248,38 @@ func QSqlRelationalTableModel_TrUtf8(s string) string {
 }
 
 func (this *QSqlRelationalTableModel) Data(item *qt.QModelIndex, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSqlRelationalTableModel_data(this.h, (*C.QModelIndex)(item.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlRelationalTableModel) SetData(item *qt.QModelIndex, value *qt.QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QSqlRelationalTableModel_setData(this.h, (*C.QModelIndex)(item.UnsafePointer()), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 }
 
 func (this *QSqlRelationalTableModel) RemoveColumns(column int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QSqlRelationalTableModel_removeColumns(this.h, (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 }
 
 func (this *QSqlRelationalTableModel) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QSqlRelationalTableModel_clear(this.h)
 }
 
 func (this *QSqlRelationalTableModel) Select() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlRelationalTableModel_select(this.h))
 }
 
 func (this *QSqlRelationalTableModel) SetTable(tableName string) {
+	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -250,24 +288,30 @@ func (this *QSqlRelationalTableModel) SetTable(tableName string) {
 }
 
 func (this *QSqlRelationalTableModel) SetRelation(column int, relation *QSqlRelation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(relation)
 	C.QSqlRelationalTableModel_setRelation(this.h, (C.int)(column), relation.cPointer())
 }
 
 func (this *QSqlRelationalTableModel) Relation(column int) *QSqlRelation {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSqlRelation(C.QSqlRelationalTableModel_relation(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlRelationalTableModel) RelationModel(column int) *QSqlTableModel {
+	defer runtime.KeepAlive(this)
 	return newQSqlTableModel(C.QSqlRelationalTableModel_relationModel(this.h, (C.int)(column)))
 }
 
 func (this *QSqlRelationalTableModel) SetJoinMode(joinMode QSqlRelationalTableModel__JoinMode) {
+	defer runtime.KeepAlive(this)
 	C.QSqlRelationalTableModel_setJoinMode(this.h, (C.int)(joinMode))
 }
 
 func (this *QSqlRelationalTableModel) RevertRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QSqlRelationalTableModel_revertRow(this.h, (C.int)(row))
 }
 
@@ -317,6 +361,8 @@ func QSqlRelationalTableModel_TrUtf83(s string, c string, n int) string {
 
 // SetPrimaryKey can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) SetPrimaryKey(key *QSqlIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(key)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_setPrimaryKey(&_dynamic_cast_ok, unsafe.Pointer(this.h), key.cPointer())
@@ -329,6 +375,8 @@ func (this *QSqlRelationalTableModel) SetPrimaryKey(key *QSqlIndex) {
 
 // SetQuery can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) SetQuery(query *QSqlQuery) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(query)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_setQuery(&_dynamic_cast_ok, unsafe.Pointer(this.h), query.cPointer())
@@ -341,6 +389,7 @@ func (this *QSqlRelationalTableModel) SetQuery(query *QSqlQuery) {
 
 // PrimaryValues can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) PrimaryValues(row int) QSqlRecord {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQSqlRecord(C.QSqlRelationalTableModel_protectedbase_primaryValues(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row)))
@@ -357,6 +406,8 @@ func (this *QSqlRelationalTableModel) PrimaryValues(row int) QSqlRecord {
 
 // BeginInsertRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginInsertRows(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -369,6 +420,7 @@ func (this *QSqlRelationalTableModel) BeginInsertRows(parent *qt.QModelIndex, fi
 
 // EndInsertRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndInsertRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -381,6 +433,8 @@ func (this *QSqlRelationalTableModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginRemoveRows(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -393,6 +447,7 @@ func (this *QSqlRelationalTableModel) BeginRemoveRows(parent *qt.QModelIndex, fi
 
 // EndRemoveRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndRemoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -405,6 +460,8 @@ func (this *QSqlRelationalTableModel) EndRemoveRows() {
 
 // BeginInsertColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginInsertColumns(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -417,6 +474,7 @@ func (this *QSqlRelationalTableModel) BeginInsertColumns(parent *qt.QModelIndex,
 
 // EndInsertColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndInsertColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -429,6 +487,8 @@ func (this *QSqlRelationalTableModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginRemoveColumns(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -441,6 +501,7 @@ func (this *QSqlRelationalTableModel) BeginRemoveColumns(parent *qt.QModelIndex,
 
 // EndRemoveColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndRemoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -453,6 +514,7 @@ func (this *QSqlRelationalTableModel) EndRemoveColumns() {
 
 // BeginResetModel can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -465,6 +527,7 @@ func (this *QSqlRelationalTableModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -477,6 +540,8 @@ func (this *QSqlRelationalTableModel) EndResetModel() {
 
 // SetLastError can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) SetLastError(error *QSqlError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(error)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_setLastError(&_dynamic_cast_ok, unsafe.Pointer(this.h), error.cPointer())
@@ -489,6 +554,7 @@ func (this *QSqlRelationalTableModel) SetLastError(error *QSqlError) {
 
 // ResetInternalData can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) ResetInternalData() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -501,6 +567,7 @@ func (this *QSqlRelationalTableModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) CreateIndex(row int, column int) qt.QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlRelationalTableModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column))))
@@ -517,6 +584,9 @@ func (this *QSqlRelationalTableModel) CreateIndex(row int, column int) qt.QModel
 
 // EncodeData can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EncodeData(indexes []qt.QModelIndex, stream *qt.QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
+	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -536,6 +606,9 @@ func (this *QSqlRelationalTableModel) EncodeData(indexes []qt.QModelIndex, strea
 
 // DecodeData can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) DecodeData(row int, column int, parent *qt.QModelIndex, stream *qt.QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSqlRelationalTableModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()), (*C.QDataStream)(stream.UnsafePointer())))
@@ -550,6 +623,9 @@ func (this *QSqlRelationalTableModel) DecodeData(row int, column int, parent *qt
 
 // BeginMoveRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginMoveRows(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationRow int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSqlRelationalTableModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationRow)))
@@ -564,6 +640,7 @@ func (this *QSqlRelationalTableModel) BeginMoveRows(sourceParent *qt.QModelIndex
 
 // EndMoveRows can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndMoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -576,6 +653,9 @@ func (this *QSqlRelationalTableModel) EndMoveRows() {
 
 // BeginMoveColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) BeginMoveColumns(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationColumn int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSqlRelationalTableModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationColumn)))
@@ -590,6 +670,7 @@ func (this *QSqlRelationalTableModel) BeginMoveColumns(sourceParent *qt.QModelIn
 
 // EndMoveColumns can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) EndMoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -602,6 +683,9 @@ func (this *QSqlRelationalTableModel) EndMoveColumns() {
 
 // ChangePersistentIndex can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) ChangePersistentIndex(from *qt.QModelIndex, to *qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlRelationalTableModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(from.UnsafePointer()), (*C.QModelIndex)(to.UnsafePointer()))
@@ -614,6 +698,9 @@ func (this *QSqlRelationalTableModel) ChangePersistentIndex(from *qt.QModelIndex
 
 // ChangePersistentIndexList can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) ChangePersistentIndexList(from []qt.QModelIndex, to []qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
@@ -640,6 +727,7 @@ func (this *QSqlRelationalTableModel) ChangePersistentIndexList(from []qt.QModel
 
 // PersistentIndexList can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) PersistentIndexList() []qt.QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QSqlRelationalTableModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -662,6 +750,7 @@ func (this *QSqlRelationalTableModel) PersistentIndexList() []qt.QModelIndex {
 
 // Sender can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSqlRelationalTableModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -676,6 +765,7 @@ func (this *QSqlRelationalTableModel) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSqlRelationalTableModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -690,6 +780,7 @@ func (this *QSqlRelationalTableModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -706,6 +797,8 @@ func (this *QSqlRelationalTableModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSqlRelationalTableModel that was directly constructed.
 func (this *QSqlRelationalTableModel) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSqlRelationalTableModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -719,6 +812,8 @@ func (this *QSqlRelationalTableModel) IsSignalConnected(signal *qt.QMetaMethod) 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Data(item *qt.QModelIndex, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_data(unsafe.Pointer(this.h), (*C.QModelIndex)(item.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -745,12 +840,16 @@ func miqt_exec_callback_QSqlRelationalTableModel_data(self *C.QSqlRelationalTabl
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetData(item *qt.QModelIndex, value *qt.QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_setData(unsafe.Pointer(this.h), (*C.QModelIndex)(item.UnsafePointer()), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 
@@ -783,6 +882,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_setData(self *C.QSqlRelationalT
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RemoveColumns(column int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -815,6 +916,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_removeColumns(self *C.QSqlRelat
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Clear() {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -838,6 +940,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_clear(self *C.QSqlRelationalTab
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Select() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_select(unsafe.Pointer(this.h)))
 
@@ -863,6 +966,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_select(self *C.QSqlRelationalTa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetTable(tableName string) {
+	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -896,6 +1000,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_setTable(self *C.QSqlRelational
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetRelation(column int, relation *QSqlRelation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(relation)
 
 	C.QSqlRelationalTableModel_virtualbase_setRelation(unsafe.Pointer(this.h), (C.int)(column), relation.cPointer())
 
@@ -924,6 +1030,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_setRelation(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RelationModel(column int) *QSqlTableModel {
+	defer runtime.KeepAlive(this)
 
 	return newQSqlTableModel(C.QSqlRelationalTableModel_virtualbase_relationModel(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -946,12 +1053,14 @@ func miqt_exec_callback_QSqlRelationalTableModel_relationModel(self *C.QSqlRelat
 	slotval1 := (int)(column)
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_RelationModel, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RevertRow(row int) {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_revertRow(unsafe.Pointer(this.h), (C.int)(row))
 
@@ -978,6 +1087,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_revertRow(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SelectStatement() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QSqlRelationalTableModel_virtualbase_selectStatement(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -1008,6 +1118,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_selectStatement(self *C.QSqlRel
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_UpdateRowInTable(row int, values *QSqlRecord) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(values)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_updateRowInTable(unsafe.Pointer(this.h), (C.int)(row), values.cPointer()))
 
@@ -1038,6 +1150,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_updateRowInTable(self *C.QSqlRe
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_InsertRowIntoTable(values *QSqlRecord) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(values)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_insertRowIntoTable(unsafe.Pointer(this.h), values.cPointer()))
 
@@ -1066,6 +1180,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_insertRowIntoTable(self *C.QSql
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_OrderByClause() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QSqlRelationalTableModel_virtualbase_orderByClause(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -1096,6 +1211,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_orderByClause(self *C.QSqlRelat
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Flags(index *qt.QModelIndex) qt.ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (qt.ItemFlag)(C.QSqlRelationalTableModel_virtualbase_flags(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer())))
 
@@ -1124,6 +1241,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_flags(self *C.QSqlRelationalTab
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_HeaderData(section int, orientation qt.Orientation, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1152,12 +1270,14 @@ func miqt_exec_callback_QSqlRelationalTableModel_headerData(self *C.QSqlRelation
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_HeaderData, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetEditStrategy(strategy QSqlTableModel__EditStrategy) {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_setEditStrategy(unsafe.Pointer(this.h), (C.int)(strategy))
 
@@ -1184,6 +1304,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_setEditStrategy(self *C.QSqlRel
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Sort(column int, order qt.SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1212,6 +1333,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_sort(self *C.QSqlRelationalTabl
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetSort(column int, order qt.SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_setSort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1240,6 +1362,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_setSort(self *C.QSqlRelationalT
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetFilter(filter string) {
+	defer runtime.KeepAlive(this)
 	filter_ms := C.struct_miqt_string{}
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
@@ -1273,6 +1396,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_setFilter(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RowCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QSqlRelationalTableModel_virtualbase_rowCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1301,6 +1426,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_rowCount(self *C.QSqlRelational
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RemoveRows(row int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1333,6 +1460,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_removeRows(self *C.QSqlRelation
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_InsertRows(row int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1365,6 +1494,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_insertRows(self *C.QSqlRelation
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SelectRow(row int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_selectRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1393,6 +1523,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_selectRow(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Submit() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1418,6 +1549,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_submit(self *C.QSqlRelationalTa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Revert() {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1441,6 +1573,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_revert(self *C.QSqlRelationalTa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_DeleteRowFromTable(row int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_deleteRowFromTable(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1469,6 +1602,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_deleteRowFromTable(self *C.QSql
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_IndexInQuery(item *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_indexInQuery(unsafe.Pointer(this.h), (*C.QModelIndex)(item.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1493,12 +1628,15 @@ func miqt_exec_callback_QSqlRelationalTableModel_indexInQuery(self *C.QSqlRelati
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(item))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_IndexInQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_ColumnCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QSqlRelationalTableModel_virtualbase_columnCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1527,6 +1665,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_columnCount(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetHeaderData(section int, orientation qt.Orientation, value *qt.QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 
@@ -1561,6 +1701,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_setHeaderData(self *C.QSqlRelat
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_InsertColumns(column int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1593,6 +1735,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_insertColumns(self *C.QSqlRelat
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_FetchMore(parent *qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QSqlRelationalTableModel_virtualbase_fetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()))
 
@@ -1619,6 +1763,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_fetchMore(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_CanFetchMore(parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1647,6 +1793,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_canFetchMore(self *C.QSqlRelati
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QSqlRelationalTableModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -1707,6 +1854,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_roleNames(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_QueryChange() {
+	defer runtime.KeepAlive(this)
 
 	C.QSqlRelationalTableModel_virtualbase_queryChange(unsafe.Pointer(this.h))
 
@@ -1730,6 +1878,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_queryChange(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Index(row int, column int, parent *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1758,12 +1908,15 @@ func miqt_exec_callback_QSqlRelationalTableModel_index(self *C.QSqlRelationalTab
 	slotval3 := qt.UnsafeNewQModelIndex(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Sibling(row int, column int, idx *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(idx.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1792,12 +1945,16 @@ func miqt_exec_callback_QSqlRelationalTableModel_sibling(self *C.QSqlRelationalT
 	slotval3 := qt.UnsafeNewQModelIndex(unsafe.Pointer(idx))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_DropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1834,6 +1991,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_dropMimeData(self *C.QSqlRelati
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_ItemData(index *qt.QModelIndex) map[int]qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QSqlRelationalTableModel_virtualbase_itemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))
 	_ret := make(map[int]qt.QVariant, int(_mm.len))
@@ -1869,6 +2028,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_itemData(self *C.QSqlRelational
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_ItemData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
 	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1876,7 +2036,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_itemData(self *C.QSqlRelational
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
-		virtualReturn_Values_CArray[virtualReturn_ctr] = (*C.QVariant)(virtualReturn_v.UnsafePointer())
+		virtualReturn_Values_CArray[virtualReturn_ctr] = C.QSqlRelationalTableModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn_v.UnsafePointer()))
 		virtualReturn_ctr++
 	}
 	virtualReturn_mm := C.struct_miqt_map{
@@ -1890,6 +2050,9 @@ func miqt_exec_callback_QSqlRelationalTableModel_itemData(self *C.QSqlRelational
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SetItemData(index *qt.QModelIndex, roles map[int]qt.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -1950,6 +2113,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_setItemData(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QSqlRelationalTableModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1993,6 +2157,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_mimeTypes(self *C.QSqlRelationa
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_MimeData(indexes []qt.QModelIndex) *qt.QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -2030,12 +2196,16 @@ func miqt_exec_callback_QSqlRelationalTableModel_mimeData(self *C.QSqlRelational
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QMimeData)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_CanDropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -2072,6 +2242,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_canDropMimeData(self *C.QSqlRel
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SupportedDropActions() qt.DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QSqlRelationalTableModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -2097,6 +2268,7 @@ func miqt_exec_callback_QSqlRelationalTableModel_supportedDropActions(self *C.QS
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_SupportedDragActions() qt.DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QSqlRelationalTableModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -2122,6 +2294,9 @@ func miqt_exec_callback_QSqlRelationalTableModel_supportedDragActions(self *C.QS
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_MoveRows(sourceParent *qt.QModelIndex, sourceRow int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_moveRows(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceRow), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
 
@@ -2158,6 +2333,9 @@ func miqt_exec_callback_QSqlRelationalTableModel_moveRows(self *C.QSqlRelational
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_MoveColumns(sourceParent *qt.QModelIndex, sourceColumn int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_moveColumns(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceColumn), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
 
@@ -2194,6 +2372,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_moveColumns(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Buddy(index *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_buddy(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2218,12 +2398,16 @@ func miqt_exec_callback_QSqlRelationalTableModel_buddy(self *C.QSqlRelationalTab
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Buddy, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Match(start *qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 
 	var _ma C.struct_miqt_array = C.QSqlRelationalTableModel_virtualbase_match(unsafe.Pointer(this.h), (*C.QModelIndex)(start.UnsafePointer()), (C.int)(role), (*C.QVariant)(value.UnsafePointer()), (C.int)(hits), (C.int)(flags))
 	_ret := make([]qt.QModelIndex, int(_ma.len))
@@ -2262,10 +2446,11 @@ func miqt_exec_callback_QSqlRelationalTableModel_match(self *C.QSqlRelationalTab
 	slotval5 := (qt.MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = (*C.QModelIndex)(virtualReturn[i].UnsafePointer())
+		virtualReturn_CArray[i] = C.QSqlRelationalTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn[i].UnsafePointer()))
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2274,6 +2459,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_match(self *C.QSqlRelationalTab
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Span(index *qt.QModelIndex) *qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSqlRelationalTableModel_virtualbase_span(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2298,12 +2485,15 @@ func miqt_exec_callback_QSqlRelationalTableModel_span(self *C.QSqlRelationalTabl
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QSqlRelationalTableModel{h: self}).callVirtualBase_Span, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QSqlRelationalTableModel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2332,6 +2522,9 @@ func miqt_exec_callback_QSqlRelationalTableModel_event(self *C.QSqlRelationalTab
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlRelationalTableModel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -2362,6 +2555,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_eventFilter(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlRelationalTableModel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -2388,6 +2583,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_timerEvent(self *C.QSqlRelation
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlRelationalTableModel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -2414,6 +2611,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_childEvent(self *C.QSqlRelation
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlRelationalTableModel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -2440,6 +2639,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_customEvent(self *C.QSqlRelatio
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSqlRelationalTableModel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2466,6 +2667,8 @@ func miqt_exec_callback_QSqlRelationalTableModel_connectNotify(self *C.QSqlRelat
 }
 
 func (this *QSqlRelationalTableModel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSqlRelationalTableModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2503,8 +2706,9 @@ func (this *QSqlRelationalTableModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlRelationalTableModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlRelationalTableModel) {
-		C.QSqlRelationalTableModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlRelationalTableModel_delete((*C.QSqlRelationalTableModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

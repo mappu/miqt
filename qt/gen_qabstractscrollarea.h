@@ -242,6 +242,8 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QAbstractScrollArea_virtualreturncopy_QSize(QSize* src);
+QVariant* QAbstractScrollArea_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(bool* _dynamic_cast_ok, void* self, QMargins* margins);

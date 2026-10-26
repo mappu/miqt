@@ -210,6 +210,8 @@ bool QDial_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDial_virtualreturncopy_QSize(QSize* src);
+QVariant* QDial_virtualreturncopy_QVariant(QVariant* src);
 
 void QDial_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option);
 void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);

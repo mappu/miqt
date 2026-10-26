@@ -83,6 +83,8 @@ bool QIconEngine_override_virtual_iconName(void* self, intptr_t slot);
 struct miqt_string QIconEngine_virtualbase_iconName(const void* self);
 bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data);
+QSize* QIconEngine_virtualreturncopy_QSize(QSize* src);
+QPixmap* QIconEngine_virtualreturncopy_QPixmap(QPixmap* src);
 
 void QIconEngine_delete(QIconEngine* self);
 

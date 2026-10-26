@@ -236,7 +236,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtDynGridLayout_virtualbase_sizeHint(const void* self);
@@ -282,7 +284,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QwtDynGridLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtDynGridLayout_virtualbase_geometry(const void* self);
@@ -297,7 +301,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtDynGridLayout_virtualbase_minimumSize(const void* self);
@@ -312,7 +318,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtDynGridLayout_virtualbase_maximumSize(const void* self);
@@ -1145,6 +1153,14 @@ bool QwtDynGridLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QwtDynGridLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::spacerItem();
+}
+
+QSize* QwtDynGridLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QwtDynGridLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QwtDynGridLayout_protectedbase_layoutGrid(bool* _dynamic_cast_ok, const void* self, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth) {

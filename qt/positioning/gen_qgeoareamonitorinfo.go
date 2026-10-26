@@ -16,7 +16,13 @@ import (
 
 type QGeoAreaMonitorInfo struct {
 	h  *C.QGeoAreaMonitorInfo
-	gc *[1]*C.QGeoAreaMonitorInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoAreaMonitorInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoAreaMonitorInfo) cPointer() *C.QGeoAreaMonitorInfo {
@@ -55,6 +61,7 @@ func NewQGeoAreaMonitorInfo() *QGeoAreaMonitorInfo {
 
 // NewQGeoAreaMonitorInfo2 constructs a new QGeoAreaMonitorInfo object.
 func NewQGeoAreaMonitorInfo2(other *QGeoAreaMonitorInfo) *QGeoAreaMonitorInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQGeoAreaMonitorInfo(C.QGeoAreaMonitorInfo_new2(other.cPointer()))
 }
@@ -70,18 +77,25 @@ func NewQGeoAreaMonitorInfo3(name string) *QGeoAreaMonitorInfo {
 }
 
 func (this *QGeoAreaMonitorInfo) OperatorAssign(other *QGeoAreaMonitorInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QGeoAreaMonitorInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGeoAreaMonitorInfo) OperatorEqual(other *QGeoAreaMonitorInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoAreaMonitorInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoAreaMonitorInfo) OperatorNotEqual(other *QGeoAreaMonitorInfo) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QGeoAreaMonitorInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGeoAreaMonitorInfo) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAreaMonitorInfo_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -89,6 +103,7 @@ func (this *QGeoAreaMonitorInfo) Name() string {
 }
 
 func (this *QGeoAreaMonitorInfo) SetName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -97,6 +112,7 @@ func (this *QGeoAreaMonitorInfo) SetName(name string) {
 }
 
 func (this *QGeoAreaMonitorInfo) Identifier() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoAreaMonitorInfo_identifier(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,38 +120,48 @@ func (this *QGeoAreaMonitorInfo) Identifier() string {
 }
 
 func (this *QGeoAreaMonitorInfo) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoAreaMonitorInfo_isValid(this.h))
 }
 
 func (this *QGeoAreaMonitorInfo) Area() *QGeoShape {
+	defer runtime.KeepAlive(this)
 	_goptr := newQGeoShape(C.QGeoAreaMonitorInfo_area(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoAreaMonitorInfo) SetArea(newShape *QGeoShape) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newShape)
 	C.QGeoAreaMonitorInfo_setArea(this.h, newShape.cPointer())
 }
 
 func (this *QGeoAreaMonitorInfo) Expiration() *qt.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QGeoAreaMonitorInfo_expiration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGeoAreaMonitorInfo) SetExpiration(expiry *qt.QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(expiry)
 	C.QGeoAreaMonitorInfo_setExpiration(this.h, (*C.QDateTime)(expiry.UnsafePointer()))
 }
 
 func (this *QGeoAreaMonitorInfo) IsPersistent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QGeoAreaMonitorInfo_isPersistent(this.h))
 }
 
 func (this *QGeoAreaMonitorInfo) SetPersistent(isPersistent bool) {
+	defer runtime.KeepAlive(this)
 	C.QGeoAreaMonitorInfo_setPersistent(this.h, (C.bool)(isPersistent))
 }
 
 func (this *QGeoAreaMonitorInfo) NotificationParameters() map[string]qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QGeoAreaMonitorInfo_notificationParameters(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -155,6 +181,8 @@ func (this *QGeoAreaMonitorInfo) NotificationParameters() map[string]qt.QVariant
 }
 
 func (this *QGeoAreaMonitorInfo) SetNotificationParameters(parameters map[string]qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
 	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
@@ -191,8 +219,9 @@ func (this *QGeoAreaMonitorInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoAreaMonitorInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoAreaMonitorInfo) {
-		C.QGeoAreaMonitorInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoAreaMonitorInfo_delete((*C.QGeoAreaMonitorInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

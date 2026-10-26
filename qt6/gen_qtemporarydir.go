@@ -15,7 +15,13 @@ import (
 
 type QTemporaryDir struct {
 	h  *C.QTemporaryDir
-	gc *[1]*C.QTemporaryDir
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTemporaryDir) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTemporaryDir) cPointer() *C.QTemporaryDir {
@@ -63,14 +69,18 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 }
 
 func (this *QTemporaryDir) Swap(other *QTemporaryDir) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QTemporaryDir_swap(this.h, other.cPointer())
 }
 
 func (this *QTemporaryDir) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTemporaryDir_isValid(this.h))
 }
 
 func (this *QTemporaryDir) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTemporaryDir_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -78,18 +88,22 @@ func (this *QTemporaryDir) ErrorString() string {
 }
 
 func (this *QTemporaryDir) AutoRemove() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTemporaryDir_autoRemove(this.h))
 }
 
 func (this *QTemporaryDir) SetAutoRemove(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QTemporaryDir_setAutoRemove(this.h, (C.bool)(b))
 }
 
 func (this *QTemporaryDir) Remove() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTemporaryDir_remove(this.h))
 }
 
 func (this *QTemporaryDir) Path() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTemporaryDir_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -97,6 +111,7 @@ func (this *QTemporaryDir) Path() string {
 }
 
 func (this *QTemporaryDir) FilePath(fileName string) string {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -119,8 +134,9 @@ func (this *QTemporaryDir) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTemporaryDir{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTemporaryDir) {
-		C.QTemporaryDir_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTemporaryDir_delete((*C.QTemporaryDir)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

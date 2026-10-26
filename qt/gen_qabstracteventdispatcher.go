@@ -16,8 +16,15 @@ import (
 
 type QAbstractEventDispatcher struct {
 	h  *C.QAbstractEventDispatcher
-	gc *[1]*C.QAbstractEventDispatcher
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractEventDispatcher) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QAbstractEventDispatcher) cPointer() *C.QAbstractEventDispatcher {
@@ -52,10 +59,12 @@ func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer) *QAbstractEventDispatch
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractEventDispatcher_metaObject(this.h))
 }
 
 func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractEventDispatcher_metacast(this.h, param1_Cstring))
@@ -84,38 +93,53 @@ func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractEventDispatcher_processEvents(this.h, (C.int)(flags)))
 }
 
 func (this *QAbstractEventDispatcher) HasPendingEvents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractEventDispatcher_hasPendingEvents(this.h))
 }
 
 func (this *QAbstractEventDispatcher) RegisterSocketNotifier(notifier *QSocketNotifier) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(notifier)
 	C.QAbstractEventDispatcher_registerSocketNotifier(this.h, notifier.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) UnregisterSocketNotifier(notifier *QSocketNotifier) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(notifier)
 	C.QAbstractEventDispatcher_unregisterSocketNotifier(this.h, notifier.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType TimerType, object *QObject) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	return (int)(C.QAbstractEventDispatcher_registerTimer(this.h, (C.int)(interval), (C.int)(timerType), object.cPointer()))
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType TimerType, object *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QAbstractEventDispatcher_registerTimer2(this.h, (C.int)(timerId), (C.int)(interval), (C.int)(timerType), object.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) UnregisterTimer(timerId int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractEventDispatcher_unregisterTimer(this.h, (C.int)(timerId)))
 }
 
 func (this *QAbstractEventDispatcher) UnregisterTimers(object *QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	return (bool)(C.QAbstractEventDispatcher_unregisterTimers(this.h, object.cPointer()))
 }
 
 func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstractEventDispatcher__TimerInfo {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	var _ma C.struct_miqt_array = C.QAbstractEventDispatcher_registeredTimers(this.h, object.cPointer())
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -128,38 +152,49 @@ func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstr
 }
 
 func (this *QAbstractEventDispatcher) RemainingTime(timerId int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractEventDispatcher_remainingTime(this.h, (C.int)(timerId)))
 }
 
 func (this *QAbstractEventDispatcher) WakeUp() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_wakeUp(this.h)
 }
 
 func (this *QAbstractEventDispatcher) Interrupt() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_interrupt(this.h)
 }
 
 func (this *QAbstractEventDispatcher) Flush() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_flush(this.h)
 }
 
 func (this *QAbstractEventDispatcher) StartingUp() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_startingUp(this.h)
 }
 
 func (this *QAbstractEventDispatcher) ClosingDown() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_closingDown(this.h)
 }
 
 func (this *QAbstractEventDispatcher) InstallNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(filterObj)
 	C.QAbstractEventDispatcher_installNativeEventFilter(this.h, filterObj.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) RemoveNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(filterObj)
 	C.QAbstractEventDispatcher_removeNativeEventFilter(this.h, filterObj.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) FilterNativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -171,6 +206,7 @@ func (this *QAbstractEventDispatcher) FilterNativeEvent(eventType []byte, messag
 }
 
 func (this *QAbstractEventDispatcher) AboutToBlock() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_aboutToBlock(this.h)
 }
 func (this *QAbstractEventDispatcher) OnAboutToBlock(slot func()) {
@@ -188,6 +224,7 @@ func miqt_exec_callback_QAbstractEventDispatcher_aboutToBlock(cb C.intptr_t) {
 }
 
 func (this *QAbstractEventDispatcher) Awake() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher_awake(this.h)
 }
 func (this *QAbstractEventDispatcher) OnAwake(slot func()) {
@@ -249,6 +286,7 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_InstanceWithThread(thread *QThread) *QAbstractEventDispatcher {
+	defer runtime.KeepAlive(thread)
 	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_instanceWithThread(thread.cPointer()))
 }
 
@@ -264,15 +302,22 @@ func (this *QAbstractEventDispatcher) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractEventDispatcher{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractEventDispatcher) {
-		C.QAbstractEventDispatcher_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractEventDispatcher_delete((*C.QAbstractEventDispatcher)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractEventDispatcher__TimerInfo struct {
 	h  *C.QAbstractEventDispatcher__TimerInfo
-	gc *[1]*C.QAbstractEventDispatcher__TimerInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractEventDispatcher__TimerInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDispatcher__TimerInfo {
@@ -310,26 +355,32 @@ func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstra
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) TimerId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractEventDispatcher__TimerInfo_timerId(this.h))
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) SetTimerId(timerId int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher__TimerInfo_setTimerId(this.h, (C.int)(timerId))
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) Interval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractEventDispatcher__TimerInfo_interval(this.h))
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) SetInterval(interval int) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher__TimerInfo_setInterval(this.h, (C.int)(interval))
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) TimerType() TimerType {
+	defer runtime.KeepAlive(this)
 	return (TimerType)(C.QAbstractEventDispatcher__TimerInfo_timerType(this.h))
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) SetTimerType(timerType TimerType) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractEventDispatcher__TimerInfo_setTimerType(this.h, (C.int)(timerType))
 }
 
@@ -345,8 +396,9 @@ func (this *QAbstractEventDispatcher__TimerInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractEventDispatcher__TimerInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractEventDispatcher__TimerInfo) {
-		C.QAbstractEventDispatcher__TimerInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractEventDispatcher__TimerInfo_delete((*C.QAbstractEventDispatcher__TimerInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,15 @@ import (
 
 type QAudioInputSelectorControl struct {
 	h  *C.QAudioInputSelectorControl
-	gc *[1]*C.QAudioInputSelectorControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioInputSelectorControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QAudioInputSelectorControl) cPointer() *C.QAudioInputSelectorControl {
@@ -53,10 +60,12 @@ func UnsafeNewQAudioInputSelectorControl(h unsafe.Pointer) *QAudioInputSelectorC
 }
 
 func (this *QAudioInputSelectorControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioInputSelectorControl_metaObject(this.h)))
 }
 
 func (this *QAudioInputSelectorControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioInputSelectorControl_metacast(this.h, param1_Cstring))
@@ -81,6 +90,7 @@ func QAudioInputSelectorControl_TrUtf8(s string) string {
 }
 
 func (this *QAudioInputSelectorControl) AvailableInputs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioInputSelectorControl_availableInputs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -94,6 +104,7 @@ func (this *QAudioInputSelectorControl) AvailableInputs() []string {
 }
 
 func (this *QAudioInputSelectorControl) InputDescription(name string) string {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -105,6 +116,7 @@ func (this *QAudioInputSelectorControl) InputDescription(name string) string {
 }
 
 func (this *QAudioInputSelectorControl) DefaultInput() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioInputSelectorControl_defaultInput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -112,6 +124,7 @@ func (this *QAudioInputSelectorControl) DefaultInput() string {
 }
 
 func (this *QAudioInputSelectorControl) ActiveInput() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioInputSelectorControl_activeInput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -119,6 +132,7 @@ func (this *QAudioInputSelectorControl) ActiveInput() string {
 }
 
 func (this *QAudioInputSelectorControl) SetActiveInput(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -127,6 +141,7 @@ func (this *QAudioInputSelectorControl) SetActiveInput(name string) {
 }
 
 func (this *QAudioInputSelectorControl) ActiveInputChanged(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -154,6 +169,7 @@ func miqt_exec_callback_QAudioInputSelectorControl_activeInputChanged(cb C.intpt
 }
 
 func (this *QAudioInputSelectorControl) AvailableInputsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioInputSelectorControl_availableInputsChanged(this.h)
 }
 func (this *QAudioInputSelectorControl) OnAvailableInputsChanged(slot func()) {
@@ -226,8 +242,9 @@ func (this *QAudioInputSelectorControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioInputSelectorControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioInputSelectorControl) {
-		C.QAudioInputSelectorControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioInputSelectorControl_delete((*C.QAudioInputSelectorControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

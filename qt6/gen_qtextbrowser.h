@@ -276,6 +276,8 @@ bool QTextBrowser_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextBrowser_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QTextBrowser_virtualreturncopy_QVariant(QVariant* src);
+QSize* QTextBrowser_virtualreturncopy_QSize(QSize* src);
 
 void QTextBrowser_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 void QTextBrowser_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);

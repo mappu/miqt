@@ -17,8 +17,14 @@ import (
 
 type QDesignerFormEditorInterface struct {
 	h  *C.QDesignerFormEditorInterface
-	gc *[1]*C.QDesignerFormEditorInterface
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerFormEditorInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerFormEditorInterface) cPointer() *C.QDesignerFormEditorInterface {
@@ -60,15 +66,18 @@ func NewQDesignerFormEditorInterface() *QDesignerFormEditorInterface {
 
 // NewQDesignerFormEditorInterface2 constructs a new QDesignerFormEditorInterface object.
 func NewQDesignerFormEditorInterface2(parent *qt6.QObject) *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(parent)
 
 	return newQDesignerFormEditorInterface(C.QDesignerFormEditorInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerFormEditorInterface) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerFormEditorInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerFormEditorInterface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerFormEditorInterface_metacast(this.h, param1_Cstring))
@@ -84,58 +93,72 @@ func QDesignerFormEditorInterface_Tr(s string) string {
 }
 
 func (this *QDesignerFormEditorInterface) ExtensionManager() *QExtensionManager {
+	defer runtime.KeepAlive(this)
 	return newQExtensionManager(C.QDesignerFormEditorInterface_extensionManager(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) TopLevel() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormEditorInterface_topLevel(this.h)))
 }
 
 func (this *QDesignerFormEditorInterface) WidgetBox() *QDesignerWidgetBoxInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetBoxInterface(C.QDesignerFormEditorInterface_widgetBox(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) PropertyEditor() *QDesignerPropertyEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerPropertyEditorInterface(C.QDesignerFormEditorInterface_propertyEditor(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) ObjectInspector() *QDesignerObjectInspectorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerObjectInspectorInterface(C.QDesignerFormEditorInterface_objectInspector(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) FormWindowManager() *QDesignerFormWindowManagerInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowManagerInterface(C.QDesignerFormEditorInterface_formWindowManager(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) WidgetDataBase() *QDesignerWidgetDataBaseInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetDataBaseInterface(C.QDesignerFormEditorInterface_widgetDataBase(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) MetaDataBase() *QDesignerMetaDataBaseInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerMetaDataBaseInterface(C.QDesignerFormEditorInterface_metaDataBase(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) Promotion() *QDesignerPromotionInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerPromotionInterface(C.QDesignerFormEditorInterface_promotion(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) WidgetFactory() *QDesignerWidgetFactoryInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetFactoryInterface(C.QDesignerFormEditorInterface_widgetFactory(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) ActionEditor() *QDesignerActionEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerActionEditorInterface(C.QDesignerFormEditorInterface_actionEditor(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) Integration() *QDesignerIntegrationInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerIntegrationInterface(C.QDesignerFormEditorInterface_integration(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) SettingsManager() *QDesignerSettingsInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerSettingsInterface(C.QDesignerFormEditorInterface_settingsManager(this.h))
 }
 
 func (this *QDesignerFormEditorInterface) ResourceLocation() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerFormEditorInterface_resourceLocation(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -143,6 +166,7 @@ func (this *QDesignerFormEditorInterface) ResourceLocation() string {
 }
 
 func (this *QDesignerFormEditorInterface) OptionsPages() []*QDesignerOptionsPageInterface {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormEditorInterface_optionsPages(this.h)
 	_ret := make([]*QDesignerOptionsPageInterface, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDesignerOptionsPageInterface)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -153,34 +177,50 @@ func (this *QDesignerFormEditorInterface) OptionsPages() []*QDesignerOptionsPage
 }
 
 func (this *QDesignerFormEditorInterface) SetTopLevel(topLevel *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLevel)
 	C.QDesignerFormEditorInterface_setTopLevel(this.h, (*C.QWidget)(topLevel.UnsafePointer()))
 }
 
 func (this *QDesignerFormEditorInterface) SetWidgetBox(widgetBox *QDesignerWidgetBoxInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widgetBox)
 	C.QDesignerFormEditorInterface_setWidgetBox(this.h, widgetBox.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetPropertyEditor(propertyEditor *QDesignerPropertyEditorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(propertyEditor)
 	C.QDesignerFormEditorInterface_setPropertyEditor(this.h, propertyEditor.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetObjectInspector(objectInspector *QDesignerObjectInspectorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(objectInspector)
 	C.QDesignerFormEditorInterface_setObjectInspector(this.h, objectInspector.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetActionEditor(actionEditor *QDesignerActionEditorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(actionEditor)
 	C.QDesignerFormEditorInterface_setActionEditor(this.h, actionEditor.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetIntegration(integration *QDesignerIntegrationInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(integration)
 	C.QDesignerFormEditorInterface_setIntegration(this.h, integration.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetSettingsManager(settingsManager *QDesignerSettingsInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settingsManager)
 	C.QDesignerFormEditorInterface_setSettingsManager(this.h, settingsManager.cPointer())
 }
 
 func (this *QDesignerFormEditorInterface) SetOptionsPages(optionsPages []*QDesignerOptionsPageInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(optionsPages)
 	optionsPages_CArray_ptr := (**C.QDesignerOptionsPageInterface)(C.malloc(C.size_t(8 * len(optionsPages))))
 	defer C.free(unsafe.Pointer(optionsPages_CArray_ptr))
 	optionsPages_CArray := unsafe.Slice(optionsPages_CArray_ptr, len(optionsPages))
@@ -192,6 +232,7 @@ func (this *QDesignerFormEditorInterface) SetOptionsPages(optionsPages []*QDesig
 }
 
 func (this *QDesignerFormEditorInterface) PluginInstances() []*qt6.QObject {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerFormEditorInterface_pluginInstances(this.h)
 	_ret := make([]*qt6.QObject, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -235,6 +276,8 @@ func QDesignerFormEditorInterface_Tr3(s string, c string, n int) string {
 
 // SetFormManager can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetFormManager(formWindowManager *QDesignerFormWindowManagerInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(formWindowManager)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setFormManager(&_dynamic_cast_ok, unsafe.Pointer(this.h), formWindowManager.cPointer())
@@ -247,6 +290,8 @@ func (this *QDesignerFormEditorInterface) SetFormManager(formWindowManager *QDes
 
 // SetMetaDataBase can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetMetaDataBase(metaDataBase *QDesignerMetaDataBaseInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(metaDataBase)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setMetaDataBase(&_dynamic_cast_ok, unsafe.Pointer(this.h), metaDataBase.cPointer())
@@ -259,6 +304,8 @@ func (this *QDesignerFormEditorInterface) SetMetaDataBase(metaDataBase *QDesigne
 
 // SetWidgetDataBase can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetWidgetDataBase(widgetDataBase *QDesignerWidgetDataBaseInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widgetDataBase)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setWidgetDataBase(&_dynamic_cast_ok, unsafe.Pointer(this.h), widgetDataBase.cPointer())
@@ -271,6 +318,8 @@ func (this *QDesignerFormEditorInterface) SetWidgetDataBase(widgetDataBase *QDes
 
 // SetPromotion can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetPromotion(promotion *QDesignerPromotionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(promotion)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setPromotion(&_dynamic_cast_ok, unsafe.Pointer(this.h), promotion.cPointer())
@@ -283,6 +332,8 @@ func (this *QDesignerFormEditorInterface) SetPromotion(promotion *QDesignerPromo
 
 // SetWidgetFactory can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetWidgetFactory(widgetFactory *QDesignerWidgetFactoryInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widgetFactory)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setWidgetFactory(&_dynamic_cast_ok, unsafe.Pointer(this.h), widgetFactory.cPointer())
@@ -295,6 +346,8 @@ func (this *QDesignerFormEditorInterface) SetWidgetFactory(widgetFactory *QDesig
 
 // SetExtensionManager can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SetExtensionManager(extensionManager *QExtensionManager) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(extensionManager)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerFormEditorInterface_protectedbase_setExtensionManager(&_dynamic_cast_ok, unsafe.Pointer(this.h), extensionManager.cPointer())
@@ -307,6 +360,7 @@ func (this *QDesignerFormEditorInterface) SetExtensionManager(extensionManager *
 
 // Sender can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDesignerFormEditorInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -321,6 +375,7 @@ func (this *QDesignerFormEditorInterface) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerFormEditorInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -335,6 +390,7 @@ func (this *QDesignerFormEditorInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -351,6 +407,8 @@ func (this *QDesignerFormEditorInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerFormEditorInterface that was directly constructed.
 func (this *QDesignerFormEditorInterface) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerFormEditorInterface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -364,6 +422,8 @@ func (this *QDesignerFormEditorInterface) IsSignalConnected(signal *qt6.QMetaMet
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormEditorInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -392,6 +452,9 @@ func miqt_exec_callback_QDesignerFormEditorInterface_event(self *C.QDesignerForm
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormEditorInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -422,6 +485,8 @@ func miqt_exec_callback_QDesignerFormEditorInterface_eventFilter(self *C.QDesign
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormEditorInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -448,6 +513,8 @@ func miqt_exec_callback_QDesignerFormEditorInterface_timerEvent(self *C.QDesigne
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormEditorInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -474,6 +541,8 @@ func miqt_exec_callback_QDesignerFormEditorInterface_childEvent(self *C.QDesigne
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormEditorInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -500,6 +569,8 @@ func miqt_exec_callback_QDesignerFormEditorInterface_customEvent(self *C.QDesign
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormEditorInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -526,6 +597,8 @@ func miqt_exec_callback_QDesignerFormEditorInterface_connectNotify(self *C.QDesi
 }
 
 func (this *QDesignerFormEditorInterface) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormEditorInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -563,8 +636,9 @@ func (this *QDesignerFormEditorInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerFormEditorInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormEditorInterface) {
-		C.QDesignerFormEditorInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerFormEditorInterface_delete((*C.QDesignerFormEditorInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

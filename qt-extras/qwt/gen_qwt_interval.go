@@ -24,7 +24,13 @@ const (
 
 type QwtInterval struct {
 	h  *C.QwtInterval
-	gc *[1]*C.QwtInterval
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtInterval) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtInterval) cPointer() *C.QwtInterval {
@@ -69,6 +75,7 @@ func NewQwtInterval2(minValue float64, maxValue float64) *QwtInterval {
 
 // NewQwtInterval3 constructs a new QwtInterval object.
 func NewQwtInterval3(param1 *QwtInterval) *QwtInterval {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtInterval(C.QwtInterval_new3(param1.cPointer()))
 }
@@ -80,138 +87,176 @@ func NewQwtInterval4(minValue float64, maxValue float64, param3 QwtInterval__Bor
 }
 
 func (this *QwtInterval) SetInterval(minValue float64, maxValue float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_setInterval(this.h, (C.double)(minValue), (C.double)(maxValue))
 }
 
 func (this *QwtInterval) Normalized() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) Inverted() *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_inverted(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) Limited(lowerBound float64, upperBound float64) *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_limited(this.h, (C.double)(lowerBound), (C.double)(upperBound)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorEqual(param1 *QwtInterval) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtInterval_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtInterval) OperatorNotEqual(param1 *QwtInterval) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtInterval_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtInterval) SetBorderFlags(borderFlags QwtInterval__BorderFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_setBorderFlags(this.h, (C.int)(borderFlags))
 }
 
 func (this *QwtInterval) BorderFlags() QwtInterval__BorderFlag {
+	defer runtime.KeepAlive(this)
 	return (QwtInterval__BorderFlag)(C.QwtInterval_borderFlags(this.h))
 }
 
 func (this *QwtInterval) MinValue() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtInterval_minValue(this.h))
 }
 
 func (this *QwtInterval) MaxValue() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtInterval_maxValue(this.h))
 }
 
 func (this *QwtInterval) Width() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtInterval_width(this.h))
 }
 
 func (this *QwtInterval) SetMinValue(minValue float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_setMinValue(this.h, (C.double)(minValue))
 }
 
 func (this *QwtInterval) SetMaxValue(maxValue float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_setMaxValue(this.h, (C.double)(maxValue))
 }
 
 func (this *QwtInterval) Contains(value float64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtInterval_contains(this.h, (C.double)(value)))
 }
 
 func (this *QwtInterval) Intersects(param1 *QwtInterval) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtInterval_intersects(this.h, param1.cPointer()))
 }
 
 func (this *QwtInterval) Intersect(param1 *QwtInterval) *QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQwtInterval(C.QwtInterval_intersect(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) Unite(param1 *QwtInterval) *QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQwtInterval(C.QwtInterval_unite(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorBitwiseOr(param1 *QwtInterval) *QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQwtInterval(C.QwtInterval_operatorBitwiseOr(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorBitwiseAnd(param1 *QwtInterval) *QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQwtInterval(C.QwtInterval_operatorBitwiseAnd(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorBitwiseOrAssign(param1 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtInterval_operatorBitwiseOrAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtInterval) OperatorBitwiseAndAssign(param1 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtInterval_operatorBitwiseAndAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtInterval) Extend(value float64) *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_extend(this.h, (C.double)(value)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorBitwiseOrWithDouble(param1 float64) *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_operatorBitwiseOrWithDouble(this.h, (C.double)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) OperatorBitwiseOrAssignWithDouble(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_operatorBitwiseOrAssignWithDouble(this.h, (C.double)(param1))
 }
 
 func (this *QwtInterval) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtInterval_isValid(this.h))
 }
 
 func (this *QwtInterval) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtInterval_isNull(this.h))
 }
 
 func (this *QwtInterval) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_invalidate(this.h)
 }
 
 func (this *QwtInterval) Symmetrize(value float64) *QwtInterval {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtInterval_symmetrize(this.h, (C.double)(value)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtInterval) SetInterval2(minValue float64, maxValue float64, param3 QwtInterval__BorderFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtInterval_setInterval2(this.h, (C.double)(minValue), (C.double)(maxValue), (C.int)(param3))
 }
 
@@ -227,8 +272,9 @@ func (this *QwtInterval) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtInterval{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtInterval) {
-		C.QwtInterval_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtInterval_delete((*C.QwtInterval)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -243,6 +243,8 @@ bool QwtSlider_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtSlider_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtSlider_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtSlider_virtualreturncopy_QVariant(QVariant* src);
 
 QRect* QwtSlider_protectedbase_sliderRect(bool* _dynamic_cast_ok, const void* self);
 QRect* QwtSlider_protectedbase_handleRect(bool* _dynamic_cast_ok, const void* self);

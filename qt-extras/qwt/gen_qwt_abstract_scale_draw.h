@@ -67,6 +67,7 @@ bool QwtAbstractScaleDraw_override_virtual_drawBackbone(void* self, intptr_t slo
 void QwtAbstractScaleDraw_virtualbase_drawBackbone(const void* self, QPainter* painter);
 bool QwtAbstractScaleDraw_override_virtual_drawLabel(void* self, intptr_t slot);
 void QwtAbstractScaleDraw_virtualbase_drawLabel(const void* self, QPainter* painter, double value);
+QwtText* QwtAbstractScaleDraw_virtualreturncopy_QwtText(QwtText* src);
 
 void QwtAbstractScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 QwtText* QwtAbstractScaleDraw_protectedbase_tickLabel(bool* _dynamic_cast_ok, const void* self, QFont* param1, double value);

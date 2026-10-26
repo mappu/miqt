@@ -55,7 +55,13 @@ const (
 
 type QNetworkAddressEntry struct {
 	h  *C.QNetworkAddressEntry
-	gc *[1]*C.QNetworkAddressEntry
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkAddressEntry) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkAddressEntry) cPointer() *C.QNetworkAddressEntry {
@@ -94,101 +100,132 @@ func NewQNetworkAddressEntry() *QNetworkAddressEntry {
 
 // NewQNetworkAddressEntry2 constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry2(other *QNetworkAddressEntry) *QNetworkAddressEntry {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkAddressEntry(C.QNetworkAddressEntry_new2(other.cPointer()))
 }
 
 func (this *QNetworkAddressEntry) OperatorAssign(other *QNetworkAddressEntry) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkAddressEntry_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkAddressEntry) Swap(other *QNetworkAddressEntry) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkAddressEntry_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkAddressEntry) OperatorEqual(other *QNetworkAddressEntry) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkAddressEntry_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkAddressEntry) OperatorNotEqual(other *QNetworkAddressEntry) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkAddressEntry_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkAddressEntry) DnsEligibility() QNetworkAddressEntry__DnsEligibilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QNetworkAddressEntry__DnsEligibilityStatus)(C.QNetworkAddressEntry_dnsEligibility(this.h))
 }
 
 func (this *QNetworkAddressEntry) SetDnsEligibility(status QNetworkAddressEntry__DnsEligibilityStatus) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkAddressEntry_setDnsEligibility(this.h, (C.int8_t)(status))
 }
 
 func (this *QNetworkAddressEntry) Ip() *QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QNetworkAddressEntry_ip(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) SetIp(newIp *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newIp)
 	C.QNetworkAddressEntry_setIp(this.h, newIp.cPointer())
 }
 
 func (this *QNetworkAddressEntry) Netmask() *QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QNetworkAddressEntry_netmask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) SetNetmask(newNetmask *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newNetmask)
 	C.QNetworkAddressEntry_setNetmask(this.h, newNetmask.cPointer())
 }
 
 func (this *QNetworkAddressEntry) PrefixLength() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkAddressEntry_prefixLength(this.h))
 }
 
 func (this *QNetworkAddressEntry) SetPrefixLength(length int) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkAddressEntry_setPrefixLength(this.h, (C.int)(length))
 }
 
 func (this *QNetworkAddressEntry) Broadcast() *QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QNetworkAddressEntry_broadcast(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) SetBroadcast(newBroadcast *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newBroadcast)
 	C.QNetworkAddressEntry_setBroadcast(this.h, newBroadcast.cPointer())
 }
 
 func (this *QNetworkAddressEntry) IsLifetimeKnown() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAddressEntry_isLifetimeKnown(this.h))
 }
 
 func (this *QNetworkAddressEntry) PreferredLifetime() *qt6.QDeadlineTimer {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QNetworkAddressEntry_preferredLifetime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) ValidityLifetime() *qt6.QDeadlineTimer {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QNetworkAddressEntry_validityLifetime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) SetAddressLifetime(preferred qt6.QDeadlineTimer, validity qt6.QDeadlineTimer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(preferred)
+	defer runtime.KeepAlive(validity)
 	C.QNetworkAddressEntry_setAddressLifetime(this.h, (*C.QDeadlineTimer)(preferred.UnsafePointer()), (*C.QDeadlineTimer)(validity.UnsafePointer()))
 }
 
 func (this *QNetworkAddressEntry) ClearAddressLifetime() {
+	defer runtime.KeepAlive(this)
 	C.QNetworkAddressEntry_clearAddressLifetime(this.h)
 }
 
 func (this *QNetworkAddressEntry) IsPermanent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAddressEntry_isPermanent(this.h))
 }
 
 func (this *QNetworkAddressEntry) IsTemporary() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAddressEntry_isTemporary(this.h))
 }
 
@@ -204,15 +241,22 @@ func (this *QNetworkAddressEntry) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkAddressEntry{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkAddressEntry) {
-		C.QNetworkAddressEntry_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkAddressEntry_delete((*C.QNetworkAddressEntry)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QNetworkInterface struct {
 	h  *C.QNetworkInterface
-	gc *[1]*C.QNetworkInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkInterface) cPointer() *C.QNetworkInterface {
@@ -251,31 +295,40 @@ func NewQNetworkInterface() *QNetworkInterface {
 
 // NewQNetworkInterface2 constructs a new QNetworkInterface object.
 func NewQNetworkInterface2(other *QNetworkInterface) *QNetworkInterface {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkInterface(C.QNetworkInterface_new2(other.cPointer()))
 }
 
 func (this *QNetworkInterface) OperatorAssign(other *QNetworkInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkInterface_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkInterface) Swap(other *QNetworkInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkInterface_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkInterface) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkInterface_isValid(this.h))
 }
 
 func (this *QNetworkInterface) Index() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkInterface_index(this.h))
 }
 
 func (this *QNetworkInterface) MaximumTransmissionUnit() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkInterface_maximumTransmissionUnit(this.h))
 }
 
 func (this *QNetworkInterface) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkInterface_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -283,6 +336,7 @@ func (this *QNetworkInterface) Name() string {
 }
 
 func (this *QNetworkInterface) HumanReadableName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkInterface_humanReadableName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -290,14 +344,17 @@ func (this *QNetworkInterface) HumanReadableName() string {
 }
 
 func (this *QNetworkInterface) Flags() QNetworkInterface__InterfaceFlag {
+	defer runtime.KeepAlive(this)
 	return (QNetworkInterface__InterfaceFlag)(C.QNetworkInterface_flags(this.h))
 }
 
 func (this *QNetworkInterface) Type() QNetworkInterface__InterfaceType {
+	defer runtime.KeepAlive(this)
 	return (QNetworkInterface__InterfaceType)(C.QNetworkInterface_type(this.h))
 }
 
 func (this *QNetworkInterface) HardwareAddress() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkInterface_hardwareAddress(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -305,6 +362,7 @@ func (this *QNetworkInterface) HardwareAddress() string {
 }
 
 func (this *QNetworkInterface) AddressEntries() []QNetworkAddressEntry {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkInterface_addressEntries(this.h)
 	_ret := make([]QNetworkAddressEntry, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkAddressEntry)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -383,8 +441,9 @@ func (this *QNetworkInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkInterface) {
-		C.QNetworkInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkInterface_delete((*C.QNetworkInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

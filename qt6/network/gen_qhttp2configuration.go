@@ -15,7 +15,13 @@ import (
 
 type QHttp2Configuration struct {
 	h  *C.QHttp2Configuration
-	gc *[1]*C.QHttp2Configuration
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHttp2Configuration) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHttp2Configuration) cPointer() *C.QHttp2Configuration {
@@ -54,55 +60,70 @@ func NewQHttp2Configuration() *QHttp2Configuration {
 
 // NewQHttp2Configuration2 constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration2(other *QHttp2Configuration) *QHttp2Configuration {
+	defer runtime.KeepAlive(other)
 
 	return newQHttp2Configuration(C.QHttp2Configuration_new2(other.cPointer()))
 }
 
 func (this *QHttp2Configuration) OperatorAssign(other *QHttp2Configuration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHttp2Configuration_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QHttp2Configuration) SetServerPushEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHttp2Configuration_setServerPushEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QHttp2Configuration) ServerPushEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHttp2Configuration_serverPushEnabled(this.h))
 }
 
 func (this *QHttp2Configuration) SetHuffmanCompressionEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHttp2Configuration_setHuffmanCompressionEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QHttp2Configuration) HuffmanCompressionEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHttp2Configuration_huffmanCompressionEnabled(this.h))
 }
 
 func (this *QHttp2Configuration) SetSessionReceiveWindowSize(size uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHttp2Configuration_setSessionReceiveWindowSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) SessionReceiveWindowSize() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QHttp2Configuration_sessionReceiveWindowSize(this.h))
 }
 
 func (this *QHttp2Configuration) SetStreamReceiveWindowSize(size uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHttp2Configuration_setStreamReceiveWindowSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) StreamReceiveWindowSize() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QHttp2Configuration_streamReceiveWindowSize(this.h))
 }
 
 func (this *QHttp2Configuration) SetMaxFrameSize(size uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHttp2Configuration_setMaxFrameSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) MaxFrameSize() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QHttp2Configuration_maxFrameSize(this.h))
 }
 
 func (this *QHttp2Configuration) Swap(other *QHttp2Configuration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QHttp2Configuration_swap(this.h, other.cPointer())
 }
 
@@ -118,8 +139,9 @@ func (this *QHttp2Configuration) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHttp2Configuration{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHttp2Configuration) {
-		C.QHttp2Configuration_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHttp2Configuration_delete((*C.QHttp2Configuration)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

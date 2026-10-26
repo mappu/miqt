@@ -119,7 +119,13 @@ const (
 
 type QsciCommand struct {
 	h  *C.QsciCommand
-	gc *[1]*C.QsciCommand
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciCommand) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QsciCommand) cPointer() *C.QsciCommand {
@@ -151,26 +157,32 @@ func UnsafeNewQsciCommand(h unsafe.Pointer) *QsciCommand {
 }
 
 func (this *QsciCommand) Command() QsciCommand__Command {
+	defer runtime.KeepAlive(this)
 	return (QsciCommand__Command)(C.QsciCommand_command(this.h))
 }
 
 func (this *QsciCommand) Execute() {
+	defer runtime.KeepAlive(this)
 	C.QsciCommand_execute(this.h)
 }
 
 func (this *QsciCommand) SetKey(key int) {
+	defer runtime.KeepAlive(this)
 	C.QsciCommand_setKey(this.h, (C.int)(key))
 }
 
 func (this *QsciCommand) SetAlternateKey(altkey int) {
+	defer runtime.KeepAlive(this)
 	C.QsciCommand_setAlternateKey(this.h, (C.int)(altkey))
 }
 
 func (this *QsciCommand) Key() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciCommand_key(this.h))
 }
 
 func (this *QsciCommand) AlternateKey() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciCommand_alternateKey(this.h))
 }
 
@@ -179,6 +191,7 @@ func QsciCommand_ValidKey(key int) bool {
 }
 
 func (this *QsciCommand) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciCommand_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -197,8 +210,9 @@ func (this *QsciCommand) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciCommand{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciCommand) {
-		C.QsciCommand_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciCommand_delete((*C.QsciCommand)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

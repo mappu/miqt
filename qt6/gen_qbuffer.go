@@ -16,8 +16,15 @@ import (
 
 type QBuffer struct {
 	h  *C.QBuffer
-	gc *[1]*C.QBuffer
+	gc *[1]unsafe.Pointer
 	*QIODevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBuffer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QIODevice.miqtSetGC(gc)
 }
 
 func (this *QBuffer) cPointer() *C.QBuffer {
@@ -59,15 +66,18 @@ func NewQBuffer() *QBuffer {
 
 // NewQBuffer2 constructs a new QBuffer object.
 func NewQBuffer2(parent *QObject) *QBuffer {
+	defer runtime.KeepAlive(parent)
 
 	return newQBuffer(C.QBuffer_new2(parent.cPointer()))
 }
 
 func (this *QBuffer) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QBuffer_metaObject(this.h))
 }
 
 func (this *QBuffer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBuffer_metacast(this.h, param1_Cstring))
@@ -83,6 +93,7 @@ func QBuffer_Tr(s string) string {
 }
 
 func (this *QBuffer) Buffer() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QBuffer_buffer(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -90,6 +101,7 @@ func (this *QBuffer) Buffer() []byte {
 }
 
 func (this *QBuffer) Buffer2() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QBuffer_buffer2(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -97,6 +109,7 @@ func (this *QBuffer) Buffer2() []byte {
 }
 
 func (this *QBuffer) SetData(data []byte) {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -108,12 +121,14 @@ func (this *QBuffer) SetData(data []byte) {
 }
 
 func (this *QBuffer) SetData2(data string, lenVal int) {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	C.QBuffer_setData2(this.h, data_Cstring, (C.int)(lenVal))
 }
 
 func (this *QBuffer) Data() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QBuffer_data(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -121,30 +136,37 @@ func (this *QBuffer) Data() []byte {
 }
 
 func (this *QBuffer) Open(openMode QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBuffer_open(this.h, (C.int)(openMode)))
 }
 
 func (this *QBuffer) Close() {
+	defer runtime.KeepAlive(this)
 	C.QBuffer_close(this.h)
 }
 
 func (this *QBuffer) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QBuffer_size(this.h))
 }
 
 func (this *QBuffer) Pos() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QBuffer_pos(this.h))
 }
 
 func (this *QBuffer) Seek(off int64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBuffer_seek(this.h, (C.longlong)(off)))
 }
 
 func (this *QBuffer) AtEnd() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBuffer_atEnd(this.h))
 }
 
 func (this *QBuffer) CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBuffer_canReadLine(this.h))
 }
 
@@ -172,6 +194,7 @@ func QBuffer_Tr3(s string, c string, n int) string {
 
 // SetOpenMode can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QBuffer_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -184,6 +207,7 @@ func (this *QBuffer) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
 
 // SetErrorString can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -200,6 +224,7 @@ func (this *QBuffer) SetErrorString(errorString string) {
 
 // Sender can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QBuffer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -214,6 +239,7 @@ func (this *QBuffer) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBuffer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -228,6 +254,7 @@ func (this *QBuffer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -244,6 +271,8 @@ func (this *QBuffer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBuffer that was directly constructed.
 func (this *QBuffer) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBuffer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -257,6 +286,7 @@ func (this *QBuffer) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QBuffer) callVirtualBase_Open(openMode QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_open(unsafe.Pointer(this.h), (C.int)(openMode)))
 
@@ -285,6 +315,7 @@ func miqt_exec_callback_QBuffer_open(self *C.QBuffer, cb C.intptr_t, openMode C.
 }
 
 func (this *QBuffer) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QBuffer_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -308,6 +339,7 @@ func miqt_exec_callback_QBuffer_close(self *C.QBuffer, cb C.intptr_t) {
 }
 
 func (this *QBuffer) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QBuffer_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -333,6 +365,7 @@ func miqt_exec_callback_QBuffer_size(self *C.QBuffer, cb C.intptr_t) C.longlong 
 }
 
 func (this *QBuffer) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QBuffer_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -358,6 +391,7 @@ func miqt_exec_callback_QBuffer_pos(self *C.QBuffer, cb C.intptr_t) C.longlong {
 }
 
 func (this *QBuffer) callVirtualBase_Seek(off int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(off)))
 
@@ -386,6 +420,7 @@ func miqt_exec_callback_QBuffer_seek(self *C.QBuffer, cb C.intptr_t, off C.longl
 }
 
 func (this *QBuffer) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -411,6 +446,7 @@ func miqt_exec_callback_QBuffer_atEnd(self *C.QBuffer, cb C.intptr_t) C.bool {
 }
 
 func (this *QBuffer) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -436,6 +472,8 @@ func miqt_exec_callback_QBuffer_canReadLine(self *C.QBuffer, cb C.intptr_t) C.bo
 }
 
 func (this *QBuffer) callVirtualBase_ConnectNotify(param1 *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QBuffer_virtualbase_connectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -462,6 +500,8 @@ func miqt_exec_callback_QBuffer_connectNotify(self *C.QBuffer, cb C.intptr_t, pa
 }
 
 func (this *QBuffer) callVirtualBase_DisconnectNotify(param1 *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QBuffer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -488,6 +528,7 @@ func miqt_exec_callback_QBuffer_disconnectNotify(self *C.QBuffer, cb C.intptr_t,
 }
 
 func (this *QBuffer) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -521,6 +562,7 @@ func miqt_exec_callback_QBuffer_readData(self *C.QBuffer, cb C.intptr_t, data *C
 }
 
 func (this *QBuffer) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -554,6 +596,7 @@ func miqt_exec_callback_QBuffer_writeData(self *C.QBuffer, cb C.intptr_t, data *
 }
 
 func (this *QBuffer) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -579,6 +622,7 @@ func miqt_exec_callback_QBuffer_isSequential(self *C.QBuffer, cb C.intptr_t) C.b
 }
 
 func (this *QBuffer) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -604,6 +648,7 @@ func miqt_exec_callback_QBuffer_reset(self *C.QBuffer, cb C.intptr_t) C.bool {
 }
 
 func (this *QBuffer) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QBuffer_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -629,6 +674,7 @@ func miqt_exec_callback_QBuffer_bytesAvailable(self *C.QBuffer, cb C.intptr_t) C
 }
 
 func (this *QBuffer) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QBuffer_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -654,6 +700,7 @@ func miqt_exec_callback_QBuffer_bytesToWrite(self *C.QBuffer, cb C.intptr_t) C.l
 }
 
 func (this *QBuffer) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -682,6 +729,7 @@ func miqt_exec_callback_QBuffer_waitForReadyRead(self *C.QBuffer, cb C.intptr_t,
 }
 
 func (this *QBuffer) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QBuffer_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -710,6 +758,7 @@ func miqt_exec_callback_QBuffer_waitForBytesWritten(self *C.QBuffer, cb C.intptr
 }
 
 func (this *QBuffer) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -743,6 +792,7 @@ func miqt_exec_callback_QBuffer_readLineData(self *C.QBuffer, cb C.intptr_t, dat
 }
 
 func (this *QBuffer) callVirtualBase_SkipData(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QBuffer_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
@@ -771,6 +821,8 @@ func miqt_exec_callback_QBuffer_skipData(self *C.QBuffer, cb C.intptr_t, maxSize
 }
 
 func (this *QBuffer) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBuffer_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -799,6 +851,9 @@ func miqt_exec_callback_QBuffer_event(self *C.QBuffer, cb C.intptr_t, event *C.Q
 }
 
 func (this *QBuffer) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBuffer_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -829,6 +884,8 @@ func miqt_exec_callback_QBuffer_eventFilter(self *C.QBuffer, cb C.intptr_t, watc
 }
 
 func (this *QBuffer) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBuffer_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -855,6 +912,8 @@ func miqt_exec_callback_QBuffer_timerEvent(self *C.QBuffer, cb C.intptr_t, event
 }
 
 func (this *QBuffer) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBuffer_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -881,6 +940,8 @@ func miqt_exec_callback_QBuffer_childEvent(self *C.QBuffer, cb C.intptr_t, event
 }
 
 func (this *QBuffer) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBuffer_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -918,8 +979,9 @@ func (this *QBuffer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBuffer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBuffer) {
-		C.QBuffer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBuffer_delete((*C.QBuffer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

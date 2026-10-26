@@ -23,8 +23,14 @@ const (
 
 type QSound struct {
 	h  *C.QSound
-	gc *[1]*C.QSound
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSound) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSound) cPointer() *C.QSound {
@@ -70,6 +76,7 @@ func NewQSound(filename string) *QSound {
 
 // NewQSound2 constructs a new QSound object.
 func NewQSound2(filename string, parent *qt.QObject) *QSound {
+	defer runtime.KeepAlive(parent)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -79,10 +86,12 @@ func NewQSound2(filename string, parent *qt.QObject) *QSound {
 }
 
 func (this *QSound) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSound_metaObject(this.h)))
 }
 
 func (this *QSound) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSound_metacast(this.h, param1_Cstring))
@@ -115,18 +124,22 @@ func QSound_Play(filename string) {
 }
 
 func (this *QSound) Loops() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSound_loops(this.h))
 }
 
 func (this *QSound) LoopsRemaining() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSound_loopsRemaining(this.h))
 }
 
 func (this *QSound) SetLoops(loops int) {
+	defer runtime.KeepAlive(this)
 	C.QSound_setLoops(this.h, (C.int)(loops))
 }
 
 func (this *QSound) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSound_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -134,14 +147,17 @@ func (this *QSound) FileName() string {
 }
 
 func (this *QSound) IsFinished() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSound_isFinished(this.h))
 }
 
 func (this *QSound) Play2() {
+	defer runtime.KeepAlive(this)
 	C.QSound_play2(this.h)
 }
 
 func (this *QSound) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QSound_stop(this.h)
 }
 
@@ -191,6 +207,7 @@ func QSound_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QSound that was directly constructed.
 func (this *QSound) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSound_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -205,6 +222,7 @@ func (this *QSound) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSound that was directly constructed.
 func (this *QSound) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSound_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -219,6 +237,7 @@ func (this *QSound) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSound that was directly constructed.
 func (this *QSound) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -235,6 +254,8 @@ func (this *QSound) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSound that was directly constructed.
 func (this *QSound) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSound_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -248,6 +269,8 @@ func (this *QSound) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QSound) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSound_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -276,6 +299,9 @@ func miqt_exec_callback_QSound_event(self *C.QSound, cb C.intptr_t, event *C.QEv
 }
 
 func (this *QSound) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSound_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -306,6 +332,8 @@ func miqt_exec_callback_QSound_eventFilter(self *C.QSound, cb C.intptr_t, watche
 }
 
 func (this *QSound) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSound_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -332,6 +360,8 @@ func miqt_exec_callback_QSound_timerEvent(self *C.QSound, cb C.intptr_t, event *
 }
 
 func (this *QSound) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSound_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -358,6 +388,8 @@ func miqt_exec_callback_QSound_childEvent(self *C.QSound, cb C.intptr_t, event *
 }
 
 func (this *QSound) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSound_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -384,6 +416,8 @@ func miqt_exec_callback_QSound_customEvent(self *C.QSound, cb C.intptr_t, event 
 }
 
 func (this *QSound) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSound_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -410,6 +444,8 @@ func miqt_exec_callback_QSound_connectNotify(self *C.QSound, cb C.intptr_t, sign
 }
 
 func (this *QSound) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSound_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -447,8 +483,9 @@ func (this *QSound) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSound{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSound) {
-		C.QSound_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSound_delete((*C.QSound)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

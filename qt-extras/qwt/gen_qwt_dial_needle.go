@@ -38,7 +38,13 @@ const (
 
 type QwtDialNeedle struct {
 	h  *C.QwtDialNeedle
-	gc *[1]*C.QwtDialNeedle
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtDialNeedle) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtDialNeedle) cPointer() *C.QwtDialNeedle {
@@ -77,27 +83,38 @@ func NewQwtDialNeedle() *QwtDialNeedle {
 
 // NewQwtDialNeedle2 constructs a new QwtDialNeedle object.
 func NewQwtDialNeedle2(param1 *QwtDialNeedle) *QwtDialNeedle {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtDialNeedle(C.QwtDialNeedle_new2(param1.cPointer()))
 }
 
 func (this *QwtDialNeedle) SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 	C.QwtDialNeedle_setPalette(this.h, (*C.QPalette)(palette.UnsafePointer()))
 }
 
 func (this *QwtDialNeedle) Palette() *qt.QPalette {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtDialNeedle_palette(this.h)))
 }
 
 func (this *QwtDialNeedle) Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 	C.QwtDialNeedle_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
 }
 
 func (this *QwtDialNeedle) OperatorAssign(param1 *QwtDialNeedle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtDialNeedle_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtDialNeedle) callVirtualBase_SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 
 	C.QwtDialNeedle_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(palette.UnsafePointer()))
 
@@ -124,6 +141,9 @@ func miqt_exec_callback_QwtDialNeedle_setPalette(self *C.QwtDialNeedle, cb C.int
 }
 
 func (this *QwtDialNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 
 	C.QwtDialNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
@@ -182,6 +202,9 @@ func miqt_exec_callback_QwtDialNeedle_drawNeedle(self *C.QwtDialNeedle, cb C.int
 }
 
 func (this *QwtDialNeedle) callVirtualBase_DrawKnob(param1 *qt.QPainter, width float64, param3 *qt.QBrush, sunken bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtDialNeedle_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(width), (*C.QBrush)(param3.UnsafePointer()), (C.bool)(sunken))
 
@@ -225,16 +248,24 @@ func (this *QwtDialNeedle) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtDialNeedle{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDialNeedle) {
-		C.QwtDialNeedle_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtDialNeedle_delete((*C.QwtDialNeedle)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtDialSimpleNeedle struct {
 	h  *C.QwtDialSimpleNeedle
-	gc *[1]*C.QwtDialSimpleNeedle
+	gc *[1]unsafe.Pointer
 	*QwtDialNeedle
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtDialSimpleNeedle) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtDialNeedle.miqtSetGC(gc)
 }
 
 func (this *QwtDialSimpleNeedle) cPointer() *C.QwtDialSimpleNeedle {
@@ -276,6 +307,7 @@ func NewQwtDialSimpleNeedle(param1 QwtDialSimpleNeedle__Style) *QwtDialSimpleNee
 
 // NewQwtDialSimpleNeedle2 constructs a new QwtDialSimpleNeedle object.
 func NewQwtDialSimpleNeedle2(param1 *QwtDialSimpleNeedle) *QwtDialSimpleNeedle {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new2(param1.cPointer()))
 }
@@ -288,29 +320,38 @@ func NewQwtDialSimpleNeedle3(param1 QwtDialSimpleNeedle__Style, hasKnob bool) *Q
 
 // NewQwtDialSimpleNeedle4 constructs a new QwtDialSimpleNeedle object.
 func NewQwtDialSimpleNeedle4(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid *qt.QColor) *QwtDialSimpleNeedle {
+	defer runtime.KeepAlive(mid)
 
 	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new4((C.int)(param1), (C.bool)(hasKnob), (*C.QColor)(mid.UnsafePointer())))
 }
 
 // NewQwtDialSimpleNeedle5 constructs a new QwtDialSimpleNeedle object.
 func NewQwtDialSimpleNeedle5(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid *qt.QColor, base *qt.QColor) *QwtDialSimpleNeedle {
+	defer runtime.KeepAlive(mid)
+	defer runtime.KeepAlive(base)
 
 	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new5((C.int)(param1), (C.bool)(hasKnob), (*C.QColor)(mid.UnsafePointer()), (*C.QColor)(base.UnsafePointer())))
 }
 
 func (this *QwtDialSimpleNeedle) SetWidth(width float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtDialSimpleNeedle_setWidth(this.h, (C.double)(width))
 }
 
 func (this *QwtDialSimpleNeedle) Width() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtDialSimpleNeedle_width(this.h))
 }
 
 func (this *QwtDialSimpleNeedle) OperatorAssign(param1 *QwtDialSimpleNeedle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtDialSimpleNeedle_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtDialSimpleNeedle) callVirtualBase_DrawNeedle(param1 *qt.QPainter, length float64, param3 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtDialSimpleNeedle_virtualbase_drawNeedle(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(length), (C.int)(param3))
 
@@ -341,6 +382,8 @@ func miqt_exec_callback_QwtDialSimpleNeedle_drawNeedle(self *C.QwtDialSimpleNeed
 }
 
 func (this *QwtDialSimpleNeedle) callVirtualBase_SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 
 	C.QwtDialSimpleNeedle_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(palette.UnsafePointer()))
 
@@ -367,6 +410,9 @@ func miqt_exec_callback_QwtDialSimpleNeedle_setPalette(self *C.QwtDialSimpleNeed
 }
 
 func (this *QwtDialSimpleNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 
 	C.QwtDialSimpleNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
@@ -401,6 +447,9 @@ func miqt_exec_callback_QwtDialSimpleNeedle_draw(self *C.QwtDialSimpleNeedle, cb
 }
 
 func (this *QwtDialSimpleNeedle) callVirtualBase_DrawKnob(param1 *qt.QPainter, width float64, param3 *qt.QBrush, sunken bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtDialSimpleNeedle_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(width), (*C.QBrush)(param3.UnsafePointer()), (C.bool)(sunken))
 
@@ -444,16 +493,24 @@ func (this *QwtDialSimpleNeedle) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtDialSimpleNeedle{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDialSimpleNeedle) {
-		C.QwtDialSimpleNeedle_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtDialSimpleNeedle_delete((*C.QwtDialSimpleNeedle)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtCompassMagnetNeedle struct {
 	h  *C.QwtCompassMagnetNeedle
-	gc *[1]*C.QwtCompassMagnetNeedle
+	gc *[1]unsafe.Pointer
 	*QwtDialNeedle
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCompassMagnetNeedle) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtDialNeedle.miqtSetGC(gc)
 }
 
 func (this *QwtCompassMagnetNeedle) cPointer() *C.QwtCompassMagnetNeedle {
@@ -495,6 +552,7 @@ func NewQwtCompassMagnetNeedle() *QwtCompassMagnetNeedle {
 
 // NewQwtCompassMagnetNeedle2 constructs a new QwtCompassMagnetNeedle object.
 func NewQwtCompassMagnetNeedle2(param1 *QwtCompassMagnetNeedle) *QwtCompassMagnetNeedle {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new2(param1.cPointer()))
 }
@@ -507,21 +565,28 @@ func NewQwtCompassMagnetNeedle3(param1 QwtCompassMagnetNeedle__Style) *QwtCompas
 
 // NewQwtCompassMagnetNeedle4 constructs a new QwtCompassMagnetNeedle object.
 func NewQwtCompassMagnetNeedle4(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor) *QwtCompassMagnetNeedle {
+	defer runtime.KeepAlive(light)
 
 	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new4((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
 }
 
 // NewQwtCompassMagnetNeedle5 constructs a new QwtCompassMagnetNeedle object.
 func NewQwtCompassMagnetNeedle5(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassMagnetNeedle {
+	defer runtime.KeepAlive(light)
+	defer runtime.KeepAlive(dark)
 
 	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new5((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
 }
 
 func (this *QwtCompassMagnetNeedle) OperatorAssign(param1 *QwtCompassMagnetNeedle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtCompassMagnetNeedle_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtCompassMagnetNeedle) callVirtualBase_DrawNeedle(param1 *qt.QPainter, length float64, param3 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCompassMagnetNeedle_virtualbase_drawNeedle(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(length), (C.int)(param3))
 
@@ -552,6 +617,8 @@ func miqt_exec_callback_QwtCompassMagnetNeedle_drawNeedle(self *C.QwtCompassMagn
 }
 
 func (this *QwtCompassMagnetNeedle) callVirtualBase_SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 
 	C.QwtCompassMagnetNeedle_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(palette.UnsafePointer()))
 
@@ -578,6 +645,9 @@ func miqt_exec_callback_QwtCompassMagnetNeedle_setPalette(self *C.QwtCompassMagn
 }
 
 func (this *QwtCompassMagnetNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 
 	C.QwtCompassMagnetNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
@@ -612,6 +682,9 @@ func miqt_exec_callback_QwtCompassMagnetNeedle_draw(self *C.QwtCompassMagnetNeed
 }
 
 func (this *QwtCompassMagnetNeedle) callVirtualBase_DrawKnob(param1 *qt.QPainter, width float64, param3 *qt.QBrush, sunken bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtCompassMagnetNeedle_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(width), (*C.QBrush)(param3.UnsafePointer()), (C.bool)(sunken))
 
@@ -655,16 +728,24 @@ func (this *QwtCompassMagnetNeedle) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCompassMagnetNeedle{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassMagnetNeedle) {
-		C.QwtCompassMagnetNeedle_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCompassMagnetNeedle_delete((*C.QwtCompassMagnetNeedle)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtCompassWindArrow struct {
 	h  *C.QwtCompassWindArrow
-	gc *[1]*C.QwtCompassWindArrow
+	gc *[1]unsafe.Pointer
 	*QwtDialNeedle
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtCompassWindArrow) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtDialNeedle.miqtSetGC(gc)
 }
 
 func (this *QwtCompassWindArrow) cPointer() *C.QwtCompassWindArrow {
@@ -706,27 +787,35 @@ func NewQwtCompassWindArrow(param1 QwtCompassWindArrow__Style) *QwtCompassWindAr
 
 // NewQwtCompassWindArrow2 constructs a new QwtCompassWindArrow object.
 func NewQwtCompassWindArrow2(param1 *QwtCompassWindArrow) *QwtCompassWindArrow {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new2(param1.cPointer()))
 }
 
 // NewQwtCompassWindArrow3 constructs a new QwtCompassWindArrow object.
 func NewQwtCompassWindArrow3(param1 QwtCompassWindArrow__Style, light *qt.QColor) *QwtCompassWindArrow {
+	defer runtime.KeepAlive(light)
 
 	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new3((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
 }
 
 // NewQwtCompassWindArrow4 constructs a new QwtCompassWindArrow object.
 func NewQwtCompassWindArrow4(param1 QwtCompassWindArrow__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassWindArrow {
+	defer runtime.KeepAlive(light)
+	defer runtime.KeepAlive(dark)
 
 	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new4((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
 }
 
 func (this *QwtCompassWindArrow) OperatorAssign(param1 *QwtCompassWindArrow) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtCompassWindArrow_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtCompassWindArrow) callVirtualBase_DrawNeedle(param1 *qt.QPainter, length float64, param3 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtCompassWindArrow_virtualbase_drawNeedle(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(length), (C.int)(param3))
 
@@ -757,6 +846,8 @@ func miqt_exec_callback_QwtCompassWindArrow_drawNeedle(self *C.QwtCompassWindArr
 }
 
 func (this *QwtCompassWindArrow) callVirtualBase_SetPalette(palette *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(palette)
 
 	C.QwtCompassWindArrow_virtualbase_setPalette(unsafe.Pointer(this.h), (*C.QPalette)(palette.UnsafePointer()))
 
@@ -783,6 +874,9 @@ func miqt_exec_callback_QwtCompassWindArrow_setPalette(self *C.QwtCompassWindArr
 }
 
 func (this *QwtCompassWindArrow) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(center)
 
 	C.QwtCompassWindArrow_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
@@ -817,6 +911,9 @@ func miqt_exec_callback_QwtCompassWindArrow_draw(self *C.QwtCompassWindArrow, cb
 }
 
 func (this *QwtCompassWindArrow) callVirtualBase_DrawKnob(param1 *qt.QPainter, width float64, param3 *qt.QBrush, sunken bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtCompassWindArrow_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(width), (*C.QBrush)(param3.UnsafePointer()), (C.bool)(sunken))
 
@@ -860,8 +957,9 @@ func (this *QwtCompassWindArrow) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtCompassWindArrow{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassWindArrow) {
-		C.QwtCompassWindArrow_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtCompassWindArrow_delete((*C.QwtCompassWindArrow)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

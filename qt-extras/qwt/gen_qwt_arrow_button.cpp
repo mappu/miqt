@@ -116,7 +116,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtArrowButton_virtualbase_sizeHint(const void* self);
@@ -131,7 +133,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtArrowButton_virtualbase_minimumSizeHint(const void* self);
@@ -202,7 +206,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QwtArrowButton_labelRect(this, handle__labelRect);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtArrowButton_virtualbase_labelRect(const void* self);
@@ -222,7 +228,9 @@ public:
 		// Cast returned reference into pointer
 		QSize* sigval2 = const_cast<QSize*>(&boundingSize_ret);
 		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_arrowSize(this, handle__arrowSize, sigval1, sigval2);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtArrowButton_virtualbase_arrowSize(const void* self, int param1, QSize* boundingSize);
@@ -913,7 +921,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QwtArrowButton_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QwtArrowButton_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1820,6 +1830,18 @@ bool QwtArrowButton_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QwtArrowButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::disconnectNotify(*signal);
+}
+
+QSize* QwtArrowButton_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QwtArrowButton_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QVariant* QwtArrowButton_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QwtArrowButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option) {

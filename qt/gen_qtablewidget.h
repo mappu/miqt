@@ -196,6 +196,7 @@ bool QTableWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QTableWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+QVariant* QTableWidgetItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QTableWidgetItem_delete(QTableWidgetItem* self);
 
@@ -489,6 +490,12 @@ bool QTableWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTableWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QTableWidget_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QTableWidget_virtualreturncopy_QModelIndex(QModelIndex* src);
+QStyleOptionViewItem* QTableWidget_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src);
+QRegion* QTableWidget_virtualreturncopy_QRegion(QRegion* src);
+QSize* QTableWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QTableWidget_virtualreturncopy_QVariant(QVariant* src);
 
 struct miqt_array /* of QTableWidgetItem* */  QTableWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data);
 QModelIndex* QTableWidget_protectedbase_indexFromItem(bool* _dynamic_cast_ok, const void* self, QTableWidgetItem* item);

@@ -246,7 +246,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDateTimeEdit_virtualbase_sizeHint(const void* self);
@@ -433,7 +435,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 		QDateTime* callback_return_value = miqt_exec_callback_QDateTimeEdit_dateTimeFromText(this, handle__dateTimeFromText, sigval1);
-		return *callback_return_value;
+		QDateTime callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QDateTime* QDateTimeEdit_virtualbase_dateTimeFromText(const void* self, struct miqt_string text);
@@ -517,7 +521,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDateTimeEdit_virtualbase_minimumSizeHint(const void* self);
@@ -534,7 +540,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDateTimeEdit_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QDateTimeEdit_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -2320,6 +2328,18 @@ void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	static_cast<MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::disconnectNotify(*signal);
 }
 
+QSize* QDateTimeEdit_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QDateTime* QDateTimeEdit_virtualreturncopy_QDateTime(QDateTime* src) {
+	return new QDateTime(*src);
+}
+
+QVariant* QDateTimeEdit_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QDateTimeEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option) {
 	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -2476,7 +2496,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTimeEdit_virtualbase_sizeHint(const void* self);
@@ -2663,7 +2685,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 		QDateTime* callback_return_value = miqt_exec_callback_QTimeEdit_dateTimeFromText(this, handle__dateTimeFromText, sigval1);
-		return *callback_return_value;
+		QDateTime callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QDateTime* QTimeEdit_virtualbase_dateTimeFromText(const void* self, struct miqt_string text);
@@ -2747,7 +2771,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTimeEdit_virtualbase_minimumSizeHint(const void* self);
@@ -2764,7 +2790,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTimeEdit_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTimeEdit_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -4289,6 +4317,18 @@ void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTimeEdit*>(self)->QTimeEdit::disconnectNotify(*signal);
 }
 
+QSize* QTimeEdit_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QDateTime* QTimeEdit_virtualreturncopy_QDateTime(QDateTime* src) {
+	return new QDateTime(*src);
+}
+
+QVariant* QTimeEdit_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QTimeEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option) {
 	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -4445,7 +4485,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDateEdit_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDateEdit_virtualbase_sizeHint(const void* self);
@@ -4632,7 +4674,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 		QDateTime* callback_return_value = miqt_exec_callback_QDateEdit_dateTimeFromText(this, handle__dateTimeFromText, sigval1);
-		return *callback_return_value;
+		QDateTime callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QDateTime* QDateEdit_virtualbase_dateTimeFromText(const void* self, struct miqt_string text);
@@ -4716,7 +4760,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QDateEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QDateEdit_virtualbase_minimumSizeHint(const void* self);
@@ -4733,7 +4779,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QDateEdit_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QDateEdit_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -6256,6 +6304,18 @@ bool QDateEdit_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDateEdit*>(self)->QDateEdit::disconnectNotify(*signal);
+}
+
+QSize* QDateEdit_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QDateTime* QDateEdit_virtualreturncopy_QDateTime(QDateTime* src) {
+	return new QDateTime(*src);
+}
+
+QVariant* QDateEdit_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDateEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option) {

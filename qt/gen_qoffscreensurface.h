@@ -87,6 +87,8 @@ bool QOffscreenSurface_override_virtual_connectNotify(void* self, intptr_t slot)
 void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSurfaceFormat* QOffscreenSurface_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src);
+QSize* QOffscreenSurface_virtualreturncopy_QSize(QSize* src);
 
 QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QOffscreenSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

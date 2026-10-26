@@ -222,7 +222,9 @@ public:
 
 		int sigval1 = index;
 		QVariant* callback_return_value = miqt_exec_callback_QDesignerPropertySheetExtension_property(this, handle__property, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -529,6 +531,10 @@ bool QDesignerPropertySheetExtension_override_virtual_isEnabled(void* self, intp
 
 	self_cast->handle__isEnabled = slot;
 	return true;
+}
+
+QVariant* QDesignerPropertySheetExtension_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDesignerPropertySheetExtension_delete(QDesignerPropertySheetExtension* self) {

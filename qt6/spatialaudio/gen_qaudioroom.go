@@ -57,8 +57,14 @@ const (
 
 type QAudioRoom struct {
 	h  *C.QAudioRoom
-	gc *[1]*C.QAudioRoom
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioRoom) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioRoom) cPointer() *C.QAudioRoom {
@@ -94,15 +100,18 @@ func UnsafeNewQAudioRoom(h unsafe.Pointer) *QAudioRoom {
 
 // NewQAudioRoom constructs a new QAudioRoom object.
 func NewQAudioRoom(engine *QAudioEngine) *QAudioRoom {
+	defer runtime.KeepAlive(engine)
 
 	return newQAudioRoom(C.QAudioRoom_new(engine.cPointer()))
 }
 
 func (this *QAudioRoom) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioRoom_metaObject(this.h)))
 }
 
 func (this *QAudioRoom) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioRoom_metacast(this.h, param1_Cstring))
@@ -118,76 +127,96 @@ func QAudioRoom_Tr(s string) string {
 }
 
 func (this *QAudioRoom) SetPosition(pos qt6.QVector3D) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QAudioRoom_setPosition(this.h, (*C.QVector3D)(pos.UnsafePointer()))
 }
 
 func (this *QAudioRoom) Position() *qt6.QVector3D {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioRoom_position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioRoom) SetDimensions(dim qt6.QVector3D) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(dim)
 	C.QAudioRoom_setDimensions(this.h, (*C.QVector3D)(dim.UnsafePointer()))
 }
 
 func (this *QAudioRoom) Dimensions() *qt6.QVector3D {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioRoom_dimensions(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioRoom) SetRotation(q *qt6.QQuaternion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(q)
 	C.QAudioRoom_setRotation(this.h, (*C.QQuaternion)(q.UnsafePointer()))
 }
 
 func (this *QAudioRoom) Rotation() *qt6.QQuaternion {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(C.QAudioRoom_rotation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioRoom) SetWallMaterial(wall QAudioRoom__Wall, material QAudioRoom__Material) {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_setWallMaterial(this.h, (C.int)(wall), (C.int)(material))
 }
 
 func (this *QAudioRoom) WallMaterial(wall QAudioRoom__Wall) QAudioRoom__Material {
+	defer runtime.KeepAlive(this)
 	return (QAudioRoom__Material)(C.QAudioRoom_wallMaterial(this.h, (C.int)(wall)))
 }
 
 func (this *QAudioRoom) SetReflectionGain(factor float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_setReflectionGain(this.h, (C.float)(factor))
 }
 
 func (this *QAudioRoom) ReflectionGain() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioRoom_reflectionGain(this.h))
 }
 
 func (this *QAudioRoom) SetReverbGain(factor float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_setReverbGain(this.h, (C.float)(factor))
 }
 
 func (this *QAudioRoom) ReverbGain() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioRoom_reverbGain(this.h))
 }
 
 func (this *QAudioRoom) SetReverbTime(factor float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_setReverbTime(this.h, (C.float)(factor))
 }
 
 func (this *QAudioRoom) ReverbTime() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioRoom_reverbTime(this.h))
 }
 
 func (this *QAudioRoom) SetReverbBrightness(factor float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_setReverbBrightness(this.h, (C.float)(factor))
 }
 
 func (this *QAudioRoom) ReverbBrightness() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioRoom_reverbBrightness(this.h))
 }
 
 func (this *QAudioRoom) PositionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_positionChanged(this.h)
 }
 func (this *QAudioRoom) OnPositionChanged(slot func()) {
@@ -205,6 +234,7 @@ func miqt_exec_callback_QAudioRoom_positionChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) DimensionsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_dimensionsChanged(this.h)
 }
 func (this *QAudioRoom) OnDimensionsChanged(slot func()) {
@@ -222,6 +252,7 @@ func miqt_exec_callback_QAudioRoom_dimensionsChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) RotationChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_rotationChanged(this.h)
 }
 func (this *QAudioRoom) OnRotationChanged(slot func()) {
@@ -239,6 +270,7 @@ func miqt_exec_callback_QAudioRoom_rotationChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) WallsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_wallsChanged(this.h)
 }
 func (this *QAudioRoom) OnWallsChanged(slot func()) {
@@ -256,6 +288,7 @@ func miqt_exec_callback_QAudioRoom_wallsChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) ReflectionGainChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_reflectionGainChanged(this.h)
 }
 func (this *QAudioRoom) OnReflectionGainChanged(slot func()) {
@@ -273,6 +306,7 @@ func miqt_exec_callback_QAudioRoom_reflectionGainChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) ReverbGainChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_reverbGainChanged(this.h)
 }
 func (this *QAudioRoom) OnReverbGainChanged(slot func()) {
@@ -290,6 +324,7 @@ func miqt_exec_callback_QAudioRoom_reverbGainChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) ReverbTimeChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_reverbTimeChanged(this.h)
 }
 func (this *QAudioRoom) OnReverbTimeChanged(slot func()) {
@@ -307,6 +342,7 @@ func miqt_exec_callback_QAudioRoom_reverbTimeChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioRoom) ReverbBrightnessChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioRoom_reverbBrightnessChanged(this.h)
 }
 func (this *QAudioRoom) OnReverbBrightnessChanged(slot func()) {
@@ -347,6 +383,7 @@ func QAudioRoom_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QAudioRoom that was directly constructed.
 func (this *QAudioRoom) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAudioRoom_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -361,6 +398,7 @@ func (this *QAudioRoom) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAudioRoom that was directly constructed.
 func (this *QAudioRoom) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioRoom_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,6 +413,7 @@ func (this *QAudioRoom) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioRoom that was directly constructed.
 func (this *QAudioRoom) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -391,6 +430,8 @@ func (this *QAudioRoom) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioRoom that was directly constructed.
 func (this *QAudioRoom) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAudioRoom_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -404,6 +445,8 @@ func (this *QAudioRoom) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAudioRoom) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioRoom_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -432,6 +475,9 @@ func miqt_exec_callback_QAudioRoom_event(self *C.QAudioRoom, cb C.intptr_t, even
 }
 
 func (this *QAudioRoom) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioRoom_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -462,6 +508,8 @@ func miqt_exec_callback_QAudioRoom_eventFilter(self *C.QAudioRoom, cb C.intptr_t
 }
 
 func (this *QAudioRoom) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioRoom_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -488,6 +536,8 @@ func miqt_exec_callback_QAudioRoom_timerEvent(self *C.QAudioRoom, cb C.intptr_t,
 }
 
 func (this *QAudioRoom) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioRoom_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -514,6 +564,8 @@ func miqt_exec_callback_QAudioRoom_childEvent(self *C.QAudioRoom, cb C.intptr_t,
 }
 
 func (this *QAudioRoom) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioRoom_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -540,6 +592,8 @@ func miqt_exec_callback_QAudioRoom_customEvent(self *C.QAudioRoom, cb C.intptr_t
 }
 
 func (this *QAudioRoom) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioRoom_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -566,6 +620,8 @@ func miqt_exec_callback_QAudioRoom_connectNotify(self *C.QAudioRoom, cb C.intptr
 }
 
 func (this *QAudioRoom) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioRoom_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -603,8 +659,9 @@ func (this *QAudioRoom) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioRoom{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioRoom) {
-		C.QAudioRoom_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioRoom_delete((*C.QAudioRoom)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

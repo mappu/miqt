@@ -186,6 +186,9 @@ bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QDirModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QDirModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QDirModel_virtualreturncopy_QSize(QSize* src);
 
 void QDirModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QDirModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);

@@ -263,7 +263,9 @@ public:
 		}
 
 		QIcon* callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_icon(this, handle__icon);
-		return *callback_return_value;
+		QIcon callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -500,6 +502,10 @@ public:
 		QVariant** callback_return_value_arr = static_cast<QVariant**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QVariant** callback_return_value_free_arr = static_cast<QVariant**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -944,6 +950,14 @@ bool QDesignerWidgetDataBaseItemInterface_override_virtual_defaultPropertyValues
 
 	self_cast->handle__defaultPropertyValues = slot;
 	return true;
+}
+
+QIcon* QDesignerWidgetDataBaseItemInterface_virtualreturncopy_QIcon(QIcon* src) {
+	return new QIcon(*src);
+}
+
+QVariant* QDesignerWidgetDataBaseItemInterface_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QDesignerWidgetDataBaseItemInterface_delete(QDesignerWidgetDataBaseItemInterface* self) {

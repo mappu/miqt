@@ -17,8 +17,14 @@ import (
 
 type QCandlestickModelMapper struct {
 	h  *C.QCandlestickModelMapper
-	gc *[1]*C.QCandlestickModelMapper
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCandlestickModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCandlestickModelMapper) cPointer() *C.QCandlestickModelMapper {
@@ -60,15 +66,18 @@ func NewQCandlestickModelMapper() *QCandlestickModelMapper {
 
 // NewQCandlestickModelMapper2 constructs a new QCandlestickModelMapper object.
 func NewQCandlestickModelMapper2(parent *qt6.QObject) *QCandlestickModelMapper {
+	defer runtime.KeepAlive(parent)
 
 	return newQCandlestickModelMapper(C.QCandlestickModelMapper_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCandlestickModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QCandlestickModelMapper_metaObject(this.h)))
 }
 
 func (this *QCandlestickModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCandlestickModelMapper_metacast(this.h, param1_Cstring))
@@ -84,26 +93,34 @@ func QCandlestickModelMapper_Tr(s string) string {
 }
 
 func (this *QCandlestickModelMapper) SetModel(model *qt6.QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QCandlestickModelMapper_setModel(this.h, (*C.QAbstractItemModel)(model.UnsafePointer()))
 }
 
 func (this *QCandlestickModelMapper) Model() *qt6.QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCandlestickModelMapper_model(this.h)))
 }
 
 func (this *QCandlestickModelMapper) SetSeries(series *QCandlestickSeries) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(series)
 	C.QCandlestickModelMapper_setSeries(this.h, series.cPointer())
 }
 
 func (this *QCandlestickModelMapper) Series() *QCandlestickSeries {
+	defer runtime.KeepAlive(this)
 	return newQCandlestickSeries(C.QCandlestickModelMapper_series(this.h))
 }
 
 func (this *QCandlestickModelMapper) Orientation() qt6.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt6.Orientation)(C.QCandlestickModelMapper_orientation(this.h))
 }
 
 func (this *QCandlestickModelMapper) ModelReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickModelMapper_modelReplaced(this.h)
 }
 func (this *QCandlestickModelMapper) OnModelReplaced(slot func()) {
@@ -121,6 +138,7 @@ func miqt_exec_callback_QCandlestickModelMapper_modelReplaced(cb C.intptr_t) {
 }
 
 func (this *QCandlestickModelMapper) SeriesReplaced() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickModelMapper_seriesReplaced(this.h)
 }
 func (this *QCandlestickModelMapper) OnSeriesReplaced(slot func()) {
@@ -161,6 +179,7 @@ func QCandlestickModelMapper_Tr3(s string, c string, n int) string {
 
 // SetTimestamp can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetTimestamp(timestamp int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setTimestamp(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(timestamp))
@@ -173,6 +192,7 @@ func (this *QCandlestickModelMapper) SetTimestamp(timestamp int) {
 
 // Timestamp can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Timestamp() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_timestamp(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -187,6 +207,7 @@ func (this *QCandlestickModelMapper) Timestamp() int {
 
 // SetOpen can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetOpen(open int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setOpen(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(open))
@@ -199,6 +220,7 @@ func (this *QCandlestickModelMapper) SetOpen(open int) {
 
 // Open can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Open() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_open(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -213,6 +235,7 @@ func (this *QCandlestickModelMapper) Open() int {
 
 // SetHigh can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetHigh(high int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setHigh(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(high))
@@ -225,6 +248,7 @@ func (this *QCandlestickModelMapper) SetHigh(high int) {
 
 // High can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) High() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_high(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -239,6 +263,7 @@ func (this *QCandlestickModelMapper) High() int {
 
 // SetLow can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetLow(low int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setLow(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(low))
@@ -251,6 +276,7 @@ func (this *QCandlestickModelMapper) SetLow(low int) {
 
 // Low can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Low() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_low(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -265,6 +291,7 @@ func (this *QCandlestickModelMapper) Low() int {
 
 // SetClose can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetClose(close int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setClose(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(close))
@@ -277,6 +304,7 @@ func (this *QCandlestickModelMapper) SetClose(close int) {
 
 // Close can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Close() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_close(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -291,6 +319,7 @@ func (this *QCandlestickModelMapper) Close() int {
 
 // SetFirstSetSection can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetFirstSetSection(firstSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setFirstSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(firstSetSection))
@@ -303,6 +332,7 @@ func (this *QCandlestickModelMapper) SetFirstSetSection(firstSetSection int) {
 
 // FirstSetSection can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) FirstSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_firstSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -317,6 +347,7 @@ func (this *QCandlestickModelMapper) FirstSetSection() int {
 
 // SetLastSetSection can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SetLastSetSection(lastSetSection int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCandlestickModelMapper_protectedbase_setLastSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(lastSetSection))
@@ -329,6 +360,7 @@ func (this *QCandlestickModelMapper) SetLastSetSection(lastSetSection int) {
 
 // LastSetSection can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) LastSetSection() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_lastSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -343,6 +375,7 @@ func (this *QCandlestickModelMapper) LastSetSection() int {
 
 // Sender can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QCandlestickModelMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -357,6 +390,7 @@ func (this *QCandlestickModelMapper) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickModelMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -371,6 +405,7 @@ func (this *QCandlestickModelMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -387,6 +422,8 @@ func (this *QCandlestickModelMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCandlestickModelMapper that was directly constructed.
 func (this *QCandlestickModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCandlestickModelMapper_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -419,6 +456,8 @@ func miqt_exec_callback_QCandlestickModelMapper_orientation(self *C.QCandlestick
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickModelMapper_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -447,6 +486,9 @@ func miqt_exec_callback_QCandlestickModelMapper_event(self *C.QCandlestickModelM
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickModelMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -477,6 +519,8 @@ func miqt_exec_callback_QCandlestickModelMapper_eventFilter(self *C.QCandlestick
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickModelMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -503,6 +547,8 @@ func miqt_exec_callback_QCandlestickModelMapper_timerEvent(self *C.QCandlestickM
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickModelMapper_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -529,6 +575,8 @@ func miqt_exec_callback_QCandlestickModelMapper_childEvent(self *C.QCandlestickM
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickModelMapper_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -555,6 +603,8 @@ func miqt_exec_callback_QCandlestickModelMapper_customEvent(self *C.QCandlestick
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickModelMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -581,6 +631,8 @@ func miqt_exec_callback_QCandlestickModelMapper_connectNotify(self *C.QCandlesti
 }
 
 func (this *QCandlestickModelMapper) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickModelMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -618,8 +670,9 @@ func (this *QCandlestickModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCandlestickModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCandlestickModelMapper) {
-		C.QCandlestickModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCandlestickModelMapper_delete((*C.QCandlestickModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

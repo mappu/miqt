@@ -29,8 +29,15 @@ const (
 
 type QDockWidget struct {
 	h  *C.QDockWidget
-	gc *[1]*C.QDockWidget
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDockWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QDockWidget) cPointer() *C.QDockWidget {
@@ -66,6 +73,7 @@ func UnsafeNewQDockWidget(h unsafe.Pointer) *QDockWidget {
 
 // NewQDockWidget constructs a new QDockWidget object.
 func NewQDockWidget(parent *QWidget) *QDockWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQDockWidget(C.QDockWidget_new(parent.cPointer()))
 }
@@ -88,6 +96,7 @@ func NewQDockWidget3() *QDockWidget {
 
 // NewQDockWidget4 constructs a new QDockWidget object.
 func NewQDockWidget4(title string, parent *QWidget) *QDockWidget {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -98,6 +107,7 @@ func NewQDockWidget4(title string, parent *QWidget) *QDockWidget {
 
 // NewQDockWidget5 constructs a new QDockWidget object.
 func NewQDockWidget5(title string, parent *QWidget, flags WindowType) *QDockWidget {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -108,15 +118,18 @@ func NewQDockWidget5(title string, parent *QWidget, flags WindowType) *QDockWidg
 
 // NewQDockWidget6 constructs a new QDockWidget object.
 func NewQDockWidget6(parent *QWidget, flags WindowType) *QDockWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQDockWidget(C.QDockWidget_new6(parent.cPointer(), (C.int)(flags)))
 }
 
 func (this *QDockWidget) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDockWidget_metaObject(this.h))
 }
 
 func (this *QDockWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDockWidget_metacast(this.h, param1_Cstring))
@@ -141,54 +154,69 @@ func QDockWidget_TrUtf8(s string) string {
 }
 
 func (this *QDockWidget) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QDockWidget_widget(this.h))
 }
 
 func (this *QDockWidget) SetWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDockWidget_setWidget(this.h, widget.cPointer())
 }
 
 func (this *QDockWidget) SetFeatures(features QDockWidget__DockWidgetFeature) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_setFeatures(this.h, (C.int)(features))
 }
 
 func (this *QDockWidget) Features() QDockWidget__DockWidgetFeature {
+	defer runtime.KeepAlive(this)
 	return (QDockWidget__DockWidgetFeature)(C.QDockWidget_features(this.h))
 }
 
 func (this *QDockWidget) SetFloating(floating bool) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_setFloating(this.h, (C.bool)(floating))
 }
 
 func (this *QDockWidget) IsFloating() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDockWidget_isFloating(this.h))
 }
 
 func (this *QDockWidget) SetAllowedAreas(areas DockWidgetArea) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_setAllowedAreas(this.h, (C.int)(areas))
 }
 
 func (this *QDockWidget) AllowedAreas() DockWidgetArea {
+	defer runtime.KeepAlive(this)
 	return (DockWidgetArea)(C.QDockWidget_allowedAreas(this.h))
 }
 
 func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDockWidget_setTitleBarWidget(this.h, widget.cPointer())
 }
 
 func (this *QDockWidget) TitleBarWidget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QDockWidget_titleBarWidget(this.h))
 }
 
 func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDockWidget_isAreaAllowed(this.h, (C.int)(area)))
 }
 
 func (this *QDockWidget) ToggleViewAction() *QAction {
+	defer runtime.KeepAlive(this)
 	return newQAction(C.QDockWidget_toggleViewAction(this.h))
 }
 
 func (this *QDockWidget) FeaturesChanged(features QDockWidget__DockWidgetFeature) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_featuresChanged(this.h, (C.int)(features))
 }
 func (this *QDockWidget) OnFeaturesChanged(slot func(features QDockWidget__DockWidgetFeature)) {
@@ -209,6 +237,7 @@ func miqt_exec_callback_QDockWidget_featuresChanged(cb C.intptr_t, features C.in
 }
 
 func (this *QDockWidget) TopLevelChanged(topLevel bool) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_topLevelChanged(this.h, (C.bool)(topLevel))
 }
 func (this *QDockWidget) OnTopLevelChanged(slot func(topLevel bool)) {
@@ -229,6 +258,7 @@ func miqt_exec_callback_QDockWidget_topLevelChanged(cb C.intptr_t, topLevel C.bo
 }
 
 func (this *QDockWidget) AllowedAreasChanged(allowedAreas DockWidgetArea) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_allowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas DockWidgetArea)) {
@@ -249,6 +279,7 @@ func miqt_exec_callback_QDockWidget_allowedAreasChanged(cb C.intptr_t, allowedAr
 }
 
 func (this *QDockWidget) VisibilityChanged(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_visibilityChanged(this.h, (C.bool)(visible))
 }
 func (this *QDockWidget) OnVisibilityChanged(slot func(visible bool)) {
@@ -269,6 +300,7 @@ func miqt_exec_callback_QDockWidget_visibilityChanged(cb C.intptr_t, visible C.b
 }
 
 func (this *QDockWidget) DockLocationChanged(area DockWidgetArea) {
+	defer runtime.KeepAlive(this)
 	C.QDockWidget_dockLocationChanged(this.h, (C.int)(area))
 }
 func (this *QDockWidget) OnDockLocationChanged(slot func(area DockWidgetArea)) {
@@ -334,6 +366,8 @@ func QDockWidget_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) InitStyleOption(option *QStyleOptionDockWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDockWidget_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -346,6 +380,7 @@ func (this *QDockWidget) InitStyleOption(option *QStyleOptionDockWidget) {
 
 // UpdateMicroFocus can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDockWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -358,6 +393,7 @@ func (this *QDockWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDockWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -370,6 +406,7 @@ func (this *QDockWidget) Create() {
 
 // Destroy can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDockWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -382,6 +419,7 @@ func (this *QDockWidget) Destroy() {
 
 // FocusNextChild can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDockWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -396,6 +434,7 @@ func (this *QDockWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDockWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -410,6 +449,7 @@ func (this *QDockWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDockWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -424,6 +464,7 @@ func (this *QDockWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDockWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -438,6 +479,7 @@ func (this *QDockWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -454,6 +496,8 @@ func (this *QDockWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDockWidget that was directly constructed.
 func (this *QDockWidget) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDockWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -467,6 +511,8 @@ func (this *QDockWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDockWidget) callVirtualBase_ChangeEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -493,6 +539,8 @@ func miqt_exec_callback_QDockWidget_changeEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -519,6 +567,8 @@ func miqt_exec_callback_QDockWidget_closeEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -545,6 +595,8 @@ func miqt_exec_callback_QDockWidget_paintEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDockWidget_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -573,6 +625,7 @@ func miqt_exec_callback_QDockWidget_event(self *C.QDockWidget, cb C.intptr_t, ev
 }
 
 func (this *QDockWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDockWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -598,6 +651,7 @@ func miqt_exec_callback_QDockWidget_devType(self *C.QDockWidget, cb C.intptr_t) 
 }
 
 func (this *QDockWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDockWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -624,6 +678,7 @@ func miqt_exec_callback_QDockWidget_setVisible(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDockWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -645,12 +700,14 @@ func miqt_exec_callback_QDockWidget_sizeHint(self *C.QDockWidget, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDockWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QDockWidget) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDockWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -672,12 +729,14 @@ func miqt_exec_callback_QDockWidget_minimumSizeHint(self *C.QDockWidget, cb C.in
 	}
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDockWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QDockWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDockWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -706,6 +765,7 @@ func miqt_exec_callback_QDockWidget_heightForWidth(self *C.QDockWidget, cb C.int
 }
 
 func (this *QDockWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDockWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -731,6 +791,7 @@ func miqt_exec_callback_QDockWidget_hasHeightForWidth(self *C.QDockWidget, cb C.
 }
 
 func (this *QDockWidget) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDockWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -750,12 +811,15 @@ func miqt_exec_callback_QDockWidget_paintEngine(self *C.QDockWidget, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDockWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -782,6 +846,8 @@ func miqt_exec_callback_QDockWidget_mousePressEvent(self *C.QDockWidget, cb C.in
 }
 
 func (this *QDockWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -808,6 +874,8 @@ func miqt_exec_callback_QDockWidget_mouseReleaseEvent(self *C.QDockWidget, cb C.
 }
 
 func (this *QDockWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -834,6 +902,8 @@ func miqt_exec_callback_QDockWidget_mouseDoubleClickEvent(self *C.QDockWidget, c
 }
 
 func (this *QDockWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -860,6 +930,8 @@ func miqt_exec_callback_QDockWidget_mouseMoveEvent(self *C.QDockWidget, cb C.int
 }
 
 func (this *QDockWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -886,6 +958,8 @@ func miqt_exec_callback_QDockWidget_wheelEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -912,6 +986,8 @@ func miqt_exec_callback_QDockWidget_keyPressEvent(self *C.QDockWidget, cb C.intp
 }
 
 func (this *QDockWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -938,6 +1014,8 @@ func miqt_exec_callback_QDockWidget_keyReleaseEvent(self *C.QDockWidget, cb C.in
 }
 
 func (this *QDockWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -964,6 +1042,8 @@ func miqt_exec_callback_QDockWidget_focusInEvent(self *C.QDockWidget, cb C.intpt
 }
 
 func (this *QDockWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -990,6 +1070,8 @@ func miqt_exec_callback_QDockWidget_focusOutEvent(self *C.QDockWidget, cb C.intp
 }
 
 func (this *QDockWidget) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1016,6 +1098,8 @@ func miqt_exec_callback_QDockWidget_enterEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1042,6 +1126,8 @@ func miqt_exec_callback_QDockWidget_leaveEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1068,6 +1154,8 @@ func miqt_exec_callback_QDockWidget_moveEvent(self *C.QDockWidget, cb C.intptr_t
 }
 
 func (this *QDockWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1094,6 +1182,8 @@ func miqt_exec_callback_QDockWidget_resizeEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1120,6 +1210,8 @@ func miqt_exec_callback_QDockWidget_contextMenuEvent(self *C.QDockWidget, cb C.i
 }
 
 func (this *QDockWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1146,6 +1238,8 @@ func miqt_exec_callback_QDockWidget_tabletEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1172,6 +1266,8 @@ func miqt_exec_callback_QDockWidget_actionEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1198,6 +1294,8 @@ func miqt_exec_callback_QDockWidget_dragEnterEvent(self *C.QDockWidget, cb C.int
 }
 
 func (this *QDockWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1224,6 +1322,8 @@ func miqt_exec_callback_QDockWidget_dragMoveEvent(self *C.QDockWidget, cb C.intp
 }
 
 func (this *QDockWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1250,6 +1350,8 @@ func miqt_exec_callback_QDockWidget_dragLeaveEvent(self *C.QDockWidget, cb C.int
 }
 
 func (this *QDockWidget) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1276,6 +1378,8 @@ func miqt_exec_callback_QDockWidget_dropEvent(self *C.QDockWidget, cb C.intptr_t
 }
 
 func (this *QDockWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1302,6 +1406,8 @@ func miqt_exec_callback_QDockWidget_showEvent(self *C.QDockWidget, cb C.intptr_t
 }
 
 func (this *QDockWidget) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1328,6 +1434,7 @@ func miqt_exec_callback_QDockWidget_hideEvent(self *C.QDockWidget, cb C.intptr_t
 }
 
 func (this *QDockWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1369,6 +1476,7 @@ func miqt_exec_callback_QDockWidget_nativeEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDockWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1397,6 +1505,8 @@ func miqt_exec_callback_QDockWidget_metric(self *C.QDockWidget, cb C.intptr_t, p
 }
 
 func (this *QDockWidget) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QDockWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1423,6 +1533,8 @@ func miqt_exec_callback_QDockWidget_initPainter(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDockWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1445,12 +1557,14 @@ func miqt_exec_callback_QDockWidget_redirected(self *C.QDockWidget, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDockWidget) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDockWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1470,12 +1584,15 @@ func miqt_exec_callback_QDockWidget_sharedPainter(self *C.QDockWidget, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDockWidget) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QDockWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1502,6 +1619,7 @@ func miqt_exec_callback_QDockWidget_inputMethodEvent(self *C.QDockWidget, cb C.i
 }
 
 func (this *QDockWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDockWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1526,12 +1644,14 @@ func miqt_exec_callback_QDockWidget_inputMethodQuery(self *C.QDockWidget, cb C.i
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QDockWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDockWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QDockWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDockWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1560,6 +1680,9 @@ func miqt_exec_callback_QDockWidget_focusNextPrevChild(self *C.QDockWidget, cb C
 }
 
 func (this *QDockWidget) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDockWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1590,6 +1713,8 @@ func miqt_exec_callback_QDockWidget_eventFilter(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1616,6 +1741,8 @@ func miqt_exec_callback_QDockWidget_timerEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1642,6 +1769,8 @@ func miqt_exec_callback_QDockWidget_childEvent(self *C.QDockWidget, cb C.intptr_
 }
 
 func (this *QDockWidget) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDockWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1668,6 +1797,8 @@ func miqt_exec_callback_QDockWidget_customEvent(self *C.QDockWidget, cb C.intptr
 }
 
 func (this *QDockWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDockWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1694,6 +1825,8 @@ func miqt_exec_callback_QDockWidget_connectNotify(self *C.QDockWidget, cb C.intp
 }
 
 func (this *QDockWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDockWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1731,8 +1864,9 @@ func (this *QDockWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDockWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDockWidget) {
-		C.QDockWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDockWidget_delete((*C.QDockWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

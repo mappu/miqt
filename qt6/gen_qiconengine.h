@@ -80,6 +80,8 @@ bool QIconEngine_override_virtual_scaledPixmap(void* self, intptr_t slot);
 QPixmap* QIconEngine_virtualbase_scaledPixmap(void* self, QSize* size, int mode, int state, double scale);
 bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data);
+QSize* QIconEngine_virtualreturncopy_QSize(QSize* src);
+QPixmap* QIconEngine_virtualreturncopy_QPixmap(QPixmap* src);
 
 void QIconEngine_delete(QIconEngine* self);
 

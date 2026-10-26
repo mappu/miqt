@@ -141,6 +141,8 @@ bool QsciLexerMakefile_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMakefile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerMakefile_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerMakefile_virtualreturncopy_QFont(QFont* src);
 
 QObject* QsciLexerMakefile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMakefile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

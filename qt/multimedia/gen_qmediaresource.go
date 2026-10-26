@@ -17,7 +17,13 @@ import (
 
 type QMediaResource struct {
 	h  *C.QMediaResource
-	gc *[1]*C.QMediaResource
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaResource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMediaResource) cPointer() *C.QMediaResource {
@@ -56,24 +62,28 @@ func NewQMediaResource() *QMediaResource {
 
 // NewQMediaResource2 constructs a new QMediaResource object.
 func NewQMediaResource2(url *qt.QUrl) *QMediaResource {
+	defer runtime.KeepAlive(url)
 
 	return newQMediaResource(C.QMediaResource_new2((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQMediaResource3 constructs a new QMediaResource object.
 func NewQMediaResource3(request *network.QNetworkRequest) *QMediaResource {
+	defer runtime.KeepAlive(request)
 
 	return newQMediaResource(C.QMediaResource_new3((*C.QNetworkRequest)(request.UnsafePointer())))
 }
 
 // NewQMediaResource4 constructs a new QMediaResource object.
 func NewQMediaResource4(other *QMediaResource) *QMediaResource {
+	defer runtime.KeepAlive(other)
 
 	return newQMediaResource(C.QMediaResource_new4(other.cPointer()))
 }
 
 // NewQMediaResource5 constructs a new QMediaResource object.
 func NewQMediaResource5(url *qt.QUrl, mimeType string) *QMediaResource {
+	defer runtime.KeepAlive(url)
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
@@ -84,6 +94,7 @@ func NewQMediaResource5(url *qt.QUrl, mimeType string) *QMediaResource {
 
 // NewQMediaResource6 constructs a new QMediaResource object.
 func NewQMediaResource6(request *network.QNetworkRequest, mimeType string) *QMediaResource {
+	defer runtime.KeepAlive(request)
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
@@ -93,34 +104,44 @@ func NewQMediaResource6(request *network.QNetworkRequest, mimeType string) *QMed
 }
 
 func (this *QMediaResource) OperatorAssign(other *QMediaResource) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMediaResource_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMediaResource) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaResource_isNull(this.h))
 }
 
 func (this *QMediaResource) OperatorEqual(other *QMediaResource) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaResource_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaResource) OperatorNotEqual(other *QMediaResource) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMediaResource_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaResource) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaResource_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaResource) Request() *network.QNetworkRequest {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaResource_request(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaResource) MimeType() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaResource_mimeType(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -128,6 +149,7 @@ func (this *QMediaResource) MimeType() string {
 }
 
 func (this *QMediaResource) Language() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaResource_language(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -135,6 +157,7 @@ func (this *QMediaResource) Language() string {
 }
 
 func (this *QMediaResource) SetLanguage(language string) {
+	defer runtime.KeepAlive(this)
 	language_ms := C.struct_miqt_string{}
 	language_ms.data = C.CString(language)
 	language_ms.len = C.size_t(len(language))
@@ -143,6 +166,7 @@ func (this *QMediaResource) SetLanguage(language string) {
 }
 
 func (this *QMediaResource) AudioCodec() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaResource_audioCodec(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -150,6 +174,7 @@ func (this *QMediaResource) AudioCodec() string {
 }
 
 func (this *QMediaResource) SetAudioCodec(codec string) {
+	defer runtime.KeepAlive(this)
 	codec_ms := C.struct_miqt_string{}
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
@@ -158,6 +183,7 @@ func (this *QMediaResource) SetAudioCodec(codec string) {
 }
 
 func (this *QMediaResource) VideoCodec() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaResource_videoCodec(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -165,6 +191,7 @@ func (this *QMediaResource) VideoCodec() string {
 }
 
 func (this *QMediaResource) SetVideoCodec(codec string) {
+	defer runtime.KeepAlive(this)
 	codec_ms := C.struct_miqt_string{}
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
@@ -173,56 +200,70 @@ func (this *QMediaResource) SetVideoCodec(codec string) {
 }
 
 func (this *QMediaResource) DataSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMediaResource_dataSize(this.h))
 }
 
 func (this *QMediaResource) SetDataSize(size int64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setDataSize(this.h, (C.longlong)(size))
 }
 
 func (this *QMediaResource) AudioBitRate() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaResource_audioBitRate(this.h))
 }
 
 func (this *QMediaResource) SetAudioBitRate(rate int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setAudioBitRate(this.h, (C.int)(rate))
 }
 
 func (this *QMediaResource) SampleRate() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaResource_sampleRate(this.h))
 }
 
 func (this *QMediaResource) SetSampleRate(frequency int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setSampleRate(this.h, (C.int)(frequency))
 }
 
 func (this *QMediaResource) ChannelCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaResource_channelCount(this.h))
 }
 
 func (this *QMediaResource) SetChannelCount(channels int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setChannelCount(this.h, (C.int)(channels))
 }
 
 func (this *QMediaResource) VideoBitRate() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaResource_videoBitRate(this.h))
 }
 
 func (this *QMediaResource) SetVideoBitRate(rate int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setVideoBitRate(this.h, (C.int)(rate))
 }
 
 func (this *QMediaResource) Resolution() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QMediaResource_resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaResource) SetResolution(resolution *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(resolution)
 	C.QMediaResource_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
 }
 
 func (this *QMediaResource) SetResolution2(width int, height int) {
+	defer runtime.KeepAlive(this)
 	C.QMediaResource_setResolution2(this.h, (C.int)(width), (C.int)(height))
 }
 
@@ -238,8 +279,9 @@ func (this *QMediaResource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaResource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaResource) {
-		C.QMediaResource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaResource_delete((*C.QMediaResource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

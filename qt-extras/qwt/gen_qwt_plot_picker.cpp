@@ -114,7 +114,9 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerText(this, handle__trackerText, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtPlotPicker_virtualbase_trackerText(const void* self, QPoint* param1);
@@ -132,7 +134,9 @@ public:
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerTextF(this, handle__trackerTextF, sigval1);
-		return *callback_return_value;
+		QwtText callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QwtText* QwtPlotPicker_virtualbase_trackerTextF(const void* self, QPointF* param1);
@@ -218,7 +222,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QwtPlotPicker_pickArea(this, handle__pickArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QwtPlotPicker_virtualbase_pickArea(const void* self);
@@ -267,7 +273,9 @@ public:
 		}
 
 		QRegion* callback_return_value = miqt_exec_callback_QwtPlotPicker_rubberBandMask(this, handle__rubberBandMask);
-		return *callback_return_value;
+		QRegion callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRegion* QwtPlotPicker_virtualbase_rubberBandMask(const void* self);
@@ -285,7 +293,9 @@ public:
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
 		QRect* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerRect(this, handle__trackerRect, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtPlotPicker_virtualbase_trackerRect(const void* self, QFont* param1);
@@ -1387,6 +1397,22 @@ bool QwtPlotPicker_override_virtual_keyMatch2(void* self, intptr_t slot) {
 
 bool QwtPlotPicker_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2) {
 	return static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::keyMatch(*param1, param2);
+}
+
+QwtText* QwtPlotPicker_virtualreturncopy_QwtText(QwtText* src) {
+	return new QwtText(*src);
+}
+
+QPainterPath* QwtPlotPicker_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QRegion* QwtPlotPicker_virtualreturncopy_QRegion(QRegion* src) {
+	return new QRegion(*src);
+}
+
+QRect* QwtPlotPicker_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 QRectF* QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {

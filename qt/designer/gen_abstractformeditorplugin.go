@@ -16,7 +16,13 @@ import (
 
 type QDesignerFormEditorPluginInterface struct {
 	h  *C.QDesignerFormEditorPluginInterface
-	gc *[1]*C.QDesignerFormEditorPluginInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerFormEditorPluginInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerFormEditorPluginInterface) cPointer() *C.QDesignerFormEditorPluginInterface {
@@ -48,22 +54,29 @@ func UnsafeNewQDesignerFormEditorPluginInterface(h unsafe.Pointer) *QDesignerFor
 }
 
 func (this *QDesignerFormEditorPluginInterface) IsInitialized() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerFormEditorPluginInterface_isInitialized(this.h))
 }
 
 func (this *QDesignerFormEditorPluginInterface) Initialize(core *QDesignerFormEditorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(core)
 	C.QDesignerFormEditorPluginInterface_initialize(this.h, core.cPointer())
 }
 
 func (this *QDesignerFormEditorPluginInterface) Action() *qt.QAction {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormEditorPluginInterface_action(this.h)))
 }
 
 func (this *QDesignerFormEditorPluginInterface) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerFormEditorPluginInterface_core(this.h))
 }
 
 func (this *QDesignerFormEditorPluginInterface) OperatorAssign(param1 *QDesignerFormEditorPluginInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerFormEditorPluginInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -79,8 +92,9 @@ func (this *QDesignerFormEditorPluginInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerFormEditorPluginInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormEditorPluginInterface) {
-		C.QDesignerFormEditorPluginInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerFormEditorPluginInterface_delete((*C.QDesignerFormEditorPluginInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -103,7 +103,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 		QSize* callback_return_value = miqt_exec_callback_QItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index);
@@ -952,6 +954,10 @@ bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::disconnectNotify(*signal);
+}
+
+QSize* QItemDelegate_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {

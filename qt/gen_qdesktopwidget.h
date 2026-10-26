@@ -215,6 +215,8 @@ bool QDesktopWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDesktopWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDesktopWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesktopWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesktopWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesktopWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);

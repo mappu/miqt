@@ -50,6 +50,7 @@ bool QwtTextEngine_override_virtual_textMargins(void* self, intptr_t slot);
 void QwtTextEngine_virtualbase_textMargins(const void* self, QFont* font, struct miqt_string text, double* left, double* right, double* top, double* bottom);
 bool QwtTextEngine_override_virtual_draw(void* self, intptr_t slot);
 void QwtTextEngine_virtualbase_draw(const void* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text);
+QSizeF* QwtTextEngine_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QwtTextEngine_delete(QwtTextEngine* self);
 
@@ -73,6 +74,7 @@ bool QwtPlainTextEngine_override_virtual_mightRender(void* self, intptr_t slot);
 bool QwtPlainTextEngine_virtualbase_mightRender(const void* self, struct miqt_string param1);
 bool QwtPlainTextEngine_override_virtual_textMargins(void* self, intptr_t slot);
 void QwtPlainTextEngine_virtualbase_textMargins(const void* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom);
+QSizeF* QwtPlainTextEngine_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QwtPlainTextEngine_delete(QwtPlainTextEngine* self);
 
@@ -96,6 +98,7 @@ bool QwtRichTextEngine_override_virtual_mightRender(void* self, intptr_t slot);
 bool QwtRichTextEngine_virtualbase_mightRender(const void* self, struct miqt_string param1);
 bool QwtRichTextEngine_override_virtual_textMargins(void* self, intptr_t slot);
 void QwtRichTextEngine_virtualbase_textMargins(const void* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom);
+QSizeF* QwtRichTextEngine_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QwtRichTextEngine_delete(QwtRichTextEngine* self);
 

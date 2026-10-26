@@ -16,8 +16,15 @@ import (
 
 type QTemporaryFile struct {
 	h  *C.QTemporaryFile
-	gc *[1]*C.QTemporaryFile
+	gc *[1]unsafe.Pointer
 	*QFile
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTemporaryFile) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QFile.miqtSetGC(gc)
 }
 
 func (this *QTemporaryFile) cPointer() *C.QTemporaryFile {
@@ -69,12 +76,14 @@ func NewQTemporaryFile2(templateName string) *QTemporaryFile {
 
 // NewQTemporaryFile3 constructs a new QTemporaryFile object.
 func NewQTemporaryFile3(parent *QObject) *QTemporaryFile {
+	defer runtime.KeepAlive(parent)
 
 	return newQTemporaryFile(C.QTemporaryFile_new3(parent.cPointer()))
 }
 
 // NewQTemporaryFile4 constructs a new QTemporaryFile object.
 func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
+	defer runtime.KeepAlive(parent)
 	templateName_ms := C.struct_miqt_string{}
 	templateName_ms.data = C.CString(templateName)
 	templateName_ms.len = C.size_t(len(templateName))
@@ -84,10 +93,12 @@ func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 }
 
 func (this *QTemporaryFile) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTemporaryFile_metaObject(this.h))
 }
 
 func (this *QTemporaryFile) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTemporaryFile_metacast(this.h, param1_Cstring))
@@ -103,18 +114,22 @@ func QTemporaryFile_Tr(s string) string {
 }
 
 func (this *QTemporaryFile) AutoRemove() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTemporaryFile_autoRemove(this.h))
 }
 
 func (this *QTemporaryFile) SetAutoRemove(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QTemporaryFile_setAutoRemove(this.h, (C.bool)(b))
 }
 
 func (this *QTemporaryFile) Open() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTemporaryFile_open(this.h))
 }
 
 func (this *QTemporaryFile) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTemporaryFile_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -122,6 +137,7 @@ func (this *QTemporaryFile) FileName() string {
 }
 
 func (this *QTemporaryFile) FileTemplate() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTemporaryFile_fileTemplate(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -129,6 +145,7 @@ func (this *QTemporaryFile) FileTemplate() string {
 }
 
 func (this *QTemporaryFile) SetFileTemplate(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -137,6 +154,7 @@ func (this *QTemporaryFile) SetFileTemplate(name string) {
 }
 
 func (this *QTemporaryFile) Rename(newName string) bool {
+	defer runtime.KeepAlive(this)
 	newName_ms := C.struct_miqt_string{}
 	newName_ms.data = C.CString(newName)
 	newName_ms.len = C.size_t(len(newName))
@@ -153,6 +171,7 @@ func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
+	defer runtime.KeepAlive(file)
 	return newQTemporaryFile(C.QTemporaryFile_createNativeFileWithFile(file.cPointer()))
 }
 
@@ -180,6 +199,7 @@ func QTemporaryFile_Tr3(s string, c string, n int) string {
 
 // SetOpenMode can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTemporaryFile_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -192,6 +212,7 @@ func (this *QTemporaryFile) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
 
 // SetErrorString can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -208,6 +229,7 @@ func (this *QTemporaryFile) SetErrorString(errorString string) {
 
 // Sender can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTemporaryFile_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -222,6 +244,7 @@ func (this *QTemporaryFile) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTemporaryFile_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -236,6 +259,7 @@ func (this *QTemporaryFile) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -252,6 +276,8 @@ func (this *QTemporaryFile) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTemporaryFile that was directly constructed.
 func (this *QTemporaryFile) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTemporaryFile_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -265,6 +291,7 @@ func (this *QTemporaryFile) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTemporaryFile) callVirtualBase_FileName() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QTemporaryFile_virtualbase_fileName(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -295,6 +322,7 @@ func miqt_exec_callback_QTemporaryFile_fileName(self *C.QTemporaryFile, cb C.int
 }
 
 func (this *QTemporaryFile) callVirtualBase_OpenWithFlags(flags QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_openWithFlags(unsafe.Pointer(this.h), (C.int)(flags)))
 
@@ -323,6 +351,7 @@ func miqt_exec_callback_QTemporaryFile_openWithFlags(self *C.QTemporaryFile, cb 
 }
 
 func (this *QTemporaryFile) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QTemporaryFile_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -348,6 +377,7 @@ func miqt_exec_callback_QTemporaryFile_size(self *C.QTemporaryFile, cb C.intptr_
 }
 
 func (this *QTemporaryFile) callVirtualBase_Resize(sz int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_resize(unsafe.Pointer(this.h), (C.longlong)(sz)))
 
@@ -376,6 +406,7 @@ func miqt_exec_callback_QTemporaryFile_resize(self *C.QTemporaryFile, cb C.intpt
 }
 
 func (this *QTemporaryFile) callVirtualBase_Permissions() QFileDevice__Permission {
+	defer runtime.KeepAlive(this)
 
 	return (QFileDevice__Permission)(C.QTemporaryFile_virtualbase_permissions(unsafe.Pointer(this.h)))
 
@@ -401,6 +432,7 @@ func miqt_exec_callback_QTemporaryFile_permissions(self *C.QTemporaryFile, cb C.
 }
 
 func (this *QTemporaryFile) callVirtualBase_SetPermissions(permissionSpec QFileDevice__Permission) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_setPermissions(unsafe.Pointer(this.h), (C.int)(permissionSpec)))
 
@@ -429,6 +461,7 @@ func miqt_exec_callback_QTemporaryFile_setPermissions(self *C.QTemporaryFile, cb
 }
 
 func (this *QTemporaryFile) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QTemporaryFile_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -452,6 +485,7 @@ func miqt_exec_callback_QTemporaryFile_close(self *C.QTemporaryFile, cb C.intptr
 }
 
 func (this *QTemporaryFile) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -477,6 +511,7 @@ func miqt_exec_callback_QTemporaryFile_isSequential(self *C.QTemporaryFile, cb C
 }
 
 func (this *QTemporaryFile) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QTemporaryFile_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -502,6 +537,7 @@ func miqt_exec_callback_QTemporaryFile_pos(self *C.QTemporaryFile, cb C.intptr_t
 }
 
 func (this *QTemporaryFile) callVirtualBase_Seek(offset int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(offset)))
 
@@ -530,6 +566,7 @@ func miqt_exec_callback_QTemporaryFile_seek(self *C.QTemporaryFile, cb C.intptr_
 }
 
 func (this *QTemporaryFile) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -555,6 +592,7 @@ func miqt_exec_callback_QTemporaryFile_atEnd(self *C.QTemporaryFile, cb C.intptr
 }
 
 func (this *QTemporaryFile) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -588,6 +626,7 @@ func miqt_exec_callback_QTemporaryFile_readData(self *C.QTemporaryFile, cb C.int
 }
 
 func (this *QTemporaryFile) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -621,6 +660,7 @@ func miqt_exec_callback_QTemporaryFile_writeData(self *C.QTemporaryFile, cb C.in
 }
 
 func (this *QTemporaryFile) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -654,6 +694,7 @@ func miqt_exec_callback_QTemporaryFile_readLineData(self *C.QTemporaryFile, cb C
 }
 
 func (this *QTemporaryFile) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -679,6 +720,7 @@ func miqt_exec_callback_QTemporaryFile_reset(self *C.QTemporaryFile, cb C.intptr
 }
 
 func (this *QTemporaryFile) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QTemporaryFile_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -704,6 +746,7 @@ func miqt_exec_callback_QTemporaryFile_bytesAvailable(self *C.QTemporaryFile, cb
 }
 
 func (this *QTemporaryFile) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QTemporaryFile_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -729,6 +772,7 @@ func miqt_exec_callback_QTemporaryFile_bytesToWrite(self *C.QTemporaryFile, cb C
 }
 
 func (this *QTemporaryFile) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -754,6 +798,7 @@ func miqt_exec_callback_QTemporaryFile_canReadLine(self *C.QTemporaryFile, cb C.
 }
 
 func (this *QTemporaryFile) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -782,6 +827,7 @@ func miqt_exec_callback_QTemporaryFile_waitForReadyRead(self *C.QTemporaryFile, 
 }
 
 func (this *QTemporaryFile) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTemporaryFile_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -810,6 +856,7 @@ func miqt_exec_callback_QTemporaryFile_waitForBytesWritten(self *C.QTemporaryFil
 }
 
 func (this *QTemporaryFile) callVirtualBase_SkipData(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QTemporaryFile_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
@@ -838,6 +885,8 @@ func miqt_exec_callback_QTemporaryFile_skipData(self *C.QTemporaryFile, cb C.int
 }
 
 func (this *QTemporaryFile) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTemporaryFile_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -866,6 +915,9 @@ func miqt_exec_callback_QTemporaryFile_event(self *C.QTemporaryFile, cb C.intptr
 }
 
 func (this *QTemporaryFile) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTemporaryFile_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -896,6 +948,8 @@ func miqt_exec_callback_QTemporaryFile_eventFilter(self *C.QTemporaryFile, cb C.
 }
 
 func (this *QTemporaryFile) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTemporaryFile_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -922,6 +976,8 @@ func miqt_exec_callback_QTemporaryFile_timerEvent(self *C.QTemporaryFile, cb C.i
 }
 
 func (this *QTemporaryFile) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTemporaryFile_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -948,6 +1004,8 @@ func miqt_exec_callback_QTemporaryFile_childEvent(self *C.QTemporaryFile, cb C.i
 }
 
 func (this *QTemporaryFile) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTemporaryFile_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -974,6 +1032,8 @@ func miqt_exec_callback_QTemporaryFile_customEvent(self *C.QTemporaryFile, cb C.
 }
 
 func (this *QTemporaryFile) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTemporaryFile_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1000,6 +1060,8 @@ func miqt_exec_callback_QTemporaryFile_connectNotify(self *C.QTemporaryFile, cb 
 }
 
 func (this *QTemporaryFile) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTemporaryFile_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1037,8 +1099,9 @@ func (this *QTemporaryFile) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTemporaryFile{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTemporaryFile) {
-		C.QTemporaryFile_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTemporaryFile_delete((*C.QTemporaryFile)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

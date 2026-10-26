@@ -15,7 +15,13 @@ import (
 
 type QRgba64 struct {
 	h  *C.QRgba64
-	gc *[1]*C.QRgba64
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRgba64) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRgba64) cPointer() *C.QRgba64 {
@@ -54,6 +60,7 @@ func NewQRgba64() *QRgba64 {
 
 // NewQRgba642 constructs a new QRgba64 object.
 func NewQRgba642(param1 *QRgba64) *QRgba64 {
+	defer runtime.KeepAlive(param1)
 
 	return newQRgba64(C.QRgba64_new2(param1.cPointer()))
 }
@@ -83,86 +90,106 @@ func QRgba64_FromArgb32(rgb uint) *QRgba64 {
 }
 
 func (this *QRgba64) IsOpaque() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRgba64_isOpaque(this.h))
 }
 
 func (this *QRgba64) IsTransparent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRgba64_isTransparent(this.h))
 }
 
 func (this *QRgba64) Red() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QRgba64_red(this.h))
 }
 
 func (this *QRgba64) Green() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QRgba64_green(this.h))
 }
 
 func (this *QRgba64) Blue() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QRgba64_blue(this.h))
 }
 
 func (this *QRgba64) Alpha() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QRgba64_alpha(this.h))
 }
 
 func (this *QRgba64) SetRed(_red uint16) {
+	defer runtime.KeepAlive(this)
 	C.QRgba64_setRed(this.h, (C.ushort)(_red))
 }
 
 func (this *QRgba64) SetGreen(_green uint16) {
+	defer runtime.KeepAlive(this)
 	C.QRgba64_setGreen(this.h, (C.ushort)(_green))
 }
 
 func (this *QRgba64) SetBlue(_blue uint16) {
+	defer runtime.KeepAlive(this)
 	C.QRgba64_setBlue(this.h, (C.ushort)(_blue))
 }
 
 func (this *QRgba64) SetAlpha(_alpha uint16) {
+	defer runtime.KeepAlive(this)
 	C.QRgba64_setAlpha(this.h, (C.ushort)(_alpha))
 }
 
 func (this *QRgba64) Red8() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QRgba64_red8(this.h))
 }
 
 func (this *QRgba64) Green8() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QRgba64_green8(this.h))
 }
 
 func (this *QRgba64) Blue8() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QRgba64_blue8(this.h))
 }
 
 func (this *QRgba64) Alpha8() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QRgba64_alpha8(this.h))
 }
 
 func (this *QRgba64) ToArgb32() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QRgba64_toArgb32(this.h))
 }
 
 func (this *QRgba64) ToRgb16() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QRgba64_toRgb16(this.h))
 }
 
 func (this *QRgba64) Premultiplied() *QRgba64 {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRgba64(C.QRgba64_premultiplied(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRgba64) Unpremultiplied() *QRgba64 {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRgba64(C.QRgba64_unpremultiplied(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRgba64) ToUnsignedLongLong() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QRgba64_ToUnsignedLongLong(this.h))
 }
 
 func (this *QRgba64) OperatorAssign(_rgba uint64) {
+	defer runtime.KeepAlive(this)
 	C.QRgba64_operatorAssign(this.h, (C.ulonglong)(_rgba))
 }
 
@@ -178,8 +205,9 @@ func (this *QRgba64) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRgba64{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRgba64) {
-		C.QRgba64_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRgba64_delete((*C.QRgba64)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

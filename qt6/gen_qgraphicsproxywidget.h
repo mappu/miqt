@@ -258,6 +258,10 @@ bool QGraphicsProxyWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant* variant);
 bool QGraphicsProxyWidget_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsProxyWidget_virtualbase_isEmpty(const void* self);
+QVariant* QGraphicsProxyWidget_virtualreturncopy_QVariant(QVariant* src);
+QSizeF* QGraphicsProxyWidget_virtualreturncopy_QSizeF(QSizeF* src);
+QRectF* QGraphicsProxyWidget_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsProxyWidget_virtualreturncopy_QPainterPath(QPainterPath* src);
 
 QGraphicsProxyWidget* QGraphicsProxyWidget_protectedbase_newProxyWidget(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QGraphicsProxyWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

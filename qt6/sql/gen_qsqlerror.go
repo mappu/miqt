@@ -25,7 +25,13 @@ const (
 
 type QSqlError struct {
 	h  *C.QSqlError
-	gc *[1]*C.QSqlError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlError) cPointer() *C.QSqlError {
@@ -64,6 +70,7 @@ func NewQSqlError() *QSqlError {
 
 // NewQSqlError2 constructs a new QSqlError object.
 func NewQSqlError2(other *QSqlError) *QSqlError {
+	defer runtime.KeepAlive(other)
 
 	return newQSqlError(C.QSqlError_new2(other.cPointer()))
 }
@@ -125,22 +132,31 @@ func NewQSqlError6(driverText string, databaseText string, typeVal QSqlError__Er
 }
 
 func (this *QSqlError) OperatorAssign(other *QSqlError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSqlError) OperatorEqual(other *QSqlError) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSqlError_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QSqlError) OperatorNotEqual(other *QSqlError) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSqlError_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QSqlError) Swap(other *QSqlError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlError_swap(this.h, other.cPointer())
 }
 
 func (this *QSqlError) DriverText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlError_driverText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -148,6 +164,7 @@ func (this *QSqlError) DriverText() string {
 }
 
 func (this *QSqlError) DatabaseText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlError_databaseText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -155,10 +172,12 @@ func (this *QSqlError) DatabaseText() string {
 }
 
 func (this *QSqlError) Type() QSqlError__ErrorType {
+	defer runtime.KeepAlive(this)
 	return (QSqlError__ErrorType)(C.QSqlError_type(this.h))
 }
 
 func (this *QSqlError) NativeErrorCode() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlError_nativeErrorCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -166,6 +185,7 @@ func (this *QSqlError) NativeErrorCode() string {
 }
 
 func (this *QSqlError) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlError_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -173,6 +193,7 @@ func (this *QSqlError) Text() string {
 }
 
 func (this *QSqlError) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlError_isValid(this.h))
 }
 
@@ -188,8 +209,9 @@ func (this *QSqlError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlError) {
-		C.QSqlError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlError_delete((*C.QSqlError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

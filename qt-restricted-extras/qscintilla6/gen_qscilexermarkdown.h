@@ -139,6 +139,8 @@ bool QsciLexerMarkdown_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciLexerMarkdown_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMarkdown_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMarkdown_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerMarkdown_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerMarkdown_virtualreturncopy_QFont(QFont* src);
 
 QObject* QsciLexerMarkdown_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMarkdown_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

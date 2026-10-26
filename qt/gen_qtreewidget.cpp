@@ -226,7 +226,9 @@ public:
 		int sigval1 = column;
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QTreeWidgetItem_data(this, handle__data, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTreeWidgetItem_virtualbase_data(const void* self, int column, int role);
@@ -810,6 +812,10 @@ void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out) {
 	static_cast<const MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::write(*out);
 }
 
+QVariant* QTreeWidgetItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QTreeWidgetItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQTreeWidgetItem* self_cast = dynamic_cast<MiqtVirtualQTreeWidgetItem*>( (QTreeWidgetItem*)(self) );
 	if (self_cast == nullptr) {
@@ -1026,7 +1032,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QRect* callback_return_value = miqt_exec_callback_QTreeWidget_visualRect(this, handle__visualRect, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QTreeWidget_virtualbase_visualRect(const void* self, QModelIndex* index);
@@ -1065,7 +1073,9 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QTreeWidget_indexAt(this, handle__indexAt, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QTreeWidget_virtualbase_indexAt(const void* self, QPoint* p);
@@ -1241,7 +1251,9 @@ public:
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QTreeWidget_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QTreeWidget_virtualbase_moveCursor(void* self, int cursorAction, int modifiers);
@@ -1310,7 +1322,9 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 		QRegion* callback_return_value = miqt_exec_callback_QTreeWidget_visualRegionForSelection(this, handle__visualRegionForSelection, sigval1);
-		return *callback_return_value;
+		QRegion callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRegion* QTreeWidget_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection);
@@ -1330,6 +1344,10 @@ public:
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
@@ -1561,7 +1579,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_viewportSizeHint(this, handle__viewportSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTreeWidget_virtualbase_viewportSizeHint(const void* self);
@@ -1689,7 +1709,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QTreeWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QTreeWidget_virtualbase_inputMethodQuery(const void* self, int query);
@@ -1881,7 +1903,9 @@ public:
 		}
 
 		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QTreeWidget_viewOptions(this, handle__viewOptions);
-		return *callback_return_value;
+		QStyleOptionViewItem callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QStyleOptionViewItem* QTreeWidget_virtualbase_viewOptions(const void* self);
@@ -2031,7 +2055,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTreeWidget_virtualbase_minimumSizeHint(const void* self);
@@ -2046,7 +2072,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QTreeWidget_virtualbase_sizeHint(const void* self);
@@ -4381,6 +4409,30 @@ bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::disconnectNotify(*signal);
+}
+
+QRect* QTreeWidget_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QModelIndex* QTreeWidget_virtualreturncopy_QModelIndex(QModelIndex* src) {
+	return new QModelIndex(*src);
+}
+
+QRegion* QTreeWidget_virtualreturncopy_QRegion(QRegion* src) {
+	return new QRegion(*src);
+}
+
+QSize* QTreeWidget_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QTreeWidget_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QStyleOptionViewItem* QTreeWidget_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src) {
+	return new QStyleOptionViewItem(*src);
 }
 
 struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data) {

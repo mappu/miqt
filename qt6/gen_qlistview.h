@@ -367,6 +367,11 @@ bool QListView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QListView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QListView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QListView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QListView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QListView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QRegion* QListView_virtualreturncopy_QRegion(QRegion* src);
+QSize* QListView_virtualreturncopy_QSize(QSize* src);
+QVariant* QListView_virtualreturncopy_QVariant(QVariant* src);
 
 void QListView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height);
 QSize* QListView_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self);

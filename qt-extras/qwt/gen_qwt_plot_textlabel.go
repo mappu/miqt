@@ -16,8 +16,15 @@ import (
 
 type QwtPlotTextLabel struct {
 	h  *C.QwtPlotTextLabel
-	gc *[1]*C.QwtPlotTextLabel
+	gc *[1]unsafe.Pointer
 	*QwtPlotItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotTextLabel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotTextLabel) cPointer() *C.QwtPlotTextLabel {
@@ -58,28 +65,37 @@ func NewQwtPlotTextLabel() *QwtPlotTextLabel {
 }
 
 func (this *QwtPlotTextLabel) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotTextLabel_rtti(this.h))
 }
 
 func (this *QwtPlotTextLabel) SetText(text *QwtText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(text)
 	C.QwtPlotTextLabel_setText(this.h, text.cPointer())
 }
 
 func (this *QwtPlotTextLabel) Text() *QwtText {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtText(C.QwtPlotTextLabel_text(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotTextLabel) SetMargin(margin int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTextLabel_setMargin(this.h, (C.int)(margin))
 }
 
 func (this *QwtPlotTextLabel) Margin() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotTextLabel_margin(this.h))
 }
 
 func (this *QwtPlotTextLabel) TextRect(param1 *qt.QRectF, param2 *qt.QSizeF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotTextLabel_textRect(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -97,8 +113,9 @@ func (this *QwtPlotTextLabel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotTextLabel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotTextLabel) {
-		C.QwtPlotTextLabel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotTextLabel_delete((*C.QwtPlotTextLabel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

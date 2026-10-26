@@ -17,8 +17,14 @@ import (
 
 type QSqlDriverPlugin struct {
 	h  *C.QSqlDriverPlugin
-	gc *[1]*C.QSqlDriverPlugin
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlDriverPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlDriverPlugin) cPointer() *C.QSqlDriverPlugin {
@@ -60,15 +66,18 @@ func NewQSqlDriverPlugin() *QSqlDriverPlugin {
 
 // NewQSqlDriverPlugin2 constructs a new QSqlDriverPlugin object.
 func NewQSqlDriverPlugin2(parent *qt.QObject) *QSqlDriverPlugin {
+	defer runtime.KeepAlive(parent)
 
 	return newQSqlDriverPlugin(C.QSqlDriverPlugin_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSqlDriverPlugin) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSqlDriverPlugin_metaObject(this.h)))
 }
 
 func (this *QSqlDriverPlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSqlDriverPlugin_metacast(this.h, param1_Cstring))
@@ -93,6 +102,7 @@ func QSqlDriverPlugin_TrUtf8(s string) string {
 }
 
 func (this *QSqlDriverPlugin) Create(key string) *QSqlDriver {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -146,6 +156,7 @@ func QSqlDriverPlugin_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QSqlDriverPlugin that was directly constructed.
 func (this *QSqlDriverPlugin) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSqlDriverPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -160,6 +171,7 @@ func (this *QSqlDriverPlugin) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSqlDriverPlugin that was directly constructed.
 func (this *QSqlDriverPlugin) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSqlDriverPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -174,6 +186,7 @@ func (this *QSqlDriverPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSqlDriverPlugin that was directly constructed.
 func (this *QSqlDriverPlugin) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -190,6 +203,8 @@ func (this *QSqlDriverPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSqlDriverPlugin that was directly constructed.
 func (this *QSqlDriverPlugin) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSqlDriverPlugin_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -222,12 +237,15 @@ func miqt_exec_callback_QSqlDriverPlugin_create(self *C.QSqlDriverPlugin, cb C.i
 	slotval1 := key_ret
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlDriverPlugin_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -256,6 +274,9 @@ func miqt_exec_callback_QSqlDriverPlugin_event(self *C.QSqlDriverPlugin, cb C.in
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlDriverPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -286,6 +307,8 @@ func miqt_exec_callback_QSqlDriverPlugin_eventFilter(self *C.QSqlDriverPlugin, c
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlDriverPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -312,6 +335,8 @@ func miqt_exec_callback_QSqlDriverPlugin_timerEvent(self *C.QSqlDriverPlugin, cb
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlDriverPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -338,6 +363,8 @@ func miqt_exec_callback_QSqlDriverPlugin_childEvent(self *C.QSqlDriverPlugin, cb
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSqlDriverPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -364,6 +391,8 @@ func miqt_exec_callback_QSqlDriverPlugin_customEvent(self *C.QSqlDriverPlugin, c
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSqlDriverPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -390,6 +419,8 @@ func miqt_exec_callback_QSqlDriverPlugin_connectNotify(self *C.QSqlDriverPlugin,
 }
 
 func (this *QSqlDriverPlugin) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSqlDriverPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -427,8 +458,9 @@ func (this *QSqlDriverPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlDriverPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlDriverPlugin) {
-		C.QSqlDriverPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlDriverPlugin_delete((*C.QSqlDriverPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

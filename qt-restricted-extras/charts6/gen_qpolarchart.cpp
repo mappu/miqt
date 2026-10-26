@@ -228,7 +228,9 @@ public:
 		}
 
 		QRectF* callback_return_value = miqt_exec_callback_QPolarChart_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QPolarChart_virtualbase_boundingRect(const void* self);
@@ -243,7 +245,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QPolarChart_shape(this, handle__shape);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QPolarChart_virtualbase_shape(const void* self);
@@ -280,7 +284,9 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 		QSizeF* callback_return_value = miqt_exec_callback_QPolarChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QPolarChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
@@ -316,7 +322,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPolarChart_itemChange(this, handle__itemChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPolarChart_virtualbase_itemChange(void* self, int change, QVariant* value);
@@ -342,7 +350,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPolarChart_propertyChange(this, handle__propertyChange, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPolarChart_virtualbase_propertyChange(void* self, struct miqt_string propertyName, QVariant* value);
@@ -888,7 +898,9 @@ public:
 		}
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QPolarChart_opaqueArea(this, handle__opaqueArea);
-		return *callback_return_value;
+		QPainterPath callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPainterPath* QPolarChart_virtualbase_opaqueArea(const void* self);
@@ -1160,7 +1172,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPolarChart_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPolarChart_virtualbase_inputMethodQuery(const void* self, int query);
@@ -1216,7 +1230,9 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPolarChart_extension(this, handle__extension, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPolarChart_virtualbase_extension(const void* self, QVariant* variant);
@@ -2250,6 +2266,22 @@ bool QPolarChart_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QPolarChart_virtualbase_isEmpty(const void* self) {
 	return static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::isEmpty();
+}
+
+QRectF* QPolarChart_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
+}
+
+QPainterPath* QPolarChart_virtualreturncopy_QPainterPath(QPainterPath* src) {
+	return new QPainterPath(*src);
+}
+
+QSizeF* QPolarChart_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
+QVariant* QPolarChart_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QPolarChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

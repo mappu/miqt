@@ -45,7 +45,13 @@ const (
 
 type QUuid struct {
 	h  *C.QUuid
-	gc *[1]*C.QUuid
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUuid) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QUuid) cPointer() *C.QUuid {
@@ -121,11 +127,13 @@ func NewQUuid5(param1 []byte) *QUuid {
 
 // NewQUuid6 constructs a new QUuid object.
 func NewQUuid6(param1 *QUuid) *QUuid {
+	defer runtime.KeepAlive(param1)
 
 	return newQUuid(C.QUuid_new6(param1.cPointer()))
 }
 
 func (this *QUuid) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUuid_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -133,6 +141,7 @@ func (this *QUuid) ToString() string {
 }
 
 func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUuid_toStringWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -140,6 +149,7 @@ func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
 }
 
 func (this *QUuid) ToByteArray() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QUuid_toByteArray(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -147,6 +157,7 @@ func (this *QUuid) ToByteArray() []byte {
 }
 
 func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QUuid_toByteArrayWithMode(this.h, (C.int)(mode))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -154,6 +165,7 @@ func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) []byte {
 }
 
 func (this *QUuid) ToRfc4122() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QUuid_toRfc4122(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -174,22 +186,31 @@ func QUuid_FromRfc4122(param1 []byte) *QUuid {
 }
 
 func (this *QUuid) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUuid_isNull(this.h))
 }
 
 func (this *QUuid) OperatorEqual(orig *QUuid) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(orig)
 	return (bool)(C.QUuid_operatorEqual(this.h, orig.cPointer()))
 }
 
 func (this *QUuid) OperatorNotEqual(orig *QUuid) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(orig)
 	return (bool)(C.QUuid_operatorNotEqual(this.h, orig.cPointer()))
 }
 
 func (this *QUuid) OperatorLesser(other *QUuid) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QUuid_operatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QUuid) OperatorGreater(other *QUuid) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QUuid_operatorGreater(this.h, other.cPointer()))
 }
 
@@ -200,6 +221,7 @@ func QUuid_CreateUuid() *QUuid {
 }
 
 func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
+	defer runtime.KeepAlive(ns)
 	baseData_alias := C.struct_miqt_string{}
 	if len(baseData) > 0 {
 		baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
@@ -213,6 +235,7 @@ func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
 }
 
 func QUuid_CreateUuidV5(ns *QUuid, baseData []byte) *QUuid {
+	defer runtime.KeepAlive(ns)
 	baseData_alias := C.struct_miqt_string{}
 	if len(baseData) > 0 {
 		baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
@@ -226,6 +249,7 @@ func QUuid_CreateUuidV5(ns *QUuid, baseData []byte) *QUuid {
 }
 
 func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
+	defer runtime.KeepAlive(ns)
 	baseData_ms := C.struct_miqt_string{}
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
@@ -236,6 +260,7 @@ func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 }
 
 func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
+	defer runtime.KeepAlive(ns)
 	baseData_ms := C.struct_miqt_string{}
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
@@ -246,34 +271,42 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 }
 
 func (this *QUuid) Variant() QUuid__Variant {
+	defer runtime.KeepAlive(this)
 	return (QUuid__Variant)(C.QUuid_variant(this.h))
 }
 
 func (this *QUuid) Version() QUuid__Version {
+	defer runtime.KeepAlive(this)
 	return (QUuid__Version)(C.QUuid_version(this.h))
 }
 
 func (this *QUuid) Data1() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QUuid_data1(this.h))
 }
 
 func (this *QUuid) SetData1(data1 uint) {
+	defer runtime.KeepAlive(this)
 	C.QUuid_setData1(this.h, (C.uint)(data1))
 }
 
 func (this *QUuid) Data2() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QUuid_data2(this.h))
 }
 
 func (this *QUuid) SetData2(data2 uint16) {
+	defer runtime.KeepAlive(this)
 	C.QUuid_setData2(this.h, (C.ushort)(data2))
 }
 
 func (this *QUuid) Data3() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QUuid_data3(this.h))
 }
 
 func (this *QUuid) SetData3(data3 uint16) {
+	defer runtime.KeepAlive(this)
 	C.QUuid_setData3(this.h, (C.ushort)(data3))
 }
 
@@ -289,8 +322,9 @@ func (this *QUuid) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUuid{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUuid) {
-		C.QUuid_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUuid_delete((*C.QUuid)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -31,8 +31,15 @@ const (
 
 type QIODevice struct {
 	h  *C.QIODevice
-	gc *[1]*C.QIODevice
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIODevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QIODevice) cPointer() *C.QIODevice {
@@ -74,15 +81,18 @@ func NewQIODevice() *QIODevice {
 
 // NewQIODevice2 constructs a new QIODevice object.
 func NewQIODevice2(parent *QObject) *QIODevice {
+	defer runtime.KeepAlive(parent)
 
 	return newQIODevice(C.QIODevice_new2(parent.cPointer()))
 }
 
 func (this *QIODevice) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QIODevice_metaObject(this.h))
 }
 
 func (this *QIODevice) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QIODevice_metacast(this.h, param1_Cstring))
@@ -107,100 +117,124 @@ func QIODevice_TrUtf8(s string) string {
 }
 
 func (this *QIODevice) OpenMode() QIODevice__OpenModeFlag {
+	defer runtime.KeepAlive(this)
 	return (QIODevice__OpenModeFlag)(C.QIODevice_openMode(this.h))
 }
 
 func (this *QIODevice) SetTextModeEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_setTextModeEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QIODevice) IsTextModeEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isTextModeEnabled(this.h))
 }
 
 func (this *QIODevice) IsOpen() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isOpen(this.h))
 }
 
 func (this *QIODevice) IsReadable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isReadable(this.h))
 }
 
 func (this *QIODevice) IsWritable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isWritable(this.h))
 }
 
 func (this *QIODevice) IsSequential() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isSequential(this.h))
 }
 
 func (this *QIODevice) ReadChannelCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QIODevice_readChannelCount(this.h))
 }
 
 func (this *QIODevice) WriteChannelCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QIODevice_writeChannelCount(this.h))
 }
 
 func (this *QIODevice) CurrentReadChannel() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QIODevice_currentReadChannel(this.h))
 }
 
 func (this *QIODevice) SetCurrentReadChannel(channel int) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_setCurrentReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QIODevice) CurrentWriteChannel() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QIODevice_currentWriteChannel(this.h))
 }
 
 func (this *QIODevice) SetCurrentWriteChannel(channel int) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_setCurrentWriteChannel(this.h, (C.int)(channel))
 }
 
 func (this *QIODevice) Open(mode QIODevice__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_open(this.h, (C.int)(mode)))
 }
 
 func (this *QIODevice) Close() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_close(this.h)
 }
 
 func (this *QIODevice) Pos() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIODevice_pos(this.h))
 }
 
 func (this *QIODevice) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIODevice_size(this.h))
 }
 
 func (this *QIODevice) Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_seek(this.h, (C.longlong)(pos)))
 }
 
 func (this *QIODevice) AtEnd() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_atEnd(this.h))
 }
 
 func (this *QIODevice) Reset() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_reset(this.h))
 }
 
 func (this *QIODevice) BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIODevice_bytesAvailable(this.h))
 }
 
 func (this *QIODevice) BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIODevice_bytesToWrite(this.h))
 }
 
 func (this *QIODevice) Read(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QIODevice_read(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) ReadWithMaxlen(maxlen int64) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QIODevice_readWithMaxlen(this.h, (C.longlong)(maxlen))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -208,6 +242,7 @@ func (this *QIODevice) ReadWithMaxlen(maxlen int64) []byte {
 }
 
 func (this *QIODevice) ReadAll() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QIODevice_readAll(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -215,12 +250,14 @@ func (this *QIODevice) ReadAll() []byte {
 }
 
 func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QIODevice_readLine(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) ReadLine2() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QIODevice_readLine2(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -228,38 +265,46 @@ func (this *QIODevice) ReadLine2() []byte {
 }
 
 func (this *QIODevice) CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_canReadLine(this.h))
 }
 
 func (this *QIODevice) StartTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_startTransaction(this.h)
 }
 
 func (this *QIODevice) CommitTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_commitTransaction(this.h)
 }
 
 func (this *QIODevice) RollbackTransaction() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_rollbackTransaction(this.h)
 }
 
 func (this *QIODevice) IsTransactionStarted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_isTransactionStarted(this.h))
 }
 
 func (this *QIODevice) Write(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QIODevice_write(this.h, data_Cstring, (C.longlong)(lenVal)))
 }
 
 func (this *QIODevice) WriteWithData(data string) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QIODevice_writeWithData(this.h, data_Cstring))
 }
 
 func (this *QIODevice) Write2(data []byte) int64 {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -271,12 +316,14 @@ func (this *QIODevice) Write2(data []byte) int64 {
 }
 
 func (this *QIODevice) Peek(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	return (int64)(C.QIODevice_peek(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) PeekWithMaxlen(maxlen int64) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QIODevice_peekWithMaxlen(this.h, (C.longlong)(maxlen))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -284,32 +331,39 @@ func (this *QIODevice) PeekWithMaxlen(maxlen int64) []byte {
 }
 
 func (this *QIODevice) Skip(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QIODevice_skip(this.h, (C.longlong)(maxSize)))
 }
 
 func (this *QIODevice) WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QIODevice) WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QIODevice) UngetChar(c int8) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_ungetChar(this.h, (C.char)(c))
 }
 
 func (this *QIODevice) PutChar(c int8) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIODevice_putChar(this.h, (C.char)(c)))
 }
 
 func (this *QIODevice) GetChar(c string) bool {
+	defer runtime.KeepAlive(this)
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
 	return (bool)(C.QIODevice_getChar(this.h, c_Cstring))
 }
 
 func (this *QIODevice) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QIODevice_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -317,6 +371,7 @@ func (this *QIODevice) ErrorString() string {
 }
 
 func (this *QIODevice) ReadyRead() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_readyRead(this.h)
 }
 func (this *QIODevice) OnReadyRead(slot func()) {
@@ -334,6 +389,7 @@ func miqt_exec_callback_QIODevice_readyRead(cb C.intptr_t) {
 }
 
 func (this *QIODevice) ChannelReadyRead(channel int) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_channelReadyRead(this.h, (C.int)(channel))
 }
 func (this *QIODevice) OnChannelReadyRead(slot func(channel int)) {
@@ -354,6 +410,7 @@ func miqt_exec_callback_QIODevice_channelReadyRead(cb C.intptr_t, channel C.int)
 }
 
 func (this *QIODevice) BytesWritten(bytes int64) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_bytesWritten(this.h, (C.longlong)(bytes))
 }
 func (this *QIODevice) OnBytesWritten(slot func(bytes int64)) {
@@ -374,6 +431,7 @@ func miqt_exec_callback_QIODevice_bytesWritten(cb C.intptr_t, bytes C.longlong) 
 }
 
 func (this *QIODevice) ChannelBytesWritten(channel int, bytes int64) {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_channelBytesWritten(this.h, (C.int)(channel), (C.longlong)(bytes))
 }
 func (this *QIODevice) OnChannelBytesWritten(slot func(channel int, bytes int64)) {
@@ -396,6 +454,7 @@ func miqt_exec_callback_QIODevice_channelBytesWritten(cb C.intptr_t, channel C.i
 }
 
 func (this *QIODevice) AboutToClose() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_aboutToClose(this.h)
 }
 func (this *QIODevice) OnAboutToClose(slot func()) {
@@ -413,6 +472,7 @@ func miqt_exec_callback_QIODevice_aboutToClose(cb C.intptr_t) {
 }
 
 func (this *QIODevice) ReadChannelFinished() {
+	defer runtime.KeepAlive(this)
 	C.QIODevice_readChannelFinished(this.h)
 }
 func (this *QIODevice) OnReadChannelFinished(slot func()) {
@@ -474,6 +534,7 @@ func QIODevice_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QIODevice) ReadLineWithMaxlen(maxlen int64) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QIODevice_readLineWithMaxlen(this.h, (C.longlong)(maxlen))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -482,6 +543,7 @@ func (this *QIODevice) ReadLineWithMaxlen(maxlen int64) []byte {
 
 // SetOpenMode can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) SetOpenMode(openMode QIODevice__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIODevice_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -494,6 +556,7 @@ func (this *QIODevice) SetOpenMode(openMode QIODevice__OpenModeFlag) {
 
 // SetErrorString can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -510,6 +573,7 @@ func (this *QIODevice) SetErrorString(errorString string) {
 
 // Sender can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QIODevice_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -524,6 +588,7 @@ func (this *QIODevice) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QIODevice_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -538,6 +603,7 @@ func (this *QIODevice) SenderSignalIndex() int {
 
 // Receivers can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -554,6 +620,8 @@ func (this *QIODevice) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QIODevice that was directly constructed.
 func (this *QIODevice) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QIODevice_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -567,6 +635,7 @@ func (this *QIODevice) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QIODevice) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -592,6 +661,7 @@ func miqt_exec_callback_QIODevice_isSequential(self *C.QIODevice, cb C.intptr_t)
 }
 
 func (this *QIODevice) callVirtualBase_Open(mode QIODevice__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
@@ -620,6 +690,7 @@ func miqt_exec_callback_QIODevice_open(self *C.QIODevice, cb C.intptr_t, mode C.
 }
 
 func (this *QIODevice) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QIODevice_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -643,6 +714,7 @@ func miqt_exec_callback_QIODevice_close(self *C.QIODevice, cb C.intptr_t) {
 }
 
 func (this *QIODevice) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QIODevice_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -668,6 +740,7 @@ func miqt_exec_callback_QIODevice_pos(self *C.QIODevice, cb C.intptr_t) C.longlo
 }
 
 func (this *QIODevice) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QIODevice_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -693,6 +766,7 @@ func miqt_exec_callback_QIODevice_size(self *C.QIODevice, cb C.intptr_t) C.longl
 }
 
 func (this *QIODevice) callVirtualBase_Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -721,6 +795,7 @@ func miqt_exec_callback_QIODevice_seek(self *C.QIODevice, cb C.intptr_t, pos C.l
 }
 
 func (this *QIODevice) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -746,6 +821,7 @@ func miqt_exec_callback_QIODevice_atEnd(self *C.QIODevice, cb C.intptr_t) C.bool
 }
 
 func (this *QIODevice) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -771,6 +847,7 @@ func miqt_exec_callback_QIODevice_reset(self *C.QIODevice, cb C.intptr_t) C.bool
 }
 
 func (this *QIODevice) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QIODevice_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -796,6 +873,7 @@ func miqt_exec_callback_QIODevice_bytesAvailable(self *C.QIODevice, cb C.intptr_
 }
 
 func (this *QIODevice) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QIODevice_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -821,6 +899,7 @@ func miqt_exec_callback_QIODevice_bytesToWrite(self *C.QIODevice, cb C.intptr_t)
 }
 
 func (this *QIODevice) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -846,6 +925,7 @@ func miqt_exec_callback_QIODevice_canReadLine(self *C.QIODevice, cb C.intptr_t) 
 }
 
 func (this *QIODevice) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -874,6 +954,7 @@ func miqt_exec_callback_QIODevice_waitForReadyRead(self *C.QIODevice, cb C.intpt
 }
 
 func (this *QIODevice) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIODevice_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -927,6 +1008,7 @@ func miqt_exec_callback_QIODevice_readData(self *C.QIODevice, cb C.intptr_t, dat
 }
 
 func (this *QIODevice) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -985,6 +1067,8 @@ func miqt_exec_callback_QIODevice_writeData(self *C.QIODevice, cb C.intptr_t, da
 }
 
 func (this *QIODevice) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIODevice_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1013,6 +1097,9 @@ func miqt_exec_callback_QIODevice_event(self *C.QIODevice, cb C.intptr_t, event 
 }
 
 func (this *QIODevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIODevice_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1043,6 +1130,8 @@ func miqt_exec_callback_QIODevice_eventFilter(self *C.QIODevice, cb C.intptr_t, 
 }
 
 func (this *QIODevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QIODevice_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1069,6 +1158,8 @@ func miqt_exec_callback_QIODevice_timerEvent(self *C.QIODevice, cb C.intptr_t, e
 }
 
 func (this *QIODevice) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QIODevice_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1095,6 +1186,8 @@ func miqt_exec_callback_QIODevice_childEvent(self *C.QIODevice, cb C.intptr_t, e
 }
 
 func (this *QIODevice) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QIODevice_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1121,6 +1214,8 @@ func miqt_exec_callback_QIODevice_customEvent(self *C.QIODevice, cb C.intptr_t, 
 }
 
 func (this *QIODevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QIODevice_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1147,6 +1242,8 @@ func miqt_exec_callback_QIODevice_connectNotify(self *C.QIODevice, cb C.intptr_t
 }
 
 func (this *QIODevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QIODevice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1184,8 +1281,9 @@ func (this *QIODevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIODevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIODevice) {
-		C.QIODevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIODevice_delete((*C.QIODevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

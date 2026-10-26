@@ -72,6 +72,7 @@ bool QDesignerPropertySheetExtension_override_virtual_setChanged(void* self, int
 void QDesignerPropertySheetExtension_virtualbase_setChanged(void* self, int index, bool changed);
 bool QDesignerPropertySheetExtension_override_virtual_isEnabled(void* self, intptr_t slot);
 bool QDesignerPropertySheetExtension_virtualbase_isEnabled(const void* self, int index);
+QVariant* QDesignerPropertySheetExtension_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerPropertySheetExtension_delete(QDesignerPropertySheetExtension* self);
 

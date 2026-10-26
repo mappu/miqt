@@ -161,6 +161,8 @@ bool QsciLexerPostScript_override_virtual_connectNotify(void* self, intptr_t slo
 void QsciLexerPostScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPostScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPostScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerPostScript_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerPostScript_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerPostScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerPostScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

@@ -213,6 +213,8 @@ bool QSplashScreen_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplashScreen_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QSplashScreen_virtualreturncopy_QSize(QSize* src);
+QVariant* QSplashScreen_virtualreturncopy_QVariant(QVariant* src);
 
 void QSplashScreen_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QSplashScreen_protectedbase_create(bool* _dynamic_cast_ok, void* self);

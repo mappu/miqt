@@ -17,8 +17,15 @@ import (
 
 type QCandlestickSeries struct {
 	h  *C.QCandlestickSeries
-	gc *[1]*C.QCandlestickSeries
+	gc *[1]unsafe.Pointer
 	*QAbstractSeries
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCandlestickSeries) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractSeries.miqtSetGC(gc)
 }
 
 func (this *QCandlestickSeries) cPointer() *C.QCandlestickSeries {
@@ -60,15 +67,18 @@ func NewQCandlestickSeries() *QCandlestickSeries {
 
 // NewQCandlestickSeries2 constructs a new QCandlestickSeries object.
 func NewQCandlestickSeries2(parent *qt6.QObject) *QCandlestickSeries {
+	defer runtime.KeepAlive(parent)
 
 	return newQCandlestickSeries(C.QCandlestickSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCandlestickSeries) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QCandlestickSeries_metaObject(this.h)))
 }
 
 func (this *QCandlestickSeries) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCandlestickSeries_metacast(this.h, param1_Cstring))
@@ -84,14 +94,20 @@ func QCandlestickSeries_Tr(s string) string {
 }
 
 func (this *QCandlestickSeries) Append(set *QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	return (bool)(C.QCandlestickSeries_append(this.h, set.cPointer()))
 }
 
 func (this *QCandlestickSeries) Remove(set *QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	return (bool)(C.QCandlestickSeries_remove(this.h, set.cPointer()))
 }
 
 func (this *QCandlestickSeries) AppendWithSets(sets []*QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -103,6 +119,8 @@ func (this *QCandlestickSeries) AppendWithSets(sets []*QCandlestickSet) bool {
 }
 
 func (this *QCandlestickSeries) RemoveWithSets(sets []*QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -114,18 +132,24 @@ func (this *QCandlestickSeries) RemoveWithSets(sets []*QCandlestickSet) bool {
 }
 
 func (this *QCandlestickSeries) Insert(index int, set *QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	return (bool)(C.QCandlestickSeries_insert(this.h, (C.int)(index), set.cPointer()))
 }
 
 func (this *QCandlestickSeries) Take(set *QCandlestickSet) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	return (bool)(C.QCandlestickSeries_take(this.h, set.cPointer()))
 }
 
 func (this *QCandlestickSeries) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_clear(this.h)
 }
 
 func (this *QCandlestickSeries) Sets() []*QCandlestickSet {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCandlestickSeries_sets(this.h)
 	_ret := make([]*QCandlestickSet, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCandlestickSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -136,102 +160,130 @@ func (this *QCandlestickSeries) Sets() []*QCandlestickSet {
 }
 
 func (this *QCandlestickSeries) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCandlestickSeries_count(this.h))
 }
 
 func (this *QCandlestickSeries) Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QCandlestickSeries_type(this.h))
 }
 
 func (this *QCandlestickSeries) SetMaximumColumnWidth(maximumColumnWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setMaximumColumnWidth(this.h, (C.double)(maximumColumnWidth))
 }
 
 func (this *QCandlestickSeries) MaximumColumnWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCandlestickSeries_maximumColumnWidth(this.h))
 }
 
 func (this *QCandlestickSeries) SetMinimumColumnWidth(minimumColumnWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setMinimumColumnWidth(this.h, (C.double)(minimumColumnWidth))
 }
 
 func (this *QCandlestickSeries) MinimumColumnWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCandlestickSeries_minimumColumnWidth(this.h))
 }
 
 func (this *QCandlestickSeries) SetBodyWidth(bodyWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setBodyWidth(this.h, (C.double)(bodyWidth))
 }
 
 func (this *QCandlestickSeries) BodyWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCandlestickSeries_bodyWidth(this.h))
 }
 
 func (this *QCandlestickSeries) SetBodyOutlineVisible(bodyOutlineVisible bool) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setBodyOutlineVisible(this.h, (C.bool)(bodyOutlineVisible))
 }
 
 func (this *QCandlestickSeries) BodyOutlineVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCandlestickSeries_bodyOutlineVisible(this.h))
 }
 
 func (this *QCandlestickSeries) SetCapsWidth(capsWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setCapsWidth(this.h, (C.double)(capsWidth))
 }
 
 func (this *QCandlestickSeries) CapsWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCandlestickSeries_capsWidth(this.h))
 }
 
 func (this *QCandlestickSeries) SetCapsVisible(capsVisible bool) {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_setCapsVisible(this.h, (C.bool)(capsVisible))
 }
 
 func (this *QCandlestickSeries) CapsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCandlestickSeries_capsVisible(this.h))
 }
 
 func (this *QCandlestickSeries) SetIncreasingColor(increasingColor *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(increasingColor)
 	C.QCandlestickSeries_setIncreasingColor(this.h, (*C.QColor)(increasingColor.UnsafePointer()))
 }
 
 func (this *QCandlestickSeries) IncreasingColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QCandlestickSeries_increasingColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCandlestickSeries) SetDecreasingColor(decreasingColor *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(decreasingColor)
 	C.QCandlestickSeries_setDecreasingColor(this.h, (*C.QColor)(decreasingColor.UnsafePointer()))
 }
 
 func (this *QCandlestickSeries) DecreasingColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QCandlestickSeries_decreasingColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCandlestickSeries) SetBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QCandlestickSeries_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QCandlestickSeries) Brush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QCandlestickSeries_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCandlestickSeries) SetPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QCandlestickSeries_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QCandlestickSeries) Pen() *qt6.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QCandlestickSeries_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCandlestickSeries) Clicked(set *QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	C.QCandlestickSeries_clicked(this.h, set.cPointer())
 }
 func (this *QCandlestickSeries) OnClicked(slot func(set *QCandlestickSet)) {
@@ -252,6 +304,8 @@ func miqt_exec_callback_QCandlestickSeries_clicked(cb C.intptr_t, set *C.QCandle
 }
 
 func (this *QCandlestickSeries) Hovered(status bool, set *QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	C.QCandlestickSeries_hovered(this.h, (C.bool)(status), set.cPointer())
 }
 func (this *QCandlestickSeries) OnHovered(slot func(status bool, set *QCandlestickSet)) {
@@ -274,6 +328,8 @@ func miqt_exec_callback_QCandlestickSeries_hovered(cb C.intptr_t, status C.bool,
 }
 
 func (this *QCandlestickSeries) Pressed(set *QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	C.QCandlestickSeries_pressed(this.h, set.cPointer())
 }
 func (this *QCandlestickSeries) OnPressed(slot func(set *QCandlestickSet)) {
@@ -294,6 +350,8 @@ func miqt_exec_callback_QCandlestickSeries_pressed(cb C.intptr_t, set *C.QCandle
 }
 
 func (this *QCandlestickSeries) Released(set *QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	C.QCandlestickSeries_released(this.h, set.cPointer())
 }
 func (this *QCandlestickSeries) OnReleased(slot func(set *QCandlestickSet)) {
@@ -314,6 +372,8 @@ func miqt_exec_callback_QCandlestickSeries_released(cb C.intptr_t, set *C.QCandl
 }
 
 func (this *QCandlestickSeries) DoubleClicked(set *QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(set)
 	C.QCandlestickSeries_doubleClicked(this.h, set.cPointer())
 }
 func (this *QCandlestickSeries) OnDoubleClicked(slot func(set *QCandlestickSet)) {
@@ -334,6 +394,8 @@ func miqt_exec_callback_QCandlestickSeries_doubleClicked(cb C.intptr_t, set *C.Q
 }
 
 func (this *QCandlestickSeries) CandlestickSetsAdded(sets []*QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -367,6 +429,8 @@ func miqt_exec_callback_QCandlestickSeries_candlestickSetsAdded(cb C.intptr_t, s
 }
 
 func (this *QCandlestickSeries) CandlestickSetsRemoved(sets []*QCandlestickSet) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QCandlestickSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -400,6 +464,7 @@ func miqt_exec_callback_QCandlestickSeries_candlestickSetsRemoved(cb C.intptr_t,
 }
 
 func (this *QCandlestickSeries) CountChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_countChanged(this.h)
 }
 func (this *QCandlestickSeries) OnCountChanged(slot func()) {
@@ -417,6 +482,7 @@ func miqt_exec_callback_QCandlestickSeries_countChanged(cb C.intptr_t) {
 }
 
 func (this *QCandlestickSeries) MaximumColumnWidthChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_maximumColumnWidthChanged(this.h)
 }
 func (this *QCandlestickSeries) OnMaximumColumnWidthChanged(slot func()) {
@@ -434,6 +500,7 @@ func miqt_exec_callback_QCandlestickSeries_maximumColumnWidthChanged(cb C.intptr
 }
 
 func (this *QCandlestickSeries) MinimumColumnWidthChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_minimumColumnWidthChanged(this.h)
 }
 func (this *QCandlestickSeries) OnMinimumColumnWidthChanged(slot func()) {
@@ -451,6 +518,7 @@ func miqt_exec_callback_QCandlestickSeries_minimumColumnWidthChanged(cb C.intptr
 }
 
 func (this *QCandlestickSeries) BodyWidthChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_bodyWidthChanged(this.h)
 }
 func (this *QCandlestickSeries) OnBodyWidthChanged(slot func()) {
@@ -468,6 +536,7 @@ func miqt_exec_callback_QCandlestickSeries_bodyWidthChanged(cb C.intptr_t) {
 }
 
 func (this *QCandlestickSeries) BodyOutlineVisibilityChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_bodyOutlineVisibilityChanged(this.h)
 }
 func (this *QCandlestickSeries) OnBodyOutlineVisibilityChanged(slot func()) {
@@ -485,6 +554,7 @@ func miqt_exec_callback_QCandlestickSeries_bodyOutlineVisibilityChanged(cb C.int
 }
 
 func (this *QCandlestickSeries) CapsWidthChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_capsWidthChanged(this.h)
 }
 func (this *QCandlestickSeries) OnCapsWidthChanged(slot func()) {
@@ -502,6 +572,7 @@ func miqt_exec_callback_QCandlestickSeries_capsWidthChanged(cb C.intptr_t) {
 }
 
 func (this *QCandlestickSeries) CapsVisibilityChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_capsVisibilityChanged(this.h)
 }
 func (this *QCandlestickSeries) OnCapsVisibilityChanged(slot func()) {
@@ -519,6 +590,7 @@ func miqt_exec_callback_QCandlestickSeries_capsVisibilityChanged(cb C.intptr_t) 
 }
 
 func (this *QCandlestickSeries) IncreasingColorChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_increasingColorChanged(this.h)
 }
 func (this *QCandlestickSeries) OnIncreasingColorChanged(slot func()) {
@@ -536,6 +608,7 @@ func miqt_exec_callback_QCandlestickSeries_increasingColorChanged(cb C.intptr_t)
 }
 
 func (this *QCandlestickSeries) DecreasingColorChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_decreasingColorChanged(this.h)
 }
 func (this *QCandlestickSeries) OnDecreasingColorChanged(slot func()) {
@@ -553,6 +626,7 @@ func miqt_exec_callback_QCandlestickSeries_decreasingColorChanged(cb C.intptr_t)
 }
 
 func (this *QCandlestickSeries) BrushChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_brushChanged(this.h)
 }
 func (this *QCandlestickSeries) OnBrushChanged(slot func()) {
@@ -570,6 +644,7 @@ func miqt_exec_callback_QCandlestickSeries_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QCandlestickSeries) PenChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCandlestickSeries_penChanged(this.h)
 }
 func (this *QCandlestickSeries) OnPenChanged(slot func()) {
@@ -610,6 +685,7 @@ func QCandlestickSeries_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QCandlestickSeries that was directly constructed.
 func (this *QCandlestickSeries) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QCandlestickSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -624,6 +700,7 @@ func (this *QCandlestickSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QCandlestickSeries that was directly constructed.
 func (this *QCandlestickSeries) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -638,6 +715,7 @@ func (this *QCandlestickSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCandlestickSeries that was directly constructed.
 func (this *QCandlestickSeries) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -654,6 +732,8 @@ func (this *QCandlestickSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCandlestickSeries that was directly constructed.
 func (this *QCandlestickSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCandlestickSeries_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -667,6 +747,7 @@ func (this *QCandlestickSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool 
 }
 
 func (this *QCandlestickSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QCandlestickSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -692,6 +773,8 @@ func miqt_exec_callback_QCandlestickSeries_type(self *C.QCandlestickSeries, cb C
 }
 
 func (this *QCandlestickSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -720,6 +803,9 @@ func miqt_exec_callback_QCandlestickSeries_event(self *C.QCandlestickSeries, cb 
 }
 
 func (this *QCandlestickSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -750,6 +836,8 @@ func miqt_exec_callback_QCandlestickSeries_eventFilter(self *C.QCandlestickSerie
 }
 
 func (this *QCandlestickSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -776,6 +864,8 @@ func miqt_exec_callback_QCandlestickSeries_timerEvent(self *C.QCandlestickSeries
 }
 
 func (this *QCandlestickSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -802,6 +892,8 @@ func miqt_exec_callback_QCandlestickSeries_childEvent(self *C.QCandlestickSeries
 }
 
 func (this *QCandlestickSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCandlestickSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -828,6 +920,8 @@ func miqt_exec_callback_QCandlestickSeries_customEvent(self *C.QCandlestickSerie
 }
 
 func (this *QCandlestickSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -854,6 +948,8 @@ func miqt_exec_callback_QCandlestickSeries_connectNotify(self *C.QCandlestickSer
 }
 
 func (this *QCandlestickSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -891,8 +987,9 @@ func (this *QCandlestickSeries) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCandlestickSeries{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCandlestickSeries) {
-		C.QCandlestickSeries_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCandlestickSeries_delete((*C.QCandlestickSeries)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

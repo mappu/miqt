@@ -26,8 +26,15 @@ const (
 
 type QwtScaleDraw struct {
 	h  *C.QwtScaleDraw
-	gc *[1]*C.QwtScaleDraw
+	gc *[1]unsafe.Pointer
 	*QwtAbstractScaleDraw
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtScaleDraw) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtAbstractScaleDraw.miqtSetGC(gc)
 }
 
 func (this *QwtScaleDraw) cPointer() *C.QwtScaleDraw {
@@ -68,98 +75,130 @@ func NewQwtScaleDraw() *QwtScaleDraw {
 }
 
 func (this *QwtScaleDraw) GetBorderDistHint(param1 *qt.QFont, start *int, end *int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtScaleDraw_getBorderDistHint(this.h, (*C.QFont)(param1.UnsafePointer()), (*C.int)(unsafe.Pointer(start)), (*C.int)(unsafe.Pointer(end)))
 }
 
 func (this *QwtScaleDraw) MinLabelDist(param1 *qt.QFont) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtScaleDraw_minLabelDist(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func (this *QwtScaleDraw) MinLength(param1 *qt.QFont) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtScaleDraw_minLength(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func (this *QwtScaleDraw) Extent(param1 *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QwtScaleDraw_extent(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func (this *QwtScaleDraw) Move(x float64, y float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDraw_move(this.h, (C.double)(x), (C.double)(y))
 }
 
 func (this *QwtScaleDraw) MoveWithQPointF(param1 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtScaleDraw_moveWithQPointF(this.h, (*C.QPointF)(param1.UnsafePointer()))
 }
 
 func (this *QwtScaleDraw) SetLength(length float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDraw_setLength(this.h, (C.double)(length))
 }
 
 func (this *QwtScaleDraw) Alignment() QwtScaleDraw__Alignment {
+	defer runtime.KeepAlive(this)
 	return (QwtScaleDraw__Alignment)(C.QwtScaleDraw_alignment(this.h))
 }
 
 func (this *QwtScaleDraw) SetAlignment(alignment QwtScaleDraw__Alignment) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDraw_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QwtScaleDraw) Orientation() qt.Orientation {
+	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtScaleDraw_orientation(this.h))
 }
 
 func (this *QwtScaleDraw) Pos() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtScaleDraw_pos(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDraw) Length() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleDraw_length(this.h))
 }
 
 func (this *QwtScaleDraw) SetLabelAlignment(labelAlignment qt.AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDraw_setLabelAlignment(this.h, (C.int)(labelAlignment))
 }
 
 func (this *QwtScaleDraw) LabelAlignment() qt.AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (qt.AlignmentFlag)(C.QwtScaleDraw_labelAlignment(this.h))
 }
 
 func (this *QwtScaleDraw) SetLabelRotation(rotation float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleDraw_setLabelRotation(this.h, (C.double)(rotation))
 }
 
 func (this *QwtScaleDraw) LabelRotation() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleDraw_labelRotation(this.h))
 }
 
 func (this *QwtScaleDraw) MaxLabelHeight(param1 *qt.QFont) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtScaleDraw_maxLabelHeight(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func (this *QwtScaleDraw) MaxLabelWidth(param1 *qt.QFont) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QwtScaleDraw_maxLabelWidth(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func (this *QwtScaleDraw) LabelPosition(value float64) *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtScaleDraw_labelPosition(this.h, (C.double)(value))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDraw) LabelRect(param1 *qt.QFont, value float64) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtScaleDraw_labelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDraw) LabelSize(param1 *qt.QFont, value float64) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtScaleDraw_labelSize(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleDraw) BoundingLabelRect(param1 *qt.QFont, value float64) *qt.QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtScaleDraw_boundingLabelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -167,6 +206,9 @@ func (this *QwtScaleDraw) BoundingLabelRect(param1 *qt.QFont, value float64) *qt
 
 // LabelTransformation can only be called from a QwtScaleDraw that was directly constructed.
 func (this *QwtScaleDraw) LabelTransformation(param1 *qt.QPointF, param2 *qt.QSizeF) qt.QTransform {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtScaleDraw_protectedbase_labelTransformation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))))
@@ -183,6 +225,7 @@ func (this *QwtScaleDraw) LabelTransformation(param1 *qt.QPointF, param2 *qt.QSi
 
 // InvalidateCache can only be called from a QwtScaleDraw that was directly constructed.
 func (this *QwtScaleDraw) InvalidateCache() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleDraw_protectedbase_invalidateCache(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -195,6 +238,8 @@ func (this *QwtScaleDraw) InvalidateCache() {
 
 // TickLabel can only be called from a QwtScaleDraw that was directly constructed.
 func (this *QwtScaleDraw) TickLabel(param1 *qt.QFont, value float64) *QwtText {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtText(C.QwtScaleDraw_protectedbase_tickLabel(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
@@ -208,6 +253,8 @@ func (this *QwtScaleDraw) TickLabel(param1 *qt.QFont, value float64) *QwtText {
 }
 
 func (this *QwtScaleDraw) callVirtualBase_Extent(param1 *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (float64)(C.QwtScaleDraw_virtualbase_extent(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer())))
 
@@ -236,6 +283,8 @@ func miqt_exec_callback_QwtScaleDraw_extent(self *C.QwtScaleDraw, cb C.intptr_t,
 }
 
 func (this *QwtScaleDraw) callVirtualBase_DrawTick(param1 *qt.QPainter, value float64, lenVal float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleDraw_virtualbase_drawTick(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(value), (C.double)(lenVal))
 
@@ -266,6 +315,8 @@ func miqt_exec_callback_QwtScaleDraw_drawTick(self *C.QwtScaleDraw, cb C.intptr_
 }
 
 func (this *QwtScaleDraw) callVirtualBase_DrawBackbone(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleDraw_virtualbase_drawBackbone(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
 
@@ -292,6 +343,8 @@ func miqt_exec_callback_QwtScaleDraw_drawBackbone(self *C.QwtScaleDraw, cb C.int
 }
 
 func (this *QwtScaleDraw) callVirtualBase_DrawLabel(param1 *qt.QPainter, value float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleDraw_virtualbase_drawLabel(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.double)(value))
 
@@ -320,6 +373,9 @@ func miqt_exec_callback_QwtScaleDraw_drawLabel(self *C.QwtScaleDraw, cb C.intptr
 }
 
 func (this *QwtScaleDraw) callVirtualBase_Draw(param1 *qt.QPainter, param2 *qt.QPalette) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtScaleDraw_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()))
 
@@ -348,6 +404,7 @@ func miqt_exec_callback_QwtScaleDraw_draw(self *C.QwtScaleDraw, cb C.intptr_t, p
 }
 
 func (this *QwtScaleDraw) callVirtualBase_Label(param1 float64) *QwtText {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtText(C.QwtScaleDraw_virtualbase_label(unsafe.Pointer(this.h), (C.double)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -372,8 +429,9 @@ func miqt_exec_callback_QwtScaleDraw_label(self *C.QwtScaleDraw, cb C.intptr_t, 
 	slotval1 := (float64)(param1)
 
 	virtualReturn := gofunc((&QwtScaleDraw{h: self}).callVirtualBase_Label, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtScaleDraw_virtualreturncopy_QwtText(virtualReturn.cPointer())
 
 }
 
@@ -389,8 +447,9 @@ func (this *QwtScaleDraw) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtScaleDraw{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleDraw) {
-		C.QwtScaleDraw_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtScaleDraw_delete((*C.QwtScaleDraw)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

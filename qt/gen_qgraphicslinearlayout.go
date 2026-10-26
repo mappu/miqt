@@ -16,8 +16,15 @@ import (
 
 type QGraphicsLinearLayout struct {
 	h  *C.QGraphicsLinearLayout
-	gc *[1]*C.QGraphicsLinearLayout
+	gc *[1]unsafe.Pointer
 	*QGraphicsLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGraphicsLinearLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGraphicsLayout.miqtSetGC(gc)
 }
 
 func (this *QGraphicsLinearLayout) cPointer() *C.QGraphicsLinearLayout {
@@ -65,120 +72,158 @@ func NewQGraphicsLinearLayout2(orientation Orientation) *QGraphicsLinearLayout {
 
 // NewQGraphicsLinearLayout3 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new3(parent.cPointer()))
 }
 
 // NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout4(orientation Orientation, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer()))
 }
 
 func (this *QGraphicsLinearLayout) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QGraphicsLinearLayout) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QGraphicsLinearLayout_orientation(this.h))
 }
 
 func (this *QGraphicsLinearLayout) AddItem(item *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsLinearLayout_addItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsLinearLayout) AddStretch() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_addStretch(this.h)
 }
 
 func (this *QGraphicsLinearLayout) InsertItem(index int, item *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsLinearLayout_insertItem(this.h, (C.int)(index), item.cPointer())
 }
 
 func (this *QGraphicsLinearLayout) InsertStretch(index int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_insertStretch(this.h, (C.int)(index))
 }
 
 func (this *QGraphicsLinearLayout) RemoveItem(item *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsLinearLayout_removeItem(this.h, item.cPointer())
 }
 
 func (this *QGraphicsLinearLayout) RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_removeAt(this.h, (C.int)(index))
 }
 
 func (this *QGraphicsLinearLayout) SetSpacing(spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsLinearLayout) Spacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsLinearLayout_spacing(this.h))
 }
 
 func (this *QGraphicsLinearLayout) SetItemSpacing(index int, spacing float64) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_setItemSpacing(this.h, (C.int)(index), (C.double)(spacing))
 }
 
 func (this *QGraphicsLinearLayout) ItemSpacing(index int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsLinearLayout_itemSpacing(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsLinearLayout) SetStretchFactor(item *QGraphicsLayoutItem, stretch int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsLinearLayout_setStretchFactor(this.h, item.cPointer(), (C.int)(stretch))
 }
 
 func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (int)(C.QGraphicsLinearLayout_stretchFactor(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QGraphicsLinearLayout_setAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
 func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) AlignmentFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (AlignmentFlag)(C.QGraphicsLinearLayout_alignment(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsLinearLayout) SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QGraphicsLinearLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsLinearLayout) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsLinearLayout_count(this.h))
 }
 
 func (this *QGraphicsLinearLayout) ItemAt(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQGraphicsLayoutItem(C.QGraphicsLinearLayout_itemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsLinearLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_invalidate(this.h)
 }
 
 func (this *QGraphicsLinearLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 	_goptr := newQSizeF(C.QGraphicsLinearLayout_sizeHint(this.h, (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLinearLayout) Dump() {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_dump(this.h)
 }
 
 func (this *QGraphicsLinearLayout) AddStretchWithStretch(stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_addStretchWithStretch(this.h, (C.int)(stretch))
 }
 
 func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_insertStretch2(this.h, (C.int)(index), (C.int)(stretch))
 }
 
 func (this *QGraphicsLinearLayout) DumpWithIndent(indent int) {
+	defer runtime.KeepAlive(this)
 	C.QGraphicsLinearLayout_dumpWithIndent(this.h, (C.int)(indent))
 }
 
 // AddChildLayoutItem can only be called from a QGraphicsLinearLayout that was directly constructed.
 func (this *QGraphicsLinearLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layoutItem)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsLinearLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
@@ -191,6 +236,8 @@ func (this *QGraphicsLinearLayout) AddChildLayoutItem(layoutItem *QGraphicsLayou
 
 // SetGraphicsItem can only be called from a QGraphicsLinearLayout that was directly constructed.
 func (this *QGraphicsLinearLayout) SetGraphicsItem(item *QGraphicsItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsLinearLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
@@ -203,6 +250,7 @@ func (this *QGraphicsLinearLayout) SetGraphicsItem(item *QGraphicsItem) {
 
 // SetOwnedByLayout can only be called from a QGraphicsLinearLayout that was directly constructed.
 func (this *QGraphicsLinearLayout) SetOwnedByLayout(ownedByLayout bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsLinearLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
@@ -214,6 +262,7 @@ func (this *QGraphicsLinearLayout) SetOwnedByLayout(ownedByLayout bool) {
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_RemoveAt(index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsLinearLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))
 
@@ -240,6 +289,8 @@ func miqt_exec_callback_QGraphicsLinearLayout_removeAt(self *C.QGraphicsLinearLa
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QGraphicsLinearLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
@@ -266,6 +317,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_setGeometry(self *C.QGraphicsLinea
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsLinearLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -291,6 +343,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_count(self *C.QGraphicsLinearLayou
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_ItemAt(index int) *QGraphicsLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQGraphicsLayoutItem(C.QGraphicsLinearLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -313,12 +366,14 @@ func miqt_exec_callback_QGraphicsLinearLayout_itemAt(self *C.QGraphicsLinearLayo
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QGraphicsLinearLayout{h: self}).callVirtualBase_ItemAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsLinearLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -342,6 +397,8 @@ func miqt_exec_callback_QGraphicsLinearLayout_invalidate(self *C.QGraphicsLinear
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(constraint)
 
 	_goptr := newQSizeF(C.QGraphicsLinearLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -368,12 +425,14 @@ func miqt_exec_callback_QGraphicsLinearLayout_sizeHint(self *C.QGraphicsLinearLa
 	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsLinearLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QGraphicsLinearLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
 
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsLinearLayout_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
@@ -406,6 +465,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_getContentsMargins(self *C.QGraphi
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_UpdateGeometry() {
+	defer runtime.KeepAlive(this)
 
 	C.QGraphicsLinearLayout_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
@@ -429,6 +489,8 @@ func miqt_exec_callback_QGraphicsLinearLayout_updateGeometry(self *C.QGraphicsLi
 }
 
 func (this *QGraphicsLinearLayout) callVirtualBase_WidgetEvent(e *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QGraphicsLinearLayout_virtualbase_widgetEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -466,8 +528,9 @@ func (this *QGraphicsLinearLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGraphicsLinearLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsLinearLayout) {
-		C.QGraphicsLinearLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGraphicsLinearLayout_delete((*C.QGraphicsLinearLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

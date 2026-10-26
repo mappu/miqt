@@ -16,8 +16,15 @@ import (
 
 type QProgressDialog struct {
 	h  *C.QProgressDialog
-	gc *[1]*C.QProgressDialog
+	gc *[1]unsafe.Pointer
 	*QDialog
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QProgressDialog) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDialog.miqtSetGC(gc)
 }
 
 func (this *QProgressDialog) cPointer() *C.QProgressDialog {
@@ -53,6 +60,7 @@ func UnsafeNewQProgressDialog(h unsafe.Pointer) *QProgressDialog {
 
 // NewQProgressDialog constructs a new QProgressDialog object.
 func NewQProgressDialog(parent *QWidget) *QProgressDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQProgressDialog(C.QProgressDialog_new(parent.cPointer()))
 }
@@ -79,12 +87,14 @@ func NewQProgressDialog3(labelText string, cancelButtonText string, minimum int,
 
 // NewQProgressDialog4 constructs a new QProgressDialog object.
 func NewQProgressDialog4(parent *QWidget, flags WindowType) *QProgressDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQProgressDialog(C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags)))
 }
 
 // NewQProgressDialog5 constructs a new QProgressDialog object.
 func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget) *QProgressDialog {
+	defer runtime.KeepAlive(parent)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -99,6 +109,7 @@ func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int,
 
 // NewQProgressDialog6 constructs a new QProgressDialog object.
 func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget, flags WindowType) *QProgressDialog {
+	defer runtime.KeepAlive(parent)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -112,10 +123,12 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QProgressDialog_metaObject(this.h))
 }
 
 func (this *QProgressDialog) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QProgressDialog_metacast(this.h, param1_Cstring))
@@ -140,40 +153,52 @@ func QProgressDialog_TrUtf8(s string) string {
 }
 
 func (this *QProgressDialog) SetLabel(label *QLabel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(label)
 	C.QProgressDialog_setLabel(this.h, label.cPointer())
 }
 
 func (this *QProgressDialog) SetCancelButton(button *QPushButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QProgressDialog_setCancelButton(this.h, button.cPointer())
 }
 
 func (this *QProgressDialog) SetBar(bar *QProgressBar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(bar)
 	C.QProgressDialog_setBar(this.h, bar.cPointer())
 }
 
 func (this *QProgressDialog) WasCanceled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QProgressDialog_wasCanceled(this.h))
 }
 
 func (this *QProgressDialog) Minimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressDialog_minimum(this.h))
 }
 
 func (this *QProgressDialog) Maximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressDialog_maximum(this.h))
 }
 
 func (this *QProgressDialog) Value() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressDialog_value(this.h))
 }
 
 func (this *QProgressDialog) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QProgressDialog_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProgressDialog) LabelText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QProgressDialog_labelText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -181,50 +206,62 @@ func (this *QProgressDialog) LabelText() string {
 }
 
 func (this *QProgressDialog) MinimumDuration() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressDialog_minimumDuration(this.h))
 }
 
 func (this *QProgressDialog) SetAutoReset(reset bool) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setAutoReset(this.h, (C.bool)(reset))
 }
 
 func (this *QProgressDialog) AutoReset() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QProgressDialog_autoReset(this.h))
 }
 
 func (this *QProgressDialog) SetAutoClose(close bool) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setAutoClose(this.h, (C.bool)(close))
 }
 
 func (this *QProgressDialog) AutoClose() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QProgressDialog_autoClose(this.h))
 }
 
 func (this *QProgressDialog) Cancel() {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_cancel(this.h)
 }
 
 func (this *QProgressDialog) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_reset(this.h)
 }
 
 func (this *QProgressDialog) SetMaximum(maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QProgressDialog) SetMinimum(minimum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QProgressDialog) SetRange(minimum int, maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setRange(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 
 func (this *QProgressDialog) SetValue(progress int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setValue(this.h, (C.int)(progress))
 }
 
 func (this *QProgressDialog) SetLabelText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -233,6 +270,7 @@ func (this *QProgressDialog) SetLabelText(text string) {
 }
 
 func (this *QProgressDialog) SetCancelButtonText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -241,10 +279,12 @@ func (this *QProgressDialog) SetCancelButtonText(text string) {
 }
 
 func (this *QProgressDialog) SetMinimumDuration(ms int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_setMinimumDuration(this.h, (C.int)(ms))
 }
 
 func (this *QProgressDialog) Canceled() {
+	defer runtime.KeepAlive(this)
 	C.QProgressDialog_canceled(this.h)
 }
 func (this *QProgressDialog) OnCanceled(slot func()) {
@@ -307,6 +347,7 @@ func QProgressDialog_TrUtf83(s string, c string, n int) string {
 
 // ForceShow can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) ForceShow() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressDialog_protectedbase_forceShow(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -319,6 +360,8 @@ func (this *QProgressDialog) ForceShow() {
 
 // AdjustPosition can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) AdjustPosition(param1 *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -331,6 +374,7 @@ func (this *QProgressDialog) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -343,6 +387,7 @@ func (this *QProgressDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -355,6 +400,7 @@ func (this *QProgressDialog) Create() {
 
 // Destroy can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -367,6 +413,7 @@ func (this *QProgressDialog) Destroy() {
 
 // FocusNextChild can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -381,6 +428,7 @@ func (this *QProgressDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -395,6 +443,7 @@ func (this *QProgressDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QProgressDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -409,6 +458,7 @@ func (this *QProgressDialog) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QProgressDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -423,6 +473,7 @@ func (this *QProgressDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -439,6 +490,8 @@ func (this *QProgressDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QProgressDialog that was directly constructed.
 func (this *QProgressDialog) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressDialog_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -452,6 +505,7 @@ func (this *QProgressDialog) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QProgressDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -473,12 +527,15 @@ func miqt_exec_callback_QProgressDialog_sizeHint(self *C.QProgressDialog, cb C.i
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressDialog) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -505,6 +562,8 @@ func miqt_exec_callback_QProgressDialog_resizeEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -531,6 +590,8 @@ func miqt_exec_callback_QProgressDialog_closeEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_ChangeEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -557,6 +618,8 @@ func miqt_exec_callback_QProgressDialog_changeEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -583,6 +646,7 @@ func miqt_exec_callback_QProgressDialog_showEvent(self *C.QProgressDialog, cb C.
 }
 
 func (this *QProgressDialog) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -609,6 +673,7 @@ func miqt_exec_callback_QProgressDialog_setVisible(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QProgressDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -630,12 +695,14 @@ func miqt_exec_callback_QProgressDialog_minimumSizeHint(self *C.QProgressDialog,
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressDialog) callVirtualBase_Open() {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -659,6 +726,7 @@ func miqt_exec_callback_QProgressDialog_open(self *C.QProgressDialog, cb C.intpt
 }
 
 func (this *QProgressDialog) callVirtualBase_Exec() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -684,6 +752,7 @@ func miqt_exec_callback_QProgressDialog_exec(self *C.QProgressDialog, cb C.intpt
 }
 
 func (this *QProgressDialog) callVirtualBase_Done(param1 int) {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -710,6 +779,7 @@ func miqt_exec_callback_QProgressDialog_done(self *C.QProgressDialog, cb C.intpt
 }
 
 func (this *QProgressDialog) callVirtualBase_Accept() {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -733,6 +803,7 @@ func miqt_exec_callback_QProgressDialog_accept(self *C.QProgressDialog, cb C.int
 }
 
 func (this *QProgressDialog) callVirtualBase_Reject() {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -756,6 +827,8 @@ func miqt_exec_callback_QProgressDialog_reject(self *C.QProgressDialog, cb C.int
 }
 
 func (this *QProgressDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -782,6 +855,8 @@ func miqt_exec_callback_QProgressDialog_keyPressEvent(self *C.QProgressDialog, c
 }
 
 func (this *QProgressDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -808,6 +883,9 @@ func miqt_exec_callback_QProgressDialog_contextMenuEvent(self *C.QProgressDialog
 }
 
 func (this *QProgressDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QProgressDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -838,6 +916,7 @@ func miqt_exec_callback_QProgressDialog_eventFilter(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -863,6 +942,7 @@ func miqt_exec_callback_QProgressDialog_devType(self *C.QProgressDialog, cb C.in
 }
 
 func (this *QProgressDialog) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -891,6 +971,7 @@ func miqt_exec_callback_QProgressDialog_heightForWidth(self *C.QProgressDialog, 
 }
 
 func (this *QProgressDialog) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProgressDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -916,6 +997,7 @@ func miqt_exec_callback_QProgressDialog_hasHeightForWidth(self *C.QProgressDialo
 }
 
 func (this *QProgressDialog) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QProgressDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -935,12 +1017,15 @@ func miqt_exec_callback_QProgressDialog_paintEngine(self *C.QProgressDialog, cb 
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressDialog) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QProgressDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -969,6 +1054,8 @@ func miqt_exec_callback_QProgressDialog_event(self *C.QProgressDialog, cb C.intp
 }
 
 func (this *QProgressDialog) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -995,6 +1082,8 @@ func miqt_exec_callback_QProgressDialog_mousePressEvent(self *C.QProgressDialog,
 }
 
 func (this *QProgressDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1021,6 +1110,8 @@ func miqt_exec_callback_QProgressDialog_mouseReleaseEvent(self *C.QProgressDialo
 }
 
 func (this *QProgressDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1047,6 +1138,8 @@ func miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent(self *C.QProgressD
 }
 
 func (this *QProgressDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1073,6 +1166,8 @@ func miqt_exec_callback_QProgressDialog_mouseMoveEvent(self *C.QProgressDialog, 
 }
 
 func (this *QProgressDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1099,6 +1194,8 @@ func miqt_exec_callback_QProgressDialog_wheelEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1125,6 +1222,8 @@ func miqt_exec_callback_QProgressDialog_keyReleaseEvent(self *C.QProgressDialog,
 }
 
 func (this *QProgressDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1151,6 +1250,8 @@ func miqt_exec_callback_QProgressDialog_focusInEvent(self *C.QProgressDialog, cb
 }
 
 func (this *QProgressDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1177,6 +1278,8 @@ func miqt_exec_callback_QProgressDialog_focusOutEvent(self *C.QProgressDialog, c
 }
 
 func (this *QProgressDialog) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1203,6 +1306,8 @@ func miqt_exec_callback_QProgressDialog_enterEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1229,6 +1334,8 @@ func miqt_exec_callback_QProgressDialog_leaveEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1255,6 +1362,8 @@ func miqt_exec_callback_QProgressDialog_paintEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1281,6 +1390,8 @@ func miqt_exec_callback_QProgressDialog_moveEvent(self *C.QProgressDialog, cb C.
 }
 
 func (this *QProgressDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1307,6 +1418,8 @@ func miqt_exec_callback_QProgressDialog_tabletEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1333,6 +1446,8 @@ func miqt_exec_callback_QProgressDialog_actionEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1359,6 +1474,8 @@ func miqt_exec_callback_QProgressDialog_dragEnterEvent(self *C.QProgressDialog, 
 }
 
 func (this *QProgressDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1385,6 +1502,8 @@ func miqt_exec_callback_QProgressDialog_dragMoveEvent(self *C.QProgressDialog, c
 }
 
 func (this *QProgressDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1411,6 +1530,8 @@ func miqt_exec_callback_QProgressDialog_dragLeaveEvent(self *C.QProgressDialog, 
 }
 
 func (this *QProgressDialog) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1437,6 +1558,8 @@ func miqt_exec_callback_QProgressDialog_dropEvent(self *C.QProgressDialog, cb C.
 }
 
 func (this *QProgressDialog) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1463,6 +1586,7 @@ func miqt_exec_callback_QProgressDialog_hideEvent(self *C.QProgressDialog, cb C.
 }
 
 func (this *QProgressDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1504,6 +1628,7 @@ func miqt_exec_callback_QProgressDialog_nativeEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1532,6 +1657,8 @@ func miqt_exec_callback_QProgressDialog_metric(self *C.QProgressDialog, cb C.int
 }
 
 func (this *QProgressDialog) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QProgressDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1558,6 +1685,8 @@ func miqt_exec_callback_QProgressDialog_initPainter(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QProgressDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1580,12 +1709,14 @@ func miqt_exec_callback_QProgressDialog_redirected(self *C.QProgressDialog, cb C
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressDialog) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QProgressDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1605,12 +1736,15 @@ func miqt_exec_callback_QProgressDialog_sharedPainter(self *C.QProgressDialog, c
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressDialog) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1637,6 +1771,7 @@ func miqt_exec_callback_QProgressDialog_inputMethodEvent(self *C.QProgressDialog
 }
 
 func (this *QProgressDialog) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QProgressDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1661,12 +1796,14 @@ func miqt_exec_callback_QProgressDialog_inputMethodQuery(self *C.QProgressDialog
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressDialog_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProgressDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1695,6 +1832,8 @@ func miqt_exec_callback_QProgressDialog_focusNextPrevChild(self *C.QProgressDial
 }
 
 func (this *QProgressDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1721,6 +1860,8 @@ func miqt_exec_callback_QProgressDialog_timerEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1747,6 +1888,8 @@ func miqt_exec_callback_QProgressDialog_childEvent(self *C.QProgressDialog, cb C
 }
 
 func (this *QProgressDialog) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1773,6 +1916,8 @@ func miqt_exec_callback_QProgressDialog_customEvent(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProgressDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1799,6 +1944,8 @@ func miqt_exec_callback_QProgressDialog_connectNotify(self *C.QProgressDialog, c
 }
 
 func (this *QProgressDialog) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProgressDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1836,8 +1983,9 @@ func (this *QProgressDialog) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QProgressDialog{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProgressDialog) {
-		C.QProgressDialog_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QProgressDialog_delete((*C.QProgressDialog)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

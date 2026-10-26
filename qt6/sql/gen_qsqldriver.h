@@ -149,6 +149,9 @@ bool QSqlDriver_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSqlDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSqlDriver_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSqlDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSqlIndex* QSqlDriver_virtualreturncopy_QSqlIndex(QSqlIndex* src);
+QSqlRecord* QSqlDriver_virtualreturncopy_QSqlRecord(QSqlRecord* src);
+QVariant* QSqlDriver_virtualreturncopy_QVariant(QVariant* src);
 
 QObject* QSqlDriver_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSqlDriver_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

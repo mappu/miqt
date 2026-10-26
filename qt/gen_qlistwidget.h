@@ -186,6 +186,7 @@ bool QListWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QListWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+QVariant* QListWidgetItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QListWidgetItem_delete(QListWidgetItem* self);
 
@@ -451,6 +452,12 @@ bool QListWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QListWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QListWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QListWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QListWidget_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QListWidget_virtualreturncopy_QModelIndex(QModelIndex* src);
+QStyleOptionViewItem* QListWidget_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src);
+QRegion* QListWidget_virtualreturncopy_QRegion(QRegion* src);
+QSize* QListWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QListWidget_virtualreturncopy_QVariant(QVariant* src);
 
 struct miqt_array /* of QListWidgetItem* */  QListWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data);
 QModelIndex* QListWidget_protectedbase_indexFromItem(bool* _dynamic_cast_ok, const void* self, QListWidgetItem* item);

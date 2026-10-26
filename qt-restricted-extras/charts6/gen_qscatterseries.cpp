@@ -130,7 +130,9 @@ public:
 		}
 
 		QColor* callback_return_value = miqt_exec_callback_QScatterSeries_color(this, handle__color);
-		return *callback_return_value;
+		QColor callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QColor* QScatterSeries_virtualbase_color(const void* self);
@@ -581,6 +583,10 @@ bool QScatterSeries_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QScatterSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::disconnectNotify(*signal);
+}
+
+QColor* QScatterSeries_virtualreturncopy_QColor(QColor* src) {
+	return new QColor(*src);
 }
 
 QObject* QScatterSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

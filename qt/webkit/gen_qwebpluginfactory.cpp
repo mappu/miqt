@@ -61,6 +61,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QWebPluginFactory__Plugin** callback_return_value_free_arr = static_cast<QWebPluginFactory__Plugin**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -592,6 +596,10 @@ bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWebPluginFactory*>(self)->QWebPluginFactory::disconnectNotify(*signal);
+}
+
+QWebPluginFactory__Plugin* QWebPluginFactory_virtualreturncopy_QWebPluginFactory__Plugin(QWebPluginFactory__Plugin* src) {
+	return new QWebPluginFactory__Plugin(*src);
 }
 
 QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

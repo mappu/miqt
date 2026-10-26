@@ -74,6 +74,7 @@ bool QwtDateScaleDraw_override_virtual_drawLabel(void* self, intptr_t slot);
 void QwtDateScaleDraw_virtualbase_drawLabel(const void* self, QPainter* param1, double value);
 bool QwtDateScaleDraw_override_virtual_draw(void* self, intptr_t slot);
 void QwtDateScaleDraw_virtualbase_draw(const void* self, QPainter* param1, QPalette* param2);
+QwtText* QwtDateScaleDraw_virtualreturncopy_QwtText(QwtText* src);
 
 QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2);
 void QwtDateScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);

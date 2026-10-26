@@ -24,8 +24,15 @@ const (
 
 type QValueAxis struct {
 	h  *C.QValueAxis
-	gc *[1]*C.QValueAxis
+	gc *[1]unsafe.Pointer
 	*QAbstractAxis
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QValueAxis) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractAxis.miqtSetGC(gc)
 }
 
 func (this *QValueAxis) cPointer() *C.QValueAxis {
@@ -67,15 +74,18 @@ func NewQValueAxis() *QValueAxis {
 
 // NewQValueAxis2 constructs a new QValueAxis object.
 func NewQValueAxis2(parent *qt6.QObject) *QValueAxis {
+	defer runtime.KeepAlive(parent)
 
 	return newQValueAxis(C.QValueAxis_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QValueAxis) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QValueAxis_metaObject(this.h)))
 }
 
 func (this *QValueAxis) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QValueAxis_metacast(this.h, param1_Cstring))
@@ -91,70 +101,87 @@ func QValueAxis_Tr(s string) string {
 }
 
 func (this *QValueAxis) Type() QAbstractAxis__AxisType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractAxis__AxisType)(C.QValueAxis_type(this.h))
 }
 
 func (this *QValueAxis) SetMin(min float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setMin(this.h, (C.double)(min))
 }
 
 func (this *QValueAxis) Min() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QValueAxis_min(this.h))
 }
 
 func (this *QValueAxis) SetMax(max float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setMax(this.h, (C.double)(max))
 }
 
 func (this *QValueAxis) Max() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QValueAxis_max(this.h))
 }
 
 func (this *QValueAxis) SetRange(min float64, max float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setRange(this.h, (C.double)(min), (C.double)(max))
 }
 
 func (this *QValueAxis) SetTickCount(count int) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setTickCount(this.h, (C.int)(count))
 }
 
 func (this *QValueAxis) TickCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QValueAxis_tickCount(this.h))
 }
 
 func (this *QValueAxis) SetMinorTickCount(count int) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setMinorTickCount(this.h, (C.int)(count))
 }
 
 func (this *QValueAxis) MinorTickCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QValueAxis_minorTickCount(this.h))
 }
 
 func (this *QValueAxis) SetTickAnchor(anchor float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setTickAnchor(this.h, (C.double)(anchor))
 }
 
 func (this *QValueAxis) TickAnchor() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QValueAxis_tickAnchor(this.h))
 }
 
 func (this *QValueAxis) SetTickInterval(insterval float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setTickInterval(this.h, (C.double)(insterval))
 }
 
 func (this *QValueAxis) TickInterval() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QValueAxis_tickInterval(this.h))
 }
 
 func (this *QValueAxis) SetTickType(typeVal QValueAxis__TickType) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_setTickType(this.h, (C.int)(typeVal))
 }
 
 func (this *QValueAxis) TickType() QValueAxis__TickType {
+	defer runtime.KeepAlive(this)
 	return (QValueAxis__TickType)(C.QValueAxis_tickType(this.h))
 }
 
 func (this *QValueAxis) SetLabelFormat(format string) {
+	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -163,6 +190,7 @@ func (this *QValueAxis) SetLabelFormat(format string) {
 }
 
 func (this *QValueAxis) LabelFormat() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QValueAxis_labelFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -170,10 +198,12 @@ func (this *QValueAxis) LabelFormat() string {
 }
 
 func (this *QValueAxis) ApplyNiceNumbers() {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_applyNiceNumbers(this.h)
 }
 
 func (this *QValueAxis) MinChanged(min float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_minChanged(this.h, (C.double)(min))
 }
 func (this *QValueAxis) OnMinChanged(slot func(min float64)) {
@@ -194,6 +224,7 @@ func miqt_exec_callback_QValueAxis_minChanged(cb C.intptr_t, min C.double) {
 }
 
 func (this *QValueAxis) MaxChanged(max float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_maxChanged(this.h, (C.double)(max))
 }
 func (this *QValueAxis) OnMaxChanged(slot func(max float64)) {
@@ -214,6 +245,7 @@ func miqt_exec_callback_QValueAxis_maxChanged(cb C.intptr_t, max C.double) {
 }
 
 func (this *QValueAxis) RangeChanged(min float64, max float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_rangeChanged(this.h, (C.double)(min), (C.double)(max))
 }
 func (this *QValueAxis) OnRangeChanged(slot func(min float64, max float64)) {
@@ -236,6 +268,7 @@ func miqt_exec_callback_QValueAxis_rangeChanged(cb C.intptr_t, min C.double, max
 }
 
 func (this *QValueAxis) TickCountChanged(tickCount int) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_tickCountChanged(this.h, (C.int)(tickCount))
 }
 func (this *QValueAxis) OnTickCountChanged(slot func(tickCount int)) {
@@ -256,6 +289,7 @@ func miqt_exec_callback_QValueAxis_tickCountChanged(cb C.intptr_t, tickCount C.i
 }
 
 func (this *QValueAxis) MinorTickCountChanged(tickCount int) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_minorTickCountChanged(this.h, (C.int)(tickCount))
 }
 func (this *QValueAxis) OnMinorTickCountChanged(slot func(tickCount int)) {
@@ -276,6 +310,7 @@ func miqt_exec_callback_QValueAxis_minorTickCountChanged(cb C.intptr_t, tickCoun
 }
 
 func (this *QValueAxis) LabelFormatChanged(format string) {
+	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -303,6 +338,7 @@ func miqt_exec_callback_QValueAxis_labelFormatChanged(cb C.intptr_t, format C.st
 }
 
 func (this *QValueAxis) TickIntervalChanged(interval float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_tickIntervalChanged(this.h, (C.double)(interval))
 }
 func (this *QValueAxis) OnTickIntervalChanged(slot func(interval float64)) {
@@ -323,6 +359,7 @@ func miqt_exec_callback_QValueAxis_tickIntervalChanged(cb C.intptr_t, interval C
 }
 
 func (this *QValueAxis) TickAnchorChanged(anchor float64) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_tickAnchorChanged(this.h, (C.double)(anchor))
 }
 func (this *QValueAxis) OnTickAnchorChanged(slot func(anchor float64)) {
@@ -343,6 +380,7 @@ func miqt_exec_callback_QValueAxis_tickAnchorChanged(cb C.intptr_t, anchor C.dou
 }
 
 func (this *QValueAxis) TickTypeChanged(typeVal QValueAxis__TickType) {
+	defer runtime.KeepAlive(this)
 	C.QValueAxis_tickTypeChanged(this.h, (C.int)(typeVal))
 }
 func (this *QValueAxis) OnTickTypeChanged(slot func(typeVal QValueAxis__TickType)) {
@@ -386,6 +424,7 @@ func QValueAxis_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QValueAxis that was directly constructed.
 func (this *QValueAxis) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QValueAxis_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -400,6 +439,7 @@ func (this *QValueAxis) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QValueAxis that was directly constructed.
 func (this *QValueAxis) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QValueAxis_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -414,6 +454,7 @@ func (this *QValueAxis) SenderSignalIndex() int {
 
 // Receivers can only be called from a QValueAxis that was directly constructed.
 func (this *QValueAxis) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -430,6 +471,8 @@ func (this *QValueAxis) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QValueAxis that was directly constructed.
 func (this *QValueAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QValueAxis_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -443,6 +486,7 @@ func (this *QValueAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QValueAxis) callVirtualBase_Type() QAbstractAxis__AxisType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractAxis__AxisType)(C.QValueAxis_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -468,6 +512,8 @@ func miqt_exec_callback_QValueAxis_type(self *C.QValueAxis, cb C.intptr_t) C.int
 }
 
 func (this *QValueAxis) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QValueAxis_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -496,6 +542,9 @@ func miqt_exec_callback_QValueAxis_event(self *C.QValueAxis, cb C.intptr_t, even
 }
 
 func (this *QValueAxis) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QValueAxis_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -526,6 +575,8 @@ func miqt_exec_callback_QValueAxis_eventFilter(self *C.QValueAxis, cb C.intptr_t
 }
 
 func (this *QValueAxis) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QValueAxis_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -552,6 +603,8 @@ func miqt_exec_callback_QValueAxis_timerEvent(self *C.QValueAxis, cb C.intptr_t,
 }
 
 func (this *QValueAxis) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QValueAxis_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -578,6 +631,8 @@ func miqt_exec_callback_QValueAxis_childEvent(self *C.QValueAxis, cb C.intptr_t,
 }
 
 func (this *QValueAxis) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QValueAxis_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -604,6 +659,8 @@ func miqt_exec_callback_QValueAxis_customEvent(self *C.QValueAxis, cb C.intptr_t
 }
 
 func (this *QValueAxis) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QValueAxis_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -630,6 +687,8 @@ func miqt_exec_callback_QValueAxis_connectNotify(self *C.QValueAxis, cb C.intptr
 }
 
 func (this *QValueAxis) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QValueAxis_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -667,8 +726,9 @@ func (this *QValueAxis) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QValueAxis{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QValueAxis) {
-		C.QValueAxis_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QValueAxis_delete((*C.QValueAxis)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

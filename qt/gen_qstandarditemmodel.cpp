@@ -104,7 +104,9 @@ public:
 
 		int sigval1 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QStandardItem_data(this, handle__data, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QStandardItem_virtualbase_data(const void* self, int role);
@@ -796,6 +798,10 @@ bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* o
 	return static_cast<const MiqtVirtualQStandardItem*>(self)->QStandardItem::operator<(*other);
 }
 
+QVariant* QStandardItem_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
 void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
 	if (self_cast == nullptr) {
@@ -836,7 +842,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_index(this, handle__index, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QStandardItemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
@@ -854,7 +862,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_parent(this, handle__parent, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QStandardItemModel_virtualbase_parent(const void* self, QModelIndex* child);
@@ -928,7 +938,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QStandardItemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
@@ -947,7 +959,9 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_data(this, handle__data, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QStandardItemModel_virtualbase_data(const void* self, QModelIndex* index, int role);
@@ -988,7 +1002,9 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QStandardItemModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
@@ -1147,6 +1163,12 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = *(callback_return_value_varr[i]);
 		}
+		QVariant** callback_return_value_free_varr = static_cast<QVariant**>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_varr[i];
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -1415,7 +1437,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_buddy(this, handle__buddy, sigval1);
-		return *callback_return_value;
+		QModelIndex callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QModelIndex* QStandardItemModel_virtualbase_buddy(const void* self, QModelIndex* index);
@@ -1446,6 +1470,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -1465,7 +1493,9 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QSize* callback_return_value = miqt_exec_callback_QStandardItemModel_span(this, handle__span, sigval1);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QStandardItemModel_virtualbase_span(const void* self, QModelIndex* index);
@@ -1488,6 +1518,12 @@ public:
 			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
 		}
+		struct miqt_string* callback_return_value_free_varr = static_cast<struct miqt_string*>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_varr[i].data);
+		}
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QMap;
 	}
 
@@ -2814,6 +2850,18 @@ bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQStandardItemModel*>(self)->QStandardItemModel::disconnectNotify(*signal);
+}
+
+QModelIndex* QStandardItemModel_virtualreturncopy_QModelIndex(QModelIndex* src) {
+	return new QModelIndex(*src);
+}
+
+QVariant* QStandardItemModel_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QSize* QStandardItemModel_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {

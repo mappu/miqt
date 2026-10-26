@@ -389,6 +389,9 @@ bool QGraphicsItem_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* variant);
+QRectF* QGraphicsItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -518,6 +521,9 @@ bool QGraphicsObject_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsObject_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsObject_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* variant);
+QRectF* QGraphicsObject_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsObject_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsObject_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsObject_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsObject_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -610,6 +616,9 @@ bool QAbstractGraphicsShapeItem_override_virtual_setExtension(void* self, intptr
 void QAbstractGraphicsShapeItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QAbstractGraphicsShapeItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QAbstractGraphicsShapeItem_virtualbase_extension(const void* self, QVariant* variant);
+QPainterPath* QAbstractGraphicsShapeItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QRectF* QAbstractGraphicsShapeItem_virtualreturncopy_QRectF(QRectF* src);
+QVariant* QAbstractGraphicsShapeItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractGraphicsShapeItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QAbstractGraphicsShapeItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -706,6 +715,9 @@ bool QGraphicsPathItem_override_virtual_inputMethodQuery(void* self, intptr_t sl
 QVariant* QGraphicsPathItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsPathItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsPathItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsPathItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsPathItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsPathItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsPathItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -805,6 +817,9 @@ bool QGraphicsRectItem_override_virtual_inputMethodQuery(void* self, intptr_t sl
 QVariant* QGraphicsRectItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsRectItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsRectItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsRectItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsRectItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsRectItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsRectItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -908,6 +923,9 @@ bool QGraphicsEllipseItem_override_virtual_inputMethodQuery(void* self, intptr_t
 QVariant* QGraphicsEllipseItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsEllipseItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsEllipseItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsEllipseItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsEllipseItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsEllipseItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsEllipseItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -1002,6 +1020,9 @@ bool QGraphicsPolygonItem_override_virtual_inputMethodQuery(void* self, intptr_t
 QVariant* QGraphicsPolygonItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsPolygonItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsPolygonItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsPolygonItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsPolygonItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsPolygonItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsPolygonItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -1103,6 +1124,9 @@ bool QGraphicsLineItem_override_virtual_inputMethodQuery(void* self, intptr_t sl
 QVariant* QGraphicsLineItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsLineItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsLineItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsLineItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsLineItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsLineItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsLineItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -1206,6 +1230,9 @@ bool QGraphicsPixmapItem_override_virtual_inputMethodQuery(void* self, intptr_t 
 QVariant* QGraphicsPixmapItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsPixmapItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsPixmapItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsPixmapItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsPixmapItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsPixmapItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsPixmapItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -1363,6 +1390,9 @@ bool QGraphicsTextItem_override_virtual_wheelEvent(void* self, intptr_t slot);
 void QGraphicsTextItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event);
 bool QGraphicsTextItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsTextItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsTextItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsTextItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsTextItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsTextItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1465,6 +1495,9 @@ bool QGraphicsSimpleTextItem_override_virtual_inputMethodQuery(void* self, intpt
 QVariant* QGraphicsSimpleTextItem_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsSimpleTextItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+QRectF* QGraphicsSimpleTextItem_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsSimpleTextItem_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsSimpleTextItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsSimpleTextItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsSimpleTextItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
@@ -1554,6 +1587,9 @@ bool QGraphicsItemGroup_override_virtual_setExtension(void* self, intptr_t slot)
 void QGraphicsItemGroup_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsItemGroup_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant);
+QRectF* QGraphicsItemGroup_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QGraphicsItemGroup_virtualreturncopy_QPainterPath(QPainterPath* src);
+QVariant* QGraphicsItemGroup_virtualreturncopy_QVariant(QVariant* src);
 
 void QGraphicsItemGroup_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QGraphicsItemGroup_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);

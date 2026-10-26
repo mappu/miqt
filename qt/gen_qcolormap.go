@@ -23,7 +23,13 @@ const (
 
 type QColormap struct {
 	h  *C.QColormap
-	gc *[1]*C.QColormap
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QColormap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QColormap) cPointer() *C.QColormap {
@@ -56,6 +62,7 @@ func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
 
 // NewQColormap constructs a new QColormap object.
 func NewQColormap(colormap *QColormap) *QColormap {
+	defer runtime.KeepAlive(colormap)
 
 	return newQColormap(C.QColormap_new(colormap.cPointer()))
 }
@@ -75,32 +82,41 @@ func QColormap_Instance() *QColormap {
 }
 
 func (this *QColormap) OperatorAssign(colormap *QColormap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(colormap)
 	C.QColormap_operatorAssign(this.h, colormap.cPointer())
 }
 
 func (this *QColormap) Mode() QColormap__Mode {
+	defer runtime.KeepAlive(this)
 	return (QColormap__Mode)(C.QColormap_mode(this.h))
 }
 
 func (this *QColormap) Depth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColormap_depth(this.h))
 }
 
 func (this *QColormap) Size() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QColormap_size(this.h))
 }
 
 func (this *QColormap) Pixel(color *QColor) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	return (uint)(C.QColormap_pixel(this.h, color.cPointer()))
 }
 
 func (this *QColormap) ColorAt(pixel uint) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColormap_colorAt(this.h, (C.uint)(pixel)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColormap) Colormap() []QColor {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QColormap_colormap(this.h)
 	_ret := make([]QColor, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QColor)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -130,8 +146,9 @@ func (this *QColormap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QColormap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColormap) {
-		C.QColormap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QColormap_delete((*C.QColormap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

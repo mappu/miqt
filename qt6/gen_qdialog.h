@@ -223,6 +223,8 @@ bool QDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

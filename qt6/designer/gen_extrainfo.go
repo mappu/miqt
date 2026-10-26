@@ -16,7 +16,13 @@ import (
 
 type QDesignerExtraInfoExtension struct {
 	h  *C.QDesignerExtraInfoExtension
-	gc *[1]*C.QDesignerExtraInfoExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerExtraInfoExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerExtraInfoExtension) cPointer() *C.QDesignerExtraInfoExtension {
@@ -48,14 +54,17 @@ func UnsafeNewQDesignerExtraInfoExtension(h unsafe.Pointer) *QDesignerExtraInfoE
 }
 
 func (this *QDesignerExtraInfoExtension) Core() *QDesignerFormEditorInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerExtraInfoExtension_core(this.h))
 }
 
 func (this *QDesignerExtraInfoExtension) Widget() *qt6.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerExtraInfoExtension_widget(this.h)))
 }
 
 func (this *QDesignerExtraInfoExtension) WorkingDirectory() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerExtraInfoExtension_workingDirectory(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -63,6 +72,7 @@ func (this *QDesignerExtraInfoExtension) WorkingDirectory() string {
 }
 
 func (this *QDesignerExtraInfoExtension) SetWorkingDirectory(workingDirectory string) {
+	defer runtime.KeepAlive(this)
 	workingDirectory_ms := C.struct_miqt_string{}
 	workingDirectory_ms.data = C.CString(workingDirectory)
 	workingDirectory_ms.len = C.size_t(len(workingDirectory))
@@ -82,8 +92,9 @@ func (this *QDesignerExtraInfoExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerExtraInfoExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerExtraInfoExtension) {
-		C.QDesignerExtraInfoExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerExtraInfoExtension_delete((*C.QDesignerExtraInfoExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

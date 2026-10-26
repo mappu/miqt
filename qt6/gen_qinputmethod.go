@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -21,8 +22,16 @@ const (
 )
 
 type QInputMethod struct {
-	h *C.QInputMethod
+	h  *C.QInputMethod
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputMethod) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QInputMethod) cPointer() *C.QInputMethod {
@@ -57,10 +66,12 @@ func UnsafeNewQInputMethod(h unsafe.Pointer) *QInputMethod {
 }
 
 func (this *QInputMethod) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QInputMethod_metaObject(this.h))
 }
 
 func (this *QInputMethod) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QInputMethod_metacast(this.h, param1_Cstring))
@@ -76,102 +87,125 @@ func QInputMethod_Tr(s string) string {
 }
 
 func (this *QInputMethod) InputItemTransform() *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QInputMethod_inputItemTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) SetInputItemTransform(transform *QTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transform)
 	C.QInputMethod_setInputItemTransform(this.h, transform.cPointer())
 }
 
 func (this *QInputMethod) InputItemRectangle() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QInputMethod_inputItemRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) SetInputItemRectangle(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QInputMethod_setInputItemRectangle(this.h, rect.cPointer())
 }
 
 func (this *QInputMethod) CursorRectangle() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QInputMethod_cursorRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) AnchorRectangle() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QInputMethod_anchorRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) KeyboardRectangle() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QInputMethod_keyboardRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) InputItemClipRectangle() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QInputMethod_inputItemClipRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) IsVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QInputMethod_isVisible(this.h))
 }
 
 func (this *QInputMethod) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QInputMethod) IsAnimating() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QInputMethod_isAnimating(this.h))
 }
 
 func (this *QInputMethod) Locale() *QLocale {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QInputMethod_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) InputDirection() LayoutDirection {
+	defer runtime.KeepAlive(this)
 	return (LayoutDirection)(C.QInputMethod_inputDirection(this.h))
 }
 
 func QInputMethod_QueryFocusObject(query InputMethodQuery, argument *QVariant) *QVariant {
+	defer runtime.KeepAlive(argument)
 	_goptr := newQVariant(C.QInputMethod_queryFocusObject((C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) Show() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_show(this.h)
 }
 
 func (this *QInputMethod) Hide() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_hide(this.h)
 }
 
 func (this *QInputMethod) Update(queries InputMethodQuery) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_update(this.h, (C.int)(queries))
 }
 
 func (this *QInputMethod) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_reset(this.h)
 }
 
 func (this *QInputMethod) Commit() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_commit(this.h)
 }
 
 func (this *QInputMethod) InvokeAction(a QInputMethod__Action, cursorPosition int) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_invokeAction(this.h, (C.int)(a), (C.int)(cursorPosition))
 }
 
 func (this *QInputMethod) CursorRectangleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_cursorRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnCursorRectangleChanged(slot func()) {
@@ -189,6 +223,7 @@ func miqt_exec_callback_QInputMethod_cursorRectangleChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) AnchorRectangleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_anchorRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnAnchorRectangleChanged(slot func()) {
@@ -206,6 +241,7 @@ func miqt_exec_callback_QInputMethod_anchorRectangleChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) KeyboardRectangleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_keyboardRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnKeyboardRectangleChanged(slot func()) {
@@ -223,6 +259,7 @@ func miqt_exec_callback_QInputMethod_keyboardRectangleChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) InputItemClipRectangleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_inputItemClipRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnInputItemClipRectangleChanged(slot func()) {
@@ -240,6 +277,7 @@ func miqt_exec_callback_QInputMethod_inputItemClipRectangleChanged(cb C.intptr_t
 }
 
 func (this *QInputMethod) VisibleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_visibleChanged(this.h)
 }
 func (this *QInputMethod) OnVisibleChanged(slot func()) {
@@ -257,6 +295,7 @@ func miqt_exec_callback_QInputMethod_visibleChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) AnimatingChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_animatingChanged(this.h)
 }
 func (this *QInputMethod) OnAnimatingChanged(slot func()) {
@@ -274,6 +313,7 @@ func miqt_exec_callback_QInputMethod_animatingChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) LocaleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_localeChanged(this.h)
 }
 func (this *QInputMethod) OnLocaleChanged(slot func()) {
@@ -291,6 +331,7 @@ func miqt_exec_callback_QInputMethod_localeChanged(cb C.intptr_t) {
 }
 
 func (this *QInputMethod) InputDirectionChanged(newDirection LayoutDirection) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethod_inputDirectionChanged(this.h, (C.int)(newDirection))
 }
 func (this *QInputMethod) OnInputDirectionChanged(slot func(newDirection LayoutDirection)) {

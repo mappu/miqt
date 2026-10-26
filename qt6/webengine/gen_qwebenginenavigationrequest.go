@@ -36,8 +36,14 @@ const (
 
 type QWebEngineNavigationRequest struct {
 	h  *C.QWebEngineNavigationRequest
-	gc *[1]*C.QWebEngineNavigationRequest
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineNavigationRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineNavigationRequest) cPointer() *C.QWebEngineNavigationRequest {
@@ -72,10 +78,12 @@ func UnsafeNewQWebEngineNavigationRequest(h unsafe.Pointer) *QWebEngineNavigatio
 }
 
 func (this *QWebEngineNavigationRequest) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNavigationRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNavigationRequest) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineNavigationRequest_metacast(this.h, param1_Cstring))
@@ -91,28 +99,34 @@ func QWebEngineNavigationRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineNavigationRequest) Url() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNavigationRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNavigationRequest) IsMainFrame() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineNavigationRequest_isMainFrame(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) NavigationType() QWebEngineNavigationRequest__NavigationType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineNavigationRequest__NavigationType)(C.QWebEngineNavigationRequest_navigationType(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) Accept() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_accept(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) Reject() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_reject(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) ActionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_actionChanged(this.h)
 }
 func (this *QWebEngineNavigationRequest) OnActionChanged(slot func()) {
@@ -163,8 +177,9 @@ func (this *QWebEngineNavigationRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineNavigationRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineNavigationRequest) {
-		C.QWebEngineNavigationRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineNavigationRequest_delete((*C.QWebEngineNavigationRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

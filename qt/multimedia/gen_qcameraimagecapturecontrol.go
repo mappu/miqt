@@ -17,8 +17,15 @@ import (
 
 type QCameraImageCaptureControl struct {
 	h  *C.QCameraImageCaptureControl
-	gc *[1]*C.QCameraImageCaptureControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraImageCaptureControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraImageCaptureControl) cPointer() *C.QCameraImageCaptureControl {
@@ -53,10 +60,12 @@ func UnsafeNewQCameraImageCaptureControl(h unsafe.Pointer) *QCameraImageCaptureC
 }
 
 func (this *QCameraImageCaptureControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageCaptureControl_metaObject(this.h)))
 }
 
 func (this *QCameraImageCaptureControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraImageCaptureControl_metacast(this.h, param1_Cstring))
@@ -81,18 +90,22 @@ func QCameraImageCaptureControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraImageCaptureControl) IsReadyForCapture() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraImageCaptureControl_isReadyForCapture(this.h))
 }
 
 func (this *QCameraImageCaptureControl) DriveMode() QCameraImageCapture__DriveMode {
+	defer runtime.KeepAlive(this)
 	return (QCameraImageCapture__DriveMode)(C.QCameraImageCaptureControl_driveMode(this.h))
 }
 
 func (this *QCameraImageCaptureControl) SetDriveMode(mode QCameraImageCapture__DriveMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraImageCaptureControl_setDriveMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraImageCaptureControl) Capture(fileName string) int {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -101,10 +114,12 @@ func (this *QCameraImageCaptureControl) Capture(fileName string) int {
 }
 
 func (this *QCameraImageCaptureControl) CancelCapture() {
+	defer runtime.KeepAlive(this)
 	C.QCameraImageCaptureControl_cancelCapture(this.h)
 }
 
 func (this *QCameraImageCaptureControl) ReadyForCaptureChanged(ready bool) {
+	defer runtime.KeepAlive(this)
 	C.QCameraImageCaptureControl_readyForCaptureChanged(this.h, (C.bool)(ready))
 }
 func (this *QCameraImageCaptureControl) OnReadyForCaptureChanged(slot func(ready bool)) {
@@ -125,6 +140,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_readyForCaptureChanged(cb C.i
 }
 
 func (this *QCameraImageCaptureControl) ImageExposed(requestId int) {
+	defer runtime.KeepAlive(this)
 	C.QCameraImageCaptureControl_imageExposed(this.h, (C.int)(requestId))
 }
 func (this *QCameraImageCaptureControl) OnImageExposed(slot func(requestId int)) {
@@ -145,6 +161,8 @@ func miqt_exec_callback_QCameraImageCaptureControl_imageExposed(cb C.intptr_t, r
 }
 
 func (this *QCameraImageCaptureControl) ImageCaptured(requestId int, preview *qt.QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(preview)
 	C.QCameraImageCaptureControl_imageCaptured(this.h, (C.int)(requestId), (*C.QImage)(preview.UnsafePointer()))
 }
 func (this *QCameraImageCaptureControl) OnImageCaptured(slot func(requestId int, preview *qt.QImage)) {
@@ -167,6 +185,8 @@ func miqt_exec_callback_QCameraImageCaptureControl_imageCaptured(cb C.intptr_t, 
 }
 
 func (this *QCameraImageCaptureControl) ImageMetadataAvailable(id int, key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -197,6 +217,8 @@ func miqt_exec_callback_QCameraImageCaptureControl_imageMetadataAvailable(cb C.i
 }
 
 func (this *QCameraImageCaptureControl) ImageAvailable(requestId int, buffer *QVideoFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(buffer)
 	C.QCameraImageCaptureControl_imageAvailable(this.h, (C.int)(requestId), buffer.cPointer())
 }
 func (this *QCameraImageCaptureControl) OnImageAvailable(slot func(requestId int, buffer *QVideoFrame)) {
@@ -219,6 +241,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_imageAvailable(cb C.intptr_t,
 }
 
 func (this *QCameraImageCaptureControl) ImageSaved(requestId int, fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -248,6 +271,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_imageSaved(cb C.intptr_t, req
 }
 
 func (this *QCameraImageCaptureControl) Error(id int, error int, errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -334,8 +358,9 @@ func (this *QCameraImageCaptureControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraImageCaptureControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraImageCaptureControl) {
-		C.QCameraImageCaptureControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraImageCaptureControl_delete((*C.QCameraImageCaptureControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -193,7 +193,9 @@ public:
 		}
 
 		QPixmap* callback_return_value = miqt_exec_callback_QDesignerFormWindowManagerInterface_createPreviewPixmap(this, handle__createPreviewPixmap);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -920,6 +922,10 @@ bool QDesignerFormWindowManagerInterface_override_virtual_disconnectNotify(void*
 
 void QDesignerFormWindowManagerInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesignerFormWindowManagerInterface*>(self)->QDesignerFormWindowManagerInterface::disconnectNotify(*signal);
+}
+
+QPixmap* QDesignerFormWindowManagerInterface_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
 }
 
 QObject* QDesignerFormWindowManagerInterface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -53,7 +53,13 @@ const (
 
 type QRegularExpression struct {
 	h  *C.QRegularExpression
-	gc *[1]*C.QRegularExpression
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRegularExpression) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRegularExpression) cPointer() *C.QRegularExpression {
@@ -102,6 +108,7 @@ func NewQRegularExpression2(pattern string) *QRegularExpression {
 
 // NewQRegularExpression3 constructs a new QRegularExpression object.
 func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
+	defer runtime.KeepAlive(re)
 
 	return newQRegularExpression(C.QRegularExpression_new3(re.cPointer()))
 }
@@ -117,22 +124,29 @@ func NewQRegularExpression4(pattern string, options QRegularExpression__PatternO
 }
 
 func (this *QRegularExpression) PatternOptions() QRegularExpression__PatternOption {
+	defer runtime.KeepAlive(this)
 	return (QRegularExpression__PatternOption)(C.QRegularExpression_patternOptions(this.h))
 }
 
 func (this *QRegularExpression) SetPatternOptions(options QRegularExpression__PatternOption) {
+	defer runtime.KeepAlive(this)
 	C.QRegularExpression_setPatternOptions(this.h, (C.int)(options))
 }
 
 func (this *QRegularExpression) OperatorAssign(re *QRegularExpression) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(re)
 	C.QRegularExpression_operatorAssign(this.h, re.cPointer())
 }
 
 func (this *QRegularExpression) Swap(other *QRegularExpression) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QRegularExpression_swap(this.h, other.cPointer())
 }
 
 func (this *QRegularExpression) Pattern() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRegularExpression_pattern(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -140,6 +154,7 @@ func (this *QRegularExpression) Pattern() string {
 }
 
 func (this *QRegularExpression) SetPattern(pattern string) {
+	defer runtime.KeepAlive(this)
 	pattern_ms := C.struct_miqt_string{}
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
@@ -148,14 +163,17 @@ func (this *QRegularExpression) SetPattern(pattern string) {
 }
 
 func (this *QRegularExpression) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpression_isValid(this.h))
 }
 
 func (this *QRegularExpression) PatternErrorOffset() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpression_patternErrorOffset(this.h))
 }
 
 func (this *QRegularExpression) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRegularExpression_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -163,10 +181,12 @@ func (this *QRegularExpression) ErrorString() string {
 }
 
 func (this *QRegularExpression) CaptureCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QRegularExpression_captureCount(this.h))
 }
 
 func (this *QRegularExpression) NamedCaptureGroups() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QRegularExpression_namedCaptureGroups(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -180,6 +200,7 @@ func (this *QRegularExpression) NamedCaptureGroups() []string {
 }
 
 func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -190,6 +211,7 @@ func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
 }
 
 func (this *QRegularExpression) GlobalMatch(subject string) *QRegularExpressionMatchIterator {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -200,6 +222,7 @@ func (this *QRegularExpression) GlobalMatch(subject string) *QRegularExpressionM
 }
 
 func (this *QRegularExpression) Optimize() {
+	defer runtime.KeepAlive(this)
 	C.QRegularExpression_optimize(this.h)
 }
 
@@ -237,14 +260,19 @@ func QRegularExpression_AnchoredPattern(expression string) string {
 }
 
 func (this *QRegularExpression) OperatorEqual(re *QRegularExpression) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(re)
 	return (bool)(C.QRegularExpression_operatorEqual(this.h, re.cPointer()))
 }
 
 func (this *QRegularExpression) OperatorNotEqual(re *QRegularExpression) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(re)
 	return (bool)(C.QRegularExpression_operatorNotEqual(this.h, re.cPointer()))
 }
 
 func (this *QRegularExpression) Match2(subject string, offset int64) *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -255,6 +283,7 @@ func (this *QRegularExpression) Match2(subject string, offset int64) *QRegularEx
 }
 
 func (this *QRegularExpression) Match3(subject string, offset int64, matchType QRegularExpression__MatchType) *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -265,6 +294,7 @@ func (this *QRegularExpression) Match3(subject string, offset int64, matchType Q
 }
 
 func (this *QRegularExpression) Match4(subject string, offset int64, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -275,6 +305,7 @@ func (this *QRegularExpression) Match4(subject string, offset int64, matchType Q
 }
 
 func (this *QRegularExpression) GlobalMatch2(subject string, offset int64) *QRegularExpressionMatchIterator {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -285,6 +316,7 @@ func (this *QRegularExpression) GlobalMatch2(subject string, offset int64) *QReg
 }
 
 func (this *QRegularExpression) GlobalMatch3(subject string, offset int64, matchType QRegularExpression__MatchType) *QRegularExpressionMatchIterator {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -295,6 +327,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int64, match
 }
 
 func (this *QRegularExpression) GlobalMatch4(subject string, offset int64, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatchIterator {
+	defer runtime.KeepAlive(this)
 	subject_ms := C.struct_miqt_string{}
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
@@ -327,15 +360,22 @@ func (this *QRegularExpression) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRegularExpression{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpression) {
-		C.QRegularExpression_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRegularExpression_delete((*C.QRegularExpression)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QRegularExpressionMatch struct {
 	h  *C.QRegularExpressionMatch
-	gc *[1]*C.QRegularExpressionMatch
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRegularExpressionMatch) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRegularExpressionMatch) cPointer() *C.QRegularExpressionMatch {
@@ -374,49 +414,62 @@ func NewQRegularExpressionMatch() *QRegularExpressionMatch {
 
 // NewQRegularExpressionMatch2 constructs a new QRegularExpressionMatch object.
 func NewQRegularExpressionMatch2(match *QRegularExpressionMatch) *QRegularExpressionMatch {
+	defer runtime.KeepAlive(match)
 
 	return newQRegularExpressionMatch(C.QRegularExpressionMatch_new2(match.cPointer()))
 }
 
 func (this *QRegularExpressionMatch) OperatorAssign(match *QRegularExpressionMatch) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(match)
 	C.QRegularExpressionMatch_operatorAssign(this.h, match.cPointer())
 }
 
 func (this *QRegularExpressionMatch) Swap(other *QRegularExpressionMatch) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QRegularExpressionMatch_swap(this.h, other.cPointer())
 }
 
 func (this *QRegularExpressionMatch) RegularExpression() *QRegularExpression {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpression(C.QRegularExpressionMatch_regularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatch) MatchType() QRegularExpression__MatchType {
+	defer runtime.KeepAlive(this)
 	return (QRegularExpression__MatchType)(C.QRegularExpressionMatch_matchType(this.h))
 }
 
 func (this *QRegularExpressionMatch) MatchOptions() QRegularExpression__MatchOption {
+	defer runtime.KeepAlive(this)
 	return (QRegularExpression__MatchOption)(C.QRegularExpressionMatch_matchOptions(this.h))
 }
 
 func (this *QRegularExpressionMatch) HasMatch() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatch_hasMatch(this.h))
 }
 
 func (this *QRegularExpressionMatch) HasPartialMatch() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatch_hasPartialMatch(this.h))
 }
 
 func (this *QRegularExpressionMatch) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatch_isValid(this.h))
 }
 
 func (this *QRegularExpressionMatch) LastCapturedIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QRegularExpressionMatch_lastCapturedIndex(this.h))
 }
 
 func (this *QRegularExpressionMatch) HasCaptured(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -425,10 +478,12 @@ func (this *QRegularExpressionMatch) HasCaptured(name string) bool {
 }
 
 func (this *QRegularExpressionMatch) HasCapturedWithNth(nth int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatch_hasCapturedWithNth(this.h, (C.int)(nth)))
 }
 
 func (this *QRegularExpressionMatch) Captured() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_captured(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -436,6 +491,7 @@ func (this *QRegularExpressionMatch) Captured() string {
 }
 
 func (this *QRegularExpressionMatch) CapturedWithName(name string) string {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -447,6 +503,7 @@ func (this *QRegularExpressionMatch) CapturedWithName(name string) string {
 }
 
 func (this *QRegularExpressionMatch) CapturedTexts() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QRegularExpressionMatch_capturedTexts(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -460,18 +517,22 @@ func (this *QRegularExpressionMatch) CapturedTexts() []string {
 }
 
 func (this *QRegularExpressionMatch) CapturedStart() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedStart(this.h))
 }
 
 func (this *QRegularExpressionMatch) CapturedLength() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedLength(this.h))
 }
 
 func (this *QRegularExpressionMatch) CapturedEnd() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedEnd(this.h))
 }
 
 func (this *QRegularExpressionMatch) CapturedStartWithName(name string) int64 {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -480,6 +541,7 @@ func (this *QRegularExpressionMatch) CapturedStartWithName(name string) int64 {
 }
 
 func (this *QRegularExpressionMatch) CapturedLengthWithName(name string) int64 {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -488,6 +550,7 @@ func (this *QRegularExpressionMatch) CapturedLengthWithName(name string) int64 {
 }
 
 func (this *QRegularExpressionMatch) CapturedEndWithName(name string) int64 {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -496,6 +559,7 @@ func (this *QRegularExpressionMatch) CapturedEndWithName(name string) int64 {
 }
 
 func (this *QRegularExpressionMatch) CapturedWithNth(nth int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_capturedWithNth(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -503,14 +567,17 @@ func (this *QRegularExpressionMatch) CapturedWithNth(nth int) string {
 }
 
 func (this *QRegularExpressionMatch) CapturedStartWithNth(nth int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedStartWithNth(this.h, (C.int)(nth)))
 }
 
 func (this *QRegularExpressionMatch) CapturedLengthWithNth(nth int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedLengthWithNth(this.h, (C.int)(nth)))
 }
 
 func (this *QRegularExpressionMatch) CapturedEndWithNth(nth int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QRegularExpressionMatch_capturedEndWithNth(this.h, (C.int)(nth)))
 }
 
@@ -526,15 +593,22 @@ func (this *QRegularExpressionMatch) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRegularExpressionMatch{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpressionMatch) {
-		C.QRegularExpressionMatch_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRegularExpressionMatch_delete((*C.QRegularExpressionMatch)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QRegularExpressionMatchIterator struct {
 	h  *C.QRegularExpressionMatchIterator
-	gc *[1]*C.QRegularExpressionMatchIterator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QRegularExpressionMatchIterator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QRegularExpressionMatchIterator) cPointer() *C.QRegularExpressionMatchIterator {
@@ -573,49 +647,61 @@ func NewQRegularExpressionMatchIterator() *QRegularExpressionMatchIterator {
 
 // NewQRegularExpressionMatchIterator2 constructs a new QRegularExpressionMatchIterator object.
 func NewQRegularExpressionMatchIterator2(iterator *QRegularExpressionMatchIterator) *QRegularExpressionMatchIterator {
+	defer runtime.KeepAlive(iterator)
 
 	return newQRegularExpressionMatchIterator(C.QRegularExpressionMatchIterator_new2(iterator.cPointer()))
 }
 
 func (this *QRegularExpressionMatchIterator) OperatorAssign(iterator *QRegularExpressionMatchIterator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(iterator)
 	C.QRegularExpressionMatchIterator_operatorAssign(this.h, iterator.cPointer())
 }
 
 func (this *QRegularExpressionMatchIterator) Swap(other *QRegularExpressionMatchIterator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QRegularExpressionMatchIterator_swap(this.h, other.cPointer())
 }
 
 func (this *QRegularExpressionMatchIterator) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatchIterator_isValid(this.h))
 }
 
 func (this *QRegularExpressionMatchIterator) HasNext() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QRegularExpressionMatchIterator_hasNext(this.h))
 }
 
 func (this *QRegularExpressionMatchIterator) Next() *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpressionMatch(C.QRegularExpressionMatchIterator_next(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatchIterator) PeekNext() *QRegularExpressionMatch {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpressionMatch(C.QRegularExpressionMatchIterator_peekNext(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatchIterator) RegularExpression() *QRegularExpression {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpression(C.QRegularExpressionMatchIterator_regularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatchIterator) MatchType() QRegularExpression__MatchType {
+	defer runtime.KeepAlive(this)
 	return (QRegularExpression__MatchType)(C.QRegularExpressionMatchIterator_matchType(this.h))
 }
 
 func (this *QRegularExpressionMatchIterator) MatchOptions() QRegularExpression__MatchOption {
+	defer runtime.KeepAlive(this)
 	return (QRegularExpression__MatchOption)(C.QRegularExpressionMatchIterator_matchOptions(this.h))
 }
 
@@ -631,8 +717,9 @@ func (this *QRegularExpressionMatchIterator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QRegularExpressionMatchIterator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpressionMatchIterator) {
-		C.QRegularExpressionMatchIterator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QRegularExpressionMatchIterator_delete((*C.QRegularExpressionMatchIterator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

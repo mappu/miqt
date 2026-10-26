@@ -58,7 +58,9 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QwtMatrixRasterData_pixelHint(this, handle__pixelHint, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QwtMatrixRasterData_virtualbase_pixelHint(const void* self, QRectF* param1);
@@ -252,6 +254,10 @@ bool QwtMatrixRasterData_override_virtual_discardRaster(void* self, intptr_t slo
 
 void QwtMatrixRasterData_virtualbase_discardRaster(void* self) {
 	static_cast<MiqtVirtualQwtMatrixRasterData*>(self)->QwtMatrixRasterData::discardRaster();
+}
+
+QRectF* QwtMatrixRasterData_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 void QwtMatrixRasterData_delete(QwtMatrixRasterData* self) {

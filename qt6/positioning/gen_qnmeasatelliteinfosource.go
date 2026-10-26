@@ -32,8 +32,15 @@ const (
 
 type QNmeaSatelliteInfoSource struct {
 	h  *C.QNmeaSatelliteInfoSource
-	gc *[1]*C.QNmeaSatelliteInfoSource
+	gc *[1]unsafe.Pointer
 	*QGeoSatelliteInfoSource
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNmeaSatelliteInfoSource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QGeoSatelliteInfoSource.miqtSetGC(gc)
 }
 
 func (this *QNmeaSatelliteInfoSource) cPointer() *C.QNmeaSatelliteInfoSource {
@@ -75,15 +82,18 @@ func NewQNmeaSatelliteInfoSource(mode QNmeaSatelliteInfoSource__UpdateMode) *QNm
 
 // NewQNmeaSatelliteInfoSource2 constructs a new QNmeaSatelliteInfoSource object.
 func NewQNmeaSatelliteInfoSource2(mode QNmeaSatelliteInfoSource__UpdateMode, parent *qt6.QObject) *QNmeaSatelliteInfoSource {
+	defer runtime.KeepAlive(parent)
 
 	return newQNmeaSatelliteInfoSource(C.QNmeaSatelliteInfoSource_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNmeaSatelliteInfoSource) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNmeaSatelliteInfoSource_metaObject(this.h)))
 }
 
 func (this *QNmeaSatelliteInfoSource) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNmeaSatelliteInfoSource_metacast(this.h, param1_Cstring))
@@ -99,30 +109,39 @@ func QNmeaSatelliteInfoSource_Tr(s string) string {
 }
 
 func (this *QNmeaSatelliteInfoSource) UpdateMode() QNmeaSatelliteInfoSource__UpdateMode {
+	defer runtime.KeepAlive(this)
 	return (QNmeaSatelliteInfoSource__UpdateMode)(C.QNmeaSatelliteInfoSource_updateMode(this.h))
 }
 
 func (this *QNmeaSatelliteInfoSource) SetDevice(source *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source)
 	C.QNmeaSatelliteInfoSource_setDevice(this.h, (*C.QIODevice)(source.UnsafePointer()))
 }
 
 func (this *QNmeaSatelliteInfoSource) Device() *qt6.QIODevice {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNmeaSatelliteInfoSource_device(this.h)))
 }
 
 func (this *QNmeaSatelliteInfoSource) SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 	C.QNmeaSatelliteInfoSource_setUpdateInterval(this.h, (C.int)(msec))
 }
 
 func (this *QNmeaSatelliteInfoSource) MinimumUpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNmeaSatelliteInfoSource_minimumUpdateInterval(this.h))
 }
 
 func (this *QNmeaSatelliteInfoSource) Error() QGeoSatelliteInfoSource__Error {
+	defer runtime.KeepAlive(this)
 	return (QGeoSatelliteInfoSource__Error)(C.QNmeaSatelliteInfoSource_error(this.h))
 }
 
 func (this *QNmeaSatelliteInfoSource) SetBackendProperty(name string, value *qt6.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -131,6 +150,7 @@ func (this *QNmeaSatelliteInfoSource) SetBackendProperty(name string, value *qt6
 }
 
 func (this *QNmeaSatelliteInfoSource) BackendProperty(name string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -141,14 +161,17 @@ func (this *QNmeaSatelliteInfoSource) BackendProperty(name string) *qt6.QVariant
 }
 
 func (this *QNmeaSatelliteInfoSource) StartUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QNmeaSatelliteInfoSource_startUpdates(this.h)
 }
 
 func (this *QNmeaSatelliteInfoSource) StopUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QNmeaSatelliteInfoSource_stopUpdates(this.h)
 }
 
 func (this *QNmeaSatelliteInfoSource) RequestUpdate(timeout int) {
+	defer runtime.KeepAlive(this)
 	C.QNmeaSatelliteInfoSource_requestUpdate(this.h, (C.int)(timeout))
 }
 
@@ -176,6 +199,7 @@ func QNmeaSatelliteInfoSource_Tr3(s string, c string, n int) string {
 
 // SetError can only be called from a QNmeaSatelliteInfoSource that was directly constructed.
 func (this *QNmeaSatelliteInfoSource) SetError(satelliteError QGeoSatelliteInfoSource__Error) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QNmeaSatelliteInfoSource_protectedbase_setError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(satelliteError))
@@ -188,6 +212,7 @@ func (this *QNmeaSatelliteInfoSource) SetError(satelliteError QGeoSatelliteInfoS
 
 // Sender can only be called from a QNmeaSatelliteInfoSource that was directly constructed.
 func (this *QNmeaSatelliteInfoSource) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QNmeaSatelliteInfoSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -202,6 +227,7 @@ func (this *QNmeaSatelliteInfoSource) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QNmeaSatelliteInfoSource that was directly constructed.
 func (this *QNmeaSatelliteInfoSource) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNmeaSatelliteInfoSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -216,6 +242,7 @@ func (this *QNmeaSatelliteInfoSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNmeaSatelliteInfoSource that was directly constructed.
 func (this *QNmeaSatelliteInfoSource) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -232,6 +259,8 @@ func (this *QNmeaSatelliteInfoSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNmeaSatelliteInfoSource that was directly constructed.
 func (this *QNmeaSatelliteInfoSource) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QNmeaSatelliteInfoSource_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -245,6 +274,7 @@ func (this *QNmeaSatelliteInfoSource) IsSignalConnected(signal *qt6.QMetaMethod)
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_setUpdateInterval(unsafe.Pointer(this.h), (C.int)(msec))
 
@@ -271,6 +301,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_setUpdateInterval(self *C.QNmea
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_MinimumUpdateInterval() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QNmeaSatelliteInfoSource_virtualbase_minimumUpdateInterval(unsafe.Pointer(this.h)))
 
@@ -296,6 +327,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_minimumUpdateInterval(self *C.Q
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_Error() QGeoSatelliteInfoSource__Error {
+	defer runtime.KeepAlive(this)
 
 	return (QGeoSatelliteInfoSource__Error)(C.QNmeaSatelliteInfoSource_virtualbase_error(unsafe.Pointer(this.h)))
 
@@ -321,6 +353,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_error(self *C.QNmeaSatelliteInf
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_SetBackendProperty(name string, value *qt6.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -357,6 +391,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_setBackendProperty(self *C.QNme
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_BackendProperty(name string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -388,12 +423,14 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_backendProperty(self *C.QNmeaSa
 	slotval1 := name_ret
 
 	virtualReturn := gofunc((&QNmeaSatelliteInfoSource{h: self}).callVirtualBase_BackendProperty, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QNmeaSatelliteInfoSource_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_StartUpdates() {
+	defer runtime.KeepAlive(this)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_startUpdates(unsafe.Pointer(this.h))
 
@@ -417,6 +454,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_startUpdates(self *C.QNmeaSatel
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_StopUpdates() {
+	defer runtime.KeepAlive(this)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_stopUpdates(unsafe.Pointer(this.h))
 
@@ -440,6 +478,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_stopUpdates(self *C.QNmeaSatell
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_RequestUpdate(timeout int) {
+	defer runtime.KeepAlive(this)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_requestUpdate(unsafe.Pointer(this.h), (C.int)(timeout))
 
@@ -466,6 +505,7 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_requestUpdate(self *C.QNmeaSate
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ParseSatellitesInUseFromNmea(data string, size int, pnrsInUse []int) QGeoSatelliteInfo__SatelliteSystem {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	pnrsInUse_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(pnrsInUse))))
@@ -514,6 +554,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_parseSatellitesInUseFromNmea(se
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ParseSatelliteInfoFromNmea(data string, size int, infos []QGeoSatelliteInfo, system *QGeoSatelliteInfo__SatelliteSystem) QNmeaSatelliteInfoSource__SatelliteInfoParseStatus {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(infos)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 	infos_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(infos))))
@@ -566,6 +608,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_parseSatelliteInfoFromNmea(self
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNmeaSatelliteInfoSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -594,6 +638,9 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_event(self *C.QNmeaSatelliteInf
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNmeaSatelliteInfoSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -624,6 +671,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_eventFilter(self *C.QNmeaSatell
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -650,6 +699,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_timerEvent(self *C.QNmeaSatelli
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -676,6 +727,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_childEvent(self *C.QNmeaSatelli
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -702,6 +755,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_customEvent(self *C.QNmeaSatell
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -728,6 +783,8 @@ func miqt_exec_callback_QNmeaSatelliteInfoSource_connectNotify(self *C.QNmeaSate
 }
 
 func (this *QNmeaSatelliteInfoSource) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNmeaSatelliteInfoSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -765,8 +822,9 @@ func (this *QNmeaSatelliteInfoSource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNmeaSatelliteInfoSource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNmeaSatelliteInfoSource) {
-		C.QNmeaSatelliteInfoSource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNmeaSatelliteInfoSource_delete((*C.QNmeaSatelliteInfoSource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -218,6 +218,8 @@ bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QLCDNumber_virtualreturncopy_QSize(QSize* src);
+QVariant* QLCDNumber_virtualreturncopy_QVariant(QVariant* src);
 
 void QLCDNumber_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QLCDNumber_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);

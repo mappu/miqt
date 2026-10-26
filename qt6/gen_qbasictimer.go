@@ -15,7 +15,13 @@ import (
 
 type QBasicTimer struct {
 	h  *C.QBasicTimer
-	gc *[1]*C.QBasicTimer
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBasicTimer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBasicTimer) cPointer() *C.QBasicTimer {
@@ -53,26 +59,35 @@ func NewQBasicTimer() *QBasicTimer {
 }
 
 func (this *QBasicTimer) Swap(other *QBasicTimer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QBasicTimer_swap(this.h, other.cPointer())
 }
 
 func (this *QBasicTimer) IsActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QBasicTimer_isActive(this.h))
 }
 
 func (this *QBasicTimer) TimerId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QBasicTimer_timerId(this.h))
 }
 
 func (this *QBasicTimer) Start(msec int, obj *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(obj)
 	C.QBasicTimer_start(this.h, (C.int)(msec), obj.cPointer())
 }
 
 func (this *QBasicTimer) Start2(msec int, timerType TimerType, obj *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(obj)
 	C.QBasicTimer_start2(this.h, (C.int)(msec), (C.int)(timerType), obj.cPointer())
 }
 
 func (this *QBasicTimer) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QBasicTimer_stop(this.h)
 }
 
@@ -88,8 +103,9 @@ func (this *QBasicTimer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBasicTimer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBasicTimer) {
-		C.QBasicTimer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBasicTimer_delete((*C.QBasicTimer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

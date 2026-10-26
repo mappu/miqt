@@ -16,8 +16,14 @@ import (
 
 type QBoxPlotModelMapper struct {
 	h  *C.QBoxPlotModelMapper
-	gc *[1]*C.QBoxPlotModelMapper
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBoxPlotModelMapper) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QBoxPlotModelMapper) cPointer() *C.QBoxPlotModelMapper {
@@ -52,10 +58,12 @@ func UnsafeNewQBoxPlotModelMapper(h unsafe.Pointer) *QBoxPlotModelMapper {
 }
 
 func (this *QBoxPlotModelMapper) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxPlotModelMapper_metaObject(this.h)))
 }
 
 func (this *QBoxPlotModelMapper) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBoxPlotModelMapper_metacast(this.h, param1_Cstring))
@@ -104,8 +112,9 @@ func (this *QBoxPlotModelMapper) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBoxPlotModelMapper{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxPlotModelMapper) {
-		C.QBoxPlotModelMapper_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBoxPlotModelMapper_delete((*C.QBoxPlotModelMapper)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

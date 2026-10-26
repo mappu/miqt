@@ -41,6 +41,7 @@ bool QAbstractFileIconProvider_override_virtual_setOptions(void* self, intptr_t 
 void QAbstractFileIconProvider_virtualbase_setOptions(void* self, int options);
 bool QAbstractFileIconProvider_override_virtual_options(void* self, intptr_t slot);
 int QAbstractFileIconProvider_virtualbase_options(const void* self);
+QIcon* QAbstractFileIconProvider_virtualreturncopy_QIcon(QIcon* src);
 
 void QAbstractFileIconProvider_delete(QAbstractFileIconProvider* self);
 

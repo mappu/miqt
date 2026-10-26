@@ -17,8 +17,15 @@ import (
 
 type QEventTransition struct {
 	h  *C.QEventTransition
-	gc *[1]*C.QEventTransition
+	gc *[1]unsafe.Pointer
 	*QAbstractTransition
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEventTransition) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractTransition.miqtSetGC(gc)
 }
 
 func (this *QEventTransition) cPointer() *C.QEventTransition {
@@ -60,27 +67,33 @@ func NewQEventTransition() *QEventTransition {
 
 // NewQEventTransition2 constructs a new QEventTransition object.
 func NewQEventTransition2(object *qt6.QObject, typeVal qt6.QEvent__Type) *QEventTransition {
+	defer runtime.KeepAlive(object)
 
 	return newQEventTransition(C.QEventTransition_new2((*C.QObject)(object.UnsafePointer()), (C.int)(typeVal)))
 }
 
 // NewQEventTransition3 constructs a new QEventTransition object.
 func NewQEventTransition3(sourceState *QState) *QEventTransition {
+	defer runtime.KeepAlive(sourceState)
 
 	return newQEventTransition(C.QEventTransition_new3(sourceState.cPointer()))
 }
 
 // NewQEventTransition4 constructs a new QEventTransition object.
 func NewQEventTransition4(object *qt6.QObject, typeVal qt6.QEvent__Type, sourceState *QState) *QEventTransition {
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(sourceState)
 
 	return newQEventTransition(C.QEventTransition_new4((*C.QObject)(object.UnsafePointer()), (C.int)(typeVal), sourceState.cPointer()))
 }
 
 func (this *QEventTransition) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QEventTransition_metaObject(this.h)))
 }
 
 func (this *QEventTransition) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QEventTransition_metacast(this.h, param1_Cstring))
@@ -96,18 +109,23 @@ func QEventTransition_Tr(s string) string {
 }
 
 func (this *QEventTransition) EventSource() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QEventTransition_eventSource(this.h)))
 }
 
 func (this *QEventTransition) SetEventSource(object *qt6.QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QEventTransition_setEventSource(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 
 func (this *QEventTransition) EventType() qt6.QEvent__Type {
+	defer runtime.KeepAlive(this)
 	return (qt6.QEvent__Type)(C.QEventTransition_eventType(this.h))
 }
 
 func (this *QEventTransition) SetEventType(typeVal qt6.QEvent__Type) {
+	defer runtime.KeepAlive(this)
 	C.QEventTransition_setEventType(this.h, (C.int)(typeVal))
 }
 
@@ -135,6 +153,7 @@ func QEventTransition_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QEventTransition that was directly constructed.
 func (this *QEventTransition) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QEventTransition_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -149,6 +168,7 @@ func (this *QEventTransition) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QEventTransition that was directly constructed.
 func (this *QEventTransition) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QEventTransition_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -163,6 +183,7 @@ func (this *QEventTransition) SenderSignalIndex() int {
 
 // Receivers can only be called from a QEventTransition that was directly constructed.
 func (this *QEventTransition) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -179,6 +200,8 @@ func (this *QEventTransition) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QEventTransition that was directly constructed.
 func (this *QEventTransition) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QEventTransition_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -192,6 +215,8 @@ func (this *QEventTransition) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QEventTransition) callVirtualBase_EventTest(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QEventTransition_virtualbase_eventTest(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -220,6 +245,8 @@ func miqt_exec_callback_QEventTransition_eventTest(self *C.QEventTransition, cb 
 }
 
 func (this *QEventTransition) callVirtualBase_OnTransition(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventTransition_virtualbase_onTransition(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -246,6 +273,8 @@ func miqt_exec_callback_QEventTransition_onTransition(self *C.QEventTransition, 
 }
 
 func (this *QEventTransition) callVirtualBase_Event(e *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QEventTransition_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -274,6 +303,9 @@ func miqt_exec_callback_QEventTransition_event(self *C.QEventTransition, cb C.in
 }
 
 func (this *QEventTransition) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QEventTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -304,6 +336,8 @@ func miqt_exec_callback_QEventTransition_eventFilter(self *C.QEventTransition, c
 }
 
 func (this *QEventTransition) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -330,6 +364,8 @@ func miqt_exec_callback_QEventTransition_timerEvent(self *C.QEventTransition, cb
 }
 
 func (this *QEventTransition) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventTransition_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -356,6 +392,8 @@ func miqt_exec_callback_QEventTransition_childEvent(self *C.QEventTransition, cb
 }
 
 func (this *QEventTransition) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QEventTransition_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -382,6 +420,8 @@ func miqt_exec_callback_QEventTransition_customEvent(self *C.QEventTransition, c
 }
 
 func (this *QEventTransition) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QEventTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -408,6 +448,8 @@ func miqt_exec_callback_QEventTransition_connectNotify(self *C.QEventTransition,
 }
 
 func (this *QEventTransition) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QEventTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -445,8 +487,9 @@ func (this *QEventTransition) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEventTransition{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEventTransition) {
-		C.QEventTransition_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEventTransition_delete((*C.QEventTransition)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

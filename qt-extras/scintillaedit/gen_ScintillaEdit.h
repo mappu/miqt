@@ -1063,6 +1063,8 @@ bool ScintillaEditBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void ScintillaEditBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool ScintillaEditBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void ScintillaEditBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* ScintillaEditBase_virtualreturncopy_QVariant(QVariant* src);
+QSize* ScintillaEditBase_virtualreturncopy_QSize(QSize* src);
 
 void ScintillaEditBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* ScintillaEditBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
@@ -2093,6 +2095,8 @@ bool ScintillaEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void ScintillaEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool ScintillaEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void ScintillaEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* ScintillaEdit_virtualreturncopy_QVariant(QVariant* src);
+QSize* ScintillaEdit_virtualreturncopy_QSize(QSize* src);
 
 void ScintillaEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* ScintillaEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);

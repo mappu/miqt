@@ -23,7 +23,13 @@ const (
 
 type QNetworkCookie struct {
 	h  *C.QNetworkCookie
-	gc *[1]*C.QNetworkCookie
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkCookie) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkCookie) cPointer() *C.QNetworkCookie {
@@ -62,6 +68,7 @@ func NewQNetworkCookie() *QNetworkCookie {
 
 // NewQNetworkCookie2 constructs a new QNetworkCookie object.
 func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
+	defer runtime.KeepAlive(other)
 
 	return newQNetworkCookie(C.QNetworkCookie_new2(other.cPointer()))
 }
@@ -100,52 +107,69 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 }
 
 func (this *QNetworkCookie) OperatorAssign(other *QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkCookie_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkCookie) Swap(other *QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QNetworkCookie_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkCookie) OperatorEqual(other *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkCookie_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) OperatorNotEqual(other *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkCookie_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) IsSecure() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkCookie_isSecure(this.h))
 }
 
 func (this *QNetworkCookie) SetSecure(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkCookie_setSecure(this.h, (C.bool)(enable))
 }
 
 func (this *QNetworkCookie) IsHttpOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkCookie_isHttpOnly(this.h))
 }
 
 func (this *QNetworkCookie) SetHttpOnly(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QNetworkCookie_setHttpOnly(this.h, (C.bool)(enable))
 }
 
 func (this *QNetworkCookie) IsSessionCookie() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkCookie_isSessionCookie(this.h))
 }
 
 func (this *QNetworkCookie) ExpirationDate() *qt.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCookie_expirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCookie) SetExpirationDate(date *qt.QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QNetworkCookie_setExpirationDate(this.h, (*C.QDateTime)(date.UnsafePointer()))
 }
 
 func (this *QNetworkCookie) Domain() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkCookie_domain(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -153,6 +177,7 @@ func (this *QNetworkCookie) Domain() string {
 }
 
 func (this *QNetworkCookie) SetDomain(domain string) {
+	defer runtime.KeepAlive(this)
 	domain_ms := C.struct_miqt_string{}
 	domain_ms.data = C.CString(domain)
 	domain_ms.len = C.size_t(len(domain))
@@ -161,6 +186,7 @@ func (this *QNetworkCookie) SetDomain(domain string) {
 }
 
 func (this *QNetworkCookie) Path() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkCookie_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -168,6 +194,7 @@ func (this *QNetworkCookie) Path() string {
 }
 
 func (this *QNetworkCookie) SetPath(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -176,6 +203,7 @@ func (this *QNetworkCookie) SetPath(path string) {
 }
 
 func (this *QNetworkCookie) Name() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QNetworkCookie_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -183,6 +211,7 @@ func (this *QNetworkCookie) Name() []byte {
 }
 
 func (this *QNetworkCookie) SetName(cookieName []byte) {
+	defer runtime.KeepAlive(this)
 	cookieName_alias := C.struct_miqt_string{}
 	if len(cookieName) > 0 {
 		cookieName_alias.data = (*C.char)(unsafe.Pointer(&cookieName[0]))
@@ -194,6 +223,7 @@ func (this *QNetworkCookie) SetName(cookieName []byte) {
 }
 
 func (this *QNetworkCookie) Value() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QNetworkCookie_value(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -201,6 +231,7 @@ func (this *QNetworkCookie) Value() []byte {
 }
 
 func (this *QNetworkCookie) SetValue(value []byte) {
+	defer runtime.KeepAlive(this)
 	value_alias := C.struct_miqt_string{}
 	if len(value) > 0 {
 		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
@@ -212,6 +243,7 @@ func (this *QNetworkCookie) SetValue(value []byte) {
 }
 
 func (this *QNetworkCookie) ToRawForm() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawForm(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -219,10 +251,14 @@ func (this *QNetworkCookie) ToRawForm() []byte {
 }
 
 func (this *QNetworkCookie) HasSameIdentifier(other *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QNetworkCookie_hasSameIdentifier(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) Normalize(url *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QNetworkCookie_normalize(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
@@ -246,6 +282,7 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 }
 
 func (this *QNetworkCookie) ToRawFormWithForm(form QNetworkCookie__RawForm) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawFormWithForm(this.h, (C.int)(form))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -264,8 +301,9 @@ func (this *QNetworkCookie) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkCookie{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkCookie) {
-		C.QNetworkCookie_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkCookie_delete((*C.QNetworkCookie)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

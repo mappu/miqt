@@ -69,7 +69,13 @@ const (
 
 type QEasingCurve struct {
 	h  *C.QEasingCurve
-	gc *[1]*C.QEasingCurve
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEasingCurve) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QEasingCurve) cPointer() *C.QEasingCurve {
@@ -108,6 +114,7 @@ func NewQEasingCurve() *QEasingCurve {
 
 // NewQEasingCurve2 constructs a new QEasingCurve object.
 func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
+	defer runtime.KeepAlive(other)
 
 	return newQEasingCurve(C.QEasingCurve_new2(other.cPointer()))
 }
@@ -119,54 +126,75 @@ func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
 }
 
 func (this *QEasingCurve) OperatorAssign(other *QEasingCurve) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QEasingCurve_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QEasingCurve) Swap(other *QEasingCurve) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QEasingCurve_swap(this.h, other.cPointer())
 }
 
 func (this *QEasingCurve) OperatorEqual(other *QEasingCurve) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QEasingCurve_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) OperatorNotEqual(other *QEasingCurve) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QEasingCurve_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) Amplitude() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QEasingCurve_amplitude(this.h))
 }
 
 func (this *QEasingCurve) SetAmplitude(amplitude float64) {
+	defer runtime.KeepAlive(this)
 	C.QEasingCurve_setAmplitude(this.h, (C.double)(amplitude))
 }
 
 func (this *QEasingCurve) Period() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QEasingCurve_period(this.h))
 }
 
 func (this *QEasingCurve) SetPeriod(period float64) {
+	defer runtime.KeepAlive(this)
 	C.QEasingCurve_setPeriod(this.h, (C.double)(period))
 }
 
 func (this *QEasingCurve) Overshoot() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QEasingCurve_overshoot(this.h))
 }
 
 func (this *QEasingCurve) SetOvershoot(overshoot float64) {
+	defer runtime.KeepAlive(this)
 	C.QEasingCurve_setOvershoot(this.h, (C.double)(overshoot))
 }
 
 func (this *QEasingCurve) AddCubicBezierSegment(c1 *QPointF, c2 *QPointF, endPoint *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c1)
+	defer runtime.KeepAlive(c2)
+	defer runtime.KeepAlive(endPoint)
 	C.QEasingCurve_addCubicBezierSegment(this.h, c1.cPointer(), c2.cPointer(), endPoint.cPointer())
 }
 
 func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64, b float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(nextPoint)
 	C.QEasingCurve_addTCBSegment(this.h, nextPoint.cPointer(), (C.double)(t), (C.double)(c), (C.double)(b))
 }
 
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QEasingCurve_toCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -179,14 +207,17 @@ func (this *QEasingCurve) ToCubicSpline() []QPointF {
 }
 
 func (this *QEasingCurve) Type() QEasingCurve__Type {
+	defer runtime.KeepAlive(this)
 	return (QEasingCurve__Type)(C.QEasingCurve_type(this.h))
 }
 
 func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
+	defer runtime.KeepAlive(this)
 	C.QEasingCurve_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QEasingCurve_valueForProgress(this.h, (C.double)(progress)))
 }
 
@@ -202,8 +233,9 @@ func (this *QEasingCurve) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEasingCurve{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEasingCurve) {
-		C.QEasingCurve_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEasingCurve_delete((*C.QEasingCurve)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

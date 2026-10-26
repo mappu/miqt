@@ -293,6 +293,8 @@ bool QTabBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTabBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QTabBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QTabBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QTabBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);

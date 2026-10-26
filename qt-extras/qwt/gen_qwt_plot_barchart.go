@@ -23,8 +23,15 @@ const (
 
 type QwtPlotBarChart struct {
 	h  *C.QwtPlotBarChart
-	gc *[1]*C.QwtPlotBarChart
+	gc *[1]unsafe.Pointer
 	*QwtPlotAbstractBarChart
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotBarChart) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotAbstractBarChart.miqtSetGC(gc)
 }
 
 func (this *QwtPlotBarChart) cPointer() *C.QwtPlotBarChart {
@@ -66,6 +73,7 @@ func NewQwtPlotBarChart() *QwtPlotBarChart {
 
 // NewQwtPlotBarChart2 constructs a new QwtPlotBarChart object.
 func NewQwtPlotBarChart2(title *QwtText) *QwtPlotBarChart {
+	defer runtime.KeepAlive(title)
 
 	return newQwtPlotBarChart(C.QwtPlotBarChart_new2(title.cPointer()))
 }
@@ -81,10 +89,13 @@ func NewQwtPlotBarChart3(title string) *QwtPlotBarChart {
 }
 
 func (this *QwtPlotBarChart) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotBarChart_rtti(this.h))
 }
 
 func (this *QwtPlotBarChart) SetSamples(samples []qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(samples)
 	samples_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
@@ -96,6 +107,7 @@ func (this *QwtPlotBarChart) SetSamples(samples []qt.QPointF) {
 }
 
 func (this *QwtPlotBarChart) SetSamplesWithSamples(samples []float64) {
+	defer runtime.KeepAlive(this)
 	samples_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
@@ -107,32 +119,41 @@ func (this *QwtPlotBarChart) SetSamplesWithSamples(samples []float64) {
 }
 
 func (this *QwtPlotBarChart) SetSymbol(symbol *QwtColumnSymbol) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(symbol)
 	C.QwtPlotBarChart_setSymbol(this.h, symbol.cPointer())
 }
 
 func (this *QwtPlotBarChart) Symbol() *QwtColumnSymbol {
+	defer runtime.KeepAlive(this)
 	return newQwtColumnSymbol(C.QwtPlotBarChart_symbol(this.h))
 }
 
 func (this *QwtPlotBarChart) SetLegendMode(legendMode QwtPlotBarChart__LegendMode) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotBarChart_setLegendMode(this.h, (C.int)(legendMode))
 }
 
 func (this *QwtPlotBarChart) LegendMode() QwtPlotBarChart__LegendMode {
+	defer runtime.KeepAlive(this)
 	return (QwtPlotBarChart__LegendMode)(C.QwtPlotBarChart_legendMode(this.h))
 }
 
 func (this *QwtPlotBarChart) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotBarChart_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotBarChart) SpecialSymbol(sampleIndex int, param2 *qt.QPointF) *QwtColumnSymbol {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	return newQwtColumnSymbol(C.QwtPlotBarChart_specialSymbol(this.h, (C.int)(sampleIndex), (*C.QPointF)(param2.UnsafePointer())))
 }
 
 func (this *QwtPlotBarChart) BarTitle(sampleIndex int) *QwtText {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtText(C.QwtPlotBarChart_barTitle(this.h, (C.int)(sampleIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -150,8 +171,9 @@ func (this *QwtPlotBarChart) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotBarChart{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotBarChart) {
-		C.QwtPlotBarChart_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotBarChart_delete((*C.QwtPlotBarChart)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

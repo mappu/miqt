@@ -28,7 +28,14 @@ const (
 )
 
 type QIODeviceBase struct {
-	h *C.QIODeviceBase
+	h  *C.QIODeviceBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIODeviceBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QIODeviceBase) cPointer() *C.QIODeviceBase {

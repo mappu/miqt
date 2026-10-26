@@ -16,8 +16,15 @@ import (
 
 type QAudioEncoderSettingsControl struct {
 	h  *C.QAudioEncoderSettingsControl
-	gc *[1]*C.QAudioEncoderSettingsControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioEncoderSettingsControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QAudioEncoderSettingsControl) cPointer() *C.QAudioEncoderSettingsControl {
@@ -52,10 +59,12 @@ func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer) *QAudioEncoderSetti
 }
 
 func (this *QAudioEncoderSettingsControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioEncoderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QAudioEncoderSettingsControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioEncoderSettingsControl_metacast(this.h, param1_Cstring))
@@ -80,6 +89,7 @@ func QAudioEncoderSettingsControl_TrUtf8(s string) string {
 }
 
 func (this *QAudioEncoderSettingsControl) SupportedAudioCodecs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedAudioCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -93,6 +103,7 @@ func (this *QAudioEncoderSettingsControl) SupportedAudioCodecs() []string {
 }
 
 func (this *QAudioEncoderSettingsControl) CodecDescription(codecName string) string {
+	defer runtime.KeepAlive(this)
 	codecName_ms := C.struct_miqt_string{}
 	codecName_ms.data = C.CString(codecName)
 	codecName_ms.len = C.size_t(len(codecName))
@@ -104,6 +115,8 @@ func (this *QAudioEncoderSettingsControl) CodecDescription(codecName string) str
 }
 
 func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioEncoderSettings, continuous *bool) []int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedSampleRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -114,12 +127,15 @@ func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioE
 }
 
 func (this *QAudioEncoderSettingsControl) AudioSettings() *QAudioEncoderSettings {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioEncoderSettings(C.QAudioEncoderSettingsControl_audioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioEncoderSettingsControl) SetAudioSettings(settings *QAudioEncoderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	C.QAudioEncoderSettingsControl_setAudioSettings(this.h, settings.cPointer())
 }
 
@@ -179,8 +195,9 @@ func (this *QAudioEncoderSettingsControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioEncoderSettingsControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioEncoderSettingsControl) {
-		C.QAudioEncoderSettingsControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioEncoderSettingsControl_delete((*C.QAudioEncoderSettingsControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

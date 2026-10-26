@@ -17,8 +17,15 @@ import (
 
 type QMediaAudioProbeControl struct {
 	h  *C.QMediaAudioProbeControl
-	gc *[1]*C.QMediaAudioProbeControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaAudioProbeControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMediaAudioProbeControl) cPointer() *C.QMediaAudioProbeControl {
@@ -53,10 +60,12 @@ func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer) *QMediaAudioProbeControl
 }
 
 func (this *QMediaAudioProbeControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAudioProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaAudioProbeControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaAudioProbeControl_metacast(this.h, param1_Cstring))
@@ -81,6 +90,8 @@ func QMediaAudioProbeControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaAudioProbeControl) AudioBufferProbed(buffer *QAudioBuffer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(buffer)
 	C.QMediaAudioProbeControl_audioBufferProbed(this.h, buffer.cPointer())
 }
 func (this *QMediaAudioProbeControl) OnAudioBufferProbed(slot func(buffer *QAudioBuffer)) {
@@ -101,6 +112,7 @@ func miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(cb C.intptr_t,
 }
 
 func (this *QMediaAudioProbeControl) Flush() {
+	defer runtime.KeepAlive(this)
 	C.QMediaAudioProbeControl_flush(this.h)
 }
 func (this *QMediaAudioProbeControl) OnFlush(slot func()) {
@@ -173,8 +185,9 @@ func (this *QMediaAudioProbeControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaAudioProbeControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaAudioProbeControl) {
-		C.QMediaAudioProbeControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaAudioProbeControl_delete((*C.QMediaAudioProbeControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

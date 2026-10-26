@@ -159,6 +159,8 @@ bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self);
+QSurfaceFormat* QRasterWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src);
+QSize* QRasterWindow_virtualreturncopy_QSize(QSize* src);
 
 void* QRasterWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QRasterWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

@@ -15,7 +15,13 @@ import (
 
 type QQmlModuleRegistration struct {
 	h  *C.QQmlModuleRegistration
-	gc *[1]*C.QQmlModuleRegistration
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlModuleRegistration) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlModuleRegistration) cPointer() *C.QQmlModuleRegistration {
@@ -58,8 +64,9 @@ func (this *QQmlModuleRegistration) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlModuleRegistration{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlModuleRegistration) {
-		C.QQmlModuleRegistration_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlModuleRegistration_delete((*C.QQmlModuleRegistration)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

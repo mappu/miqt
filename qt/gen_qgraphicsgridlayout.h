@@ -101,6 +101,7 @@ bool QGraphicsGridLayout_override_virtual_updateGeometry(void* self, intptr_t sl
 void QGraphicsGridLayout_virtualbase_updateGeometry(void* self);
 bool QGraphicsGridLayout_override_virtual_widgetEvent(void* self, intptr_t slot);
 void QGraphicsGridLayout_virtualbase_widgetEvent(void* self, QEvent* e);
+QSizeF* QGraphicsGridLayout_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsGridLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsGridLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

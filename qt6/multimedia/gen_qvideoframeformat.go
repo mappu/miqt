@@ -103,7 +103,13 @@ const (
 
 type QVideoFrameFormat struct {
 	h  *C.QVideoFrameFormat
-	gc *[1]*C.QVideoFrameFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoFrameFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QVideoFrameFormat) cPointer() *C.QVideoFrameFormat {
@@ -142,137 +148,175 @@ func NewQVideoFrameFormat() *QVideoFrameFormat {
 
 // NewQVideoFrameFormat2 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat2(size *qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
+	defer runtime.KeepAlive(size)
 
 	return newQVideoFrameFormat(C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
 }
 
 // NewQVideoFrameFormat3 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat3(format *QVideoFrameFormat) *QVideoFrameFormat {
+	defer runtime.KeepAlive(format)
 
 	return newQVideoFrameFormat(C.QVideoFrameFormat_new3(format.cPointer()))
 }
 
 func (this *QVideoFrameFormat) Swap(other *QVideoFrameFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QVideoFrameFormat_swap(this.h, other.cPointer())
 }
 
 func (this *QVideoFrameFormat) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_detach(this.h)
 }
 
 func (this *QVideoFrameFormat) OperatorAssign(format *QVideoFrameFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QVideoFrameFormat_operatorAssign(this.h, format.cPointer())
 }
 
 func (this *QVideoFrameFormat) OperatorEqual(format *QVideoFrameFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	return (bool)(C.QVideoFrameFormat_operatorEqual(this.h, format.cPointer()))
 }
 
 func (this *QVideoFrameFormat) OperatorNotEqual(format *QVideoFrameFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	return (bool)(C.QVideoFrameFormat_operatorNotEqual(this.h, format.cPointer()))
 }
 
 func (this *QVideoFrameFormat) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrameFormat_isValid(this.h))
 }
 
 func (this *QVideoFrameFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__PixelFormat)(C.QVideoFrameFormat_pixelFormat(this.h))
 }
 
 func (this *QVideoFrameFormat) FrameSize() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrameFormat_frameSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrameFormat) SetFrameSize(size *qt6.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QVideoFrameFormat_setFrameSize(this.h, (*C.QSize)(size.UnsafePointer()))
 }
 
 func (this *QVideoFrameFormat) SetFrameSize2(width int, height int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setFrameSize2(this.h, (C.int)(width), (C.int)(height))
 }
 
 func (this *QVideoFrameFormat) FrameWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrameFormat_frameWidth(this.h))
 }
 
 func (this *QVideoFrameFormat) FrameHeight() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrameFormat_frameHeight(this.h))
 }
 
 func (this *QVideoFrameFormat) PlaneCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrameFormat_planeCount(this.h))
 }
 
 func (this *QVideoFrameFormat) Viewport() *qt6.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QVideoFrameFormat_viewport(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrameFormat) SetViewport(viewport *qt6.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 	C.QVideoFrameFormat_setViewport(this.h, (*C.QRect)(viewport.UnsafePointer()))
 }
 
 func (this *QVideoFrameFormat) ScanLineDirection() QVideoFrameFormat__Direction {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__Direction)(C.QVideoFrameFormat_scanLineDirection(this.h))
 }
 
 func (this *QVideoFrameFormat) SetScanLineDirection(direction QVideoFrameFormat__Direction) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setScanLineDirection(this.h, (C.int)(direction))
 }
 
 func (this *QVideoFrameFormat) FrameRate() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QVideoFrameFormat_frameRate(this.h))
 }
 
 func (this *QVideoFrameFormat) SetFrameRate(rate float64) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setFrameRate(this.h, (C.double)(rate))
 }
 
 func (this *QVideoFrameFormat) YCbCrColorSpace() QVideoFrameFormat__YCbCrColorSpace {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__YCbCrColorSpace)(C.QVideoFrameFormat_yCbCrColorSpace(this.h))
 }
 
 func (this *QVideoFrameFormat) SetYCbCrColorSpace(colorSpace QVideoFrameFormat__YCbCrColorSpace) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setYCbCrColorSpace(this.h, (C.int)(colorSpace))
 }
 
 func (this *QVideoFrameFormat) ColorSpace() QVideoFrameFormat__ColorSpace {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__ColorSpace)(C.QVideoFrameFormat_colorSpace(this.h))
 }
 
 func (this *QVideoFrameFormat) SetColorSpace(colorSpace QVideoFrameFormat__ColorSpace) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setColorSpace(this.h, (C.int)(colorSpace))
 }
 
 func (this *QVideoFrameFormat) ColorTransfer() QVideoFrameFormat__ColorTransfer {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__ColorTransfer)(C.QVideoFrameFormat_colorTransfer(this.h))
 }
 
 func (this *QVideoFrameFormat) SetColorTransfer(colorTransfer QVideoFrameFormat__ColorTransfer) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setColorTransfer(this.h, (C.int)(colorTransfer))
 }
 
 func (this *QVideoFrameFormat) ColorRange() QVideoFrameFormat__ColorRange {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrameFormat__ColorRange)(C.QVideoFrameFormat_colorRange(this.h))
 }
 
 func (this *QVideoFrameFormat) SetColorRange(rangeVal QVideoFrameFormat__ColorRange) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setColorRange(this.h, (C.int)(rangeVal))
 }
 
 func (this *QVideoFrameFormat) IsMirrored() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrameFormat_isMirrored(this.h))
 }
 
 func (this *QVideoFrameFormat) SetMirrored(mirrored bool) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setMirrored(this.h, (C.bool)(mirrored))
 }
 
 func (this *QVideoFrameFormat) VertexShaderFileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVideoFrameFormat_vertexShaderFileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -280,6 +324,7 @@ func (this *QVideoFrameFormat) VertexShaderFileName() string {
 }
 
 func (this *QVideoFrameFormat) FragmentShaderFileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVideoFrameFormat_fragmentShaderFileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -287,10 +332,12 @@ func (this *QVideoFrameFormat) FragmentShaderFileName() string {
 }
 
 func (this *QVideoFrameFormat) MaxLuminance() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QVideoFrameFormat_maxLuminance(this.h))
 }
 
 func (this *QVideoFrameFormat) SetMaxLuminance(lum float32) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrameFormat_setMaxLuminance(this.h, (C.float)(lum))
 }
 
@@ -321,8 +368,9 @@ func (this *QVideoFrameFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoFrameFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrameFormat) {
-		C.QVideoFrameFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoFrameFormat_delete((*C.QVideoFrameFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -24,7 +24,13 @@ const (
 
 type QDesignerLayoutDecorationExtension struct {
 	h  *C.QDesignerLayoutDecorationExtension
-	gc *[1]*C.QDesignerLayoutDecorationExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerLayoutDecorationExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerLayoutDecorationExtension) cPointer() *C.QDesignerLayoutDecorationExtension {
@@ -56,6 +62,8 @@ func UnsafeNewQDesignerLayoutDecorationExtension(h unsafe.Pointer) *QDesignerLay
 }
 
 func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt.QLayout) []*qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	var _ma C.struct_miqt_array = C.QDesignerLayoutDecorationExtension_widgets(this.h, (*C.QLayout)(layout.UnsafePointer()))
 	_ret := make([]*qt.QWidget, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -66,24 +74,31 @@ func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt.QLayout) []*q
 }
 
 func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QDesignerLayoutDecorationExtension_itemInfo(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerLayoutDecorationExtension) IndexOf(widget *qt.QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return (int)(C.QDesignerLayoutDecorationExtension_indexOf(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 
 func (this *QDesignerLayoutDecorationExtension) IndexOfWithItem(item *qt.QLayoutItem) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	return (int)(C.QDesignerLayoutDecorationExtension_indexOfWithItem(this.h, (*C.QLayoutItem)(item.UnsafePointer())))
 }
 
 func (this *QDesignerLayoutDecorationExtension) CurrentInsertMode() QDesignerLayoutDecorationExtension__InsertMode {
+	defer runtime.KeepAlive(this)
 	return (QDesignerLayoutDecorationExtension__InsertMode)(C.QDesignerLayoutDecorationExtension_currentInsertMode(this.h))
 }
 
 func (this *QDesignerLayoutDecorationExtension) CurrentIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerLayoutDecorationExtension_currentIndex(this.h))
 }
 
@@ -91,6 +106,7 @@ func (this *QDesignerLayoutDecorationExtension) CurrentCell() struct {
 	First  int
 	Second int
 } {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QDesignerLayoutDecorationExtension_currentCell(this.h)
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
@@ -108,6 +124,8 @@ func (this *QDesignerLayoutDecorationExtension) InsertWidget(widget *qt.QWidget,
 	First  int
 	Second int
 }) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	cell_First_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
 	defer C.free(unsafe.Pointer(cell_First_CArray))
 	cell_Second_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
@@ -123,34 +141,46 @@ func (this *QDesignerLayoutDecorationExtension) InsertWidget(widget *qt.QWidget,
 }
 
 func (this *QDesignerLayoutDecorationExtension) RemoveWidget(widget *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QDesignerLayoutDecorationExtension_removeWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QDesignerLayoutDecorationExtension) InsertRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerLayoutDecorationExtension_insertRow(this.h, (C.int)(row))
 }
 
 func (this *QDesignerLayoutDecorationExtension) InsertColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerLayoutDecorationExtension_insertColumn(this.h, (C.int)(column))
 }
 
 func (this *QDesignerLayoutDecorationExtension) Simplify() {
+	defer runtime.KeepAlive(this)
 	C.QDesignerLayoutDecorationExtension_simplify(this.h)
 }
 
 func (this *QDesignerLayoutDecorationExtension) FindItemAt(pos *qt.QPoint) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt(this.h, (*C.QPoint)(pos.UnsafePointer())))
 }
 
 func (this *QDesignerLayoutDecorationExtension) FindItemAt2(row int, column int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos *qt.QPoint, index int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, (*C.QPoint)(pos.UnsafePointer()), (C.int)(index))
 }
 
 func (this *QDesignerLayoutDecorationExtension) OperatorAssign(param1 *QDesignerLayoutDecorationExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerLayoutDecorationExtension_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -166,8 +196,9 @@ func (this *QDesignerLayoutDecorationExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerLayoutDecorationExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerLayoutDecorationExtension) {
-		C.QDesignerLayoutDecorationExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerLayoutDecorationExtension_delete((*C.QDesignerLayoutDecorationExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

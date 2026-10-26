@@ -79,7 +79,9 @@ public:
 		QIcon::State state_ret = state;
 		int sigval3 = static_cast<int>(state_ret);
 		QSize* callback_return_value = miqt_exec_callback_QIconEngine_actualSize(this, handle__actualSize, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QIconEngine_virtualbase_actualSize(void* self, QSize* size, int mode, int state);
@@ -101,7 +103,9 @@ public:
 		QIcon::State state_ret = state;
 		int sigval3 = static_cast<int>(state_ret);
 		QPixmap* callback_return_value = miqt_exec_callback_QIconEngine_pixmap(this, handle__pixmap, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QIconEngine_virtualbase_pixmap(void* self, QSize* size, int mode, int state);
@@ -246,6 +250,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QSize** callback_return_value_free_arr = static_cast<QSize**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -303,7 +311,9 @@ public:
 		qreal scale_ret = scale;
 		double sigval4 = static_cast<double>(scale_ret);
 		QPixmap* callback_return_value = miqt_exec_callback_QIconEngine_scaledPixmap(this, handle__scaledPixmap, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QIconEngine_virtualbase_scaledPixmap(void* self, QSize* size, int mode, int state, double scale);
@@ -622,6 +632,14 @@ bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot) {
 
 void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data) {
 	static_cast<MiqtVirtualQIconEngine*>(self)->QIconEngine::virtual_hook(static_cast<int>(id), data);
+}
+
+QSize* QIconEngine_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QPixmap* QIconEngine_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
 }
 
 void QIconEngine_delete(QIconEngine* self) {

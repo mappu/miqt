@@ -218,7 +218,13 @@ const (
 
 type QAccessible struct {
 	h  *C.QAccessible
-	gc *[1]*C.QAccessible
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessible) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -250,18 +256,22 @@ func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
+	defer runtime.KeepAlive(param1)
 	C.QAccessible_installActivationObserver(param1.cPointer())
 }
 
 func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserver) {
+	defer runtime.KeepAlive(param1)
 	C.QAccessible_removeActivationObserver(param1.cPointer())
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
+	defer runtime.KeepAlive(param1)
 	return newQAccessibleInterface(C.QAccessible_queryAccessibleInterface(param1.cPointer()))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
+	defer runtime.KeepAlive(iface)
 	return (uint)(C.QAccessible_uniqueId(iface.cPointer()))
 }
 
@@ -270,6 +280,7 @@ func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
+	defer runtime.KeepAlive(iface)
 	return (uint)(C.QAccessible_registerAccessibleInterface(iface.cPointer()))
 }
 
@@ -278,6 +289,7 @@ func QAccessible_DeleteAccessibleInterface(uniqueId uint) {
 }
 
 func QAccessible_UpdateAccessibility(event *QAccessibleEvent) {
+	defer runtime.KeepAlive(event)
 	C.QAccessible_updateAccessibility(event.cPointer())
 }
 
@@ -290,6 +302,7 @@ func QAccessible_SetActive(active bool) {
 }
 
 func QAccessible_SetRootObject(object *QObject) {
+	defer runtime.KeepAlive(object)
 	C.QAccessible_setRootObject(object.cPointer())
 }
 
@@ -301,6 +314,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 	First  int
 	Second int
 } {
+	defer runtime.KeepAlive(cursor)
 	var _mm C.struct_miqt_map = C.QAccessible_qAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
@@ -326,15 +340,22 @@ func (this *QAccessible) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAccessible{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible) {
-		C.QAccessible_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAccessible_delete((*C.QAccessible)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAccessible__State struct {
 	h  *C.QAccessible__State
-	gc *[1]*C.QAccessible__State
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessible__State) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -372,298 +393,372 @@ func NewQAccessible__State() *QAccessible__State {
 }
 
 func (this *QAccessible__State) Disabled() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_disabled(this.h))
 }
 
 func (this *QAccessible__State) SetDisabled(disabled uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setDisabled(this.h, (C.ulonglong)(disabled))
 }
 
 func (this *QAccessible__State) Selected() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_selected(this.h))
 }
 
 func (this *QAccessible__State) SetSelected(selected uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSelected(this.h, (C.ulonglong)(selected))
 }
 
 func (this *QAccessible__State) Focusable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_focusable(this.h))
 }
 
 func (this *QAccessible__State) SetFocusable(focusable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setFocusable(this.h, (C.ulonglong)(focusable))
 }
 
 func (this *QAccessible__State) Focused() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_focused(this.h))
 }
 
 func (this *QAccessible__State) SetFocused(focused uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setFocused(this.h, (C.ulonglong)(focused))
 }
 
 func (this *QAccessible__State) Pressed() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_pressed(this.h))
 }
 
 func (this *QAccessible__State) SetPressed(pressed uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setPressed(this.h, (C.ulonglong)(pressed))
 }
 
 func (this *QAccessible__State) Checkable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_checkable(this.h))
 }
 
 func (this *QAccessible__State) SetCheckable(checkable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setCheckable(this.h, (C.ulonglong)(checkable))
 }
 
 func (this *QAccessible__State) Checked() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_checked(this.h))
 }
 
 func (this *QAccessible__State) SetChecked(checked uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setChecked(this.h, (C.ulonglong)(checked))
 }
 
 func (this *QAccessible__State) CheckStateMixed() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_checkStateMixed(this.h))
 }
 
 func (this *QAccessible__State) SetCheckStateMixed(checkStateMixed uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setCheckStateMixed(this.h, (C.ulonglong)(checkStateMixed))
 }
 
 func (this *QAccessible__State) ReadOnly() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_readOnly(this.h))
 }
 
 func (this *QAccessible__State) SetReadOnly(readOnly uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setReadOnly(this.h, (C.ulonglong)(readOnly))
 }
 
 func (this *QAccessible__State) HotTracked() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_hotTracked(this.h))
 }
 
 func (this *QAccessible__State) SetHotTracked(hotTracked uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setHotTracked(this.h, (C.ulonglong)(hotTracked))
 }
 
 func (this *QAccessible__State) DefaultButton() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_defaultButton(this.h))
 }
 
 func (this *QAccessible__State) SetDefaultButton(defaultButton uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setDefaultButton(this.h, (C.ulonglong)(defaultButton))
 }
 
 func (this *QAccessible__State) Expanded() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_expanded(this.h))
 }
 
 func (this *QAccessible__State) SetExpanded(expanded uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setExpanded(this.h, (C.ulonglong)(expanded))
 }
 
 func (this *QAccessible__State) Collapsed() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_collapsed(this.h))
 }
 
 func (this *QAccessible__State) SetCollapsed(collapsed uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setCollapsed(this.h, (C.ulonglong)(collapsed))
 }
 
 func (this *QAccessible__State) Busy() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_busy(this.h))
 }
 
 func (this *QAccessible__State) SetBusy(busy uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setBusy(this.h, (C.ulonglong)(busy))
 }
 
 func (this *QAccessible__State) Expandable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_expandable(this.h))
 }
 
 func (this *QAccessible__State) SetExpandable(expandable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setExpandable(this.h, (C.ulonglong)(expandable))
 }
 
 func (this *QAccessible__State) Marqueed() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_marqueed(this.h))
 }
 
 func (this *QAccessible__State) SetMarqueed(marqueed uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setMarqueed(this.h, (C.ulonglong)(marqueed))
 }
 
 func (this *QAccessible__State) Animated() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_animated(this.h))
 }
 
 func (this *QAccessible__State) SetAnimated(animated uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setAnimated(this.h, (C.ulonglong)(animated))
 }
 
 func (this *QAccessible__State) Invisible() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_invisible(this.h))
 }
 
 func (this *QAccessible__State) SetInvisible(invisible uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setInvisible(this.h, (C.ulonglong)(invisible))
 }
 
 func (this *QAccessible__State) Offscreen() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_offscreen(this.h))
 }
 
 func (this *QAccessible__State) SetOffscreen(offscreen uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setOffscreen(this.h, (C.ulonglong)(offscreen))
 }
 
 func (this *QAccessible__State) Sizeable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_sizeable(this.h))
 }
 
 func (this *QAccessible__State) SetSizeable(sizeable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSizeable(this.h, (C.ulonglong)(sizeable))
 }
 
 func (this *QAccessible__State) Movable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_movable(this.h))
 }
 
 func (this *QAccessible__State) SetMovable(movable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setMovable(this.h, (C.ulonglong)(movable))
 }
 
 func (this *QAccessible__State) SelfVoicing() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_selfVoicing(this.h))
 }
 
 func (this *QAccessible__State) SetSelfVoicing(selfVoicing uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSelfVoicing(this.h, (C.ulonglong)(selfVoicing))
 }
 
 func (this *QAccessible__State) Selectable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_selectable(this.h))
 }
 
 func (this *QAccessible__State) SetSelectable(selectable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSelectable(this.h, (C.ulonglong)(selectable))
 }
 
 func (this *QAccessible__State) Linked() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_linked(this.h))
 }
 
 func (this *QAccessible__State) SetLinked(linked uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setLinked(this.h, (C.ulonglong)(linked))
 }
 
 func (this *QAccessible__State) Traversed() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_traversed(this.h))
 }
 
 func (this *QAccessible__State) SetTraversed(traversed uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setTraversed(this.h, (C.ulonglong)(traversed))
 }
 
 func (this *QAccessible__State) MultiSelectable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_multiSelectable(this.h))
 }
 
 func (this *QAccessible__State) SetMultiSelectable(multiSelectable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setMultiSelectable(this.h, (C.ulonglong)(multiSelectable))
 }
 
 func (this *QAccessible__State) ExtSelectable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_extSelectable(this.h))
 }
 
 func (this *QAccessible__State) SetExtSelectable(extSelectable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setExtSelectable(this.h, (C.ulonglong)(extSelectable))
 }
 
 func (this *QAccessible__State) PasswordEdit() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_passwordEdit(this.h))
 }
 
 func (this *QAccessible__State) SetPasswordEdit(passwordEdit uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setPasswordEdit(this.h, (C.ulonglong)(passwordEdit))
 }
 
 func (this *QAccessible__State) HasPopup() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_hasPopup(this.h))
 }
 
 func (this *QAccessible__State) SetHasPopup(hasPopup uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setHasPopup(this.h, (C.ulonglong)(hasPopup))
 }
 
 func (this *QAccessible__State) Modal() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_modal(this.h))
 }
 
 func (this *QAccessible__State) SetModal(modal uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setModal(this.h, (C.ulonglong)(modal))
 }
 
 func (this *QAccessible__State) Active() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_active(this.h))
 }
 
 func (this *QAccessible__State) SetActive(active uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setActive(this.h, (C.ulonglong)(active))
 }
 
 func (this *QAccessible__State) Invalid() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_invalid(this.h))
 }
 
 func (this *QAccessible__State) SetInvalid(invalid uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setInvalid(this.h, (C.ulonglong)(invalid))
 }
 
 func (this *QAccessible__State) Editable() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_editable(this.h))
 }
 
 func (this *QAccessible__State) SetEditable(editable uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setEditable(this.h, (C.ulonglong)(editable))
 }
 
 func (this *QAccessible__State) MultiLine() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_multiLine(this.h))
 }
 
 func (this *QAccessible__State) SetMultiLine(multiLine uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setMultiLine(this.h, (C.ulonglong)(multiLine))
 }
 
 func (this *QAccessible__State) SelectableText() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_selectableText(this.h))
 }
 
 func (this *QAccessible__State) SetSelectableText(selectableText uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSelectableText(this.h, (C.ulonglong)(selectableText))
 }
 
 func (this *QAccessible__State) SupportsAutoCompletion() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_supportsAutoCompletion(this.h))
 }
 
 func (this *QAccessible__State) SetSupportsAutoCompletion(supportsAutoCompletion uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSupportsAutoCompletion(this.h, (C.ulonglong)(supportsAutoCompletion))
 }
 
 func (this *QAccessible__State) SearchEdit() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QAccessible__State_searchEdit(this.h))
 }
 
 func (this *QAccessible__State) SetSearchEdit(searchEdit uint64) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__State_setSearchEdit(this.h, (C.ulonglong)(searchEdit))
 }
 
@@ -679,15 +774,22 @@ func (this *QAccessible__State) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAccessible__State{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible__State) {
-		C.QAccessible__State_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAccessible__State_delete((*C.QAccessible__State)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAccessible__ActivationObserver struct {
 	h  *C.QAccessible__ActivationObserver
-	gc *[1]*C.QAccessible__ActivationObserver
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessible__ActivationObserver) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
@@ -719,10 +821,13 @@ func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__Ac
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
+	defer runtime.KeepAlive(this)
 	C.QAccessible__ActivationObserver_accessibilityActiveChanged(this.h, (C.bool)(active))
 }
 
 func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible__ActivationObserver) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QAccessible__ActivationObserver_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -738,8 +843,9 @@ func (this *QAccessible__ActivationObserver) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAccessible__ActivationObserver{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessible__ActivationObserver) {
-		C.QAccessible__ActivationObserver_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAccessible__ActivationObserver_delete((*C.QAccessible__ActivationObserver)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -39,7 +39,13 @@ const (
 
 type QTimeZone struct {
 	h  *C.QTimeZone
-	gc *[1]*C.QTimeZone
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTimeZone) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTimeZone) cPointer() *C.QTimeZone {
@@ -118,6 +124,7 @@ func NewQTimeZone4(zoneId []byte, offsetSeconds int, name string, abbreviation s
 
 // NewQTimeZone5 constructs a new QTimeZone object.
 func NewQTimeZone5(other *QTimeZone) *QTimeZone {
+	defer runtime.KeepAlive(other)
 
 	return newQTimeZone(C.QTimeZone_new5(other.cPointer()))
 }
@@ -169,18 +176,24 @@ func NewQTimeZone7(zoneId []byte, offsetSeconds int, name string, abbreviation s
 }
 
 func (this *QTimeZone) OperatorAssign(other *QTimeZone) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QTimeZone_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QTimeZone) Swap(other *QTimeZone) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QTimeZone_swap(this.h, other.cPointer())
 }
 
 func (this *QTimeZone) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTimeZone_isValid(this.h))
 }
 
 func (this *QTimeZone) Id() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QTimeZone_id(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -188,10 +201,12 @@ func (this *QTimeZone) Id() []byte {
 }
 
 func (this *QTimeZone) Country() QLocale__Country {
+	defer runtime.KeepAlive(this)
 	return (QLocale__Country)(C.QTimeZone_country(this.h))
 }
 
 func (this *QTimeZone) Comment() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTimeZone_comment(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -199,6 +214,8 @@ func (this *QTimeZone) Comment() string {
 }
 
 func (this *QTimeZone) DisplayName(atDateTime *QDateTime) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayName(this.h, atDateTime.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -206,6 +223,7 @@ func (this *QTimeZone) DisplayName(atDateTime *QDateTime) string {
 }
 
 func (this *QTimeZone) DisplayNameWithTimeType(timeType QTimeZone__TimeType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayNameWithTimeType(this.h, (C.int)(timeType))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -213,6 +231,8 @@ func (this *QTimeZone) DisplayNameWithTimeType(timeType QTimeZone__TimeType) str
 }
 
 func (this *QTimeZone) Abbreviation(atDateTime *QDateTime) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	var _ms C.struct_miqt_string = C.QTimeZone_abbreviation(this.h, atDateTime.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -220,48 +240,67 @@ func (this *QTimeZone) Abbreviation(atDateTime *QDateTime) string {
 }
 
 func (this *QTimeZone) OffsetFromUtc(atDateTime *QDateTime) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	return (int)(C.QTimeZone_offsetFromUtc(this.h, atDateTime.cPointer()))
 }
 
 func (this *QTimeZone) StandardTimeOffset(atDateTime *QDateTime) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	return (int)(C.QTimeZone_standardTimeOffset(this.h, atDateTime.cPointer()))
 }
 
 func (this *QTimeZone) DaylightTimeOffset(atDateTime *QDateTime) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	return (int)(C.QTimeZone_daylightTimeOffset(this.h, atDateTime.cPointer()))
 }
 
 func (this *QTimeZone) HasDaylightTime() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTimeZone_hasDaylightTime(this.h))
 }
 
 func (this *QTimeZone) IsDaylightTime(atDateTime *QDateTime) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	return (bool)(C.QTimeZone_isDaylightTime(this.h, atDateTime.cPointer()))
 }
 
 func (this *QTimeZone) OffsetData(forDateTime *QDateTime) *QTimeZone__OffsetData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(forDateTime)
 	_goptr := newQTimeZone__OffsetData(C.QTimeZone_offsetData(this.h, forDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeZone) HasTransitions() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTimeZone_hasTransitions(this.h))
 }
 
 func (this *QTimeZone) NextTransition(afterDateTime *QDateTime) *QTimeZone__OffsetData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(afterDateTime)
 	_goptr := newQTimeZone__OffsetData(C.QTimeZone_nextTransition(this.h, afterDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeZone) PreviousTransition(beforeDateTime *QDateTime) *QTimeZone__OffsetData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(beforeDateTime)
 	_goptr := newQTimeZone__OffsetData(C.QTimeZone_previousTransition(this.h, beforeDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeZone) Transitions(fromDateTime *QDateTime, toDateTime *QDateTime) []QTimeZone__OffsetData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fromDateTime)
+	defer runtime.KeepAlive(toDateTime)
 	var _ma C.struct_miqt_array = C.QTimeZone_transitions(this.h, fromDateTime.cPointer(), toDateTime.cPointer())
 	_ret := make([]QTimeZone__OffsetData, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTimeZone__OffsetData)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -425,6 +464,8 @@ func QTimeZone_WindowsIdToIanaIds2(windowsId []byte, country QLocale__Country) [
 }
 
 func (this *QTimeZone) DisplayName2(atDateTime *QDateTime, nameType QTimeZone__NameType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayName2(this.h, atDateTime.cPointer(), (C.int)(nameType))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -432,6 +473,9 @@ func (this *QTimeZone) DisplayName2(atDateTime *QDateTime, nameType QTimeZone__N
 }
 
 func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType QTimeZone__NameType, locale *QLocale) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atDateTime)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayName3(this.h, atDateTime.cPointer(), (C.int)(nameType), locale.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -439,6 +483,7 @@ func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType QTimeZone__N
 }
 
 func (this *QTimeZone) DisplayName4(timeType QTimeZone__TimeType, nameType QTimeZone__NameType) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayName4(this.h, (C.int)(timeType), (C.int)(nameType))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -446,6 +491,8 @@ func (this *QTimeZone) DisplayName4(timeType QTimeZone__TimeType, nameType QTime
 }
 
 func (this *QTimeZone) DisplayName5(timeType QTimeZone__TimeType, nameType QTimeZone__NameType, locale *QLocale) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QTimeZone_displayName5(this.h, (C.int)(timeType), (C.int)(nameType), locale.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -464,15 +511,22 @@ func (this *QTimeZone) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTimeZone{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeZone) {
-		C.QTimeZone_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTimeZone_delete((*C.QTimeZone)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTimeZone__OffsetData struct {
 	h  *C.QTimeZone__OffsetData
-	gc *[1]*C.QTimeZone__OffsetData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTimeZone__OffsetData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTimeZone__OffsetData) cPointer() *C.QTimeZone__OffsetData {
@@ -505,6 +559,7 @@ func UnsafeNewQTimeZone__OffsetData(h unsafe.Pointer) *QTimeZone__OffsetData {
 
 // NewQTimeZone__OffsetData constructs a new QTimeZone::OffsetData object.
 func NewQTimeZone__OffsetData(param1 *QTimeZone__OffsetData) *QTimeZone__OffsetData {
+	defer runtime.KeepAlive(param1)
 
 	return newQTimeZone__OffsetData(C.QTimeZone__OffsetData_new(param1.cPointer()))
 }
@@ -516,6 +571,7 @@ func NewQTimeZone__OffsetData2() *QTimeZone__OffsetData {
 }
 
 func (this *QTimeZone__OffsetData) Abbreviation() string {
+	defer runtime.KeepAlive(this)
 	var abbreviation_ms C.struct_miqt_string = C.QTimeZone__OffsetData_abbreviation(this.h)
 	abbreviation_ret := C.GoStringN(abbreviation_ms.data, C.int(int64(abbreviation_ms.len)))
 	C.free(unsafe.Pointer(abbreviation_ms.data))
@@ -523,6 +579,7 @@ func (this *QTimeZone__OffsetData) Abbreviation() string {
 }
 
 func (this *QTimeZone__OffsetData) SetAbbreviation(abbreviation string) {
+	defer runtime.KeepAlive(this)
 	abbreviation_ms := C.struct_miqt_string{}
 	abbreviation_ms.data = C.CString(abbreviation)
 	abbreviation_ms.len = C.size_t(len(abbreviation))
@@ -531,40 +588,51 @@ func (this *QTimeZone__OffsetData) SetAbbreviation(abbreviation string) {
 }
 
 func (this *QTimeZone__OffsetData) AtUtc() *QDateTime {
+	defer runtime.KeepAlive(this)
 	atUtc_goptr := newQDateTime(C.QTimeZone__OffsetData_atUtc(this.h))
 	atUtc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return atUtc_goptr
 }
 
 func (this *QTimeZone__OffsetData) SetAtUtc(atUtc QDateTime) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(atUtc)
 	C.QTimeZone__OffsetData_setAtUtc(this.h, atUtc.cPointer())
 }
 
 func (this *QTimeZone__OffsetData) OffsetFromUtc() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeZone__OffsetData_offsetFromUtc(this.h))
 }
 
 func (this *QTimeZone__OffsetData) SetOffsetFromUtc(offsetFromUtc int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeZone__OffsetData_setOffsetFromUtc(this.h, (C.int)(offsetFromUtc))
 }
 
 func (this *QTimeZone__OffsetData) StandardTimeOffset() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeZone__OffsetData_standardTimeOffset(this.h))
 }
 
 func (this *QTimeZone__OffsetData) SetStandardTimeOffset(standardTimeOffset int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeZone__OffsetData_setStandardTimeOffset(this.h, (C.int)(standardTimeOffset))
 }
 
 func (this *QTimeZone__OffsetData) DaylightTimeOffset() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeZone__OffsetData_daylightTimeOffset(this.h))
 }
 
 func (this *QTimeZone__OffsetData) SetDaylightTimeOffset(daylightTimeOffset int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeZone__OffsetData_setDaylightTimeOffset(this.h, (C.int)(daylightTimeOffset))
 }
 
 func (this *QTimeZone__OffsetData) OperatorAssign(param1 *QTimeZone__OffsetData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QTimeZone__OffsetData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -580,8 +648,9 @@ func (this *QTimeZone__OffsetData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTimeZone__OffsetData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeZone__OffsetData) {
-		C.QTimeZone__OffsetData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTimeZone__OffsetData_delete((*C.QTimeZone__OffsetData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

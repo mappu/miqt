@@ -16,8 +16,15 @@ import (
 
 type QPropertyAnimation struct {
 	h  *C.QPropertyAnimation
-	gc *[1]*C.QPropertyAnimation
+	gc *[1]unsafe.Pointer
 	*QVariantAnimation
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyAnimation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QVariantAnimation.miqtSetGC(gc)
 }
 
 func (this *QPropertyAnimation) cPointer() *C.QPropertyAnimation {
@@ -59,6 +66,7 @@ func NewQPropertyAnimation() *QPropertyAnimation {
 
 // NewQPropertyAnimation2 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation2(target *QObject, propertyName []byte) *QPropertyAnimation {
+	defer runtime.KeepAlive(target)
 	propertyName_alias := C.struct_miqt_string{}
 	if len(propertyName) > 0 {
 		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
@@ -72,12 +80,15 @@ func NewQPropertyAnimation2(target *QObject, propertyName []byte) *QPropertyAnim
 
 // NewQPropertyAnimation3 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation3(parent *QObject) *QPropertyAnimation {
+	defer runtime.KeepAlive(parent)
 
 	return newQPropertyAnimation(C.QPropertyAnimation_new3(parent.cPointer()))
 }
 
 // NewQPropertyAnimation4 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObject) *QPropertyAnimation {
+	defer runtime.KeepAlive(target)
+	defer runtime.KeepAlive(parent)
 	propertyName_alias := C.struct_miqt_string{}
 	if len(propertyName) > 0 {
 		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
@@ -90,10 +101,12 @@ func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObjec
 }
 
 func (this *QPropertyAnimation) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPropertyAnimation_metaObject(this.h))
 }
 
 func (this *QPropertyAnimation) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPropertyAnimation_metacast(this.h, param1_Cstring))
@@ -118,14 +131,18 @@ func QPropertyAnimation_TrUtf8(s string) string {
 }
 
 func (this *QPropertyAnimation) TargetObject() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QPropertyAnimation_targetObject(this.h))
 }
 
 func (this *QPropertyAnimation) SetTargetObject(target *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(target)
 	C.QPropertyAnimation_setTargetObject(this.h, target.cPointer())
 }
 
 func (this *QPropertyAnimation) PropertyName() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QPropertyAnimation_propertyName(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -133,6 +150,7 @@ func (this *QPropertyAnimation) PropertyName() []byte {
 }
 
 func (this *QPropertyAnimation) SetPropertyName(propertyName []byte) {
+	defer runtime.KeepAlive(this)
 	propertyName_alias := C.struct_miqt_string{}
 	if len(propertyName) > 0 {
 		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
@@ -189,6 +207,7 @@ func QPropertyAnimation_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QPropertyAnimation that was directly constructed.
 func (this *QPropertyAnimation) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPropertyAnimation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -203,6 +222,7 @@ func (this *QPropertyAnimation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPropertyAnimation that was directly constructed.
 func (this *QPropertyAnimation) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPropertyAnimation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -217,6 +237,7 @@ func (this *QPropertyAnimation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPropertyAnimation that was directly constructed.
 func (this *QPropertyAnimation) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -233,6 +254,8 @@ func (this *QPropertyAnimation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPropertyAnimation that was directly constructed.
 func (this *QPropertyAnimation) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPropertyAnimation_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -246,6 +269,8 @@ func (this *QPropertyAnimation) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPropertyAnimation) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPropertyAnimation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -274,6 +299,8 @@ func miqt_exec_callback_QPropertyAnimation_event(self *C.QPropertyAnimation, cb 
 }
 
 func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentValue(value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QPropertyAnimation_virtualbase_updateCurrentValue(unsafe.Pointer(this.h), value.cPointer())
 
@@ -300,6 +327,7 @@ func miqt_exec_callback_QPropertyAnimation_updateCurrentValue(self *C.QPropertyA
 }
 
 func (this *QPropertyAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+	defer runtime.KeepAlive(this)
 
 	C.QPropertyAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -328,6 +356,7 @@ func miqt_exec_callback_QPropertyAnimation_updateState(self *C.QPropertyAnimatio
 }
 
 func (this *QPropertyAnimation) callVirtualBase_Duration() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPropertyAnimation_virtualbase_duration(unsafe.Pointer(this.h)))
 
@@ -353,6 +382,7 @@ func miqt_exec_callback_QPropertyAnimation_duration(self *C.QPropertyAnimation, 
 }
 
 func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
+	defer runtime.KeepAlive(this)
 
 	C.QPropertyAnimation_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -379,6 +409,9 @@ func miqt_exec_callback_QPropertyAnimation_updateCurrentTime(self *C.QPropertyAn
 }
 
 func (this *QPropertyAnimation) callVirtualBase_Interpolated(from *QVariant, to *QVariant, progress float64) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	_goptr := newQVariant(C.QPropertyAnimation_virtualbase_interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -407,12 +440,14 @@ func miqt_exec_callback_QPropertyAnimation_interpolated(self *C.QPropertyAnimati
 	slotval3 := (float64)(progress)
 
 	virtualReturn := gofunc((&QPropertyAnimation{h: self}).callVirtualBase_Interpolated, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QPropertyAnimation_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QPropertyAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+	defer runtime.KeepAlive(this)
 
 	C.QPropertyAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -439,6 +474,9 @@ func miqt_exec_callback_QPropertyAnimation_updateDirection(self *C.QPropertyAnim
 }
 
 func (this *QPropertyAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPropertyAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -469,6 +507,8 @@ func miqt_exec_callback_QPropertyAnimation_eventFilter(self *C.QPropertyAnimatio
 }
 
 func (this *QPropertyAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPropertyAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -495,6 +535,8 @@ func miqt_exec_callback_QPropertyAnimation_timerEvent(self *C.QPropertyAnimation
 }
 
 func (this *QPropertyAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPropertyAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -521,6 +563,8 @@ func miqt_exec_callback_QPropertyAnimation_childEvent(self *C.QPropertyAnimation
 }
 
 func (this *QPropertyAnimation) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPropertyAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -547,6 +591,8 @@ func miqt_exec_callback_QPropertyAnimation_customEvent(self *C.QPropertyAnimatio
 }
 
 func (this *QPropertyAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPropertyAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -573,6 +619,8 @@ func miqt_exec_callback_QPropertyAnimation_connectNotify(self *C.QPropertyAnimat
 }
 
 func (this *QPropertyAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPropertyAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -610,8 +658,9 @@ func (this *QPropertyAnimation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyAnimation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyAnimation) {
-		C.QPropertyAnimation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyAnimation_delete((*C.QPropertyAnimation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

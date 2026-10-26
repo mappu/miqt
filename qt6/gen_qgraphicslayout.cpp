@@ -196,7 +196,9 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// Wrappers to allow calling protected methods:
@@ -387,6 +389,10 @@ bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 	self_cast->handle__sizeHint = slot;
 	return true;
+}
+
+QSizeF* QGraphicsLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
 }
 
 void QGraphicsLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

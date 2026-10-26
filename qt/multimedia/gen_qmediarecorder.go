@@ -47,9 +47,16 @@ const (
 
 type QMediaRecorder struct {
 	h  *C.QMediaRecorder
-	gc *[1]*C.QMediaRecorder
+	gc *[1]unsafe.Pointer
 	*qt.QObject
 	*QMediaBindableInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaRecorder) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaBindableInterface.miqtSetGC(gc)
 }
 
 func (this *QMediaRecorder) cPointer() *C.QMediaRecorder {
@@ -87,21 +94,26 @@ func UnsafeNewQMediaRecorder(h unsafe.Pointer) *QMediaRecorder {
 
 // NewQMediaRecorder constructs a new QMediaRecorder object.
 func NewQMediaRecorder(mediaObject *QMediaObject) *QMediaRecorder {
+	defer runtime.KeepAlive(mediaObject)
 
 	return newQMediaRecorder(C.QMediaRecorder_new(mediaObject.cPointer()))
 }
 
 // NewQMediaRecorder2 constructs a new QMediaRecorder object.
 func NewQMediaRecorder2(mediaObject *QMediaObject, parent *qt.QObject) *QMediaRecorder {
+	defer runtime.KeepAlive(mediaObject)
+	defer runtime.KeepAlive(parent)
 
 	return newQMediaRecorder(C.QMediaRecorder_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QMediaRecorder) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaRecorder_metaObject(this.h)))
 }
 
 func (this *QMediaRecorder) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaRecorder_metacast(this.h, param1_Cstring))
@@ -126,46 +138,57 @@ func QMediaRecorder_TrUtf8(s string) string {
 }
 
 func (this *QMediaRecorder) MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QMediaRecorder_mediaObject(this.h))
 }
 
 func (this *QMediaRecorder) IsAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaRecorder_isAvailable(this.h))
 }
 
 func (this *QMediaRecorder) Availability() QMultimedia__AvailabilityStatus {
+	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QMediaRecorder_availability(this.h))
 }
 
 func (this *QMediaRecorder) OutputLocation() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_outputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorder) SetOutputLocation(location *qt.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(location)
 	return (bool)(C.QMediaRecorder_setOutputLocation(this.h, (*C.QUrl)(location.UnsafePointer())))
 }
 
 func (this *QMediaRecorder) ActualLocation() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_actualLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorder) State() QMediaRecorder__State {
+	defer runtime.KeepAlive(this)
 	return (QMediaRecorder__State)(C.QMediaRecorder_state(this.h))
 }
 
 func (this *QMediaRecorder) Status() QMediaRecorder__Status {
+	defer runtime.KeepAlive(this)
 	return (QMediaRecorder__Status)(C.QMediaRecorder_status(this.h))
 }
 
 func (this *QMediaRecorder) Error() QMediaRecorder__Error {
+	defer runtime.KeepAlive(this)
 	return (QMediaRecorder__Error)(C.QMediaRecorder_error(this.h))
 }
 
 func (this *QMediaRecorder) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaRecorder_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -173,18 +196,22 @@ func (this *QMediaRecorder) ErrorString() string {
 }
 
 func (this *QMediaRecorder) Duration() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QMediaRecorder_duration(this.h))
 }
 
 func (this *QMediaRecorder) IsMuted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaRecorder_isMuted(this.h))
 }
 
 func (this *QMediaRecorder) Volume() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QMediaRecorder_volume(this.h))
 }
 
 func (this *QMediaRecorder) SupportedContainers() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedContainers(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -198,6 +225,7 @@ func (this *QMediaRecorder) SupportedContainers() []string {
 }
 
 func (this *QMediaRecorder) ContainerDescription(format string) string {
+	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -209,6 +237,7 @@ func (this *QMediaRecorder) ContainerDescription(format string) string {
 }
 
 func (this *QMediaRecorder) SupportedAudioCodecs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -222,6 +251,7 @@ func (this *QMediaRecorder) SupportedAudioCodecs() []string {
 }
 
 func (this *QMediaRecorder) AudioCodecDescription(codecName string) string {
+	defer runtime.KeepAlive(this)
 	codecName_ms := C.struct_miqt_string{}
 	codecName_ms.data = C.CString(codecName)
 	codecName_ms.len = C.size_t(len(codecName))
@@ -233,6 +263,7 @@ func (this *QMediaRecorder) AudioCodecDescription(codecName string) string {
 }
 
 func (this *QMediaRecorder) SupportedAudioSampleRates() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -243,6 +274,7 @@ func (this *QMediaRecorder) SupportedAudioSampleRates() []int {
 }
 
 func (this *QMediaRecorder) SupportedVideoCodecs() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedVideoCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -256,6 +288,7 @@ func (this *QMediaRecorder) SupportedVideoCodecs() []string {
 }
 
 func (this *QMediaRecorder) VideoCodecDescription(codecName string) string {
+	defer runtime.KeepAlive(this)
 	codecName_ms := C.struct_miqt_string{}
 	codecName_ms.data = C.CString(codecName)
 	codecName_ms.len = C.size_t(len(codecName))
@@ -267,6 +300,7 @@ func (this *QMediaRecorder) VideoCodecDescription(codecName string) string {
 }
 
 func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -279,6 +313,7 @@ func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
 }
 
 func (this *QMediaRecorder) SupportedFrameRates() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRates(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -289,18 +324,21 @@ func (this *QMediaRecorder) SupportedFrameRates() []float64 {
 }
 
 func (this *QMediaRecorder) AudioSettings() *QAudioEncoderSettings {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAudioEncoderSettings(C.QMediaRecorder_audioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorder) VideoSettings() *QVideoEncoderSettings {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVideoEncoderSettings(C.QMediaRecorder_videoSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorder) ContainerFormat() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaRecorder_containerFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -308,14 +346,19 @@ func (this *QMediaRecorder) ContainerFormat() string {
 }
 
 func (this *QMediaRecorder) SetAudioSettings(audioSettings *QAudioEncoderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(audioSettings)
 	C.QMediaRecorder_setAudioSettings(this.h, audioSettings.cPointer())
 }
 
 func (this *QMediaRecorder) SetVideoSettings(videoSettings *QVideoEncoderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(videoSettings)
 	C.QMediaRecorder_setVideoSettings(this.h, videoSettings.cPointer())
 }
 
 func (this *QMediaRecorder) SetContainerFormat(container string) {
+	defer runtime.KeepAlive(this)
 	container_ms := C.struct_miqt_string{}
 	container_ms.data = C.CString(container)
 	container_ms.len = C.size_t(len(container))
@@ -324,18 +367,23 @@ func (this *QMediaRecorder) SetContainerFormat(container string) {
 }
 
 func (this *QMediaRecorder) SetEncodingSettings(audioSettings *QAudioEncoderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(audioSettings)
 	C.QMediaRecorder_setEncodingSettings(this.h, audioSettings.cPointer())
 }
 
 func (this *QMediaRecorder) IsMetaDataAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaRecorder_isMetaDataAvailable(this.h))
 }
 
 func (this *QMediaRecorder) IsMetaDataWritable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaRecorder_isMetaDataWritable(this.h))
 }
 
 func (this *QMediaRecorder) MetaData(key string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -346,6 +394,8 @@ func (this *QMediaRecorder) MetaData(key string) *qt.QVariant {
 }
 
 func (this *QMediaRecorder) SetMetaData(key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -354,6 +404,7 @@ func (this *QMediaRecorder) SetMetaData(key string, value *qt.QVariant) {
 }
 
 func (this *QMediaRecorder) AvailableMetaData() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -367,26 +418,32 @@ func (this *QMediaRecorder) AvailableMetaData() []string {
 }
 
 func (this *QMediaRecorder) Record() {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_record(this.h)
 }
 
 func (this *QMediaRecorder) Pause() {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_pause(this.h)
 }
 
 func (this *QMediaRecorder) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_stop(this.h)
 }
 
 func (this *QMediaRecorder) SetMuted(muted bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QMediaRecorder) SetVolume(volume float64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QMediaRecorder) StateChanged(state QMediaRecorder__State) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_stateChanged(this.h, (C.int)(state))
 }
 func (this *QMediaRecorder) OnStateChanged(slot func(state QMediaRecorder__State)) {
@@ -407,6 +464,7 @@ func miqt_exec_callback_QMediaRecorder_stateChanged(cb C.intptr_t, state C.int) 
 }
 
 func (this *QMediaRecorder) StatusChanged(status QMediaRecorder__Status) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_statusChanged(this.h, (C.int)(status))
 }
 func (this *QMediaRecorder) OnStatusChanged(slot func(status QMediaRecorder__Status)) {
@@ -427,6 +485,7 @@ func miqt_exec_callback_QMediaRecorder_statusChanged(cb C.intptr_t, status C.int
 }
 
 func (this *QMediaRecorder) DurationChanged(duration int64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QMediaRecorder) OnDurationChanged(slot func(duration int64)) {
@@ -447,6 +506,7 @@ func miqt_exec_callback_QMediaRecorder_durationChanged(cb C.intptr_t, duration C
 }
 
 func (this *QMediaRecorder) MutedChanged(muted bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_mutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QMediaRecorder) OnMutedChanged(slot func(muted bool)) {
@@ -467,6 +527,7 @@ func miqt_exec_callback_QMediaRecorder_mutedChanged(cb C.intptr_t, muted C.bool)
 }
 
 func (this *QMediaRecorder) VolumeChanged(volume float64) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_volumeChanged(this.h, (C.double)(volume))
 }
 func (this *QMediaRecorder) OnVolumeChanged(slot func(volume float64)) {
@@ -487,6 +548,8 @@ func miqt_exec_callback_QMediaRecorder_volumeChanged(cb C.intptr_t, volume C.dou
 }
 
 func (this *QMediaRecorder) ActualLocationChanged(location *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(location)
 	C.QMediaRecorder_actualLocationChanged(this.h, (*C.QUrl)(location.UnsafePointer()))
 }
 func (this *QMediaRecorder) OnActualLocationChanged(slot func(location *qt.QUrl)) {
@@ -507,6 +570,7 @@ func miqt_exec_callback_QMediaRecorder_actualLocationChanged(cb C.intptr_t, loca
 }
 
 func (this *QMediaRecorder) ErrorWithError(error QMediaRecorder__Error) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_errorWithError(this.h, (C.int)(error))
 }
 func (this *QMediaRecorder) OnErrorWithError(slot func(error QMediaRecorder__Error)) {
@@ -527,6 +591,7 @@ func miqt_exec_callback_QMediaRecorder_errorWithError(cb C.intptr_t, error C.int
 }
 
 func (this *QMediaRecorder) MetaDataAvailableChanged(available bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_metaDataAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaRecorder) OnMetaDataAvailableChanged(slot func(available bool)) {
@@ -547,6 +612,7 @@ func miqt_exec_callback_QMediaRecorder_metaDataAvailableChanged(cb C.intptr_t, a
 }
 
 func (this *QMediaRecorder) MetaDataWritableChanged(writable bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_metaDataWritableChanged(this.h, (C.bool)(writable))
 }
 func (this *QMediaRecorder) OnMetaDataWritableChanged(slot func(writable bool)) {
@@ -567,6 +633,7 @@ func miqt_exec_callback_QMediaRecorder_metaDataWritableChanged(cb C.intptr_t, wr
 }
 
 func (this *QMediaRecorder) MetaDataChanged() {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_metaDataChanged(this.h)
 }
 func (this *QMediaRecorder) OnMetaDataChanged(slot func()) {
@@ -584,6 +651,8 @@ func miqt_exec_callback_QMediaRecorder_metaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaRecorder) MetaDataChanged2(key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -612,6 +681,7 @@ func miqt_exec_callback_QMediaRecorder_metaDataChanged2(cb C.intptr_t, key C.str
 }
 
 func (this *QMediaRecorder) AvailabilityChanged(available bool) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_availabilityChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaRecorder) OnAvailabilityChanged(slot func(available bool)) {
@@ -632,6 +702,7 @@ func miqt_exec_callback_QMediaRecorder_availabilityChanged(cb C.intptr_t, availa
 }
 
 func (this *QMediaRecorder) AvailabilityChangedWithAvailability(availability QMultimedia__AvailabilityStatus) {
+	defer runtime.KeepAlive(this)
 	C.QMediaRecorder_availabilityChangedWithAvailability(this.h, (C.int)(availability))
 }
 func (this *QMediaRecorder) OnAvailabilityChangedWithAvailability(slot func(availability QMultimedia__AvailabilityStatus)) {
@@ -696,6 +767,8 @@ func QMediaRecorder_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMediaRecorder) SupportedAudioSampleRatesWithSettings(settings *QAudioEncoderSettings) []int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -706,6 +779,8 @@ func (this *QMediaRecorder) SupportedAudioSampleRatesWithSettings(settings *QAud
 }
 
 func (this *QMediaRecorder) SupportedAudioSampleRates2(settings *QAudioEncoderSettings, continuous *bool) []int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -716,6 +791,8 @@ func (this *QMediaRecorder) SupportedAudioSampleRates2(settings *QAudioEncoderSe
 }
 
 func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEncoderSettings) []qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -728,6 +805,8 @@ func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEnc
 }
 
 func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSettings, continuous *bool) []qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -740,6 +819,8 @@ func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSetting
 }
 
 func (this *QMediaRecorder) SupportedFrameRatesWithSettings(settings *QVideoEncoderSettings) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -750,6 +831,8 @@ func (this *QMediaRecorder) SupportedFrameRatesWithSettings(settings *QVideoEnco
 }
 
 func (this *QMediaRecorder) SupportedFrameRates2(settings *QVideoEncoderSettings, continuous *bool) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -760,10 +843,16 @@ func (this *QMediaRecorder) SupportedFrameRates2(settings *QVideoEncoderSettings
 }
 
 func (this *QMediaRecorder) SetEncodingSettings2(audioSettings *QAudioEncoderSettings, videoSettings *QVideoEncoderSettings) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(audioSettings)
+	defer runtime.KeepAlive(videoSettings)
 	C.QMediaRecorder_setEncodingSettings2(this.h, audioSettings.cPointer(), videoSettings.cPointer())
 }
 
 func (this *QMediaRecorder) SetEncodingSettings3(audioSettings *QAudioEncoderSettings, videoSettings *QVideoEncoderSettings, containerMimeType string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(audioSettings)
+	defer runtime.KeepAlive(videoSettings)
 	containerMimeType_ms := C.struct_miqt_string{}
 	containerMimeType_ms.data = C.CString(containerMimeType)
 	containerMimeType_ms.len = C.size_t(len(containerMimeType))
@@ -773,6 +862,7 @@ func (this *QMediaRecorder) SetEncodingSettings3(audioSettings *QAudioEncoderSet
 
 // Sender can only be called from a QMediaRecorder that was directly constructed.
 func (this *QMediaRecorder) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMediaRecorder_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -787,6 +877,7 @@ func (this *QMediaRecorder) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QMediaRecorder that was directly constructed.
 func (this *QMediaRecorder) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMediaRecorder_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -801,6 +892,7 @@ func (this *QMediaRecorder) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMediaRecorder that was directly constructed.
 func (this *QMediaRecorder) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -817,6 +909,8 @@ func (this *QMediaRecorder) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMediaRecorder that was directly constructed.
 func (this *QMediaRecorder) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMediaRecorder_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -830,6 +924,7 @@ func (this *QMediaRecorder) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QMediaRecorder) callVirtualBase_MediaObject() *QMediaObject {
+	defer runtime.KeepAlive(this)
 
 	return newQMediaObject(C.QMediaRecorder_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
@@ -849,12 +944,15 @@ func miqt_exec_callback_QMediaRecorder_mediaObject(self *C.QMediaRecorder, cb C.
 	}
 
 	virtualReturn := gofunc((&QMediaRecorder{h: self}).callVirtualBase_MediaObject)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMediaRecorder) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 
 	return (bool)(C.QMediaRecorder_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
@@ -883,6 +981,8 @@ func miqt_exec_callback_QMediaRecorder_setMediaObject(self *C.QMediaRecorder, cb
 }
 
 func (this *QMediaRecorder) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaRecorder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -911,6 +1011,9 @@ func miqt_exec_callback_QMediaRecorder_event(self *C.QMediaRecorder, cb C.intptr
 }
 
 func (this *QMediaRecorder) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaRecorder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -941,6 +1044,8 @@ func miqt_exec_callback_QMediaRecorder_eventFilter(self *C.QMediaRecorder, cb C.
 }
 
 func (this *QMediaRecorder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaRecorder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -967,6 +1072,8 @@ func miqt_exec_callback_QMediaRecorder_timerEvent(self *C.QMediaRecorder, cb C.i
 }
 
 func (this *QMediaRecorder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaRecorder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -993,6 +1100,8 @@ func miqt_exec_callback_QMediaRecorder_childEvent(self *C.QMediaRecorder, cb C.i
 }
 
 func (this *QMediaRecorder) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QMediaRecorder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1019,6 +1128,8 @@ func miqt_exec_callback_QMediaRecorder_customEvent(self *C.QMediaRecorder, cb C.
 }
 
 func (this *QMediaRecorder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMediaRecorder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1045,6 +1156,8 @@ func miqt_exec_callback_QMediaRecorder_connectNotify(self *C.QMediaRecorder, cb 
 }
 
 func (this *QMediaRecorder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QMediaRecorder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1082,8 +1195,9 @@ func (this *QMediaRecorder) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaRecorder{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaRecorder) {
-		C.QMediaRecorder_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaRecorder_delete((*C.QMediaRecorder)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

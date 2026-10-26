@@ -67,7 +67,13 @@ const (
 
 type QVideoFrame struct {
 	h  *C.QVideoFrame
-	gc *[1]*C.QVideoFrame
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoFrame) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -106,147 +112,184 @@ func NewQVideoFrame() *QVideoFrame {
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
 func NewQVideoFrame2(bytes int, size *qt.QSize, bytesPerLine int, format QVideoFrame__PixelFormat) *QVideoFrame {
+	defer runtime.KeepAlive(size)
 
 	return newQVideoFrame(C.QVideoFrame_new2((C.int)(bytes), (*C.QSize)(size.UnsafePointer()), (C.int)(bytesPerLine), (C.int)(format)))
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
 func NewQVideoFrame3(image *qt.QImage) *QVideoFrame {
+	defer runtime.KeepAlive(image)
 
 	return newQVideoFrame(C.QVideoFrame_new3((*C.QImage)(image.UnsafePointer())))
 }
 
 // NewQVideoFrame4 constructs a new QVideoFrame object.
 func NewQVideoFrame4(other *QVideoFrame) *QVideoFrame {
+	defer runtime.KeepAlive(other)
 
 	return newQVideoFrame(C.QVideoFrame_new4(other.cPointer()))
 }
 
 func (this *QVideoFrame) OperatorAssign(other *QVideoFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QVideoFrame_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QVideoFrame) OperatorEqual(other *QVideoFrame) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QVideoFrame_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoFrame) OperatorNotEqual(other *QVideoFrame) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QVideoFrame_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoFrame) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrame_isValid(this.h))
 }
 
 func (this *QVideoFrame) PixelFormat() QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrame__PixelFormat)(C.QVideoFrame_pixelFormat(this.h))
 }
 
 func (this *QVideoFrame) HandleType() QAbstractVideoBuffer__HandleType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractVideoBuffer__HandleType)(C.QVideoFrame_handleType(this.h))
 }
 
 func (this *QVideoFrame) Size() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrame) Width() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_width(this.h))
 }
 
 func (this *QVideoFrame) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_height(this.h))
 }
 
 func (this *QVideoFrame) FieldType() QVideoFrame__FieldType {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrame__FieldType)(C.QVideoFrame_fieldType(this.h))
 }
 
 func (this *QVideoFrame) SetFieldType(fieldType QVideoFrame__FieldType) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrame_setFieldType(this.h, (C.int)(fieldType))
 }
 
 func (this *QVideoFrame) IsMapped() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrame_isMapped(this.h))
 }
 
 func (this *QVideoFrame) IsReadable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrame_isReadable(this.h))
 }
 
 func (this *QVideoFrame) IsWritable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrame_isWritable(this.h))
 }
 
 func (this *QVideoFrame) MapMode() QAbstractVideoBuffer__MapMode {
+	defer runtime.KeepAlive(this)
 	return (QAbstractVideoBuffer__MapMode)(C.QVideoFrame_mapMode(this.h))
 }
 
 func (this *QVideoFrame) Map(mode QAbstractVideoBuffer__MapMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoFrame_map(this.h, (C.int)(mode)))
 }
 
 func (this *QVideoFrame) Unmap() {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrame_unmap(this.h)
 }
 
 func (this *QVideoFrame) BytesPerLine() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_bytesPerLine(this.h))
 }
 
 func (this *QVideoFrame) BytesPerLineWithPlane(plane int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_bytesPerLineWithPlane(this.h, (C.int)(plane)))
 }
 
 func (this *QVideoFrame) Bits() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits(this.h)))
 }
 
 func (this *QVideoFrame) BitsWithPlane(plane int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QVideoFrame_bitsWithPlane(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) Bits2() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits2(this.h)))
 }
 
 func (this *QVideoFrame) Bits3(plane int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits3(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) MappedBytes() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_mappedBytes(this.h))
 }
 
 func (this *QVideoFrame) PlaneCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoFrame_planeCount(this.h))
 }
 
 func (this *QVideoFrame) Handle() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoFrame_handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrame) StartTime() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVideoFrame_startTime(this.h))
 }
 
 func (this *QVideoFrame) SetStartTime(time int64) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrame_setStartTime(this.h, (C.longlong)(time))
 }
 
 func (this *QVideoFrame) EndTime() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QVideoFrame_endTime(this.h))
 }
 
 func (this *QVideoFrame) SetEndTime(time int64) {
+	defer runtime.KeepAlive(this)
 	C.QVideoFrame_setEndTime(this.h, (C.longlong)(time))
 }
 
 func (this *QVideoFrame) AvailableMetaData() map[string]qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QVideoFrame_availableMetaData(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -266,6 +309,7 @@ func (this *QVideoFrame) AvailableMetaData() map[string]qt.QVariant {
 }
 
 func (this *QVideoFrame) MetaData(key string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -276,6 +320,8 @@ func (this *QVideoFrame) MetaData(key string) *qt.QVariant {
 }
 
 func (this *QVideoFrame) SetMetaData(key string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -284,6 +330,7 @@ func (this *QVideoFrame) SetMetaData(key string, value *qt.QVariant) {
 }
 
 func (this *QVideoFrame) Image() *qt.QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_image(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -309,8 +356,9 @@ func (this *QVideoFrame) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoFrame{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrame) {
-		C.QVideoFrame_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoFrame_delete((*C.QVideoFrame)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

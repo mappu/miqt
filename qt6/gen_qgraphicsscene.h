@@ -310,6 +310,7 @@ bool QGraphicsScene_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QGraphicsScene_virtualreturncopy_QVariant(QVariant* src);
 
 QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

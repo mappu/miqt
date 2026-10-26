@@ -194,6 +194,8 @@ bool QsciLexer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexer_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexer_virtualreturncopy_QFont(QFont* src);
 
 QObject* QsciLexer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

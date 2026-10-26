@@ -17,8 +17,15 @@ import (
 
 type QCameraLocksControl struct {
 	h  *C.QCameraLocksControl
-	gc *[1]*C.QCameraLocksControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraLocksControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraLocksControl) cPointer() *C.QCameraLocksControl {
@@ -53,10 +60,12 @@ func UnsafeNewQCameraLocksControl(h unsafe.Pointer) *QCameraLocksControl {
 }
 
 func (this *QCameraLocksControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraLocksControl_metaObject(this.h)))
 }
 
 func (this *QCameraLocksControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraLocksControl_metacast(this.h, param1_Cstring))
@@ -81,22 +90,27 @@ func QCameraLocksControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraLocksControl) SupportedLocks() QCamera__LockType {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockType)(C.QCameraLocksControl_supportedLocks(this.h))
 }
 
 func (this *QCameraLocksControl) LockStatus(lock QCamera__LockType) QCamera__LockStatus {
+	defer runtime.KeepAlive(this)
 	return (QCamera__LockStatus)(C.QCameraLocksControl_lockStatus(this.h, (C.int)(lock)))
 }
 
 func (this *QCameraLocksControl) SearchAndLock(locks QCamera__LockType) {
+	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_searchAndLock(this.h, (C.int)(locks))
 }
 
 func (this *QCameraLocksControl) Unlock(locks QCamera__LockType) {
+	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_unlock(this.h, (C.int)(locks))
 }
 
 func (this *QCameraLocksControl) LockStatusChanged(typeVal QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason) {
+	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_lockStatusChanged(this.h, (C.int)(typeVal), (C.int)(status), (C.int)(reason))
 }
 func (this *QCameraLocksControl) OnLockStatusChanged(slot func(typeVal QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason)) {
@@ -176,8 +190,9 @@ func (this *QCameraLocksControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraLocksControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraLocksControl) {
-		C.QCameraLocksControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraLocksControl_delete((*C.QCameraLocksControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

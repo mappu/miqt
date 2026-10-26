@@ -16,7 +16,13 @@ import (
 
 type QLayoutItem struct {
 	h  *C.QLayoutItem
-	gc *[1]*C.QLayoutItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLayoutItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLayoutItem) cPointer() *C.QLayoutItem {
@@ -55,6 +61,7 @@ func NewQLayoutItem() *QLayoutItem {
 
 // NewQLayoutItem2 constructs a new QLayoutItem object.
 func NewQLayoutItem2(param1 *QLayoutItem) *QLayoutItem {
+	defer runtime.KeepAlive(param1)
 
 	return newQLayoutItem(C.QLayoutItem_new2(param1.cPointer()))
 }
@@ -66,82 +73,102 @@ func NewQLayoutItem3(alignment AlignmentFlag) *QLayoutItem {
 }
 
 func (this *QLayoutItem) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QLayoutItem_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QLayoutItem_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QLayoutItem_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QLayoutItem_expandingDirections(this.h))
 }
 
 func (this *QLayoutItem) SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 	C.QLayoutItem_setGeometry(this.h, geometry.cPointer())
 }
 
 func (this *QLayoutItem) Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QLayoutItem_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLayoutItem_isEmpty(this.h))
 }
 
 func (this *QLayoutItem) HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLayoutItem_hasHeightForWidth(this.h))
 }
 
 func (this *QLayoutItem) HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QLayoutItem_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLayoutItem) MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QLayoutItem_minimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLayoutItem) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QLayoutItem_invalidate(this.h)
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QLayoutItem_widget(this.h))
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 	return newQLayout(C.QLayoutItem_layout(this.h))
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 	return newQSpacerItem(C.QLayoutItem_spacerItem(this.h))
 }
 
 func (this *QLayoutItem) Alignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QLayoutItem_alignment(this.h))
 }
 
 func (this *QLayoutItem) SetAlignment(a AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QLayoutItem_setAlignment(this.h, (C.int)(a))
 }
 
 func (this *QLayoutItem) ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__ControlType)(C.QLayoutItem_controlTypes(this.h))
 }
 
 func (this *QLayoutItem) OperatorAssign(param1 *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QLayoutItem_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QLayoutItem) OnSizeHint(slot func() *QSize) {
@@ -159,8 +186,9 @@ func miqt_exec_callback_QLayoutItem_sizeHint(self *C.QLayoutItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QLayoutItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 func (this *QLayoutItem) OnMinimumSize(slot func() *QSize) {
@@ -178,8 +206,9 @@ func miqt_exec_callback_QLayoutItem_minimumSize(self *C.QLayoutItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QLayoutItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 func (this *QLayoutItem) OnMaximumSize(slot func() *QSize) {
@@ -197,8 +226,9 @@ func miqt_exec_callback_QLayoutItem_maximumSize(self *C.QLayoutItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QLayoutItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 func (this *QLayoutItem) OnExpandingDirections(slot func() Orientation) {
@@ -255,8 +285,9 @@ func miqt_exec_callback_QLayoutItem_geometry(self *C.QLayoutItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QLayoutItem_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 func (this *QLayoutItem) OnIsEmpty(slot func() bool) {
@@ -280,6 +311,7 @@ func miqt_exec_callback_QLayoutItem_isEmpty(self *C.QLayoutItem, cb C.intptr_t) 
 }
 
 func (this *QLayoutItem) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLayoutItem_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -305,6 +337,7 @@ func miqt_exec_callback_QLayoutItem_hasHeightForWidth(self *C.QLayoutItem, cb C.
 }
 
 func (this *QLayoutItem) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QLayoutItem_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -333,6 +366,7 @@ func miqt_exec_callback_QLayoutItem_heightForWidth(self *C.QLayoutItem, cb C.int
 }
 
 func (this *QLayoutItem) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QLayoutItem_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -361,6 +395,7 @@ func miqt_exec_callback_QLayoutItem_minimumHeightForWidth(self *C.QLayoutItem, c
 }
 
 func (this *QLayoutItem) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QLayoutItem_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -384,6 +419,7 @@ func miqt_exec_callback_QLayoutItem_invalidate(self *C.QLayoutItem, cb C.intptr_
 }
 
 func (this *QLayoutItem) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QLayoutItem_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -403,12 +439,14 @@ func miqt_exec_callback_QLayoutItem_widget(self *C.QLayoutItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QLayoutItem) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QLayoutItem_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -428,12 +466,14 @@ func miqt_exec_callback_QLayoutItem_layout(self *C.QLayoutItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QLayoutItem) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QLayoutItem_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -453,12 +493,14 @@ func miqt_exec_callback_QLayoutItem_spacerItem(self *C.QLayoutItem, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QLayoutItem) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QLayoutItem_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -495,16 +537,24 @@ func (this *QLayoutItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLayoutItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLayoutItem) {
-		C.QLayoutItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLayoutItem_delete((*C.QLayoutItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QSpacerItem struct {
 	h  *C.QSpacerItem
-	gc *[1]*C.QSpacerItem
+	gc *[1]unsafe.Pointer
 	*QLayoutItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSpacerItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLayoutItem.miqtSetGC(gc)
 }
 
 func (this *QSpacerItem) cPointer() *C.QSpacerItem {
@@ -546,6 +596,7 @@ func NewQSpacerItem(w int, h int) *QSpacerItem {
 
 // NewQSpacerItem2 constructs a new QSpacerItem object.
 func NewQSpacerItem2(param1 *QSpacerItem) *QSpacerItem {
+	defer runtime.KeepAlive(param1)
 
 	return newQSpacerItem(C.QSpacerItem_new2(param1.cPointer()))
 }
@@ -563,68 +614,84 @@ func NewQSpacerItem4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy_
 }
 
 func (this *QSpacerItem) ChangeSize(w int, h int) {
+	defer runtime.KeepAlive(this)
 	C.QSpacerItem_changeSize(this.h, (C.int)(w), (C.int)(h))
 }
 
 func (this *QSpacerItem) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSpacerItem_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSpacerItem_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSpacerItem_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QSpacerItem_expandingDirections(this.h))
 }
 
 func (this *QSpacerItem) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSpacerItem_isEmpty(this.h))
 }
 
 func (this *QSpacerItem) SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 	C.QSpacerItem_setGeometry(this.h, geometry.cPointer())
 }
 
 func (this *QSpacerItem) Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QSpacerItem_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 	return newQSpacerItem(C.QSpacerItem_spacerItem(this.h))
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizePolicy(C.QSpacerItem_sizePolicy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) OperatorAssign(param1 *QSpacerItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QSpacerItem_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QSpacerItem) ChangeSize2(w int, h int, hData QSizePolicy__Policy) {
+	defer runtime.KeepAlive(this)
 	C.QSpacerItem_changeSize2(this.h, (C.int)(w), (C.int)(h), (C.int)(hData))
 }
 
 func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
+	defer runtime.KeepAlive(this)
 	C.QSpacerItem_changeSize3(this.h, (C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 }
 
 func (this *QSpacerItem) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSpacerItem_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -646,12 +713,14 @@ func miqt_exec_callback_QSpacerItem_sizeHint(self *C.QSpacerItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSpacerItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSpacerItem) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSpacerItem_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -673,12 +742,14 @@ func miqt_exec_callback_QSpacerItem_minimumSize(self *C.QSpacerItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSpacerItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSpacerItem) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSpacerItem_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -700,12 +771,14 @@ func miqt_exec_callback_QSpacerItem_maximumSize(self *C.QSpacerItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSpacerItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QSpacerItem) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QSpacerItem_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -731,6 +804,7 @@ func miqt_exec_callback_QSpacerItem_expandingDirections(self *C.QSpacerItem, cb 
 }
 
 func (this *QSpacerItem) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSpacerItem_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -756,6 +830,8 @@ func miqt_exec_callback_QSpacerItem_isEmpty(self *C.QSpacerItem, cb C.intptr_t) 
 }
 
 func (this *QSpacerItem) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QSpacerItem_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -782,6 +858,7 @@ func miqt_exec_callback_QSpacerItem_setGeometry(self *C.QSpacerItem, cb C.intptr
 }
 
 func (this *QSpacerItem) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QSpacerItem_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -803,12 +880,14 @@ func miqt_exec_callback_QSpacerItem_geometry(self *C.QSpacerItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QSpacerItem_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QSpacerItem) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QSpacerItem_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -828,12 +907,14 @@ func miqt_exec_callback_QSpacerItem_spacerItem(self *C.QSpacerItem, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSpacerItem) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSpacerItem_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -859,6 +940,7 @@ func miqt_exec_callback_QSpacerItem_hasHeightForWidth(self *C.QSpacerItem, cb C.
 }
 
 func (this *QSpacerItem) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSpacerItem_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -887,6 +969,7 @@ func miqt_exec_callback_QSpacerItem_heightForWidth(self *C.QSpacerItem, cb C.int
 }
 
 func (this *QSpacerItem) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSpacerItem_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -915,6 +998,7 @@ func miqt_exec_callback_QSpacerItem_minimumHeightForWidth(self *C.QSpacerItem, c
 }
 
 func (this *QSpacerItem) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QSpacerItem_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -938,6 +1022,7 @@ func miqt_exec_callback_QSpacerItem_invalidate(self *C.QSpacerItem, cb C.intptr_
 }
 
 func (this *QSpacerItem) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QSpacerItem_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -957,12 +1042,14 @@ func miqt_exec_callback_QSpacerItem_widget(self *C.QSpacerItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSpacerItem) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QSpacerItem_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -982,12 +1069,14 @@ func miqt_exec_callback_QSpacerItem_layout(self *C.QSpacerItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSpacerItem) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QSpacerItem_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -1024,16 +1113,24 @@ func (this *QSpacerItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSpacerItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSpacerItem) {
-		C.QSpacerItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSpacerItem_delete((*C.QSpacerItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWidgetItem struct {
 	h  *C.QWidgetItem
-	gc *[1]*C.QWidgetItem
+	gc *[1]unsafe.Pointer
 	*QLayoutItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWidgetItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLayoutItem.miqtSetGC(gc)
 }
 
 func (this *QWidgetItem) cPointer() *C.QWidgetItem {
@@ -1069,63 +1166,77 @@ func UnsafeNewQWidgetItem(h unsafe.Pointer) *QWidgetItem {
 
 // NewQWidgetItem constructs a new QWidgetItem object.
 func NewQWidgetItem(w *QWidget) *QWidgetItem {
+	defer runtime.KeepAlive(w)
 
 	return newQWidgetItem(C.QWidgetItem_new(w.cPointer()))
 }
 
 func (this *QWidgetItem) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItem_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItem_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItem_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QWidgetItem_expandingDirections(this.h))
 }
 
 func (this *QWidgetItem) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidgetItem_isEmpty(this.h))
 }
 
 func (this *QWidgetItem) SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 	C.QWidgetItem_setGeometry(this.h, geometry.cPointer())
 }
 
 func (this *QWidgetItem) Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidgetItem_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidgetItem_widget(this.h))
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidgetItem_hasHeightForWidth(this.h))
 }
 
 func (this *QWidgetItem) HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWidgetItem_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QWidgetItem) ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 	return (QSizePolicy__ControlType)(C.QWidgetItem_controlTypes(this.h))
 }
 
 func (this *QWidgetItem) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItem_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1147,12 +1258,14 @@ func miqt_exec_callback_QWidgetItem_sizeHint(self *C.QWidgetItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItem) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItem_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1174,12 +1287,14 @@ func miqt_exec_callback_QWidgetItem_minimumSize(self *C.QWidgetItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItem) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItem_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1201,12 +1316,14 @@ func miqt_exec_callback_QWidgetItem_maximumSize(self *C.QWidgetItem, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItem_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItem) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QWidgetItem_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -1232,6 +1349,7 @@ func miqt_exec_callback_QWidgetItem_expandingDirections(self *C.QWidgetItem, cb 
 }
 
 func (this *QWidgetItem) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidgetItem_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -1257,6 +1375,8 @@ func miqt_exec_callback_QWidgetItem_isEmpty(self *C.QWidgetItem, cb C.intptr_t) 
 }
 
 func (this *QWidgetItem) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QWidgetItem_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -1283,6 +1403,7 @@ func miqt_exec_callback_QWidgetItem_setGeometry(self *C.QWidgetItem, cb C.intptr
 }
 
 func (this *QWidgetItem) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QWidgetItem_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1304,12 +1425,14 @@ func miqt_exec_callback_QWidgetItem_geometry(self *C.QWidgetItem, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItem_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItem) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QWidgetItem_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -1329,12 +1452,14 @@ func miqt_exec_callback_QWidgetItem_widget(self *C.QWidgetItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWidgetItem) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidgetItem_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1360,6 +1485,7 @@ func miqt_exec_callback_QWidgetItem_hasHeightForWidth(self *C.QWidgetItem, cb C.
 }
 
 func (this *QWidgetItem) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidgetItem_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1388,6 +1514,7 @@ func miqt_exec_callback_QWidgetItem_heightForWidth(self *C.QWidgetItem, cb C.int
 }
 
 func (this *QWidgetItem) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QWidgetItem_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -1413,6 +1540,7 @@ func miqt_exec_callback_QWidgetItem_controlTypes(self *C.QWidgetItem, cb C.intpt
 }
 
 func (this *QWidgetItem) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidgetItem_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1441,6 +1569,7 @@ func miqt_exec_callback_QWidgetItem_minimumHeightForWidth(self *C.QWidgetItem, c
 }
 
 func (this *QWidgetItem) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QWidgetItem_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -1464,6 +1593,7 @@ func miqt_exec_callback_QWidgetItem_invalidate(self *C.QWidgetItem, cb C.intptr_
 }
 
 func (this *QWidgetItem) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QWidgetItem_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -1483,12 +1613,14 @@ func miqt_exec_callback_QWidgetItem_layout(self *C.QWidgetItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWidgetItem) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QWidgetItem_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -1508,6 +1640,7 @@ func miqt_exec_callback_QWidgetItem_spacerItem(self *C.QWidgetItem, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1525,16 +1658,24 @@ func (this *QWidgetItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWidgetItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWidgetItem) {
-		C.QWidgetItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWidgetItem_delete((*C.QWidgetItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWidgetItemV2 struct {
 	h  *C.QWidgetItemV2
-	gc *[1]*C.QWidgetItemV2
+	gc *[1]unsafe.Pointer
 	*QWidgetItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWidgetItemV2) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidgetItem.miqtSetGC(gc)
 }
 
 func (this *QWidgetItemV2) cPointer() *C.QWidgetItemV2 {
@@ -1570,33 +1711,39 @@ func UnsafeNewQWidgetItemV2(h unsafe.Pointer) *QWidgetItemV2 {
 
 // NewQWidgetItemV2 constructs a new QWidgetItemV2 object.
 func NewQWidgetItemV2(widget *QWidget) *QWidgetItemV2 {
+	defer runtime.KeepAlive(widget)
 
 	return newQWidgetItemV2(C.QWidgetItemV2_new(widget.cPointer()))
 }
 
 func (this *QWidgetItemV2) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItemV2_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItemV2) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItemV2_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItemV2) MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidgetItemV2_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItemV2) HeightForWidth(width int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWidgetItemV2_heightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QWidgetItemV2) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItemV2_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1618,12 +1765,14 @@ func miqt_exec_callback_QWidgetItemV2_sizeHint(self *C.QWidgetItemV2, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItemV2_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItemV2_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1645,12 +1794,14 @@ func miqt_exec_callback_QWidgetItemV2_minimumSize(self *C.QWidgetItemV2, cb C.in
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItemV2_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidgetItemV2_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1672,12 +1823,14 @@ func miqt_exec_callback_QWidgetItemV2_maximumSize(self *C.QWidgetItemV2, cb C.in
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItemV2_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_HeightForWidth(width int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidgetItemV2_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
@@ -1706,6 +1859,7 @@ func miqt_exec_callback_QWidgetItemV2_heightForWidth(self *C.QWidgetItemV2, cb C
 }
 
 func (this *QWidgetItemV2) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QWidgetItemV2_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -1731,6 +1885,7 @@ func miqt_exec_callback_QWidgetItemV2_expandingDirections(self *C.QWidgetItemV2,
 }
 
 func (this *QWidgetItemV2) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidgetItemV2_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -1756,6 +1911,8 @@ func miqt_exec_callback_QWidgetItemV2_isEmpty(self *C.QWidgetItemV2, cb C.intptr
 }
 
 func (this *QWidgetItemV2) callVirtualBase_SetGeometry(geometry *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 
 	C.QWidgetItemV2_virtualbase_setGeometry(unsafe.Pointer(this.h), geometry.cPointer())
 
@@ -1782,6 +1939,7 @@ func miqt_exec_callback_QWidgetItemV2_setGeometry(self *C.QWidgetItemV2, cb C.in
 }
 
 func (this *QWidgetItemV2) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QWidgetItemV2_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1803,12 +1961,14 @@ func miqt_exec_callback_QWidgetItemV2_geometry(self *C.QWidgetItemV2, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QWidgetItemV2_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QWidgetItemV2_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -1828,12 +1988,14 @@ func miqt_exec_callback_QWidgetItemV2_widget(self *C.QWidgetItemV2, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidgetItemV2_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1859,6 +2021,7 @@ func miqt_exec_callback_QWidgetItemV2_hasHeightForWidth(self *C.QWidgetItemV2, c
 }
 
 func (this *QWidgetItemV2) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QWidgetItemV2_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -1884,6 +2047,7 @@ func miqt_exec_callback_QWidgetItemV2_controlTypes(self *C.QWidgetItemV2, cb C.i
 }
 
 func (this *QWidgetItemV2) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidgetItemV2_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1912,6 +2076,7 @@ func miqt_exec_callback_QWidgetItemV2_minimumHeightForWidth(self *C.QWidgetItemV
 }
 
 func (this *QWidgetItemV2) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QWidgetItemV2_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -1935,6 +2100,7 @@ func miqt_exec_callback_QWidgetItemV2_invalidate(self *C.QWidgetItemV2, cb C.int
 }
 
 func (this *QWidgetItemV2) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QWidgetItemV2_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -1954,12 +2120,14 @@ func miqt_exec_callback_QWidgetItemV2_layout(self *C.QWidgetItemV2, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWidgetItemV2) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QWidgetItemV2_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -1979,6 +2147,7 @@ func miqt_exec_callback_QWidgetItemV2_spacerItem(self *C.QWidgetItemV2, cb C.int
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1996,8 +2165,9 @@ func (this *QWidgetItemV2) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWidgetItemV2{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWidgetItemV2) {
-		C.QWidgetItemV2_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWidgetItemV2_delete((*C.QWidgetItemV2)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -16,8 +16,15 @@ import (
 
 type QPixmap struct {
 	h  *C.QPixmap
-	gc *[1]*C.QPixmap
+	gc *[1]unsafe.Pointer
 	*QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPixmap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QPixmap) cPointer() *C.QPixmap {
@@ -65,6 +72,7 @@ func NewQPixmap2(w int, h int) *QPixmap {
 
 // NewQPixmap3 constructs a new QPixmap object.
 func NewQPixmap3(param1 *QSize) *QPixmap {
+	defer runtime.KeepAlive(param1)
 
 	return newQPixmap(C.QPixmap_new3(param1.cPointer()))
 }
@@ -81,6 +89,7 @@ func NewQPixmap4(fileName string) *QPixmap {
 
 // NewQPixmap5 constructs a new QPixmap object.
 func NewQPixmap5(param1 *QPixmap) *QPixmap {
+	defer runtime.KeepAlive(param1)
 
 	return newQPixmap(C.QPixmap_new5(param1.cPointer()))
 }
@@ -110,48 +119,60 @@ func NewQPixmap7(fileName string, format string, flags ImageConversionFlag) *QPi
 }
 
 func (this *QPixmap) OperatorAssign(param1 *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QPixmap_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QPixmap) Swap(other *QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPixmap_swap(this.h, other.cPointer())
 }
 
 func (this *QPixmap) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QPixmap_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_isNull(this.h))
 }
 
 func (this *QPixmap) DevType() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPixmap_devType(this.h))
 }
 
 func (this *QPixmap) Width() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPixmap_width(this.h))
 }
 
 func (this *QPixmap) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPixmap_height(this.h))
 }
 
 func (this *QPixmap) Size() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QPixmap_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Rect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QPixmap_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Depth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPixmap_depth(this.h))
 }
 
@@ -160,108 +181,132 @@ func QPixmap_DefaultDepth() int {
 }
 
 func (this *QPixmap) Fill() {
+	defer runtime.KeepAlive(this)
 	C.QPixmap_fill(this.h)
 }
 
 func (this *QPixmap) Mask() *QBitmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBitmap(C.QPixmap_mask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) SetMask(mask *QBitmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(mask)
 	C.QPixmap_setMask(this.h, mask.cPointer())
 }
 
 func (this *QPixmap) DevicePixelRatio() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPixmap_devicePixelRatio(this.h))
 }
 
 func (this *QPixmap) SetDevicePixelRatio(scaleFactor float64) {
+	defer runtime.KeepAlive(this)
 	C.QPixmap_setDevicePixelRatio(this.h, (C.double)(scaleFactor))
 }
 
 func (this *QPixmap) DeviceIndependentSize() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QPixmap_deviceIndependentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) HasAlpha() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_hasAlpha(this.h))
 }
 
 func (this *QPixmap) HasAlphaChannel() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_hasAlphaChannel(this.h))
 }
 
 func (this *QPixmap) CreateHeuristicMask() *QBitmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBitmap(C.QPixmap_createHeuristicMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) CreateMaskFromColor(maskColor *QColor) *QBitmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(maskColor)
 	_goptr := newQBitmap(C.QPixmap_createMaskFromColor(this.h, maskColor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled(w int, h int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaled(this.h, (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledWithQSize(s *QSize) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQPixmap(C.QPixmap_scaledWithQSize(this.h, s.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToWidth(w int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaledToWidth(this.h, (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToHeight(h int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaledToHeight(this.h, (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Transformed(param1 *QTransform) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQPixmap(C.QPixmap_transformed(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_TrueMatrix(m *QTransform, w int, h int) *QTransform {
+	defer runtime.KeepAlive(m)
 	_goptr := newQTransform(C.QPixmap_trueMatrix(m.cPointer(), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ToImage() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QPixmap_toImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImage(image *QImage) *QPixmap {
+	defer runtime.KeepAlive(image)
 	_goptr := newQPixmap(C.QPixmap_fromImage(image.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
+	defer runtime.KeepAlive(imageReader)
 	_goptr := newQPixmap(C.QPixmap_fromImageReader(imageReader.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Load(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -270,10 +315,12 @@ func (this *QPixmap) Load(fileName string) bool {
 }
 
 func (this *QPixmap) LoadFromData(buf *byte, lenVal uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_loadFromData(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal)))
 }
 
 func (this *QPixmap) LoadFromDataWithData(data []byte) bool {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -285,6 +332,7 @@ func (this *QPixmap) LoadFromDataWithData(data []byte) bool {
 }
 
 func (this *QPixmap) Save(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -293,128 +341,161 @@ func (this *QPixmap) Save(fileName string) bool {
 }
 
 func (this *QPixmap) SaveWithDevice(device *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	return (bool)(C.QPixmap_saveWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QPixmap) ConvertFromImage(img *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(img)
 	return (bool)(C.QPixmap_convertFromImage(this.h, img.cPointer()))
 }
 
 func (this *QPixmap) Copy(x int, y int, width int, height int) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_copy(this.h, (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Copy2() *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_copy2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scroll(dx int, dy int, x int, y int, width int, height int) {
+	defer runtime.KeepAlive(this)
 	C.QPixmap_scroll(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height))
 }
 
 func (this *QPixmap) Scroll2(dx int, dy int, rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QPixmap_scroll2(this.h, (C.int)(dx), (C.int)(dy), rect.cPointer())
 }
 
 func (this *QPixmap) CacheKey() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QPixmap_cacheKey(this.h))
 }
 
 func (this *QPixmap) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_isDetached(this.h))
 }
 
 func (this *QPixmap) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QPixmap_detach(this.h)
 }
 
 func (this *QPixmap) IsQBitmap() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_isQBitmap(this.h))
 }
 
 func (this *QPixmap) PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return newQPaintEngine(C.QPixmap_paintEngine(this.h))
 }
 
 func (this *QPixmap) OperatorNot() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPixmap_operatorNot(this.h))
 }
 
 func (this *QPixmap) FillWithFillColor(fillColor *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fillColor)
 	C.QPixmap_fillWithFillColor(this.h, fillColor.cPointer())
 }
 
 func (this *QPixmap) CreateHeuristicMaskWithClipTight(clipTight bool) *QBitmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBitmap(C.QPixmap_createHeuristicMaskWithClipTight(this.h, (C.bool)(clipTight)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode MaskMode) *QBitmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(maskColor)
 	_goptr := newQBitmap(C.QPixmap_createMaskFromColor2(this.h, maskColor.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled2(w int, h int, aspectMode AspectRatioMode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaled2(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled4(s *QSize, aspectMode AspectRatioMode) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQPixmap(C.QPixmap_scaled4(this.h, s.cPointer(), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled5(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQPixmap(C.QPixmap_scaled5(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToWidth2(w int, mode TransformationMode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaledToWidth2(this.h, (C.int)(w), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToHeight2(h int, mode TransformationMode) *QPixmap {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QPixmap_scaledToHeight2(this.h, (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Transformed2(param1 *QTransform, mode TransformationMode) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQPixmap(C.QPixmap_transformed2(this.h, param1.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImage2(image *QImage, flags ImageConversionFlag) *QPixmap {
+	defer runtime.KeepAlive(image)
 	_goptr := newQPixmap(C.QPixmap_fromImage2(image.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImageReader2(imageReader *QImageReader, flags ImageConversionFlag) *QPixmap {
+	defer runtime.KeepAlive(imageReader)
 	_goptr := newQPixmap(C.QPixmap_fromImageReader2(imageReader.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Load2(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -425,6 +506,7 @@ func (this *QPixmap) Load2(fileName string, format string) bool {
 }
 
 func (this *QPixmap) Load3(fileName string, format string, flags ImageConversionFlag) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -435,18 +517,21 @@ func (this *QPixmap) Load3(fileName string, format string, flags ImageConversion
 }
 
 func (this *QPixmap) LoadFromData2(buf *byte, lenVal uint, format string) bool {
+	defer runtime.KeepAlive(this)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_loadFromData2(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring))
 }
 
 func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string, flags ImageConversionFlag) bool {
+	defer runtime.KeepAlive(this)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_loadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData4(data []byte, format string) bool {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -460,6 +545,7 @@ func (this *QPixmap) LoadFromData4(data []byte, format string) bool {
 }
 
 func (this *QPixmap) LoadFromData5(data []byte, format string, flags ImageConversionFlag) bool {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -473,6 +559,7 @@ func (this *QPixmap) LoadFromData5(data []byte, format string, flags ImageConver
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -483,6 +570,7 @@ func (this *QPixmap) Save2(fileName string, format string) bool {
 }
 
 func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -493,36 +581,50 @@ func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
 }
 
 func (this *QPixmap) Save4(device *QIODevice, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_save4(this.h, device.cPointer(), format_Cstring))
 }
 
 func (this *QPixmap) Save5(device *QIODevice, format string, quality int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
 }
 
 func (this *QPixmap) ConvertFromImage2(img *QImage, flags ImageConversionFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(img)
 	return (bool)(C.QPixmap_convertFromImage2(this.h, img.cPointer(), (C.int)(flags)))
 }
 
 func (this *QPixmap) CopyWithRect(rect *QRect) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	_goptr := newQPixmap(C.QPixmap_copyWithRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scroll3(dx int, dy int, x int, y int, width int, height int, exposed *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exposed)
 	C.QPixmap_scroll3(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height), exposed.cPointer())
 }
 
 func (this *QPixmap) Scroll4(dx int, dy int, rect *QRect, exposed *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(exposed)
 	C.QPixmap_scroll4(this.h, (C.int)(dx), (C.int)(dy), rect.cPointer(), exposed.cPointer())
 }
 
 func (this *QPixmap) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPixmap_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -548,6 +650,7 @@ func miqt_exec_callback_QPixmap_devType(self *C.QPixmap, cb C.intptr_t) C.int {
 }
 
 func (this *QPixmap) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QPixmap_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -567,12 +670,14 @@ func miqt_exec_callback_QPixmap_paintEngine(self *C.QPixmap, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QPixmap{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPixmap) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPixmap_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -601,6 +706,8 @@ func miqt_exec_callback_QPixmap_metric(self *C.QPixmap, cb C.intptr_t, param1 C.
 }
 
 func (this *QPixmap) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPixmap_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -627,6 +734,8 @@ func miqt_exec_callback_QPixmap_initPainter(self *C.QPixmap, cb C.intptr_t, pain
 }
 
 func (this *QPixmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPixmap_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -649,12 +758,14 @@ func miqt_exec_callback_QPixmap_redirected(self *C.QPixmap, cb C.intptr_t, offse
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPixmap{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPixmap) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QPixmap_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -674,6 +785,7 @@ func miqt_exec_callback_QPixmap_sharedPainter(self *C.QPixmap, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QPixmap{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -691,8 +803,9 @@ func (this *QPixmap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPixmap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPixmap) {
-		C.QPixmap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPixmap_delete((*C.QPixmap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

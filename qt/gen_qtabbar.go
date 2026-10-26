@@ -44,8 +44,15 @@ const (
 
 type QTabBar struct {
 	h  *C.QTabBar
-	gc *[1]*C.QTabBar
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTabBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QTabBar) cPointer() *C.QTabBar {
@@ -81,6 +88,7 @@ func UnsafeNewQTabBar(h unsafe.Pointer) *QTabBar {
 
 // NewQTabBar constructs a new QTabBar object.
 func NewQTabBar(parent *QWidget) *QTabBar {
+	defer runtime.KeepAlive(parent)
 
 	return newQTabBar(C.QTabBar_new(parent.cPointer()))
 }
@@ -92,10 +100,12 @@ func NewQTabBar2() *QTabBar {
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTabBar_metaObject(this.h))
 }
 
 func (this *QTabBar) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTabBar_metacast(this.h, param1_Cstring))
@@ -120,14 +130,17 @@ func QTabBar_TrUtf8(s string) string {
 }
 
 func (this *QTabBar) Shape() QTabBar__Shape {
+	defer runtime.KeepAlive(this)
 	return (QTabBar__Shape)(C.QTabBar_shape(this.h))
 }
 
 func (this *QTabBar) SetShape(shape QTabBar__Shape) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QTabBar) AddTab(text string) int {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -136,6 +149,8 @@ func (this *QTabBar) AddTab(text string) int {
 }
 
 func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -144,6 +159,7 @@ func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
 }
 
 func (this *QTabBar) InsertTab(index int, text string) int {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -152,6 +168,8 @@ func (this *QTabBar) InsertTab(index int, text string) int {
 }
 
 func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -160,30 +178,37 @@ func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
 }
 
 func (this *QTabBar) RemoveTab(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_removeTab(this.h, (C.int)(index))
 }
 
 func (this *QTabBar) MoveTab(from int, to int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_moveTab(this.h, (C.int)(from), (C.int)(to))
 }
 
 func (this *QTabBar) IsTabEnabled(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_isTabEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QTabBar) SetTabEnabled(index int, enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setTabEnabled(this.h, (C.int)(index), (C.bool)(enabled))
 }
 
 func (this *QTabBar) IsTabVisible(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_isTabVisible(this.h, (C.int)(index)))
 }
 
 func (this *QTabBar) SetTabVisible(index int, visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setTabVisible(this.h, (C.int)(index), (C.bool)(visible))
 }
 
 func (this *QTabBar) TabText(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTabBar_tabText(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -191,6 +216,7 @@ func (this *QTabBar) TabText(index int) string {
 }
 
 func (this *QTabBar) SetTabText(index int, text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -199,34 +225,43 @@ func (this *QTabBar) SetTabText(index int, text string) {
 }
 
 func (this *QTabBar) TabTextColor(index int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QTabBar_tabTextColor(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) SetTabTextColor(index int, color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QTabBar_setTabTextColor(this.h, (C.int)(index), color.cPointer())
 }
 
 func (this *QTabBar) TabIcon(index int) *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QTabBar_tabIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) SetTabIcon(index int, icon *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QTabBar_setTabIcon(this.h, (C.int)(index), icon.cPointer())
 }
 
 func (this *QTabBar) ElideMode() TextElideMode {
+	defer runtime.KeepAlive(this)
 	return (TextElideMode)(C.QTabBar_elideMode(this.h))
 }
 
 func (this *QTabBar) SetElideMode(mode TextElideMode) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setElideMode(this.h, (C.int)(mode))
 }
 
 func (this *QTabBar) SetTabToolTip(index int, tip string) {
+	defer runtime.KeepAlive(this)
 	tip_ms := C.struct_miqt_string{}
 	tip_ms.data = C.CString(tip)
 	tip_ms.len = C.size_t(len(tip))
@@ -235,6 +270,7 @@ func (this *QTabBar) SetTabToolTip(index int, tip string) {
 }
 
 func (this *QTabBar) TabToolTip(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTabBar_tabToolTip(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -242,6 +278,7 @@ func (this *QTabBar) TabToolTip(index int) string {
 }
 
 func (this *QTabBar) SetTabWhatsThis(index int, text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -250,6 +287,7 @@ func (this *QTabBar) SetTabWhatsThis(index int, text string) {
 }
 
 func (this *QTabBar) TabWhatsThis(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTabBar_tabWhatsThis(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -257,136 +295,171 @@ func (this *QTabBar) TabWhatsThis(index int) string {
 }
 
 func (this *QTabBar) SetTabData(index int, data *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	C.QTabBar_setTabData(this.h, (C.int)(index), data.cPointer())
 }
 
 func (this *QTabBar) TabData(index int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QTabBar_tabData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) TabRect(index int) *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QTabBar_tabRect(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) TabAt(pos *QPoint) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	return (int)(C.QTabBar_tabAt(this.h, pos.cPointer()))
 }
 
 func (this *QTabBar) CurrentIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabBar_currentIndex(this.h))
 }
 
 func (this *QTabBar) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabBar_count(this.h))
 }
 
 func (this *QTabBar) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QTabBar_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QTabBar_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) SetDrawBase(drawTheBase bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setDrawBase(this.h, (C.bool)(drawTheBase))
 }
 
 func (this *QTabBar) DrawBase() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_drawBase(this.h))
 }
 
 func (this *QTabBar) IconSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QTabBar_iconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) SetIconSize(size *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QTabBar_setIconSize(this.h, size.cPointer())
 }
 
 func (this *QTabBar) UsesScrollButtons() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_usesScrollButtons(this.h))
 }
 
 func (this *QTabBar) SetUsesScrollButtons(useButtons bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setUsesScrollButtons(this.h, (C.bool)(useButtons))
 }
 
 func (this *QTabBar) TabsClosable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_tabsClosable(this.h))
 }
 
 func (this *QTabBar) SetTabsClosable(closable bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setTabsClosable(this.h, (C.bool)(closable))
 }
 
 func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QTabBar_setTabButton(this.h, (C.int)(index), (C.int)(position), widget.cPointer())
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QTabBar_tabButton(this.h, (C.int)(index), (C.int)(position)))
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
+	defer runtime.KeepAlive(this)
 	return (QTabBar__SelectionBehavior)(C.QTabBar_selectionBehaviorOnRemove(this.h))
 }
 
 func (this *QTabBar) SetSelectionBehaviorOnRemove(behavior QTabBar__SelectionBehavior) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setSelectionBehaviorOnRemove(this.h, (C.int)(behavior))
 }
 
 func (this *QTabBar) Expanding() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_expanding(this.h))
 }
 
 func (this *QTabBar) SetExpanding(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setExpanding(this.h, (C.bool)(enabled))
 }
 
 func (this *QTabBar) IsMovable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_isMovable(this.h))
 }
 
 func (this *QTabBar) SetMovable(movable bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QTabBar) DocumentMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_documentMode(this.h))
 }
 
 func (this *QTabBar) SetDocumentMode(set bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setDocumentMode(this.h, (C.bool)(set))
 }
 
 func (this *QTabBar) AutoHide() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_autoHide(this.h))
 }
 
 func (this *QTabBar) SetAutoHide(hide bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setAutoHide(this.h, (C.bool)(hide))
 }
 
 func (this *QTabBar) ChangeCurrentOnDrag() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTabBar_changeCurrentOnDrag(this.h))
 }
 
 func (this *QTabBar) SetChangeCurrentOnDrag(change bool) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setChangeCurrentOnDrag(this.h, (C.bool)(change))
 }
 
 func (this *QTabBar) AccessibleTabName(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTabBar_accessibleTabName(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -394,6 +467,7 @@ func (this *QTabBar) AccessibleTabName(index int) string {
 }
 
 func (this *QTabBar) SetAccessibleTabName(index int, name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -402,10 +476,12 @@ func (this *QTabBar) SetAccessibleTabName(index int, name string) {
 }
 
 func (this *QTabBar) SetCurrentIndex(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_setCurrentIndex(this.h, (C.int)(index))
 }
 
 func (this *QTabBar) CurrentChanged(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_currentChanged(this.h, (C.int)(index))
 }
 func (this *QTabBar) OnCurrentChanged(slot func(index int)) {
@@ -426,6 +502,7 @@ func miqt_exec_callback_QTabBar_currentChanged(cb C.intptr_t, index C.int) {
 }
 
 func (this *QTabBar) TabCloseRequested(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_tabCloseRequested(this.h, (C.int)(index))
 }
 func (this *QTabBar) OnTabCloseRequested(slot func(index int)) {
@@ -446,6 +523,7 @@ func miqt_exec_callback_QTabBar_tabCloseRequested(cb C.intptr_t, index C.int) {
 }
 
 func (this *QTabBar) TabMoved(from int, to int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_tabMoved(this.h, (C.int)(from), (C.int)(to))
 }
 func (this *QTabBar) OnTabMoved(slot func(from int, to int)) {
@@ -468,6 +546,7 @@ func miqt_exec_callback_QTabBar_tabMoved(cb C.intptr_t, from C.int, to C.int) {
 }
 
 func (this *QTabBar) TabBarClicked(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_tabBarClicked(this.h, (C.int)(index))
 }
 func (this *QTabBar) OnTabBarClicked(slot func(index int)) {
@@ -488,6 +567,7 @@ func miqt_exec_callback_QTabBar_tabBarClicked(cb C.intptr_t, index C.int) {
 }
 
 func (this *QTabBar) TabBarDoubleClicked(index int) {
+	defer runtime.KeepAlive(this)
 	C.QTabBar_tabBarDoubleClicked(this.h, (C.int)(index))
 }
 func (this *QTabBar) OnTabBarDoubleClicked(slot func(index int)) {
@@ -553,6 +633,8 @@ func QTabBar_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) InitStyleOption(option *QStyleOptionTab, tabIndex int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTabBar_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), (C.int)(tabIndex))
@@ -565,6 +647,7 @@ func (this *QTabBar) InitStyleOption(option *QStyleOptionTab, tabIndex int) {
 
 // UpdateMicroFocus can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTabBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -577,6 +660,7 @@ func (this *QTabBar) UpdateMicroFocus() {
 
 // Create can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTabBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -589,6 +673,7 @@ func (this *QTabBar) Create() {
 
 // Destroy can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTabBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -601,6 +686,7 @@ func (this *QTabBar) Destroy() {
 
 // FocusNextChild can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTabBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -615,6 +701,7 @@ func (this *QTabBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTabBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -629,6 +716,7 @@ func (this *QTabBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTabBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -643,6 +731,7 @@ func (this *QTabBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTabBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -657,6 +746,7 @@ func (this *QTabBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -673,6 +763,8 @@ func (this *QTabBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTabBar that was directly constructed.
 func (this *QTabBar) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTabBar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -686,6 +778,7 @@ func (this *QTabBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTabBar) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTabBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -707,12 +800,14 @@ func miqt_exec_callback_QTabBar_sizeHint(self *C.QTabBar, cb C.intptr_t) *C.QSiz
 	}
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTabBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTabBar) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTabBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -734,12 +829,14 @@ func miqt_exec_callback_QTabBar_minimumSizeHint(self *C.QTabBar, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTabBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTabBar) callVirtualBase_TabSizeHint(index int) *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTabBar_virtualbase_tabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -764,12 +861,14 @@ func miqt_exec_callback_QTabBar_tabSizeHint(self *C.QTabBar, cb C.intptr_t, inde
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_TabSizeHint, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTabBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTabBar) callVirtualBase_MinimumTabSizeHint(index int) *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTabBar_virtualbase_minimumTabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -794,12 +893,14 @@ func miqt_exec_callback_QTabBar_minimumTabSizeHint(self *C.QTabBar, cb C.intptr_
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_MinimumTabSizeHint, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTabBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QTabBar) callVirtualBase_TabInserted(index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTabBar_virtualbase_tabInserted(unsafe.Pointer(this.h), (C.int)(index))
 
@@ -826,6 +927,7 @@ func miqt_exec_callback_QTabBar_tabInserted(self *C.QTabBar, cb C.intptr_t, inde
 }
 
 func (this *QTabBar) callVirtualBase_TabRemoved(index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QTabBar_virtualbase_tabRemoved(unsafe.Pointer(this.h), (C.int)(index))
 
@@ -852,6 +954,7 @@ func miqt_exec_callback_QTabBar_tabRemoved(self *C.QTabBar, cb C.intptr_t, index
 }
 
 func (this *QTabBar) callVirtualBase_TabLayoutChange() {
+	defer runtime.KeepAlive(this)
 
 	C.QTabBar_virtualbase_tabLayoutChange(unsafe.Pointer(this.h))
 
@@ -875,6 +978,8 @@ func miqt_exec_callback_QTabBar_tabLayoutChange(self *C.QTabBar, cb C.intptr_t) 
 }
 
 func (this *QTabBar) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QTabBar_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -903,6 +1008,8 @@ func miqt_exec_callback_QTabBar_event(self *C.QTabBar, cb C.intptr_t, param1 *C.
 }
 
 func (this *QTabBar) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -929,6 +1036,8 @@ func miqt_exec_callback_QTabBar_resizeEvent(self *C.QTabBar, cb C.intptr_t, para
 }
 
 func (this *QTabBar) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -955,6 +1064,8 @@ func miqt_exec_callback_QTabBar_showEvent(self *C.QTabBar, cb C.intptr_t, param1
 }
 
 func (this *QTabBar) callVirtualBase_HideEvent(param1 *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_hideEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -981,6 +1092,8 @@ func miqt_exec_callback_QTabBar_hideEvent(self *C.QTabBar, cb C.intptr_t, param1
 }
 
 func (this *QTabBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1007,6 +1120,8 @@ func miqt_exec_callback_QTabBar_paintEvent(self *C.QTabBar, cb C.intptr_t, param
 }
 
 func (this *QTabBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1033,6 +1148,8 @@ func miqt_exec_callback_QTabBar_mousePressEvent(self *C.QTabBar, cb C.intptr_t, 
 }
 
 func (this *QTabBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1059,6 +1176,8 @@ func miqt_exec_callback_QTabBar_mouseMoveEvent(self *C.QTabBar, cb C.intptr_t, p
 }
 
 func (this *QTabBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1085,6 +1204,8 @@ func miqt_exec_callback_QTabBar_mouseReleaseEvent(self *C.QTabBar, cb C.intptr_t
 }
 
 func (this *QTabBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1111,6 +1232,8 @@ func miqt_exec_callback_QTabBar_wheelEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1137,6 +1260,8 @@ func miqt_exec_callback_QTabBar_keyPressEvent(self *C.QTabBar, cb C.intptr_t, pa
 }
 
 func (this *QTabBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1163,6 +1288,8 @@ func miqt_exec_callback_QTabBar_changeEvent(self *C.QTabBar, cb C.intptr_t, para
 }
 
 func (this *QTabBar) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1189,6 +1316,7 @@ func miqt_exec_callback_QTabBar_timerEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTabBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1214,6 +1342,7 @@ func miqt_exec_callback_QTabBar_devType(self *C.QTabBar, cb C.intptr_t) C.int {
 }
 
 func (this *QTabBar) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QTabBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1240,6 +1369,7 @@ func miqt_exec_callback_QTabBar_setVisible(self *C.QTabBar, cb C.intptr_t, visib
 }
 
 func (this *QTabBar) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTabBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1268,6 +1398,7 @@ func miqt_exec_callback_QTabBar_heightForWidth(self *C.QTabBar, cb C.intptr_t, p
 }
 
 func (this *QTabBar) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTabBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1293,6 +1424,7 @@ func miqt_exec_callback_QTabBar_hasHeightForWidth(self *C.QTabBar, cb C.intptr_t
 }
 
 func (this *QTabBar) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTabBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1312,12 +1444,15 @@ func miqt_exec_callback_QTabBar_paintEngine(self *C.QTabBar, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTabBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1344,6 +1479,8 @@ func miqt_exec_callback_QTabBar_mouseDoubleClickEvent(self *C.QTabBar, cb C.intp
 }
 
 func (this *QTabBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1370,6 +1507,8 @@ func miqt_exec_callback_QTabBar_keyReleaseEvent(self *C.QTabBar, cb C.intptr_t, 
 }
 
 func (this *QTabBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1396,6 +1535,8 @@ func miqt_exec_callback_QTabBar_focusInEvent(self *C.QTabBar, cb C.intptr_t, eve
 }
 
 func (this *QTabBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1422,6 +1563,8 @@ func miqt_exec_callback_QTabBar_focusOutEvent(self *C.QTabBar, cb C.intptr_t, ev
 }
 
 func (this *QTabBar) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1448,6 +1591,8 @@ func miqt_exec_callback_QTabBar_enterEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1474,6 +1619,8 @@ func miqt_exec_callback_QTabBar_leaveEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1500,6 +1647,8 @@ func miqt_exec_callback_QTabBar_moveEvent(self *C.QTabBar, cb C.intptr_t, event 
 }
 
 func (this *QTabBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1526,6 +1675,8 @@ func miqt_exec_callback_QTabBar_closeEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1552,6 +1703,8 @@ func miqt_exec_callback_QTabBar_contextMenuEvent(self *C.QTabBar, cb C.intptr_t,
 }
 
 func (this *QTabBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1578,6 +1731,8 @@ func miqt_exec_callback_QTabBar_tabletEvent(self *C.QTabBar, cb C.intptr_t, even
 }
 
 func (this *QTabBar) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1604,6 +1759,8 @@ func miqt_exec_callback_QTabBar_actionEvent(self *C.QTabBar, cb C.intptr_t, even
 }
 
 func (this *QTabBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1630,6 +1787,8 @@ func miqt_exec_callback_QTabBar_dragEnterEvent(self *C.QTabBar, cb C.intptr_t, e
 }
 
 func (this *QTabBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1656,6 +1815,8 @@ func miqt_exec_callback_QTabBar_dragMoveEvent(self *C.QTabBar, cb C.intptr_t, ev
 }
 
 func (this *QTabBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1682,6 +1843,8 @@ func miqt_exec_callback_QTabBar_dragLeaveEvent(self *C.QTabBar, cb C.intptr_t, e
 }
 
 func (this *QTabBar) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1708,6 +1871,7 @@ func miqt_exec_callback_QTabBar_dropEvent(self *C.QTabBar, cb C.intptr_t, event 
 }
 
 func (this *QTabBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1749,6 +1913,7 @@ func miqt_exec_callback_QTabBar_nativeEvent(self *C.QTabBar, cb C.intptr_t, even
 }
 
 func (this *QTabBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTabBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1777,6 +1942,8 @@ func miqt_exec_callback_QTabBar_metric(self *C.QTabBar, cb C.intptr_t, param1 C.
 }
 
 func (this *QTabBar) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QTabBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1803,6 +1970,8 @@ func miqt_exec_callback_QTabBar_initPainter(self *C.QTabBar, cb C.intptr_t, pain
 }
 
 func (this *QTabBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTabBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1825,12 +1994,14 @@ func miqt_exec_callback_QTabBar_redirected(self *C.QTabBar, cb C.intptr_t, offse
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTabBar) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTabBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1850,12 +2021,15 @@ func miqt_exec_callback_QTabBar_sharedPainter(self *C.QTabBar, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTabBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QTabBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1882,6 +2056,7 @@ func miqt_exec_callback_QTabBar_inputMethodEvent(self *C.QTabBar, cb C.intptr_t,
 }
 
 func (this *QTabBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTabBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1906,12 +2081,14 @@ func miqt_exec_callback_QTabBar_inputMethodQuery(self *C.QTabBar, cb C.intptr_t,
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QTabBar_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QTabBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTabBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1940,6 +2117,9 @@ func miqt_exec_callback_QTabBar_focusNextPrevChild(self *C.QTabBar, cb C.intptr_
 }
 
 func (this *QTabBar) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTabBar_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1970,6 +2150,8 @@ func miqt_exec_callback_QTabBar_eventFilter(self *C.QTabBar, cb C.intptr_t, watc
 }
 
 func (this *QTabBar) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1996,6 +2178,8 @@ func miqt_exec_callback_QTabBar_childEvent(self *C.QTabBar, cb C.intptr_t, event
 }
 
 func (this *QTabBar) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTabBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2022,6 +2206,8 @@ func miqt_exec_callback_QTabBar_customEvent(self *C.QTabBar, cb C.intptr_t, even
 }
 
 func (this *QTabBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTabBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2048,6 +2234,8 @@ func miqt_exec_callback_QTabBar_connectNotify(self *C.QTabBar, cb C.intptr_t, si
 }
 
 func (this *QTabBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTabBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2085,8 +2273,9 @@ func (this *QTabBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTabBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTabBar) {
-		C.QTabBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTabBar_delete((*C.QTabBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

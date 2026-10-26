@@ -17,7 +17,13 @@ import (
 
 type QwtTextEngine struct {
 	h  *C.QwtTextEngine
-	gc *[1]*C.QwtTextEngine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtTextEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtTextEngine) cPointer() *C.QwtTextEngine {
@@ -50,11 +56,14 @@ func UnsafeNewQwtTextEngine(h unsafe.Pointer) *QwtTextEngine {
 
 // NewQwtTextEngine constructs a new QwtTextEngine object.
 func NewQwtTextEngine(param1 *QwtTextEngine) *QwtTextEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtTextEngine(C.QwtTextEngine_new(param1.cPointer()))
 }
 
 func (this *QwtTextEngine) HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -63,6 +72,8 @@ func (this *QwtTextEngine) HeightForWidth(font *qt.QFont, flags int, text string
 }
 
 func (this *QwtTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -73,6 +84,7 @@ func (this *QwtTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.
 }
 
 func (this *QwtTextEngine) MightRender(text string) bool {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -81,6 +93,8 @@ func (this *QwtTextEngine) MightRender(text string) bool {
 }
 
 func (this *QwtTextEngine) TextMargins(font *qt.QFont, text string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -89,6 +103,9 @@ func (this *QwtTextEngine) TextMargins(font *qt.QFont, text string, left *float6
 }
 
 func (this *QwtTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -97,6 +114,8 @@ func (this *QwtTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int
 }
 
 func (this *QwtTextEngine) OperatorAssign(param1 *QwtTextEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtTextEngine_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QwtTextEngine) OnHeightForWidth(slot func(font *qt.QFont, flags int, text string, width float64) float64) {
@@ -154,8 +173,9 @@ func miqt_exec_callback_QwtTextEngine_textSize(self *C.QwtTextEngine, cb C.intpt
 	slotval3 := text_ret
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSizeF)(virtualReturn.UnsafePointer())
+	return C.QwtTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
 
 }
 func (this *QwtTextEngine) OnMightRender(slot func(text string) bool) {
@@ -257,16 +277,24 @@ func (this *QwtTextEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtTextEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTextEngine) {
-		C.QwtTextEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtTextEngine_delete((*C.QwtTextEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPlainTextEngine struct {
 	h  *C.QwtPlainTextEngine
-	gc *[1]*C.QwtPlainTextEngine
+	gc *[1]unsafe.Pointer
 	*QwtTextEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlainTextEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTextEngine.miqtSetGC(gc)
 }
 
 func (this *QwtPlainTextEngine) cPointer() *C.QwtPlainTextEngine {
@@ -308,11 +336,14 @@ func NewQwtPlainTextEngine() *QwtPlainTextEngine {
 
 // NewQwtPlainTextEngine2 constructs a new QwtPlainTextEngine object.
 func NewQwtPlainTextEngine2(param1 *QwtPlainTextEngine) *QwtPlainTextEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPlainTextEngine(C.QwtPlainTextEngine_new2(param1.cPointer()))
 }
 
 func (this *QwtPlainTextEngine) HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -321,6 +352,8 @@ func (this *QwtPlainTextEngine) HeightForWidth(font *qt.QFont, flags int, text s
 }
 
 func (this *QwtPlainTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -331,6 +364,9 @@ func (this *QwtPlainTextEngine) TextSize(font *qt.QFont, flags int, text string)
 }
 
 func (this *QwtPlainTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -339,6 +375,7 @@ func (this *QwtPlainTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flag
 }
 
 func (this *QwtPlainTextEngine) MightRender(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -347,6 +384,8 @@ func (this *QwtPlainTextEngine) MightRender(param1 string) bool {
 }
 
 func (this *QwtPlainTextEngine) TextMargins(param1 *qt.QFont, param2 string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -355,10 +394,14 @@ func (this *QwtPlainTextEngine) TextMargins(param1 *qt.QFont, param2 string, lef
 }
 
 func (this *QwtPlainTextEngine) OperatorAssign(param1 *QwtPlainTextEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlainTextEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtPlainTextEngine) callVirtualBase_HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -399,6 +442,8 @@ func miqt_exec_callback_QwtPlainTextEngine_heightForWidth(self *C.QwtPlainTextEn
 }
 
 func (this *QwtPlainTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -434,12 +479,16 @@ func miqt_exec_callback_QwtPlainTextEngine_textSize(self *C.QwtPlainTextEngine, 
 	slotval3 := text_ret
 
 	virtualReturn := gofunc((&QwtPlainTextEngine{h: self}).callVirtualBase_TextSize, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSizeF)(virtualReturn.UnsafePointer())
+	return C.QwtPlainTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtPlainTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -479,6 +528,7 @@ func miqt_exec_callback_QwtPlainTextEngine_draw(self *C.QwtPlainTextEngine, cb C
 }
 
 func (this *QwtPlainTextEngine) callVirtualBase_MightRender(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -514,6 +564,8 @@ func miqt_exec_callback_QwtPlainTextEngine_mightRender(self *C.QwtPlainTextEngin
 }
 
 func (this *QwtPlainTextEngine) callVirtualBase_TextMargins(param1 *qt.QFont, param2 string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -567,16 +619,24 @@ func (this *QwtPlainTextEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlainTextEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlainTextEngine) {
-		C.QwtPlainTextEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlainTextEngine_delete((*C.QwtPlainTextEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtRichTextEngine struct {
 	h  *C.QwtRichTextEngine
-	gc *[1]*C.QwtRichTextEngine
+	gc *[1]unsafe.Pointer
 	*QwtTextEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtRichTextEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTextEngine.miqtSetGC(gc)
 }
 
 func (this *QwtRichTextEngine) cPointer() *C.QwtRichTextEngine {
@@ -618,11 +678,14 @@ func NewQwtRichTextEngine() *QwtRichTextEngine {
 
 // NewQwtRichTextEngine2 constructs a new QwtRichTextEngine object.
 func NewQwtRichTextEngine2(param1 *QwtRichTextEngine) *QwtRichTextEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtRichTextEngine(C.QwtRichTextEngine_new2(param1.cPointer()))
 }
 
 func (this *QwtRichTextEngine) HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -631,6 +694,8 @@ func (this *QwtRichTextEngine) HeightForWidth(font *qt.QFont, flags int, text st
 }
 
 func (this *QwtRichTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -641,6 +706,9 @@ func (this *QwtRichTextEngine) TextSize(font *qt.QFont, flags int, text string) 
 }
 
 func (this *QwtRichTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -649,6 +717,7 @@ func (this *QwtRichTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags
 }
 
 func (this *QwtRichTextEngine) MightRender(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -657,6 +726,8 @@ func (this *QwtRichTextEngine) MightRender(param1 string) bool {
 }
 
 func (this *QwtRichTextEngine) TextMargins(param1 *qt.QFont, param2 string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -665,10 +736,14 @@ func (this *QwtRichTextEngine) TextMargins(param1 *qt.QFont, param2 string, left
 }
 
 func (this *QwtRichTextEngine) OperatorAssign(param1 *QwtRichTextEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtRichTextEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtRichTextEngine) callVirtualBase_HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -709,6 +784,8 @@ func miqt_exec_callback_QwtRichTextEngine_heightForWidth(self *C.QwtRichTextEngi
 }
 
 func (this *QwtRichTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -744,12 +821,16 @@ func miqt_exec_callback_QwtRichTextEngine_textSize(self *C.QwtRichTextEngine, cb
 	slotval3 := text_ret
 
 	virtualReturn := gofunc((&QwtRichTextEngine{h: self}).callVirtualBase_TextSize, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSizeF)(virtualReturn.UnsafePointer())
+	return C.QwtRichTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtRichTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -789,6 +870,7 @@ func miqt_exec_callback_QwtRichTextEngine_draw(self *C.QwtRichTextEngine, cb C.i
 }
 
 func (this *QwtRichTextEngine) callVirtualBase_MightRender(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -824,6 +906,8 @@ func miqt_exec_callback_QwtRichTextEngine_mightRender(self *C.QwtRichTextEngine,
 }
 
 func (this *QwtRichTextEngine) callVirtualBase_TextMargins(param1 *qt.QFont, param2 string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -877,8 +961,9 @@ func (this *QwtRichTextEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtRichTextEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtRichTextEngine) {
-		C.QwtRichTextEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtRichTextEngine_delete((*C.QwtRichTextEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

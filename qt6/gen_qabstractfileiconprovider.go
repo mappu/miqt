@@ -34,7 +34,13 @@ const (
 
 type QAbstractFileIconProvider struct {
 	h  *C.QAbstractFileIconProvider
-	gc *[1]*C.QAbstractFileIconProvider
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractFileIconProvider) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractFileIconProvider) cPointer() *C.QAbstractFileIconProvider {
@@ -72,18 +78,23 @@ func NewQAbstractFileIconProvider() *QAbstractFileIconProvider {
 }
 
 func (this *QAbstractFileIconProvider) Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QAbstractFileIconProvider_icon(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractFileIconProvider) IconWithQFileInfo(param1 *QFileInfo) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQIcon(C.QAbstractFileIconProvider_iconWithQFileInfo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractFileIconProvider) Type(param1 *QFileInfo) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	var _ms C.struct_miqt_string = C.QAbstractFileIconProvider_type(this.h, param1.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -91,14 +102,17 @@ func (this *QAbstractFileIconProvider) Type(param1 *QFileInfo) string {
 }
 
 func (this *QAbstractFileIconProvider) SetOptions(options QAbstractFileIconProvider__Option) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractFileIconProvider_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QAbstractFileIconProvider) Options() QAbstractFileIconProvider__Option {
+	defer runtime.KeepAlive(this)
 	return (QAbstractFileIconProvider__Option)(C.QAbstractFileIconProvider_options(this.h))
 }
 
 func (this *QAbstractFileIconProvider) callVirtualBase_Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQIcon(C.QAbstractFileIconProvider_virtualbase_icon(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -123,12 +137,15 @@ func miqt_exec_callback_QAbstractFileIconProvider_icon(self *C.QAbstractFileIcon
 	slotval1 := (QAbstractFileIconProvider__IconType)(param1)
 
 	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_Icon, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractFileIconProvider_virtualreturncopy_QIcon(virtualReturn.cPointer())
 
 }
 
 func (this *QAbstractFileIconProvider) callVirtualBase_IconWithQFileInfo(param1 *QFileInfo) *QIcon {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := newQIcon(C.QAbstractFileIconProvider_virtualbase_iconWithQFileInfo(unsafe.Pointer(this.h), param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -153,12 +170,15 @@ func miqt_exec_callback_QAbstractFileIconProvider_iconWithQFileInfo(self *C.QAbs
 	slotval1 := newQFileInfo(param1)
 
 	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_IconWithQFileInfo, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractFileIconProvider_virtualreturncopy_QIcon(virtualReturn.cPointer())
 
 }
 
 func (this *QAbstractFileIconProvider) callVirtualBase_Type(param1 *QFileInfo) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _ms C.struct_miqt_string = C.QAbstractFileIconProvider_virtualbase_type(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -192,6 +212,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_type(self *C.QAbstractFileIcon
 }
 
 func (this *QAbstractFileIconProvider) callVirtualBase_SetOptions(options QAbstractFileIconProvider__Option) {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractFileIconProvider_virtualbase_setOptions(unsafe.Pointer(this.h), (C.int)(options))
 
@@ -218,6 +239,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_setOptions(self *C.QAbstractFi
 }
 
 func (this *QAbstractFileIconProvider) callVirtualBase_Options() QAbstractFileIconProvider__Option {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractFileIconProvider__Option)(C.QAbstractFileIconProvider_virtualbase_options(unsafe.Pointer(this.h)))
 
@@ -254,8 +276,9 @@ func (this *QAbstractFileIconProvider) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractFileIconProvider{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractFileIconProvider) {
-		C.QAbstractFileIconProvider_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractFileIconProvider_delete((*C.QAbstractFileIconProvider)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

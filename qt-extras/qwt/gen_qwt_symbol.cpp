@@ -62,7 +62,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QwtSymbol_boundingRect(this, handle__boundingRect);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QwtSymbol_virtualbase_boundingRect(const void* self);
@@ -291,6 +293,10 @@ bool QwtSymbol_override_virtual_renderSymbols(void* self, intptr_t slot) {
 
 void QwtSymbol_virtualbase_renderSymbols(const void* self, QPainter* param1, QPointF* param2, int numPoints) {
 	static_cast<const MiqtVirtualQwtSymbol*>(self)->QwtSymbol::renderSymbols(param1, param2, static_cast<int>(numPoints));
+}
+
+QRect* QwtSymbol_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QwtSymbol_delete(QwtSymbol* self) {

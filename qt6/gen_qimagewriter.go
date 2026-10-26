@@ -24,7 +24,13 @@ const (
 
 type QImageWriter struct {
 	h  *C.QImageWriter
-	gc *[1]*C.QImageWriter
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QImageWriter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QImageWriter) cPointer() *C.QImageWriter {
@@ -63,6 +69,7 @@ func NewQImageWriter() *QImageWriter {
 
 // NewQImageWriter2 constructs a new QImageWriter object.
 func NewQImageWriter2(device *QIODevice, format []byte) *QImageWriter {
+	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -111,6 +118,7 @@ func QImageWriter_Tr(sourceText string) string {
 }
 
 func (this *QImageWriter) SetFormat(format []byte) {
+	defer runtime.KeepAlive(this)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -122,6 +130,7 @@ func (this *QImageWriter) SetFormat(format []byte) {
 }
 
 func (this *QImageWriter) Format() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QImageWriter_format(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -129,14 +138,18 @@ func (this *QImageWriter) Format() []byte {
 }
 
 func (this *QImageWriter) SetDevice(device *QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QImageWriter_setDevice(this.h, device.cPointer())
 }
 
 func (this *QImageWriter) Device() *QIODevice {
+	defer runtime.KeepAlive(this)
 	return newQIODevice(C.QImageWriter_device(this.h))
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -145,6 +158,7 @@ func (this *QImageWriter) SetFileName(fileName string) {
 }
 
 func (this *QImageWriter) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QImageWriter_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -152,22 +166,27 @@ func (this *QImageWriter) FileName() string {
 }
 
 func (this *QImageWriter) SetQuality(quality int) {
+	defer runtime.KeepAlive(this)
 	C.QImageWriter_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QImageWriter) Quality() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageWriter_quality(this.h))
 }
 
 func (this *QImageWriter) SetCompression(compression int) {
+	defer runtime.KeepAlive(this)
 	C.QImageWriter_setCompression(this.h, (C.int)(compression))
 }
 
 func (this *QImageWriter) Compression() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageWriter_compression(this.h))
 }
 
 func (this *QImageWriter) SetSubType(typeVal []byte) {
+	defer runtime.KeepAlive(this)
 	typeVal_alias := C.struct_miqt_string{}
 	if len(typeVal) > 0 {
 		typeVal_alias.data = (*C.char)(unsafe.Pointer(&typeVal[0]))
@@ -179,6 +198,7 @@ func (this *QImageWriter) SetSubType(typeVal []byte) {
 }
 
 func (this *QImageWriter) SubType() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QImageWriter_subType(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -186,6 +206,7 @@ func (this *QImageWriter) SubType() []byte {
 }
 
 func (this *QImageWriter) SupportedSubTypes() [][]byte {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QImageWriter_supportedSubTypes(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -199,30 +220,37 @@ func (this *QImageWriter) SupportedSubTypes() [][]byte {
 }
 
 func (this *QImageWriter) SetOptimizedWrite(optimize bool) {
+	defer runtime.KeepAlive(this)
 	C.QImageWriter_setOptimizedWrite(this.h, (C.bool)(optimize))
 }
 
 func (this *QImageWriter) OptimizedWrite() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageWriter_optimizedWrite(this.h))
 }
 
 func (this *QImageWriter) SetProgressiveScanWrite(progressive bool) {
+	defer runtime.KeepAlive(this)
 	C.QImageWriter_setProgressiveScanWrite(this.h, (C.bool)(progressive))
 }
 
 func (this *QImageWriter) ProgressiveScanWrite() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageWriter_progressiveScanWrite(this.h))
 }
 
 func (this *QImageWriter) Transformation() QImageIOHandler__Transformation {
+	defer runtime.KeepAlive(this)
 	return (QImageIOHandler__Transformation)(C.QImageWriter_transformation(this.h))
 }
 
 func (this *QImageWriter) SetTransformation(orientation QImageIOHandler__Transformation) {
+	defer runtime.KeepAlive(this)
 	C.QImageWriter_setTransformation(this.h, (C.int)(orientation))
 }
 
 func (this *QImageWriter) SetText(key string, text string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -235,18 +263,23 @@ func (this *QImageWriter) SetText(key string, text string) {
 }
 
 func (this *QImageWriter) CanWrite() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageWriter_canWrite(this.h))
 }
 
 func (this *QImageWriter) Write(image *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 	return (bool)(C.QImageWriter_write(this.h, image.cPointer()))
 }
 
 func (this *QImageWriter) Error() QImageWriter__ImageWriterError {
+	defer runtime.KeepAlive(this)
 	return (QImageWriter__ImageWriterError)(C.QImageWriter_error(this.h))
 }
 
 func (this *QImageWriter) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QImageWriter_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -254,6 +287,7 @@ func (this *QImageWriter) ErrorString() string {
 }
 
 func (this *QImageWriter) SupportsOption(option QImageIOHandler__ImageOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageWriter_supportsOption(this.h, (C.int)(option)))
 }
 
@@ -337,8 +371,9 @@ func (this *QImageWriter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QImageWriter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImageWriter) {
-		C.QImageWriter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QImageWriter_delete((*C.QImageWriter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

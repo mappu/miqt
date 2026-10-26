@@ -133,7 +133,9 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLinearLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QGraphicsLinearLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
@@ -449,6 +451,10 @@ bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 	static_cast<MiqtVirtualQGraphicsLinearLayout*>(self)->QGraphicsLinearLayout::widgetEvent(e);
+}
+
+QSizeF* QGraphicsLinearLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
 }
 
 void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

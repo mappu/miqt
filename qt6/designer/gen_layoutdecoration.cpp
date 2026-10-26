@@ -71,7 +71,9 @@ public:
 
 		int sigval1 = index;
 		QRect* callback_return_value = miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(this, handle__itemInfo, sigval1);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -143,6 +145,8 @@ public:
 		int* callback_return_value_second_arr = static_cast<int*>(callback_return_value.values);
 		callback_return_value_QPair.first = static_cast<int>(callback_return_value_first_arr[0]);
 		callback_return_value_QPair.second = static_cast<int>(callback_return_value_second_arr[0]);
+		free(callback_return_value.keys);
+		free(callback_return_value.values);
 		return callback_return_value_QPair;
 	}
 
@@ -513,6 +517,10 @@ bool QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(void* s
 
 	self_cast->handle__adjustIndicator = slot;
 	return true;
+}
+
+QRect* QDesignerLayoutDecorationExtension_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QDesignerLayoutDecorationExtension_delete(QDesignerLayoutDecorationExtension* self) {

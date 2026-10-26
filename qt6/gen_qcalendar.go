@@ -33,7 +33,13 @@ const (
 
 type QCalendar struct {
 	h  *C.QCalendar
-	gc *[1]*C.QCalendar
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCalendar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCalendar) cPointer() *C.QCalendar {
@@ -88,71 +94,88 @@ func NewQCalendar3(name string) *QCalendar {
 
 // NewQCalendar4 constructs a new QCalendar object.
 func NewQCalendar4(id QCalendar__SystemId) *QCalendar {
+	defer runtime.KeepAlive(id)
 
 	return newQCalendar(C.QCalendar_new4(id.cPointer()))
 }
 
 func (this *QCalendar) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isValid(this.h))
 }
 
 func (this *QCalendar) DaysInMonth(month int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_daysInMonth(this.h, (C.int)(month)))
 }
 
 func (this *QCalendar) DaysInYear(year int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_daysInYear(this.h, (C.int)(year)))
 }
 
 func (this *QCalendar) MonthsInYear(year int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_monthsInYear(this.h, (C.int)(year)))
 }
 
 func (this *QCalendar) IsDateValid(year int, month int, day int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isDateValid(this.h, (C.int)(year), (C.int)(month), (C.int)(day)))
 }
 
 func (this *QCalendar) IsLeapYear(year int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isLeapYear(this.h, (C.int)(year)))
 }
 
 func (this *QCalendar) IsGregorian() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isGregorian(this.h))
 }
 
 func (this *QCalendar) IsLunar() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isLunar(this.h))
 }
 
 func (this *QCalendar) IsLuniSolar() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isLuniSolar(this.h))
 }
 
 func (this *QCalendar) IsSolar() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isSolar(this.h))
 }
 
 func (this *QCalendar) IsProleptic() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_isProleptic(this.h))
 }
 
 func (this *QCalendar) HasYearZero() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar_hasYearZero(this.h))
 }
 
 func (this *QCalendar) MaximumDaysInMonth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_maximumDaysInMonth(this.h))
 }
 
 func (this *QCalendar) MinimumDaysInMonth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_minimumDaysInMonth(this.h))
 }
 
 func (this *QCalendar) MaximumMonthsInYear() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_maximumMonthsInYear(this.h))
 }
 
 func (this *QCalendar) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCalendar_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -160,28 +183,37 @@ func (this *QCalendar) Name() string {
 }
 
 func (this *QCalendar) DateFromParts(year int, month int, day int) *QDate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QCalendar_dateFromParts(this.h, (C.int)(year), (C.int)(month), (C.int)(day)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) DateFromPartsWithParts(parts *QCalendar__YearMonthDay) *QDate {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parts)
 	_goptr := newQDate(C.QCalendar_dateFromPartsWithParts(this.h, parts.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) PartsFromDate(date QDate) *QCalendar__YearMonthDay {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	_goptr := newQCalendar__YearMonthDay(C.QCalendar_partsFromDate(this.h, date.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) DayOfWeek(date QDate) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	return (int)(C.QCalendar_dayOfWeek(this.h, date.cPointer()))
 }
 
 func (this *QCalendar) MonthName(locale *QLocale, month int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_monthName(this.h, locale.cPointer(), (C.int)(month))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -189,6 +221,8 @@ func (this *QCalendar) MonthName(locale *QLocale, month int) string {
 }
 
 func (this *QCalendar) StandaloneMonthName(locale *QLocale, month int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName(this.h, locale.cPointer(), (C.int)(month))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -196,6 +230,8 @@ func (this *QCalendar) StandaloneMonthName(locale *QLocale, month int) string {
 }
 
 func (this *QCalendar) WeekDayName(locale *QLocale, day int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_weekDayName(this.h, locale.cPointer(), (C.int)(day))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -203,6 +239,8 @@ func (this *QCalendar) WeekDayName(locale *QLocale, day int) string {
 }
 
 func (this *QCalendar) StandaloneWeekDayName(locale *QLocale, day int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_standaloneWeekDayName(this.h, locale.cPointer(), (C.int)(day))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -223,10 +261,13 @@ func QCalendar_AvailableCalendars() []string {
 }
 
 func (this *QCalendar) DaysInMonth2(month int, year int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar_daysInMonth2(this.h, (C.int)(month), (C.int)(year)))
 }
 
 func (this *QCalendar) MonthName2(locale *QLocale, month int, year int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_monthName2(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -234,6 +275,8 @@ func (this *QCalendar) MonthName2(locale *QLocale, month int, year int) string {
 }
 
 func (this *QCalendar) MonthName3(locale *QLocale, month int, year int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_monthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -241,6 +284,8 @@ func (this *QCalendar) MonthName3(locale *QLocale, month int, year int, format Q
 }
 
 func (this *QCalendar) StandaloneMonthName2(locale *QLocale, month int, year int) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName2(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -248,6 +293,8 @@ func (this *QCalendar) StandaloneMonthName2(locale *QLocale, month int, year int
 }
 
 func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -255,6 +302,8 @@ func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int
 }
 
 func (this *QCalendar) WeekDayName2(locale *QLocale, day int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_weekDayName2(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -262,6 +311,8 @@ func (this *QCalendar) WeekDayName2(locale *QLocale, day int, format QLocale__Fo
 }
 
 func (this *QCalendar) StandaloneWeekDayName2(locale *QLocale, day int, format QLocale__FormatType) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QCalendar_standaloneWeekDayName2(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -280,15 +331,22 @@ func (this *QCalendar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCalendar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar) {
-		C.QCalendar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCalendar_delete((*C.QCalendar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCalendar__YearMonthDay struct {
 	h  *C.QCalendar__YearMonthDay
-	gc *[1]*C.QCalendar__YearMonthDay
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCalendar__YearMonthDay) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
@@ -344,30 +402,37 @@ func NewQCalendar__YearMonthDay4(y int, m int, d int) *QCalendar__YearMonthDay {
 }
 
 func (this *QCalendar__YearMonthDay) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar__YearMonthDay_isValid(this.h))
 }
 
 func (this *QCalendar__YearMonthDay) Year() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar__YearMonthDay_year(this.h))
 }
 
 func (this *QCalendar__YearMonthDay) SetYear(year int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendar__YearMonthDay_setYear(this.h, (C.int)(year))
 }
 
 func (this *QCalendar__YearMonthDay) Month() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar__YearMonthDay_month(this.h))
 }
 
 func (this *QCalendar__YearMonthDay) SetMonth(month int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendar__YearMonthDay_setMonth(this.h, (C.int)(month))
 }
 
 func (this *QCalendar__YearMonthDay) Day() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendar__YearMonthDay_day(this.h))
 }
 
 func (this *QCalendar__YearMonthDay) SetDay(day int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendar__YearMonthDay_setDay(this.h, (C.int)(day))
 }
 
@@ -383,15 +448,22 @@ func (this *QCalendar__YearMonthDay) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCalendar__YearMonthDay{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar__YearMonthDay) {
-		C.QCalendar__YearMonthDay_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCalendar__YearMonthDay_delete((*C.QCalendar__YearMonthDay)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCalendar__SystemId struct {
 	h  *C.QCalendar__SystemId
-	gc *[1]*C.QCalendar__SystemId
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCalendar__SystemId) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCalendar__SystemId) cPointer() *C.QCalendar__SystemId {
@@ -429,10 +501,12 @@ func NewQCalendar__SystemId() *QCalendar__SystemId {
 }
 
 func (this *QCalendar__SystemId) Index() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QCalendar__SystemId_index(this.h))
 }
 
 func (this *QCalendar__SystemId) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendar__SystemId_isValid(this.h))
 }
 
@@ -448,8 +522,9 @@ func (this *QCalendar__SystemId) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCalendar__SystemId{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar__SystemId) {
-		C.QCalendar__SystemId_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCalendar__SystemId_delete((*C.QCalendar__SystemId)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

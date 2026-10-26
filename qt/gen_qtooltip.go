@@ -15,7 +15,13 @@ import (
 
 type QToolTip struct {
 	h  *C.QToolTip
-	gc *[1]*C.QToolTip
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QToolTip) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QToolTip) cPointer() *C.QToolTip {
@@ -47,6 +53,7 @@ func UnsafeNewQToolTip(h unsafe.Pointer) *QToolTip {
 }
 
 func QToolTip_ShowText(pos *QPoint, text string) {
+	defer runtime.KeepAlive(pos)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -55,6 +62,9 @@ func QToolTip_ShowText(pos *QPoint, text string) {
 }
 
 func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(w)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -63,6 +73,9 @@ func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
 }
 
 func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(w)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -92,6 +105,7 @@ func QToolTip_Palette() *QPalette {
 }
 
 func QToolTip_SetPalette(palette *QPalette) {
+	defer runtime.KeepAlive(palette)
 	C.QToolTip_setPalette(palette.cPointer())
 }
 
@@ -102,10 +116,13 @@ func QToolTip_Font() *QFont {
 }
 
 func QToolTip_SetFont(font *QFont) {
+	defer runtime.KeepAlive(font)
 	C.QToolTip_setFont(font.cPointer())
 }
 
 func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget) {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(w)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -125,8 +142,9 @@ func (this *QToolTip) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QToolTip{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QToolTip) {
-		C.QToolTip_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QToolTip_delete((*C.QToolTip)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

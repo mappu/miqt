@@ -238,6 +238,8 @@ bool QProgressDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QProgressDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QProgressDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self);
 void QProgressDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);

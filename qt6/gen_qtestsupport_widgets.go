@@ -16,8 +16,15 @@ import (
 
 type QTest__QTouchEventWidgetSequence struct {
 	h  *C.QTest__QTouchEventWidgetSequence
-	gc *[1]*C.QTest__QTouchEventWidgetSequence
+	gc *[1]unsafe.Pointer
 	*QTest__QTouchEventSequence
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTest__QTouchEventWidgetSequence) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QTest__QTouchEventSequence.miqtSetGC(gc)
 }
 
 func (this *QTest__QTouchEventWidgetSequence) cPointer() *C.QTest__QTouchEventWidgetSequence {
@@ -53,48 +60,83 @@ func UnsafeNewQTest__QTouchEventWidgetSequence(h unsafe.Pointer) *QTest__QTouchE
 
 // NewQTest__QTouchEventWidgetSequence constructs a new QTest::QTouchEventWidgetSequence object.
 func NewQTest__QTouchEventWidgetSequence(param1 *QTest__QTouchEventWidgetSequence) *QTest__QTouchEventWidgetSequence {
+	defer runtime.KeepAlive(param1)
 
 	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_new(param1.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press(this.h, (C.int)(touchId), pt.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move(this.h, (C.int)(touchId), pt.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release(this.h, (C.int)(touchId), pt.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_stationary(this.h, (C.int)(touchId)))
+	defer runtime.KeepAlive(this)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_stationary(this.h, (C.int)(touchId)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTest__QTouchEventWidgetSequence_commit(this.h, (C.bool)(processEvents)))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) OperatorAssign(param1 *QTest__QTouchEventWidgetSequence) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QTest__QTouchEventWidgetSequence_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	defer runtime.KeepAlive(widget)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	defer runtime.KeepAlive(widget)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	defer runtime.KeepAlive(widget)
+	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 // Point can only be called from a QTest__QTouchEventWidgetSequence that was directly constructed.
 func (this *QTest__QTouchEventWidgetSequence) Point(touchId int) *QEventPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQEventPoint(C.QTest__QTouchEventWidgetSequence_protectedbase_point(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(touchId)))
@@ -109,6 +151,7 @@ func (this *QTest__QTouchEventWidgetSequence) Point(touchId int) *QEventPoint {
 
 // PointOrPreviousPoint can only be called from a QTest__QTouchEventWidgetSequence that was directly constructed.
 func (this *QTest__QTouchEventWidgetSequence) PointOrPreviousPoint(touchId int) *QEventPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQEventPoint(C.QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(touchId)))
@@ -122,6 +165,7 @@ func (this *QTest__QTouchEventWidgetSequence) PointOrPreviousPoint(touchId int) 
 }
 
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
+	defer runtime.KeepAlive(this)
 
 	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_virtualbase_stationary(unsafe.Pointer(this.h), (C.int)(touchId)))
 
@@ -144,12 +188,14 @@ func miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(self *C.QTes
 	slotval1 := (int)(touchId)
 
 	virtualReturn := gofunc((&QTest__QTouchEventWidgetSequence{h: self}).callVirtualBase_Stationary, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Commit(processEvents bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTest__QTouchEventWidgetSequence_virtualbase_commit(unsafe.Pointer(this.h), (C.bool)(processEvents)))
 
@@ -189,8 +235,9 @@ func (this *QTest__QTouchEventWidgetSequence) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTest__QTouchEventWidgetSequence{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTest__QTouchEventWidgetSequence) {
-		C.QTest__QTouchEventWidgetSequence_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTest__QTouchEventWidgetSequence_delete((*C.QTest__QTouchEventWidgetSequence)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -152,6 +152,8 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot);
 QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size);
 bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t slot);
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags);
+QPoint* QPaintEngine_virtualreturncopy_QPoint(QPoint* src);
+QPixmap* QPaintEngine_virtualreturncopy_QPixmap(QPixmap* src);
 
 void QPaintEngine_delete(QPaintEngine* self);
 

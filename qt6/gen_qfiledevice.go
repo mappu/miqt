@@ -75,8 +75,15 @@ const (
 
 type QFileDevice struct {
 	h  *C.QFileDevice
-	gc *[1]*C.QFileDevice
+	gc *[1]unsafe.Pointer
 	*QIODevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFileDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QIODevice.miqtSetGC(gc)
 }
 
 func (this *QFileDevice) cPointer() *C.QFileDevice {
@@ -111,10 +118,12 @@ func UnsafeNewQFileDevice(h unsafe.Pointer) *QFileDevice {
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFileDevice_metaObject(this.h))
 }
 
 func (this *QFileDevice) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFileDevice_metacast(this.h, param1_Cstring))
@@ -130,26 +139,32 @@ func QFileDevice_Tr(s string) string {
 }
 
 func (this *QFileDevice) Error() QFileDevice__FileError {
+	defer runtime.KeepAlive(this)
 	return (QFileDevice__FileError)(C.QFileDevice_error(this.h))
 }
 
 func (this *QFileDevice) UnsetError() {
+	defer runtime.KeepAlive(this)
 	C.QFileDevice_unsetError(this.h)
 }
 
 func (this *QFileDevice) Close() {
+	defer runtime.KeepAlive(this)
 	C.QFileDevice_close(this.h)
 }
 
 func (this *QFileDevice) IsSequential() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_isSequential(this.h))
 }
 
 func (this *QFileDevice) Handle() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFileDevice_handle(this.h))
 }
 
 func (this *QFileDevice) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFileDevice_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -157,52 +172,65 @@ func (this *QFileDevice) FileName() string {
 }
 
 func (this *QFileDevice) Pos() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QFileDevice_pos(this.h))
 }
 
 func (this *QFileDevice) Seek(offset int64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_seek(this.h, (C.longlong)(offset)))
 }
 
 func (this *QFileDevice) AtEnd() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_atEnd(this.h))
 }
 
 func (this *QFileDevice) Flush() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_flush(this.h))
 }
 
 func (this *QFileDevice) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QFileDevice_size(this.h))
 }
 
 func (this *QFileDevice) Resize(sz int64) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_resize(this.h, (C.longlong)(sz)))
 }
 
 func (this *QFileDevice) Permissions() QFileDevice__Permission {
+	defer runtime.KeepAlive(this)
 	return (QFileDevice__Permission)(C.QFileDevice_permissions(this.h))
 }
 
 func (this *QFileDevice) SetPermissions(permissionSpec QFileDevice__Permission) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_setPermissions(this.h, (C.int)(permissionSpec)))
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QFileDevice_map(this.h, (C.longlong)(offset), (C.longlong)(size))))
 }
 
 func (this *QFileDevice) Unmap(address *byte) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFileDevice_unmap(this.h, (*C.uchar)(unsafe.Pointer(address))))
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QFileDevice_fileTime(this.h, (C.int)(time)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileDevice) SetFileTime(newDate *QDateTime, fileTime QFileDevice__FileTime) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newDate)
 	return (bool)(C.QFileDevice_setFileTime(this.h, newDate.cPointer(), (C.int)(fileTime)))
 }
 
@@ -229,6 +257,7 @@ func QFileDevice_Tr3(s string, c string, n int) string {
 }
 
 func (this *QFileDevice) Map2(offset int64, size int64, flags QFileDevice__MemoryMapFlag) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QFileDevice_map2(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags))))
 }
 
@@ -244,8 +273,9 @@ func (this *QFileDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFileDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileDevice) {
-		C.QFileDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFileDevice_delete((*C.QFileDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

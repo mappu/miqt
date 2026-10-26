@@ -155,6 +155,8 @@ bool QsciLexerJavaScript_override_virtual_connectNotify(void* self, intptr_t slo
 void QsciLexerJavaScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerJavaScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerJavaScript_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerJavaScript_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerJavaScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerJavaScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

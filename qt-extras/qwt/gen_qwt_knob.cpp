@@ -118,7 +118,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtKnob_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtKnob_virtualbase_sizeHint(const void* self);
@@ -133,7 +135,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtKnob_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtKnob_virtualbase_minimumSizeHint(const void* self);
@@ -900,7 +904,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QwtKnob_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QwtKnob_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1976,6 +1982,14 @@ bool QwtKnob_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtKnob_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtKnob*>(self)->QwtKnob::disconnectNotify(*signal);
+}
+
+QSize* QwtKnob_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QwtKnob_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QwtKnob_protectedbase_incrementValue(bool* _dynamic_cast_ok, void* self, int stepCount) {

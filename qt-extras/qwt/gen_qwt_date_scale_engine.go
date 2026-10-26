@@ -17,8 +17,15 @@ import (
 
 type QwtDateScaleEngine struct {
 	h  *C.QwtDateScaleEngine
-	gc *[1]*C.QwtDateScaleEngine
+	gc *[1]unsafe.Pointer
 	*QwtLinearScaleEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtDateScaleEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtLinearScaleEngine.miqtSetGC(gc)
 }
 
 func (this *QwtDateScaleEngine) cPointer() *C.QwtDateScaleEngine {
@@ -60,6 +67,7 @@ func NewQwtDateScaleEngine() *QwtDateScaleEngine {
 
 // NewQwtDateScaleEngine2 constructs a new QwtDateScaleEngine object.
 func NewQwtDateScaleEngine2(param1 *QwtDateScaleEngine) *QwtDateScaleEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtDateScaleEngine(C.QwtDateScaleEngine_new2(param1.cPointer()))
 }
@@ -71,63 +79,81 @@ func NewQwtDateScaleEngine3(param1 qt.TimeSpec) *QwtDateScaleEngine {
 }
 
 func (this *QwtDateScaleEngine) SetTimeSpec(timeSpec qt.TimeSpec) {
+	defer runtime.KeepAlive(this)
 	C.QwtDateScaleEngine_setTimeSpec(this.h, (C.int)(timeSpec))
 }
 
 func (this *QwtDateScaleEngine) TimeSpec() qt.TimeSpec {
+	defer runtime.KeepAlive(this)
 	return (qt.TimeSpec)(C.QwtDateScaleEngine_timeSpec(this.h))
 }
 
 func (this *QwtDateScaleEngine) SetUtcOffset(seconds int) {
+	defer runtime.KeepAlive(this)
 	C.QwtDateScaleEngine_setUtcOffset(this.h, (C.int)(seconds))
 }
 
 func (this *QwtDateScaleEngine) UtcOffset() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtDateScaleEngine_utcOffset(this.h))
 }
 
 func (this *QwtDateScaleEngine) SetWeek0Type(week0Type QwtDate__Week0Type) {
+	defer runtime.KeepAlive(this)
 	C.QwtDateScaleEngine_setWeek0Type(this.h, (C.int)(week0Type))
 }
 
 func (this *QwtDateScaleEngine) Week0Type() QwtDate__Week0Type {
+	defer runtime.KeepAlive(this)
 	return (QwtDate__Week0Type)(C.QwtDateScaleEngine_week0Type(this.h))
 }
 
 func (this *QwtDateScaleEngine) SetMaxWeeks(maxWeeks int) {
+	defer runtime.KeepAlive(this)
 	C.QwtDateScaleEngine_setMaxWeeks(this.h, (C.int)(maxWeeks))
 }
 
 func (this *QwtDateScaleEngine) MaxWeeks() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtDateScaleEngine_maxWeeks(this.h))
 }
 
 func (this *QwtDateScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtDateScaleEngine_autoScale(this.h, (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 }
 
 func (this *QwtDateScaleEngine) DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtDateScaleEngine_divideScale(this.h, (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtDateScaleEngine) IntervalType(param1 *qt.QDateTime, param2 *qt.QDateTime, maxSteps int) QwtDate__IntervalType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	return (QwtDate__IntervalType)(C.QwtDateScaleEngine_intervalType(this.h, (*C.QDateTime)(param1.UnsafePointer()), (*C.QDateTime)(param2.UnsafePointer()), (C.int)(maxSteps)))
 }
 
 func (this *QwtDateScaleEngine) ToDateTime(param1 float64) *qt.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QwtDateScaleEngine_toDateTime(this.h, (C.double)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtDateScaleEngine) OperatorAssign(param1 *QwtDateScaleEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtDateScaleEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 // Align can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) Align(param1 *QwtInterval, stepSize float64) QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtDateScaleEngine_protectedbase_align(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(stepSize)))
@@ -144,6 +170,8 @@ func (this *QwtDateScaleEngine) Align(param1 *QwtInterval, stepSize float64) Qwt
 
 // BuildTicks can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64, maxMinorSteps int, ticks []float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	ticks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(ticks))))
 	defer C.free(unsafe.Pointer(ticks_CArray_ptr))
 	ticks_CArray := unsafe.Slice(ticks_CArray_ptr, len(ticks))
@@ -163,6 +191,8 @@ func (this *QwtDateScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64
 
 // BuildMajorTicks can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize float64) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtDateScaleEngine_protectedbase_buildMajorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), interval.cPointer(), (C.double)(stepSize))
@@ -183,6 +213,7 @@ func (this *QwtDateScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize 
 
 // BuildMinorTicks can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSteps int, stepSize float64, minorTicks []float64, mediumTicks []float64) {
+	defer runtime.KeepAlive(this)
 	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
 	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
 	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
@@ -216,6 +247,8 @@ func (this *QwtDateScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSt
 
 // Contains can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtDateScaleEngine_protectedbase_contains(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
@@ -230,6 +263,8 @@ func (this *QwtDateScaleEngine) Contains(param1 *QwtInterval, value float64) boo
 
 // Strip can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray_ptr))
 	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
@@ -257,6 +292,7 @@ func (this *QwtDateScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []f
 
 // DivideInterval can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) DivideInterval(intervalSize float64, numSteps int) float64 {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtDateScaleEngine_protectedbase_divideInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(intervalSize), (C.int)(numSteps)))
@@ -271,6 +307,7 @@ func (this *QwtDateScaleEngine) DivideInterval(intervalSize float64, numSteps in
 
 // BuildInterval can only be called from a QwtDateScaleEngine that was directly constructed.
 func (this *QwtDateScaleEngine) BuildInterval(value float64) QwtInterval {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtDateScaleEngine_protectedbase_buildInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value)))
@@ -286,6 +323,7 @@ func (this *QwtDateScaleEngine) BuildInterval(value float64) QwtInterval {
 }
 
 func (this *QwtDateScaleEngine) callVirtualBase_AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtDateScaleEngine_virtualbase_autoScale(unsafe.Pointer(this.h), (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 
@@ -318,6 +356,7 @@ func miqt_exec_callback_QwtDateScaleEngine_autoScale(self *C.QwtDateScaleEngine,
 }
 
 func (this *QwtDateScaleEngine) callVirtualBase_DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtScaleDiv(C.QwtDateScaleEngine_virtualbase_divideScale(unsafe.Pointer(this.h), (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -350,12 +389,16 @@ func miqt_exec_callback_QwtDateScaleEngine_divideScale(self *C.QwtDateScaleEngin
 	slotval5 := (float64)(stepSize)
 
 	virtualReturn := gofunc((&QwtDateScaleEngine{h: self}).callVirtualBase_DivideScale, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtDateScaleEngine_virtualreturncopy_QwtScaleDiv(virtualReturn.cPointer())
 
 }
 
 func (this *QwtDateScaleEngine) callVirtualBase_IntervalType(param1 *qt.QDateTime, param2 *qt.QDateTime, maxSteps int) QwtDate__IntervalType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (QwtDate__IntervalType)(C.QwtDateScaleEngine_virtualbase_intervalType(unsafe.Pointer(this.h), (*C.QDateTime)(param1.UnsafePointer()), (*C.QDateTime)(param2.UnsafePointer()), (C.int)(maxSteps)))
 
@@ -388,6 +431,8 @@ func miqt_exec_callback_QwtDateScaleEngine_intervalType(self *C.QwtDateScaleEngi
 }
 
 func (this *QwtDateScaleEngine) callVirtualBase_AlignDate(param1 *qt.QDateTime, stepSize float64, param3 QwtDate__IntervalType, up bool) *qt.QDateTime {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QwtDateScaleEngine_virtualbase_alignDate(unsafe.Pointer(this.h), (*C.QDateTime)(param1.UnsafePointer()), (C.double)(stepSize), (C.int)(param3), (C.bool)(up))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -418,8 +463,9 @@ func miqt_exec_callback_QwtDateScaleEngine_alignDate(self *C.QwtDateScaleEngine,
 	slotval4 := (bool)(up)
 
 	virtualReturn := gofunc((&QwtDateScaleEngine{h: self}).callVirtualBase_AlignDate, slotval1, slotval2, slotval3, slotval4)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QDateTime)(virtualReturn.UnsafePointer())
+	return C.QwtDateScaleEngine_virtualreturncopy_QDateTime((*C.QDateTime)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -435,8 +481,9 @@ func (this *QwtDateScaleEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtDateScaleEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDateScaleEngine) {
-		C.QwtDateScaleEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtDateScaleEngine_delete((*C.QwtDateScaleEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

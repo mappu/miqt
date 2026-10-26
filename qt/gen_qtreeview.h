@@ -398,6 +398,12 @@ bool QTreeView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTreeView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTreeView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QTreeView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QTreeView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QRegion* QTreeView_virtualreturncopy_QRegion(QRegion* src);
+QSize* QTreeView_virtualreturncopy_QSize(QSize* src);
+QVariant* QTreeView_virtualreturncopy_QVariant(QVariant* src);
+QStyleOptionViewItem* QTreeView_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src);
 
 void QTreeView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
 void QTreeView_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);

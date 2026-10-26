@@ -16,7 +16,13 @@ import (
 
 type QPdfLink struct {
 	h  *C.QPdfLink
-	gc *[1]*C.QPdfLink
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfLink) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfLink) cPointer() *C.QPdfLink {
@@ -55,43 +61,54 @@ func NewQPdfLink() *QPdfLink {
 
 // NewQPdfLink2 constructs a new QPdfLink object.
 func NewQPdfLink2(other *QPdfLink) *QPdfLink {
+	defer runtime.KeepAlive(other)
 
 	return newQPdfLink(C.QPdfLink_new2(other.cPointer()))
 }
 
 func (this *QPdfLink) OperatorAssign(other *QPdfLink) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfLink_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPdfLink) Swap(other *QPdfLink) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfLink_swap(this.h, other.cPointer())
 }
 
 func (this *QPdfLink) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfLink_isValid(this.h))
 }
 
 func (this *QPdfLink) Page() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfLink_page(this.h))
 }
 
 func (this *QPdfLink) Location() *qt6.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QPdfLink_location(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfLink) Zoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPdfLink_zoom(this.h))
 }
 
 func (this *QPdfLink) Url() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QPdfLink_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfLink) ContextBefore() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfLink_contextBefore(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -99,6 +116,7 @@ func (this *QPdfLink) ContextBefore() string {
 }
 
 func (this *QPdfLink) ContextAfter() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfLink_contextAfter(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -106,6 +124,7 @@ func (this *QPdfLink) ContextAfter() string {
 }
 
 func (this *QPdfLink) Rectangles() []qt6.QRectF {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPdfLink_rectangles(this.h)
 	_ret := make([]qt6.QRectF, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -118,6 +137,7 @@ func (this *QPdfLink) Rectangles() []qt6.QRectF {
 }
 
 func (this *QPdfLink) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfLink_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -125,10 +145,12 @@ func (this *QPdfLink) ToString() string {
 }
 
 func (this *QPdfLink) CopyToClipboard() {
+	defer runtime.KeepAlive(this)
 	C.QPdfLink_copyToClipboard(this.h)
 }
 
 func (this *QPdfLink) CopyToClipboardWithMode(mode qt6.QClipboard__Mode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfLink_copyToClipboardWithMode(this.h, (C.int)(mode))
 }
 
@@ -144,8 +166,9 @@ func (this *QPdfLink) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfLink{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfLink) {
-		C.QPdfLink_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfLink_delete((*C.QPdfLink)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

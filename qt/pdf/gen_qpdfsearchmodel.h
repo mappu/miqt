@@ -152,6 +152,9 @@ bool QPdfSearchModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPdfSearchModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfSearchModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfSearchModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QPdfSearchModel_virtualreturncopy_QVariant(QVariant* src);
+QModelIndex* QPdfSearchModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QSize* QPdfSearchModel_virtualreturncopy_QSize(QSize* src);
 
 void QPdfSearchModel_protectedbase_updatePage(bool* _dynamic_cast_ok, void* self, int page);
 void QPdfSearchModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);

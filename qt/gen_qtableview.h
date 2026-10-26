@@ -366,6 +366,12 @@ bool QTableView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTableView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTableView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QTableView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QTableView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QStyleOptionViewItem* QTableView_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src);
+QRegion* QTableView_virtualreturncopy_QRegion(QRegion* src);
+QSize* QTableView_virtualreturncopy_QSize(QSize* src);
+QVariant* QTableView_virtualreturncopy_QVariant(QVariant* src);
 
 void QTableView_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex);
 void QTableView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self, int column, int oldIndex, int newIndex);

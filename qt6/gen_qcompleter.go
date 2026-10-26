@@ -32,8 +32,15 @@ const (
 
 type QCompleter struct {
 	h  *C.QCompleter
-	gc *[1]*C.QCompleter
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCompleter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QCompleter) cPointer() *C.QCompleter {
@@ -75,6 +82,7 @@ func NewQCompleter() *QCompleter {
 
 // NewQCompleter2 constructs a new QCompleter object.
 func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
+	defer runtime.KeepAlive(model)
 
 	return newQCompleter(C.QCompleter_new2(model.cPointer()))
 }
@@ -98,18 +106,22 @@ func NewQCompleter3(completions []string) *QCompleter {
 
 // NewQCompleter4 constructs a new QCompleter object.
 func NewQCompleter4(parent *QObject) *QCompleter {
+	defer runtime.KeepAlive(parent)
 
 	return newQCompleter(C.QCompleter_new4(parent.cPointer()))
 }
 
 // NewQCompleter5 constructs a new QCompleter object.
 func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
+	defer runtime.KeepAlive(model)
+	defer runtime.KeepAlive(parent)
 
 	return newQCompleter(C.QCompleter_new5(model.cPointer(), parent.cPointer()))
 }
 
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
+	defer runtime.KeepAlive(parent)
 	completions_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray_ptr))
 	completions_CArray := unsafe.Slice(completions_CArray_ptr, len(completions))
@@ -126,10 +138,12 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QCompleter_metaObject(this.h))
 }
 
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCompleter_metacast(this.h, param1_Cstring))
@@ -145,108 +159,137 @@ func QCompleter_Tr(s string) string {
 }
 
 func (this *QCompleter) SetWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QCompleter_setWidget(this.h, widget.cPointer())
 }
 
 func (this *QCompleter) Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 	return newQWidget(C.QCompleter_widget(this.h))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QCompleter_setModel(this.h, c.cPointer())
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QCompleter_model(this.h))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setCompletionMode(this.h, (C.int)(mode))
 }
 
 func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
+	defer runtime.KeepAlive(this)
 	return (QCompleter__CompletionMode)(C.QCompleter_completionMode(this.h))
 }
 
 func (this *QCompleter) SetFilterMode(filterMode MatchFlag) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setFilterMode(this.h, (C.int)(filterMode))
 }
 
 func (this *QCompleter) FilterMode() MatchFlag {
+	defer runtime.KeepAlive(this)
 	return (MatchFlag)(C.QCompleter_filterMode(this.h))
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemView(C.QCompleter_popup(this.h))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(popup)
 	C.QCompleter_setPopup(this.h, popup.cPointer())
 }
 
 func (this *QCompleter) SetCaseSensitivity(caseSensitivity CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setCaseSensitivity(this.h, (C.int)(caseSensitivity))
 }
 
 func (this *QCompleter) CaseSensitivity() CaseSensitivity {
+	defer runtime.KeepAlive(this)
 	return (CaseSensitivity)(C.QCompleter_caseSensitivity(this.h))
 }
 
 func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setModelSorting(this.h, (C.int)(sorting))
 }
 
 func (this *QCompleter) ModelSorting() QCompleter__ModelSorting {
+	defer runtime.KeepAlive(this)
 	return (QCompleter__ModelSorting)(C.QCompleter_modelSorting(this.h))
 }
 
 func (this *QCompleter) SetCompletionColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setCompletionColumn(this.h, (C.int)(column))
 }
 
 func (this *QCompleter) CompletionColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCompleter_completionColumn(this.h))
 }
 
 func (this *QCompleter) SetCompletionRole(role int) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setCompletionRole(this.h, (C.int)(role))
 }
 
 func (this *QCompleter) CompletionRole() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCompleter_completionRole(this.h))
 }
 
 func (this *QCompleter) WrapAround() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCompleter_wrapAround(this.h))
 }
 
 func (this *QCompleter) MaxVisibleItems() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCompleter_maxVisibleItems(this.h))
 }
 
 func (this *QCompleter) SetMaxVisibleItems(maxItems int) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setMaxVisibleItems(this.h, (C.int)(maxItems))
 }
 
 func (this *QCompleter) CompletionCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCompleter_completionCount(this.h))
 }
 
 func (this *QCompleter) SetCurrentRow(row int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCompleter_setCurrentRow(this.h, (C.int)(row)))
 }
 
 func (this *QCompleter) CurrentRow() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCompleter_currentRow(this.h))
 }
 
 func (this *QCompleter) CurrentIndex() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QCompleter_currentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCompleter) CurrentCompletion() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCompleter_currentCompletion(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -254,10 +297,12 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QCompleter_completionModel(this.h))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCompleter_completionPrefix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -265,6 +310,7 @@ func (this *QCompleter) CompletionPrefix() string {
 }
 
 func (this *QCompleter) SetCompletionPrefix(prefix string) {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -273,14 +319,18 @@ func (this *QCompleter) SetCompletionPrefix(prefix string) {
 }
 
 func (this *QCompleter) Complete() {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_complete(this.h)
 }
 
 func (this *QCompleter) SetWrapAround(wrap bool) {
+	defer runtime.KeepAlive(this)
 	C.QCompleter_setWrapAround(this.h, (C.bool)(wrap))
 }
 
 func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	var _ms C.struct_miqt_string = C.QCompleter_pathFromIndex(this.h, index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -288,6 +338,7 @@ func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
 }
 
 func (this *QCompleter) SplitPath(path string) []string {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -305,6 +356,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 }
 
 func (this *QCompleter) Activated(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -332,6 +384,8 @@ func miqt_exec_callback_QCompleter_activated(cb C.intptr_t, text C.struct_miqt_s
 }
 
 func (this *QCompleter) ActivatedWithIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QCompleter_activatedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnActivatedWithIndex(slot func(index *QModelIndex)) {
@@ -352,6 +406,7 @@ func miqt_exec_callback_QCompleter_activatedWithIndex(cb C.intptr_t, index *C.QM
 }
 
 func (this *QCompleter) Highlighted(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -379,6 +434,8 @@ func miqt_exec_callback_QCompleter_highlighted(cb C.intptr_t, text C.struct_miqt
 }
 
 func (this *QCompleter) HighlightedWithIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QCompleter_highlightedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnHighlightedWithIndex(slot func(index *QModelIndex)) {
@@ -421,11 +478,14 @@ func QCompleter_Tr3(s string, c string, n int) string {
 }
 
 func (this *QCompleter) CompleteWithRect(rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QCompleter_completeWithRect(this.h, rect.cPointer())
 }
 
 // Sender can only be called from a QCompleter that was directly constructed.
 func (this *QCompleter) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QCompleter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -440,6 +500,7 @@ func (this *QCompleter) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QCompleter that was directly constructed.
 func (this *QCompleter) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCompleter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -454,6 +515,7 @@ func (this *QCompleter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCompleter that was directly constructed.
 func (this *QCompleter) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -470,6 +532,8 @@ func (this *QCompleter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCompleter that was directly constructed.
 func (this *QCompleter) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCompleter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -483,6 +547,8 @@ func (this *QCompleter) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QCompleter) callVirtualBase_PathFromIndex(index *QModelIndex) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _ms C.struct_miqt_string = C.QCompleter_virtualbase_pathFromIndex(unsafe.Pointer(this.h), index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -516,6 +582,7 @@ func miqt_exec_callback_QCompleter_pathFromIndex(self *C.QCompleter, cb C.intptr
 }
 
 func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -569,6 +636,9 @@ func miqt_exec_callback_QCompleter_splitPath(self *C.QCompleter, cb C.intptr_t, 
 }
 
 func (this *QCompleter) callVirtualBase_EventFilter(o *QObject, e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(o)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QCompleter_virtualbase_eventFilter(unsafe.Pointer(this.h), o.cPointer(), e.cPointer()))
 
@@ -599,6 +669,8 @@ func miqt_exec_callback_QCompleter_eventFilter(self *C.QCompleter, cb C.intptr_t
 }
 
 func (this *QCompleter) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QCompleter_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -627,6 +699,8 @@ func miqt_exec_callback_QCompleter_event(self *C.QCompleter, cb C.intptr_t, para
 }
 
 func (this *QCompleter) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCompleter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -653,6 +727,8 @@ func miqt_exec_callback_QCompleter_timerEvent(self *C.QCompleter, cb C.intptr_t,
 }
 
 func (this *QCompleter) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCompleter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -679,6 +755,8 @@ func miqt_exec_callback_QCompleter_childEvent(self *C.QCompleter, cb C.intptr_t,
 }
 
 func (this *QCompleter) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCompleter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -705,6 +783,8 @@ func miqt_exec_callback_QCompleter_customEvent(self *C.QCompleter, cb C.intptr_t
 }
 
 func (this *QCompleter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCompleter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -731,6 +811,8 @@ func miqt_exec_callback_QCompleter_connectNotify(self *C.QCompleter, cb C.intptr
 }
 
 func (this *QCompleter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCompleter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -768,8 +850,9 @@ func (this *QCompleter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCompleter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCompleter) {
-		C.QCompleter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCompleter_delete((*C.QCompleter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

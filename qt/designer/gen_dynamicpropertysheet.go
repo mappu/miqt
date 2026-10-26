@@ -16,7 +16,13 @@ import (
 
 type QDesignerDynamicPropertySheetExtension struct {
 	h  *C.QDesignerDynamicPropertySheetExtension
-	gc *[1]*C.QDesignerDynamicPropertySheetExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerDynamicPropertySheetExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) cPointer() *C.QDesignerDynamicPropertySheetExtension {
@@ -48,10 +54,13 @@ func UnsafeNewQDesignerDynamicPropertySheetExtension(h unsafe.Pointer) *QDesigne
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) DynamicPropertiesAllowed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerDynamicPropertySheetExtension_dynamicPropertiesAllowed(this.h))
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) AddDynamicProperty(propertyName string, value *qt.QVariant) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
 	propertyName_ms.len = C.size_t(len(propertyName))
@@ -60,14 +69,17 @@ func (this *QDesignerDynamicPropertySheetExtension) AddDynamicProperty(propertyN
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) RemoveDynamicProperty(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerDynamicPropertySheetExtension_removeDynamicProperty(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) IsDynamicProperty(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerDynamicPropertySheetExtension_isDynamicProperty(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) CanAddDynamicProperty(propertyName string) bool {
+	defer runtime.KeepAlive(this)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
 	propertyName_ms.len = C.size_t(len(propertyName))
@@ -76,6 +88,8 @@ func (this *QDesignerDynamicPropertySheetExtension) CanAddDynamicProperty(proper
 }
 
 func (this *QDesignerDynamicPropertySheetExtension) OperatorAssign(param1 *QDesignerDynamicPropertySheetExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerDynamicPropertySheetExtension_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -91,8 +105,9 @@ func (this *QDesignerDynamicPropertySheetExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerDynamicPropertySheetExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerDynamicPropertySheetExtension) {
-		C.QDesignerDynamicPropertySheetExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerDynamicPropertySheetExtension_delete((*C.QDesignerDynamicPropertySheetExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

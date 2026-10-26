@@ -15,7 +15,13 @@ import (
 
 type QHashSeed struct {
 	h  *C.QHashSeed
-	gc *[1]*C.QHashSeed
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHashSeed) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QHashSeed) cPointer() *C.QHashSeed {
@@ -84,8 +90,9 @@ func (this *QHashSeed) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHashSeed{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHashSeed) {
-		C.QHashSeed_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHashSeed_delete((*C.QHashSeed)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

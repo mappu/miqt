@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt6"
+	"runtime"
 	"unsafe"
 )
 
@@ -54,7 +55,14 @@ const (
 )
 
 type QWebEngineUrlRequestInfo struct {
-	h *C.QWebEngineUrlRequestInfo
+	h  *C.QWebEngineUrlRequestInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineUrlRequestInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineUrlRequestInfo) cPointer() *C.QWebEngineUrlRequestInfo {
@@ -86,32 +94,38 @@ func UnsafeNewQWebEngineUrlRequestInfo(h unsafe.Pointer) *QWebEngineUrlRequestIn
 }
 
 func (this *QWebEngineUrlRequestInfo) ResourceType() QWebEngineUrlRequestInfo__ResourceType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineUrlRequestInfo__ResourceType)(C.QWebEngineUrlRequestInfo_resourceType(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) NavigationType() QWebEngineUrlRequestInfo__NavigationType {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineUrlRequestInfo__NavigationType)(C.QWebEngineUrlRequestInfo_navigationType(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) RequestUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_requestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) FirstPartyUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_firstPartyUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) Initiator() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) RequestMethod() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestInfo_requestMethod(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -119,18 +133,23 @@ func (this *QWebEngineUrlRequestInfo) RequestMethod() []byte {
 }
 
 func (this *QWebEngineUrlRequestInfo) Changed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineUrlRequestInfo_changed(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) Block(shouldBlock bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlRequestInfo_block(this.h, (C.bool)(shouldBlock))
 }
 
 func (this *QWebEngineUrlRequestInfo) Redirect(url *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	C.QWebEngineUrlRequestInfo_redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineUrlRequestInfo) SetHttpHeader(name []byte, value []byte) {
+	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))

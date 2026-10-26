@@ -56,6 +56,7 @@ bool QwtPlotLayout_override_virtual_activate(void* self, intptr_t slot);
 void QwtPlotLayout_virtualbase_activate(void* self, QwtPlot* param1, QRectF* plotRect, int options);
 bool QwtPlotLayout_override_virtual_invalidate(void* self, intptr_t slot);
 void QwtPlotLayout_virtualbase_invalidate(void* self);
+QSize* QwtPlotLayout_virtualreturncopy_QSize(QSize* src);
 
 void QwtPlotLayout_protectedbase_setTitleRect(bool* _dynamic_cast_ok, void* self, QRectF* titleRect);
 void QwtPlotLayout_protectedbase_setFooterRect(bool* _dynamic_cast_ok, void* self, QRectF* footerRect);

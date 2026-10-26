@@ -29,7 +29,13 @@ const (
 
 type QGestureRecognizer struct {
 	h  *C.QGestureRecognizer
-	gc *[1]*C.QGestureRecognizer
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGestureRecognizer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGestureRecognizer) cPointer() *C.QGestureRecognizer {
@@ -67,18 +73,27 @@ func NewQGestureRecognizer() *QGestureRecognizer {
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(target)
 	return newQGesture(C.QGestureRecognizer_create(this.h, target.cPointer()))
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 	return (QGestureRecognizer__ResultFlag)(C.QGestureRecognizer_recognize(this.h, state.cPointer(), watched.cPointer(), event.cPointer()))
 }
 
 func (this *QGestureRecognizer) Reset(state *QGesture) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 	C.QGestureRecognizer_reset(this.h, state.cPointer())
 }
 
 func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) GestureType {
+	defer runtime.KeepAlive(recognizer)
 	return (GestureType)(C.QGestureRecognizer_registerRecognizer(recognizer.cPointer()))
 }
 
@@ -87,10 +102,14 @@ func QGestureRecognizer_UnregisterRecognizer(typeVal GestureType) {
 }
 
 func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QGestureRecognizer_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGesture {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(target)
 
 	return newQGesture(C.QGestureRecognizer_virtualbase_create(unsafe.Pointer(this.h), target.cPointer()))
 
@@ -113,6 +132,7 @@ func miqt_exec_callback_QGestureRecognizer_create(self *C.QGestureRecognizer, cb
 	slotval1 := newQObject(target)
 
 	virtualReturn := gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Create, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -145,6 +165,8 @@ func miqt_exec_callback_QGestureRecognizer_recognize(self *C.QGestureRecognizer,
 }
 
 func (this *QGestureRecognizer) callVirtualBase_Reset(state *QGesture) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 
 	C.QGestureRecognizer_virtualbase_reset(unsafe.Pointer(this.h), state.cPointer())
 
@@ -182,8 +204,9 @@ func (this *QGestureRecognizer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGestureRecognizer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGestureRecognizer) {
-		C.QGestureRecognizer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGestureRecognizer_delete((*C.QGestureRecognizer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -265,6 +265,8 @@ bool QMenu_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenu_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QMenu_virtualreturncopy_QSize(QSize* src);
+QVariant* QMenu_virtualreturncopy_QVariant(QVariant* src);
 
 int QMenu_protectedbase_columnCount(bool* _dynamic_cast_ok, const void* self);
 void QMenu_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionMenuItem* option, QAction* action);

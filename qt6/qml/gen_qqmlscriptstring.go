@@ -15,7 +15,13 @@ import (
 
 type QQmlScriptString struct {
 	h  *C.QQmlScriptString
-	gc *[1]*C.QQmlScriptString
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlScriptString) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlScriptString) cPointer() *C.QQmlScriptString {
@@ -54,35 +60,46 @@ func NewQQmlScriptString() *QQmlScriptString {
 
 // NewQQmlScriptString2 constructs a new QQmlScriptString object.
 func NewQQmlScriptString2(param1 *QQmlScriptString) *QQmlScriptString {
+	defer runtime.KeepAlive(param1)
 
 	return newQQmlScriptString(C.QQmlScriptString_new2(param1.cPointer()))
 }
 
 func (this *QQmlScriptString) OperatorAssign(param1 *QQmlScriptString) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlScriptString_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QQmlScriptString) OperatorEqual(param1 *QQmlScriptString) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QQmlScriptString_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QQmlScriptString) OperatorNotEqual(param1 *QQmlScriptString) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QQmlScriptString_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QQmlScriptString) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlScriptString_isEmpty(this.h))
 }
 
 func (this *QQmlScriptString) IsUndefinedLiteral() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlScriptString_isUndefinedLiteral(this.h))
 }
 
 func (this *QQmlScriptString) IsNullLiteral() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlScriptString_isNullLiteral(this.h))
 }
 
 func (this *QQmlScriptString) StringLiteral() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QQmlScriptString_stringLiteral(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -90,10 +107,12 @@ func (this *QQmlScriptString) StringLiteral() string {
 }
 
 func (this *QQmlScriptString) NumberLiteral(ok *bool) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QQmlScriptString_numberLiteral(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QQmlScriptString) BooleanLiteral(ok *bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlScriptString_booleanLiteral(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
@@ -109,8 +128,9 @@ func (this *QQmlScriptString) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlScriptString{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlScriptString) {
-		C.QQmlScriptString_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlScriptString_delete((*C.QQmlScriptString)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

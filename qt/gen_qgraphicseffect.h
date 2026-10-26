@@ -95,6 +95,7 @@ bool QGraphicsEffect_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRectF* QGraphicsEffect_virtualreturncopy_QRectF(QRectF* src);
 
 void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
@@ -153,6 +154,7 @@ bool QGraphicsColorizeEffect_override_virtual_connectNotify(void* self, intptr_t
 void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsColorizeEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRectF* QGraphicsColorizeEffect_virtualreturncopy_QRectF(QRectF* src);
 
 void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
@@ -208,6 +210,7 @@ bool QGraphicsBlurEffect_override_virtual_connectNotify(void* self, intptr_t slo
 void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsBlurEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRectF* QGraphicsBlurEffect_virtualreturncopy_QRectF(QRectF* src);
 
 void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
@@ -273,6 +276,7 @@ bool QGraphicsDropShadowEffect_override_virtual_connectNotify(void* self, intptr
 void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsDropShadowEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRectF* QGraphicsDropShadowEffect_virtualreturncopy_QRectF(QRectF* src);
 
 void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
@@ -327,6 +331,7 @@ bool QGraphicsOpacityEffect_override_virtual_connectNotify(void* self, intptr_t 
 void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRectF* QGraphicsOpacityEffect_virtualreturncopy_QRectF(QRectF* src);
 
 void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);

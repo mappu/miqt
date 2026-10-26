@@ -17,8 +17,15 @@ import (
 
 type QBoxPlotLegendMarker struct {
 	h  *C.QBoxPlotLegendMarker
-	gc *[1]*C.QBoxPlotLegendMarker
+	gc *[1]unsafe.Pointer
 	*QLegendMarker
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QBoxPlotLegendMarker) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLegendMarker.miqtSetGC(gc)
 }
 
 func (this *QBoxPlotLegendMarker) cPointer() *C.QBoxPlotLegendMarker {
@@ -54,21 +61,28 @@ func UnsafeNewQBoxPlotLegendMarker(h unsafe.Pointer) *QBoxPlotLegendMarker {
 
 // NewQBoxPlotLegendMarker constructs a new QBoxPlotLegendMarker object.
 func NewQBoxPlotLegendMarker(series *QBoxPlotSeries, legend *QLegend) *QBoxPlotLegendMarker {
+	defer runtime.KeepAlive(series)
+	defer runtime.KeepAlive(legend)
 
 	return newQBoxPlotLegendMarker(C.QBoxPlotLegendMarker_new(series.cPointer(), legend.cPointer()))
 }
 
 // NewQBoxPlotLegendMarker2 constructs a new QBoxPlotLegendMarker object.
 func NewQBoxPlotLegendMarker2(series *QBoxPlotSeries, legend *QLegend, parent *qt6.QObject) *QBoxPlotLegendMarker {
+	defer runtime.KeepAlive(series)
+	defer runtime.KeepAlive(legend)
+	defer runtime.KeepAlive(parent)
 
 	return newQBoxPlotLegendMarker(C.QBoxPlotLegendMarker_new2(series.cPointer(), legend.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QBoxPlotLegendMarker) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxPlotLegendMarker_metaObject(this.h)))
 }
 
 func (this *QBoxPlotLegendMarker) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBoxPlotLegendMarker_metacast(this.h, param1_Cstring))
@@ -84,10 +98,12 @@ func QBoxPlotLegendMarker_Tr(s string) string {
 }
 
 func (this *QBoxPlotLegendMarker) Type() QLegendMarker__LegendMarkerType {
+	defer runtime.KeepAlive(this)
 	return (QLegendMarker__LegendMarkerType)(C.QBoxPlotLegendMarker_type(this.h))
 }
 
 func (this *QBoxPlotLegendMarker) Series() *QBoxPlotSeries {
+	defer runtime.KeepAlive(this)
 	return newQBoxPlotSeries(C.QBoxPlotLegendMarker_series(this.h))
 }
 
@@ -115,6 +131,7 @@ func QBoxPlotLegendMarker_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QBoxPlotLegendMarker that was directly constructed.
 func (this *QBoxPlotLegendMarker) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QBoxPlotLegendMarker_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -129,6 +146,7 @@ func (this *QBoxPlotLegendMarker) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QBoxPlotLegendMarker that was directly constructed.
 func (this *QBoxPlotLegendMarker) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBoxPlotLegendMarker_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -143,6 +161,7 @@ func (this *QBoxPlotLegendMarker) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBoxPlotLegendMarker that was directly constructed.
 func (this *QBoxPlotLegendMarker) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -159,6 +178,8 @@ func (this *QBoxPlotLegendMarker) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBoxPlotLegendMarker that was directly constructed.
 func (this *QBoxPlotLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QBoxPlotLegendMarker_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -172,6 +193,7 @@ func (this *QBoxPlotLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod) boo
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_Type() QLegendMarker__LegendMarkerType {
+	defer runtime.KeepAlive(this)
 
 	return (QLegendMarker__LegendMarkerType)(C.QBoxPlotLegendMarker_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -197,6 +219,7 @@ func miqt_exec_callback_QBoxPlotLegendMarker_type(self *C.QBoxPlotLegendMarker, 
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_Series() *QBoxPlotSeries {
+	defer runtime.KeepAlive(this)
 
 	return newQBoxPlotSeries(C.QBoxPlotLegendMarker_virtualbase_series(unsafe.Pointer(this.h)))
 
@@ -216,12 +239,15 @@ func miqt_exec_callback_QBoxPlotLegendMarker_series(self *C.QBoxPlotLegendMarker
 	}
 
 	virtualReturn := gofunc((&QBoxPlotLegendMarker{h: self}).callVirtualBase_Series)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxPlotLegendMarker_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -250,6 +276,9 @@ func miqt_exec_callback_QBoxPlotLegendMarker_event(self *C.QBoxPlotLegendMarker,
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxPlotLegendMarker_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -280,6 +309,8 @@ func miqt_exec_callback_QBoxPlotLegendMarker_eventFilter(self *C.QBoxPlotLegendM
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotLegendMarker_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -306,6 +337,8 @@ func miqt_exec_callback_QBoxPlotLegendMarker_timerEvent(self *C.QBoxPlotLegendMa
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotLegendMarker_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -332,6 +365,8 @@ func miqt_exec_callback_QBoxPlotLegendMarker_childEvent(self *C.QBoxPlotLegendMa
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QBoxPlotLegendMarker_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -358,6 +393,8 @@ func miqt_exec_callback_QBoxPlotLegendMarker_customEvent(self *C.QBoxPlotLegendM
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxPlotLegendMarker_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -384,6 +421,8 @@ func miqt_exec_callback_QBoxPlotLegendMarker_connectNotify(self *C.QBoxPlotLegen
 }
 
 func (this *QBoxPlotLegendMarker) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QBoxPlotLegendMarker_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -421,8 +460,9 @@ func (this *QBoxPlotLegendMarker) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QBoxPlotLegendMarker{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxPlotLegendMarker) {
-		C.QBoxPlotLegendMarker_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QBoxPlotLegendMarker_delete((*C.QBoxPlotLegendMarker)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

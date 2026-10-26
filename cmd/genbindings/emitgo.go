@@ -287,6 +287,56 @@ func (gfs *goFileState) emitParametersGo(params []CppParameter) string {
 type goFileState struct {
 	imports            map[string]struct{}
 	currentPackageName string
+
+	// virtualReturnCopyClass is set while forwarding the return value of a
+	// virtual-override callback of this class. Qt value types are then copied
+	// into a new heap object for the C++ caller to own and delete.
+	virtualReturnCopyClass *CppClass
+}
+
+// holdsGoWrapper reports whether the Go projection of p is or contains a Go
+// wrapper struct for a Qt class, which may own a C++ object through GoGC().
+func (p CppParameter) holdsGoWrapper() bool {
+	if t, _, ok := p.QListOf(); ok {
+		return t.holdsGoWrapper()
+	}
+	if t, ok := p.QSetOf(); ok {
+		return t.holdsGoWrapper()
+	}
+	if kType, vType, _, ok := p.QMapOf(); ok {
+		return kType.holdsGoWrapper() || vType.holdsGoWrapper()
+	}
+	if kType, vType, ok := p.QPairOf(); ok {
+		return kType.holdsGoWrapper() || vType.holdsGoWrapper()
+	}
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+		return false
+	}
+	_, ok := KnownClassnames[p.ParameterType]
+	return ok
+}
+
+// emitKeepAlive keeps the receiver (if any) and every argument that may own a
+// C++ object reachable until the function returns. Otherwise, once their C++
+// pointers have been passed to C, the Go wrappers can become unreachable and
+// their finalizers can delete the C++ objects while C++ is still using them.
+func (gfs *goFileState) emitKeepAlive(m CppMethod, receiver bool) string {
+	ret := ""
+	if receiver && !m.IsStatic {
+		ret += "defer runtime.KeepAlive(this)\n"
+	}
+	for i, p := range m.Parameters {
+		if IsArgcArgv(m.Parameters, i) {
+			break
+		}
+		if p.holdsGoWrapper() {
+			ret += "defer runtime.KeepAlive(" + p.goParameterName() + ")\n"
+		}
+	}
+	if ret != "" {
+		gfs.imports["runtime"] = struct{}{}
+	}
+	return ret
 }
 
 func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble string, forwarding string) {
@@ -507,6 +557,12 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		} else {
 			// Same package
 			rvalue = p.goParameterName() + ".cPointer()"
+		}
+
+		if gfs.virtualReturnCopyClass != nil && p.isValueClassType() {
+			// The C++ caller reads this value only after the callback has
+			// returned, so give it its own copy
+			rvalue = "C." + cabiVirtualReturnCopyName(*gfs.virtualReturnCopyClass, p) + "(" + rvalue + ")"
 		}
 
 	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() || p.ParameterType == "bool" {
@@ -827,16 +883,15 @@ import "C"
 
 		// Type definition
 
+		// Value copies of this struct share the gc pointer, so the finalizer
+		// added by GoGC() only runs once all copies are unreachable. The
+		// embedded base class wrappers and wrappers for references into this
+		// object share it too.
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
+			gc *[1]unsafe.Pointer
 		`)
-
-		if c.CanDelete {
-			// Value copies of this struct share the gc pointer, so the
-			// finalizer added by GoGC() only runs once all copies are unreachable
-			ret.WriteString("gc *[1]*C." + goClassName + "\n")
-		}
 
 		// Embed all inherited types to directly allow calling inherited methods
 		// Only include the direct inherits; the recursive inherits will exist
@@ -858,8 +913,23 @@ import "C"
 
 		}
 
+		setBaseGC := ""
+		for _, base := range c.DirectInherits {
+			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName == gfs.currentPackageName && !strings.Contains(base, "<") {
+				setBaseGC += "this." + cabiClassName(base) + ".miqtSetGC(gc)\n"
+			}
+			// n.b. a cross-package base class wrapper can't be reached, so it
+			// doesn't keep this object alive
+		}
+
 		ret.WriteString(`
 		}
+
+		// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+		// and its base class wrappers, so that they all keep it alive.
+		func (this *` + goClassName + `) miqtSetGC(gc *[1]unsafe.Pointer) {
+			this.gc = gc
+			` + setBaseGC + `}
 		
 		func (this *` + goClassName + `) cPointer() *C.` + goClassName + ` {
 			if this == nil {
@@ -953,6 +1023,7 @@ import "C"
 				`)
 			}
 
+			ret.WriteString(gfs.emitKeepAlive(ctor, false))
 			ret.WriteString(preamble)
 
 			// Call Cgo constructor
@@ -979,6 +1050,14 @@ import "C"
 
 			returnFunc := gfs.emitCabiToGo("return ", m.ReturnType, rvalue)
 
+			if pkg, ok := KnownClassnames[m.ReturnType.ParameterType]; ok && !m.IsStatic && m.ReturnType.ByRef && !m.ReturnType.Pointer && m.ReturnType.holdsGoWrapper() && pkg.PackageName == gfs.currentPackageName {
+				// The returned reference points into this object (or something
+				// it owns), so it must keep this object alive
+				returnFunc = gfs.emitCabiToGo("_ret := ", m.ReturnType, rvalue) +
+					"_ret.miqtSetGC(this.gc)\n" +
+					"return _ret\n"
+			}
+
 			receiverAndMethod := `(this *` + goClassName + `) ` + m.goMethodName()
 			if m.IsStatic {
 				receiverAndMethod = goClassName + `_` + m.goMethodName()
@@ -995,7 +1074,7 @@ import "C"
 				`)
 			}
 			ret.WriteString(`
-				` + preamble +
+				` + gfs.emitKeepAlive(m, true) + preamble +
 				returnFunc + `}
 			`)
 
@@ -1056,7 +1135,7 @@ import "C"
 				ret.WriteString(`
 			// ` + m.goMethodName() + ` can only be called from a ` + goClassName + ` that was directly constructed.
 			func (this *` + goClassName + `) ` + m.goMethodName() + ` (` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
-				` + preamble + `
+				` + gfs.emitKeepAlive(m, true) + preamble + `
 				var _dynamic_cast_ok C.bool = false
 				` + gfs.emitCabiToGo("_method_ret := ", m.ReturnType, `C.`+cabiProtectedBaseName(c, m)+`(&_dynamic_cast_ok, `+forwarding+`)`) + `
 				if !_dynamic_cast_ok {
@@ -1094,7 +1173,7 @@ import "C"
 
 				ret.WriteString(`
 				func (this *` + goClassName + `) callVirtualBase_` + m.goMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
-					` + preamble + `
+					` + gfs.emitKeepAlive(m, true) + preamble + `
 					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+cabiVirtualBaseName(c, m)+`(`+forwarding+`)`) + `
 				}
 				`)
@@ -1161,9 +1240,16 @@ import "C"
 					ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
 				} else {
 					ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+					if m.ReturnType.holdsGoWrapper() {
+						// Keep it alive while it is copied for the C++ caller
+						gfs.imports["runtime"] = struct{}{}
+						ret.WriteString("defer runtime.KeepAlive(virtualReturn)\n")
+					}
 					virtualRetP := m.ReturnType // copy
 					virtualRetP.ParameterName = "virtualReturn"
+					gfs.virtualReturnCopyClass = &c
 					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+					gfs.virtualReturnCopyClass = nil
 					// A virtual-override callback hands ownership of any heap-allocated
 					// CABI return memory to the C++ caller, which copies it into the real
 					// Qt type. The `defer C.free(...)` emitted for argument forwarding would
@@ -1237,10 +1323,11 @@ import "C"
 				if this.gc != nil {
 					return
 				}
-				this.gc = &[1]*C.` + goClassName + `{this.h}
-				runtime.SetFinalizer(this.gc, func(gc *[1]*C.` + goClassName + `) {
-					C.` + cabiDeleteName(c) + `(gc[0])
+				gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+				runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+					C.` + cabiDeleteName(c) + `((*C.` + goClassName + `)(gc[0]))
 				})
+				this.miqtSetGC(gc)
 			}
 			`)
 

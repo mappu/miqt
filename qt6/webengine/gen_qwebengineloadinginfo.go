@@ -38,7 +38,13 @@ const (
 
 type QWebEngineLoadingInfo struct {
 	h  *C.QWebEngineLoadingInfo
-	gc *[1]*C.QWebEngineLoadingInfo
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineLoadingInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineLoadingInfo) cPointer() *C.QWebEngineLoadingInfo {
@@ -71,29 +77,36 @@ func UnsafeNewQWebEngineLoadingInfo(h unsafe.Pointer) *QWebEngineLoadingInfo {
 
 // NewQWebEngineLoadingInfo constructs a new QWebEngineLoadingInfo object.
 func NewQWebEngineLoadingInfo(other *QWebEngineLoadingInfo) *QWebEngineLoadingInfo {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
 }
 
 func (this *QWebEngineLoadingInfo) OperatorAssign(other *QWebEngineLoadingInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineLoadingInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineLoadingInfo) Url() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineLoadingInfo_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineLoadingInfo) IsErrorPage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineLoadingInfo_isErrorPage(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) Status() QWebEngineLoadingInfo__LoadStatus {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineLoadingInfo__LoadStatus)(C.QWebEngineLoadingInfo_status(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineLoadingInfo_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -101,10 +114,12 @@ func (this *QWebEngineLoadingInfo) ErrorString() string {
 }
 
 func (this *QWebEngineLoadingInfo) ErrorDomain() QWebEngineLoadingInfo__ErrorDomain {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineLoadingInfo__ErrorDomain)(C.QWebEngineLoadingInfo_errorDomain(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) ErrorCode() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineLoadingInfo_errorCode(this.h))
 }
 
@@ -120,8 +135,9 @@ func (this *QWebEngineLoadingInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineLoadingInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineLoadingInfo) {
-		C.QWebEngineLoadingInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineLoadingInfo_delete((*C.QWebEngineLoadingInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

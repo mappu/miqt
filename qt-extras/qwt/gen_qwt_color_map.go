@@ -31,7 +31,13 @@ const (
 
 type QwtColorMap struct {
 	h  *C.QwtColorMap
-	gc *[1]*C.QwtColorMap
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtColorMap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtColorMap) cPointer() *C.QwtColorMap {
@@ -75,24 +81,33 @@ func NewQwtColorMap2(param1 QwtColorMap__Format) *QwtColorMap {
 }
 
 func (this *QwtColorMap) Format() QwtColorMap__Format {
+	defer runtime.KeepAlive(this)
 	return (QwtColorMap__Format)(C.QwtColorMap_format(this.h))
 }
 
 func (this *QwtColorMap) Rgb(interval *QwtInterval, value float64) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 	return (uint)(C.QwtColorMap_rgb(this.h, interval.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtColorMap) ColorIndex(interval *QwtInterval, value float64) byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 	return (byte)(C.QwtColorMap_colorIndex(this.h, interval.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtColorMap) Color(param1 *QwtInterval, value float64) *qt.QColor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtColorMap_color(this.h, param1.cPointer(), (C.double)(value))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtColorMap) ColorTable(param1 *QwtInterval) []uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	var _ma C.struct_miqt_array = C.QwtColorMap_colorTable(this.h, param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
 	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -103,6 +118,8 @@ func (this *QwtColorMap) ColorTable(param1 *QwtInterval) []uint {
 }
 
 func (this *QwtColorMap) OperatorAssign(param1 *QwtColorMap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtColorMap_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QwtColorMap) OnRgb(slot func(interval *QwtInterval, value float64) uint) {
@@ -155,6 +172,8 @@ func miqt_exec_callback_QwtColorMap_colorIndex(self *C.QwtColorMap, cb C.intptr_
 }
 
 func (this *QwtColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _ma C.struct_miqt_array = C.QwtColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
@@ -206,16 +225,24 @@ func (this *QwtColorMap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtColorMap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColorMap) {
-		C.QwtColorMap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtColorMap_delete((*C.QwtColorMap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtLinearColorMap struct {
 	h  *C.QwtLinearColorMap
-	gc *[1]*C.QwtLinearColorMap
+	gc *[1]unsafe.Pointer
 	*QwtColorMap
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtLinearColorMap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtColorMap.miqtSetGC(gc)
 }
 
 func (this *QwtLinearColorMap) cPointer() *C.QwtLinearColorMap {
@@ -257,6 +284,8 @@ func NewQwtLinearColorMap() *QwtLinearColorMap {
 
 // NewQwtLinearColorMap2 constructs a new QwtLinearColorMap object.
 func NewQwtLinearColorMap2(color1 *qt.QColor, color2 *qt.QColor) *QwtLinearColorMap {
+	defer runtime.KeepAlive(color1)
+	defer runtime.KeepAlive(color2)
 
 	return newQwtLinearColorMap(C.QwtLinearColorMap_new2((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer())))
 }
@@ -269,27 +298,37 @@ func NewQwtLinearColorMap3(param1 QwtColorMap__Format) *QwtLinearColorMap {
 
 // NewQwtLinearColorMap4 constructs a new QwtLinearColorMap object.
 func NewQwtLinearColorMap4(color1 *qt.QColor, color2 *qt.QColor, param3 QwtColorMap__Format) *QwtLinearColorMap {
+	defer runtime.KeepAlive(color1)
+	defer runtime.KeepAlive(color2)
 
 	return newQwtLinearColorMap(C.QwtLinearColorMap_new4((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()), (C.int)(param3)))
 }
 
 func (this *QwtLinearColorMap) SetMode(mode QwtLinearColorMap__Mode) {
+	defer runtime.KeepAlive(this)
 	C.QwtLinearColorMap_setMode(this.h, (C.int)(mode))
 }
 
 func (this *QwtLinearColorMap) Mode() QwtLinearColorMap__Mode {
+	defer runtime.KeepAlive(this)
 	return (QwtLinearColorMap__Mode)(C.QwtLinearColorMap_mode(this.h))
 }
 
 func (this *QwtLinearColorMap) SetColorInterval(color1 *qt.QColor, color2 *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color1)
+	defer runtime.KeepAlive(color2)
 	C.QwtLinearColorMap_setColorInterval(this.h, (*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()))
 }
 
 func (this *QwtLinearColorMap) AddColorStop(value float64, param2 *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QwtLinearColorMap_addColorStop(this.h, (C.double)(value), (*C.QColor)(param2.UnsafePointer()))
 }
 
 func (this *QwtLinearColorMap) ColorStops() []float64 {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QwtLinearColorMap_colorStops(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -300,26 +339,34 @@ func (this *QwtLinearColorMap) ColorStops() []float64 {
 }
 
 func (this *QwtLinearColorMap) Color1() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtLinearColorMap_color1(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLinearColorMap) Color2() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtLinearColorMap_color2(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLinearColorMap) Rgb(param1 *QwtInterval, value float64) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (uint)(C.QwtLinearColorMap_rgb(this.h, param1.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtLinearColorMap) ColorIndex(param1 *QwtInterval, value float64) byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (byte)(C.QwtLinearColorMap_colorIndex(this.h, param1.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtLinearColorMap) callVirtualBase_Rgb(param1 *QwtInterval, value float64) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (uint)(C.QwtLinearColorMap_virtualbase_rgb(unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
 
@@ -350,6 +397,8 @@ func miqt_exec_callback_QwtLinearColorMap_rgb(self *C.QwtLinearColorMap, cb C.in
 }
 
 func (this *QwtLinearColorMap) callVirtualBase_ColorIndex(param1 *QwtInterval, value float64) byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (byte)(C.QwtLinearColorMap_virtualbase_colorIndex(unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
 
@@ -380,6 +429,8 @@ func miqt_exec_callback_QwtLinearColorMap_colorIndex(self *C.QwtLinearColorMap, 
 }
 
 func (this *QwtLinearColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _ma C.struct_miqt_array = C.QwtLinearColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
@@ -431,16 +482,24 @@ func (this *QwtLinearColorMap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtLinearColorMap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLinearColorMap) {
-		C.QwtLinearColorMap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtLinearColorMap_delete((*C.QwtLinearColorMap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtAlphaColorMap struct {
 	h  *C.QwtAlphaColorMap
-	gc *[1]*C.QwtAlphaColorMap
+	gc *[1]unsafe.Pointer
 	*QwtColorMap
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtAlphaColorMap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtColorMap.miqtSetGC(gc)
 }
 
 func (this *QwtAlphaColorMap) cPointer() *C.QwtAlphaColorMap {
@@ -482,25 +541,33 @@ func NewQwtAlphaColorMap() *QwtAlphaColorMap {
 
 // NewQwtAlphaColorMap2 constructs a new QwtAlphaColorMap object.
 func NewQwtAlphaColorMap2(param1 *qt.QColor) *QwtAlphaColorMap {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new2((*C.QColor)(param1.UnsafePointer())))
 }
 
 func (this *QwtAlphaColorMap) SetColor(color *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QwtAlphaColorMap_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QwtAlphaColorMap) Color() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtAlphaColorMap_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtAlphaColorMap) Rgb(param1 *QwtInterval, value float64) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (uint)(C.QwtAlphaColorMap_rgb(this.h, param1.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtAlphaColorMap) callVirtualBase_Rgb(param1 *QwtInterval, value float64) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (uint)(C.QwtAlphaColorMap_virtualbase_rgb(unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
 
@@ -531,6 +598,8 @@ func miqt_exec_callback_QwtAlphaColorMap_rgb(self *C.QwtAlphaColorMap, cb C.intp
 }
 
 func (this *QwtAlphaColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _ma C.struct_miqt_array = C.QwtAlphaColorMap_virtualbase_colorTable(unsafe.Pointer(this.h), param1.cPointer())
 	_ret := make([]uint, int(_ma.len))
@@ -582,8 +651,9 @@ func (this *QwtAlphaColorMap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtAlphaColorMap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtAlphaColorMap) {
-		C.QwtAlphaColorMap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtAlphaColorMap_delete((*C.QwtAlphaColorMap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

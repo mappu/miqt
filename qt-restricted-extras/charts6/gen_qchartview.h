@@ -225,6 +225,8 @@ bool QChartView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QChartView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QChartView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QChartView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QChartView_virtualreturncopy_QSize(QSize* src);
+QVariant* QChartView_virtualreturncopy_QVariant(QVariant* src);
 
 void QChartView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);

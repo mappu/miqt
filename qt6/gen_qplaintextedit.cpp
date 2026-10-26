@@ -178,7 +178,9 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&name_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPlainTextEdit_loadResource(this, handle__loadResource, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPlainTextEdit_virtualbase_loadResource(void* self, int type, QUrl* name);
@@ -195,7 +197,9 @@ public:
 		Qt::InputMethodQuery property_ret = property;
 		int sigval1 = static_cast<int>(property_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QPlainTextEdit_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QPlainTextEdit_virtualbase_inputMethodQuery(const void* self, int property);
@@ -667,7 +671,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QPlainTextEdit_virtualbase_minimumSizeHint(const void* self);
@@ -682,7 +688,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QPlainTextEdit_virtualbase_sizeHint(const void* self);
@@ -747,7 +755,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_viewportSizeHint(this, handle__viewportSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QPlainTextEdit_virtualbase_viewportSizeHint(const void* self);
@@ -2456,6 +2466,14 @@ void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	static_cast<MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::disconnectNotify(*signal);
 }
 
+QVariant* QPlainTextEdit_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QSize* QPlainTextEdit_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
 QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -2730,7 +2748,9 @@ public:
 		}
 
 		QSizeF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_documentSize(this, handle__documentSize);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QPlainTextDocumentLayout_virtualbase_documentSize(const void* self);
@@ -2746,7 +2766,9 @@ public:
 
 		QTextFrame* sigval1 = param1;
 		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QPlainTextDocumentLayout_virtualbase_frameBoundingRect(const void* self, QTextFrame* param1);
@@ -2764,7 +2786,9 @@ public:
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRectF* QPlainTextDocumentLayout_virtualbase_blockBoundingRect(const void* self, QTextBlock* block);
@@ -3311,6 +3335,14 @@ bool QPlainTextDocumentLayout_override_virtual_disconnectNotify(void* self, intp
 
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::disconnectNotify(*signal);
+}
+
+QSizeF* QPlainTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
+QRectF* QPlainTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 int QPlainTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {

@@ -108,7 +108,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QStackedLayout_virtualbase_sizeHint(const void* self);
@@ -123,7 +125,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_minimumSize(this, handle__minimumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QStackedLayout_virtualbase_minimumSize(const void* self);
@@ -268,7 +272,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QStackedLayout_geometry(this, handle__geometry);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QStackedLayout_virtualbase_geometry(const void* self);
@@ -298,7 +304,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_maximumSize(this, handle__maximumSize);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QStackedLayout_virtualbase_maximumSize(const void* self);
@@ -1135,6 +1143,14 @@ bool QStackedLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQStackedLayout*>(self)->QStackedLayout::spacerItem();
+}
+
+QSize* QStackedLayout_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QRect* QStackedLayout_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QStackedLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {

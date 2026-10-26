@@ -224,6 +224,8 @@ bool QDockWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDockWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDockWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QDockWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QDockWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDockWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);

@@ -163,6 +163,9 @@ bool QConcatenateTablesProxyModel_override_virtual_connectNotify(void* self, int
 void QConcatenateTablesProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QConcatenateTablesProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QConcatenateTablesProxyModel_virtualreturncopy_QVariant(QVariant* src);
+QModelIndex* QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QSize* QConcatenateTablesProxyModel_virtualreturncopy_QSize(QSize* src);
 
 QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);

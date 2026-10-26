@@ -15,7 +15,13 @@ import (
 
 type QJSValueIterator struct {
 	h  *C.QJSValueIterator
-	gc *[1]*C.QJSValueIterator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJSValueIterator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJSValueIterator) cPointer() *C.QJSValueIterator {
@@ -48,19 +54,23 @@ func UnsafeNewQJSValueIterator(h unsafe.Pointer) *QJSValueIterator {
 
 // NewQJSValueIterator constructs a new QJSValueIterator object.
 func NewQJSValueIterator(value *QJSValue) *QJSValueIterator {
+	defer runtime.KeepAlive(value)
 
 	return newQJSValueIterator(C.QJSValueIterator_new(value.cPointer()))
 }
 
 func (this *QJSValueIterator) HasNext() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValueIterator_hasNext(this.h))
 }
 
 func (this *QJSValueIterator) Next() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValueIterator_next(this.h))
 }
 
 func (this *QJSValueIterator) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJSValueIterator_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -68,12 +78,15 @@ func (this *QJSValueIterator) Name() string {
 }
 
 func (this *QJSValueIterator) Value() *QJSValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSValueIterator_value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValueIterator) OperatorAssign(value *QJSValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QJSValueIterator_operatorAssign(this.h, value.cPointer())
 }
 
@@ -89,8 +102,9 @@ func (this *QJSValueIterator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJSValueIterator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSValueIterator) {
-		C.QJSValueIterator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJSValueIterator_delete((*C.QJSValueIterator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,14 @@ import (
 
 type QQmlPropertyMap struct {
 	h  *C.QQmlPropertyMap
-	gc *[1]*C.QQmlPropertyMap
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlPropertyMap) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlPropertyMap) cPointer() *C.QQmlPropertyMap {
@@ -60,15 +66,18 @@ func NewQQmlPropertyMap() *QQmlPropertyMap {
 
 // NewQQmlPropertyMap2 constructs a new QQmlPropertyMap object.
 func NewQQmlPropertyMap2(parent *qt6.QObject) *QQmlPropertyMap {
+	defer runtime.KeepAlive(parent)
 
 	return newQQmlPropertyMap(C.QQmlPropertyMap_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlPropertyMap) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlPropertyMap_metaObject(this.h)))
 }
 
 func (this *QQmlPropertyMap) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlPropertyMap_metacast(this.h, param1_Cstring))
@@ -84,6 +93,7 @@ func QQmlPropertyMap_Tr(s string) string {
 }
 
 func (this *QQmlPropertyMap) Value(key string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -94,6 +104,8 @@ func (this *QQmlPropertyMap) Value(key string) *qt6.QVariant {
 }
 
 func (this *QQmlPropertyMap) Insert(key string, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -102,6 +114,8 @@ func (this *QQmlPropertyMap) Insert(key string, value *qt6.QVariant) {
 }
 
 func (this *QQmlPropertyMap) InsertWithValues(values map[string]qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(values)
 	values_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(values))))
 	defer C.free(unsafe.Pointer(values_Keys_CArray_ptr))
 	values_Keys_CArray := unsafe.Slice(values_Keys_CArray_ptr, len(values))
@@ -127,6 +141,7 @@ func (this *QQmlPropertyMap) InsertWithValues(values map[string]qt6.QVariant) {
 }
 
 func (this *QQmlPropertyMap) Clear(key string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -135,10 +150,12 @@ func (this *QQmlPropertyMap) Clear(key string) {
 }
 
 func (this *QQmlPropertyMap) Freeze() {
+	defer runtime.KeepAlive(this)
 	C.QQmlPropertyMap_freeze(this.h)
 }
 
 func (this *QQmlPropertyMap) Keys() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlPropertyMap_keys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -152,18 +169,22 @@ func (this *QQmlPropertyMap) Keys() []string {
 }
 
 func (this *QQmlPropertyMap) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QQmlPropertyMap_count(this.h))
 }
 
 func (this *QQmlPropertyMap) Size() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QQmlPropertyMap_size(this.h))
 }
 
 func (this *QQmlPropertyMap) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlPropertyMap_isEmpty(this.h))
 }
 
 func (this *QQmlPropertyMap) Contains(key string) bool {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -172,6 +193,7 @@ func (this *QQmlPropertyMap) Contains(key string) bool {
 }
 
 func (this *QQmlPropertyMap) OperatorSubscript(key string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -180,6 +202,7 @@ func (this *QQmlPropertyMap) OperatorSubscript(key string) *qt6.QVariant {
 }
 
 func (this *QQmlPropertyMap) OperatorSubscriptWithKey(key string) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -190,6 +213,8 @@ func (this *QQmlPropertyMap) OperatorSubscriptWithKey(key string) *qt6.QVariant 
 }
 
 func (this *QQmlPropertyMap) ValueChanged(key string, value *qt6.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -241,6 +266,7 @@ func QQmlPropertyMap_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlPropertyMap that was directly constructed.
 func (this *QQmlPropertyMap) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlPropertyMap_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -255,6 +281,7 @@ func (this *QQmlPropertyMap) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlPropertyMap that was directly constructed.
 func (this *QQmlPropertyMap) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlPropertyMap_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -269,6 +296,7 @@ func (this *QQmlPropertyMap) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlPropertyMap that was directly constructed.
 func (this *QQmlPropertyMap) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -285,6 +313,8 @@ func (this *QQmlPropertyMap) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlPropertyMap that was directly constructed.
 func (this *QQmlPropertyMap) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QQmlPropertyMap_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -298,6 +328,8 @@ func (this *QQmlPropertyMap) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_UpdateValue(key string, input *qt6.QVariant) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(input)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -330,12 +362,15 @@ func miqt_exec_callback_QQmlPropertyMap_updateValue(self *C.QQmlPropertyMap, cb 
 	slotval2 := qt6.UnsafeNewQVariant(unsafe.Pointer(input))
 
 	virtualReturn := gofunc((&QQmlPropertyMap{h: self}).callVirtualBase_UpdateValue, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QQmlPropertyMap_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlPropertyMap_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -364,6 +399,9 @@ func miqt_exec_callback_QQmlPropertyMap_event(self *C.QQmlPropertyMap, cb C.intp
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlPropertyMap_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -394,6 +432,8 @@ func miqt_exec_callback_QQmlPropertyMap_eventFilter(self *C.QQmlPropertyMap, cb 
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlPropertyMap_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -420,6 +460,8 @@ func miqt_exec_callback_QQmlPropertyMap_timerEvent(self *C.QQmlPropertyMap, cb C
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlPropertyMap_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -446,6 +488,8 @@ func miqt_exec_callback_QQmlPropertyMap_childEvent(self *C.QQmlPropertyMap, cb C
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlPropertyMap_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -472,6 +516,8 @@ func miqt_exec_callback_QQmlPropertyMap_customEvent(self *C.QQmlPropertyMap, cb 
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlPropertyMap_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -498,6 +544,8 @@ func miqt_exec_callback_QQmlPropertyMap_connectNotify(self *C.QQmlPropertyMap, c
 }
 
 func (this *QQmlPropertyMap) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlPropertyMap_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -535,8 +583,9 @@ func (this *QQmlPropertyMap) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlPropertyMap{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlPropertyMap) {
-		C.QQmlPropertyMap_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlPropertyMap_delete((*C.QQmlPropertyMap)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

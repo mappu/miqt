@@ -23,8 +23,15 @@ const (
 
 type QProgressBar struct {
 	h  *C.QProgressBar
-	gc *[1]*C.QProgressBar
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QProgressBar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QProgressBar) cPointer() *C.QProgressBar {
@@ -60,6 +67,7 @@ func UnsafeNewQProgressBar(h unsafe.Pointer) *QProgressBar {
 
 // NewQProgressBar constructs a new QProgressBar object.
 func NewQProgressBar(parent *QWidget) *QProgressBar {
+	defer runtime.KeepAlive(parent)
 
 	return newQProgressBar(C.QProgressBar_new(parent.cPointer()))
 }
@@ -71,10 +79,12 @@ func NewQProgressBar2() *QProgressBar {
 }
 
 func (this *QProgressBar) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QProgressBar_metaObject(this.h))
 }
 
 func (this *QProgressBar) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QProgressBar_metacast(this.h, param1_Cstring))
@@ -99,18 +109,22 @@ func QProgressBar_TrUtf8(s string) string {
 }
 
 func (this *QProgressBar) Minimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressBar_minimum(this.h))
 }
 
 func (this *QProgressBar) Maximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressBar_maximum(this.h))
 }
 
 func (this *QProgressBar) Value() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QProgressBar_value(this.h))
 }
 
 func (this *QProgressBar) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QProgressBar_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -118,54 +132,66 @@ func (this *QProgressBar) Text() string {
 }
 
 func (this *QProgressBar) SetTextVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setTextVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QProgressBar) IsTextVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QProgressBar_isTextVisible(this.h))
 }
 
 func (this *QProgressBar) Alignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QProgressBar_alignment(this.h))
 }
 
 func (this *QProgressBar) SetAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QProgressBar) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QProgressBar_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProgressBar) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QProgressBar_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProgressBar) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QProgressBar_orientation(this.h))
 }
 
 func (this *QProgressBar) SetInvertedAppearance(invert bool) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setInvertedAppearance(this.h, (C.bool)(invert))
 }
 
 func (this *QProgressBar) InvertedAppearance() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QProgressBar_invertedAppearance(this.h))
 }
 
 func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setTextDirection(this.h, (C.int)(textDirection))
 }
 
 func (this *QProgressBar) TextDirection() QProgressBar__Direction {
+	defer runtime.KeepAlive(this)
 	return (QProgressBar__Direction)(C.QProgressBar_textDirection(this.h))
 }
 
 func (this *QProgressBar) SetFormat(format string) {
+	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -174,10 +200,12 @@ func (this *QProgressBar) SetFormat(format string) {
 }
 
 func (this *QProgressBar) ResetFormat() {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_resetFormat(this.h)
 }
 
 func (this *QProgressBar) Format() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QProgressBar_format(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -185,30 +213,37 @@ func (this *QProgressBar) Format() string {
 }
 
 func (this *QProgressBar) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_reset(this.h)
 }
 
 func (this *QProgressBar) SetRange(minimum int, maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setRange(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 
 func (this *QProgressBar) SetMinimum(minimum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QProgressBar) SetMaximum(maximum int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QProgressBar) SetValue(value int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setValue(this.h, (C.int)(value))
 }
 
 func (this *QProgressBar) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QProgressBar) ValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 	C.QProgressBar_valueChanged(this.h, (C.int)(value))
 }
 func (this *QProgressBar) OnValueChanged(slot func(value int)) {
@@ -274,6 +309,8 @@ func QProgressBar_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) InitStyleOption(option *QStyleOptionProgressBar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressBar_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -286,6 +323,7 @@ func (this *QProgressBar) InitStyleOption(option *QStyleOptionProgressBar) {
 
 // UpdateMicroFocus can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -298,6 +336,7 @@ func (this *QProgressBar) UpdateMicroFocus() {
 
 // Create can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -310,6 +349,7 @@ func (this *QProgressBar) Create() {
 
 // Destroy can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProgressBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -322,6 +362,7 @@ func (this *QProgressBar) Destroy() {
 
 // FocusNextChild can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -336,6 +377,7 @@ func (this *QProgressBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -350,6 +392,7 @@ func (this *QProgressBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QProgressBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -364,6 +407,7 @@ func (this *QProgressBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QProgressBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -378,6 +422,7 @@ func (this *QProgressBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -394,6 +439,8 @@ func (this *QProgressBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QProgressBar that was directly constructed.
 func (this *QProgressBar) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QProgressBar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -407,6 +454,7 @@ func (this *QProgressBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QProgressBar) callVirtualBase_Text() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QProgressBar_virtualbase_text(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -437,6 +485,7 @@ func miqt_exec_callback_QProgressBar_text(self *C.QProgressBar, cb C.intptr_t) C
 }
 
 func (this *QProgressBar) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QProgressBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -458,12 +507,14 @@ func miqt_exec_callback_QProgressBar_sizeHint(self *C.QProgressBar, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressBar) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QProgressBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -485,12 +536,15 @@ func miqt_exec_callback_QProgressBar_minimumSizeHint(self *C.QProgressBar, cb C.
 	}
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressBar_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressBar) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QProgressBar_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -519,6 +573,8 @@ func miqt_exec_callback_QProgressBar_event(self *C.QProgressBar, cb C.intptr_t, 
 }
 
 func (this *QProgressBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -545,6 +601,7 @@ func miqt_exec_callback_QProgressBar_paintEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -570,6 +627,7 @@ func miqt_exec_callback_QProgressBar_devType(self *C.QProgressBar, cb C.intptr_t
 }
 
 func (this *QProgressBar) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QProgressBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -596,6 +654,7 @@ func miqt_exec_callback_QProgressBar_setVisible(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -624,6 +683,7 @@ func miqt_exec_callback_QProgressBar_heightForWidth(self *C.QProgressBar, cb C.i
 }
 
 func (this *QProgressBar) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProgressBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -649,6 +709,7 @@ func miqt_exec_callback_QProgressBar_hasHeightForWidth(self *C.QProgressBar, cb 
 }
 
 func (this *QProgressBar) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QProgressBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -668,12 +729,15 @@ func miqt_exec_callback_QProgressBar_paintEngine(self *C.QProgressBar, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressBar) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -700,6 +764,8 @@ func miqt_exec_callback_QProgressBar_mousePressEvent(self *C.QProgressBar, cb C.
 }
 
 func (this *QProgressBar) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -726,6 +792,8 @@ func miqt_exec_callback_QProgressBar_mouseReleaseEvent(self *C.QProgressBar, cb 
 }
 
 func (this *QProgressBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -752,6 +820,8 @@ func miqt_exec_callback_QProgressBar_mouseDoubleClickEvent(self *C.QProgressBar,
 }
 
 func (this *QProgressBar) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -778,6 +848,8 @@ func miqt_exec_callback_QProgressBar_mouseMoveEvent(self *C.QProgressBar, cb C.i
 }
 
 func (this *QProgressBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -804,6 +876,8 @@ func miqt_exec_callback_QProgressBar_wheelEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -830,6 +904,8 @@ func miqt_exec_callback_QProgressBar_keyPressEvent(self *C.QProgressBar, cb C.in
 }
 
 func (this *QProgressBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -856,6 +932,8 @@ func miqt_exec_callback_QProgressBar_keyReleaseEvent(self *C.QProgressBar, cb C.
 }
 
 func (this *QProgressBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -882,6 +960,8 @@ func miqt_exec_callback_QProgressBar_focusInEvent(self *C.QProgressBar, cb C.int
 }
 
 func (this *QProgressBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -908,6 +988,8 @@ func miqt_exec_callback_QProgressBar_focusOutEvent(self *C.QProgressBar, cb C.in
 }
 
 func (this *QProgressBar) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -934,6 +1016,8 @@ func miqt_exec_callback_QProgressBar_enterEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -960,6 +1044,8 @@ func miqt_exec_callback_QProgressBar_leaveEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -986,6 +1072,8 @@ func miqt_exec_callback_QProgressBar_moveEvent(self *C.QProgressBar, cb C.intptr
 }
 
 func (this *QProgressBar) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1012,6 +1100,8 @@ func miqt_exec_callback_QProgressBar_resizeEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1038,6 +1128,8 @@ func miqt_exec_callback_QProgressBar_closeEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1064,6 +1156,8 @@ func miqt_exec_callback_QProgressBar_contextMenuEvent(self *C.QProgressBar, cb C
 }
 
 func (this *QProgressBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1090,6 +1184,8 @@ func miqt_exec_callback_QProgressBar_tabletEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1116,6 +1212,8 @@ func miqt_exec_callback_QProgressBar_actionEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1142,6 +1240,8 @@ func miqt_exec_callback_QProgressBar_dragEnterEvent(self *C.QProgressBar, cb C.i
 }
 
 func (this *QProgressBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1168,6 +1268,8 @@ func miqt_exec_callback_QProgressBar_dragMoveEvent(self *C.QProgressBar, cb C.in
 }
 
 func (this *QProgressBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1194,6 +1296,8 @@ func miqt_exec_callback_QProgressBar_dragLeaveEvent(self *C.QProgressBar, cb C.i
 }
 
 func (this *QProgressBar) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1220,6 +1324,8 @@ func miqt_exec_callback_QProgressBar_dropEvent(self *C.QProgressBar, cb C.intptr
 }
 
 func (this *QProgressBar) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1246,6 +1352,8 @@ func miqt_exec_callback_QProgressBar_showEvent(self *C.QProgressBar, cb C.intptr
 }
 
 func (this *QProgressBar) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1272,6 +1380,7 @@ func miqt_exec_callback_QProgressBar_hideEvent(self *C.QProgressBar, cb C.intptr
 }
 
 func (this *QProgressBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1313,6 +1422,8 @@ func miqt_exec_callback_QProgressBar_nativeEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressBar_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1339,6 +1450,7 @@ func miqt_exec_callback_QProgressBar_changeEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QProgressBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1367,6 +1479,8 @@ func miqt_exec_callback_QProgressBar_metric(self *C.QProgressBar, cb C.intptr_t,
 }
 
 func (this *QProgressBar) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QProgressBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1393,6 +1507,8 @@ func miqt_exec_callback_QProgressBar_initPainter(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QProgressBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1415,12 +1531,14 @@ func miqt_exec_callback_QProgressBar_redirected(self *C.QProgressBar, cb C.intpt
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressBar) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QProgressBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1440,12 +1558,15 @@ func miqt_exec_callback_QProgressBar_sharedPainter(self *C.QProgressBar, cb C.in
 	}
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QProgressBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QProgressBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1472,6 +1593,7 @@ func miqt_exec_callback_QProgressBar_inputMethodEvent(self *C.QProgressBar, cb C
 }
 
 func (this *QProgressBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QProgressBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1496,12 +1618,14 @@ func miqt_exec_callback_QProgressBar_inputMethodQuery(self *C.QProgressBar, cb C
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QProgressBar_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QProgressBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProgressBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1530,6 +1654,9 @@ func miqt_exec_callback_QProgressBar_focusNextPrevChild(self *C.QProgressBar, cb
 }
 
 func (this *QProgressBar) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QProgressBar_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1560,6 +1687,8 @@ func miqt_exec_callback_QProgressBar_eventFilter(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1586,6 +1715,8 @@ func miqt_exec_callback_QProgressBar_timerEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1612,6 +1743,8 @@ func miqt_exec_callback_QProgressBar_childEvent(self *C.QProgressBar, cb C.intpt
 }
 
 func (this *QProgressBar) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QProgressBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1638,6 +1771,8 @@ func miqt_exec_callback_QProgressBar_customEvent(self *C.QProgressBar, cb C.intp
 }
 
 func (this *QProgressBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProgressBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1664,6 +1799,8 @@ func miqt_exec_callback_QProgressBar_connectNotify(self *C.QProgressBar, cb C.in
 }
 
 func (this *QProgressBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QProgressBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1701,8 +1838,9 @@ func (this *QProgressBar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QProgressBar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProgressBar) {
-		C.QProgressBar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QProgressBar_delete((*C.QProgressBar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

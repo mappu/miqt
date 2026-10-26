@@ -272,6 +272,8 @@ bool QWizard_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QWizard_virtualreturncopy_QSize(QSize* src);
+QVariant* QWizard_virtualreturncopy_QVariant(QVariant* src);
 
 void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -418,6 +420,8 @@ bool QWizardPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QWizardPage_virtualreturncopy_QSize(QSize* src);
+QVariant* QWizardPage_virtualreturncopy_QVariant(QVariant* src);
 
 void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value);
 QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name);

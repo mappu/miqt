@@ -39,7 +39,13 @@ const (
 
 type QAbstractVideoBuffer struct {
 	h  *C.QAbstractVideoBuffer
-	gc *[1]*C.QAbstractVideoBuffer
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractVideoBuffer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractVideoBuffer) cPointer() *C.QAbstractVideoBuffer {
@@ -77,32 +83,39 @@ func NewQAbstractVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstrac
 }
 
 func (this *QAbstractVideoBuffer) Release() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractVideoBuffer_release(this.h)
 }
 
 func (this *QAbstractVideoBuffer) HandleType() QAbstractVideoBuffer__HandleType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractVideoBuffer__HandleType)(C.QAbstractVideoBuffer_handleType(this.h))
 }
 
 func (this *QAbstractVideoBuffer) MapMode() QAbstractVideoBuffer__MapMode {
+	defer runtime.KeepAlive(this)
 	return (QAbstractVideoBuffer__MapMode)(C.QAbstractVideoBuffer_mapMode(this.h))
 }
 
 func (this *QAbstractVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QAbstractVideoBuffer_map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
 }
 
 func (this *QAbstractVideoBuffer) Unmap() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractVideoBuffer_unmap(this.h)
 }
 
 func (this *QAbstractVideoBuffer) Handle() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractVideoBuffer_handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoBuffer) callVirtualBase_Release() {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractVideoBuffer_virtualbase_release(unsafe.Pointer(this.h))
 
@@ -188,6 +201,7 @@ func miqt_exec_callback_QAbstractVideoBuffer_unmap(self *C.QAbstractVideoBuffer,
 }
 
 func (this *QAbstractVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractVideoBuffer_virtualbase_handle(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -209,8 +223,9 @@ func miqt_exec_callback_QAbstractVideoBuffer_handle(self *C.QAbstractVideoBuffer
 	}
 
 	virtualReturn := gofunc((&QAbstractVideoBuffer{h: self}).callVirtualBase_Handle)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QAbstractVideoBuffer_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -226,16 +241,24 @@ func (this *QAbstractVideoBuffer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractVideoBuffer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractVideoBuffer) {
-		C.QAbstractVideoBuffer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractVideoBuffer_delete((*C.QAbstractVideoBuffer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QAbstractPlanarVideoBuffer struct {
 	h  *C.QAbstractPlanarVideoBuffer
-	gc *[1]*C.QAbstractPlanarVideoBuffer
+	gc *[1]unsafe.Pointer
 	*QAbstractVideoBuffer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractPlanarVideoBuffer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractVideoBuffer.miqtSetGC(gc)
 }
 
 func (this *QAbstractPlanarVideoBuffer) cPointer() *C.QAbstractPlanarVideoBuffer {
@@ -270,6 +293,7 @@ func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer) *QAbstractPlanarVideo
 }
 
 func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QAbstractPlanarVideoBuffer_map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
 }
 
@@ -285,8 +309,9 @@ func (this *QAbstractPlanarVideoBuffer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractPlanarVideoBuffer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractPlanarVideoBuffer) {
-		C.QAbstractPlanarVideoBuffer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractPlanarVideoBuffer_delete((*C.QAbstractPlanarVideoBuffer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

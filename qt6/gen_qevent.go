@@ -55,8 +55,15 @@ const (
 
 type QInputEvent struct {
 	h  *C.QInputEvent
-	gc *[1]*C.QInputEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QInputEvent) cPointer() *C.QInputEvent {
@@ -92,45 +99,55 @@ func UnsafeNewQInputEvent(h unsafe.Pointer) *QInputEvent {
 
 // NewQInputEvent constructs a new QInputEvent object.
 func NewQInputEvent(typeVal QEvent__Type, m_dev *QInputDevice) *QInputEvent {
+	defer runtime.KeepAlive(m_dev)
 
 	return newQInputEvent(C.QInputEvent_new((C.int)(typeVal), m_dev.cPointer()))
 }
 
 // NewQInputEvent2 constructs a new QInputEvent object.
 func NewQInputEvent2(typeVal QEvent__Type, m_dev *QInputDevice, modifiers KeyboardModifier) *QInputEvent {
+	defer runtime.KeepAlive(m_dev)
 
 	return newQInputEvent(C.QInputEvent_new2((C.int)(typeVal), m_dev.cPointer(), (C.int)(modifiers)))
 }
 
 func (this *QInputEvent) Clone() *QInputEvent {
+	defer runtime.KeepAlive(this)
 	return newQInputEvent(C.QInputEvent_clone(this.h))
 }
 
 func (this *QInputEvent) Device() *QInputDevice {
+	defer runtime.KeepAlive(this)
 	return newQInputDevice(C.QInputEvent_device(this.h))
 }
 
 func (this *QInputEvent) DeviceType() QInputDevice__DeviceType {
+	defer runtime.KeepAlive(this)
 	return (QInputDevice__DeviceType)(C.QInputEvent_deviceType(this.h))
 }
 
 func (this *QInputEvent) Modifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QInputEvent_modifiers(this.h))
 }
 
 func (this *QInputEvent) SetModifiers(modifiers KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QInputEvent_setModifiers(this.h, (C.int)(modifiers))
 }
 
 func (this *QInputEvent) Timestamp() uint64 {
+	defer runtime.KeepAlive(this)
 	return (uint64)(C.QInputEvent_timestamp(this.h))
 }
 
 func (this *QInputEvent) SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 	C.QInputEvent_setTimestamp(this.h, (C.ulonglong)(timestamp))
 }
 
 func (this *QInputEvent) callVirtualBase_Clone() *QInputEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQInputEvent(C.QInputEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -150,12 +167,14 @@ func miqt_exec_callback_QInputEvent_clone(self *C.QInputEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QInputEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -182,6 +201,7 @@ func miqt_exec_callback_QInputEvent_setTimestamp(self *C.QInputEvent, cb C.intpt
 }
 
 func (this *QInputEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -219,16 +239,24 @@ func (this *QInputEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputEvent) {
-		C.QInputEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputEvent_delete((*C.QInputEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPointerEvent struct {
 	h  *C.QPointerEvent
-	gc *[1]*C.QPointerEvent
+	gc *[1]unsafe.Pointer
 	*QInputEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPointerEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QInputEvent.miqtSetGC(gc)
 }
 
 func (this *QPointerEvent) cPointer() *C.QPointerEvent {
@@ -264,18 +292,22 @@ func UnsafeNewQPointerEvent(h unsafe.Pointer) *QPointerEvent {
 
 // NewQPointerEvent constructs a new QPointerEvent object.
 func NewQPointerEvent(typeVal QEvent__Type, dev *QPointingDevice) *QPointerEvent {
+	defer runtime.KeepAlive(dev)
 
 	return newQPointerEvent(C.QPointerEvent_new((C.int)(typeVal), dev.cPointer()))
 }
 
 // NewQPointerEvent2 constructs a new QPointerEvent object.
 func NewQPointerEvent2(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier) *QPointerEvent {
+	defer runtime.KeepAlive(dev)
 
 	return newQPointerEvent(C.QPointerEvent_new2((C.int)(typeVal), dev.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQPointerEvent3 constructs a new QPointerEvent object.
 func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier, points []QEventPoint) *QPointerEvent {
+	defer runtime.KeepAlive(dev)
+	defer runtime.KeepAlive(points)
 	points_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray_ptr))
 	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
@@ -288,30 +320,39 @@ func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers Key
 }
 
 func (this *QPointerEvent) Clone() *QPointerEvent {
+	defer runtime.KeepAlive(this)
 	return newQPointerEvent(C.QPointerEvent_clone(this.h))
 }
 
 func (this *QPointerEvent) PointingDevice() *QPointingDevice {
+	defer runtime.KeepAlive(this)
 	return newQPointingDevice(C.QPointerEvent_pointingDevice(this.h))
 }
 
 func (this *QPointerEvent) PointerType() QPointingDevice__PointerType {
+	defer runtime.KeepAlive(this)
 	return (QPointingDevice__PointerType)(C.QPointerEvent_pointerType(this.h))
 }
 
 func (this *QPointerEvent) SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 	C.QPointerEvent_setTimestamp(this.h, (C.ulonglong)(timestamp))
 }
 
 func (this *QPointerEvent) PointCount() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QPointerEvent_pointCount(this.h))
 }
 
 func (this *QPointerEvent) Point(i int64) *QEventPoint {
-	return newQEventPoint(C.QPointerEvent_point(this.h, (C.ptrdiff_t)(i)))
+	defer runtime.KeepAlive(this)
+	_ret := newQEventPoint(C.QPointerEvent_point(this.h, (C.ptrdiff_t)(i)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPointerEvent) Points() []QEventPoint {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPointerEvent_points(this.h)
 	_ret := make([]QEventPoint, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QEventPoint)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -324,54 +365,75 @@ func (this *QPointerEvent) Points() []QEventPoint {
 }
 
 func (this *QPointerEvent) PointById(id int) *QEventPoint {
+	defer runtime.KeepAlive(this)
 	return newQEventPoint(C.QPointerEvent_pointById(this.h, (C.int)(id)))
 }
 
 func (this *QPointerEvent) AllPointsGrabbed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPointerEvent_allPointsGrabbed(this.h))
 }
 
 func (this *QPointerEvent) IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPointerEvent_isBeginEvent(this.h))
 }
 
 func (this *QPointerEvent) IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPointerEvent_isUpdateEvent(this.h))
 }
 
 func (this *QPointerEvent) IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPointerEvent_isEndEvent(this.h))
 }
 
 func (this *QPointerEvent) AllPointsAccepted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPointerEvent_allPointsAccepted(this.h))
 }
 
 func (this *QPointerEvent) SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 	C.QPointerEvent_setAccepted(this.h, (C.bool)(accepted))
 }
 
 func (this *QPointerEvent) ExclusiveGrabber(point *QEventPoint) *QObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	return newQObject(C.QPointerEvent_exclusiveGrabber(this.h, point.cPointer()))
 }
 
 func (this *QPointerEvent) SetExclusiveGrabber(point *QEventPoint, exclusiveGrabber *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
+	defer runtime.KeepAlive(exclusiveGrabber)
 	C.QPointerEvent_setExclusiveGrabber(this.h, point.cPointer(), exclusiveGrabber.cPointer())
 }
 
 func (this *QPointerEvent) ClearPassiveGrabbers(point *QEventPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	C.QPointerEvent_clearPassiveGrabbers(this.h, point.cPointer())
 }
 
 func (this *QPointerEvent) AddPassiveGrabber(point *QEventPoint, grabber *QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
+	defer runtime.KeepAlive(grabber)
 	return (bool)(C.QPointerEvent_addPassiveGrabber(this.h, point.cPointer(), grabber.cPointer()))
 }
 
 func (this *QPointerEvent) RemovePassiveGrabber(point *QEventPoint, grabber *QObject) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
+	defer runtime.KeepAlive(grabber)
 	return (bool)(C.QPointerEvent_removePassiveGrabber(this.h, point.cPointer(), grabber.cPointer()))
 }
 
 func (this *QPointerEvent) callVirtualBase_Clone() *QPointerEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQPointerEvent(C.QPointerEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -391,12 +453,14 @@ func miqt_exec_callback_QPointerEvent_clone(self *C.QPointerEvent, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QPointerEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPointerEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QPointerEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -423,6 +487,7 @@ func miqt_exec_callback_QPointerEvent_setTimestamp(self *C.QPointerEvent, cb C.i
 }
 
 func (this *QPointerEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPointerEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -448,6 +513,7 @@ func miqt_exec_callback_QPointerEvent_isBeginEvent(self *C.QPointerEvent, cb C.i
 }
 
 func (this *QPointerEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPointerEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -473,6 +539,7 @@ func miqt_exec_callback_QPointerEvent_isUpdateEvent(self *C.QPointerEvent, cb C.
 }
 
 func (this *QPointerEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPointerEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -498,6 +565,7 @@ func miqt_exec_callback_QPointerEvent_isEndEvent(self *C.QPointerEvent, cb C.int
 }
 
 func (this *QPointerEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPointerEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -535,16 +603,24 @@ func (this *QPointerEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPointerEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPointerEvent) {
-		C.QPointerEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPointerEvent_delete((*C.QPointerEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QSinglePointEvent struct {
 	h  *C.QSinglePointEvent
-	gc *[1]*C.QSinglePointEvent
+	gc *[1]unsafe.Pointer
 	*QPointerEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSinglePointEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPointerEvent.miqtSetGC(gc)
 }
 
 func (this *QSinglePointEvent) cPointer() *C.QSinglePointEvent {
@@ -579,52 +655,64 @@ func UnsafeNewQSinglePointEvent(h unsafe.Pointer) *QSinglePointEvent {
 }
 
 func (this *QSinglePointEvent) Clone() *QSinglePointEvent {
+	defer runtime.KeepAlive(this)
 	return newQSinglePointEvent(C.QSinglePointEvent_clone(this.h))
 }
 
 func (this *QSinglePointEvent) Button() MouseButton {
+	defer runtime.KeepAlive(this)
 	return (MouseButton)(C.QSinglePointEvent_button(this.h))
 }
 
 func (this *QSinglePointEvent) Buttons() MouseButton {
+	defer runtime.KeepAlive(this)
 	return (MouseButton)(C.QSinglePointEvent_buttons(this.h))
 }
 
 func (this *QSinglePointEvent) Position() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QSinglePointEvent_position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSinglePointEvent) ScenePosition() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QSinglePointEvent_scenePosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSinglePointEvent) GlobalPosition() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QSinglePointEvent_globalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSinglePointEvent) IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSinglePointEvent_isBeginEvent(this.h))
 }
 
 func (this *QSinglePointEvent) IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSinglePointEvent_isUpdateEvent(this.h))
 }
 
 func (this *QSinglePointEvent) IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSinglePointEvent_isEndEvent(this.h))
 }
 
 func (this *QSinglePointEvent) ExclusivePointGrabber() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QSinglePointEvent_exclusivePointGrabber(this.h))
 }
 
 func (this *QSinglePointEvent) SetExclusivePointGrabber(exclusiveGrabber *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exclusiveGrabber)
 	C.QSinglePointEvent_setExclusivePointGrabber(this.h, exclusiveGrabber.cPointer())
 }
 
@@ -640,16 +728,24 @@ func (this *QSinglePointEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSinglePointEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSinglePointEvent) {
-		C.QSinglePointEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSinglePointEvent_delete((*C.QSinglePointEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QEnterEvent struct {
 	h  *C.QEnterEvent
-	gc *[1]*C.QEnterEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QEnterEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QEnterEvent) cPointer() *C.QEnterEvent {
@@ -685,67 +781,85 @@ func UnsafeNewQEnterEvent(h unsafe.Pointer) *QEnterEvent {
 
 // NewQEnterEvent constructs a new QEnterEvent object.
 func NewQEnterEvent(localPos *QPointF, scenePos *QPointF, globalPos *QPointF) *QEnterEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQEnterEvent(C.QEnterEvent_new(localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer()))
 }
 
 // NewQEnterEvent2 constructs a new QEnterEvent object.
 func NewQEnterEvent2(localPos *QPointF, scenePos *QPointF, globalPos *QPointF, device *QPointingDevice) *QEnterEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(device)
 
 	return newQEnterEvent(C.QEnterEvent_new2(localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), device.cPointer()))
 }
 
 func (this *QEnterEvent) Clone() *QEnterEvent {
+	defer runtime.KeepAlive(this)
 	return newQEnterEvent(C.QEnterEvent_clone(this.h))
 }
 
 func (this *QEnterEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QEnterEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) GlobalPos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QEnterEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) X() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEnterEvent_x(this.h))
 }
 
 func (this *QEnterEvent) Y() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEnterEvent_y(this.h))
 }
 
 func (this *QEnterEvent) GlobalX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEnterEvent_globalX(this.h))
 }
 
 func (this *QEnterEvent) GlobalY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QEnterEvent_globalY(this.h))
 }
 
 func (this *QEnterEvent) LocalPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QEnterEvent_localPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) WindowPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QEnterEvent_windowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QEnterEvent_screenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) callVirtualBase_Clone() *QEnterEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQEnterEvent(C.QEnterEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -765,12 +879,14 @@ func miqt_exec_callback_QEnterEvent_clone(self *C.QEnterEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QEnterEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QEnterEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QEnterEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -796,6 +912,7 @@ func miqt_exec_callback_QEnterEvent_isBeginEvent(self *C.QEnterEvent, cb C.intpt
 }
 
 func (this *QEnterEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QEnterEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -821,6 +938,7 @@ func miqt_exec_callback_QEnterEvent_isUpdateEvent(self *C.QEnterEvent, cb C.intp
 }
 
 func (this *QEnterEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QEnterEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -846,6 +964,7 @@ func miqt_exec_callback_QEnterEvent_isEndEvent(self *C.QEnterEvent, cb C.intptr_
 }
 
 func (this *QEnterEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QEnterEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -872,6 +991,7 @@ func miqt_exec_callback_QEnterEvent_setTimestamp(self *C.QEnterEvent, cb C.intpt
 }
 
 func (this *QEnterEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QEnterEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -909,16 +1029,24 @@ func (this *QEnterEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QEnterEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEnterEvent) {
-		C.QEnterEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QEnterEvent_delete((*C.QEnterEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMouseEvent struct {
 	h  *C.QMouseEvent
-	gc *[1]*C.QMouseEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMouseEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QMouseEvent) cPointer() *C.QMouseEvent {
@@ -954,111 +1082,146 @@ func UnsafeNewQMouseEvent(h unsafe.Pointer) *QMouseEvent {
 
 // NewQMouseEvent constructs a new QMouseEvent object.
 func NewQMouseEvent(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
 
 	return newQMouseEvent(C.QMouseEvent_new((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent2 constructs a new QMouseEvent object.
 func NewQMouseEvent2(typeVal QEvent__Type, localPos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQMouseEvent(C.QMouseEvent_new2((C.int)(typeVal), localPos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent3 constructs a new QMouseEvent object.
 func NewQMouseEvent3(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQMouseEvent(C.QMouseEvent_new3((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent4 constructs a new QMouseEvent object.
 func NewQMouseEvent4(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQMouseEvent(C.QMouseEvent_new4((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source)))
 }
 
 // NewQMouseEvent5 constructs a new QMouseEvent object.
 func NewQMouseEvent5(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new5((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent6 constructs a new QMouseEvent object.
 func NewQMouseEvent6(typeVal QEvent__Type, localPos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new6((C.int)(typeVal), localPos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent7 constructs a new QMouseEvent object.
 func NewQMouseEvent7(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new7((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent8 constructs a new QMouseEvent object.
 func NewQMouseEvent8(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource, device *QPointingDevice) *QMouseEvent {
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new8((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source), device.cPointer()))
 }
 
 func (this *QMouseEvent) Clone() *QMouseEvent {
+	defer runtime.KeepAlive(this)
 	return newQMouseEvent(C.QMouseEvent_clone(this.h))
 }
 
 func (this *QMouseEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QMouseEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) GlobalPos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QMouseEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) X() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMouseEvent_x(this.h))
 }
 
 func (this *QMouseEvent) Y() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMouseEvent_y(this.h))
 }
 
 func (this *QMouseEvent) GlobalX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMouseEvent_globalX(this.h))
 }
 
 func (this *QMouseEvent) GlobalY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QMouseEvent_globalY(this.h))
 }
 
 func (this *QMouseEvent) LocalPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QMouseEvent_localPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) WindowPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QMouseEvent_windowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) ScreenPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QMouseEvent_screenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) Source() MouseEventSource {
+	defer runtime.KeepAlive(this)
 	return (MouseEventSource)(C.QMouseEvent_source(this.h))
 }
 
 func (this *QMouseEvent) Flags() MouseEventFlag {
+	defer runtime.KeepAlive(this)
 	return (MouseEventFlag)(C.QMouseEvent_flags(this.h))
 }
 
 func (this *QMouseEvent) callVirtualBase_Clone() *QMouseEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQMouseEvent(C.QMouseEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -1078,12 +1241,14 @@ func miqt_exec_callback_QMouseEvent_clone(self *C.QMouseEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QMouseEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMouseEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMouseEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -1109,6 +1274,7 @@ func miqt_exec_callback_QMouseEvent_isBeginEvent(self *C.QMouseEvent, cb C.intpt
 }
 
 func (this *QMouseEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMouseEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -1134,6 +1300,7 @@ func miqt_exec_callback_QMouseEvent_isUpdateEvent(self *C.QMouseEvent, cb C.intp
 }
 
 func (this *QMouseEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMouseEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -1159,6 +1326,7 @@ func miqt_exec_callback_QMouseEvent_isEndEvent(self *C.QMouseEvent, cb C.intptr_
 }
 
 func (this *QMouseEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QMouseEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -1185,6 +1353,7 @@ func miqt_exec_callback_QMouseEvent_setTimestamp(self *C.QMouseEvent, cb C.intpt
 }
 
 func (this *QMouseEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QMouseEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -1222,16 +1391,24 @@ func (this *QMouseEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMouseEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMouseEvent) {
-		C.QMouseEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMouseEvent_delete((*C.QMouseEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHoverEvent struct {
 	h  *C.QHoverEvent
-	gc *[1]*C.QHoverEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHoverEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QHoverEvent) cPointer() *C.QHoverEvent {
@@ -1267,73 +1444,97 @@ func UnsafeNewQHoverEvent(h unsafe.Pointer) *QHoverEvent {
 
 // NewQHoverEvent constructs a new QHoverEvent object.
 func NewQHoverEvent(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF) *QHoverEvent {
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(oldPos)
 
 	return newQHoverEvent(C.QHoverEvent_new((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer()))
 }
 
 // NewQHoverEvent2 constructs a new QHoverEvent object.
 func NewQHoverEvent2(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF) *QHoverEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(oldPos)
 
 	return newQHoverEvent(C.QHoverEvent_new2((C.int)(typeVal), pos.cPointer(), oldPos.cPointer()))
 }
 
 // NewQHoverEvent3 constructs a new QHoverEvent object.
 func NewQHoverEvent3(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF, modifiers KeyboardModifier) *QHoverEvent {
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(oldPos)
 
 	return newQHoverEvent(C.QHoverEvent_new3((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQHoverEvent4 constructs a new QHoverEvent object.
 func NewQHoverEvent4(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(oldPos)
+	defer runtime.KeepAlive(device)
 
 	return newQHoverEvent(C.QHoverEvent_new4((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQHoverEvent5 constructs a new QHoverEvent object.
 func NewQHoverEvent5(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier) *QHoverEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(oldPos)
 
 	return newQHoverEvent(C.QHoverEvent_new5((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQHoverEvent6 constructs a new QHoverEvent object.
 func NewQHoverEvent6(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(oldPos)
+	defer runtime.KeepAlive(device)
 
 	return newQHoverEvent(C.QHoverEvent_new6((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
 }
 
 func (this *QHoverEvent) Clone() *QHoverEvent {
+	defer runtime.KeepAlive(this)
 	return newQHoverEvent(C.QHoverEvent_clone(this.h))
 }
 
 func (this *QHoverEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QHoverEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) PosF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QHoverEvent_posF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHoverEvent_isUpdateEvent(this.h))
 }
 
 func (this *QHoverEvent) OldPos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QHoverEvent_oldPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) OldPosF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QHoverEvent_oldPosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) callVirtualBase_Clone() *QHoverEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQHoverEvent(C.QHoverEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -1353,12 +1554,14 @@ func miqt_exec_callback_QHoverEvent_clone(self *C.QHoverEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QHoverEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHoverEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHoverEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -1384,6 +1587,7 @@ func miqt_exec_callback_QHoverEvent_isUpdateEvent(self *C.QHoverEvent, cb C.intp
 }
 
 func (this *QHoverEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHoverEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -1409,6 +1613,7 @@ func miqt_exec_callback_QHoverEvent_isBeginEvent(self *C.QHoverEvent, cb C.intpt
 }
 
 func (this *QHoverEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHoverEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -1434,6 +1639,7 @@ func miqt_exec_callback_QHoverEvent_isEndEvent(self *C.QHoverEvent, cb C.intptr_
 }
 
 func (this *QHoverEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QHoverEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -1460,6 +1666,7 @@ func miqt_exec_callback_QHoverEvent_setTimestamp(self *C.QHoverEvent, cb C.intpt
 }
 
 func (this *QHoverEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QHoverEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -1497,16 +1704,24 @@ func (this *QHoverEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHoverEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHoverEvent) {
-		C.QHoverEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHoverEvent_delete((*C.QHoverEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWheelEvent struct {
 	h  *C.QWheelEvent
-	gc *[1]*C.QWheelEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWheelEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QWheelEvent) cPointer() *C.QWheelEvent {
@@ -1542,71 +1757,96 @@ func UnsafeNewQWheelEvent(h unsafe.Pointer) *QWheelEvent {
 
 // NewQWheelEvent constructs a new QWheelEvent object.
 func NewQWheelEvent(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool) *QWheelEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(pixelDelta)
+	defer runtime.KeepAlive(angleDelta)
 
 	return newQWheelEvent(C.QWheelEvent_new(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted)))
 }
 
 // NewQWheelEvent2 constructs a new QWheelEvent object.
 func NewQWheelEvent2(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource) *QWheelEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(pixelDelta)
+	defer runtime.KeepAlive(angleDelta)
 
 	return newQWheelEvent(C.QWheelEvent_new2(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source)))
 }
 
 // NewQWheelEvent3 constructs a new QWheelEvent object.
 func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource, device *QPointingDevice) *QWheelEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(pixelDelta)
+	defer runtime.KeepAlive(angleDelta)
+	defer runtime.KeepAlive(device)
 
 	return newQWheelEvent(C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source), device.cPointer()))
 }
 
 func (this *QWheelEvent) Clone() *QWheelEvent {
+	defer runtime.KeepAlive(this)
 	return newQWheelEvent(C.QWheelEvent_clone(this.h))
 }
 
 func (this *QWheelEvent) PixelDelta() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QWheelEvent_pixelDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) AngleDelta() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QWheelEvent_angleDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) Phase() ScrollPhase {
+	defer runtime.KeepAlive(this)
 	return (ScrollPhase)(C.QWheelEvent_phase(this.h))
 }
 
 func (this *QWheelEvent) Inverted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_inverted(this.h))
 }
 
 func (this *QWheelEvent) IsInverted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_isInverted(this.h))
 }
 
 func (this *QWheelEvent) HasPixelDelta() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_hasPixelDelta(this.h))
 }
 
 func (this *QWheelEvent) IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_isBeginEvent(this.h))
 }
 
 func (this *QWheelEvent) IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_isUpdateEvent(this.h))
 }
 
 func (this *QWheelEvent) IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWheelEvent_isEndEvent(this.h))
 }
 
 func (this *QWheelEvent) Source() MouseEventSource {
+	defer runtime.KeepAlive(this)
 	return (MouseEventSource)(C.QWheelEvent_source(this.h))
 }
 
 func (this *QWheelEvent) callVirtualBase_Clone() *QWheelEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQWheelEvent(C.QWheelEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -1626,12 +1866,14 @@ func miqt_exec_callback_QWheelEvent_clone(self *C.QWheelEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QWheelEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWheelEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWheelEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -1657,6 +1899,7 @@ func miqt_exec_callback_QWheelEvent_isBeginEvent(self *C.QWheelEvent, cb C.intpt
 }
 
 func (this *QWheelEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWheelEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -1682,6 +1925,7 @@ func miqt_exec_callback_QWheelEvent_isUpdateEvent(self *C.QWheelEvent, cb C.intp
 }
 
 func (this *QWheelEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWheelEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -1707,6 +1951,7 @@ func miqt_exec_callback_QWheelEvent_isEndEvent(self *C.QWheelEvent, cb C.intptr_
 }
 
 func (this *QWheelEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QWheelEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -1733,6 +1978,7 @@ func miqt_exec_callback_QWheelEvent_setTimestamp(self *C.QWheelEvent, cb C.intpt
 }
 
 func (this *QWheelEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QWheelEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -1770,16 +2016,24 @@ func (this *QWheelEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWheelEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWheelEvent) {
-		C.QWheelEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWheelEvent_delete((*C.QWheelEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTabletEvent struct {
 	h  *C.QTabletEvent
-	gc *[1]*C.QTabletEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTabletEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QTabletEvent) cPointer() *C.QTabletEvent {
@@ -1815,91 +2069,113 @@ func UnsafeNewQTabletEvent(h unsafe.Pointer) *QTabletEvent {
 
 // NewQTabletEvent constructs a new QTabletEvent object.
 func NewQTabletEvent(t QEvent__Type, device *QPointingDevice, pos *QPointF, globalPos *QPointF, pressure float64, xTilt float32, yTilt float32, tangentialPressure float32, rotation float64, z float32, keyState KeyboardModifier, button MouseButton, buttons MouseButton) *QTabletEvent {
+	defer runtime.KeepAlive(device)
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQTabletEvent(C.QTabletEvent_new((C.int)(t), device.cPointer(), pos.cPointer(), globalPos.cPointer(), (C.double)(pressure), (C.float)(xTilt), (C.float)(yTilt), (C.float)(tangentialPressure), (C.double)(rotation), (C.float)(z), (C.int)(keyState), (C.int)(button), (C.int)(buttons)))
 }
 
 func (this *QTabletEvent) Clone() *QTabletEvent {
+	defer runtime.KeepAlive(this)
 	return newQTabletEvent(C.QTabletEvent_clone(this.h))
 }
 
 func (this *QTabletEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QTabletEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QTabletEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) PosF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QTabletEvent_posF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPosF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QTabletEvent_globalPosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) X() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabletEvent_x(this.h))
 }
 
 func (this *QTabletEvent) Y() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabletEvent_y(this.h))
 }
 
 func (this *QTabletEvent) GlobalX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabletEvent_globalX(this.h))
 }
 
 func (this *QTabletEvent) GlobalY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTabletEvent_globalY(this.h))
 }
 
 func (this *QTabletEvent) HiResGlobalX() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_hiResGlobalX(this.h))
 }
 
 func (this *QTabletEvent) HiResGlobalY() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_hiResGlobalY(this.h))
 }
 
 func (this *QTabletEvent) UniqueId() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QTabletEvent_uniqueId(this.h))
 }
 
 func (this *QTabletEvent) Pressure() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_pressure(this.h))
 }
 
 func (this *QTabletEvent) Rotation() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_rotation(this.h))
 }
 
 func (this *QTabletEvent) Z() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_z(this.h))
 }
 
 func (this *QTabletEvent) TangentialPressure() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_tangentialPressure(this.h))
 }
 
 func (this *QTabletEvent) XTilt() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_xTilt(this.h))
 }
 
 func (this *QTabletEvent) YTilt() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTabletEvent_yTilt(this.h))
 }
 
 func (this *QTabletEvent) callVirtualBase_Clone() *QTabletEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQTabletEvent(C.QTabletEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -1919,12 +2195,14 @@ func miqt_exec_callback_QTabletEvent_clone(self *C.QTabletEvent, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QTabletEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTabletEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTabletEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -1950,6 +2228,7 @@ func miqt_exec_callback_QTabletEvent_isBeginEvent(self *C.QTabletEvent, cb C.int
 }
 
 func (this *QTabletEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTabletEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -1975,6 +2254,7 @@ func miqt_exec_callback_QTabletEvent_isUpdateEvent(self *C.QTabletEvent, cb C.in
 }
 
 func (this *QTabletEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTabletEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -2000,6 +2280,7 @@ func miqt_exec_callback_QTabletEvent_isEndEvent(self *C.QTabletEvent, cb C.intpt
 }
 
 func (this *QTabletEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QTabletEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -2026,6 +2307,7 @@ func miqt_exec_callback_QTabletEvent_setTimestamp(self *C.QTabletEvent, cb C.int
 }
 
 func (this *QTabletEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QTabletEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2063,16 +2345,24 @@ func (this *QTabletEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTabletEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTabletEvent) {
-		C.QTabletEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTabletEvent_delete((*C.QTabletEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QNativeGestureEvent struct {
 	h  *C.QNativeGestureEvent
-	gc *[1]*C.QNativeGestureEvent
+	gc *[1]unsafe.Pointer
 	*QSinglePointEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNativeGestureEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QSinglePointEvent.miqtSetGC(gc)
 }
 
 func (this *QNativeGestureEvent) cPointer() *C.QNativeGestureEvent {
@@ -2108,75 +2398,100 @@ func UnsafeNewQNativeGestureEvent(h unsafe.Pointer) *QNativeGestureEvent {
 
 // NewQNativeGestureEvent constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent(typeVal NativeGestureType, dev *QPointingDevice, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
+	defer runtime.KeepAlive(dev)
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQNativeGestureEvent(C.QNativeGestureEvent_new((C.int)(typeVal), dev.cPointer(), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), (C.ulonglong)(sequenceId), (C.ulonglong)(intArgument)))
 }
 
 // NewQNativeGestureEvent2 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF) *QNativeGestureEvent {
+	defer runtime.KeepAlive(dev)
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(delta)
 
 	return newQNativeGestureEvent(C.QNativeGestureEvent_new2((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), delta.cPointer()))
 }
 
 // NewQNativeGestureEvent3 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent3(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF, sequenceId uint64) *QNativeGestureEvent {
+	defer runtime.KeepAlive(dev)
+	defer runtime.KeepAlive(localPos)
+	defer runtime.KeepAlive(scenePos)
+	defer runtime.KeepAlive(globalPos)
+	defer runtime.KeepAlive(delta)
 
 	return newQNativeGestureEvent(C.QNativeGestureEvent_new3((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), delta.cPointer(), (C.ulonglong)(sequenceId)))
 }
 
 func (this *QNativeGestureEvent) Clone() *QNativeGestureEvent {
+	defer runtime.KeepAlive(this)
 	return newQNativeGestureEvent(C.QNativeGestureEvent_clone(this.h))
 }
 
 func (this *QNativeGestureEvent) GestureType() NativeGestureType {
+	defer runtime.KeepAlive(this)
 	return (NativeGestureType)(C.QNativeGestureEvent_gestureType(this.h))
 }
 
 func (this *QNativeGestureEvent) FingerCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QNativeGestureEvent_fingerCount(this.h))
 }
 
 func (this *QNativeGestureEvent) Value() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QNativeGestureEvent_value(this.h))
 }
 
 func (this *QNativeGestureEvent) Delta() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QNativeGestureEvent_delta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QNativeGestureEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) GlobalPos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QNativeGestureEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) LocalPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QNativeGestureEvent_localPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) WindowPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QNativeGestureEvent_windowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) ScreenPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QNativeGestureEvent_screenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_Clone() *QNativeGestureEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQNativeGestureEvent(C.QNativeGestureEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -2196,12 +2511,14 @@ func miqt_exec_callback_QNativeGestureEvent_clone(self *C.QNativeGestureEvent, c
 	}
 
 	virtualReturn := gofunc((&QNativeGestureEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QNativeGestureEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -2227,6 +2544,7 @@ func miqt_exec_callback_QNativeGestureEvent_isBeginEvent(self *C.QNativeGestureE
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QNativeGestureEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -2252,6 +2570,7 @@ func miqt_exec_callback_QNativeGestureEvent_isUpdateEvent(self *C.QNativeGesture
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QNativeGestureEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -2277,6 +2596,7 @@ func miqt_exec_callback_QNativeGestureEvent_isEndEvent(self *C.QNativeGestureEve
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QNativeGestureEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -2303,6 +2623,7 @@ func miqt_exec_callback_QNativeGestureEvent_setTimestamp(self *C.QNativeGestureE
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QNativeGestureEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2340,16 +2661,24 @@ func (this *QNativeGestureEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNativeGestureEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNativeGestureEvent) {
-		C.QNativeGestureEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNativeGestureEvent_delete((*C.QNativeGestureEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QKeyEvent struct {
 	h  *C.QKeyEvent
-	gc *[1]*C.QKeyEvent
+	gc *[1]unsafe.Pointer
 	*QInputEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QKeyEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QInputEvent.miqtSetGC(gc)
 }
 
 func (this *QKeyEvent) cPointer() *C.QKeyEvent {
@@ -2457,6 +2786,7 @@ func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 
 // NewQKeyEvent9 constructs a new QKeyEvent object.
 func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16, device *QInputDevice) *QKeyEvent {
+	defer runtime.KeepAlive(device)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2466,28 +2796,34 @@ func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 }
 
 func (this *QKeyEvent) Clone() *QKeyEvent {
+	defer runtime.KeepAlive(this)
 	return newQKeyEvent(C.QKeyEvent_clone(this.h))
 }
 
 func (this *QKeyEvent) Key() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeyEvent_key(this.h))
 }
 
 func (this *QKeyEvent) Matches(key QKeySequence__StandardKey) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QKeyEvent_matches(this.h, (C.int)(key)))
 }
 
 func (this *QKeyEvent) Modifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QKeyEvent_modifiers(this.h))
 }
 
 func (this *QKeyEvent) KeyCombination() *QKeyCombination {
+	defer runtime.KeepAlive(this)
 	_goptr := newQKeyCombination(C.QKeyEvent_keyCombination(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QKeyEvent) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QKeyEvent_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2495,26 +2831,32 @@ func (this *QKeyEvent) Text() string {
 }
 
 func (this *QKeyEvent) IsAutoRepeat() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QKeyEvent_isAutoRepeat(this.h))
 }
 
 func (this *QKeyEvent) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeyEvent_count(this.h))
 }
 
 func (this *QKeyEvent) NativeScanCode() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QKeyEvent_nativeScanCode(this.h))
 }
 
 func (this *QKeyEvent) NativeVirtualKey() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QKeyEvent_nativeVirtualKey(this.h))
 }
 
 func (this *QKeyEvent) NativeModifiers() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QKeyEvent_nativeModifiers(this.h))
 }
 
 func (this *QKeyEvent) callVirtualBase_Clone() *QKeyEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQKeyEvent(C.QKeyEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -2534,12 +2876,14 @@ func miqt_exec_callback_QKeyEvent_clone(self *C.QKeyEvent, cb C.intptr_t) *C.QKe
 	}
 
 	virtualReturn := gofunc((&QKeyEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QKeyEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QKeyEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -2566,6 +2910,7 @@ func miqt_exec_callback_QKeyEvent_setTimestamp(self *C.QKeyEvent, cb C.intptr_t,
 }
 
 func (this *QKeyEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QKeyEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2603,16 +2948,24 @@ func (this *QKeyEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QKeyEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeyEvent) {
-		C.QKeyEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QKeyEvent_delete((*C.QKeyEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QFocusEvent struct {
 	h  *C.QFocusEvent
-	gc *[1]*C.QFocusEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFocusEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QFocusEvent) cPointer() *C.QFocusEvent {
@@ -2659,22 +3012,27 @@ func NewQFocusEvent2(typeVal QEvent__Type, reason FocusReason) *QFocusEvent {
 }
 
 func (this *QFocusEvent) Clone() *QFocusEvent {
+	defer runtime.KeepAlive(this)
 	return newQFocusEvent(C.QFocusEvent_clone(this.h))
 }
 
 func (this *QFocusEvent) GotFocus() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFocusEvent_gotFocus(this.h))
 }
 
 func (this *QFocusEvent) LostFocus() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFocusEvent_lostFocus(this.h))
 }
 
 func (this *QFocusEvent) Reason() FocusReason {
+	defer runtime.KeepAlive(this)
 	return (FocusReason)(C.QFocusEvent_reason(this.h))
 }
 
 func (this *QFocusEvent) callVirtualBase_Clone() *QFocusEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQFocusEvent(C.QFocusEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -2694,12 +3052,14 @@ func miqt_exec_callback_QFocusEvent_clone(self *C.QFocusEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QFocusEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFocusEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QFocusEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2737,16 +3097,24 @@ func (this *QFocusEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFocusEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFocusEvent) {
-		C.QFocusEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFocusEvent_delete((*C.QFocusEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPaintEvent struct {
 	h  *C.QPaintEvent
-	gc *[1]*C.QPaintEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPaintEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QPaintEvent) cPointer() *C.QPaintEvent {
@@ -2782,29 +3150,39 @@ func UnsafeNewQPaintEvent(h unsafe.Pointer) *QPaintEvent {
 
 // NewQPaintEvent constructs a new QPaintEvent object.
 func NewQPaintEvent(paintRegion *QRegion) *QPaintEvent {
+	defer runtime.KeepAlive(paintRegion)
 
 	return newQPaintEvent(C.QPaintEvent_new(paintRegion.cPointer()))
 }
 
 // NewQPaintEvent2 constructs a new QPaintEvent object.
 func NewQPaintEvent2(paintRect *QRect) *QPaintEvent {
+	defer runtime.KeepAlive(paintRect)
 
 	return newQPaintEvent(C.QPaintEvent_new2(paintRect.cPointer()))
 }
 
 func (this *QPaintEvent) Clone() *QPaintEvent {
+	defer runtime.KeepAlive(this)
 	return newQPaintEvent(C.QPaintEvent_clone(this.h))
 }
 
 func (this *QPaintEvent) Rect() *QRect {
-	return newQRect(C.QPaintEvent_rect(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQRect(C.QPaintEvent_rect(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPaintEvent) Region() *QRegion {
-	return newQRegion(C.QPaintEvent_region(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQRegion(C.QPaintEvent_region(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QPaintEvent) callVirtualBase_Clone() *QPaintEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEvent(C.QPaintEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -2824,12 +3202,14 @@ func miqt_exec_callback_QPaintEvent_clone(self *C.QPaintEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QPaintEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPaintEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPaintEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2867,16 +3247,24 @@ func (this *QPaintEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPaintEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEvent) {
-		C.QPaintEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPaintEvent_delete((*C.QPaintEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QMoveEvent struct {
 	h  *C.QMoveEvent
-	gc *[1]*C.QMoveEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMoveEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QMoveEvent) cPointer() *C.QMoveEvent {
@@ -2912,23 +3300,33 @@ func UnsafeNewQMoveEvent(h unsafe.Pointer) *QMoveEvent {
 
 // NewQMoveEvent constructs a new QMoveEvent object.
 func NewQMoveEvent(pos *QPoint, oldPos *QPoint) *QMoveEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(oldPos)
 
 	return newQMoveEvent(C.QMoveEvent_new(pos.cPointer(), oldPos.cPointer()))
 }
 
 func (this *QMoveEvent) Clone() *QMoveEvent {
+	defer runtime.KeepAlive(this)
 	return newQMoveEvent(C.QMoveEvent_clone(this.h))
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
-	return newQPoint(C.QMoveEvent_pos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QMoveEvent_pos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QMoveEvent) OldPos() *QPoint {
-	return newQPoint(C.QMoveEvent_oldPos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QMoveEvent_oldPos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QMoveEvent) callVirtualBase_Clone() *QMoveEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQMoveEvent(C.QMoveEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -2948,12 +3346,14 @@ func miqt_exec_callback_QMoveEvent_clone(self *C.QMoveEvent, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QMoveEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMoveEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QMoveEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -2991,16 +3391,24 @@ func (this *QMoveEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMoveEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMoveEvent) {
-		C.QMoveEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMoveEvent_delete((*C.QMoveEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QExposeEvent struct {
 	h  *C.QExposeEvent
-	gc *[1]*C.QExposeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QExposeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QExposeEvent) cPointer() *C.QExposeEvent {
@@ -3036,19 +3444,25 @@ func UnsafeNewQExposeEvent(h unsafe.Pointer) *QExposeEvent {
 
 // NewQExposeEvent constructs a new QExposeEvent object.
 func NewQExposeEvent(m_region *QRegion) *QExposeEvent {
+	defer runtime.KeepAlive(m_region)
 
 	return newQExposeEvent(C.QExposeEvent_new(m_region.cPointer()))
 }
 
 func (this *QExposeEvent) Clone() *QExposeEvent {
+	defer runtime.KeepAlive(this)
 	return newQExposeEvent(C.QExposeEvent_clone(this.h))
 }
 
 func (this *QExposeEvent) Region() *QRegion {
-	return newQRegion(C.QExposeEvent_region(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQRegion(C.QExposeEvent_region(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QExposeEvent) callVirtualBase_Clone() *QExposeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQExposeEvent(C.QExposeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3068,12 +3482,14 @@ func miqt_exec_callback_QExposeEvent_clone(self *C.QExposeEvent, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QExposeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QExposeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QExposeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3111,16 +3527,24 @@ func (this *QExposeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QExposeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QExposeEvent) {
-		C.QExposeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QExposeEvent_delete((*C.QExposeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPlatformSurfaceEvent struct {
 	h  *C.QPlatformSurfaceEvent
-	gc *[1]*C.QPlatformSurfaceEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPlatformSurfaceEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QPlatformSurfaceEvent) cPointer() *C.QPlatformSurfaceEvent {
@@ -3161,14 +3585,17 @@ func NewQPlatformSurfaceEvent(surfaceEventType QPlatformSurfaceEvent__SurfaceEve
 }
 
 func (this *QPlatformSurfaceEvent) Clone() *QPlatformSurfaceEvent {
+	defer runtime.KeepAlive(this)
 	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_clone(this.h))
 }
 
 func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__SurfaceEventType {
+	defer runtime.KeepAlive(this)
 	return (QPlatformSurfaceEvent__SurfaceEventType)(C.QPlatformSurfaceEvent_surfaceEventType(this.h))
 }
 
 func (this *QPlatformSurfaceEvent) callVirtualBase_Clone() *QPlatformSurfaceEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3188,12 +3615,14 @@ func miqt_exec_callback_QPlatformSurfaceEvent_clone(self *C.QPlatformSurfaceEven
 	}
 
 	virtualReturn := gofunc((&QPlatformSurfaceEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPlatformSurfaceEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPlatformSurfaceEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3231,16 +3660,24 @@ func (this *QPlatformSurfaceEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPlatformSurfaceEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPlatformSurfaceEvent) {
-		C.QPlatformSurfaceEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPlatformSurfaceEvent_delete((*C.QPlatformSurfaceEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QResizeEvent struct {
 	h  *C.QResizeEvent
-	gc *[1]*C.QResizeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QResizeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QResizeEvent) cPointer() *C.QResizeEvent {
@@ -3276,23 +3713,33 @@ func UnsafeNewQResizeEvent(h unsafe.Pointer) *QResizeEvent {
 
 // NewQResizeEvent constructs a new QResizeEvent object.
 func NewQResizeEvent(size *QSize, oldSize *QSize) *QResizeEvent {
+	defer runtime.KeepAlive(size)
+	defer runtime.KeepAlive(oldSize)
 
 	return newQResizeEvent(C.QResizeEvent_new(size.cPointer(), oldSize.cPointer()))
 }
 
 func (this *QResizeEvent) Clone() *QResizeEvent {
+	defer runtime.KeepAlive(this)
 	return newQResizeEvent(C.QResizeEvent_clone(this.h))
 }
 
 func (this *QResizeEvent) Size() *QSize {
-	return newQSize(C.QResizeEvent_size(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQSize(C.QResizeEvent_size(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QResizeEvent) OldSize() *QSize {
-	return newQSize(C.QResizeEvent_oldSize(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQSize(C.QResizeEvent_oldSize(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QResizeEvent) callVirtualBase_Clone() *QResizeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQResizeEvent(C.QResizeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3312,12 +3759,14 @@ func miqt_exec_callback_QResizeEvent_clone(self *C.QResizeEvent, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QResizeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QResizeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QResizeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3355,16 +3804,24 @@ func (this *QResizeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QResizeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QResizeEvent) {
-		C.QResizeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QResizeEvent_delete((*C.QResizeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCloseEvent struct {
 	h  *C.QCloseEvent
-	gc *[1]*C.QCloseEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCloseEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QCloseEvent) cPointer() *C.QCloseEvent {
@@ -3405,10 +3862,12 @@ func NewQCloseEvent() *QCloseEvent {
 }
 
 func (this *QCloseEvent) Clone() *QCloseEvent {
+	defer runtime.KeepAlive(this)
 	return newQCloseEvent(C.QCloseEvent_clone(this.h))
 }
 
 func (this *QCloseEvent) callVirtualBase_Clone() *QCloseEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQCloseEvent(C.QCloseEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3428,12 +3887,14 @@ func miqt_exec_callback_QCloseEvent_clone(self *C.QCloseEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QCloseEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCloseEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QCloseEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3471,16 +3932,24 @@ func (this *QCloseEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCloseEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCloseEvent) {
-		C.QCloseEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCloseEvent_delete((*C.QCloseEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QIconDragEvent struct {
 	h  *C.QIconDragEvent
-	gc *[1]*C.QIconDragEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIconDragEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QIconDragEvent) cPointer() *C.QIconDragEvent {
@@ -3521,10 +3990,12 @@ func NewQIconDragEvent() *QIconDragEvent {
 }
 
 func (this *QIconDragEvent) Clone() *QIconDragEvent {
+	defer runtime.KeepAlive(this)
 	return newQIconDragEvent(C.QIconDragEvent_clone(this.h))
 }
 
 func (this *QIconDragEvent) callVirtualBase_Clone() *QIconDragEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQIconDragEvent(C.QIconDragEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3544,12 +4015,14 @@ func miqt_exec_callback_QIconDragEvent_clone(self *C.QIconDragEvent, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QIconDragEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QIconDragEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QIconDragEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3587,16 +4060,24 @@ func (this *QIconDragEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIconDragEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconDragEvent) {
-		C.QIconDragEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIconDragEvent_delete((*C.QIconDragEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QShowEvent struct {
 	h  *C.QShowEvent
-	gc *[1]*C.QShowEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QShowEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QShowEvent) cPointer() *C.QShowEvent {
@@ -3637,10 +4118,12 @@ func NewQShowEvent() *QShowEvent {
 }
 
 func (this *QShowEvent) Clone() *QShowEvent {
+	defer runtime.KeepAlive(this)
 	return newQShowEvent(C.QShowEvent_clone(this.h))
 }
 
 func (this *QShowEvent) callVirtualBase_Clone() *QShowEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQShowEvent(C.QShowEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3660,12 +4143,14 @@ func miqt_exec_callback_QShowEvent_clone(self *C.QShowEvent, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QShowEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QShowEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QShowEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3703,16 +4188,24 @@ func (this *QShowEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QShowEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShowEvent) {
-		C.QShowEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QShowEvent_delete((*C.QShowEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHideEvent struct {
 	h  *C.QHideEvent
-	gc *[1]*C.QHideEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHideEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QHideEvent) cPointer() *C.QHideEvent {
@@ -3753,10 +4246,12 @@ func NewQHideEvent() *QHideEvent {
 }
 
 func (this *QHideEvent) Clone() *QHideEvent {
+	defer runtime.KeepAlive(this)
 	return newQHideEvent(C.QHideEvent_clone(this.h))
 }
 
 func (this *QHideEvent) callVirtualBase_Clone() *QHideEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQHideEvent(C.QHideEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3776,12 +4271,14 @@ func miqt_exec_callback_QHideEvent_clone(self *C.QHideEvent, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QHideEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHideEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QHideEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -3819,16 +4316,24 @@ func (this *QHideEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHideEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHideEvent) {
-		C.QHideEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHideEvent_delete((*C.QHideEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QContextMenuEvent struct {
 	h  *C.QContextMenuEvent
-	gc *[1]*C.QContextMenuEvent
+	gc *[1]unsafe.Pointer
 	*QInputEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QContextMenuEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QInputEvent.miqtSetGC(gc)
 }
 
 func (this *QContextMenuEvent) cPointer() *C.QContextMenuEvent {
@@ -3864,55 +4369,73 @@ func UnsafeNewQContextMenuEvent(h unsafe.Pointer) *QContextMenuEvent {
 
 // NewQContextMenuEvent constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint) *QContextMenuEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQContextMenuEvent(C.QContextMenuEvent_new((C.int)(reason), pos.cPointer(), globalPos.cPointer()))
 }
 
 // NewQContextMenuEvent2 constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent2(reason QContextMenuEvent__Reason, pos *QPoint) *QContextMenuEvent {
+	defer runtime.KeepAlive(pos)
 
 	return newQContextMenuEvent(C.QContextMenuEvent_new2((C.int)(reason), pos.cPointer()))
 }
 
 // NewQContextMenuEvent3 constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent3(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint, modifiers KeyboardModifier) *QContextMenuEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQContextMenuEvent(C.QContextMenuEvent_new3((C.int)(reason), pos.cPointer(), globalPos.cPointer(), (C.int)(modifiers)))
 }
 
 func (this *QContextMenuEvent) Clone() *QContextMenuEvent {
+	defer runtime.KeepAlive(this)
 	return newQContextMenuEvent(C.QContextMenuEvent_clone(this.h))
 }
 
 func (this *QContextMenuEvent) X() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QContextMenuEvent_x(this.h))
 }
 
 func (this *QContextMenuEvent) Y() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QContextMenuEvent_y(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QContextMenuEvent_globalX(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QContextMenuEvent_globalY(this.h))
 }
 
 func (this *QContextMenuEvent) Pos() *QPoint {
-	return newQPoint(C.QContextMenuEvent_pos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QContextMenuEvent_pos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QContextMenuEvent) GlobalPos() *QPoint {
-	return newQPoint(C.QContextMenuEvent_globalPos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QContextMenuEvent_globalPos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
+	defer runtime.KeepAlive(this)
 	return (QContextMenuEvent__Reason)(C.QContextMenuEvent_reason(this.h))
 }
 
 func (this *QContextMenuEvent) callVirtualBase_Clone() *QContextMenuEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQContextMenuEvent(C.QContextMenuEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -3932,12 +4455,14 @@ func miqt_exec_callback_QContextMenuEvent_clone(self *C.QContextMenuEvent, cb C.
 	}
 
 	virtualReturn := gofunc((&QContextMenuEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QContextMenuEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QContextMenuEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -3964,6 +4489,7 @@ func miqt_exec_callback_QContextMenuEvent_setTimestamp(self *C.QContextMenuEvent
 }
 
 func (this *QContextMenuEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QContextMenuEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4001,16 +4527,24 @@ func (this *QContextMenuEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QContextMenuEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QContextMenuEvent) {
-		C.QContextMenuEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QContextMenuEvent_delete((*C.QContextMenuEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QInputMethodEvent struct {
 	h  *C.QInputMethodEvent
-	gc *[1]*C.QInputMethodEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputMethodEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QInputMethodEvent) cPointer() *C.QInputMethodEvent {
@@ -4052,6 +4586,7 @@ func NewQInputMethodEvent() *QInputMethodEvent {
 
 // NewQInputMethodEvent2 constructs a new QInputMethodEvent object.
 func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__Attribute) *QInputMethodEvent {
+	defer runtime.KeepAlive(attributes)
 	preeditText_ms := C.struct_miqt_string{}
 	preeditText_ms.data = C.CString(preeditText)
 	preeditText_ms.len = C.size_t(len(preeditText))
@@ -4068,10 +4603,12 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 }
 
 func (this *QInputMethodEvent) Clone() *QInputMethodEvent {
+	defer runtime.KeepAlive(this)
 	return newQInputMethodEvent(C.QInputMethodEvent_clone(this.h))
 }
 
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
+	defer runtime.KeepAlive(this)
 	commitString_ms := C.struct_miqt_string{}
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
@@ -4080,6 +4617,7 @@ func (this *QInputMethodEvent) SetCommitString(commitString string) {
 }
 
 func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QInputMethodEvent_attributes(this.h)
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -4092,6 +4630,7 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 }
 
 func (this *QInputMethodEvent) PreeditString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputMethodEvent_preeditString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -4099,6 +4638,7 @@ func (this *QInputMethodEvent) PreeditString() string {
 }
 
 func (this *QInputMethodEvent) CommitString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputMethodEvent_commitString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -4106,14 +4646,17 @@ func (this *QInputMethodEvent) CommitString() string {
 }
 
 func (this *QInputMethodEvent) ReplacementStart() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputMethodEvent_replacementStart(this.h))
 }
 
 func (this *QInputMethodEvent) ReplacementLength() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputMethodEvent_replacementLength(this.h))
 }
 
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
+	defer runtime.KeepAlive(this)
 	commitString_ms := C.struct_miqt_string{}
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
@@ -4122,6 +4665,7 @@ func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom
 }
 
 func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom int, replaceLength int) {
+	defer runtime.KeepAlive(this)
 	commitString_ms := C.struct_miqt_string{}
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
@@ -4130,6 +4674,7 @@ func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom
 }
 
 func (this *QInputMethodEvent) callVirtualBase_Clone() *QInputMethodEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQInputMethodEvent(C.QInputMethodEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4149,12 +4694,14 @@ func miqt_exec_callback_QInputMethodEvent_clone(self *C.QInputMethodEvent, cb C.
 	}
 
 	virtualReturn := gofunc((&QInputMethodEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputMethodEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputMethodEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4192,16 +4739,24 @@ func (this *QInputMethodEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputMethodEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodEvent) {
-		C.QInputMethodEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputMethodEvent_delete((*C.QInputMethodEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QInputMethodQueryEvent struct {
 	h  *C.QInputMethodQueryEvent
-	gc *[1]*C.QInputMethodQueryEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputMethodQueryEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QInputMethodQueryEvent) cPointer() *C.QInputMethodQueryEvent {
@@ -4242,24 +4797,30 @@ func NewQInputMethodQueryEvent(queries InputMethodQuery) *QInputMethodQueryEvent
 }
 
 func (this *QInputMethodQueryEvent) Clone() *QInputMethodQueryEvent {
+	defer runtime.KeepAlive(this)
 	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_clone(this.h))
 }
 
 func (this *QInputMethodQueryEvent) Queries() InputMethodQuery {
+	defer runtime.KeepAlive(this)
 	return (InputMethodQuery)(C.QInputMethodQueryEvent_queries(this.h))
 }
 
 func (this *QInputMethodQueryEvent) SetValue(query InputMethodQuery, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QInputMethodQueryEvent_setValue(this.h, (C.int)(query), value.cPointer())
 }
 
 func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QInputMethodQueryEvent_value(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethodQueryEvent) callVirtualBase_Clone() *QInputMethodQueryEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4279,12 +4840,14 @@ func miqt_exec_callback_QInputMethodQueryEvent_clone(self *C.QInputMethodQueryEv
 	}
 
 	virtualReturn := gofunc((&QInputMethodQueryEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputMethodQueryEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputMethodQueryEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4322,16 +4885,24 @@ func (this *QInputMethodQueryEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputMethodQueryEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodQueryEvent) {
-		C.QInputMethodQueryEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputMethodQueryEvent_delete((*C.QInputMethodQueryEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDropEvent struct {
 	h  *C.QDropEvent
-	gc *[1]*C.QDropEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDropEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QDropEvent) cPointer() *C.QDropEvent {
@@ -4367,83 +4938,103 @@ func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 
 // NewQDropEvent constructs a new QDropEvent object.
 func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDropEvent2 constructs a new QDropEvent object.
 func NewQDropEvent2(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDropEvent) Clone() *QDropEvent {
+	defer runtime.KeepAlive(this)
 	return newQDropEvent(C.QDropEvent_clone(this.h))
 }
 
 func (this *QDropEvent) Pos() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QDropEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) PosF() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QDropEvent_posF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) MouseButtons() MouseButton {
+	defer runtime.KeepAlive(this)
 	return (MouseButton)(C.QDropEvent_mouseButtons(this.h))
 }
 
 func (this *QDropEvent) KeyboardModifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QDropEvent_keyboardModifiers(this.h))
 }
 
 func (this *QDropEvent) Position() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QDropEvent_position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) Buttons() MouseButton {
+	defer runtime.KeepAlive(this)
 	return (MouseButton)(C.QDropEvent_buttons(this.h))
 }
 
 func (this *QDropEvent) Modifiers() KeyboardModifier {
+	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QDropEvent_modifiers(this.h))
 }
 
 func (this *QDropEvent) PossibleActions() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDropEvent_possibleActions(this.h))
 }
 
 func (this *QDropEvent) ProposedAction() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDropEvent_proposedAction(this.h))
 }
 
 func (this *QDropEvent) AcceptProposedAction() {
+	defer runtime.KeepAlive(this)
 	C.QDropEvent_acceptProposedAction(this.h)
 }
 
 func (this *QDropEvent) DropAction() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDropEvent_dropAction(this.h))
 }
 
 func (this *QDropEvent) SetDropAction(action DropAction) {
+	defer runtime.KeepAlive(this)
 	C.QDropEvent_setDropAction(this.h, (C.int)(action))
 }
 
 func (this *QDropEvent) Source() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QDropEvent_source(this.h))
 }
 
 func (this *QDropEvent) MimeData() *QMimeData {
+	defer runtime.KeepAlive(this)
 	return newQMimeData(C.QDropEvent_mimeData(this.h))
 }
 
 func (this *QDropEvent) callVirtualBase_Clone() *QDropEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQDropEvent(C.QDropEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4463,12 +5054,14 @@ func miqt_exec_callback_QDropEvent_clone(self *C.QDropEvent, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QDropEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDropEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDropEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4506,16 +5099,24 @@ func (this *QDropEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDropEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDropEvent) {
-		C.QDropEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDropEvent_delete((*C.QDropEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDragMoveEvent struct {
 	h  *C.QDragMoveEvent
-	gc *[1]*C.QDragMoveEvent
+	gc *[1]unsafe.Pointer
 	*QDropEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDragMoveEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDropEvent.miqtSetGC(gc)
 }
 
 func (this *QDragMoveEvent) cPointer() *C.QDragMoveEvent {
@@ -4551,43 +5152,56 @@ func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDragMoveEvent2 constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent2(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDragMoveEvent) Clone() *QDragMoveEvent {
+	defer runtime.KeepAlive(this)
 	return newQDragMoveEvent(C.QDragMoveEvent_clone(this.h))
 }
 
 func (this *QDragMoveEvent) AnswerRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QDragMoveEvent_answerRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDragMoveEvent) Accept() {
+	defer runtime.KeepAlive(this)
 	C.QDragMoveEvent_accept(this.h)
 }
 
 func (this *QDragMoveEvent) Ignore() {
+	defer runtime.KeepAlive(this)
 	C.QDragMoveEvent_ignore(this.h)
 }
 
 func (this *QDragMoveEvent) AcceptWithQRect(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QDragMoveEvent_acceptWithQRect(this.h, r.cPointer())
 }
 
 func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QDragMoveEvent_ignoreWithQRect(this.h, r.cPointer())
 }
 
 func (this *QDragMoveEvent) callVirtualBase_Clone() *QDragMoveEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4607,12 +5221,14 @@ func miqt_exec_callback_QDragMoveEvent_clone(self *C.QDragMoveEvent, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QDragMoveEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDragMoveEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDragMoveEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4650,16 +5266,24 @@ func (this *QDragMoveEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDragMoveEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragMoveEvent) {
-		C.QDragMoveEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDragMoveEvent_delete((*C.QDragMoveEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDragEnterEvent struct {
 	h  *C.QDragEnterEvent
-	gc *[1]*C.QDragEnterEvent
+	gc *[1]unsafe.Pointer
 	*QDragMoveEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDragEnterEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDragMoveEvent.miqtSetGC(gc)
 }
 
 func (this *QDragEnterEvent) cPointer() *C.QDragEnterEvent {
@@ -4695,15 +5319,19 @@ func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
 func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(data)
 
 	return newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 func (this *QDragEnterEvent) Clone() *QDragEnterEvent {
+	defer runtime.KeepAlive(this)
 	return newQDragEnterEvent(C.QDragEnterEvent_clone(this.h))
 }
 
 func (this *QDragEnterEvent) callVirtualBase_Clone() *QDragEnterEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQDragEnterEvent(C.QDragEnterEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4723,12 +5351,14 @@ func miqt_exec_callback_QDragEnterEvent_clone(self *C.QDragEnterEvent, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QDragEnterEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDragEnterEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDragEnterEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4766,16 +5396,24 @@ func (this *QDragEnterEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDragEnterEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragEnterEvent) {
-		C.QDragEnterEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDragEnterEvent_delete((*C.QDragEnterEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDragLeaveEvent struct {
 	h  *C.QDragLeaveEvent
-	gc *[1]*C.QDragLeaveEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDragLeaveEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QDragLeaveEvent) cPointer() *C.QDragLeaveEvent {
@@ -4816,10 +5454,12 @@ func NewQDragLeaveEvent() *QDragLeaveEvent {
 }
 
 func (this *QDragLeaveEvent) Clone() *QDragLeaveEvent {
+	defer runtime.KeepAlive(this)
 	return newQDragLeaveEvent(C.QDragLeaveEvent_clone(this.h))
 }
 
 func (this *QDragLeaveEvent) callVirtualBase_Clone() *QDragLeaveEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQDragLeaveEvent(C.QDragLeaveEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4839,12 +5479,14 @@ func miqt_exec_callback_QDragLeaveEvent_clone(self *C.QDragLeaveEvent, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QDragLeaveEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDragLeaveEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDragLeaveEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -4882,16 +5524,24 @@ func (this *QDragLeaveEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDragLeaveEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDragLeaveEvent) {
-		C.QDragLeaveEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDragLeaveEvent_delete((*C.QDragLeaveEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QHelpEvent struct {
 	h  *C.QHelpEvent
-	gc *[1]*C.QHelpEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHelpEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QHelpEvent) cPointer() *C.QHelpEvent {
@@ -4927,39 +5577,53 @@ func UnsafeNewQHelpEvent(h unsafe.Pointer) *QHelpEvent {
 
 // NewQHelpEvent constructs a new QHelpEvent object.
 func NewQHelpEvent(typeVal QEvent__Type, pos *QPoint, globalPos *QPoint) *QHelpEvent {
+	defer runtime.KeepAlive(pos)
+	defer runtime.KeepAlive(globalPos)
 
 	return newQHelpEvent(C.QHelpEvent_new((C.int)(typeVal), pos.cPointer(), globalPos.cPointer()))
 }
 
 func (this *QHelpEvent) Clone() *QHelpEvent {
+	defer runtime.KeepAlive(this)
 	return newQHelpEvent(C.QHelpEvent_clone(this.h))
 }
 
 func (this *QHelpEvent) X() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHelpEvent_x(this.h))
 }
 
 func (this *QHelpEvent) Y() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHelpEvent_y(this.h))
 }
 
 func (this *QHelpEvent) GlobalX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHelpEvent_globalX(this.h))
 }
 
 func (this *QHelpEvent) GlobalY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHelpEvent_globalY(this.h))
 }
 
 func (this *QHelpEvent) Pos() *QPoint {
-	return newQPoint(C.QHelpEvent_pos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QHelpEvent_pos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QHelpEvent) GlobalPos() *QPoint {
-	return newQPoint(C.QHelpEvent_globalPos(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPoint(C.QHelpEvent_globalPos(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QHelpEvent) callVirtualBase_Clone() *QHelpEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQHelpEvent(C.QHelpEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -4979,12 +5643,14 @@ func miqt_exec_callback_QHelpEvent_clone(self *C.QHelpEvent, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QHelpEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHelpEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QHelpEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5022,16 +5688,24 @@ func (this *QHelpEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHelpEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHelpEvent) {
-		C.QHelpEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHelpEvent_delete((*C.QHelpEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStatusTipEvent struct {
 	h  *C.QStatusTipEvent
-	gc *[1]*C.QStatusTipEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStatusTipEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QStatusTipEvent) cPointer() *C.QStatusTipEvent {
@@ -5076,10 +5750,12 @@ func NewQStatusTipEvent(tip string) *QStatusTipEvent {
 }
 
 func (this *QStatusTipEvent) Clone() *QStatusTipEvent {
+	defer runtime.KeepAlive(this)
 	return newQStatusTipEvent(C.QStatusTipEvent_clone(this.h))
 }
 
 func (this *QStatusTipEvent) Tip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStatusTipEvent_tip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -5087,6 +5763,7 @@ func (this *QStatusTipEvent) Tip() string {
 }
 
 func (this *QStatusTipEvent) callVirtualBase_Clone() *QStatusTipEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQStatusTipEvent(C.QStatusTipEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5106,12 +5783,14 @@ func miqt_exec_callback_QStatusTipEvent_clone(self *C.QStatusTipEvent, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QStatusTipEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStatusTipEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QStatusTipEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5149,16 +5828,24 @@ func (this *QStatusTipEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStatusTipEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStatusTipEvent) {
-		C.QStatusTipEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStatusTipEvent_delete((*C.QStatusTipEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWhatsThisClickedEvent struct {
 	h  *C.QWhatsThisClickedEvent
-	gc *[1]*C.QWhatsThisClickedEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWhatsThisClickedEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QWhatsThisClickedEvent) cPointer() *C.QWhatsThisClickedEvent {
@@ -5203,10 +5890,12 @@ func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
 }
 
 func (this *QWhatsThisClickedEvent) Clone() *QWhatsThisClickedEvent {
+	defer runtime.KeepAlive(this)
 	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_clone(this.h))
 }
 
 func (this *QWhatsThisClickedEvent) Href() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWhatsThisClickedEvent_href(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -5214,6 +5903,7 @@ func (this *QWhatsThisClickedEvent) Href() string {
 }
 
 func (this *QWhatsThisClickedEvent) callVirtualBase_Clone() *QWhatsThisClickedEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5233,12 +5923,14 @@ func miqt_exec_callback_QWhatsThisClickedEvent_clone(self *C.QWhatsThisClickedEv
 	}
 
 	virtualReturn := gofunc((&QWhatsThisClickedEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWhatsThisClickedEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QWhatsThisClickedEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5276,16 +5968,24 @@ func (this *QWhatsThisClickedEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWhatsThisClickedEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWhatsThisClickedEvent) {
-		C.QWhatsThisClickedEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWhatsThisClickedEvent_delete((*C.QWhatsThisClickedEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QActionEvent struct {
 	h  *C.QActionEvent
-	gc *[1]*C.QActionEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QActionEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QActionEvent) cPointer() *C.QActionEvent {
@@ -5321,29 +6021,36 @@ func UnsafeNewQActionEvent(h unsafe.Pointer) *QActionEvent {
 
 // NewQActionEvent constructs a new QActionEvent object.
 func NewQActionEvent(typeVal int, action *QAction) *QActionEvent {
+	defer runtime.KeepAlive(action)
 
 	return newQActionEvent(C.QActionEvent_new((C.int)(typeVal), action.cPointer()))
 }
 
 // NewQActionEvent2 constructs a new QActionEvent object.
 func NewQActionEvent2(typeVal int, action *QAction, before *QAction) *QActionEvent {
+	defer runtime.KeepAlive(action)
+	defer runtime.KeepAlive(before)
 
 	return newQActionEvent(C.QActionEvent_new2((C.int)(typeVal), action.cPointer(), before.cPointer()))
 }
 
 func (this *QActionEvent) Clone() *QActionEvent {
+	defer runtime.KeepAlive(this)
 	return newQActionEvent(C.QActionEvent_clone(this.h))
 }
 
 func (this *QActionEvent) Action() *QAction {
+	defer runtime.KeepAlive(this)
 	return newQAction(C.QActionEvent_action(this.h))
 }
 
 func (this *QActionEvent) Before() *QAction {
+	defer runtime.KeepAlive(this)
 	return newQAction(C.QActionEvent_before(this.h))
 }
 
 func (this *QActionEvent) callVirtualBase_Clone() *QActionEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQActionEvent(C.QActionEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5363,12 +6070,14 @@ func miqt_exec_callback_QActionEvent_clone(self *C.QActionEvent, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QActionEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QActionEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QActionEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5406,16 +6115,24 @@ func (this *QActionEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QActionEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QActionEvent) {
-		C.QActionEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QActionEvent_delete((*C.QActionEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QFileOpenEvent struct {
 	h  *C.QFileOpenEvent
-	gc *[1]*C.QFileOpenEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFileOpenEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QFileOpenEvent) cPointer() *C.QFileOpenEvent {
@@ -5461,15 +6178,18 @@ func NewQFileOpenEvent(file string) *QFileOpenEvent {
 
 // NewQFileOpenEvent2 constructs a new QFileOpenEvent object.
 func NewQFileOpenEvent2(url *QUrl) *QFileOpenEvent {
+	defer runtime.KeepAlive(url)
 
 	return newQFileOpenEvent(C.QFileOpenEvent_new2(url.cPointer()))
 }
 
 func (this *QFileOpenEvent) Clone() *QFileOpenEvent {
+	defer runtime.KeepAlive(this)
 	return newQFileOpenEvent(C.QFileOpenEvent_clone(this.h))
 }
 
 func (this *QFileOpenEvent) File() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFileOpenEvent_file(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -5477,16 +6197,20 @@ func (this *QFileOpenEvent) File() string {
 }
 
 func (this *QFileOpenEvent) Url() *QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUrl(C.QFileOpenEvent_url(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(file)
 	return (bool)(C.QFileOpenEvent_openFile(this.h, file.cPointer(), (C.int)(flags)))
 }
 
 func (this *QFileOpenEvent) callVirtualBase_Clone() *QFileOpenEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQFileOpenEvent(C.QFileOpenEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5506,12 +6230,14 @@ func miqt_exec_callback_QFileOpenEvent_clone(self *C.QFileOpenEvent, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QFileOpenEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFileOpenEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QFileOpenEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5549,16 +6275,24 @@ func (this *QFileOpenEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFileOpenEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileOpenEvent) {
-		C.QFileOpenEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFileOpenEvent_delete((*C.QFileOpenEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QToolBarChangeEvent struct {
 	h  *C.QToolBarChangeEvent
-	gc *[1]*C.QToolBarChangeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QToolBarChangeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QToolBarChangeEvent) cPointer() *C.QToolBarChangeEvent {
@@ -5599,14 +6333,17 @@ func NewQToolBarChangeEvent(t bool) *QToolBarChangeEvent {
 }
 
 func (this *QToolBarChangeEvent) Clone() *QToolBarChangeEvent {
+	defer runtime.KeepAlive(this)
 	return newQToolBarChangeEvent(C.QToolBarChangeEvent_clone(this.h))
 }
 
 func (this *QToolBarChangeEvent) Toggle() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QToolBarChangeEvent_toggle(this.h))
 }
 
 func (this *QToolBarChangeEvent) callVirtualBase_Clone() *QToolBarChangeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQToolBarChangeEvent(C.QToolBarChangeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5626,12 +6363,14 @@ func miqt_exec_callback_QToolBarChangeEvent_clone(self *C.QToolBarChangeEvent, c
 	}
 
 	virtualReturn := gofunc((&QToolBarChangeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QToolBarChangeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QToolBarChangeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5669,16 +6408,24 @@ func (this *QToolBarChangeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QToolBarChangeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QToolBarChangeEvent) {
-		C.QToolBarChangeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QToolBarChangeEvent_delete((*C.QToolBarChangeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QShortcutEvent struct {
 	h  *C.QShortcutEvent
-	gc *[1]*C.QShortcutEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QShortcutEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QShortcutEvent) cPointer() *C.QShortcutEvent {
@@ -5714,33 +6461,42 @@ func UnsafeNewQShortcutEvent(h unsafe.Pointer) *QShortcutEvent {
 
 // NewQShortcutEvent constructs a new QShortcutEvent object.
 func NewQShortcutEvent(key *QKeySequence, id int) *QShortcutEvent {
+	defer runtime.KeepAlive(key)
 
 	return newQShortcutEvent(C.QShortcutEvent_new(key.cPointer(), (C.int)(id)))
 }
 
 // NewQShortcutEvent2 constructs a new QShortcutEvent object.
 func NewQShortcutEvent2(key *QKeySequence, id int, ambiguous bool) *QShortcutEvent {
+	defer runtime.KeepAlive(key)
 
 	return newQShortcutEvent(C.QShortcutEvent_new2(key.cPointer(), (C.int)(id), (C.bool)(ambiguous)))
 }
 
 func (this *QShortcutEvent) Clone() *QShortcutEvent {
+	defer runtime.KeepAlive(this)
 	return newQShortcutEvent(C.QShortcutEvent_clone(this.h))
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
-	return newQKeySequence(C.QShortcutEvent_key(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQKeySequence(C.QShortcutEvent_key(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QShortcutEvent) ShortcutId() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QShortcutEvent_shortcutId(this.h))
 }
 
 func (this *QShortcutEvent) IsAmbiguous() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QShortcutEvent_isAmbiguous(this.h))
 }
 
 func (this *QShortcutEvent) callVirtualBase_Clone() *QShortcutEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQShortcutEvent(C.QShortcutEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5760,12 +6516,14 @@ func miqt_exec_callback_QShortcutEvent_clone(self *C.QShortcutEvent, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QShortcutEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QShortcutEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QShortcutEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5803,16 +6561,24 @@ func (this *QShortcutEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QShortcutEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShortcutEvent) {
-		C.QShortcutEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QShortcutEvent_delete((*C.QShortcutEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWindowStateChangeEvent struct {
 	h  *C.QWindowStateChangeEvent
-	gc *[1]*C.QWindowStateChangeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWindowStateChangeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QWindowStateChangeEvent) cPointer() *C.QWindowStateChangeEvent {
@@ -5859,18 +6625,22 @@ func NewQWindowStateChangeEvent2(oldState WindowState, isOverride bool) *QWindow
 }
 
 func (this *QWindowStateChangeEvent) Clone() *QWindowStateChangeEvent {
+	defer runtime.KeepAlive(this)
 	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_clone(this.h))
 }
 
 func (this *QWindowStateChangeEvent) OldState() WindowState {
+	defer runtime.KeepAlive(this)
 	return (WindowState)(C.QWindowStateChangeEvent_oldState(this.h))
 }
 
 func (this *QWindowStateChangeEvent) IsOverride() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWindowStateChangeEvent_isOverride(this.h))
 }
 
 func (this *QWindowStateChangeEvent) callVirtualBase_Clone() *QWindowStateChangeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -5890,12 +6660,14 @@ func miqt_exec_callback_QWindowStateChangeEvent_clone(self *C.QWindowStateChange
 	}
 
 	virtualReturn := gofunc((&QWindowStateChangeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWindowStateChangeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QWindowStateChangeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -5933,16 +6705,24 @@ func (this *QWindowStateChangeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWindowStateChangeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWindowStateChangeEvent) {
-		C.QWindowStateChangeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWindowStateChangeEvent_delete((*C.QWindowStateChangeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTouchEvent struct {
 	h  *C.QTouchEvent
-	gc *[1]*C.QTouchEvent
+	gc *[1]unsafe.Pointer
 	*QPointerEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTouchEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPointerEvent.miqtSetGC(gc)
 }
 
 func (this *QTouchEvent) cPointer() *C.QTouchEvent {
@@ -5984,24 +6764,29 @@ func NewQTouchEvent(eventType QEvent__Type) *QTouchEvent {
 
 // NewQTouchEvent2 constructs a new QTouchEvent object.
 func NewQTouchEvent2(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State) *QTouchEvent {
+	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new2((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uint8_t)(touchPointStates)))
 }
 
 // NewQTouchEvent3 constructs a new QTouchEvent object.
 func NewQTouchEvent3(eventType QEvent__Type, device *QPointingDevice) *QTouchEvent {
+	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new3((C.int)(eventType), device.cPointer()))
 }
 
 // NewQTouchEvent4 constructs a new QTouchEvent object.
 func NewQTouchEvent4(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier) *QTouchEvent {
+	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new4((C.int)(eventType), device.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQTouchEvent5 constructs a new QTouchEvent object.
 func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPoints []QEventPoint) *QTouchEvent {
+	defer runtime.KeepAlive(device)
+	defer runtime.KeepAlive(touchPoints)
 	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
 	touchPoints_CArray := unsafe.Slice(touchPoints_CArray_ptr, len(touchPoints))
@@ -6015,6 +6800,8 @@ func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers 
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State, touchPoints []QEventPoint) *QTouchEvent {
+	defer runtime.KeepAlive(device)
+	defer runtime.KeepAlive(touchPoints)
 	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
 	touchPoints_CArray := unsafe.Slice(touchPoints_CArray_ptr, len(touchPoints))
@@ -6027,18 +6814,22 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers 
 }
 
 func (this *QTouchEvent) Clone() *QTouchEvent {
+	defer runtime.KeepAlive(this)
 	return newQTouchEvent(C.QTouchEvent_clone(this.h))
 }
 
 func (this *QTouchEvent) Target() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QTouchEvent_target(this.h))
 }
 
 func (this *QTouchEvent) TouchPointStates() QEventPoint__State {
+	defer runtime.KeepAlive(this)
 	return (QEventPoint__State)(C.QTouchEvent_touchPointStates(this.h))
 }
 
 func (this *QTouchEvent) TouchPoints() []QEventPoint {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTouchEvent_touchPoints(this.h)
 	_ret := make([]QEventPoint, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QEventPoint)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -6051,18 +6842,22 @@ func (this *QTouchEvent) TouchPoints() []QEventPoint {
 }
 
 func (this *QTouchEvent) IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTouchEvent_isBeginEvent(this.h))
 }
 
 func (this *QTouchEvent) IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTouchEvent_isUpdateEvent(this.h))
 }
 
 func (this *QTouchEvent) IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTouchEvent_isEndEvent(this.h))
 }
 
 func (this *QTouchEvent) callVirtualBase_Clone() *QTouchEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQTouchEvent(C.QTouchEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -6082,12 +6877,14 @@ func miqt_exec_callback_QTouchEvent_clone(self *C.QTouchEvent, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QTouchEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTouchEvent) callVirtualBase_IsBeginEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTouchEvent_virtualbase_isBeginEvent(unsafe.Pointer(this.h)))
 
@@ -6113,6 +6910,7 @@ func miqt_exec_callback_QTouchEvent_isBeginEvent(self *C.QTouchEvent, cb C.intpt
 }
 
 func (this *QTouchEvent) callVirtualBase_IsUpdateEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTouchEvent_virtualbase_isUpdateEvent(unsafe.Pointer(this.h)))
 
@@ -6138,6 +6936,7 @@ func miqt_exec_callback_QTouchEvent_isUpdateEvent(self *C.QTouchEvent, cb C.intp
 }
 
 func (this *QTouchEvent) callVirtualBase_IsEndEvent() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTouchEvent_virtualbase_isEndEvent(unsafe.Pointer(this.h)))
 
@@ -6163,6 +6962,7 @@ func miqt_exec_callback_QTouchEvent_isEndEvent(self *C.QTouchEvent, cb C.intptr_
 }
 
 func (this *QTouchEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+	defer runtime.KeepAlive(this)
 
 	C.QTouchEvent_virtualbase_setTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
 
@@ -6189,6 +6989,7 @@ func miqt_exec_callback_QTouchEvent_setTimestamp(self *C.QTouchEvent, cb C.intpt
 }
 
 func (this *QTouchEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QTouchEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -6226,16 +7027,24 @@ func (this *QTouchEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTouchEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTouchEvent) {
-		C.QTouchEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTouchEvent_delete((*C.QTouchEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QScrollPrepareEvent struct {
 	h  *C.QScrollPrepareEvent
-	gc *[1]*C.QScrollPrepareEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScrollPrepareEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QScrollPrepareEvent) cPointer() *C.QScrollPrepareEvent {
@@ -6271,51 +7080,64 @@ func UnsafeNewQScrollPrepareEvent(h unsafe.Pointer) *QScrollPrepareEvent {
 
 // NewQScrollPrepareEvent constructs a new QScrollPrepareEvent object.
 func NewQScrollPrepareEvent(startPos *QPointF) *QScrollPrepareEvent {
+	defer runtime.KeepAlive(startPos)
 
 	return newQScrollPrepareEvent(C.QScrollPrepareEvent_new(startPos.cPointer()))
 }
 
 func (this *QScrollPrepareEvent) Clone() *QScrollPrepareEvent {
+	defer runtime.KeepAlive(this)
 	return newQScrollPrepareEvent(C.QScrollPrepareEvent_clone(this.h))
 }
 
 func (this *QScrollPrepareEvent) StartPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScrollPrepareEvent_startPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ViewportSize() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QScrollPrepareEvent_viewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPosRange() *QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QScrollPrepareEvent_contentPosRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScrollPrepareEvent_contentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) SetViewportSize(size *QSizeF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QScrollPrepareEvent_setViewportSize(this.h, size.cPointer())
 }
 
 func (this *QScrollPrepareEvent) SetContentPosRange(rect *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QScrollPrepareEvent_setContentPosRange(this.h, rect.cPointer())
 }
 
 func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	C.QScrollPrepareEvent_setContentPos(this.h, pos.cPointer())
 }
 
 func (this *QScrollPrepareEvent) callVirtualBase_Clone() *QScrollPrepareEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQScrollPrepareEvent(C.QScrollPrepareEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -6335,12 +7157,14 @@ func miqt_exec_callback_QScrollPrepareEvent_clone(self *C.QScrollPrepareEvent, c
 	}
 
 	virtualReturn := gofunc((&QScrollPrepareEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScrollPrepareEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QScrollPrepareEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -6378,16 +7202,24 @@ func (this *QScrollPrepareEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScrollPrepareEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollPrepareEvent) {
-		C.QScrollPrepareEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScrollPrepareEvent_delete((*C.QScrollPrepareEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QScrollEvent struct {
 	h  *C.QScrollEvent
-	gc *[1]*C.QScrollEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScrollEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QScrollEvent) cPointer() *C.QScrollEvent {
@@ -6423,31 +7255,38 @@ func UnsafeNewQScrollEvent(h unsafe.Pointer) *QScrollEvent {
 
 // NewQScrollEvent constructs a new QScrollEvent object.
 func NewQScrollEvent(contentPos *QPointF, overshoot *QPointF, scrollState QScrollEvent__ScrollState) *QScrollEvent {
+	defer runtime.KeepAlive(contentPos)
+	defer runtime.KeepAlive(overshoot)
 
 	return newQScrollEvent(C.QScrollEvent_new(contentPos.cPointer(), overshoot.cPointer(), (C.int)(scrollState)))
 }
 
 func (this *QScrollEvent) Clone() *QScrollEvent {
+	defer runtime.KeepAlive(this)
 	return newQScrollEvent(C.QScrollEvent_clone(this.h))
 }
 
 func (this *QScrollEvent) ContentPos() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScrollEvent_contentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) OvershootDistance() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScrollEvent_overshootDistance(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
+	defer runtime.KeepAlive(this)
 	return (QScrollEvent__ScrollState)(C.QScrollEvent_scrollState(this.h))
 }
 
 func (this *QScrollEvent) callVirtualBase_Clone() *QScrollEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQScrollEvent(C.QScrollEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -6467,12 +7306,14 @@ func miqt_exec_callback_QScrollEvent_clone(self *C.QScrollEvent, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QScrollEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScrollEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QScrollEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -6510,16 +7351,24 @@ func (this *QScrollEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScrollEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollEvent) {
-		C.QScrollEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScrollEvent_delete((*C.QScrollEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QScreenOrientationChangeEvent struct {
 	h  *C.QScreenOrientationChangeEvent
-	gc *[1]*C.QScreenOrientationChangeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScreenOrientationChangeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QScreenOrientationChangeEvent) cPointer() *C.QScreenOrientationChangeEvent {
@@ -6555,23 +7404,28 @@ func UnsafeNewQScreenOrientationChangeEvent(h unsafe.Pointer) *QScreenOrientatio
 
 // NewQScreenOrientationChangeEvent constructs a new QScreenOrientationChangeEvent object.
 func NewQScreenOrientationChangeEvent(screen *QScreen, orientation ScreenOrientation) *QScreenOrientationChangeEvent {
+	defer runtime.KeepAlive(screen)
 
 	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.int)(orientation)))
 }
 
 func (this *QScreenOrientationChangeEvent) Clone() *QScreenOrientationChangeEvent {
+	defer runtime.KeepAlive(this)
 	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_clone(this.h))
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
+	defer runtime.KeepAlive(this)
 	return newQScreen(C.QScreenOrientationChangeEvent_screen(this.h))
 }
 
 func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
+	defer runtime.KeepAlive(this)
 	return (ScreenOrientation)(C.QScreenOrientationChangeEvent_orientation(this.h))
 }
 
 func (this *QScreenOrientationChangeEvent) callVirtualBase_Clone() *QScreenOrientationChangeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -6591,12 +7445,14 @@ func miqt_exec_callback_QScreenOrientationChangeEvent_clone(self *C.QScreenOrien
 	}
 
 	virtualReturn := gofunc((&QScreenOrientationChangeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScreenOrientationChangeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QScreenOrientationChangeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -6634,16 +7490,24 @@ func (this *QScreenOrientationChangeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScreenOrientationChangeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScreenOrientationChangeEvent) {
-		C.QScreenOrientationChangeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScreenOrientationChangeEvent_delete((*C.QScreenOrientationChangeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QApplicationStateChangeEvent struct {
 	h  *C.QApplicationStateChangeEvent
-	gc *[1]*C.QApplicationStateChangeEvent
+	gc *[1]unsafe.Pointer
 	*QEvent
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QApplicationStateChangeEvent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QEvent.miqtSetGC(gc)
 }
 
 func (this *QApplicationStateChangeEvent) cPointer() *C.QApplicationStateChangeEvent {
@@ -6684,14 +7548,17 @@ func NewQApplicationStateChangeEvent(state ApplicationState) *QApplicationStateC
 }
 
 func (this *QApplicationStateChangeEvent) Clone() *QApplicationStateChangeEvent {
+	defer runtime.KeepAlive(this)
 	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_clone(this.h))
 }
 
 func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
+	defer runtime.KeepAlive(this)
 	return (ApplicationState)(C.QApplicationStateChangeEvent_applicationState(this.h))
 }
 
 func (this *QApplicationStateChangeEvent) callVirtualBase_Clone() *QApplicationStateChangeEvent {
+	defer runtime.KeepAlive(this)
 
 	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -6711,12 +7578,14 @@ func miqt_exec_callback_QApplicationStateChangeEvent_clone(self *C.QApplicationS
 	}
 
 	virtualReturn := gofunc((&QApplicationStateChangeEvent{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QApplicationStateChangeEvent) callVirtualBase_SetAccepted(accepted bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QApplicationStateChangeEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
 
@@ -6754,15 +7623,22 @@ func (this *QApplicationStateChangeEvent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QApplicationStateChangeEvent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QApplicationStateChangeEvent) {
-		C.QApplicationStateChangeEvent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QApplicationStateChangeEvent_delete((*C.QApplicationStateChangeEvent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QInputMethodEvent__Attribute struct {
 	h  *C.QInputMethodEvent__Attribute
-	gc *[1]*C.QInputMethodEvent__Attribute
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputMethodEvent__Attribute) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attribute {
@@ -6795,6 +7671,7 @@ func UnsafeNewQInputMethodEvent__Attribute(h unsafe.Pointer) *QInputMethodEvent_
 
 // NewQInputMethodEvent__Attribute constructs a new QInputMethodEvent::Attribute object.
 func NewQInputMethodEvent__Attribute(typ QInputMethodEvent__AttributeType, s int, l int, val QVariant) *QInputMethodEvent__Attribute {
+	defer runtime.KeepAlive(val)
 
 	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new((C.int)(typ), (C.int)(s), (C.int)(l), val.cPointer()))
 }
@@ -6807,45 +7684,57 @@ func NewQInputMethodEvent__Attribute2(typ QInputMethodEvent__AttributeType, s in
 
 // NewQInputMethodEvent__Attribute3 constructs a new QInputMethodEvent::Attribute object.
 func NewQInputMethodEvent__Attribute3(param1 *QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
+	defer runtime.KeepAlive(param1)
 
 	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new3(param1.cPointer()))
 }
 
 func (this *QInputMethodEvent__Attribute) Type() QInputMethodEvent__AttributeType {
+	defer runtime.KeepAlive(this)
 	return (QInputMethodEvent__AttributeType)(C.QInputMethodEvent__Attribute_type(this.h))
 }
 
 func (this *QInputMethodEvent__Attribute) SetType(typeVal QInputMethodEvent__AttributeType) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethodEvent__Attribute_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QInputMethodEvent__Attribute) Start() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputMethodEvent__Attribute_start(this.h))
 }
 
 func (this *QInputMethodEvent__Attribute) SetStart(start int) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethodEvent__Attribute_setStart(this.h, (C.int)(start))
 }
 
 func (this *QInputMethodEvent__Attribute) Length() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputMethodEvent__Attribute_length(this.h))
 }
 
 func (this *QInputMethodEvent__Attribute) SetLength(length int) {
+	defer runtime.KeepAlive(this)
 	C.QInputMethodEvent__Attribute_setLength(this.h, (C.int)(length))
 }
 
 func (this *QInputMethodEvent__Attribute) Value() *QVariant {
+	defer runtime.KeepAlive(this)
 	value_goptr := newQVariant(C.QInputMethodEvent__Attribute_value(this.h))
 	value_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return value_goptr
 }
 
 func (this *QInputMethodEvent__Attribute) SetValue(value QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QInputMethodEvent__Attribute_setValue(this.h, value.cPointer())
 }
 
 func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEvent__Attribute) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QInputMethodEvent__Attribute_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -6861,8 +7750,9 @@ func (this *QInputMethodEvent__Attribute) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputMethodEvent__Attribute{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputMethodEvent__Attribute) {
-		C.QInputMethodEvent__Attribute_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputMethodEvent__Attribute_delete((*C.QInputMethodEvent__Attribute)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

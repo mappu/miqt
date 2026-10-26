@@ -32,8 +32,15 @@ const (
 
 type QInputDialog struct {
 	h  *C.QInputDialog
-	gc *[1]*C.QInputDialog
+	gc *[1]unsafe.Pointer
 	*QDialog
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QInputDialog) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QDialog.miqtSetGC(gc)
 }
 
 func (this *QInputDialog) cPointer() *C.QInputDialog {
@@ -69,6 +76,7 @@ func UnsafeNewQInputDialog(h unsafe.Pointer) *QInputDialog {
 
 // NewQInputDialog constructs a new QInputDialog object.
 func NewQInputDialog(parent *QWidget) *QInputDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQInputDialog(C.QInputDialog_new(parent.cPointer()))
 }
@@ -81,15 +89,18 @@ func NewQInputDialog2() *QInputDialog {
 
 // NewQInputDialog3 constructs a new QInputDialog object.
 func NewQInputDialog3(parent *QWidget, flags WindowType) *QInputDialog {
+	defer runtime.KeepAlive(parent)
 
 	return newQInputDialog(C.QInputDialog_new3(parent.cPointer(), (C.int)(flags)))
 }
 
 func (this *QInputDialog) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QInputDialog_metaObject(this.h))
 }
 
 func (this *QInputDialog) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QInputDialog_metacast(this.h, param1_Cstring))
@@ -105,14 +116,17 @@ func QInputDialog_Tr(s string) string {
 }
 
 func (this *QInputDialog) SetInputMode(mode QInputDialog__InputMode) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setInputMode(this.h, (C.int)(mode))
 }
 
 func (this *QInputDialog) InputMode() QInputDialog__InputMode {
+	defer runtime.KeepAlive(this)
 	return (QInputDialog__InputMode)(C.QInputDialog_inputMode(this.h))
 }
 
 func (this *QInputDialog) SetLabelText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -121,6 +135,7 @@ func (this *QInputDialog) SetLabelText(text string) {
 }
 
 func (this *QInputDialog) LabelText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDialog_labelText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -128,22 +143,27 @@ func (this *QInputDialog) LabelText() string {
 }
 
 func (this *QInputDialog) SetOption(option QInputDialog__InputDialogOption) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setOption(this.h, (C.int)(option))
 }
 
 func (this *QInputDialog) TestOption(option QInputDialog__InputDialogOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QInputDialog_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QInputDialog) SetOptions(options QInputDialog__InputDialogOption) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QInputDialog) Options() QInputDialog__InputDialogOption {
+	defer runtime.KeepAlive(this)
 	return (QInputDialog__InputDialogOption)(C.QInputDialog_options(this.h))
 }
 
 func (this *QInputDialog) SetTextValue(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -152,6 +172,7 @@ func (this *QInputDialog) SetTextValue(text string) {
 }
 
 func (this *QInputDialog) TextValue() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDialog_textValue(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -159,22 +180,27 @@ func (this *QInputDialog) TextValue() string {
 }
 
 func (this *QInputDialog) SetTextEchoMode(mode QLineEdit__EchoMode) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setTextEchoMode(this.h, (C.int)(mode))
 }
 
 func (this *QInputDialog) TextEchoMode() QLineEdit__EchoMode {
+	defer runtime.KeepAlive(this)
 	return (QLineEdit__EchoMode)(C.QInputDialog_textEchoMode(this.h))
 }
 
 func (this *QInputDialog) SetComboBoxEditable(editable bool) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setComboBoxEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QInputDialog) IsComboBoxEditable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QInputDialog_isComboBoxEditable(this.h))
 }
 
 func (this *QInputDialog) SetComboBoxItems(items []string) {
+	defer runtime.KeepAlive(this)
 	items_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -190,6 +216,7 @@ func (this *QInputDialog) SetComboBoxItems(items []string) {
 }
 
 func (this *QInputDialog) ComboBoxItems() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QInputDialog_comboBoxItems(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -203,78 +230,97 @@ func (this *QInputDialog) ComboBoxItems() []string {
 }
 
 func (this *QInputDialog) SetIntValue(value int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setIntValue(this.h, (C.int)(value))
 }
 
 func (this *QInputDialog) IntValue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputDialog_intValue(this.h))
 }
 
 func (this *QInputDialog) SetIntMinimum(min int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setIntMinimum(this.h, (C.int)(min))
 }
 
 func (this *QInputDialog) IntMinimum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputDialog_intMinimum(this.h))
 }
 
 func (this *QInputDialog) SetIntMaximum(max int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setIntMaximum(this.h, (C.int)(max))
 }
 
 func (this *QInputDialog) IntMaximum() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputDialog_intMaximum(this.h))
 }
 
 func (this *QInputDialog) SetIntRange(min int, max int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setIntRange(this.h, (C.int)(min), (C.int)(max))
 }
 
 func (this *QInputDialog) SetIntStep(step int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setIntStep(this.h, (C.int)(step))
 }
 
 func (this *QInputDialog) IntStep() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputDialog_intStep(this.h))
 }
 
 func (this *QInputDialog) SetDoubleValue(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleValue(this.h, (C.double)(value))
 }
 
 func (this *QInputDialog) DoubleValue() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QInputDialog_doubleValue(this.h))
 }
 
 func (this *QInputDialog) SetDoubleMinimum(min float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleMinimum(this.h, (C.double)(min))
 }
 
 func (this *QInputDialog) DoubleMinimum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QInputDialog_doubleMinimum(this.h))
 }
 
 func (this *QInputDialog) SetDoubleMaximum(max float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleMaximum(this.h, (C.double)(max))
 }
 
 func (this *QInputDialog) DoubleMaximum() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QInputDialog_doubleMaximum(this.h))
 }
 
 func (this *QInputDialog) SetDoubleRange(min float64, max float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleRange(this.h, (C.double)(min), (C.double)(max))
 }
 
 func (this *QInputDialog) SetDoubleDecimals(decimals int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleDecimals(this.h, (C.int)(decimals))
 }
 
 func (this *QInputDialog) DoubleDecimals() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QInputDialog_doubleDecimals(this.h))
 }
 
 func (this *QInputDialog) SetOkButtonText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -283,6 +329,7 @@ func (this *QInputDialog) SetOkButtonText(text string) {
 }
 
 func (this *QInputDialog) OkButtonText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDialog_okButtonText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -290,6 +337,7 @@ func (this *QInputDialog) OkButtonText() string {
 }
 
 func (this *QInputDialog) SetCancelButtonText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -298,6 +346,7 @@ func (this *QInputDialog) SetCancelButtonText(text string) {
 }
 
 func (this *QInputDialog) CancelButtonText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QInputDialog_cancelButtonText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -305,22 +354,26 @@ func (this *QInputDialog) CancelButtonText() string {
 }
 
 func (this *QInputDialog) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QInputDialog_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputDialog) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QInputDialog_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputDialog) SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setVisible(this.h, (C.bool)(visible))
 }
 
 func QInputDialog_GetText(parent *QWidget, title string, label string) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -336,6 +389,7 @@ func QInputDialog_GetText(parent *QWidget, title string, label string) string {
 }
 
 func QInputDialog_GetMultiLineText(parent *QWidget, title string, label string) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -351,6 +405,7 @@ func QInputDialog_GetMultiLineText(parent *QWidget, title string, label string) 
 }
 
 func QInputDialog_GetItem(parent *QWidget, title string, label string, items []string) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -377,6 +432,7 @@ func QInputDialog_GetItem(parent *QWidget, title string, label string, items []s
 }
 
 func QInputDialog_GetInt(parent *QWidget, title string, label string) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -389,6 +445,7 @@ func QInputDialog_GetInt(parent *QWidget, title string, label string) int {
 }
 
 func QInputDialog_GetDouble(parent *QWidget, title string, label string) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -401,14 +458,17 @@ func QInputDialog_GetDouble(parent *QWidget, title string, label string) float64
 }
 
 func (this *QInputDialog) SetDoubleStep(step float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setDoubleStep(this.h, (C.double)(step))
 }
 
 func (this *QInputDialog) DoubleStep() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QInputDialog_doubleStep(this.h))
 }
 
 func (this *QInputDialog) TextValueChanged(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -436,6 +496,7 @@ func miqt_exec_callback_QInputDialog_textValueChanged(cb C.intptr_t, text C.stru
 }
 
 func (this *QInputDialog) TextValueSelected(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -463,6 +524,7 @@ func miqt_exec_callback_QInputDialog_textValueSelected(cb C.intptr_t, text C.str
 }
 
 func (this *QInputDialog) IntValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_intValueChanged(this.h, (C.int)(value))
 }
 func (this *QInputDialog) OnIntValueChanged(slot func(value int)) {
@@ -483,6 +545,7 @@ func miqt_exec_callback_QInputDialog_intValueChanged(cb C.intptr_t, value C.int)
 }
 
 func (this *QInputDialog) IntValueSelected(value int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_intValueSelected(this.h, (C.int)(value))
 }
 func (this *QInputDialog) OnIntValueSelected(slot func(value int)) {
@@ -503,6 +566,7 @@ func miqt_exec_callback_QInputDialog_intValueSelected(cb C.intptr_t, value C.int
 }
 
 func (this *QInputDialog) DoubleValueChanged(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_doubleValueChanged(this.h, (C.double)(value))
 }
 func (this *QInputDialog) OnDoubleValueChanged(slot func(value float64)) {
@@ -523,6 +587,7 @@ func miqt_exec_callback_QInputDialog_doubleValueChanged(cb C.intptr_t, value C.d
 }
 
 func (this *QInputDialog) DoubleValueSelected(value float64) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_doubleValueSelected(this.h, (C.double)(value))
 }
 func (this *QInputDialog) OnDoubleValueSelected(slot func(value float64)) {
@@ -543,6 +608,7 @@ func miqt_exec_callback_QInputDialog_doubleValueSelected(cb C.intptr_t, value C.
 }
 
 func (this *QInputDialog) Done(result int) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_done(this.h, (C.int)(result))
 }
 
@@ -569,10 +635,12 @@ func QInputDialog_Tr3(s string, c string, n int) string {
 }
 
 func (this *QInputDialog) SetOption2(option QInputDialog__InputDialogOption, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QInputDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 func QInputDialog_GetText2(parent *QWidget, title string, label string, echo QLineEdit__EchoMode) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -588,6 +656,7 @@ func QInputDialog_GetText2(parent *QWidget, title string, label string, echo QLi
 }
 
 func QInputDialog_GetText3(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -607,6 +676,7 @@ func QInputDialog_GetText3(parent *QWidget, title string, label string, echo QLi
 }
 
 func QInputDialog_GetText4(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -626,6 +696,7 @@ func QInputDialog_GetText4(parent *QWidget, title string, label string, echo QLi
 }
 
 func QInputDialog_GetText5(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -645,6 +716,7 @@ func QInputDialog_GetText5(parent *QWidget, title string, label string, echo QLi
 }
 
 func QInputDialog_GetText6(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -664,6 +736,7 @@ func QInputDialog_GetText6(parent *QWidget, title string, label string, echo QLi
 }
 
 func QInputDialog_GetMultiLineText2(parent *QWidget, title string, label string, text string) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -683,6 +756,7 @@ func QInputDialog_GetMultiLineText2(parent *QWidget, title string, label string,
 }
 
 func QInputDialog_GetMultiLineText3(parent *QWidget, title string, label string, text string, ok *bool) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -702,6 +776,7 @@ func QInputDialog_GetMultiLineText3(parent *QWidget, title string, label string,
 }
 
 func QInputDialog_GetMultiLineText4(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -721,6 +796,7 @@ func QInputDialog_GetMultiLineText4(parent *QWidget, title string, label string,
 }
 
 func QInputDialog_GetMultiLineText5(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -740,6 +816,7 @@ func QInputDialog_GetMultiLineText5(parent *QWidget, title string, label string,
 }
 
 func QInputDialog_GetItem2(parent *QWidget, title string, label string, items []string, current int) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -766,6 +843,7 @@ func QInputDialog_GetItem2(parent *QWidget, title string, label string, items []
 }
 
 func QInputDialog_GetItem3(parent *QWidget, title string, label string, items []string, current int, editable bool) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -792,6 +870,7 @@ func QInputDialog_GetItem3(parent *QWidget, title string, label string, items []
 }
 
 func QInputDialog_GetItem4(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -818,6 +897,7 @@ func QInputDialog_GetItem4(parent *QWidget, title string, label string, items []
 }
 
 func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -844,6 +924,7 @@ func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []
 }
 
 func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -870,6 +951,7 @@ func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []
 }
 
 func QInputDialog_GetInt2(parent *QWidget, title string, label string, value int) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -882,6 +964,7 @@ func QInputDialog_GetInt2(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetInt3(parent *QWidget, title string, label string, value int, minValue int) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -894,6 +977,7 @@ func QInputDialog_GetInt3(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetInt4(parent *QWidget, title string, label string, value int, minValue int, maxValue int) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -906,6 +990,7 @@ func QInputDialog_GetInt4(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetInt5(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -918,6 +1003,7 @@ func QInputDialog_GetInt5(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetInt6(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -930,6 +1016,7 @@ func QInputDialog_GetInt6(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetInt7(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool, flags WindowType) int {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -942,6 +1029,7 @@ func QInputDialog_GetInt7(parent *QWidget, title string, label string, value int
 }
 
 func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value float64) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -954,6 +1042,7 @@ func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble3(parent *QWidget, title string, label string, value float64, minValue float64) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -966,6 +1055,7 @@ func QInputDialog_GetDouble3(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble4(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -978,6 +1068,7 @@ func QInputDialog_GetDouble4(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble5(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -990,6 +1081,7 @@ func QInputDialog_GetDouble5(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble6(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1002,6 +1094,7 @@ func QInputDialog_GetDouble6(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble7(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1014,6 +1107,7 @@ func QInputDialog_GetDouble7(parent *QWidget, title string, label string, value 
 }
 
 func QInputDialog_GetDouble8(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType, step float64) float64 {
+	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1027,6 +1121,8 @@ func QInputDialog_GetDouble8(parent *QWidget, title string, label string, value 
 
 // AdjustPosition can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) AdjustPosition(param1 *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QInputDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -1039,6 +1135,7 @@ func (this *QInputDialog) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QInputDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1051,6 +1148,7 @@ func (this *QInputDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QInputDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1063,6 +1161,7 @@ func (this *QInputDialog) Create() {
 
 // Destroy can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QInputDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1075,6 +1174,7 @@ func (this *QInputDialog) Destroy() {
 
 // FocusNextChild can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QInputDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1089,6 +1189,7 @@ func (this *QInputDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QInputDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1103,6 +1204,7 @@ func (this *QInputDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QInputDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1117,6 +1219,7 @@ func (this *QInputDialog) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QInputDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1131,6 +1234,7 @@ func (this *QInputDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1147,6 +1251,8 @@ func (this *QInputDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QInputDialog that was directly constructed.
 func (this *QInputDialog) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QInputDialog_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1160,6 +1266,7 @@ func (this *QInputDialog) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QInputDialog) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QInputDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1181,12 +1288,14 @@ func miqt_exec_callback_QInputDialog_minimumSizeHint(self *C.QInputDialog, cb C.
 	}
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QInputDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QInputDialog) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QInputDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1208,12 +1317,14 @@ func miqt_exec_callback_QInputDialog_sizeHint(self *C.QInputDialog, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QInputDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QInputDialog) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1240,6 +1351,7 @@ func miqt_exec_callback_QInputDialog_setVisible(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_Done(result int) {
+	defer runtime.KeepAlive(this)
 
 	C.QInputDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -1266,6 +1378,7 @@ func miqt_exec_callback_QInputDialog_done(self *C.QInputDialog, cb C.intptr_t, r
 }
 
 func (this *QInputDialog) callVirtualBase_Open() {
+	defer runtime.KeepAlive(this)
 
 	C.QInputDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -1289,6 +1402,7 @@ func miqt_exec_callback_QInputDialog_open(self *C.QInputDialog, cb C.intptr_t) {
 }
 
 func (this *QInputDialog) callVirtualBase_Exec() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QInputDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -1314,6 +1428,7 @@ func miqt_exec_callback_QInputDialog_exec(self *C.QInputDialog, cb C.intptr_t) C
 }
 
 func (this *QInputDialog) callVirtualBase_Accept() {
+	defer runtime.KeepAlive(this)
 
 	C.QInputDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -1337,6 +1452,7 @@ func miqt_exec_callback_QInputDialog_accept(self *C.QInputDialog, cb C.intptr_t)
 }
 
 func (this *QInputDialog) callVirtualBase_Reject() {
+	defer runtime.KeepAlive(this)
 
 	C.QInputDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -1360,6 +1476,8 @@ func miqt_exec_callback_QInputDialog_reject(self *C.QInputDialog, cb C.intptr_t)
 }
 
 func (this *QInputDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1386,6 +1504,8 @@ func miqt_exec_callback_QInputDialog_keyPressEvent(self *C.QInputDialog, cb C.in
 }
 
 func (this *QInputDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1412,6 +1532,8 @@ func miqt_exec_callback_QInputDialog_closeEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1438,6 +1560,8 @@ func miqt_exec_callback_QInputDialog_showEvent(self *C.QInputDialog, cb C.intptr
 }
 
 func (this *QInputDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1464,6 +1588,8 @@ func miqt_exec_callback_QInputDialog_resizeEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1490,6 +1616,9 @@ func miqt_exec_callback_QInputDialog_contextMenuEvent(self *C.QInputDialog, cb C
 }
 
 func (this *QInputDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QInputDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -1520,6 +1649,7 @@ func miqt_exec_callback_QInputDialog_eventFilter(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QInputDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1545,6 +1675,7 @@ func miqt_exec_callback_QInputDialog_devType(self *C.QInputDialog, cb C.intptr_t
 }
 
 func (this *QInputDialog) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QInputDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1573,6 +1704,7 @@ func miqt_exec_callback_QInputDialog_heightForWidth(self *C.QInputDialog, cb C.i
 }
 
 func (this *QInputDialog) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QInputDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1598,6 +1730,7 @@ func miqt_exec_callback_QInputDialog_hasHeightForWidth(self *C.QInputDialog, cb 
 }
 
 func (this *QInputDialog) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QInputDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1617,12 +1750,15 @@ func miqt_exec_callback_QInputDialog_paintEngine(self *C.QInputDialog, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputDialog) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QInputDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1651,6 +1787,8 @@ func miqt_exec_callback_QInputDialog_event(self *C.QInputDialog, cb C.intptr_t, 
 }
 
 func (this *QInputDialog) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1677,6 +1815,8 @@ func miqt_exec_callback_QInputDialog_mousePressEvent(self *C.QInputDialog, cb C.
 }
 
 func (this *QInputDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1703,6 +1843,8 @@ func miqt_exec_callback_QInputDialog_mouseReleaseEvent(self *C.QInputDialog, cb 
 }
 
 func (this *QInputDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1729,6 +1871,8 @@ func miqt_exec_callback_QInputDialog_mouseDoubleClickEvent(self *C.QInputDialog,
 }
 
 func (this *QInputDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1755,6 +1899,8 @@ func miqt_exec_callback_QInputDialog_mouseMoveEvent(self *C.QInputDialog, cb C.i
 }
 
 func (this *QInputDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1781,6 +1927,8 @@ func miqt_exec_callback_QInputDialog_wheelEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1807,6 +1955,8 @@ func miqt_exec_callback_QInputDialog_keyReleaseEvent(self *C.QInputDialog, cb C.
 }
 
 func (this *QInputDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1833,6 +1983,8 @@ func miqt_exec_callback_QInputDialog_focusInEvent(self *C.QInputDialog, cb C.int
 }
 
 func (this *QInputDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1859,6 +2011,8 @@ func miqt_exec_callback_QInputDialog_focusOutEvent(self *C.QInputDialog, cb C.in
 }
 
 func (this *QInputDialog) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1885,6 +2039,8 @@ func miqt_exec_callback_QInputDialog_enterEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1911,6 +2067,8 @@ func miqt_exec_callback_QInputDialog_leaveEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1937,6 +2095,8 @@ func miqt_exec_callback_QInputDialog_paintEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1963,6 +2123,8 @@ func miqt_exec_callback_QInputDialog_moveEvent(self *C.QInputDialog, cb C.intptr
 }
 
 func (this *QInputDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1989,6 +2151,8 @@ func miqt_exec_callback_QInputDialog_tabletEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2015,6 +2179,8 @@ func miqt_exec_callback_QInputDialog_actionEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2041,6 +2207,8 @@ func miqt_exec_callback_QInputDialog_dragEnterEvent(self *C.QInputDialog, cb C.i
 }
 
 func (this *QInputDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2067,6 +2235,8 @@ func miqt_exec_callback_QInputDialog_dragMoveEvent(self *C.QInputDialog, cb C.in
 }
 
 func (this *QInputDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2093,6 +2263,8 @@ func miqt_exec_callback_QInputDialog_dragLeaveEvent(self *C.QInputDialog, cb C.i
 }
 
 func (this *QInputDialog) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2119,6 +2291,8 @@ func miqt_exec_callback_QInputDialog_dropEvent(self *C.QInputDialog, cb C.intptr
 }
 
 func (this *QInputDialog) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2145,6 +2319,7 @@ func miqt_exec_callback_QInputDialog_hideEvent(self *C.QInputDialog, cb C.intptr
 }
 
 func (this *QInputDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2186,6 +2361,8 @@ func miqt_exec_callback_QInputDialog_nativeEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2212,6 +2389,7 @@ func miqt_exec_callback_QInputDialog_changeEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QInputDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2240,6 +2418,8 @@ func miqt_exec_callback_QInputDialog_metric(self *C.QInputDialog, cb C.intptr_t,
 }
 
 func (this *QInputDialog) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QInputDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2266,6 +2446,8 @@ func miqt_exec_callback_QInputDialog_initPainter(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QInputDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2288,12 +2470,14 @@ func miqt_exec_callback_QInputDialog_redirected(self *C.QInputDialog, cb C.intpt
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputDialog) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QInputDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2313,12 +2497,15 @@ func miqt_exec_callback_QInputDialog_sharedPainter(self *C.QInputDialog, cb C.in
 	}
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QInputDialog) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QInputDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2345,6 +2532,7 @@ func miqt_exec_callback_QInputDialog_inputMethodEvent(self *C.QInputDialog, cb C
 }
 
 func (this *QInputDialog) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QInputDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2369,12 +2557,14 @@ func miqt_exec_callback_QInputDialog_inputMethodQuery(self *C.QInputDialog, cb C
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QInputDialog_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QInputDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QInputDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2403,6 +2593,8 @@ func miqt_exec_callback_QInputDialog_focusNextPrevChild(self *C.QInputDialog, cb
 }
 
 func (this *QInputDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2429,6 +2621,8 @@ func miqt_exec_callback_QInputDialog_timerEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2455,6 +2649,8 @@ func miqt_exec_callback_QInputDialog_childEvent(self *C.QInputDialog, cb C.intpt
 }
 
 func (this *QInputDialog) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QInputDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2481,6 +2677,8 @@ func miqt_exec_callback_QInputDialog_customEvent(self *C.QInputDialog, cb C.intp
 }
 
 func (this *QInputDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QInputDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2507,6 +2705,8 @@ func miqt_exec_callback_QInputDialog_connectNotify(self *C.QInputDialog, cb C.in
 }
 
 func (this *QInputDialog) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QInputDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -2544,8 +2744,9 @@ func (this *QInputDialog) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QInputDialog{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QInputDialog) {
-		C.QInputDialog_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QInputDialog_delete((*C.QInputDialog)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

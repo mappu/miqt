@@ -16,8 +16,15 @@ import (
 
 type QUndoView struct {
 	h  *C.QUndoView
-	gc *[1]*C.QUndoView
+	gc *[1]unsafe.Pointer
 	*QListView
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUndoView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QListView.miqtSetGC(gc)
 }
 
 func (this *QUndoView) cPointer() *C.QUndoView {
@@ -53,6 +60,7 @@ func UnsafeNewQUndoView(h unsafe.Pointer) *QUndoView {
 
 // NewQUndoView constructs a new QUndoView object.
 func NewQUndoView(parent *QWidget) *QUndoView {
+	defer runtime.KeepAlive(parent)
 
 	return newQUndoView(C.QUndoView_new(parent.cPointer()))
 }
@@ -65,33 +73,41 @@ func NewQUndoView2() *QUndoView {
 
 // NewQUndoView3 constructs a new QUndoView object.
 func NewQUndoView3(stack *QUndoStack) *QUndoView {
+	defer runtime.KeepAlive(stack)
 
 	return newQUndoView(C.QUndoView_new3(stack.cPointer()))
 }
 
 // NewQUndoView4 constructs a new QUndoView object.
 func NewQUndoView4(group *QUndoGroup) *QUndoView {
+	defer runtime.KeepAlive(group)
 
 	return newQUndoView(C.QUndoView_new4(group.cPointer()))
 }
 
 // NewQUndoView5 constructs a new QUndoView object.
 func NewQUndoView5(stack *QUndoStack, parent *QWidget) *QUndoView {
+	defer runtime.KeepAlive(stack)
+	defer runtime.KeepAlive(parent)
 
 	return newQUndoView(C.QUndoView_new5(stack.cPointer(), parent.cPointer()))
 }
 
 // NewQUndoView6 constructs a new QUndoView object.
 func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
+	defer runtime.KeepAlive(group)
+	defer runtime.KeepAlive(parent)
 
 	return newQUndoView(C.QUndoView_new6(group.cPointer(), parent.cPointer()))
 }
 
 func (this *QUndoView) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QUndoView_metaObject(this.h))
 }
 
 func (this *QUndoView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QUndoView_metacast(this.h, param1_Cstring))
@@ -116,14 +132,17 @@ func QUndoView_TrUtf8(s string) string {
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
+	defer runtime.KeepAlive(this)
 	return newQUndoStack(C.QUndoView_stack(this.h))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
+	defer runtime.KeepAlive(this)
 	return newQUndoGroup(C.QUndoView_group(this.h))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {
+	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -132,6 +151,7 @@ func (this *QUndoView) SetEmptyLabel(label string) {
 }
 
 func (this *QUndoView) EmptyLabel() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoView_emptyLabel(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -139,20 +159,27 @@ func (this *QUndoView) EmptyLabel() string {
 }
 
 func (this *QUndoView) SetCleanIcon(icon *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QUndoView_setCleanIcon(this.h, icon.cPointer())
 }
 
 func (this *QUndoView) CleanIcon() *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QUndoView_cleanIcon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUndoView) SetStack(stack *QUndoStack) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(stack)
 	C.QUndoView_setStack(this.h, stack.cPointer())
 }
 
 func (this *QUndoView) SetGroup(group *QUndoGroup) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(group)
 	C.QUndoView_setGroup(this.h, group.cPointer())
 }
 
@@ -202,6 +229,7 @@ func QUndoView_TrUtf83(s string, c string, n int) string {
 
 // ResizeContents can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ResizeContents(width int, height int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_resizeContents(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(width), (C.int)(height))
@@ -214,6 +242,7 @@ func (this *QUndoView) ResizeContents(width int, height int) {
 
 // ContentsSize can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ContentsSize() QSize {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQSize(C.QUndoView_protectedbase_contentsSize(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -230,6 +259,8 @@ func (this *QUndoView) ContentsSize() QSize {
 
 // RectForIndex can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) RectForIndex(index *QModelIndex) QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRect(C.QUndoView_protectedbase_rectForIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
@@ -246,6 +277,9 @@ func (this *QUndoView) RectForIndex(index *QModelIndex) QRect {
 
 // SetPositionForIndex can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetPositionForIndex(position *QPoint, index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(position)
+	defer runtime.KeepAlive(index)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setPositionForIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), position.cPointer(), index.cPointer())
@@ -258,6 +292,7 @@ func (this *QUndoView) SetPositionForIndex(position *QPoint, index *QModelIndex)
 
 // SetHorizontalStepsPerItem can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetHorizontalStepsPerItem(steps int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setHorizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -270,6 +305,7 @@ func (this *QUndoView) SetHorizontalStepsPerItem(steps int) {
 
 // HorizontalStepsPerItem can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) HorizontalStepsPerItem() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUndoView_protectedbase_horizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -284,6 +320,7 @@ func (this *QUndoView) HorizontalStepsPerItem() int {
 
 // SetVerticalStepsPerItem can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetVerticalStepsPerItem(steps int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setVerticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -296,6 +333,7 @@ func (this *QUndoView) SetVerticalStepsPerItem(steps int) {
 
 // VerticalStepsPerItem can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) VerticalStepsPerItem() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUndoView_protectedbase_verticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -310,6 +348,7 @@ func (this *QUndoView) VerticalStepsPerItem() int {
 
 // State can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) State() QAbstractItemView__State {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QUndoView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -324,6 +363,7 @@ func (this *QUndoView) State() QAbstractItemView__State {
 
 // SetState can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetState(state QAbstractItemView__State) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -336,6 +376,7 @@ func (this *QUndoView) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ScheduleDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -348,6 +389,7 @@ func (this *QUndoView) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ExecuteDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -360,6 +402,8 @@ func (this *QUndoView) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetDirtyRegion(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
@@ -372,6 +416,7 @@ func (this *QUndoView) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ScrollDirtyRegion(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -384,6 +429,7 @@ func (this *QUndoView) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) DirtyRegionOffset() QPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QUndoView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -400,6 +446,7 @@ func (this *QUndoView) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) StartAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -412,6 +459,7 @@ func (this *QUndoView) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) StopAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -424,6 +472,7 @@ func (this *QUndoView) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) DoAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -436,6 +485,7 @@ func (this *QUndoView) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QUndoView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -450,6 +500,7 @@ func (this *QUndoView) DropIndicatorPosition() QAbstractItemView__DropIndicatorP
 
 // SetViewportMargins can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -462,6 +513,7 @@ func (this *QUndoView) SetViewportMargins(left int, top int, right int, bottom i
 
 // ViewportMargins can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QUndoView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -478,6 +530,8 @@ func (this *QUndoView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -490,6 +544,8 @@ func (this *QUndoView) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) InitStyleOption(option *QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
@@ -502,6 +558,7 @@ func (this *QUndoView) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -514,6 +571,7 @@ func (this *QUndoView) UpdateMicroFocus() {
 
 // Create can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -526,6 +584,7 @@ func (this *QUndoView) Create() {
 
 // Destroy can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QUndoView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -538,6 +597,7 @@ func (this *QUndoView) Destroy() {
 
 // FocusNextChild can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QUndoView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -552,6 +612,7 @@ func (this *QUndoView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QUndoView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -566,6 +627,7 @@ func (this *QUndoView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QUndoView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -580,6 +642,7 @@ func (this *QUndoView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUndoView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -594,6 +657,7 @@ func (this *QUndoView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -610,6 +674,8 @@ func (this *QUndoView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QUndoView that was directly constructed.
 func (this *QUndoView) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QUndoView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -623,6 +689,8 @@ func (this *QUndoView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QUndoView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QUndoView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -647,12 +715,15 @@ func miqt_exec_callback_QUndoView_visualRect(self *C.QUndoView, cb C.intptr_t, i
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_VisualRect, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QUndoView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
@@ -681,6 +752,8 @@ func miqt_exec_callback_QUndoView_scrollTo(self *C.QUndoView, cb C.intptr_t, ind
 }
 
 func (this *QUndoView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 
 	_goptr := newQModelIndex(C.QUndoView_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -705,12 +778,14 @@ func miqt_exec_callback_QUndoView_indexAt(self *C.QUndoView, cb C.intptr_t, p *C
 	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_IndexAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_DoItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -734,6 +809,7 @@ func miqt_exec_callback_QUndoView_doItemsLayout(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -757,6 +833,8 @@ func miqt_exec_callback_QUndoView_reset(self *C.QUndoView, cb C.intptr_t) {
 }
 
 func (this *QUndoView) callVirtualBase_SetRootIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QUndoView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
@@ -783,6 +861,8 @@ func miqt_exec_callback_QUndoView_setRootIndex(self *C.QUndoView, cb C.intptr_t,
 }
 
 func (this *QUndoView) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QUndoView_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -811,6 +891,7 @@ func miqt_exec_callback_QUndoView_event(self *C.QUndoView, cb C.intptr_t, e *C.Q
 }
 
 func (this *QUndoView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -839,6 +920,9 @@ func miqt_exec_callback_QUndoView_scrollContentsBy(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -882,6 +966,8 @@ func miqt_exec_callback_QUndoView_dataChanged(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QUndoView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -912,6 +998,8 @@ func miqt_exec_callback_QUndoView_rowsInserted(self *C.QUndoView, cb C.intptr_t,
 }
 
 func (this *QUndoView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QUndoView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -942,6 +1030,8 @@ func miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(self *C.QUndoView, cb C.i
 }
 
 func (this *QUndoView) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -968,6 +1058,8 @@ func miqt_exec_callback_QUndoView_mouseMoveEvent(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -994,6 +1086,8 @@ func miqt_exec_callback_QUndoView_mouseReleaseEvent(self *C.QUndoView, cb C.intp
 }
 
 func (this *QUndoView) callVirtualBase_WheelEvent(e *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1020,6 +1114,8 @@ func miqt_exec_callback_QUndoView_wheelEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_TimerEvent(e *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1046,6 +1142,8 @@ func miqt_exec_callback_QUndoView_timerEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_ResizeEvent(e *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1072,6 +1170,8 @@ func miqt_exec_callback_QUndoView_resizeEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1098,6 +1198,8 @@ func miqt_exec_callback_QUndoView_dragMoveEvent(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1124,6 +1226,8 @@ func miqt_exec_callback_QUndoView_dragLeaveEvent(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_DropEvent(e *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1150,6 +1254,7 @@ func miqt_exec_callback_QUndoView_dropEvent(self *C.QUndoView, cb C.intptr_t, e 
 }
 
 func (this *QUndoView) callVirtualBase_StartDrag(supportedActions DropAction) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -1176,6 +1281,7 @@ func miqt_exec_callback_QUndoView_startDrag(self *C.QUndoView, cb C.intptr_t, su
 }
 
 func (this *QUndoView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQStyleOptionViewItem(C.QUndoView_virtualbase_viewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1197,12 +1303,15 @@ func miqt_exec_callback_QUndoView_viewOptions(self *C.QUndoView, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_ViewOptions)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QStyleOptionViewItem(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_PaintEvent(e *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QUndoView_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1229,6 +1338,7 @@ func miqt_exec_callback_QUndoView_paintEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_HorizontalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -1254,6 +1364,7 @@ func miqt_exec_callback_QUndoView_horizontalOffset(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_VerticalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -1279,6 +1390,7 @@ func miqt_exec_callback_QUndoView_verticalOffset(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QUndoView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1305,12 +1417,15 @@ func miqt_exec_callback_QUndoView_moveCursor(self *C.QUndoView, cb C.intptr_t, c
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QUndoView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
@@ -1339,6 +1454,8 @@ func miqt_exec_callback_QUndoView_setSelection(self *C.QUndoView, cb C.intptr_t,
 }
 
 func (this *QUndoView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QUndoView_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1363,12 +1480,14 @@ func miqt_exec_callback_QUndoView_visualRegionForSelection(self *C.QUndoView, cb
 	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QRegion(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SelectedIndexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QUndoView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -1396,10 +1515,11 @@ func miqt_exec_callback_QUndoView_selectedIndexes(self *C.QUndoView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_SelectedIndexes)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QUndoView_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1408,6 +1528,7 @@ func miqt_exec_callback_QUndoView_selectedIndexes(self *C.QUndoView, cb C.intptr
 }
 
 func (this *QUndoView) callVirtualBase_UpdateGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -1431,6 +1552,8 @@ func miqt_exec_callback_QUndoView_updateGeometries(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QUndoView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1459,6 +1582,9 @@ func miqt_exec_callback_QUndoView_isIndexHidden(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selected)
+	defer runtime.KeepAlive(deselected)
 
 	C.QUndoView_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
@@ -1487,6 +1613,9 @@ func miqt_exec_callback_QUndoView_selectionChanged(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 
 	C.QUndoView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
@@ -1515,6 +1644,7 @@ func miqt_exec_callback_QUndoView_currentChanged(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QUndoView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1536,12 +1666,15 @@ func miqt_exec_callback_QUndoView_viewportSizeHint(self *C.QUndoView, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 
 	C.QUndoView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -1568,6 +1701,8 @@ func miqt_exec_callback_QUndoView_setModel(self *C.QUndoView, cb C.intptr_t, mod
 }
 
 func (this *QUndoView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectionModel)
 
 	C.QUndoView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1594,6 +1729,7 @@ func miqt_exec_callback_QUndoView_setSelectionModel(self *C.QUndoView, cb C.intp
 }
 
 func (this *QUndoView) callVirtualBase_KeyboardSearch(search string) {
+	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -1627,6 +1763,7 @@ func miqt_exec_callback_QUndoView_keyboardSearch(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_SizeHintForRow(row int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1655,6 +1792,7 @@ func miqt_exec_callback_QUndoView_sizeHintForRow(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_SizeHintForColumn(column int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -1683,6 +1821,7 @@ func miqt_exec_callback_QUndoView_sizeHintForColumn(self *C.QUndoView, cb C.intp
 }
 
 func (this *QUndoView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QUndoView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1707,12 +1846,14 @@ func miqt_exec_callback_QUndoView_inputMethodQuery(self *C.QUndoView, cb C.intpt
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SelectAll() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -1736,6 +1877,7 @@ func miqt_exec_callback_QUndoView_selectAll(self *C.QUndoView, cb C.intptr_t) {
 }
 
 func (this *QUndoView) callVirtualBase_UpdateEditorData() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -1759,6 +1901,7 @@ func miqt_exec_callback_QUndoView_updateEditorData(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_UpdateEditorGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -1782,6 +1925,7 @@ func miqt_exec_callback_QUndoView_updateEditorGeometries(self *C.QUndoView, cb C
 }
 
 func (this *QUndoView) callVirtualBase_VerticalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1808,6 +1952,7 @@ func miqt_exec_callback_QUndoView_verticalScrollbarAction(self *C.QUndoView, cb 
 }
 
 func (this *QUndoView) callVirtualBase_HorizontalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1834,6 +1979,7 @@ func miqt_exec_callback_QUndoView_horizontalScrollbarAction(self *C.QUndoView, c
 }
 
 func (this *QUndoView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1860,6 +2006,7 @@ func miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(self *C.QUndoVie
 }
 
 func (this *QUndoView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1886,6 +2033,8 @@ func miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(self *C.QUndoV
 }
 
 func (this *QUndoView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QUndoView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -1914,6 +2063,8 @@ func miqt_exec_callback_QUndoView_closeEditor(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_CommitData(editor *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QUndoView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1940,6 +2091,8 @@ func miqt_exec_callback_QUndoView_commitData(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_EditorDestroyed(editor *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QUndoView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1966,6 +2119,9 @@ func miqt_exec_callback_QUndoView_editorDestroyed(self *C.QUndoView, cb C.intptr
 }
 
 func (this *QUndoView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
@@ -1998,6 +2154,9 @@ func miqt_exec_callback_QUndoView_edit2(self *C.QUndoView, cb C.intptr_t, index 
 }
 
 func (this *QUndoView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (QItemSelectionModel__SelectionFlag)(C.QUndoView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
@@ -2028,6 +2187,7 @@ func miqt_exec_callback_QUndoView_selectionCommand(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUndoView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2056,6 +2216,8 @@ func miqt_exec_callback_QUndoView_focusNextPrevChild(self *C.QUndoView, cb C.int
 }
 
 func (this *QUndoView) callVirtualBase_ViewportEvent(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2084,6 +2246,8 @@ func miqt_exec_callback_QUndoView_viewportEvent(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2110,6 +2274,8 @@ func miqt_exec_callback_QUndoView_mousePressEvent(self *C.QUndoView, cb C.intptr
 }
 
 func (this *QUndoView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2136,6 +2302,8 @@ func miqt_exec_callback_QUndoView_mouseDoubleClickEvent(self *C.QUndoView, cb C.
 }
 
 func (this *QUndoView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2162,6 +2330,8 @@ func miqt_exec_callback_QUndoView_dragEnterEvent(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2188,6 +2358,8 @@ func miqt_exec_callback_QUndoView_focusInEvent(self *C.QUndoView, cb C.intptr_t,
 }
 
 func (this *QUndoView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2214,6 +2386,8 @@ func miqt_exec_callback_QUndoView_focusOutEvent(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2240,6 +2414,8 @@ func miqt_exec_callback_QUndoView_keyPressEvent(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2266,6 +2442,9 @@ func miqt_exec_callback_QUndoView_inputMethodEvent(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -2296,6 +2475,7 @@ func miqt_exec_callback_QUndoView_eventFilter(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QUndoView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2317,12 +2497,14 @@ func miqt_exec_callback_QUndoView_minimumSizeHint(self *C.QUndoView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QUndoView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2344,12 +2526,15 @@ func miqt_exec_callback_QUndoView_sizeHint(self *C.QUndoView, cb C.intptr_t) *C.
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QUndoView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QUndoView) callVirtualBase_SetupViewport(viewport *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QUndoView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2376,6 +2561,8 @@ func miqt_exec_callback_QUndoView_setupViewport(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QUndoView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2402,6 +2589,8 @@ func miqt_exec_callback_QUndoView_contextMenuEvent(self *C.QUndoView, cb C.intpt
 }
 
 func (this *QUndoView) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QUndoView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2428,6 +2617,7 @@ func miqt_exec_callback_QUndoView_changeEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2453,6 +2643,7 @@ func miqt_exec_callback_QUndoView_devType(self *C.QUndoView, cb C.intptr_t) C.in
 }
 
 func (this *QUndoView) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QUndoView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2479,6 +2670,7 @@ func miqt_exec_callback_QUndoView_setVisible(self *C.QUndoView, cb C.intptr_t, v
 }
 
 func (this *QUndoView) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2507,6 +2699,7 @@ func miqt_exec_callback_QUndoView_heightForWidth(self *C.QUndoView, cb C.intptr_
 }
 
 func (this *QUndoView) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QUndoView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2532,6 +2725,7 @@ func miqt_exec_callback_QUndoView_hasHeightForWidth(self *C.QUndoView, cb C.intp
 }
 
 func (this *QUndoView) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QUndoView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2551,12 +2745,15 @@ func miqt_exec_callback_QUndoView_paintEngine(self *C.QUndoView, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QUndoView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2583,6 +2780,8 @@ func miqt_exec_callback_QUndoView_keyReleaseEvent(self *C.QUndoView, cb C.intptr
 }
 
 func (this *QUndoView) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2609,6 +2808,8 @@ func miqt_exec_callback_QUndoView_enterEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2635,6 +2836,8 @@ func miqt_exec_callback_QUndoView_leaveEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2661,6 +2864,8 @@ func miqt_exec_callback_QUndoView_moveEvent(self *C.QUndoView, cb C.intptr_t, ev
 }
 
 func (this *QUndoView) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2687,6 +2892,8 @@ func miqt_exec_callback_QUndoView_closeEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2713,6 +2920,8 @@ func miqt_exec_callback_QUndoView_tabletEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2739,6 +2948,8 @@ func miqt_exec_callback_QUndoView_actionEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2765,6 +2976,8 @@ func miqt_exec_callback_QUndoView_showEvent(self *C.QUndoView, cb C.intptr_t, ev
 }
 
 func (this *QUndoView) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2791,6 +3004,7 @@ func miqt_exec_callback_QUndoView_hideEvent(self *C.QUndoView, cb C.intptr_t, ev
 }
 
 func (this *QUndoView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2832,6 +3046,7 @@ func miqt_exec_callback_QUndoView_nativeEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QUndoView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2860,6 +3075,8 @@ func miqt_exec_callback_QUndoView_metric(self *C.QUndoView, cb C.intptr_t, param
 }
 
 func (this *QUndoView) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QUndoView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -2886,6 +3103,8 @@ func miqt_exec_callback_QUndoView_initPainter(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QUndoView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2908,12 +3127,14 @@ func miqt_exec_callback_QUndoView_redirected(self *C.QUndoView, cb C.intptr_t, o
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QUndoView) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QUndoView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2933,12 +3154,15 @@ func miqt_exec_callback_QUndoView_sharedPainter(self *C.QUndoView, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QUndoView) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2965,6 +3189,8 @@ func miqt_exec_callback_QUndoView_childEvent(self *C.QUndoView, cb C.intptr_t, e
 }
 
 func (this *QUndoView) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QUndoView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2991,6 +3217,8 @@ func miqt_exec_callback_QUndoView_customEvent(self *C.QUndoView, cb C.intptr_t, 
 }
 
 func (this *QUndoView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QUndoView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3017,6 +3245,8 @@ func miqt_exec_callback_QUndoView_connectNotify(self *C.QUndoView, cb C.intptr_t
 }
 
 func (this *QUndoView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QUndoView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3054,8 +3284,9 @@ func (this *QUndoView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUndoView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUndoView) {
-		C.QUndoView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUndoView_delete((*C.QUndoView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

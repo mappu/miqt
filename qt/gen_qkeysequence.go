@@ -106,7 +106,13 @@ const (
 
 type QKeySequence struct {
 	h  *C.QKeySequence
-	gc *[1]*C.QKeySequence
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QKeySequence) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QKeySequence) cPointer() *C.QKeySequence {
@@ -161,6 +167,7 @@ func NewQKeySequence3(k1 int) *QKeySequence {
 
 // NewQKeySequence4 constructs a new QKeySequence object.
 func NewQKeySequence4(ks *QKeySequence) *QKeySequence {
+	defer runtime.KeepAlive(ks)
 
 	return newQKeySequence(C.QKeySequence_new4(ks.cPointer()))
 }
@@ -200,14 +207,17 @@ func NewQKeySequence9(k1 int, k2 int, k3 int, k4 int) *QKeySequence {
 }
 
 func (this *QKeySequence) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeySequence_count(this.h))
 }
 
 func (this *QKeySequence) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QKeySequence_isEmpty(this.h))
 }
 
 func (this *QKeySequence) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QKeySequence_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -241,6 +251,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 }
 
 func QKeySequence_ListToString(list []QKeySequence) string {
+	defer runtime.KeepAlive(list)
 	list_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -255,6 +266,8 @@ func QKeySequence_ListToString(list []QKeySequence) string {
 }
 
 func (this *QKeySequence) Matches(seq *QKeySequence) QKeySequence__SequenceMatch {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(seq)
 	return (QKeySequence__SequenceMatch)(C.QKeySequence_matches(this.h, seq.cPointer()))
 }
 
@@ -281,52 +294,72 @@ func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 }
 
 func (this *QKeySequence) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QKeySequence_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QKeySequence) OperatorSubscript(i uint) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QKeySequence_operatorSubscript(this.h, (C.uint)(i)))
 }
 
 func (this *QKeySequence) OperatorAssign(other *QKeySequence) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QKeySequence_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QKeySequence) Swap(other *QKeySequence) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QKeySequence_swap(this.h, other.cPointer())
 }
 
 func (this *QKeySequence) OperatorEqual(other *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QKeySequence_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QKeySequence) OperatorNotEqual(other *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QKeySequence_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QKeySequence) OperatorLesser(ks *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ks)
 	return (bool)(C.QKeySequence_operatorLesser(this.h, ks.cPointer()))
 }
 
 func (this *QKeySequence) OperatorGreater(other *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QKeySequence_operatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QKeySequence) OperatorLesserOrEqual(other *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QKeySequence_operatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QKeySequence) OperatorGreaterOrEqual(other *QKeySequence) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QKeySequence_operatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QKeySequence) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QKeySequence_isDetached(this.h))
 }
 
 func (this *QKeySequence) ToStringWithFormat(format QKeySequence__SequenceFormat) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QKeySequence_toStringWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -360,6 +393,7 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 }
 
 func QKeySequence_ListToString2(list []QKeySequence, format QKeySequence__SequenceFormat) string {
+	defer runtime.KeepAlive(list)
 	list_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -385,8 +419,9 @@ func (this *QKeySequence) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QKeySequence{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeySequence) {
-		C.QKeySequence_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QKeySequence_delete((*C.QKeySequence)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

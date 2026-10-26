@@ -15,7 +15,13 @@ import (
 
 type QwtSystemClock struct {
 	h  *C.QwtSystemClock
-	gc *[1]*C.QwtSystemClock
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtSystemClock) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtSystemClock) cPointer() *C.QwtSystemClock {
@@ -53,22 +59,28 @@ func NewQwtSystemClock() *QwtSystemClock {
 }
 
 func (this *QwtSystemClock) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtSystemClock_isNull(this.h))
 }
 
 func (this *QwtSystemClock) Start() {
+	defer runtime.KeepAlive(this)
 	C.QwtSystemClock_start(this.h)
 }
 
 func (this *QwtSystemClock) Restart() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSystemClock_restart(this.h))
 }
 
 func (this *QwtSystemClock) Elapsed() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSystemClock_elapsed(this.h))
 }
 
 func (this *QwtSystemClock) OperatorAssign(param1 *QwtSystemClock) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtSystemClock_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -84,8 +96,9 @@ func (this *QwtSystemClock) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtSystemClock{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSystemClock) {
-		C.QwtSystemClock_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtSystemClock_delete((*C.QwtSystemClock)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

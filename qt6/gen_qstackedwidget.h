@@ -208,6 +208,8 @@ bool QStackedWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStackedWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QStackedWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QStackedWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QStackedWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QStackedWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

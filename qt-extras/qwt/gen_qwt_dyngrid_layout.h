@@ -137,6 +137,8 @@ bool QwtDynGridLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QwtDynGridLayout_virtualbase_widget(void* self);
 bool QwtDynGridLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QwtDynGridLayout_virtualbase_spacerItem(void* self);
+QSize* QwtDynGridLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QwtDynGridLayout_virtualreturncopy_QRect(QRect* src);
 
 void QwtDynGridLayout_protectedbase_layoutGrid(bool* _dynamic_cast_ok, const void* self, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth);
 void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const void* self, QRect* rect, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth);

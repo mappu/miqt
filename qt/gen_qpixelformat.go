@@ -88,7 +88,13 @@ const (
 
 type QPixelFormat struct {
 	h  *C.QPixelFormat
-	gc *[1]*C.QPixelFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPixelFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPixelFormat) cPointer() *C.QPixelFormat {
@@ -133,6 +139,7 @@ func NewQPixelFormat2(colorModel QPixelFormat__ColorModel, firstSize byte, secon
 
 // NewQPixelFormat3 constructs a new QPixelFormat object.
 func NewQPixelFormat3(param1 *QPixelFormat) *QPixelFormat {
+	defer runtime.KeepAlive(param1)
 
 	return newQPixelFormat(C.QPixelFormat_new3(param1.cPointer()))
 }
@@ -150,90 +157,112 @@ func NewQPixelFormat5(colorModel QPixelFormat__ColorModel, firstSize byte, secon
 }
 
 func (this *QPixelFormat) ColorModel() QPixelFormat__ColorModel {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__ColorModel)(C.QPixelFormat_colorModel(this.h))
 }
 
 func (this *QPixelFormat) ChannelCount() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_channelCount(this.h))
 }
 
 func (this *QPixelFormat) RedSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_redSize(this.h))
 }
 
 func (this *QPixelFormat) GreenSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_greenSize(this.h))
 }
 
 func (this *QPixelFormat) BlueSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_blueSize(this.h))
 }
 
 func (this *QPixelFormat) CyanSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_cyanSize(this.h))
 }
 
 func (this *QPixelFormat) MagentaSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_magentaSize(this.h))
 }
 
 func (this *QPixelFormat) YellowSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_yellowSize(this.h))
 }
 
 func (this *QPixelFormat) BlackSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_blackSize(this.h))
 }
 
 func (this *QPixelFormat) HueSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_hueSize(this.h))
 }
 
 func (this *QPixelFormat) SaturationSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_saturationSize(this.h))
 }
 
 func (this *QPixelFormat) LightnessSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_lightnessSize(this.h))
 }
 
 func (this *QPixelFormat) BrightnessSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_brightnessSize(this.h))
 }
 
 func (this *QPixelFormat) AlphaSize() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_alphaSize(this.h))
 }
 
 func (this *QPixelFormat) BitsPerPixel() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_bitsPerPixel(this.h))
 }
 
 func (this *QPixelFormat) AlphaUsage() QPixelFormat__AlphaUsage {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__AlphaUsage)(C.QPixelFormat_alphaUsage(this.h))
 }
 
 func (this *QPixelFormat) AlphaPosition() QPixelFormat__AlphaPosition {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__AlphaPosition)(C.QPixelFormat_alphaPosition(this.h))
 }
 
 func (this *QPixelFormat) Premultiplied() QPixelFormat__AlphaPremultiplied {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__AlphaPremultiplied)(C.QPixelFormat_premultiplied(this.h))
 }
 
 func (this *QPixelFormat) TypeInterpretation() QPixelFormat__TypeInterpretation {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__TypeInterpretation)(C.QPixelFormat_typeInterpretation(this.h))
 }
 
 func (this *QPixelFormat) ByteOrder() QPixelFormat__ByteOrder {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__ByteOrder)(C.QPixelFormat_byteOrder(this.h))
 }
 
 func (this *QPixelFormat) YuvLayout() QPixelFormat__YUVLayout {
+	defer runtime.KeepAlive(this)
 	return (QPixelFormat__YUVLayout)(C.QPixelFormat_yuvLayout(this.h))
 }
 
 func (this *QPixelFormat) SubEnum() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QPixelFormat_subEnum(this.h))
 }
 
@@ -249,8 +278,9 @@ func (this *QPixelFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPixelFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPixelFormat) {
-		C.QPixelFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPixelFormat_delete((*C.QPixelFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

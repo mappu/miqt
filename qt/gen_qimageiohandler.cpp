@@ -129,7 +129,9 @@ public:
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QImageIOHandler_option(this, handle__option, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QImageIOHandler_virtualbase_option(const void* self, int option);
@@ -273,7 +275,9 @@ public:
 		}
 
 		QRect* callback_return_value = miqt_exec_callback_QImageIOHandler_currentImageRect(this, handle__currentImageRect);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self);
@@ -563,6 +567,14 @@ bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot
 
 QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self) {
 	return new QRect(static_cast<const MiqtVirtualQImageIOHandler*>(self)->QImageIOHandler::currentImageRect());
+}
+
+QVariant* QImageIOHandler_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
+}
+
+QRect* QImageIOHandler_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
 }
 
 void QImageIOHandler_delete(QImageIOHandler* self) {

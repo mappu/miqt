@@ -16,7 +16,13 @@ import (
 
 type QDesignerTaskMenuExtension struct {
 	h  *C.QDesignerTaskMenuExtension
-	gc *[1]*C.QDesignerTaskMenuExtension
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerTaskMenuExtension) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerTaskMenuExtension) cPointer() *C.QDesignerTaskMenuExtension {
@@ -48,10 +54,12 @@ func UnsafeNewQDesignerTaskMenuExtension(h unsafe.Pointer) *QDesignerTaskMenuExt
 }
 
 func (this *QDesignerTaskMenuExtension) PreferredEditAction() *qt.QAction {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerTaskMenuExtension_preferredEditAction(this.h)))
 }
 
 func (this *QDesignerTaskMenuExtension) TaskActions() []*qt.QAction {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDesignerTaskMenuExtension_taskActions(this.h)
 	_ret := make([]*qt.QAction, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -62,6 +70,8 @@ func (this *QDesignerTaskMenuExtension) TaskActions() []*qt.QAction {
 }
 
 func (this *QDesignerTaskMenuExtension) OperatorAssign(param1 *QDesignerTaskMenuExtension) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerTaskMenuExtension_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -77,8 +87,9 @@ func (this *QDesignerTaskMenuExtension) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerTaskMenuExtension{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerTaskMenuExtension) {
-		C.QDesignerTaskMenuExtension_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerTaskMenuExtension_delete((*C.QDesignerTaskMenuExtension)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -32,7 +32,13 @@ const (
 
 type QItemSelectionRange struct {
 	h  *C.QItemSelectionRange
-	gc *[1]*C.QItemSelectionRange
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QItemSelectionRange) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
@@ -71,103 +77,138 @@ func NewQItemSelectionRange() *QItemSelectionRange {
 
 // NewQItemSelectionRange2 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange2(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
+	defer runtime.KeepAlive(topL)
+	defer runtime.KeepAlive(bottomR)
 
 	return newQItemSelectionRange(C.QItemSelectionRange_new2(topL.cPointer(), bottomR.cPointer()))
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange3(index *QModelIndex) *QItemSelectionRange {
+	defer runtime.KeepAlive(index)
 
 	return newQItemSelectionRange(C.QItemSelectionRange_new3(index.cPointer()))
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange4(param1 *QItemSelectionRange) *QItemSelectionRange {
+	defer runtime.KeepAlive(param1)
 
 	return newQItemSelectionRange(C.QItemSelectionRange_new4(param1.cPointer()))
 }
 
 func (this *QItemSelectionRange) Swap(other *QItemSelectionRange) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QItemSelectionRange_swap(this.h, other.cPointer())
 }
 
 func (this *QItemSelectionRange) Top() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_top(this.h))
 }
 
 func (this *QItemSelectionRange) Left() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_left(this.h))
 }
 
 func (this *QItemSelectionRange) Bottom() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_bottom(this.h))
 }
 
 func (this *QItemSelectionRange) Right() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_right(this.h))
 }
 
 func (this *QItemSelectionRange) Width() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_width(this.h))
 }
 
 func (this *QItemSelectionRange) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QItemSelectionRange_height(this.h))
 }
 
 func (this *QItemSelectionRange) TopLeft() *QPersistentModelIndex {
-	return newQPersistentModelIndex(C.QItemSelectionRange_topLeft(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPersistentModelIndex(C.QItemSelectionRange_topLeft(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
-	return newQPersistentModelIndex(C.QItemSelectionRange_bottomRight(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQPersistentModelIndex(C.QItemSelectionRange_bottomRight(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QItemSelectionRange) Parent() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QItemSelectionRange_parent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QItemSelectionRange_model(this.h))
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QItemSelectionRange_contains(this.h, index.cPointer()))
 }
 
 func (this *QItemSelectionRange) Contains2(row int, column int, parentIndex *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parentIndex)
 	return (bool)(C.QItemSelectionRange_contains2(this.h, (C.int)(row), (C.int)(column), parentIndex.cPointer()))
 }
 
 func (this *QItemSelectionRange) Intersects(other *QItemSelectionRange) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QItemSelectionRange_intersects(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) Intersected(other *QItemSelectionRange) *QItemSelectionRange {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	_goptr := newQItemSelectionRange(C.QItemSelectionRange_intersected(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionRange) OperatorEqual(other *QItemSelectionRange) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QItemSelectionRange_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) OperatorNotEqual(other *QItemSelectionRange) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QItemSelectionRange_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QItemSelectionRange) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionRange_isValid(this.h))
 }
 
 func (this *QItemSelectionRange) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionRange_isEmpty(this.h))
 }
 
 func (this *QItemSelectionRange) Indexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionRange_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -180,6 +221,8 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 }
 
 func (this *QItemSelectionRange) OperatorAssign(param1 *QItemSelectionRange) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QItemSelectionRange_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -195,16 +238,24 @@ func (this *QItemSelectionRange) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QItemSelectionRange{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelectionRange) {
-		C.QItemSelectionRange_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QItemSelectionRange_delete((*C.QItemSelectionRange)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QItemSelectionModel struct {
 	h  *C.QItemSelectionModel
-	gc *[1]*C.QItemSelectionModel
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QItemSelectionModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QItemSelectionModel) cPointer() *C.QItemSelectionModel {
@@ -246,21 +297,26 @@ func NewQItemSelectionModel() *QItemSelectionModel {
 
 // NewQItemSelectionModel2 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel2(model *QAbstractItemModel, parent *QObject) *QItemSelectionModel {
+	defer runtime.KeepAlive(model)
+	defer runtime.KeepAlive(parent)
 
 	return newQItemSelectionModel(C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer()))
 }
 
 // NewQItemSelectionModel3 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
+	defer runtime.KeepAlive(model)
 
 	return newQItemSelectionModel(C.QItemSelectionModel_new3(model.cPointer()))
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QItemSelectionModel_metaObject(this.h))
 }
 
 func (this *QItemSelectionModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QItemSelectionModel_metacast(this.h, param1_Cstring))
@@ -276,36 +332,45 @@ func QItemSelectionModel_Tr(s string) string {
 }
 
 func (this *QItemSelectionModel) CurrentIndex() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QItemSelectionModel_currentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionModel) IsSelected(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QItemSelectionModel_isSelected(this.h, index.cPointer()))
 }
 
 func (this *QItemSelectionModel) IsRowSelected(row int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionModel_isRowSelected(this.h, (C.int)(row)))
 }
 
 func (this *QItemSelectionModel) IsColumnSelected(column int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionModel_isColumnSelected(this.h, (C.int)(column)))
 }
 
 func (this *QItemSelectionModel) RowIntersectsSelection(row int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionModel_rowIntersectsSelection(this.h, (C.int)(row)))
 }
 
 func (this *QItemSelectionModel) ColumnIntersectsSelection(column int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionModel_columnIntersectsSelection(this.h, (C.int)(column)))
 }
 
 func (this *QItemSelectionModel) HasSelection() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QItemSelectionModel_hasSelection(this.h))
 }
 
 func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedIndexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -318,6 +383,7 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRows(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -330,6 +396,7 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumns(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -342,52 +409,70 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) Selection() *QItemSelection {
+	defer runtime.KeepAlive(this)
 	_goptr := newQItemSelection(C.QItemSelectionModel_selection(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QItemSelectionModel_model(this.h))
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
+	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QItemSelectionModel_model2(this.h))
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QItemSelectionModel_setModel(this.h, model.cPointer())
 }
 
 func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QItemSelectionModel_setCurrentIndex(this.h, index.cPointer(), (C.int)(command))
 }
 
 func (this *QItemSelectionModel) Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	C.QItemSelectionModel_select(this.h, index.cPointer(), (C.int)(command))
 }
 
 func (this *QItemSelectionModel) Select2(selection *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 	C.QItemSelectionModel_select2(this.h, selection.cPointer(), (C.int)(command))
 }
 
 func (this *QItemSelectionModel) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QItemSelectionModel_clear(this.h)
 }
 
 func (this *QItemSelectionModel) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QItemSelectionModel_reset(this.h)
 }
 
 func (this *QItemSelectionModel) ClearSelection() {
+	defer runtime.KeepAlive(this)
 	C.QItemSelectionModel_clearSelection(this.h)
 }
 
 func (this *QItemSelectionModel) ClearCurrentIndex() {
+	defer runtime.KeepAlive(this)
 	C.QItemSelectionModel_clearCurrentIndex(this.h)
 }
 
 func (this *QItemSelectionModel) SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selected)
+	defer runtime.KeepAlive(deselected)
 	C.QItemSelectionModel_selectionChanged(this.h, selected.cPointer(), deselected.cPointer())
 }
 func (this *QItemSelectionModel) OnSelectionChanged(slot func(selected *QItemSelection, deselected *QItemSelection)) {
@@ -410,6 +495,9 @@ func miqt_exec_callback_QItemSelectionModel_selectionChanged(cb C.intptr_t, sele
 }
 
 func (this *QItemSelectionModel) CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 	C.QItemSelectionModel_currentChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
@@ -432,6 +520,9 @@ func miqt_exec_callback_QItemSelectionModel_currentChanged(cb C.intptr_t, curren
 }
 
 func (this *QItemSelectionModel) CurrentRowChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 	C.QItemSelectionModel_currentRowChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentRowChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
@@ -454,6 +545,9 @@ func miqt_exec_callback_QItemSelectionModel_currentRowChanged(cb C.intptr_t, cur
 }
 
 func (this *QItemSelectionModel) CurrentColumnChanged(current *QModelIndex, previous *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(previous)
 	C.QItemSelectionModel_currentColumnChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentColumnChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
@@ -476,6 +570,8 @@ func miqt_exec_callback_QItemSelectionModel_currentColumnChanged(cb C.intptr_t, 
 }
 
 func (this *QItemSelectionModel) ModelChanged(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QItemSelectionModel_modelChanged(this.h, model.cPointer())
 }
 func (this *QItemSelectionModel) OnModelChanged(slot func(model *QAbstractItemModel)) {
@@ -518,22 +614,31 @@ func QItemSelectionModel_Tr3(s string, c string, n int) string {
 }
 
 func (this *QItemSelectionModel) IsRowSelected2(row int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QItemSelectionModel_isRowSelected2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) IsColumnSelected2(column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QItemSelectionModel_isColumnSelected2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) RowIntersectsSelection2(row int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QItemSelectionModel_rowIntersectsSelection2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QItemSelectionModel_columnIntersectsSelection2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRowsWithColumn(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -546,6 +651,7 @@ func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelInde
 }
 
 func (this *QItemSelectionModel) SelectedColumnsWithRow(row int) []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumnsWithRow(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -559,6 +665,9 @@ func (this *QItemSelectionModel) SelectedColumnsWithRow(row int) []QModelIndex {
 
 // EmitSelectionChanged can only be called from a QItemSelectionModel that was directly constructed.
 func (this *QItemSelectionModel) EmitSelectionChanged(newSelection *QItemSelection, oldSelection *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(newSelection)
+	defer runtime.KeepAlive(oldSelection)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QItemSelectionModel_protectedbase_emitSelectionChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), newSelection.cPointer(), oldSelection.cPointer())
@@ -571,6 +680,7 @@ func (this *QItemSelectionModel) EmitSelectionChanged(newSelection *QItemSelecti
 
 // Sender can only be called from a QItemSelectionModel that was directly constructed.
 func (this *QItemSelectionModel) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QItemSelectionModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -585,6 +695,7 @@ func (this *QItemSelectionModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QItemSelectionModel that was directly constructed.
 func (this *QItemSelectionModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QItemSelectionModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -599,6 +710,7 @@ func (this *QItemSelectionModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QItemSelectionModel that was directly constructed.
 func (this *QItemSelectionModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -615,6 +727,8 @@ func (this *QItemSelectionModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QItemSelectionModel that was directly constructed.
 func (this *QItemSelectionModel) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QItemSelectionModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -628,6 +742,8 @@ func (this *QItemSelectionModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QItemSelectionModel_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
 
@@ -656,6 +772,8 @@ func miqt_exec_callback_QItemSelectionModel_setCurrentIndex(self *C.QItemSelecti
 }
 
 func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QItemSelectionModel_virtualbase_select(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
 
@@ -684,6 +802,8 @@ func miqt_exec_callback_QItemSelectionModel_select(self *C.QItemSelectionModel, 
 }
 
 func (this *QItemSelectionModel) callVirtualBase_Select2(selection *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 
 	C.QItemSelectionModel_virtualbase_select2(unsafe.Pointer(this.h), selection.cPointer(), (C.int)(command))
 
@@ -712,6 +832,7 @@ func miqt_exec_callback_QItemSelectionModel_select2(self *C.QItemSelectionModel,
 }
 
 func (this *QItemSelectionModel) callVirtualBase_Clear() {
+	defer runtime.KeepAlive(this)
 
 	C.QItemSelectionModel_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -735,6 +856,7 @@ func miqt_exec_callback_QItemSelectionModel_clear(self *C.QItemSelectionModel, c
 }
 
 func (this *QItemSelectionModel) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QItemSelectionModel_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -758,6 +880,7 @@ func miqt_exec_callback_QItemSelectionModel_reset(self *C.QItemSelectionModel, c
 }
 
 func (this *QItemSelectionModel) callVirtualBase_ClearCurrentIndex() {
+	defer runtime.KeepAlive(this)
 
 	C.QItemSelectionModel_virtualbase_clearCurrentIndex(unsafe.Pointer(this.h))
 
@@ -781,6 +904,8 @@ func miqt_exec_callback_QItemSelectionModel_clearCurrentIndex(self *C.QItemSelec
 }
 
 func (this *QItemSelectionModel) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QItemSelectionModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -809,6 +934,9 @@ func miqt_exec_callback_QItemSelectionModel_event(self *C.QItemSelectionModel, c
 }
 
 func (this *QItemSelectionModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QItemSelectionModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -839,6 +967,8 @@ func miqt_exec_callback_QItemSelectionModel_eventFilter(self *C.QItemSelectionMo
 }
 
 func (this *QItemSelectionModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QItemSelectionModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -865,6 +995,8 @@ func miqt_exec_callback_QItemSelectionModel_timerEvent(self *C.QItemSelectionMod
 }
 
 func (this *QItemSelectionModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QItemSelectionModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -891,6 +1023,8 @@ func miqt_exec_callback_QItemSelectionModel_childEvent(self *C.QItemSelectionMod
 }
 
 func (this *QItemSelectionModel) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QItemSelectionModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -917,6 +1051,8 @@ func miqt_exec_callback_QItemSelectionModel_customEvent(self *C.QItemSelectionMo
 }
 
 func (this *QItemSelectionModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QItemSelectionModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -943,6 +1079,8 @@ func miqt_exec_callback_QItemSelectionModel_connectNotify(self *C.QItemSelection
 }
 
 func (this *QItemSelectionModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QItemSelectionModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -980,17 +1118,24 @@ func (this *QItemSelectionModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QItemSelectionModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelectionModel) {
-		C.QItemSelectionModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QItemSelectionModel_delete((*C.QItemSelectionModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QItemSelection struct {
 	h  *C.QItemSelection
-	gc *[1]*C.QItemSelection
+	gc *[1]unsafe.Pointer
 	/* Also inherits unprojectable QList<QItemSelectionRange> */
 
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QItemSelection) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QItemSelection) cPointer() *C.QItemSelection {
@@ -1023,6 +1168,8 @@ func UnsafeNewQItemSelection(h unsafe.Pointer) *QItemSelection {
 
 // NewQItemSelection constructs a new QItemSelection object.
 func NewQItemSelection(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 
 	return newQItemSelection(C.QItemSelection_new(topLeft.cPointer(), bottomRight.cPointer()))
 }
@@ -1035,19 +1182,26 @@ func NewQItemSelection2() *QItemSelection {
 
 // NewQItemSelection3 constructs a new QItemSelection object.
 func NewQItemSelection3(param1 *QItemSelection) *QItemSelection {
+	defer runtime.KeepAlive(param1)
 
 	return newQItemSelection(C.QItemSelection_new3(param1.cPointer()))
 }
 
 func (this *QItemSelection) Select(topLeft *QModelIndex, bottomRight *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 	C.QItemSelection_select(this.h, topLeft.cPointer(), bottomRight.cPointer())
 }
 
 func (this *QItemSelection) Contains(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QItemSelection_contains(this.h, index.cPointer()))
 }
 
 func (this *QItemSelection) Indexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelection_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1060,10 +1214,15 @@ func (this *QItemSelection) Indexes() []QModelIndex {
 }
 
 func (this *QItemSelection) Merge(other *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QItemSelection_merge(this.h, other.cPointer(), (C.int)(command))
 }
 
 func QItemSelection_Split(rangeVal *QItemSelectionRange, other *QItemSelectionRange, result *QItemSelection) {
+	defer runtime.KeepAlive(rangeVal)
+	defer runtime.KeepAlive(other)
+	defer runtime.KeepAlive(result)
 	C.QItemSelection_split(rangeVal.cPointer(), other.cPointer(), result.cPointer())
 }
 
@@ -1079,8 +1238,9 @@ func (this *QItemSelection) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QItemSelection{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemSelection) {
-		C.QItemSelection_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QItemSelection_delete((*C.QItemSelection)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

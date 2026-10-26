@@ -96,6 +96,7 @@ bool QNmeaSatelliteInfoSource_override_virtual_connectNotify(void* self, intptr_
 void QNmeaSatelliteInfoSource_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNmeaSatelliteInfoSource_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNmeaSatelliteInfoSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QNmeaSatelliteInfoSource_virtualreturncopy_QVariant(QVariant* src);
 
 void QNmeaSatelliteInfoSource_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int satelliteError);
 QObject* QNmeaSatelliteInfoSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

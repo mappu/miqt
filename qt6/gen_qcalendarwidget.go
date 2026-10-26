@@ -39,8 +39,15 @@ const (
 
 type QCalendarWidget struct {
 	h  *C.QCalendarWidget
-	gc *[1]*C.QCalendarWidget
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCalendarWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QCalendarWidget) cPointer() *C.QCalendarWidget {
@@ -76,6 +83,7 @@ func UnsafeNewQCalendarWidget(h unsafe.Pointer) *QCalendarWidget {
 
 // NewQCalendarWidget constructs a new QCalendarWidget object.
 func NewQCalendarWidget(parent *QWidget) *QCalendarWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQCalendarWidget(C.QCalendarWidget_new(parent.cPointer()))
 }
@@ -87,10 +95,12 @@ func NewQCalendarWidget2() *QCalendarWidget {
 }
 
 func (this *QCalendarWidget) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QCalendarWidget_metaObject(this.h))
 }
 
 func (this *QCalendarWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCalendarWidget_metacast(this.h, param1_Cstring))
@@ -106,122 +116,153 @@ func QCalendarWidget_Tr(s string) string {
 }
 
 func (this *QCalendarWidget) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QCalendarWidget_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QCalendarWidget_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SelectedDate() *QDate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QCalendarWidget_selectedDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) YearShown() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendarWidget_yearShown(this.h))
 }
 
 func (this *QCalendarWidget) MonthShown() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendarWidget_monthShown(this.h))
 }
 
 func (this *QCalendarWidget) MinimumDate() *QDate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QCalendarWidget_minimumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetMinimumDate(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QCalendarWidget_setMinimumDate(this.h, date.cPointer())
 }
 
 func (this *QCalendarWidget) MaximumDate() *QDate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QCalendarWidget_maximumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetMaximumDate(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QCalendarWidget_setMaximumDate(this.h, date.cPointer())
 }
 
 func (this *QCalendarWidget) FirstDayOfWeek() DayOfWeek {
+	defer runtime.KeepAlive(this)
 	return (DayOfWeek)(C.QCalendarWidget_firstDayOfWeek(this.h))
 }
 
 func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setFirstDayOfWeek(this.h, (C.int)(dayOfWeek))
 }
 
 func (this *QCalendarWidget) IsNavigationBarVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendarWidget_isNavigationBarVisible(this.h))
 }
 
 func (this *QCalendarWidget) IsGridVisible() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendarWidget_isGridVisible(this.h))
 }
 
 func (this *QCalendarWidget) Calendar() *QCalendar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQCalendar(C.QCalendarWidget_calendar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetCalendar(calendar QCalendar) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(calendar)
 	C.QCalendarWidget_setCalendar(this.h, calendar.cPointer())
 }
 
 func (this *QCalendarWidget) SelectionMode() QCalendarWidget__SelectionMode {
+	defer runtime.KeepAlive(this)
 	return (QCalendarWidget__SelectionMode)(C.QCalendarWidget_selectionMode(this.h))
 }
 
 func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMode) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__HorizontalHeaderFormat {
+	defer runtime.KeepAlive(this)
 	return (QCalendarWidget__HorizontalHeaderFormat)(C.QCalendarWidget_horizontalHeaderFormat(this.h))
 }
 
 func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__HorizontalHeaderFormat) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setHorizontalHeaderFormat(this.h, (C.int)(format))
 }
 
 func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHeaderFormat {
+	defer runtime.KeepAlive(this)
 	return (QCalendarWidget__VerticalHeaderFormat)(C.QCalendarWidget_verticalHeaderFormat(this.h))
 }
 
 func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__VerticalHeaderFormat) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setVerticalHeaderFormat(this.h, (C.int)(format))
 }
 
 func (this *QCalendarWidget) HeaderTextFormat() *QTextCharFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextCharFormat(C.QCalendarWidget_headerTextFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QCalendarWidget_setHeaderTextFormat(this.h, format.cPointer())
 }
 
 func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek DayOfWeek) *QTextCharFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextCharFormat(C.QCalendarWidget_weekdayTextFormat(this.h, (C.int)(dayOfWeek)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QCalendarWidget_setWeekdayTextFormat(this.h, (C.int)(dayOfWeek), format.cPointer())
 }
 
 func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QCalendarWidget_dateTextFormat(this.h)
 	_ret := make(map[QDate]QTextCharFormat, int(_mm.len))
 	_Keys := unsafe.Slice((**C.QDate)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -241,76 +282,100 @@ func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
 }
 
 func (this *QCalendarWidget) DateTextFormatWithDate(date QDate) *QTextCharFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	_goptr := newQTextCharFormat(C.QCalendarWidget_dateTextFormatWithDate(this.h, date.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetDateTextFormat(date QDate, format *QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
+	defer runtime.KeepAlive(format)
 	C.QCalendarWidget_setDateTextFormat(this.h, date.cPointer(), format.cPointer())
 }
 
 func (this *QCalendarWidget) IsDateEditEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCalendarWidget_isDateEditEnabled(this.h))
 }
 
 func (this *QCalendarWidget) SetDateEditEnabled(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setDateEditEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QCalendarWidget) DateEditAcceptDelay() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QCalendarWidget_dateEditAcceptDelay(this.h))
 }
 
 func (this *QCalendarWidget) SetDateEditAcceptDelay(delay int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setDateEditAcceptDelay(this.h, (C.int)(delay))
 }
 
 func (this *QCalendarWidget) SetSelectedDate(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QCalendarWidget_setSelectedDate(this.h, date.cPointer())
 }
 
 func (this *QCalendarWidget) SetDateRange(min QDate, max QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(min)
+	defer runtime.KeepAlive(max)
 	C.QCalendarWidget_setDateRange(this.h, min.cPointer(), max.cPointer())
 }
 
 func (this *QCalendarWidget) SetCurrentPage(year int, month int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setCurrentPage(this.h, (C.int)(year), (C.int)(month))
 }
 
 func (this *QCalendarWidget) SetGridVisible(show bool) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setGridVisible(this.h, (C.bool)(show))
 }
 
 func (this *QCalendarWidget) SetNavigationBarVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_setNavigationBarVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QCalendarWidget) ShowNextMonth() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showNextMonth(this.h)
 }
 
 func (this *QCalendarWidget) ShowPreviousMonth() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showPreviousMonth(this.h)
 }
 
 func (this *QCalendarWidget) ShowNextYear() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showNextYear(this.h)
 }
 
 func (this *QCalendarWidget) ShowPreviousYear() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showPreviousYear(this.h)
 }
 
 func (this *QCalendarWidget) ShowSelectedDate() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showSelectedDate(this.h)
 }
 
 func (this *QCalendarWidget) ShowToday() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_showToday(this.h)
 }
 
 func (this *QCalendarWidget) SelectionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_selectionChanged(this.h)
 }
 func (this *QCalendarWidget) OnSelectionChanged(slot func()) {
@@ -328,6 +393,8 @@ func miqt_exec_callback_QCalendarWidget_selectionChanged(cb C.intptr_t) {
 }
 
 func (this *QCalendarWidget) Clicked(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QCalendarWidget_clicked(this.h, date.cPointer())
 }
 func (this *QCalendarWidget) OnClicked(slot func(date QDate)) {
@@ -350,6 +417,8 @@ func miqt_exec_callback_QCalendarWidget_clicked(cb C.intptr_t, date *C.QDate) {
 }
 
 func (this *QCalendarWidget) Activated(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 	C.QCalendarWidget_activated(this.h, date.cPointer())
 }
 func (this *QCalendarWidget) OnActivated(slot func(date QDate)) {
@@ -372,6 +441,7 @@ func miqt_exec_callback_QCalendarWidget_activated(cb C.intptr_t, date *C.QDate) 
 }
 
 func (this *QCalendarWidget) CurrentPageChanged(year int, month int) {
+	defer runtime.KeepAlive(this)
 	C.QCalendarWidget_currentPageChanged(this.h, (C.int)(year), (C.int)(month))
 }
 func (this *QCalendarWidget) OnCurrentPageChanged(slot func(year int, month int)) {
@@ -417,6 +487,8 @@ func QCalendarWidget_Tr3(s string, c string, n int) string {
 
 // UpdateCell can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) UpdateCell(date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(date)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCalendarWidget_protectedbase_updateCell(&_dynamic_cast_ok, unsafe.Pointer(this.h), date.cPointer())
@@ -429,6 +501,7 @@ func (this *QCalendarWidget) UpdateCell(date QDate) {
 
 // UpdateCells can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) UpdateCells() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCalendarWidget_protectedbase_updateCells(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -441,6 +514,7 @@ func (this *QCalendarWidget) UpdateCells() {
 
 // UpdateMicroFocus can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCalendarWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -453,6 +527,7 @@ func (this *QCalendarWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCalendarWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -465,6 +540,7 @@ func (this *QCalendarWidget) Create() {
 
 // Destroy can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCalendarWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -477,6 +553,7 @@ func (this *QCalendarWidget) Destroy() {
 
 // FocusNextChild can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCalendarWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -491,6 +568,7 @@ func (this *QCalendarWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCalendarWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -505,6 +583,7 @@ func (this *QCalendarWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QCalendarWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -519,6 +598,7 @@ func (this *QCalendarWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCalendarWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -533,6 +613,7 @@ func (this *QCalendarWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -549,6 +630,8 @@ func (this *QCalendarWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCalendarWidget that was directly constructed.
 func (this *QCalendarWidget) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCalendarWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -562,6 +645,7 @@ func (this *QCalendarWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QCalendarWidget) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QCalendarWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -583,12 +667,14 @@ func miqt_exec_callback_QCalendarWidget_sizeHint(self *C.QCalendarWidget, cb C.i
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QCalendarWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QCalendarWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -610,12 +696,15 @@ func miqt_exec_callback_QCalendarWidget_minimumSizeHint(self *C.QCalendarWidget,
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QCalendarWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCalendarWidget_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -644,6 +733,9 @@ func miqt_exec_callback_QCalendarWidget_event(self *C.QCalendarWidget, cb C.intp
 }
 
 func (this *QCalendarWidget) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCalendarWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -674,6 +766,8 @@ func miqt_exec_callback_QCalendarWidget_eventFilter(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -700,6 +794,8 @@ func miqt_exec_callback_QCalendarWidget_mousePressEvent(self *C.QCalendarWidget,
 }
 
 func (this *QCalendarWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -726,6 +822,8 @@ func miqt_exec_callback_QCalendarWidget_resizeEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -752,6 +850,10 @@ func miqt_exec_callback_QCalendarWidget_keyPressEvent(self *C.QCalendarWidget, c
 }
 
 func (this *QCalendarWidget) callVirtualBase_PaintCell(painter *QPainter, rect *QRect, date QDate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
+	defer runtime.KeepAlive(date)
 
 	C.QCalendarWidget_virtualbase_paintCell(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), date.cPointer())
 
@@ -784,6 +886,7 @@ func miqt_exec_callback_QCalendarWidget_paintCell(self *C.QCalendarWidget, cb C.
 }
 
 func (this *QCalendarWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCalendarWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -809,6 +912,7 @@ func miqt_exec_callback_QCalendarWidget_devType(self *C.QCalendarWidget, cb C.in
 }
 
 func (this *QCalendarWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QCalendarWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -835,6 +939,7 @@ func miqt_exec_callback_QCalendarWidget_setVisible(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCalendarWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -863,6 +968,7 @@ func miqt_exec_callback_QCalendarWidget_heightForWidth(self *C.QCalendarWidget, 
 }
 
 func (this *QCalendarWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCalendarWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -888,6 +994,7 @@ func miqt_exec_callback_QCalendarWidget_hasHeightForWidth(self *C.QCalendarWidge
 }
 
 func (this *QCalendarWidget) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QCalendarWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -907,12 +1014,15 @@ func miqt_exec_callback_QCalendarWidget_paintEngine(self *C.QCalendarWidget, cb 
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -939,6 +1049,8 @@ func miqt_exec_callback_QCalendarWidget_mouseReleaseEvent(self *C.QCalendarWidge
 }
 
 func (this *QCalendarWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -965,6 +1077,8 @@ func miqt_exec_callback_QCalendarWidget_mouseDoubleClickEvent(self *C.QCalendarW
 }
 
 func (this *QCalendarWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -991,6 +1105,8 @@ func miqt_exec_callback_QCalendarWidget_mouseMoveEvent(self *C.QCalendarWidget, 
 }
 
 func (this *QCalendarWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1017,6 +1133,8 @@ func miqt_exec_callback_QCalendarWidget_wheelEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1043,6 +1161,8 @@ func miqt_exec_callback_QCalendarWidget_keyReleaseEvent(self *C.QCalendarWidget,
 }
 
 func (this *QCalendarWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1069,6 +1189,8 @@ func miqt_exec_callback_QCalendarWidget_focusInEvent(self *C.QCalendarWidget, cb
 }
 
 func (this *QCalendarWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1095,6 +1217,8 @@ func miqt_exec_callback_QCalendarWidget_focusOutEvent(self *C.QCalendarWidget, c
 }
 
 func (this *QCalendarWidget) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1121,6 +1245,8 @@ func miqt_exec_callback_QCalendarWidget_enterEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1147,6 +1273,8 @@ func miqt_exec_callback_QCalendarWidget_leaveEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1173,6 +1301,8 @@ func miqt_exec_callback_QCalendarWidget_paintEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1199,6 +1329,8 @@ func miqt_exec_callback_QCalendarWidget_moveEvent(self *C.QCalendarWidget, cb C.
 }
 
 func (this *QCalendarWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1225,6 +1357,8 @@ func miqt_exec_callback_QCalendarWidget_closeEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1251,6 +1385,8 @@ func miqt_exec_callback_QCalendarWidget_contextMenuEvent(self *C.QCalendarWidget
 }
 
 func (this *QCalendarWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1277,6 +1413,8 @@ func miqt_exec_callback_QCalendarWidget_tabletEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1303,6 +1441,8 @@ func miqt_exec_callback_QCalendarWidget_actionEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1329,6 +1469,8 @@ func miqt_exec_callback_QCalendarWidget_dragEnterEvent(self *C.QCalendarWidget, 
 }
 
 func (this *QCalendarWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1355,6 +1497,8 @@ func miqt_exec_callback_QCalendarWidget_dragMoveEvent(self *C.QCalendarWidget, c
 }
 
 func (this *QCalendarWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1381,6 +1525,8 @@ func miqt_exec_callback_QCalendarWidget_dragLeaveEvent(self *C.QCalendarWidget, 
 }
 
 func (this *QCalendarWidget) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1407,6 +1553,8 @@ func miqt_exec_callback_QCalendarWidget_dropEvent(self *C.QCalendarWidget, cb C.
 }
 
 func (this *QCalendarWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1433,6 +1581,8 @@ func miqt_exec_callback_QCalendarWidget_showEvent(self *C.QCalendarWidget, cb C.
 }
 
 func (this *QCalendarWidget) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1459,6 +1609,7 @@ func miqt_exec_callback_QCalendarWidget_hideEvent(self *C.QCalendarWidget, cb C.
 }
 
 func (this *QCalendarWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1500,6 +1651,8 @@ func miqt_exec_callback_QCalendarWidget_nativeEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QCalendarWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1526,6 +1679,7 @@ func miqt_exec_callback_QCalendarWidget_changeEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCalendarWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1554,6 +1708,8 @@ func miqt_exec_callback_QCalendarWidget_metric(self *C.QCalendarWidget, cb C.int
 }
 
 func (this *QCalendarWidget) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QCalendarWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1580,6 +1736,8 @@ func miqt_exec_callback_QCalendarWidget_initPainter(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QCalendarWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1602,12 +1760,14 @@ func miqt_exec_callback_QCalendarWidget_redirected(self *C.QCalendarWidget, cb C
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QCalendarWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1627,12 +1787,15 @@ func miqt_exec_callback_QCalendarWidget_sharedPainter(self *C.QCalendarWidget, c
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QCalendarWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1659,6 +1822,7 @@ func miqt_exec_callback_QCalendarWidget_inputMethodEvent(self *C.QCalendarWidget
 }
 
 func (this *QCalendarWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QCalendarWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1683,12 +1847,14 @@ func miqt_exec_callback_QCalendarWidget_inputMethodQuery(self *C.QCalendarWidget
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QCalendarWidget_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QCalendarWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCalendarWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1717,6 +1883,8 @@ func miqt_exec_callback_QCalendarWidget_focusNextPrevChild(self *C.QCalendarWidg
 }
 
 func (this *QCalendarWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1743,6 +1911,8 @@ func miqt_exec_callback_QCalendarWidget_timerEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1769,6 +1939,8 @@ func miqt_exec_callback_QCalendarWidget_childEvent(self *C.QCalendarWidget, cb C
 }
 
 func (this *QCalendarWidget) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCalendarWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1795,6 +1967,8 @@ func miqt_exec_callback_QCalendarWidget_customEvent(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCalendarWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1821,6 +1995,8 @@ func miqt_exec_callback_QCalendarWidget_connectNotify(self *C.QCalendarWidget, c
 }
 
 func (this *QCalendarWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCalendarWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1858,8 +2034,9 @@ func (this *QCalendarWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCalendarWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendarWidget) {
-		C.QCalendarWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCalendarWidget_delete((*C.QCalendarWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

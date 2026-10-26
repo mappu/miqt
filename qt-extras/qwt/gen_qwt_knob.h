@@ -243,6 +243,8 @@ bool QwtKnob_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtKnob_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtKnob_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtKnob_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtKnob_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtKnob_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtKnob_protectedbase_incrementValue(bool* _dynamic_cast_ok, void* self, int stepCount);
 double QwtKnob_protectedbase_incrementedValue(bool* _dynamic_cast_ok, const void* self, double value, int stepCount);

@@ -38,8 +38,15 @@ const (
 
 type QwtPlotTradingCurve struct {
 	h  *C.QwtPlotTradingCurve
-	gc *[1]*C.QwtPlotTradingCurve
+	gc *[1]unsafe.Pointer
 	*QwtPlotSeriesItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotTradingCurve) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotSeriesItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotTradingCurve) cPointer() *C.QwtPlotTradingCurve {
@@ -81,6 +88,7 @@ func NewQwtPlotTradingCurve() *QwtPlotTradingCurve {
 
 // NewQwtPlotTradingCurve2 constructs a new QwtPlotTradingCurve object.
 func NewQwtPlotTradingCurve2(title *QwtText) *QwtPlotTradingCurve {
+	defer runtime.KeepAlive(title)
 
 	return newQwtPlotTradingCurve(C.QwtPlotTradingCurve_new2(title.cPointer()))
 }
@@ -96,18 +104,23 @@ func NewQwtPlotTradingCurve3(title string) *QwtPlotTradingCurve {
 }
 
 func (this *QwtPlotTradingCurve) Rtti() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotTradingCurve_rtti(this.h))
 }
 
 func (this *QwtPlotTradingCurve) SetPaintAttribute(param1 QwtPlotTradingCurve__PaintAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setPaintAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtPlotTradingCurve) TestPaintAttribute(param1 QwtPlotTradingCurve__PaintAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotTradingCurve_testPaintAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotTradingCurve) SetSamples(samples []QwtOHLCSample) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(samples)
 	samples_CArray_ptr := (**C.QwtOHLCSample)(C.malloc(C.size_t(8 * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
@@ -119,82 +132,106 @@ func (this *QwtPlotTradingCurve) SetSamples(samples []QwtOHLCSample) {
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolStyle(style QwtPlotTradingCurve__SymbolStyle) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setSymbolStyle(this.h, (C.int)(style))
 }
 
 func (this *QwtPlotTradingCurve) SymbolStyle() QwtPlotTradingCurve__SymbolStyle {
+	defer runtime.KeepAlive(this)
 	return (QwtPlotTradingCurve__SymbolStyle)(C.QwtPlotTradingCurve_symbolStyle(this.h))
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolPen(param1 *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotTradingCurve_setSymbolPen(this.h, (*C.QColor)(param1.UnsafePointer()))
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolPenWithSymbolPen(symbolPen *qt.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(symbolPen)
 	C.QwtPlotTradingCurve_setSymbolPenWithSymbolPen(this.h, (*C.QPen)(symbolPen.UnsafePointer()))
 }
 
 func (this *QwtPlotTradingCurve) SymbolPen() *qt.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPlotTradingCurve_symbolPen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolBrush(param1 QwtPlotTradingCurve__Direction, param2 *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QwtPlotTradingCurve_setSymbolBrush(this.h, (C.int)(param1), (*C.QBrush)(param2.UnsafePointer()))
 }
 
 func (this *QwtPlotTradingCurve) SymbolBrush(param1 QwtPlotTradingCurve__Direction) *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtPlotTradingCurve_symbolBrush(this.h, (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolExtent(symbolExtent float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setSymbolExtent(this.h, (C.double)(symbolExtent))
 }
 
 func (this *QwtPlotTradingCurve) SymbolExtent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotTradingCurve_symbolExtent(this.h))
 }
 
 func (this *QwtPlotTradingCurve) SetMinSymbolWidth(minSymbolWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setMinSymbolWidth(this.h, (C.double)(minSymbolWidth))
 }
 
 func (this *QwtPlotTradingCurve) MinSymbolWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotTradingCurve_minSymbolWidth(this.h))
 }
 
 func (this *QwtPlotTradingCurve) SetMaxSymbolWidth(maxSymbolWidth float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setMaxSymbolWidth(this.h, (C.double)(maxSymbolWidth))
 }
 
 func (this *QwtPlotTradingCurve) MaxSymbolWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotTradingCurve_maxSymbolWidth(this.h))
 }
 
 func (this *QwtPlotTradingCurve) BoundingRect() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotTradingCurve_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotTradingCurve) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	_goptr := newQwtGraphic(C.QwtPlotTradingCurve_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotTradingCurve) SetPaintAttribute2(param1 QwtPlotTradingCurve__PaintAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotTradingCurve_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolPen2(param1 *qt.QColor, width float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotTradingCurve_setSymbolPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPlotTradingCurve_setSymbolPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
 }
 
@@ -210,8 +247,9 @@ func (this *QwtPlotTradingCurve) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotTradingCurve{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotTradingCurve) {
-		C.QwtPlotTradingCurve_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotTradingCurve_delete((*C.QwtPlotTradingCurve)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

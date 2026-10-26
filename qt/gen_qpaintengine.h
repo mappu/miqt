@@ -146,6 +146,7 @@ bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot);
 QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self);
 bool QPaintEngine_override_virtual_type(void* self, intptr_t slot);
 int QPaintEngine_virtualbase_type(const void* self);
+QPoint* QPaintEngine_virtualreturncopy_QPoint(QPoint* src);
 
 void QPaintEngine_delete(QPaintEngine* self);
 

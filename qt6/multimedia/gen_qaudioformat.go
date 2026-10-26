@@ -71,7 +71,13 @@ const (
 
 type QAudioFormat struct {
 	h  *C.QAudioFormat
-	gc *[1]*C.QAudioFormat
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioFormat) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioFormat) cPointer() *C.QAudioFormat {
@@ -110,83 +116,103 @@ func NewQAudioFormat() *QAudioFormat {
 
 // NewQAudioFormat2 constructs a new QAudioFormat object.
 func NewQAudioFormat2(param1 *QAudioFormat) *QAudioFormat {
+	defer runtime.KeepAlive(param1)
 
 	return newQAudioFormat(C.QAudioFormat_new2(param1.cPointer()))
 }
 
 func (this *QAudioFormat) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioFormat_isValid(this.h))
 }
 
 func (this *QAudioFormat) SetSampleRate(sampleRate int) {
+	defer runtime.KeepAlive(this)
 	C.QAudioFormat_setSampleRate(this.h, (C.int)(sampleRate))
 }
 
 func (this *QAudioFormat) SampleRate() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_sampleRate(this.h))
 }
 
 func (this *QAudioFormat) SetChannelConfig(config QAudioFormat__ChannelConfig) {
+	defer runtime.KeepAlive(this)
 	C.QAudioFormat_setChannelConfig(this.h, (C.uint32_t)(config))
 }
 
 func (this *QAudioFormat) ChannelConfig() QAudioFormat__ChannelConfig {
+	defer runtime.KeepAlive(this)
 	return (QAudioFormat__ChannelConfig)(C.QAudioFormat_channelConfig(this.h))
 }
 
 func (this *QAudioFormat) SetChannelCount(channelCount int) {
+	defer runtime.KeepAlive(this)
 	C.QAudioFormat_setChannelCount(this.h, (C.int)(channelCount))
 }
 
 func (this *QAudioFormat) ChannelCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_channelCount(this.h))
 }
 
 func (this *QAudioFormat) ChannelOffset(channel QAudioFormat__AudioChannelPosition) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_channelOffset(this.h, (C.int)(channel)))
 }
 
 func (this *QAudioFormat) SetSampleFormat(f QAudioFormat__SampleFormat) {
+	defer runtime.KeepAlive(this)
 	C.QAudioFormat_setSampleFormat(this.h, (C.uint16_t)(f))
 }
 
 func (this *QAudioFormat) SampleFormat() QAudioFormat__SampleFormat {
+	defer runtime.KeepAlive(this)
 	return (QAudioFormat__SampleFormat)(C.QAudioFormat_sampleFormat(this.h))
 }
 
 func (this *QAudioFormat) BytesForDuration(microseconds int64) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_bytesForDuration(this.h, (C.longlong)(microseconds)))
 }
 
 func (this *QAudioFormat) DurationForBytes(byteCount int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioFormat_durationForBytes(this.h, (C.int)(byteCount)))
 }
 
 func (this *QAudioFormat) BytesForFrames(frameCount int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_bytesForFrames(this.h, (C.int)(frameCount)))
 }
 
 func (this *QAudioFormat) FramesForBytes(byteCount int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_framesForBytes(this.h, (C.int)(byteCount)))
 }
 
 func (this *QAudioFormat) FramesForDuration(microseconds int64) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_framesForDuration(this.h, (C.longlong)(microseconds)))
 }
 
 func (this *QAudioFormat) DurationForFrames(frameCount int) int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioFormat_durationForFrames(this.h, (C.int)(frameCount)))
 }
 
 func (this *QAudioFormat) BytesPerFrame() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_bytesPerFrame(this.h))
 }
 
 func (this *QAudioFormat) BytesPerSample() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioFormat_bytesPerSample(this.h))
 }
 
 func (this *QAudioFormat) NormalizedSampleValue(sample unsafe.Pointer) float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioFormat_normalizedSampleValue(this.h, sample))
 }
 
@@ -206,8 +232,9 @@ func (this *QAudioFormat) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioFormat{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioFormat) {
-		C.QAudioFormat_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioFormat_delete((*C.QAudioFormat)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

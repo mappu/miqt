@@ -23,7 +23,13 @@ const (
 
 type QResource struct {
 	h  *C.QResource
-	gc *[1]*C.QResource
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QResource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QResource) cPointer() *C.QResource {
@@ -72,6 +78,7 @@ func NewQResource2(file string) *QResource {
 
 // NewQResource3 constructs a new QResource object.
 func NewQResource3(file string, locale *QLocale) *QResource {
+	defer runtime.KeepAlive(locale)
 	file_ms := C.struct_miqt_string{}
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
@@ -81,6 +88,7 @@ func NewQResource3(file string, locale *QLocale) *QResource {
 }
 
 func (this *QResource) SetFileName(file string) {
+	defer runtime.KeepAlive(this)
 	file_ms := C.struct_miqt_string{}
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
@@ -89,6 +97,7 @@ func (this *QResource) SetFileName(file string) {
 }
 
 func (this *QResource) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QResource_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -96,6 +105,7 @@ func (this *QResource) FileName() string {
 }
 
 func (this *QResource) AbsoluteFilePath() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QResource_absoluteFilePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -103,36 +113,45 @@ func (this *QResource) AbsoluteFilePath() string {
 }
 
 func (this *QResource) SetLocale(locale *QLocale) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(locale)
 	C.QResource_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QResource) Locale() *QLocale {
+	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QResource_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QResource) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QResource_isValid(this.h))
 }
 
 func (this *QResource) CompressionAlgorithm() QResource__Compression {
+	defer runtime.KeepAlive(this)
 	return (QResource__Compression)(C.QResource_compressionAlgorithm(this.h))
 }
 
 func (this *QResource) Size() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QResource_size(this.h))
 }
 
 func (this *QResource) Data() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QResource_data(this.h)))
 }
 
 func (this *QResource) UncompressedSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QResource_uncompressedSize(this.h))
 }
 
 func (this *QResource) UncompressedData() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QResource_uncompressedData(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -140,6 +159,7 @@ func (this *QResource) UncompressedData() []byte {
 }
 
 func (this *QResource) LastModified() *QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QResource_lastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -167,6 +187,7 @@ func QResource_SearchPaths() []string {
 }
 
 func (this *QResource) IsCompressed() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QResource_isCompressed(this.h))
 }
 
@@ -246,8 +267,9 @@ func (this *QResource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QResource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QResource) {
-		C.QResource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QResource_delete((*C.QResource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

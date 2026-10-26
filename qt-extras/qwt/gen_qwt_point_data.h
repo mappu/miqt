@@ -45,6 +45,8 @@ bool QwtPointArrayData_override_virtual_size(void* self, intptr_t slot);
 size_t QwtPointArrayData_virtualbase_size(const void* self);
 bool QwtPointArrayData_override_virtual_sample(void* self, intptr_t slot);
 QPointF* QwtPointArrayData_virtualbase_sample(const void* self, size_t index);
+QRectF* QwtPointArrayData_virtualreturncopy_QRectF(QRectF* src);
+QPointF* QwtPointArrayData_virtualreturncopy_QPointF(QPointF* src);
 
 void QwtPointArrayData_delete(QwtPointArrayData* self);
 
@@ -62,6 +64,8 @@ bool QwtCPointerData_override_virtual_size(void* self, intptr_t slot);
 size_t QwtCPointerData_virtualbase_size(const void* self);
 bool QwtCPointerData_override_virtual_sample(void* self, intptr_t slot);
 QPointF* QwtCPointerData_virtualbase_sample(const void* self, size_t index);
+QRectF* QwtCPointerData_virtualreturncopy_QRectF(QRectF* src);
+QPointF* QwtCPointerData_virtualreturncopy_QPointF(QPointF* src);
 
 void QwtCPointerData_delete(QwtCPointerData* self);
 
@@ -91,6 +95,8 @@ bool QwtSyntheticPointData_override_virtual_x(void* self, intptr_t slot);
 double QwtSyntheticPointData_virtualbase_x(const void* self, unsigned int index);
 bool QwtSyntheticPointData_override_virtual_setRectOfInterest(void* self, intptr_t slot);
 void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, QRectF* rectOfInterest);
+QRectF* QwtSyntheticPointData_virtualreturncopy_QRectF(QRectF* src);
+QPointF* QwtSyntheticPointData_virtualreturncopy_QPointF(QPointF* src);
 
 void QwtSyntheticPointData_delete(QwtSyntheticPointData* self);
 

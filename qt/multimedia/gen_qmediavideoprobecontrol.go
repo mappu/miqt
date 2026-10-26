@@ -17,8 +17,15 @@ import (
 
 type QMediaVideoProbeControl struct {
 	h  *C.QMediaVideoProbeControl
-	gc *[1]*C.QMediaVideoProbeControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMediaVideoProbeControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QMediaVideoProbeControl) cPointer() *C.QMediaVideoProbeControl {
@@ -53,10 +60,12 @@ func UnsafeNewQMediaVideoProbeControl(h unsafe.Pointer) *QMediaVideoProbeControl
 }
 
 func (this *QMediaVideoProbeControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaVideoProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaVideoProbeControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaVideoProbeControl_metacast(this.h, param1_Cstring))
@@ -81,6 +90,8 @@ func QMediaVideoProbeControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaVideoProbeControl) VideoFrameProbed(frame *QVideoFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(frame)
 	C.QMediaVideoProbeControl_videoFrameProbed(this.h, frame.cPointer())
 }
 func (this *QMediaVideoProbeControl) OnVideoFrameProbed(slot func(frame *QVideoFrame)) {
@@ -101,6 +112,7 @@ func miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed(cb C.intptr_t, 
 }
 
 func (this *QMediaVideoProbeControl) Flush() {
+	defer runtime.KeepAlive(this)
 	C.QMediaVideoProbeControl_flush(this.h)
 }
 func (this *QMediaVideoProbeControl) OnFlush(slot func()) {
@@ -173,8 +185,9 @@ func (this *QMediaVideoProbeControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMediaVideoProbeControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaVideoProbeControl) {
-		C.QMediaVideoProbeControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMediaVideoProbeControl_delete((*C.QMediaVideoProbeControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

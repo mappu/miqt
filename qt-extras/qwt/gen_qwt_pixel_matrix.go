@@ -16,8 +16,14 @@ import (
 
 type QwtPixelMatrix struct {
 	h  *C.QwtPixelMatrix
-	gc *[1]*C.QwtPixelMatrix
+	gc *[1]unsafe.Pointer
 	*qt.QBitArray
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPixelMatrix) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtPixelMatrix) cPointer() *C.QwtPixelMatrix {
@@ -53,39 +59,49 @@ func UnsafeNewQwtPixelMatrix(h unsafe.Pointer) *QwtPixelMatrix {
 
 // NewQwtPixelMatrix constructs a new QwtPixelMatrix object.
 func NewQwtPixelMatrix(rect *qt.QRect) *QwtPixelMatrix {
+	defer runtime.KeepAlive(rect)
 
 	return newQwtPixelMatrix(C.QwtPixelMatrix_new((*C.QRect)(rect.UnsafePointer())))
 }
 
 // NewQwtPixelMatrix2 constructs a new QwtPixelMatrix object.
 func NewQwtPixelMatrix2(param1 *QwtPixelMatrix) *QwtPixelMatrix {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPixelMatrix(C.QwtPixelMatrix_new2(param1.cPointer()))
 }
 
 func (this *QwtPixelMatrix) SetRect(rect *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QwtPixelMatrix_setRect(this.h, (*C.QRect)(rect.UnsafePointer()))
 }
 
 func (this *QwtPixelMatrix) Rect() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPixelMatrix_rect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPixelMatrix) TestPixel(x int, y int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPixelMatrix_testPixel(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QwtPixelMatrix) TestAndSetPixel(x int, y int, on bool) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPixelMatrix_testAndSetPixel(this.h, (C.int)(x), (C.int)(y), (C.bool)(on)))
 }
 
 func (this *QwtPixelMatrix) Index(x int, y int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPixelMatrix_index(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QwtPixelMatrix) OperatorAssign(param1 *QwtPixelMatrix) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtPixelMatrix_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -101,8 +117,9 @@ func (this *QwtPixelMatrix) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPixelMatrix{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPixelMatrix) {
-		C.QwtPixelMatrix_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPixelMatrix_delete((*C.QwtPixelMatrix)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

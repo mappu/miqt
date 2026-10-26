@@ -37,7 +37,13 @@ const (
 
 type QOcspResponse struct {
 	h  *C.QOcspResponse
-	gc *[1]*C.QOcspResponse
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QOcspResponse) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QOcspResponse) cPointer() *C.QOcspResponse {
@@ -76,35 +82,44 @@ func NewQOcspResponse() *QOcspResponse {
 
 // NewQOcspResponse2 constructs a new QOcspResponse object.
 func NewQOcspResponse2(other *QOcspResponse) *QOcspResponse {
+	defer runtime.KeepAlive(other)
 
 	return newQOcspResponse(C.QOcspResponse_new2(other.cPointer()))
 }
 
 func (this *QOcspResponse) OperatorAssign(other *QOcspResponse) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QOcspResponse_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QOcspResponse) CertificateStatus() QOcspCertificateStatus {
+	defer runtime.KeepAlive(this)
 	return (QOcspCertificateStatus)(C.QOcspResponse_certificateStatus(this.h))
 }
 
 func (this *QOcspResponse) RevocationReason() QOcspRevocationReason {
+	defer runtime.KeepAlive(this)
 	return (QOcspRevocationReason)(C.QOcspResponse_revocationReason(this.h))
 }
 
 func (this *QOcspResponse) Responder() *QSslCertificate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCertificate(C.QOcspResponse_responder(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Subject() *QSslCertificate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCertificate(C.QOcspResponse_subject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Swap(other *QOcspResponse) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QOcspResponse_swap(this.h, other.cPointer())
 }
 
@@ -120,8 +135,9 @@ func (this *QOcspResponse) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QOcspResponse{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOcspResponse) {
-		C.QOcspResponse_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QOcspResponse_delete((*C.QOcspResponse)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

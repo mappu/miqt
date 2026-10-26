@@ -17,8 +17,14 @@ import (
 
 type QsciAbstractAPIs struct {
 	h  *C.QsciAbstractAPIs
-	gc *[1]*C.QsciAbstractAPIs
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciAbstractAPIs) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QsciAbstractAPIs) cPointer() *C.QsciAbstractAPIs {
@@ -54,15 +60,18 @@ func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer) *QsciAbstractAPIs {
 
 // NewQsciAbstractAPIs constructs a new QsciAbstractAPIs object.
 func NewQsciAbstractAPIs(lexer *QsciLexer) *QsciAbstractAPIs {
+	defer runtime.KeepAlive(lexer)
 
 	return newQsciAbstractAPIs(C.QsciAbstractAPIs_new(lexer.cPointer()))
 }
 
 func (this *QsciAbstractAPIs) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciAbstractAPIs_metaObject(this.h)))
 }
 
 func (this *QsciAbstractAPIs) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciAbstractAPIs_metacast(this.h, param1_Cstring))
@@ -87,10 +96,12 @@ func QsciAbstractAPIs_TrUtf8(s string) string {
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
+	defer runtime.KeepAlive(this)
 	return newQsciLexer(C.QsciAbstractAPIs_lexer(this.h))
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
+	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -117,6 +128,7 @@ func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []
 }
 
 func (this *QsciAbstractAPIs) AutoCompletionSelected(selection string) {
+	defer runtime.KeepAlive(this)
 	selection_ms := C.struct_miqt_string{}
 	selection_ms.data = C.CString(selection)
 	selection_ms.len = C.size_t(len(selection))
@@ -125,6 +137,7 @@ func (this *QsciAbstractAPIs) AutoCompletionSelected(selection string) {
 }
 
 func (this *QsciAbstractAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
+	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -201,6 +214,7 @@ func QsciAbstractAPIs_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QsciAbstractAPIs that was directly constructed.
 func (this *QsciAbstractAPIs) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciAbstractAPIs_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -215,6 +229,7 @@ func (this *QsciAbstractAPIs) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QsciAbstractAPIs that was directly constructed.
 func (this *QsciAbstractAPIs) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciAbstractAPIs_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -229,6 +244,7 @@ func (this *QsciAbstractAPIs) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciAbstractAPIs that was directly constructed.
 func (this *QsciAbstractAPIs) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -245,6 +261,8 @@ func (this *QsciAbstractAPIs) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciAbstractAPIs that was directly constructed.
 func (this *QsciAbstractAPIs) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciAbstractAPIs_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -298,6 +316,7 @@ func miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList(self *C.QsciAb
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_AutoCompletionSelected(selection string) {
+	defer runtime.KeepAlive(this)
 	selection_ms := C.struct_miqt_string{}
 	selection_ms.data = C.CString(selection)
 	selection_ms.len = C.size_t(len(selection))
@@ -383,6 +402,8 @@ func miqt_exec_callback_QsciAbstractAPIs_callTips(self *C.QsciAbstractAPIs, cb C
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciAbstractAPIs_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -411,6 +432,9 @@ func miqt_exec_callback_QsciAbstractAPIs_event(self *C.QsciAbstractAPIs, cb C.in
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciAbstractAPIs_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -441,6 +465,8 @@ func miqt_exec_callback_QsciAbstractAPIs_eventFilter(self *C.QsciAbstractAPIs, c
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciAbstractAPIs_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -467,6 +493,8 @@ func miqt_exec_callback_QsciAbstractAPIs_timerEvent(self *C.QsciAbstractAPIs, cb
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciAbstractAPIs_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -493,6 +521,8 @@ func miqt_exec_callback_QsciAbstractAPIs_childEvent(self *C.QsciAbstractAPIs, cb
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciAbstractAPIs_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -519,6 +549,8 @@ func miqt_exec_callback_QsciAbstractAPIs_customEvent(self *C.QsciAbstractAPIs, c
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciAbstractAPIs_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -545,6 +577,8 @@ func miqt_exec_callback_QsciAbstractAPIs_connectNotify(self *C.QsciAbstractAPIs,
 }
 
 func (this *QsciAbstractAPIs) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciAbstractAPIs_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -582,8 +616,9 @@ func (this *QsciAbstractAPIs) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciAbstractAPIs{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciAbstractAPIs) {
-		C.QsciAbstractAPIs_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciAbstractAPIs_delete((*C.QsciAbstractAPIs)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

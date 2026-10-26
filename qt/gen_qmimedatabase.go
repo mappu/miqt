@@ -23,7 +23,13 @@ const (
 
 type QMimeDatabase struct {
 	h  *C.QMimeDatabase
-	gc *[1]*C.QMimeDatabase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMimeDatabase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMimeDatabase) cPointer() *C.QMimeDatabase {
@@ -61,6 +67,7 @@ func NewQMimeDatabase() *QMimeDatabase {
 }
 
 func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
+	defer runtime.KeepAlive(this)
 	nameOrAlias_ms := C.struct_miqt_string{}
 	nameOrAlias_ms.data = C.CString(nameOrAlias)
 	nameOrAlias_ms.len = C.size_t(len(nameOrAlias))
@@ -71,6 +78,7 @@ func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFile(fileName string) *QMimeType {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -81,12 +89,15 @@ func (this *QMimeDatabase) MimeTypeForFile(fileName string) *QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFileWithFileInfo(fileInfo *QFileInfo) *QMimeType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fileInfo)
 	_goptr := newQMimeType(C.QMimeDatabase_mimeTypeForFileWithFileInfo(this.h, fileInfo.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -103,6 +114,7 @@ func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForData(data []byte) *QMimeType {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -116,18 +128,24 @@ func (this *QMimeDatabase) MimeTypeForData(data []byte) *QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForDataWithDevice(device *QIODevice) *QMimeType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	_goptr := newQMimeType(C.QMimeDatabase_mimeTypeForDataWithDevice(this.h, device.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMimeDatabase) MimeTypeForUrl(url *QUrl) *QMimeType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	_goptr := newQMimeType(C.QMimeDatabase_mimeTypeForUrl(this.h, url.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMimeDatabase) MimeTypeForFileNameAndData(fileName string, device *QIODevice) *QMimeType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -138,6 +156,7 @@ func (this *QMimeDatabase) MimeTypeForFileNameAndData(fileName string, device *Q
 }
 
 func (this *QMimeDatabase) MimeTypeForFileNameAndData2(fileName string, data []byte) *QMimeType {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -155,6 +174,7 @@ func (this *QMimeDatabase) MimeTypeForFileNameAndData2(fileName string, data []b
 }
 
 func (this *QMimeDatabase) SuffixForFileName(fileName string) string {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -166,6 +186,7 @@ func (this *QMimeDatabase) SuffixForFileName(fileName string) string {
 }
 
 func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeDatabase_allMimeTypes(this.h)
 	_ret := make([]QMimeType, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QMimeType)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -178,6 +199,7 @@ func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode QMimeDatabase__MatchMode) *QMimeType {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -188,6 +210,8 @@ func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode QMimeDatabase_
 }
 
 func (this *QMimeDatabase) MimeTypeForFile3(fileInfo *QFileInfo, mode QMimeDatabase__MatchMode) *QMimeType {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fileInfo)
 	_goptr := newQMimeType(C.QMimeDatabase_mimeTypeForFile3(this.h, fileInfo.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -205,8 +229,9 @@ func (this *QMimeDatabase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMimeDatabase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMimeDatabase) {
-		C.QMimeDatabase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMimeDatabase_delete((*C.QMimeDatabase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

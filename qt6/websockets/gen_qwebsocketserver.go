@@ -25,8 +25,14 @@ const (
 
 type QWebSocketServer struct {
 	h  *C.QWebSocketServer
-	gc *[1]*C.QWebSocketServer
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSocketServer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSocketServer) cPointer() *C.QWebSocketServer {
@@ -72,6 +78,7 @@ func NewQWebSocketServer(serverName string, secureMode QWebSocketServer__SslMode
 
 // NewQWebSocketServer2 constructs a new QWebSocketServer object.
 func NewQWebSocketServer2(serverName string, secureMode QWebSocketServer__SslMode, parent *qt6.QObject) *QWebSocketServer {
+	defer runtime.KeepAlive(parent)
 	serverName_ms := C.struct_miqt_string{}
 	serverName_ms.data = C.CString(serverName)
 	serverName_ms.len = C.size_t(len(serverName))
@@ -81,10 +88,12 @@ func NewQWebSocketServer2(serverName string, secureMode QWebSocketServer__SslMod
 }
 
 func (this *QWebSocketServer) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSocketServer_metaObject(this.h)))
 }
 
 func (this *QWebSocketServer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSocketServer_metacast(this.h, param1_Cstring))
@@ -100,90 +109,111 @@ func QWebSocketServer_Tr(s string) string {
 }
 
 func (this *QWebSocketServer) Listen() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketServer_listen(this.h))
 }
 
 func (this *QWebSocketServer) Close() {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_close(this.h)
 }
 
 func (this *QWebSocketServer) IsListening() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketServer_isListening(this.h))
 }
 
 func (this *QWebSocketServer) SetMaxPendingConnections(numConnections int) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_setMaxPendingConnections(this.h, (C.int)(numConnections))
 }
 
 func (this *QWebSocketServer) MaxPendingConnections() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSocketServer_maxPendingConnections(this.h))
 }
 
 func (this *QWebSocketServer) SetHandshakeTimeout(msec qt6.Milliseconds) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_setHandshakeTimeout(this.h, (C.int64_t)(msec))
 }
 
 func (this *QWebSocketServer) HandshakeTimeout() qt6.Milliseconds {
+	defer runtime.KeepAlive(this)
 	return (qt6.Milliseconds)(C.QWebSocketServer_handshakeTimeout(this.h))
 }
 
 func (this *QWebSocketServer) SetHandshakeTimeoutWithMsec(msec int) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_setHandshakeTimeoutWithMsec(this.h, (C.int)(msec))
 }
 
 func (this *QWebSocketServer) HandshakeTimeoutMS() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSocketServer_handshakeTimeoutMS(this.h))
 }
 
 func (this *QWebSocketServer) ServerPort() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QWebSocketServer_serverPort(this.h))
 }
 
 func (this *QWebSocketServer) ServerAddress() *network.QHostAddress {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQHostAddress(unsafe.Pointer(C.QWebSocketServer_serverAddress(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSocketServer) ServerUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebSocketServer_serverUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSocketServer) SecureMode() QWebSocketServer__SslMode {
+	defer runtime.KeepAlive(this)
 	return (QWebSocketServer__SslMode)(C.QWebSocketServer_secureMode(this.h))
 }
 
 func (this *QWebSocketServer) SetSocketDescriptor(socketDescriptor uintptr) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketServer_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
 }
 
 func (this *QWebSocketServer) SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QWebSocketServer_socketDescriptor(this.h))
 }
 
 func (this *QWebSocketServer) SetNativeDescriptor(descriptor uintptr) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketServer_setNativeDescriptor(this.h, (C.intptr_t)(descriptor)))
 }
 
 func (this *QWebSocketServer) NativeDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QWebSocketServer_nativeDescriptor(this.h))
 }
 
 func (this *QWebSocketServer) HasPendingConnections() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSocketServer_hasPendingConnections(this.h))
 }
 
 func (this *QWebSocketServer) NextPendingConnection() *QWebSocket {
+	defer runtime.KeepAlive(this)
 	return newQWebSocket(C.QWebSocketServer_nextPendingConnection(this.h))
 }
 
 func (this *QWebSocketServer) Error() QWebSocketProtocol__CloseCode {
+	defer runtime.KeepAlive(this)
 	return (QWebSocketProtocol__CloseCode)(C.QWebSocketServer_error(this.h))
 }
 
 func (this *QWebSocketServer) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSocketServer_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -191,14 +221,17 @@ func (this *QWebSocketServer) ErrorString() string {
 }
 
 func (this *QWebSocketServer) PauseAccepting() {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_pauseAccepting(this.h)
 }
 
 func (this *QWebSocketServer) ResumeAccepting() {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_resumeAccepting(this.h)
 }
 
 func (this *QWebSocketServer) SetServerName(serverName string) {
+	defer runtime.KeepAlive(this)
 	serverName_ms := C.struct_miqt_string{}
 	serverName_ms.data = C.CString(serverName)
 	serverName_ms.len = C.size_t(len(serverName))
@@ -207,6 +240,7 @@ func (this *QWebSocketServer) SetServerName(serverName string) {
 }
 
 func (this *QWebSocketServer) ServerName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSocketServer_serverName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -214,6 +248,7 @@ func (this *QWebSocketServer) ServerName() string {
 }
 
 func (this *QWebSocketServer) SetSupportedSubprotocols(protocols []string) {
+	defer runtime.KeepAlive(this)
 	protocols_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(protocols))))
 	defer C.free(unsafe.Pointer(protocols_CArray_ptr))
 	protocols_CArray := unsafe.Slice(protocols_CArray_ptr, len(protocols))
@@ -229,6 +264,7 @@ func (this *QWebSocketServer) SetSupportedSubprotocols(protocols []string) {
 }
 
 func (this *QWebSocketServer) SupportedSubprotocols() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebSocketServer_supportedSubprotocols(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -242,26 +278,33 @@ func (this *QWebSocketServer) SupportedSubprotocols() []string {
 }
 
 func (this *QWebSocketServer) SetProxy(networkProxy *network.QNetworkProxy) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(networkProxy)
 	C.QWebSocketServer_setProxy(this.h, (*C.QNetworkProxy)(networkProxy.UnsafePointer()))
 }
 
 func (this *QWebSocketServer) Proxy() *network.QNetworkProxy {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQNetworkProxy(unsafe.Pointer(C.QWebSocketServer_proxy(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSocketServer) SetSslConfiguration(sslConfiguration *network.QSslConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sslConfiguration)
 	C.QWebSocketServer_setSslConfiguration(this.h, (*C.QSslConfiguration)(sslConfiguration.UnsafePointer()))
 }
 
 func (this *QWebSocketServer) SslConfiguration() *network.QSslConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQSslConfiguration(unsafe.Pointer(C.QWebSocketServer_sslConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSocketServer) SupportedVersions() []QWebSocketProtocol__Version {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebSocketServer_supportedVersions(this.h)
 	_ret := make([]QWebSocketProtocol__Version, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -272,10 +315,13 @@ func (this *QWebSocketServer) SupportedVersions() []QWebSocketProtocol__Version 
 }
 
 func (this *QWebSocketServer) HandleConnection(socket *network.QTcpSocket) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	C.QWebSocketServer_handleConnection(this.h, (*C.QTcpSocket)(socket.UnsafePointer()))
 }
 
 func (this *QWebSocketServer) AcceptError(socketError network.QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_acceptError(this.h, (C.int)(socketError))
 }
 func (this *QWebSocketServer) OnAcceptError(slot func(socketError network.QAbstractSocket__SocketError)) {
@@ -296,6 +342,7 @@ func miqt_exec_callback_QWebSocketServer_acceptError(cb C.intptr_t, socketError 
 }
 
 func (this *QWebSocketServer) ServerError(closeCode QWebSocketProtocol__CloseCode) {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_serverError(this.h, (C.int)(closeCode))
 }
 func (this *QWebSocketServer) OnServerError(slot func(closeCode QWebSocketProtocol__CloseCode)) {
@@ -316,6 +363,8 @@ func miqt_exec_callback_QWebSocketServer_serverError(cb C.intptr_t, closeCode C.
 }
 
 func (this *QWebSocketServer) OriginAuthenticationRequired(pAuthenticator *QWebSocketCorsAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pAuthenticator)
 	C.QWebSocketServer_originAuthenticationRequired(this.h, pAuthenticator.cPointer())
 }
 func (this *QWebSocketServer) OnOriginAuthenticationRequired(slot func(pAuthenticator *QWebSocketCorsAuthenticator)) {
@@ -336,6 +385,7 @@ func miqt_exec_callback_QWebSocketServer_originAuthenticationRequired(cb C.intpt
 }
 
 func (this *QWebSocketServer) NewConnection() {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_newConnection(this.h)
 }
 func (this *QWebSocketServer) OnNewConnection(slot func()) {
@@ -353,6 +403,8 @@ func miqt_exec_callback_QWebSocketServer_newConnection(cb C.intptr_t) {
 }
 
 func (this *QWebSocketServer) PeerVerifyError(error *network.QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(error)
 	C.QWebSocketServer_peerVerifyError(this.h, (*C.QSslError)(error.UnsafePointer()))
 }
 func (this *QWebSocketServer) OnPeerVerifyError(slot func(error *network.QSslError)) {
@@ -373,6 +425,8 @@ func miqt_exec_callback_QWebSocketServer_peerVerifyError(cb C.intptr_t, error *C
 }
 
 func (this *QWebSocketServer) SslErrors(errors []network.QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
 	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
@@ -408,6 +462,8 @@ func miqt_exec_callback_QWebSocketServer_sslErrors(cb C.intptr_t, errors C.struc
 }
 
 func (this *QWebSocketServer) PreSharedKeyAuthenticationRequired(authenticator *network.QSslPreSharedKeyAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(authenticator)
 	C.QWebSocketServer_preSharedKeyAuthenticationRequired(this.h, (*C.QSslPreSharedKeyAuthenticator)(authenticator.UnsafePointer()))
 }
 func (this *QWebSocketServer) OnPreSharedKeyAuthenticationRequired(slot func(authenticator *network.QSslPreSharedKeyAuthenticator)) {
@@ -428,6 +484,7 @@ func miqt_exec_callback_QWebSocketServer_preSharedKeyAuthenticationRequired(cb C
 }
 
 func (this *QWebSocketServer) AlertSent(level network.QSsl__AlertLevel, typeVal network.QSsl__AlertType, description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -459,6 +516,7 @@ func miqt_exec_callback_QWebSocketServer_alertSent(cb C.intptr_t, level C.int, t
 }
 
 func (this *QWebSocketServer) AlertReceived(level network.QSsl__AlertLevel, typeVal network.QSsl__AlertType, description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -490,6 +548,8 @@ func miqt_exec_callback_QWebSocketServer_alertReceived(cb C.intptr_t, level C.in
 }
 
 func (this *QWebSocketServer) HandshakeInterruptedOnError(error *network.QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(error)
 	C.QWebSocketServer_handshakeInterruptedOnError(this.h, (*C.QSslError)(error.UnsafePointer()))
 }
 func (this *QWebSocketServer) OnHandshakeInterruptedOnError(slot func(error *network.QSslError)) {
@@ -510,6 +570,7 @@ func miqt_exec_callback_QWebSocketServer_handshakeInterruptedOnError(cb C.intptr
 }
 
 func (this *QWebSocketServer) Closed() {
+	defer runtime.KeepAlive(this)
 	C.QWebSocketServer_closed(this.h)
 }
 func (this *QWebSocketServer) OnClosed(slot func()) {
@@ -549,15 +610,20 @@ func QWebSocketServer_Tr3(s string, c string, n int) string {
 }
 
 func (this *QWebSocketServer) ListenWithAddress(address *network.QHostAddress) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QWebSocketServer_listenWithAddress(this.h, (*C.QHostAddress)(address.UnsafePointer())))
 }
 
 func (this *QWebSocketServer) Listen2(address *network.QHostAddress, port uint16) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 	return (bool)(C.QWebSocketServer_listen2(this.h, (*C.QHostAddress)(address.UnsafePointer()), (C.ushort)(port)))
 }
 
 // Sender can only be called from a QWebSocketServer that was directly constructed.
 func (this *QWebSocketServer) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QWebSocketServer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -572,6 +638,7 @@ func (this *QWebSocketServer) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QWebSocketServer that was directly constructed.
 func (this *QWebSocketServer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebSocketServer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -586,6 +653,7 @@ func (this *QWebSocketServer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebSocketServer that was directly constructed.
 func (this *QWebSocketServer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -602,6 +670,8 @@ func (this *QWebSocketServer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebSocketServer that was directly constructed.
 func (this *QWebSocketServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWebSocketServer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -615,6 +685,7 @@ func (this *QWebSocketServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QWebSocketServer) callVirtualBase_NextPendingConnection() *QWebSocket {
+	defer runtime.KeepAlive(this)
 
 	return newQWebSocket(C.QWebSocketServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h)))
 
@@ -634,12 +705,15 @@ func miqt_exec_callback_QWebSocketServer_nextPendingConnection(self *C.QWebSocke
 	}
 
 	virtualReturn := gofunc((&QWebSocketServer{h: self}).callVirtualBase_NextPendingConnection)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWebSocketServer) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebSocketServer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -668,6 +742,9 @@ func miqt_exec_callback_QWebSocketServer_event(self *C.QWebSocketServer, cb C.in
 }
 
 func (this *QWebSocketServer) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebSocketServer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -698,6 +775,8 @@ func miqt_exec_callback_QWebSocketServer_eventFilter(self *C.QWebSocketServer, c
 }
 
 func (this *QWebSocketServer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebSocketServer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -724,6 +803,8 @@ func miqt_exec_callback_QWebSocketServer_timerEvent(self *C.QWebSocketServer, cb
 }
 
 func (this *QWebSocketServer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebSocketServer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -750,6 +831,8 @@ func miqt_exec_callback_QWebSocketServer_childEvent(self *C.QWebSocketServer, cb
 }
 
 func (this *QWebSocketServer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QWebSocketServer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -776,6 +859,8 @@ func miqt_exec_callback_QWebSocketServer_customEvent(self *C.QWebSocketServer, c
 }
 
 func (this *QWebSocketServer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebSocketServer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -802,6 +887,8 @@ func miqt_exec_callback_QWebSocketServer_connectNotify(self *C.QWebSocketServer,
 }
 
 func (this *QWebSocketServer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QWebSocketServer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -839,8 +926,9 @@ func (this *QWebSocketServer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSocketServer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSocketServer) {
-		C.QWebSocketServer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSocketServer_delete((*C.QWebSocketServer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

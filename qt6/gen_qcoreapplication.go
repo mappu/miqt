@@ -22,8 +22,15 @@ const (
 
 type QCoreApplication struct {
 	h  *C.QCoreApplication
-	gc *[1]*C.QCoreApplication
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCoreApplication) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QCoreApplication) cPointer() *C.QCoreApplication {
@@ -88,10 +95,12 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QCoreApplication_metaObject(this.h))
 }
 
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCoreApplication_metacast(this.h, param1_Cstring))
@@ -212,10 +221,14 @@ func QCoreApplication_ProcessEvents2(flags QEventLoop__ProcessEventsFlag, maxtim
 }
 
 func QCoreApplication_SendEvent(receiver *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(receiver)
+	defer runtime.KeepAlive(event)
 	return (bool)(C.QCoreApplication_sendEvent(receiver.cPointer(), event.cPointer()))
 }
 
 func QCoreApplication_PostEvent(receiver *QObject, event *QEvent) {
+	defer runtime.KeepAlive(receiver)
+	defer runtime.KeepAlive(event)
 	C.QCoreApplication_postEvent(receiver.cPointer(), event.cPointer())
 }
 
@@ -224,6 +237,7 @@ func QCoreApplication_SendPostedEvents() {
 }
 
 func QCoreApplication_RemovePostedEvents(receiver *QObject) {
+	defer runtime.KeepAlive(receiver)
 	C.QCoreApplication_removePostedEvents(receiver.cPointer())
 }
 
@@ -232,10 +246,14 @@ func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
+	defer runtime.KeepAlive(eventDispatcher)
 	C.QCoreApplication_setEventDispatcher(eventDispatcher.cPointer())
 }
 
 func (this *QCoreApplication) Notify(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	return (bool)(C.QCoreApplication_notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
@@ -310,10 +328,12 @@ func QCoreApplication_RemoveLibraryPath(param1 string) {
 }
 
 func QCoreApplication_InstallTranslator(messageFile *QTranslator) bool {
+	defer runtime.KeepAlive(messageFile)
 	return (bool)(C.QCoreApplication_installTranslator(messageFile.cPointer()))
 }
 
 func QCoreApplication_RemoveTranslator(messageFile *QTranslator) bool {
+	defer runtime.KeepAlive(messageFile)
 	return (bool)(C.QCoreApplication_removeTranslator(messageFile.cPointer()))
 }
 
@@ -329,6 +349,8 @@ func QCoreApplication_Translate(context string, key string) string {
 }
 
 func (this *QCoreApplication) InstallNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(filterObj)
 	C.QCoreApplication_installNativeEventFilter(this.h, filterObj.cPointer())
 }
 func (this *QCoreApplication) OnInstallNativeEventFilter(slot func(filterObj *QAbstractNativeEventFilter)) {
@@ -349,6 +371,8 @@ func miqt_exec_callback_QCoreApplication_installNativeEventFilter(cb C.intptr_t,
 }
 
 func (this *QCoreApplication) RemoveNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(filterObj)
 	C.QCoreApplication_removeNativeEventFilter(this.h, filterObj.cPointer())
 }
 func (this *QCoreApplication) OnRemoveNativeEventFilter(slot func(filterObj *QAbstractNativeEventFilter)) {
@@ -385,6 +409,7 @@ func QCoreApplication_Exit() {
 }
 
 func (this *QCoreApplication) OrganizationNameChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCoreApplication_organizationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationNameChanged(slot func()) {
@@ -402,6 +427,7 @@ func miqt_exec_callback_QCoreApplication_organizationNameChanged(cb C.intptr_t) 
 }
 
 func (this *QCoreApplication) OrganizationDomainChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCoreApplication_organizationDomainChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationDomainChanged(slot func()) {
@@ -419,6 +445,7 @@ func miqt_exec_callback_QCoreApplication_organizationDomainChanged(cb C.intptr_t
 }
 
 func (this *QCoreApplication) ApplicationNameChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCoreApplication_applicationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationNameChanged(slot func()) {
@@ -436,6 +463,7 @@ func miqt_exec_callback_QCoreApplication_applicationNameChanged(cb C.intptr_t) {
 }
 
 func (this *QCoreApplication) ApplicationVersionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCoreApplication_applicationVersionChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationVersionChanged(slot func()) {
@@ -483,18 +511,23 @@ func QCoreApplication_ProcessEventsWithFlags(flags QEventLoop__ProcessEventsFlag
 }
 
 func QCoreApplication_PostEvent2(receiver *QObject, event *QEvent, priority int) {
+	defer runtime.KeepAlive(receiver)
+	defer runtime.KeepAlive(event)
 	C.QCoreApplication_postEvent2(receiver.cPointer(), event.cPointer(), (C.int)(priority))
 }
 
 func QCoreApplication_SendPostedEventsWithReceiver(receiver *QObject) {
+	defer runtime.KeepAlive(receiver)
 	C.QCoreApplication_sendPostedEventsWithReceiver(receiver.cPointer())
 }
 
 func QCoreApplication_SendPostedEvents2(receiver *QObject, event_type int) {
+	defer runtime.KeepAlive(receiver)
 	C.QCoreApplication_sendPostedEvents2(receiver.cPointer(), (C.int)(event_type))
 }
 
 func QCoreApplication_RemovePostedEvents2(receiver *QObject, eventType int) {
+	defer runtime.KeepAlive(receiver)
 	C.QCoreApplication_removePostedEvents2(receiver.cPointer(), (C.int)(eventType))
 }
 
@@ -530,6 +563,7 @@ func QCoreApplication_ExitWithRetcode(retcode int) {
 
 // ResolveInterface can only be called from a QCoreApplication that was directly constructed.
 func (this *QCoreApplication) ResolveInterface(name string, revision int) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
@@ -546,6 +580,7 @@ func (this *QCoreApplication) ResolveInterface(name string, revision int) unsafe
 
 // Sender can only be called from a QCoreApplication that was directly constructed.
 func (this *QCoreApplication) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QCoreApplication_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -560,6 +595,7 @@ func (this *QCoreApplication) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QCoreApplication that was directly constructed.
 func (this *QCoreApplication) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCoreApplication_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -574,6 +610,7 @@ func (this *QCoreApplication) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCoreApplication that was directly constructed.
 func (this *QCoreApplication) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -590,6 +627,8 @@ func (this *QCoreApplication) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCoreApplication that was directly constructed.
 func (this *QCoreApplication) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCoreApplication_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -603,6 +642,9 @@ func (this *QCoreApplication) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QCoreApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QCoreApplication_virtualbase_notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
@@ -633,6 +675,8 @@ func miqt_exec_callback_QCoreApplication_notify(self *C.QCoreApplication, cb C.i
 }
 
 func (this *QCoreApplication) callVirtualBase_Event(param1 *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QCoreApplication_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -661,6 +705,9 @@ func miqt_exec_callback_QCoreApplication_event(self *C.QCoreApplication, cb C.in
 }
 
 func (this *QCoreApplication) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCoreApplication_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -691,6 +738,8 @@ func miqt_exec_callback_QCoreApplication_eventFilter(self *C.QCoreApplication, c
 }
 
 func (this *QCoreApplication) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCoreApplication_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -717,6 +766,8 @@ func miqt_exec_callback_QCoreApplication_timerEvent(self *C.QCoreApplication, cb
 }
 
 func (this *QCoreApplication) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCoreApplication_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -743,6 +794,8 @@ func miqt_exec_callback_QCoreApplication_childEvent(self *C.QCoreApplication, cb
 }
 
 func (this *QCoreApplication) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QCoreApplication_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -769,6 +822,8 @@ func miqt_exec_callback_QCoreApplication_customEvent(self *C.QCoreApplication, c
 }
 
 func (this *QCoreApplication) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCoreApplication_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -795,6 +850,8 @@ func miqt_exec_callback_QCoreApplication_connectNotify(self *C.QCoreApplication,
 }
 
 func (this *QCoreApplication) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QCoreApplication_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -845,8 +902,9 @@ func (this *QCoreApplication) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCoreApplication{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCoreApplication) {
-		C.QCoreApplication_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCoreApplication_delete((*C.QCoreApplication)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

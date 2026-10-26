@@ -64,6 +64,7 @@ bool QwtScaleEngine_override_virtual_autoScale(void* self, intptr_t slot);
 void QwtScaleEngine_virtualbase_autoScale(const void* self, int maxNumSteps, double* x1, double* x2, double* stepSize);
 bool QwtScaleEngine_override_virtual_divideScale(void* self, intptr_t slot);
 QwtScaleDiv* QwtScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
+QwtScaleDiv* QwtScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src);
 
 bool QwtScaleEngine_protectedbase_contains(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double value);
 struct miqt_array /* of double */  QwtScaleEngine_protectedbase_strip(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of double */  param1, QwtInterval* param2);
@@ -84,6 +85,7 @@ bool QwtLinearScaleEngine_override_virtual_autoScale(void* self, intptr_t slot);
 void QwtLinearScaleEngine_virtualbase_autoScale(const void* self, int maxNumSteps, double* x1, double* x2, double* stepSize);
 bool QwtLinearScaleEngine_override_virtual_divideScale(void* self, intptr_t slot);
 QwtScaleDiv* QwtLinearScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
+QwtScaleDiv* QwtLinearScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src);
 
 QwtInterval* QwtLinearScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize);
 void QwtLinearScaleEngine_protectedbase_buildTicks(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize, int maxMinorSteps, struct miqt_array /* of double */  ticks);
@@ -108,6 +110,7 @@ bool QwtLogScaleEngine_override_virtual_autoScale(void* self, intptr_t slot);
 void QwtLogScaleEngine_virtualbase_autoScale(const void* self, int maxNumSteps, double* x1, double* x2, double* stepSize);
 bool QwtLogScaleEngine_override_virtual_divideScale(void* self, intptr_t slot);
 QwtScaleDiv* QwtLogScaleEngine_virtualbase_divideScale(const void* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
+QwtScaleDiv* QwtLogScaleEngine_virtualreturncopy_QwtScaleDiv(QwtScaleDiv* src);
 
 QwtInterval* QwtLogScaleEngine_protectedbase_align(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize);
 void QwtLogScaleEngine_protectedbase_buildTicks(bool* _dynamic_cast_ok, const void* self, QwtInterval* param1, double stepSize, int maxMinorSteps, struct miqt_array /* of double */  ticks);

@@ -16,7 +16,13 @@ import (
 
 type QTextTableCell struct {
 	h  *C.QTextTableCell
-	gc *[1]*C.QTextTableCell
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextTableCell) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextTableCell) cPointer() *C.QTextTableCell {
@@ -55,85 +61,107 @@ func NewQTextTableCell() *QTextTableCell {
 
 // NewQTextTableCell2 constructs a new QTextTableCell object.
 func NewQTextTableCell2(o *QTextTableCell) *QTextTableCell {
+	defer runtime.KeepAlive(o)
 
 	return newQTextTableCell(C.QTextTableCell_new2(o.cPointer()))
 }
 
 func (this *QTextTableCell) OperatorAssign(o *QTextTableCell) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(o)
 	C.QTextTableCell_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextTableCell) SetFormat(format *QTextCharFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QTextTableCell_setFormat(this.h, format.cPointer())
 }
 
 func (this *QTextTableCell) Format() *QTextCharFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextCharFormat(C.QTextTableCell_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) Row() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_row(this.h))
 }
 
 func (this *QTextTableCell) Column() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_column(this.h))
 }
 
 func (this *QTextTableCell) RowSpan() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_rowSpan(this.h))
 }
 
 func (this *QTextTableCell) ColumnSpan() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_columnSpan(this.h))
 }
 
 func (this *QTextTableCell) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextTableCell_isValid(this.h))
 }
 
 func (this *QTextTableCell) FirstCursorPosition() *QTextCursor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QTextTableCell_firstCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) LastCursorPosition() *QTextCursor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QTextTableCell_lastCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) FirstPosition() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_firstPosition(this.h))
 }
 
 func (this *QTextTableCell) LastPosition() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_lastPosition(this.h))
 }
 
 func (this *QTextTableCell) OperatorEqual(other *QTextTableCell) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QTextTableCell_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextTableCell) OperatorNotEqual(other *QTextTableCell) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QTextTableCell_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextTableCell) Begin() *QTextFrame__iterator {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextFrame__iterator(C.QTextTableCell_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) End() *QTextFrame__iterator {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextFrame__iterator(C.QTextTableCell_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) TableCellFormatIndex() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTableCell_tableCellFormatIndex(this.h))
 }
 
@@ -149,16 +177,24 @@ func (this *QTextTableCell) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextTableCell{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextTableCell) {
-		C.QTextTableCell_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextTableCell_delete((*C.QTextTableCell)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QTextTable struct {
 	h  *C.QTextTable
-	gc *[1]*C.QTextTable
+	gc *[1]unsafe.Pointer
 	*QTextFrame
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextTable) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QTextFrame.miqtSetGC(gc)
 }
 
 func (this *QTextTable) cPointer() *C.QTextTable {
@@ -194,15 +230,18 @@ func UnsafeNewQTextTable(h unsafe.Pointer) *QTextTable {
 
 // NewQTextTable constructs a new QTextTable object.
 func NewQTextTable(doc *QTextDocument) *QTextTable {
+	defer runtime.KeepAlive(doc)
 
 	return newQTextTable(C.QTextTable_new(doc.cPointer()))
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextTable_metaObject(this.h))
 }
 
 func (this *QTextTable) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextTable_metacast(this.h, param1_Cstring))
@@ -227,88 +266,112 @@ func QTextTable_TrUtf8(s string) string {
 }
 
 func (this *QTextTable) Resize(rows int, cols int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_resize(this.h, (C.int)(rows), (C.int)(cols))
 }
 
 func (this *QTextTable) InsertRows(pos int, num int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_insertRows(this.h, (C.int)(pos), (C.int)(num))
 }
 
 func (this *QTextTable) InsertColumns(pos int, num int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_insertColumns(this.h, (C.int)(pos), (C.int)(num))
 }
 
 func (this *QTextTable) AppendRows(count int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_appendRows(this.h, (C.int)(count))
 }
 
 func (this *QTextTable) AppendColumns(count int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_appendColumns(this.h, (C.int)(count))
 }
 
 func (this *QTextTable) RemoveRows(pos int, num int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_removeRows(this.h, (C.int)(pos), (C.int)(num))
 }
 
 func (this *QTextTable) RemoveColumns(pos int, num int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_removeColumns(this.h, (C.int)(pos), (C.int)(num))
 }
 
 func (this *QTextTable) MergeCells(row int, col int, numRows int, numCols int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_mergeCells(this.h, (C.int)(row), (C.int)(col), (C.int)(numRows), (C.int)(numCols))
 }
 
 func (this *QTextTable) MergeCellsWithCursor(cursor *QTextCursor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cursor)
 	C.QTextTable_mergeCellsWithCursor(this.h, cursor.cPointer())
 }
 
 func (this *QTextTable) SplitCell(row int, col int, numRows int, numCols int) {
+	defer runtime.KeepAlive(this)
 	C.QTextTable_splitCell(this.h, (C.int)(row), (C.int)(col), (C.int)(numRows), (C.int)(numCols))
 }
 
 func (this *QTextTable) Rows() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTable_rows(this.h))
 }
 
 func (this *QTextTable) Columns() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTextTable_columns(this.h))
 }
 
 func (this *QTextTable) CellAt(row int, col int) *QTextTableCell {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextTableCell(C.QTextTable_cellAt(this.h, (C.int)(row), (C.int)(col)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) CellAtWithPosition(position int) *QTextTableCell {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextTableCell(C.QTextTable_cellAtWithPosition(this.h, (C.int)(position)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) CellAtWithQTextCursor(c *QTextCursor) *QTextTableCell {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	_goptr := newQTextTableCell(C.QTextTable_cellAtWithQTextCursor(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) RowStart(c *QTextCursor) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	_goptr := newQTextCursor(C.QTextTable_rowStart(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) RowEnd(c *QTextCursor) *QTextCursor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	_goptr := newQTextCursor(C.QTextTable_rowEnd(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) SetFormat(format *QTextTableFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QTextTable_setFormat(this.h, format.cPointer())
 }
 
 func (this *QTextTable) Format() *QTextTableFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTextTableFormat(C.QTextTable_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -360,6 +423,7 @@ func QTextTable_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QTextTable that was directly constructed.
 func (this *QTextTable) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextTable_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -374,6 +438,7 @@ func (this *QTextTable) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextTable that was directly constructed.
 func (this *QTextTable) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextTable_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -388,6 +453,7 @@ func (this *QTextTable) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextTable that was directly constructed.
 func (this *QTextTable) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -404,6 +470,8 @@ func (this *QTextTable) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextTable that was directly constructed.
 func (this *QTextTable) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextTable_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -417,6 +485,8 @@ func (this *QTextTable) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextTable) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextTable_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -445,6 +515,9 @@ func miqt_exec_callback_QTextTable_event(self *C.QTextTable, cb C.intptr_t, even
 }
 
 func (this *QTextTable) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextTable_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -475,6 +548,8 @@ func miqt_exec_callback_QTextTable_eventFilter(self *C.QTextTable, cb C.intptr_t
 }
 
 func (this *QTextTable) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextTable_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -501,6 +576,8 @@ func miqt_exec_callback_QTextTable_timerEvent(self *C.QTextTable, cb C.intptr_t,
 }
 
 func (this *QTextTable) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextTable_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -527,6 +604,8 @@ func miqt_exec_callback_QTextTable_childEvent(self *C.QTextTable, cb C.intptr_t,
 }
 
 func (this *QTextTable) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTextTable_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -553,6 +632,8 @@ func miqt_exec_callback_QTextTable_customEvent(self *C.QTextTable, cb C.intptr_t
 }
 
 func (this *QTextTable) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTextTable_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -579,6 +660,8 @@ func miqt_exec_callback_QTextTable_connectNotify(self *C.QTextTable, cb C.intptr
 }
 
 func (this *QTextTable) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTextTable_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -616,8 +699,9 @@ func (this *QTextTable) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextTable{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextTable) {
-		C.QTextTable_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextTable_delete((*C.QTextTable)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

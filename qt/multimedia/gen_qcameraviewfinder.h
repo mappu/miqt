@@ -200,6 +200,8 @@ bool QCameraViewfinder_override_virtual_connectNotify(void* self, intptr_t slot)
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QCameraViewfinder_virtualreturncopy_QSize(QSize* src);
+QVariant* QCameraViewfinder_virtualreturncopy_QVariant(QVariant* src);
 
 void QCameraViewfinder_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QCameraViewfinder_protectedbase_create(bool* _dynamic_cast_ok, void* self);

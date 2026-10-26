@@ -534,6 +534,8 @@ bool QWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);

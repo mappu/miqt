@@ -16,7 +16,13 @@ import (
 
 type QwtTransform struct {
 	h  *C.QwtTransform
-	gc *[1]*C.QwtTransform
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtTransform) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtTransform) cPointer() *C.QwtTransform {
@@ -55,31 +61,39 @@ func NewQwtTransform() *QwtTransform {
 
 // NewQwtTransform2 constructs a new QwtTransform object.
 func NewQwtTransform2(param1 *QwtTransform) *QwtTransform {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtTransform(C.QwtTransform_new2(param1.cPointer()))
 }
 
 func (this *QwtTransform) Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtTransform_bounded(this.h, (C.double)(value)))
 }
 
 func (this *QwtTransform) Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtTransform_transform(this.h, (C.double)(value)))
 }
 
 func (this *QwtTransform) InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtTransform_invTransform(this.h, (C.double)(value)))
 }
 
 func (this *QwtTransform) Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtTransform_copy(this.h))
 }
 
 func (this *QwtTransform) OperatorAssign(param1 *QwtTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtTransform_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtTransform) callVirtualBase_Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtTransform_virtualbase_bounded(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -165,6 +179,7 @@ func miqt_exec_callback_QwtTransform_copy(self *C.QwtTransform, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -182,16 +197,24 @@ func (this *QwtTransform) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtTransform{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtTransform) {
-		C.QwtTransform_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtTransform_delete((*C.QwtTransform)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtNullTransform struct {
 	h  *C.QwtNullTransform
-	gc *[1]*C.QwtNullTransform
+	gc *[1]unsafe.Pointer
 	*QwtTransform
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtNullTransform) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTransform.miqtSetGC(gc)
 }
 
 func (this *QwtNullTransform) cPointer() *C.QwtNullTransform {
@@ -233,27 +256,34 @@ func NewQwtNullTransform() *QwtNullTransform {
 
 // NewQwtNullTransform2 constructs a new QwtNullTransform object.
 func NewQwtNullTransform2(param1 *QwtNullTransform) *QwtNullTransform {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtNullTransform(C.QwtNullTransform_new2(param1.cPointer()))
 }
 
 func (this *QwtNullTransform) Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtNullTransform_transform(this.h, (C.double)(value)))
 }
 
 func (this *QwtNullTransform) InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtNullTransform_invTransform(this.h, (C.double)(value)))
 }
 
 func (this *QwtNullTransform) Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtNullTransform_copy(this.h))
 }
 
 func (this *QwtNullTransform) OperatorAssign(param1 *QwtNullTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullTransform_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtNullTransform) callVirtualBase_Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtNullTransform_virtualbase_transform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -282,6 +312,7 @@ func miqt_exec_callback_QwtNullTransform_transform(self *C.QwtNullTransform, cb 
 }
 
 func (this *QwtNullTransform) callVirtualBase_InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtNullTransform_virtualbase_invTransform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -310,6 +341,7 @@ func miqt_exec_callback_QwtNullTransform_invTransform(self *C.QwtNullTransform, 
 }
 
 func (this *QwtNullTransform) callVirtualBase_Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 
 	return newQwtTransform(C.QwtNullTransform_virtualbase_copy(unsafe.Pointer(this.h)))
 
@@ -329,12 +361,14 @@ func miqt_exec_callback_QwtNullTransform_copy(self *C.QwtNullTransform, cb C.int
 	}
 
 	virtualReturn := gofunc((&QwtNullTransform{h: self}).callVirtualBase_Copy)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QwtNullTransform) callVirtualBase_Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtNullTransform_virtualbase_bounded(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -374,16 +408,24 @@ func (this *QwtNullTransform) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtNullTransform{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtNullTransform) {
-		C.QwtNullTransform_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtNullTransform_delete((*C.QwtNullTransform)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtLogTransform struct {
 	h  *C.QwtLogTransform
-	gc *[1]*C.QwtLogTransform
+	gc *[1]unsafe.Pointer
 	*QwtTransform
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtLogTransform) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTransform.miqtSetGC(gc)
 }
 
 func (this *QwtLogTransform) cPointer() *C.QwtLogTransform {
@@ -425,31 +467,39 @@ func NewQwtLogTransform() *QwtLogTransform {
 
 // NewQwtLogTransform2 constructs a new QwtLogTransform object.
 func NewQwtLogTransform2(param1 *QwtLogTransform) *QwtLogTransform {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtLogTransform(C.QwtLogTransform_new2(param1.cPointer()))
 }
 
 func (this *QwtLogTransform) Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtLogTransform_transform(this.h, (C.double)(value)))
 }
 
 func (this *QwtLogTransform) InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtLogTransform_invTransform(this.h, (C.double)(value)))
 }
 
 func (this *QwtLogTransform) Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtLogTransform_bounded(this.h, (C.double)(value)))
 }
 
 func (this *QwtLogTransform) Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtLogTransform_copy(this.h))
 }
 
 func (this *QwtLogTransform) OperatorAssign(param1 *QwtLogTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtLogTransform_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtLogTransform) callVirtualBase_Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtLogTransform_virtualbase_transform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -478,6 +528,7 @@ func miqt_exec_callback_QwtLogTransform_transform(self *C.QwtLogTransform, cb C.
 }
 
 func (this *QwtLogTransform) callVirtualBase_InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtLogTransform_virtualbase_invTransform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -506,6 +557,7 @@ func miqt_exec_callback_QwtLogTransform_invTransform(self *C.QwtLogTransform, cb
 }
 
 func (this *QwtLogTransform) callVirtualBase_Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtLogTransform_virtualbase_bounded(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -534,6 +586,7 @@ func miqt_exec_callback_QwtLogTransform_bounded(self *C.QwtLogTransform, cb C.in
 }
 
 func (this *QwtLogTransform) callVirtualBase_Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 
 	return newQwtTransform(C.QwtLogTransform_virtualbase_copy(unsafe.Pointer(this.h)))
 
@@ -553,6 +606,7 @@ func miqt_exec_callback_QwtLogTransform_copy(self *C.QwtLogTransform, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QwtLogTransform{h: self}).callVirtualBase_Copy)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -570,16 +624,24 @@ func (this *QwtLogTransform) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtLogTransform{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLogTransform) {
-		C.QwtLogTransform_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtLogTransform_delete((*C.QwtLogTransform)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtPowerTransform struct {
 	h  *C.QwtPowerTransform
-	gc *[1]*C.QwtPowerTransform
+	gc *[1]unsafe.Pointer
 	*QwtTransform
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPowerTransform) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTransform.miqtSetGC(gc)
 }
 
 func (this *QwtPowerTransform) cPointer() *C.QwtPowerTransform {
@@ -621,23 +683,28 @@ func NewQwtPowerTransform(exponent float64) *QwtPowerTransform {
 
 // NewQwtPowerTransform2 constructs a new QwtPowerTransform object.
 func NewQwtPowerTransform2(param1 *QwtPowerTransform) *QwtPowerTransform {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtPowerTransform(C.QwtPowerTransform_new2(param1.cPointer()))
 }
 
 func (this *QwtPowerTransform) Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPowerTransform_transform(this.h, (C.double)(value)))
 }
 
 func (this *QwtPowerTransform) InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPowerTransform_invTransform(this.h, (C.double)(value)))
 }
 
 func (this *QwtPowerTransform) Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtPowerTransform_copy(this.h))
 }
 
 func (this *QwtPowerTransform) callVirtualBase_Transform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtPowerTransform_virtualbase_transform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -666,6 +733,7 @@ func miqt_exec_callback_QwtPowerTransform_transform(self *C.QwtPowerTransform, c
 }
 
 func (this *QwtPowerTransform) callVirtualBase_InvTransform(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtPowerTransform_virtualbase_invTransform(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -694,6 +762,7 @@ func miqt_exec_callback_QwtPowerTransform_invTransform(self *C.QwtPowerTransform
 }
 
 func (this *QwtPowerTransform) callVirtualBase_Copy() *QwtTransform {
+	defer runtime.KeepAlive(this)
 
 	return newQwtTransform(C.QwtPowerTransform_virtualbase_copy(unsafe.Pointer(this.h)))
 
@@ -713,12 +782,14 @@ func miqt_exec_callback_QwtPowerTransform_copy(self *C.QwtPowerTransform, cb C.i
 	}
 
 	virtualReturn := gofunc((&QwtPowerTransform{h: self}).callVirtualBase_Copy)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QwtPowerTransform) callVirtualBase_Bounded(value float64) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QwtPowerTransform_virtualbase_bounded(unsafe.Pointer(this.h), (C.double)(value)))
 
@@ -758,8 +829,9 @@ func (this *QwtPowerTransform) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPowerTransform{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPowerTransform) {
-		C.QwtPowerTransform_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPowerTransform_delete((*C.QwtPowerTransform)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

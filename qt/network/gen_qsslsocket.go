@@ -34,8 +34,15 @@ const (
 
 type QSslSocket struct {
 	h  *C.QSslSocket
-	gc *[1]*C.QSslSocket
+	gc *[1]unsafe.Pointer
 	*QTcpSocket
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslSocket) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QTcpSocket.miqtSetGC(gc)
 }
 
 func (this *QSslSocket) cPointer() *C.QSslSocket {
@@ -77,15 +84,18 @@ func NewQSslSocket() *QSslSocket {
 
 // NewQSslSocket2 constructs a new QSslSocket object.
 func NewQSslSocket2(parent *qt.QObject) *QSslSocket {
+	defer runtime.KeepAlive(parent)
 
 	return newQSslSocket(C.QSslSocket_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSslSocket) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSslSocket_metaObject(this.h)))
 }
 
 func (this *QSslSocket) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSslSocket_metacast(this.h, param1_Cstring))
@@ -110,10 +120,12 @@ func QSslSocket_TrUtf8(s string) string {
 }
 
 func (this *QSslSocket) Resume() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_resume(this.h)
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted(hostName string, port uint16) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -122,6 +134,7 @@ func (this *QSslSocket) ConnectToHostEncrypted(hostName string, port uint16) {
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted2(hostName string, port uint16, sslPeerName string) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -134,10 +147,12 @@ func (this *QSslSocket) ConnectToHostEncrypted2(hostName string, port uint16, ss
 }
 
 func (this *QSslSocket) SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt.QIODevice__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 }
 
 func (this *QSslSocket) ConnectToHost(hostName string, port uint16, openMode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -146,52 +161,65 @@ func (this *QSslSocket) ConnectToHost(hostName string, port uint16, openMode qt.
 }
 
 func (this *QSslSocket) DisconnectFromHost() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_disconnectFromHost(this.h)
 }
 
 func (this *QSslSocket) SetSocketOption(option QAbstractSocket__SocketOption, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QSslSocket_setSocketOption(this.h, (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QSslSocket) SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSslSocket_socketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) Mode() QSslSocket__SslMode {
+	defer runtime.KeepAlive(this)
 	return (QSslSocket__SslMode)(C.QSslSocket_mode(this.h))
 }
 
 func (this *QSslSocket) IsEncrypted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_isEncrypted(this.h))
 }
 
 func (this *QSslSocket) Protocol() QSsl__SslProtocol {
+	defer runtime.KeepAlive(this)
 	return (QSsl__SslProtocol)(C.QSslSocket_protocol(this.h))
 }
 
 func (this *QSslSocket) SetProtocol(protocol QSsl__SslProtocol) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_setProtocol(this.h, (C.int)(protocol))
 }
 
 func (this *QSslSocket) PeerVerifyMode() QSslSocket__PeerVerifyMode {
+	defer runtime.KeepAlive(this)
 	return (QSslSocket__PeerVerifyMode)(C.QSslSocket_peerVerifyMode(this.h))
 }
 
 func (this *QSslSocket) SetPeerVerifyMode(mode QSslSocket__PeerVerifyMode) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_setPeerVerifyMode(this.h, (C.int)(mode))
 }
 
 func (this *QSslSocket) PeerVerifyDepth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSslSocket_peerVerifyDepth(this.h))
 }
 
 func (this *QSslSocket) SetPeerVerifyDepth(depth int) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_setPeerVerifyDepth(this.h, (C.int)(depth))
 }
 
 func (this *QSslSocket) PeerVerifyName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslSocket_peerVerifyName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -199,6 +227,7 @@ func (this *QSslSocket) PeerVerifyName() string {
 }
 
 func (this *QSslSocket) SetPeerVerifyName(hostName string) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -207,56 +236,71 @@ func (this *QSslSocket) SetPeerVerifyName(hostName string) {
 }
 
 func (this *QSslSocket) BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QSslSocket_bytesAvailable(this.h))
 }
 
 func (this *QSslSocket) BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QSslSocket_bytesToWrite(this.h))
 }
 
 func (this *QSslSocket) CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_canReadLine(this.h))
 }
 
 func (this *QSslSocket) Close() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_close(this.h)
 }
 
 func (this *QSslSocket) AtEnd() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_atEnd(this.h))
 }
 
 func (this *QSslSocket) Flush() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_flush(this.h))
 }
 
 func (this *QSslSocket) Abort() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_abort(this.h)
 }
 
 func (this *QSslSocket) SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QSslSocket) EncryptedBytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QSslSocket_encryptedBytesAvailable(this.h))
 }
 
 func (this *QSslSocket) EncryptedBytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QSslSocket_encryptedBytesToWrite(this.h))
 }
 
 func (this *QSslSocket) SslConfiguration() *QSslConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslConfiguration(C.QSslSocket_sslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) SetSslConfiguration(config *QSslConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(config)
 	C.QSslSocket_setSslConfiguration(this.h, config.cPointer())
 }
 
 func (this *QSslSocket) SetLocalCertificateChain(localChain []QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(localChain)
 	localChain_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(localChain))))
 	defer C.free(unsafe.Pointer(localChain_CArray_ptr))
 	localChain_CArray := unsafe.Slice(localChain_CArray_ptr, len(localChain))
@@ -268,6 +312,7 @@ func (this *QSslSocket) SetLocalCertificateChain(localChain []QSslCertificate) {
 }
 
 func (this *QSslSocket) LocalCertificateChain() []QSslCertificate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_localCertificateChain(this.h)
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -280,10 +325,13 @@ func (this *QSslSocket) LocalCertificateChain() []QSslCertificate {
 }
 
 func (this *QSslSocket) SetLocalCertificate(certificate *QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificate)
 	C.QSslSocket_setLocalCertificate(this.h, certificate.cPointer())
 }
 
 func (this *QSslSocket) SetLocalCertificateWithFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -292,18 +340,21 @@ func (this *QSslSocket) SetLocalCertificateWithFileName(fileName string) {
 }
 
 func (this *QSslSocket) LocalCertificate() *QSslCertificate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCertificate(C.QSslSocket_localCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) PeerCertificate() *QSslCertificate {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCertificate(C.QSslSocket_peerCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) PeerCertificateChain() []QSslCertificate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_peerCertificateChain(this.h)
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -316,16 +367,19 @@ func (this *QSslSocket) PeerCertificateChain() []QSslCertificate {
 }
 
 func (this *QSslSocket) SessionCipher() *QSslCipher {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslCipher(C.QSslSocket_sessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) SessionProtocol() QSsl__SslProtocol {
+	defer runtime.KeepAlive(this)
 	return (QSsl__SslProtocol)(C.QSslSocket_sessionProtocol(this.h))
 }
 
 func (this *QSslSocket) OcspResponses() []QOcspResponse {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_ocspResponses(this.h)
 	_ret := make([]QOcspResponse, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QOcspResponse)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -338,10 +392,13 @@ func (this *QSslSocket) OcspResponses() []QOcspResponse {
 }
 
 func (this *QSslSocket) SetPrivateKey(key *QSslKey) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(key)
 	C.QSslSocket_setPrivateKey(this.h, key.cPointer())
 }
 
 func (this *QSslSocket) SetPrivateKeyWithFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -350,12 +407,14 @@ func (this *QSslSocket) SetPrivateKeyWithFileName(fileName string) {
 }
 
 func (this *QSslSocket) PrivateKey() *QSslKey {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslKey(C.QSslSocket_privateKey(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) Ciphers() []QSslCipher {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_ciphers(this.h)
 	_ret := make([]QSslCipher, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCipher)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -368,6 +427,8 @@ func (this *QSslSocket) Ciphers() []QSslCipher {
 }
 
 func (this *QSslSocket) SetCiphers(ciphers []QSslCipher) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(ciphers)
 	ciphers_CArray_ptr := (**C.QSslCipher)(C.malloc(C.size_t(8 * len(ciphers))))
 	defer C.free(unsafe.Pointer(ciphers_CArray_ptr))
 	ciphers_CArray := unsafe.Slice(ciphers_CArray_ptr, len(ciphers))
@@ -379,6 +440,7 @@ func (this *QSslSocket) SetCiphers(ciphers []QSslCipher) {
 }
 
 func (this *QSslSocket) SetCiphersWithCiphers(ciphers string) {
+	defer runtime.KeepAlive(this)
 	ciphers_ms := C.struct_miqt_string{}
 	ciphers_ms.data = C.CString(ciphers)
 	ciphers_ms.len = C.size_t(len(ciphers))
@@ -387,6 +449,7 @@ func (this *QSslSocket) SetCiphersWithCiphers(ciphers string) {
 }
 
 func QSslSocket_SetDefaultCiphers(ciphers []QSslCipher) {
+	defer runtime.KeepAlive(ciphers)
 	ciphers_CArray_ptr := (**C.QSslCipher)(C.malloc(C.size_t(8 * len(ciphers))))
 	defer C.free(unsafe.Pointer(ciphers_CArray_ptr))
 	ciphers_CArray := unsafe.Slice(ciphers_CArray_ptr, len(ciphers))
@@ -422,6 +485,7 @@ func QSslSocket_SupportedCiphers() []QSslCipher {
 }
 
 func (this *QSslSocket) AddCaCertificates(path string) bool {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -430,10 +494,14 @@ func (this *QSslSocket) AddCaCertificates(path string) bool {
 }
 
 func (this *QSslSocket) AddCaCertificate(certificate *QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificate)
 	C.QSslSocket_addCaCertificate(this.h, certificate.cPointer())
 }
 
 func (this *QSslSocket) AddCaCertificatesWithCertificates(certificates []QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificates)
 	certificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificates))))
 	defer C.free(unsafe.Pointer(certificates_CArray_ptr))
 	certificates_CArray := unsafe.Slice(certificates_CArray_ptr, len(certificates))
@@ -445,6 +513,8 @@ func (this *QSslSocket) AddCaCertificatesWithCertificates(certificates []QSslCer
 }
 
 func (this *QSslSocket) SetCaCertificates(certificates []QSslCertificate) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(certificates)
 	certificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificates))))
 	defer C.free(unsafe.Pointer(certificates_CArray_ptr))
 	certificates_CArray := unsafe.Slice(certificates_CArray_ptr, len(certificates))
@@ -456,6 +526,7 @@ func (this *QSslSocket) SetCaCertificates(certificates []QSslCertificate) {
 }
 
 func (this *QSslSocket) CaCertificates() []QSslCertificate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_caCertificates(this.h)
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -476,10 +547,12 @@ func QSslSocket_AddDefaultCaCertificates(path string) bool {
 }
 
 func QSslSocket_AddDefaultCaCertificate(certificate *QSslCertificate) {
+	defer runtime.KeepAlive(certificate)
 	C.QSslSocket_addDefaultCaCertificate(certificate.cPointer())
 }
 
 func QSslSocket_AddDefaultCaCertificatesWithCertificates(certificates []QSslCertificate) {
+	defer runtime.KeepAlive(certificates)
 	certificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificates))))
 	defer C.free(unsafe.Pointer(certificates_CArray_ptr))
 	certificates_CArray := unsafe.Slice(certificates_CArray_ptr, len(certificates))
@@ -491,6 +564,7 @@ func QSslSocket_AddDefaultCaCertificatesWithCertificates(certificates []QSslCert
 }
 
 func QSslSocket_SetDefaultCaCertificates(certificates []QSslCertificate) {
+	defer runtime.KeepAlive(certificates)
 	certificates_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(certificates))))
 	defer C.free(unsafe.Pointer(certificates_CArray_ptr))
 	certificates_CArray := unsafe.Slice(certificates_CArray_ptr, len(certificates))
@@ -526,26 +600,32 @@ func QSslSocket_SystemCaCertificates() []QSslCertificate {
 }
 
 func (this *QSslSocket) WaitForConnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForConnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QSslSocket) WaitForEncrypted() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForEncrypted(this.h))
 }
 
 func (this *QSslSocket) WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QSslSocket) WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QSslSocket) WaitForDisconnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForDisconnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QSslSocket) SslErrors() []QSslError {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_sslErrors(this.h)
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -558,6 +638,7 @@ func (this *QSslSocket) SslErrors() []QSslError {
 }
 
 func (this *QSslSocket) SslHandshakeErrors() []QSslError {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSslSocket_sslHandshakeErrors(this.h)
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -596,6 +677,8 @@ func QSslSocket_SslLibraryBuildVersionString() string {
 }
 
 func (this *QSslSocket) IgnoreSslErrors(errors []QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
 	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
@@ -607,18 +690,22 @@ func (this *QSslSocket) IgnoreSslErrors(errors []QSslError) {
 }
 
 func (this *QSslSocket) StartClientEncryption() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_startClientEncryption(this.h)
 }
 
 func (this *QSslSocket) StartServerEncryption() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_startServerEncryption(this.h)
 }
 
 func (this *QSslSocket) IgnoreSslErrors2() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_ignoreSslErrors2(this.h)
 }
 
 func (this *QSslSocket) Encrypted() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_encrypted(this.h)
 }
 func (this *QSslSocket) OnEncrypted(slot func()) {
@@ -636,6 +723,8 @@ func miqt_exec_callback_QSslSocket_encrypted(cb C.intptr_t) {
 }
 
 func (this *QSslSocket) PeerVerifyError(error *QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(error)
 	C.QSslSocket_peerVerifyError(this.h, error.cPointer())
 }
 func (this *QSslSocket) OnPeerVerifyError(slot func(error *QSslError)) {
@@ -656,6 +745,8 @@ func miqt_exec_callback_QSslSocket_peerVerifyError(cb C.intptr_t, error *C.QSslE
 }
 
 func (this *QSslSocket) SslErrorsWithErrors(errors []QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
 	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
@@ -691,6 +782,7 @@ func miqt_exec_callback_QSslSocket_sslErrorsWithErrors(cb C.intptr_t, errors C.s
 }
 
 func (this *QSslSocket) ModeChanged(newMode QSslSocket__SslMode) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_modeChanged(this.h, (C.int)(newMode))
 }
 func (this *QSslSocket) OnModeChanged(slot func(newMode QSslSocket__SslMode)) {
@@ -711,6 +803,7 @@ func miqt_exec_callback_QSslSocket_modeChanged(cb C.intptr_t, newMode C.int) {
 }
 
 func (this *QSslSocket) EncryptedBytesWritten(totalBytes int64) {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_encryptedBytesWritten(this.h, (C.longlong)(totalBytes))
 }
 func (this *QSslSocket) OnEncryptedBytesWritten(slot func(totalBytes int64)) {
@@ -731,6 +824,8 @@ func miqt_exec_callback_QSslSocket_encryptedBytesWritten(cb C.intptr_t, totalByt
 }
 
 func (this *QSslSocket) PreSharedKeyAuthenticationRequired(authenticator *QSslPreSharedKeyAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(authenticator)
 	C.QSslSocket_preSharedKeyAuthenticationRequired(this.h, authenticator.cPointer())
 }
 func (this *QSslSocket) OnPreSharedKeyAuthenticationRequired(slot func(authenticator *QSslPreSharedKeyAuthenticator)) {
@@ -751,6 +846,7 @@ func miqt_exec_callback_QSslSocket_preSharedKeyAuthenticationRequired(cb C.intpt
 }
 
 func (this *QSslSocket) NewSessionTicketReceived() {
+	defer runtime.KeepAlive(this)
 	C.QSslSocket_newSessionTicketReceived(this.h)
 }
 func (this *QSslSocket) OnNewSessionTicketReceived(slot func()) {
@@ -812,6 +908,7 @@ func QSslSocket_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted3(hostName string, port uint16, mode qt.QIODevice__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -820,6 +917,7 @@ func (this *QSslSocket) ConnectToHostEncrypted3(hostName string, port uint16, mo
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -828,6 +926,7 @@ func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mo
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -840,6 +939,7 @@ func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, ss
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -852,6 +952,7 @@ func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, ss
 }
 
 func (this *QSslSocket) SetLocalCertificate2(fileName string, format QSsl__EncodingFormat) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -860,6 +961,7 @@ func (this *QSslSocket) SetLocalCertificate2(fileName string, format QSsl__Encod
 }
 
 func (this *QSslSocket) SetPrivateKey2(fileName string, algorithm QSsl__KeyAlgorithm) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -868,6 +970,7 @@ func (this *QSslSocket) SetPrivateKey2(fileName string, algorithm QSsl__KeyAlgor
 }
 
 func (this *QSslSocket) SetPrivateKey3(fileName string, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -876,6 +979,7 @@ func (this *QSslSocket) SetPrivateKey3(fileName string, algorithm QSsl__KeyAlgor
 }
 
 func (this *QSslSocket) SetPrivateKey4(fileName string, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, passPhrase []byte) {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -891,6 +995,7 @@ func (this *QSslSocket) SetPrivateKey4(fileName string, algorithm QSsl__KeyAlgor
 }
 
 func (this *QSslSocket) AddCaCertificates2(path string, format QSsl__EncodingFormat) bool {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -899,6 +1004,7 @@ func (this *QSslSocket) AddCaCertificates2(path string, format QSsl__EncodingFor
 }
 
 func (this *QSslSocket) AddCaCertificates3(path string, format QSsl__EncodingFormat, syntax qt.QRegExp__PatternSyntax) bool {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -923,11 +1029,13 @@ func QSslSocket_AddDefaultCaCertificates3(path string, format QSsl__EncodingForm
 }
 
 func (this *QSslSocket) WaitForEncryptedWithMsecs(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslSocket_waitForEncryptedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // SetSocketState can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetSocketState(state QAbstractSocket__SocketState) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setSocketState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -940,6 +1048,7 @@ func (this *QSslSocket) SetSocketState(state QAbstractSocket__SocketState) {
 
 // SetSocketError can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetSocketError(socketError QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setSocketError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(socketError))
@@ -952,6 +1061,7 @@ func (this *QSslSocket) SetSocketError(socketError QAbstractSocket__SocketError)
 
 // SetLocalPort can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetLocalPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -964,6 +1074,8 @@ func (this *QSslSocket) SetLocalPort(port uint16) {
 
 // SetLocalAddress can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetLocalAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setLocalAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -976,6 +1088,7 @@ func (this *QSslSocket) SetLocalAddress(address *QHostAddress) {
 
 // SetPeerPort can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetPeerPort(port uint16) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
@@ -988,6 +1101,8 @@ func (this *QSslSocket) SetPeerPort(port uint16) {
 
 // SetPeerAddress can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetPeerAddress(address *QHostAddress) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(address)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setPeerAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
@@ -1000,6 +1115,7 @@ func (this *QSslSocket) SetPeerAddress(address *QHostAddress) {
 
 // SetPeerName can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetPeerName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1016,6 +1132,7 @@ func (this *QSslSocket) SetPeerName(name string) {
 
 // SetOpenMode can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetOpenMode(openMode qt.QIODevice__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -1028,6 +1145,7 @@ func (this *QSslSocket) SetOpenMode(openMode qt.QIODevice__OpenModeFlag) {
 
 // SetErrorString can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -1044,6 +1162,7 @@ func (this *QSslSocket) SetErrorString(errorString string) {
 
 // Sender can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSslSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1058,6 +1177,7 @@ func (this *QSslSocket) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSslSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1072,6 +1192,7 @@ func (this *QSslSocket) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1088,6 +1209,8 @@ func (this *QSslSocket) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSslSocket that was directly constructed.
 func (this *QSslSocket) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSslSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -1101,6 +1224,7 @@ func (this *QSslSocket) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QSslSocket) callVirtualBase_Resume() {
+	defer runtime.KeepAlive(this)
 
 	C.QSslSocket_virtualbase_resume(unsafe.Pointer(this.h))
 
@@ -1124,6 +1248,7 @@ func miqt_exec_callback_QSslSocket_resume(self *C.QSslSocket, cb C.intptr_t) {
 }
 
 func (this *QSslSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt.QIODevice__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_setSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
@@ -1156,6 +1281,7 @@ func miqt_exec_callback_QSslSocket_setSocketDescriptor(self *C.QSslSocket, cb C.
 }
 
 func (this *QSslSocket) callVirtualBase_ConnectToHost(hostName string, port uint16, openMode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -1194,6 +1320,7 @@ func miqt_exec_callback_QSslSocket_connectToHost(self *C.QSslSocket, cb C.intptr
 }
 
 func (this *QSslSocket) callVirtualBase_DisconnectFromHost() {
+	defer runtime.KeepAlive(this)
 
 	C.QSslSocket_virtualbase_disconnectFromHost(unsafe.Pointer(this.h))
 
@@ -1217,6 +1344,8 @@ func miqt_exec_callback_QSslSocket_disconnectFromHost(self *C.QSslSocket, cb C.i
 }
 
 func (this *QSslSocket) callVirtualBase_SetSocketOption(option QAbstractSocket__SocketOption, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QSslSocket_virtualbase_setSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 
@@ -1245,6 +1374,7 @@ func miqt_exec_callback_QSslSocket_setSocketOption(self *C.QSslSocket, cb C.intp
 }
 
 func (this *QSslSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSslSocket_virtualbase_socketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1269,12 +1399,14 @@ func miqt_exec_callback_QSslSocket_socketOption(self *C.QSslSocket, cb C.intptr_
 	slotval1 := (QAbstractSocket__SocketOption)(option)
 
 	virtualReturn := gofunc((&QSslSocket{h: self}).callVirtualBase_SocketOption, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QSslSocket_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSslSocket) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSslSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -1300,6 +1432,7 @@ func miqt_exec_callback_QSslSocket_bytesAvailable(self *C.QSslSocket, cb C.intpt
 }
 
 func (this *QSslSocket) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSslSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -1325,6 +1458,7 @@ func miqt_exec_callback_QSslSocket_bytesToWrite(self *C.QSslSocket, cb C.intptr_
 }
 
 func (this *QSslSocket) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -1350,6 +1484,7 @@ func miqt_exec_callback_QSslSocket_canReadLine(self *C.QSslSocket, cb C.intptr_t
 }
 
 func (this *QSslSocket) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QSslSocket_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -1373,6 +1508,7 @@ func miqt_exec_callback_QSslSocket_close(self *C.QSslSocket, cb C.intptr_t) {
 }
 
 func (this *QSslSocket) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -1398,6 +1534,7 @@ func miqt_exec_callback_QSslSocket_atEnd(self *C.QSslSocket, cb C.intptr_t) C.bo
 }
 
 func (this *QSslSocket) callVirtualBase_SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 
 	C.QSslSocket_virtualbase_setReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
 
@@ -1424,6 +1561,7 @@ func miqt_exec_callback_QSslSocket_setReadBufferSize(self *C.QSslSocket, cb C.in
 }
 
 func (this *QSslSocket) callVirtualBase_WaitForConnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_waitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1452,6 +1590,7 @@ func miqt_exec_callback_QSslSocket_waitForConnected(self *C.QSslSocket, cb C.int
 }
 
 func (this *QSslSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1480,6 +1619,7 @@ func miqt_exec_callback_QSslSocket_waitForReadyRead(self *C.QSslSocket, cb C.int
 }
 
 func (this *QSslSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1508,6 +1648,7 @@ func miqt_exec_callback_QSslSocket_waitForBytesWritten(self *C.QSslSocket, cb C.
 }
 
 func (this *QSslSocket) callVirtualBase_WaitForDisconnected(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_waitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1536,6 +1677,7 @@ func miqt_exec_callback_QSslSocket_waitForDisconnected(self *C.QSslSocket, cb C.
 }
 
 func (this *QSslSocket) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1569,6 +1711,7 @@ func miqt_exec_callback_QSslSocket_readData(self *C.QSslSocket, cb C.intptr_t, d
 }
 
 func (this *QSslSocket) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1602,6 +1745,7 @@ func miqt_exec_callback_QSslSocket_writeData(self *C.QSslSocket, cb C.intptr_t, 
 }
 
 func (this *QSslSocket) callVirtualBase_SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 
 	return (uintptr)(C.QSslSocket_virtualbase_socketDescriptor(unsafe.Pointer(this.h)))
 
@@ -1627,6 +1771,7 @@ func miqt_exec_callback_QSslSocket_socketDescriptor(self *C.QSslSocket, cb C.int
 }
 
 func (this *QSslSocket) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -1652,6 +1797,7 @@ func miqt_exec_callback_QSslSocket_isSequential(self *C.QSslSocket, cb C.intptr_
 }
 
 func (this *QSslSocket) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1685,6 +1831,7 @@ func miqt_exec_callback_QSslSocket_readLineData(self *C.QSslSocket, cb C.intptr_
 }
 
 func (this *QSslSocket) callVirtualBase_Open(mode qt.QIODevice__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
@@ -1713,6 +1860,7 @@ func miqt_exec_callback_QSslSocket_open(self *C.QSslSocket, cb C.intptr_t, mode 
 }
 
 func (this *QSslSocket) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSslSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -1738,6 +1886,7 @@ func miqt_exec_callback_QSslSocket_pos(self *C.QSslSocket, cb C.intptr_t) C.long
 }
 
 func (this *QSslSocket) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSslSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -1763,6 +1912,7 @@ func miqt_exec_callback_QSslSocket_size(self *C.QSslSocket, cb C.intptr_t) C.lon
 }
 
 func (this *QSslSocket) callVirtualBase_Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -1791,6 +1941,7 @@ func miqt_exec_callback_QSslSocket_seek(self *C.QSslSocket, cb C.intptr_t, pos C
 }
 
 func (this *QSslSocket) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -1816,6 +1967,8 @@ func miqt_exec_callback_QSslSocket_reset(self *C.QSslSocket, cb C.intptr_t) C.bo
 }
 
 func (this *QSslSocket) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSslSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1844,6 +1997,9 @@ func miqt_exec_callback_QSslSocket_event(self *C.QSslSocket, cb C.intptr_t, even
 }
 
 func (this *QSslSocket) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSslSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1874,6 +2030,8 @@ func miqt_exec_callback_QSslSocket_eventFilter(self *C.QSslSocket, cb C.intptr_t
 }
 
 func (this *QSslSocket) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1900,6 +2058,8 @@ func miqt_exec_callback_QSslSocket_timerEvent(self *C.QSslSocket, cb C.intptr_t,
 }
 
 func (this *QSslSocket) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1926,6 +2086,8 @@ func miqt_exec_callback_QSslSocket_childEvent(self *C.QSslSocket, cb C.intptr_t,
 }
 
 func (this *QSslSocket) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1952,6 +2114,8 @@ func miqt_exec_callback_QSslSocket_customEvent(self *C.QSslSocket, cb C.intptr_t
 }
 
 func (this *QSslSocket) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSslSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1978,6 +2142,8 @@ func miqt_exec_callback_QSslSocket_connectNotify(self *C.QSslSocket, cb C.intptr
 }
 
 func (this *QSslSocket) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSslSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -2015,8 +2181,9 @@ func (this *QSslSocket) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslSocket{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslSocket) {
-		C.QSslSocket_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslSocket_delete((*C.QSslSocket)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

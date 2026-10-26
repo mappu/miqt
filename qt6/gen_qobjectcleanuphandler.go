@@ -16,8 +16,15 @@ import (
 
 type QObjectCleanupHandler struct {
 	h  *C.QObjectCleanupHandler
-	gc *[1]*C.QObjectCleanupHandler
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QObjectCleanupHandler) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QObjectCleanupHandler) cPointer() *C.QObjectCleanupHandler {
@@ -58,10 +65,12 @@ func NewQObjectCleanupHandler() *QObjectCleanupHandler {
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QObjectCleanupHandler_metaObject(this.h))
 }
 
 func (this *QObjectCleanupHandler) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QObjectCleanupHandler_metacast(this.h, param1_Cstring))
@@ -77,18 +86,24 @@ func QObjectCleanupHandler_Tr(s string) string {
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	return newQObject(C.QObjectCleanupHandler_add(this.h, object.cPointer()))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	C.QObjectCleanupHandler_remove(this.h, object.cPointer())
 }
 
 func (this *QObjectCleanupHandler) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QObjectCleanupHandler_isEmpty(this.h))
 }
 
 func (this *QObjectCleanupHandler) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QObjectCleanupHandler_clear(this.h)
 }
 
@@ -116,6 +131,7 @@ func QObjectCleanupHandler_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QObjectCleanupHandler that was directly constructed.
 func (this *QObjectCleanupHandler) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QObjectCleanupHandler_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -130,6 +146,7 @@ func (this *QObjectCleanupHandler) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QObjectCleanupHandler that was directly constructed.
 func (this *QObjectCleanupHandler) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QObjectCleanupHandler_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -144,6 +161,7 @@ func (this *QObjectCleanupHandler) SenderSignalIndex() int {
 
 // Receivers can only be called from a QObjectCleanupHandler that was directly constructed.
 func (this *QObjectCleanupHandler) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -160,6 +178,8 @@ func (this *QObjectCleanupHandler) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QObjectCleanupHandler that was directly constructed.
 func (this *QObjectCleanupHandler) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QObjectCleanupHandler_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -173,6 +193,8 @@ func (this *QObjectCleanupHandler) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QObjectCleanupHandler_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -201,6 +223,9 @@ func miqt_exec_callback_QObjectCleanupHandler_event(self *C.QObjectCleanupHandle
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QObjectCleanupHandler_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -231,6 +256,8 @@ func miqt_exec_callback_QObjectCleanupHandler_eventFilter(self *C.QObjectCleanup
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QObjectCleanupHandler_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -257,6 +284,8 @@ func miqt_exec_callback_QObjectCleanupHandler_timerEvent(self *C.QObjectCleanupH
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QObjectCleanupHandler_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -283,6 +312,8 @@ func miqt_exec_callback_QObjectCleanupHandler_childEvent(self *C.QObjectCleanupH
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QObjectCleanupHandler_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -309,6 +340,8 @@ func miqt_exec_callback_QObjectCleanupHandler_customEvent(self *C.QObjectCleanup
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QObjectCleanupHandler_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -335,6 +368,8 @@ func miqt_exec_callback_QObjectCleanupHandler_connectNotify(self *C.QObjectClean
 }
 
 func (this *QObjectCleanupHandler) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QObjectCleanupHandler_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -372,8 +407,9 @@ func (this *QObjectCleanupHandler) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QObjectCleanupHandler{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QObjectCleanupHandler) {
-		C.QObjectCleanupHandler_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QObjectCleanupHandler_delete((*C.QObjectCleanupHandler)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

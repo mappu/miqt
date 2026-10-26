@@ -68,8 +68,15 @@ const (
 
 type QDialogButtonBox struct {
 	h  *C.QDialogButtonBox
-	gc *[1]*C.QDialogButtonBox
+	gc *[1]unsafe.Pointer
 	*QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDialogButtonBox) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QWidget.miqtSetGC(gc)
 }
 
 func (this *QDialogButtonBox) cPointer() *C.QDialogButtonBox {
@@ -105,6 +112,7 @@ func UnsafeNewQDialogButtonBox(h unsafe.Pointer) *QDialogButtonBox {
 
 // NewQDialogButtonBox constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox(parent *QWidget) *QDialogButtonBox {
+	defer runtime.KeepAlive(parent)
 
 	return newQDialogButtonBox(C.QDialogButtonBox_new(parent.cPointer()))
 }
@@ -135,27 +143,32 @@ func NewQDialogButtonBox5(buttons QDialogButtonBox__StandardButton, orientation 
 
 // NewQDialogButtonBox6 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButtonBox {
+	defer runtime.KeepAlive(parent)
 
 	return newQDialogButtonBox(C.QDialogButtonBox_new6((C.int)(orientation), parent.cPointer()))
 }
 
 // NewQDialogButtonBox7 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox7(buttons QDialogButtonBox__StandardButton, parent *QWidget) *QDialogButtonBox {
+	defer runtime.KeepAlive(parent)
 
 	return newQDialogButtonBox(C.QDialogButtonBox_new7((C.int)(buttons), parent.cPointer()))
 }
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox8(buttons QDialogButtonBox__StandardButton, orientation Orientation, parent *QWidget) *QDialogButtonBox {
+	defer runtime.KeepAlive(parent)
 
 	return newQDialogButtonBox(C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer()))
 }
 
 func (this *QDialogButtonBox) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDialogButtonBox_metaObject(this.h))
 }
 
 func (this *QDialogButtonBox) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDialogButtonBox_metacast(this.h, param1_Cstring))
@@ -180,18 +193,23 @@ func QDialogButtonBox_TrUtf8(s string) string {
 }
 
 func (this *QDialogButtonBox) SetOrientation(orientation Orientation) {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QDialogButtonBox) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QDialogButtonBox_orientation(this.h))
 }
 
 func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogButtonBox__ButtonRole) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QDialogButtonBox_addButton(this.h, button.cPointer(), (C.int)(role))
 }
 
 func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__ButtonRole) *QPushButton {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -200,18 +218,23 @@ func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__But
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
+	defer runtime.KeepAlive(this)
 	return newQPushButton(C.QDialogButtonBox_addButtonWithButton(this.h, (C.int)(button)))
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QDialogButtonBox_removeButton(this.h, button.cPointer())
 }
 
 func (this *QDialogButtonBox) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_clear(this.h)
 }
 
 func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDialogButtonBox_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractButton)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -222,34 +245,45 @@ func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 }
 
 func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonBox__ButtonRole {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	return (QDialogButtonBox__ButtonRole)(C.QDialogButtonBox_buttonRole(this.h, button.cPointer()))
 }
 
 func (this *QDialogButtonBox) SetStandardButtons(buttons QDialogButtonBox__StandardButton) {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_setStandardButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QDialogButtonBox) StandardButtons() QDialogButtonBox__StandardButton {
+	defer runtime.KeepAlive(this)
 	return (QDialogButtonBox__StandardButton)(C.QDialogButtonBox_standardButtons(this.h))
 }
 
 func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogButtonBox__StandardButton {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	return (QDialogButtonBox__StandardButton)(C.QDialogButtonBox_standardButton(this.h, button.cPointer()))
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
+	defer runtime.KeepAlive(this)
 	return newQPushButton(C.QDialogButtonBox_button(this.h, (C.int)(which)))
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_setCenterButtons(this.h, (C.bool)(center))
 }
 
 func (this *QDialogButtonBox) CenterButtons() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDialogButtonBox_centerButtons(this.h))
 }
 
 func (this *QDialogButtonBox) Clicked(button *QAbstractButton) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(button)
 	C.QDialogButtonBox_clicked(this.h, button.cPointer())
 }
 func (this *QDialogButtonBox) OnClicked(slot func(button *QAbstractButton)) {
@@ -270,6 +304,7 @@ func miqt_exec_callback_QDialogButtonBox_clicked(cb C.intptr_t, button *C.QAbstr
 }
 
 func (this *QDialogButtonBox) Accepted() {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_accepted(this.h)
 }
 func (this *QDialogButtonBox) OnAccepted(slot func()) {
@@ -287,6 +322,7 @@ func miqt_exec_callback_QDialogButtonBox_accepted(cb C.intptr_t) {
 }
 
 func (this *QDialogButtonBox) HelpRequested() {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_helpRequested(this.h)
 }
 func (this *QDialogButtonBox) OnHelpRequested(slot func()) {
@@ -304,6 +340,7 @@ func miqt_exec_callback_QDialogButtonBox_helpRequested(cb C.intptr_t) {
 }
 
 func (this *QDialogButtonBox) Rejected() {
+	defer runtime.KeepAlive(this)
 	C.QDialogButtonBox_rejected(this.h)
 }
 func (this *QDialogButtonBox) OnRejected(slot func()) {
@@ -366,6 +403,7 @@ func QDialogButtonBox_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDialogButtonBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -378,6 +416,7 @@ func (this *QDialogButtonBox) UpdateMicroFocus() {
 
 // Create can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDialogButtonBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -390,6 +429,7 @@ func (this *QDialogButtonBox) Create() {
 
 // Destroy can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDialogButtonBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -402,6 +442,7 @@ func (this *QDialogButtonBox) Destroy() {
 
 // FocusNextChild can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDialogButtonBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -416,6 +457,7 @@ func (this *QDialogButtonBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDialogButtonBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -430,6 +472,7 @@ func (this *QDialogButtonBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDialogButtonBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -444,6 +487,7 @@ func (this *QDialogButtonBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDialogButtonBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -458,6 +502,7 @@ func (this *QDialogButtonBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -474,6 +519,8 @@ func (this *QDialogButtonBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDialogButtonBox that was directly constructed.
 func (this *QDialogButtonBox) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDialogButtonBox_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -487,6 +534,8 @@ func (this *QDialogButtonBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ChangeEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -513,6 +562,8 @@ func miqt_exec_callback_QDialogButtonBox_changeEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDialogButtonBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -541,6 +592,7 @@ func miqt_exec_callback_QDialogButtonBox_event(self *C.QDialogButtonBox, cb C.in
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDialogButtonBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -566,6 +618,7 @@ func miqt_exec_callback_QDialogButtonBox_devType(self *C.QDialogButtonBox, cb C.
 }
 
 func (this *QDialogButtonBox) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QDialogButtonBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -592,6 +645,7 @@ func miqt_exec_callback_QDialogButtonBox_setVisible(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDialogButtonBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -613,12 +667,14 @@ func miqt_exec_callback_QDialogButtonBox_sizeHint(self *C.QDialogButtonBox, cb C
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDialogButtonBox_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDialogButtonBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -640,12 +696,14 @@ func miqt_exec_callback_QDialogButtonBox_minimumSizeHint(self *C.QDialogButtonBo
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDialogButtonBox_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDialogButtonBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -674,6 +732,7 @@ func miqt_exec_callback_QDialogButtonBox_heightForWidth(self *C.QDialogButtonBox
 }
 
 func (this *QDialogButtonBox) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDialogButtonBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -699,6 +758,7 @@ func miqt_exec_callback_QDialogButtonBox_hasHeightForWidth(self *C.QDialogButton
 }
 
 func (this *QDialogButtonBox) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDialogButtonBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -718,12 +778,15 @@ func miqt_exec_callback_QDialogButtonBox_paintEngine(self *C.QDialogButtonBox, c
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -750,6 +813,8 @@ func miqt_exec_callback_QDialogButtonBox_mousePressEvent(self *C.QDialogButtonBo
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -776,6 +841,8 @@ func miqt_exec_callback_QDialogButtonBox_mouseReleaseEvent(self *C.QDialogButton
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -802,6 +869,8 @@ func miqt_exec_callback_QDialogButtonBox_mouseDoubleClickEvent(self *C.QDialogBu
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -828,6 +897,8 @@ func miqt_exec_callback_QDialogButtonBox_mouseMoveEvent(self *C.QDialogButtonBox
 }
 
 func (this *QDialogButtonBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -854,6 +925,8 @@ func miqt_exec_callback_QDialogButtonBox_wheelEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -880,6 +953,8 @@ func miqt_exec_callback_QDialogButtonBox_keyPressEvent(self *C.QDialogButtonBox,
 }
 
 func (this *QDialogButtonBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -906,6 +981,8 @@ func miqt_exec_callback_QDialogButtonBox_keyReleaseEvent(self *C.QDialogButtonBo
 }
 
 func (this *QDialogButtonBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -932,6 +1009,8 @@ func miqt_exec_callback_QDialogButtonBox_focusInEvent(self *C.QDialogButtonBox, 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -958,6 +1037,8 @@ func miqt_exec_callback_QDialogButtonBox_focusOutEvent(self *C.QDialogButtonBox,
 }
 
 func (this *QDialogButtonBox) callVirtualBase_EnterEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -984,6 +1065,8 @@ func miqt_exec_callback_QDialogButtonBox_enterEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1010,6 +1093,8 @@ func miqt_exec_callback_QDialogButtonBox_leaveEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1036,6 +1121,8 @@ func miqt_exec_callback_QDialogButtonBox_paintEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1062,6 +1149,8 @@ func miqt_exec_callback_QDialogButtonBox_moveEvent(self *C.QDialogButtonBox, cb 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1088,6 +1177,8 @@ func miqt_exec_callback_QDialogButtonBox_resizeEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1114,6 +1205,8 @@ func miqt_exec_callback_QDialogButtonBox_closeEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1140,6 +1233,8 @@ func miqt_exec_callback_QDialogButtonBox_contextMenuEvent(self *C.QDialogButtonB
 }
 
 func (this *QDialogButtonBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1166,6 +1261,8 @@ func miqt_exec_callback_QDialogButtonBox_tabletEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1192,6 +1289,8 @@ func miqt_exec_callback_QDialogButtonBox_actionEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1218,6 +1317,8 @@ func miqt_exec_callback_QDialogButtonBox_dragEnterEvent(self *C.QDialogButtonBox
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1244,6 +1345,8 @@ func miqt_exec_callback_QDialogButtonBox_dragMoveEvent(self *C.QDialogButtonBox,
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1270,6 +1373,8 @@ func miqt_exec_callback_QDialogButtonBox_dragLeaveEvent(self *C.QDialogButtonBox
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1296,6 +1401,8 @@ func miqt_exec_callback_QDialogButtonBox_dropEvent(self *C.QDialogButtonBox, cb 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1322,6 +1429,8 @@ func miqt_exec_callback_QDialogButtonBox_showEvent(self *C.QDialogButtonBox, cb 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1348,6 +1457,7 @@ func miqt_exec_callback_QDialogButtonBox_hideEvent(self *C.QDialogButtonBox, cb 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1389,6 +1499,7 @@ func miqt_exec_callback_QDialogButtonBox_nativeEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDialogButtonBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1417,6 +1528,8 @@ func miqt_exec_callback_QDialogButtonBox_metric(self *C.QDialogButtonBox, cb C.i
 }
 
 func (this *QDialogButtonBox) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QDialogButtonBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1443,6 +1556,8 @@ func miqt_exec_callback_QDialogButtonBox_initPainter(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDialogButtonBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1465,12 +1580,14 @@ func miqt_exec_callback_QDialogButtonBox_redirected(self *C.QDialogButtonBox, cb
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDialogButtonBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1490,12 +1607,15 @@ func miqt_exec_callback_QDialogButtonBox_sharedPainter(self *C.QDialogButtonBox,
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QDialogButtonBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -1522,6 +1642,7 @@ func miqt_exec_callback_QDialogButtonBox_inputMethodEvent(self *C.QDialogButtonB
 }
 
 func (this *QDialogButtonBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDialogButtonBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1546,12 +1667,14 @@ func miqt_exec_callback_QDialogButtonBox_inputMethodQuery(self *C.QDialogButtonB
 	slotval1 := (InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QDialogButtonBox_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QDialogButtonBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDialogButtonBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1580,6 +1703,9 @@ func miqt_exec_callback_QDialogButtonBox_focusNextPrevChild(self *C.QDialogButto
 }
 
 func (this *QDialogButtonBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDialogButtonBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1610,6 +1736,8 @@ func miqt_exec_callback_QDialogButtonBox_eventFilter(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1636,6 +1764,8 @@ func miqt_exec_callback_QDialogButtonBox_timerEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1662,6 +1792,8 @@ func miqt_exec_callback_QDialogButtonBox_childEvent(self *C.QDialogButtonBox, cb
 }
 
 func (this *QDialogButtonBox) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QDialogButtonBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1688,6 +1820,8 @@ func miqt_exec_callback_QDialogButtonBox_customEvent(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDialogButtonBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1714,6 +1848,8 @@ func miqt_exec_callback_QDialogButtonBox_connectNotify(self *C.QDialogButtonBox,
 }
 
 func (this *QDialogButtonBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QDialogButtonBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1751,8 +1887,9 @@ func (this *QDialogButtonBox) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDialogButtonBox{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDialogButtonBox) {
-		C.QDialogButtonBox_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDialogButtonBox_delete((*C.QDialogButtonBox)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

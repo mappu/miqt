@@ -24,7 +24,13 @@ const (
 
 type QSslDiffieHellmanParameters struct {
 	h  *C.QSslDiffieHellmanParameters
-	gc *[1]*C.QSslDiffieHellmanParameters
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslDiffieHellmanParameters) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSslDiffieHellmanParameters) cPointer() *C.QSslDiffieHellmanParameters {
@@ -63,6 +69,7 @@ func NewQSslDiffieHellmanParameters() *QSslDiffieHellmanParameters {
 
 // NewQSslDiffieHellmanParameters2 constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters2(other *QSslDiffieHellmanParameters) *QSslDiffieHellmanParameters {
+	defer runtime.KeepAlive(other)
 
 	return newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_new2(other.cPointer()))
 }
@@ -74,10 +81,14 @@ func QSslDiffieHellmanParameters_DefaultParameters() *QSslDiffieHellmanParameter
 }
 
 func (this *QSslDiffieHellmanParameters) OperatorAssign(other *QSslDiffieHellmanParameters) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslDiffieHellmanParameters_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslDiffieHellmanParameters) Swap(other *QSslDiffieHellmanParameters) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSslDiffieHellmanParameters_swap(this.h, other.cPointer())
 }
 
@@ -95,24 +106,29 @@ func QSslDiffieHellmanParameters_FromEncoded(encoded []byte) *QSslDiffieHellmanP
 }
 
 func QSslDiffieHellmanParameters_FromEncodedWithDevice(device *qt.QIODevice) *QSslDiffieHellmanParameters {
+	defer runtime.KeepAlive(device)
 	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncodedWithDevice((*C.QIODevice)(device.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslDiffieHellmanParameters) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslDiffieHellmanParameters_isEmpty(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSslDiffieHellmanParameters_isValid(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) Error() QSslDiffieHellmanParameters__Error {
+	defer runtime.KeepAlive(this)
 	return (QSslDiffieHellmanParameters__Error)(C.QSslDiffieHellmanParameters_error(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) ErrorString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSslDiffieHellmanParameters_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -133,6 +149,7 @@ func QSslDiffieHellmanParameters_FromEncoded2(encoded []byte, format QSsl__Encod
 }
 
 func QSslDiffieHellmanParameters_FromEncoded3(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
+	defer runtime.KeepAlive(device)
 	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded3((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -150,8 +167,9 @@ func (this *QSslDiffieHellmanParameters) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslDiffieHellmanParameters{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslDiffieHellmanParameters) {
-		C.QSslDiffieHellmanParameters_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslDiffieHellmanParameters_delete((*C.QSslDiffieHellmanParameters)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

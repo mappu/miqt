@@ -182,7 +182,9 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval5 = text_ms;
 		QRect* callback_return_value = miqt_exec_callback_QStyle_itemTextRect(this, handle__itemTextRect, sigval1, sigval2, sigval3, sigval4, sigval5);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text);
@@ -204,7 +206,9 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval3 = const_cast<QPixmap*>(&pixmap_ret);
 		QRect* callback_return_value = miqt_exec_callback_QStyle_itemPixmapRect(this, handle__itemPixmapRect, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QRect* QStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap);
@@ -278,7 +282,9 @@ public:
 		}
 
 		QPalette* callback_return_value = miqt_exec_callback_QStyle_standardPalette(this, handle__standardPalette);
-		return *callback_return_value;
+		QPalette callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPalette* QStyle_virtualbase_standardPalette(const void* self);
@@ -333,7 +339,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 		QRect* callback_return_value = miqt_exec_callback_QStyle_subElementRect(this, handle__subElementRect, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -390,7 +398,9 @@ public:
 		int sigval3 = static_cast<int>(sc_ret);
 		QWidget* sigval4 = (QWidget*) widget;
 		QRect* callback_return_value = miqt_exec_callback_QStyle_subControlRect(this, handle__subControlRect, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QRect callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -427,7 +437,9 @@ public:
 		QSize* sigval3 = const_cast<QSize*>(&contentsSize_ret);
 		QWidget* sigval4 = (QWidget*) w;
 		QSize* callback_return_value = miqt_exec_callback_QStyle_sizeFromContents(this, handle__sizeFromContents, sigval1, sigval2, sigval3, sigval4);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -462,7 +474,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) opt;
 		QWidget* sigval3 = (QWidget*) widget;
 		QPixmap* callback_return_value = miqt_exec_callback_QStyle_standardPixmap(this, handle__standardPixmap, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -479,7 +493,9 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 		QIcon* callback_return_value = miqt_exec_callback_QStyle_standardIcon(this, handle__standardIcon, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QIcon callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -498,7 +514,9 @@ public:
 		QPixmap* sigval2 = const_cast<QPixmap*>(&pixmap_ret);
 		QStyleOption* sigval3 = (QStyleOption*) opt;
 		QPixmap* callback_return_value = miqt_exec_callback_QStyle_generatedIconPixmap(this, handle__generatedIconPixmap, sigval1, sigval2, sigval3);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -1223,6 +1241,26 @@ bool QStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQStyle*>(self)->QStyle::disconnectNotify(*signal);
+}
+
+QRect* QStyle_virtualreturncopy_QRect(QRect* src) {
+	return new QRect(*src);
+}
+
+QPalette* QStyle_virtualreturncopy_QPalette(QPalette* src) {
+	return new QPalette(*src);
+}
+
+QSize* QStyle_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QPixmap* QStyle_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
+}
+
+QIcon* QStyle_virtualreturncopy_QIcon(QIcon* src) {
+	return new QIcon(*src);
 }
 
 QObject* QStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

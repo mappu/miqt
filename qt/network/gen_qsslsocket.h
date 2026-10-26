@@ -239,6 +239,7 @@ bool QSslSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSslSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSslSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QSslSocket_virtualreturncopy_QVariant(QVariant* src);
 
 void QSslSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QSslSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);

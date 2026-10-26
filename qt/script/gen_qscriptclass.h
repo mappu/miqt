@@ -60,6 +60,8 @@ bool QScriptClass_override_virtual_supportsExtension(void* self, intptr_t slot);
 bool QScriptClass_virtualbase_supportsExtension(const void* self, int extension);
 bool QScriptClass_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument);
+QScriptValue* QScriptClass_virtualreturncopy_QScriptValue(QScriptValue* src);
+QVariant* QScriptClass_virtualreturncopy_QVariant(QVariant* src);
 
 void QScriptClass_delete(QScriptClass* self);
 

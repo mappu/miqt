@@ -16,8 +16,15 @@ import (
 
 type QwtMathMLTextEngine struct {
 	h  *C.QwtMathMLTextEngine
-	gc *[1]*C.QwtMathMLTextEngine
+	gc *[1]unsafe.Pointer
 	*QwtTextEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtMathMLTextEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtTextEngine.miqtSetGC(gc)
 }
 
 func (this *QwtMathMLTextEngine) cPointer() *C.QwtMathMLTextEngine {
@@ -52,6 +59,8 @@ func UnsafeNewQwtMathMLTextEngine(h unsafe.Pointer) *QwtMathMLTextEngine {
 }
 
 func (this *QwtMathMLTextEngine) HeightForWidth(font *qt.QFont, flags int, text string, width float64) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -60,6 +69,8 @@ func (this *QwtMathMLTextEngine) HeightForWidth(font *qt.QFont, flags int, text 
 }
 
 func (this *QwtMathMLTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -70,6 +81,9 @@ func (this *QwtMathMLTextEngine) TextSize(font *qt.QFont, flags int, text string
 }
 
 func (this *QwtMathMLTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -78,6 +92,7 @@ func (this *QwtMathMLTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, fla
 }
 
 func (this *QwtMathMLTextEngine) MightRender(param1 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -86,6 +101,8 @@ func (this *QwtMathMLTextEngine) MightRender(param1 string) bool {
 }
 
 func (this *QwtMathMLTextEngine) TextMargins(param1 *qt.QFont, param2 string, left *float64, right *float64, top *float64, bottom *float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -94,6 +111,8 @@ func (this *QwtMathMLTextEngine) TextMargins(param1 *qt.QFont, param2 string, le
 }
 
 func (this *QwtMathMLTextEngine) OperatorAssign(param1 *QwtMathMLTextEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtMathMLTextEngine_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -109,8 +128,9 @@ func (this *QwtMathMLTextEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtMathMLTextEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtMathMLTextEngine) {
-		C.QwtMathMLTextEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtMathMLTextEngine_delete((*C.QwtMathMLTextEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

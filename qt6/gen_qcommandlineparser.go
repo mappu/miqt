@@ -29,7 +29,13 @@ const (
 
 type QCommandLineParser struct {
 	h  *C.QCommandLineParser
-	gc *[1]*C.QCommandLineParser
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCommandLineParser) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCommandLineParser) cPointer() *C.QCommandLineParser {
@@ -76,18 +82,24 @@ func QCommandLineParser_Tr(sourceText string) string {
 }
 
 func (this *QCommandLineParser) SetSingleDashWordOptionMode(parsingMode QCommandLineParser__SingleDashWordOptionMode) {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_setSingleDashWordOptionMode(this.h, (C.int)(parsingMode))
 }
 
 func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode QCommandLineParser__OptionsAfterPositionalArgumentsMode) {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_setOptionsAfterPositionalArgumentsMode(this.h, (C.int)(mode))
 }
 
 func (this *QCommandLineParser) AddOption(commandLineOption *QCommandLineOption) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(commandLineOption)
 	return (bool)(C.QCommandLineParser_addOption(this.h, commandLineOption.cPointer()))
 }
 
 func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(options)
 	options_CArray_ptr := (**C.QCommandLineOption)(C.malloc(C.size_t(8 * len(options))))
 	defer C.free(unsafe.Pointer(options_CArray_ptr))
 	options_CArray := unsafe.Slice(options_CArray_ptr, len(options))
@@ -99,18 +111,21 @@ func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 }
 
 func (this *QCommandLineParser) AddVersionOption() *QCommandLineOption {
+	defer runtime.KeepAlive(this)
 	_goptr := newQCommandLineOption(C.QCommandLineParser_addVersionOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCommandLineParser) AddHelpOption() *QCommandLineOption {
+	defer runtime.KeepAlive(this)
 	_goptr := newQCommandLineOption(C.QCommandLineParser_addHelpOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCommandLineParser) SetApplicationDescription(description string) {
+	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -119,6 +134,7 @@ func (this *QCommandLineParser) SetApplicationDescription(description string) {
 }
 
 func (this *QCommandLineParser) ApplicationDescription() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCommandLineParser_applicationDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -126,6 +142,7 @@ func (this *QCommandLineParser) ApplicationDescription() string {
 }
 
 func (this *QCommandLineParser) AddPositionalArgument(name string, description string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -138,10 +155,12 @@ func (this *QCommandLineParser) AddPositionalArgument(name string, description s
 }
 
 func (this *QCommandLineParser) ClearPositionalArguments() {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_clearPositionalArguments(this.h)
 }
 
 func (this *QCommandLineParser) Process(arguments []string) {
+	defer runtime.KeepAlive(this)
 	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
 	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
@@ -157,10 +176,13 @@ func (this *QCommandLineParser) Process(arguments []string) {
 }
 
 func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(app)
 	C.QCommandLineParser_processWithApp(this.h, app.cPointer())
 }
 
 func (this *QCommandLineParser) Parse(arguments []string) bool {
+	defer runtime.KeepAlive(this)
 	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
 	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
@@ -176,6 +198,7 @@ func (this *QCommandLineParser) Parse(arguments []string) bool {
 }
 
 func (this *QCommandLineParser) ErrorText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCommandLineParser_errorText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -183,6 +206,7 @@ func (this *QCommandLineParser) ErrorText() string {
 }
 
 func (this *QCommandLineParser) IsSet(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -191,6 +215,7 @@ func (this *QCommandLineParser) IsSet(name string) bool {
 }
 
 func (this *QCommandLineParser) Value(name string) string {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -202,6 +227,7 @@ func (this *QCommandLineParser) Value(name string) string {
 }
 
 func (this *QCommandLineParser) Values(name string) []string {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -219,10 +245,14 @@ func (this *QCommandLineParser) Values(name string) []string {
 }
 
 func (this *QCommandLineParser) IsSetWithOption(option *QCommandLineOption) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 	return (bool)(C.QCommandLineParser_isSetWithOption(this.h, option.cPointer()))
 }
 
 func (this *QCommandLineParser) ValueWithOption(option *QCommandLineOption) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 	var _ms C.struct_miqt_string = C.QCommandLineParser_valueWithOption(this.h, option.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -230,6 +260,8 @@ func (this *QCommandLineParser) ValueWithOption(option *QCommandLineOption) stri
 }
 
 func (this *QCommandLineParser) ValuesWithOption(option *QCommandLineOption) []string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 	var _ma C.struct_miqt_array = C.QCommandLineParser_valuesWithOption(this.h, option.cPointer())
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -243,6 +275,7 @@ func (this *QCommandLineParser) ValuesWithOption(option *QCommandLineOption) []s
 }
 
 func (this *QCommandLineParser) PositionalArguments() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCommandLineParser_positionalArguments(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -256,6 +289,7 @@ func (this *QCommandLineParser) PositionalArguments() []string {
 }
 
 func (this *QCommandLineParser) OptionNames() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCommandLineParser_optionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -269,6 +303,7 @@ func (this *QCommandLineParser) OptionNames() []string {
 }
 
 func (this *QCommandLineParser) UnknownOptionNames() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCommandLineParser_unknownOptionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -282,14 +317,17 @@ func (this *QCommandLineParser) UnknownOptionNames() []string {
 }
 
 func (this *QCommandLineParser) ShowVersion() {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_showVersion(this.h)
 }
 
 func (this *QCommandLineParser) ShowHelp() {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_showHelp(this.h)
 }
 
 func (this *QCommandLineParser) HelpText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCommandLineParser_helpText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -319,6 +357,7 @@ func QCommandLineParser_Tr3(sourceText string, disambiguation string, n int) str
 }
 
 func (this *QCommandLineParser) AddPositionalArgument2(name string, description string, syntax string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -335,6 +374,7 @@ func (this *QCommandLineParser) AddPositionalArgument2(name string, description 
 }
 
 func (this *QCommandLineParser) ShowHelpWithExitCode(exitCode int) {
+	defer runtime.KeepAlive(this)
 	C.QCommandLineParser_showHelpWithExitCode(this.h, (C.int)(exitCode))
 }
 
@@ -350,8 +390,9 @@ func (this *QCommandLineParser) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCommandLineParser{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCommandLineParser) {
-		C.QCommandLineParser_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCommandLineParser_delete((*C.QCommandLineParser)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

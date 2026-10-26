@@ -60,8 +60,14 @@ const (
 
 type QPdfDocument struct {
 	h  *C.QPdfDocument
-	gc *[1]*C.QPdfDocument
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfDocument) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfDocument) cPointer() *C.QPdfDocument {
@@ -103,15 +109,18 @@ func NewQPdfDocument() *QPdfDocument {
 
 // NewQPdfDocument2 constructs a new QPdfDocument object.
 func NewQPdfDocument2(parent *qt6.QObject) *QPdfDocument {
+	defer runtime.KeepAlive(parent)
 
 	return newQPdfDocument(C.QPdfDocument_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPdfDocument) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfDocument_metaObject(this.h)))
 }
 
 func (this *QPdfDocument) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfDocument_metacast(this.h, param1_Cstring))
@@ -127,6 +136,7 @@ func QPdfDocument_Tr(s string) string {
 }
 
 func (this *QPdfDocument) Load(fileName string) QPdfDocument__Error {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -135,14 +145,18 @@ func (this *QPdfDocument) Load(fileName string) QPdfDocument__Error {
 }
 
 func (this *QPdfDocument) Status() QPdfDocument__Status {
+	defer runtime.KeepAlive(this)
 	return (QPdfDocument__Status)(C.QPdfDocument_status(this.h))
 }
 
 func (this *QPdfDocument) LoadWithDevice(device *qt6.QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QPdfDocument_loadWithDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QPdfDocument) SetPassword(password string) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -151,6 +165,7 @@ func (this *QPdfDocument) SetPassword(password string) {
 }
 
 func (this *QPdfDocument) Password() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfDocument_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -158,30 +173,36 @@ func (this *QPdfDocument) Password() string {
 }
 
 func (this *QPdfDocument) MetaData(field QPdfDocument__MetaDataField) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QPdfDocument_metaData(this.h, (C.int)(field))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) Error() QPdfDocument__Error {
+	defer runtime.KeepAlive(this)
 	return (QPdfDocument__Error)(C.QPdfDocument_error(this.h))
 }
 
 func (this *QPdfDocument) Close() {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_close(this.h)
 }
 
 func (this *QPdfDocument) PageCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfDocument_pageCount(this.h))
 }
 
 func (this *QPdfDocument) PagePointSize(page int) *qt6.QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QPdfDocument_pagePointSize(this.h, (C.int)(page))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) PageLabel(page int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfDocument_pageLabel(this.h, (C.int)(page))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -189,34 +210,43 @@ func (this *QPdfDocument) PageLabel(page int) string {
 }
 
 func (this *QPdfDocument) PageModel() *qt6.QAbstractListModel {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQAbstractListModel(unsafe.Pointer(C.QPdfDocument_pageModel(this.h)))
 }
 
 func (this *QPdfDocument) Render(page int, imageSize qt6.QSize) *qt6.QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(imageSize)
 	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render(this.h, (C.int)(page), (*C.QSize)(imageSize.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) GetSelection(page int, start qt6.QPointF, end qt6.QPointF) *QPdfSelection {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(end)
 	_goptr := newQPdfSelection(C.QPdfDocument_getSelection(this.h, (C.int)(page), (*C.QPointF)(start.UnsafePointer()), (*C.QPointF)(end.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) GetSelectionAtIndex(page int, startIndex int, maxLength int) *QPdfSelection {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPdfSelection(C.QPdfDocument_getSelectionAtIndex(this.h, (C.int)(page), (C.int)(startIndex), (C.int)(maxLength)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) GetAllText(page int) *QPdfSelection {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPdfSelection(C.QPdfDocument_getAllText(this.h, (C.int)(page)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) PasswordChanged() {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_passwordChanged(this.h)
 }
 func (this *QPdfDocument) OnPasswordChanged(slot func()) {
@@ -234,6 +264,7 @@ func miqt_exec_callback_QPdfDocument_passwordChanged(cb C.intptr_t) {
 }
 
 func (this *QPdfDocument) PasswordRequired() {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_passwordRequired(this.h)
 }
 func (this *QPdfDocument) OnPasswordRequired(slot func()) {
@@ -251,6 +282,7 @@ func miqt_exec_callback_QPdfDocument_passwordRequired(cb C.intptr_t) {
 }
 
 func (this *QPdfDocument) StatusChanged(status QPdfDocument__Status) {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_statusChanged(this.h, (C.int)(status))
 }
 func (this *QPdfDocument) OnStatusChanged(slot func(status QPdfDocument__Status)) {
@@ -271,6 +303,7 @@ func miqt_exec_callback_QPdfDocument_statusChanged(cb C.intptr_t, status C.int) 
 }
 
 func (this *QPdfDocument) PageCountChanged(pageCount int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_pageCountChanged(this.h, (C.int)(pageCount))
 }
 func (this *QPdfDocument) OnPageCountChanged(slot func(pageCount int)) {
@@ -291,6 +324,7 @@ func miqt_exec_callback_QPdfDocument_pageCountChanged(cb C.intptr_t, pageCount C
 }
 
 func (this *QPdfDocument) PageModelChanged() {
+	defer runtime.KeepAlive(this)
 	C.QPdfDocument_pageModelChanged(this.h)
 }
 func (this *QPdfDocument) OnPageModelChanged(slot func()) {
@@ -330,6 +364,9 @@ func QPdfDocument_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPdfDocument) Render2(page int, imageSize qt6.QSize, options QPdfDocumentRenderOptions) *qt6.QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(imageSize)
+	defer runtime.KeepAlive(options)
 	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render2(this.h, (C.int)(page), (*C.QSize)(imageSize.UnsafePointer()), options.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -337,6 +374,7 @@ func (this *QPdfDocument) Render2(page int, imageSize qt6.QSize, options QPdfDoc
 
 // Sender can only be called from a QPdfDocument that was directly constructed.
 func (this *QPdfDocument) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPdfDocument_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -351,6 +389,7 @@ func (this *QPdfDocument) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QPdfDocument that was directly constructed.
 func (this *QPdfDocument) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfDocument_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -365,6 +404,7 @@ func (this *QPdfDocument) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfDocument that was directly constructed.
 func (this *QPdfDocument) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -381,6 +421,8 @@ func (this *QPdfDocument) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfDocument that was directly constructed.
 func (this *QPdfDocument) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfDocument_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -394,6 +436,8 @@ func (this *QPdfDocument) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QPdfDocument) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfDocument_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -422,6 +466,9 @@ func miqt_exec_callback_QPdfDocument_event(self *C.QPdfDocument, cb C.intptr_t, 
 }
 
 func (this *QPdfDocument) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfDocument_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -452,6 +499,8 @@ func miqt_exec_callback_QPdfDocument_eventFilter(self *C.QPdfDocument, cb C.intp
 }
 
 func (this *QPdfDocument) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfDocument_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -478,6 +527,8 @@ func miqt_exec_callback_QPdfDocument_timerEvent(self *C.QPdfDocument, cb C.intpt
 }
 
 func (this *QPdfDocument) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfDocument_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -504,6 +555,8 @@ func miqt_exec_callback_QPdfDocument_childEvent(self *C.QPdfDocument, cb C.intpt
 }
 
 func (this *QPdfDocument) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfDocument_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -530,6 +583,8 @@ func miqt_exec_callback_QPdfDocument_customEvent(self *C.QPdfDocument, cb C.intp
 }
 
 func (this *QPdfDocument) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfDocument_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -556,6 +611,8 @@ func miqt_exec_callback_QPdfDocument_connectNotify(self *C.QPdfDocument, cb C.in
 }
 
 func (this *QPdfDocument) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfDocument_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -593,8 +650,9 @@ func (this *QPdfDocument) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfDocument{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfDocument) {
-		C.QPdfDocument_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfDocument_delete((*C.QPdfDocument)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

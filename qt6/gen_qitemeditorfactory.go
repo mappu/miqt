@@ -16,7 +16,13 @@ import (
 
 type QItemEditorCreatorBase struct {
 	h  *C.QItemEditorCreatorBase
-	gc *[1]*C.QItemEditorCreatorBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QItemEditorCreatorBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QItemEditorCreatorBase) cPointer() *C.QItemEditorCreatorBase {
@@ -48,10 +54,13 @@ func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QItemEditorCreatorBase_createWidget(this.h, parent.cPointer()))
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QItemEditorCreatorBase_valuePropertyName(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -59,6 +68,8 @@ func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
 }
 
 func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QItemEditorCreatorBase_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -74,15 +85,22 @@ func (this *QItemEditorCreatorBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QItemEditorCreatorBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemEditorCreatorBase) {
-		C.QItemEditorCreatorBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QItemEditorCreatorBase_delete((*C.QItemEditorCreatorBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QItemEditorFactory struct {
 	h  *C.QItemEditorFactory
-	gc *[1]*C.QItemEditorFactory
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QItemEditorFactory) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QItemEditorFactory) cPointer() *C.QItemEditorFactory {
@@ -121,15 +139,19 @@ func NewQItemEditorFactory() *QItemEditorFactory {
 
 // NewQItemEditorFactory2 constructs a new QItemEditorFactory object.
 func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
+	defer runtime.KeepAlive(param1)
 
 	return newQItemEditorFactory(C.QItemEditorFactory_new2(param1.cPointer()))
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QItemEditorFactory_createEditor(this.h, (C.int)(userType), parent.cPointer()))
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_valuePropertyName(this.h, (C.int)(userType))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -137,6 +159,8 @@ func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
 }
 
 func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEditorCreatorBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(creator)
 	C.QItemEditorFactory_registerEditor(this.h, (C.int)(userType), creator.cPointer())
 }
 
@@ -145,14 +169,19 @@ func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
+	defer runtime.KeepAlive(factory)
 	C.QItemEditorFactory_setDefaultFactory(factory.cPointer())
 }
 
 func (this *QItemEditorFactory) OperatorAssign(param1 *QItemEditorFactory) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QItemEditorFactory_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return newQWidget(C.QItemEditorFactory_virtualbase_createEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
 
@@ -177,12 +206,14 @@ func miqt_exec_callback_QItemEditorFactory_createEditor(self *C.QItemEditorFacto
 	slotval2 := newQWidget(parent)
 
 	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QItemEditorFactory) callVirtualBase_ValuePropertyName(userType int) []byte {
+	defer runtime.KeepAlive(this)
 
 	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_virtualbase_valuePropertyName(unsafe.Pointer(this.h), (C.int)(userType))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -231,8 +262,9 @@ func (this *QItemEditorFactory) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QItemEditorFactory{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QItemEditorFactory) {
-		C.QItemEditorFactory_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QItemEditorFactory_delete((*C.QItemEditorFactory)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

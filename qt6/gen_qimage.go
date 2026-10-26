@@ -65,8 +65,15 @@ const (
 
 type QImage struct {
 	h  *C.QImage
-	gc *[1]*C.QImage
+	gc *[1]unsafe.Pointer
 	*QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QImage) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPaintDevice.miqtSetGC(gc)
 }
 
 func (this *QImage) cPointer() *C.QImage {
@@ -108,6 +115,7 @@ func NewQImage() *QImage {
 
 // NewQImage2 constructs a new QImage object.
 func NewQImage2(size *QSize, format QImage__Format) *QImage {
+	defer runtime.KeepAlive(size)
 
 	return newQImage(C.QImage_new2(size.cPointer(), (C.int)(format)))
 }
@@ -154,6 +162,7 @@ func NewQImage8(fileName string) *QImage {
 
 // NewQImage9 constructs a new QImage object.
 func NewQImage9(param1 *QImage) *QImage {
+	defer runtime.KeepAlive(param1)
 
 	return newQImage(C.QImage_new9(param1.cPointer()))
 }
@@ -171,66 +180,84 @@ func NewQImage10(fileName string, format string) *QImage {
 }
 
 func (this *QImage) OperatorAssign(param1 *QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QImage_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QImage) Swap(other *QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QImage_swap(this.h, other.cPointer())
 }
 
 func (this *QImage) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_isNull(this.h))
 }
 
 func (this *QImage) DevType() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_devType(this.h))
 }
 
 func (this *QImage) OperatorEqual(param1 *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QImage_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QImage) OperatorNotEqual(param1 *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QImage_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QImage) ToQVariant() *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QImage_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QImage_detach(this.h)
 }
 
 func (this *QImage) IsDetached() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_isDetached(this.h))
 }
 
 func (this *QImage) Copy() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_copy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Copy2(x int, y int, w int, h int) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_copy2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Format() QImage__Format {
+	defer runtime.KeepAlive(this)
 	return (QImage__Format)(C.QImage_format(this.h))
 }
 
 func (this *QImage) ConvertToFormat(f QImage__Format) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_convertToFormat(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImage {
+	defer runtime.KeepAlive(this)
 	colorTable_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray_ptr))
 	colorTable_CArray := unsafe.Slice(colorTable_CArray_ptr, len(colorTable))
@@ -244,156 +271,200 @@ func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImag
 }
 
 func (this *QImage) ReinterpretAsFormat(f QImage__Format) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_reinterpretAsFormat(this.h, (C.int)(f)))
 }
 
 func (this *QImage) ConvertedTo(f QImage__Format) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_convertedTo(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertTo(f QImage__Format) {
+	defer runtime.KeepAlive(this)
 	C.QImage_convertTo(this.h, (C.int)(f))
 }
 
 func (this *QImage) Width() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_width(this.h))
 }
 
 func (this *QImage) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_height(this.h))
 }
 
 func (this *QImage) Size() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QImage_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Rect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QImage_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Depth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_depth(this.h))
 }
 
 func (this *QImage) ColorCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_colorCount(this.h))
 }
 
 func (this *QImage) BitPlaneCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_bitPlaneCount(this.h))
 }
 
 func (this *QImage) Color(i int) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QImage_color(this.h, (C.int)(i)))
 }
 
 func (this *QImage) SetColor(i int, c uint) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setColor(this.h, (C.int)(i), (C.uint)(c))
 }
 
 func (this *QImage) SetColorCount(colorCount int) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setColorCount(this.h, (C.int)(colorCount))
 }
 
 func (this *QImage) AllGray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_allGray(this.h))
 }
 
 func (this *QImage) IsGrayscale() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_isGrayscale(this.h))
 }
 
 func (this *QImage) Bits() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_bits(this.h)))
 }
 
 func (this *QImage) Bits2() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_bits2(this.h)))
 }
 
 func (this *QImage) ConstBits() *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_constBits(this.h)))
 }
 
 func (this *QImage) SizeInBytes() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QImage_sizeInBytes(this.h))
 }
 
 func (this *QImage) ScanLine(param1 int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_scanLine(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) ScanLineWithInt(param1 int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_scanLineWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) ConstScanLine(param1 int) *byte {
+	defer runtime.KeepAlive(this)
 	return (*byte)(unsafe.Pointer(C.QImage_constScanLine(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) BytesPerLine() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QImage_bytesPerLine(this.h))
 }
 
 func (this *QImage) Valid(x int, y int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_valid(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QImage) ValidWithPt(pt *QPoint) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
 	return (bool)(C.QImage_validWithPt(this.h, pt.cPointer()))
 }
 
 func (this *QImage) PixelIndex(x int, y int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_pixelIndex(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QImage) PixelIndexWithPt(pt *QPoint) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
 	return (int)(C.QImage_pixelIndexWithPt(this.h, pt.cPointer()))
 }
 
 func (this *QImage) Pixel(x int, y int) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QImage_pixel(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QImage) PixelWithPt(pt *QPoint) uint {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
 	return (uint)(C.QImage_pixelWithPt(this.h, pt.cPointer()))
 }
 
 func (this *QImage) SetPixel(x int, y int, index_or_rgb uint) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setPixel(this.h, (C.int)(x), (C.int)(y), (C.uint)(index_or_rgb))
 }
 
 func (this *QImage) SetPixel2(pt *QPoint, index_or_rgb uint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
 	C.QImage_setPixel2(this.h, pt.cPointer(), (C.uint)(index_or_rgb))
 }
 
 func (this *QImage) PixelColor(x int, y int) *QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QImage_pixelColor(this.h, (C.int)(x), (C.int)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) PixelColorWithPt(pt *QPoint) *QColor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
 	_goptr := newQColor(C.QImage_pixelColorWithPt(this.h, pt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) SetPixelColor(x int, y int, c *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QImage_setPixelColor(this.h, (C.int)(x), (C.int)(y), c.cPointer())
 }
 
 func (this *QImage) SetPixelColor2(pt *QPoint, c *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pt)
+	defer runtime.KeepAlive(c)
 	C.QImage_setPixelColor2(this.h, pt.cPointer(), c.cPointer())
 }
 
 func (this *QImage) ColorTable() []uint {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QImage_colorTable(this.h)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -404,6 +475,7 @@ func (this *QImage) ColorTable() []uint {
 }
 
 func (this *QImage) SetColorTable(colors []uint) {
+	defer runtime.KeepAlive(this)
 	colors_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colors))))
 	defer C.free(unsafe.Pointer(colors_CArray_ptr))
 	colors_CArray := unsafe.Slice(colors_CArray_ptr, len(colors))
@@ -415,154 +487,194 @@ func (this *QImage) SetColorTable(colors []uint) {
 }
 
 func (this *QImage) DevicePixelRatio() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QImage_devicePixelRatio(this.h))
 }
 
 func (this *QImage) SetDevicePixelRatio(scaleFactor float64) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setDevicePixelRatio(this.h, (C.double)(scaleFactor))
 }
 
 func (this *QImage) DeviceIndependentSize() *QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QImage_deviceIndependentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Fill(pixel uint) {
+	defer runtime.KeepAlive(this)
 	C.QImage_fill(this.h, (C.uint)(pixel))
 }
 
 func (this *QImage) FillWithColor(color *QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QImage_fillWithColor(this.h, color.cPointer())
 }
 
 func (this *QImage) Fill2(color GlobalColor) {
+	defer runtime.KeepAlive(this)
 	C.QImage_fill2(this.h, (C.int)(color))
 }
 
 func (this *QImage) HasAlphaChannel() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_hasAlphaChannel(this.h))
 }
 
 func (this *QImage) SetAlphaChannel(alphaChannel *QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(alphaChannel)
 	C.QImage_setAlphaChannel(this.h, alphaChannel.cPointer())
 }
 
 func (this *QImage) CreateAlphaMask() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createAlphaMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateHeuristicMask() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createHeuristicMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateMaskFromColor(color uint) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createMaskFromColor(this.h, (C.uint)(color)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled(w int, h int) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaled(this.h, (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledWithQSize(s *QSize) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQImage(C.QImage_scaledWithQSize(this.h, s.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToWidth(w int) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaledToWidth(this.h, (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToHeight(h int) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaledToHeight(this.h, (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Transformed(matrix *QTransform) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	_goptr := newQImage(C.QImage_transformed(this.h, matrix.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QImage_TrueMatrix(param1 *QTransform, w int, h int) *QTransform {
+	defer runtime.KeepAlive(param1)
 	_goptr := newQTransform(C.QImage_trueMatrix(param1.cPointer(), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Mirrored() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_mirrored(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) RgbSwapped() *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_rgbSwapped(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Mirror() {
+	defer runtime.KeepAlive(this)
 	C.QImage_mirror(this.h)
 }
 
 func (this *QImage) RgbSwap() {
+	defer runtime.KeepAlive(this)
 	C.QImage_rgbSwap(this.h)
 }
 
 func (this *QImage) InvertPixels() {
+	defer runtime.KeepAlive(this)
 	C.QImage_invertPixels(this.h)
 }
 
 func (this *QImage) ColorSpace() *QColorSpace {
+	defer runtime.KeepAlive(this)
 	_goptr := newQColorSpace(C.QImage_colorSpace(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertedToColorSpace(param1 *QColorSpace) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQImage(C.QImage_convertedToColorSpace(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertToColorSpace(param1 *QColorSpace) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QImage_convertToColorSpace(this.h, param1.cPointer())
 }
 
 func (this *QImage) SetColorSpace(colorSpace *QColorSpace) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(colorSpace)
 	C.QImage_setColorSpace(this.h, colorSpace.cPointer())
 }
 
 func (this *QImage) ColorTransformed(transform *QColorTransform) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transform)
 	_goptr := newQImage(C.QImage_colorTransformed(this.h, transform.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ApplyColorTransform(transform *QColorTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transform)
 	C.QImage_applyColorTransform(this.h, transform.cPointer())
 }
 
 func (this *QImage) Load(device *QIODevice, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_load(this.h, device.cPointer(), format_Cstring))
 }
 
 func (this *QImage) LoadWithFileName(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -571,14 +683,18 @@ func (this *QImage) LoadWithFileName(fileName string) bool {
 }
 
 func (this *QImage) LoadFromData(data QByteArrayView) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	return (bool)(C.QImage_loadFromData(this.h, data.cPointer()))
 }
 
 func (this *QImage) LoadFromData2(buf *byte, lenVal int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImage_loadFromData2(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.int)(lenVal)))
 }
 
 func (this *QImage) LoadFromDataWithData(data []byte) bool {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -590,6 +706,7 @@ func (this *QImage) LoadFromDataWithData(data []byte) bool {
 }
 
 func (this *QImage) Save(fileName string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -598,10 +715,13 @@ func (this *QImage) Save(fileName string) bool {
 }
 
 func (this *QImage) SaveWithDevice(device *QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	return (bool)(C.QImage_saveWithDevice(this.h, device.cPointer()))
 }
 
 func QImage_FromData(data QByteArrayView) *QImage {
+	defer runtime.KeepAlive(data)
 	_goptr := newQImage(C.QImage_fromData(data.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -627,40 +747,50 @@ func QImage_FromDataWithData(data []byte) *QImage {
 }
 
 func (this *QImage) CacheKey() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QImage_cacheKey(this.h))
 }
 
 func (this *QImage) PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return newQPaintEngine(C.QImage_paintEngine(this.h))
 }
 
 func (this *QImage) DotsPerMeterX() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_dotsPerMeterX(this.h))
 }
 
 func (this *QImage) DotsPerMeterY() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImage_dotsPerMeterY(this.h))
 }
 
 func (this *QImage) SetDotsPerMeterX(dotsPerMeterX int) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setDotsPerMeterX(this.h, (C.int)(dotsPerMeterX))
 }
 
 func (this *QImage) SetDotsPerMeterY(dotsPerMeterY int) {
+	defer runtime.KeepAlive(this)
 	C.QImage_setDotsPerMeterY(this.h, (C.int)(dotsPerMeterY))
 }
 
 func (this *QImage) Offset() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QImage_offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) SetOffset(offset *QPoint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 	C.QImage_setOffset(this.h, offset.cPointer())
 }
 
 func (this *QImage) TextKeys() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QImage_textKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -674,6 +804,7 @@ func (this *QImage) TextKeys() []string {
 }
 
 func (this *QImage) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QImage_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -681,6 +812,7 @@ func (this *QImage) Text() string {
 }
 
 func (this *QImage) SetText(key string, value string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -693,6 +825,7 @@ func (this *QImage) SetText(key string, value string) {
 }
 
 func (this *QImage) PixelFormat() *QPixelFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPixelFormat(C.QImage_pixelFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -705,22 +838,27 @@ func QImage_ToPixelFormat(format QImage__Format) *QPixelFormat {
 }
 
 func QImage_ToImageFormat(format QPixelFormat) QImage__Format {
+	defer runtime.KeepAlive(format)
 	return (QImage__Format)(C.QImage_toImageFormat(format.cPointer()))
 }
 
 func (this *QImage) CopyWithRect(rect *QRect) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	_goptr := newQImage(C.QImage_copyWithRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertToFormat3(f QImage__Format, flags ImageConversionFlag) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_convertToFormat3(this.h, (C.int)(f), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertToFormat4(f QImage__Format, colorTable []uint, flags ImageConversionFlag) *QImage {
+	defer runtime.KeepAlive(this)
 	colorTable_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray_ptr))
 	colorTable_CArray := unsafe.Slice(colorTable_CArray_ptr, len(colorTable))
@@ -734,100 +872,121 @@ func (this *QImage) ConvertToFormat4(f QImage__Format, colorTable []uint, flags 
 }
 
 func (this *QImage) ConvertedTo2(f QImage__Format, flags ImageConversionFlag) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_convertedTo2(this.h, (C.int)(f), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertTo2(f QImage__Format, flags ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
 	C.QImage_convertTo2(this.h, (C.int)(f), (C.int)(flags))
 }
 
 func (this *QImage) CreateAlphaMaskWithFlags(flags ImageConversionFlag) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createAlphaMaskWithFlags(this.h, (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateHeuristicMaskWithClipTight(clipTight bool) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createHeuristicMaskWithClipTight(this.h, (C.bool)(clipTight)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateMaskFromColor2(color uint, mode MaskMode) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_createMaskFromColor2(this.h, (C.uint)(color), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled2(w int, h int, aspectMode AspectRatioMode) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaled2(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled3(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled4(s *QSize, aspectMode AspectRatioMode) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQImage(C.QImage_scaled4(this.h, s.cPointer(), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled5(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(s)
 	_goptr := newQImage(C.QImage_scaled5(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToWidth2(w int, mode TransformationMode) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaledToWidth2(this.h, (C.int)(w), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToHeight2(h int, mode TransformationMode) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_scaledToHeight2(this.h, (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Transformed2(matrix *QTransform, mode TransformationMode) *QImage {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(matrix)
 	_goptr := newQImage(C.QImage_transformed2(this.h, matrix.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) MirroredWithHorizontally(horizontally bool) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_mirroredWithHorizontally(this.h, (C.bool)(horizontally)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Mirrored2(horizontally bool, vertically bool) *QImage {
+	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QImage_mirrored2(this.h, (C.bool)(horizontally), (C.bool)(vertically)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) MirrorWithHorizontally(horizontally bool) {
+	defer runtime.KeepAlive(this)
 	C.QImage_mirrorWithHorizontally(this.h, (C.bool)(horizontally))
 }
 
 func (this *QImage) Mirror2(horizontally bool, vertically bool) {
+	defer runtime.KeepAlive(this)
 	C.QImage_mirror2(this.h, (C.bool)(horizontally), (C.bool)(vertically))
 }
 
 func (this *QImage) InvertPixelsWithQImageInvertMode(param1 QImage__InvertMode) {
+	defer runtime.KeepAlive(this)
 	C.QImage_invertPixelsWithQImageInvertMode(this.h, (C.int)(param1))
 }
 
 func (this *QImage) Load2(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -838,18 +997,22 @@ func (this *QImage) Load2(fileName string, format string) bool {
 }
 
 func (this *QImage) LoadFromData3(data QByteArrayView, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_loadFromData3(this.h, data.cPointer(), format_Cstring))
 }
 
 func (this *QImage) LoadFromData4(buf *byte, lenVal int, format string) bool {
+	defer runtime.KeepAlive(this)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_loadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.int)(lenVal), format_Cstring))
 }
 
 func (this *QImage) LoadFromData5(data []byte, format string) bool {
+	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -863,6 +1026,7 @@ func (this *QImage) LoadFromData5(data []byte, format string) bool {
 }
 
 func (this *QImage) Save2(fileName string, format string) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -873,6 +1037,7 @@ func (this *QImage) Save2(fileName string, format string) bool {
 }
 
 func (this *QImage) Save3(fileName string, format string, quality int) bool {
+	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -883,18 +1048,23 @@ func (this *QImage) Save3(fileName string, format string, quality int) bool {
 }
 
 func (this *QImage) Save4(device *QIODevice, format string) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_save4(this.h, device.cPointer(), format_Cstring))
 }
 
 func (this *QImage) Save5(device *QIODevice, format string, quality int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
 }
 
 func QImage_FromData3(data QByteArrayView, format string) *QImage {
+	defer runtime.KeepAlive(data)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	_goptr := newQImage(C.QImage_fromData3(data.cPointer(), format_Cstring))
@@ -926,6 +1096,7 @@ func QImage_FromData5(data []byte, format string) *QImage {
 }
 
 func (this *QImage) TextWithKey(key string) string {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -938,6 +1109,7 @@ func (this *QImage) TextWithKey(key string) string {
 
 // MirroredHelper can only be called from a QImage that was directly constructed.
 func (this *QImage) MirroredHelper(horizontal bool, vertical bool) QImage {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQImage(C.QImage_protectedbase_mirroredHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(horizontal), (C.bool)(vertical)))
@@ -954,6 +1126,7 @@ func (this *QImage) MirroredHelper(horizontal bool, vertical bool) QImage {
 
 // RgbSwappedHelper can only be called from a QImage that was directly constructed.
 func (this *QImage) RgbSwappedHelper() QImage {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQImage(C.QImage_protectedbase_rgbSwappedHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -970,6 +1143,7 @@ func (this *QImage) RgbSwappedHelper() QImage {
 
 // MirroredInplace can only be called from a QImage that was directly constructed.
 func (this *QImage) MirroredInplace(horizontal bool, vertical bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QImage_protectedbase_mirroredInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(horizontal), (C.bool)(vertical))
@@ -982,6 +1156,7 @@ func (this *QImage) MirroredInplace(horizontal bool, vertical bool) {
 
 // RgbSwappedInplace can only be called from a QImage that was directly constructed.
 func (this *QImage) RgbSwappedInplace() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QImage_protectedbase_rgbSwappedInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -994,6 +1169,7 @@ func (this *QImage) RgbSwappedInplace() {
 
 // ConvertToFormatHelper can only be called from a QImage that was directly constructed.
 func (this *QImage) ConvertToFormatHelper(format QImage__Format, flags ImageConversionFlag) QImage {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQImage(C.QImage_protectedbase_convertToFormatHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(format), (C.int)(flags)))
@@ -1010,6 +1186,7 @@ func (this *QImage) ConvertToFormatHelper(format QImage__Format, flags ImageConv
 
 // ConvertToFormatInplace can only be called from a QImage that was directly constructed.
 func (this *QImage) ConvertToFormatInplace(format QImage__Format, flags ImageConversionFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QImage_protectedbase_convertToFormatInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(format), (C.int)(flags)))
@@ -1024,6 +1201,7 @@ func (this *QImage) ConvertToFormatInplace(format QImage__Format, flags ImageCon
 
 // SmoothScaled can only be called from a QImage that was directly constructed.
 func (this *QImage) SmoothScaled(w int, h int) QImage {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQImage(C.QImage_protectedbase_smoothScaled(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(w), (C.int)(h)))
@@ -1040,6 +1218,7 @@ func (this *QImage) SmoothScaled(w int, h int) QImage {
 
 // DetachMetadata can only be called from a QImage that was directly constructed.
 func (this *QImage) DetachMetadata() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QImage_protectedbase_detachMetadata(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1052,6 +1231,7 @@ func (this *QImage) DetachMetadata() {
 
 // DetachMetadataWithInvalidateCache can only be called from a QImage that was directly constructed.
 func (this *QImage) DetachMetadataWithInvalidateCache(invalidateCache bool) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QImage_protectedbase_detachMetadataWithInvalidateCache(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(invalidateCache))
@@ -1063,6 +1243,7 @@ func (this *QImage) DetachMetadataWithInvalidateCache(invalidateCache bool) {
 }
 
 func (this *QImage) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImage_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1088,6 +1269,7 @@ func miqt_exec_callback_QImage_devType(self *C.QImage, cb C.intptr_t) C.int {
 }
 
 func (this *QImage) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QImage_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1107,12 +1289,14 @@ func miqt_exec_callback_QImage_paintEngine(self *C.QImage, cb C.intptr_t) *C.QPa
 	}
 
 	virtualReturn := gofunc((&QImage{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QImage) callVirtualBase_Metric(metric QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImage_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(metric)))
 
@@ -1141,6 +1325,8 @@ func miqt_exec_callback_QImage_metric(self *C.QImage, cb C.intptr_t, metric C.in
 }
 
 func (this *QImage) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QImage_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -1167,6 +1353,8 @@ func miqt_exec_callback_QImage_initPainter(self *C.QImage, cb C.intptr_t, painte
 }
 
 func (this *QImage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QImage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1189,12 +1377,14 @@ func miqt_exec_callback_QImage_redirected(self *C.QImage, cb C.intptr_t, offset 
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QImage{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QImage) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QImage_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1214,6 +1404,7 @@ func miqt_exec_callback_QImage_sharedPainter(self *C.QImage, cb C.intptr_t) *C.Q
 	}
 
 	virtualReturn := gofunc((&QImage{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1231,8 +1422,9 @@ func (this *QImage) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QImage{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImage) {
-		C.QImage_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QImage_delete((*C.QImage)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

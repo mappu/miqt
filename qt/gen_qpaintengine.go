@@ -106,7 +106,13 @@ const (
 
 type QTextItem struct {
 	h  *C.QTextItem
-	gc *[1]*C.QTextItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTextItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTextItem) cPointer() *C.QTextItem {
@@ -138,22 +144,27 @@ func UnsafeNewQTextItem(h unsafe.Pointer) *QTextItem {
 }
 
 func (this *QTextItem) Descent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextItem_descent(this.h))
 }
 
 func (this *QTextItem) Ascent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextItem_ascent(this.h))
 }
 
 func (this *QTextItem) Width() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextItem_width(this.h))
 }
 
 func (this *QTextItem) RenderFlags() QTextItem__RenderFlag {
+	defer runtime.KeepAlive(this)
 	return (QTextItem__RenderFlag)(C.QTextItem_renderFlags(this.h))
 }
 
 func (this *QTextItem) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextItem_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -161,6 +172,7 @@ func (this *QTextItem) Text() string {
 }
 
 func (this *QTextItem) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QTextItem_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -178,15 +190,22 @@ func (this *QTextItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTextItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextItem) {
-		C.QTextItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTextItem_delete((*C.QTextItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPaintEngine struct {
 	h  *C.QPaintEngine
-	gc *[1]*C.QPaintEngine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPaintEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPaintEngine) cPointer() *C.QPaintEngine {
@@ -230,152 +249,215 @@ func NewQPaintEngine2(features QPaintEngine__PaintEngineFeature) *QPaintEngine {
 }
 
 func (this *QPaintEngine) IsActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngine_isActive(this.h))
 }
 
 func (this *QPaintEngine) SetActive(newState bool) {
+	defer runtime.KeepAlive(this)
 	C.QPaintEngine_setActive(this.h, (C.bool)(newState))
 }
 
 func (this *QPaintEngine) Begin(pdev *QPaintDevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pdev)
 	return (bool)(C.QPaintEngine_begin(this.h, pdev.cPointer()))
 }
 
 func (this *QPaintEngine) End() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngine_end(this.h))
 }
 
 func (this *QPaintEngine) UpdateState(state *QPaintEngineState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(state)
 	C.QPaintEngine_updateState(this.h, state.cPointer())
 }
 
 func (this *QPaintEngine) DrawRects(rects *QRect, rectCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rects)
 	C.QPaintEngine_drawRects(this.h, rects.cPointer(), (C.int)(rectCount))
 }
 
 func (this *QPaintEngine) DrawRects2(rects *QRectF, rectCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rects)
 	C.QPaintEngine_drawRects2(this.h, rects.cPointer(), (C.int)(rectCount))
 }
 
 func (this *QPaintEngine) DrawLines(lines *QLine, lineCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lines)
 	C.QPaintEngine_drawLines(this.h, lines.cPointer(), (C.int)(lineCount))
 }
 
 func (this *QPaintEngine) DrawLines2(lines *QLineF, lineCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lines)
 	C.QPaintEngine_drawLines2(this.h, lines.cPointer(), (C.int)(lineCount))
 }
 
 func (this *QPaintEngine) DrawEllipse(r *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QPaintEngine_drawEllipse(this.h, r.cPointer())
 }
 
 func (this *QPaintEngine) DrawEllipseWithQRect(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	C.QPaintEngine_drawEllipseWithQRect(this.h, r.cPointer())
 }
 
 func (this *QPaintEngine) DrawPath(path *QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 	C.QPaintEngine_drawPath(this.h, path.cPointer())
 }
 
 func (this *QPaintEngine) DrawPoints(points *QPointF, pointCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPoints(this.h, points.cPointer(), (C.int)(pointCount))
 }
 
 func (this *QPaintEngine) DrawPoints2(points *QPoint, pointCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPoints2(this.h, points.cPointer(), (C.int)(pointCount))
 }
 
 func (this *QPaintEngine) DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPixmap(r *QRectF, pm *QPixmap, sr *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pm)
+	defer runtime.KeepAlive(sr)
 	C.QPaintEngine_drawPixmap(this.h, r.cPointer(), pm.cPointer(), sr.cPointer())
 }
 
 func (this *QPaintEngine) DrawTextItem(p *QPointF, textItem *QTextItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(textItem)
 	C.QPaintEngine_drawTextItem(this.h, p.cPointer(), textItem.cPointer())
 }
 
 func (this *QPaintEngine) DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pixmap)
+	defer runtime.KeepAlive(s)
 	C.QPaintEngine_drawTiledPixmap(this.h, r.cPointer(), pixmap.cPointer(), s.cPointer())
 }
 
 func (this *QPaintEngine) DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pm)
+	defer runtime.KeepAlive(sr)
 	C.QPaintEngine_drawImage(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QPaintEngine_setPaintDevice(this.h, device.cPointer())
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
+	defer runtime.KeepAlive(this)
 	return newQPaintDevice(C.QPaintEngine_paintDevice(this.h))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseClip)
 	C.QPaintEngine_setSystemClip(this.h, baseClip.cPointer())
 }
 
 func (this *QPaintEngine) SystemClip() *QRegion {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QPaintEngine_systemClip(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngine) SetSystemRect(rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QPaintEngine_setSystemRect(this.h, rect.cPointer())
 }
 
 func (this *QPaintEngine) SystemRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QPaintEngine_systemRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngine) CoordinateOffset() *QPoint {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QPaintEngine_coordinateOffset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngine) Type() QPaintEngine__Type {
+	defer runtime.KeepAlive(this)
 	return (QPaintEngine__Type)(C.QPaintEngine_type(this.h))
 }
 
 func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
+	defer runtime.KeepAlive(this)
 	C.QPaintEngine_fixNegRect(this.h, (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
 }
 
 func (this *QPaintEngine) TestDirty(df QPaintEngine__DirtyFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngine_testDirty(this.h, (C.int)(df)))
 }
 
 func (this *QPaintEngine) SetDirty(df QPaintEngine__DirtyFlag) {
+	defer runtime.KeepAlive(this)
 	C.QPaintEngine_setDirty(this.h, (C.int)(df))
 }
 
 func (this *QPaintEngine) ClearDirty(df QPaintEngine__DirtyFlag) {
+	defer runtime.KeepAlive(this)
 	C.QPaintEngine_clearDirty(this.h, (C.int)(df))
 }
 
 func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngine_hasFeature(this.h, (C.int)(feature)))
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
+	defer runtime.KeepAlive(this)
 	return newQPainter(C.QPaintEngine_painter(this.h))
 }
 
 func (this *QPaintEngine) SyncState() {
+	defer runtime.KeepAlive(this)
 	C.QPaintEngine_syncState(this.h)
 }
 
 func (this *QPaintEngine) IsExtended() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngine_isExtended(this.h))
 }
 func (this *QPaintEngine) OnBegin(slot func(pdev *QPaintDevice) bool) {
@@ -441,6 +523,8 @@ func miqt_exec_callback_QPaintEngine_updateState(self *C.QPaintEngine, cb C.intp
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawRects(rects *QRect, rectCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rects)
 
 	C.QPaintEngine_virtualbase_drawRects(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
 
@@ -469,6 +553,8 @@ func miqt_exec_callback_QPaintEngine_drawRects(self *C.QPaintEngine, cb C.intptr
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawRects2(rects *QRectF, rectCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rects)
 
 	C.QPaintEngine_virtualbase_drawRects2(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
 
@@ -497,6 +583,8 @@ func miqt_exec_callback_QPaintEngine_drawRects2(self *C.QPaintEngine, cb C.intpt
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawLines(lines *QLine, lineCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lines)
 
 	C.QPaintEngine_virtualbase_drawLines(unsafe.Pointer(this.h), lines.cPointer(), (C.int)(lineCount))
 
@@ -525,6 +613,8 @@ func miqt_exec_callback_QPaintEngine_drawLines(self *C.QPaintEngine, cb C.intptr
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawLines2(lines *QLineF, lineCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lines)
 
 	C.QPaintEngine_virtualbase_drawLines2(unsafe.Pointer(this.h), lines.cPointer(), (C.int)(lineCount))
 
@@ -553,6 +643,8 @@ func miqt_exec_callback_QPaintEngine_drawLines2(self *C.QPaintEngine, cb C.intpt
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawEllipse(r *QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 
 	C.QPaintEngine_virtualbase_drawEllipse(unsafe.Pointer(this.h), r.cPointer())
 
@@ -579,6 +671,8 @@ func miqt_exec_callback_QPaintEngine_drawEllipse(self *C.QPaintEngine, cb C.intp
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 
 	C.QPaintEngine_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), r.cPointer())
 
@@ -605,6 +699,8 @@ func miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(self *C.QPaintEngine, 
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawPath(path *QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(path)
 
 	C.QPaintEngine_virtualbase_drawPath(unsafe.Pointer(this.h), path.cPointer())
 
@@ -631,6 +727,8 @@ func miqt_exec_callback_QPaintEngine_drawPath(self *C.QPaintEngine, cb C.intptr_
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawPoints(points *QPointF, pointCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPoints(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
 
@@ -659,6 +757,8 @@ func miqt_exec_callback_QPaintEngine_drawPoints(self *C.QPaintEngine, cb C.intpt
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawPoints2(points *QPoint, pointCount int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPoints2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
 
@@ -687,6 +787,8 @@ func miqt_exec_callback_QPaintEngine_drawPoints2(self *C.QPaintEngine, cb C.intp
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPolygon(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 
@@ -717,6 +819,8 @@ func miqt_exec_callback_QPaintEngine_drawPolygon(self *C.QPaintEngine, cb C.intp
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPolygon2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 
@@ -771,6 +875,9 @@ func miqt_exec_callback_QPaintEngine_drawPixmap(self *C.QPaintEngine, cb C.intpt
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawTextItem(p *QPointF, textItem *QTextItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(textItem)
 
 	C.QPaintEngine_virtualbase_drawTextItem(unsafe.Pointer(this.h), p.cPointer(), textItem.cPointer())
 
@@ -799,6 +906,10 @@ func miqt_exec_callback_QPaintEngine_drawTextItem(self *C.QPaintEngine, cb C.int
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pixmap)
+	defer runtime.KeepAlive(s)
 
 	C.QPaintEngine_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), r.cPointer(), pixmap.cPointer(), s.cPointer())
 
@@ -829,6 +940,10 @@ func miqt_exec_callback_QPaintEngine_drawTiledPixmap(self *C.QPaintEngine, cb C.
 }
 
 func (this *QPaintEngine) callVirtualBase_DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pm)
+	defer runtime.KeepAlive(sr)
 
 	C.QPaintEngine_virtualbase_drawImage(unsafe.Pointer(this.h), r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 
@@ -861,6 +976,7 @@ func miqt_exec_callback_QPaintEngine_drawImage(self *C.QPaintEngine, cb C.intptr
 }
 
 func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQPoint(C.QPaintEngine_virtualbase_coordinateOffset(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -882,8 +998,9 @@ func miqt_exec_callback_QPaintEngine_coordinateOffset(self *C.QPaintEngine, cb C
 	}
 
 	virtualReturn := gofunc((&QPaintEngine{h: self}).callVirtualBase_CoordinateOffset)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QPaintEngine_virtualreturncopy_QPoint(virtualReturn.cPointer())
 
 }
 func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
@@ -918,15 +1035,22 @@ func (this *QPaintEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPaintEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEngine) {
-		C.QPaintEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPaintEngine_delete((*C.QPaintEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPaintEngineState struct {
 	h  *C.QPaintEngineState
-	gc *[1]*C.QPaintEngineState
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPaintEngineState) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {
@@ -964,96 +1088,115 @@ func NewQPaintEngineState() *QPaintEngineState {
 }
 
 func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
+	defer runtime.KeepAlive(this)
 	return (QPaintEngine__DirtyFlag)(C.QPaintEngineState_state(this.h))
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPen(C.QPaintEngineState_pen(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Brush() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QPaintEngineState_brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BrushOrigin() *QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPaintEngineState_brushOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundBrush() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QPaintEngineState_backgroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundMode() BGMode {
+	defer runtime.KeepAlive(this)
 	return (BGMode)(C.QPaintEngineState_backgroundMode(this.h))
 }
 
 func (this *QPaintEngineState) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QPaintEngineState_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Matrix() *QMatrix {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMatrix(C.QPaintEngineState_matrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Transform() *QTransform {
+	defer runtime.KeepAlive(this)
 	_goptr := newQTransform(C.QPaintEngineState_transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) ClipOperation() ClipOperation {
+	defer runtime.KeepAlive(this)
 	return (ClipOperation)(C.QPaintEngineState_clipOperation(this.h))
 }
 
 func (this *QPaintEngineState) ClipRegion() *QRegion {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QPaintEngineState_clipRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) ClipPath() *QPainterPath {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPainterPath(C.QPaintEngineState_clipPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) IsClipEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngineState_isClipEnabled(this.h))
 }
 
 func (this *QPaintEngineState) RenderHints() QPainter__RenderHint {
+	defer runtime.KeepAlive(this)
 	return (QPainter__RenderHint)(C.QPaintEngineState_renderHints(this.h))
 }
 
 func (this *QPaintEngineState) CompositionMode() QPainter__CompositionMode {
+	defer runtime.KeepAlive(this)
 	return (QPainter__CompositionMode)(C.QPaintEngineState_compositionMode(this.h))
 }
 
 func (this *QPaintEngineState) Opacity() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPaintEngineState_opacity(this.h))
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
+	defer runtime.KeepAlive(this)
 	return newQPainter(C.QPaintEngineState_painter(this.h))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngineState_brushNeedsResolving(this.h))
 }
 
 func (this *QPaintEngineState) PenNeedsResolving() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPaintEngineState_penNeedsResolving(this.h))
 }
 
@@ -1069,8 +1212,9 @@ func (this *QPaintEngineState) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPaintEngineState{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPaintEngineState) {
-		C.QPaintEngineState_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPaintEngineState_delete((*C.QPaintEngineState)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

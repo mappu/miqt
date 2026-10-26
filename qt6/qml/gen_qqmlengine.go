@@ -33,8 +33,14 @@ const (
 
 type QQmlImageProviderBase struct {
 	h  *C.QQmlImageProviderBase
-	gc *[1]*C.QQmlImageProviderBase
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlImageProviderBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlImageProviderBase) cPointer() *C.QQmlImageProviderBase {
@@ -69,10 +75,12 @@ func UnsafeNewQQmlImageProviderBase(h unsafe.Pointer) *QQmlImageProviderBase {
 }
 
 func (this *QQmlImageProviderBase) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlImageProviderBase_metaObject(this.h)))
 }
 
 func (this *QQmlImageProviderBase) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlImageProviderBase_metacast(this.h, param1_Cstring))
@@ -88,10 +96,12 @@ func QQmlImageProviderBase_Tr(s string) string {
 }
 
 func (this *QQmlImageProviderBase) ImageType() QQmlImageProviderBase__ImageType {
+	defer runtime.KeepAlive(this)
 	return (QQmlImageProviderBase__ImageType)(C.QQmlImageProviderBase_imageType(this.h))
 }
 
 func (this *QQmlImageProviderBase) Flags() QQmlImageProviderBase__Flag {
+	defer runtime.KeepAlive(this)
 	return (QQmlImageProviderBase__Flag)(C.QQmlImageProviderBase_flags(this.h))
 }
 
@@ -129,16 +139,24 @@ func (this *QQmlImageProviderBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlImageProviderBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlImageProviderBase) {
-		C.QQmlImageProviderBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlImageProviderBase_delete((*C.QQmlImageProviderBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QQmlEngine struct {
 	h  *C.QQmlEngine
-	gc *[1]*C.QQmlEngine
+	gc *[1]unsafe.Pointer
 	*QJSEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QJSEngine.miqtSetGC(gc)
 }
 
 func (this *QQmlEngine) cPointer() *C.QQmlEngine {
@@ -180,15 +198,18 @@ func NewQQmlEngine() *QQmlEngine {
 
 // NewQQmlEngine2 constructs a new QQmlEngine object.
 func NewQQmlEngine2(p *qt6.QObject) *QQmlEngine {
+	defer runtime.KeepAlive(p)
 
 	return newQQmlEngine(C.QQmlEngine_new2((*C.QObject)(p.UnsafePointer())))
 }
 
 func (this *QQmlEngine) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlEngine_metaObject(this.h)))
 }
 
 func (this *QQmlEngine) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlEngine_metacast(this.h, param1_Cstring))
@@ -204,22 +225,27 @@ func QQmlEngine_Tr(s string) string {
 }
 
 func (this *QQmlEngine) RootContext() *QQmlContext {
+	defer runtime.KeepAlive(this)
 	return newQQmlContext(C.QQmlEngine_rootContext(this.h))
 }
 
 func (this *QQmlEngine) ClearComponentCache() {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_clearComponentCache(this.h)
 }
 
 func (this *QQmlEngine) TrimComponentCache() {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_trimComponentCache(this.h)
 }
 
 func (this *QQmlEngine) ClearSingletons() {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_clearSingletons(this.h)
 }
 
 func (this *QQmlEngine) ImportPathList() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlEngine_importPathList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -233,6 +259,7 @@ func (this *QQmlEngine) ImportPathList() []string {
 }
 
 func (this *QQmlEngine) SetImportPathList(paths []string) {
+	defer runtime.KeepAlive(this)
 	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray_ptr))
 	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
@@ -248,6 +275,7 @@ func (this *QQmlEngine) SetImportPathList(paths []string) {
 }
 
 func (this *QQmlEngine) AddImportPath(dir string) {
+	defer runtime.KeepAlive(this)
 	dir_ms := C.struct_miqt_string{}
 	dir_ms.data = C.CString(dir)
 	dir_ms.len = C.size_t(len(dir))
@@ -256,6 +284,7 @@ func (this *QQmlEngine) AddImportPath(dir string) {
 }
 
 func (this *QQmlEngine) PluginPathList() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlEngine_pluginPathList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -269,6 +298,7 @@ func (this *QQmlEngine) PluginPathList() []string {
 }
 
 func (this *QQmlEngine) SetPluginPathList(paths []string) {
+	defer runtime.KeepAlive(this)
 	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray_ptr))
 	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
@@ -284,6 +314,7 @@ func (this *QQmlEngine) SetPluginPathList(paths []string) {
 }
 
 func (this *QQmlEngine) AddPluginPath(dir string) {
+	defer runtime.KeepAlive(this)
 	dir_ms := C.struct_miqt_string{}
 	dir_ms.data = C.CString(dir)
 	dir_ms.len = C.size_t(len(dir))
@@ -292,6 +323,7 @@ func (this *QQmlEngine) AddPluginPath(dir string) {
 }
 
 func (this *QQmlEngine) AddNamedBundle(param1 string, param2 string) bool {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -304,6 +336,8 @@ func (this *QQmlEngine) AddNamedBundle(param1 string, param2 string) bool {
 }
 
 func (this *QQmlEngine) ImportPlugin(filePath string, uri string, errors []QQmlError) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(errors)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -323,30 +357,41 @@ func (this *QQmlEngine) ImportPlugin(filePath string, uri string, errors []QQmlE
 }
 
 func (this *QQmlEngine) SetNetworkAccessManagerFactory(networkAccessManagerFactory *QQmlNetworkAccessManagerFactory) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(networkAccessManagerFactory)
 	C.QQmlEngine_setNetworkAccessManagerFactory(this.h, networkAccessManagerFactory.cPointer())
 }
 
 func (this *QQmlEngine) NetworkAccessManagerFactory() *QQmlNetworkAccessManagerFactory {
+	defer runtime.KeepAlive(this)
 	return newQQmlNetworkAccessManagerFactory(C.QQmlEngine_networkAccessManagerFactory(this.h))
 }
 
 func (this *QQmlEngine) SetUrlInterceptor(urlInterceptor *QQmlAbstractUrlInterceptor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(urlInterceptor)
 	C.QQmlEngine_setUrlInterceptor(this.h, urlInterceptor.cPointer())
 }
 
 func (this *QQmlEngine) UrlInterceptor() *QQmlAbstractUrlInterceptor {
+	defer runtime.KeepAlive(this)
 	return newQQmlAbstractUrlInterceptor(C.QQmlEngine_urlInterceptor(this.h))
 }
 
 func (this *QQmlEngine) AddUrlInterceptor(urlInterceptor *QQmlAbstractUrlInterceptor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(urlInterceptor)
 	C.QQmlEngine_addUrlInterceptor(this.h, urlInterceptor.cPointer())
 }
 
 func (this *QQmlEngine) RemoveUrlInterceptor(urlInterceptor *QQmlAbstractUrlInterceptor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(urlInterceptor)
 	C.QQmlEngine_removeUrlInterceptor(this.h, urlInterceptor.cPointer())
 }
 
 func (this *QQmlEngine) UrlInterceptors() []*QQmlAbstractUrlInterceptor {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlEngine_urlInterceptors(this.h)
 	_ret := make([]*QQmlAbstractUrlInterceptor, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QQmlAbstractUrlInterceptor)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -357,12 +402,16 @@ func (this *QQmlEngine) UrlInterceptors() []*QQmlAbstractUrlInterceptor {
 }
 
 func (this *QQmlEngine) InterceptUrl(url *qt6.QUrl, typeVal QQmlAbstractUrlInterceptor__DataType) *qt6.QUrl {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlEngine_interceptUrl(this.h, (*C.QUrl)(url.UnsafePointer()), (C.int)(typeVal))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlEngine) AddImageProvider(id string, param2 *QQmlImageProviderBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -371,6 +420,7 @@ func (this *QQmlEngine) AddImageProvider(id string, param2 *QQmlImageProviderBas
 }
 
 func (this *QQmlEngine) ImageProvider(id string) *QQmlImageProviderBase {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -379,6 +429,7 @@ func (this *QQmlEngine) ImageProvider(id string) *QQmlImageProviderBase {
 }
 
 func (this *QQmlEngine) RemoveImageProvider(id string) {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -387,14 +438,18 @@ func (this *QQmlEngine) RemoveImageProvider(id string) {
 }
 
 func (this *QQmlEngine) SetIncubationController(incubationController *QQmlIncubationController) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(incubationController)
 	C.QQmlEngine_setIncubationController(this.h, incubationController.cPointer())
 }
 
 func (this *QQmlEngine) IncubationController() *QQmlIncubationController {
+	defer runtime.KeepAlive(this)
 	return newQQmlIncubationController(C.QQmlEngine_incubationController(this.h))
 }
 
 func (this *QQmlEngine) SetOfflineStoragePath(dir string) {
+	defer runtime.KeepAlive(this)
 	dir_ms := C.struct_miqt_string{}
 	dir_ms.data = C.CString(dir)
 	dir_ms.len = C.size_t(len(dir))
@@ -403,6 +458,7 @@ func (this *QQmlEngine) SetOfflineStoragePath(dir string) {
 }
 
 func (this *QQmlEngine) OfflineStoragePath() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QQmlEngine_offlineStoragePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -410,6 +466,7 @@ func (this *QQmlEngine) OfflineStoragePath() string {
 }
 
 func (this *QQmlEngine) OfflineStorageDatabaseFilePath(databaseName string) string {
+	defer runtime.KeepAlive(this)
 	databaseName_ms := C.struct_miqt_string{}
 	databaseName_ms.data = C.CString(databaseName)
 	databaseName_ms.len = C.size_t(len(databaseName))
@@ -421,40 +478,53 @@ func (this *QQmlEngine) OfflineStorageDatabaseFilePath(databaseName string) stri
 }
 
 func (this *QQmlEngine) BaseUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlEngine_baseUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlEngine) SetBaseUrl(baseUrl *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(baseUrl)
 	C.QQmlEngine_setBaseUrl(this.h, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QQmlEngine) OutputWarningsToStandardError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlEngine_outputWarningsToStandardError(this.h))
 }
 
 func (this *QQmlEngine) SetOutputWarningsToStandardError(outputWarningsToStandardError bool) {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_setOutputWarningsToStandardError(this.h, (C.bool)(outputWarningsToStandardError))
 }
 
 func (this *QQmlEngine) CaptureProperty(object *qt6.QObject, property *qt6.QMetaProperty) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(property)
 	C.QQmlEngine_captureProperty(this.h, (*C.QObject)(object.UnsafePointer()), (*C.QMetaProperty)(property.UnsafePointer()))
 }
 
 func (this *QQmlEngine) Retranslate() {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_retranslate(this.h)
 }
 
 func QQmlEngine_ContextForObject(param1 *qt6.QObject) *QQmlContext {
+	defer runtime.KeepAlive(param1)
 	return newQQmlContext(C.QQmlEngine_contextForObject((*C.QObject)(param1.UnsafePointer())))
 }
 
 func QQmlEngine_SetContextForObject(param1 *qt6.QObject, param2 *QQmlContext) {
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QQmlEngine_setContextForObject((*C.QObject)(param1.UnsafePointer()), param2.cPointer())
 }
 
 func (this *QQmlEngine) Quit() {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_quit(this.h)
 }
 func (this *QQmlEngine) OnQuit(slot func()) {
@@ -472,6 +542,7 @@ func miqt_exec_callback_QQmlEngine_quit(cb C.intptr_t) {
 }
 
 func (this *QQmlEngine) Exit(retCode int) {
+	defer runtime.KeepAlive(this)
 	C.QQmlEngine_exit(this.h, (C.int)(retCode))
 }
 func (this *QQmlEngine) OnExit(slot func(retCode int)) {
@@ -492,6 +563,8 @@ func miqt_exec_callback_QQmlEngine_exit(cb C.intptr_t, retCode C.int) {
 }
 
 func (this *QQmlEngine) Warnings(warnings []QQmlError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(warnings)
 	warnings_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(warnings))))
 	defer C.free(unsafe.Pointer(warnings_CArray_ptr))
 	warnings_CArray := unsafe.Slice(warnings_CArray_ptr, len(warnings))
@@ -550,6 +623,7 @@ func QQmlEngine_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlEngine that was directly constructed.
 func (this *QQmlEngine) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlEngine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -564,6 +638,7 @@ func (this *QQmlEngine) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlEngine that was directly constructed.
 func (this *QQmlEngine) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlEngine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -578,6 +653,7 @@ func (this *QQmlEngine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlEngine that was directly constructed.
 func (this *QQmlEngine) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -594,6 +670,8 @@ func (this *QQmlEngine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlEngine that was directly constructed.
 func (this *QQmlEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QQmlEngine_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -607,6 +685,8 @@ func (this *QQmlEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QQmlEngine) callVirtualBase_Event(param1 *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QQmlEngine_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -635,6 +715,9 @@ func miqt_exec_callback_QQmlEngine_event(self *C.QQmlEngine, cb C.intptr_t, para
 }
 
 func (this *QQmlEngine) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlEngine_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -665,6 +748,8 @@ func miqt_exec_callback_QQmlEngine_eventFilter(self *C.QQmlEngine, cb C.intptr_t
 }
 
 func (this *QQmlEngine) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngine_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -691,6 +776,8 @@ func miqt_exec_callback_QQmlEngine_timerEvent(self *C.QQmlEngine, cb C.intptr_t,
 }
 
 func (this *QQmlEngine) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngine_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -717,6 +804,8 @@ func miqt_exec_callback_QQmlEngine_childEvent(self *C.QQmlEngine, cb C.intptr_t,
 }
 
 func (this *QQmlEngine) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngine_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -743,6 +832,8 @@ func miqt_exec_callback_QQmlEngine_customEvent(self *C.QQmlEngine, cb C.intptr_t
 }
 
 func (this *QQmlEngine) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlEngine_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -769,6 +860,8 @@ func miqt_exec_callback_QQmlEngine_connectNotify(self *C.QQmlEngine, cb C.intptr
 }
 
 func (this *QQmlEngine) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlEngine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -806,8 +899,9 @@ func (this *QQmlEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlEngine) {
-		C.QQmlEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlEngine_delete((*C.QQmlEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

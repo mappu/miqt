@@ -16,7 +16,13 @@ import (
 
 type QQmlParserStatus struct {
 	h  *C.QQmlParserStatus
-	gc *[1]*C.QQmlParserStatus
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlParserStatus) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlParserStatus) cPointer() *C.QQmlParserStatus {
@@ -54,14 +60,18 @@ func NewQQmlParserStatus() *QQmlParserStatus {
 }
 
 func (this *QQmlParserStatus) ClassBegin() {
+	defer runtime.KeepAlive(this)
 	C.QQmlParserStatus_classBegin(this.h)
 }
 
 func (this *QQmlParserStatus) ComponentComplete() {
+	defer runtime.KeepAlive(this)
 	C.QQmlParserStatus_componentComplete(this.h)
 }
 
 func (this *QQmlParserStatus) OperatorAssign(param1 *QQmlParserStatus) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlParserStatus_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlParserStatus) OnClassBegin(slot func()) {
@@ -111,8 +121,9 @@ func (this *QQmlParserStatus) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlParserStatus{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlParserStatus) {
-		C.QQmlParserStatus_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlParserStatus_delete((*C.QQmlParserStatus)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

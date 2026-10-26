@@ -93,7 +93,9 @@ public:
 		}
 
 		QVariant* callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_handle(this, handle__handle);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self);
@@ -187,6 +189,10 @@ bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot) {
 
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self) {
 	return new QVariant(static_cast<const MiqtVirtualQAbstractVideoBuffer*>(self)->QAbstractVideoBuffer::handle());
+}
+
+QVariant* QAbstractVideoBuffer_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QAbstractVideoBuffer_delete(QAbstractVideoBuffer* self) {

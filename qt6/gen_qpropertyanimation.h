@@ -82,6 +82,7 @@ bool QPropertyAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 void QPropertyAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPropertyAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QPropertyAnimation_virtualreturncopy_QVariant(QVariant* src);
 
 QObject* QPropertyAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPropertyAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

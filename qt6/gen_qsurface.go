@@ -34,7 +34,13 @@ const (
 
 type QSurface struct {
 	h  *C.QSurface
-	gc *[1]*C.QSurface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSurface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSurface) cPointer() *C.QSurface {
@@ -66,30 +72,37 @@ func UnsafeNewQSurface(h unsafe.Pointer) *QSurface {
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
+	defer runtime.KeepAlive(this)
 	return (QSurface__SurfaceClass)(C.QSurface_surfaceClass(this.h))
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSurfaceFormat(C.QSurface_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSurface) SurfaceType() QSurface__SurfaceType {
+	defer runtime.KeepAlive(this)
 	return (QSurface__SurfaceType)(C.QSurface_surfaceType(this.h))
 }
 
 func (this *QSurface) SupportsOpenGL() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSurface_supportsOpenGL(this.h))
 }
 
 func (this *QSurface) Size() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QSurface_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSurface) OperatorAssign(param1 *QSurface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QSurface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -105,8 +118,9 @@ func (this *QSurface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSurface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSurface) {
-		C.QSurface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSurface_delete((*C.QSurface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -93,6 +93,7 @@ bool QVariantAnimation_override_virtual_connectNotify(void* self, intptr_t slot)
 void QVariantAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVariantAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QVariantAnimation_virtualreturncopy_QVariant(QVariant* src);
 
 QObject* QVariantAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QVariantAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

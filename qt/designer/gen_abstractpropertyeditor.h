@@ -213,6 +213,8 @@ bool QDesignerPropertyEditorInterface_override_virtual_connectNotify(void* self,
 void QDesignerPropertyEditorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerPropertyEditorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerPropertyEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDesignerPropertyEditorInterface_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesignerPropertyEditorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerPropertyEditorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesignerPropertyEditorInterface_protectedbase_create(bool* _dynamic_cast_ok, void* self);

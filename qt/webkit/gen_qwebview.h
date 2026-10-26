@@ -286,6 +286,8 @@ bool QWebView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QWebView_virtualreturncopy_QVariant(QVariant* src);
+QSize* QWebView_virtualreturncopy_QSize(QSize* src);
 
 void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebView_protectedbase_create(bool* _dynamic_cast_ok, void* self);

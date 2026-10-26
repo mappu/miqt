@@ -26,8 +26,14 @@ const (
 
 type QGeoSatelliteInfoSource struct {
 	h  *C.QGeoSatelliteInfoSource
-	gc *[1]*C.QGeoSatelliteInfoSource
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QGeoSatelliteInfoSource) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QGeoSatelliteInfoSource) cPointer() *C.QGeoSatelliteInfoSource {
@@ -63,15 +69,18 @@ func UnsafeNewQGeoSatelliteInfoSource(h unsafe.Pointer) *QGeoSatelliteInfoSource
 
 // NewQGeoSatelliteInfoSource constructs a new QGeoSatelliteInfoSource object.
 func NewQGeoSatelliteInfoSource(parent *qt.QObject) *QGeoSatelliteInfoSource {
+	defer runtime.KeepAlive(parent)
 
 	return newQGeoSatelliteInfoSource(C.QGeoSatelliteInfoSource_new((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QGeoSatelliteInfoSource) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QGeoSatelliteInfoSource_metaObject(this.h)))
 }
 
 func (this *QGeoSatelliteInfoSource) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGeoSatelliteInfoSource_metacast(this.h, param1_Cstring))
@@ -96,10 +105,12 @@ func QGeoSatelliteInfoSource_TrUtf8(s string) string {
 }
 
 func QGeoSatelliteInfoSource_CreateDefaultSource(parent *qt.QObject) *QGeoSatelliteInfoSource {
+	defer runtime.KeepAlive(parent)
 	return newQGeoSatelliteInfoSource(C.QGeoSatelliteInfoSource_createDefaultSource((*C.QObject)(parent.UnsafePointer())))
 }
 
 func QGeoSatelliteInfoSource_CreateSource(sourceName string, parent *qt.QObject) *QGeoSatelliteInfoSource {
+	defer runtime.KeepAlive(parent)
 	sourceName_ms := C.struct_miqt_string{}
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
@@ -108,6 +119,8 @@ func QGeoSatelliteInfoSource_CreateSource(sourceName string, parent *qt.QObject)
 }
 
 func QGeoSatelliteInfoSource_CreateDefaultSource2(parameters map[string]qt.QVariant, parent *qt.QObject) *QGeoSatelliteInfoSource {
+	defer runtime.KeepAlive(parameters)
+	defer runtime.KeepAlive(parent)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
 	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
@@ -133,6 +146,8 @@ func QGeoSatelliteInfoSource_CreateDefaultSource2(parameters map[string]qt.QVari
 }
 
 func QGeoSatelliteInfoSource_CreateSource2(sourceName string, parameters map[string]qt.QVariant, parent *qt.QObject) *QGeoSatelliteInfoSource {
+	defer runtime.KeepAlive(parameters)
+	defer runtime.KeepAlive(parent)
 	sourceName_ms := C.struct_miqt_string{}
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
@@ -175,6 +190,7 @@ func QGeoSatelliteInfoSource_AvailableSources() []string {
 }
 
 func (this *QGeoSatelliteInfoSource) SourceName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGeoSatelliteInfoSource_sourceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -182,34 +198,43 @@ func (this *QGeoSatelliteInfoSource) SourceName() string {
 }
 
 func (this *QGeoSatelliteInfoSource) SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_setUpdateInterval(this.h, (C.int)(msec))
 }
 
 func (this *QGeoSatelliteInfoSource) UpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGeoSatelliteInfoSource_updateInterval(this.h))
 }
 
 func (this *QGeoSatelliteInfoSource) MinimumUpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QGeoSatelliteInfoSource_minimumUpdateInterval(this.h))
 }
 
 func (this *QGeoSatelliteInfoSource) Error() QGeoSatelliteInfoSource__Error {
+	defer runtime.KeepAlive(this)
 	return (QGeoSatelliteInfoSource__Error)(C.QGeoSatelliteInfoSource_error(this.h))
 }
 
 func (this *QGeoSatelliteInfoSource) StartUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_startUpdates(this.h)
 }
 
 func (this *QGeoSatelliteInfoSource) StopUpdates() {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_stopUpdates(this.h)
 }
 
 func (this *QGeoSatelliteInfoSource) RequestUpdate(timeout int) {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_requestUpdate(this.h, (C.int)(timeout))
 }
 
 func (this *QGeoSatelliteInfoSource) SatellitesInViewUpdated(satellites []QGeoSatelliteInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(satellites)
 	satellites_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
 	defer C.free(unsafe.Pointer(satellites_CArray_ptr))
 	satellites_CArray := unsafe.Slice(satellites_CArray_ptr, len(satellites))
@@ -245,6 +270,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_satellitesInViewUpdated(cb C.int
 }
 
 func (this *QGeoSatelliteInfoSource) SatellitesInUseUpdated(satellites []QGeoSatelliteInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(satellites)
 	satellites_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
 	defer C.free(unsafe.Pointer(satellites_CArray_ptr))
 	satellites_CArray := unsafe.Slice(satellites_CArray_ptr, len(satellites))
@@ -280,6 +307,7 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_satellitesInUseUpdated(cb C.intp
 }
 
 func (this *QGeoSatelliteInfoSource) RequestTimeout() {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_requestTimeout(this.h)
 }
 func (this *QGeoSatelliteInfoSource) OnRequestTimeout(slot func()) {
@@ -297,6 +325,7 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_requestTimeout(cb C.intptr_t) {
 }
 
 func (this *QGeoSatelliteInfoSource) ErrorWithQGeoSatelliteInfoSourceError(param1 QGeoSatelliteInfoSource__Error) {
+	defer runtime.KeepAlive(this)
 	C.QGeoSatelliteInfoSource_errorWithQGeoSatelliteInfoSourceError(this.h, (C.int)(param1))
 }
 func (this *QGeoSatelliteInfoSource) OnErrorWithQGeoSatelliteInfoSourceError(slot func(param1 QGeoSatelliteInfoSource__Error)) {
@@ -362,6 +391,7 @@ func QGeoSatelliteInfoSource_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QGeoSatelliteInfoSource that was directly constructed.
 func (this *QGeoSatelliteInfoSource) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QGeoSatelliteInfoSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -376,6 +406,7 @@ func (this *QGeoSatelliteInfoSource) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QGeoSatelliteInfoSource that was directly constructed.
 func (this *QGeoSatelliteInfoSource) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGeoSatelliteInfoSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -390,6 +421,7 @@ func (this *QGeoSatelliteInfoSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGeoSatelliteInfoSource that was directly constructed.
 func (this *QGeoSatelliteInfoSource) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -406,6 +438,8 @@ func (this *QGeoSatelliteInfoSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGeoSatelliteInfoSource that was directly constructed.
 func (this *QGeoSatelliteInfoSource) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QGeoSatelliteInfoSource_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -419,6 +453,7 @@ func (this *QGeoSatelliteInfoSource) IsSignalConnected(signal *qt.QMetaMethod) b
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_SetUpdateInterval(msec int) {
+	defer runtime.KeepAlive(this)
 
 	C.QGeoSatelliteInfoSource_virtualbase_setUpdateInterval(unsafe.Pointer(this.h), (C.int)(msec))
 
@@ -537,6 +572,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_requestUpdate(self *C.QGeoSatell
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoSatelliteInfoSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -565,6 +602,9 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_event(self *C.QGeoSatelliteInfoS
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGeoSatelliteInfoSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -595,6 +635,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_eventFilter(self *C.QGeoSatellit
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoSatelliteInfoSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -621,6 +663,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_timerEvent(self *C.QGeoSatellite
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoSatelliteInfoSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -647,6 +691,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_childEvent(self *C.QGeoSatellite
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QGeoSatelliteInfoSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -673,6 +719,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_customEvent(self *C.QGeoSatellit
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoSatelliteInfoSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -699,6 +747,8 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_connectNotify(self *C.QGeoSatell
 }
 
 func (this *QGeoSatelliteInfoSource) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QGeoSatelliteInfoSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -736,8 +786,9 @@ func (this *QGeoSatelliteInfoSource) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QGeoSatelliteInfoSource{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoSatelliteInfoSource) {
-		C.QGeoSatelliteInfoSource_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QGeoSatelliteInfoSource_delete((*C.QGeoSatelliteInfoSource)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

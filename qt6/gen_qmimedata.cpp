@@ -110,7 +110,9 @@ public:
 		struct miqt_string sigval1 = mimetype_ms;
 		QMetaType* sigval2 = new QMetaType(preferredType);
 		QVariant* callback_return_value = miqt_exec_callback_QMimeData_retrieveData(this, handle__retrieveData, sigval1, sigval2);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QMimeData_virtualbase_retrieveData(const void* self, struct miqt_string mimetype, QMetaType* preferredType);
@@ -590,6 +592,10 @@ bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::disconnectNotify(*signal);
+}
+
+QVariant* QMimeData_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 QObject* QMimeData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

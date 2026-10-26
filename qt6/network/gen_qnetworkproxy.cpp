@@ -371,6 +371,10 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		QNetworkProxy** callback_return_value_free_arr = static_cast<QNetworkProxy**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			delete callback_return_value_free_arr[i];
+		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
@@ -457,6 +461,10 @@ bool QNetworkProxyFactory_override_virtual_queryProxy(void* self, intptr_t slot)
 
 	self_cast->handle__queryProxy = slot;
 	return true;
+}
+
+QNetworkProxy* QNetworkProxyFactory_virtualreturncopy_QNetworkProxy(QNetworkProxy* src) {
+	return new QNetworkProxy(*src);
 }
 
 void QNetworkProxyFactory_delete(QNetworkProxyFactory* self) {

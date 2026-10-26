@@ -40,8 +40,15 @@ const (
 
 type QFormLayout struct {
 	h  *C.QFormLayout
-	gc *[1]*C.QFormLayout
+	gc *[1]unsafe.Pointer
 	*QLayout
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFormLayout) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLayout.miqtSetGC(gc)
 }
 
 func (this *QFormLayout) cPointer() *C.QFormLayout {
@@ -77,6 +84,7 @@ func UnsafeNewQFormLayout(h unsafe.Pointer) *QFormLayout {
 
 // NewQFormLayout constructs a new QFormLayout object.
 func NewQFormLayout(parent *QWidget) *QFormLayout {
+	defer runtime.KeepAlive(parent)
 
 	return newQFormLayout(C.QFormLayout_new(parent.cPointer()))
 }
@@ -88,10 +96,12 @@ func NewQFormLayout2() *QFormLayout {
 }
 
 func (this *QFormLayout) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFormLayout_metaObject(this.h))
 }
 
 func (this *QFormLayout) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFormLayout_metacast(this.h, param1_Cstring))
@@ -107,70 +117,92 @@ func QFormLayout_Tr(s string) string {
 }
 
 func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setFieldGrowthPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
+	defer runtime.KeepAlive(this)
 	return (QFormLayout__FieldGrowthPolicy)(C.QFormLayout_fieldGrowthPolicy(this.h))
 }
 
 func (this *QFormLayout) SetRowWrapPolicy(policy QFormLayout__RowWrapPolicy) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setRowWrapPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) RowWrapPolicy() QFormLayout__RowWrapPolicy {
+	defer runtime.KeepAlive(this)
 	return (QFormLayout__RowWrapPolicy)(C.QFormLayout_rowWrapPolicy(this.h))
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setLabelAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) LabelAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QFormLayout_labelAlignment(this.h))
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setFormAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) FormAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QFormLayout_formAlignment(this.h))
 }
 
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setHorizontalSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) HorizontalSpacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_horizontalSpacing(this.h))
 }
 
 func (this *QFormLayout) SetVerticalSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setVerticalSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) VerticalSpacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_verticalSpacing(this.h))
 }
 
 func (this *QFormLayout) Spacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_spacing(this.h))
 }
 
 func (this *QFormLayout) SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) AddRow(label *QWidget, field *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(label)
+	defer runtime.KeepAlive(field)
 	C.QFormLayout_addRow(this.h, label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(label)
+	defer runtime.KeepAlive(field)
 	C.QFormLayout_addRow2(this.h, label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -179,6 +211,8 @@ func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -187,22 +221,34 @@ func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
 }
 
 func (this *QFormLayout) AddRowWithWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QFormLayout_addRowWithWidget(this.h, widget.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithLayout(layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QFormLayout_addRowWithLayout(this.h, layout.cPointer())
 }
 
 func (this *QFormLayout) InsertRow(row int, label *QWidget, field *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(label)
+	defer runtime.KeepAlive(field)
 	C.QFormLayout_insertRow(this.h, (C.int)(row), label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(label)
+	defer runtime.KeepAlive(field)
 	C.QFormLayout_insertRow2(this.h, (C.int)(row), label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -211,6 +257,8 @@ func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -219,140 +267,189 @@ func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
 }
 
 func (this *QFormLayout) InsertRow5(row int, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QFormLayout_insertRow5(this.h, (C.int)(row), widget.cPointer())
 }
 
 func (this *QFormLayout) InsertRow6(row int, layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QFormLayout_insertRow6(this.h, (C.int)(row), layout.cPointer())
 }
 
 func (this *QFormLayout) RemoveRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_removeRow(this.h, (C.int)(row))
 }
 
 func (this *QFormLayout) RemoveRowWithWidget(widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QFormLayout_removeRowWithWidget(this.h, widget.cPointer())
 }
 
 func (this *QFormLayout) RemoveRowWithLayout(layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QFormLayout_removeRowWithLayout(this.h, layout.cPointer())
 }
 
 func (this *QFormLayout) TakeRow(row int) *QFormLayout__TakeRowResult {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRow(this.h, (C.int)(row)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithWidget(widget *QWidget) *QFormLayout__TakeRowResult {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRowWithWidget(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithLayout(layout *QLayout) *QFormLayout__TakeRowResult {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRowWithLayout(this.h, layout.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) SetItem(row int, role QFormLayout__ItemRole, item *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QFormLayout_setItem(this.h, (C.int)(row), (C.int)(role), item.cPointer())
 }
 
 func (this *QFormLayout) SetWidget(row int, role QFormLayout__ItemRole, widget *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QFormLayout_setWidget(this.h, (C.int)(row), (C.int)(role), widget.cPointer())
 }
 
 func (this *QFormLayout) SetLayout(row int, role QFormLayout__ItemRole, layout *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QFormLayout_setLayout(this.h, (C.int)(row), (C.int)(role), layout.cPointer())
 }
 
 func (this *QFormLayout) SetRowVisible(row int, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_setRowVisible(this.h, (C.int)(row), (C.bool)(on))
 }
 
 func (this *QFormLayout) SetRowVisible2(widget *QWidget, on bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	C.QFormLayout_setRowVisible2(this.h, widget.cPointer(), (C.bool)(on))
 }
 
 func (this *QFormLayout) SetRowVisible3(layout *QLayout, on bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	C.QFormLayout_setRowVisible3(this.h, layout.cPointer(), (C.bool)(on))
 }
 
 func (this *QFormLayout) IsRowVisible(row int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFormLayout_isRowVisible(this.h, (C.int)(row)))
 }
 
 func (this *QFormLayout) IsRowVisibleWithWidget(widget *QWidget) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return (bool)(C.QFormLayout_isRowVisibleWithWidget(this.h, widget.cPointer()))
 }
 
 func (this *QFormLayout) IsRowVisibleWithLayout(layout *QLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 	return (bool)(C.QFormLayout_isRowVisibleWithLayout(this.h, layout.cPointer()))
 }
 
 func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QFormLayout_itemAt(this.h, (C.int)(row), (C.int)(role)))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	return newQWidget(C.QFormLayout_labelForField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	return newQWidget(C.QFormLayout_labelForFieldWithField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QFormLayout_addItem(this.h, item.cPointer())
 }
 
 func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QFormLayout_itemAtWithIndex(this.h, (C.int)(index)))
 }
 
 func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QFormLayout_takeAt(this.h, (C.int)(index)))
 }
 
 func (this *QFormLayout) SetGeometry(rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 	C.QFormLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QFormLayout) MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QFormLayout_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QFormLayout_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) Invalidate() {
+	defer runtime.KeepAlive(this)
 	C.QFormLayout_invalidate(this.h)
 }
 
 func (this *QFormLayout) HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFormLayout_hasHeightForWidth(this.h))
 }
 
 func (this *QFormLayout) HeightForWidth(width int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_heightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QFormLayout) ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QFormLayout_expandingDirections(this.h))
 }
 
 func (this *QFormLayout) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_count(this.h))
 }
 
 func (this *QFormLayout) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFormLayout_rowCount(this.h))
 }
 
@@ -380,6 +477,8 @@ func QFormLayout_Tr3(s string, c string, n int) string {
 
 // WidgetEvent can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) WidgetEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFormLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -392,6 +491,8 @@ func (this *QFormLayout) WidgetEvent(param1 *QEvent) {
 
 // AddChildLayout can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) AddChildLayout(l *QLayout) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(l)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFormLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
@@ -404,6 +505,8 @@ func (this *QFormLayout) AddChildLayout(l *QLayout) {
 
 // AddChildWidget can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) AddChildWidget(w *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(w)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFormLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
@@ -416,6 +519,8 @@ func (this *QFormLayout) AddChildWidget(w *QWidget) {
 
 // AdoptLayout can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) AdoptLayout(layout *QLayout) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(layout)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFormLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
@@ -430,6 +535,8 @@ func (this *QFormLayout) AdoptLayout(layout *QLayout) bool {
 
 // AlignmentRect can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) AlignmentRect(param1 *QRect) QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQRect(C.QFormLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
@@ -446,6 +553,7 @@ func (this *QFormLayout) AlignmentRect(param1 *QRect) QRect {
 
 // Sender can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFormLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -460,6 +568,7 @@ func (this *QFormLayout) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFormLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -474,6 +583,7 @@ func (this *QFormLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -490,6 +600,8 @@ func (this *QFormLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFormLayout that was directly constructed.
 func (this *QFormLayout) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFormLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -503,6 +615,7 @@ func (this *QFormLayout) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFormLayout) callVirtualBase_Spacing() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFormLayout_virtualbase_spacing(unsafe.Pointer(this.h)))
 
@@ -528,6 +641,7 @@ func miqt_exec_callback_QFormLayout_spacing(self *C.QFormLayout, cb C.intptr_t) 
 }
 
 func (this *QFormLayout) callVirtualBase_SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 
 	C.QFormLayout_virtualbase_setSpacing(unsafe.Pointer(this.h), (C.int)(spacing))
 
@@ -554,6 +668,8 @@ func miqt_exec_callback_QFormLayout_setSpacing(self *C.QFormLayout, cb C.intptr_
 }
 
 func (this *QFormLayout) callVirtualBase_AddItem(item *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 
 	C.QFormLayout_virtualbase_addItem(unsafe.Pointer(this.h), item.cPointer())
 
@@ -580,6 +696,7 @@ func miqt_exec_callback_QFormLayout_addItem(self *C.QFormLayout, cb C.intptr_t, 
 }
 
 func (this *QFormLayout) callVirtualBase_ItemAtWithIndex(index int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QFormLayout_virtualbase_itemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -602,12 +719,14 @@ func miqt_exec_callback_QFormLayout_itemAtWithIndex(self *C.QFormLayout, cb C.in
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_ItemAtWithIndex, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFormLayout) callVirtualBase_TakeAt(index int) *QLayoutItem {
+	defer runtime.KeepAlive(this)
 
 	return newQLayoutItem(C.QFormLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -630,12 +749,15 @@ func miqt_exec_callback_QFormLayout_takeAt(self *C.QFormLayout, cb C.intptr_t, i
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_TakeAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFormLayout) callVirtualBase_SetGeometry(rect *QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QFormLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
@@ -662,6 +784,7 @@ func miqt_exec_callback_QFormLayout_setGeometry(self *C.QFormLayout, cb C.intptr
 }
 
 func (this *QFormLayout) callVirtualBase_MinimumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFormLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -683,12 +806,14 @@ func miqt_exec_callback_QFormLayout_minimumSize(self *C.QFormLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_MinimumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFormLayout) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFormLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -710,12 +835,14 @@ func miqt_exec_callback_QFormLayout_sizeHint(self *C.QFormLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFormLayout) callVirtualBase_Invalidate() {
+	defer runtime.KeepAlive(this)
 
 	C.QFormLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -739,6 +866,7 @@ func miqt_exec_callback_QFormLayout_invalidate(self *C.QFormLayout, cb C.intptr_
 }
 
 func (this *QFormLayout) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFormLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -764,6 +892,7 @@ func miqt_exec_callback_QFormLayout_hasHeightForWidth(self *C.QFormLayout, cb C.
 }
 
 func (this *QFormLayout) callVirtualBase_HeightForWidth(width int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFormLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
@@ -792,6 +921,7 @@ func miqt_exec_callback_QFormLayout_heightForWidth(self *C.QFormLayout, cb C.int
 }
 
 func (this *QFormLayout) callVirtualBase_ExpandingDirections() Orientation {
+	defer runtime.KeepAlive(this)
 
 	return (Orientation)(C.QFormLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -817,6 +947,7 @@ func miqt_exec_callback_QFormLayout_expandingDirections(self *C.QFormLayout, cb 
 }
 
 func (this *QFormLayout) callVirtualBase_Count() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFormLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -842,6 +973,7 @@ func miqt_exec_callback_QFormLayout_count(self *C.QFormLayout, cb C.intptr_t) C.
 }
 
 func (this *QFormLayout) callVirtualBase_Geometry() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QFormLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -863,12 +995,14 @@ func miqt_exec_callback_QFormLayout_geometry(self *C.QFormLayout, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Geometry)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFormLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QFormLayout) callVirtualBase_MaximumSize() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFormLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -890,12 +1024,15 @@ func miqt_exec_callback_QFormLayout_maximumSize(self *C.QFormLayout, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_MaximumSize)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QFormLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (int)(C.QFormLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
@@ -924,6 +1061,7 @@ func miqt_exec_callback_QFormLayout_indexOf(self *C.QFormLayout, cb C.intptr_t, 
 }
 
 func (this *QFormLayout) callVirtualBase_IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFormLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -949,6 +1087,7 @@ func miqt_exec_callback_QFormLayout_isEmpty(self *C.QFormLayout, cb C.intptr_t) 
 }
 
 func (this *QFormLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+	defer runtime.KeepAlive(this)
 
 	return (QSizePolicy__ControlType)(C.QFormLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -974,6 +1113,9 @@ func miqt_exec_callback_QFormLayout_controlTypes(self *C.QFormLayout, cb C.intpt
 }
 
 func (this *QFormLayout) callVirtualBase_ReplaceWidget(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	return newQLayoutItem(C.QFormLayout_virtualbase_replaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options)))
 
@@ -1000,12 +1142,14 @@ func miqt_exec_callback_QFormLayout_replaceWidget(self *C.QFormLayout, cb C.intp
 	slotval3 := (FindChildOption)(options)
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_ReplaceWidget, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFormLayout) callVirtualBase_Layout() *QLayout {
+	defer runtime.KeepAlive(this)
 
 	return newQLayout(C.QFormLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
@@ -1025,12 +1169,15 @@ func miqt_exec_callback_QFormLayout_layout(self *C.QFormLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Layout)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFormLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QFormLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1057,6 +1204,8 @@ func miqt_exec_callback_QFormLayout_childEvent(self *C.QFormLayout, cb C.intptr_
 }
 
 func (this *QFormLayout) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFormLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -1085,6 +1234,9 @@ func miqt_exec_callback_QFormLayout_event(self *C.QFormLayout, cb C.intptr_t, ev
 }
 
 func (this *QFormLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFormLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -1115,6 +1267,8 @@ func miqt_exec_callback_QFormLayout_eventFilter(self *C.QFormLayout, cb C.intptr
 }
 
 func (this *QFormLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFormLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1141,6 +1295,8 @@ func miqt_exec_callback_QFormLayout_timerEvent(self *C.QFormLayout, cb C.intptr_
 }
 
 func (this *QFormLayout) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QFormLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -1167,6 +1323,8 @@ func miqt_exec_callback_QFormLayout_customEvent(self *C.QFormLayout, cb C.intptr
 }
 
 func (this *QFormLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFormLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1193,6 +1351,8 @@ func miqt_exec_callback_QFormLayout_connectNotify(self *C.QFormLayout, cb C.intp
 }
 
 func (this *QFormLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QFormLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -1219,6 +1379,7 @@ func miqt_exec_callback_QFormLayout_disconnectNotify(self *C.QFormLayout, cb C.i
 }
 
 func (this *QFormLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFormLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1247,6 +1408,7 @@ func miqt_exec_callback_QFormLayout_minimumHeightForWidth(self *C.QFormLayout, c
 }
 
 func (this *QFormLayout) callVirtualBase_Widget() *QWidget {
+	defer runtime.KeepAlive(this)
 
 	return newQWidget(C.QFormLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
@@ -1266,12 +1428,14 @@ func miqt_exec_callback_QFormLayout_widget(self *C.QFormLayout, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Widget)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QFormLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+	defer runtime.KeepAlive(this)
 
 	return newQSpacerItem(C.QFormLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
@@ -1291,6 +1455,7 @@ func miqt_exec_callback_QFormLayout_spacerItem(self *C.QFormLayout, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_SpacerItem)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1308,15 +1473,22 @@ func (this *QFormLayout) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFormLayout{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFormLayout) {
-		C.QFormLayout_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFormLayout_delete((*C.QFormLayout)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QFormLayout__TakeRowResult struct {
 	h  *C.QFormLayout__TakeRowResult
-	gc *[1]*C.QFormLayout__TakeRowResult
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFormLayout__TakeRowResult) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFormLayout__TakeRowResult) cPointer() *C.QFormLayout__TakeRowResult {
@@ -1348,18 +1520,24 @@ func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRow
 }
 
 func (this *QFormLayout__TakeRowResult) LabelItem() *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QFormLayout__TakeRowResult_labelItem(this.h))
 }
 
 func (this *QFormLayout__TakeRowResult) SetLabelItem(labelItem *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(labelItem)
 	C.QFormLayout__TakeRowResult_setLabelItem(this.h, labelItem.cPointer())
 }
 
 func (this *QFormLayout__TakeRowResult) FieldItem() *QLayoutItem {
+	defer runtime.KeepAlive(this)
 	return newQLayoutItem(C.QFormLayout__TakeRowResult_fieldItem(this.h))
 }
 
 func (this *QFormLayout__TakeRowResult) SetFieldItem(fieldItem *QLayoutItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fieldItem)
 	C.QFormLayout__TakeRowResult_setFieldItem(this.h, fieldItem.cPointer())
 }
 
@@ -1375,8 +1553,9 @@ func (this *QFormLayout__TakeRowResult) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFormLayout__TakeRowResult{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFormLayout__TakeRowResult) {
-		C.QFormLayout__TakeRowResult_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFormLayout__TakeRowResult_delete((*C.QFormLayout__TakeRowResult)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

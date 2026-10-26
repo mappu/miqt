@@ -15,7 +15,13 @@ import (
 
 type QFactoryInterface struct {
 	h  *C.QFactoryInterface
-	gc *[1]*C.QFactoryInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFactoryInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFactoryInterface) cPointer() *C.QFactoryInterface {
@@ -47,6 +53,7 @@ func UnsafeNewQFactoryInterface(h unsafe.Pointer) *QFactoryInterface {
 }
 
 func (this *QFactoryInterface) Keys() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFactoryInterface_keys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -71,8 +78,9 @@ func (this *QFactoryInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFactoryInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFactoryInterface) {
-		C.QFactoryInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFactoryInterface_delete((*C.QFactoryInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -136,7 +136,9 @@ public:
 		}
 
 		QBitmap* callback_return_value = miqt_exec_callback_QwtPlotPanner_contentsMask(this, handle__contentsMask);
-		return *callback_return_value;
+		QBitmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QBitmap* QwtPlotPanner_virtualbase_contentsMask(const void* self);
@@ -151,7 +153,9 @@ public:
 		}
 
 		QPixmap* callback_return_value = miqt_exec_callback_QwtPlotPanner_grab(this, handle__grab);
-		return *callback_return_value;
+		QPixmap callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPixmap* QwtPlotPanner_virtualbase_grab(const void* self);
@@ -317,7 +321,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtPlotPanner_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtPlotPanner_virtualbase_sizeHint(const void* self);
@@ -332,7 +338,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QwtPlotPanner_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QwtPlotPanner_virtualbase_minimumSizeHint(const void* self);
@@ -924,7 +932,9 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QwtPlotPanner_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QwtPlotPanner_virtualbase_inputMethodQuery(const void* self, int param1);
@@ -1921,6 +1931,22 @@ bool QwtPlotPanner_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QwtPlotPanner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtPlotPanner*>(self)->QwtPlotPanner::disconnectNotify(*signal);
+}
+
+QBitmap* QwtPlotPanner_virtualreturncopy_QBitmap(QBitmap* src) {
+	return new QBitmap(*src);
+}
+
+QPixmap* QwtPlotPanner_virtualreturncopy_QPixmap(QPixmap* src) {
+	return new QPixmap(*src);
+}
+
+QSize* QwtPlotPanner_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QwtPlotPanner_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QwtPlotPanner_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

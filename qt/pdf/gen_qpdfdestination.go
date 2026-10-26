@@ -16,7 +16,13 @@ import (
 
 type QPdfDestination struct {
 	h  *C.QPdfDestination
-	gc *[1]*C.QPdfDestination
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfDestination) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfDestination) cPointer() *C.QPdfDestination {
@@ -49,33 +55,42 @@ func UnsafeNewQPdfDestination(h unsafe.Pointer) *QPdfDestination {
 
 // NewQPdfDestination constructs a new QPdfDestination object.
 func NewQPdfDestination(other *QPdfDestination) *QPdfDestination {
+	defer runtime.KeepAlive(other)
 
 	return newQPdfDestination(C.QPdfDestination_new(other.cPointer()))
 }
 
 func (this *QPdfDestination) OperatorAssign(other *QPdfDestination) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfDestination_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPdfDestination) Swap(other *QPdfDestination) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPdfDestination_swap(this.h, other.cPointer())
 }
 
 func (this *QPdfDestination) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPdfDestination_isValid(this.h))
 }
 
 func (this *QPdfDestination) Page() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfDestination_page(this.h))
 }
 
 func (this *QPdfDestination) Location() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QPdfDestination_location(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDestination) Zoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPdfDestination_zoom(this.h))
 }
 
@@ -91,8 +106,9 @@ func (this *QPdfDestination) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfDestination{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfDestination) {
-		C.QPdfDestination_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfDestination_delete((*C.QPdfDestination)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

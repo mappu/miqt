@@ -78,6 +78,7 @@ bool QSplineSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplineSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplineSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplineSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QSplineSeries_virtualreturncopy_QColor(QColor* src);
 
 QObject* QSplineSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSplineSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

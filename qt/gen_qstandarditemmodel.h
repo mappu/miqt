@@ -160,6 +160,7 @@ bool QStandardItem_override_virtual_write(void* self, intptr_t slot);
 void QStandardItem_virtualbase_write(const void* self, QDataStream* out);
 bool QStandardItem_override_virtual_operatorLesser(void* self, intptr_t slot);
 bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* other);
+QVariant* QStandardItem_virtualreturncopy_QVariant(QVariant* src);
 
 void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
 
@@ -326,6 +327,9 @@ bool QStandardItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QStandardItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QStandardItemModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QVariant* QStandardItemModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QStandardItemModel_virtualreturncopy_QSize(QSize* src);
 
 void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QStandardItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);

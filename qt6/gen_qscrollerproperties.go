@@ -58,7 +58,13 @@ const (
 
 type QScrollerProperties struct {
 	h  *C.QScrollerProperties
-	gc *[1]*C.QScrollerProperties
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScrollerProperties) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScrollerProperties) cPointer() *C.QScrollerProperties {
@@ -97,23 +103,31 @@ func NewQScrollerProperties() *QScrollerProperties {
 
 // NewQScrollerProperties2 constructs a new QScrollerProperties object.
 func NewQScrollerProperties2(sp *QScrollerProperties) *QScrollerProperties {
+	defer runtime.KeepAlive(sp)
 
 	return newQScrollerProperties(C.QScrollerProperties_new2(sp.cPointer()))
 }
 
 func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sp)
 	C.QScrollerProperties_operatorAssign(this.h, sp.cPointer())
 }
 
 func (this *QScrollerProperties) OperatorEqual(sp *QScrollerProperties) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sp)
 	return (bool)(C.QScrollerProperties_operatorEqual(this.h, sp.cPointer()))
 }
 
 func (this *QScrollerProperties) OperatorNotEqual(sp *QScrollerProperties) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sp)
 	return (bool)(C.QScrollerProperties_operatorNotEqual(this.h, sp.cPointer()))
 }
 
 func QScrollerProperties_SetDefaultScrollerProperties(sp *QScrollerProperties) {
+	defer runtime.KeepAlive(sp)
 	C.QScrollerProperties_setDefaultScrollerProperties(sp.cPointer())
 }
 
@@ -122,12 +136,15 @@ func QScrollerProperties_UnsetDefaultScrollerProperties() {
 }
 
 func (this *QScrollerProperties) ScrollMetric(metric QScrollerProperties__ScrollMetric) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QScrollerProperties_scrollMetric(this.h, (C.int)(metric)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollerProperties) SetScrollMetric(metric QScrollerProperties__ScrollMetric, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QScrollerProperties_setScrollMetric(this.h, (C.int)(metric), value.cPointer())
 }
 
@@ -143,8 +160,9 @@ func (this *QScrollerProperties) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScrollerProperties{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollerProperties) {
-		C.QScrollerProperties_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScrollerProperties_delete((*C.QScrollerProperties)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

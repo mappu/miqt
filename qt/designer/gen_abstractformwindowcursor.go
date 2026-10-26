@@ -37,7 +37,13 @@ const (
 
 type QDesignerFormWindowCursorInterface struct {
 	h  *C.QDesignerFormWindowCursorInterface
-	gc *[1]*C.QDesignerFormWindowCursorInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerFormWindowCursorInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerFormWindowCursorInterface) cPointer() *C.QDesignerFormWindowCursorInterface {
@@ -69,46 +75,58 @@ func UnsafeNewQDesignerFormWindowCursorInterface(h unsafe.Pointer) *QDesignerFor
 }
 
 func (this *QDesignerFormWindowCursorInterface) FormWindow() *QDesignerFormWindowInterface {
+	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowCursorInterface_formWindow(this.h))
 }
 
 func (this *QDesignerFormWindowCursorInterface) MovePosition(op QDesignerFormWindowCursorInterface__MoveOperation, mode QDesignerFormWindowCursorInterface__MoveMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerFormWindowCursorInterface_movePosition(this.h, (C.int)(op), (C.int)(mode)))
 }
 
 func (this *QDesignerFormWindowCursorInterface) Position() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowCursorInterface_position(this.h))
 }
 
 func (this *QDesignerFormWindowCursorInterface) SetPosition(pos int, mode QDesignerFormWindowCursorInterface__MoveMode) {
+	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowCursorInterface_setPosition(this.h, (C.int)(pos), (C.int)(mode))
 }
 
 func (this *QDesignerFormWindowCursorInterface) Current() *qt.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowCursorInterface_current(this.h)))
 }
 
 func (this *QDesignerFormWindowCursorInterface) WidgetCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowCursorInterface_widgetCount(this.h))
 }
 
 func (this *QDesignerFormWindowCursorInterface) Widget(index int) *qt.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowCursorInterface_widget(this.h, (C.int)(index))))
 }
 
 func (this *QDesignerFormWindowCursorInterface) HasSelection() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerFormWindowCursorInterface_hasSelection(this.h))
 }
 
 func (this *QDesignerFormWindowCursorInterface) SelectedWidgetCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowCursorInterface_selectedWidgetCount(this.h))
 }
 
 func (this *QDesignerFormWindowCursorInterface) SelectedWidget(index int) *qt.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowCursorInterface_selectedWidget(this.h, (C.int)(index))))
 }
 
 func (this *QDesignerFormWindowCursorInterface) SetProperty(name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -117,6 +135,9 @@ func (this *QDesignerFormWindowCursorInterface) SetProperty(name string, value *
 }
 
 func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt.QWidget, name string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -125,6 +146,8 @@ func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt.QWi
 }
 
 func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt.QWidget, name string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -133,10 +156,14 @@ func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt.Q
 }
 
 func (this *QDesignerFormWindowCursorInterface) IsWidgetSelected(widget *qt.QWidget) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(widget)
 	return (bool)(C.QDesignerFormWindowCursorInterface_isWidgetSelected(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 
 func (this *QDesignerFormWindowCursorInterface) OperatorAssign(param1 *QDesignerFormWindowCursorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerFormWindowCursorInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -152,8 +179,9 @@ func (this *QDesignerFormWindowCursorInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerFormWindowCursorInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormWindowCursorInterface) {
-		C.QDesignerFormWindowCursorInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerFormWindowCursorInterface_delete((*C.QDesignerFormWindowCursorInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

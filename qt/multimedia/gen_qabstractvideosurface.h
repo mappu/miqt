@@ -94,6 +94,7 @@ bool QAbstractVideoSurface_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractVideoSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVideoSurfaceFormat* QAbstractVideoSurface_virtualreturncopy_QVideoSurfaceFormat(QVideoSurfaceFormat* src);
 
 void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error);
 void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, QSize* resolution);

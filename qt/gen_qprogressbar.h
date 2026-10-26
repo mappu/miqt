@@ -220,6 +220,8 @@ bool QProgressBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProgressBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QProgressBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QProgressBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QProgressBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionProgressBar* option);
 void QProgressBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

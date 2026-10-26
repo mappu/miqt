@@ -226,6 +226,9 @@ bool QSqlTableModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSqlTableModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSqlTableModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSqlTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QSqlTableModel_virtualreturncopy_QVariant(QVariant* src);
+QModelIndex* QSqlTableModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QSize* QSqlTableModel_virtualreturncopy_QSize(QSize* src);
 
 void QSqlTableModel_protectedbase_setPrimaryKey(bool* _dynamic_cast_ok, void* self, QSqlIndex* key);
 void QSqlTableModel_protectedbase_setQuery(bool* _dynamic_cast_ok, void* self, QSqlQuery* query);

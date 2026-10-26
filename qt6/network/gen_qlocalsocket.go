@@ -49,8 +49,14 @@ const (
 
 type QLocalSocket struct {
 	h  *C.QLocalSocket
-	gc *[1]*C.QLocalSocket
+	gc *[1]unsafe.Pointer
 	*qt6.QIODevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLocalSocket) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLocalSocket) cPointer() *C.QLocalSocket {
@@ -92,15 +98,18 @@ func NewQLocalSocket() *QLocalSocket {
 
 // NewQLocalSocket2 constructs a new QLocalSocket object.
 func NewQLocalSocket2(parent *qt6.QObject) *QLocalSocket {
+	defer runtime.KeepAlive(parent)
 
 	return newQLocalSocket(C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QLocalSocket) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QLocalSocket_metaObject(this.h)))
 }
 
 func (this *QLocalSocket) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLocalSocket_metacast(this.h, param1_Cstring))
@@ -116,10 +125,12 @@ func QLocalSocket_Tr(s string) string {
 }
 
 func (this *QLocalSocket) ConnectToServer() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_connectToServer(this.h)
 }
 
 func (this *QLocalSocket) ConnectToServerWithName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -128,10 +139,12 @@ func (this *QLocalSocket) ConnectToServerWithName(name string) {
 }
 
 func (this *QLocalSocket) DisconnectFromServer() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_disconnectFromServer(this.h)
 }
 
 func (this *QLocalSocket) SetServerName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -140,6 +153,7 @@ func (this *QLocalSocket) SetServerName(name string) {
 }
 
 func (this *QLocalSocket) ServerName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocalSocket_serverName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -147,6 +161,7 @@ func (this *QLocalSocket) ServerName() string {
 }
 
 func (this *QLocalSocket) FullServerName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLocalSocket_fullServerName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -154,90 +169,112 @@ func (this *QLocalSocket) FullServerName() string {
 }
 
 func (this *QLocalSocket) Abort() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_abort(this.h)
 }
 
 func (this *QLocalSocket) IsSequential() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_isSequential(this.h))
 }
 
 func (this *QLocalSocket) BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QLocalSocket_bytesAvailable(this.h))
 }
 
 func (this *QLocalSocket) BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QLocalSocket_bytesToWrite(this.h))
 }
 
 func (this *QLocalSocket) CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_canReadLine(this.h))
 }
 
 func (this *QLocalSocket) Open(openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_open(this.h, (C.int)(openMode)))
 }
 
 func (this *QLocalSocket) Close() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_close(this.h)
 }
 
 func (this *QLocalSocket) Error() QLocalSocket__LocalSocketError {
+	defer runtime.KeepAlive(this)
 	return (QLocalSocket__LocalSocketError)(C.QLocalSocket_error(this.h))
 }
 
 func (this *QLocalSocket) Flush() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_flush(this.h))
 }
 
 func (this *QLocalSocket) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_isValid(this.h))
 }
 
 func (this *QLocalSocket) ReadBufferSize() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QLocalSocket_readBufferSize(this.h))
 }
 
 func (this *QLocalSocket) SetReadBufferSize(size int64) {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QLocalSocket) SetSocketDescriptor(socketDescriptor uintptr) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
 }
 
 func (this *QLocalSocket) SocketDescriptor() uintptr {
+	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QLocalSocket_socketDescriptor(this.h))
 }
 
 func (this *QLocalSocket) SetSocketOptions(option QLocalSocket__SocketOption) {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_setSocketOptions(this.h, (C.int)(option))
 }
 
 func (this *QLocalSocket) SocketOptions() QLocalSocket__SocketOption {
+	defer runtime.KeepAlive(this)
 	return (QLocalSocket__SocketOption)(C.QLocalSocket_socketOptions(this.h))
 }
 
 func (this *QLocalSocket) State() QLocalSocket__LocalSocketState {
+	defer runtime.KeepAlive(this)
 	return (QLocalSocket__LocalSocketState)(C.QLocalSocket_state(this.h))
 }
 
 func (this *QLocalSocket) WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) WaitForConnected() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForConnected(this.h))
 }
 
 func (this *QLocalSocket) WaitForDisconnected() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForDisconnected(this.h))
 }
 
 func (this *QLocalSocket) WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) Connected() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_connected(this.h)
 }
 func (this *QLocalSocket) OnConnected(slot func()) {
@@ -255,6 +292,7 @@ func miqt_exec_callback_QLocalSocket_connected(cb C.intptr_t) {
 }
 
 func (this *QLocalSocket) Disconnected() {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_disconnected(this.h)
 }
 func (this *QLocalSocket) OnDisconnected(slot func()) {
@@ -272,6 +310,7 @@ func miqt_exec_callback_QLocalSocket_disconnected(cb C.intptr_t) {
 }
 
 func (this *QLocalSocket) ErrorOccurred(socketError QLocalSocket__LocalSocketError) {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_errorOccurred(this.h, (C.int)(socketError))
 }
 func (this *QLocalSocket) OnErrorOccurred(slot func(socketError QLocalSocket__LocalSocketError)) {
@@ -292,6 +331,7 @@ func miqt_exec_callback_QLocalSocket_errorOccurred(cb C.intptr_t, socketError C.
 }
 
 func (this *QLocalSocket) StateChanged(socketState QLocalSocket__LocalSocketState) {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_stateChanged(this.h, (C.int)(socketState))
 }
 func (this *QLocalSocket) OnStateChanged(slot func(socketState QLocalSocket__LocalSocketState)) {
@@ -334,10 +374,12 @@ func QLocalSocket_Tr3(s string, c string, n int) string {
 }
 
 func (this *QLocalSocket) ConnectToServerWithOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 	C.QLocalSocket_connectToServerWithOpenMode(this.h, (C.int)(openMode))
 }
 
 func (this *QLocalSocket) ConnectToServer2(name string, openMode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -346,23 +388,28 @@ func (this *QLocalSocket) ConnectToServer2(name string, openMode qt6.QIODeviceBa
 }
 
 func (this *QLocalSocket) SetSocketDescriptor2(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_setSocketDescriptor2(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState)))
 }
 
 func (this *QLocalSocket) SetSocketDescriptor3(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_setSocketDescriptor3(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
 }
 
 func (this *QLocalSocket) WaitForConnectedWithMsecs(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForConnectedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) WaitForDisconnectedWithMsecs(msecs int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLocalSocket_waitForDisconnectedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // SetOpenMode can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QLocalSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -375,6 +422,7 @@ func (this *QLocalSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) 
 
 // SetErrorString can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) SetErrorString(errorString string) {
+	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -391,6 +439,7 @@ func (this *QLocalSocket) SetErrorString(errorString string) {
 
 // Sender can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QLocalSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -405,6 +454,7 @@ func (this *QLocalSocket) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QLocalSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -419,6 +469,7 @@ func (this *QLocalSocket) SenderSignalIndex() int {
 
 // Receivers can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -435,6 +486,8 @@ func (this *QLocalSocket) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QLocalSocket that was directly constructed.
 func (this *QLocalSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QLocalSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -448,6 +501,7 @@ func (this *QLocalSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QLocalSocket) callVirtualBase_IsSequential() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -473,6 +527,7 @@ func miqt_exec_callback_QLocalSocket_isSequential(self *C.QLocalSocket, cb C.int
 }
 
 func (this *QLocalSocket) callVirtualBase_BytesAvailable() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QLocalSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -498,6 +553,7 @@ func miqt_exec_callback_QLocalSocket_bytesAvailable(self *C.QLocalSocket, cb C.i
 }
 
 func (this *QLocalSocket) callVirtualBase_BytesToWrite() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QLocalSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -523,6 +579,7 @@ func miqt_exec_callback_QLocalSocket_bytesToWrite(self *C.QLocalSocket, cb C.int
 }
 
 func (this *QLocalSocket) callVirtualBase_CanReadLine() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -548,6 +605,7 @@ func miqt_exec_callback_QLocalSocket_canReadLine(self *C.QLocalSocket, cb C.intp
 }
 
 func (this *QLocalSocket) callVirtualBase_Open(openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(openMode)))
 
@@ -576,6 +634,7 @@ func miqt_exec_callback_QLocalSocket_open(self *C.QLocalSocket, cb C.intptr_t, o
 }
 
 func (this *QLocalSocket) callVirtualBase_Close() {
+	defer runtime.KeepAlive(this)
 
 	C.QLocalSocket_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -599,6 +658,7 @@ func miqt_exec_callback_QLocalSocket_close(self *C.QLocalSocket, cb C.intptr_t) 
 }
 
 func (this *QLocalSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -627,6 +687,7 @@ func miqt_exec_callback_QLocalSocket_waitForBytesWritten(self *C.QLocalSocket, c
 }
 
 func (this *QLocalSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -655,6 +716,7 @@ func miqt_exec_callback_QLocalSocket_waitForReadyRead(self *C.QLocalSocket, cb C
 }
 
 func (this *QLocalSocket) callVirtualBase_ReadData(param1 string, param2 int64) int64 {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 
@@ -688,6 +750,7 @@ func miqt_exec_callback_QLocalSocket_readData(self *C.QLocalSocket, cb C.intptr_
 }
 
 func (this *QLocalSocket) callVirtualBase_ReadLineData(data string, maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -721,6 +784,7 @@ func miqt_exec_callback_QLocalSocket_readLineData(self *C.QLocalSocket, cb C.int
 }
 
 func (this *QLocalSocket) callVirtualBase_SkipData(maxSize int64) int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QLocalSocket_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
@@ -749,6 +813,7 @@ func miqt_exec_callback_QLocalSocket_skipData(self *C.QLocalSocket, cb C.intptr_
 }
 
 func (this *QLocalSocket) callVirtualBase_WriteData(param1 string, param2 int64) int64 {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 
@@ -782,6 +847,7 @@ func miqt_exec_callback_QLocalSocket_writeData(self *C.QLocalSocket, cb C.intptr
 }
 
 func (this *QLocalSocket) callVirtualBase_Pos() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QLocalSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -807,6 +873,7 @@ func miqt_exec_callback_QLocalSocket_pos(self *C.QLocalSocket, cb C.intptr_t) C.
 }
 
 func (this *QLocalSocket) callVirtualBase_Size() int64 {
+	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QLocalSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -832,6 +899,7 @@ func miqt_exec_callback_QLocalSocket_size(self *C.QLocalSocket, cb C.intptr_t) C
 }
 
 func (this *QLocalSocket) callVirtualBase_Seek(pos int64) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -860,6 +928,7 @@ func miqt_exec_callback_QLocalSocket_seek(self *C.QLocalSocket, cb C.intptr_t, p
 }
 
 func (this *QLocalSocket) callVirtualBase_AtEnd() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -885,6 +954,7 @@ func miqt_exec_callback_QLocalSocket_atEnd(self *C.QLocalSocket, cb C.intptr_t) 
 }
 
 func (this *QLocalSocket) callVirtualBase_Reset() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLocalSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -910,6 +980,8 @@ func miqt_exec_callback_QLocalSocket_reset(self *C.QLocalSocket, cb C.intptr_t) 
 }
 
 func (this *QLocalSocket) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLocalSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -938,6 +1010,9 @@ func miqt_exec_callback_QLocalSocket_event(self *C.QLocalSocket, cb C.intptr_t, 
 }
 
 func (this *QLocalSocket) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLocalSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -968,6 +1043,8 @@ func miqt_exec_callback_QLocalSocket_eventFilter(self *C.QLocalSocket, cb C.intp
 }
 
 func (this *QLocalSocket) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLocalSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -994,6 +1071,8 @@ func miqt_exec_callback_QLocalSocket_timerEvent(self *C.QLocalSocket, cb C.intpt
 }
 
 func (this *QLocalSocket) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLocalSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1020,6 +1099,8 @@ func miqt_exec_callback_QLocalSocket_childEvent(self *C.QLocalSocket, cb C.intpt
 }
 
 func (this *QLocalSocket) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QLocalSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1046,6 +1127,8 @@ func miqt_exec_callback_QLocalSocket_customEvent(self *C.QLocalSocket, cb C.intp
 }
 
 func (this *QLocalSocket) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QLocalSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1072,6 +1155,8 @@ func miqt_exec_callback_QLocalSocket_connectNotify(self *C.QLocalSocket, cb C.in
 }
 
 func (this *QLocalSocket) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QLocalSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1109,8 +1194,9 @@ func (this *QLocalSocket) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLocalSocket{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLocalSocket) {
-		C.QLocalSocket_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLocalSocket_delete((*C.QLocalSocket)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

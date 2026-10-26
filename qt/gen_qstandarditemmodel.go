@@ -23,7 +23,13 @@ const (
 
 type QStandardItem struct {
 	h  *C.QStandardItem
-	gc *[1]*C.QStandardItem
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStandardItem) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStandardItem) cPointer() *C.QStandardItem {
@@ -72,6 +78,7 @@ func NewQStandardItem2(text string) *QStandardItem {
 
 // NewQStandardItem3 constructs a new QStandardItem object.
 func NewQStandardItem3(icon *QIcon, text string) *QStandardItem {
+	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -93,20 +100,25 @@ func NewQStandardItem5(rows int, columns int) *QStandardItem {
 }
 
 func (this *QStandardItem) Data(role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QStandardItem_data(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetData(value *QVariant, role int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QStandardItem_setData(this.h, value.cPointer(), (C.int)(role))
 }
 
 func (this *QStandardItem) ClearData() {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_clearData(this.h)
 }
 
 func (this *QStandardItem) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -114,6 +126,7 @@ func (this *QStandardItem) Text() string {
 }
 
 func (this *QStandardItem) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -122,16 +135,20 @@ func (this *QStandardItem) SetText(text string) {
 }
 
 func (this *QStandardItem) Icon() *QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QStandardItem_icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetIcon(icon *QIcon) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(icon)
 	C.QStandardItem_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QStandardItem) ToolTip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -139,6 +156,7 @@ func (this *QStandardItem) ToolTip() string {
 }
 
 func (this *QStandardItem) SetToolTip(toolTip string) {
+	defer runtime.KeepAlive(this)
 	toolTip_ms := C.struct_miqt_string{}
 	toolTip_ms.data = C.CString(toolTip)
 	toolTip_ms.len = C.size_t(len(toolTip))
@@ -147,6 +165,7 @@ func (this *QStandardItem) SetToolTip(toolTip string) {
 }
 
 func (this *QStandardItem) StatusTip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_statusTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -154,6 +173,7 @@ func (this *QStandardItem) StatusTip() string {
 }
 
 func (this *QStandardItem) SetStatusTip(statusTip string) {
+	defer runtime.KeepAlive(this)
 	statusTip_ms := C.struct_miqt_string{}
 	statusTip_ms.data = C.CString(statusTip)
 	statusTip_ms.len = C.size_t(len(statusTip))
@@ -162,6 +182,7 @@ func (this *QStandardItem) SetStatusTip(statusTip string) {
 }
 
 func (this *QStandardItem) WhatsThis() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -169,6 +190,7 @@ func (this *QStandardItem) WhatsThis() string {
 }
 
 func (this *QStandardItem) SetWhatsThis(whatsThis string) {
+	defer runtime.KeepAlive(this)
 	whatsThis_ms := C.struct_miqt_string{}
 	whatsThis_ms.data = C.CString(whatsThis)
 	whatsThis_ms.len = C.size_t(len(whatsThis))
@@ -177,62 +199,79 @@ func (this *QStandardItem) SetWhatsThis(whatsThis string) {
 }
 
 func (this *QStandardItem) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QStandardItem_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetSizeHint(sizeHint *QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sizeHint)
 	C.QStandardItem_setSizeHint(this.h, sizeHint.cPointer())
 }
 
 func (this *QStandardItem) Font() *QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QStandardItem_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetFont(font *QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QStandardItem_setFont(this.h, font.cPointer())
 }
 
 func (this *QStandardItem) TextAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QStandardItem_textAlignment(this.h))
 }
 
 func (this *QStandardItem) SetTextAlignment(textAlignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStandardItem) Background() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QStandardItem_background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetBackground(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QStandardItem_setBackground(this.h, brush.cPointer())
 }
 
 func (this *QStandardItem) Foreground() *QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := newQBrush(C.QStandardItem_foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) SetForeground(brush *QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QStandardItem_setForeground(this.h, brush.cPointer())
 }
 
 func (this *QStandardItem) CheckState() CheckState {
+	defer runtime.KeepAlive(this)
 	return (CheckState)(C.QStandardItem_checkState(this.h))
 }
 
 func (this *QStandardItem) SetCheckState(checkState CheckState) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setCheckState(this.h, (C.int)(checkState))
 }
 
 func (this *QStandardItem) AccessibleText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_accessibleText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -240,6 +279,7 @@ func (this *QStandardItem) AccessibleText() string {
 }
 
 func (this *QStandardItem) SetAccessibleText(accessibleText string) {
+	defer runtime.KeepAlive(this)
 	accessibleText_ms := C.struct_miqt_string{}
 	accessibleText_ms.data = C.CString(accessibleText)
 	accessibleText_ms.len = C.size_t(len(accessibleText))
@@ -248,6 +288,7 @@ func (this *QStandardItem) SetAccessibleText(accessibleText string) {
 }
 
 func (this *QStandardItem) AccessibleDescription() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStandardItem_accessibleDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -255,6 +296,7 @@ func (this *QStandardItem) AccessibleDescription() string {
 }
 
 func (this *QStandardItem) SetAccessibleDescription(accessibleDescription string) {
+	defer runtime.KeepAlive(this)
 	accessibleDescription_ms := C.struct_miqt_string{}
 	accessibleDescription_ms.data = C.CString(accessibleDescription)
 	accessibleDescription_ms.len = C.size_t(len(accessibleDescription))
@@ -263,140 +305,177 @@ func (this *QStandardItem) SetAccessibleDescription(accessibleDescription string
 }
 
 func (this *QStandardItem) Flags() ItemFlag {
+	defer runtime.KeepAlive(this)
 	return (ItemFlag)(C.QStandardItem_flags(this.h))
 }
 
 func (this *QStandardItem) SetFlags(flags ItemFlag) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QStandardItem) IsEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isEnabled(this.h))
 }
 
 func (this *QStandardItem) SetEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QStandardItem) IsEditable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isEditable(this.h))
 }
 
 func (this *QStandardItem) SetEditable(editable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QStandardItem) IsSelectable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isSelectable(this.h))
 }
 
 func (this *QStandardItem) SetSelectable(selectable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setSelectable(this.h, (C.bool)(selectable))
 }
 
 func (this *QStandardItem) IsCheckable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isCheckable(this.h))
 }
 
 func (this *QStandardItem) SetCheckable(checkable bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setCheckable(this.h, (C.bool)(checkable))
 }
 
 func (this *QStandardItem) IsAutoTristate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isAutoTristate(this.h))
 }
 
 func (this *QStandardItem) SetAutoTristate(tristate bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setAutoTristate(this.h, (C.bool)(tristate))
 }
 
 func (this *QStandardItem) IsUserTristate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isUserTristate(this.h))
 }
 
 func (this *QStandardItem) SetUserTristate(tristate bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setUserTristate(this.h, (C.bool)(tristate))
 }
 
 func (this *QStandardItem) IsTristate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isTristate(this.h))
 }
 
 func (this *QStandardItem) SetTristate(tristate bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setTristate(this.h, (C.bool)(tristate))
 }
 
 func (this *QStandardItem) IsDragEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isDragEnabled(this.h))
 }
 
 func (this *QStandardItem) SetDragEnabled(dragEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setDragEnabled(this.h, (C.bool)(dragEnabled))
 }
 
 func (this *QStandardItem) IsDropEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_isDropEnabled(this.h))
 }
 
 func (this *QStandardItem) SetDropEnabled(dropEnabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setDropEnabled(this.h, (C.bool)(dropEnabled))
 }
 
 func (this *QStandardItem) Parent() *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_parent(this.h))
 }
 
 func (this *QStandardItem) Row() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItem_row(this.h))
 }
 
 func (this *QStandardItem) Column() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItem_column(this.h))
 }
 
 func (this *QStandardItem) Index() *QModelIndex {
+	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QStandardItem_index(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) Model() *QStandardItemModel {
+	defer runtime.KeepAlive(this)
 	return newQStandardItemModel(C.QStandardItem_model(this.h))
 }
 
 func (this *QStandardItem) RowCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItem_rowCount(this.h))
 }
 
 func (this *QStandardItem) SetRowCount(rows int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setRowCount(this.h, (C.int)(rows))
 }
 
 func (this *QStandardItem) ColumnCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItem_columnCount(this.h))
 }
 
 func (this *QStandardItem) SetColumnCount(columns int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_setColumnCount(this.h, (C.int)(columns))
 }
 
 func (this *QStandardItem) HasChildren() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItem_hasChildren(this.h))
 }
 
 func (this *QStandardItem) Child(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_child(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItem) SetChild(row int, column int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItem_setChild(this.h, (C.int)(row), (C.int)(column), item.cPointer())
 }
 
 func (this *QStandardItem) SetChild2(row int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItem_setChild2(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -408,6 +487,8 @@ func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -419,6 +500,8 @@ func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -430,30 +513,38 @@ func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRows2(row int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_insertRows2(this.h, (C.int)(row), (C.int)(count))
 }
 
 func (this *QStandardItem) InsertColumns(column int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_insertColumns(this.h, (C.int)(column), (C.int)(count))
 }
 
 func (this *QStandardItem) RemoveRow(row int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_removeRow(this.h, (C.int)(row))
 }
 
 func (this *QStandardItem) RemoveColumn(column int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_removeColumn(this.h, (C.int)(column))
 }
 
 func (this *QStandardItem) RemoveRows(row int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_removeRows(this.h, (C.int)(row), (C.int)(count))
 }
 
 func (this *QStandardItem) RemoveColumns(column int, count int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_removeColumns(this.h, (C.int)(column), (C.int)(count))
 }
 
 func (this *QStandardItem) AppendRow(items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -465,6 +556,8 @@ func (this *QStandardItem) AppendRow(items []*QStandardItem) {
 }
 
 func (this *QStandardItem) AppendRows(items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -476,6 +569,8 @@ func (this *QStandardItem) AppendRows(items []*QStandardItem) {
 }
 
 func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -487,18 +582,24 @@ func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRow2(row int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItem_insertRow2(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QStandardItem) AppendRowWithItem(item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItem_appendRowWithItem(this.h, item.cPointer())
 }
 
 func (this *QStandardItem) TakeChild(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_takeChild(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStandardItem_takeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -509,6 +610,7 @@ func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
 }
 
 func (this *QStandardItem) TakeColumn(column int) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStandardItem_takeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -519,43 +621,56 @@ func (this *QStandardItem) TakeColumn(column int) []*QStandardItem {
 }
 
 func (this *QStandardItem) SortChildren(column int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_sortChildren(this.h, (C.int)(column))
 }
 
 func (this *QStandardItem) Clone() *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_clone(this.h))
 }
 
 func (this *QStandardItem) Type() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItem_type(this.h))
 }
 
 func (this *QStandardItem) Read(in *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 	C.QStandardItem_read(this.h, in.cPointer())
 }
 
 func (this *QStandardItem) Write(out *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 	C.QStandardItem_write(this.h, out.cPointer())
 }
 
 func (this *QStandardItem) OperatorLesser(other *QStandardItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QStandardItem_operatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QStandardItem) Child2(row int, column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_child2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItem) TakeChild2(row int, column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItem_takeChild2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItem) SortChildren2(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItem_sortChildren2(this.h, (C.int)(column), (C.int)(order))
 }
 
 // EmitDataChanged can only be called from a QStandardItem that was directly constructed.
 func (this *QStandardItem) EmitDataChanged() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItem_protectedbase_emitDataChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -567,6 +682,7 @@ func (this *QStandardItem) EmitDataChanged() {
 }
 
 func (this *QStandardItem) callVirtualBase_Data(role int) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QStandardItem_virtualbase_data(unsafe.Pointer(this.h), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -591,12 +707,15 @@ func miqt_exec_callback_QStandardItem_data(self *C.QStandardItem, cb C.intptr_t,
 	slotval1 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItem{h: self}).callVirtualBase_Data, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItem_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItem) callVirtualBase_SetData(value *QVariant, role int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QStandardItem_virtualbase_setData(unsafe.Pointer(this.h), value.cPointer(), (C.int)(role))
 
@@ -625,6 +744,7 @@ func miqt_exec_callback_QStandardItem_setData(self *C.QStandardItem, cb C.intptr
 }
 
 func (this *QStandardItem) callVirtualBase_Clone() *QStandardItem {
+	defer runtime.KeepAlive(this)
 
 	return newQStandardItem(C.QStandardItem_virtualbase_clone(unsafe.Pointer(this.h)))
 
@@ -644,12 +764,14 @@ func miqt_exec_callback_QStandardItem_clone(self *C.QStandardItem, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QStandardItem{h: self}).callVirtualBase_Clone)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStandardItem) callVirtualBase_Type() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QStandardItem_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -675,6 +797,8 @@ func miqt_exec_callback_QStandardItem_type(self *C.QStandardItem, cb C.intptr_t)
 }
 
 func (this *QStandardItem) callVirtualBase_Read(in *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 
 	C.QStandardItem_virtualbase_read(unsafe.Pointer(this.h), in.cPointer())
 
@@ -701,6 +825,8 @@ func miqt_exec_callback_QStandardItem_read(self *C.QStandardItem, cb C.intptr_t,
 }
 
 func (this *QStandardItem) callVirtualBase_Write(out *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 
 	C.QStandardItem_virtualbase_write(unsafe.Pointer(this.h), out.cPointer())
 
@@ -727,6 +853,8 @@ func miqt_exec_callback_QStandardItem_write(self *C.QStandardItem, cb C.intptr_t
 }
 
 func (this *QStandardItem) callVirtualBase_OperatorLesser(other *QStandardItem) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QStandardItem_virtualbase_operatorLesser(unsafe.Pointer(this.h), other.cPointer()))
 
@@ -766,16 +894,24 @@ func (this *QStandardItem) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStandardItem{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStandardItem) {
-		C.QStandardItem_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStandardItem_delete((*C.QStandardItem)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QStandardItemModel struct {
 	h  *C.QStandardItemModel
-	gc *[1]*C.QStandardItemModel
+	gc *[1]unsafe.Pointer
 	*QAbstractItemModel
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStandardItemModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractItemModel.miqtSetGC(gc)
 }
 
 func (this *QStandardItemModel) cPointer() *C.QStandardItemModel {
@@ -823,21 +959,25 @@ func NewQStandardItemModel2(rows int, columns int) *QStandardItemModel {
 
 // NewQStandardItemModel3 constructs a new QStandardItemModel object.
 func NewQStandardItemModel3(parent *QObject) *QStandardItemModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQStandardItemModel(C.QStandardItemModel_new3(parent.cPointer()))
 }
 
 // NewQStandardItemModel4 constructs a new QStandardItemModel object.
 func NewQStandardItemModel4(rows int, columns int, parent *QObject) *QStandardItemModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQStandardItemModel(C.QStandardItemModel_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStandardItemModel_metaObject(this.h))
 }
 
 func (this *QStandardItemModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStandardItemModel_metacast(this.h, param1_Cstring))
@@ -862,6 +1002,7 @@ func QStandardItemModel_TrUtf8(s string) string {
 }
 
 func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
+	defer runtime.KeepAlive(this)
 	roleNames_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roleNames))))
 	defer C.free(unsafe.Pointer(roleNames_Keys_CArray_ptr))
 	roleNames_Keys_CArray := unsafe.Slice(roleNames_Keys_CArray_ptr, len(roleNames))
@@ -890,84 +1031,119 @@ func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
 }
 
 func (this *QStandardItemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QStandardItemModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 	_goptr := newQModelIndex(C.QStandardItemModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QStandardItemModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QStandardItemModel) ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QStandardItemModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QStandardItemModel) HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QStandardItemModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QStandardItemModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QStandardItemModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QStandardItemModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QStandardItemModel) ClearItemData(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (bool)(C.QStandardItemModel_clearItemData(this.h, index.cPointer()))
 }
 
 func (this *QStandardItemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QStandardItemModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	return (bool)(C.QStandardItemModel_setHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QStandardItemModel) InsertRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_insertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_removeColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QStandardItemModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QStandardItemModel) SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QStandardItemModel_supportedDropActions(this.h))
 }
 
 func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	var _mm C.struct_miqt_map = C.QStandardItemModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -985,6 +1161,9 @@ func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QStandardItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -1006,56 +1185,75 @@ func (this *QStandardItemModel) SetItemData(index *QModelIndex, roles map[int]QV
 }
 
 func (this *QStandardItemModel) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QStandardItemModel_clear(this.h)
 }
 
 func (this *QStandardItemModel) Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItemModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QStandardItemModel) ItemFromIndex(index *QModelIndex) *QStandardItem {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	return newQStandardItem(C.QStandardItemModel_itemFromIndex(this.h, index.cPointer()))
 }
 
 func (this *QStandardItemModel) IndexFromItem(item *QStandardItem) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	_goptr := newQModelIndex(C.QStandardItemModel_indexFromItem(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Item(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_item(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) SetItem(row int, column int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_setItem(this.h, (C.int)(row), (C.int)(column), item.cPointer())
 }
 
 func (this *QStandardItemModel) SetItem2(row int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_setItem2(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QStandardItemModel) InvisibleRootItem() *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_invisibleRootItem(this.h))
 }
 
 func (this *QStandardItemModel) HorizontalHeaderItem(column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_horizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QStandardItemModel) SetHorizontalHeaderItem(column int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_setHorizontalHeaderItem(this.h, (C.int)(column), item.cPointer())
 }
 
 func (this *QStandardItemModel) VerticalHeaderItem(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_verticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_setVerticalHeaderItem(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
+	defer runtime.KeepAlive(this)
 	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray_ptr))
 	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
@@ -1071,6 +1269,7 @@ func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
+	defer runtime.KeepAlive(this)
 	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray_ptr))
 	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
@@ -1086,14 +1285,18 @@ func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
 }
 
 func (this *QStandardItemModel) SetRowCount(rows int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItemModel_setRowCount(this.h, (C.int)(rows))
 }
 
 func (this *QStandardItemModel) SetColumnCount(columns int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItemModel_setColumnCount(this.h, (C.int)(columns))
 }
 
 func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -1105,6 +1308,8 @@ func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
 }
 
 func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -1116,10 +1321,14 @@ func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
 }
 
 func (this *QStandardItemModel) AppendRowWithItem(item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_appendRowWithItem(this.h, item.cPointer())
 }
 
 func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -1131,6 +1340,8 @@ func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
 }
 
 func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
 	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
@@ -1142,22 +1353,28 @@ func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem)
 }
 
 func (this *QStandardItemModel) InsertRow2(row int, item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_insertRow2(this.h, (C.int)(row), item.cPointer())
 }
 
 func (this *QStandardItemModel) InsertRowWithRow(row int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItemModel_insertRowWithRow(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) InsertColumnWithColumn(column int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QStandardItemModel_insertColumnWithColumn(this.h, (C.int)(column)))
 }
 
 func (this *QStandardItemModel) TakeItem(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_takeItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStandardItemModel_takeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1168,6 +1385,7 @@ func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
 }
 
 func (this *QStandardItemModel) TakeColumn(column int) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStandardItemModel_takeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1178,22 +1396,28 @@ func (this *QStandardItemModel) TakeColumn(column int) []*QStandardItem {
 }
 
 func (this *QStandardItemModel) TakeHorizontalHeaderItem(column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_takeHorizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QStandardItemModel) TakeVerticalHeaderItem(row int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_takeVerticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) ItemPrototype() *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_itemPrototype(this.h))
 }
 
 func (this *QStandardItemModel) SetItemPrototype(item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_setItemPrototype(this.h, item.cPointer())
 }
 
 func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1208,14 +1432,17 @@ func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
 }
 
 func (this *QStandardItemModel) SortRole() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QStandardItemModel_sortRole(this.h))
 }
 
 func (this *QStandardItemModel) SetSortRole(role int) {
+	defer runtime.KeepAlive(this)
 	C.QStandardItemModel_setSortRole(this.h, (C.int)(role))
 }
 
 func (this *QStandardItemModel) MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStandardItemModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1229,6 +1456,8 @@ func (this *QStandardItemModel) MimeTypes() []string {
 }
 
 func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -1240,10 +1469,15 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QStandardItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) ItemChanged(item *QStandardItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(item)
 	C.QStandardItemModel_itemChanged(this.h, item.cPointer())
 }
 func (this *QStandardItemModel) OnItemChanged(slot func(item *QStandardItem)) {
@@ -1308,22 +1542,29 @@ func QStandardItemModel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStandardItemModel) Item2(row int, column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_item2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItemModel) InsertRow3(row int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_insertRow3(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) InsertColumn2(column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStandardItemModel_insertColumn2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) TakeItem2(row int, column int) *QStandardItem {
+	defer runtime.KeepAlive(this)
 	return newQStandardItem(C.QStandardItemModel_takeItem2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1338,6 +1579,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QSta
 }
 
 func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column int) []*QStandardItem {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1353,6 +1595,7 @@ func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column 
 
 // ResetInternalData can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) ResetInternalData() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1365,6 +1608,7 @@ func (this *QStandardItemModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) CreateIndex(row int, column int) QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QStandardItemModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -1381,6 +1625,9 @@ func (this *QStandardItemModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
+	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -1400,6 +1647,9 @@ func (this *QStandardItemModel) EncodeData(indexes []QModelIndex, stream *QDataS
 
 // DecodeData can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStandardItemModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer(), stream.cPointer()))
@@ -1414,6 +1664,8 @@ func (this *QStandardItemModel) DecodeData(row int, column int, parent *QModelIn
 
 // BeginInsertRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -1426,6 +1678,7 @@ func (this *QStandardItemModel) BeginInsertRows(parent *QModelIndex, first int, 
 
 // EndInsertRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndInsertRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1438,6 +1691,8 @@ func (this *QStandardItemModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -1450,6 +1705,7 @@ func (this *QStandardItemModel) BeginRemoveRows(parent *QModelIndex, first int, 
 
 // EndRemoveRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndRemoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1462,6 +1718,9 @@ func (this *QStandardItemModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStandardItemModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationRow)))
@@ -1476,6 +1735,7 @@ func (this *QStandardItemModel) BeginMoveRows(sourceParent *QModelIndex, sourceF
 
 // EndMoveRows can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndMoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1488,6 +1748,8 @@ func (this *QStandardItemModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -1500,6 +1762,7 @@ func (this *QStandardItemModel) BeginInsertColumns(parent *QModelIndex, first in
 
 // EndInsertColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndInsertColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1512,6 +1775,8 @@ func (this *QStandardItemModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
@@ -1524,6 +1789,7 @@ func (this *QStandardItemModel) BeginRemoveColumns(parent *QModelIndex, first in
 
 // EndRemoveColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndRemoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1536,6 +1802,9 @@ func (this *QStandardItemModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStandardItemModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationColumn)))
@@ -1550,6 +1819,7 @@ func (this *QStandardItemModel) BeginMoveColumns(sourceParent *QModelIndex, sour
 
 // EndMoveColumns can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndMoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1562,6 +1832,7 @@ func (this *QStandardItemModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) BeginResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1574,6 +1845,7 @@ func (this *QStandardItemModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EndResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1586,6 +1858,9 @@ func (this *QStandardItemModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), from.cPointer(), to.cPointer())
@@ -1598,6 +1873,9 @@ func (this *QStandardItemModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
@@ -1624,6 +1902,7 @@ func (this *QStandardItemModel) ChangePersistentIndexList(from []QModelIndex, to
 
 // PersistentIndexList can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) PersistentIndexList() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QStandardItemModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1646,6 +1925,7 @@ func (this *QStandardItemModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStandardItemModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1660,6 +1940,7 @@ func (this *QStandardItemModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStandardItemModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1674,6 +1955,7 @@ func (this *QStandardItemModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1690,6 +1972,8 @@ func (this *QStandardItemModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStandardItemModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1703,6 +1987,8 @@ func (this *QStandardItemModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStandardItemModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1731,12 +2017,15 @@ func miqt_exec_callback_QStandardItemModel_index(self *C.QStandardItemModel, cb 
 	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(child)
 
 	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1761,12 +2050,15 @@ func miqt_exec_callback_QStandardItemModel_parent(self *C.QStandardItemModel, cb
 	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Parent, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_RowCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QStandardItemModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1795,6 +2087,8 @@ func miqt_exec_callback_QStandardItemModel_rowCount(self *C.QStandardItemModel, 
 }
 
 func (this *QStandardItemModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QStandardItemModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1823,6 +2117,8 @@ func miqt_exec_callback_QStandardItemModel_columnCount(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -1851,6 +2147,8 @@ func miqt_exec_callback_QStandardItemModel_hasChildren(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1879,12 +2177,15 @@ func miqt_exec_callback_QStandardItemModel_sibling(self *C.QStandardItemModel, c
 	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQVariant(C.QStandardItemModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1911,12 +2212,16 @@ func miqt_exec_callback_QStandardItemModel_data(self *C.QStandardItemModel, cb C
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QStandardItemModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
 
@@ -1949,6 +2254,7 @@ func miqt_exec_callback_QStandardItemModel_setData(self *C.QStandardItemModel, c
 }
 
 func (this *QStandardItemModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QStandardItemModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1977,12 +2283,15 @@ func miqt_exec_callback_QStandardItemModel_headerData(self *C.QStandardItemModel
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_HeaderData, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QStandardItemModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 
@@ -2017,6 +2326,8 @@ func miqt_exec_callback_QStandardItemModel_setHeaderData(self *C.QStandardItemMo
 }
 
 func (this *QStandardItemModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -2049,6 +2360,8 @@ func miqt_exec_callback_QStandardItemModel_insertRows(self *C.QStandardItemModel
 }
 
 func (this *QStandardItemModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -2081,6 +2394,8 @@ func miqt_exec_callback_QStandardItemModel_insertColumns(self *C.QStandardItemMo
 }
 
 func (this *QStandardItemModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
@@ -2113,6 +2428,8 @@ func miqt_exec_callback_QStandardItemModel_removeRows(self *C.QStandardItemModel
 }
 
 func (this *QStandardItemModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
@@ -2145,6 +2462,8 @@ func miqt_exec_callback_QStandardItemModel_removeColumns(self *C.QStandardItemMo
 }
 
 func (this *QStandardItemModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QStandardItemModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -2173,6 +2492,7 @@ func miqt_exec_callback_QStandardItemModel_flags(self *C.QStandardItemModel, cb 
 }
 
 func (this *QStandardItemModel) callVirtualBase_SupportedDropActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QStandardItemModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -2198,6 +2518,8 @@ func miqt_exec_callback_QStandardItemModel_supportedDropActions(self *C.QStandar
 }
 
 func (this *QStandardItemModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QStandardItemModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -2233,6 +2555,7 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_ItemData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
 	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -2240,7 +2563,7 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
-		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v.cPointer()
+		virtualReturn_Values_CArray[virtualReturn_ctr] = C.QStandardItemModel_virtualreturncopy_QVariant(virtualReturn_v.cPointer())
 		virtualReturn_ctr++
 	}
 	virtualReturn_mm := C.struct_miqt_map{
@@ -2254,6 +2577,9 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 }
 
 func (this *QStandardItemModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -2314,6 +2640,7 @@ func miqt_exec_callback_QStandardItemModel_setItemData(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_Sort(column int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QStandardItemModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -2342,6 +2669,7 @@ func miqt_exec_callback_QStandardItemModel_sort(self *C.QStandardItemModel, cb C
 }
 
 func (this *QStandardItemModel) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QStandardItemModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -2385,6 +2713,8 @@ func miqt_exec_callback_QStandardItemModel_mimeTypes(self *C.QStandardItemModel,
 }
 
 func (this *QStandardItemModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -2422,12 +2752,16 @@ func miqt_exec_callback_QStandardItemModel_mimeData(self *C.QStandardItemModel, 
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -2464,6 +2798,9 @@ func miqt_exec_callback_QStandardItemModel_dropMimeData(self *C.QStandardItemMod
 }
 
 func (this *QStandardItemModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
@@ -2500,6 +2837,7 @@ func miqt_exec_callback_QStandardItemModel_canDropMimeData(self *C.QStandardItem
 }
 
 func (this *QStandardItemModel) callVirtualBase_SupportedDragActions() DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QStandardItemModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -2525,6 +2863,9 @@ func miqt_exec_callback_QStandardItemModel_supportedDragActions(self *C.QStandar
 }
 
 func (this *QStandardItemModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -2561,6 +2902,9 @@ func miqt_exec_callback_QStandardItemModel_moveRows(self *C.QStandardItemModel, 
 }
 
 func (this *QStandardItemModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
@@ -2597,6 +2941,8 @@ func miqt_exec_callback_QStandardItemModel_moveColumns(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_FetchMore(parent *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QStandardItemModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
 
@@ -2623,6 +2969,8 @@ func miqt_exec_callback_QStandardItemModel_fetchMore(self *C.QStandardItemModel,
 }
 
 func (this *QStandardItemModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStandardItemModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -2651,6 +2999,8 @@ func miqt_exec_callback_QStandardItemModel_canFetchMore(self *C.QStandardItemMod
 }
 
 func (this *QStandardItemModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2675,12 +3025,16 @@ func miqt_exec_callback_QStandardItemModel_buddy(self *C.QStandardItemModel, cb 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Buddy, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 
 	var _ma C.struct_miqt_array = C.QStandardItemModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2719,10 +3073,11 @@ func miqt_exec_callback_QStandardItemModel_match(self *C.QStandardItemModel, cb 
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QStandardItemModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2731,6 +3086,8 @@ func miqt_exec_callback_QStandardItemModel_match(self *C.QStandardItemModel, cb 
 }
 
 func (this *QStandardItemModel) callVirtualBase_Span(index *QModelIndex) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QStandardItemModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2755,12 +3112,14 @@ func miqt_exec_callback_QStandardItemModel_span(self *C.QStandardItemModel, cb C
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Span, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QStandardItemModel_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QStandardItemModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -2821,6 +3180,7 @@ func miqt_exec_callback_QStandardItemModel_roleNames(self *C.QStandardItemModel,
 }
 
 func (this *QStandardItemModel) callVirtualBase_Submit() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QStandardItemModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -2846,6 +3206,7 @@ func miqt_exec_callback_QStandardItemModel_submit(self *C.QStandardItemModel, cb
 }
 
 func (this *QStandardItemModel) callVirtualBase_Revert() {
+	defer runtime.KeepAlive(this)
 
 	C.QStandardItemModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -2869,6 +3230,8 @@ func miqt_exec_callback_QStandardItemModel_revert(self *C.QStandardItemModel, cb
 }
 
 func (this *QStandardItemModel) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStandardItemModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -2897,6 +3260,9 @@ func miqt_exec_callback_QStandardItemModel_event(self *C.QStandardItemModel, cb 
 }
 
 func (this *QStandardItemModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStandardItemModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -2927,6 +3293,8 @@ func miqt_exec_callback_QStandardItemModel_eventFilter(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStandardItemModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2953,6 +3321,8 @@ func miqt_exec_callback_QStandardItemModel_timerEvent(self *C.QStandardItemModel
 }
 
 func (this *QStandardItemModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStandardItemModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2979,6 +3349,8 @@ func miqt_exec_callback_QStandardItemModel_childEvent(self *C.QStandardItemModel
 }
 
 func (this *QStandardItemModel) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStandardItemModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3005,6 +3377,8 @@ func miqt_exec_callback_QStandardItemModel_customEvent(self *C.QStandardItemMode
 }
 
 func (this *QStandardItemModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStandardItemModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3031,6 +3405,8 @@ func miqt_exec_callback_QStandardItemModel_connectNotify(self *C.QStandardItemMo
 }
 
 func (this *QStandardItemModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStandardItemModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3068,8 +3444,9 @@ func (this *QStandardItemModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStandardItemModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStandardItemModel) {
-		C.QStandardItemModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStandardItemModel_delete((*C.QStandardItemModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,15 @@ import (
 
 type QHorizontalStackedBarSeries struct {
 	h  *C.QHorizontalStackedBarSeries
-	gc *[1]*C.QHorizontalStackedBarSeries
+	gc *[1]unsafe.Pointer
 	*QAbstractBarSeries
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHorizontalStackedBarSeries) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractBarSeries.miqtSetGC(gc)
 }
 
 func (this *QHorizontalStackedBarSeries) cPointer() *C.QHorizontalStackedBarSeries {
@@ -60,15 +67,18 @@ func NewQHorizontalStackedBarSeries() *QHorizontalStackedBarSeries {
 
 // NewQHorizontalStackedBarSeries2 constructs a new QHorizontalStackedBarSeries object.
 func NewQHorizontalStackedBarSeries2(parent *qt6.QObject) *QHorizontalStackedBarSeries {
+	defer runtime.KeepAlive(parent)
 
 	return newQHorizontalStackedBarSeries(C.QHorizontalStackedBarSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QHorizontalStackedBarSeries) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QHorizontalStackedBarSeries_metaObject(this.h)))
 }
 
 func (this *QHorizontalStackedBarSeries) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHorizontalStackedBarSeries_metacast(this.h, param1_Cstring))
@@ -84,6 +94,7 @@ func QHorizontalStackedBarSeries_Tr(s string) string {
 }
 
 func (this *QHorizontalStackedBarSeries) Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QHorizontalStackedBarSeries_type(this.h))
 }
 
@@ -111,6 +122,7 @@ func QHorizontalStackedBarSeries_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QHorizontalStackedBarSeries that was directly constructed.
 func (this *QHorizontalStackedBarSeries) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QHorizontalStackedBarSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -125,6 +137,7 @@ func (this *QHorizontalStackedBarSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QHorizontalStackedBarSeries that was directly constructed.
 func (this *QHorizontalStackedBarSeries) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHorizontalStackedBarSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -139,6 +152,7 @@ func (this *QHorizontalStackedBarSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHorizontalStackedBarSeries that was directly constructed.
 func (this *QHorizontalStackedBarSeries) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -155,6 +169,8 @@ func (this *QHorizontalStackedBarSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHorizontalStackedBarSeries that was directly constructed.
 func (this *QHorizontalStackedBarSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHorizontalStackedBarSeries_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -168,6 +184,7 @@ func (this *QHorizontalStackedBarSeries) IsSignalConnected(signal *qt6.QMetaMeth
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QHorizontalStackedBarSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -193,6 +210,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_type(self *C.QHorizontalStac
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHorizontalStackedBarSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -221,6 +240,9 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_event(self *C.QHorizontalSta
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHorizontalStackedBarSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -251,6 +273,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_eventFilter(self *C.QHorizon
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHorizontalStackedBarSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -277,6 +301,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_timerEvent(self *C.QHorizont
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHorizontalStackedBarSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -303,6 +329,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_childEvent(self *C.QHorizont
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHorizontalStackedBarSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -329,6 +357,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_customEvent(self *C.QHorizon
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHorizontalStackedBarSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -355,6 +385,8 @@ func miqt_exec_callback_QHorizontalStackedBarSeries_connectNotify(self *C.QHoriz
 }
 
 func (this *QHorizontalStackedBarSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHorizontalStackedBarSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -392,8 +424,9 @@ func (this *QHorizontalStackedBarSeries) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHorizontalStackedBarSeries{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHorizontalStackedBarSeries) {
-		C.QHorizontalStackedBarSeries_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHorizontalStackedBarSeries_delete((*C.QHorizontalStackedBarSeries)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

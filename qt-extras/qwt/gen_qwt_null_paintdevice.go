@@ -25,8 +25,14 @@ const (
 
 type QwtNullPaintDevice struct {
 	h  *C.QwtNullPaintDevice
-	gc *[1]*C.QwtNullPaintDevice
+	gc *[1]unsafe.Pointer
 	*qt.QPaintDevice
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtNullPaintDevice) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtNullPaintDevice) cPointer() *C.QwtNullPaintDevice {
@@ -67,86 +73,130 @@ func NewQwtNullPaintDevice() *QwtNullPaintDevice {
 }
 
 func (this *QwtNullPaintDevice) SetMode(mode QwtNullPaintDevice__Mode) {
+	defer runtime.KeepAlive(this)
 	C.QwtNullPaintDevice_setMode(this.h, (C.int)(mode))
 }
 
 func (this *QwtNullPaintDevice) Mode() QwtNullPaintDevice__Mode {
+	defer runtime.KeepAlive(this)
 	return (QwtNullPaintDevice__Mode)(C.QwtNullPaintDevice_mode(this.h))
 }
 
 func (this *QwtNullPaintDevice) PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtNullPaintDevice_paintEngine(this.h)))
 }
 
 func (this *QwtNullPaintDevice) Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtNullPaintDevice_metric(this.h, (C.int)(param1)))
 }
 
 func (this *QwtNullPaintDevice) DrawRects(param1 *qt.QRect, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawRects(this.h, (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawRects2(param1 *qt.QRectF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawRects2(this.h, (*C.QRectF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawLines(param1 *qt.QLine, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawLines(this.h, (*C.QLine)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawLines2(param1 *qt.QLineF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawLines2(this.h, (*C.QLineF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawEllipse(param1 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawEllipse(this.h, (*C.QRectF)(param1.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawEllipseWithQRect(param1 *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawEllipseWithQRect(this.h, (*C.QRect)(param1.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawPath(param1 *qt.QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPath(this.h, (*C.QPainterPath)(param1.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawPoints(param1 *qt.QPointF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPoints(this.h, (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawPoints2(param1 *qt.QPoint, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPoints2(this.h, (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPolygon(this.h, (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 }
 
 func (this *QwtNullPaintDevice) DrawPolygon2(param1 *qt.QPoint, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPolygon2(this.h, (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 }
 
 func (this *QwtNullPaintDevice) DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 	C.QwtNullPaintDevice_drawPixmap(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 	C.QwtNullPaintDevice_drawTextItem(this.h, (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 	C.QwtNullPaintDevice_drawTiledPixmap(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 	C.QwtNullPaintDevice_drawImage(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
 }
 
 func (this *QwtNullPaintDevice) UpdateState(param1 *qt.QPaintEngineState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_updateState(this.h, (*C.QPaintEngineState)(param1.UnsafePointer()))
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtNullPaintDevice_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -166,12 +216,14 @@ func miqt_exec_callback_QwtNullPaintDevice_paintEngine(self *C.QwtNullPaintDevic
 	}
 
 	virtualReturn := gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtNullPaintDevice_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -200,6 +252,8 @@ func miqt_exec_callback_QwtNullPaintDevice_metric(self *C.QwtNullPaintDevice, cb
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawRects(param1 *qt.QRect, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawRects(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -228,6 +282,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawRects(self *C.QwtNullPaintDevice,
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawRects2(param1 *qt.QRectF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawRects2(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -256,6 +312,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawRects2(self *C.QwtNullPaintDevice
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawLines(param1 *qt.QLine, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawLines(unsafe.Pointer(this.h), (*C.QLine)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -284,6 +342,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawLines(self *C.QwtNullPaintDevice,
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawLines2(param1 *qt.QLineF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawLines2(unsafe.Pointer(this.h), (*C.QLineF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -312,6 +372,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawLines2(self *C.QwtNullPaintDevice
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipse(param1 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawEllipse(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
 
@@ -338,6 +400,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawEllipse(self *C.QwtNullPaintDevic
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipseWithQRect(param1 *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))
 
@@ -364,6 +428,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(self *C.QwtNullP
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPath(param1 *qt.QPainterPath) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPath(unsafe.Pointer(this.h), (*C.QPainterPath)(param1.UnsafePointer()))
 
@@ -390,6 +456,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPath(self *C.QwtNullPaintDevice, 
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPoints(param1 *qt.QPointF, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPoints(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -418,6 +486,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPoints(self *C.QwtNullPaintDevice
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPoints2(param1 *qt.QPoint, param2 int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPoints2(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -446,6 +516,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPoints2(self *C.QwtNullPaintDevic
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPolygon(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -476,6 +548,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPolygon(self *C.QwtNullPaintDevic
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPolygon2(param1 *qt.QPoint, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPolygon2(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -506,6 +580,10 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPolygon2(self *C.QwtNullPaintDevi
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtNullPaintDevice_virtualbase_drawPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
 
@@ -536,6 +614,9 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPixmap(self *C.QwtNullPaintDevice
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtNullPaintDevice_virtualbase_drawTextItem(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
 
@@ -564,6 +645,10 @@ func miqt_exec_callback_QwtNullPaintDevice_drawTextItem(self *C.QwtNullPaintDevi
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtNullPaintDevice_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
 
@@ -594,6 +679,10 @@ func miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(self *C.QwtNullPaintD
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
+	defer runtime.KeepAlive(param3)
 
 	C.QwtNullPaintDevice_virtualbase_drawImage(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
 
@@ -626,6 +715,8 @@ func miqt_exec_callback_QwtNullPaintDevice_drawImage(self *C.QwtNullPaintDevice,
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_UpdateState(param1 *qt.QPaintEngineState) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_updateState(unsafe.Pointer(this.h), (*C.QPaintEngineState)(param1.UnsafePointer()))
 
@@ -665,12 +756,14 @@ func miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(self *C.QwtNullPaintDevic
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QwtNullPaintDevice_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtNullPaintDevice_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -696,6 +789,8 @@ func miqt_exec_callback_QwtNullPaintDevice_devType(self *C.QwtNullPaintDevice, c
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QwtNullPaintDevice_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -722,6 +817,8 @@ func miqt_exec_callback_QwtNullPaintDevice_initPainter(self *C.QwtNullPaintDevic
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtNullPaintDevice_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -744,12 +841,14 @@ func miqt_exec_callback_QwtNullPaintDevice_redirected(self *C.QwtNullPaintDevice
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtNullPaintDevice) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtNullPaintDevice_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -769,6 +868,7 @@ func miqt_exec_callback_QwtNullPaintDevice_sharedPainter(self *C.QwtNullPaintDev
 	}
 
 	virtualReturn := gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
@@ -786,8 +886,9 @@ func (this *QwtNullPaintDevice) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtNullPaintDevice{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtNullPaintDevice) {
-		C.QwtNullPaintDevice_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtNullPaintDevice_delete((*C.QwtNullPaintDevice)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

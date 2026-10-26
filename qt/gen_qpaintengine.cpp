@@ -453,7 +453,9 @@ public:
 		}
 
 		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_coordinateOffset(this, handle__coordinateOffset);
-		return *callback_return_value;
+		QPoint callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self);
@@ -884,6 +886,10 @@ bool QPaintEngine_override_virtual_type(void* self, intptr_t slot) {
 
 	self_cast->handle__type = slot;
 	return true;
+}
+
+QPoint* QPaintEngine_virtualreturncopy_QPoint(QPoint* src) {
+	return new QPoint(*src);
 }
 
 void QPaintEngine_delete(QPaintEngine* self) {

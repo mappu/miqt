@@ -26,7 +26,13 @@ const (
 
 type QwtScaleArithmetic struct {
 	h  *C.QwtScaleArithmetic
-	gc *[1]*C.QwtScaleArithmetic
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtScaleArithmetic) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtScaleArithmetic) cPointer() *C.QwtScaleArithmetic {
@@ -85,15 +91,22 @@ func (this *QwtScaleArithmetic) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtScaleArithmetic{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleArithmetic) {
-		C.QwtScaleArithmetic_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtScaleArithmetic_delete((*C.QwtScaleArithmetic)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtScaleEngine struct {
 	h  *C.QwtScaleEngine
-	gc *[1]*C.QwtScaleEngine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtScaleEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtScaleEngine) cPointer() *C.QwtScaleEngine {
@@ -132,6 +145,7 @@ func NewQwtScaleEngine() *QwtScaleEngine {
 
 // NewQwtScaleEngine2 constructs a new QwtScaleEngine object.
 func NewQwtScaleEngine2(param1 *QwtScaleEngine) *QwtScaleEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtScaleEngine(C.QwtScaleEngine_new2(param1.cPointer()))
 }
@@ -143,77 +157,98 @@ func NewQwtScaleEngine3(base uint) *QwtScaleEngine {
 }
 
 func (this *QwtScaleEngine) SetBase(base uint) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setBase(this.h, (C.uint)(base))
 }
 
 func (this *QwtScaleEngine) Base() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtScaleEngine_base(this.h))
 }
 
 func (this *QwtScaleEngine) SetAttribute(param1 QwtScaleEngine__Attribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtScaleEngine) TestAttribute(param1 QwtScaleEngine__Attribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleEngine_testAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtScaleEngine) SetAttributes(attributes QwtScaleEngine__Attribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setAttributes(this.h, (C.int)(attributes))
 }
 
 func (this *QwtScaleEngine) Attributes() QwtScaleEngine__Attribute {
+	defer runtime.KeepAlive(this)
 	return (QwtScaleEngine__Attribute)(C.QwtScaleEngine_attributes(this.h))
 }
 
 func (this *QwtScaleEngine) SetReference(reference float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setReference(this.h, (C.double)(reference))
 }
 
 func (this *QwtScaleEngine) Reference() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleEngine_reference(this.h))
 }
 
 func (this *QwtScaleEngine) SetMargins(lower float64, upper float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setMargins(this.h, (C.double)(lower), (C.double)(upper))
 }
 
 func (this *QwtScaleEngine) LowerMargin() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleEngine_lowerMargin(this.h))
 }
 
 func (this *QwtScaleEngine) UpperMargin() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtScaleEngine_upperMargin(this.h))
 }
 
 func (this *QwtScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_autoScale(this.h, (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 }
 
 func (this *QwtScaleEngine) DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtScaleEngine_divideScale(this.h, (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleEngine) SetTransformation(transformation *QwtTransform) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(transformation)
 	C.QwtScaleEngine_setTransformation(this.h, transformation.cPointer())
 }
 
 func (this *QwtScaleEngine) Transformation() *QwtTransform {
+	defer runtime.KeepAlive(this)
 	return newQwtTransform(C.QwtScaleEngine_transformation(this.h))
 }
 
 func (this *QwtScaleEngine) OperatorAssign(param1 *QwtScaleEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtScaleEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtScaleEngine) SetAttribute2(param1 QwtScaleEngine__Attribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtScaleEngine_setAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 // Contains can only be called from a QwtScaleEngine that was directly constructed.
 func (this *QwtScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtScaleEngine_protectedbase_contains(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
@@ -228,6 +263,8 @@ func (this *QwtScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
 
 // Strip can only be called from a QwtScaleEngine that was directly constructed.
 func (this *QwtScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray_ptr))
 	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
@@ -255,6 +292,7 @@ func (this *QwtScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float
 
 // DivideInterval can only be called from a QwtScaleEngine that was directly constructed.
 func (this *QwtScaleEngine) DivideInterval(intervalSize float64, numSteps int) float64 {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtScaleEngine_protectedbase_divideInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(intervalSize), (C.int)(numSteps)))
@@ -269,6 +307,7 @@ func (this *QwtScaleEngine) DivideInterval(intervalSize float64, numSteps int) f
 
 // BuildInterval can only be called from a QwtScaleEngine that was directly constructed.
 func (this *QwtScaleEngine) BuildInterval(value float64) QwtInterval {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtScaleEngine_protectedbase_buildInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value)))
@@ -334,8 +373,9 @@ func miqt_exec_callback_QwtScaleEngine_divideScale(self *C.QwtScaleEngine, cb C.
 	slotval5 := (float64)(stepSize)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtScaleEngine_virtualreturncopy_QwtScaleDiv(virtualReturn.cPointer())
 
 }
 
@@ -351,16 +391,24 @@ func (this *QwtScaleEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtScaleEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleEngine) {
-		C.QwtScaleEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtScaleEngine_delete((*C.QwtScaleEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtLinearScaleEngine struct {
 	h  *C.QwtLinearScaleEngine
-	gc *[1]*C.QwtLinearScaleEngine
+	gc *[1]unsafe.Pointer
 	*QwtScaleEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtLinearScaleEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtScaleEngine.miqtSetGC(gc)
 }
 
 func (this *QwtLinearScaleEngine) cPointer() *C.QwtLinearScaleEngine {
@@ -402,6 +450,7 @@ func NewQwtLinearScaleEngine() *QwtLinearScaleEngine {
 
 // NewQwtLinearScaleEngine2 constructs a new QwtLinearScaleEngine object.
 func NewQwtLinearScaleEngine2(param1 *QwtLinearScaleEngine) *QwtLinearScaleEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtLinearScaleEngine(C.QwtLinearScaleEngine_new2(param1.cPointer()))
 }
@@ -413,21 +462,27 @@ func NewQwtLinearScaleEngine3(base uint) *QwtLinearScaleEngine {
 }
 
 func (this *QwtLinearScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtLinearScaleEngine_autoScale(this.h, (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 }
 
 func (this *QwtLinearScaleEngine) DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtLinearScaleEngine_divideScale(this.h, (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLinearScaleEngine) OperatorAssign(param1 *QwtLinearScaleEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtLinearScaleEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 // Align can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) Align(param1 *QwtInterval, stepSize float64) QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtLinearScaleEngine_protectedbase_align(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(stepSize)))
@@ -444,6 +499,8 @@ func (this *QwtLinearScaleEngine) Align(param1 *QwtInterval, stepSize float64) Q
 
 // BuildTicks can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64, maxMinorSteps int, ticks []float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	ticks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(ticks))))
 	defer C.free(unsafe.Pointer(ticks_CArray_ptr))
 	ticks_CArray := unsafe.Slice(ticks_CArray_ptr, len(ticks))
@@ -463,6 +520,8 @@ func (this *QwtLinearScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float
 
 // BuildMajorTicks can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize float64) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLinearScaleEngine_protectedbase_buildMajorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), interval.cPointer(), (C.double)(stepSize))
@@ -483,6 +542,7 @@ func (this *QwtLinearScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSiz
 
 // BuildMinorTicks can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSteps int, stepSize float64, minorTicks []float64, mediumTicks []float64) {
+	defer runtime.KeepAlive(this)
 	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
 	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
 	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
@@ -516,6 +576,8 @@ func (this *QwtLinearScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinor
 
 // Contains can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtLinearScaleEngine_protectedbase_contains(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
@@ -530,6 +592,8 @@ func (this *QwtLinearScaleEngine) Contains(param1 *QwtInterval, value float64) b
 
 // Strip can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray_ptr))
 	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
@@ -557,6 +621,7 @@ func (this *QwtLinearScaleEngine) Strip(param1 []float64, param2 *QwtInterval) [
 
 // DivideInterval can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) DivideInterval(intervalSize float64, numSteps int) float64 {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtLinearScaleEngine_protectedbase_divideInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(intervalSize), (C.int)(numSteps)))
@@ -571,6 +636,7 @@ func (this *QwtLinearScaleEngine) DivideInterval(intervalSize float64, numSteps 
 
 // BuildInterval can only be called from a QwtLinearScaleEngine that was directly constructed.
 func (this *QwtLinearScaleEngine) BuildInterval(value float64) QwtInterval {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtLinearScaleEngine_protectedbase_buildInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value)))
@@ -586,6 +652,7 @@ func (this *QwtLinearScaleEngine) BuildInterval(value float64) QwtInterval {
 }
 
 func (this *QwtLinearScaleEngine) callVirtualBase_AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtLinearScaleEngine_virtualbase_autoScale(unsafe.Pointer(this.h), (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 
@@ -618,6 +685,7 @@ func miqt_exec_callback_QwtLinearScaleEngine_autoScale(self *C.QwtLinearScaleEng
 }
 
 func (this *QwtLinearScaleEngine) callVirtualBase_DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtScaleDiv(C.QwtLinearScaleEngine_virtualbase_divideScale(unsafe.Pointer(this.h), (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -650,8 +718,9 @@ func miqt_exec_callback_QwtLinearScaleEngine_divideScale(self *C.QwtLinearScaleE
 	slotval5 := (float64)(stepSize)
 
 	virtualReturn := gofunc((&QwtLinearScaleEngine{h: self}).callVirtualBase_DivideScale, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtLinearScaleEngine_virtualreturncopy_QwtScaleDiv(virtualReturn.cPointer())
 
 }
 
@@ -667,16 +736,24 @@ func (this *QwtLinearScaleEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtLinearScaleEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLinearScaleEngine) {
-		C.QwtLinearScaleEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtLinearScaleEngine_delete((*C.QwtLinearScaleEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QwtLogScaleEngine struct {
 	h  *C.QwtLogScaleEngine
-	gc *[1]*C.QwtLogScaleEngine
+	gc *[1]unsafe.Pointer
 	*QwtScaleEngine
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtLogScaleEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtScaleEngine.miqtSetGC(gc)
 }
 
 func (this *QwtLogScaleEngine) cPointer() *C.QwtLogScaleEngine {
@@ -718,6 +795,7 @@ func NewQwtLogScaleEngine() *QwtLogScaleEngine {
 
 // NewQwtLogScaleEngine2 constructs a new QwtLogScaleEngine object.
 func NewQwtLogScaleEngine2(param1 *QwtLogScaleEngine) *QwtLogScaleEngine {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtLogScaleEngine(C.QwtLogScaleEngine_new2(param1.cPointer()))
 }
@@ -729,21 +807,27 @@ func NewQwtLogScaleEngine3(base uint) *QwtLogScaleEngine {
 }
 
 func (this *QwtLogScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtLogScaleEngine_autoScale(this.h, (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 }
 
 func (this *QwtLogScaleEngine) DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 	_goptr := newQwtScaleDiv(C.QwtLogScaleEngine_divideScale(this.h, (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLogScaleEngine) OperatorAssign(param1 *QwtLogScaleEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtLogScaleEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 // Align can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) Align(param1 *QwtInterval, stepSize float64) QwtInterval {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtLogScaleEngine_protectedbase_align(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(stepSize)))
@@ -760,6 +844,8 @@ func (this *QwtLogScaleEngine) Align(param1 *QwtInterval, stepSize float64) QwtI
 
 // BuildTicks can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64, maxMinorSteps int, ticks []float64) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	ticks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(ticks))))
 	defer C.free(unsafe.Pointer(ticks_CArray_ptr))
 	ticks_CArray := unsafe.Slice(ticks_CArray_ptr, len(ticks))
@@ -779,6 +865,8 @@ func (this *QwtLogScaleEngine) BuildTicks(param1 *QwtInterval, stepSize float64,
 
 // BuildMajorTicks can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize float64) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(interval)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QwtLogScaleEngine_protectedbase_buildMajorTicks(&_dynamic_cast_ok, unsafe.Pointer(this.h), interval.cPointer(), (C.double)(stepSize))
@@ -799,6 +887,7 @@ func (this *QwtLogScaleEngine) BuildMajorTicks(interval *QwtInterval, stepSize f
 
 // BuildMinorTicks can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSteps int, stepSize float64, minorTicks []float64, mediumTicks []float64) {
+	defer runtime.KeepAlive(this)
 	majorTicks_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(majorTicks))))
 	defer C.free(unsafe.Pointer(majorTicks_CArray_ptr))
 	majorTicks_CArray := unsafe.Slice(majorTicks_CArray_ptr, len(majorTicks))
@@ -832,6 +921,8 @@ func (this *QwtLogScaleEngine) BuildMinorTicks(majorTicks []float64, maxMinorSte
 
 // Contains can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) Contains(param1 *QwtInterval, value float64) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtLogScaleEngine_protectedbase_contains(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer(), (C.double)(value)))
@@ -846,6 +937,8 @@ func (this *QwtLogScaleEngine) Contains(param1 *QwtInterval, value float64) bool
 
 // Strip can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	param1_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray_ptr))
 	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
@@ -873,6 +966,7 @@ func (this *QwtLogScaleEngine) Strip(param1 []float64, param2 *QwtInterval) []fl
 
 // DivideInterval can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) DivideInterval(intervalSize float64, numSteps int) float64 {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtLogScaleEngine_protectedbase_divideInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(intervalSize), (C.int)(numSteps)))
@@ -887,6 +981,7 @@ func (this *QwtLogScaleEngine) DivideInterval(intervalSize float64, numSteps int
 
 // BuildInterval can only be called from a QwtLogScaleEngine that was directly constructed.
 func (this *QwtLogScaleEngine) BuildInterval(value float64) QwtInterval {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtLogScaleEngine_protectedbase_buildInterval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value)))
@@ -902,6 +997,7 @@ func (this *QwtLogScaleEngine) BuildInterval(value float64) QwtInterval {
 }
 
 func (this *QwtLogScaleEngine) callVirtualBase_AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
+	defer runtime.KeepAlive(this)
 
 	C.QwtLogScaleEngine_virtualbase_autoScale(unsafe.Pointer(this.h), (C.int)(maxNumSteps), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(stepSize)))
 
@@ -934,6 +1030,7 @@ func miqt_exec_callback_QwtLogScaleEngine_autoScale(self *C.QwtLogScaleEngine, c
 }
 
 func (this *QwtLogScaleEngine) callVirtualBase_DivideScale(x1 float64, x2 float64, maxMajorSteps int, maxMinorSteps int, stepSize float64) *QwtScaleDiv {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQwtScaleDiv(C.QwtLogScaleEngine_virtualbase_divideScale(unsafe.Pointer(this.h), (C.double)(x1), (C.double)(x2), (C.int)(maxMajorSteps), (C.int)(maxMinorSteps), (C.double)(stepSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -966,8 +1063,9 @@ func miqt_exec_callback_QwtLogScaleEngine_divideScale(self *C.QwtLogScaleEngine,
 	slotval5 := (float64)(stepSize)
 
 	virtualReturn := gofunc((&QwtLogScaleEngine{h: self}).callVirtualBase_DivideScale, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QwtLogScaleEngine_virtualreturncopy_QwtScaleDiv(virtualReturn.cPointer())
 
 }
 
@@ -983,8 +1081,9 @@ func (this *QwtLogScaleEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtLogScaleEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLogScaleEngine) {
-		C.QwtLogScaleEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtLogScaleEngine_delete((*C.QwtLogScaleEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

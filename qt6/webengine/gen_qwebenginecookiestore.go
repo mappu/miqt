@@ -18,8 +18,14 @@ import (
 
 type QWebEngineCookieStore struct {
 	h  *C.QWebEngineCookieStore
-	gc *[1]*C.QWebEngineCookieStore
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineCookieStore) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineCookieStore) cPointer() *C.QWebEngineCookieStore {
@@ -54,10 +60,12 @@ func UnsafeNewQWebEngineCookieStore(h unsafe.Pointer) *QWebEngineCookieStore {
 }
 
 func (this *QWebEngineCookieStore) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineCookieStore_metaObject(this.h)))
 }
 
 func (this *QWebEngineCookieStore) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineCookieStore_metacast(this.h, param1_Cstring))
@@ -73,26 +81,35 @@ func QWebEngineCookieStore_Tr(s string) string {
 }
 
 func (this *QWebEngineCookieStore) SetCookie(cookie *network.QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_setCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie(cookie *network.QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_deleteCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteSessionCookies() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_deleteSessionCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) DeleteAllCookies() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_deleteAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) LoadAllCookies() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_loadAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) CookieAdded(cookie *network.QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_cookieAdded(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 func (this *QWebEngineCookieStore) OnCookieAdded(slot func(cookie *network.QNetworkCookie)) {
@@ -113,6 +130,8 @@ func miqt_exec_callback_QWebEngineCookieStore_cookieAdded(cb C.intptr_t, cookie 
 }
 
 func (this *QWebEngineCookieStore) CookieRemoved(cookie *network.QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_cookieRemoved(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 func (this *QWebEngineCookieStore) OnCookieRemoved(slot func(cookie *network.QNetworkCookie)) {
@@ -155,10 +174,16 @@ func QWebEngineCookieStore_Tr3(s string, c string, n int) string {
 }
 
 func (this *QWebEngineCookieStore) SetCookie2(cookie *network.QNetworkCookie, origin *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
+	defer runtime.KeepAlive(origin)
 	C.QWebEngineCookieStore_setCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie2(cookie *network.QNetworkCookie, origin *qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
+	defer runtime.KeepAlive(origin)
 	C.QWebEngineCookieStore_deleteCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
 }
 
@@ -174,15 +199,22 @@ func (this *QWebEngineCookieStore) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineCookieStore{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCookieStore) {
-		C.QWebEngineCookieStore_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineCookieStore_delete((*C.QWebEngineCookieStore)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebEngineCookieStore__FilterRequest struct {
 	h  *C.QWebEngineCookieStore__FilterRequest
-	gc *[1]*C.QWebEngineCookieStore__FilterRequest
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineCookieStore__FilterRequest) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) cPointer() *C.QWebEngineCookieStore__FilterRequest {
@@ -215,6 +247,7 @@ func UnsafeNewQWebEngineCookieStore__FilterRequest(h unsafe.Pointer) *QWebEngine
 
 // NewQWebEngineCookieStore__FilterRequest constructs a new QWebEngineCookieStore::FilterRequest object.
 func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__FilterRequest) *QWebEngineCookieStore__FilterRequest {
+	defer runtime.KeepAlive(param1)
 
 	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 }
@@ -226,50 +259,64 @@ func NewQWebEngineCookieStore__FilterRequest2() *QWebEngineCookieStore__FilterRe
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) FirstPartyUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	firstPartyUrl_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCookieStore__FilterRequest_firstPartyUrl(this.h)))
 	firstPartyUrl_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return firstPartyUrl_goptr
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) SetFirstPartyUrl(firstPartyUrl qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(firstPartyUrl)
 	C.QWebEngineCookieStore__FilterRequest_setFirstPartyUrl(this.h, (*C.QUrl)(firstPartyUrl.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) Origin() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	origin_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCookieStore__FilterRequest_origin(this.h)))
 	origin_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return origin_goptr
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) SetOrigin(origin qt6.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(origin)
 	C.QWebEngineCookieStore__FilterRequest_setOrigin(this.h, (*C.QUrl)(origin.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) ThirdParty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineCookieStore__FilterRequest_thirdParty(this.h))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) SetThirdParty(thirdParty bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore__FilterRequest_setThirdParty(this.h, (C.bool)(thirdParty))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) ReservedFlag() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineCookieStore__FilterRequest_ReservedFlag(this.h))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) SetReservedFlag(_reservedFlag bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore__FilterRequest_setReservedFlag(this.h, (C.bool)(_reservedFlag))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) ReservedType() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QWebEngineCookieStore__FilterRequest_ReservedType(this.h))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) SetReservedType(_reservedType uint16) {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore__FilterRequest_setReservedType(this.h, (C.ushort)(_reservedType))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEngineCookieStore__FilterRequest) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebEngineCookieStore__FilterRequest_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -285,8 +332,9 @@ func (this *QWebEngineCookieStore__FilterRequest) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineCookieStore__FilterRequest{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCookieStore__FilterRequest) {
-		C.QWebEngineCookieStore__FilterRequest_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineCookieStore__FilterRequest_delete((*C.QWebEngineCookieStore__FilterRequest)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

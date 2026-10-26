@@ -251,6 +251,8 @@ bool QAbstractButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QAbstractButton_virtualreturncopy_QSize(QSize* src);
+QVariant* QAbstractButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QAbstractButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);

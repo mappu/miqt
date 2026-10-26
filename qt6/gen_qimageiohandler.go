@@ -61,7 +61,13 @@ const (
 
 type QImageIOHandler struct {
 	h  *C.QImageIOHandler
-	gc *[1]*C.QImageIOHandler
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QImageIOHandler) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QImageIOHandler) cPointer() *C.QImageIOHandler {
@@ -99,14 +105,18 @@ func NewQImageIOHandler() *QImageIOHandler {
 }
 
 func (this *QImageIOHandler) SetDevice(device *QIODevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QImageIOHandler_setDevice(this.h, device.cPointer())
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
+	defer runtime.KeepAlive(this)
 	return newQIODevice(C.QImageIOHandler_device(this.h))
 }
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
+	defer runtime.KeepAlive(this)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -118,6 +128,7 @@ func (this *QImageIOHandler) SetFormat(format []byte) {
 }
 
 func (this *QImageIOHandler) SetFormatWithFormat(format []byte) {
+	defer runtime.KeepAlive(this)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -129,6 +140,7 @@ func (this *QImageIOHandler) SetFormatWithFormat(format []byte) {
 }
 
 func (this *QImageIOHandler) Format() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QImageIOHandler_format(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -136,62 +148,80 @@ func (this *QImageIOHandler) Format() []byte {
 }
 
 func (this *QImageIOHandler) CanRead() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageIOHandler_canRead(this.h))
 }
 
 func (this *QImageIOHandler) Read(image *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 	return (bool)(C.QImageIOHandler_read(this.h, image.cPointer()))
 }
 
 func (this *QImageIOHandler) Write(image *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 	return (bool)(C.QImageIOHandler_write(this.h, image.cPointer()))
 }
 
 func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QImageIOHandler_option(this.h, (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImageIOHandler) SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QImageIOHandler_setOption(this.h, (C.int)(option), value.cPointer())
 }
 
 func (this *QImageIOHandler) SupportsOption(option QImageIOHandler__ImageOption) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageIOHandler_supportsOption(this.h, (C.int)(option)))
 }
 
 func (this *QImageIOHandler) JumpToNextImage() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageIOHandler_jumpToNextImage(this.h))
 }
 
 func (this *QImageIOHandler) JumpToImage(imageNumber int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QImageIOHandler_jumpToImage(this.h, (C.int)(imageNumber)))
 }
 
 func (this *QImageIOHandler) LoopCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageIOHandler_loopCount(this.h))
 }
 
 func (this *QImageIOHandler) ImageCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageIOHandler_imageCount(this.h))
 }
 
 func (this *QImageIOHandler) NextImageDelay() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageIOHandler_nextImageDelay(this.h))
 }
 
 func (this *QImageIOHandler) CurrentImageNumber() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QImageIOHandler_currentImageNumber(this.h))
 }
 
 func (this *QImageIOHandler) CurrentImageRect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QImageIOHandler_currentImageRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QImageIOHandler_AllocateImage(size QSize, format QImage__Format, image *QImage) bool {
+	defer runtime.KeepAlive(size)
+	defer runtime.KeepAlive(image)
 	return (bool)(C.QImageIOHandler_allocateImage(size.cPointer(), (C.int)(format), image.cPointer()))
 }
 func (this *QImageIOHandler) OnCanRead(slot func() bool) {
@@ -237,6 +267,8 @@ func miqt_exec_callback_QImageIOHandler_read(self *C.QImageIOHandler, cb C.intpt
 }
 
 func (this *QImageIOHandler) callVirtualBase_Write(image *QImage) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(image)
 
 	return (bool)(C.QImageIOHandler_virtualbase_write(unsafe.Pointer(this.h), image.cPointer()))
 
@@ -265,6 +297,7 @@ func miqt_exec_callback_QImageIOHandler_write(self *C.QImageIOHandler, cb C.intp
 }
 
 func (this *QImageIOHandler) callVirtualBase_Option(option QImageIOHandler__ImageOption) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QImageIOHandler_virtualbase_option(unsafe.Pointer(this.h), (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -289,12 +322,15 @@ func miqt_exec_callback_QImageIOHandler_option(self *C.QImageIOHandler, cb C.int
 	slotval1 := (QImageIOHandler__ImageOption)(option)
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Option, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QImageIOHandler_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QImageIOHandler) callVirtualBase_SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	C.QImageIOHandler_virtualbase_setOption(unsafe.Pointer(this.h), (C.int)(option), value.cPointer())
 
@@ -323,6 +359,7 @@ func miqt_exec_callback_QImageIOHandler_setOption(self *C.QImageIOHandler, cb C.
 }
 
 func (this *QImageIOHandler) callVirtualBase_SupportsOption(option QImageIOHandler__ImageOption) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QImageIOHandler_virtualbase_supportsOption(unsafe.Pointer(this.h), (C.int)(option)))
 
@@ -351,6 +388,7 @@ func miqt_exec_callback_QImageIOHandler_supportsOption(self *C.QImageIOHandler, 
 }
 
 func (this *QImageIOHandler) callVirtualBase_JumpToNextImage() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QImageIOHandler_virtualbase_jumpToNextImage(unsafe.Pointer(this.h)))
 
@@ -376,6 +414,7 @@ func miqt_exec_callback_QImageIOHandler_jumpToNextImage(self *C.QImageIOHandler,
 }
 
 func (this *QImageIOHandler) callVirtualBase_JumpToImage(imageNumber int) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QImageIOHandler_virtualbase_jumpToImage(unsafe.Pointer(this.h), (C.int)(imageNumber)))
 
@@ -404,6 +443,7 @@ func miqt_exec_callback_QImageIOHandler_jumpToImage(self *C.QImageIOHandler, cb 
 }
 
 func (this *QImageIOHandler) callVirtualBase_LoopCount() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImageIOHandler_virtualbase_loopCount(unsafe.Pointer(this.h)))
 
@@ -429,6 +469,7 @@ func miqt_exec_callback_QImageIOHandler_loopCount(self *C.QImageIOHandler, cb C.
 }
 
 func (this *QImageIOHandler) callVirtualBase_ImageCount() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImageIOHandler_virtualbase_imageCount(unsafe.Pointer(this.h)))
 
@@ -454,6 +495,7 @@ func miqt_exec_callback_QImageIOHandler_imageCount(self *C.QImageIOHandler, cb C
 }
 
 func (this *QImageIOHandler) callVirtualBase_NextImageDelay() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImageIOHandler_virtualbase_nextImageDelay(unsafe.Pointer(this.h)))
 
@@ -479,6 +521,7 @@ func miqt_exec_callback_QImageIOHandler_nextImageDelay(self *C.QImageIOHandler, 
 }
 
 func (this *QImageIOHandler) callVirtualBase_CurrentImageNumber() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QImageIOHandler_virtualbase_currentImageNumber(unsafe.Pointer(this.h)))
 
@@ -504,6 +547,7 @@ func miqt_exec_callback_QImageIOHandler_currentImageNumber(self *C.QImageIOHandl
 }
 
 func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQRect(C.QImageIOHandler_virtualbase_currentImageRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -525,8 +569,9 @@ func miqt_exec_callback_QImageIOHandler_currentImageRect(self *C.QImageIOHandler
 	}
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_CurrentImageRect)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QImageIOHandler_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
@@ -542,16 +587,24 @@ func (this *QImageIOHandler) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QImageIOHandler{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImageIOHandler) {
-		C.QImageIOHandler_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QImageIOHandler_delete((*C.QImageIOHandler)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QImageIOPlugin struct {
 	h  *C.QImageIOPlugin
-	gc *[1]*C.QImageIOPlugin
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QImageIOPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QImageIOPlugin) cPointer() *C.QImageIOPlugin {
@@ -593,15 +646,18 @@ func NewQImageIOPlugin() *QImageIOPlugin {
 
 // NewQImageIOPlugin2 constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
+	defer runtime.KeepAlive(parent)
 
 	return newQImageIOPlugin(C.QImageIOPlugin_new2(parent.cPointer()))
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QImageIOPlugin_metaObject(this.h))
 }
 
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QImageIOPlugin_metacast(this.h, param1_Cstring))
@@ -617,6 +673,8 @@ func QImageIOPlugin_Tr(s string) string {
 }
 
 func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImageIOPlugin__Capability {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -628,6 +686,8 @@ func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImag
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHandler {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -662,6 +722,7 @@ func QImageIOPlugin_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QImageIOPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -676,6 +737,7 @@ func (this *QImageIOPlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QImageIOPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -690,6 +752,7 @@ func (this *QImageIOPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -706,6 +769,8 @@ func (this *QImageIOPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QImageIOPlugin_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -767,12 +832,15 @@ func miqt_exec_callback_QImageIOPlugin_create(self *C.QImageIOPlugin, cb C.intpt
 	slotval2 := format_ret
 
 	virtualReturn := gofunc(slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QImageIOPlugin) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QImageIOPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -801,6 +869,9 @@ func miqt_exec_callback_QImageIOPlugin_event(self *C.QImageIOPlugin, cb C.intptr
 }
 
 func (this *QImageIOPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QImageIOPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -831,6 +902,8 @@ func miqt_exec_callback_QImageIOPlugin_eventFilter(self *C.QImageIOPlugin, cb C.
 }
 
 func (this *QImageIOPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -857,6 +930,8 @@ func miqt_exec_callback_QImageIOPlugin_timerEvent(self *C.QImageIOPlugin, cb C.i
 }
 
 func (this *QImageIOPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -883,6 +958,8 @@ func miqt_exec_callback_QImageIOPlugin_childEvent(self *C.QImageIOPlugin, cb C.i
 }
 
 func (this *QImageIOPlugin) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -909,6 +986,8 @@ func miqt_exec_callback_QImageIOPlugin_customEvent(self *C.QImageIOPlugin, cb C.
 }
 
 func (this *QImageIOPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QImageIOPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -935,6 +1014,8 @@ func miqt_exec_callback_QImageIOPlugin_connectNotify(self *C.QImageIOPlugin, cb 
 }
 
 func (this *QImageIOPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QImageIOPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -972,8 +1053,9 @@ func (this *QImageIOPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QImageIOPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImageIOPlugin) {
-		C.QImageIOPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QImageIOPlugin_delete((*C.QImageIOPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

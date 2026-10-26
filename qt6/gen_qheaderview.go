@@ -26,8 +26,15 @@ const (
 
 type QHeaderView struct {
 	h  *C.QHeaderView
-	gc *[1]*C.QHeaderView
+	gc *[1]unsafe.Pointer
 	*QAbstractItemView
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QHeaderView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractItemView.miqtSetGC(gc)
 }
 
 func (this *QHeaderView) cPointer() *C.QHeaderView {
@@ -69,15 +76,18 @@ func NewQHeaderView(orientation Orientation) *QHeaderView {
 
 // NewQHeaderView2 constructs a new QHeaderView object.
 func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
+	defer runtime.KeepAlive(parent)
 
 	return newQHeaderView(C.QHeaderView_new2((C.int)(orientation), parent.cPointer()))
 }
 
 func (this *QHeaderView) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QHeaderView_metaObject(this.h))
 }
 
 func (this *QHeaderView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHeaderView_metacast(this.h, param1_Cstring))
@@ -93,260 +103,326 @@ func QHeaderView_Tr(s string) string {
 }
 
 func (this *QHeaderView) SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 	C.QHeaderView_setModel(this.h, model.cPointer())
 }
 
 func (this *QHeaderView) Orientation() Orientation {
+	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QHeaderView_orientation(this.h))
 }
 
 func (this *QHeaderView) Offset() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_offset(this.h))
 }
 
 func (this *QHeaderView) Length() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_length(this.h))
 }
 
 func (this *QHeaderView) SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QHeaderView_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHeaderView) SetVisible(v bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setVisible(this.h, (C.bool)(v))
 }
 
 func (this *QHeaderView) SectionSizeHint(logicalIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_sectionSizeHint(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) VisualIndexAt(position int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_visualIndexAt(this.h, (C.int)(position)))
 }
 
 func (this *QHeaderView) LogicalIndexAt(position int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_logicalIndexAt(this.h, (C.int)(position)))
 }
 
 func (this *QHeaderView) LogicalIndexAt2(x int, y int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_logicalIndexAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QHeaderView) LogicalIndexAtWithPos(pos *QPoint) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pos)
 	return (int)(C.QHeaderView_logicalIndexAtWithPos(this.h, pos.cPointer()))
 }
 
 func (this *QHeaderView) SectionSize(logicalIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_sectionSize(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SectionPosition(logicalIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_sectionPosition(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SectionViewportPosition(logicalIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_sectionViewportPosition(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) MoveSection(from int, to int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_moveSection(this.h, (C.int)(from), (C.int)(to))
 }
 
 func (this *QHeaderView) SwapSections(first int, second int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_swapSections(this.h, (C.int)(first), (C.int)(second))
 }
 
 func (this *QHeaderView) ResizeSection(logicalIndex int, size int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_resizeSection(this.h, (C.int)(logicalIndex), (C.int)(size))
 }
 
 func (this *QHeaderView) ResizeSections(mode QHeaderView__ResizeMode) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_resizeSections(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) IsSectionHidden(logicalIndex int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_isSectionHidden(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SetSectionHidden(logicalIndex int, hide bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSectionHidden(this.h, (C.int)(logicalIndex), (C.bool)(hide))
 }
 
 func (this *QHeaderView) HiddenSectionCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_hiddenSectionCount(this.h))
 }
 
 func (this *QHeaderView) HideSection(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_hideSection(this.h, (C.int)(logicalIndex))
 }
 
 func (this *QHeaderView) ShowSection(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_showSection(this.h, (C.int)(logicalIndex))
 }
 
 func (this *QHeaderView) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_count(this.h))
 }
 
 func (this *QHeaderView) VisualIndex(logicalIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_visualIndex(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) LogicalIndex(visualIndex int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_logicalIndex(this.h, (C.int)(visualIndex)))
 }
 
 func (this *QHeaderView) SetSectionsMovable(movable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSectionsMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QHeaderView) SectionsMovable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_sectionsMovable(this.h))
 }
 
 func (this *QHeaderView) SetFirstSectionMovable(movable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setFirstSectionMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QHeaderView) IsFirstSectionMovable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_isFirstSectionMovable(this.h))
 }
 
 func (this *QHeaderView) SetSectionsClickable(clickable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSectionsClickable(this.h, (C.bool)(clickable))
 }
 
 func (this *QHeaderView) SectionsClickable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_sectionsClickable(this.h))
 }
 
 func (this *QHeaderView) SetHighlightSections(highlight bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setHighlightSections(this.h, (C.bool)(highlight))
 }
 
 func (this *QHeaderView) HighlightSections() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_highlightSections(this.h))
 }
 
 func (this *QHeaderView) SectionResizeMode(logicalIndex int) QHeaderView__ResizeMode {
+	defer runtime.KeepAlive(this)
 	return (QHeaderView__ResizeMode)(C.QHeaderView_sectionResizeMode(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SetSectionResizeMode(mode QHeaderView__ResizeMode) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSectionResizeMode(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) SetSectionResizeMode2(logicalIndex int, mode QHeaderView__ResizeMode) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSectionResizeMode2(this.h, (C.int)(logicalIndex), (C.int)(mode))
 }
 
 func (this *QHeaderView) SetResizeContentsPrecision(precision int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setResizeContentsPrecision(this.h, (C.int)(precision))
 }
 
 func (this *QHeaderView) ResizeContentsPrecision() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_resizeContentsPrecision(this.h))
 }
 
 func (this *QHeaderView) StretchSectionCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_stretchSectionCount(this.h))
 }
 
 func (this *QHeaderView) SetSortIndicatorShown(show bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSortIndicatorShown(this.h, (C.bool)(show))
 }
 
 func (this *QHeaderView) IsSortIndicatorShown() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_isSortIndicatorShown(this.h))
 }
 
 func (this *QHeaderView) SetSortIndicator(logicalIndex int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSortIndicator(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 
 func (this *QHeaderView) SortIndicatorSection() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_sortIndicatorSection(this.h))
 }
 
 func (this *QHeaderView) SortIndicatorOrder() SortOrder {
+	defer runtime.KeepAlive(this)
 	return (SortOrder)(C.QHeaderView_sortIndicatorOrder(this.h))
 }
 
 func (this *QHeaderView) SetSortIndicatorClearable(clearable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setSortIndicatorClearable(this.h, (C.bool)(clearable))
 }
 
 func (this *QHeaderView) IsSortIndicatorClearable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_isSortIndicatorClearable(this.h))
 }
 
 func (this *QHeaderView) StretchLastSection() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_stretchLastSection(this.h))
 }
 
 func (this *QHeaderView) SetStretchLastSection(stretch bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setStretchLastSection(this.h, (C.bool)(stretch))
 }
 
 func (this *QHeaderView) CascadingSectionResizes() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_cascadingSectionResizes(this.h))
 }
 
 func (this *QHeaderView) SetCascadingSectionResizes(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setCascadingSectionResizes(this.h, (C.bool)(enable))
 }
 
 func (this *QHeaderView) DefaultSectionSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_defaultSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetDefaultSectionSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setDefaultSectionSize(this.h, (C.int)(size))
 }
 
 func (this *QHeaderView) ResetDefaultSectionSize() {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_resetDefaultSectionSize(this.h)
 }
 
 func (this *QHeaderView) MinimumSectionSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_minimumSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetMinimumSectionSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setMinimumSectionSize(this.h, (C.int)(size))
 }
 
 func (this *QHeaderView) MaximumSectionSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QHeaderView_maximumSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetMaximumSectionSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setMaximumSectionSize(this.h, (C.int)(size))
 }
 
 func (this *QHeaderView) DefaultAlignment() AlignmentFlag {
+	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QHeaderView_defaultAlignment(this.h))
 }
 
 func (this *QHeaderView) SetDefaultAlignment(alignment AlignmentFlag) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setDefaultAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QHeaderView) DoItemsLayout() {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_doItemsLayout(this.h)
 }
 
 func (this *QHeaderView) SectionsMoved() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_sectionsMoved(this.h))
 }
 
 func (this *QHeaderView) SectionsHidden() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QHeaderView_sectionsHidden(this.h))
 }
 
 func (this *QHeaderView) SaveState() []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QHeaderView_saveState(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -354,6 +430,7 @@ func (this *QHeaderView) SaveState() []byte {
 }
 
 func (this *QHeaderView) RestoreState(state []byte) bool {
+	defer runtime.KeepAlive(this)
 	state_alias := C.struct_miqt_string{}
 	if len(state) > 0 {
 		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
@@ -365,26 +442,32 @@ func (this *QHeaderView) RestoreState(state []byte) bool {
 }
 
 func (this *QHeaderView) Reset() {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_reset(this.h)
 }
 
 func (this *QHeaderView) SetOffset(offset int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setOffset(this.h, (C.int)(offset))
 }
 
 func (this *QHeaderView) SetOffsetToSectionPosition(visualIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setOffsetToSectionPosition(this.h, (C.int)(visualIndex))
 }
 
 func (this *QHeaderView) SetOffsetToLastSection() {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_setOffsetToLastSection(this.h)
 }
 
 func (this *QHeaderView) HeaderDataChanged(orientation Orientation, logicalFirst int, logicalLast int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_headerDataChanged(this.h, (C.int)(orientation), (C.int)(logicalFirst), (C.int)(logicalLast))
 }
 
 func (this *QHeaderView) SectionMoved(logicalIndex int, oldVisualIndex int, newVisualIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionMoved(this.h, (C.int)(logicalIndex), (C.int)(oldVisualIndex), (C.int)(newVisualIndex))
 }
 func (this *QHeaderView) OnSectionMoved(slot func(logicalIndex int, oldVisualIndex int, newVisualIndex int)) {
@@ -409,6 +492,7 @@ func miqt_exec_callback_QHeaderView_sectionMoved(cb C.intptr_t, logicalIndex C.i
 }
 
 func (this *QHeaderView) SectionResized(logicalIndex int, oldSize int, newSize int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionResized(this.h, (C.int)(logicalIndex), (C.int)(oldSize), (C.int)(newSize))
 }
 func (this *QHeaderView) OnSectionResized(slot func(logicalIndex int, oldSize int, newSize int)) {
@@ -433,6 +517,7 @@ func miqt_exec_callback_QHeaderView_sectionResized(cb C.intptr_t, logicalIndex C
 }
 
 func (this *QHeaderView) SectionPressed(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionPressed(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionPressed(slot func(logicalIndex int)) {
@@ -453,6 +538,7 @@ func miqt_exec_callback_QHeaderView_sectionPressed(cb C.intptr_t, logicalIndex C
 }
 
 func (this *QHeaderView) SectionClicked(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionClicked(slot func(logicalIndex int)) {
@@ -473,6 +559,7 @@ func miqt_exec_callback_QHeaderView_sectionClicked(cb C.intptr_t, logicalIndex C
 }
 
 func (this *QHeaderView) SectionEntered(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionEntered(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionEntered(slot func(logicalIndex int)) {
@@ -493,6 +580,7 @@ func miqt_exec_callback_QHeaderView_sectionEntered(cb C.intptr_t, logicalIndex C
 }
 
 func (this *QHeaderView) SectionDoubleClicked(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionDoubleClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionDoubleClicked(slot func(logicalIndex int)) {
@@ -513,6 +601,7 @@ func miqt_exec_callback_QHeaderView_sectionDoubleClicked(cb C.intptr_t, logicalI
 }
 
 func (this *QHeaderView) SectionCountChanged(oldCount int, newCount int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionCountChanged(this.h, (C.int)(oldCount), (C.int)(newCount))
 }
 func (this *QHeaderView) OnSectionCountChanged(slot func(oldCount int, newCount int)) {
@@ -535,6 +624,7 @@ func miqt_exec_callback_QHeaderView_sectionCountChanged(cb C.intptr_t, oldCount 
 }
 
 func (this *QHeaderView) SectionHandleDoubleClicked(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sectionHandleDoubleClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionHandleDoubleClicked(slot func(logicalIndex int)) {
@@ -555,6 +645,7 @@ func miqt_exec_callback_QHeaderView_sectionHandleDoubleClicked(cb C.intptr_t, lo
 }
 
 func (this *QHeaderView) GeometriesChanged() {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_geometriesChanged(this.h)
 }
 func (this *QHeaderView) OnGeometriesChanged(slot func()) {
@@ -572,6 +663,7 @@ func miqt_exec_callback_QHeaderView_geometriesChanged(cb C.intptr_t) {
 }
 
 func (this *QHeaderView) SortIndicatorChanged(logicalIndex int, order SortOrder) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 func (this *QHeaderView) OnSortIndicatorChanged(slot func(logicalIndex int, order SortOrder)) {
@@ -594,6 +686,7 @@ func miqt_exec_callback_QHeaderView_sortIndicatorChanged(cb C.intptr_t, logicalI
 }
 
 func (this *QHeaderView) SortIndicatorClearableChanged(clearable bool) {
+	defer runtime.KeepAlive(this)
 	C.QHeaderView_sortIndicatorClearableChanged(this.h, (C.bool)(clearable))
 }
 func (this *QHeaderView) OnSortIndicatorClearableChanged(slot func(clearable bool)) {
@@ -637,6 +730,7 @@ func QHeaderView_Tr3(s string, c string, n int) string {
 
 // UpdateSection can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) UpdateSection(logicalIndex int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_updateSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(logicalIndex))
@@ -649,6 +743,7 @@ func (this *QHeaderView) UpdateSection(logicalIndex int) {
 
 // ResizeSections2 can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) ResizeSections2() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_resizeSections2(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -661,6 +756,8 @@ func (this *QHeaderView) ResizeSections2() {
 
 // SectionsInserted can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SectionsInserted(parent *QModelIndex, logicalFirst int, logicalLast int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_sectionsInserted(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(logicalFirst), (C.int)(logicalLast))
@@ -673,6 +770,8 @@ func (this *QHeaderView) SectionsInserted(parent *QModelIndex, logicalFirst int,
 
 // SectionsAboutToBeRemoved can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SectionsAboutToBeRemoved(parent *QModelIndex, logicalFirst int, logicalLast int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_sectionsAboutToBeRemoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(logicalFirst), (C.int)(logicalLast))
@@ -685,6 +784,7 @@ func (this *QHeaderView) SectionsAboutToBeRemoved(parent *QModelIndex, logicalFi
 
 // Initialize can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) Initialize() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_initialize(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -697,6 +797,7 @@ func (this *QHeaderView) Initialize() {
 
 // InitializeSections can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) InitializeSections() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_initializeSections(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -709,6 +810,7 @@ func (this *QHeaderView) InitializeSections() {
 
 // InitializeSections2 can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) InitializeSections2(start int, end int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_initializeSections2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(end))
@@ -721,6 +823,7 @@ func (this *QHeaderView) InitializeSections2(start int, end int) {
 
 // State can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) State() QAbstractItemView__State {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QHeaderView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -735,6 +838,7 @@ func (this *QHeaderView) State() QAbstractItemView__State {
 
 // SetState can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SetState(state QAbstractItemView__State) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -747,6 +851,7 @@ func (this *QHeaderView) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) ScheduleDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -759,6 +864,7 @@ func (this *QHeaderView) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) ExecuteDelayedItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -771,6 +877,8 @@ func (this *QHeaderView) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SetDirtyRegion(region *QRegion) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
@@ -783,6 +891,7 @@ func (this *QHeaderView) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) ScrollDirtyRegion(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -795,6 +904,7 @@ func (this *QHeaderView) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) DirtyRegionOffset() QPoint {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QHeaderView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -811,6 +921,7 @@ func (this *QHeaderView) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) StartAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -823,6 +934,7 @@ func (this *QHeaderView) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) StopAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -835,6 +947,7 @@ func (this *QHeaderView) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) DoAutoScroll() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -847,6 +960,7 @@ func (this *QHeaderView) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QHeaderView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -861,6 +975,7 @@ func (this *QHeaderView) DropIndicatorPosition() QAbstractItemView__DropIndicato
 
 // SetViewportMargins can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -873,6 +988,7 @@ func (this *QHeaderView) SetViewportMargins(left int, top int, right int, bottom
 
 // ViewportMargins can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) ViewportMargins() QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QHeaderView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -889,6 +1005,8 @@ func (this *QHeaderView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) DrawFrame(param1 *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -901,6 +1019,7 @@ func (this *QHeaderView) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -913,6 +1032,7 @@ func (this *QHeaderView) UpdateMicroFocus() {
 
 // Create can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -925,6 +1045,7 @@ func (this *QHeaderView) Create() {
 
 // Destroy can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHeaderView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -937,6 +1058,7 @@ func (this *QHeaderView) Destroy() {
 
 // FocusNextChild can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHeaderView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -951,6 +1073,7 @@ func (this *QHeaderView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHeaderView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -965,6 +1088,7 @@ func (this *QHeaderView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QHeaderView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -979,6 +1103,7 @@ func (this *QHeaderView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHeaderView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -993,6 +1118,7 @@ func (this *QHeaderView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1009,6 +1135,8 @@ func (this *QHeaderView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHeaderView that was directly constructed.
 func (this *QHeaderView) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QHeaderView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -1022,6 +1150,8 @@ func (this *QHeaderView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QHeaderView) callVirtualBase_SetModel(model *QAbstractItemModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(model)
 
 	C.QHeaderView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -1048,6 +1178,7 @@ func miqt_exec_callback_QHeaderView_setModel(self *C.QHeaderView, cb C.intptr_t,
 }
 
 func (this *QHeaderView) callVirtualBase_SizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHeaderView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1069,12 +1200,14 @@ func miqt_exec_callback_QHeaderView_sizeHint(self *C.QHeaderView, cb C.intptr_t)
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_SetVisible(v bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(v))
 
@@ -1101,6 +1234,7 @@ func miqt_exec_callback_QHeaderView_setVisible(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_DoItemsLayout() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -1124,6 +1258,7 @@ func miqt_exec_callback_QHeaderView_doItemsLayout(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_Reset() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -1147,6 +1282,9 @@ func miqt_exec_callback_QHeaderView_reset(self *C.QHeaderView, cb C.intptr_t) {
 }
 
 func (this *QHeaderView) callVirtualBase_CurrentChanged(current *QModelIndex, old *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(current)
+	defer runtime.KeepAlive(old)
 
 	C.QHeaderView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), old.cPointer())
 
@@ -1175,6 +1313,8 @@ func miqt_exec_callback_QHeaderView_currentChanged(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_Event(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QHeaderView_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -1203,6 +1343,8 @@ func miqt_exec_callback_QHeaderView_event(self *C.QHeaderView, cb C.intptr_t, e 
 }
 
 func (this *QHeaderView) callVirtualBase_PaintEvent(e *QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHeaderView_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1229,6 +1371,8 @@ func miqt_exec_callback_QHeaderView_paintEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_MousePressEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHeaderView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1255,6 +1399,8 @@ func miqt_exec_callback_QHeaderView_mousePressEvent(self *C.QHeaderView, cb C.in
 }
 
 func (this *QHeaderView) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHeaderView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1281,6 +1427,8 @@ func miqt_exec_callback_QHeaderView_mouseMoveEvent(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHeaderView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1307,6 +1455,8 @@ func miqt_exec_callback_QHeaderView_mouseReleaseEvent(self *C.QHeaderView, cb C.
 }
 
 func (this *QHeaderView) callVirtualBase_MouseDoubleClickEvent(e *QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QHeaderView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), e.cPointer())
 
@@ -1333,6 +1483,8 @@ func miqt_exec_callback_QHeaderView_mouseDoubleClickEvent(self *C.QHeaderView, c
 }
 
 func (this *QHeaderView) callVirtualBase_ViewportEvent(e *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QHeaderView_virtualbase_viewportEvent(unsafe.Pointer(this.h), e.cPointer()))
 
@@ -1361,6 +1513,9 @@ func miqt_exec_callback_QHeaderView_viewportEvent(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_PaintSection(painter *QPainter, rect *QRect, logicalIndex int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 
 	C.QHeaderView_virtualbase_paintSection(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), (C.int)(logicalIndex))
 
@@ -1391,6 +1546,7 @@ func miqt_exec_callback_QHeaderView_paintSection(self *C.QHeaderView, cb C.intpt
 }
 
 func (this *QHeaderView) callVirtualBase_SectionSizeFromContents(logicalIndex int) *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHeaderView_virtualbase_sectionSizeFromContents(unsafe.Pointer(this.h), (C.int)(logicalIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1415,12 +1571,14 @@ func miqt_exec_callback_QHeaderView_sectionSizeFromContents(self *C.QHeaderView,
 	slotval1 := (int)(logicalIndex)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SectionSizeFromContents, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_HorizontalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -1446,6 +1604,7 @@ func miqt_exec_callback_QHeaderView_horizontalOffset(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_VerticalOffset() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -1471,6 +1630,7 @@ func miqt_exec_callback_QHeaderView_verticalOffset(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_UpdateGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -1494,6 +1654,7 @@ func miqt_exec_callback_QHeaderView_updateGeometries(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1522,6 +1683,9 @@ func miqt_exec_callback_QHeaderView_scrollContentsBy(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(topLeft)
+	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -1565,6 +1729,8 @@ func miqt_exec_callback_QHeaderView_dataChanged(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QHeaderView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -1595,6 +1761,8 @@ func miqt_exec_callback_QHeaderView_rowsInserted(self *C.QHeaderView, cb C.intpt
 }
 
 func (this *QHeaderView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QHeaderView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1619,12 +1787,15 @@ func miqt_exec_callback_QHeaderView_visualRect(self *C.QHeaderView, cb C.intptr_
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_VisualRect, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QRect(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QHeaderView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
@@ -1653,6 +1824,8 @@ func miqt_exec_callback_QHeaderView_scrollTo(self *C.QHeaderView, cb C.intptr_t,
 }
 
 func (this *QHeaderView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 
 	_goptr := newQModelIndex(C.QHeaderView_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1677,12 +1850,15 @@ func miqt_exec_callback_QHeaderView_indexAt(self *C.QHeaderView, cb C.intptr_t, 
 	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_IndexAt, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QHeaderView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1711,6 +1887,7 @@ func miqt_exec_callback_QHeaderView_isIndexHidden(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_MoveCursor(param1 QAbstractItemView__CursorAction, param2 KeyboardModifier) *QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QHeaderView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1737,12 +1914,15 @@ func miqt_exec_callback_QHeaderView_moveCursor(self *C.QHeaderView, cb C.intptr_
 	slotval2 := (KeyboardModifier)(param2)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_SetSelection(rect *QRect, flags QItemSelectionModel__SelectionFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(rect)
 
 	C.QHeaderView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(flags))
 
@@ -1771,6 +1951,8 @@ func miqt_exec_callback_QHeaderView_setSelection(self *C.QHeaderView, cb C.intpt
 }
 
 func (this *QHeaderView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QHeaderView_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1795,12 +1977,15 @@ func miqt_exec_callback_QHeaderView_visualRegionForSelection(self *C.QHeaderView
 	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QRegion(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_InitStyleOptionForIndex(option *QStyleOptionHeader, logicalIndex int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QHeaderView_virtualbase_initStyleOptionForIndex(unsafe.Pointer(this.h), option.cPointer(), (C.int)(logicalIndex))
 
@@ -1829,6 +2014,8 @@ func miqt_exec_callback_QHeaderView_initStyleOptionForIndex(self *C.QHeaderView,
 }
 
 func (this *QHeaderView) callVirtualBase_InitStyleOption(option *QStyleOptionHeader) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QHeaderView_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -1855,6 +2042,8 @@ func miqt_exec_callback_QHeaderView_initStyleOption(self *C.QHeaderView, cb C.in
 }
 
 func (this *QHeaderView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selectionModel)
 
 	C.QHeaderView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1881,6 +2070,7 @@ func miqt_exec_callback_QHeaderView_setSelectionModel(self *C.QHeaderView, cb C.
 }
 
 func (this *QHeaderView) callVirtualBase_KeyboardSearch(search string) {
+	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -1914,6 +2104,7 @@ func miqt_exec_callback_QHeaderView_keyboardSearch(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_SizeHintForRow(row int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1942,6 +2133,7 @@ func miqt_exec_callback_QHeaderView_sizeHintForRow(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_SizeHintForColumn(column int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -1970,6 +2162,8 @@ func miqt_exec_callback_QHeaderView_sizeHintForColumn(self *C.QHeaderView, cb C.
 }
 
 func (this *QHeaderView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return newQAbstractItemDelegate(C.QHeaderView_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
 
@@ -1992,12 +2186,14 @@ func miqt_exec_callback_QHeaderView_itemDelegateForIndex(self *C.QHeaderView, cb
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHeaderView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QHeaderView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2022,12 +2218,15 @@ func miqt_exec_callback_QHeaderView_inputMethodQuery(self *C.QHeaderView, cb C.i
 	slotval1 := (InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QVariant(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_SetRootIndex(index *QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	C.QHeaderView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
@@ -2054,6 +2253,7 @@ func miqt_exec_callback_QHeaderView_setRootIndex(self *C.QHeaderView, cb C.intpt
 }
 
 func (this *QHeaderView) callVirtualBase_SelectAll() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -2077,6 +2277,8 @@ func miqt_exec_callback_QHeaderView_selectAll(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QHeaderView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
@@ -2107,6 +2309,9 @@ func miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(self *C.QHeaderView, cb
 }
 
 func (this *QHeaderView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(selected)
+	defer runtime.KeepAlive(deselected)
 
 	C.QHeaderView_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
@@ -2135,6 +2340,7 @@ func miqt_exec_callback_QHeaderView_selectionChanged(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_UpdateEditorData() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -2158,6 +2364,7 @@ func miqt_exec_callback_QHeaderView_updateEditorData(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_UpdateEditorGeometries() {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -2181,6 +2388,7 @@ func miqt_exec_callback_QHeaderView_updateEditorGeometries(self *C.QHeaderView, 
 }
 
 func (this *QHeaderView) callVirtualBase_VerticalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2207,6 +2415,7 @@ func miqt_exec_callback_QHeaderView_verticalScrollbarAction(self *C.QHeaderView,
 }
 
 func (this *QHeaderView) callVirtualBase_HorizontalScrollbarAction(action int) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2233,6 +2442,7 @@ func miqt_exec_callback_QHeaderView_horizontalScrollbarAction(self *C.QHeaderVie
 }
 
 func (this *QHeaderView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2259,6 +2469,7 @@ func miqt_exec_callback_QHeaderView_verticalScrollbarValueChanged(self *C.QHeade
 }
 
 func (this *QHeaderView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2285,6 +2496,8 @@ func miqt_exec_callback_QHeaderView_horizontalScrollbarValueChanged(self *C.QHea
 }
 
 func (this *QHeaderView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QHeaderView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -2313,6 +2526,8 @@ func miqt_exec_callback_QHeaderView_closeEditor(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_CommitData(editor *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QHeaderView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2339,6 +2554,8 @@ func miqt_exec_callback_QHeaderView_commitData(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_EditorDestroyed(editor *QObject) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(editor)
 
 	C.QHeaderView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2365,6 +2582,7 @@ func miqt_exec_callback_QHeaderView_editorDestroyed(self *C.QHeaderView, cb C.in
 }
 
 func (this *QHeaderView) callVirtualBase_SelectedIndexes() []QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QHeaderView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2392,10 +2610,11 @@ func miqt_exec_callback_QHeaderView_selectedIndexes(self *C.QHeaderView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SelectedIndexes)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QHeaderView_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2404,6 +2623,9 @@ func miqt_exec_callback_QHeaderView_selectedIndexes(self *C.QHeaderView, cb C.in
 }
 
 func (this *QHeaderView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHeaderView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
@@ -2436,6 +2658,9 @@ func miqt_exec_callback_QHeaderView_edit2(self *C.QHeaderView, cb C.intptr_t, in
 }
 
 func (this *QHeaderView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(event)
 
 	return (QItemSelectionModel__SelectionFlag)(C.QHeaderView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
@@ -2466,6 +2691,7 @@ func miqt_exec_callback_QHeaderView_selectionCommand(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_StartDrag(supportedActions DropAction) {
+	defer runtime.KeepAlive(this)
 
 	C.QHeaderView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -2492,6 +2718,8 @@ func miqt_exec_callback_QHeaderView_startDrag(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_InitViewItemOption(option *QStyleOptionViewItem) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QHeaderView_virtualbase_initViewItemOption(unsafe.Pointer(this.h), option.cPointer())
 
@@ -2518,6 +2746,7 @@ func miqt_exec_callback_QHeaderView_initViewItemOption(self *C.QHeaderView, cb C
 }
 
 func (this *QHeaderView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHeaderView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2546,6 +2775,8 @@ func miqt_exec_callback_QHeaderView_focusNextPrevChild(self *C.QHeaderView, cb C
 }
 
 func (this *QHeaderView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2572,6 +2803,8 @@ func miqt_exec_callback_QHeaderView_dragEnterEvent(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2598,6 +2831,8 @@ func miqt_exec_callback_QHeaderView_dragMoveEvent(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2624,6 +2859,8 @@ func miqt_exec_callback_QHeaderView_dragLeaveEvent(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_DropEvent(event *QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2650,6 +2887,8 @@ func miqt_exec_callback_QHeaderView_dropEvent(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2676,6 +2915,8 @@ func miqt_exec_callback_QHeaderView_focusInEvent(self *C.QHeaderView, cb C.intpt
 }
 
 func (this *QHeaderView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2702,6 +2943,8 @@ func miqt_exec_callback_QHeaderView_focusOutEvent(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2728,6 +2971,8 @@ func miqt_exec_callback_QHeaderView_keyPressEvent(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2754,6 +2999,8 @@ func miqt_exec_callback_QHeaderView_resizeEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2780,6 +3027,8 @@ func miqt_exec_callback_QHeaderView_timerEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -2806,6 +3055,9 @@ func miqt_exec_callback_QHeaderView_inputMethodEvent(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHeaderView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
@@ -2836,6 +3088,7 @@ func miqt_exec_callback_QHeaderView_eventFilter(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_ViewportSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHeaderView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2857,12 +3110,14 @@ func miqt_exec_callback_QHeaderView_viewportSizeHint(self *C.QHeaderView, cb C.i
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_MinimumSizeHint() *QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QHeaderView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2884,12 +3139,15 @@ func miqt_exec_callback_QHeaderView_minimumSizeHint(self *C.QHeaderView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QHeaderView_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QHeaderView) callVirtualBase_SetupViewport(viewport *QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QHeaderView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2916,6 +3174,8 @@ func miqt_exec_callback_QHeaderView_setupViewport(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QHeaderView_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2942,6 +3202,8 @@ func miqt_exec_callback_QHeaderView_wheelEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QHeaderView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2968,6 +3230,8 @@ func miqt_exec_callback_QHeaderView_contextMenuEvent(self *C.QHeaderView, cb C.i
 }
 
 func (this *QHeaderView) callVirtualBase_ChangeEvent(param1 *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QHeaderView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
@@ -2994,6 +3258,7 @@ func miqt_exec_callback_QHeaderView_changeEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -3019,6 +3284,7 @@ func miqt_exec_callback_QHeaderView_devType(self *C.QHeaderView, cb C.intptr_t) 
 }
 
 func (this *QHeaderView) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3047,6 +3313,7 @@ func miqt_exec_callback_QHeaderView_heightForWidth(self *C.QHeaderView, cb C.int
 }
 
 func (this *QHeaderView) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QHeaderView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -3072,6 +3339,7 @@ func miqt_exec_callback_QHeaderView_hasHeightForWidth(self *C.QHeaderView, cb C.
 }
 
 func (this *QHeaderView) callVirtualBase_PaintEngine() *QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QHeaderView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -3091,12 +3359,15 @@ func miqt_exec_callback_QHeaderView_paintEngine(self *C.QHeaderView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHeaderView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3123,6 +3394,8 @@ func miqt_exec_callback_QHeaderView_keyReleaseEvent(self *C.QHeaderView, cb C.in
 }
 
 func (this *QHeaderView) callVirtualBase_EnterEvent(event *QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3149,6 +3422,8 @@ func miqt_exec_callback_QHeaderView_enterEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_LeaveEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3175,6 +3450,8 @@ func miqt_exec_callback_QHeaderView_leaveEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_MoveEvent(event *QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3201,6 +3478,8 @@ func miqt_exec_callback_QHeaderView_moveEvent(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_CloseEvent(event *QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3227,6 +3506,8 @@ func miqt_exec_callback_QHeaderView_closeEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_TabletEvent(event *QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3253,6 +3534,8 @@ func miqt_exec_callback_QHeaderView_tabletEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_ActionEvent(event *QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3279,6 +3562,8 @@ func miqt_exec_callback_QHeaderView_actionEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_ShowEvent(event *QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3305,6 +3590,8 @@ func miqt_exec_callback_QHeaderView_showEvent(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_HideEvent(event *QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3331,6 +3618,7 @@ func miqt_exec_callback_QHeaderView_hideEvent(self *C.QHeaderView, cb C.intptr_t
 }
 
 func (this *QHeaderView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -3372,6 +3660,7 @@ func miqt_exec_callback_QHeaderView_nativeEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QHeaderView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3400,6 +3689,8 @@ func miqt_exec_callback_QHeaderView_metric(self *C.QHeaderView, cb C.intptr_t, p
 }
 
 func (this *QHeaderView) callVirtualBase_InitPainter(painter *QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QHeaderView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
@@ -3426,6 +3717,8 @@ func miqt_exec_callback_QHeaderView_initPainter(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QHeaderView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -3448,12 +3741,14 @@ func miqt_exec_callback_QHeaderView_redirected(self *C.QHeaderView, cb C.intptr_
 	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHeaderView) callVirtualBase_SharedPainter() *QPainter {
+	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QHeaderView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3473,12 +3768,15 @@ func miqt_exec_callback_QHeaderView_sharedPainter(self *C.QHeaderView, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QHeaderView) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3505,6 +3803,8 @@ func miqt_exec_callback_QHeaderView_childEvent(self *C.QHeaderView, cb C.intptr_
 }
 
 func (this *QHeaderView) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QHeaderView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -3531,6 +3831,8 @@ func miqt_exec_callback_QHeaderView_customEvent(self *C.QHeaderView, cb C.intptr
 }
 
 func (this *QHeaderView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHeaderView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3557,6 +3859,8 @@ func miqt_exec_callback_QHeaderView_connectNotify(self *C.QHeaderView, cb C.intp
 }
 
 func (this *QHeaderView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QHeaderView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -3594,8 +3898,9 @@ func (this *QHeaderView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QHeaderView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHeaderView) {
-		C.QHeaderView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QHeaderView_delete((*C.QHeaderView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

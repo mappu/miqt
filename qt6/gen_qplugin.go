@@ -15,7 +15,13 @@ import (
 
 type QStaticPlugin struct {
 	h  *C.QStaticPlugin
-	gc *[1]*C.QStaticPlugin
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStaticPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
@@ -47,6 +53,7 @@ func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QStaticPlugin_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -64,8 +71,9 @@ func (this *QStaticPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStaticPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStaticPlugin) {
-		C.QStaticPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStaticPlugin_delete((*C.QStaticPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

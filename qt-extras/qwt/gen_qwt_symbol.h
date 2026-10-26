@@ -87,6 +87,7 @@ bool QwtSymbol_override_virtual_boundingRect(void* self, intptr_t slot);
 QRect* QwtSymbol_virtualbase_boundingRect(const void* self);
 bool QwtSymbol_override_virtual_renderSymbols(void* self, intptr_t slot);
 void QwtSymbol_virtualbase_renderSymbols(const void* self, QPainter* param1, QPointF* param2, int numPoints);
+QRect* QwtSymbol_virtualreturncopy_QRect(QRect* src);
 
 void QwtSymbol_delete(QwtSymbol* self);
 

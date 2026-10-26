@@ -23,7 +23,13 @@ const (
 
 type QIconEngine struct {
 	h  *C.QIconEngine
-	gc *[1]*C.QIconEngine
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIconEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QIconEngine) cPointer() *C.QIconEngine {
@@ -61,26 +67,37 @@ func NewQIconEngine() *QIconEngine {
 }
 
 func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QIconEngine_paint(this.h, painter.cPointer(), rect.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIconEngine_actualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIconEngine_pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QIconEngine_addPixmap(this.h, pixmap.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -89,6 +106,7 @@ func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode,
 }
 
 func (this *QIconEngine) Key() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QIconEngine_key(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -96,18 +114,24 @@ func (this *QIconEngine) Key() string {
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
+	defer runtime.KeepAlive(this)
 	return newQIconEngine(C.QIconEngine_clone(this.h))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 	return (bool)(C.QIconEngine_read(this.h, in.cPointer()))
 }
 
 func (this *QIconEngine) Write(out *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 	return (bool)(C.QIconEngine_write(this.h, out.cPointer()))
 }
 
 func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []QSize {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QIconEngine_availableSizes(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -120,6 +144,7 @@ func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []
 }
 
 func (this *QIconEngine) IconName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QIconEngine_iconName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -127,16 +152,20 @@ func (this *QIconEngine) IconName() string {
 }
 
 func (this *QIconEngine) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QIconEngine_isNull(this.h))
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIconEngine_scaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 	C.QIconEngine_virtualHook(this.h, (C.int)(id), data)
 }
 func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State)) {
@@ -167,6 +196,8 @@ func miqt_exec_callback_QIconEngine_paint(self *C.QIconEngine, cb C.intptr_t, pa
 }
 
 func (this *QIconEngine) callVirtualBase_ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 
 	_goptr := newQSize(C.QIconEngine_virtualbase_actualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -195,12 +226,15 @@ func miqt_exec_callback_QIconEngine_actualSize(self *C.QIconEngine, cb C.intptr_
 	slotval3 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_ActualSize, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QIconEngine_virtualreturncopy_QSize(virtualReturn.cPointer())
 
 }
 
 func (this *QIconEngine) callVirtualBase_Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 
 	_goptr := newQPixmap(C.QIconEngine_virtualbase_pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -229,12 +263,15 @@ func miqt_exec_callback_QIconEngine_pixmap(self *C.QIconEngine, cb C.intptr_t, s
 	slotval3 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Pixmap, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QIconEngine_virtualreturncopy_QPixmap(virtualReturn.cPointer())
 
 }
 
 func (this *QIconEngine) callVirtualBase_AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 
 	C.QIconEngine_virtualbase_addPixmap(unsafe.Pointer(this.h), pixmap.cPointer(), (C.int)(mode), (C.int)(state))
 
@@ -265,6 +302,8 @@ func miqt_exec_callback_QIconEngine_addPixmap(self *C.QIconEngine, cb C.intptr_t
 }
 
 func (this *QIconEngine) callVirtualBase_AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -303,6 +342,7 @@ func miqt_exec_callback_QIconEngine_addFile(self *C.QIconEngine, cb C.intptr_t, 
 }
 
 func (this *QIconEngine) callVirtualBase_Key() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QIconEngine_virtualbase_key(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -346,12 +386,15 @@ func miqt_exec_callback_QIconEngine_clone(self *C.QIconEngine, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc()
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QIconEngine) callVirtualBase_Read(in *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(in)
 
 	return (bool)(C.QIconEngine_virtualbase_read(unsafe.Pointer(this.h), in.cPointer()))
 
@@ -380,6 +423,8 @@ func miqt_exec_callback_QIconEngine_read(self *C.QIconEngine, cb C.intptr_t, in 
 }
 
 func (this *QIconEngine) callVirtualBase_Write(out *QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(out)
 
 	return (bool)(C.QIconEngine_virtualbase_write(unsafe.Pointer(this.h), out.cPointer()))
 
@@ -408,6 +453,7 @@ func miqt_exec_callback_QIconEngine_write(self *C.QIconEngine, cb C.intptr_t, ou
 }
 
 func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state QIcon__State) []QSize {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QIconEngine_virtualbase_availableSizes(unsafe.Pointer(this.h), (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
@@ -440,10 +486,11 @@ func miqt_exec_callback_QIconEngine_availableSizes(self *C.QIconEngine, cb C.int
 	slotval2 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_AvailableSizes, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QSize)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QIconEngine_virtualreturncopy_QSize(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -452,6 +499,7 @@ func miqt_exec_callback_QIconEngine_availableSizes(self *C.QIconEngine, cb C.int
 }
 
 func (this *QIconEngine) callVirtualBase_IconName() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QIconEngine_virtualbase_iconName(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -482,6 +530,7 @@ func miqt_exec_callback_QIconEngine_iconName(self *C.QIconEngine, cb C.intptr_t)
 }
 
 func (this *QIconEngine) callVirtualBase_IsNull() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIconEngine_virtualbase_isNull(unsafe.Pointer(this.h)))
 
@@ -507,6 +556,8 @@ func miqt_exec_callback_QIconEngine_isNull(self *C.QIconEngine, cb C.intptr_t) C
 }
 
 func (this *QIconEngine) callVirtualBase_ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 
 	_goptr := newQPixmap(C.QIconEngine_virtualbase_scaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -537,12 +588,14 @@ func miqt_exec_callback_QIconEngine_scaledPixmap(self *C.QIconEngine, cb C.intpt
 	slotval4 := (float64)(scale)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_ScaledPixmap, slotval1, slotval2, slotval3, slotval4)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QIconEngine_virtualreturncopy_QPixmap(virtualReturn.cPointer())
 
 }
 
 func (this *QIconEngine) callVirtualBase_VirtualHook(id int, data unsafe.Pointer) {
+	defer runtime.KeepAlive(this)
 
 	C.QIconEngine_virtualbase_virtualHook(unsafe.Pointer(this.h), (C.int)(id), data)
 
@@ -582,15 +635,22 @@ func (this *QIconEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIconEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconEngine) {
-		C.QIconEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIconEngine_delete((*C.QIconEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QIconEngine__ScaledPixmapArgument struct {
 	h  *C.QIconEngine__ScaledPixmapArgument
-	gc *[1]*C.QIconEngine__ScaledPixmapArgument
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QIconEngine__ScaledPixmapArgument) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__ScaledPixmapArgument {
@@ -623,6 +683,7 @@ func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__
 
 // NewQIconEngine__ScaledPixmapArgument constructs a new QIconEngine::ScaledPixmapArgument object.
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
+	defer runtime.KeepAlive(param1)
 
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
 }
@@ -634,50 +695,64 @@ func NewQIconEngine__ScaledPixmapArgument2() *QIconEngine__ScaledPixmapArgument 
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {
+	defer runtime.KeepAlive(this)
 	size_goptr := newQSize(C.QIconEngine__ScaledPixmapArgument_size(this.h))
 	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return size_goptr
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetSize(size QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(size)
 	C.QIconEngine__ScaledPixmapArgument_setSize(this.h, size.cPointer())
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Mode() QIcon__Mode {
+	defer runtime.KeepAlive(this)
 	return (QIcon__Mode)(C.QIconEngine__ScaledPixmapArgument_mode(this.h))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetMode(mode QIcon__Mode) {
+	defer runtime.KeepAlive(this)
 	C.QIconEngine__ScaledPixmapArgument_setMode(this.h, (C.int)(mode))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) State() QIcon__State {
+	defer runtime.KeepAlive(this)
 	return (QIcon__State)(C.QIconEngine__ScaledPixmapArgument_state(this.h))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetState(state QIcon__State) {
+	defer runtime.KeepAlive(this)
 	C.QIconEngine__ScaledPixmapArgument_setState(this.h, (C.int)(state))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Scale() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QIconEngine__ScaledPixmapArgument_scale(this.h))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetScale(scale float64) {
+	defer runtime.KeepAlive(this)
 	C.QIconEngine__ScaledPixmapArgument_setScale(this.h, (C.double)(scale))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Pixmap() *QPixmap {
+	defer runtime.KeepAlive(this)
 	pixmap_goptr := newQPixmap(C.QIconEngine__ScaledPixmapArgument_pixmap(this.h))
 	pixmap_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return pixmap_goptr
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetPixmap(pixmap QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pixmap)
 	C.QIconEngine__ScaledPixmapArgument_setPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngine__ScaledPixmapArgument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QIconEngine__ScaledPixmapArgument_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -693,8 +768,9 @@ func (this *QIconEngine__ScaledPixmapArgument) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QIconEngine__ScaledPixmapArgument{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIconEngine__ScaledPixmapArgument) {
-		C.QIconEngine__ScaledPixmapArgument_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QIconEngine__ScaledPixmapArgument_delete((*C.QIconEngine__ScaledPixmapArgument)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

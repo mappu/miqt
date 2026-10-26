@@ -16,7 +16,13 @@ import (
 
 type QSqlRecord struct {
 	h  *C.QSqlRecord
-	gc *[1]*C.QSqlRecord
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSqlRecord) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSqlRecord) cPointer() *C.QSqlRecord {
@@ -55,29 +61,38 @@ func NewQSqlRecord() *QSqlRecord {
 
 // NewQSqlRecord2 constructs a new QSqlRecord object.
 func NewQSqlRecord2(other *QSqlRecord) *QSqlRecord {
+	defer runtime.KeepAlive(other)
 
 	return newQSqlRecord(C.QSqlRecord_new2(other.cPointer()))
 }
 
 func (this *QSqlRecord) OperatorAssign(other *QSqlRecord) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QSqlRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSqlRecord) OperatorEqual(other *QSqlRecord) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSqlRecord_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QSqlRecord) OperatorNotEqual(other *QSqlRecord) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QSqlRecord_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QSqlRecord) Value(i int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSqlRecord_value(this.h, (C.int)(i))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlRecord) ValueWithName(name string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -88,10 +103,14 @@ func (this *QSqlRecord) ValueWithName(name string) *qt.QVariant {
 }
 
 func (this *QSqlRecord) SetValue(i int, val *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(val)
 	C.QSqlRecord_setValue(this.h, (C.int)(i), (*C.QVariant)(val.UnsafePointer()))
 }
 
 func (this *QSqlRecord) SetValue2(name string, val *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(val)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -100,10 +119,12 @@ func (this *QSqlRecord) SetValue2(name string, val *qt.QVariant) {
 }
 
 func (this *QSqlRecord) SetNull(i int) {
+	defer runtime.KeepAlive(this)
 	C.QSqlRecord_setNull(this.h, (C.int)(i))
 }
 
 func (this *QSqlRecord) SetNullWithName(name string) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -112,10 +133,12 @@ func (this *QSqlRecord) SetNullWithName(name string) {
 }
 
 func (this *QSqlRecord) IsNull(i int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlRecord_isNull(this.h, (C.int)(i)))
 }
 
 func (this *QSqlRecord) IsNullWithName(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -124,6 +147,7 @@ func (this *QSqlRecord) IsNullWithName(name string) bool {
 }
 
 func (this *QSqlRecord) IndexOf(name string) int {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -132,6 +156,7 @@ func (this *QSqlRecord) IndexOf(name string) int {
 }
 
 func (this *QSqlRecord) FieldName(i int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSqlRecord_fieldName(this.h, (C.int)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -139,12 +164,14 @@ func (this *QSqlRecord) FieldName(i int) string {
 }
 
 func (this *QSqlRecord) Field(i int) *QSqlField {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSqlField(C.QSqlRecord_field(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlRecord) FieldWithName(name string) *QSqlField {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -155,10 +182,12 @@ func (this *QSqlRecord) FieldWithName(name string) *QSqlField {
 }
 
 func (this *QSqlRecord) IsGenerated(i int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlRecord_isGenerated(this.h, (C.int)(i)))
 }
 
 func (this *QSqlRecord) IsGeneratedWithName(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -167,6 +196,7 @@ func (this *QSqlRecord) IsGeneratedWithName(name string) bool {
 }
 
 func (this *QSqlRecord) SetGenerated(name string, generated bool) {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -175,30 +205,40 @@ func (this *QSqlRecord) SetGenerated(name string, generated bool) {
 }
 
 func (this *QSqlRecord) SetGenerated2(i int, generated bool) {
+	defer runtime.KeepAlive(this)
 	C.QSqlRecord_setGenerated2(this.h, (C.int)(i), (C.bool)(generated))
 }
 
 func (this *QSqlRecord) Append(field *QSqlField) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	C.QSqlRecord_append(this.h, field.cPointer())
 }
 
 func (this *QSqlRecord) Replace(pos int, field *QSqlField) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	C.QSqlRecord_replace(this.h, (C.int)(pos), field.cPointer())
 }
 
 func (this *QSqlRecord) Insert(pos int, field *QSqlField) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(field)
 	C.QSqlRecord_insert(this.h, (C.int)(pos), field.cPointer())
 }
 
 func (this *QSqlRecord) Remove(pos int) {
+	defer runtime.KeepAlive(this)
 	C.QSqlRecord_remove(this.h, (C.int)(pos))
 }
 
 func (this *QSqlRecord) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlRecord_isEmpty(this.h))
 }
 
 func (this *QSqlRecord) Contains(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -207,18 +247,23 @@ func (this *QSqlRecord) Contains(name string) bool {
 }
 
 func (this *QSqlRecord) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QSqlRecord_clear(this.h)
 }
 
 func (this *QSqlRecord) ClearValues() {
+	defer runtime.KeepAlive(this)
 	C.QSqlRecord_clearValues(this.h)
 }
 
 func (this *QSqlRecord) Count() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSqlRecord_count(this.h))
 }
 
 func (this *QSqlRecord) KeyValues(keyFields *QSqlRecord) *QSqlRecord {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(keyFields)
 	_goptr := newQSqlRecord(C.QSqlRecord_keyValues(this.h, keyFields.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -236,8 +281,9 @@ func (this *QSqlRecord) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSqlRecord{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlRecord) {
-		C.QSqlRecord_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSqlRecord_delete((*C.QSqlRecord)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

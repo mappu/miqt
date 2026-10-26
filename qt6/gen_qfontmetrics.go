@@ -15,7 +15,13 @@ import (
 
 type QFontMetrics struct {
 	h  *C.QFontMetrics
-	gc *[1]*C.QFontMetrics
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFontMetrics) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFontMetrics) cPointer() *C.QFontMetrics {
@@ -48,91 +54,118 @@ func UnsafeNewQFontMetrics(h unsafe.Pointer) *QFontMetrics {
 
 // NewQFontMetrics constructs a new QFontMetrics object.
 func NewQFontMetrics(param1 *QFont) *QFontMetrics {
+	defer runtime.KeepAlive(param1)
 
 	return newQFontMetrics(C.QFontMetrics_new(param1.cPointer()))
 }
 
 // NewQFontMetrics2 constructs a new QFontMetrics object.
 func NewQFontMetrics2(font *QFont, pd *QPaintDevice) *QFontMetrics {
+	defer runtime.KeepAlive(font)
+	defer runtime.KeepAlive(pd)
 
 	return newQFontMetrics(C.QFontMetrics_new2(font.cPointer(), pd.cPointer()))
 }
 
 // NewQFontMetrics3 constructs a new QFontMetrics object.
 func NewQFontMetrics3(param1 *QFontMetrics) *QFontMetrics {
+	defer runtime.KeepAlive(param1)
 
 	return newQFontMetrics(C.QFontMetrics_new3(param1.cPointer()))
 }
 
 func (this *QFontMetrics) OperatorAssign(param1 *QFontMetrics) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QFontMetrics_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QFontMetrics) Swap(other *QFontMetrics) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QFontMetrics_swap(this.h, other.cPointer())
 }
 
 func (this *QFontMetrics) Ascent() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_ascent(this.h))
 }
 
 func (this *QFontMetrics) CapHeight() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_capHeight(this.h))
 }
 
 func (this *QFontMetrics) Descent() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_descent(this.h))
 }
 
 func (this *QFontMetrics) Height() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_height(this.h))
 }
 
 func (this *QFontMetrics) Leading() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_leading(this.h))
 }
 
 func (this *QFontMetrics) LineSpacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_lineSpacing(this.h))
 }
 
 func (this *QFontMetrics) MinLeftBearing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_minLeftBearing(this.h))
 }
 
 func (this *QFontMetrics) MinRightBearing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_minRightBearing(this.h))
 }
 
 func (this *QFontMetrics) MaxWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_maxWidth(this.h))
 }
 
 func (this *QFontMetrics) XHeight() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_xHeight(this.h))
 }
 
 func (this *QFontMetrics) AverageCharWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_averageCharWidth(this.h))
 }
 
 func (this *QFontMetrics) InFont(param1 QChar) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QFontMetrics_inFont(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetrics) InFontUcs4(ucs4 uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFontMetrics_inFontUcs4(this.h, (C.uint)(ucs4)))
 }
 
 func (this *QFontMetrics) LeftBearing(param1 QChar) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QFontMetrics_leftBearing(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetrics) RightBearing(param1 QChar) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QFontMetrics_rightBearing(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetrics) HorizontalAdvance(param1 string) int {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -141,6 +174,8 @@ func (this *QFontMetrics) HorizontalAdvance(param1 string) int {
 }
 
 func (this *QFontMetrics) HorizontalAdvance2(param1 string, textOption *QTextOption) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -149,16 +184,21 @@ func (this *QFontMetrics) HorizontalAdvance2(param1 string, textOption *QTextOpt
 }
 
 func (this *QFontMetrics) HorizontalAdvanceWithQChar(param1 QChar) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QFontMetrics_horizontalAdvanceWithQChar(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetrics) BoundingRect(param1 QChar) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQRect(C.QFontMetrics_boundingRect(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontMetrics) BoundingRectWithText(text string) *QRect {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -169,6 +209,8 @@ func (this *QFontMetrics) BoundingRectWithText(text string) *QRect {
 }
 
 func (this *QFontMetrics) BoundingRect2(text string, textOption *QTextOption) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -179,6 +221,8 @@ func (this *QFontMetrics) BoundingRect2(text string, textOption *QTextOption) *Q
 }
 
 func (this *QFontMetrics) BoundingRect3(r *QRect, flags int, text string) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -189,6 +233,7 @@ func (this *QFontMetrics) BoundingRect3(r *QRect, flags int, text string) *QRect
 }
 
 func (this *QFontMetrics) BoundingRect4(x int, y int, w int, h int, flags int, text string) *QRect {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -199,6 +244,7 @@ func (this *QFontMetrics) BoundingRect4(x int, y int, w int, h int, flags int, t
 }
 
 func (this *QFontMetrics) Size(flags int, str string) *QSize {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -209,6 +255,7 @@ func (this *QFontMetrics) Size(flags int, str string) *QSize {
 }
 
 func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -219,6 +266,8 @@ func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
 }
 
 func (this *QFontMetrics) TightBoundingRect2(text string, textOption *QTextOption) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -229,6 +278,7 @@ func (this *QFontMetrics) TightBoundingRect2(text string, textOption *QTextOptio
 }
 
 func (this *QFontMetrics) ElidedText(text string, mode TextElideMode, width int) string {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -240,34 +290,44 @@ func (this *QFontMetrics) ElidedText(text string, mode TextElideMode, width int)
 }
 
 func (this *QFontMetrics) UnderlinePos() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_underlinePos(this.h))
 }
 
 func (this *QFontMetrics) OverlinePos() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_overlinePos(this.h))
 }
 
 func (this *QFontMetrics) StrikeOutPos() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_strikeOutPos(this.h))
 }
 
 func (this *QFontMetrics) LineWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QFontMetrics_lineWidth(this.h))
 }
 
 func (this *QFontMetrics) FontDpi() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetrics_fontDpi(this.h))
 }
 
 func (this *QFontMetrics) OperatorEqual(other *QFontMetrics) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFontMetrics_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QFontMetrics) OperatorNotEqual(other *QFontMetrics) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFontMetrics_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QFontMetrics) HorizontalAdvance3(param1 string, lenVal int) int {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -276,6 +336,8 @@ func (this *QFontMetrics) HorizontalAdvance3(param1 string, lenVal int) int {
 }
 
 func (this *QFontMetrics) BoundingRect5(r *QRect, flags int, text string, tabstops int) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -286,6 +348,8 @@ func (this *QFontMetrics) BoundingRect5(r *QRect, flags int, text string, tabsto
 }
 
 func (this *QFontMetrics) BoundingRect6(r *QRect, flags int, text string, tabstops int, tabarray *int) *QRect {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -296,6 +360,7 @@ func (this *QFontMetrics) BoundingRect6(r *QRect, flags int, text string, tabsto
 }
 
 func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, text string, tabstops int) *QRect {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -306,6 +371,7 @@ func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, t
 }
 
 func (this *QFontMetrics) BoundingRect8(x int, y int, w int, h int, flags int, text string, tabstops int, tabarray *int) *QRect {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -316,6 +382,7 @@ func (this *QFontMetrics) BoundingRect8(x int, y int, w int, h int, flags int, t
 }
 
 func (this *QFontMetrics) Size2(flags int, str string, tabstops int) *QSize {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -326,6 +393,7 @@ func (this *QFontMetrics) Size2(flags int, str string, tabstops int) *QSize {
 }
 
 func (this *QFontMetrics) Size3(flags int, str string, tabstops int, tabarray *int) *QSize {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -336,6 +404,7 @@ func (this *QFontMetrics) Size3(flags int, str string, tabstops int, tabarray *i
 }
 
 func (this *QFontMetrics) ElidedText2(text string, mode TextElideMode, width int, flags int) string {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -358,15 +427,22 @@ func (this *QFontMetrics) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFontMetrics{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontMetrics) {
-		C.QFontMetrics_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFontMetrics_delete((*C.QFontMetrics)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QFontMetricsF struct {
 	h  *C.QFontMetricsF
-	gc *[1]*C.QFontMetricsF
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QFontMetricsF) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QFontMetricsF) cPointer() *C.QFontMetricsF {
@@ -399,101 +475,131 @@ func UnsafeNewQFontMetricsF(h unsafe.Pointer) *QFontMetricsF {
 
 // NewQFontMetricsF constructs a new QFontMetricsF object.
 func NewQFontMetricsF(font *QFont) *QFontMetricsF {
+	defer runtime.KeepAlive(font)
 
 	return newQFontMetricsF(C.QFontMetricsF_new(font.cPointer()))
 }
 
 // NewQFontMetricsF2 constructs a new QFontMetricsF object.
 func NewQFontMetricsF2(font *QFont, pd *QPaintDevice) *QFontMetricsF {
+	defer runtime.KeepAlive(font)
+	defer runtime.KeepAlive(pd)
 
 	return newQFontMetricsF(C.QFontMetricsF_new2(font.cPointer(), pd.cPointer()))
 }
 
 // NewQFontMetricsF3 constructs a new QFontMetricsF object.
 func NewQFontMetricsF3(param1 *QFontMetrics) *QFontMetricsF {
+	defer runtime.KeepAlive(param1)
 
 	return newQFontMetricsF(C.QFontMetricsF_new3(param1.cPointer()))
 }
 
 // NewQFontMetricsF4 constructs a new QFontMetricsF object.
 func NewQFontMetricsF4(param1 *QFontMetricsF) *QFontMetricsF {
+	defer runtime.KeepAlive(param1)
 
 	return newQFontMetricsF(C.QFontMetricsF_new4(param1.cPointer()))
 }
 
 func (this *QFontMetricsF) OperatorAssign(param1 *QFontMetricsF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QFontMetricsF_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QFontMetricsF) OperatorAssignWithQFontMetrics(param1 *QFontMetrics) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QFontMetricsF_operatorAssignWithQFontMetrics(this.h, param1.cPointer())
 }
 
 func (this *QFontMetricsF) Swap(other *QFontMetricsF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QFontMetricsF_swap(this.h, other.cPointer())
 }
 
 func (this *QFontMetricsF) Ascent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_ascent(this.h))
 }
 
 func (this *QFontMetricsF) CapHeight() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_capHeight(this.h))
 }
 
 func (this *QFontMetricsF) Descent() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_descent(this.h))
 }
 
 func (this *QFontMetricsF) Height() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_height(this.h))
 }
 
 func (this *QFontMetricsF) Leading() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_leading(this.h))
 }
 
 func (this *QFontMetricsF) LineSpacing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_lineSpacing(this.h))
 }
 
 func (this *QFontMetricsF) MinLeftBearing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_minLeftBearing(this.h))
 }
 
 func (this *QFontMetricsF) MinRightBearing() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_minRightBearing(this.h))
 }
 
 func (this *QFontMetricsF) MaxWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_maxWidth(this.h))
 }
 
 func (this *QFontMetricsF) XHeight() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_xHeight(this.h))
 }
 
 func (this *QFontMetricsF) AverageCharWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_averageCharWidth(this.h))
 }
 
 func (this *QFontMetricsF) InFont(param1 QChar) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QFontMetricsF_inFont(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetricsF) InFontUcs4(ucs4 uint) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QFontMetricsF_inFontUcs4(this.h, (C.uint)(ucs4)))
 }
 
 func (this *QFontMetricsF) LeftBearing(param1 QChar) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QFontMetricsF_leftBearing(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetricsF) RightBearing(param1 QChar) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QFontMetricsF_rightBearing(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetricsF) HorizontalAdvance(stringVal string) float64 {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -502,10 +608,14 @@ func (this *QFontMetricsF) HorizontalAdvance(stringVal string) float64 {
 }
 
 func (this *QFontMetricsF) HorizontalAdvanceWithQChar(param1 QChar) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (float64)(C.QFontMetricsF_horizontalAdvanceWithQChar(this.h, param1.cPointer()))
 }
 
 func (this *QFontMetricsF) HorizontalAdvance2(stringVal string, textOption *QTextOption) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -514,6 +624,7 @@ func (this *QFontMetricsF) HorizontalAdvance2(stringVal string, textOption *QTex
 }
 
 func (this *QFontMetricsF) BoundingRect(stringVal string) *QRectF {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -524,6 +635,8 @@ func (this *QFontMetricsF) BoundingRect(stringVal string) *QRectF {
 }
 
 func (this *QFontMetricsF) BoundingRect2(text string, textOption *QTextOption) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -534,12 +647,16 @@ func (this *QFontMetricsF) BoundingRect2(text string, textOption *QTextOption) *
 }
 
 func (this *QFontMetricsF) BoundingRectWithQChar(param1 QChar) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := newQRectF(C.QFontMetricsF_boundingRectWithQChar(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontMetricsF) BoundingRect3(r *QRectF, flags int, stringVal string) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -550,6 +667,7 @@ func (this *QFontMetricsF) BoundingRect3(r *QRectF, flags int, stringVal string)
 }
 
 func (this *QFontMetricsF) Size(flags int, str string) *QSizeF {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -560,6 +678,7 @@ func (this *QFontMetricsF) Size(flags int, str string) *QSizeF {
 }
 
 func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -570,6 +689,8 @@ func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
 }
 
 func (this *QFontMetricsF) TightBoundingRect2(text string, textOption *QTextOption) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(textOption)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -580,6 +701,7 @@ func (this *QFontMetricsF) TightBoundingRect2(text string, textOption *QTextOpti
 }
 
 func (this *QFontMetricsF) ElidedText(text string, mode TextElideMode, width float64) string {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -591,34 +713,44 @@ func (this *QFontMetricsF) ElidedText(text string, mode TextElideMode, width flo
 }
 
 func (this *QFontMetricsF) UnderlinePos() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_underlinePos(this.h))
 }
 
 func (this *QFontMetricsF) OverlinePos() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_overlinePos(this.h))
 }
 
 func (this *QFontMetricsF) StrikeOutPos() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_strikeOutPos(this.h))
 }
 
 func (this *QFontMetricsF) LineWidth() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_lineWidth(this.h))
 }
 
 func (this *QFontMetricsF) FontDpi() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QFontMetricsF_fontDpi(this.h))
 }
 
 func (this *QFontMetricsF) OperatorEqual(other *QFontMetricsF) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFontMetricsF_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QFontMetricsF) OperatorNotEqual(other *QFontMetricsF) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QFontMetricsF_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QFontMetricsF) HorizontalAdvance3(stringVal string, length int) float64 {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -627,6 +759,8 @@ func (this *QFontMetricsF) HorizontalAdvance3(stringVal string, length int) floa
 }
 
 func (this *QFontMetricsF) BoundingRect4(r *QRectF, flags int, stringVal string, tabstops int) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -637,6 +771,8 @@ func (this *QFontMetricsF) BoundingRect4(r *QRectF, flags int, stringVal string,
 }
 
 func (this *QFontMetricsF) BoundingRect5(r *QRectF, flags int, stringVal string, tabstops int, tabarray *int) *QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -647,6 +783,7 @@ func (this *QFontMetricsF) BoundingRect5(r *QRectF, flags int, stringVal string,
 }
 
 func (this *QFontMetricsF) Size2(flags int, str string, tabstops int) *QSizeF {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -657,6 +794,7 @@ func (this *QFontMetricsF) Size2(flags int, str string, tabstops int) *QSizeF {
 }
 
 func (this *QFontMetricsF) Size3(flags int, str string, tabstops int, tabarray *int) *QSizeF {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -667,6 +805,7 @@ func (this *QFontMetricsF) Size3(flags int, str string, tabstops int, tabarray *
 }
 
 func (this *QFontMetricsF) ElidedText2(text string, mode TextElideMode, width float64, flags int) string {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -689,8 +828,9 @@ func (this *QFontMetricsF) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QFontMetricsF{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontMetricsF) {
-		C.QFontMetricsF_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QFontMetricsF_delete((*C.QFontMetricsF)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

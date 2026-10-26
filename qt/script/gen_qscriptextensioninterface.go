@@ -17,8 +17,14 @@ import (
 
 type QScriptExtensionInterface struct {
 	h  *C.QScriptExtensionInterface
-	gc *[1]*C.QScriptExtensionInterface
+	gc *[1]unsafe.Pointer
 	*qt.QFactoryInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptExtensionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptExtensionInterface) cPointer() *C.QScriptExtensionInterface {
@@ -54,11 +60,14 @@ func UnsafeNewQScriptExtensionInterface(h unsafe.Pointer) *QScriptExtensionInter
 
 // NewQScriptExtensionInterface constructs a new QScriptExtensionInterface object.
 func NewQScriptExtensionInterface(param1 *QScriptExtensionInterface) *QScriptExtensionInterface {
+	defer runtime.KeepAlive(param1)
 
 	return newQScriptExtensionInterface(C.QScriptExtensionInterface_new(param1.cPointer()))
 }
 
 func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEngine) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -67,6 +76,8 @@ func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEng
 }
 
 func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QScriptExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
@@ -134,8 +145,9 @@ func (this *QScriptExtensionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptExtensionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptExtensionInterface) {
-		C.QScriptExtensionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptExtensionInterface_delete((*C.QScriptExtensionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

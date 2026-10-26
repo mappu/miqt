@@ -244,6 +244,8 @@ bool QToolBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QToolBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QToolBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QToolBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionToolBar* option);
 void QToolBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

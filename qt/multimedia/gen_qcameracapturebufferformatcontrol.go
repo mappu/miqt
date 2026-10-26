@@ -17,8 +17,15 @@ import (
 
 type QCameraCaptureBufferFormatControl struct {
 	h  *C.QCameraCaptureBufferFormatControl
-	gc *[1]*C.QCameraCaptureBufferFormatControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraCaptureBufferFormatControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraCaptureBufferFormatControl) cPointer() *C.QCameraCaptureBufferFormatControl {
@@ -53,10 +60,12 @@ func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer) *QCameraCaptur
 }
 
 func (this *QCameraCaptureBufferFormatControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraCaptureBufferFormatControl_metaObject(this.h)))
 }
 
 func (this *QCameraCaptureBufferFormatControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraCaptureBufferFormatControl_metacast(this.h, param1_Cstring))
@@ -81,6 +90,7 @@ func QCameraCaptureBufferFormatControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraCaptureBufferFormatControl) SupportedBufferFormats() []QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraCaptureBufferFormatControl_supportedBufferFormats(this.h)
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -91,14 +101,17 @@ func (this *QCameraCaptureBufferFormatControl) SupportedBufferFormats() []QVideo
 }
 
 func (this *QCameraCaptureBufferFormatControl) BufferFormat() QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
 	return (QVideoFrame__PixelFormat)(C.QCameraCaptureBufferFormatControl_bufferFormat(this.h))
 }
 
 func (this *QCameraCaptureBufferFormatControl) SetBufferFormat(format QVideoFrame__PixelFormat) {
+	defer runtime.KeepAlive(this)
 	C.QCameraCaptureBufferFormatControl_setBufferFormat(this.h, (C.int)(format))
 }
 
 func (this *QCameraCaptureBufferFormatControl) BufferFormatChanged(format QVideoFrame__PixelFormat) {
+	defer runtime.KeepAlive(this)
 	C.QCameraCaptureBufferFormatControl_bufferFormatChanged(this.h, (C.int)(format))
 }
 func (this *QCameraCaptureBufferFormatControl) OnBufferFormatChanged(slot func(format QVideoFrame__PixelFormat)) {
@@ -174,8 +187,9 @@ func (this *QCameraCaptureBufferFormatControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraCaptureBufferFormatControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraCaptureBufferFormatControl) {
-		C.QCameraCaptureBufferFormatControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraCaptureBufferFormatControl_delete((*C.QCameraCaptureBufferFormatControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -221,8 +221,15 @@ const (
 
 type QsciScintilla struct {
 	h  *C.QsciScintilla
-	gc *[1]*C.QsciScintilla
+	gc *[1]unsafe.Pointer
 	*QsciScintillaBase
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QsciScintilla) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QsciScintillaBase.miqtSetGC(gc)
 }
 
 func (this *QsciScintilla) cPointer() *C.QsciScintilla {
@@ -258,6 +265,7 @@ func UnsafeNewQsciScintilla(h unsafe.Pointer) *QsciScintilla {
 
 // NewQsciScintilla constructs a new QsciScintilla object.
 func NewQsciScintilla(parent *qt.QWidget) *QsciScintilla {
+	defer runtime.KeepAlive(parent)
 
 	return newQsciScintilla(C.QsciScintilla_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -269,10 +277,12 @@ func NewQsciScintilla2() *QsciScintilla {
 }
 
 func (this *QsciScintilla) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciScintilla_metaObject(this.h)))
 }
 
 func (this *QsciScintilla) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciScintilla_metacast(this.h, param1_Cstring))
@@ -297,6 +307,7 @@ func QsciScintilla_TrUtf8(s string) string {
 }
 
 func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_start *int) []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QsciScintilla_apiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -310,6 +321,7 @@ func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_sta
 }
 
 func (this *QsciScintilla) Annotate(line int, text string, style int) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -318,6 +330,8 @@ func (this *QsciScintilla) Annotate(line int, text string, style int) {
 }
 
 func (this *QsciScintilla) Annotate2(line int, text string, style *QsciStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(style)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -326,10 +340,13 @@ func (this *QsciScintilla) Annotate2(line int, text string, style *QsciStyle) {
 }
 
 func (this *QsciScintilla) Annotate3(line int, text *QsciStyledText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(text)
 	C.QsciScintilla_annotate3(this.h, (C.int)(line), text.cPointer())
 }
 
 func (this *QsciScintilla) Annotation(line int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_annotation(this.h, (C.int)(line))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -337,58 +354,72 @@ func (this *QsciScintilla) Annotation(line int) string {
 }
 
 func (this *QsciScintilla) AnnotationDisplay() QsciScintilla__AnnotationDisplay {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__AnnotationDisplay)(C.QsciScintilla_annotationDisplay(this.h))
 }
 
 func (this *QsciScintilla) ClearAnnotations() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearAnnotations(this.h)
 }
 
 func (this *QsciScintilla) AutoCompletionCaseSensitivity() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_autoCompletionCaseSensitivity(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionFillupsEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_autoCompletionFillupsEnabled(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionReplaceWord() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_autoCompletionReplaceWord(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionShowSingle() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_autoCompletionShowSingle(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionSource() QsciScintilla__AutoCompletionSource {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__AutoCompletionSource)(C.QsciScintilla_autoCompletionSource(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionThreshold() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_autoCompletionThreshold(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionUseSingle() QsciScintilla__AutoCompletionUseSingle {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__AutoCompletionUseSingle)(C.QsciScintilla_autoCompletionUseSingle(this.h))
 }
 
 func (this *QsciScintilla) AutoIndent() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_autoIndent(this.h))
 }
 
 func (this *QsciScintilla) BackspaceUnindents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_backspaceUnindents(this.h))
 }
 
 func (this *QsciScintilla) BeginUndoAction() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_beginUndoAction(this.h)
 }
 
 func (this *QsciScintilla) BraceMatching() QsciScintilla__BraceMatch {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__BraceMatch)(C.QsciScintilla_braceMatching(this.h))
 }
 
 func (this *QsciScintilla) Bytes(start int, end int) []byte {
+	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QsciScintilla_bytes(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -396,48 +427,59 @@ func (this *QsciScintilla) Bytes(start int, end int) []byte {
 }
 
 func (this *QsciScintilla) CallTipsPosition() QsciScintilla__CallTipsPosition {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__CallTipsPosition)(C.QsciScintilla_callTipsPosition(this.h))
 }
 
 func (this *QsciScintilla) CallTipsStyle() QsciScintilla__CallTipsStyle {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__CallTipsStyle)(C.QsciScintilla_callTipsStyle(this.h))
 }
 
 func (this *QsciScintilla) CallTipsVisible() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_callTipsVisible(this.h))
 }
 
 func (this *QsciScintilla) CancelFind() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_cancelFind(this.h)
 }
 
 func (this *QsciScintilla) CancelList() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_cancelList(this.h)
 }
 
 func (this *QsciScintilla) CaseSensitive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_caseSensitive(this.h))
 }
 
 func (this *QsciScintilla) ClearFolds() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearFolds(this.h)
 }
 
 func (this *QsciScintilla) ClearIndicatorRange(lineFrom int, indexFrom int, lineTo int, indexTo int, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ClearRegisteredImages() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearRegisteredImages(this.h)
 }
 
 func (this *QsciScintilla) Color() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) ContractedFolds() []int {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QsciScintilla_contractedFolds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -448,62 +490,77 @@ func (this *QsciScintilla) ContractedFolds() []int {
 }
 
 func (this *QsciScintilla) ConvertEols(mode QsciScintilla__EolMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_convertEols(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) CreateStandardContextMenu() *qt.QMenu {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QsciScintilla_createStandardContextMenu(this.h)))
 }
 
 func (this *QsciScintilla) Document() *QsciDocument {
+	defer runtime.KeepAlive(this)
 	_goptr := newQsciDocument(C.QsciScintilla_document(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) EndUndoAction() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_endUndoAction(this.h)
 }
 
 func (this *QsciScintilla) EdgeColor() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_edgeColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) EdgeColumn() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_edgeColumn(this.h))
 }
 
 func (this *QsciScintilla) EdgeMode() QsciScintilla__EdgeMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__EdgeMode)(C.QsciScintilla_edgeMode(this.h))
 }
 
 func (this *QsciScintilla) SetFont(f *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 	C.QsciScintilla_setFont(this.h, (*C.QFont)(f.UnsafePointer()))
 }
 
 func (this *QsciScintilla) EolMode() QsciScintilla__EolMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__EolMode)(C.QsciScintilla_eolMode(this.h))
 }
 
 func (this *QsciScintilla) EolVisibility() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_eolVisibility(this.h))
 }
 
 func (this *QsciScintilla) ExtraAscent() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_extraAscent(this.h))
 }
 
 func (this *QsciScintilla) ExtraDescent() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_extraDescent(this.h))
 }
 
 func (this *QsciScintilla) FillIndicatorRange(lineFrom int, indexFrom int, lineTo int, indexTo int, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_fillIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) FindFirst(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool {
+	defer runtime.KeepAlive(this)
 	expr_ms := C.struct_miqt_string{}
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
@@ -512,6 +569,7 @@ func (this *QsciScintilla) FindFirst(expr string, re bool, cs bool, wo bool, wra
 }
 
 func (this *QsciScintilla) FindFirstInSelection(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool {
+	defer runtime.KeepAlive(this)
 	expr_ms := C.struct_miqt_string{}
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
@@ -520,226 +578,287 @@ func (this *QsciScintilla) FindFirstInSelection(expr string, re bool, cs bool, w
 }
 
 func (this *QsciScintilla) FindNext() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_findNext(this.h))
 }
 
 func (this *QsciScintilla) FindMatchingBrace(brace *int64, other *int64, mode QsciScintilla__BraceMatch) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_findMatchingBrace(this.h, (*C.long)(unsafe.Pointer(brace)), (*C.long)(unsafe.Pointer(other)), (C.int)(mode)))
 }
 
 func (this *QsciScintilla) FirstVisibleLine() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_firstVisibleLine(this.h))
 }
 
 func (this *QsciScintilla) Folding() QsciScintilla__FoldStyle {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__FoldStyle)(C.QsciScintilla_folding(this.h))
 }
 
 func (this *QsciScintilla) GetCursorPosition(line *int, index *int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_getCursorPosition(this.h, (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
 }
 
 func (this *QsciScintilla) GetSelection(lineFrom *int, indexFrom *int, lineTo *int, indexTo *int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_getSelection(this.h, (*C.int)(unsafe.Pointer(lineFrom)), (*C.int)(unsafe.Pointer(indexFrom)), (*C.int)(unsafe.Pointer(lineTo)), (*C.int)(unsafe.Pointer(indexTo)))
 }
 
 func (this *QsciScintilla) HasSelectedText() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_hasSelectedText(this.h))
 }
 
 func (this *QsciScintilla) Indentation(line int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_indentation(this.h, (C.int)(line)))
 }
 
 func (this *QsciScintilla) IndentationGuides() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_indentationGuides(this.h))
 }
 
 func (this *QsciScintilla) IndentationsUseTabs() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_indentationsUseTabs(this.h))
 }
 
 func (this *QsciScintilla) IndentationWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_indentationWidth(this.h))
 }
 
 func (this *QsciScintilla) IndicatorDefine(style QsciScintilla__IndicatorStyle) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_indicatorDefine(this.h, (C.int)(style)))
 }
 
 func (this *QsciScintilla) IndicatorDrawUnder(indicatorNumber int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_indicatorDrawUnder(this.h, (C.int)(indicatorNumber)))
 }
 
 func (this *QsciScintilla) IsCallTipActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isCallTipActive(this.h))
 }
 
 func (this *QsciScintilla) IsListActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isListActive(this.h))
 }
 
 func (this *QsciScintilla) IsModified() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isModified(this.h))
 }
 
 func (this *QsciScintilla) IsReadOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isReadOnly(this.h))
 }
 
 func (this *QsciScintilla) IsRedoAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isRedoAvailable(this.h))
 }
 
 func (this *QsciScintilla) IsUndoAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isUndoAvailable(this.h))
 }
 
 func (this *QsciScintilla) IsUtf8() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isUtf8(this.h))
 }
 
 func (this *QsciScintilla) IsWordCharacter(ch int8) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_isWordCharacter(this.h, (C.char)(ch)))
 }
 
 func (this *QsciScintilla) LineAt(point *qt.QPoint) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	return (int)(C.QsciScintilla_lineAt(this.h, (*C.QPoint)(point.UnsafePointer())))
 }
 
 func (this *QsciScintilla) LineIndexFromPosition(position int, line *int, index *int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_lineIndexFromPosition(this.h, (C.int)(position), (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
 }
 
 func (this *QsciScintilla) LineLength(line int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_lineLength(this.h, (C.int)(line)))
 }
 
 func (this *QsciScintilla) Lines() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_lines(this.h))
 }
 
 func (this *QsciScintilla) Length() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_length(this.h))
 }
 
 func (this *QsciScintilla) Lexer() *QsciLexer {
+	defer runtime.KeepAlive(this)
 	return newQsciLexer(C.QsciScintilla_lexer(this.h))
 }
 
 func (this *QsciScintilla) MarginBackgroundColor(margin int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_marginBackgroundColor(this.h, (C.int)(margin))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) MarginLineNumbers(margin int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_marginLineNumbers(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginMarkerMask(margin int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_marginMarkerMask(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginOptions() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_marginOptions(this.h))
 }
 
 func (this *QsciScintilla) MarginSensitivity(margin int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_marginSensitivity(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginType(margin int) QsciScintilla__MarginType {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__MarginType)(C.QsciScintilla_marginType(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginWidth(margin int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_marginWidth(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) Margins() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_margins(this.h))
 }
 
 func (this *QsciScintilla) MarkerDefine(sym QsciScintilla__MarkerSymbol) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerDefine(this.h, (C.int)(sym)))
 }
 
 func (this *QsciScintilla) MarkerDefineWithCh(ch int8) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerDefineWithCh(this.h, (C.char)(ch)))
 }
 
 func (this *QsciScintilla) MarkerDefineWithPm(pm *qt.QPixmap) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pm)
 	return (int)(C.QsciScintilla_markerDefineWithPm(this.h, (*C.QPixmap)(pm.UnsafePointer())))
 }
 
 func (this *QsciScintilla) MarkerDefineWithIm(im *qt.QImage) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(im)
 	return (int)(C.QsciScintilla_markerDefineWithIm(this.h, (*C.QImage)(im.UnsafePointer())))
 }
 
 func (this *QsciScintilla) MarkerAdd(linenr int, markerNumber int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerAdd(this.h, (C.int)(linenr), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkersAtLine(linenr int) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QsciScintilla_markersAtLine(this.h, (C.int)(linenr)))
 }
 
 func (this *QsciScintilla) MarkerDelete(linenr int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_markerDelete(this.h, (C.int)(linenr))
 }
 
 func (this *QsciScintilla) MarkerDeleteAll() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_markerDeleteAll(this.h)
 }
 
 func (this *QsciScintilla) MarkerDeleteHandle(mhandle int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_markerDeleteHandle(this.h, (C.int)(mhandle))
 }
 
 func (this *QsciScintilla) MarkerLine(mhandle int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerLine(this.h, (C.int)(mhandle)))
 }
 
 func (this *QsciScintilla) MarkerFindNext(linenr int, mask uint) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerFindNext(this.h, (C.int)(linenr), (C.uint)(mask)))
 }
 
 func (this *QsciScintilla) MarkerFindPrevious(linenr int, mask uint) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerFindPrevious(this.h, (C.int)(linenr), (C.uint)(mask)))
 }
 
 func (this *QsciScintilla) OverwriteMode() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_overwriteMode(this.h))
 }
 
 func (this *QsciScintilla) Paper() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_paper(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) PositionFromLineIndex(line int, index int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_positionFromLineIndex(this.h, (C.int)(line), (C.int)(index)))
 }
 
 func (this *QsciScintilla) Read(io *qt.QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(io)
 	return (bool)(C.QsciScintilla_read(this.h, (*C.QIODevice)(io.UnsafePointer())))
 }
 
 func (this *QsciScintilla) Recolor(start int, end int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_recolor(this.h, (C.int)(start), (C.int)(end))
 }
 
 func (this *QsciScintilla) RegisterImage(id int, pm *qt.QPixmap) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pm)
 	C.QsciScintilla_registerImage(this.h, (C.int)(id), (*C.QPixmap)(pm.UnsafePointer()))
 }
 
 func (this *QsciScintilla) RegisterImage2(id int, im *qt.QImage) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(im)
 	C.QsciScintilla_registerImage2(this.h, (C.int)(id), (*C.QImage)(im.UnsafePointer()))
 }
 
 func (this *QsciScintilla) Replace(replaceStr string) {
+	defer runtime.KeepAlive(this)
 	replaceStr_ms := C.struct_miqt_string{}
 	replaceStr_ms.data = C.CString(replaceStr)
 	replaceStr_ms.len = C.size_t(len(replaceStr))
@@ -748,44 +867,56 @@ func (this *QsciScintilla) Replace(replaceStr string) {
 }
 
 func (this *QsciScintilla) ResetFoldMarginColors() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetFoldMarginColors(this.h)
 }
 
 func (this *QsciScintilla) ResetHotspotBackgroundColor() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetHotspotBackgroundColor(this.h)
 }
 
 func (this *QsciScintilla) ResetHotspotForegroundColor() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetHotspotForegroundColor(this.h)
 }
 
 func (this *QsciScintilla) ScrollWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_scrollWidth(this.h))
 }
 
 func (this *QsciScintilla) ScrollWidthTracking() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_scrollWidthTracking(this.h))
 }
 
 func (this *QsciScintilla) SetFoldMarginColors(fore *qt.QColor, back *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(fore)
+	defer runtime.KeepAlive(back)
 	C.QsciScintilla_setFoldMarginColors(this.h, (*C.QColor)(fore.UnsafePointer()), (*C.QColor)(back.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetAnnotationDisplay(display QsciScintilla__AnnotationDisplay) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAnnotationDisplay(this.h, (C.int)(display))
 }
 
 func (this *QsciScintilla) SetAutoCompletionFillupsEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionFillupsEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciScintilla) SetAutoCompletionFillups(fillups string) {
+	defer runtime.KeepAlive(this)
 	fillups_Cstring := C.CString(fillups)
 	defer C.free(unsafe.Pointer(fillups_Cstring))
 	C.QsciScintilla_setAutoCompletionFillups(this.h, fillups_Cstring)
 }
 
 func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) {
+	defer runtime.KeepAlive(this)
 	separators_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(separators))))
 	defer C.free(unsafe.Pointer(separators_CArray_ptr))
 	separators_CArray := unsafe.Slice(separators_CArray_ptr, len(separators))
@@ -801,30 +932,40 @@ func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) 
 }
 
 func (this *QsciScintilla) SetCallTipsBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setCallTipsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setCallTipsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsHighlightColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setCallTipsHighlightColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsPosition(position QsciScintilla__CallTipsPosition) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCallTipsPosition(this.h, (C.int)(position))
 }
 
 func (this *QsciScintilla) SetCallTipsStyle(style QsciScintilla__CallTipsStyle) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCallTipsStyle(this.h, (C.int)(style))
 }
 
 func (this *QsciScintilla) SetCallTipsVisible(nr int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCallTipsVisible(this.h, (C.int)(nr))
 }
 
 func (this *QsciScintilla) SetContractedFolds(folds []int) {
+	defer runtime.KeepAlive(this)
 	folds_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(folds))))
 	defer C.free(unsafe.Pointer(folds_CArray_ptr))
 	folds_CArray := unsafe.Slice(folds_CArray_ptr, len(folds))
@@ -836,62 +977,84 @@ func (this *QsciScintilla) SetContractedFolds(folds []int) {
 }
 
 func (this *QsciScintilla) SetDocument(document *QsciDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QsciScintilla_setDocument(this.h, document.cPointer())
 }
 
 func (this *QsciScintilla) AddEdgeColumn(colnr int, col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_addEdgeColumn(this.h, (C.int)(colnr), (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) ClearEdgeColumns() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearEdgeColumns(this.h)
 }
 
 func (this *QsciScintilla) SetEdgeColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setEdgeColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetEdgeColumn(colnr int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setEdgeColumn(this.h, (C.int)(colnr))
 }
 
 func (this *QsciScintilla) SetEdgeMode(mode QsciScintilla__EdgeMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setEdgeMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetFirstVisibleLine(linenr int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setFirstVisibleLine(this.h, (C.int)(linenr))
 }
 
 func (this *QsciScintilla) SetIndicatorDrawUnder(under bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndicatorDrawUnder(this.h, (C.bool)(under))
 }
 
 func (this *QsciScintilla) SetIndicatorForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorHoverForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle(style QsciScintilla__IndicatorStyle) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndicatorHoverStyle(this.h, (C.int)(style))
 }
 
 func (this *QsciScintilla) SetIndicatorOutlineColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorOutlineColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginBackgroundColor(margin int, col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarginBackgroundColor(this.h, (C.int)(margin), (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginOptions(options int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginOptions(this.h, (C.int)(options))
 }
 
 func (this *QsciScintilla) SetMarginText(line int, text string, style int) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -900,6 +1063,8 @@ func (this *QsciScintilla) SetMarginText(line int, text string, style int) {
 }
 
 func (this *QsciScintilla) SetMarginText2(line int, text string, style *QsciStyle) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(style)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -908,78 +1073,104 @@ func (this *QsciScintilla) SetMarginText2(line int, text string, style *QsciStyl
 }
 
 func (this *QsciScintilla) SetMarginText3(line int, text *QsciStyledText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(text)
 	C.QsciScintilla_setMarginText3(this.h, (C.int)(line), text.cPointer())
 }
 
 func (this *QsciScintilla) SetMarginType(margin int, typeVal QsciScintilla__MarginType) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginType(this.h, (C.int)(margin), (C.int)(typeVal))
 }
 
 func (this *QsciScintilla) ClearMarginText() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearMarginText(this.h)
 }
 
 func (this *QsciScintilla) SetMargins(margins int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMargins(this.h, (C.int)(margins))
 }
 
 func (this *QsciScintilla) SetMarkerBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarkerBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarkerForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarkerForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceIndicator(indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ResetMatchedBraceIndicator() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetMatchedBraceIndicator(this.h)
 }
 
 func (this *QsciScintilla) SetScrollWidth(pixelWidth int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setScrollWidth(this.h, (C.int)(pixelWidth))
 }
 
 func (this *QsciScintilla) SetScrollWidthTracking(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setScrollWidthTracking(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciScintilla) SetTabDrawMode(mode QsciScintilla__TabDrawMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setTabDrawMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setUnmatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setUnmatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceIndicator(indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setUnmatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ResetUnmatchedBraceIndicator() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetUnmatchedBraceIndicator(this.h)
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags(endFlag QsciScintilla__WrapVisualFlag) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWrapVisualFlags(this.h, (C.int)(endFlag))
 }
 
 func (this *QsciScintilla) SelectedText() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -987,58 +1178,76 @@ func (this *QsciScintilla) SelectedText() string {
 }
 
 func (this *QsciScintilla) SelectionToEol() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_selectionToEol(this.h))
 }
 
 func (this *QsciScintilla) SetHotspotBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setHotspotBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetHotspotForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setHotspotForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetHotspotUnderline(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setHotspotUnderline(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetHotspotWrap(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setHotspotWrap(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetSelectionToEol(filled bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setSelectionToEol(this.h, (C.bool)(filled))
 }
 
 func (this *QsciScintilla) SetExtraAscent(extra int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setExtraAscent(this.h, (C.int)(extra))
 }
 
 func (this *QsciScintilla) SetExtraDescent(extra int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setExtraDescent(this.h, (C.int)(extra))
 }
 
 func (this *QsciScintilla) SetOverwriteMode(overwrite bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
 func (this *QsciScintilla) SetWhitespaceBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setWhitespaceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetWhitespaceForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setWhitespaceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetWhitespaceSize(size int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWhitespaceSize(this.h, (C.int)(size))
 }
 
 func (this *QsciScintilla) SetWrapIndentMode(mode QsciScintilla__WrapIndentMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWrapIndentMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) ShowUserList(id int, list []string) {
+	defer runtime.KeepAlive(this)
 	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -1054,22 +1263,27 @@ func (this *QsciScintilla) ShowUserList(id int, list []string) {
 }
 
 func (this *QsciScintilla) StandardCommands() *QsciCommandSet {
+	defer runtime.KeepAlive(this)
 	return newQsciCommandSet(C.QsciScintilla_standardCommands(this.h))
 }
 
 func (this *QsciScintilla) TabDrawMode() QsciScintilla__TabDrawMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__TabDrawMode)(C.QsciScintilla_tabDrawMode(this.h))
 }
 
 func (this *QsciScintilla) TabIndents() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciScintilla_tabIndents(this.h))
 }
 
 func (this *QsciScintilla) TabWidth() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_tabWidth(this.h))
 }
 
 func (this *QsciScintilla) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1077,6 +1291,7 @@ func (this *QsciScintilla) Text() string {
 }
 
 func (this *QsciScintilla) TextWithLine(line int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_textWithLine(this.h, (C.int)(line))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1084,6 +1299,7 @@ func (this *QsciScintilla) TextWithLine(line int) string {
 }
 
 func (this *QsciScintilla) Text2(start int, end int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_text2(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1091,18 +1307,22 @@ func (this *QsciScintilla) Text2(start int, end int) string {
 }
 
 func (this *QsciScintilla) TextHeight(linenr int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_textHeight(this.h, (C.int)(linenr)))
 }
 
 func (this *QsciScintilla) WhitespaceSize() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_whitespaceSize(this.h))
 }
 
 func (this *QsciScintilla) WhitespaceVisibility() QsciScintilla__WhitespaceVisibility {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__WhitespaceVisibility)(C.QsciScintilla_whitespaceVisibility(this.h))
 }
 
 func (this *QsciScintilla) WordAtLineIndex(line int, index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtLineIndex(this.h, (C.int)(line), (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1110,6 +1330,8 @@ func (this *QsciScintilla) WordAtLineIndex(line int, index int) string {
 }
 
 func (this *QsciScintilla) WordAtPoint(point *qt.QPoint) string {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtPoint(this.h, (*C.QPoint)(point.UnsafePointer()))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -1117,23 +1339,29 @@ func (this *QsciScintilla) WordAtPoint(point *qt.QPoint) string {
 }
 
 func (this *QsciScintilla) WordCharacters() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QsciScintilla_wordCharacters(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciScintilla) WrapMode() QsciScintilla__WrapMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__WrapMode)(C.QsciScintilla_wrapMode(this.h))
 }
 
 func (this *QsciScintilla) WrapIndentMode() QsciScintilla__WrapIndentMode {
+	defer runtime.KeepAlive(this)
 	return (QsciScintilla__WrapIndentMode)(C.QsciScintilla_wrapIndentMode(this.h))
 }
 
 func (this *QsciScintilla) Write(io *qt.QIODevice) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(io)
 	return (bool)(C.QsciScintilla_write(this.h, (*C.QIODevice)(io.UnsafePointer())))
 }
 
 func (this *QsciScintilla) Append(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1142,54 +1370,67 @@ func (this *QsciScintilla) Append(text string) {
 }
 
 func (this *QsciScintilla) AutoCompleteFromAll() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_autoCompleteFromAll(this.h)
 }
 
 func (this *QsciScintilla) AutoCompleteFromAPIs() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_autoCompleteFromAPIs(this.h)
 }
 
 func (this *QsciScintilla) AutoCompleteFromDocument() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_autoCompleteFromDocument(this.h)
 }
 
 func (this *QsciScintilla) CallTip() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_callTip(this.h)
 }
 
 func (this *QsciScintilla) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clear(this.h)
 }
 
 func (this *QsciScintilla) Copy() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_copy(this.h)
 }
 
 func (this *QsciScintilla) Cut() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_cut(this.h)
 }
 
 func (this *QsciScintilla) EnsureCursorVisible() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_ensureCursorVisible(this.h)
 }
 
 func (this *QsciScintilla) EnsureLineVisible(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_ensureLineVisible(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) FoldAll(children bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_foldAll(this.h, (C.bool)(children))
 }
 
 func (this *QsciScintilla) FoldLine(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_foldLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) Indent(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_indent(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) Insert(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1198,6 +1439,7 @@ func (this *QsciScintilla) Insert(text string) {
 }
 
 func (this *QsciScintilla) InsertAt(text string, line int, index int) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1206,22 +1448,27 @@ func (this *QsciScintilla) InsertAt(text string, line int, index int) {
 }
 
 func (this *QsciScintilla) MoveToMatchingBrace() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_moveToMatchingBrace(this.h)
 }
 
 func (this *QsciScintilla) Paste() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_paste(this.h)
 }
 
 func (this *QsciScintilla) Redo() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_redo(this.h)
 }
 
 func (this *QsciScintilla) RemoveSelectedText() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_removeSelectedText(this.h)
 }
 
 func (this *QsciScintilla) ReplaceSelectedText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1230,154 +1477,201 @@ func (this *QsciScintilla) ReplaceSelectedText(text string) {
 }
 
 func (this *QsciScintilla) ResetSelectionBackgroundColor() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetSelectionBackgroundColor(this.h)
 }
 
 func (this *QsciScintilla) ResetSelectionForegroundColor() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_resetSelectionForegroundColor(this.h)
 }
 
 func (this *QsciScintilla) SelectAll(selectVal bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_selectAll(this.h, (C.bool)(selectVal))
 }
 
 func (this *QsciScintilla) SelectToMatchingBrace() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_selectToMatchingBrace(this.h)
 }
 
 func (this *QsciScintilla) SetAutoCompletionCaseSensitivity(cs bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionCaseSensitivity(this.h, (C.bool)(cs))
 }
 
 func (this *QsciScintilla) SetAutoCompletionReplaceWord(replace bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionReplaceWord(this.h, (C.bool)(replace))
 }
 
 func (this *QsciScintilla) SetAutoCompletionShowSingle(single bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionShowSingle(this.h, (C.bool)(single))
 }
 
 func (this *QsciScintilla) SetAutoCompletionSource(source QsciScintilla__AutoCompletionSource) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionSource(this.h, (C.int)(source))
 }
 
 func (this *QsciScintilla) SetAutoCompletionThreshold(thresh int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionThreshold(this.h, (C.int)(thresh))
 }
 
 func (this *QsciScintilla) SetAutoCompletionUseSingle(single QsciScintilla__AutoCompletionUseSingle) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoCompletionUseSingle(this.h, (C.int)(single))
 }
 
 func (this *QsciScintilla) SetAutoIndent(autoindent bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setAutoIndent(this.h, (C.bool)(autoindent))
 }
 
 func (this *QsciScintilla) SetBraceMatching(bm QsciScintilla__BraceMatch) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setBraceMatching(this.h, (C.int)(bm))
 }
 
 func (this *QsciScintilla) SetBackspaceUnindents(unindent bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setBackspaceUnindents(this.h, (C.bool)(unindent))
 }
 
 func (this *QsciScintilla) SetCaretForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setCaretForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCaretLineBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setCaretLineBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCaretLineFrameWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCaretLineFrameWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetCaretLineVisible(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCaretLineVisible(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetCaretWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCaretWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetColor(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QsciScintilla_setColor(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCursorPosition(line int, index int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setCursorPosition(this.h, (C.int)(line), (C.int)(index))
 }
 
 func (this *QsciScintilla) SetEolMode(mode QsciScintilla__EolMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setEolMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetEolVisibility(visible bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setEolVisibility(this.h, (C.bool)(visible))
 }
 
 func (this *QsciScintilla) SetFolding(fold QsciScintilla__FoldStyle, margin int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setFolding(this.h, (C.int)(fold), (C.int)(margin))
 }
 
 func (this *QsciScintilla) SetIndentation(line int, indentation int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndentation(this.h, (C.int)(line), (C.int)(indentation))
 }
 
 func (this *QsciScintilla) SetIndentationGuides(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndentationGuides(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetIndentationGuidesBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndentationGuidesBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndentationGuidesForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndentationGuidesForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndentationsUseTabs(tabs bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndentationsUseTabs(this.h, (C.bool)(tabs))
 }
 
 func (this *QsciScintilla) SetIndentationWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndentationWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetLexer(lexer *QsciLexer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lexer)
 	C.QsciScintilla_setLexer(this.h, lexer.cPointer())
 }
 
 func (this *QsciScintilla) SetMarginsBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarginsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginsFont(f *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 	C.QsciScintilla_setMarginsFont(this.h, (*C.QFont)(f.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginsForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarginsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginLineNumbers(margin int, lnrs bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginLineNumbers(this.h, (C.int)(margin), (C.bool)(lnrs))
 }
 
 func (this *QsciScintilla) SetMarginMarkerMask(margin int, mask int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginMarkerMask(this.h, (C.int)(margin), (C.int)(mask))
 }
 
 func (this *QsciScintilla) SetMarginSensitivity(margin int, sens bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginSensitivity(this.h, (C.int)(margin), (C.bool)(sens))
 }
 
 func (this *QsciScintilla) SetMarginWidth(margin int, width int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setMarginWidth(this.h, (C.int)(margin), (C.int)(width))
 }
 
 func (this *QsciScintilla) SetMarginWidth2(margin int, s string) {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -1386,38 +1680,50 @@ func (this *QsciScintilla) SetMarginWidth2(margin int, s string) {
 }
 
 func (this *QsciScintilla) SetModified(m bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setModified(this.h, (C.bool)(m))
 }
 
 func (this *QsciScintilla) SetPaper(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 	C.QsciScintilla_setPaper(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetReadOnly(ro bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setReadOnly(this.h, (C.bool)(ro))
 }
 
 func (this *QsciScintilla) SetSelection(lineFrom int, indexFrom int, lineTo int, indexTo int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setSelection(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
 }
 
 func (this *QsciScintilla) SetSelectionBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setSelectionBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetSelectionForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setSelectionForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetTabIndents(indent bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setTabIndents(this.h, (C.bool)(indent))
 }
 
 func (this *QsciScintilla) SetTabWidth(width int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setTabWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1426,46 +1732,57 @@ func (this *QsciScintilla) SetText(text string) {
 }
 
 func (this *QsciScintilla) SetUtf8(cp bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setUtf8(this.h, (C.bool)(cp))
 }
 
 func (this *QsciScintilla) SetWhitespaceVisibility(mode QsciScintilla__WhitespaceVisibility) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWhitespaceVisibility(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetWrapMode(mode QsciScintilla__WrapMode) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) Undo() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_undo(this.h)
 }
 
 func (this *QsciScintilla) Unindent(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_unindent(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) ZoomIn(rangeVal int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_zoomIn(this.h, (C.int)(rangeVal))
 }
 
 func (this *QsciScintilla) ZoomIn2() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_zoomIn2(this.h)
 }
 
 func (this *QsciScintilla) ZoomOut(rangeVal int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_zoomOut(this.h, (C.int)(rangeVal))
 }
 
 func (this *QsciScintilla) ZoomOut2() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_zoomOut2(this.h)
 }
 
 func (this *QsciScintilla) ZoomTo(size int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_zoomTo(this.h, (C.int)(size))
 }
 
 func (this *QsciScintilla) CursorPositionChanged(line int, index int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_cursorPositionChanged(this.h, (C.int)(line), (C.int)(index))
 }
 func (this *QsciScintilla) OnCursorPositionChanged(slot func(line int, index int)) {
@@ -1488,6 +1805,7 @@ func miqt_exec_callback_QsciScintilla_cursorPositionChanged(cb C.intptr_t, line 
 }
 
 func (this *QsciScintilla) CopyAvailable(yes bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_copyAvailable(this.h, (C.bool)(yes))
 }
 func (this *QsciScintilla) OnCopyAvailable(slot func(yes bool)) {
@@ -1508,6 +1826,7 @@ func miqt_exec_callback_QsciScintilla_copyAvailable(cb C.intptr_t, yes C.bool) {
 }
 
 func (this *QsciScintilla) IndicatorClicked(line int, index int, state qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_indicatorClicked(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
 }
 func (this *QsciScintilla) OnIndicatorClicked(slot func(line int, index int, state qt.KeyboardModifier)) {
@@ -1532,6 +1851,7 @@ func miqt_exec_callback_QsciScintilla_indicatorClicked(cb C.intptr_t, line C.int
 }
 
 func (this *QsciScintilla) IndicatorReleased(line int, index int, state qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_indicatorReleased(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
 }
 func (this *QsciScintilla) OnIndicatorReleased(slot func(line int, index int, state qt.KeyboardModifier)) {
@@ -1556,6 +1876,7 @@ func miqt_exec_callback_QsciScintilla_indicatorReleased(cb C.intptr_t, line C.in
 }
 
 func (this *QsciScintilla) LinesChanged() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_linesChanged(this.h)
 }
 func (this *QsciScintilla) OnLinesChanged(slot func()) {
@@ -1573,6 +1894,7 @@ func miqt_exec_callback_QsciScintilla_linesChanged(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) MarginClicked(margin int, line int, state qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_marginClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
 }
 func (this *QsciScintilla) OnMarginClicked(slot func(margin int, line int, state qt.KeyboardModifier)) {
@@ -1597,6 +1919,7 @@ func miqt_exec_callback_QsciScintilla_marginClicked(cb C.intptr_t, margin C.int,
 }
 
 func (this *QsciScintilla) MarginRightClicked(margin int, line int, state qt.KeyboardModifier) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_marginRightClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
 }
 func (this *QsciScintilla) OnMarginRightClicked(slot func(margin int, line int, state qt.KeyboardModifier)) {
@@ -1621,6 +1944,7 @@ func miqt_exec_callback_QsciScintilla_marginRightClicked(cb C.intptr_t, margin C
 }
 
 func (this *QsciScintilla) ModificationAttempted() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_modificationAttempted(this.h)
 }
 func (this *QsciScintilla) OnModificationAttempted(slot func()) {
@@ -1638,6 +1962,7 @@ func miqt_exec_callback_QsciScintilla_modificationAttempted(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) ModificationChanged(m bool) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_modificationChanged(this.h, (C.bool)(m))
 }
 func (this *QsciScintilla) OnModificationChanged(slot func(m bool)) {
@@ -1658,6 +1983,7 @@ func miqt_exec_callback_QsciScintilla_modificationChanged(cb C.intptr_t, m C.boo
 }
 
 func (this *QsciScintilla) SelectionChanged() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_selectionChanged(this.h)
 }
 func (this *QsciScintilla) OnSelectionChanged(slot func()) {
@@ -1675,6 +2001,7 @@ func miqt_exec_callback_QsciScintilla_selectionChanged(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) TextChanged() {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_textChanged(this.h)
 }
 func (this *QsciScintilla) OnTextChanged(slot func()) {
@@ -1692,6 +2019,7 @@ func miqt_exec_callback_QsciScintilla_textChanged(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) UserListActivated(id int, stringVal string) {
+	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
@@ -1765,79 +2093,105 @@ func QsciScintilla_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QsciScintilla) ClearAnnotationsWithLine(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearAnnotationsWithLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) IndicatorDefine2(style QsciScintilla__IndicatorStyle, indicatorNumber int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_indicatorDefine2(this.h, (C.int)(style), (C.int)(indicatorNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine2(sym QsciScintilla__MarkerSymbol, markerNumber int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerDefine2(this.h, (C.int)(sym), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine3(ch int8, markerNumber int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QsciScintilla_markerDefine3(this.h, (C.char)(ch), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine4(pm *qt.QPixmap, markerNumber int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pm)
 	return (int)(C.QsciScintilla_markerDefine4(this.h, (*C.QPixmap)(pm.UnsafePointer()), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine5(im *qt.QImage, markerNumber int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(im)
 	return (int)(C.QsciScintilla_markerDefine5(this.h, (*C.QImage)(im.UnsafePointer()), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDelete2(linenr int, markerNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_markerDelete2(this.h, (C.int)(linenr), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) MarkerDeleteAllWithMarkerNumber(markerNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_markerDeleteAllWithMarkerNumber(this.h, (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorDrawUnder2(under bool, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndicatorDrawUnder2(this.h, (C.bool)(under), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorForegroundColor2(col *qt.QColor, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverForegroundColor2(col *qt.QColor, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorHoverForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle2(style QsciScintilla__IndicatorStyle, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setIndicatorHoverStyle2(this.h, (C.int)(style), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorOutlineColor2(col *qt.QColor, indicatorNumber int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setIndicatorOutlineColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ClearMarginTextWithLine(line int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_clearMarginTextWithLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) SetMarkerBackgroundColor2(col *qt.QColor, markerNumber int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarkerBackgroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetMarkerForegroundColor2(col *qt.QColor, markerNumber int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 	C.QsciScintilla_setMarkerForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags2(endFlag QsciScintilla__WrapVisualFlag, startFlag QsciScintilla__WrapVisualFlag) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWrapVisualFlags2(this.h, (C.int)(endFlag), (C.int)(startFlag))
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags3(endFlag QsciScintilla__WrapVisualFlag, startFlag QsciScintilla__WrapVisualFlag, indent int) {
+	defer runtime.KeepAlive(this)
 	C.QsciScintilla_setWrapVisualFlags3(this.h, (C.int)(endFlag), (C.int)(startFlag), (C.int)(indent))
 }
 
 // SetScrollBars can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) SetScrollBars() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_setScrollBars(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1850,6 +2204,7 @@ func (this *QsciScintilla) SetScrollBars() {
 
 // TextAsBytes can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) TextAsBytes(text string) []byte {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1870,6 +2225,7 @@ func (this *QsciScintilla) TextAsBytes(text string) []byte {
 
 // BytesAsText can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) BytesAsText(bytes string) string {
+	defer runtime.KeepAlive(this)
 	bytes_Cstring := C.CString(bytes)
 	defer C.free(unsafe.Pointer(bytes_Cstring))
 
@@ -1888,6 +2244,7 @@ func (this *QsciScintilla) BytesAsText(bytes string) string {
 
 // ContextMenuNeeded can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) ContextMenuNeeded(x int, y int) bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciScintilla_protectedbase_contextMenuNeeded(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(x), (C.int)(y)))
@@ -1902,6 +2259,7 @@ func (this *QsciScintilla) ContextMenuNeeded(x int, y int) bool {
 
 // SetViewportMargins can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -1914,6 +2272,7 @@ func (this *QsciScintilla) SetViewportMargins(left int, top int, right int, bott
 
 // ViewportMargins can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) ViewportMargins() qt.QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.QsciScintilla_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1930,6 +2289,8 @@ func (this *QsciScintilla) ViewportMargins() qt.QMargins {
 
 // DrawFrame can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) DrawFrame(param1 *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -1942,6 +2303,8 @@ func (this *QsciScintilla) DrawFrame(param1 *qt.QPainter) {
 
 // InitStyleOption can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) InitStyleOption(option *qt.QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QStyleOptionFrame)(option.UnsafePointer()))
@@ -1954,6 +2317,7 @@ func (this *QsciScintilla) InitStyleOption(option *qt.QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1966,6 +2330,7 @@ func (this *QsciScintilla) UpdateMicroFocus() {
 
 // Create can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1978,6 +2343,7 @@ func (this *QsciScintilla) Create() {
 
 // Destroy can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QsciScintilla_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1990,6 +2356,7 @@ func (this *QsciScintilla) Destroy() {
 
 // FocusNextChild can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciScintilla_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2004,6 +2371,7 @@ func (this *QsciScintilla) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciScintilla_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2018,6 +2386,7 @@ func (this *QsciScintilla) FocusPreviousChild() bool {
 
 // Sender can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciScintilla_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -2032,6 +2401,7 @@ func (this *QsciScintilla) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciScintilla_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2046,6 +2416,7 @@ func (this *QsciScintilla) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2062,6 +2433,8 @@ func (this *QsciScintilla) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciScintilla that was directly constructed.
 func (this *QsciScintilla) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QsciScintilla_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -2075,6 +2448,7 @@ func (this *QsciScintilla) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QsciScintilla) callVirtualBase_ApiContext(pos int, context_start *int, last_word_start *int) []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QsciScintilla_virtualbase_apiContext(unsafe.Pointer(this.h), (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
@@ -2125,6 +2499,7 @@ func miqt_exec_callback_QsciScintilla_apiContext(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_FindFirst(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool {
+	defer runtime.KeepAlive(this)
 	expr_ms := C.struct_miqt_string{}
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
@@ -2179,6 +2554,7 @@ func miqt_exec_callback_QsciScintilla_findFirst(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_FindFirstInSelection(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool {
+	defer runtime.KeepAlive(this)
 	expr_ms := C.struct_miqt_string{}
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
@@ -2227,6 +2603,7 @@ func miqt_exec_callback_QsciScintilla_findFirstInSelection(self *C.QsciScintilla
 }
 
 func (this *QsciScintilla) callVirtualBase_FindNext() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciScintilla_virtualbase_findNext(unsafe.Pointer(this.h)))
 
@@ -2252,6 +2629,7 @@ func miqt_exec_callback_QsciScintilla_findNext(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_Recolor(start int, end int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_recolor(unsafe.Pointer(this.h), (C.int)(start), (C.int)(end))
 
@@ -2280,6 +2658,7 @@ func miqt_exec_callback_QsciScintilla_recolor(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_Replace(replaceStr string) {
+	defer runtime.KeepAlive(this)
 	replaceStr_ms := C.struct_miqt_string{}
 	replaceStr_ms.data = C.CString(replaceStr)
 	replaceStr_ms.len = C.size_t(len(replaceStr))
@@ -2313,6 +2692,7 @@ func miqt_exec_callback_QsciScintilla_replace(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_Append(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2346,6 +2726,7 @@ func miqt_exec_callback_QsciScintilla_append(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromAll() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_autoCompleteFromAll(unsafe.Pointer(this.h))
 
@@ -2369,6 +2750,7 @@ func miqt_exec_callback_QsciScintilla_autoCompleteFromAll(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromAPIs() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_autoCompleteFromAPIs(unsafe.Pointer(this.h))
 
@@ -2392,6 +2774,7 @@ func miqt_exec_callback_QsciScintilla_autoCompleteFromAPIs(self *C.QsciScintilla
 }
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromDocument() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_autoCompleteFromDocument(unsafe.Pointer(this.h))
 
@@ -2415,6 +2798,7 @@ func miqt_exec_callback_QsciScintilla_autoCompleteFromDocument(self *C.QsciScint
 }
 
 func (this *QsciScintilla) callVirtualBase_CallTip() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_callTip(unsafe.Pointer(this.h))
 
@@ -2438,6 +2822,7 @@ func miqt_exec_callback_QsciScintilla_callTip(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_Clear() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -2461,6 +2846,7 @@ func miqt_exec_callback_QsciScintilla_clear(self *C.QsciScintilla, cb C.intptr_t
 }
 
 func (this *QsciScintilla) callVirtualBase_Copy() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_copy(unsafe.Pointer(this.h))
 
@@ -2484,6 +2870,7 @@ func miqt_exec_callback_QsciScintilla_copy(self *C.QsciScintilla, cb C.intptr_t)
 }
 
 func (this *QsciScintilla) callVirtualBase_Cut() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_cut(unsafe.Pointer(this.h))
 
@@ -2507,6 +2894,7 @@ func miqt_exec_callback_QsciScintilla_cut(self *C.QsciScintilla, cb C.intptr_t) 
 }
 
 func (this *QsciScintilla) callVirtualBase_EnsureCursorVisible() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_ensureCursorVisible(unsafe.Pointer(this.h))
 
@@ -2530,6 +2918,7 @@ func miqt_exec_callback_QsciScintilla_ensureCursorVisible(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_EnsureLineVisible(line int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_ensureLineVisible(unsafe.Pointer(this.h), (C.int)(line))
 
@@ -2556,6 +2945,7 @@ func miqt_exec_callback_QsciScintilla_ensureLineVisible(self *C.QsciScintilla, c
 }
 
 func (this *QsciScintilla) callVirtualBase_FoldAll(children bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_foldAll(unsafe.Pointer(this.h), (C.bool)(children))
 
@@ -2582,6 +2972,7 @@ func miqt_exec_callback_QsciScintilla_foldAll(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_FoldLine(line int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_foldLine(unsafe.Pointer(this.h), (C.int)(line))
 
@@ -2608,6 +2999,7 @@ func miqt_exec_callback_QsciScintilla_foldLine(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_Indent(line int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_indent(unsafe.Pointer(this.h), (C.int)(line))
 
@@ -2634,6 +3026,7 @@ func miqt_exec_callback_QsciScintilla_indent(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_Insert(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2667,6 +3060,7 @@ func miqt_exec_callback_QsciScintilla_insert(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_InsertAt(text string, line int, index int) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2703,6 +3097,7 @@ func miqt_exec_callback_QsciScintilla_insertAt(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_MoveToMatchingBrace() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_moveToMatchingBrace(unsafe.Pointer(this.h))
 
@@ -2726,6 +3121,7 @@ func miqt_exec_callback_QsciScintilla_moveToMatchingBrace(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_Paste() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_paste(unsafe.Pointer(this.h))
 
@@ -2749,6 +3145,7 @@ func miqt_exec_callback_QsciScintilla_paste(self *C.QsciScintilla, cb C.intptr_t
 }
 
 func (this *QsciScintilla) callVirtualBase_Redo() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_redo(unsafe.Pointer(this.h))
 
@@ -2772,6 +3169,7 @@ func miqt_exec_callback_QsciScintilla_redo(self *C.QsciScintilla, cb C.intptr_t)
 }
 
 func (this *QsciScintilla) callVirtualBase_RemoveSelectedText() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_removeSelectedText(unsafe.Pointer(this.h))
 
@@ -2795,6 +3193,7 @@ func miqt_exec_callback_QsciScintilla_removeSelectedText(self *C.QsciScintilla, 
 }
 
 func (this *QsciScintilla) callVirtualBase_ReplaceSelectedText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2828,6 +3227,7 @@ func miqt_exec_callback_QsciScintilla_replaceSelectedText(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_ResetSelectionBackgroundColor() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_resetSelectionBackgroundColor(unsafe.Pointer(this.h))
 
@@ -2851,6 +3251,7 @@ func miqt_exec_callback_QsciScintilla_resetSelectionBackgroundColor(self *C.Qsci
 }
 
 func (this *QsciScintilla) callVirtualBase_ResetSelectionForegroundColor() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_resetSelectionForegroundColor(unsafe.Pointer(this.h))
 
@@ -2874,6 +3275,7 @@ func miqt_exec_callback_QsciScintilla_resetSelectionForegroundColor(self *C.Qsci
 }
 
 func (this *QsciScintilla) callVirtualBase_SelectAll(selectVal bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_selectAll(unsafe.Pointer(this.h), (C.bool)(selectVal))
 
@@ -2900,6 +3302,7 @@ func miqt_exec_callback_QsciScintilla_selectAll(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_SelectToMatchingBrace() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_selectToMatchingBrace(unsafe.Pointer(this.h))
 
@@ -2923,6 +3326,7 @@ func miqt_exec_callback_QsciScintilla_selectToMatchingBrace(self *C.QsciScintill
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionCaseSensitivity(cs bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(unsafe.Pointer(this.h), (C.bool)(cs))
 
@@ -2949,6 +3353,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionCaseSensitivity(self *C.Q
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionReplaceWord(replace bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionReplaceWord(unsafe.Pointer(this.h), (C.bool)(replace))
 
@@ -2975,6 +3380,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionReplaceWord(self *C.QsciS
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionShowSingle(single bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionShowSingle(unsafe.Pointer(this.h), (C.bool)(single))
 
@@ -3001,6 +3407,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionShowSingle(self *C.QsciSc
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionSource(source QsciScintilla__AutoCompletionSource) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionSource(unsafe.Pointer(this.h), (C.int)(source))
 
@@ -3027,6 +3434,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionSource(self *C.QsciScinti
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionThreshold(thresh int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionThreshold(unsafe.Pointer(this.h), (C.int)(thresh))
 
@@ -3053,6 +3461,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionThreshold(self *C.QsciSci
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionUseSingle(single QsciScintilla__AutoCompletionUseSingle) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoCompletionUseSingle(unsafe.Pointer(this.h), (C.int)(single))
 
@@ -3079,6 +3488,7 @@ func miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle(self *C.QsciSci
 }
 
 func (this *QsciScintilla) callVirtualBase_SetAutoIndent(autoindent bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setAutoIndent(unsafe.Pointer(this.h), (C.bool)(autoindent))
 
@@ -3105,6 +3515,7 @@ func miqt_exec_callback_QsciScintilla_setAutoIndent(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_SetBraceMatching(bm QsciScintilla__BraceMatch) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setBraceMatching(unsafe.Pointer(this.h), (C.int)(bm))
 
@@ -3131,6 +3542,7 @@ func miqt_exec_callback_QsciScintilla_setBraceMatching(self *C.QsciScintilla, cb
 }
 
 func (this *QsciScintilla) callVirtualBase_SetBackspaceUnindents(unindent bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setBackspaceUnindents(unsafe.Pointer(this.h), (C.bool)(unindent))
 
@@ -3157,6 +3569,8 @@ func miqt_exec_callback_QsciScintilla_setBackspaceUnindents(self *C.QsciScintill
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCaretForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setCaretForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3183,6 +3597,8 @@ func miqt_exec_callback_QsciScintilla_setCaretForegroundColor(self *C.QsciScinti
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setCaretLineBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3209,6 +3625,7 @@ func miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(self *C.QsciSc
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineFrameWidth(width int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setCaretLineFrameWidth(unsafe.Pointer(this.h), (C.int)(width))
 
@@ -3235,6 +3652,7 @@ func miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth(self *C.QsciScintil
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineVisible(enable bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setCaretLineVisible(unsafe.Pointer(this.h), (C.bool)(enable))
 
@@ -3261,6 +3679,7 @@ func miqt_exec_callback_QsciScintilla_setCaretLineVisible(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCaretWidth(width int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setCaretWidth(unsafe.Pointer(this.h), (C.int)(width))
 
@@ -3287,6 +3706,8 @@ func miqt_exec_callback_QsciScintilla_setCaretWidth(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_SetColor(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciScintilla_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
 
@@ -3313,6 +3734,7 @@ func miqt_exec_callback_QsciScintilla_setColor(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_SetCursorPosition(line int, index int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setCursorPosition(unsafe.Pointer(this.h), (C.int)(line), (C.int)(index))
 
@@ -3341,6 +3763,7 @@ func miqt_exec_callback_QsciScintilla_setCursorPosition(self *C.QsciScintilla, c
 }
 
 func (this *QsciScintilla) callVirtualBase_SetEolMode(mode QsciScintilla__EolMode) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setEolMode(unsafe.Pointer(this.h), (C.int)(mode))
 
@@ -3367,6 +3790,7 @@ func miqt_exec_callback_QsciScintilla_setEolMode(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_SetEolVisibility(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setEolVisibility(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -3393,6 +3817,7 @@ func miqt_exec_callback_QsciScintilla_setEolVisibility(self *C.QsciScintilla, cb
 }
 
 func (this *QsciScintilla) callVirtualBase_SetFolding(fold QsciScintilla__FoldStyle, margin int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setFolding(unsafe.Pointer(this.h), (C.int)(fold), (C.int)(margin))
 
@@ -3421,6 +3846,7 @@ func miqt_exec_callback_QsciScintilla_setFolding(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentation(line int, indentation int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setIndentation(unsafe.Pointer(this.h), (C.int)(line), (C.int)(indentation))
 
@@ -3449,6 +3875,7 @@ func miqt_exec_callback_QsciScintilla_setIndentation(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuides(enable bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setIndentationGuides(unsafe.Pointer(this.h), (C.bool)(enable))
 
@@ -3475,6 +3902,8 @@ func miqt_exec_callback_QsciScintilla_setIndentationGuides(self *C.QsciScintilla
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3501,6 +3930,8 @@ func miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(self *
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3527,6 +3958,7 @@ func miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(self *
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationsUseTabs(tabs bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setIndentationsUseTabs(unsafe.Pointer(this.h), (C.bool)(tabs))
 
@@ -3553,6 +3985,7 @@ func miqt_exec_callback_QsciScintilla_setIndentationsUseTabs(self *C.QsciScintil
 }
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationWidth(width int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setIndentationWidth(unsafe.Pointer(this.h), (C.int)(width))
 
@@ -3579,6 +4012,8 @@ func miqt_exec_callback_QsciScintilla_setIndentationWidth(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_SetLexer(lexer *QsciLexer) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(lexer)
 
 	C.QsciScintilla_virtualbase_setLexer(unsafe.Pointer(this.h), lexer.cPointer())
 
@@ -3605,6 +4040,8 @@ func miqt_exec_callback_QsciScintilla_setLexer(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setMarginsBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3631,6 +4068,8 @@ func miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(self *C.QsciScin
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsFont(f *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(f)
 
 	C.QsciScintilla_virtualbase_setMarginsFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()))
 
@@ -3657,6 +4096,8 @@ func miqt_exec_callback_QsciScintilla_setMarginsFont(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setMarginsForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3683,6 +4124,7 @@ func miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(self *C.QsciScin
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginLineNumbers(margin int, lnrs bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setMarginLineNumbers(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(lnrs))
 
@@ -3711,6 +4153,7 @@ func miqt_exec_callback_QsciScintilla_setMarginLineNumbers(self *C.QsciScintilla
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginMarkerMask(margin int, mask int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setMarginMarkerMask(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(mask))
 
@@ -3739,6 +4182,7 @@ func miqt_exec_callback_QsciScintilla_setMarginMarkerMask(self *C.QsciScintilla,
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginSensitivity(margin int, sens bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setMarginSensitivity(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(sens))
 
@@ -3767,6 +4211,7 @@ func miqt_exec_callback_QsciScintilla_setMarginSensitivity(self *C.QsciScintilla
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginWidth(margin int, width int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setMarginWidth(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(width))
 
@@ -3795,6 +4240,7 @@ func miqt_exec_callback_QsciScintilla_setMarginWidth(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_SetMarginWidth2(margin int, s string) {
+	defer runtime.KeepAlive(this)
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
@@ -3830,6 +4276,7 @@ func miqt_exec_callback_QsciScintilla_setMarginWidth2(self *C.QsciScintilla, cb 
 }
 
 func (this *QsciScintilla) callVirtualBase_SetModified(m bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setModified(unsafe.Pointer(this.h), (C.bool)(m))
 
@@ -3856,6 +4303,8 @@ func miqt_exec_callback_QsciScintilla_setModified(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_SetPaper(c *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(c)
 
 	C.QsciScintilla_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
 
@@ -3882,6 +4331,7 @@ func miqt_exec_callback_QsciScintilla_setPaper(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_SetReadOnly(ro bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setReadOnly(unsafe.Pointer(this.h), (C.bool)(ro))
 
@@ -3908,6 +4358,7 @@ func miqt_exec_callback_QsciScintilla_setReadOnly(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_SetSelection(lineFrom int, indexFrom int, lineTo int, indexTo int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setSelection(unsafe.Pointer(this.h), (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
 
@@ -3940,6 +4391,8 @@ func miqt_exec_callback_QsciScintilla_setSelection(self *C.QsciScintilla, cb C.i
 }
 
 func (this *QsciScintilla) callVirtualBase_SetSelectionBackgroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setSelectionBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3966,6 +4419,8 @@ func miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(self *C.QsciSc
 }
 
 func (this *QsciScintilla) callVirtualBase_SetSelectionForegroundColor(col *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(col)
 
 	C.QsciScintilla_virtualbase_setSelectionForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
@@ -3992,6 +4447,7 @@ func miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(self *C.QsciSc
 }
 
 func (this *QsciScintilla) callVirtualBase_SetTabIndents(indent bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setTabIndents(unsafe.Pointer(this.h), (C.bool)(indent))
 
@@ -4018,6 +4474,7 @@ func miqt_exec_callback_QsciScintilla_setTabIndents(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_SetTabWidth(width int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setTabWidth(unsafe.Pointer(this.h), (C.int)(width))
 
@@ -4044,6 +4501,7 @@ func miqt_exec_callback_QsciScintilla_setTabWidth(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_SetText(text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -4077,6 +4535,7 @@ func miqt_exec_callback_QsciScintilla_setText(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_SetUtf8(cp bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setUtf8(unsafe.Pointer(this.h), (C.bool)(cp))
 
@@ -4103,6 +4562,7 @@ func miqt_exec_callback_QsciScintilla_setUtf8(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_SetWhitespaceVisibility(mode QsciScintilla__WhitespaceVisibility) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setWhitespaceVisibility(unsafe.Pointer(this.h), (C.int)(mode))
 
@@ -4129,6 +4589,7 @@ func miqt_exec_callback_QsciScintilla_setWhitespaceVisibility(self *C.QsciScinti
 }
 
 func (this *QsciScintilla) callVirtualBase_SetWrapMode(mode QsciScintilla__WrapMode) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setWrapMode(unsafe.Pointer(this.h), (C.int)(mode))
 
@@ -4155,6 +4616,7 @@ func miqt_exec_callback_QsciScintilla_setWrapMode(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_Undo() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_undo(unsafe.Pointer(this.h))
 
@@ -4178,6 +4640,7 @@ func miqt_exec_callback_QsciScintilla_undo(self *C.QsciScintilla, cb C.intptr_t)
 }
 
 func (this *QsciScintilla) callVirtualBase_Unindent(line int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_unindent(unsafe.Pointer(this.h), (C.int)(line))
 
@@ -4204,6 +4667,7 @@ func miqt_exec_callback_QsciScintilla_unindent(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_ZoomIn(rangeVal int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_zoomIn(unsafe.Pointer(this.h), (C.int)(rangeVal))
 
@@ -4230,6 +4694,7 @@ func miqt_exec_callback_QsciScintilla_zoomIn(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_ZoomIn2() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_zoomIn2(unsafe.Pointer(this.h))
 
@@ -4253,6 +4718,7 @@ func miqt_exec_callback_QsciScintilla_zoomIn2(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_ZoomOut(rangeVal int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_zoomOut(unsafe.Pointer(this.h), (C.int)(rangeVal))
 
@@ -4279,6 +4745,7 @@ func miqt_exec_callback_QsciScintilla_zoomOut(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_ZoomOut2() {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_zoomOut2(unsafe.Pointer(this.h))
 
@@ -4302,6 +4769,7 @@ func miqt_exec_callback_QsciScintilla_zoomOut2(self *C.QsciScintilla, cb C.intpt
 }
 
 func (this *QsciScintilla) callVirtualBase_ZoomTo(size int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_zoomTo(unsafe.Pointer(this.h), (C.int)(size))
 
@@ -4328,6 +4796,8 @@ func miqt_exec_callback_QsciScintilla_zoomTo(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_Event(e *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QsciScintilla_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
@@ -4356,6 +4826,8 @@ func miqt_exec_callback_QsciScintilla_event(self *C.QsciScintilla, cb C.intptr_t
 }
 
 func (this *QsciScintilla) callVirtualBase_ChangeEvent(e *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer()))
 
@@ -4382,6 +4854,8 @@ func miqt_exec_callback_QsciScintilla_changeEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ContextMenuEvent(e *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(e.UnsafePointer()))
 
@@ -4408,6 +4882,8 @@ func miqt_exec_callback_QsciScintilla_contextMenuEvent(self *C.QsciScintilla, cb
 }
 
 func (this *QsciScintilla) callVirtualBase_WheelEvent(e *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(e.UnsafePointer()))
 
@@ -4434,6 +4910,8 @@ func miqt_exec_callback_QsciScintilla_wheelEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_CanInsertFromMimeData(source *qt.QMimeData) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source)
 
 	return (bool)(C.QsciScintilla_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer())))
 
@@ -4462,6 +4940,8 @@ func miqt_exec_callback_QsciScintilla_canInsertFromMimeData(self *C.QsciScintill
 }
 
 func (this *QsciScintilla) callVirtualBase_FromMimeData(source *qt.QMimeData, rectangular *bool) []byte {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(source)
 
 	var _bytearray C.struct_miqt_string = C.QsciScintilla_virtualbase_fromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer()), (*C.bool)(unsafe.Pointer(rectangular)))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -4501,6 +4981,7 @@ func miqt_exec_callback_QsciScintilla_fromMimeData(self *C.QsciScintilla, cb C.i
 }
 
 func (this *QsciScintilla) callVirtualBase_ToMimeData(text []byte, rectangular bool) *qt.QMimeData {
+	defer runtime.KeepAlive(this)
 	text_alias := C.struct_miqt_string{}
 	if len(text) > 0 {
 		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
@@ -4534,12 +5015,15 @@ func miqt_exec_callback_QsciScintilla_toMimeData(self *C.QsciScintilla, cb C.int
 	slotval2 := (bool)(rectangular)
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_ToMimeData, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QMimeData)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciScintilla) callVirtualBase_DragEnterEvent(e *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
 
@@ -4566,6 +5050,8 @@ func miqt_exec_callback_QsciScintilla_dragEnterEvent(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_DragLeaveEvent(e *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
 
@@ -4592,6 +5078,8 @@ func miqt_exec_callback_QsciScintilla_dragLeaveEvent(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_DragMoveEvent(e *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
 
@@ -4618,6 +5106,8 @@ func miqt_exec_callback_QsciScintilla_dragMoveEvent(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_DropEvent(e *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
 
@@ -4644,6 +5134,8 @@ func miqt_exec_callback_QsciScintilla_dropEvent(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_FocusInEvent(e *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
 
@@ -4670,6 +5162,8 @@ func miqt_exec_callback_QsciScintilla_focusInEvent(self *C.QsciScintilla, cb C.i
 }
 
 func (this *QsciScintilla) callVirtualBase_FocusOutEvent(e *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
 
@@ -4696,6 +5190,7 @@ func miqt_exec_callback_QsciScintilla_focusOutEvent(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciScintilla_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -4724,6 +5219,8 @@ func miqt_exec_callback_QsciScintilla_focusNextPrevChild(self *C.QsciScintilla, 
 }
 
 func (this *QsciScintilla) callVirtualBase_KeyPressEvent(e *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(e.UnsafePointer()))
 
@@ -4750,6 +5247,8 @@ func miqt_exec_callback_QsciScintilla_keyPressEvent(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
 
@@ -4776,6 +5275,7 @@ func miqt_exec_callback_QsciScintilla_inputMethodEvent(self *C.QsciScintilla, cb
 }
 
 func (this *QsciScintilla) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QsciScintilla_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4800,12 +5300,15 @@ func miqt_exec_callback_QsciScintilla_inputMethodQuery(self *C.QsciScintilla, cb
 	slotval1 := (qt.InputMethodQuery)(query)
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QsciScintilla_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciScintilla) callVirtualBase_MouseDoubleClickEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -4832,6 +5335,8 @@ func miqt_exec_callback_QsciScintilla_mouseDoubleClickEvent(self *C.QsciScintill
 }
 
 func (this *QsciScintilla) callVirtualBase_MouseMoveEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -4858,6 +5363,8 @@ func miqt_exec_callback_QsciScintilla_mouseMoveEvent(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_MousePressEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -4884,6 +5391,8 @@ func miqt_exec_callback_QsciScintilla_mousePressEvent(self *C.QsciScintilla, cb 
 }
 
 func (this *QsciScintilla) callVirtualBase_MouseReleaseEvent(e *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
@@ -4910,6 +5419,8 @@ func miqt_exec_callback_QsciScintilla_mouseReleaseEvent(self *C.QsciScintilla, c
 }
 
 func (this *QsciScintilla) callVirtualBase_PaintEvent(e *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(e.UnsafePointer()))
 
@@ -4936,6 +5447,8 @@ func miqt_exec_callback_QsciScintilla_paintEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_ResizeEvent(e *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(e)
 
 	C.QsciScintilla_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(e.UnsafePointer()))
 
@@ -4962,6 +5475,7 @@ func miqt_exec_callback_QsciScintilla_resizeEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -4990,6 +5504,7 @@ func miqt_exec_callback_QsciScintilla_scrollContentsBy(self *C.QsciScintilla, cb
 }
 
 func (this *QsciScintilla) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5011,12 +5526,14 @@ func miqt_exec_callback_QsciScintilla_minimumSizeHint(self *C.QsciScintilla, cb 
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciScintilla) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5038,12 +5555,15 @@ func miqt_exec_callback_QsciScintilla_sizeHint(self *C.QsciScintilla, cb C.intpt
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciScintilla) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QsciScintilla_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
@@ -5070,6 +5590,9 @@ func miqt_exec_callback_QsciScintilla_setupViewport(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QsciScintilla_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
@@ -5100,6 +5623,8 @@ func miqt_exec_callback_QsciScintilla_eventFilter(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QsciScintilla_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -5128,6 +5653,7 @@ func miqt_exec_callback_QsciScintilla_viewportEvent(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_ViewportSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5149,12 +5675,14 @@ func miqt_exec_callback_QsciScintilla_viewportSizeHint(self *C.QsciScintilla, cb
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QsciScintilla) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciScintilla_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -5180,6 +5708,7 @@ func miqt_exec_callback_QsciScintilla_devType(self *C.QsciScintilla, cb C.intptr
 }
 
 func (this *QsciScintilla) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QsciScintilla_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -5206,6 +5735,7 @@ func miqt_exec_callback_QsciScintilla_setVisible(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciScintilla_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -5234,6 +5764,7 @@ func miqt_exec_callback_QsciScintilla_heightForWidth(self *C.QsciScintilla, cb C
 }
 
 func (this *QsciScintilla) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciScintilla_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -5259,6 +5790,7 @@ func miqt_exec_callback_QsciScintilla_hasHeightForWidth(self *C.QsciScintilla, c
 }
 
 func (this *QsciScintilla) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciScintilla_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -5278,12 +5810,15 @@ func miqt_exec_callback_QsciScintilla_paintEngine(self *C.QsciScintilla, cb C.in
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciScintilla) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -5310,6 +5845,8 @@ func miqt_exec_callback_QsciScintilla_keyReleaseEvent(self *C.QsciScintilla, cb 
 }
 
 func (this *QsciScintilla) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -5336,6 +5873,8 @@ func miqt_exec_callback_QsciScintilla_enterEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -5362,6 +5901,8 @@ func miqt_exec_callback_QsciScintilla_leaveEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -5388,6 +5929,8 @@ func miqt_exec_callback_QsciScintilla_moveEvent(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -5414,6 +5957,8 @@ func miqt_exec_callback_QsciScintilla_closeEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -5440,6 +5985,8 @@ func miqt_exec_callback_QsciScintilla_tabletEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -5466,6 +6013,8 @@ func miqt_exec_callback_QsciScintilla_actionEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -5492,6 +6041,8 @@ func miqt_exec_callback_QsciScintilla_showEvent(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -5518,6 +6069,7 @@ func miqt_exec_callback_QsciScintilla_hideEvent(self *C.QsciScintilla, cb C.intp
 }
 
 func (this *QsciScintilla) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -5559,6 +6111,7 @@ func miqt_exec_callback_QsciScintilla_nativeEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciScintilla_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -5587,6 +6140,8 @@ func miqt_exec_callback_QsciScintilla_metric(self *C.QsciScintilla, cb C.intptr_
 }
 
 func (this *QsciScintilla) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QsciScintilla_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -5613,6 +6168,8 @@ func miqt_exec_callback_QsciScintilla_initPainter(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintilla_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -5635,12 +6192,14 @@ func miqt_exec_callback_QsciScintilla_redirected(self *C.QsciScintilla, cb C.int
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciScintilla) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QsciScintilla_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -5660,12 +6219,15 @@ func miqt_exec_callback_QsciScintilla_sharedPainter(self *C.QsciScintilla, cb C.
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QsciScintilla) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -5692,6 +6254,8 @@ func miqt_exec_callback_QsciScintilla_timerEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -5718,6 +6282,8 @@ func miqt_exec_callback_QsciScintilla_childEvent(self *C.QsciScintilla, cb C.int
 }
 
 func (this *QsciScintilla) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QsciScintilla_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -5744,6 +6310,8 @@ func miqt_exec_callback_QsciScintilla_customEvent(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciScintilla_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -5770,6 +6338,8 @@ func miqt_exec_callback_QsciScintilla_connectNotify(self *C.QsciScintilla, cb C.
 }
 
 func (this *QsciScintilla) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QsciScintilla_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -5807,8 +6377,9 @@ func (this *QsciScintilla) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QsciScintilla{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciScintilla) {
-		C.QsciScintilla_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QsciScintilla_delete((*C.QsciScintilla)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

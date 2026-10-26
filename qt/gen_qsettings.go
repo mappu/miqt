@@ -55,8 +55,15 @@ const (
 
 type QSettings struct {
 	h  *C.QSettings
-	gc *[1]*C.QSettings
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSettings) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QSettings) cPointer() *C.QSettings {
@@ -158,6 +165,7 @@ func NewQSettings7(organization string, application string) *QSettings {
 
 // NewQSettings8 constructs a new QSettings object.
 func NewQSettings8(organization string, application string, parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 	organization_ms := C.struct_miqt_string{}
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
@@ -186,6 +194,7 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 
 // NewQSettings10 constructs a new QSettings object.
 func NewQSettings10(scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 	organization_ms := C.struct_miqt_string{}
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
@@ -214,6 +223,7 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 
 // NewQSettings12 constructs a new QSettings object.
 func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 	organization_ms := C.struct_miqt_string{}
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
@@ -228,6 +238,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 
 // NewQSettings13 constructs a new QSettings object.
 func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -238,21 +249,25 @@ func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) 
 
 // NewQSettings14 constructs a new QSettings object.
 func NewQSettings14(parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 
 	return newQSettings(C.QSettings_new14(parent.cPointer()))
 }
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
+	defer runtime.KeepAlive(parent)
 
 	return newQSettings(C.QSettings_new15((C.int)(scope), parent.cPointer()))
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSettings_metaObject(this.h))
 }
 
 func (this *QSettings) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSettings_metacast(this.h, param1_Cstring))
@@ -277,26 +292,32 @@ func QSettings_TrUtf8(s string) string {
 }
 
 func (this *QSettings) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QSettings_clear(this.h)
 }
 
 func (this *QSettings) Sync() {
+	defer runtime.KeepAlive(this)
 	C.QSettings_sync(this.h)
 }
 
 func (this *QSettings) Status() QSettings__Status {
+	defer runtime.KeepAlive(this)
 	return (QSettings__Status)(C.QSettings_status(this.h))
 }
 
 func (this *QSettings) IsAtomicSyncRequired() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSettings_isAtomicSyncRequired(this.h))
 }
 
 func (this *QSettings) SetAtomicSyncRequired(enable bool) {
+	defer runtime.KeepAlive(this)
 	C.QSettings_setAtomicSyncRequired(this.h, (C.bool)(enable))
 }
 
 func (this *QSettings) BeginGroup(prefix string) {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -305,10 +326,12 @@ func (this *QSettings) BeginGroup(prefix string) {
 }
 
 func (this *QSettings) EndGroup() {
+	defer runtime.KeepAlive(this)
 	C.QSettings_endGroup(this.h)
 }
 
 func (this *QSettings) Group() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSettings_group(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -316,6 +339,7 @@ func (this *QSettings) Group() string {
 }
 
 func (this *QSettings) BeginReadArray(prefix string) int {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -324,6 +348,7 @@ func (this *QSettings) BeginReadArray(prefix string) int {
 }
 
 func (this *QSettings) BeginWriteArray(prefix string) {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -332,14 +357,17 @@ func (this *QSettings) BeginWriteArray(prefix string) {
 }
 
 func (this *QSettings) EndArray() {
+	defer runtime.KeepAlive(this)
 	C.QSettings_endArray(this.h)
 }
 
 func (this *QSettings) SetArrayIndex(i int) {
+	defer runtime.KeepAlive(this)
 	C.QSettings_setArrayIndex(this.h, (C.int)(i))
 }
 
 func (this *QSettings) AllKeys() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSettings_allKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -353,6 +381,7 @@ func (this *QSettings) AllKeys() []string {
 }
 
 func (this *QSettings) ChildKeys() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSettings_childKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -366,6 +395,7 @@ func (this *QSettings) ChildKeys() []string {
 }
 
 func (this *QSettings) ChildGroups() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSettings_childGroups(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -379,10 +409,13 @@ func (this *QSettings) ChildGroups() []string {
 }
 
 func (this *QSettings) IsWritable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSettings_isWritable(this.h))
 }
 
 func (this *QSettings) SetValue(key string, value *QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -391,6 +424,7 @@ func (this *QSettings) SetValue(key string, value *QVariant) {
 }
 
 func (this *QSettings) Value(key string) *QVariant {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -401,6 +435,7 @@ func (this *QSettings) Value(key string) *QVariant {
 }
 
 func (this *QSettings) Remove(key string) {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -409,6 +444,7 @@ func (this *QSettings) Remove(key string) {
 }
 
 func (this *QSettings) Contains(key string) bool {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -417,14 +453,17 @@ func (this *QSettings) Contains(key string) bool {
 }
 
 func (this *QSettings) SetFallbacksEnabled(b bool) {
+	defer runtime.KeepAlive(this)
 	C.QSettings_setFallbacksEnabled(this.h, (C.bool)(b))
 }
 
 func (this *QSettings) FallbacksEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSettings_fallbacksEnabled(this.h))
 }
 
 func (this *QSettings) FileName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSettings_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -432,14 +471,17 @@ func (this *QSettings) FileName() string {
 }
 
 func (this *QSettings) Format() QSettings__Format {
+	defer runtime.KeepAlive(this)
 	return (QSettings__Format)(C.QSettings_format(this.h))
 }
 
 func (this *QSettings) Scope() QSettings__Scope {
+	defer runtime.KeepAlive(this)
 	return (QSettings__Scope)(C.QSettings_scope(this.h))
 }
 
 func (this *QSettings) OrganizationName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSettings_organizationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -447,6 +489,7 @@ func (this *QSettings) OrganizationName() string {
 }
 
 func (this *QSettings) ApplicationName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSettings_applicationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -454,16 +497,20 @@ func (this *QSettings) ApplicationName() string {
 }
 
 func (this *QSettings) SetIniCodec(codec *QTextCodec) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(codec)
 	C.QSettings_setIniCodec(this.h, codec.cPointer())
 }
 
 func (this *QSettings) SetIniCodecWithCodecName(codecName string) {
+	defer runtime.KeepAlive(this)
 	codecName_Cstring := C.CString(codecName)
 	defer C.free(unsafe.Pointer(codecName_Cstring))
 	C.QSettings_setIniCodecWithCodecName(this.h, codecName_Cstring)
 }
 
 func (this *QSettings) IniCodec() *QTextCodec {
+	defer runtime.KeepAlive(this)
 	return newQTextCodec(C.QSettings_iniCodec(this.h))
 }
 
@@ -544,6 +591,7 @@ func QSettings_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSettings) BeginWriteArray2(prefix string, size int) {
+	defer runtime.KeepAlive(this)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -552,6 +600,8 @@ func (this *QSettings) BeginWriteArray2(prefix string, size int) {
 }
 
 func (this *QSettings) Value2(key string, defaultValue *QVariant) *QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(defaultValue)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -563,6 +613,7 @@ func (this *QSettings) Value2(key string, defaultValue *QVariant) *QVariant {
 
 // Sender can only be called from a QSettings that was directly constructed.
 func (this *QSettings) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSettings_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -577,6 +628,7 @@ func (this *QSettings) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSettings that was directly constructed.
 func (this *QSettings) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSettings_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -591,6 +643,7 @@ func (this *QSettings) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSettings that was directly constructed.
 func (this *QSettings) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -607,6 +660,8 @@ func (this *QSettings) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSettings that was directly constructed.
 func (this *QSettings) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSettings_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -620,6 +675,8 @@ func (this *QSettings) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSettings) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSettings_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -648,6 +705,9 @@ func miqt_exec_callback_QSettings_event(self *C.QSettings, cb C.intptr_t, event 
 }
 
 func (this *QSettings) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSettings_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -678,6 +738,8 @@ func miqt_exec_callback_QSettings_eventFilter(self *C.QSettings, cb C.intptr_t, 
 }
 
 func (this *QSettings) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSettings_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -704,6 +766,8 @@ func miqt_exec_callback_QSettings_timerEvent(self *C.QSettings, cb C.intptr_t, e
 }
 
 func (this *QSettings) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSettings_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -730,6 +794,8 @@ func miqt_exec_callback_QSettings_childEvent(self *C.QSettings, cb C.intptr_t, e
 }
 
 func (this *QSettings) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSettings_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -756,6 +822,8 @@ func miqt_exec_callback_QSettings_customEvent(self *C.QSettings, cb C.intptr_t, 
 }
 
 func (this *QSettings) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSettings_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -782,6 +850,8 @@ func miqt_exec_callback_QSettings_connectNotify(self *C.QSettings, cb C.intptr_t
 }
 
 func (this *QSettings) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSettings_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -819,8 +889,9 @@ func (this *QSettings) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSettings{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSettings) {
-		C.QSettings_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSettings_delete((*C.QSettings)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

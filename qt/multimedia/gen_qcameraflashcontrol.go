@@ -17,8 +17,15 @@ import (
 
 type QCameraFlashControl struct {
 	h  *C.QCameraFlashControl
-	gc *[1]*C.QCameraFlashControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraFlashControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QCameraFlashControl) cPointer() *C.QCameraFlashControl {
@@ -53,10 +60,12 @@ func UnsafeNewQCameraFlashControl(h unsafe.Pointer) *QCameraFlashControl {
 }
 
 func (this *QCameraFlashControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFlashControl_metaObject(this.h)))
 }
 
 func (this *QCameraFlashControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraFlashControl_metacast(this.h, param1_Cstring))
@@ -81,22 +90,27 @@ func QCameraFlashControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraFlashControl) FlashMode() QCameraExposure__FlashMode {
+	defer runtime.KeepAlive(this)
 	return (QCameraExposure__FlashMode)(C.QCameraFlashControl_flashMode(this.h))
 }
 
 func (this *QCameraFlashControl) SetFlashMode(mode QCameraExposure__FlashMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFlashControl_setFlashMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFlashControl) IsFlashModeSupported(mode QCameraExposure__FlashMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFlashControl_isFlashModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFlashControl) IsFlashReady() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFlashControl_isFlashReady(this.h))
 }
 
 func (this *QCameraFlashControl) FlashReady(param1 bool) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFlashControl_flashReady(this.h, (C.bool)(param1))
 }
 func (this *QCameraFlashControl) OnFlashReady(slot func(param1 bool)) {
@@ -172,8 +186,9 @@ func (this *QCameraFlashControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraFlashControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraFlashControl) {
-		C.QCameraFlashControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraFlashControl_delete((*C.QCameraFlashControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

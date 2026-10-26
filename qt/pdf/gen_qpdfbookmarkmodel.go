@@ -32,8 +32,14 @@ const (
 
 type QPdfBookmarkModel struct {
 	h  *C.QPdfBookmarkModel
-	gc *[1]*C.QPdfBookmarkModel
+	gc *[1]unsafe.Pointer
 	*qt.QAbstractItemModel
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfBookmarkModel) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfBookmarkModel) cPointer() *C.QPdfBookmarkModel {
@@ -75,15 +81,18 @@ func NewQPdfBookmarkModel() *QPdfBookmarkModel {
 
 // NewQPdfBookmarkModel2 constructs a new QPdfBookmarkModel object.
 func NewQPdfBookmarkModel2(parent *qt.QObject) *QPdfBookmarkModel {
+	defer runtime.KeepAlive(parent)
 
 	return newQPdfBookmarkModel(C.QPdfBookmarkModel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPdfBookmarkModel) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfBookmarkModel_metaObject(this.h)))
 }
 
 func (this *QPdfBookmarkModel) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfBookmarkModel_metacast(this.h, param1_Cstring))
@@ -108,48 +117,64 @@ func QPdfBookmarkModel_TrUtf8(s string) string {
 }
 
 func (this *QPdfBookmarkModel) Document() *QPdfDocument {
+	defer runtime.KeepAlive(this)
 	return newQPdfDocument(C.QPdfBookmarkModel_document(this.h))
 }
 
 func (this *QPdfBookmarkModel) SetDocument(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfBookmarkModel_setDocument(this.h, document.cPointer())
 }
 
 func (this *QPdfBookmarkModel) StructureMode() QPdfBookmarkModel__StructureMode {
+	defer runtime.KeepAlive(this)
 	return (QPdfBookmarkModel__StructureMode)(C.QPdfBookmarkModel_structureMode(this.h))
 }
 
 func (this *QPdfBookmarkModel) SetStructureMode(mode QPdfBookmarkModel__StructureMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfBookmarkModel_setStructureMode(this.h, (C.int)(mode))
 }
 
 func (this *QPdfBookmarkModel) Data(index *qt.QModelIndex, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfBookmarkModel_data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfBookmarkModel) Index(row int, column int, parent *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_index(this.h, (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfBookmarkModel) Parent(index *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_parent(this.h, (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfBookmarkModel) RowCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QPdfBookmarkModel_rowCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
 }
 
 func (this *QPdfBookmarkModel) ColumnCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return (int)(C.QPdfBookmarkModel_columnCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
 }
 
 func (this *QPdfBookmarkModel) RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QPdfBookmarkModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -167,6 +192,8 @@ func (this *QPdfBookmarkModel) RoleNames() map[int][]byte {
 }
 
 func (this *QPdfBookmarkModel) DocumentChanged(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfBookmarkModel_documentChanged(this.h, document.cPointer())
 }
 func (this *QPdfBookmarkModel) OnDocumentChanged(slot func(document *QPdfDocument)) {
@@ -187,6 +214,7 @@ func miqt_exec_callback_QPdfBookmarkModel_documentChanged(cb C.intptr_t, documen
 }
 
 func (this *QPdfBookmarkModel) StructureModeChanged(structureMode QPdfBookmarkModel__StructureMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfBookmarkModel_structureModeChanged(this.h, (C.int)(structureMode))
 }
 func (this *QPdfBookmarkModel) OnStructureModeChanged(slot func(structureMode QPdfBookmarkModel__StructureMode)) {
@@ -252,6 +280,7 @@ func QPdfBookmarkModel_TrUtf83(s string, c string, n int) string {
 
 // ResetInternalData can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) ResetInternalData() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -264,6 +293,7 @@ func (this *QPdfBookmarkModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) CreateIndex(row int, column int) qt.QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column))))
@@ -280,6 +310,9 @@ func (this *QPdfBookmarkModel) CreateIndex(row int, column int) qt.QModelIndex {
 
 // EncodeData can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EncodeData(indexes []qt.QModelIndex, stream *qt.QDataStream) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
+	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -299,6 +332,9 @@ func (this *QPdfBookmarkModel) EncodeData(indexes []qt.QModelIndex, stream *qt.Q
 
 // DecodeData can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) DecodeData(row int, column int, parent *qt.QModelIndex, stream *qt.QDataStream) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
+	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfBookmarkModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()), (*C.QDataStream)(stream.UnsafePointer())))
@@ -313,6 +349,8 @@ func (this *QPdfBookmarkModel) DecodeData(row int, column int, parent *qt.QModel
 
 // BeginInsertRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginInsertRows(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -325,6 +363,7 @@ func (this *QPdfBookmarkModel) BeginInsertRows(parent *qt.QModelIndex, first int
 
 // EndInsertRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndInsertRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -337,6 +376,8 @@ func (this *QPdfBookmarkModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginRemoveRows(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -349,6 +390,7 @@ func (this *QPdfBookmarkModel) BeginRemoveRows(parent *qt.QModelIndex, first int
 
 // EndRemoveRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndRemoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -361,6 +403,9 @@ func (this *QPdfBookmarkModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginMoveRows(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationRow int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfBookmarkModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationRow)))
@@ -375,6 +420,7 @@ func (this *QPdfBookmarkModel) BeginMoveRows(sourceParent *qt.QModelIndex, sourc
 
 // EndMoveRows can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndMoveRows() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -387,6 +433,8 @@ func (this *QPdfBookmarkModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginInsertColumns(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -399,6 +447,7 @@ func (this *QPdfBookmarkModel) BeginInsertColumns(parent *qt.QModelIndex, first 
 
 // EndInsertColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndInsertColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -411,6 +460,8 @@ func (this *QPdfBookmarkModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginRemoveColumns(parent *qt.QModelIndex, first int, last int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
@@ -423,6 +474,7 @@ func (this *QPdfBookmarkModel) BeginRemoveColumns(parent *qt.QModelIndex, first 
 
 // EndRemoveColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndRemoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -435,6 +487,9 @@ func (this *QPdfBookmarkModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginMoveColumns(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationColumn int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfBookmarkModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationColumn)))
@@ -449,6 +504,7 @@ func (this *QPdfBookmarkModel) BeginMoveColumns(sourceParent *qt.QModelIndex, so
 
 // EndMoveColumns can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndMoveColumns() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -461,6 +517,7 @@ func (this *QPdfBookmarkModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) BeginResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -473,6 +530,7 @@ func (this *QPdfBookmarkModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) EndResetModel() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -485,6 +543,9 @@ func (this *QPdfBookmarkModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) ChangePersistentIndex(from *qt.QModelIndex, to *qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfBookmarkModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(from.UnsafePointer()), (*C.QModelIndex)(to.UnsafePointer()))
@@ -497,6 +558,9 @@ func (this *QPdfBookmarkModel) ChangePersistentIndex(from *qt.QModelIndex, to *q
 
 // ChangePersistentIndexList can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) ChangePersistentIndexList(from []qt.QModelIndex, to []qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(from)
+	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
@@ -523,6 +587,7 @@ func (this *QPdfBookmarkModel) ChangePersistentIndexList(from []qt.QModelIndex, 
 
 // PersistentIndexList can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) PersistentIndexList() []qt.QModelIndex {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QPdfBookmarkModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -545,6 +610,7 @@ func (this *QPdfBookmarkModel) PersistentIndexList() []qt.QModelIndex {
 
 // Sender can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QPdfBookmarkModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -559,6 +625,7 @@ func (this *QPdfBookmarkModel) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfBookmarkModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -573,6 +640,7 @@ func (this *QPdfBookmarkModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -589,6 +657,8 @@ func (this *QPdfBookmarkModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfBookmarkModel that was directly constructed.
 func (this *QPdfBookmarkModel) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfBookmarkModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -602,6 +672,8 @@ func (this *QPdfBookmarkModel) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Data(index *qt.QModelIndex, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_data(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -628,12 +700,15 @@ func miqt_exec_callback_QPdfBookmarkModel_data(self *C.QPdfBookmarkModel, cb C.i
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Index(row int, column int, parent *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -662,12 +737,15 @@ func miqt_exec_callback_QPdfBookmarkModel_index(self *C.QPdfBookmarkModel, cb C.
 	slotval3 := qt.UnsafeNewQModelIndex(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Parent(index *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_parent(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -692,12 +770,15 @@ func miqt_exec_callback_QPdfBookmarkModel_parent(self *C.QPdfBookmarkModel, cb C
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Parent, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_RowCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QPdfBookmarkModel_virtualbase_rowCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -726,6 +807,8 @@ func miqt_exec_callback_QPdfBookmarkModel_rowCount(self *C.QPdfBookmarkModel, cb
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_ColumnCount(parent *qt.QModelIndex) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QPdfBookmarkModel_virtualbase_columnCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -754,6 +837,7 @@ func miqt_exec_callback_QPdfBookmarkModel_columnCount(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_RoleNames() map[int][]byte {
+	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QPdfBookmarkModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -814,6 +898,8 @@ func miqt_exec_callback_QPdfBookmarkModel_roleNames(self *C.QPdfBookmarkModel, c
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Sibling(row int, column int, idx *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(idx)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(idx.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -842,12 +928,15 @@ func miqt_exec_callback_QPdfBookmarkModel_sibling(self *C.QPdfBookmarkModel, cb 
 	slotval3 := qt.UnsafeNewQModelIndex(unsafe.Pointer(idx))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_HasChildren(parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_hasChildren(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -876,6 +965,9 @@ func miqt_exec_callback_QPdfBookmarkModel_hasChildren(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_SetData(index *qt.QModelIndex, value *qt.QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_setData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 
@@ -908,6 +1000,7 @@ func miqt_exec_callback_QPdfBookmarkModel_setData(self *C.QPdfBookmarkModel, cb 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_HeaderData(section int, orientation qt.Orientation, role int) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -936,12 +1029,15 @@ func miqt_exec_callback_QPdfBookmarkModel_headerData(self *C.QPdfBookmarkModel, 
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_HeaderData, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_SetHeaderData(section int, orientation qt.Orientation, value *qt.QVariant, role int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 
@@ -976,6 +1072,8 @@ func miqt_exec_callback_QPdfBookmarkModel_setHeaderData(self *C.QPdfBookmarkMode
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_ItemData(index *qt.QModelIndex) map[int]qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QPdfBookmarkModel_virtualbase_itemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))
 	_ret := make(map[int]qt.QVariant, int(_mm.len))
@@ -1011,6 +1109,7 @@ func miqt_exec_callback_QPdfBookmarkModel_itemData(self *C.QPdfBookmarkModel, cb
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_ItemData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
 	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1018,7 +1117,7 @@ func miqt_exec_callback_QPdfBookmarkModel_itemData(self *C.QPdfBookmarkModel, cb
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
-		virtualReturn_Values_CArray[virtualReturn_ctr] = (*C.QVariant)(virtualReturn_v.UnsafePointer())
+		virtualReturn_Values_CArray[virtualReturn_ctr] = C.QPdfBookmarkModel_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn_v.UnsafePointer()))
 		virtualReturn_ctr++
 	}
 	virtualReturn_mm := C.struct_miqt_map{
@@ -1032,6 +1131,9 @@ func miqt_exec_callback_QPdfBookmarkModel_itemData(self *C.QPdfBookmarkModel, cb
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_SetItemData(index *qt.QModelIndex, roles map[int]qt.QVariant) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
+	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
 	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
@@ -1092,6 +1194,7 @@ func miqt_exec_callback_QPdfBookmarkModel_setItemData(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_MimeTypes() []string {
+	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QPdfBookmarkModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1135,6 +1238,8 @@ func miqt_exec_callback_QPdfBookmarkModel_mimeTypes(self *C.QPdfBookmarkModel, c
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_MimeData(indexes []qt.QModelIndex) *qt.QMimeData {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
@@ -1172,12 +1277,16 @@ func miqt_exec_callback_QPdfBookmarkModel_mimeData(self *C.QPdfBookmarkModel, cb
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_MimeData, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QMimeData)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_CanDropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1214,6 +1323,9 @@ func miqt_exec_callback_QPdfBookmarkModel_canDropMimeData(self *C.QPdfBookmarkMo
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_DropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1250,6 +1362,7 @@ func miqt_exec_callback_QPdfBookmarkModel_dropMimeData(self *C.QPdfBookmarkModel
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_SupportedDropActions() qt.DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QPdfBookmarkModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1275,6 +1388,7 @@ func miqt_exec_callback_QPdfBookmarkModel_supportedDropActions(self *C.QPdfBookm
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_SupportedDragActions() qt.DropAction {
+	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QPdfBookmarkModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1300,6 +1414,8 @@ func miqt_exec_callback_QPdfBookmarkModel_supportedDragActions(self *C.QPdfBookm
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_InsertRows(row int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1332,6 +1448,8 @@ func miqt_exec_callback_QPdfBookmarkModel_insertRows(self *C.QPdfBookmarkModel, 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_InsertColumns(column int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1364,6 +1482,8 @@ func miqt_exec_callback_QPdfBookmarkModel_insertColumns(self *C.QPdfBookmarkMode
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_RemoveRows(row int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1396,6 +1516,8 @@ func miqt_exec_callback_QPdfBookmarkModel_removeRows(self *C.QPdfBookmarkModel, 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_RemoveColumns(column int, count int, parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1428,6 +1550,9 @@ func miqt_exec_callback_QPdfBookmarkModel_removeColumns(self *C.QPdfBookmarkMode
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_MoveRows(sourceParent *qt.QModelIndex, sourceRow int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_moveRows(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceRow), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
 
@@ -1464,6 +1589,9 @@ func miqt_exec_callback_QPdfBookmarkModel_moveRows(self *C.QPdfBookmarkModel, cb
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_MoveColumns(sourceParent *qt.QModelIndex, sourceColumn int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sourceParent)
+	defer runtime.KeepAlive(destinationParent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_moveColumns(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceColumn), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
 
@@ -1500,6 +1628,8 @@ func miqt_exec_callback_QPdfBookmarkModel_moveColumns(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_FetchMore(parent *qt.QModelIndex) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	C.QPdfBookmarkModel_virtualbase_fetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()))
 
@@ -1526,6 +1656,8 @@ func miqt_exec_callback_QPdfBookmarkModel_fetchMore(self *C.QPdfBookmarkModel, c
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_CanFetchMore(parent *qt.QModelIndex) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
 
@@ -1554,6 +1686,8 @@ func miqt_exec_callback_QPdfBookmarkModel_canFetchMore(self *C.QPdfBookmarkModel
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Flags(index *qt.QModelIndex) qt.ItemFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	return (qt.ItemFlag)(C.QPdfBookmarkModel_virtualbase_flags(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer())))
 
@@ -1582,6 +1716,7 @@ func miqt_exec_callback_QPdfBookmarkModel_flags(self *C.QPdfBookmarkModel, cb C.
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Sort(column int, order qt.SortOrder) {
+	defer runtime.KeepAlive(this)
 
 	C.QPdfBookmarkModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1610,6 +1745,8 @@ func miqt_exec_callback_QPdfBookmarkModel_sort(self *C.QPdfBookmarkModel, cb C.i
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Buddy(index *qt.QModelIndex) *qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_buddy(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1634,12 +1771,16 @@ func miqt_exec_callback_QPdfBookmarkModel_buddy(self *C.QPdfBookmarkModel, cb C.
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Buddy, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Match(start *qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(start)
+	defer runtime.KeepAlive(value)
 
 	var _ma C.struct_miqt_array = C.QPdfBookmarkModel_virtualbase_match(unsafe.Pointer(this.h), (*C.QModelIndex)(start.UnsafePointer()), (C.int)(role), (*C.QVariant)(value.UnsafePointer()), (C.int)(hits), (C.int)(flags))
 	_ret := make([]qt.QModelIndex, int(_ma.len))
@@ -1678,10 +1819,11 @@ func miqt_exec_callback_QPdfBookmarkModel_match(self *C.QPdfBookmarkModel, cb C.
 	slotval5 := (qt.MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = (*C.QModelIndex)(virtualReturn[i].UnsafePointer())
+		virtualReturn_CArray[i] = C.QPdfBookmarkModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn[i].UnsafePointer()))
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1690,6 +1832,8 @@ func miqt_exec_callback_QPdfBookmarkModel_match(self *C.QPdfBookmarkModel, cb C.
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Span(index *qt.QModelIndex) *qt.QSize {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfBookmarkModel_virtualbase_span(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1714,12 +1858,14 @@ func miqt_exec_callback_QPdfBookmarkModel_span(self *C.QPdfBookmarkModel, cb C.i
 	slotval1 := qt.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QPdfBookmarkModel{h: self}).callVirtualBase_Span, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPdfBookmarkModel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Submit() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1745,6 +1891,7 @@ func miqt_exec_callback_QPdfBookmarkModel_submit(self *C.QPdfBookmarkModel, cb C
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Revert() {
+	defer runtime.KeepAlive(this)
 
 	C.QPdfBookmarkModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1768,6 +1915,8 @@ func miqt_exec_callback_QPdfBookmarkModel_revert(self *C.QPdfBookmarkModel, cb C
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1796,6 +1945,9 @@ func miqt_exec_callback_QPdfBookmarkModel_event(self *C.QPdfBookmarkModel, cb C.
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfBookmarkModel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1826,6 +1978,8 @@ func miqt_exec_callback_QPdfBookmarkModel_eventFilter(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfBookmarkModel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1852,6 +2006,8 @@ func miqt_exec_callback_QPdfBookmarkModel_timerEvent(self *C.QPdfBookmarkModel, 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfBookmarkModel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1878,6 +2034,8 @@ func miqt_exec_callback_QPdfBookmarkModel_childEvent(self *C.QPdfBookmarkModel, 
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfBookmarkModel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1904,6 +2062,8 @@ func miqt_exec_callback_QPdfBookmarkModel_customEvent(self *C.QPdfBookmarkModel,
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfBookmarkModel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1930,6 +2090,8 @@ func miqt_exec_callback_QPdfBookmarkModel_connectNotify(self *C.QPdfBookmarkMode
 }
 
 func (this *QPdfBookmarkModel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfBookmarkModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1967,8 +2129,9 @@ func (this *QPdfBookmarkModel) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfBookmarkModel{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfBookmarkModel) {
-		C.QPdfBookmarkModel_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfBookmarkModel_delete((*C.QPdfBookmarkModel)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

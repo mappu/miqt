@@ -17,9 +17,16 @@ import (
 
 type QQmlExtensionPlugin struct {
 	h  *C.QQmlExtensionPlugin
-	gc *[1]*C.QQmlExtensionPlugin
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
 	*QQmlExtensionInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlExtensionPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QQmlExtensionInterface.miqtSetGC(gc)
 }
 
 func (this *QQmlExtensionPlugin) cPointer() *C.QQmlExtensionPlugin {
@@ -63,15 +70,18 @@ func NewQQmlExtensionPlugin() *QQmlExtensionPlugin {
 
 // NewQQmlExtensionPlugin2 constructs a new QQmlExtensionPlugin object.
 func NewQQmlExtensionPlugin2(parent *qt6.QObject) *QQmlExtensionPlugin {
+	defer runtime.KeepAlive(parent)
 
 	return newQQmlExtensionPlugin(C.QQmlExtensionPlugin_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlExtensionPlugin) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlExtensionPlugin_metaObject(this.h)))
 }
 
 func (this *QQmlExtensionPlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlExtensionPlugin_metacast(this.h, param1_Cstring))
@@ -87,22 +97,27 @@ func QQmlExtensionPlugin_Tr(s string) string {
 }
 
 func (this *QQmlExtensionPlugin) BaseUrl() *qt6.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlExtensionPlugin_baseUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlExtensionPlugin) RegisterTypes(uri string) {
+	defer runtime.KeepAlive(this)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlExtensionPlugin_registerTypes(this.h, uri_Cstring)
 }
 
 func (this *QQmlExtensionPlugin) UnregisterTypes() {
+	defer runtime.KeepAlive(this)
 	C.QQmlExtensionPlugin_unregisterTypes(this.h)
 }
 
 func (this *QQmlExtensionPlugin) InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlExtensionPlugin_initializeEngine(this.h, engine.cPointer(), uri_Cstring)
@@ -132,6 +147,7 @@ func QQmlExtensionPlugin_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlExtensionPlugin that was directly constructed.
 func (this *QQmlExtensionPlugin) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlExtensionPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -146,6 +162,7 @@ func (this *QQmlExtensionPlugin) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlExtensionPlugin that was directly constructed.
 func (this *QQmlExtensionPlugin) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlExtensionPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -160,6 +177,7 @@ func (this *QQmlExtensionPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlExtensionPlugin that was directly constructed.
 func (this *QQmlExtensionPlugin) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -176,6 +194,8 @@ func (this *QQmlExtensionPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlExtensionPlugin that was directly constructed.
 func (this *QQmlExtensionPlugin) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QQmlExtensionPlugin_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -210,6 +230,7 @@ func miqt_exec_callback_QQmlExtensionPlugin_registerTypes(self *C.QQmlExtensionP
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_UnregisterTypes() {
+	defer runtime.KeepAlive(this)
 
 	C.QQmlExtensionPlugin_virtualbase_unregisterTypes(unsafe.Pointer(this.h))
 
@@ -233,6 +254,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_unregisterTypes(self *C.QQmlExtensio
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 
@@ -264,6 +287,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_initializeEngine(self *C.QQmlExtensi
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlExtensionPlugin_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -292,6 +317,9 @@ func miqt_exec_callback_QQmlExtensionPlugin_event(self *C.QQmlExtensionPlugin, c
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlExtensionPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -322,6 +350,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_eventFilter(self *C.QQmlExtensionPlu
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlExtensionPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -348,6 +378,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_timerEvent(self *C.QQmlExtensionPlug
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlExtensionPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -374,6 +406,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_childEvent(self *C.QQmlExtensionPlug
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlExtensionPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -400,6 +434,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_customEvent(self *C.QQmlExtensionPlu
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlExtensionPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -426,6 +462,8 @@ func miqt_exec_callback_QQmlExtensionPlugin_connectNotify(self *C.QQmlExtensionP
 }
 
 func (this *QQmlExtensionPlugin) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlExtensionPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -463,17 +501,25 @@ func (this *QQmlExtensionPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlExtensionPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlExtensionPlugin) {
-		C.QQmlExtensionPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlExtensionPlugin_delete((*C.QQmlExtensionPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QQmlEngineExtensionPlugin struct {
 	h  *C.QQmlEngineExtensionPlugin
-	gc *[1]*C.QQmlEngineExtensionPlugin
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
 	*QQmlEngineExtensionInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlEngineExtensionPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QQmlEngineExtensionInterface.miqtSetGC(gc)
 }
 
 func (this *QQmlEngineExtensionPlugin) cPointer() *C.QQmlEngineExtensionPlugin {
@@ -517,15 +563,18 @@ func NewQQmlEngineExtensionPlugin() *QQmlEngineExtensionPlugin {
 
 // NewQQmlEngineExtensionPlugin2 constructs a new QQmlEngineExtensionPlugin object.
 func NewQQmlEngineExtensionPlugin2(parent *qt6.QObject) *QQmlEngineExtensionPlugin {
+	defer runtime.KeepAlive(parent)
 
 	return newQQmlEngineExtensionPlugin(C.QQmlEngineExtensionPlugin_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlEngineExtensionPlugin) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlEngineExtensionPlugin_metaObject(this.h)))
 }
 
 func (this *QQmlEngineExtensionPlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlEngineExtensionPlugin_metacast(this.h, param1_Cstring))
@@ -541,6 +590,8 @@ func QQmlEngineExtensionPlugin_Tr(s string) string {
 }
 
 func (this *QQmlEngineExtensionPlugin) InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlEngineExtensionPlugin_initializeEngine(this.h, engine.cPointer(), uri_Cstring)
@@ -570,6 +621,7 @@ func QQmlEngineExtensionPlugin_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlEngineExtensionPlugin that was directly constructed.
 func (this *QQmlEngineExtensionPlugin) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlEngineExtensionPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -584,6 +636,7 @@ func (this *QQmlEngineExtensionPlugin) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlEngineExtensionPlugin that was directly constructed.
 func (this *QQmlEngineExtensionPlugin) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlEngineExtensionPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -598,6 +651,7 @@ func (this *QQmlEngineExtensionPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlEngineExtensionPlugin that was directly constructed.
 func (this *QQmlEngineExtensionPlugin) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -614,6 +668,8 @@ func (this *QQmlEngineExtensionPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlEngineExtensionPlugin that was directly constructed.
 func (this *QQmlEngineExtensionPlugin) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QQmlEngineExtensionPlugin_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -627,6 +683,8 @@ func (this *QQmlEngineExtensionPlugin) IsSignalConnected(signal *qt6.QMetaMethod
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_InitializeEngine(engine *QQmlEngine, uri string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 
@@ -658,6 +716,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_initializeEngine(self *C.QQmlE
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlEngineExtensionPlugin_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -686,6 +746,9 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_event(self *C.QQmlEngineExtens
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlEngineExtensionPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -716,6 +779,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_eventFilter(self *C.QQmlEngine
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngineExtensionPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -742,6 +807,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_timerEvent(self *C.QQmlEngineE
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngineExtensionPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -768,6 +835,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_childEvent(self *C.QQmlEngineE
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QQmlEngineExtensionPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -794,6 +863,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_customEvent(self *C.QQmlEngine
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlEngineExtensionPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -820,6 +891,8 @@ func miqt_exec_callback_QQmlEngineExtensionPlugin_connectNotify(self *C.QQmlEngi
 }
 
 func (this *QQmlEngineExtensionPlugin) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QQmlEngineExtensionPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -857,8 +930,9 @@ func (this *QQmlEngineExtensionPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlEngineExtensionPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlEngineExtensionPlugin) {
-		C.QQmlEngineExtensionPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlEngineExtensionPlugin_delete((*C.QQmlEngineExtensionPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

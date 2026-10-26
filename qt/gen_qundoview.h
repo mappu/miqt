@@ -316,6 +316,12 @@ bool QUndoView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUndoView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUndoView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QUndoView_virtualreturncopy_QRect(QRect* src);
+QModelIndex* QUndoView_virtualreturncopy_QModelIndex(QModelIndex* src);
+QStyleOptionViewItem* QUndoView_virtualreturncopy_QStyleOptionViewItem(QStyleOptionViewItem* src);
+QRegion* QUndoView_virtualreturncopy_QRegion(QRegion* src);
+QSize* QUndoView_virtualreturncopy_QSize(QSize* src);
+QVariant* QUndoView_virtualreturncopy_QVariant(QVariant* src);
 
 void QUndoView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height);
 QSize* QUndoView_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self);

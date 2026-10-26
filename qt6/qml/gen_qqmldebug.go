@@ -23,7 +23,13 @@ const (
 
 type QQmlDebuggingEnabler struct {
 	h  *C.QQmlDebuggingEnabler
-	gc *[1]*C.QQmlDebuggingEnabler
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlDebuggingEnabler) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlDebuggingEnabler) cPointer() *C.QQmlDebuggingEnabler {
@@ -178,6 +184,7 @@ func QQmlDebuggingEnabler_ConnectToLocalDebugger2(socketFileName string, mode QQ
 }
 
 func QQmlDebuggingEnabler_StartDebugConnector2(pluginName string, configuration map[string]qt6.QVariant) bool {
+	defer runtime.KeepAlive(configuration)
 	pluginName_ms := C.struct_miqt_string{}
 	pluginName_ms.data = C.CString(pluginName)
 	pluginName_ms.len = C.size_t(len(pluginName))
@@ -218,8 +225,9 @@ func (this *QQmlDebuggingEnabler) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlDebuggingEnabler{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlDebuggingEnabler) {
-		C.QQmlDebuggingEnabler_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlDebuggingEnabler_delete((*C.QQmlDebuggingEnabler)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

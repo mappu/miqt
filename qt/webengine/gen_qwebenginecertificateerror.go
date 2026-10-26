@@ -38,7 +38,13 @@ const (
 
 type QWebEngineCertificateError struct {
 	h  *C.QWebEngineCertificateError
-	gc *[1]*C.QWebEngineCertificateError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebEngineCertificateError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebEngineCertificateError) cPointer() *C.QWebEngineCertificateError {
@@ -71,6 +77,7 @@ func UnsafeNewQWebEngineCertificateError(h unsafe.Pointer) *QWebEngineCertificat
 
 // NewQWebEngineCertificateError constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError(error int, url qt.QUrl, overridable bool, errorDescription string) *QWebEngineCertificateError {
+	defer runtime.KeepAlive(url)
 	errorDescription_ms := C.struct_miqt_string{}
 	errorDescription_ms.data = C.CString(errorDescription)
 	errorDescription_ms.len = C.size_t(len(errorDescription))
@@ -81,25 +88,30 @@ func NewQWebEngineCertificateError(error int, url qt.QUrl, overridable bool, err
 
 // NewQWebEngineCertificateError2 constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError2(other *QWebEngineCertificateError) *QWebEngineCertificateError {
+	defer runtime.KeepAlive(other)
 
 	return newQWebEngineCertificateError(C.QWebEngineCertificateError_new2(other.cPointer()))
 }
 
 func (this *QWebEngineCertificateError) Error() QWebEngineCertificateError__Error {
+	defer runtime.KeepAlive(this)
 	return (QWebEngineCertificateError__Error)(C.QWebEngineCertificateError_error(this.h))
 }
 
 func (this *QWebEngineCertificateError) Url() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCertificateError_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineCertificateError) IsOverridable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineCertificateError_isOverridable(this.h))
 }
 
 func (this *QWebEngineCertificateError) ErrorDescription() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineCertificateError_errorDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -107,30 +119,38 @@ func (this *QWebEngineCertificateError) ErrorDescription() string {
 }
 
 func (this *QWebEngineCertificateError) OperatorAssign(other *QWebEngineCertificateError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QWebEngineCertificateError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineCertificateError) Defer() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCertificateError_defer(this.h)
 }
 
 func (this *QWebEngineCertificateError) Deferred() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineCertificateError_deferred(this.h))
 }
 
 func (this *QWebEngineCertificateError) RejectCertificate() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCertificateError_rejectCertificate(this.h)
 }
 
 func (this *QWebEngineCertificateError) IgnoreCertificateError() {
+	defer runtime.KeepAlive(this)
 	C.QWebEngineCertificateError_ignoreCertificateError(this.h)
 }
 
 func (this *QWebEngineCertificateError) Answered() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineCertificateError_answered(this.h))
 }
 
 func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertificate {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineCertificateError_certificateChain(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -154,8 +174,9 @@ func (this *QWebEngineCertificateError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebEngineCertificateError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCertificateError) {
-		C.QWebEngineCertificateError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebEngineCertificateError_delete((*C.QWebEngineCertificateError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

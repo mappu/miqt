@@ -223,6 +223,8 @@ bool QPushButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPushButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPushButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QPushButton_virtualreturncopy_QSize(QSize* src);
+QVariant* QPushButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QPushButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option);
 void QPushButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

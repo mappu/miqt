@@ -28,8 +28,15 @@ const (
 
 type QScatterSeries struct {
 	h  *C.QScatterSeries
-	gc *[1]*C.QScatterSeries
+	gc *[1]unsafe.Pointer
 	*QXYSeries
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScatterSeries) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QXYSeries.miqtSetGC(gc)
 }
 
 func (this *QScatterSeries) cPointer() *C.QScatterSeries {
@@ -71,15 +78,18 @@ func NewQScatterSeries() *QScatterSeries {
 
 // NewQScatterSeries2 constructs a new QScatterSeries object.
 func NewQScatterSeries2(parent *qt6.QObject) *QScatterSeries {
+	defer runtime.KeepAlive(parent)
 
 	return newQScatterSeries(C.QScatterSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QScatterSeries) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QScatterSeries_metaObject(this.h)))
 }
 
 func (this *QScatterSeries) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QScatterSeries_metacast(this.h, param1_Cstring))
@@ -95,60 +105,78 @@ func QScatterSeries_Tr(s string) string {
 }
 
 func (this *QScatterSeries) Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QScatterSeries_type(this.h))
 }
 
 func (this *QScatterSeries) SetPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 	C.QScatterSeries_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QScatterSeries) SetBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 	C.QScatterSeries_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QScatterSeries) Brush() *qt6.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QScatterSeries_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScatterSeries) SetColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QScatterSeries_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QScatterSeries) Color() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScatterSeries) SetBorderColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QScatterSeries_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QScatterSeries) BorderColor() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_borderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScatterSeries) MarkerShape() QScatterSeries__MarkerShape {
+	defer runtime.KeepAlive(this)
 	return (QScatterSeries__MarkerShape)(C.QScatterSeries_markerShape(this.h))
 }
 
 func (this *QScatterSeries) SetMarkerShape(shape QScatterSeries__MarkerShape) {
+	defer runtime.KeepAlive(this)
 	C.QScatterSeries_setMarkerShape(this.h, (C.int)(shape))
 }
 
 func (this *QScatterSeries) MarkerSize() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QScatterSeries_markerSize(this.h))
 }
 
 func (this *QScatterSeries) SetMarkerSize(size float64) {
+	defer runtime.KeepAlive(this)
 	C.QScatterSeries_setMarkerSize(this.h, (C.double)(size))
 }
 
 func (this *QScatterSeries) ColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QScatterSeries_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QScatterSeries) OnColorChanged(slot func(color qt6.QColor)) {
@@ -171,6 +199,8 @@ func miqt_exec_callback_QScatterSeries_colorChanged(cb C.intptr_t, color *C.QCol
 }
 
 func (this *QScatterSeries) BorderColorChanged(color qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QScatterSeries_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 func (this *QScatterSeries) OnBorderColorChanged(slot func(color qt6.QColor)) {
@@ -193,6 +223,7 @@ func miqt_exec_callback_QScatterSeries_borderColorChanged(cb C.intptr_t, color *
 }
 
 func (this *QScatterSeries) MarkerShapeChanged(shape QScatterSeries__MarkerShape) {
+	defer runtime.KeepAlive(this)
 	C.QScatterSeries_markerShapeChanged(this.h, (C.int)(shape))
 }
 func (this *QScatterSeries) OnMarkerShapeChanged(slot func(shape QScatterSeries__MarkerShape)) {
@@ -213,6 +244,7 @@ func miqt_exec_callback_QScatterSeries_markerShapeChanged(cb C.intptr_t, shape C
 }
 
 func (this *QScatterSeries) MarkerSizeChanged(size float64) {
+	defer runtime.KeepAlive(this)
 	C.QScatterSeries_markerSizeChanged(this.h, (C.double)(size))
 }
 func (this *QScatterSeries) OnMarkerSizeChanged(slot func(size float64)) {
@@ -256,6 +288,7 @@ func QScatterSeries_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QScatterSeries that was directly constructed.
 func (this *QScatterSeries) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QScatterSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -270,6 +303,7 @@ func (this *QScatterSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QScatterSeries that was directly constructed.
 func (this *QScatterSeries) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QScatterSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -284,6 +318,7 @@ func (this *QScatterSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QScatterSeries that was directly constructed.
 func (this *QScatterSeries) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -300,6 +335,8 @@ func (this *QScatterSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QScatterSeries that was directly constructed.
 func (this *QScatterSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QScatterSeries_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -313,6 +350,7 @@ func (this *QScatterSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QScatterSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
+	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QScatterSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -338,6 +376,8 @@ func miqt_exec_callback_QScatterSeries_type(self *C.QScatterSeries, cb C.intptr_
 }
 
 func (this *QScatterSeries) callVirtualBase_SetPen(pen *qt6.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(pen)
 
 	C.QScatterSeries_virtualbase_setPen(unsafe.Pointer(this.h), (*C.QPen)(pen.UnsafePointer()))
 
@@ -364,6 +404,8 @@ func miqt_exec_callback_QScatterSeries_setPen(self *C.QScatterSeries, cb C.intpt
 }
 
 func (this *QScatterSeries) callVirtualBase_SetBrush(brush *qt6.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(brush)
 
 	C.QScatterSeries_virtualbase_setBrush(unsafe.Pointer(this.h), (*C.QBrush)(brush.UnsafePointer()))
 
@@ -390,6 +432,8 @@ func miqt_exec_callback_QScatterSeries_setBrush(self *C.QScatterSeries, cb C.int
 }
 
 func (this *QScatterSeries) callVirtualBase_SetColor(color *qt6.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 
 	C.QScatterSeries_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(color.UnsafePointer()))
 
@@ -416,6 +460,7 @@ func miqt_exec_callback_QScatterSeries_setColor(self *C.QScatterSeries, cb C.int
 }
 
 func (this *QScatterSeries) callVirtualBase_Color() *qt6.QColor {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_virtualbase_color(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -437,12 +482,15 @@ func miqt_exec_callback_QScatterSeries_color(self *C.QScatterSeries, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QScatterSeries{h: self}).callVirtualBase_Color)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QColor)(virtualReturn.UnsafePointer())
+	return C.QScatterSeries_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QScatterSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QScatterSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -471,6 +519,9 @@ func miqt_exec_callback_QScatterSeries_event(self *C.QScatterSeries, cb C.intptr
 }
 
 func (this *QScatterSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QScatterSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -501,6 +552,8 @@ func miqt_exec_callback_QScatterSeries_eventFilter(self *C.QScatterSeries, cb C.
 }
 
 func (this *QScatterSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScatterSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -527,6 +580,8 @@ func miqt_exec_callback_QScatterSeries_timerEvent(self *C.QScatterSeries, cb C.i
 }
 
 func (this *QScatterSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScatterSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -553,6 +608,8 @@ func miqt_exec_callback_QScatterSeries_childEvent(self *C.QScatterSeries, cb C.i
 }
 
 func (this *QScatterSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QScatterSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -579,6 +636,8 @@ func miqt_exec_callback_QScatterSeries_customEvent(self *C.QScatterSeries, cb C.
 }
 
 func (this *QScatterSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QScatterSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -605,6 +664,8 @@ func miqt_exec_callback_QScatterSeries_connectNotify(self *C.QScatterSeries, cb 
 }
 
 func (this *QScatterSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QScatterSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -642,8 +703,9 @@ func (this *QScatterSeries) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScatterSeries{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScatterSeries) {
-		C.QScatterSeries_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScatterSeries_delete((*C.QScatterSeries)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

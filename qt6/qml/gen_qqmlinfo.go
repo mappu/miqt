@@ -16,8 +16,14 @@ import (
 
 type QQmlInfo struct {
 	h  *C.QQmlInfo
-	gc *[1]*C.QQmlInfo
+	gc *[1]unsafe.Pointer
 	*qt6.QDebug
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QQmlInfo) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QQmlInfo) cPointer() *C.QQmlInfo {
@@ -53,77 +59,125 @@ func UnsafeNewQQmlInfo(h unsafe.Pointer) *QQmlInfo {
 
 // NewQQmlInfo constructs a new QQmlInfo object.
 func NewQQmlInfo(param1 *QQmlInfo) *QQmlInfo {
+	defer runtime.KeepAlive(param1)
 
 	return newQQmlInfo(C.QQmlInfo_new(param1.cPointer()))
 }
 
 func (this *QQmlInfo) OperatorShiftLeft(t qt6.QChar) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeft(this.h, (*C.QChar)(t.UnsafePointer())))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(t)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeft(this.h, (*C.QChar)(t.UnsafePointer())))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithBool(t bool) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithBool(this.h, (C.bool)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithBool(this.h, (C.bool)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithChar(t int8) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithChar(this.h, (C.char)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithChar(this.h, (C.char)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithShort(t int16) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithShort(this.h, (C.short)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithShort(this.h, (C.short)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithUnsignedshort(t uint16) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithInt(t int) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithInt(this.h, (C.int)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithInt(this.h, (C.int)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithUnsignedint(t uint) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedint(this.h, (C.uint)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedint(this.h, (C.uint)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithLong(t int64) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithLong(this.h, (C.long)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithLong(this.h, (C.long)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithUnsignedlong(t uint64) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithQint64(t int64) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQint64(this.h, (C.longlong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQint64(this.h, (C.longlong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithQuint64(t uint64) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithFloat(t float32) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithFloat(this.h, (C.float)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithFloat(this.h, (C.float)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithDouble(t float64) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithDouble(this.h, (C.double)(t)))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithDouble(this.h, (C.double)(t)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeft2(t string) *QQmlInfo {
+	defer runtime.KeepAlive(this)
 	t_Cstring := C.CString(t)
 	defer C.free(unsafe.Pointer(t_Cstring))
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeft2(this.h, t_Cstring))
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeft2(this.h, t_Cstring))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithQString(t string) *QQmlInfo {
+	defer runtime.KeepAlive(this)
 	t_ms := C.struct_miqt_string{}
 	t_ms.data = C.CString(t)
 	t_ms.len = C.size_t(len(t))
 	defer C.free(unsafe.Pointer(t_ms.data))
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQString(this.h, t_ms))
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQString(this.h, t_ms))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithQByteArray(t []byte) *QQmlInfo {
+	defer runtime.KeepAlive(this)
 	t_alias := C.struct_miqt_string{}
 	if len(t) > 0 {
 		t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
@@ -131,18 +185,29 @@ func (this *QQmlInfo) OperatorShiftLeftWithQByteArray(t []byte) *QQmlInfo {
 		t_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	t_alias.len = C.size_t(len(t))
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQByteArray(this.h, t_alias))
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQByteArray(this.h, t_alias))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithVoid(this.h, t))
+	defer runtime.KeepAlive(this)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithVoid(this.h, t))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithQUrl(t *qt6.QUrl) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQUrl(this.h, (*C.QUrl)(t.UnsafePointer())))
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(t)
+	_ret := newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQUrl(this.h, (*C.QUrl)(t.UnsafePointer())))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QQmlInfo) OperatorAssign(param1 *QQmlInfo) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QQmlInfo_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -158,8 +223,9 @@ func (this *QQmlInfo) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QQmlInfo{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlInfo) {
-		C.QQmlInfo_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QQmlInfo_delete((*C.QQmlInfo)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

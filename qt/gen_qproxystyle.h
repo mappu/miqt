@@ -161,6 +161,11 @@ bool QProxyStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QProxyStyle_virtualreturncopy_QSize(QSize* src);
+QRect* QProxyStyle_virtualreturncopy_QRect(QRect* src);
+QIcon* QProxyStyle_virtualreturncopy_QIcon(QIcon* src);
+QPixmap* QProxyStyle_virtualreturncopy_QPixmap(QPixmap* src);
+QPalette* QProxyStyle_virtualreturncopy_QPalette(QPalette* src);
 
 QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QProxyStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

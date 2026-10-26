@@ -17,8 +17,14 @@ import (
 
 type QSvgRenderer struct {
 	h  *C.QSvgRenderer
-	gc *[1]*C.QSvgRenderer
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSvgRenderer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSvgRenderer) cPointer() *C.QSvgRenderer {
@@ -83,18 +89,21 @@ func NewQSvgRenderer3(contents []byte) *QSvgRenderer {
 
 // NewQSvgRenderer4 constructs a new QSvgRenderer object.
 func NewQSvgRenderer4(contents *qt.QXmlStreamReader) *QSvgRenderer {
+	defer runtime.KeepAlive(contents)
 
 	return newQSvgRenderer(C.QSvgRenderer_new4((*C.QXmlStreamReader)(contents.UnsafePointer())))
 }
 
 // NewQSvgRenderer5 constructs a new QSvgRenderer object.
 func NewQSvgRenderer5(parent *qt.QObject) *QSvgRenderer {
+	defer runtime.KeepAlive(parent)
 
 	return newQSvgRenderer(C.QSvgRenderer_new5((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQSvgRenderer6 constructs a new QSvgRenderer object.
 func NewQSvgRenderer6(filename string, parent *qt.QObject) *QSvgRenderer {
+	defer runtime.KeepAlive(parent)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -105,6 +114,7 @@ func NewQSvgRenderer6(filename string, parent *qt.QObject) *QSvgRenderer {
 
 // NewQSvgRenderer7 constructs a new QSvgRenderer object.
 func NewQSvgRenderer7(contents []byte, parent *qt.QObject) *QSvgRenderer {
+	defer runtime.KeepAlive(parent)
 	contents_alias := C.struct_miqt_string{}
 	if len(contents) > 0 {
 		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
@@ -118,15 +128,19 @@ func NewQSvgRenderer7(contents []byte, parent *qt.QObject) *QSvgRenderer {
 
 // NewQSvgRenderer8 constructs a new QSvgRenderer object.
 func NewQSvgRenderer8(contents *qt.QXmlStreamReader, parent *qt.QObject) *QSvgRenderer {
+	defer runtime.KeepAlive(contents)
+	defer runtime.KeepAlive(parent)
 
 	return newQSvgRenderer(C.QSvgRenderer_new8((*C.QXmlStreamReader)(contents.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSvgRenderer) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSvgRenderer_metaObject(this.h)))
 }
 
 func (this *QSvgRenderer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSvgRenderer_metacast(this.h, param1_Cstring))
@@ -151,68 +165,85 @@ func QSvgRenderer_TrUtf8(s string) string {
 }
 
 func (this *QSvgRenderer) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSvgRenderer_isValid(this.h))
 }
 
 func (this *QSvgRenderer) DefaultSize() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgRenderer_defaultSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgRenderer) ViewBox() *qt.QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QSvgRenderer_viewBox(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgRenderer) ViewBoxF() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QSvgRenderer_viewBoxF(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgRenderer) SetViewBox(viewbox *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewbox)
 	C.QSvgRenderer_setViewBox(this.h, (*C.QRect)(viewbox.UnsafePointer()))
 }
 
 func (this *QSvgRenderer) SetViewBoxWithViewbox(viewbox *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewbox)
 	C.QSvgRenderer_setViewBoxWithViewbox(this.h, (*C.QRectF)(viewbox.UnsafePointer()))
 }
 
 func (this *QSvgRenderer) AspectRatioMode() qt.AspectRatioMode {
+	defer runtime.KeepAlive(this)
 	return (qt.AspectRatioMode)(C.QSvgRenderer_aspectRatioMode(this.h))
 }
 
 func (this *QSvgRenderer) SetAspectRatioMode(mode qt.AspectRatioMode) {
+	defer runtime.KeepAlive(this)
 	C.QSvgRenderer_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QSvgRenderer) Animated() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QSvgRenderer_animated(this.h))
 }
 
 func (this *QSvgRenderer) FramesPerSecond() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSvgRenderer_framesPerSecond(this.h))
 }
 
 func (this *QSvgRenderer) SetFramesPerSecond(num int) {
+	defer runtime.KeepAlive(this)
 	C.QSvgRenderer_setFramesPerSecond(this.h, (C.int)(num))
 }
 
 func (this *QSvgRenderer) CurrentFrame() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSvgRenderer_currentFrame(this.h))
 }
 
 func (this *QSvgRenderer) SetCurrentFrame(currentFrame int) {
+	defer runtime.KeepAlive(this)
 	C.QSvgRenderer_setCurrentFrame(this.h, (C.int)(currentFrame))
 }
 
 func (this *QSvgRenderer) AnimationDuration() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSvgRenderer_animationDuration(this.h))
 }
 
 func (this *QSvgRenderer) BoundsOnElement(id string) *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -223,6 +254,7 @@ func (this *QSvgRenderer) BoundsOnElement(id string) *qt.QRectF {
 }
 
 func (this *QSvgRenderer) ElementExists(id string) bool {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -231,6 +263,7 @@ func (this *QSvgRenderer) ElementExists(id string) bool {
 }
 
 func (this *QSvgRenderer) MatrixForElement(id string) *qt.QMatrix {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -241,6 +274,7 @@ func (this *QSvgRenderer) MatrixForElement(id string) *qt.QMatrix {
 }
 
 func (this *QSvgRenderer) TransformForElement(id string) *qt.QTransform {
+	defer runtime.KeepAlive(this)
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
@@ -251,6 +285,7 @@ func (this *QSvgRenderer) TransformForElement(id string) *qt.QTransform {
 }
 
 func (this *QSvgRenderer) Load(filename string) bool {
+	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -259,6 +294,7 @@ func (this *QSvgRenderer) Load(filename string) bool {
 }
 
 func (this *QSvgRenderer) LoadWithContents(contents []byte) bool {
+	defer runtime.KeepAlive(this)
 	contents_alias := C.struct_miqt_string{}
 	if len(contents) > 0 {
 		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
@@ -270,18 +306,27 @@ func (this *QSvgRenderer) LoadWithContents(contents []byte) bool {
 }
 
 func (this *QSvgRenderer) Load2(contents *qt.QXmlStreamReader) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(contents)
 	return (bool)(C.QSvgRenderer_load2(this.h, (*C.QXmlStreamReader)(contents.UnsafePointer())))
 }
 
 func (this *QSvgRenderer) Render(p *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	C.QSvgRenderer_render(this.h, (*C.QPainter)(p.UnsafePointer()))
 }
 
 func (this *QSvgRenderer) Render2(p *qt.QPainter, bounds *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(bounds)
 	C.QSvgRenderer_render2(this.h, (*C.QPainter)(p.UnsafePointer()), (*C.QRectF)(bounds.UnsafePointer()))
 }
 
 func (this *QSvgRenderer) Render3(p *qt.QPainter, elementId string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
 	elementId_ms := C.struct_miqt_string{}
 	elementId_ms.data = C.CString(elementId)
 	elementId_ms.len = C.size_t(len(elementId))
@@ -290,6 +335,7 @@ func (this *QSvgRenderer) Render3(p *qt.QPainter, elementId string) {
 }
 
 func (this *QSvgRenderer) RepaintNeeded() {
+	defer runtime.KeepAlive(this)
 	C.QSvgRenderer_repaintNeeded(this.h)
 }
 func (this *QSvgRenderer) OnRepaintNeeded(slot func()) {
@@ -351,6 +397,9 @@ func QSvgRenderer_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSvgRenderer) Render4(p *qt.QPainter, elementId string, bounds *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(bounds)
 	elementId_ms := C.struct_miqt_string{}
 	elementId_ms.data = C.CString(elementId)
 	elementId_ms.len = C.size_t(len(elementId))
@@ -360,6 +409,7 @@ func (this *QSvgRenderer) Render4(p *qt.QPainter, elementId string, bounds *qt.Q
 
 // Sender can only be called from a QSvgRenderer that was directly constructed.
 func (this *QSvgRenderer) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSvgRenderer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -374,6 +424,7 @@ func (this *QSvgRenderer) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSvgRenderer that was directly constructed.
 func (this *QSvgRenderer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSvgRenderer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -388,6 +439,7 @@ func (this *QSvgRenderer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSvgRenderer that was directly constructed.
 func (this *QSvgRenderer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -404,6 +456,8 @@ func (this *QSvgRenderer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSvgRenderer that was directly constructed.
 func (this *QSvgRenderer) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSvgRenderer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -417,6 +471,8 @@ func (this *QSvgRenderer) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QSvgRenderer) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSvgRenderer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -445,6 +501,9 @@ func miqt_exec_callback_QSvgRenderer_event(self *C.QSvgRenderer, cb C.intptr_t, 
 }
 
 func (this *QSvgRenderer) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSvgRenderer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -475,6 +534,8 @@ func miqt_exec_callback_QSvgRenderer_eventFilter(self *C.QSvgRenderer, cb C.intp
 }
 
 func (this *QSvgRenderer) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgRenderer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -501,6 +562,8 @@ func miqt_exec_callback_QSvgRenderer_timerEvent(self *C.QSvgRenderer, cb C.intpt
 }
 
 func (this *QSvgRenderer) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgRenderer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -527,6 +590,8 @@ func miqt_exec_callback_QSvgRenderer_childEvent(self *C.QSvgRenderer, cb C.intpt
 }
 
 func (this *QSvgRenderer) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgRenderer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -553,6 +618,8 @@ func miqt_exec_callback_QSvgRenderer_customEvent(self *C.QSvgRenderer, cb C.intp
 }
 
 func (this *QSvgRenderer) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSvgRenderer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -579,6 +646,8 @@ func miqt_exec_callback_QSvgRenderer_connectNotify(self *C.QSvgRenderer, cb C.in
 }
 
 func (this *QSvgRenderer) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSvgRenderer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -616,8 +685,9 @@ func (this *QSvgRenderer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSvgRenderer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSvgRenderer) {
-		C.QSvgRenderer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSvgRenderer_delete((*C.QSvgRenderer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -27,8 +27,14 @@ const (
 
 type QAbstractVideoSurface struct {
 	h  *C.QAbstractVideoSurface
-	gc *[1]*C.QAbstractVideoSurface
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractVideoSurface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractVideoSurface) cPointer() *C.QAbstractVideoSurface {
@@ -70,15 +76,18 @@ func NewQAbstractVideoSurface() *QAbstractVideoSurface {
 
 // NewQAbstractVideoSurface2 constructs a new QAbstractVideoSurface object.
 func NewQAbstractVideoSurface2(parent *qt.QObject) *QAbstractVideoSurface {
+	defer runtime.KeepAlive(parent)
 
 	return newQAbstractVideoSurface(C.QAbstractVideoSurface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAbstractVideoSurface) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractVideoSurface_metaObject(this.h)))
 }
 
 func (this *QAbstractVideoSurface) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractVideoSurface_metacast(this.h, param1_Cstring))
@@ -103,6 +112,7 @@ func QAbstractVideoSurface_TrUtf8(s string) string {
 }
 
 func (this *QAbstractVideoSurface) SupportedPixelFormats(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_supportedPixelFormats(this.h, (C.int)(typeVal))
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -113,48 +123,62 @@ func (this *QAbstractVideoSurface) SupportedPixelFormats(typeVal QAbstractVideoB
 }
 
 func (this *QAbstractVideoSurface) IsFormatSupported(format *QVideoSurfaceFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	return (bool)(C.QAbstractVideoSurface_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_nearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) SurfaceFormat() *QVideoSurfaceFormat {
+	defer runtime.KeepAlive(this)
 	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_surfaceFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) NativeResolution() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractVideoSurface_nativeResolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) Start(format *QVideoSurfaceFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	return (bool)(C.QAbstractVideoSurface_start(this.h, format.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractVideoSurface_stop(this.h)
 }
 
 func (this *QAbstractVideoSurface) IsActive() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractVideoSurface_isActive(this.h))
 }
 
 func (this *QAbstractVideoSurface) Present(frame *QVideoFrame) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(frame)
 	return (bool)(C.QAbstractVideoSurface_present(this.h, frame.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) Error() QAbstractVideoSurface__Error {
+	defer runtime.KeepAlive(this)
 	return (QAbstractVideoSurface__Error)(C.QAbstractVideoSurface_error(this.h))
 }
 
 func (this *QAbstractVideoSurface) ActiveChanged(active bool) {
+	defer runtime.KeepAlive(this)
 	C.QAbstractVideoSurface_activeChanged(this.h, (C.bool)(active))
 }
 func (this *QAbstractVideoSurface) OnActiveChanged(slot func(active bool)) {
@@ -175,6 +199,8 @@ func miqt_exec_callback_QAbstractVideoSurface_activeChanged(cb C.intptr_t, activ
 }
 
 func (this *QAbstractVideoSurface) SurfaceFormatChanged(format *QVideoSurfaceFormat) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 	C.QAbstractVideoSurface_surfaceFormatChanged(this.h, format.cPointer())
 }
 func (this *QAbstractVideoSurface) OnSurfaceFormatChanged(slot func(format *QVideoSurfaceFormat)) {
@@ -195,6 +221,7 @@ func miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(cb C.intptr_t
 }
 
 func (this *QAbstractVideoSurface) SupportedFormatsChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAbstractVideoSurface_supportedFormatsChanged(this.h)
 }
 func (this *QAbstractVideoSurface) OnSupportedFormatsChanged(slot func()) {
@@ -212,6 +239,8 @@ func miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(cb C.intpt
 }
 
 func (this *QAbstractVideoSurface) NativeResolutionChanged(resolution *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(resolution)
 	C.QAbstractVideoSurface_nativeResolutionChanged(this.h, (*C.QSize)(resolution.UnsafePointer()))
 }
 func (this *QAbstractVideoSurface) OnNativeResolutionChanged(slot func(resolution *qt.QSize)) {
@@ -277,6 +306,7 @@ func QAbstractVideoSurface_TrUtf83(s string, c string, n int) string {
 
 // SetError can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) SetError(error QAbstractVideoSurface__Error) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractVideoSurface_protectedbase_setError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(error))
@@ -289,6 +319,8 @@ func (this *QAbstractVideoSurface) SetError(error QAbstractVideoSurface__Error) 
 
 // SetNativeResolution can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) SetNativeResolution(resolution *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(resolution)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractVideoSurface_protectedbase_setNativeResolution(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QSize)(resolution.UnsafePointer()))
@@ -301,6 +333,7 @@ func (this *QAbstractVideoSurface) SetNativeResolution(resolution *qt.QSize) {
 
 // Sender can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QAbstractVideoSurface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -315,6 +348,7 @@ func (this *QAbstractVideoSurface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractVideoSurface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -329,6 +363,7 @@ func (this *QAbstractVideoSurface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -345,6 +380,8 @@ func (this *QAbstractVideoSurface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractVideoSurface that was directly constructed.
 func (this *QAbstractVideoSurface) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractVideoSurface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -386,6 +423,8 @@ func miqt_exec_callback_QAbstractVideoSurface_supportedPixelFormats(self *C.QAbs
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_IsFormatSupported(format *QVideoSurfaceFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 
 	return (bool)(C.QAbstractVideoSurface_virtualbase_isFormatSupported(unsafe.Pointer(this.h), format.cPointer()))
 
@@ -414,6 +453,8 @@ func miqt_exec_callback_QAbstractVideoSurface_isFormatSupported(self *C.QAbstrac
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 
 	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_virtualbase_nearestFormat(unsafe.Pointer(this.h), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -438,12 +479,15 @@ func miqt_exec_callback_QAbstractVideoSurface_nearestFormat(self *C.QAbstractVid
 	slotval1 := newQVideoSurfaceFormat(format)
 
 	virtualReturn := gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_NearestFormat, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QAbstractVideoSurface_virtualreturncopy_QVideoSurfaceFormat(virtualReturn.cPointer())
 
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_Start(format *QVideoSurfaceFormat) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(format)
 
 	return (bool)(C.QAbstractVideoSurface_virtualbase_start(unsafe.Pointer(this.h), format.cPointer()))
 
@@ -472,6 +516,7 @@ func miqt_exec_callback_QAbstractVideoSurface_start(self *C.QAbstractVideoSurfac
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_Stop() {
+	defer runtime.KeepAlive(this)
 
 	C.QAbstractVideoSurface_virtualbase_stop(unsafe.Pointer(this.h))
 
@@ -517,6 +562,8 @@ func miqt_exec_callback_QAbstractVideoSurface_present(self *C.QAbstractVideoSurf
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractVideoSurface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -545,6 +592,9 @@ func miqt_exec_callback_QAbstractVideoSurface_event(self *C.QAbstractVideoSurfac
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractVideoSurface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -575,6 +625,8 @@ func miqt_exec_callback_QAbstractVideoSurface_eventFilter(self *C.QAbstractVideo
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractVideoSurface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -601,6 +653,8 @@ func miqt_exec_callback_QAbstractVideoSurface_timerEvent(self *C.QAbstractVideoS
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractVideoSurface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -627,6 +681,8 @@ func miqt_exec_callback_QAbstractVideoSurface_childEvent(self *C.QAbstractVideoS
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAbstractVideoSurface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -653,6 +709,8 @@ func miqt_exec_callback_QAbstractVideoSurface_customEvent(self *C.QAbstractVideo
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractVideoSurface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -679,6 +737,8 @@ func miqt_exec_callback_QAbstractVideoSurface_connectNotify(self *C.QAbstractVid
 }
 
 func (this *QAbstractVideoSurface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAbstractVideoSurface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -716,8 +776,9 @@ func (this *QAbstractVideoSurface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractVideoSurface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractVideoSurface) {
-		C.QAbstractVideoSurface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractVideoSurface_delete((*C.QAbstractVideoSurface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

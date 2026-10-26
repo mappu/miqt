@@ -241,6 +241,8 @@ bool QMenuBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QMenuBar_virtualreturncopy_QSize(QSize* src);
+QVariant* QMenuBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QMenuBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);

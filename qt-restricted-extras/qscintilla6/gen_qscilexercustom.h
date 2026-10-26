@@ -144,6 +144,8 @@ bool QsciLexerCustom_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerCustom_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCustom_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCustom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerCustom_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerCustom_virtualreturncopy_QFont(QFont* src);
 
 QObject* QsciLexerCustom_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCustom_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

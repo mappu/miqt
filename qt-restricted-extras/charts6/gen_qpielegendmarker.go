@@ -17,8 +17,15 @@ import (
 
 type QPieLegendMarker struct {
 	h  *C.QPieLegendMarker
-	gc *[1]*C.QPieLegendMarker
+	gc *[1]unsafe.Pointer
 	*QLegendMarker
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPieLegendMarker) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QLegendMarker.miqtSetGC(gc)
 }
 
 func (this *QPieLegendMarker) cPointer() *C.QPieLegendMarker {
@@ -54,21 +61,30 @@ func UnsafeNewQPieLegendMarker(h unsafe.Pointer) *QPieLegendMarker {
 
 // NewQPieLegendMarker constructs a new QPieLegendMarker object.
 func NewQPieLegendMarker(series *QPieSeries, slice *QPieSlice, legend *QLegend) *QPieLegendMarker {
+	defer runtime.KeepAlive(series)
+	defer runtime.KeepAlive(slice)
+	defer runtime.KeepAlive(legend)
 
 	return newQPieLegendMarker(C.QPieLegendMarker_new(series.cPointer(), slice.cPointer(), legend.cPointer()))
 }
 
 // NewQPieLegendMarker2 constructs a new QPieLegendMarker object.
 func NewQPieLegendMarker2(series *QPieSeries, slice *QPieSlice, legend *QLegend, parent *qt6.QObject) *QPieLegendMarker {
+	defer runtime.KeepAlive(series)
+	defer runtime.KeepAlive(slice)
+	defer runtime.KeepAlive(legend)
+	defer runtime.KeepAlive(parent)
 
 	return newQPieLegendMarker(C.QPieLegendMarker_new2(series.cPointer(), slice.cPointer(), legend.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPieLegendMarker) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPieLegendMarker_metaObject(this.h)))
 }
 
 func (this *QPieLegendMarker) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPieLegendMarker_metacast(this.h, param1_Cstring))
@@ -84,14 +100,17 @@ func QPieLegendMarker_Tr(s string) string {
 }
 
 func (this *QPieLegendMarker) Type() QLegendMarker__LegendMarkerType {
+	defer runtime.KeepAlive(this)
 	return (QLegendMarker__LegendMarkerType)(C.QPieLegendMarker_type(this.h))
 }
 
 func (this *QPieLegendMarker) Series() *QPieSeries {
+	defer runtime.KeepAlive(this)
 	return newQPieSeries(C.QPieLegendMarker_series(this.h))
 }
 
 func (this *QPieLegendMarker) Slice() *QPieSlice {
+	defer runtime.KeepAlive(this)
 	return newQPieSlice(C.QPieLegendMarker_slice(this.h))
 }
 
@@ -119,6 +138,7 @@ func QPieLegendMarker_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QPieLegendMarker that was directly constructed.
 func (this *QPieLegendMarker) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPieLegendMarker_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -133,6 +153,7 @@ func (this *QPieLegendMarker) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QPieLegendMarker that was directly constructed.
 func (this *QPieLegendMarker) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPieLegendMarker_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -147,6 +168,7 @@ func (this *QPieLegendMarker) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPieLegendMarker that was directly constructed.
 func (this *QPieLegendMarker) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -163,6 +185,8 @@ func (this *QPieLegendMarker) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPieLegendMarker that was directly constructed.
 func (this *QPieLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPieLegendMarker_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -176,6 +200,7 @@ func (this *QPieLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QPieLegendMarker) callVirtualBase_Type() QLegendMarker__LegendMarkerType {
+	defer runtime.KeepAlive(this)
 
 	return (QLegendMarker__LegendMarkerType)(C.QPieLegendMarker_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -201,6 +226,7 @@ func miqt_exec_callback_QPieLegendMarker_type(self *C.QPieLegendMarker, cb C.int
 }
 
 func (this *QPieLegendMarker) callVirtualBase_Series() *QPieSeries {
+	defer runtime.KeepAlive(this)
 
 	return newQPieSeries(C.QPieLegendMarker_virtualbase_series(unsafe.Pointer(this.h)))
 
@@ -220,12 +246,15 @@ func miqt_exec_callback_QPieLegendMarker_series(self *C.QPieLegendMarker, cb C.i
 	}
 
 	virtualReturn := gofunc((&QPieLegendMarker{h: self}).callVirtualBase_Series)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QPieLegendMarker) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieLegendMarker_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -254,6 +283,9 @@ func miqt_exec_callback_QPieLegendMarker_event(self *C.QPieLegendMarker, cb C.in
 }
 
 func (this *QPieLegendMarker) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieLegendMarker_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -284,6 +316,8 @@ func miqt_exec_callback_QPieLegendMarker_eventFilter(self *C.QPieLegendMarker, c
 }
 
 func (this *QPieLegendMarker) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieLegendMarker_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -310,6 +344,8 @@ func miqt_exec_callback_QPieLegendMarker_timerEvent(self *C.QPieLegendMarker, cb
 }
 
 func (this *QPieLegendMarker) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieLegendMarker_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -336,6 +372,8 @@ func miqt_exec_callback_QPieLegendMarker_childEvent(self *C.QPieLegendMarker, cb
 }
 
 func (this *QPieLegendMarker) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPieLegendMarker_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -362,6 +400,8 @@ func miqt_exec_callback_QPieLegendMarker_customEvent(self *C.QPieLegendMarker, c
 }
 
 func (this *QPieLegendMarker) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPieLegendMarker_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -388,6 +428,8 @@ func miqt_exec_callback_QPieLegendMarker_connectNotify(self *C.QPieLegendMarker,
 }
 
 func (this *QPieLegendMarker) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPieLegendMarker_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -425,8 +467,9 @@ func (this *QPieLegendMarker) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPieLegendMarker{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPieLegendMarker) {
-		C.QPieLegendMarker_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPieLegendMarker_delete((*C.QPieLegendMarker)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

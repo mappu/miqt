@@ -254,6 +254,8 @@ bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QCalendarWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QCalendarWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self, QDate* date);
 void QCalendarWidget_protectedbase_updateCells(bool* _dynamic_cast_ok, void* self);

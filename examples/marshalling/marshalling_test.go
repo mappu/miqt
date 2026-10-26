@@ -4,6 +4,7 @@ import (
 	"os"
 	"reflect"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/mappu/miqt/qt"
@@ -147,9 +148,18 @@ func testMarshalling(t *testing.T) {
 
 }
 
+var applicationOnce sync.Once
+
+// ensureApplication creates the QApplication shared by all tests.
+func ensureApplication() {
+	applicationOnce.Do(func() {
+		qt.NewQApplication(os.Args)
+	})
+}
+
 func TestMarshalling(t *testing.T) {
 
-	qt.NewQApplication(os.Args)
+	ensureApplication()
 
 	// In case of heap corruption, run the whole test multiple times.
 

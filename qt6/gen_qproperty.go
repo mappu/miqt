@@ -41,7 +41,13 @@ const (
 
 type QPropertyBindingSourceLocation struct {
 	h  *C.QPropertyBindingSourceLocation
-	gc *[1]*C.QPropertyBindingSourceLocation
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyBindingSourceLocation) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPropertyBindingSourceLocation) cPointer() *C.QPropertyBindingSourceLocation {
@@ -80,45 +86,54 @@ func NewQPropertyBindingSourceLocation() *QPropertyBindingSourceLocation {
 
 // NewQPropertyBindingSourceLocation2 constructs a new QPropertyBindingSourceLocation object.
 func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) *QPropertyBindingSourceLocation {
+	defer runtime.KeepAlive(param1)
 
 	return newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new2(param1.cPointer()))
 }
 
 func (this *QPropertyBindingSourceLocation) FileName() string {
+	defer runtime.KeepAlive(this)
 	fileName_ret := C.QPropertyBindingSourceLocation_fileName(this.h)
 	return C.GoString(fileName_ret)
 }
 
 func (this *QPropertyBindingSourceLocation) SetFileName(fileName string) {
+	defer runtime.KeepAlive(this)
 	fileName_Cstring := C.CString(fileName)
 	defer C.free(unsafe.Pointer(fileName_Cstring))
 	C.QPropertyBindingSourceLocation_setFileName(this.h, fileName_Cstring)
 }
 
 func (this *QPropertyBindingSourceLocation) FunctionName() string {
+	defer runtime.KeepAlive(this)
 	functionName_ret := C.QPropertyBindingSourceLocation_functionName(this.h)
 	return C.GoString(functionName_ret)
 }
 
 func (this *QPropertyBindingSourceLocation) SetFunctionName(functionName string) {
+	defer runtime.KeepAlive(this)
 	functionName_Cstring := C.CString(functionName)
 	defer C.free(unsafe.Pointer(functionName_Cstring))
 	C.QPropertyBindingSourceLocation_setFunctionName(this.h, functionName_Cstring)
 }
 
 func (this *QPropertyBindingSourceLocation) Line() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QPropertyBindingSourceLocation_line(this.h))
 }
 
 func (this *QPropertyBindingSourceLocation) SetLine(line uint) {
+	defer runtime.KeepAlive(this)
 	C.QPropertyBindingSourceLocation_setLine(this.h, (C.uint)(line))
 }
 
 func (this *QPropertyBindingSourceLocation) Column() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QPropertyBindingSourceLocation_column(this.h))
 }
 
 func (this *QPropertyBindingSourceLocation) SetColumn(column uint) {
+	defer runtime.KeepAlive(this)
 	C.QPropertyBindingSourceLocation_setColumn(this.h, (C.uint)(column))
 }
 
@@ -134,15 +149,22 @@ func (this *QPropertyBindingSourceLocation) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyBindingSourceLocation{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyBindingSourceLocation) {
-		C.QPropertyBindingSourceLocation_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyBindingSourceLocation_delete((*C.QPropertyBindingSourceLocation)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPropertyBindingError struct {
 	h  *C.QPropertyBindingError
-	gc *[1]*C.QPropertyBindingError
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyBindingError) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPropertyBindingError) cPointer() *C.QPropertyBindingError {
@@ -187,6 +209,7 @@ func NewQPropertyBindingError2(typeVal QPropertyBindingError__Type) *QPropertyBi
 
 // NewQPropertyBindingError3 constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError3(other *QPropertyBindingError) *QPropertyBindingError {
+	defer runtime.KeepAlive(other)
 
 	return newQPropertyBindingError(C.QPropertyBindingError_new3(other.cPointer()))
 }
@@ -202,18 +225,23 @@ func NewQPropertyBindingError4(typeVal QPropertyBindingError__Type, description 
 }
 
 func (this *QPropertyBindingError) OperatorAssign(other *QPropertyBindingError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QPropertyBindingError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPropertyBindingError) HasError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QPropertyBindingError_hasError(this.h))
 }
 
 func (this *QPropertyBindingError) Type() QPropertyBindingError__Type {
+	defer runtime.KeepAlive(this)
 	return (QPropertyBindingError__Type)(C.QPropertyBindingError_type(this.h))
 }
 
 func (this *QPropertyBindingError) Description() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPropertyBindingError_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -232,15 +260,22 @@ func (this *QPropertyBindingError) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyBindingError{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyBindingError) {
-		C.QPropertyBindingError_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyBindingError_delete((*C.QPropertyBindingError)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QUntypedPropertyBinding struct {
 	h  *C.QUntypedPropertyBinding
-	gc *[1]*C.QUntypedPropertyBinding
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUntypedPropertyBinding) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QUntypedPropertyBinding) cPointer() *C.QUntypedPropertyBinding {
@@ -279,25 +314,31 @@ func NewQUntypedPropertyBinding() *QUntypedPropertyBinding {
 
 // NewQUntypedPropertyBinding2 constructs a new QUntypedPropertyBinding object.
 func NewQUntypedPropertyBinding2(other *QUntypedPropertyBinding) *QUntypedPropertyBinding {
+	defer runtime.KeepAlive(other)
 
 	return newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new2(other.cPointer()))
 }
 
 func (this *QUntypedPropertyBinding) OperatorAssign(other *QUntypedPropertyBinding) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QUntypedPropertyBinding_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QUntypedPropertyBinding) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUntypedPropertyBinding_isNull(this.h))
 }
 
 func (this *QUntypedPropertyBinding) Error() *QPropertyBindingError {
+	defer runtime.KeepAlive(this)
 	_goptr := newQPropertyBindingError(C.QUntypedPropertyBinding_error(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedPropertyBinding) ValueMetaType() *QMetaType {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMetaType(C.QUntypedPropertyBinding_valueMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -315,15 +356,22 @@ func (this *QUntypedPropertyBinding) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUntypedPropertyBinding{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUntypedPropertyBinding) {
-		C.QUntypedPropertyBinding_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUntypedPropertyBinding_delete((*C.QUntypedPropertyBinding)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPropertyObserverBase struct {
 	h  *C.QPropertyObserverBase
-	gc *[1]*C.QPropertyObserverBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyObserverBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPropertyObserverBase) cPointer() *C.QPropertyObserverBase {
@@ -362,11 +410,14 @@ func NewQPropertyObserverBase() *QPropertyObserverBase {
 
 // NewQPropertyObserverBase2 constructs a new QPropertyObserverBase object.
 func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserverBase {
+	defer runtime.KeepAlive(param1)
 
 	return newQPropertyObserverBase(C.QPropertyObserverBase_new2(param1.cPointer()))
 }
 
 func (this *QPropertyObserverBase) OperatorAssign(param1 *QPropertyObserverBase) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QPropertyObserverBase_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -382,16 +433,24 @@ func (this *QPropertyObserverBase) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyObserverBase{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyObserverBase) {
-		C.QPropertyObserverBase_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyObserverBase_delete((*C.QPropertyObserverBase)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPropertyObserver struct {
 	h  *C.QPropertyObserver
-	gc *[1]*C.QPropertyObserver
+	gc *[1]unsafe.Pointer
 	*QPropertyObserverBase
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyObserver) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPropertyObserverBase.miqtSetGC(gc)
 }
 
 func (this *QPropertyObserver) cPointer() *C.QPropertyObserver {
@@ -443,16 +502,24 @@ func (this *QPropertyObserver) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyObserver{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyObserver) {
-		C.QPropertyObserver_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyObserver_delete((*C.QPropertyObserver)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QPropertyNotifier struct {
 	h  *C.QPropertyNotifier
-	gc *[1]*C.QPropertyNotifier
+	gc *[1]unsafe.Pointer
 	*QPropertyObserver
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPropertyNotifier) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QPropertyObserver.miqtSetGC(gc)
 }
 
 func (this *QPropertyNotifier) cPointer() *C.QPropertyNotifier {
@@ -504,15 +571,22 @@ func (this *QPropertyNotifier) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPropertyNotifier{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyNotifier) {
-		C.QPropertyNotifier_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPropertyNotifier_delete((*C.QPropertyNotifier)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QUntypedBindable struct {
 	h  *C.QUntypedBindable
-	gc *[1]*C.QUntypedBindable
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QUntypedBindable) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QUntypedBindable) cPointer() *C.QUntypedBindable {
@@ -551,59 +625,74 @@ func NewQUntypedBindable() *QUntypedBindable {
 
 // NewQUntypedBindable2 constructs a new QUntypedBindable object.
 func NewQUntypedBindable2(param1 *QUntypedBindable) *QUntypedBindable {
+	defer runtime.KeepAlive(param1)
 
 	return newQUntypedBindable(C.QUntypedBindable_new2(param1.cPointer()))
 }
 
 func (this *QUntypedBindable) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUntypedBindable_isValid(this.h))
 }
 
 func (this *QUntypedBindable) IsBindable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUntypedBindable_isBindable(this.h))
 }
 
 func (this *QUntypedBindable) IsReadOnly() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUntypedBindable_isReadOnly(this.h))
 }
 
 func (this *QUntypedBindable) MakeBinding() *QUntypedPropertyBinding {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) TakeBinding() *QUntypedPropertyBinding {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_takeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) Observe(observer *QPropertyObserver) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(observer)
 	C.QUntypedBindable_observe(this.h, observer.cPointer())
 }
 
 func (this *QUntypedBindable) Binding() *QUntypedPropertyBinding {
+	defer runtime.KeepAlive(this)
 	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_binding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) SetBinding(binding *QUntypedPropertyBinding) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(binding)
 	return (bool)(C.QUntypedBindable_setBinding(this.h, binding.cPointer()))
 }
 
 func (this *QUntypedBindable) HasBinding() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QUntypedBindable_hasBinding(this.h))
 }
 
 func (this *QUntypedBindable) MetaType() *QMetaType {
+	defer runtime.KeepAlive(this)
 	_goptr := newQMetaType(C.QUntypedBindable_metaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) MakeBindingWithLocation(location *QPropertyBindingSourceLocation) *QUntypedPropertyBinding {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(location)
 	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBindingWithLocation(this.h, location.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -621,8 +710,9 @@ func (this *QUntypedBindable) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QUntypedBindable{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUntypedBindable) {
-		C.QUntypedBindable_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QUntypedBindable_delete((*C.QUntypedBindable)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

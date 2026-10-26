@@ -15,7 +15,13 @@ import (
 
 type QStringMatcher struct {
 	h  *C.QStringMatcher
-	gc *[1]*C.QStringMatcher
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringMatcher) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStringMatcher) cPointer() *C.QStringMatcher {
@@ -64,12 +70,14 @@ func NewQStringMatcher2(pattern string) *QStringMatcher {
 
 // NewQStringMatcher3 constructs a new QStringMatcher object.
 func NewQStringMatcher3(uc *QChar, lenVal int) *QStringMatcher {
+	defer runtime.KeepAlive(uc)
 
 	return newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal)))
 }
 
 // NewQStringMatcher4 constructs a new QStringMatcher object.
 func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
+	defer runtime.KeepAlive(other)
 
 	return newQStringMatcher(C.QStringMatcher_new4(other.cPointer()))
 }
@@ -86,15 +94,19 @@ func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int, cs CaseSensitivity) *QStringMatcher {
+	defer runtime.KeepAlive(uc)
 
 	return newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs)))
 }
 
 func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QStringMatcher_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QStringMatcher) SetPattern(pattern string) {
+	defer runtime.KeepAlive(this)
 	pattern_ms := C.struct_miqt_string{}
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
@@ -103,10 +115,12 @@ func (this *QStringMatcher) SetPattern(pattern string) {
 }
 
 func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
+	defer runtime.KeepAlive(this)
 	C.QStringMatcher_setCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QStringMatcher) IndexIn(str string) int {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -115,10 +129,13 @@ func (this *QStringMatcher) IndexIn(str string) int {
 }
 
 func (this *QStringMatcher) IndexIn2(str *QChar, length int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(str)
 	return (int)(C.QStringMatcher_indexIn2(this.h, str.cPointer(), (C.int)(length)))
 }
 
 func (this *QStringMatcher) Pattern() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStringMatcher_pattern(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -126,10 +143,12 @@ func (this *QStringMatcher) Pattern() string {
 }
 
 func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
+	defer runtime.KeepAlive(this)
 	return (CaseSensitivity)(C.QStringMatcher_caseSensitivity(this.h))
 }
 
 func (this *QStringMatcher) IndexIn3(str string, from int) int {
+	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -138,6 +157,8 @@ func (this *QStringMatcher) IndexIn3(str string, from int) int {
 }
 
 func (this *QStringMatcher) IndexIn4(str *QChar, length int, from int) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(str)
 	return (int)(C.QStringMatcher_indexIn4(this.h, str.cPointer(), (C.int)(length), (C.int)(from)))
 }
 
@@ -153,8 +174,9 @@ func (this *QStringMatcher) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStringMatcher{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStringMatcher) {
-		C.QStringMatcher_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStringMatcher_delete((*C.QStringMatcher)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

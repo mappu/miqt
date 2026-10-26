@@ -223,6 +223,8 @@ bool QPrintPreviewWidget_override_virtual_connectNotify(void* self, intptr_t slo
 void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintPreviewWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QPrintPreviewWidget_virtualreturncopy_QSize(QSize* src);
+QVariant* QPrintPreviewWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QPrintPreviewWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QPrintPreviewWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);

@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt"
+	"runtime"
 	"unsafe"
 )
 
@@ -101,7 +102,14 @@ const (
 )
 
 type QWebSettings struct {
-	h *C.QWebSettings
+	h  *C.QWebSettings
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSettings) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSettings) cPointer() *C.QWebSettings {
@@ -137,6 +145,7 @@ func QWebSettings_GlobalSettings() *QWebSettings {
 }
 
 func (this *QWebSettings) SetFontFamily(which QWebSettings__FontFamily, family string) {
+	defer runtime.KeepAlive(this)
 	family_ms := C.struct_miqt_string{}
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
@@ -145,6 +154,7 @@ func (this *QWebSettings) SetFontFamily(which QWebSettings__FontFamily, family s
 }
 
 func (this *QWebSettings) FontFamily(which QWebSettings__FontFamily) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSettings_fontFamily(this.h, (C.int)(which))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -152,44 +162,55 @@ func (this *QWebSettings) FontFamily(which QWebSettings__FontFamily) string {
 }
 
 func (this *QWebSettings) ResetFontFamily(which QWebSettings__FontFamily) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_resetFontFamily(this.h, (C.int)(which))
 }
 
 func (this *QWebSettings) SetFontSize(typeVal QWebSettings__FontSize, size int) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_setFontSize(this.h, (C.int)(typeVal), (C.int)(size))
 }
 
 func (this *QWebSettings) FontSize(typeVal QWebSettings__FontSize) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSettings_fontSize(this.h, (C.int)(typeVal)))
 }
 
 func (this *QWebSettings) ResetFontSize(typeVal QWebSettings__FontSize) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_resetFontSize(this.h, (C.int)(typeVal))
 }
 
 func (this *QWebSettings) SetAttribute(attr QWebSettings__WebAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_setAttribute(this.h, (C.int)(attr), (C.bool)(on))
 }
 
 func (this *QWebSettings) TestAttribute(attr QWebSettings__WebAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSettings_testAttribute(this.h, (C.int)(attr)))
 }
 
 func (this *QWebSettings) ResetAttribute(attr QWebSettings__WebAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_resetAttribute(this.h, (C.int)(attr))
 }
 
 func (this *QWebSettings) SetUserStyleSheetUrl(location *qt.QUrl) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(location)
 	C.QWebSettings_setUserStyleSheetUrl(this.h, (*C.QUrl)(location.UnsafePointer()))
 }
 
 func (this *QWebSettings) UserStyleSheetUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebSettings_userStyleSheetUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSettings) SetDefaultTextEncoding(encoding string) {
+	defer runtime.KeepAlive(this)
 	encoding_ms := C.struct_miqt_string{}
 	encoding_ms.data = C.CString(encoding)
 	encoding_ms.len = C.size_t(len(encoding))
@@ -198,6 +219,7 @@ func (this *QWebSettings) SetDefaultTextEncoding(encoding string) {
 }
 
 func (this *QWebSettings) DefaultTextEncoding() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSettings_defaultTextEncoding(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -224,6 +246,7 @@ func QWebSettings_ClearIconDatabase() {
 }
 
 func QWebSettings_IconForUrl(url *qt.QUrl) *qt.QIcon {
+	defer runtime.KeepAlive(url)
 	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebSettings_iconForUrl((*C.QUrl)(url.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -258,6 +281,7 @@ func QWebSettings_PluginSearchPaths() []string {
 }
 
 func QWebSettings_SetWebGraphic(typeVal QWebSettings__WebGraphic, graphic *qt.QPixmap) {
+	defer runtime.KeepAlive(graphic)
 	C.QWebSettings_setWebGraphic((C.int)(typeVal), (*C.QPixmap)(graphic.UnsafePointer()))
 }
 
@@ -326,6 +350,7 @@ func QWebSettings_OfflineWebApplicationCacheQuota() int64 {
 }
 
 func (this *QWebSettings) SetLocalStoragePath(path string) {
+	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -334,6 +359,7 @@ func (this *QWebSettings) SetLocalStoragePath(path string) {
 }
 
 func (this *QWebSettings) LocalStoragePath() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSettings_localStoragePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -349,14 +375,17 @@ func QWebSettings_EnablePersistentStorage() {
 }
 
 func (this *QWebSettings) SetThirdPartyCookiePolicy(thirdPartyCookiePolicy QWebSettings__ThirdPartyCookiePolicy) {
+	defer runtime.KeepAlive(this)
 	C.QWebSettings_setThirdPartyCookiePolicy(this.h, (C.int)(thirdPartyCookiePolicy))
 }
 
 func (this *QWebSettings) ThirdPartyCookiePolicy() QWebSettings__ThirdPartyCookiePolicy {
+	defer runtime.KeepAlive(this)
 	return (QWebSettings__ThirdPartyCookiePolicy)(C.QWebSettings_thirdPartyCookiePolicy(this.h))
 }
 
 func (this *QWebSettings) SetCSSMediaType(cSSMediaType string) {
+	defer runtime.KeepAlive(this)
 	cSSMediaType_ms := C.struct_miqt_string{}
 	cSSMediaType_ms.data = C.CString(cSSMediaType)
 	cSSMediaType_ms.len = C.size_t(len(cSSMediaType))
@@ -365,6 +394,7 @@ func (this *QWebSettings) SetCSSMediaType(cSSMediaType string) {
 }
 
 func (this *QWebSettings) CssMediaType() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSettings_cssMediaType(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

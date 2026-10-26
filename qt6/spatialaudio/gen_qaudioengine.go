@@ -26,8 +26,14 @@ const (
 
 type QAudioEngine struct {
 	h  *C.QAudioEngine
-	gc *[1]*C.QAudioEngine
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAudioEngine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAudioEngine) cPointer() *C.QAudioEngine {
@@ -69,6 +75,7 @@ func NewQAudioEngine() *QAudioEngine {
 
 // NewQAudioEngine2 constructs a new QAudioEngine object.
 func NewQAudioEngine2(parent *qt6.QObject) *QAudioEngine {
+	defer runtime.KeepAlive(parent)
 
 	return newQAudioEngine(C.QAudioEngine_new2((*C.QObject)(parent.UnsafePointer())))
 }
@@ -81,15 +88,18 @@ func NewQAudioEngine3(sampleRate int) *QAudioEngine {
 
 // NewQAudioEngine4 constructs a new QAudioEngine object.
 func NewQAudioEngine4(sampleRate int, parent *qt6.QObject) *QAudioEngine {
+	defer runtime.KeepAlive(parent)
 
 	return newQAudioEngine(C.QAudioEngine_new4((C.int)(sampleRate), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioEngine) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioEngine_metaObject(this.h)))
 }
 
 func (this *QAudioEngine) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioEngine_metacast(this.h, param1_Cstring))
@@ -105,60 +115,75 @@ func QAudioEngine_Tr(s string) string {
 }
 
 func (this *QAudioEngine) SetOutputMode(mode QAudioEngine__OutputMode) {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_setOutputMode(this.h, (C.int)(mode))
 }
 
 func (this *QAudioEngine) OutputMode() QAudioEngine__OutputMode {
+	defer runtime.KeepAlive(this)
 	return (QAudioEngine__OutputMode)(C.QAudioEngine_outputMode(this.h))
 }
 
 func (this *QAudioEngine) SampleRate() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAudioEngine_sampleRate(this.h))
 }
 
 func (this *QAudioEngine) SetOutputDevice(device *multimedia.QAudioDevice) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(device)
 	C.QAudioEngine_setOutputDevice(this.h, (*C.QAudioDevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioEngine) OutputDevice() *multimedia.QAudioDevice {
+	defer runtime.KeepAlive(this)
 	_goptr := multimedia.UnsafeNewQAudioDevice(unsafe.Pointer(C.QAudioEngine_outputDevice(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioEngine) SetMasterVolume(volume float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_setMasterVolume(this.h, (C.float)(volume))
 }
 
 func (this *QAudioEngine) MasterVolume() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioEngine_masterVolume(this.h))
 }
 
 func (this *QAudioEngine) SetPaused(paused bool) {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QAudioEngine) Paused() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioEngine_paused(this.h))
 }
 
 func (this *QAudioEngine) SetRoomEffectsEnabled(enabled bool) {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_setRoomEffectsEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QAudioEngine) RoomEffectsEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioEngine_roomEffectsEnabled(this.h))
 }
 
 func (this *QAudioEngine) SetDistanceScale(scale float32) {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_setDistanceScale(this.h, (C.float)(scale))
 }
 
 func (this *QAudioEngine) DistanceScale() float32 {
+	defer runtime.KeepAlive(this)
 	return (float32)(C.QAudioEngine_distanceScale(this.h))
 }
 
 func (this *QAudioEngine) OutputModeChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_outputModeChanged(this.h)
 }
 func (this *QAudioEngine) OnOutputModeChanged(slot func()) {
@@ -176,6 +201,7 @@ func miqt_exec_callback_QAudioEngine_outputModeChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioEngine) OutputDeviceChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_outputDeviceChanged(this.h)
 }
 func (this *QAudioEngine) OnOutputDeviceChanged(slot func()) {
@@ -193,6 +219,7 @@ func miqt_exec_callback_QAudioEngine_outputDeviceChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioEngine) MasterVolumeChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_masterVolumeChanged(this.h)
 }
 func (this *QAudioEngine) OnMasterVolumeChanged(slot func()) {
@@ -210,6 +237,7 @@ func miqt_exec_callback_QAudioEngine_masterVolumeChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioEngine) PausedChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_pausedChanged(this.h)
 }
 func (this *QAudioEngine) OnPausedChanged(slot func()) {
@@ -227,6 +255,7 @@ func miqt_exec_callback_QAudioEngine_pausedChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioEngine) DistanceScaleChanged() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_distanceScaleChanged(this.h)
 }
 func (this *QAudioEngine) OnDistanceScaleChanged(slot func()) {
@@ -244,18 +273,22 @@ func miqt_exec_callback_QAudioEngine_distanceScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioEngine) Start() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_start(this.h)
 }
 
 func (this *QAudioEngine) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_stop(this.h)
 }
 
 func (this *QAudioEngine) Pause() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_pause(this.h)
 }
 
 func (this *QAudioEngine) Resume() {
+	defer runtime.KeepAlive(this)
 	C.QAudioEngine_resume(this.h)
 }
 
@@ -283,6 +316,7 @@ func QAudioEngine_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QAudioEngine that was directly constructed.
 func (this *QAudioEngine) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAudioEngine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -297,6 +331,7 @@ func (this *QAudioEngine) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAudioEngine that was directly constructed.
 func (this *QAudioEngine) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioEngine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -311,6 +346,7 @@ func (this *QAudioEngine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioEngine that was directly constructed.
 func (this *QAudioEngine) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -327,6 +363,8 @@ func (this *QAudioEngine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioEngine that was directly constructed.
 func (this *QAudioEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAudioEngine_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -340,6 +378,8 @@ func (this *QAudioEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAudioEngine) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioEngine_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -368,6 +408,9 @@ func miqt_exec_callback_QAudioEngine_event(self *C.QAudioEngine, cb C.intptr_t, 
 }
 
 func (this *QAudioEngine) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioEngine_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -398,6 +441,8 @@ func miqt_exec_callback_QAudioEngine_eventFilter(self *C.QAudioEngine, cb C.intp
 }
 
 func (this *QAudioEngine) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioEngine_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -424,6 +469,8 @@ func miqt_exec_callback_QAudioEngine_timerEvent(self *C.QAudioEngine, cb C.intpt
 }
 
 func (this *QAudioEngine) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioEngine_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -450,6 +497,8 @@ func miqt_exec_callback_QAudioEngine_childEvent(self *C.QAudioEngine, cb C.intpt
 }
 
 func (this *QAudioEngine) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAudioEngine_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -476,6 +525,8 @@ func miqt_exec_callback_QAudioEngine_customEvent(self *C.QAudioEngine, cb C.intp
 }
 
 func (this *QAudioEngine) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioEngine_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -502,6 +553,8 @@ func miqt_exec_callback_QAudioEngine_connectNotify(self *C.QAudioEngine, cb C.in
 }
 
 func (this *QAudioEngine) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAudioEngine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -539,8 +592,9 @@ func (this *QAudioEngine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAudioEngine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioEngine) {
-		C.QAudioEngine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAudioEngine_delete((*C.QAudioEngine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

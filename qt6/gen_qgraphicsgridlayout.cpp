@@ -132,7 +132,9 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsGridLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSizeF* QGraphicsGridLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
@@ -566,6 +568,10 @@ bool QGraphicsGridLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGraphicsGridLayout_virtualbase_isEmpty(const void* self) {
 	return static_cast<const MiqtVirtualQGraphicsGridLayout*>(self)->QGraphicsGridLayout::isEmpty();
+}
+
+QSizeF* QGraphicsGridLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
 }
 
 void QGraphicsGridLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

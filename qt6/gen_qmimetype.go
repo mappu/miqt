@@ -15,7 +15,13 @@ import (
 
 type QMimeType struct {
 	h  *C.QMimeType
-	gc *[1]*C.QMimeType
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QMimeType) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QMimeType) cPointer() *C.QMimeType {
@@ -54,35 +60,47 @@ func NewQMimeType() *QMimeType {
 
 // NewQMimeType2 constructs a new QMimeType object.
 func NewQMimeType2(other *QMimeType) *QMimeType {
+	defer runtime.KeepAlive(other)
 
 	return newQMimeType(C.QMimeType_new2(other.cPointer()))
 }
 
 func (this *QMimeType) OperatorAssign(other *QMimeType) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMimeType_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMimeType) Swap(other *QMimeType) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QMimeType_swap(this.h, other.cPointer())
 }
 
 func (this *QMimeType) OperatorEqual(other *QMimeType) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMimeType_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) OperatorNotEqual(other *QMimeType) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QMimeType_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeType_isValid(this.h))
 }
 
 func (this *QMimeType) IsDefault() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeType_isDefault(this.h))
 }
 
 func (this *QMimeType) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -90,6 +108,7 @@ func (this *QMimeType) Name() string {
 }
 
 func (this *QMimeType) Comment() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_comment(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -97,6 +116,7 @@ func (this *QMimeType) Comment() string {
 }
 
 func (this *QMimeType) GenericIconName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_genericIconName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,6 +124,7 @@ func (this *QMimeType) GenericIconName() string {
 }
 
 func (this *QMimeType) IconName() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_iconName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -111,6 +132,7 @@ func (this *QMimeType) IconName() string {
 }
 
 func (this *QMimeType) GlobPatterns() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeType_globPatterns(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -124,6 +146,7 @@ func (this *QMimeType) GlobPatterns() []string {
 }
 
 func (this *QMimeType) ParentMimeTypes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeType_parentMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -137,6 +160,7 @@ func (this *QMimeType) ParentMimeTypes() []string {
 }
 
 func (this *QMimeType) AllAncestors() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeType_allAncestors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -150,6 +174,7 @@ func (this *QMimeType) AllAncestors() []string {
 }
 
 func (this *QMimeType) Aliases() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeType_aliases(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -163,6 +188,7 @@ func (this *QMimeType) Aliases() []string {
 }
 
 func (this *QMimeType) Suffixes() []string {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeType_suffixes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -176,6 +202,7 @@ func (this *QMimeType) Suffixes() []string {
 }
 
 func (this *QMimeType) PreferredSuffix() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_preferredSuffix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -183,6 +210,7 @@ func (this *QMimeType) PreferredSuffix() string {
 }
 
 func (this *QMimeType) Inherits(mimeTypeName string) bool {
+	defer runtime.KeepAlive(this)
 	mimeTypeName_ms := C.struct_miqt_string{}
 	mimeTypeName_ms.data = C.CString(mimeTypeName)
 	mimeTypeName_ms.len = C.size_t(len(mimeTypeName))
@@ -191,6 +219,7 @@ func (this *QMimeType) Inherits(mimeTypeName string) bool {
 }
 
 func (this *QMimeType) FilterString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeType_filterString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -209,8 +238,9 @@ func (this *QMimeType) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QMimeType{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMimeType) {
-		C.QMimeType_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QMimeType_delete((*C.QMimeType)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

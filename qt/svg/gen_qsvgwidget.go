@@ -17,8 +17,14 @@ import (
 
 type QSvgWidget struct {
 	h  *C.QSvgWidget
-	gc *[1]*C.QSvgWidget
+	gc *[1]unsafe.Pointer
 	*qt.QWidget
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSvgWidget) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QSvgWidget) cPointer() *C.QSvgWidget {
@@ -54,6 +60,7 @@ func UnsafeNewQSvgWidget(h unsafe.Pointer) *QSvgWidget {
 
 // NewQSvgWidget constructs a new QSvgWidget object.
 func NewQSvgWidget(parent *qt.QWidget) *QSvgWidget {
+	defer runtime.KeepAlive(parent)
 
 	return newQSvgWidget(C.QSvgWidget_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -76,6 +83,7 @@ func NewQSvgWidget3(file string) *QSvgWidget {
 
 // NewQSvgWidget4 constructs a new QSvgWidget object.
 func NewQSvgWidget4(file string, parent *qt.QWidget) *QSvgWidget {
+	defer runtime.KeepAlive(parent)
 	file_ms := C.struct_miqt_string{}
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
@@ -85,10 +93,12 @@ func NewQSvgWidget4(file string, parent *qt.QWidget) *QSvgWidget {
 }
 
 func (this *QSvgWidget) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QSvgWidget_metaObject(this.h)))
 }
 
 func (this *QSvgWidget) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSvgWidget_metacast(this.h, param1_Cstring))
@@ -113,16 +123,19 @@ func QSvgWidget_TrUtf8(s string) string {
 }
 
 func (this *QSvgWidget) Renderer() *QSvgRenderer {
+	defer runtime.KeepAlive(this)
 	return newQSvgRenderer(C.QSvgWidget_renderer(this.h))
 }
 
 func (this *QSvgWidget) SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgWidget) Load(file string) {
+	defer runtime.KeepAlive(this)
 	file_ms := C.struct_miqt_string{}
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
@@ -131,6 +144,7 @@ func (this *QSvgWidget) Load(file string) {
 }
 
 func (this *QSvgWidget) LoadWithContents(contents []byte) {
+	defer runtime.KeepAlive(this)
 	contents_alias := C.struct_miqt_string{}
 	if len(contents) > 0 {
 		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
@@ -187,6 +201,7 @@ func QSvgWidget_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSvgWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -199,6 +214,7 @@ func (this *QSvgWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSvgWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -211,6 +227,7 @@ func (this *QSvgWidget) Create() {
 
 // Destroy can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSvgWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -223,6 +240,7 @@ func (this *QSvgWidget) Destroy() {
 
 // FocusNextChild can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSvgWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -237,6 +255,7 @@ func (this *QSvgWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSvgWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -251,6 +270,7 @@ func (this *QSvgWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) Sender() *qt.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSvgWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -265,6 +285,7 @@ func (this *QSvgWidget) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSvgWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -279,6 +300,7 @@ func (this *QSvgWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -295,6 +317,8 @@ func (this *QSvgWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSvgWidget that was directly constructed.
 func (this *QSvgWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSvgWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -308,6 +332,7 @@ func (this *QSvgWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QSvgWidget) callVirtualBase_SizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -329,12 +354,15 @@ func miqt_exec_callback_QSvgWidget_sizeHint(self *C.QSvgWidget, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QSvgWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSvgWidget) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -361,6 +389,7 @@ func miqt_exec_callback_QSvgWidget_paintEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSvgWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -386,6 +415,7 @@ func miqt_exec_callback_QSvgWidget_devType(self *C.QSvgWidget, cb C.intptr_t) C.
 }
 
 func (this *QSvgWidget) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QSvgWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -412,6 +442,7 @@ func miqt_exec_callback_QSvgWidget_setVisible(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -433,12 +464,14 @@ func miqt_exec_callback_QSvgWidget_minimumSizeHint(self *C.QSvgWidget, cb C.intp
 	}
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QSvgWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSvgWidget) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSvgWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -467,6 +500,7 @@ func miqt_exec_callback_QSvgWidget_heightForWidth(self *C.QSvgWidget, cb C.intpt
 }
 
 func (this *QSvgWidget) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSvgWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -492,6 +526,7 @@ func miqt_exec_callback_QSvgWidget_hasHeightForWidth(self *C.QSvgWidget, cb C.in
 }
 
 func (this *QSvgWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QSvgWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -511,12 +546,15 @@ func miqt_exec_callback_QSvgWidget_paintEngine(self *C.QSvgWidget, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSvgWidget) callVirtualBase_Event(event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSvgWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -545,6 +583,8 @@ func miqt_exec_callback_QSvgWidget_event(self *C.QSvgWidget, cb C.intptr_t, even
 }
 
 func (this *QSvgWidget) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -571,6 +611,8 @@ func miqt_exec_callback_QSvgWidget_mousePressEvent(self *C.QSvgWidget, cb C.intp
 }
 
 func (this *QSvgWidget) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -597,6 +639,8 @@ func miqt_exec_callback_QSvgWidget_mouseReleaseEvent(self *C.QSvgWidget, cb C.in
 }
 
 func (this *QSvgWidget) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -623,6 +667,8 @@ func miqt_exec_callback_QSvgWidget_mouseDoubleClickEvent(self *C.QSvgWidget, cb 
 }
 
 func (this *QSvgWidget) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
@@ -649,6 +695,8 @@ func miqt_exec_callback_QSvgWidget_mouseMoveEvent(self *C.QSvgWidget, cb C.intpt
 }
 
 func (this *QSvgWidget) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
@@ -675,6 +723,8 @@ func miqt_exec_callback_QSvgWidget_wheelEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -701,6 +751,8 @@ func miqt_exec_callback_QSvgWidget_keyPressEvent(self *C.QSvgWidget, cb C.intptr
 }
 
 func (this *QSvgWidget) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -727,6 +779,8 @@ func miqt_exec_callback_QSvgWidget_keyReleaseEvent(self *C.QSvgWidget, cb C.intp
 }
 
 func (this *QSvgWidget) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -753,6 +807,8 @@ func miqt_exec_callback_QSvgWidget_focusInEvent(self *C.QSvgWidget, cb C.intptr_
 }
 
 func (this *QSvgWidget) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -779,6 +835,8 @@ func miqt_exec_callback_QSvgWidget_focusOutEvent(self *C.QSvgWidget, cb C.intptr
 }
 
 func (this *QSvgWidget) callVirtualBase_EnterEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -805,6 +863,8 @@ func miqt_exec_callback_QSvgWidget_enterEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -831,6 +891,8 @@ func miqt_exec_callback_QSvgWidget_leaveEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -857,6 +919,8 @@ func miqt_exec_callback_QSvgWidget_moveEvent(self *C.QSvgWidget, cb C.intptr_t, 
 }
 
 func (this *QSvgWidget) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -883,6 +947,8 @@ func miqt_exec_callback_QSvgWidget_resizeEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -909,6 +975,8 @@ func miqt_exec_callback_QSvgWidget_closeEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
@@ -935,6 +1003,8 @@ func miqt_exec_callback_QSvgWidget_contextMenuEvent(self *C.QSvgWidget, cb C.int
 }
 
 func (this *QSvgWidget) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -961,6 +1031,8 @@ func miqt_exec_callback_QSvgWidget_tabletEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -987,6 +1059,8 @@ func miqt_exec_callback_QSvgWidget_actionEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
@@ -1013,6 +1087,8 @@ func miqt_exec_callback_QSvgWidget_dragEnterEvent(self *C.QSvgWidget, cb C.intpt
 }
 
 func (this *QSvgWidget) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
@@ -1039,6 +1115,8 @@ func miqt_exec_callback_QSvgWidget_dragMoveEvent(self *C.QSvgWidget, cb C.intptr
 }
 
 func (this *QSvgWidget) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
@@ -1065,6 +1143,8 @@ func miqt_exec_callback_QSvgWidget_dragLeaveEvent(self *C.QSvgWidget, cb C.intpt
 }
 
 func (this *QSvgWidget) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
@@ -1091,6 +1171,8 @@ func miqt_exec_callback_QSvgWidget_dropEvent(self *C.QSvgWidget, cb C.intptr_t, 
 }
 
 func (this *QSvgWidget) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1117,6 +1199,8 @@ func miqt_exec_callback_QSvgWidget_showEvent(self *C.QSvgWidget, cb C.intptr_t, 
 }
 
 func (this *QSvgWidget) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1143,6 +1227,7 @@ func miqt_exec_callback_QSvgWidget_hideEvent(self *C.QSvgWidget, cb C.intptr_t, 
 }
 
 func (this *QSvgWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1184,6 +1269,8 @@ func miqt_exec_callback_QSvgWidget_nativeEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSvgWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1210,6 +1297,7 @@ func miqt_exec_callback_QSvgWidget_changeEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSvgWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1238,6 +1326,8 @@ func miqt_exec_callback_QSvgWidget_metric(self *C.QSvgWidget, cb C.intptr_t, par
 }
 
 func (this *QSvgWidget) callVirtualBase_InitPainter(painter *qt.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QSvgWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1264,6 +1354,8 @@ func miqt_exec_callback_QSvgWidget_initPainter(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1286,12 +1378,14 @@ func miqt_exec_callback_QSvgWidget_redirected(self *C.QSvgWidget, cb C.intptr_t,
 	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSvgWidget) callVirtualBase_SharedPainter() *qt.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QSvgWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1311,12 +1405,15 @@ func miqt_exec_callback_QSvgWidget_sharedPainter(self *C.QSvgWidget, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSvgWidget) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QSvgWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1343,6 +1440,7 @@ func miqt_exec_callback_QSvgWidget_inputMethodEvent(self *C.QSvgWidget, cb C.int
 }
 
 func (this *QSvgWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSvgWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1367,12 +1465,14 @@ func miqt_exec_callback_QSvgWidget_inputMethodQuery(self *C.QSvgWidget, cb C.int
 	slotval1 := (qt.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QSvgWidget{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QSvgWidget_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QSvgWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSvgWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1401,6 +1501,9 @@ func miqt_exec_callback_QSvgWidget_focusNextPrevChild(self *C.QSvgWidget, cb C.i
 }
 
 func (this *QSvgWidget) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSvgWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -1431,6 +1534,8 @@ func miqt_exec_callback_QSvgWidget_eventFilter(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1457,6 +1562,8 @@ func miqt_exec_callback_QSvgWidget_timerEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1483,6 +1590,8 @@ func miqt_exec_callback_QSvgWidget_childEvent(self *C.QSvgWidget, cb C.intptr_t,
 }
 
 func (this *QSvgWidget) callVirtualBase_CustomEvent(event *qt.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSvgWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1509,6 +1618,8 @@ func miqt_exec_callback_QSvgWidget_customEvent(self *C.QSvgWidget, cb C.intptr_t
 }
 
 func (this *QSvgWidget) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSvgWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1535,6 +1646,8 @@ func miqt_exec_callback_QSvgWidget_connectNotify(self *C.QSvgWidget, cb C.intptr
 }
 
 func (this *QSvgWidget) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSvgWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1572,8 +1685,9 @@ func (this *QSvgWidget) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSvgWidget{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSvgWidget) {
-		C.QSvgWidget_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSvgWidget_delete((*C.QSvgWidget)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

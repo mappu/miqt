@@ -17,8 +17,14 @@ import (
 
 type QNetworkCookieJar struct {
 	h  *C.QNetworkCookieJar
-	gc *[1]*C.QNetworkCookieJar
+	gc *[1]unsafe.Pointer
 	*qt6.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QNetworkCookieJar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QNetworkCookieJar) cPointer() *C.QNetworkCookieJar {
@@ -60,15 +66,18 @@ func NewQNetworkCookieJar() *QNetworkCookieJar {
 
 // NewQNetworkCookieJar2 constructs a new QNetworkCookieJar object.
 func NewQNetworkCookieJar2(parent *qt6.QObject) *QNetworkCookieJar {
+	defer runtime.KeepAlive(parent)
 
 	return newQNetworkCookieJar(C.QNetworkCookieJar_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkCookieJar) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkCookieJar_metaObject(this.h)))
 }
 
 func (this *QNetworkCookieJar) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkCookieJar_metacast(this.h, param1_Cstring))
@@ -84,6 +93,8 @@ func QNetworkCookieJar_Tr(s string) string {
 }
 
 func (this *QNetworkCookieJar) CookiesForUrl(url *qt6.QUrl) []QNetworkCookie {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_cookiesForUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 	_ret := make([]QNetworkCookie, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -96,6 +107,9 @@ func (this *QNetworkCookieJar) CookiesForUrl(url *qt6.QUrl) []QNetworkCookie {
 }
 
 func (this *QNetworkCookieJar) SetCookiesFromUrl(cookieList []QNetworkCookie, url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookieList)
+	defer runtime.KeepAlive(url)
 	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
 	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
 	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
@@ -107,14 +121,20 @@ func (this *QNetworkCookieJar) SetCookiesFromUrl(cookieList []QNetworkCookie, ur
 }
 
 func (this *QNetworkCookieJar) InsertCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	return (bool)(C.QNetworkCookieJar_insertCookie(this.h, cookie.cPointer()))
 }
 
 func (this *QNetworkCookieJar) UpdateCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	return (bool)(C.QNetworkCookieJar_updateCookie(this.h, cookie.cPointer()))
 }
 
 func (this *QNetworkCookieJar) DeleteCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 	return (bool)(C.QNetworkCookieJar_deleteCookie(this.h, cookie.cPointer()))
 }
 
@@ -142,6 +162,7 @@ func QNetworkCookieJar_Tr3(s string, c string, n int) string {
 
 // AllCookies can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) AllCookies() []QNetworkCookie {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_protectedbase_allCookies(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -164,6 +185,8 @@ func (this *QNetworkCookieJar) AllCookies() []QNetworkCookie {
 
 // SetAllCookies can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) SetAllCookies(cookieList []QNetworkCookie) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookieList)
 	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
 	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
 	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
@@ -183,6 +206,7 @@ func (this *QNetworkCookieJar) SetAllCookies(cookieList []QNetworkCookie) {
 
 // Sender can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QNetworkCookieJar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -197,6 +221,7 @@ func (this *QNetworkCookieJar) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNetworkCookieJar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -211,6 +236,7 @@ func (this *QNetworkCookieJar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -227,6 +253,8 @@ func (this *QNetworkCookieJar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QNetworkCookieJar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -240,6 +268,8 @@ func (this *QNetworkCookieJar) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt6.QUrl) []QNetworkCookie {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(url)
 
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_virtualbase_cookiesForUrl(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))
 	_ret := make([]QNetworkCookie, int(_ma.len))
@@ -270,10 +300,11 @@ func miqt_exec_callback_QNetworkCookieJar_cookiesForUrl(self *C.QNetworkCookieJa
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_CookiesForUrl, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+		virtualReturn_CArray[i] = C.QNetworkCookieJar_virtualreturncopy_QNetworkCookie(virtualReturn[i].cPointer())
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -282,6 +313,9 @@ func miqt_exec_callback_QNetworkCookieJar_cookiesForUrl(self *C.QNetworkCookieJa
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_SetCookiesFromUrl(cookieList []QNetworkCookie, url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookieList)
+	defer runtime.KeepAlive(url)
 	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
 	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
 	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
@@ -327,6 +361,8 @@ func miqt_exec_callback_QNetworkCookieJar_setCookiesFromUrl(self *C.QNetworkCook
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_InsertCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_insertCookie(unsafe.Pointer(this.h), cookie.cPointer()))
 
@@ -355,6 +391,8 @@ func miqt_exec_callback_QNetworkCookieJar_insertCookie(self *C.QNetworkCookieJar
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_UpdateCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_updateCookie(unsafe.Pointer(this.h), cookie.cPointer()))
 
@@ -383,6 +421,8 @@ func miqt_exec_callback_QNetworkCookieJar_updateCookie(self *C.QNetworkCookieJar
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_DeleteCookie(cookie *QNetworkCookie) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_deleteCookie(unsafe.Pointer(this.h), cookie.cPointer()))
 
@@ -411,6 +451,9 @@ func miqt_exec_callback_QNetworkCookieJar_deleteCookie(self *C.QNetworkCookieJar
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_ValidateCookie(cookie *QNetworkCookie, url *qt6.QUrl) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(cookie)
+	defer runtime.KeepAlive(url)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_validateCookie(unsafe.Pointer(this.h), cookie.cPointer(), (*C.QUrl)(url.UnsafePointer())))
 
@@ -441,6 +484,8 @@ func miqt_exec_callback_QNetworkCookieJar_validateCookie(self *C.QNetworkCookieJ
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -469,6 +514,9 @@ func miqt_exec_callback_QNetworkCookieJar_event(self *C.QNetworkCookieJar, cb C.
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -499,6 +547,8 @@ func miqt_exec_callback_QNetworkCookieJar_eventFilter(self *C.QNetworkCookieJar,
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkCookieJar_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -525,6 +575,8 @@ func miqt_exec_callback_QNetworkCookieJar_timerEvent(self *C.QNetworkCookieJar, 
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkCookieJar_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -551,6 +603,8 @@ func miqt_exec_callback_QNetworkCookieJar_childEvent(self *C.QNetworkCookieJar, 
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QNetworkCookieJar_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -577,6 +631,8 @@ func miqt_exec_callback_QNetworkCookieJar_customEvent(self *C.QNetworkCookieJar,
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNetworkCookieJar_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -603,6 +659,8 @@ func miqt_exec_callback_QNetworkCookieJar_connectNotify(self *C.QNetworkCookieJa
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QNetworkCookieJar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -640,8 +698,9 @@ func (this *QNetworkCookieJar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QNetworkCookieJar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkCookieJar) {
-		C.QNetworkCookieJar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QNetworkCookieJar_delete((*C.QNetworkCookieJar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

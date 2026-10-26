@@ -88,6 +88,8 @@ bool QLayoutItem_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self);
 bool QLayoutItem_override_virtual_controlTypes(void* self, intptr_t slot);
 int QLayoutItem_virtualbase_controlTypes(const void* self);
+QSize* QLayoutItem_virtualreturncopy_QSize(QSize* src);
+QRect* QLayoutItem_virtualreturncopy_QRect(QRect* src);
 
 void QLayoutItem_delete(QLayoutItem* self);
 
@@ -140,6 +142,8 @@ bool QSpacerItem_override_virtual_layout(void* self, intptr_t slot);
 QLayout* QSpacerItem_virtualbase_layout(void* self);
 bool QSpacerItem_override_virtual_controlTypes(void* self, intptr_t slot);
 int QSpacerItem_virtualbase_controlTypes(const void* self);
+QSize* QSpacerItem_virtualreturncopy_QSize(QSize* src);
+QRect* QSpacerItem_virtualreturncopy_QRect(QRect* src);
 
 void QSpacerItem_delete(QSpacerItem* self);
 
@@ -187,6 +191,8 @@ bool QWidgetItem_override_virtual_layout(void* self, intptr_t slot);
 QLayout* QWidgetItem_virtualbase_layout(void* self);
 bool QWidgetItem_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QWidgetItem_virtualbase_spacerItem(void* self);
+QSize* QWidgetItem_virtualreturncopy_QSize(QSize* src);
+QRect* QWidgetItem_virtualreturncopy_QRect(QRect* src);
 
 void QWidgetItem_delete(QWidgetItem* self);
 
@@ -227,6 +233,8 @@ bool QWidgetItemV2_override_virtual_layout(void* self, intptr_t slot);
 QLayout* QWidgetItemV2_virtualbase_layout(void* self);
 bool QWidgetItemV2_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QWidgetItemV2_virtualbase_spacerItem(void* self);
+QSize* QWidgetItemV2_virtualreturncopy_QSize(QSize* src);
+QRect* QWidgetItemV2_virtualreturncopy_QRect(QRect* src);
 
 void QWidgetItemV2_delete(QWidgetItemV2* self);
 

@@ -15,7 +15,13 @@ import (
 
 type QLoggingCategory struct {
 	h  *C.QLoggingCategory
-	gc *[1]*C.QLoggingCategory
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLoggingCategory) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
@@ -55,32 +61,43 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLoggingCategory_isDebugEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsInfoEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLoggingCategory_isInfoEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsWarningEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLoggingCategory_isWarningEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsCriticalEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QLoggingCategory_isCriticalEnabled(this.h))
 }
 
 func (this *QLoggingCategory) CategoryName() string {
+	defer runtime.KeepAlive(this)
 	_ret := C.QLoggingCategory_categoryName(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	return newQLoggingCategory(C.QLoggingCategory_operatorCall(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQLoggingCategory(C.QLoggingCategory_operatorCall(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	return newQLoggingCategory(C.QLoggingCategory_operatorCall2(this.h))
+	defer runtime.KeepAlive(this)
+	_ret := newQLoggingCategory(C.QLoggingCategory_operatorCall2(this.h))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
@@ -107,8 +124,9 @@ func (this *QLoggingCategory) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLoggingCategory{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLoggingCategory) {
-		C.QLoggingCategory_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLoggingCategory_delete((*C.QLoggingCategory)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

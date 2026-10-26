@@ -9,11 +9,19 @@ package qt6
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
 
 type QStringTokenizerBaseBase struct {
-	h *C.QStringTokenizerBaseBase
+	h  *C.QStringTokenizerBaseBase
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStringTokenizerBaseBase) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QStringTokenizerBaseBase) cPointer() *C.QStringTokenizerBaseBase {
@@ -46,6 +54,7 @@ func UnsafeNewQStringTokenizerBaseBase(h unsafe.Pointer) *QStringTokenizerBaseBa
 
 // NewQStringTokenizerBaseBase constructs a new QStringTokenizerBaseBase object.
 func NewQStringTokenizerBaseBase(param1 *QStringTokenizerBaseBase) *QStringTokenizerBaseBase {
+	defer runtime.KeepAlive(param1)
 
 	return newQStringTokenizerBaseBase(C.QStringTokenizerBaseBase_new(param1.cPointer()))
 }

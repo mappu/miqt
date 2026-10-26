@@ -14,8 +14,16 @@ import (
 )
 
 type QAccessibleObject struct {
-	h *C.QAccessibleObject
+	h  *C.QAccessibleObject
+	gc *[1]unsafe.Pointer
 	*QAccessibleInterface
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessibleObject) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAccessibleInterface.miqtSetGC(gc)
 }
 
 func (this *QAccessibleObject) cPointer() *C.QAccessibleObject {
@@ -50,20 +58,24 @@ func UnsafeNewQAccessibleObject(h unsafe.Pointer) *QAccessibleObject {
 }
 
 func (this *QAccessibleObject) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAccessibleObject_isValid(this.h))
 }
 
 func (this *QAccessibleObject) Object() *QObject {
+	defer runtime.KeepAlive(this)
 	return newQObject(C.QAccessibleObject_object(this.h))
 }
 
 func (this *QAccessibleObject) Rect() *QRect {
+	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QAccessibleObject_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
+	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -72,13 +84,21 @@ func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleObject_childAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
 type QAccessibleApplication struct {
 	h  *C.QAccessibleApplication
-	gc *[1]*C.QAccessibleApplication
+	gc *[1]unsafe.Pointer
 	*QAccessibleObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAccessibleApplication) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAccessibleObject.miqtSetGC(gc)
 }
 
 func (this *QAccessibleApplication) cPointer() *C.QAccessibleApplication {
@@ -119,30 +139,38 @@ func NewQAccessibleApplication() *QAccessibleApplication {
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
+	defer runtime.KeepAlive(this)
 	return newQWindow(C.QAccessibleApplication_window(this.h))
 }
 
 func (this *QAccessibleApplication) ChildCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAccessibleApplication_childCount(this.h))
 }
 
 func (this *QAccessibleApplication) IndexOfChild(param1 *QAccessibleInterface) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (int)(C.QAccessibleApplication_indexOfChild(this.h, param1.cPointer()))
 }
 
 func (this *QAccessibleApplication) FocusChild() *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleApplication_focusChild(this.h))
 }
 
 func (this *QAccessibleApplication) Parent() *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleApplication_parent(this.h))
 }
 
 func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
+	defer runtime.KeepAlive(this)
 	return newQAccessibleInterface(C.QAccessibleApplication_child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAccessibleApplication_text(this.h, (C.int)(t))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -150,10 +178,12 @@ func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
 }
 
 func (this *QAccessibleApplication) Role() QAccessible__Role {
+	defer runtime.KeepAlive(this)
 	return (QAccessible__Role)(C.QAccessibleApplication_role(this.h))
 }
 
 func (this *QAccessibleApplication) State() *QAccessible__State {
+	defer runtime.KeepAlive(this)
 	_goptr := newQAccessible__State(C.QAccessibleApplication_state(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -171,8 +201,9 @@ func (this *QAccessibleApplication) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAccessibleApplication{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleApplication) {
-		C.QAccessibleApplication_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAccessibleApplication_delete((*C.QAccessibleApplication)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -17,8 +17,15 @@ import (
 
 type QVideoWidgetControl struct {
 	h  *C.QVideoWidgetControl
-	gc *[1]*C.QVideoWidgetControl
+	gc *[1]unsafe.Pointer
 	*QMediaControl
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QVideoWidgetControl) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QMediaControl.miqtSetGC(gc)
 }
 
 func (this *QVideoWidgetControl) cPointer() *C.QVideoWidgetControl {
@@ -53,10 +60,12 @@ func UnsafeNewQVideoWidgetControl(h unsafe.Pointer) *QVideoWidgetControl {
 }
 
 func (this *QVideoWidgetControl) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoWidgetControl_metaObject(this.h)))
 }
 
 func (this *QVideoWidgetControl) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoWidgetControl_metacast(this.h, param1_Cstring))
@@ -81,58 +90,72 @@ func QVideoWidgetControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoWidgetControl) VideoWidget() *qt.QWidget {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QVideoWidgetControl_videoWidget(this.h)))
 }
 
 func (this *QVideoWidgetControl) AspectRatioMode() qt.AspectRatioMode {
+	defer runtime.KeepAlive(this)
 	return (qt.AspectRatioMode)(C.QVideoWidgetControl_aspectRatioMode(this.h))
 }
 
 func (this *QVideoWidgetControl) SetAspectRatioMode(mode qt.AspectRatioMode) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QVideoWidgetControl) IsFullScreen() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoWidgetControl_isFullScreen(this.h))
 }
 
 func (this *QVideoWidgetControl) SetFullScreen(fullScreen bool) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setFullScreen(this.h, (C.bool)(fullScreen))
 }
 
 func (this *QVideoWidgetControl) Brightness() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidgetControl_brightness(this.h))
 }
 
 func (this *QVideoWidgetControl) SetBrightness(brightness int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setBrightness(this.h, (C.int)(brightness))
 }
 
 func (this *QVideoWidgetControl) Contrast() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidgetControl_contrast(this.h))
 }
 
 func (this *QVideoWidgetControl) SetContrast(contrast int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setContrast(this.h, (C.int)(contrast))
 }
 
 func (this *QVideoWidgetControl) Hue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidgetControl_hue(this.h))
 }
 
 func (this *QVideoWidgetControl) SetHue(hue int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setHue(this.h, (C.int)(hue))
 }
 
 func (this *QVideoWidgetControl) Saturation() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWidgetControl_saturation(this.h))
 }
 
 func (this *QVideoWidgetControl) SetSaturation(saturation int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_setSaturation(this.h, (C.int)(saturation))
 }
 
 func (this *QVideoWidgetControl) FullScreenChanged(fullScreen bool) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_fullScreenChanged(this.h, (C.bool)(fullScreen))
 }
 func (this *QVideoWidgetControl) OnFullScreenChanged(slot func(fullScreen bool)) {
@@ -153,6 +176,7 @@ func miqt_exec_callback_QVideoWidgetControl_fullScreenChanged(cb C.intptr_t, ful
 }
 
 func (this *QVideoWidgetControl) BrightnessChanged(brightness int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_brightnessChanged(this.h, (C.int)(brightness))
 }
 func (this *QVideoWidgetControl) OnBrightnessChanged(slot func(brightness int)) {
@@ -173,6 +197,7 @@ func miqt_exec_callback_QVideoWidgetControl_brightnessChanged(cb C.intptr_t, bri
 }
 
 func (this *QVideoWidgetControl) ContrastChanged(contrast int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_contrastChanged(this.h, (C.int)(contrast))
 }
 func (this *QVideoWidgetControl) OnContrastChanged(slot func(contrast int)) {
@@ -193,6 +218,7 @@ func miqt_exec_callback_QVideoWidgetControl_contrastChanged(cb C.intptr_t, contr
 }
 
 func (this *QVideoWidgetControl) HueChanged(hue int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_hueChanged(this.h, (C.int)(hue))
 }
 func (this *QVideoWidgetControl) OnHueChanged(slot func(hue int)) {
@@ -213,6 +239,7 @@ func miqt_exec_callback_QVideoWidgetControl_hueChanged(cb C.intptr_t, hue C.int)
 }
 
 func (this *QVideoWidgetControl) SaturationChanged(saturation int) {
+	defer runtime.KeepAlive(this)
 	C.QVideoWidgetControl_saturationChanged(this.h, (C.int)(saturation))
 }
 func (this *QVideoWidgetControl) OnSaturationChanged(slot func(saturation int)) {
@@ -288,8 +315,9 @@ func (this *QVideoWidgetControl) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QVideoWidgetControl{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoWidgetControl) {
-		C.QVideoWidgetControl_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QVideoWidgetControl_delete((*C.QVideoWidgetControl)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

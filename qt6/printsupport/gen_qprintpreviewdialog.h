@@ -210,6 +210,8 @@ bool QPrintPreviewDialog_override_virtual_connectNotify(void* self, intptr_t slo
 void QPrintPreviewDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintPreviewDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QPrintPreviewDialog_virtualreturncopy_QSize(QSize* src);
+QVariant* QPrintPreviewDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QPrintPreviewDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QPrintPreviewDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

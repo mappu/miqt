@@ -31,7 +31,13 @@ const (
 
 type QScriptClass struct {
 	h  *C.QScriptClass
-	gc *[1]*C.QScriptClass
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptClass) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptClass) cPointer() *C.QScriptClass {
@@ -64,43 +70,62 @@ func UnsafeNewQScriptClass(h unsafe.Pointer) *QScriptClass {
 
 // NewQScriptClass constructs a new QScriptClass object.
 func NewQScriptClass(engine *QScriptEngine) *QScriptClass {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptClass(C.QScriptClass_new(engine.cPointer()))
 }
 
 func (this *QScriptClass) Engine() *QScriptEngine {
+	defer runtime.KeepAlive(this)
 	return newQScriptEngine(C.QScriptClass_engine(this.h))
 }
 
 func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 	return (QScriptClass__QueryFlag)(C.QScriptClass_queryProperty(this.h, object.cPointer(), name.cPointer(), (C.int)(flags), (*C.uint)(unsafe.Pointer(id))))
 }
 
 func (this *QScriptClass) Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 	_goptr := newQScriptValue(C.QScriptClass_property(this.h, object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptClass) SetProperty(object *QScriptValue, name *QScriptString, id uint, value *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
+	defer runtime.KeepAlive(value)
 	C.QScriptClass_setProperty(this.h, object.cPointer(), name.cPointer(), (C.uint)(id), value.cPointer())
 }
 
 func (this *QScriptClass) PropertyFlags(object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 	return (QScriptValue__PropertyFlag)(C.QScriptClass_propertyFlags(this.h, object.cPointer(), name.cPointer(), (C.uint)(id)))
 }
 
 func (this *QScriptClass) NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 	return newQScriptClassPropertyIterator(C.QScriptClass_newIterator(this.h, object.cPointer()))
 }
 
 func (this *QScriptClass) Prototype() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptClass_prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptClass) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptClass_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,16 +133,22 @@ func (this *QScriptClass) Name() string {
 }
 
 func (this *QScriptClass) SupportsExtension(extension QScriptClass__Extension) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptClass_supportsExtension(this.h, (C.int)(extension)))
 }
 
 func (this *QScriptClass) Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(argument)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptClass) callVirtualBase_QueryProperty(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 
 	return (QScriptClass__QueryFlag)(C.QScriptClass_virtualbase_queryProperty(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.int)(flags), (*C.uint)(unsafe.Pointer(id))))
 
@@ -152,6 +183,9 @@ func miqt_exec_callback_QScriptClass_queryProperty(self *C.QScriptClass, cb C.in
 }
 
 func (this *QScriptClass) callVirtualBase_Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 
 	_goptr := newQScriptValue(C.QScriptClass_virtualbase_property(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -180,12 +214,17 @@ func miqt_exec_callback_QScriptClass_property(self *C.QScriptClass, cb C.intptr_
 	slotval3 := (uint)(id)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_Property, slotval1, slotval2, slotval3)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QScriptClass_virtualreturncopy_QScriptValue(virtualReturn.cPointer())
 
 }
 
 func (this *QScriptClass) callVirtualBase_SetProperty(object *QScriptValue, name *QScriptString, id uint, value *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
+	defer runtime.KeepAlive(value)
 
 	C.QScriptClass_virtualbase_setProperty(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id), value.cPointer())
 
@@ -218,6 +257,9 @@ func miqt_exec_callback_QScriptClass_setProperty(self *C.QScriptClass, cb C.intp
 }
 
 func (this *QScriptClass) callVirtualBase_PropertyFlags(object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
+	defer runtime.KeepAlive(name)
 
 	return (QScriptValue__PropertyFlag)(C.QScriptClass_virtualbase_propertyFlags(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id)))
 
@@ -250,6 +292,8 @@ func miqt_exec_callback_QScriptClass_propertyFlags(self *C.QScriptClass, cb C.in
 }
 
 func (this *QScriptClass) callVirtualBase_NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(object)
 
 	return newQScriptClassPropertyIterator(C.QScriptClass_virtualbase_newIterator(unsafe.Pointer(this.h), object.cPointer()))
 
@@ -272,12 +316,14 @@ func miqt_exec_callback_QScriptClass_newIterator(self *C.QScriptClass, cb C.intp
 	slotval1 := newQScriptValue(object)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_NewIterator, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QScriptClass) callVirtualBase_Prototype() *QScriptValue {
+	defer runtime.KeepAlive(this)
 
 	_goptr := newQScriptValue(C.QScriptClass_virtualbase_prototype(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -299,12 +345,14 @@ func miqt_exec_callback_QScriptClass_prototype(self *C.QScriptClass, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_Prototype)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return virtualReturn.cPointer()
+	return C.QScriptClass_virtualreturncopy_QScriptValue(virtualReturn.cPointer())
 
 }
 
 func (this *QScriptClass) callVirtualBase_Name() string {
+	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QScriptClass_virtualbase_name(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -335,6 +383,7 @@ func miqt_exec_callback_QScriptClass_name(self *C.QScriptClass, cb C.intptr_t) C
 }
 
 func (this *QScriptClass) callVirtualBase_SupportsExtension(extension QScriptClass__Extension) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QScriptClass_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -363,6 +412,8 @@ func miqt_exec_callback_QScriptClass_supportsExtension(self *C.QScriptClass, cb 
 }
 
 func (this *QScriptClass) callVirtualBase_Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(argument)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_virtualbase_extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -389,8 +440,9 @@ func miqt_exec_callback_QScriptClass_extension(self *C.QScriptClass, cb C.intptr
 	slotval2 := qt.UnsafeNewQVariant(unsafe.Pointer(argument))
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_Extension, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QScriptClass_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -406,8 +458,9 @@ func (this *QScriptClass) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptClass{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptClass) {
-		C.QScriptClass_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptClass_delete((*C.QScriptClass)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

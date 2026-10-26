@@ -16,7 +16,13 @@ import (
 
 type QAuthenticator struct {
 	h  *C.QAuthenticator
-	gc *[1]*C.QAuthenticator
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAuthenticator) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAuthenticator) cPointer() *C.QAuthenticator {
@@ -55,23 +61,31 @@ func NewQAuthenticator() *QAuthenticator {
 
 // NewQAuthenticator2 constructs a new QAuthenticator object.
 func NewQAuthenticator2(other *QAuthenticator) *QAuthenticator {
+	defer runtime.KeepAlive(other)
 
 	return newQAuthenticator(C.QAuthenticator_new2(other.cPointer()))
 }
 
 func (this *QAuthenticator) OperatorAssign(other *QAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QAuthenticator_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAuthenticator) OperatorEqual(other *QAuthenticator) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QAuthenticator_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAuthenticator) OperatorNotEqual(other *QAuthenticator) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QAuthenticator_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAuthenticator) User() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAuthenticator_user(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -79,6 +93,7 @@ func (this *QAuthenticator) User() string {
 }
 
 func (this *QAuthenticator) SetUser(user string) {
+	defer runtime.KeepAlive(this)
 	user_ms := C.struct_miqt_string{}
 	user_ms.data = C.CString(user)
 	user_ms.len = C.size_t(len(user))
@@ -87,6 +102,7 @@ func (this *QAuthenticator) SetUser(user string) {
 }
 
 func (this *QAuthenticator) Password() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAuthenticator_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -94,6 +110,7 @@ func (this *QAuthenticator) Password() string {
 }
 
 func (this *QAuthenticator) SetPassword(password string) {
+	defer runtime.KeepAlive(this)
 	password_ms := C.struct_miqt_string{}
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
@@ -102,6 +119,7 @@ func (this *QAuthenticator) SetPassword(password string) {
 }
 
 func (this *QAuthenticator) Realm() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAuthenticator_realm(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -109,6 +127,7 @@ func (this *QAuthenticator) Realm() string {
 }
 
 func (this *QAuthenticator) SetRealm(realm string) {
+	defer runtime.KeepAlive(this)
 	realm_ms := C.struct_miqt_string{}
 	realm_ms.data = C.CString(realm)
 	realm_ms.len = C.size_t(len(realm))
@@ -117,6 +136,7 @@ func (this *QAuthenticator) SetRealm(realm string) {
 }
 
 func (this *QAuthenticator) Option(opt string) *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	opt_ms := C.struct_miqt_string{}
 	opt_ms.data = C.CString(opt)
 	opt_ms.len = C.size_t(len(opt))
@@ -127,6 +147,7 @@ func (this *QAuthenticator) Option(opt string) *qt.QVariant {
 }
 
 func (this *QAuthenticator) Options() map[string]qt.QVariant {
+	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QAuthenticator_options(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -146,6 +167,8 @@ func (this *QAuthenticator) Options() map[string]qt.QVariant {
 }
 
 func (this *QAuthenticator) SetOption(opt string, value *qt.QVariant) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	opt_ms := C.struct_miqt_string{}
 	opt_ms.data = C.CString(opt)
 	opt_ms.len = C.size_t(len(opt))
@@ -154,10 +177,12 @@ func (this *QAuthenticator) SetOption(opt string, value *qt.QVariant) {
 }
 
 func (this *QAuthenticator) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QAuthenticator_isNull(this.h))
 }
 
 func (this *QAuthenticator) Detach() {
+	defer runtime.KeepAlive(this)
 	C.QAuthenticator_detach(this.h)
 }
 
@@ -173,8 +198,9 @@ func (this *QAuthenticator) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAuthenticator{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAuthenticator) {
-		C.QAuthenticator_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAuthenticator_delete((*C.QAuthenticator)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

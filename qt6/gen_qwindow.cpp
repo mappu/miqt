@@ -129,7 +129,9 @@ public:
 		}
 
 		QSurfaceFormat* callback_return_value = miqt_exec_callback_QWindow_format(this, handle__format);
-		return *callback_return_value;
+		QSurfaceFormat callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSurfaceFormat* QWindow_virtualbase_format(const void* self);
@@ -144,7 +146,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QWindow_size(this, handle__size);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QWindow_virtualbase_size(const void* self);
@@ -1827,6 +1831,14 @@ bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWindow*>(self)->QWindow::disconnectNotify(*signal);
+}
+
+QSurfaceFormat* QWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
+	return new QSurfaceFormat(*src);
+}
+
+QSize* QWindow_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
 }
 
 void* QWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {

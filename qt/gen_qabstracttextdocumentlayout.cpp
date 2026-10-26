@@ -123,7 +123,9 @@ public:
 		}
 
 		QSizeF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(this, handle__documentSize);
-		return *callback_return_value;
+		QSizeF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -137,7 +139,9 @@ public:
 
 		QTextFrame* sigval1 = frame;
 		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -153,7 +157,9 @@ public:
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
 		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
-		return *callback_return_value;
+		QRectF callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -802,6 +808,14 @@ bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, i
 
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::disconnectNotify(*signal);
+}
+
+QSizeF* QAbstractTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src) {
+	return new QSizeF(*src);
+}
+
+QRectF* QAbstractTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src) {
+	return new QRectF(*src);
 }
 
 int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {

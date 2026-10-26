@@ -233,6 +233,10 @@ bool QPolarChart_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QPolarChart_virtualbase_extension(const void* self, QVariant* variant);
 bool QPolarChart_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QPolarChart_virtualbase_isEmpty(const void* self);
+QRectF* QPolarChart_virtualreturncopy_QRectF(QRectF* src);
+QPainterPath* QPolarChart_virtualreturncopy_QPainterPath(QPainterPath* src);
+QSizeF* QPolarChart_virtualreturncopy_QSizeF(QSizeF* src);
+QVariant* QPolarChart_virtualreturncopy_QVariant(QVariant* src);
 
 void QPolarChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QPolarChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

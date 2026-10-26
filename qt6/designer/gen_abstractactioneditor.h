@@ -205,6 +205,8 @@ bool QDesignerActionEditorInterface_override_virtual_connectNotify(void* self, i
 void QDesignerActionEditorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerActionEditorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerActionEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QDesignerActionEditorInterface_virtualreturncopy_QSize(QSize* src);
+QVariant* QDesignerActionEditorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerActionEditorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesignerActionEditorInterface_protectedbase_create(bool* _dynamic_cast_ok, void* self);

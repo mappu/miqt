@@ -16,8 +16,15 @@ import (
 
 type QAnimationGroup struct {
 	h  *C.QAnimationGroup
-	gc *[1]*C.QAnimationGroup
+	gc *[1]unsafe.Pointer
 	*QAbstractAnimation
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAnimationGroup) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QAbstractAnimation.miqtSetGC(gc)
 }
 
 func (this *QAnimationGroup) cPointer() *C.QAnimationGroup {
@@ -59,15 +66,18 @@ func NewQAnimationGroup() *QAnimationGroup {
 
 // NewQAnimationGroup2 constructs a new QAnimationGroup object.
 func NewQAnimationGroup2(parent *QObject) *QAnimationGroup {
+	defer runtime.KeepAlive(parent)
 
 	return newQAnimationGroup(C.QAnimationGroup_new2(parent.cPointer()))
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAnimationGroup_metaObject(this.h))
 }
 
 func (this *QAnimationGroup) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAnimationGroup_metacast(this.h, param1_Cstring))
@@ -92,34 +102,46 @@ func QAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
+	defer runtime.KeepAlive(this)
 	return newQAbstractAnimation(C.QAnimationGroup_animationAt(this.h, (C.int)(index)))
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QAnimationGroup_animationCount(this.h))
 }
 
 func (this *QAnimationGroup) IndexOfAnimation(animation *QAbstractAnimation) int {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	return (int)(C.QAnimationGroup_indexOfAnimation(this.h, animation.cPointer()))
 }
 
 func (this *QAnimationGroup) AddAnimation(animation *QAbstractAnimation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	C.QAnimationGroup_addAnimation(this.h, animation.cPointer())
 }
 
 func (this *QAnimationGroup) InsertAnimation(index int, animation *QAbstractAnimation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	C.QAnimationGroup_insertAnimation(this.h, (C.int)(index), animation.cPointer())
 }
 
 func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(animation)
 	C.QAnimationGroup_removeAnimation(this.h, animation.cPointer())
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
+	defer runtime.KeepAlive(this)
 	return newQAbstractAnimation(C.QAnimationGroup_takeAnimation(this.h, (C.int)(index)))
 }
 
 func (this *QAnimationGroup) Clear() {
+	defer runtime.KeepAlive(this)
 	C.QAnimationGroup_clear(this.h)
 }
 
@@ -169,6 +191,7 @@ func QAnimationGroup_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QAnimationGroup that was directly constructed.
 func (this *QAnimationGroup) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAnimationGroup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -183,6 +206,7 @@ func (this *QAnimationGroup) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAnimationGroup that was directly constructed.
 func (this *QAnimationGroup) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAnimationGroup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -197,6 +221,7 @@ func (this *QAnimationGroup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAnimationGroup that was directly constructed.
 func (this *QAnimationGroup) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -213,6 +238,8 @@ func (this *QAnimationGroup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAnimationGroup that was directly constructed.
 func (this *QAnimationGroup) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAnimationGroup_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -226,6 +253,8 @@ func (this *QAnimationGroup) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAnimationGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -293,6 +322,7 @@ func miqt_exec_callback_QAnimationGroup_updateCurrentTime(self *C.QAnimationGrou
 }
 
 func (this *QAnimationGroup) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+	defer runtime.KeepAlive(this)
 
 	C.QAnimationGroup_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -321,6 +351,7 @@ func miqt_exec_callback_QAnimationGroup_updateState(self *C.QAnimationGroup, cb 
 }
 
 func (this *QAnimationGroup) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+	defer runtime.KeepAlive(this)
 
 	C.QAnimationGroup_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -347,6 +378,9 @@ func miqt_exec_callback_QAnimationGroup_updateDirection(self *C.QAnimationGroup,
 }
 
 func (this *QAnimationGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAnimationGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -377,6 +411,8 @@ func miqt_exec_callback_QAnimationGroup_eventFilter(self *C.QAnimationGroup, cb 
 }
 
 func (this *QAnimationGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAnimationGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -403,6 +439,8 @@ func miqt_exec_callback_QAnimationGroup_timerEvent(self *C.QAnimationGroup, cb C
 }
 
 func (this *QAnimationGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAnimationGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -429,6 +467,8 @@ func miqt_exec_callback_QAnimationGroup_childEvent(self *C.QAnimationGroup, cb C
 }
 
 func (this *QAnimationGroup) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QAnimationGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -455,6 +495,8 @@ func miqt_exec_callback_QAnimationGroup_customEvent(self *C.QAnimationGroup, cb 
 }
 
 func (this *QAnimationGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAnimationGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -481,6 +523,8 @@ func miqt_exec_callback_QAnimationGroup_connectNotify(self *C.QAnimationGroup, c
 }
 
 func (this *QAnimationGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QAnimationGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -518,8 +562,9 @@ func (this *QAnimationGroup) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAnimationGroup{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAnimationGroup) {
-		C.QAnimationGroup_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAnimationGroup_delete((*C.QAnimationGroup)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

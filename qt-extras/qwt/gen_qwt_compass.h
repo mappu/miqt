@@ -125,6 +125,7 @@ bool QwtCompassScaleDraw_override_virtual_drawLabel(void* self, intptr_t slot);
 void QwtCompassScaleDraw_virtualbase_drawLabel(const void* self, QPainter* param1, double val);
 bool QwtCompassScaleDraw_override_virtual_draw(void* self, intptr_t slot);
 void QwtCompassScaleDraw_virtualbase_draw(const void* self, QPainter* param1, QPalette* param2);
+QwtText* QwtCompassScaleDraw_virtualreturncopy_QwtText(QwtText* src);
 
 void QwtCompassScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 QwtText* QwtCompassScaleDraw_protectedbase_tickLabel(bool* _dynamic_cast_ok, const void* self, QFont* param1, double value);
@@ -269,6 +270,9 @@ bool QwtCompass_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtCompass_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtCompass_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtCompass_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QwtCompass_virtualreturncopy_QRect(QRect* src);
+QSize* QwtCompass_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtCompass_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtCompass_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 void QwtCompass_protectedbase_incrementValue(bool* _dynamic_cast_ok, void* self, int stepCount);

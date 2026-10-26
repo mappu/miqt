@@ -32,8 +32,14 @@ const (
 
 type QPdfView struct {
 	h  *C.QPdfView
-	gc *[1]*C.QPdfView
+	gc *[1]unsafe.Pointer
 	*qt6.QAbstractScrollArea
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QPdfView) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QPdfView) cPointer() *C.QPdfView {
@@ -69,6 +75,7 @@ func UnsafeNewQPdfView(h unsafe.Pointer) *QPdfView {
 
 // NewQPdfView constructs a new QPdfView object.
 func NewQPdfView(parent *qt6.QWidget) *QPdfView {
+	defer runtime.KeepAlive(parent)
 
 	return newQPdfView(C.QPdfView_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -80,10 +87,12 @@ func NewQPdfView2() *QPdfView {
 }
 
 func (this *QPdfView) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfView_metaObject(this.h)))
 }
 
 func (this *QPdfView) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfView_metacast(this.h, param1_Cstring))
@@ -99,60 +108,77 @@ func QPdfView_Tr(s string) string {
 }
 
 func (this *QPdfView) SetDocument(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfView_setDocument(this.h, document.cPointer())
 }
 
 func (this *QPdfView) Document() *QPdfDocument {
+	defer runtime.KeepAlive(this)
 	return newQPdfDocument(C.QPdfView_document(this.h))
 }
 
 func (this *QPdfView) PageNavigator() *QPdfPageNavigator {
+	defer runtime.KeepAlive(this)
 	return newQPdfPageNavigator(C.QPdfView_pageNavigator(this.h))
 }
 
 func (this *QPdfView) PageMode() QPdfView__PageMode {
+	defer runtime.KeepAlive(this)
 	return (QPdfView__PageMode)(C.QPdfView_pageMode(this.h))
 }
 
 func (this *QPdfView) ZoomMode() QPdfView__ZoomMode {
+	defer runtime.KeepAlive(this)
 	return (QPdfView__ZoomMode)(C.QPdfView_zoomMode(this.h))
 }
 
 func (this *QPdfView) ZoomFactor() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QPdfView_zoomFactor(this.h))
 }
 
 func (this *QPdfView) PageSpacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QPdfView_pageSpacing(this.h))
 }
 
 func (this *QPdfView) SetPageSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_setPageSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QPdfView) DocumentMargins() *qt6.QMargins {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QPdfView_documentMargins(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfView) SetDocumentMargins(margins qt6.QMargins) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(margins)
 	C.QPdfView_setDocumentMargins(this.h, (*C.QMargins)(margins.UnsafePointer()))
 }
 
 func (this *QPdfView) SetPageMode(mode QPdfView__PageMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_setPageMode(this.h, (C.int)(mode))
 }
 
 func (this *QPdfView) SetZoomMode(mode QPdfView__ZoomMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_setZoomMode(this.h, (C.int)(mode))
 }
 
 func (this *QPdfView) SetZoomFactor(factor float64) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_setZoomFactor(this.h, (C.double)(factor))
 }
 
 func (this *QPdfView) DocumentChanged(document *QPdfDocument) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(document)
 	C.QPdfView_documentChanged(this.h, document.cPointer())
 }
 func (this *QPdfView) OnDocumentChanged(slot func(document *QPdfDocument)) {
@@ -173,6 +199,7 @@ func miqt_exec_callback_QPdfView_documentChanged(cb C.intptr_t, document *C.QPdf
 }
 
 func (this *QPdfView) PageModeChanged(pageMode QPdfView__PageMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_pageModeChanged(this.h, (C.int)(pageMode))
 }
 func (this *QPdfView) OnPageModeChanged(slot func(pageMode QPdfView__PageMode)) {
@@ -193,6 +220,7 @@ func miqt_exec_callback_QPdfView_pageModeChanged(cb C.intptr_t, pageMode C.int) 
 }
 
 func (this *QPdfView) ZoomModeChanged(zoomMode QPdfView__ZoomMode) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_zoomModeChanged(this.h, (C.int)(zoomMode))
 }
 func (this *QPdfView) OnZoomModeChanged(slot func(zoomMode QPdfView__ZoomMode)) {
@@ -213,6 +241,7 @@ func miqt_exec_callback_QPdfView_zoomModeChanged(cb C.intptr_t, zoomMode C.int) 
 }
 
 func (this *QPdfView) ZoomFactorChanged(zoomFactor float64) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_zoomFactorChanged(this.h, (C.double)(zoomFactor))
 }
 func (this *QPdfView) OnZoomFactorChanged(slot func(zoomFactor float64)) {
@@ -233,6 +262,7 @@ func miqt_exec_callback_QPdfView_zoomFactorChanged(cb C.intptr_t, zoomFactor C.d
 }
 
 func (this *QPdfView) PageSpacingChanged(pageSpacing int) {
+	defer runtime.KeepAlive(this)
 	C.QPdfView_pageSpacingChanged(this.h, (C.int)(pageSpacing))
 }
 func (this *QPdfView) OnPageSpacingChanged(slot func(pageSpacing int)) {
@@ -253,6 +283,8 @@ func miqt_exec_callback_QPdfView_pageSpacingChanged(cb C.intptr_t, pageSpacing C
 }
 
 func (this *QPdfView) DocumentMarginsChanged(documentMargins qt6.QMargins) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(documentMargins)
 	C.QPdfView_documentMarginsChanged(this.h, (*C.QMargins)(documentMargins.UnsafePointer()))
 }
 func (this *QPdfView) OnDocumentMarginsChanged(slot func(documentMargins qt6.QMargins)) {
@@ -298,6 +330,7 @@ func QPdfView_Tr3(s string, c string, n int) string {
 
 // SetViewportMargins can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) SetViewportMargins(left int, top int, right int, bottom int) {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -310,6 +343,7 @@ func (this *QPdfView) SetViewportMargins(left int, top int, right int, bottom in
 
 // ViewportMargins can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) ViewportMargins() qt6.QMargins {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QPdfView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -326,6 +360,8 @@ func (this *QPdfView) ViewportMargins() qt6.QMargins {
 
 // DrawFrame can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) DrawFrame(param1 *qt6.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -338,6 +374,7 @@ func (this *QPdfView) DrawFrame(param1 *qt6.QPainter) {
 
 // UpdateMicroFocus can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) UpdateMicroFocus() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -350,6 +387,7 @@ func (this *QPdfView) UpdateMicroFocus() {
 
 // Create can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) Create() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -362,6 +400,7 @@ func (this *QPdfView) Create() {
 
 // Destroy can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) Destroy() {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -374,6 +413,7 @@ func (this *QPdfView) Destroy() {
 
 // FocusNextChild can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) FocusNextChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -388,6 +428,7 @@ func (this *QPdfView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) FocusPreviousChild() bool {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -402,6 +443,7 @@ func (this *QPdfView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPdfView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -416,6 +458,7 @@ func (this *QPdfView) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -430,6 +473,7 @@ func (this *QPdfView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -446,6 +490,8 @@ func (this *QPdfView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfView that was directly constructed.
 func (this *QPdfView) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPdfView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -459,6 +505,8 @@ func (this *QPdfView) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QPdfView) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
@@ -485,6 +533,8 @@ func miqt_exec_callback_QPdfView_paintEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
@@ -511,6 +561,7 @@ func miqt_exec_callback_QPdfView_resizeEvent(self *C.QPdfView, cb C.intptr_t, ev
 }
 
 func (this *QPdfView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+	defer runtime.KeepAlive(this)
 
 	C.QPdfView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -539,6 +590,7 @@ func miqt_exec_callback_QPdfView_scrollContentsBy(self *C.QPdfView, cb C.intptr_
 }
 
 func (this *QPdfView) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -560,12 +612,14 @@ func miqt_exec_callback_QPdfView_minimumSizeHint(self *C.QPdfView, cb C.intptr_t
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_MinimumSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfView) callVirtualBase_SizeHint() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -587,12 +641,15 @@ func miqt_exec_callback_QPdfView_sizeHint(self *C.QPdfView, cb C.intptr_t) *C.QS
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_SizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfView) callVirtualBase_SetupViewport(viewport *qt6.QWidget) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(viewport)
 
 	C.QPdfView_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
@@ -619,6 +676,9 @@ func miqt_exec_callback_QPdfView_setupViewport(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_EventFilter(param1 *qt6.QObject, param2 *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QPdfView_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
@@ -649,6 +709,8 @@ func miqt_exec_callback_QPdfView_eventFilter(self *C.QPdfView, cb C.intptr_t, pa
 }
 
 func (this *QPdfView) callVirtualBase_Event(param1 *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QPdfView_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -677,6 +739,8 @@ func miqt_exec_callback_QPdfView_event(self *C.QPdfView, cb C.intptr_t, param1 *
 }
 
 func (this *QPdfView) callVirtualBase_ViewportEvent(param1 *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QPdfView_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
@@ -705,6 +769,8 @@ func miqt_exec_callback_QPdfView_viewportEvent(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_MousePressEvent(param1 *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -731,6 +797,8 @@ func miqt_exec_callback_QPdfView_mousePressEvent(self *C.QPdfView, cb C.intptr_t
 }
 
 func (this *QPdfView) callVirtualBase_MouseReleaseEvent(param1 *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -757,6 +825,8 @@ func miqt_exec_callback_QPdfView_mouseReleaseEvent(self *C.QPdfView, cb C.intptr
 }
 
 func (this *QPdfView) callVirtualBase_MouseDoubleClickEvent(param1 *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -783,6 +853,8 @@ func miqt_exec_callback_QPdfView_mouseDoubleClickEvent(self *C.QPdfView, cb C.in
 }
 
 func (this *QPdfView) callVirtualBase_MouseMoveEvent(param1 *qt6.QMouseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
 
@@ -809,6 +881,8 @@ func miqt_exec_callback_QPdfView_mouseMoveEvent(self *C.QPdfView, cb C.intptr_t,
 }
 
 func (this *QPdfView) callVirtualBase_WheelEvent(param1 *qt6.QWheelEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
 
@@ -835,6 +909,8 @@ func miqt_exec_callback_QPdfView_wheelEvent(self *C.QPdfView, cb C.intptr_t, par
 }
 
 func (this *QPdfView) callVirtualBase_ContextMenuEvent(param1 *qt6.QContextMenuEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(param1.UnsafePointer()))
 
@@ -861,6 +937,8 @@ func miqt_exec_callback_QPdfView_contextMenuEvent(self *C.QPdfView, cb C.intptr_
 }
 
 func (this *QPdfView) callVirtualBase_DragEnterEvent(param1 *qt6.QDragEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(param1.UnsafePointer()))
 
@@ -887,6 +965,8 @@ func miqt_exec_callback_QPdfView_dragEnterEvent(self *C.QPdfView, cb C.intptr_t,
 }
 
 func (this *QPdfView) callVirtualBase_DragMoveEvent(param1 *qt6.QDragMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(param1.UnsafePointer()))
 
@@ -913,6 +993,8 @@ func miqt_exec_callback_QPdfView_dragMoveEvent(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_DragLeaveEvent(param1 *qt6.QDragLeaveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(param1.UnsafePointer()))
 
@@ -939,6 +1021,8 @@ func miqt_exec_callback_QPdfView_dragLeaveEvent(self *C.QPdfView, cb C.intptr_t,
 }
 
 func (this *QPdfView) callVirtualBase_DropEvent(param1 *qt6.QDropEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(param1.UnsafePointer()))
 
@@ -965,6 +1049,8 @@ func miqt_exec_callback_QPdfView_dropEvent(self *C.QPdfView, cb C.intptr_t, para
 }
 
 func (this *QPdfView) callVirtualBase_KeyPressEvent(param1 *qt6.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
 
@@ -991,6 +1077,7 @@ func miqt_exec_callback_QPdfView_keyPressEvent(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_ViewportSizeHint() *qt6.QSize {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1012,12 +1099,15 @@ func miqt_exec_callback_QPdfView_viewportSizeHint(self *C.QPdfView, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_ViewportSizeHint)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QSize)(virtualReturn.UnsafePointer())
+	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfView) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
@@ -1044,6 +1134,8 @@ func miqt_exec_callback_QPdfView_changeEvent(self *C.QPdfView, cb C.intptr_t, pa
 }
 
 func (this *QPdfView) callVirtualBase_InitStyleOption(option *qt6.QStyleOptionFrame) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(option)
 
 	C.QPdfView_virtualbase_initStyleOption(unsafe.Pointer(this.h), (*C.QStyleOptionFrame)(option.UnsafePointer()))
 
@@ -1070,6 +1162,7 @@ func miqt_exec_callback_QPdfView_initStyleOption(self *C.QPdfView, cb C.intptr_t
 }
 
 func (this *QPdfView) callVirtualBase_DevType() int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPdfView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1095,6 +1188,7 @@ func miqt_exec_callback_QPdfView_devType(self *C.QPdfView, cb C.intptr_t) C.int 
 }
 
 func (this *QPdfView) callVirtualBase_SetVisible(visible bool) {
+	defer runtime.KeepAlive(this)
 
 	C.QPdfView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1121,6 +1215,7 @@ func miqt_exec_callback_QPdfView_setVisible(self *C.QPdfView, cb C.intptr_t, vis
 }
 
 func (this *QPdfView) callVirtualBase_HeightForWidth(param1 int) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPdfView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1149,6 +1244,7 @@ func miqt_exec_callback_QPdfView_heightForWidth(self *C.QPdfView, cb C.intptr_t,
 }
 
 func (this *QPdfView) callVirtualBase_HasHeightForWidth() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1174,6 +1270,7 @@ func miqt_exec_callback_QPdfView_hasHeightForWidth(self *C.QPdfView, cb C.intptr
 }
 
 func (this *QPdfView) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPdfView_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1193,12 +1290,15 @@ func miqt_exec_callback_QPdfView_paintEngine(self *C.QPdfView, cb C.intptr_t) *C
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_PaintEngine)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPdfView) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
@@ -1225,6 +1325,8 @@ func miqt_exec_callback_QPdfView_keyReleaseEvent(self *C.QPdfView, cb C.intptr_t
 }
 
 func (this *QPdfView) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1251,6 +1353,8 @@ func miqt_exec_callback_QPdfView_focusInEvent(self *C.QPdfView, cb C.intptr_t, e
 }
 
 func (this *QPdfView) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
@@ -1277,6 +1381,8 @@ func miqt_exec_callback_QPdfView_focusOutEvent(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEnterEvent)(event.UnsafePointer()))
 
@@ -1303,6 +1409,8 @@ func miqt_exec_callback_QPdfView_enterEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1329,6 +1437,8 @@ func miqt_exec_callback_QPdfView_leaveEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
@@ -1355,6 +1465,8 @@ func miqt_exec_callback_QPdfView_moveEvent(self *C.QPdfView, cb C.intptr_t, even
 }
 
 func (this *QPdfView) callVirtualBase_CloseEvent(event *qt6.QCloseEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
@@ -1381,6 +1493,8 @@ func miqt_exec_callback_QPdfView_closeEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_TabletEvent(event *qt6.QTabletEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
@@ -1407,6 +1521,8 @@ func miqt_exec_callback_QPdfView_tabletEvent(self *C.QPdfView, cb C.intptr_t, ev
 }
 
 func (this *QPdfView) callVirtualBase_ActionEvent(event *qt6.QActionEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
@@ -1433,6 +1549,8 @@ func miqt_exec_callback_QPdfView_actionEvent(self *C.QPdfView, cb C.intptr_t, ev
 }
 
 func (this *QPdfView) callVirtualBase_ShowEvent(event *qt6.QShowEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
@@ -1459,6 +1577,8 @@ func miqt_exec_callback_QPdfView_showEvent(self *C.QPdfView, cb C.intptr_t, even
 }
 
 func (this *QPdfView) callVirtualBase_HideEvent(event *qt6.QHideEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
@@ -1485,6 +1605,7 @@ func miqt_exec_callback_QPdfView_hideEvent(self *C.QPdfView, cb C.intptr_t, even
 }
 
 func (this *QPdfView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1526,6 +1647,7 @@ func miqt_exec_callback_QPdfView_nativeEvent(self *C.QPdfView, cb C.intptr_t, ev
 }
 
 func (this *QPdfView) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
+	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPdfView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1554,6 +1676,8 @@ func miqt_exec_callback_QPdfView_metric(self *C.QPdfView, cb C.intptr_t, param1 
 }
 
 func (this *QPdfView) callVirtualBase_InitPainter(painter *qt6.QPainter) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
 
 	C.QPdfView_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
@@ -1580,6 +1704,8 @@ func miqt_exec_callback_QPdfView_initPainter(self *C.QPdfView, cb C.intptr_t, pa
 }
 
 func (this *QPdfView) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPdfView_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -1602,12 +1728,14 @@ func miqt_exec_callback_QPdfView_redirected(self *C.QPdfView, cb C.intptr_t, off
 	slotval1 := qt6.UnsafeNewQPoint(unsafe.Pointer(offset))
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_Redirected, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPdfView) callVirtualBase_SharedPainter() *qt6.QPainter {
+	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QPdfView_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1627,12 +1755,15 @@ func miqt_exec_callback_QPdfView_sharedPainter(self *C.QPdfView, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_SharedPainter)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QPainter)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPdfView) callVirtualBase_InputMethodEvent(param1 *qt6.QInputMethodEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	C.QPdfView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
@@ -1659,6 +1790,7 @@ func miqt_exec_callback_QPdfView_inputMethodEvent(self *C.QPdfView, cb C.intptr_
 }
 
 func (this *QPdfView) callVirtualBase_InputMethodQuery(param1 qt6.InputMethodQuery) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QPdfView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1683,12 +1815,14 @@ func miqt_exec_callback_QPdfView_inputMethodQuery(self *C.QPdfView, cb C.intptr_
 	slotval1 := (qt6.InputMethodQuery)(param1)
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QPdfView_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QPdfView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1717,6 +1851,8 @@ func miqt_exec_callback_QPdfView_focusNextPrevChild(self *C.QPdfView, cb C.intpt
 }
 
 func (this *QPdfView) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -1743,6 +1879,8 @@ func miqt_exec_callback_QPdfView_timerEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -1769,6 +1907,8 @@ func miqt_exec_callback_QPdfView_childEvent(self *C.QPdfView, cb C.intptr_t, eve
 }
 
 func (this *QPdfView) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QPdfView_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -1795,6 +1935,8 @@ func miqt_exec_callback_QPdfView_customEvent(self *C.QPdfView, cb C.intptr_t, ev
 }
 
 func (this *QPdfView) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfView_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1821,6 +1963,8 @@ func miqt_exec_callback_QPdfView_connectNotify(self *C.QPdfView, cb C.intptr_t, 
 }
 
 func (this *QPdfView) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QPdfView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -1858,8 +2002,9 @@ func (this *QPdfView) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QPdfView{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfView) {
-		C.QPdfView_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QPdfView_delete((*C.QPdfView)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

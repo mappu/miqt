@@ -16,7 +16,13 @@ import (
 
 type QAbstractNativeEventFilter struct {
 	h  *C.QAbstractNativeEventFilter
-	gc *[1]*C.QAbstractNativeEventFilter
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractNativeEventFilter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractNativeEventFilter) cPointer() *C.QAbstractNativeEventFilter {
@@ -54,6 +60,7 @@ func NewQAbstractNativeEventFilter() *QAbstractNativeEventFilter {
 }
 
 func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -104,8 +111,9 @@ func (this *QAbstractNativeEventFilter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractNativeEventFilter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractNativeEventFilter) {
-		C.QAbstractNativeEventFilter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractNativeEventFilter_delete((*C.QAbstractNativeEventFilter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

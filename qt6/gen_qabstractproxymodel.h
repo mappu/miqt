@@ -185,6 +185,10 @@ bool QAbstractProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QAbstractProxyModel_virtualreturncopy_QModelIndex(QModelIndex* src);
+QItemSelection* QAbstractProxyModel_virtualreturncopy_QItemSelection(QItemSelection* src);
+QVariant* QAbstractProxyModel_virtualreturncopy_QVariant(QVariant* src);
+QSize* QAbstractProxyModel_virtualreturncopy_QSize(QSize* src);
 
 QModelIndex* QAbstractProxyModel_protectedbase_createSourceIndex(bool* _dynamic_cast_ok, const void* self, int row, int col, void* internalPtr);
 QModelIndex* QAbstractProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);

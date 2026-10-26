@@ -195,7 +195,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QChartView_sizeHint(this, handle__sizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QChartView_virtualbase_sizeHint(const void* self);
@@ -212,7 +214,9 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 		QVariant* callback_return_value = miqt_exec_callback_QChartView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-		return *callback_return_value;
+		QVariant callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QVariant* QChartView_virtualbase_inputMethodQuery(const void* self, int query);
@@ -588,7 +592,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QChartView_minimumSizeHint(this, handle__minimumSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QChartView_virtualbase_minimumSizeHint(const void* self);
@@ -620,7 +626,9 @@ public:
 		}
 
 		QSize* callback_return_value = miqt_exec_callback_QChartView_viewportSizeHint(this, handle__viewportSizeHint);
-		return *callback_return_value;
+		QSize callback_return_value_ret = *callback_return_value;
+		delete callback_return_value;
+		return callback_return_value_ret;
 	}
 
 	friend QSize* QChartView_virtualbase_viewportSizeHint(const void* self);
@@ -1882,6 +1890,14 @@ bool QChartView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QChartView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQChartView*>(self)->QChartView::disconnectNotify(*signal);
+}
+
+QSize* QChartView_virtualreturncopy_QSize(QSize* src) {
+	return new QSize(*src);
+}
+
+QVariant* QChartView_virtualreturncopy_QVariant(QVariant* src) {
+	return new QVariant(*src);
 }
 
 void QChartView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {

@@ -239,6 +239,8 @@ bool QwtLegend_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtLegend_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtLegend_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtLegend_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QwtLegend_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtLegend_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtLegend_protectedbase_itemClicked(bool* _dynamic_cast_ok, void* self);
 void QwtLegend_protectedbase_itemChecked(bool* _dynamic_cast_ok, void* self, bool param1);

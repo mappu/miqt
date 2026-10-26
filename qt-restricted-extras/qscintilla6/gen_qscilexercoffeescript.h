@@ -159,6 +159,8 @@ bool QsciLexerCoffeeScript_override_virtual_connectNotify(void* self, intptr_t s
 void QsciLexerCoffeeScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCoffeeScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QColor* QsciLexerCoffeeScript_virtualreturncopy_QColor(QColor* src);
+QFont* QsciLexerCoffeeScript_virtualreturncopy_QFont(QFont* src);
 
 bool QsciLexerCoffeeScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerCoffeeScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);

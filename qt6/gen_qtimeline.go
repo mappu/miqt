@@ -31,8 +31,15 @@ const (
 
 type QTimeLine struct {
 	h  *C.QTimeLine
-	gc *[1]*C.QTimeLine
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTimeLine) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QTimeLine) cPointer() *C.QTimeLine {
@@ -80,15 +87,18 @@ func NewQTimeLine2(duration int) *QTimeLine {
 
 // NewQTimeLine3 constructs a new QTimeLine object.
 func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
+	defer runtime.KeepAlive(parent)
 
 	return newQTimeLine(C.QTimeLine_new3((C.int)(duration), parent.cPointer()))
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTimeLine_metaObject(this.h))
 }
 
 func (this *QTimeLine) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTimeLine_metacast(this.h, param1_Cstring))
@@ -104,112 +114,140 @@ func QTimeLine_Tr(s string) string {
 }
 
 func (this *QTimeLine) State() QTimeLine__State {
+	defer runtime.KeepAlive(this)
 	return (QTimeLine__State)(C.QTimeLine_state(this.h))
 }
 
 func (this *QTimeLine) LoopCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_loopCount(this.h))
 }
 
 func (this *QTimeLine) SetLoopCount(count int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setLoopCount(this.h, (C.int)(count))
 }
 
 func (this *QTimeLine) Direction() QTimeLine__Direction {
+	defer runtime.KeepAlive(this)
 	return (QTimeLine__Direction)(C.QTimeLine_direction(this.h))
 }
 
 func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setDirection(this.h, (C.int)(direction))
 }
 
 func (this *QTimeLine) Duration() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_duration(this.h))
 }
 
 func (this *QTimeLine) SetDuration(duration int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setDuration(this.h, (C.int)(duration))
 }
 
 func (this *QTimeLine) StartFrame() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_startFrame(this.h))
 }
 
 func (this *QTimeLine) SetStartFrame(frame int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setStartFrame(this.h, (C.int)(frame))
 }
 
 func (this *QTimeLine) EndFrame() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_endFrame(this.h))
 }
 
 func (this *QTimeLine) SetEndFrame(frame int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setEndFrame(this.h, (C.int)(frame))
 }
 
 func (this *QTimeLine) SetFrameRange(startFrame int, endFrame int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setFrameRange(this.h, (C.int)(startFrame), (C.int)(endFrame))
 }
 
 func (this *QTimeLine) UpdateInterval() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_updateInterval(this.h))
 }
 
 func (this *QTimeLine) SetUpdateInterval(interval int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setUpdateInterval(this.h, (C.int)(interval))
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {
+	defer runtime.KeepAlive(this)
 	_goptr := newQEasingCurve(C.QTimeLine_easingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeLine) SetEasingCurve(curve *QEasingCurve) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(curve)
 	C.QTimeLine_setEasingCurve(this.h, curve.cPointer())
 }
 
 func (this *QTimeLine) CurrentTime() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_currentTime(this.h))
 }
 
 func (this *QTimeLine) CurrentFrame() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_currentFrame(this.h))
 }
 
 func (this *QTimeLine) CurrentValue() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTimeLine_currentValue(this.h))
 }
 
 func (this *QTimeLine) FrameForTime(msec int) int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QTimeLine_frameForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) ValueForTime(msec int) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QTimeLine_valueForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) Start() {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_start(this.h)
 }
 
 func (this *QTimeLine) Resume() {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_resume(this.h)
 }
 
 func (this *QTimeLine) Stop() {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_stop(this.h)
 }
 
 func (this *QTimeLine) SetPaused(paused bool) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QTimeLine) SetCurrentTime(msec int) {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_setCurrentTime(this.h, (C.int)(msec))
 }
 
 func (this *QTimeLine) ToggleDirection() {
+	defer runtime.KeepAlive(this)
 	C.QTimeLine_toggleDirection(this.h)
 }
 
@@ -237,6 +275,7 @@ func QTimeLine_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QTimeLine that was directly constructed.
 func (this *QTimeLine) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTimeLine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -251,6 +290,7 @@ func (this *QTimeLine) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTimeLine that was directly constructed.
 func (this *QTimeLine) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTimeLine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -265,6 +305,7 @@ func (this *QTimeLine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTimeLine that was directly constructed.
 func (this *QTimeLine) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -281,6 +322,8 @@ func (this *QTimeLine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTimeLine that was directly constructed.
 func (this *QTimeLine) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTimeLine_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -294,6 +337,7 @@ func (this *QTimeLine) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTimeLine) callVirtualBase_ValueForTime(msec int) float64 {
+	defer runtime.KeepAlive(this)
 
 	return (float64)(C.QTimeLine_virtualbase_valueForTime(unsafe.Pointer(this.h), (C.int)(msec)))
 
@@ -322,6 +366,8 @@ func miqt_exec_callback_QTimeLine_valueForTime(self *C.QTimeLine, cb C.intptr_t,
 }
 
 func (this *QTimeLine) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTimeLine_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -348,6 +394,8 @@ func miqt_exec_callback_QTimeLine_timerEvent(self *C.QTimeLine, cb C.intptr_t, e
 }
 
 func (this *QTimeLine) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimeLine_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -376,6 +424,9 @@ func miqt_exec_callback_QTimeLine_event(self *C.QTimeLine, cb C.intptr_t, event 
 }
 
 func (this *QTimeLine) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimeLine_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -406,6 +457,8 @@ func miqt_exec_callback_QTimeLine_eventFilter(self *C.QTimeLine, cb C.intptr_t, 
 }
 
 func (this *QTimeLine) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTimeLine_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -432,6 +485,8 @@ func miqt_exec_callback_QTimeLine_childEvent(self *C.QTimeLine, cb C.intptr_t, e
 }
 
 func (this *QTimeLine) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QTimeLine_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -458,6 +513,8 @@ func miqt_exec_callback_QTimeLine_customEvent(self *C.QTimeLine, cb C.intptr_t, 
 }
 
 func (this *QTimeLine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTimeLine_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -484,6 +541,8 @@ func miqt_exec_callback_QTimeLine_connectNotify(self *C.QTimeLine, cb C.intptr_t
 }
 
 func (this *QTimeLine) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QTimeLine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -585,8 +644,9 @@ func (this *QTimeLine) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTimeLine{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeLine) {
-		C.QTimeLine_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTimeLine_delete((*C.QTimeLine)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -23,7 +23,13 @@ const (
 
 type QScriptEngineAgent struct {
 	h  *C.QScriptEngineAgent
-	gc *[1]*C.QScriptEngineAgent
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptEngineAgent) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptEngineAgent) cPointer() *C.QScriptEngineAgent {
@@ -56,11 +62,13 @@ func UnsafeNewQScriptEngineAgent(h unsafe.Pointer) *QScriptEngineAgent {
 
 // NewQScriptEngineAgent constructs a new QScriptEngineAgent object.
 func NewQScriptEngineAgent(engine *QScriptEngine) *QScriptEngineAgent {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptEngineAgent(C.QScriptEngineAgent_new(engine.cPointer()))
 }
 
 func (this *QScriptEngineAgent) ScriptLoad(id int64, program string, fileName string, baseLineNumber int) {
+	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -73,52 +81,68 @@ func (this *QScriptEngineAgent) ScriptLoad(id int64, program string, fileName st
 }
 
 func (this *QScriptEngineAgent) ScriptUnload(id int64) {
+	defer runtime.KeepAlive(this)
 	C.QScriptEngineAgent_scriptUnload(this.h, (C.longlong)(id))
 }
 
 func (this *QScriptEngineAgent) ContextPush() {
+	defer runtime.KeepAlive(this)
 	C.QScriptEngineAgent_contextPush(this.h)
 }
 
 func (this *QScriptEngineAgent) ContextPop() {
+	defer runtime.KeepAlive(this)
 	C.QScriptEngineAgent_contextPop(this.h)
 }
 
 func (this *QScriptEngineAgent) FunctionEntry(scriptId int64) {
+	defer runtime.KeepAlive(this)
 	C.QScriptEngineAgent_functionEntry(this.h, (C.longlong)(scriptId))
 }
 
 func (this *QScriptEngineAgent) FunctionExit(scriptId int64, returnValue *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(returnValue)
 	C.QScriptEngineAgent_functionExit(this.h, (C.longlong)(scriptId), returnValue.cPointer())
 }
 
 func (this *QScriptEngineAgent) PositionChange(scriptId int64, lineNumber int, columnNumber int) {
+	defer runtime.KeepAlive(this)
 	C.QScriptEngineAgent_positionChange(this.h, (C.longlong)(scriptId), (C.int)(lineNumber), (C.int)(columnNumber))
 }
 
 func (this *QScriptEngineAgent) ExceptionThrow(scriptId int64, exception *QScriptValue, hasHandler bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exception)
 	C.QScriptEngineAgent_exceptionThrow(this.h, (C.longlong)(scriptId), exception.cPointer(), (C.bool)(hasHandler))
 }
 
 func (this *QScriptEngineAgent) ExceptionCatch(scriptId int64, exception *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exception)
 	C.QScriptEngineAgent_exceptionCatch(this.h, (C.longlong)(scriptId), exception.cPointer())
 }
 
 func (this *QScriptEngineAgent) SupportsExtension(extension QScriptEngineAgent__Extension) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptEngineAgent_supportsExtension(this.h, (C.int)(extension)))
 }
 
 func (this *QScriptEngineAgent) Extension(extension QScriptEngineAgent__Extension, argument *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(argument)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptEngineAgent_extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngineAgent) Engine() *QScriptEngine {
+	defer runtime.KeepAlive(this)
 	return newQScriptEngine(C.QScriptEngineAgent_engine(this.h))
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ScriptLoad(id int64, program string, fileName string, baseLineNumber int) {
+	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -163,6 +187,7 @@ func miqt_exec_callback_QScriptEngineAgent_scriptLoad(self *C.QScriptEngineAgent
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ScriptUnload(id int64) {
+	defer runtime.KeepAlive(this)
 
 	C.QScriptEngineAgent_virtualbase_scriptUnload(unsafe.Pointer(this.h), (C.longlong)(id))
 
@@ -189,6 +214,7 @@ func miqt_exec_callback_QScriptEngineAgent_scriptUnload(self *C.QScriptEngineAge
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ContextPush() {
+	defer runtime.KeepAlive(this)
 
 	C.QScriptEngineAgent_virtualbase_contextPush(unsafe.Pointer(this.h))
 
@@ -212,6 +238,7 @@ func miqt_exec_callback_QScriptEngineAgent_contextPush(self *C.QScriptEngineAgen
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ContextPop() {
+	defer runtime.KeepAlive(this)
 
 	C.QScriptEngineAgent_virtualbase_contextPop(unsafe.Pointer(this.h))
 
@@ -235,6 +262,7 @@ func miqt_exec_callback_QScriptEngineAgent_contextPop(self *C.QScriptEngineAgent
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_FunctionEntry(scriptId int64) {
+	defer runtime.KeepAlive(this)
 
 	C.QScriptEngineAgent_virtualbase_functionEntry(unsafe.Pointer(this.h), (C.longlong)(scriptId))
 
@@ -261,6 +289,8 @@ func miqt_exec_callback_QScriptEngineAgent_functionEntry(self *C.QScriptEngineAg
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_FunctionExit(scriptId int64, returnValue *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(returnValue)
 
 	C.QScriptEngineAgent_virtualbase_functionExit(unsafe.Pointer(this.h), (C.longlong)(scriptId), returnValue.cPointer())
 
@@ -289,6 +319,7 @@ func miqt_exec_callback_QScriptEngineAgent_functionExit(self *C.QScriptEngineAge
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_PositionChange(scriptId int64, lineNumber int, columnNumber int) {
+	defer runtime.KeepAlive(this)
 
 	C.QScriptEngineAgent_virtualbase_positionChange(unsafe.Pointer(this.h), (C.longlong)(scriptId), (C.int)(lineNumber), (C.int)(columnNumber))
 
@@ -319,6 +350,8 @@ func miqt_exec_callback_QScriptEngineAgent_positionChange(self *C.QScriptEngineA
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ExceptionThrow(scriptId int64, exception *QScriptValue, hasHandler bool) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exception)
 
 	C.QScriptEngineAgent_virtualbase_exceptionThrow(unsafe.Pointer(this.h), (C.longlong)(scriptId), exception.cPointer(), (C.bool)(hasHandler))
 
@@ -349,6 +382,8 @@ func miqt_exec_callback_QScriptEngineAgent_exceptionThrow(self *C.QScriptEngineA
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ExceptionCatch(scriptId int64, exception *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(exception)
 
 	C.QScriptEngineAgent_virtualbase_exceptionCatch(unsafe.Pointer(this.h), (C.longlong)(scriptId), exception.cPointer())
 
@@ -377,6 +412,7 @@ func miqt_exec_callback_QScriptEngineAgent_exceptionCatch(self *C.QScriptEngineA
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_SupportsExtension(extension QScriptEngineAgent__Extension) bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QScriptEngineAgent_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -405,6 +441,8 @@ func miqt_exec_callback_QScriptEngineAgent_supportsExtension(self *C.QScriptEngi
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_Extension(extension QScriptEngineAgent__Extension, argument *qt.QVariant) *qt.QVariant {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(argument)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptEngineAgent_virtualbase_extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -431,8 +469,9 @@ func miqt_exec_callback_QScriptEngineAgent_extension(self *C.QScriptEngineAgent,
 	slotval2 := qt.UnsafeNewQVariant(unsafe.Pointer(argument))
 
 	virtualReturn := gofunc((&QScriptEngineAgent{h: self}).callVirtualBase_Extension, slotval1, slotval2)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QVariant)(virtualReturn.UnsafePointer())
+	return C.QScriptEngineAgent_virtualreturncopy_QVariant((*C.QVariant)(virtualReturn.UnsafePointer()))
 
 }
 
@@ -448,8 +487,9 @@ func (this *QScriptEngineAgent) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptEngineAgent{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptEngineAgent) {
-		C.QScriptEngineAgent_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptEngineAgent_delete((*C.QScriptEngineAgent)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

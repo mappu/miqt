@@ -17,8 +17,15 @@ import (
 
 type QSslServer struct {
 	h  *C.QSslServer
-	gc *[1]*C.QSslServer
+	gc *[1]unsafe.Pointer
 	*QTcpServer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QSslServer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QTcpServer.miqtSetGC(gc)
 }
 
 func (this *QSslServer) cPointer() *C.QSslServer {
@@ -60,15 +67,18 @@ func NewQSslServer() *QSslServer {
 
 // NewQSslServer2 constructs a new QSslServer object.
 func NewQSslServer2(parent *qt6.QObject) *QSslServer {
+	defer runtime.KeepAlive(parent)
 
 	return newQSslServer(C.QSslServer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSslServer) MetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QSslServer_metaObject(this.h)))
 }
 
 func (this *QSslServer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSslServer_metacast(this.h, param1_Cstring))
@@ -84,24 +94,32 @@ func QSslServer_Tr(s string) string {
 }
 
 func (this *QSslServer) SetSslConfiguration(sslConfiguration *QSslConfiguration) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(sslConfiguration)
 	C.QSslServer_setSslConfiguration(this.h, sslConfiguration.cPointer())
 }
 
 func (this *QSslServer) SslConfiguration() *QSslConfiguration {
+	defer runtime.KeepAlive(this)
 	_goptr := newQSslConfiguration(C.QSslServer_sslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslServer) SetHandshakeTimeout(timeout int) {
+	defer runtime.KeepAlive(this)
 	C.QSslServer_setHandshakeTimeout(this.h, (C.int)(timeout))
 }
 
 func (this *QSslServer) HandshakeTimeout() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QSslServer_handshakeTimeout(this.h))
 }
 
 func (this *QSslServer) SslErrors(socket *QSslSocket, errors []QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
+	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
 	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
@@ -139,6 +157,9 @@ func miqt_exec_callback_QSslServer_sslErrors(cb C.intptr_t, socket *C.QSslSocket
 }
 
 func (this *QSslServer) PeerVerifyError(socket *QSslSocket, error *QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
+	defer runtime.KeepAlive(error)
 	C.QSslServer_peerVerifyError(this.h, socket.cPointer(), error.cPointer())
 }
 func (this *QSslServer) OnPeerVerifyError(slot func(socket *QSslSocket, error *QSslError)) {
@@ -161,6 +182,8 @@ func miqt_exec_callback_QSslServer_peerVerifyError(cb C.intptr_t, socket *C.QSsl
 }
 
 func (this *QSslServer) ErrorOccurred(socket *QSslSocket, error QAbstractSocket__SocketError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	C.QSslServer_errorOccurred(this.h, socket.cPointer(), (C.int)(error))
 }
 func (this *QSslServer) OnErrorOccurred(slot func(socket *QSslSocket, error QAbstractSocket__SocketError)) {
@@ -183,6 +206,9 @@ func miqt_exec_callback_QSslServer_errorOccurred(cb C.intptr_t, socket *C.QSslSo
 }
 
 func (this *QSslServer) PreSharedKeyAuthenticationRequired(socket *QSslSocket, authenticator *QSslPreSharedKeyAuthenticator) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
+	defer runtime.KeepAlive(authenticator)
 	C.QSslServer_preSharedKeyAuthenticationRequired(this.h, socket.cPointer(), authenticator.cPointer())
 }
 func (this *QSslServer) OnPreSharedKeyAuthenticationRequired(slot func(socket *QSslSocket, authenticator *QSslPreSharedKeyAuthenticator)) {
@@ -205,6 +231,8 @@ func miqt_exec_callback_QSslServer_preSharedKeyAuthenticationRequired(cb C.intpt
 }
 
 func (this *QSslServer) AlertSent(socket *QSslSocket, level QSsl__AlertLevel, typeVal QSsl__AlertType, description string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -238,6 +266,8 @@ func miqt_exec_callback_QSslServer_alertSent(cb C.intptr_t, socket *C.QSslSocket
 }
 
 func (this *QSslServer) AlertReceived(socket *QSslSocket, level QSsl__AlertLevel, typeVal QSsl__AlertType, description string) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -271,6 +301,9 @@ func miqt_exec_callback_QSslServer_alertReceived(cb C.intptr_t, socket *C.QSslSo
 }
 
 func (this *QSslServer) HandshakeInterruptedOnError(socket *QSslSocket, error *QSslError) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
+	defer runtime.KeepAlive(error)
 	C.QSslServer_handshakeInterruptedOnError(this.h, socket.cPointer(), error.cPointer())
 }
 func (this *QSslServer) OnHandshakeInterruptedOnError(slot func(socket *QSslSocket, error *QSslError)) {
@@ -293,6 +326,8 @@ func miqt_exec_callback_QSslServer_handshakeInterruptedOnError(cb C.intptr_t, so
 }
 
 func (this *QSslServer) StartedEncryptionHandshake(socket *QSslSocket) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 	C.QSslServer_startedEncryptionHandshake(this.h, socket.cPointer())
 }
 func (this *QSslServer) OnStartedEncryptionHandshake(slot func(socket *QSslSocket)) {
@@ -336,6 +371,8 @@ func QSslServer_Tr3(s string, c string, n int) string {
 
 // AddPendingConnection can only be called from a QSslServer that was directly constructed.
 func (this *QSslServer) AddPendingConnection(socket *QTcpSocket) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(socket)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSslServer_protectedbase_addPendingConnection(&_dynamic_cast_ok, unsafe.Pointer(this.h), socket.cPointer())
@@ -348,6 +385,7 @@ func (this *QSslServer) AddPendingConnection(socket *QTcpSocket) {
 
 // Sender can only be called from a QSslServer that was directly constructed.
 func (this *QSslServer) Sender() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QSslServer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -362,6 +400,7 @@ func (this *QSslServer) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QSslServer that was directly constructed.
 func (this *QSslServer) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSslServer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -376,6 +415,7 @@ func (this *QSslServer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSslServer that was directly constructed.
 func (this *QSslServer) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -392,6 +432,8 @@ func (this *QSslServer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSslServer that was directly constructed.
 func (this *QSslServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSslServer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
@@ -405,6 +447,7 @@ func (this *QSslServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QSslServer) callVirtualBase_IncomingConnection(socket uintptr) {
+	defer runtime.KeepAlive(this)
 
 	C.QSslServer_virtualbase_incomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(socket))
 
@@ -431,6 +474,7 @@ func miqt_exec_callback_QSslServer_incomingConnection(self *C.QSslServer, cb C.i
 }
 
 func (this *QSslServer) callVirtualBase_HasPendingConnections() bool {
+	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSslServer_virtualbase_hasPendingConnections(unsafe.Pointer(this.h)))
 
@@ -456,6 +500,7 @@ func miqt_exec_callback_QSslServer_hasPendingConnections(self *C.QSslServer, cb 
 }
 
 func (this *QSslServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
+	defer runtime.KeepAlive(this)
 
 	return newQTcpSocket(C.QSslServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h)))
 
@@ -475,12 +520,15 @@ func miqt_exec_callback_QSslServer_nextPendingConnection(self *C.QSslServer, cb 
 	}
 
 	virtualReturn := gofunc((&QSslServer{h: self}).callVirtualBase_NextPendingConnection)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QSslServer) callVirtualBase_Event(event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSslServer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
@@ -509,6 +557,9 @@ func miqt_exec_callback_QSslServer_event(self *C.QSslServer, cb C.intptr_t, even
 }
 
 func (this *QSslServer) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSslServer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
@@ -539,6 +590,8 @@ func miqt_exec_callback_QSslServer_eventFilter(self *C.QSslServer, cb C.intptr_t
 }
 
 func (this *QSslServer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslServer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
@@ -565,6 +618,8 @@ func miqt_exec_callback_QSslServer_timerEvent(self *C.QSslServer, cb C.intptr_t,
 }
 
 func (this *QSslServer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslServer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
@@ -591,6 +646,8 @@ func miqt_exec_callback_QSslServer_childEvent(self *C.QSslServer, cb C.intptr_t,
 }
 
 func (this *QSslServer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QSslServer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
@@ -617,6 +674,8 @@ func miqt_exec_callback_QSslServer_customEvent(self *C.QSslServer, cb C.intptr_t
 }
 
 func (this *QSslServer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSslServer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -643,6 +702,8 @@ func miqt_exec_callback_QSslServer_connectNotify(self *C.QSslServer, cb C.intptr
 }
 
 func (this *QSslServer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QSslServer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
@@ -680,8 +741,9 @@ func (this *QSslServer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QSslServer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslServer) {
-		C.QSslServer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QSslServer_delete((*C.QSslServer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

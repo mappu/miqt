@@ -263,6 +263,8 @@ bool QMainWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMainWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMainWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMainWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QSize* QMainWindow_virtualreturncopy_QSize(QSize* src);
+QVariant* QMainWindow_virtualreturncopy_QVariant(QVariant* src);
 
 void QMainWindow_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QMainWindow_protectedbase_create(bool* _dynamic_cast_ok, void* self);

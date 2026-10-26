@@ -228,6 +228,7 @@ bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QTextDocument_virtualreturncopy_QVariant(QVariant* src);
 
 QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTextDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);

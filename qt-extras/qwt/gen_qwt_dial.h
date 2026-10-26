@@ -263,6 +263,9 @@ bool QwtDial_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtDial_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QRect* QwtDial_virtualreturncopy_QRect(QRect* src);
+QSize* QwtDial_virtualreturncopy_QSize(QSize* src);
+QVariant* QwtDial_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtDial_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 void QwtDial_protectedbase_incrementValue(bool* _dynamic_cast_ok, void* self, int stepCount);

@@ -46,7 +46,13 @@ const (
 
 type QScriptValue struct {
 	h  *C.QScriptValue
-	gc *[1]*C.QScriptValue
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QScriptValue) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QScriptValue) cPointer() *C.QScriptValue {
@@ -85,42 +91,49 @@ func NewQScriptValue() *QScriptValue {
 
 // NewQScriptValue2 constructs a new QScriptValue object.
 func NewQScriptValue2(other *QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(other)
 
 	return newQScriptValue(C.QScriptValue_new2(other.cPointer()))
 }
 
 // NewQScriptValue3 constructs a new QScriptValue object.
 func NewQScriptValue3(engine *QScriptEngine, val QScriptValue__SpecialValue) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new3(engine.cPointer(), (C.int)(val)))
 }
 
 // NewQScriptValue4 constructs a new QScriptValue object.
 func NewQScriptValue4(engine *QScriptEngine, val bool) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new4(engine.cPointer(), (C.bool)(val)))
 }
 
 // NewQScriptValue5 constructs a new QScriptValue object.
 func NewQScriptValue5(engine *QScriptEngine, val int) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new5(engine.cPointer(), (C.int)(val)))
 }
 
 // NewQScriptValue6 constructs a new QScriptValue object.
 func NewQScriptValue6(engine *QScriptEngine, val uint) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new6(engine.cPointer(), (C.uint)(val)))
 }
 
 // NewQScriptValue7 constructs a new QScriptValue object.
 func NewQScriptValue7(engine *QScriptEngine, val float64) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new7(engine.cPointer(), (C.double)(val)))
 }
 
 // NewQScriptValue8 constructs a new QScriptValue object.
 func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 	val_ms := C.struct_miqt_string{}
 	val_ms.data = C.CString(val)
 	val_ms.len = C.size_t(len(val))
@@ -131,6 +144,7 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 
 // NewQScriptValue9 constructs a new QScriptValue object.
 func NewQScriptValue9(engine *QScriptEngine, val string) *QScriptValue {
+	defer runtime.KeepAlive(engine)
 	val_Cstring := C.CString(val)
 	defer C.free(unsafe.Pointer(val_Cstring))
 
@@ -186,78 +200,98 @@ func NewQScriptValue16(value string) *QScriptValue {
 }
 
 func (this *QScriptValue) OperatorAssign(other *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QScriptValue_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptValue) Engine() *QScriptEngine {
+	defer runtime.KeepAlive(this)
 	return newQScriptEngine(C.QScriptValue_engine(this.h))
 }
 
 func (this *QScriptValue) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isValid(this.h))
 }
 
 func (this *QScriptValue) IsBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isBool(this.h))
 }
 
 func (this *QScriptValue) IsBoolean() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isBoolean(this.h))
 }
 
 func (this *QScriptValue) IsNumber() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isNumber(this.h))
 }
 
 func (this *QScriptValue) IsFunction() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isFunction(this.h))
 }
 
 func (this *QScriptValue) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isNull(this.h))
 }
 
 func (this *QScriptValue) IsString() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isString(this.h))
 }
 
 func (this *QScriptValue) IsUndefined() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isUndefined(this.h))
 }
 
 func (this *QScriptValue) IsVariant() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isVariant(this.h))
 }
 
 func (this *QScriptValue) IsQObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isQObject(this.h))
 }
 
 func (this *QScriptValue) IsQMetaObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isQMetaObject(this.h))
 }
 
 func (this *QScriptValue) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isObject(this.h))
 }
 
 func (this *QScriptValue) IsDate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isDate(this.h))
 }
 
 func (this *QScriptValue) IsRegExp() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isRegExp(this.h))
 }
 
 func (this *QScriptValue) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isArray(this.h))
 }
 
 func (this *QScriptValue) IsError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_isError(this.h))
 }
 
 func (this *QScriptValue) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScriptValue_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -265,102 +299,130 @@ func (this *QScriptValue) ToString() string {
 }
 
 func (this *QScriptValue) ToNumber() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QScriptValue_toNumber(this.h))
 }
 
 func (this *QScriptValue) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_toBool(this.h))
 }
 
 func (this *QScriptValue) ToBoolean() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QScriptValue_toBoolean(this.h))
 }
 
 func (this *QScriptValue) ToInteger() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QScriptValue_toInteger(this.h))
 }
 
 func (this *QScriptValue) ToInt32() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QScriptValue_toInt32(this.h))
 }
 
 func (this *QScriptValue) ToUInt32() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QScriptValue_toUInt32(this.h))
 }
 
 func (this *QScriptValue) ToUInt16() uint16 {
+	defer runtime.KeepAlive(this)
 	return (uint16)(C.QScriptValue_toUInt16(this.h))
 }
 
 func (this *QScriptValue) ToVariant() *qt.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptValue_toVariant(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ToQObject() *qt.QObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QScriptValue_toQObject(this.h)))
 }
 
 func (this *QScriptValue) ToQMetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QScriptValue_toQMetaObject(this.h)))
 }
 
 func (this *QScriptValue) ToObject() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_toObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ToDateTime() *qt.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QScriptValue_toDateTime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ToRegExp() *qt.QRegExp {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRegExp(unsafe.Pointer(C.QScriptValue_toRegExp(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) InstanceOf(other *QScriptValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptValue_instanceOf(this.h, other.cPointer()))
 }
 
 func (this *QScriptValue) LessThan(other *QScriptValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptValue_lessThan(this.h, other.cPointer()))
 }
 
 func (this *QScriptValue) Equals(other *QScriptValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptValue_equals(this.h, other.cPointer()))
 }
 
 func (this *QScriptValue) StrictlyEquals(other *QScriptValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QScriptValue_strictlyEquals(this.h, other.cPointer()))
 }
 
 func (this *QScriptValue) Prototype() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetPrototype(prototype *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(prototype)
 	C.QScriptValue_setPrototype(this.h, prototype.cPointer())
 }
 
 func (this *QScriptValue) Scope() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_scope(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetScope(scope *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scope)
 	C.QScriptValue_setScope(this.h, scope.cPointer())
 }
 
 func (this *QScriptValue) Property(name string) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -371,6 +433,8 @@ func (this *QScriptValue) Property(name string) *QScriptValue {
 }
 
 func (this *QScriptValue) SetProperty(name string, value *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -379,26 +443,35 @@ func (this *QScriptValue) SetProperty(name string, value *QScriptValue) {
 }
 
 func (this *QScriptValue) PropertyWithArrayIndex(arrayIndex uint) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_propertyWithArrayIndex(this.h, (C.uint)(arrayIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetProperty2(arrayIndex uint, value *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QScriptValue_setProperty2(this.h, (C.uint)(arrayIndex), value.cPointer())
 }
 
 func (this *QScriptValue) PropertyWithName(name *QScriptString) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 	_goptr := newQScriptValue(C.QScriptValue_propertyWithName(this.h, name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetProperty3(name *QScriptString, value *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
+	defer runtime.KeepAlive(value)
 	C.QScriptValue_setProperty3(this.h, name.cPointer(), value.cPointer())
 }
 
 func (this *QScriptValue) PropertyFlags(name string) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -407,56 +480,73 @@ func (this *QScriptValue) PropertyFlags(name string) QScriptValue__PropertyFlag 
 }
 
 func (this *QScriptValue) PropertyFlagsWithName(name *QScriptString) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 	return (QScriptValue__PropertyFlag)(C.QScriptValue_propertyFlagsWithName(this.h, name.cPointer()))
 }
 
 func (this *QScriptValue) Call() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_call(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Call2(thisObject *QScriptValue, arguments *QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thisObject)
+	defer runtime.KeepAlive(arguments)
 	_goptr := newQScriptValue(C.QScriptValue_call2(this.h, thisObject.cPointer(), arguments.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Construct() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_construct(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ConstructWithArguments(arguments *QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(arguments)
 	_goptr := newQScriptValue(C.QScriptValue_constructWithArguments(this.h, arguments.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Data() *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_data(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetData(data *QScriptValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(data)
 	C.QScriptValue_setData(this.h, data.cPointer())
 }
 
 func (this *QScriptValue) ScriptClass() *QScriptClass {
+	defer runtime.KeepAlive(this)
 	return newQScriptClass(C.QScriptValue_scriptClass(this.h))
 }
 
 func (this *QScriptValue) SetScriptClass(scriptClass *QScriptClass) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(scriptClass)
 	C.QScriptValue_setScriptClass(this.h, scriptClass.cPointer())
 }
 
 func (this *QScriptValue) ObjectId() int64 {
+	defer runtime.KeepAlive(this)
 	return (int64)(C.QScriptValue_objectId(this.h))
 }
 
 func (this *QScriptValue) Property2(name string, mode *QScriptValue__ResolveFlag) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -467,6 +557,8 @@ func (this *QScriptValue) Property2(name string, mode *QScriptValue__ResolveFlag
 }
 
 func (this *QScriptValue) SetProperty4(name string, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -475,26 +567,35 @@ func (this *QScriptValue) SetProperty4(name string, value *QScriptValue, flags *
 }
 
 func (this *QScriptValue) Property3(arrayIndex uint, mode *QScriptValue__ResolveFlag) *QScriptValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQScriptValue(C.QScriptValue_property3(this.h, (C.uint)(arrayIndex), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetProperty5(arrayIndex uint, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QScriptValue_setProperty5(this.h, (C.uint)(arrayIndex), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
 }
 
 func (this *QScriptValue) Property4(name *QScriptString, mode *QScriptValue__ResolveFlag) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 	_goptr := newQScriptValue(C.QScriptValue_property4(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) SetProperty6(name *QScriptString, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
+	defer runtime.KeepAlive(value)
 	C.QScriptValue_setProperty6(this.h, name.cPointer(), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
 }
 
 func (this *QScriptValue) PropertyFlags2(name string, mode *QScriptValue__ResolveFlag) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -503,16 +604,23 @@ func (this *QScriptValue) PropertyFlags2(name string, mode *QScriptValue__Resolv
 }
 
 func (this *QScriptValue) PropertyFlags3(name *QScriptString, mode *QScriptValue__ResolveFlag) QScriptValue__PropertyFlag {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(name)
 	return (QScriptValue__PropertyFlag)(C.QScriptValue_propertyFlags3(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
 }
 
 func (this *QScriptValue) CallWithThisObject(thisObject *QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thisObject)
 	_goptr := newQScriptValue(C.QScriptValue_callWithThisObject(this.h, thisObject.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Call3(thisObject *QScriptValue, args []QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(thisObject)
+	defer runtime.KeepAlive(args)
 	args_CArray_ptr := (**C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray_ptr))
 	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
@@ -526,6 +634,8 @@ func (this *QScriptValue) Call3(thisObject *QScriptValue, args []QScriptValue) *
 }
 
 func (this *QScriptValue) ConstructWithArgs(args []QScriptValue) *QScriptValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(args)
 	args_CArray_ptr := (**C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray_ptr))
 	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
@@ -550,8 +660,9 @@ func (this *QScriptValue) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QScriptValue{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptValue) {
-		C.QScriptValue_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QScriptValue_delete((*C.QScriptValue)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

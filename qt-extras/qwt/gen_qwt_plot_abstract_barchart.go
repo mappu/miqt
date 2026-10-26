@@ -24,8 +24,15 @@ const (
 
 type QwtPlotAbstractBarChart struct {
 	h  *C.QwtPlotAbstractBarChart
-	gc *[1]*C.QwtPlotAbstractBarChart
+	gc *[1]unsafe.Pointer
 	*QwtPlotSeriesItem
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtPlotAbstractBarChart) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QwtPlotSeriesItem.miqtSetGC(gc)
 }
 
 func (this *QwtPlotAbstractBarChart) cPointer() *C.QwtPlotAbstractBarChart {
@@ -60,42 +67,52 @@ func UnsafeNewQwtPlotAbstractBarChart(h unsafe.Pointer) *QwtPlotAbstractBarChart
 }
 
 func (this *QwtPlotAbstractBarChart) SetLayoutPolicy(layoutPolicy QwtPlotAbstractBarChart__LayoutPolicy) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotAbstractBarChart_setLayoutPolicy(this.h, (C.int)(layoutPolicy))
 }
 
 func (this *QwtPlotAbstractBarChart) LayoutPolicy() QwtPlotAbstractBarChart__LayoutPolicy {
+	defer runtime.KeepAlive(this)
 	return (QwtPlotAbstractBarChart__LayoutPolicy)(C.QwtPlotAbstractBarChart_layoutPolicy(this.h))
 }
 
 func (this *QwtPlotAbstractBarChart) SetLayoutHint(layoutHint float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotAbstractBarChart_setLayoutHint(this.h, (C.double)(layoutHint))
 }
 
 func (this *QwtPlotAbstractBarChart) LayoutHint() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotAbstractBarChart_layoutHint(this.h))
 }
 
 func (this *QwtPlotAbstractBarChart) SetSpacing(spacing int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotAbstractBarChart_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QwtPlotAbstractBarChart) Spacing() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotAbstractBarChart_spacing(this.h))
 }
 
 func (this *QwtPlotAbstractBarChart) SetMargin(margin int) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotAbstractBarChart_setMargin(this.h, (C.int)(margin))
 }
 
 func (this *QwtPlotAbstractBarChart) Margin() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotAbstractBarChart_margin(this.h))
 }
 
 func (this *QwtPlotAbstractBarChart) SetBaseline(baseline float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtPlotAbstractBarChart_setBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QwtPlotAbstractBarChart) Baseline() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotAbstractBarChart_baseline(this.h))
 }
 
@@ -111,8 +128,9 @@ func (this *QwtPlotAbstractBarChart) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtPlotAbstractBarChart{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotAbstractBarChart) {
-		C.QwtPlotAbstractBarChart_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtPlotAbstractBarChart_delete((*C.QwtPlotAbstractBarChart)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

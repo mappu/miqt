@@ -61,7 +61,13 @@ const (
 
 type QWebSelectData struct {
 	h  *C.QWebSelectData
-	gc *[1]*C.QWebSelectData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSelectData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSelectData) cPointer() *C.QWebSelectData {
@@ -93,10 +99,12 @@ func UnsafeNewQWebSelectData(h unsafe.Pointer) *QWebSelectData {
 }
 
 func (this *QWebSelectData) ItemType(param1 int) QWebSelectData__ItemType {
+	defer runtime.KeepAlive(this)
 	return (QWebSelectData__ItemType)(C.QWebSelectData_itemType(this.h, (C.int)(param1)))
 }
 
 func (this *QWebSelectData) ItemText(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSelectData_itemText(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,6 +112,7 @@ func (this *QWebSelectData) ItemText(index int) string {
 }
 
 func (this *QWebSelectData) ItemToolTip(index int) string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebSelectData_itemToolTip(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -111,46 +120,56 @@ func (this *QWebSelectData) ItemToolTip(index int) string {
 }
 
 func (this *QWebSelectData) ItemIsEnabled(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSelectData_itemIsEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QWebSelectData) ItemIsSelected(index int) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSelectData_itemIsSelected(this.h, (C.int)(index)))
 }
 
 func (this *QWebSelectData) ItemCount() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSelectData_itemCount(this.h))
 }
 
 func (this *QWebSelectData) Multiple() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSelectData_multiple(this.h))
 }
 
 func (this *QWebSelectData) BackgroundColor() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_backgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ForegroundColor() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_foregroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemBackgroundColor(index int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemBackgroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemForegroundColor(index int) *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemForegroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) OperatorAssign(param1 *QWebSelectData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebSelectData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -166,16 +185,23 @@ func (this *QWebSelectData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSelectData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSelectData) {
-		C.QWebSelectData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSelectData_delete((*C.QWebSelectData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebSelectMethod struct {
 	h  *C.QWebSelectMethod
-	gc *[1]*C.QWebSelectMethod
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSelectMethod) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSelectMethod) cPointer() *C.QWebSelectMethod {
@@ -210,10 +236,12 @@ func UnsafeNewQWebSelectMethod(h unsafe.Pointer) *QWebSelectMethod {
 }
 
 func (this *QWebSelectMethod) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSelectMethod_metaObject(this.h)))
 }
 
 func (this *QWebSelectMethod) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSelectMethod_metacast(this.h, param1_Cstring))
@@ -238,22 +266,30 @@ func QWebSelectMethod_TrUtf8(s string) string {
 }
 
 func (this *QWebSelectMethod) Show(param1 *QWebSelectData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebSelectMethod_show(this.h, param1.cPointer())
 }
 
 func (this *QWebSelectMethod) Hide() {
+	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_hide(this.h)
 }
 
 func (this *QWebSelectMethod) SetGeometry(geometry *qt.QRect) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(geometry)
 	C.QWebSelectMethod_setGeometry(this.h, (*C.QRect)(geometry.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SetFont(font *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QWebSelectMethod_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SelectItem(index int, allowMultiplySelections bool, shift bool) {
+	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_selectItem(this.h, (C.int)(index), (C.bool)(allowMultiplySelections), (C.bool)(shift))
 }
 func (this *QWebSelectMethod) OnSelectItem(slot func(index int, allowMultiplySelections bool, shift bool)) {
@@ -278,6 +314,7 @@ func miqt_exec_callback_QWebSelectMethod_selectItem(cb C.intptr_t, index C.int, 
 }
 
 func (this *QWebSelectMethod) DidHide() {
+	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_didHide(this.h)
 }
 func (this *QWebSelectMethod) OnDidHide(slot func()) {
@@ -350,15 +387,22 @@ func (this *QWebSelectMethod) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSelectMethod{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSelectMethod) {
-		C.QWebSelectMethod_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSelectMethod_delete((*C.QWebSelectMethod)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebNotificationData struct {
 	h  *C.QWebNotificationData
-	gc *[1]*C.QWebNotificationData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebNotificationData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebNotificationData) cPointer() *C.QWebNotificationData {
@@ -390,6 +434,7 @@ func UnsafeNewQWebNotificationData(h unsafe.Pointer) *QWebNotificationData {
 }
 
 func (this *QWebNotificationData) Title() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebNotificationData_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -397,6 +442,7 @@ func (this *QWebNotificationData) Title() string {
 }
 
 func (this *QWebNotificationData) Message() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebNotificationData_message(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -404,18 +450,22 @@ func (this *QWebNotificationData) Message() string {
 }
 
 func (this *QWebNotificationData) IconUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_iconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebNotificationData) OpenerPageUrl() *qt.QUrl {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_openerPageUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebNotificationData) OperatorAssign(param1 *QWebNotificationData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebNotificationData_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -431,16 +481,23 @@ func (this *QWebNotificationData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebNotificationData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebNotificationData) {
-		C.QWebNotificationData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebNotificationData_delete((*C.QWebNotificationData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebNotificationPresenter struct {
 	h  *C.QWebNotificationPresenter
-	gc *[1]*C.QWebNotificationPresenter
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebNotificationPresenter) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebNotificationPresenter) cPointer() *C.QWebNotificationPresenter {
@@ -475,10 +532,12 @@ func UnsafeNewQWebNotificationPresenter(h unsafe.Pointer) *QWebNotificationPrese
 }
 
 func (this *QWebNotificationPresenter) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebNotificationPresenter_metaObject(this.h)))
 }
 
 func (this *QWebNotificationPresenter) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebNotificationPresenter_metacast(this.h, param1_Cstring))
@@ -503,10 +562,13 @@ func QWebNotificationPresenter_TrUtf8(s string) string {
 }
 
 func (this *QWebNotificationPresenter) ShowNotification(param1 *QWebNotificationData) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebNotificationPresenter_showNotification(this.h, param1.cPointer())
 }
 
 func (this *QWebNotificationPresenter) NotificationClosed() {
+	defer runtime.KeepAlive(this)
 	C.QWebNotificationPresenter_notificationClosed(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClosed(slot func()) {
@@ -524,6 +586,7 @@ func miqt_exec_callback_QWebNotificationPresenter_notificationClosed(cb C.intptr
 }
 
 func (this *QWebNotificationPresenter) NotificationClicked() {
+	defer runtime.KeepAlive(this)
 	C.QWebNotificationPresenter_notificationClicked(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClicked(slot func()) {
@@ -596,16 +659,23 @@ func (this *QWebNotificationPresenter) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebNotificationPresenter{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebNotificationPresenter) {
-		C.QWebNotificationPresenter_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebNotificationPresenter_delete((*C.QWebNotificationPresenter)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebHapticFeedbackPlayer struct {
 	h  *C.QWebHapticFeedbackPlayer
-	gc *[1]*C.QWebHapticFeedbackPlayer
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebHapticFeedbackPlayer) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebHapticFeedbackPlayer) cPointer() *C.QWebHapticFeedbackPlayer {
@@ -640,10 +710,12 @@ func UnsafeNewQWebHapticFeedbackPlayer(h unsafe.Pointer) *QWebHapticFeedbackPlay
 }
 
 func (this *QWebHapticFeedbackPlayer) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHapticFeedbackPlayer_metaObject(this.h)))
 }
 
 func (this *QWebHapticFeedbackPlayer) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebHapticFeedbackPlayer_metacast(this.h, param1_Cstring))
@@ -668,6 +740,7 @@ func QWebHapticFeedbackPlayer_TrUtf8(s string) string {
 }
 
 func (this *QWebHapticFeedbackPlayer) PlayHapticFeedback(param1 QWebHapticFeedbackPlayer__HapticEvent, hapticType string, param3 QWebHapticFeedbackPlayer__HapticStrength) {
+	defer runtime.KeepAlive(this)
 	hapticType_ms := C.struct_miqt_string{}
 	hapticType_ms.data = C.CString(hapticType)
 	hapticType_ms.len = C.size_t(len(hapticType))
@@ -731,16 +804,23 @@ func (this *QWebHapticFeedbackPlayer) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebHapticFeedbackPlayer{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebHapticFeedbackPlayer) {
-		C.QWebHapticFeedbackPlayer_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebHapticFeedbackPlayer_delete((*C.QWebHapticFeedbackPlayer)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebTouchModifier struct {
 	h  *C.QWebTouchModifier
-	gc *[1]*C.QWebTouchModifier
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebTouchModifier) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebTouchModifier) cPointer() *C.QWebTouchModifier {
@@ -775,10 +855,12 @@ func UnsafeNewQWebTouchModifier(h unsafe.Pointer) *QWebTouchModifier {
 }
 
 func (this *QWebTouchModifier) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebTouchModifier_metaObject(this.h)))
 }
 
 func (this *QWebTouchModifier) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebTouchModifier_metacast(this.h, param1_Cstring))
@@ -803,6 +885,7 @@ func QWebTouchModifier_TrUtf8(s string) string {
 }
 
 func (this *QWebTouchModifier) HitTestPaddingForTouch(param1 QWebTouchModifier__PaddingDirection) uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QWebTouchModifier_hitTestPaddingForTouch(this.h, (C.int)(param1)))
 }
 
@@ -862,16 +945,23 @@ func (this *QWebTouchModifier) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebTouchModifier{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebTouchModifier) {
-		C.QWebTouchModifier_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebTouchModifier_delete((*C.QWebTouchModifier)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebSpellChecker struct {
 	h  *C.QWebSpellChecker
-	gc *[1]*C.QWebSpellChecker
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSpellChecker) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSpellChecker) cPointer() *C.QWebSpellChecker {
@@ -906,10 +996,12 @@ func UnsafeNewQWebSpellChecker(h unsafe.Pointer) *QWebSpellChecker {
 }
 
 func (this *QWebSpellChecker) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSpellChecker_metaObject(this.h)))
 }
 
 func (this *QWebSpellChecker) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSpellChecker_metacast(this.h, param1_Cstring))
@@ -934,14 +1026,17 @@ func QWebSpellChecker_TrUtf8(s string) string {
 }
 
 func (this *QWebSpellChecker) IsContinousSpellCheckingEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSpellChecker_isContinousSpellCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleContinousSpellChecking() {
+	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker_toggleContinousSpellChecking(this.h)
 }
 
 func (this *QWebSpellChecker) LearnWord(word string) {
+	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -950,6 +1045,7 @@ func (this *QWebSpellChecker) LearnWord(word string) {
 }
 
 func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
+	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -958,6 +1054,7 @@ func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
 }
 
 func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLocation *int, misspellingLength *int) {
+	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -966,6 +1063,7 @@ func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLoca
 }
 
 func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string) string {
+	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -977,6 +1075,7 @@ func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string
 }
 
 func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesses []string) {
+	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1000,14 +1099,18 @@ func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesse
 }
 
 func (this *QWebSpellChecker) IsGrammarCheckingEnabled() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSpellChecker_isGrammarCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleGrammarChecking() {
+	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker_toggleGrammarChecking(this.h)
 }
 
 func (this *QWebSpellChecker) CheckGrammarOfString(param1 string, param2 []QWebSpellChecker__GrammarDetail, badGrammarLocation *int, badGrammarLength *int) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -1078,15 +1181,22 @@ func (this *QWebSpellChecker) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSpellChecker{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSpellChecker) {
-		C.QWebSpellChecker_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSpellChecker_delete((*C.QWebSpellChecker)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebKitPlatformPlugin struct {
 	h  *C.QWebKitPlatformPlugin
-	gc *[1]*C.QWebKitPlatformPlugin
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebKitPlatformPlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebKitPlatformPlugin) cPointer() *C.QWebKitPlatformPlugin {
@@ -1118,14 +1228,18 @@ func UnsafeNewQWebKitPlatformPlugin(h unsafe.Pointer) *QWebKitPlatformPlugin {
 }
 
 func (this *QWebKitPlatformPlugin) SupportsExtension(param1 QWebKitPlatformPlugin__Extension) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebKitPlatformPlugin_supportsExtension(this.h, (C.int)(param1)))
 }
 
 func (this *QWebKitPlatformPlugin) CreateExtension(param1 QWebKitPlatformPlugin__Extension) *qt.QObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebKitPlatformPlugin_createExtension(this.h, (C.int)(param1))))
 }
 
 func (this *QWebKitPlatformPlugin) OperatorAssign(param1 *QWebKitPlatformPlugin) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebKitPlatformPlugin_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1141,15 +1255,22 @@ func (this *QWebKitPlatformPlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebKitPlatformPlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebKitPlatformPlugin) {
-		C.QWebKitPlatformPlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebKitPlatformPlugin_delete((*C.QWebKitPlatformPlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QWebSpellChecker__GrammarDetail struct {
 	h  *C.QWebSpellChecker__GrammarDetail
-	gc *[1]*C.QWebSpellChecker__GrammarDetail
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QWebSpellChecker__GrammarDetail) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QWebSpellChecker__GrammarDetail) cPointer() *C.QWebSpellChecker__GrammarDetail {
@@ -1182,6 +1303,7 @@ func UnsafeNewQWebSpellChecker__GrammarDetail(h unsafe.Pointer) *QWebSpellChecke
 
 // NewQWebSpellChecker__GrammarDetail constructs a new QWebSpellChecker::GrammarDetail object.
 func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail) *QWebSpellChecker__GrammarDetail {
+	defer runtime.KeepAlive(param1)
 
 	return newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
 }
@@ -1193,22 +1315,27 @@ func NewQWebSpellChecker__GrammarDetail2() *QWebSpellChecker__GrammarDetail {
 }
 
 func (this *QWebSpellChecker__GrammarDetail) Location() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSpellChecker__GrammarDetail_location(this.h))
 }
 
 func (this *QWebSpellChecker__GrammarDetail) SetLocation(location int) {
+	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker__GrammarDetail_setLocation(this.h, (C.int)(location))
 }
 
 func (this *QWebSpellChecker__GrammarDetail) Length() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QWebSpellChecker__GrammarDetail_length(this.h))
 }
 
 func (this *QWebSpellChecker__GrammarDetail) SetLength(length int) {
+	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker__GrammarDetail_setLength(this.h, (C.int)(length))
 }
 
 func (this *QWebSpellChecker__GrammarDetail) Guesses() []string {
+	defer runtime.KeepAlive(this)
 	var guesses_ma C.struct_miqt_array = C.QWebSpellChecker__GrammarDetail_guesses(this.h)
 	guesses_ret := make([]string, int(guesses_ma.len))
 	guesses_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(guesses_ma.data)), int(guesses_ma.len))
@@ -1222,6 +1349,7 @@ func (this *QWebSpellChecker__GrammarDetail) Guesses() []string {
 }
 
 func (this *QWebSpellChecker__GrammarDetail) SetGuesses(guesses []string) {
+	defer runtime.KeepAlive(this)
 	guesses_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
 	defer C.free(unsafe.Pointer(guesses_CArray_ptr))
 	guesses_CArray := unsafe.Slice(guesses_CArray_ptr, len(guesses))
@@ -1237,6 +1365,7 @@ func (this *QWebSpellChecker__GrammarDetail) SetGuesses(guesses []string) {
 }
 
 func (this *QWebSpellChecker__GrammarDetail) UserDescription() string {
+	defer runtime.KeepAlive(this)
 	var userDescription_ms C.struct_miqt_string = C.QWebSpellChecker__GrammarDetail_userDescription(this.h)
 	userDescription_ret := C.GoStringN(userDescription_ms.data, C.int(int64(userDescription_ms.len)))
 	C.free(unsafe.Pointer(userDescription_ms.data))
@@ -1244,6 +1373,7 @@ func (this *QWebSpellChecker__GrammarDetail) UserDescription() string {
 }
 
 func (this *QWebSpellChecker__GrammarDetail) SetUserDescription(userDescription string) {
+	defer runtime.KeepAlive(this)
 	userDescription_ms := C.struct_miqt_string{}
 	userDescription_ms.data = C.CString(userDescription)
 	userDescription_ms.len = C.size_t(len(userDescription))
@@ -1252,6 +1382,8 @@ func (this *QWebSpellChecker__GrammarDetail) SetUserDescription(userDescription 
 }
 
 func (this *QWebSpellChecker__GrammarDetail) OperatorAssign(param1 *QWebSpellChecker__GrammarDetail) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QWebSpellChecker__GrammarDetail_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -1267,8 +1399,9 @@ func (this *QWebSpellChecker__GrammarDetail) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QWebSpellChecker__GrammarDetail{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSpellChecker__GrammarDetail) {
-		C.QWebSpellChecker__GrammarDetail_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QWebSpellChecker__GrammarDetail_delete((*C.QWebSpellChecker__GrammarDetail)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

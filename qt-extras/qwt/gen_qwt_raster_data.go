@@ -24,7 +24,13 @@ const (
 
 type QwtRasterData struct {
 	h  *C.QwtRasterData
-	gc *[1]*C.QwtRasterData
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtRasterData) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtRasterData) cPointer() *C.QwtRasterData {
@@ -62,32 +68,46 @@ func NewQwtRasterData() *QwtRasterData {
 }
 
 func (this *QwtRasterData) SetInterval(param1 qt.Axis, param2 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	C.QwtRasterData_setInterval(this.h, (C.int)(param1), param2.cPointer())
 }
 
 func (this *QwtRasterData) Interval(param1 qt.Axis) *QwtInterval {
-	return newQwtInterval(C.QwtRasterData_interval(this.h, (C.int)(param1)))
+	defer runtime.KeepAlive(this)
+	_ret := newQwtInterval(C.QwtRasterData_interval(this.h, (C.int)(param1)))
+	_ret.miqtSetGC(this.gc)
+	return _ret
 }
 
 func (this *QwtRasterData) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtRasterData_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtRasterData) InitRaster(param1 *qt.QRectF, raster *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(raster)
 	C.QwtRasterData_initRaster(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QSize)(raster.UnsafePointer()))
 }
 
 func (this *QwtRasterData) DiscardRaster() {
+	defer runtime.KeepAlive(this)
 	C.QwtRasterData_discardRaster(this.h)
 }
 
 func (this *QwtRasterData) Value(x float64, y float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtRasterData_value(this.h, (C.double)(x), (C.double)(y)))
 }
 
 func (this *QwtRasterData) callVirtualBase_SetInterval(param1 qt.Axis, param2 *QwtInterval) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 
 	C.QwtRasterData_virtualbase_setInterval(unsafe.Pointer(this.h), (C.int)(param1), param2.cPointer())
 
@@ -116,6 +136,8 @@ func miqt_exec_callback_QwtRasterData_setInterval(self *C.QwtRasterData, cb C.in
 }
 
 func (this *QwtRasterData) callVirtualBase_PixelHint(param1 *qt.QRectF) *qt.QRectF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtRasterData_virtualbase_pixelHint(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -140,12 +162,16 @@ func miqt_exec_callback_QwtRasterData_pixelHint(self *C.QwtRasterData, cb C.intp
 	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtRasterData{h: self}).callVirtualBase_PixelHint, slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
-	return (*C.QRectF)(virtualReturn.UnsafePointer())
+	return C.QwtRasterData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
 
 }
 
 func (this *QwtRasterData) callVirtualBase_InitRaster(param1 *qt.QRectF, raster *qt.QSize) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
+	defer runtime.KeepAlive(raster)
 
 	C.QwtRasterData_virtualbase_initRaster(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QSize)(raster.UnsafePointer()))
 
@@ -174,6 +200,7 @@ func miqt_exec_callback_QwtRasterData_initRaster(self *C.QwtRasterData, cb C.int
 }
 
 func (this *QwtRasterData) callVirtualBase_DiscardRaster() {
+	defer runtime.KeepAlive(this)
 
 	C.QwtRasterData_virtualbase_discardRaster(unsafe.Pointer(this.h))
 
@@ -232,8 +259,9 @@ func (this *QwtRasterData) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtRasterData{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtRasterData) {
-		C.QwtRasterData_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtRasterData_delete((*C.QwtRasterData)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

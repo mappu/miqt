@@ -387,6 +387,8 @@ bool QTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QVariant* QTextEdit_virtualreturncopy_QVariant(QVariant* src);
+QSize* QTextEdit_virtualreturncopy_QSize(QSize* src);
 
 void QTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 void QTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);

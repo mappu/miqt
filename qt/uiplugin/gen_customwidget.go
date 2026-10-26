@@ -17,7 +17,13 @@ import (
 
 type QDesignerCustomWidgetInterface struct {
 	h  *C.QDesignerCustomWidgetInterface
-	gc *[1]*C.QDesignerCustomWidgetInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerCustomWidgetInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerCustomWidgetInterface) cPointer() *C.QDesignerCustomWidgetInterface {
@@ -49,6 +55,7 @@ func UnsafeNewQDesignerCustomWidgetInterface(h unsafe.Pointer) *QDesignerCustomW
 }
 
 func (this *QDesignerCustomWidgetInterface) Name() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -56,6 +63,7 @@ func (this *QDesignerCustomWidgetInterface) Name() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) Group() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_group(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -63,6 +71,7 @@ func (this *QDesignerCustomWidgetInterface) Group() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) ToolTip() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -70,6 +79,7 @@ func (this *QDesignerCustomWidgetInterface) ToolTip() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) WhatsThis() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -77,6 +87,7 @@ func (this *QDesignerCustomWidgetInterface) WhatsThis() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) IncludeFile() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_includeFile(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -84,28 +95,36 @@ func (this *QDesignerCustomWidgetInterface) IncludeFile() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) Icon() *qt.QIcon {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QDesignerCustomWidgetInterface_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerCustomWidgetInterface) IsContainer() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerCustomWidgetInterface_isContainer(this.h))
 }
 
 func (this *QDesignerCustomWidgetInterface) CreateWidget(parent *qt.QWidget) *qt.QWidget {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(parent)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerCustomWidgetInterface_createWidget(this.h, (*C.QWidget)(parent.UnsafePointer()))))
 }
 
 func (this *QDesignerCustomWidgetInterface) IsInitialized() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerCustomWidgetInterface_isInitialized(this.h))
 }
 
 func (this *QDesignerCustomWidgetInterface) Initialize(core *designer.QDesignerFormEditorInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(core)
 	C.QDesignerCustomWidgetInterface_initialize(this.h, (*C.QDesignerFormEditorInterface)(core.UnsafePointer()))
 }
 
 func (this *QDesignerCustomWidgetInterface) DomXml() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_domXml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -113,6 +132,7 @@ func (this *QDesignerCustomWidgetInterface) DomXml() string {
 }
 
 func (this *QDesignerCustomWidgetInterface) CodeTemplate() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerCustomWidgetInterface_codeTemplate(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -131,15 +151,22 @@ func (this *QDesignerCustomWidgetInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerCustomWidgetInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerCustomWidgetInterface) {
-		C.QDesignerCustomWidgetInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerCustomWidgetInterface_delete((*C.QDesignerCustomWidgetInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QDesignerCustomWidgetCollectionInterface struct {
 	h  *C.QDesignerCustomWidgetCollectionInterface
-	gc *[1]*C.QDesignerCustomWidgetCollectionInterface
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QDesignerCustomWidgetCollectionInterface) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QDesignerCustomWidgetCollectionInterface) cPointer() *C.QDesignerCustomWidgetCollectionInterface {
@@ -171,6 +198,8 @@ func UnsafeNewQDesignerCustomWidgetCollectionInterface(h unsafe.Pointer) *QDesig
 }
 
 func (this *QDesignerCustomWidgetCollectionInterface) OperatorAssign(param1 *QDesignerCustomWidgetCollectionInterface) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QDesignerCustomWidgetCollectionInterface_operatorAssign(this.h, param1.cPointer())
 }
 
@@ -186,8 +215,9 @@ func (this *QDesignerCustomWidgetCollectionInterface) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QDesignerCustomWidgetCollectionInterface{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerCustomWidgetCollectionInterface) {
-		C.QDesignerCustomWidgetCollectionInterface_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QDesignerCustomWidgetCollectionInterface_delete((*C.QDesignerCustomWidgetCollectionInterface)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

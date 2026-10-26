@@ -43,7 +43,13 @@ const (
 
 type QJSValue struct {
 	h  *C.QJSValue
-	gc *[1]*C.QJSValue
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QJSValue) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QJSValue) cPointer() *C.QJSValue {
@@ -82,6 +88,7 @@ func NewQJSValue() *QJSValue {
 
 // NewQJSValue2 constructs a new QJSValue object.
 func NewQJSValue2(other *QJSValue) *QJSValue {
+	defer runtime.KeepAlive(other)
 
 	return newQJSValue(C.QJSValue_new2(other.cPointer()))
 }
@@ -135,66 +142,83 @@ func NewQJSValue9(value QJSValue__SpecialValue) *QJSValue {
 }
 
 func (this *QJSValue) OperatorAssign(other *QJSValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QJSValue_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QJSValue) IsBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isBool(this.h))
 }
 
 func (this *QJSValue) IsNumber() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isNumber(this.h))
 }
 
 func (this *QJSValue) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isNull(this.h))
 }
 
 func (this *QJSValue) IsString() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isString(this.h))
 }
 
 func (this *QJSValue) IsUndefined() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isUndefined(this.h))
 }
 
 func (this *QJSValue) IsVariant() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isVariant(this.h))
 }
 
 func (this *QJSValue) IsQObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isQObject(this.h))
 }
 
 func (this *QJSValue) IsQMetaObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isQMetaObject(this.h))
 }
 
 func (this *QJSValue) IsObject() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isObject(this.h))
 }
 
 func (this *QJSValue) IsDate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isDate(this.h))
 }
 
 func (this *QJSValue) IsRegExp() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isRegExp(this.h))
 }
 
 func (this *QJSValue) IsArray() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isArray(this.h))
 }
 
 func (this *QJSValue) IsError() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isError(this.h))
 }
 
 func (this *QJSValue) IsUrl() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isUrl(this.h))
 }
 
 func (this *QJSValue) ToString() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJSValue_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -202,72 +226,90 @@ func (this *QJSValue) ToString() string {
 }
 
 func (this *QJSValue) ToNumber() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QJSValue_toNumber(this.h))
 }
 
 func (this *QJSValue) ToInt() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QJSValue_toInt(this.h))
 }
 
 func (this *QJSValue) ToUInt() uint {
+	defer runtime.KeepAlive(this)
 	return (uint)(C.QJSValue_toUInt(this.h))
 }
 
 func (this *QJSValue) ToBool() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_toBool(this.h))
 }
 
 func (this *QJSValue) ToVariant() *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QJSValue_toVariant(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) ToVariantWithBehavior(behavior QJSValue__ObjectConversionBehavior) *qt6.QVariant {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QJSValue_toVariantWithBehavior(this.h, (C.int)(behavior))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) ToPrimitive() *QJSPrimitiveValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSPrimitiveValue(C.QJSValue_toPrimitive(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) ToQObject() *qt6.QObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QJSValue_toQObject(this.h)))
 }
 
 func (this *QJSValue) ToQMetaObject() *qt6.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QJSValue_toQMetaObject(this.h)))
 }
 
 func (this *QJSValue) ToDateTime() *qt6.QDateTime {
+	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QJSValue_toDateTime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) Equals(other *QJSValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJSValue_equals(this.h, other.cPointer()))
 }
 
 func (this *QJSValue) StrictlyEquals(other *QJSValue) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QJSValue_strictlyEquals(this.h, other.cPointer()))
 }
 
 func (this *QJSValue) Prototype() *QJSValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSValue_prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) SetPrototype(prototype *QJSValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(prototype)
 	C.QJSValue_setPrototype(this.h, prototype.cPointer())
 }
 
 func (this *QJSValue) Property(name string) *QJSValue {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -278,6 +320,8 @@ func (this *QJSValue) Property(name string) *QJSValue {
 }
 
 func (this *QJSValue) SetProperty(name string, value *QJSValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -286,6 +330,7 @@ func (this *QJSValue) SetProperty(name string, value *QJSValue) {
 }
 
 func (this *QJSValue) HasProperty(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -294,6 +339,7 @@ func (this *QJSValue) HasProperty(name string) bool {
 }
 
 func (this *QJSValue) HasOwnProperty(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -302,16 +348,20 @@ func (this *QJSValue) HasOwnProperty(name string) bool {
 }
 
 func (this *QJSValue) PropertyWithArrayIndex(arrayIndex uint) *QJSValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSValue_propertyWithArrayIndex(this.h, (C.uint)(arrayIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) SetProperty2(arrayIndex uint, value *QJSValue) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(value)
 	C.QJSValue_setProperty2(this.h, (C.uint)(arrayIndex), value.cPointer())
 }
 
 func (this *QJSValue) DeleteProperty(name string) bool {
+	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -320,32 +370,40 @@ func (this *QJSValue) DeleteProperty(name string) bool {
 }
 
 func (this *QJSValue) IsCallable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSValue_isCallable(this.h))
 }
 
 func (this *QJSValue) Call() *QJSValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSValue_call(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) CallWithInstance(instance *QJSValue) *QJSValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(instance)
 	_goptr := newQJSValue(C.QJSValue_callWithInstance(this.h, instance.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) CallAsConstructor() *QJSValue {
+	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSValue_callAsConstructor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) ErrorType() QJSValue__ErrorType {
+	defer runtime.KeepAlive(this)
 	return (QJSValue__ErrorType)(C.QJSValue_errorType(this.h))
 }
 
 func (this *QJSValue) CallWithArgs(args []QJSValue) *QJSValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(args)
 	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray_ptr))
 	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
@@ -359,6 +417,9 @@ func (this *QJSValue) CallWithArgs(args []QJSValue) *QJSValue {
 }
 
 func (this *QJSValue) CallWithInstance2(instance *QJSValue, args []QJSValue) *QJSValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(instance)
+	defer runtime.KeepAlive(args)
 	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray_ptr))
 	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
@@ -372,6 +433,8 @@ func (this *QJSValue) CallWithInstance2(instance *QJSValue, args []QJSValue) *QJ
 }
 
 func (this *QJSValue) CallAsConstructorWithArgs(args []QJSValue) *QJSValue {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(args)
 	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray_ptr))
 	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
@@ -396,8 +459,9 @@ func (this *QJSValue) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QJSValue{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSValue) {
-		C.QJSValue_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QJSValue_delete((*C.QJSValue)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

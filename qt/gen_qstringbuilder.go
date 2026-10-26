@@ -15,7 +15,13 @@ import (
 
 type QAbstractConcatenable struct {
 	h  *C.QAbstractConcatenable
-	gc *[1]*C.QAbstractConcatenable
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QAbstractConcatenable) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {
@@ -58,8 +64,9 @@ func (this *QAbstractConcatenable) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QAbstractConcatenable{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractConcatenable) {
-		C.QAbstractConcatenable_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QAbstractConcatenable_delete((*C.QAbstractConcatenable)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

@@ -33,7 +33,13 @@ const (
 
 type QTileRules struct {
 	h  *C.QTileRules
-	gc *[1]*C.QTileRules
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QTileRules) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QTileRules) cPointer() *C.QTileRules {
@@ -78,6 +84,7 @@ func NewQTileRules2() *QTileRules {
 
 // NewQTileRules3 constructs a new QTileRules object.
 func NewQTileRules3(param1 *QTileRules) *QTileRules {
+	defer runtime.KeepAlive(param1)
 
 	return newQTileRules(C.QTileRules_new3(param1.cPointer()))
 }
@@ -89,18 +96,22 @@ func NewQTileRules4(rule TileRule) *QTileRules {
 }
 
 func (this *QTileRules) Horizontal() TileRule {
+	defer runtime.KeepAlive(this)
 	return (TileRule)(C.QTileRules_horizontal(this.h))
 }
 
 func (this *QTileRules) SetHorizontal(horizontal TileRule) {
+	defer runtime.KeepAlive(this)
 	C.QTileRules_setHorizontal(this.h, (C.int)(horizontal))
 }
 
 func (this *QTileRules) Vertical() TileRule {
+	defer runtime.KeepAlive(this)
 	return (TileRule)(C.QTileRules_vertical(this.h))
 }
 
 func (this *QTileRules) SetVertical(vertical TileRule) {
+	defer runtime.KeepAlive(this)
 	C.QTileRules_setVertical(this.h, (C.int)(vertical))
 }
 
@@ -116,8 +127,9 @@ func (this *QTileRules) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QTileRules{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTileRules) {
-		C.QTileRules_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QTileRules_delete((*C.QTileRules)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

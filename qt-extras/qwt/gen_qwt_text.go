@@ -41,7 +41,13 @@ const (
 
 type QwtText struct {
 	h  *C.QwtText
-	gc *[1]*C.QwtText
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QwtText) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QwtText) cPointer() *C.QwtText {
@@ -80,6 +86,7 @@ func NewQwtText() *QwtText {
 
 // NewQwtText2 constructs a new QwtText object.
 func NewQwtText2(param1 *QwtText) *QwtText {
+	defer runtime.KeepAlive(param1)
 
 	return newQwtText(C.QwtText_new2(param1.cPointer()))
 }
@@ -105,18 +112,25 @@ func NewQwtText4(param1 string, textFormat QwtText__TextFormat) *QwtText {
 }
 
 func (this *QwtText) OperatorAssign(param1 *QwtText) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	C.QwtText_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QwtText) OperatorEqual(param1 *QwtText) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtText_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtText) OperatorNotEqual(param1 *QwtText) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	return (bool)(C.QwtText_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QwtText) SetText(param1 string) {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -125,6 +139,7 @@ func (this *QwtText) SetText(param1 string) {
 }
 
 func (this *QwtText) Text() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QwtText_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -132,108 +147,139 @@ func (this *QwtText) Text() string {
 }
 
 func (this *QwtText) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtText_isNull(this.h))
 }
 
 func (this *QwtText) IsEmpty() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtText_isEmpty(this.h))
 }
 
 func (this *QwtText) SetFont(font *qt.QFont) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(font)
 	C.QwtText_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QwtText) Font() *qt.QFont {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QwtText_font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) UsedFont(param1 *qt.QFont) *qt.QFont {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QwtText_usedFont(this.h, (*C.QFont)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) SetRenderFlags(renderFlags int) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setRenderFlags(this.h, (C.int)(renderFlags))
 }
 
 func (this *QwtText) RenderFlags() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QwtText_renderFlags(this.h))
 }
 
 func (this *QwtText) SetColor(color *qt.QColor) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(color)
 	C.QwtText_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QwtText) Color() *qt.QColor {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtText_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) UsedColor(param1 *qt.QColor) *qt.QColor {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtText_usedColor(this.h, (*C.QColor)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) SetBorderRadius(borderRadius float64) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setBorderRadius(this.h, (C.double)(borderRadius))
 }
 
 func (this *QwtText) BorderRadius() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtText_borderRadius(this.h))
 }
 
 func (this *QwtText) SetBorderPen(borderPen *qt.QPen) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(borderPen)
 	C.QwtText_setBorderPen(this.h, (*C.QPen)(borderPen.UnsafePointer()))
 }
 
 func (this *QwtText) BorderPen() *qt.QPen {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPen(unsafe.Pointer(C.QwtText_borderPen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) SetBackgroundBrush(backgroundBrush *qt.QBrush) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(backgroundBrush)
 	C.QwtText_setBackgroundBrush(this.h, (*C.QBrush)(backgroundBrush.UnsafePointer()))
 }
 
 func (this *QwtText) BackgroundBrush() *qt.QBrush {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtText_backgroundBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) SetPaintAttribute(param1 QwtText__PaintAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setPaintAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtText) TestPaintAttribute(param1 QwtText__PaintAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtText_testPaintAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtText) SetLayoutAttribute(param1 QwtText__LayoutAttribute) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setLayoutAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QwtText) TestLayoutAttribute(param1 QwtText__LayoutAttribute) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtText_testLayoutAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtText) HeightForWidth(width float64) float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtText_heightForWidth(this.h, (C.double)(width)))
 }
 
 func (this *QwtText) TextSize() *qt.QSizeF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtText_textSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtText) Draw(painter *qt.QPainter, rect *qt.QRectF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(rect)
 	C.QwtText_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()))
 }
 
@@ -250,10 +296,12 @@ func QwtText_TextEngineWithQwtTextTextFormat(param1 QwtText__TextFormat) *QwtTex
 }
 
 func QwtText_SetTextEngine(param1 QwtText__TextFormat, param2 *QwtTextEngine) {
+	defer runtime.KeepAlive(param2)
 	C.QwtText_setTextEngine((C.int)(param1), param2.cPointer())
 }
 
 func (this *QwtText) SetText2(param1 string, textFormat QwtText__TextFormat) {
+	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -262,18 +310,24 @@ func (this *QwtText) SetText2(param1 string, textFormat QwtText__TextFormat) {
 }
 
 func (this *QwtText) SetPaintAttribute2(param1 QwtText__PaintAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtText) SetLayoutAttribute2(param1 QwtText__LayoutAttribute, on bool) {
+	defer runtime.KeepAlive(this)
 	C.QwtText_setLayoutAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtText) HeightForWidth2(width float64, param2 *qt.QFont) float64 {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param2)
 	return (float64)(C.QwtText_heightForWidth2(this.h, (C.double)(width), (*C.QFont)(param2.UnsafePointer())))
 }
 
 func (this *QwtText) TextSizeWithQFont(param1 *qt.QFont) *qt.QSizeF {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtText_textSizeWithQFont(this.h, (*C.QFont)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -299,8 +353,9 @@ func (this *QwtText) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QwtText{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtText) {
-		C.QwtText_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QwtText_delete((*C.QwtText)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

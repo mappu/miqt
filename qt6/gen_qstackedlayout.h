@@ -136,6 +136,8 @@ bool QStackedLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QStackedLayout_virtualbase_widget(const void* self);
 bool QStackedLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self);
+QSize* QStackedLayout_virtualreturncopy_QSize(QSize* src);
+QRect* QStackedLayout_virtualreturncopy_QRect(QRect* src);
 
 void QStackedLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QStackedLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);

@@ -46,7 +46,13 @@ const (
 
 type QCameraFocusZone struct {
 	h  *C.QCameraFocusZone
-	gc *[1]*C.QCameraFocusZone
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraFocusZone) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCameraFocusZone) cPointer() *C.QCameraFocusZone {
@@ -85,49 +91,62 @@ func NewQCameraFocusZone() *QCameraFocusZone {
 
 // NewQCameraFocusZone2 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone2(area *qt.QRectF) *QCameraFocusZone {
+	defer runtime.KeepAlive(area)
 
 	return newQCameraFocusZone(C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer())))
 }
 
 // NewQCameraFocusZone3 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone3(other *QCameraFocusZone) *QCameraFocusZone {
+	defer runtime.KeepAlive(other)
 
 	return newQCameraFocusZone(C.QCameraFocusZone_new3(other.cPointer()))
 }
 
 // NewQCameraFocusZone4 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
+	defer runtime.KeepAlive(area)
 
 	return newQCameraFocusZone(C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status)))
 }
 
 func (this *QCameraFocusZone) OperatorAssign(other *QCameraFocusZone) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	C.QCameraFocusZone_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraFocusZone) OperatorEqual(other *QCameraFocusZone) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QCameraFocusZone_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraFocusZone) OperatorNotEqual(other *QCameraFocusZone) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(other)
 	return (bool)(C.QCameraFocusZone_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraFocusZone) IsValid() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocusZone_isValid(this.h))
 }
 
 func (this *QCameraFocusZone) Area() *qt.QRectF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_area(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFocusZone) Status() QCameraFocusZone__FocusZoneStatus {
+	defer runtime.KeepAlive(this)
 	return (QCameraFocusZone__FocusZoneStatus)(C.QCameraFocusZone_status(this.h))
 }
 
 func (this *QCameraFocusZone) SetStatus(status QCameraFocusZone__FocusZoneStatus) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocusZone_setStatus(this.h, (C.int)(status))
 }
 
@@ -143,15 +162,23 @@ func (this *QCameraFocusZone) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QCameraFocusZone{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraFocusZone) {
-		C.QCameraFocusZone_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QCameraFocusZone_delete((*C.QCameraFocusZone)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QCameraFocus struct {
-	h *C.QCameraFocus
+	h  *C.QCameraFocus
+	gc *[1]unsafe.Pointer
 	*qt.QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QCameraFocus) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QCameraFocus) cPointer() *C.QCameraFocus {
@@ -186,10 +213,12 @@ func UnsafeNewQCameraFocus(h unsafe.Pointer) *QCameraFocus {
 }
 
 func (this *QCameraFocus) MetaObject() *qt.QMetaObject {
+	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFocus_metaObject(this.h)))
 }
 
 func (this *QCameraFocus) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraFocus_metacast(this.h, param1_Cstring))
@@ -214,44 +243,55 @@ func QCameraFocus_TrUtf8(s string) string {
 }
 
 func (this *QCameraFocus) IsAvailable() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocus_isAvailable(this.h))
 }
 
 func (this *QCameraFocus) FocusMode() QCameraFocus__FocusMode {
+	defer runtime.KeepAlive(this)
 	return (QCameraFocus__FocusMode)(C.QCameraFocus_focusMode(this.h))
 }
 
 func (this *QCameraFocus) SetFocusMode(mode QCameraFocus__FocusMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_setFocusMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocus) IsFocusModeSupported(mode QCameraFocus__FocusMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocus_isFocusModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFocus) FocusPointMode() QCameraFocus__FocusPointMode {
+	defer runtime.KeepAlive(this)
 	return (QCameraFocus__FocusPointMode)(C.QCameraFocus_focusPointMode(this.h))
 }
 
 func (this *QCameraFocus) SetFocusPointMode(mode QCameraFocus__FocusPointMode) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_setFocusPointMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocus) IsFocusPointModeSupported(param1 QCameraFocus__FocusPointMode) bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocus_isFocusPointModeSupported(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFocus) CustomFocusPoint() *qt.QPointF {
+	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_customFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFocus) SetCustomFocusPoint(point *qt.QPointF) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(point)
 	C.QCameraFocus_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
 
 func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
+	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraFocus_focusZones(this.h)
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraFocusZone)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -264,26 +304,32 @@ func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
 }
 
 func (this *QCameraFocus) MaximumOpticalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraFocus_maximumOpticalZoom(this.h))
 }
 
 func (this *QCameraFocus) MaximumDigitalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraFocus_maximumDigitalZoom(this.h))
 }
 
 func (this *QCameraFocus) OpticalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraFocus_opticalZoom(this.h))
 }
 
 func (this *QCameraFocus) DigitalZoom() float64 {
+	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraFocus_digitalZoom(this.h))
 }
 
 func (this *QCameraFocus) ZoomTo(opticalZoom float64, digitalZoom float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_zoomTo(this.h, (C.double)(opticalZoom), (C.double)(digitalZoom))
 }
 
 func (this *QCameraFocus) OpticalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_opticalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnOpticalZoomChanged(slot func(param1 float64)) {
@@ -304,6 +350,7 @@ func miqt_exec_callback_QCameraFocus_opticalZoomChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QCameraFocus) DigitalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_digitalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnDigitalZoomChanged(slot func(param1 float64)) {
@@ -324,6 +371,7 @@ func miqt_exec_callback_QCameraFocus_digitalZoomChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QCameraFocus) FocusZonesChanged() {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_focusZonesChanged(this.h)
 }
 func (this *QCameraFocus) OnFocusZonesChanged(slot func()) {
@@ -341,6 +389,7 @@ func miqt_exec_callback_QCameraFocus_focusZonesChanged(cb C.intptr_t) {
 }
 
 func (this *QCameraFocus) MaximumOpticalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_maximumOpticalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnMaximumOpticalZoomChanged(slot func(param1 float64)) {
@@ -361,6 +410,7 @@ func miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged(cb C.intptr_t, pa
 }
 
 func (this *QCameraFocus) MaximumDigitalZoomChanged(param1 float64) {
+	defer runtime.KeepAlive(this)
 	C.QCameraFocus_maximumDigitalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnMaximumDigitalZoomChanged(slot func(param1 float64)) {

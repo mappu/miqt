@@ -355,7 +355,13 @@ const (
 
 type QLatin1Char struct {
 	h  *C.QLatin1Char
-	gc *[1]*C.QLatin1Char
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QLatin1Char) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QLatin1Char) cPointer() *C.QLatin1Char {
@@ -394,11 +400,13 @@ func NewQLatin1Char(c int8) *QLatin1Char {
 
 // NewQLatin1Char2 constructs a new QLatin1Char object.
 func NewQLatin1Char2(param1 *QLatin1Char) *QLatin1Char {
+	defer runtime.KeepAlive(param1)
 
 	return newQLatin1Char(C.QLatin1Char_new2(param1.cPointer()))
 }
 
 func (this *QLatin1Char) ToLatin1() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QLatin1Char_toLatin1(this.h))
 }
 
@@ -414,15 +422,22 @@ func (this *QLatin1Char) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QLatin1Char{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLatin1Char) {
-		C.QLatin1Char_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QLatin1Char_delete((*C.QLatin1Char)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
 
 type QChar struct {
 	h  *C.QChar
-	gc *[1]*C.QChar
+	gc *[1]unsafe.Pointer
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QChar) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
 }
 
 func (this *QChar) cPointer() *C.QChar {
@@ -497,6 +512,7 @@ func NewQChar7(s QChar__SpecialCharacter) *QChar {
 
 // NewQChar8 constructs a new QChar object.
 func NewQChar8(ch QLatin1Char) *QChar {
+	defer runtime.KeepAlive(ch)
 
 	return newQChar(C.QChar_new8(ch.cPointer()))
 }
@@ -515,37 +531,45 @@ func NewQChar10(c byte) *QChar {
 
 // NewQChar11 constructs a new QChar object.
 func NewQChar11(param1 *QChar) *QChar {
+	defer runtime.KeepAlive(param1)
 
 	return newQChar(C.QChar_new11(param1.cPointer()))
 }
 
 func (this *QChar) Category() QChar__Category {
+	defer runtime.KeepAlive(this)
 	return (QChar__Category)(C.QChar_category(this.h))
 }
 
 func (this *QChar) Direction() QChar__Direction {
+	defer runtime.KeepAlive(this)
 	return (QChar__Direction)(C.QChar_direction(this.h))
 }
 
 func (this *QChar) JoiningType() QChar__JoiningType {
+	defer runtime.KeepAlive(this)
 	return (QChar__JoiningType)(C.QChar_joiningType(this.h))
 }
 
 func (this *QChar) CombiningClass() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QChar_combiningClass(this.h))
 }
 
 func (this *QChar) MirroredChar() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QChar_mirroredChar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) HasMirrored() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_hasMirrored(this.h))
 }
 
 func (this *QChar) Decomposition() string {
+	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QChar_decomposition(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -553,46 +577,55 @@ func (this *QChar) Decomposition() string {
 }
 
 func (this *QChar) DecompositionTag() QChar__Decomposition {
+	defer runtime.KeepAlive(this)
 	return (QChar__Decomposition)(C.QChar_decompositionTag(this.h))
 }
 
 func (this *QChar) DigitValue() int {
+	defer runtime.KeepAlive(this)
 	return (int)(C.QChar_digitValue(this.h))
 }
 
 func (this *QChar) ToLower() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QChar_toLower(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToUpper() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QChar_toUpper(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToTitleCase() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QChar_toTitleCase(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToCaseFolded() *QChar {
+	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QChar_toCaseFolded(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) Script() QChar__Script {
+	defer runtime.KeepAlive(this)
 	return (QChar__Script)(C.QChar_script(this.h))
 }
 
 func (this *QChar) UnicodeVersion() QChar__UnicodeVersion {
+	defer runtime.KeepAlive(this)
 	return (QChar__UnicodeVersion)(C.QChar_unicodeVersion(this.h))
 }
 
 func (this *QChar) ToLatin1() int8 {
+	defer runtime.KeepAlive(this)
 	return (int8)(C.QChar_toLatin1(this.h))
 }
 
@@ -603,86 +636,107 @@ func QChar_FromLatin1(c int8) *QChar {
 }
 
 func (this *QChar) IsNull() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isNull(this.h))
 }
 
 func (this *QChar) IsPrint() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isPrint(this.h))
 }
 
 func (this *QChar) IsSpace() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isSpace(this.h))
 }
 
 func (this *QChar) IsMark() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isMark(this.h))
 }
 
 func (this *QChar) IsPunct() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isPunct(this.h))
 }
 
 func (this *QChar) IsSymbol() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isSymbol(this.h))
 }
 
 func (this *QChar) IsLetter() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isLetter(this.h))
 }
 
 func (this *QChar) IsNumber() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isNumber(this.h))
 }
 
 func (this *QChar) IsLetterOrNumber() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isLetterOrNumber(this.h))
 }
 
 func (this *QChar) IsDigit() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isDigit(this.h))
 }
 
 func (this *QChar) IsLower() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isLower(this.h))
 }
 
 func (this *QChar) IsUpper() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isUpper(this.h))
 }
 
 func (this *QChar) IsTitleCase() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isTitleCase(this.h))
 }
 
 func (this *QChar) IsNonCharacter() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isNonCharacter(this.h))
 }
 
 func (this *QChar) IsHighSurrogate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isHighSurrogate(this.h))
 }
 
 func (this *QChar) IsLowSurrogate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isLowSurrogate(this.h))
 }
 
 func (this *QChar) IsSurrogate() bool {
+	defer runtime.KeepAlive(this)
 	return (bool)(C.QChar_isSurrogate(this.h))
 }
 
 func (this *QChar) Cell() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QChar_cell(this.h))
 }
 
 func (this *QChar) Row() byte {
+	defer runtime.KeepAlive(this)
 	return (byte)(C.QChar_row(this.h))
 }
 
 func (this *QChar) SetCell(acell byte) {
+	defer runtime.KeepAlive(this)
 	C.QChar_setCell(this.h, (C.uchar)(acell))
 }
 
 func (this *QChar) SetRow(arow byte) {
+	defer runtime.KeepAlive(this)
 	C.QChar_setRow(this.h, (C.uchar)(arow))
 }
 
@@ -702,8 +756,9 @@ func (this *QChar) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QChar{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QChar) {
-		C.QChar_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QChar_delete((*C.QChar)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }

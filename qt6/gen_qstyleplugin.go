@@ -16,8 +16,15 @@ import (
 
 type QStylePlugin struct {
 	h  *C.QStylePlugin
-	gc *[1]*C.QStylePlugin
+	gc *[1]unsafe.Pointer
 	*QObject
+}
+
+// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
+// and its base class wrappers, so that they all keep it alive.
+func (this *QStylePlugin) miqtSetGC(gc *[1]unsafe.Pointer) {
+	this.gc = gc
+	this.QObject.miqtSetGC(gc)
 }
 
 func (this *QStylePlugin) cPointer() *C.QStylePlugin {
@@ -59,15 +66,18 @@ func NewQStylePlugin() *QStylePlugin {
 
 // NewQStylePlugin2 constructs a new QStylePlugin object.
 func NewQStylePlugin2(parent *QObject) *QStylePlugin {
+	defer runtime.KeepAlive(parent)
 
 	return newQStylePlugin(C.QStylePlugin_new2(parent.cPointer()))
 }
 
 func (this *QStylePlugin) MetaObject() *QMetaObject {
+	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStylePlugin_metaObject(this.h))
 }
 
 func (this *QStylePlugin) Metacast(param1 string) unsafe.Pointer {
+	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStylePlugin_metacast(this.h, param1_Cstring))
@@ -83,6 +93,7 @@ func QStylePlugin_Tr(s string) string {
 }
 
 func (this *QStylePlugin) Create(key string) *QStyle {
+	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -114,6 +125,7 @@ func QStylePlugin_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QStylePlugin that was directly constructed.
 func (this *QStylePlugin) Sender() *QObject {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStylePlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -128,6 +140,7 @@ func (this *QStylePlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStylePlugin that was directly constructed.
 func (this *QStylePlugin) SenderSignalIndex() int {
+	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStylePlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -142,6 +155,7 @@ func (this *QStylePlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStylePlugin that was directly constructed.
 func (this *QStylePlugin) Receivers(signal string) int {
+	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -158,6 +172,8 @@ func (this *QStylePlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStylePlugin that was directly constructed.
 func (this *QStylePlugin) IsSignalConnected(signal *QMetaMethod) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStylePlugin_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
@@ -190,12 +206,15 @@ func miqt_exec_callback_QStylePlugin_create(self *C.QStylePlugin, cb C.intptr_t,
 	slotval1 := key_ret
 
 	virtualReturn := gofunc(slotval1)
+	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStylePlugin) callVirtualBase_Event(event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStylePlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
@@ -224,6 +243,9 @@ func miqt_exec_callback_QStylePlugin_event(self *C.QStylePlugin, cb C.intptr_t, 
 }
 
 func (this *QStylePlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(watched)
+	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStylePlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
@@ -254,6 +276,8 @@ func miqt_exec_callback_QStylePlugin_eventFilter(self *C.QStylePlugin, cb C.intp
 }
 
 func (this *QStylePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStylePlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -280,6 +304,8 @@ func miqt_exec_callback_QStylePlugin_timerEvent(self *C.QStylePlugin, cb C.intpt
 }
 
 func (this *QStylePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStylePlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -306,6 +332,8 @@ func miqt_exec_callback_QStylePlugin_childEvent(self *C.QStylePlugin, cb C.intpt
 }
 
 func (this *QStylePlugin) callVirtualBase_CustomEvent(event *QEvent) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(event)
 
 	C.QStylePlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
@@ -332,6 +360,8 @@ func miqt_exec_callback_QStylePlugin_customEvent(self *C.QStylePlugin, cb C.intp
 }
 
 func (this *QStylePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStylePlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -358,6 +388,8 @@ func miqt_exec_callback_QStylePlugin_connectNotify(self *C.QStylePlugin, cb C.in
 }
 
 func (this *QStylePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+	defer runtime.KeepAlive(this)
+	defer runtime.KeepAlive(signal)
 
 	C.QStylePlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
@@ -395,8 +427,9 @@ func (this *QStylePlugin) GoGC() {
 	if this.gc != nil {
 		return
 	}
-	this.gc = &[1]*C.QStylePlugin{this.h}
-	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStylePlugin) {
-		C.QStylePlugin_delete(gc[0])
+	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
+	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
+		C.QStylePlugin_delete((*C.QStylePlugin)(gc[0]))
 	})
+	this.miqtSetGC(gc)
 }
