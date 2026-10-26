@@ -159,9 +159,11 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 	processHeaders := parseHeaders(includeFiles, clangBin, cflags, matcher)
 
-	// Pre-collect all free function Go names across all headers, so that
-	// overload disambiguation can avoid cross-header collisions.
+	// Collect names so we avoid collisions (cross-header and cross-type e.g. struct vs function collision)
 	for _, parsed := range processHeaders {
+		for _, c := range parsed.Classes {
+			KnownFunctionNames[c.ClassName] = struct{}{}
+		}
 		for _, fn := range parsed.Functions {
 			KnownFunctionNames[fn.goMethodName()] = struct{}{}
 		}
