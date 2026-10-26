@@ -294,42 +294,45 @@ type goFileState struct {
 	virtualReturnCopyClass *CppClass
 }
 
-// holdsGoWrapper reports whether the Go projection of p is or contains a Go
-// wrapper struct for a Qt class, which may own a C++ object through GoGC().
-func (p CppParameter) holdsGoWrapper() bool {
+// holdsGoGCWrapper reports whether the Go projection of p is or contains a Go
+// wrapper struct for a Qt class that may own a C++ object through GoGC().
+// QObject classes are excluded: they can't be copied, so Qt never returns them
+// by value and the bindings never call GoGC() on them.
+func (p CppParameter) holdsGoGCWrapper() bool {
 	if t, _, ok := p.QListOf(); ok {
-		return t.holdsGoWrapper()
+		return t.holdsGoGCWrapper()
 	}
 	if t, ok := p.QSetOf(); ok {
-		return t.holdsGoWrapper()
+		return t.holdsGoGCWrapper()
 	}
 	if kType, vType, _, ok := p.QMapOf(); ok {
-		return kType.holdsGoWrapper() || vType.holdsGoWrapper()
+		return kType.holdsGoGCWrapper() || vType.holdsGoGCWrapper()
 	}
 	if kType, vType, ok := p.QPairOf(); ok {
-		return kType.holdsGoWrapper() || vType.holdsGoWrapper()
+		return kType.holdsGoGCWrapper() || vType.holdsGoGCWrapper()
 	}
 	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
 		return false
 	}
-	_, ok := KnownClassnames[p.ParameterType]
-	return ok
+	pkg, ok := KnownClassnames[p.ParameterType]
+	return ok && !pkg.Class.IsQObject()
 }
 
-// emitKeepAlive keeps the receiver (if any) and every argument that may own a
-// C++ object reachable until the function returns. Otherwise, once their C++
-// pointers have been passed to C, the Go wrappers can become unreachable and
-// their finalizers can delete the C++ objects while C++ is still using them.
-func (gfs *goFileState) emitKeepAlive(m CppMethod, receiver bool) string {
+// emitKeepAlive keeps the receiver of class c (if any) and every argument that
+// may own a C++ object through GoGC() reachable until the function returns.
+// Otherwise, once their C++ pointers have been passed to C, the Go wrappers can
+// become unreachable and their finalizers can delete the C++ objects while C++
+// is still using them.
+func (gfs *goFileState) emitKeepAlive(c *CppClass, m CppMethod) string {
 	ret := ""
-	if receiver && !m.IsStatic {
+	if c != nil && !m.IsStatic && !c.IsQObject() {
 		ret += "defer runtime.KeepAlive(this)\n"
 	}
 	for i, p := range m.Parameters {
 		if IsArgcArgv(m.Parameters, i) {
 			break
 		}
-		if p.holdsGoWrapper() {
+		if p.holdsGoGCWrapper() {
 			ret += "defer runtime.KeepAlive(" + p.goParameterName() + ")\n"
 		}
 	}
@@ -1023,7 +1026,7 @@ import "C"
 				`)
 			}
 
-			ret.WriteString(gfs.emitKeepAlive(ctor, false))
+			ret.WriteString(gfs.emitKeepAlive(nil, ctor))
 			ret.WriteString(preamble)
 
 			// Call Cgo constructor
@@ -1050,7 +1053,7 @@ import "C"
 
 			returnFunc := gfs.emitCabiToGo("return ", m.ReturnType, rvalue)
 
-			if pkg, ok := KnownClassnames[m.ReturnType.ParameterType]; ok && !m.IsStatic && m.ReturnType.ByRef && !m.ReturnType.Pointer && m.ReturnType.holdsGoWrapper() && pkg.PackageName == gfs.currentPackageName {
+			if pkg, ok := KnownClassnames[m.ReturnType.ParameterType]; ok && !m.IsStatic && !c.IsQObject() && m.ReturnType.ByRef && !m.ReturnType.Pointer && m.ReturnType.holdsGoGCWrapper() && pkg.PackageName == gfs.currentPackageName {
 				// The returned reference points into this object (or something
 				// it owns), so it must keep this object alive
 				returnFunc = gfs.emitCabiToGo("_ret := ", m.ReturnType, rvalue) +
@@ -1074,7 +1077,7 @@ import "C"
 				`)
 			}
 			ret.WriteString(`
-				` + gfs.emitKeepAlive(m, true) + preamble +
+				` + gfs.emitKeepAlive(&c, m) + preamble +
 				returnFunc + `}
 			`)
 
@@ -1135,7 +1138,7 @@ import "C"
 				ret.WriteString(`
 			// ` + m.goMethodName() + ` can only be called from a ` + goClassName + ` that was directly constructed.
 			func (this *` + goClassName + `) ` + m.goMethodName() + ` (` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
-				` + gfs.emitKeepAlive(m, true) + preamble + `
+				` + gfs.emitKeepAlive(&c, m) + preamble + `
 				var _dynamic_cast_ok C.bool = false
 				` + gfs.emitCabiToGo("_method_ret := ", m.ReturnType, `C.`+cabiProtectedBaseName(c, m)+`(&_dynamic_cast_ok, `+forwarding+`)`) + `
 				if !_dynamic_cast_ok {
@@ -1173,7 +1176,7 @@ import "C"
 
 				ret.WriteString(`
 				func (this *` + goClassName + `) callVirtualBase_` + m.goMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
-					` + gfs.emitKeepAlive(m, true) + preamble + `
+					` + gfs.emitKeepAlive(&c, m) + preamble + `
 					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+cabiVirtualBaseName(c, m)+`(`+forwarding+`)`) + `
 				}
 				`)
@@ -1240,7 +1243,7 @@ import "C"
 					ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
 				} else {
 					ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
-					if m.ReturnType.holdsGoWrapper() {
+					if m.ReturnType.holdsGoGCWrapper() {
 						// Keep it alive while it is copied for the C++ caller
 						gfs.imports["runtime"] = struct{}{}
 						ret.WriteString("defer runtime.KeepAlive(virtualReturn)\n")
@@ -1318,7 +1321,9 @@ import "C"
 
 			// GoGC adds a Go Finalizer to this object, so that it will be deleted
 			// from C++ memory once it (and every value copy of it) is unreachable
-			// from Go memory.
+			// from Go memory.` + ifv(c.IsQObject(), `
+			// This is a QObject class, so this is unsupported: the bindings do not
+			// keep it alive during calls into C++, and its parent may delete it.`, "") + `
 			func (this *` + goClassName + `) GoGC() {
 				if this.gc != nil {
 					return

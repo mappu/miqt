@@ -6,12 +6,12 @@ import (
 )
 
 // withKnownClass registers a Qt class for the duration of a test.
-func withKnownClass(t *testing.T, className, packageName string) {
+func withKnownClass(t *testing.T, className, packageName string, inherits ...string) {
 	if KnownClassnames == nil {
 		KnownClassnames = make(map[string]lookupResultClass)
 	}
 	old, existed := KnownClassnames[className]
-	KnownClassnames[className] = lookupResultClass{PackageName: packageName, Class: CppClass{ClassName: className}}
+	KnownClassnames[className] = lookupResultClass{PackageName: packageName, Class: CppClass{ClassName: className, DirectInherits: inherits}}
 	t.Cleanup(func() {
 		if existed {
 			KnownClassnames[className] = old
@@ -27,8 +27,11 @@ func withKnownClass(t *testing.T, className, packageName string) {
 func TestEmitKeepAlive(t *testing.T) {
 	withKnownClass(t, "QFont", "qt6")
 	withKnownClass(t, "QModelIndex", "qt6")
+	withKnownClass(t, "QObject", "qt6")
+	withKnownClass(t, "QWidget", "qt6", "QObject")
 
 	gfs := goFileState{imports: map[string]struct{}{}, currentPackageName: "qt6"}
+	c := CppClass{ClassName: "QFont"}
 
 	m := CppMethod{
 		MethodName: "setFont",
@@ -37,10 +40,11 @@ func TestEmitKeepAlive(t *testing.T) {
 			{ParameterType: "QList<QModelIndex>", ParameterName: "indexes"},
 			{ParameterType: "QString", ParameterName: "name"},
 			{ParameterType: "int", ParameterName: "role"},
+			{ParameterType: "QWidget", ParameterName: "widget", Pointer: true},
 		},
 	}
 
-	got := gfs.emitKeepAlive(m, true)
+	got := gfs.emitKeepAlive(&c, m)
 	for _, want := range []string{
 		"defer runtime.KeepAlive(this)\n",
 		"defer runtime.KeepAlive(font)\n",
@@ -50,7 +54,8 @@ func TestEmitKeepAlive(t *testing.T) {
 			t.Fatalf("emitKeepAlive missing %q:\n%s", want, got)
 		}
 	}
-	for _, notWant := range []string{"KeepAlive(name)", "KeepAlive(role)"} {
+	// QObject classes never have a finalizer, so don't need to be kept alive
+	for _, notWant := range []string{"KeepAlive(name)", "KeepAlive(role)", "KeepAlive(widget)"} {
 		if strings.Contains(got, notWant) {
 			t.Fatalf("emitKeepAlive should not emit %q:\n%s", notWant, got)
 		}
@@ -60,8 +65,14 @@ func TestEmitKeepAlive(t *testing.T) {
 	}
 
 	m.IsStatic = true
-	if got := gfs.emitKeepAlive(m, true); strings.Contains(got, "KeepAlive(this)") {
+	if got := gfs.emitKeepAlive(&c, m); strings.Contains(got, "KeepAlive(this)") {
 		t.Fatalf("emitKeepAlive kept alive the receiver of a static method:\n%s", got)
+	}
+
+	m.IsStatic = false
+	w := KnownClassnames["QWidget"].Class
+	if got := gfs.emitKeepAlive(&w, m); strings.Contains(got, "KeepAlive(this)") {
+		t.Fatalf("emitKeepAlive kept alive a QObject receiver:\n%s", got)
 	}
 }
 
