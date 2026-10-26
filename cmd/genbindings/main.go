@@ -264,7 +264,14 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 func main() {
 	// data/time flags make logs hard to compare across runs
 	log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
-	clang := flag.String("clang", "clang", "Custom path to clang")
+
+	// Default clang is clang-14, then clang
+	defaultClang := `clang`
+	if _, err := exec.LookPath("clang-14"); err == nil {
+		defaultClang = `clang-14`
+	}
+
+	clang := flag.String("clang", defaultClang, "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
 	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
 
@@ -277,6 +284,8 @@ func main() {
 	} else if !strings.Contains(string(clangVersionInfo), `clang version 14`) {
 		log.Printf("WARNING: miqt/genbindings works best with clang-14")
 	}
+
+	//
 
 	ProcessLibraries(*clang, *outDir, *extraLibsDir)
 }
