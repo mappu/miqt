@@ -3184,3 +3184,24 @@ func (this *QAccessible__ActivationObserver) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QAccessibleRoleStringWithRole(role QAccessible__Role) string {
+	_ret := C.miqt_QAccessibleRoleStringWithRole((C.int)(role))
+	return C.GoString(_ret)
+}
+
+func QAccessibleEventStringWithEvent(event QAccessible__Event) string {
+	_ret := C.miqt_QAccessibleEventStringWithEvent((C.int)(event))
+	return C.GoString(_ret)
+}
+
+func QAccessibleLocalizedActionDescriptionWithActionName(actionName string) string {
+	actionName_ms := C.struct_miqt_string{}
+	actionName_ms.data = C.CString(actionName)
+	actionName_ms.len = C.size_t(len(actionName))
+	defer C.free(unsafe.Pointer(actionName_ms.data))
+	var _ms C.struct_miqt_string = C.miqt_QAccessibleLocalizedActionDescriptionWithActionName(actionName_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}

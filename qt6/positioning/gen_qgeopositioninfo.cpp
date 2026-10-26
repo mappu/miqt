@@ -77,3 +77,8 @@ void QGeoPositionInfo_delete(QGeoPositionInfo* self) {
 	delete self;
 }
 
+char* miqt_QTest_ToString2(QGeoPositionInfo* info) {
+
+	return QTest::toString(*info);
+}
+

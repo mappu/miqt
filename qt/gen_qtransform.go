@@ -474,3 +474,9 @@ func (this *QTransform) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QFuzzyCompare8(t1 *QTransform, t2 *QTransform) bool {
+	defer runtime.KeepAlive(t1)
+	defer runtime.KeepAlive(t2)
+	return (bool)(C.miqt_QFuzzyCompare8(t1.cPointer(), t2.cPointer()))
+}

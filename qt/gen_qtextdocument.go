@@ -1527,3 +1527,33 @@ func (this *QTextDocument) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func MightBeRichTextWithQString(param1 string) bool {
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	return (bool)(C.miqt_MightBeRichTextWithQString(param1_ms))
+}
+
+func ConvertFromPlainText2(plain string, mode WhiteSpaceMode) string {
+	plain_ms := C.struct_miqt_string{}
+	plain_ms.data = C.CString(plain)
+	plain_ms.len = C.size_t(len(plain))
+	defer C.free(unsafe.Pointer(plain_ms.data))
+	var _ms C.struct_miqt_string = C.miqt_ConvertFromPlainText2(plain_ms, (C.int)(mode))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func CodecForHtmlWithBa(ba []byte) *QTextCodec {
+	ba_alias := C.struct_miqt_string{}
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	ba_alias.len = C.size_t(len(ba))
+	return newQTextCodec(C.miqt_CodecForHtmlWithBa(ba_alias))
+}

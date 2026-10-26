@@ -183,3 +183,8 @@ void QVector4D_delete(QVector4D* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare11(QVector4D* v1, QVector4D* v2) {
+
+	return qFuzzyCompare(*v1, *v2);
+}
+

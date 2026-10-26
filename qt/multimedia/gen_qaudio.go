@@ -59,3 +59,7 @@ const (
 	QAudio__LogarithmicVolumeScale QAudio__VolumeScale = 2
 	QAudio__DecibelVolumeScale     QAudio__VolumeScale = 3
 )
+
+func QAudio_ConvertVolume2(volume float64, from QAudio__VolumeScale, to QAudio__VolumeScale) float64 {
+	return (float64)(C.miqt_QAudio_ConvertVolume2((C.double)(volume), (C.int)(from), (C.int)(to)))
+}

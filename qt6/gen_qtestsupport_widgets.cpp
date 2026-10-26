@@ -178,3 +178,13 @@ void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* s
 	delete self;
 }
 
+bool miqt_QTest_QWaitForWindowActive3(QWidget* widget, int timeout) {
+
+	return QTest::qWaitForWindowActive(widget, static_cast<int>(timeout));
+}
+
+bool miqt_QTest_QWaitForWindowExposed3(QWidget* widget, int timeout) {
+
+	return QTest::qWaitForWindowExposed(widget, static_cast<int>(timeout));
+}
+

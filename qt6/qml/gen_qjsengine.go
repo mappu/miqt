@@ -688,3 +688,8 @@ func (this *QJSEngine) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QjsEngineWithQObject(param1 *qt6.QObject) *QJSEngine {
+	defer runtime.KeepAlive(param1)
+	return newQJSEngine(C.miqt_QjsEngineWithQObject((*C.QObject)(param1.UnsafePointer())))
+}

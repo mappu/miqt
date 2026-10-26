@@ -100,6 +100,9 @@ QUntypedPropertyBinding* QUntypedBindable_makeBindingWithLocation(const QUntyped
 
 void QUntypedBindable_delete(QUntypedBindable* self);
 
+void miqt_BeginPropertyUpdateGroup2();
+void miqt_EndPropertyUpdateGroup2();
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

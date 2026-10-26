@@ -159,3 +159,52 @@ func (this *QwtPointPolar) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QwtPolar2Pos2(pole *qt.QPoint, radius float64, angle float64) *qt.QPoint {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.miqt_QwtPolar2Pos2((*C.QPoint)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtDegree2Pos2(pole *qt.QPoint, radius float64, angle float64) *qt.QPoint {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.miqt_QwtDegree2Pos2((*C.QPoint)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtPolar2Pos3(pole *qt.QPointF, radius float64, angle float64) *qt.QPointF {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.miqt_QwtPolar2Pos3((*C.QPointF)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtDegree2Pos3(pole *qt.QPointF, radius float64, angle float64) *qt.QPointF {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.miqt_QwtDegree2Pos3((*C.QPointF)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtFastPolar2Pos2(pole *qt.QPointF, radius float64, angle float64) *qt.QPointF {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.miqt_QwtFastPolar2Pos2((*C.QPointF)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtFastDegree2Pos2(pole *qt.QPointF, radius float64, angle float64) *qt.QPointF {
+	defer runtime.KeepAlive(pole)
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.miqt_QwtFastDegree2Pos2((*C.QPointF)(pole.UnsafePointer()), (C.double)(radius), (C.double)(angle))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QwtFastPos2PolarWithPos(pos *qt.QPointF) *QwtPointPolar {
+	defer runtime.KeepAlive(pos)
+	_goptr := newQwtPointPolar(C.miqt_QwtFastPos2PolarWithPos((*C.QPointF)(pos.UnsafePointer())))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}

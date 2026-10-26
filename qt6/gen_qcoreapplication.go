@@ -908,3 +908,10 @@ func (this *QCoreApplication) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QAppName2() string {
+	var _ms C.struct_miqt_string = C.miqt_QAppName2()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}

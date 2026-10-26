@@ -743,3 +743,23 @@ void QScriptEngine_delete(QScriptEngine* self) {
 	delete self;
 }
 
+QScriptValue* miqt_QScriptValueFromValueHelper2(QScriptEngine* engine, int type, const void* ptr) {
+
+	return new QScriptValue(qScriptValueFromValue_helper(engine, static_cast<int>(type), ptr));
+}
+
+bool miqt_QscriptvalueCastHelper2(QScriptValue* value, int type, void* ptr) {
+
+	return qscriptvalue_cast_helper(*value, static_cast<int>(type), ptr);
+}
+
+bool miqt_QScriptConnect2(QObject* sender, const char* signal, QScriptValue* receiver, QScriptValue* function) {
+
+	return qScriptConnect(sender, signal, *receiver, *function);
+}
+
+bool miqt_QScriptDisconnect2(QObject* sender, const char* signal, QScriptValue* receiver, QScriptValue* function) {
+
+	return qScriptDisconnect(sender, signal, *receiver, *function);
+}
+

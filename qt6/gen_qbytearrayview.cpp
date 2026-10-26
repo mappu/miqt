@@ -353,3 +353,9 @@ void QByteArrayView_delete(QByteArrayView* self) {
 	delete self;
 }
 
+unsigned short miqt_QChecksum3(const char* s, ptrdiff_t len, int standard) {
+
+	quint16 _ret = qChecksum(s, (qsizetype)(len), static_cast<Qt::ChecksumType>(standard));
+	return static_cast<unsigned short>(_ret);
+}
+

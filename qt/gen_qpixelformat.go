@@ -284,3 +284,45 @@ func (this *QPixelFormat) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QPixelFormatRgba2(red byte, green byte, blue byte, alfa byte, usage QPixelFormat__AlphaUsage, position QPixelFormat__AlphaPosition, pmul QPixelFormat__AlphaPremultiplied, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatRgba2((C.uchar)(red), (C.uchar)(green), (C.uchar)(blue), (C.uchar)(alfa), (C.int)(usage), (C.int)(position), (C.int)(pmul), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatGrayscale2(channelSize byte, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatGrayscale2((C.uchar)(channelSize), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatAlpha2(channelSize byte, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatAlpha2((C.uchar)(channelSize), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatCmyk2(channelSize byte, alfa byte, usage QPixelFormat__AlphaUsage, position QPixelFormat__AlphaPosition, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatCmyk2((C.uchar)(channelSize), (C.uchar)(alfa), (C.int)(usage), (C.int)(position), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatHsl2(channelSize byte, alfa byte, usage QPixelFormat__AlphaUsage, position QPixelFormat__AlphaPosition, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatHsl2((C.uchar)(channelSize), (C.uchar)(alfa), (C.int)(usage), (C.int)(position), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatHsv2(channelSize byte, alfa byte, usage QPixelFormat__AlphaUsage, position QPixelFormat__AlphaPosition, typeInt QPixelFormat__TypeInterpretation) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatHsv2((C.uchar)(channelSize), (C.uchar)(alfa), (C.int)(usage), (C.int)(position), (C.int)(typeInt)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPixelFormatYuv2(layout QPixelFormat__YUVLayout, alfa byte, usage QPixelFormat__AlphaUsage, position QPixelFormat__AlphaPosition, p_mul QPixelFormat__AlphaPremultiplied, typeInt QPixelFormat__TypeInterpretation, b_order QPixelFormat__ByteOrder) *QPixelFormat {
+	_goptr := newQPixelFormat(C.miqt_QPixelFormatYuv2((C.int)(layout), (C.uchar)(alfa), (C.int)(usage), (C.int)(position), (C.int)(p_mul), (C.int)(typeInt), (C.int)(b_order)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}

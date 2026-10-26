@@ -38,6 +38,8 @@ void QGeoSatelliteInfo_detach(QGeoSatelliteInfo* self);
 
 void QGeoSatelliteInfo_delete(QGeoSatelliteInfo* self);
 
+char* miqt_QTest_ToString3(QGeoSatelliteInfo* info);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

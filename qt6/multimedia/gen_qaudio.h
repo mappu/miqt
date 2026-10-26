@@ -18,6 +18,8 @@ extern "C" {
 #else
 #endif
 
+float miqt_QAudio_ConvertVolume2(float volume, int from, int to);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

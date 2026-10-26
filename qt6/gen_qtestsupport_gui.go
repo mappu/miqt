@@ -139,3 +139,45 @@ func (this *QTest__QTouchEventSequence) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func HandleTouchEvent2(w *QWindow, device *QPointingDevice, points []QEventPoint, mods KeyboardModifier) {
+	defer runtime.KeepAlive(w)
+	defer runtime.KeepAlive(device)
+	defer runtime.KeepAlive(points)
+	points_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
+	for i := range points {
+		points_CArray[i] = points[i].cPointer()
+	}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
+	C.miqt_HandleTouchEvent2(w.cPointer(), device.cPointer(), points_ma, (C.int)(mods))
+}
+
+func HandleTouchEventv22(w *QWindow, device *QPointingDevice, points []QEventPoint, mods KeyboardModifier) bool {
+	defer runtime.KeepAlive(w)
+	defer runtime.KeepAlive(device)
+	defer runtime.KeepAlive(points)
+	points_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
+	defer C.free(unsafe.Pointer(points_CArray_ptr))
+	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
+	for i := range points {
+		points_CArray[i] = points[i].cPointer()
+	}
+	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
+	return (bool)(C.miqt_HandleTouchEventv22(w.cPointer(), device.cPointer(), points_ma, (C.int)(mods)))
+}
+
+func QTest_QWaitForWindowActive2(window *QWindow, timeout int) bool {
+	defer runtime.KeepAlive(window)
+	return (bool)(C.miqt_QTest_QWaitForWindowActive2(window.cPointer(), (C.int)(timeout)))
+}
+
+func QTest_QWaitForWindowExposed2(window *QWindow, timeout int) bool {
+	defer runtime.KeepAlive(window)
+	return (bool)(C.miqt_QTest_QWaitForWindowExposed2(window.cPointer(), (C.int)(timeout)))
+}
+
+func QTest_CreateTouchDevice2(devType QInputDevice__DeviceType, caps QInputDevice__Capability) *QPointingDevice {
+	return newQPointingDevice(C.miqt_QTest_CreateTouchDevice2((C.int)(devType), (C.int)(caps)))
+}

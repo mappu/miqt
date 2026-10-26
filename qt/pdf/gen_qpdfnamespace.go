@@ -8,6 +8,11 @@ package pdf
 */
 import "C"
 
+import (
+	"github.com/mappu/miqt/qt"
+	"unsafe"
+)
+
 type QPdf__Rotation int
 
 const (
@@ -29,3 +34,21 @@ const (
 	QPdf__RenderImageAliased    QPdf__RenderFlag = 32
 	QPdf__RenderPathAliased     QPdf__RenderFlag = 64
 )
+
+func QPdf_QtGetEnumMetaObjectWithQPdfRotation(param1 QPdf__Rotation) *qt.QMetaObject {
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.miqt_QPdf_QtGetEnumMetaObjectWithQPdfRotation((C.int)(param1))))
+}
+
+func QPdf_QtGetEnumNameWithQPdfRotation(param1 QPdf__Rotation) string {
+	_ret := C.miqt_QPdf_QtGetEnumNameWithQPdfRotation((C.int)(param1))
+	return C.GoString(_ret)
+}
+
+func QPdf_QtGetEnumMetaObjectWithQPdfRenderFlag(param1 QPdf__RenderFlag) *qt.QMetaObject {
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.miqt_QPdf_QtGetEnumMetaObjectWithQPdfRenderFlag((C.int)(param1))))
+}
+
+func QPdf_QtGetEnumNameWithQPdfRenderFlag(param1 QPdf__RenderFlag) string {
+	_ret := C.miqt_QPdf_QtGetEnumNameWithQPdfRenderFlag((C.int)(param1))
+	return C.GoString(_ret)
+}

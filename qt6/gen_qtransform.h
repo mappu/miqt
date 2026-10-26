@@ -100,6 +100,8 @@ QTransform* QTransform_rotateRadians2(QTransform* self, double a, int axis);
 
 void QTransform_delete(QTransform* self);
 
+bool miqt_QFuzzyCompare6(QTransform* t1, QTransform* t2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

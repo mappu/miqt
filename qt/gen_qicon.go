@@ -587,3 +587,14 @@ func (this *QIcon) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func FindAtNxFile2(baseFileName string, targetDevicePixelRatio float64, sourceDevicePixelRatio *float64) string {
+	baseFileName_ms := C.struct_miqt_string{}
+	baseFileName_ms.data = C.CString(baseFileName)
+	baseFileName_ms.len = C.size_t(len(baseFileName))
+	defer C.free(unsafe.Pointer(baseFileName_ms.data))
+	var _ms C.struct_miqt_string = C.miqt_FindAtNxFile2(baseFileName_ms, (C.double)(targetDevicePixelRatio), (*C.double)(unsafe.Pointer(sourceDevicePixelRatio)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}

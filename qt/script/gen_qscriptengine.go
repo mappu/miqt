@@ -1025,3 +1025,33 @@ func (this *QScriptEngine) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QScriptValueFromValueHelper2(engine *QScriptEngine, typeVal int, ptr unsafe.Pointer) *QScriptValue {
+	defer runtime.KeepAlive(engine)
+	_goptr := newQScriptValue(C.miqt_QScriptValueFromValueHelper2(engine.cPointer(), (C.int)(typeVal), ptr))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QscriptvalueCastHelper2(value *QScriptValue, typeVal int, ptr unsafe.Pointer) bool {
+	defer runtime.KeepAlive(value)
+	return (bool)(C.miqt_QscriptvalueCastHelper2(value.cPointer(), (C.int)(typeVal), ptr))
+}
+
+func QScriptConnect2(sender *qt.QObject, signal string, receiver *QScriptValue, function *QScriptValue) bool {
+	defer runtime.KeepAlive(sender)
+	defer runtime.KeepAlive(receiver)
+	defer runtime.KeepAlive(function)
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+	return (bool)(C.miqt_QScriptConnect2((*C.QObject)(sender.UnsafePointer()), signal_Cstring, receiver.cPointer(), function.cPointer()))
+}
+
+func QScriptDisconnect2(sender *qt.QObject, signal string, receiver *QScriptValue, function *QScriptValue) bool {
+	defer runtime.KeepAlive(sender)
+	defer runtime.KeepAlive(receiver)
+	defer runtime.KeepAlive(function)
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+	return (bool)(C.miqt_QScriptDisconnect2((*C.QObject)(sender.UnsafePointer()), signal_Cstring, receiver.cPointer(), function.cPointer()))
+}

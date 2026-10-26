@@ -79,6 +79,8 @@ void QQuaternion_operatorAssign(QQuaternion* self, QQuaternion* param1);
 
 void QQuaternion_delete(QQuaternion* self);
 
+bool miqt_QFuzzyCompare7(QQuaternion* q1, QQuaternion* q2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

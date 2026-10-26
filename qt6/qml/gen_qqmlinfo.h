@@ -18,12 +18,16 @@ extern "C" {
 class QChar;
 class QDebug;
 class QIODeviceBase;
+class QObject;
+class QQmlError;
 class QQmlInfo;
 class QUrl;
 #else
 typedef struct QChar QChar;
 typedef struct QDebug QDebug;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QObject QObject;
+typedef struct QQmlError QQmlError;
 typedef struct QQmlInfo QQmlInfo;
 typedef struct QUrl QUrl;
 #endif
@@ -51,6 +55,16 @@ QQmlInfo* QQmlInfo_operatorShiftLeftWithQUrl(QQmlInfo* self, QUrl* t);
 void QQmlInfo_operatorAssign(QQmlInfo* self, QQmlInfo* param1);
 
 void QQmlInfo_delete(QQmlInfo* self);
+
+QQmlInfo* miqt_QmlDebugWithMe(QObject* me);
+QQmlInfo* miqt_QmlDebug2(QObject* me, QQmlError* error);
+QQmlInfo* miqt_QmlDebug3(QObject* me, struct miqt_array /* of QQmlError* */  errors);
+QQmlInfo* miqt_QmlInfoWithMe(QObject* me);
+QQmlInfo* miqt_QmlInfo2(QObject* me, QQmlError* error);
+QQmlInfo* miqt_QmlInfo3(QObject* me, struct miqt_array /* of QQmlError* */  errors);
+QQmlInfo* miqt_QmlWarningWithMe(QObject* me);
+QQmlInfo* miqt_QmlWarning2(QObject* me, QQmlError* error);
+QQmlInfo* miqt_QmlWarning3(QObject* me, struct miqt_array /* of QQmlError* */  errors);
 
 #ifdef __cplusplus
 } /* extern C */

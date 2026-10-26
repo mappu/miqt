@@ -296,3 +296,8 @@ void QTransform_delete(QTransform* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare6(QTransform* t1, QTransform* t2) {
+
+	return qFuzzyCompare(*t1, *t2);
+}
+

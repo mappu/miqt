@@ -890,3 +890,7 @@ func (this *QSignalBlocker) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func GetQtMetaObject2() *QMetaObject {
+	return newQMetaObject(C.miqt_GetQtMetaObject2())
+}

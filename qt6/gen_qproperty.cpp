@@ -236,3 +236,13 @@ void QUntypedBindable_delete(QUntypedBindable* self) {
 	delete self;
 }
 
+void miqt_BeginPropertyUpdateGroup2() {
+
+	Qt::beginPropertyUpdateGroup();
+}
+
+void miqt_EndPropertyUpdateGroup2() {
+
+	Qt::endPropertyUpdateGroup();
+}
+
