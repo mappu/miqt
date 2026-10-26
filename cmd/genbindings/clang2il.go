@@ -177,6 +177,14 @@ const (
 func processFunction(node *AstNode, addNamePrefix string) (CppFunction, error) {
 	var ret CppFunction
 
+	// Skip template instantiations - we'd need to link a concrete instantiation
+	// for each type in the CABI
+	for _, inner := range node.Inner {
+		if inner.Kind == "TemplateArgument" {
+			return CppFunction{}, ErrNoContent
+		}
+	}
+
 	// Must have a name
 	nodename, ok := node.Fields["name"].(string)
 	if !ok {

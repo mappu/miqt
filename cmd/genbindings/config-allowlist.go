@@ -303,7 +303,12 @@ func AllowFunction(fn CppFunction) bool {
 		`qobject_interface_iid`,
 		`qobject_cast`,
 		`qRegisterNormalizedMetaType`,
-		`qt_extension`: // Qt Designer
+		`qt_extension`,                   // Qt Designer
+		`qt_QMetaEnum_flagDebugOperator`, // template assertion problem
+		`qt_QMetaEnum_debugOperator`,
+		`qt_qFindChildren_helper`, // something is wrong with overloads
+		`qt_qFindChild_helper`,
+		`qSharedBuild`: // Not declared as a real function in Qt 6 (likely a macro)
 		return false
 	}
 
