@@ -76,20 +76,20 @@ func TestVirtualReturnCopy(t *testing.T) {
 	gfs := goFileState{imports: map[string]struct{}{}, currentPackageName: "qt6", virtualReturnCopyClass: &c}
 
 	single := CppParameter{ParameterType: "QVariant", ParameterName: "virtualReturn"}
-	_, rvalue := gfs.emitParameterGo2CABIForwarding(single)
+	_, rvalue := gfs.emitParameterGo2CABIForwarding(single, true)
 	if rvalue != "C.QAbstractTableModel_virtualreturncopy_QVariant(virtualReturn.cPointer())" {
 		t.Fatalf("value return is not copied: %s", rvalue)
 	}
 
 	list := CppParameter{ParameterType: "QList<QModelIndex>", ParameterName: "virtualReturn"}
-	preamble, _ := gfs.emitParameterGo2CABIForwarding(list)
+	preamble, _ := gfs.emitParameterGo2CABIForwarding(list, true)
 	if !strings.Contains(preamble, "C.QAbstractTableModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())") {
 		t.Fatalf("list element is not copied:\n%s", preamble)
 	}
 
 	// Pointers are not owned by the C++ caller, so must not be copied
 	ptr := CppParameter{ParameterType: "QVariant", ParameterName: "virtualReturn", Pointer: true}
-	if _, rvalue := gfs.emitParameterGo2CABIForwarding(ptr); strings.Contains(rvalue, "virtualreturncopy") {
+	if _, rvalue := gfs.emitParameterGo2CABIForwarding(ptr, true); strings.Contains(rvalue, "virtualreturncopy") {
 		t.Fatalf("pointer return was copied: %s", rvalue)
 	}
 
