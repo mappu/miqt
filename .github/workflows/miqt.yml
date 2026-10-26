@@ -8,7 +8,7 @@ on:
 
 jobs:
   miqt_genbindings:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -36,7 +36,7 @@ jobs:
       run: git update-index --really-refresh && git diff-index HEAD
       
   miqt_buildall:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -50,7 +50,7 @@ jobs:
       run: cmd/miqt-docker/miqt-docker genbindings /bin/bash -c 'cd examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
     
   miqt_linux64_qt5:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -62,7 +62,7 @@ jobs:
         cd qt && ../cmd/miqt-docker/miqt-docker linux64-go1.19-qt5.15-dynamic go build
         
   miqt_linux64_qt6_4:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -74,7 +74,7 @@ jobs:
         cd qt6 && ../cmd/miqt-docker/miqt-docker linux64-go1.19-qt6.4-dynamic go build
     
   miqt_linux64_qt6_8:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -86,7 +86,7 @@ jobs:
         cd qt6 && ../cmd/miqt-docker/miqt-docker linux64-go1.23-qt6.8-dynamic go build
     
   miqt_win32_qt5:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -98,7 +98,7 @@ jobs:
         cmd/miqt-docker/miqt-docker win32-cross-go1.23-qt5.15-static /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
 
   miqt_win64_qt5:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -110,7 +110,7 @@ jobs:
         cmd/miqt-docker/miqt-docker win64-cross-go1.23-qt5.15-static /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
 
   miqt_win64_qt68:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     
     steps:
     - name: Checkout
@@ -122,7 +122,7 @@ jobs:
         cmd/miqt-docker/miqt-docker win64-cross-go1.23-qt6.8-dynamic /bin/bash -c 'cd qt6 && go build && cd ../examples/helloworld6 && go build'
 
   miqt_android_qt5:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     steps:
     - name: Checkout
@@ -145,7 +145,7 @@ jobs:
         test -f helloworld.apk
 
   miqt_android_qt6:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     steps:
     - name: Checkout

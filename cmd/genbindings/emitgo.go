@@ -379,7 +379,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			skipNext = false
 
 		} else {
-			addPreamble, rvalue := gfs.emitParameterGo2CABIForwarding(p)
+			addPreamble, rvalue := gfs.emitParameterGo2CABIForwarding(p, true)
 
 			preamble += addPreamble
 			tmp = append(tmp, rvalue)
@@ -390,23 +390,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 	return preamble, strings.Join(tmp, ", ")
 }
 
-// stripDeferCFree removes `defer C.free(...)` lines from a Go2CABI preamble. It
-// is used for virtual-override callback RETURN values, whose CABI memory must
-// outlive the callback's return (the C++ caller copies it, then frees) — unlike
-// argument forwarding, where defer-freeing on return is correct.
-func stripDeferCFree(preamble string) string {
-	lines := strings.Split(preamble, "\n")
-	out := lines[:0]
-	for _, ln := range lines {
-		if strings.Contains(ln, "defer C.free(") {
-			continue
-		}
-		out = append(out, ln)
-	}
-	return strings.Join(out, "\n")
-}
-
-func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble string, rvalue string) {
+func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter, shouldDeferFree bool) (preamble string, rvalue string) {
 
 	nameprefix := makeNamePrefix(p.goParameterName())
 
@@ -418,7 +402,10 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
 		preamble += nameprefix + "_ms.data = C.CString(" + p.goParameterName() + ")\n"
 		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.goParameterName() + "))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
+
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
+		}
 
 		rvalue = nameprefix + "_ms"
 
@@ -436,6 +423,8 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += "}\n"
 		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.goParameterName() + "))\n"
 
+		// TODO this is missing a defer.Free() as per other types - why?
+
 		rvalue = nameprefix + "_alias"
 
 	} else if p.ParameterType == "QAnyStringView" {
@@ -446,7 +435,10 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
 		preamble += nameprefix + "_ms.data = C.CString(" + p.goParameterName() + ")\n"
 		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.goParameterName() + "))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
+
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
+		}
 
 		rvalue = nameprefix + "_ms"
 
@@ -460,13 +452,15 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		mallocSize := listType.mallocSizeCgoExpression()
 
 		preamble += nameprefix + "_CArray_ptr := (*" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray_ptr))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray_ptr))\n"
+		}
 		preamble += nameprefix + "_CArray := unsafe.Slice(" + nameprefix + "_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
 		preamble += "for i := range " + p.goParameterName() + "{\n"
 
 		listType.ParameterName = p.goParameterName() + "[i]"
-		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(listType)
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(listType, shouldDeferFree)
 		preamble += addPreamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
@@ -484,11 +478,15 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		gfs.imports["unsafe"] = struct{}{}
 
 		preamble += nameprefix + "_Keys_CArray_ptr := (*" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Keys_CArray_ptr))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Keys_CArray_ptr))\n"
+		}
 		preamble += nameprefix + "_Keys_CArray := unsafe.Slice(" + nameprefix + "_Keys_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
 		preamble += nameprefix + "_Values_CArray_ptr := (*" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Values_CArray_ptr))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Values_CArray_ptr))\n"
+		}
 		preamble += nameprefix + "_Values_CArray := unsafe.Slice(" + nameprefix + "_Values_CArray_ptr, len(" + p.goParameterName() + "))\n"
 
 		preamble += nameprefix + "_ctr := 0\n"
@@ -496,12 +494,12 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += "for " + nameprefix + "_k, " + nameprefix + "_v := range " + p.goParameterName() + "{\n"
 
 		kType.ParameterName = nameprefix + "_k"
-		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType, shouldDeferFree)
 		preamble += addPreamble
 		preamble += nameprefix + "_Keys_CArray[" + nameprefix + "_ctr] = " + innerRvalue + "\n"
 
 		vType.ParameterName = nameprefix + "_v"
-		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType)
+		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType, shouldDeferFree)
 		preamble += addPreamble
 		preamble += nameprefix + "_Values_CArray[" + nameprefix + "_ctr] = " + innerRvalue + "\n"
 
@@ -519,18 +517,22 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		gfs.imports["unsafe"] = struct{}{}
 
 		preamble += nameprefix + "_First_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + ")))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_First_CArray))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_First_CArray))\n"
+		}
 
 		preamble += nameprefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + ")))\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Second_CArray))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Second_CArray))\n"
+		}
 
 		kType.ParameterName = p.goParameterName() + ".First"
-		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType, shouldDeferFree)
 		preamble += addPreamble
 		preamble += nameprefix + "_First_CArray[0] = " + innerRvalue + "\n"
 
 		vType.ParameterName = p.goParameterName() + ".Second"
-		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType)
+		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType, shouldDeferFree)
 		preamble += addPreamble
 		preamble += nameprefix + "_Second_CArray[0] = " + innerRvalue + "\n"
 
@@ -542,7 +544,9 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Single char* argument
 		gfs.imports["unsafe"] = struct{}{}
 		preamble += nameprefix + "_Cstring := C.CString(" + p.goParameterName() + ")\n"
-		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Cstring))\n"
+		if shouldDeferFree {
+			preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Cstring))\n"
+		}
 		rvalue = nameprefix + "_Cstring"
 
 	} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
@@ -1247,16 +1251,12 @@ import "C"
 					}
 					virtualRetP := m.ReturnType // copy
 					virtualRetP.ParameterName = "virtualReturn"
+
+					// don't include defer C.free(...) - we want the memory to outlive the return and have the C++ trampoline do the freeing
 					gfs.virtualReturnCopyClass = &c
-					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP, false)
 					gfs.virtualReturnCopyClass = nil
-					// A virtual-override callback hands ownership of any heap-allocated
-					// CABI return memory to the C++ caller, which copies it into the real
-					// Qt type. The `defer C.free(...)` emitted for argument forwarding would
-					// run on THIS function's return — before the C++ caller reads the data —
-					// a use-after-free (e.g. QAbstractItemModel::mimeTypes -> qBadAlloc).
-					// Strip them so the memory outlives the return; the C++ trampoline frees.
-					binding = stripDeferCFree(binding)
+
 					ret.WriteString(binding + "\n")
 					ret.WriteString("return " + rvalue + "\n")
 				}
