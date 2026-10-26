@@ -317,10 +317,11 @@ func (nm CppMethod) IsReceiverMethod() bool {
 	return false
 }
 
-func safeMethodName(methodName string) string {
+func generateSafeCabiMethodName(methodName string) string {
 
 	// Strip redundant Qt prefix, we know these are all Qt functions
 	tmp := strings.TrimPrefix(methodName, "qt_")
+	tmp = strings.TrimPrefix(tmp, "Qt::")
 
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first
@@ -374,7 +375,7 @@ func safeMethodName(methodName string) string {
 }
 
 func (nm CppMethod) CabiMethodName() string {
-	return safeMethodName(nm.MethodName)
+	return generateSafeCabiMethodName(nm.MethodName)
 }
 
 func (nm CppMethod) IsReadonlyOperator() bool {
@@ -692,7 +693,7 @@ func (fn CppFunction) CppCallTarget() string {
 }
 
 func (fn CppFunction) CabiMethodName() string {
-	return safeMethodName(fn.FunctionName)
+	return generateSafeCabiMethodName(fn.FunctionName)
 }
 
 func (fn *CppFunction) Rename(newName string) {

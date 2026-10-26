@@ -24,23 +24,11 @@ func goReservedWord(s string) bool {
 }
 
 func (nm CppMethod) goMethodName() string {
-	// Also make the first letter uppercase so it becomes public in Go
-	tmp := nm.SafeMethodName()
-	tmp = titleCase(tmp)
-	if strings.HasPrefix(tmp, `Qt_`) {
-		tmp = tmp[3:] // FIXME SafeMethodName handles this but it's lost in the renumbering/renaming(!!)
-	}
-	return tmp
+	return titleCase(nm.CabiMethodName())
 }
 
 func (fn CppFunction) goMethodName() string {
-	// Also make the first letter uppercase so it becomes public in Go
-	tmp := fn.SafeMethodName()
-	tmp = titleCase(tmp)
-	if strings.HasPrefix(tmp, `Qt_`) {
-		tmp = tmp[3:] // FIXME SafeMethodName handles this but it's lost in the renumbering/renaming(!!)
-	}
-	return tmp
+	return titleCase(fn.CabiMethodName())
 }
 
 func (p CppParameter) goParameterName() string {
