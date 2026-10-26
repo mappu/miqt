@@ -74,6 +74,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	}
 
 	if p.ParameterType == "void" && p.Pointer {
+		gfs.imports["unsafe"] = struct{}{}
 		return "unsafe.Pointer"
 	}
 
