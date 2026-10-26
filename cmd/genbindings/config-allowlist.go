@@ -523,6 +523,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	if strings.Contains(p.ParameterType, "(*)") { // Function pointer.
 		return ErrTooComplex // e.g. QAccessible_InstallFactory
 	}
+	if p.ParameterType == "long double" {
+		return ErrTooComplex // Go has no long double type
+	}
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
 	}
