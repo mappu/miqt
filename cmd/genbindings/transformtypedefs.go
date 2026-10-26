@@ -87,4 +87,20 @@ func astTransformTypedefs(parsed *CppParsedHeader) {
 		e.UnderlyingType = applyTypedefs(e.UnderlyingType)
 		parsed.Enums[i] = e
 	}
+
+	// Free function return types and parameters
+	for i, fn := range parsed.Functions {
+		applyTypedefs_Function(&fn)
+		parsed.Functions[i] = fn
+	}
+}
+
+// applyTypedefs_Function resolves typedefs on a free function's return type
+// and parameters (e.g. QRgb -> quint32 -> uint), matching what
+// applyTypedefs_Method does for class methods.
+func applyTypedefs_Function(f *CppFunction) {
+	f.ReturnType = applyTypedefs(f.ReturnType)
+	for k, p := range f.Parameters {
+		f.Parameters[k] = applyTypedefs(p)
+	}
 }

@@ -74,3 +74,59 @@ func astTransformOverloads(parsed *CppParsedHeader) {
 		}
 	}
 }
+
+// astTransformOverloadFunctions renames free functions if another function
+// exists with the same name.
+func astTransformOverloadFunctions(parsed *CppParsedHeader, existingNames map[string]struct{}) {
+
+	for j, fn := range parsed.Functions {
+
+		originalProposal := fn.goMethodName()
+		proposedName := originalProposal
+
+		if _, ok := existingNames[proposedName]; !ok {
+			existingNames[proposedName] = struct{}{}
+			continue // No collision
+		}
+
+		// Collision - rename
+		proposedName = (func() (proposedName string) {
+
+			// Fake special-case check
+			// If this is a 1-argument function, try and name it FooFrom{Type}
+			// e.g. NewVariantFromFloat
+			if len(fn.Parameters) == 1 {
+
+				// If the parameter has a proper name (i.e. not 'l' or 'param1')
+				// then go with that
+				if len(fn.Parameters[0].ParameterName) > 1 && !strings.HasPrefix(fn.Parameters[0].ParameterName, "param") {
+					proposedName = originalProposal + "With" + titleCase(fn.Parameters[0].ParameterName)
+				} else {
+					// Try the type instead
+					proposedName = originalProposal + "With" + titleCase(fn.Parameters[0].renderTypeForMethod())
+				}
+				if _, ok := existingNames[proposedName]; !ok {
+					return proposedName
+				}
+
+			}
+
+			// No special naming, have to use a numeric overload
+			// Numbers start with 2 since the "original" is the first
+			ctr := 2
+			for {
+				proposedName = fmt.Sprintf("%s%d", originalProposal, ctr)
+				if _, ok := existingNames[proposedName]; !ok {
+					return proposedName
+				}
+
+				ctr++ // Loop until we have a non-colliding name available
+			}
+		})()
+
+		// We have identified a final replacement name
+		existingNames[proposedName] = struct{}{}
+		fn.Rename(proposedName)
+		parsed.Functions[j] = fn
+	}
+}

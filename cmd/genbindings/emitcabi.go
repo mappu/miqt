@@ -899,6 +899,14 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		delete(foundTypes, td.Alias)
 	}
 
+	// Also scan free functions for referenced types
+	for _, fn := range src.Functions {
+		for _, p := range fn.Parameters {
+			maybeAddType(p)
+		}
+		maybeAddType(fn.ReturnType)
+	}
+
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
@@ -924,6 +932,10 @@ func cabiClassName(className string) string {
 
 	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
 	return strings.Replace(className, `::`, `__`, -1)
+}
+
+func cabiFunctionName(fn CppFunction) string {
+	return "miqt_" + cabiClassName(fn.FunctionName)
 }
 
 func cabiPreventStructDeclaration(className string) bool {
@@ -1075,6 +1087,14 @@ extern "C" {
 		ret.WriteString("\n")
 	}
 
+	// Free functions
+	for _, fn := range src.Functions {
+		ret.WriteString(fmt.Sprintf("%s %s(%s);\n", fn.ReturnType.RenderTypeCabi(), cabiFunctionName(fn), emitParametersCabiFunction(&fn)))
+	}
+	if len(src.Functions) > 0 {
+		ret.WriteString("\n")
+	}
+
 	ret.WriteString(
 		`#ifdef __cplusplus
 } /* extern C */
@@ -1083,6 +1103,16 @@ extern "C" {
 #endif
 `)
 	return ret.String(), nil
+}
+
+func emitParametersCabiFunction(fn *CppFunction) string {
+
+	slist := make([]string, 0, len(fn.Parameters))
+	for _, p := range fn.Parameters {
+		slist = append(slist, p.RenderTypeCabi()+" "+p.cParameterName())
+	}
+
+	return strings.Join(slist, `, `)
 }
 
 func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
@@ -1702,6 +1732,40 @@ extern "C" {
 					"\n",
 			)
 		}
+	}
+
+	// Free function implementations
+	for _, fn := range src.Functions {
+
+		if fn.RequireCpp != nil {
+			ret.WriteString(
+				"#if " + *fn.RequireCpp + "\n",
+			)
+		}
+
+		preamble, forwarding := emitParametersCABI2CppForwarding(fn.Parameters, "\t")
+
+		ret.WriteString(
+			fn.ReturnType.RenderTypeCabi() + " " + cabiFunctionName(fn) + "(" + emitParametersCabiFunction(&fn) + ") {\n",
+		)
+
+		ret.WriteString(preamble + "\n")
+
+		// Forward to the actual Qt free function
+		callTarget := fn.CppCallTarget() + "(" + forwarding + ")"
+		ret.WriteString(emitAssignCppToCabi("\treturn ", fn.ReturnType, callTarget))
+
+		ret.WriteString("}\n")
+
+		if fn.RequireCpp != nil {
+			ret.WriteString(
+				"#else\n" +
+					"\treturn " + getCabiZeroValue(fn.ReturnType) + ";\n" +
+					"#endif\n",
+			)
+		}
+
+		ret.WriteString("\n")
 	}
 
 	//

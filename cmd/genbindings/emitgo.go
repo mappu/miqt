@@ -2,6 +2,7 @@ package main
 
 import (
 	"C"
+
 	"fmt"
 	"go/format"
 	"log"
@@ -26,7 +27,24 @@ func (nm CppMethod) goMethodName() string {
 	// Also make the first letter uppercase so it becomes public in Go
 	tmp := nm.SafeMethodName()
 	tmp = titleCase(tmp)
+	if strings.HasPrefix(tmp, `Qt_`) {
+		tmp = tmp[3:] // FIXME SafeMethodName handles this but it's lost in the renumbering/renaming(!!)
+	}
 	return tmp
+}
+
+func (fn CppFunction) goMethodName() string {
+	// Also make the first letter uppercase so it becomes public in Go
+	tmp := fn.SafeMethodName()
+	tmp = titleCase(tmp)
+	if strings.HasPrefix(tmp, `Qt_`) {
+		tmp = tmp[3:] // FIXME SafeMethodName handles this but it's lost in the renumbering/renaming(!!)
+	}
+	return tmp
+}
+
+func (fn CppFunction) SafeMethodName() string {
+	return safeMethodName(fn.FunctionName)
 }
 
 func (p CppParameter) goParameterName() string {
@@ -1332,6 +1350,34 @@ import "C"
 			`)
 
 		}
+
+	}
+
+	// Emit free functions
+	for _, fn := range src.Functions {
+
+		preamble, forwarding := gfs.emitParametersGo2CABIForwarding(CppMethod{Parameters: fn.Parameters, IsStatic: true})
+
+		returnTypeDecl := fn.ReturnType.renderReturnTypeGo(&gfs, true)
+
+		rvalue := `C.` + cabiFunctionName(fn) + `(` + forwarding + `)`
+
+		returnFunc := gfs.emitCabiToGo("return ", fn.ReturnType, rvalue)
+
+		if fn.RequireGOOS != nil {
+			gfs.imports["runtime"] = struct{}{}
+			ret.WriteString(`
+				if runtime.GOOS != "` + *fn.RequireGOOS + `" {
+					panic("Unsupported OS")
+				}
+				`)
+		}
+
+		ret.WriteString(`
+		func ` + fn.goMethodName() + `(` + gfs.emitParametersGo(fn.Parameters) + `) ` + returnTypeDecl + ` {
+			` + gfs.emitKeepAlive(CppMethod{Parameters: fn.Parameters}, false) + preamble +
+			returnFunc + `}
+		`)
 
 	}
 

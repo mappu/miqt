@@ -100,6 +100,19 @@ func Widgets_AllowHeader(fullpath string) bool {
 	return true
 }
 
+func AllowFreeFunctionsInHeader(fullpath string) bool {
+	fname := filepath.Base(fullpath)
+
+	switch fname {
+	case `qnumeric.h`, // Works, just boring / should use Go versions
+		`qmath.h`,      // Works, just boring / should use Go versions
+		`qnamespace.h`: // Works, but only contains thousands of operator overload functions(??)
+		return false
+	}
+
+	return true
+}
+
 type AllowedPlatformInfo interface {
 	GoBuildTag() string
 	CxxIf() string
@@ -232,6 +245,65 @@ func AllowClass(className string) bool {
 		"QStringConverterBase::State",    // not a public class, will be removed in Qt 7
 		"QVariantConstPointer",           // scheduled for deprecation in Qt 6.15
 		"____last____":
+		return false
+	}
+
+	return true
+}
+
+func AllowFunction(fn CppFunction) bool {
+
+	// Skip functions with "private" in their name
+	if strings.Contains(fn.FunctionName, "Private") {
+		return false
+	}
+
+	// Skip functions that return Private types
+	if strings.HasSuffix(fn.ReturnType.ParameterType, "Private") {
+		return false
+	}
+
+	for _, p := range fn.Parameters {
+		if strings.HasSuffix(p.ParameterType, "Private") {
+			return false
+		}
+
+		// Skip variadic functions (maybe doable one day)
+		if p.ParameterType == "..." {
+			return false
+		}
+
+		if strings.HasPrefix(p.ParameterType, `__va`) { // e.g. __va_list_tag
+			return false
+		}
+	}
+
+	///
+
+	callTarget := fn.CppCallTarget()
+
+	// Free operator functions (non-member operator functions)
+	// e.g. operator<<. operator|, ... lots of conflicts at top-level
+	// TODO maybe convert them to non-free functions?
+	if strings.Contains(callTarget, `operator`) {
+		return false
+	}
+
+	// These work but i don't think we need them for anything(?)
+	if strings.HasPrefix(callTarget, `qRegisterNormalizedMetaType_`) {
+		return false
+	}
+
+	// These work, there's just heaps of them for every single type
+	// If there is a use case, they would need prefixing at minimum
+	switch callTarget {
+	case
+		`qHash`,
+		`swap`,
+		`qobject_interface_iid`,
+		`qobject_cast`,
+		`qRegisterNormalizedMetaType`,
+		`qt_extension`: // Qt Designer
 		return false
 	}
 
