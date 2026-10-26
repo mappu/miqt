@@ -373,7 +373,7 @@ func safeMethodName(methodName string) string {
 	return tmp
 }
 
-func (nm CppMethod) SafeMethodName() string {
+func (nm CppMethod) CabiMethodName() string {
 	return safeMethodName(nm.MethodName)
 }
 
@@ -689,6 +689,10 @@ func (fn CppFunction) CppCallTarget() string {
 		return fn.OverrideFunctionName
 	}
 	return fn.FunctionName
+}
+
+func (fn CppFunction) CabiMethodName() string {
+	return safeMethodName(fn.FunctionName)
 }
 
 func (fn *CppFunction) Rename(newName string) {

@@ -43,10 +43,6 @@ func (fn CppFunction) goMethodName() string {
 	return tmp
 }
 
-func (fn CppFunction) SafeMethodName() string {
-	return safeMethodName(fn.FunctionName)
-}
-
 func (p CppParameter) goParameterName() string {
 	// Also make the first letter uppercase so it becomes public in Go
 	parmName := p.ParameterName

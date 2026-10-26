@@ -35,7 +35,7 @@ func (p CppParameter) cParameterName() string {
 }
 
 func cabiCallbackName(c CppClass, m CppMethod) string {
-	return "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.SafeMethodName()
+	return "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.CabiMethodName()
 }
 
 func cabiNewName(c CppClass, i int) string {
@@ -51,23 +51,23 @@ func cabiVirtBaseName(c CppClass) string {
 }
 
 func cabiMethodName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_` + m.CabiMethodName()
 }
 
 func cabiConnectName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_connect_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_connect_` + m.CabiMethodName()
 }
 
 func cabiVirtualBaseName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_virtualbase_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_virtualbase_` + m.CabiMethodName()
 }
 
 func cabiProtectedBaseName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_protectedbase_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_protectedbase_` + m.CabiMethodName()
 }
 
 func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_override_virtual_` + m.CabiMethodName()
 }
 
 func cppSubclassName(c CppClass) string {
@@ -1264,7 +1264,7 @@ extern "C" {
 							// stores QsciLexer::wordCharacters()), so it must outlive this
 							// call. Copy the malloc'd C string into storage owned by this
 							// object, free it, and return the stored copy instead.
-							storageVarname := "cstrings__" + m.SafeMethodName()
+							storageVarname := "cstrings__" + m.CabiMethodName()
 							ret.WriteString(
 								"\t// Storage for the strings returned by the Go implementation\n" +
 									"\tmutable std::set<std::string> " + storageVarname + ";\n" +
@@ -1284,7 +1284,7 @@ extern "C" {
 						}
 					}
 
-					handleVarname := "handle__" + m.SafeMethodName()
+					handleVarname := "handle__" + m.CabiMethodName()
 
 					ret.WriteString(
 						"\t// cgo.Handle value for overwritten implementation\n" +
@@ -1486,7 +1486,7 @@ extern "C" {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.CabiMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 					unavailableRetn,
@@ -1497,7 +1497,7 @@ extern "C" {
 				nonConstCallTarget := "const_cast<" + c.ClassName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
 
 				ret.WriteString("" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					preamble + "\n" +
 					"// This method was changed from const to non-const in Qt " + *m.BecomesNonConstInVersion + "\n" +
 					"#if QT_VERSION < QT_VERSION_CHECK(" + strings.Replace(*m.BecomesNonConstInVersion, `.`, `,`, -1) + ",0)\n" +
@@ -1514,9 +1514,9 @@ extern "C" {
 				ret.WriteString("" +
 					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
-					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					"#else\n" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					"#endif\n" +
 					preamble + "\n" +
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget) +
@@ -1526,7 +1526,7 @@ extern "C" {
 			} else {
 
 				if m.IsVariable {
-					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
+					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
 					if strings.HasPrefix(m.MethodName, "set") {
 						ret.WriteString(preamble + "\tself->" + m.VariableFieldName + " = " + forwarding + ";\n}\n\n")
 					} else {
@@ -1541,7 +1541,7 @@ extern "C" {
 						"%s"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.CabiMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 				))
@@ -1631,7 +1631,7 @@ extern "C" {
 						"\t\treturn false;\n" +
 						"\t}\n" +
 						"\n" +
-						"\tself_cast->handle__" + m.SafeMethodName() + " = slot;\n" +
+						"\tself_cast->handle__" + m.CabiMethodName() + " = slot;\n" +
 						"\treturn true;\n" +
 						"}\n" +
 						"\n",
