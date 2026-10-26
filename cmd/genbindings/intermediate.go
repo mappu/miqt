@@ -378,6 +378,10 @@ func (nm CppMethod) CabiMethodName() string {
 	return generateSafeCabiMethodName(nm.MethodName)
 }
 
+func (nm CppMethod) OverloadParams() []CppParameter {
+	return nm.Parameters
+}
+
 func (nm CppMethod) IsReadonlyOperator() bool {
 	targ := nm.CppCallTarget()
 	switch targ {
@@ -694,6 +698,10 @@ func (fn CppFunction) CppCallTarget() string {
 
 func (fn CppFunction) CabiMethodName() string {
 	return generateSafeCabiMethodName(fn.FunctionName)
+}
+
+func (fn CppFunction) OverloadParams() []CppParameter {
+	return fn.Parameters
 }
 
 func (fn *CppFunction) Rename(newName string) {
