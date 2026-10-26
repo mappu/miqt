@@ -58,7 +58,6 @@ func QDesktopServices_OpenUrl(url *QUrl) bool {
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {
-	defer runtime.KeepAlive(receiver)
 	scheme_ms := C.struct_miqt_string{}
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))

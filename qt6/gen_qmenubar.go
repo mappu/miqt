@@ -60,7 +60,6 @@ func UnsafeNewQMenuBar(h unsafe.Pointer) *QMenuBar {
 
 // NewQMenuBar constructs a new QMenuBar object.
 func NewQMenuBar(parent *QWidget) *QMenuBar {
-	defer runtime.KeepAlive(parent)
 
 	return newQMenuBar(C.QMenuBar_new(parent.cPointer()))
 }
@@ -72,12 +71,10 @@ func NewQMenuBar2() *QMenuBar {
 }
 
 func (this *QMenuBar) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMenuBar_metaObject(this.h))
 }
 
 func (this *QMenuBar) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMenuBar_metacast(this.h, param1_Cstring))
@@ -93,13 +90,10 @@ func QMenuBar_Tr(s string) string {
 }
 
 func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(menu)
 	return newQAction(C.QMenuBar_addMenu(this.h, menu.cPointer()))
 }
 
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -108,7 +102,6 @@ func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
@@ -118,111 +111,85 @@ func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
 }
 
 func (this *QMenuBar) AddSeparator() *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QMenuBar_addSeparator(this.h))
 }
 
 func (this *QMenuBar) InsertSeparator(before *QAction) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
 	return newQAction(C.QMenuBar_insertSeparator(this.h, before.cPointer()))
 }
 
 func (this *QMenuBar) InsertMenu(before *QAction, menu *QMenu) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
-	defer runtime.KeepAlive(menu)
 	return newQAction(C.QMenuBar_insertMenu(this.h, before.cPointer(), menu.cPointer()))
 }
 
 func (this *QMenuBar) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QMenuBar_clear(this.h)
 }
 
 func (this *QMenuBar) ActiveAction() *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QMenuBar_activeAction(this.h))
 }
 
 func (this *QMenuBar) SetActiveAction(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QMenuBar_setActiveAction(this.h, action.cPointer())
 }
 
 func (this *QMenuBar) SetDefaultUp(defaultUp bool) {
-	defer runtime.KeepAlive(this)
 	C.QMenuBar_setDefaultUp(this.h, (C.bool)(defaultUp))
 }
 
 func (this *QMenuBar) IsDefaultUp() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMenuBar_isDefaultUp(this.h))
 }
 
 func (this *QMenuBar) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QMenuBar_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QMenuBar_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMenuBar_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	_goptr := newQRect(C.QMenuBar_actionGeometry(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return newQAction(C.QMenuBar_actionAt(this.h, param1.cPointer()))
 }
 
 func (this *QMenuBar) SetCornerWidget(w *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QMenuBar_setCornerWidget(this.h, w.cPointer())
 }
 
 func (this *QMenuBar) CornerWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QMenuBar_cornerWidget(this.h))
 }
 
 func (this *QMenuBar) IsNativeMenuBar() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMenuBar_isNativeMenuBar(this.h))
 }
 
 func (this *QMenuBar) SetNativeMenuBar(nativeMenuBar bool) {
-	defer runtime.KeepAlive(this)
 	C.QMenuBar_setNativeMenuBar(this.h, (C.bool)(nativeMenuBar))
 }
 
 func (this *QMenuBar) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QMenuBar_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QMenuBar) Triggered(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QMenuBar_triggered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnTriggered(slot func(action *QAction)) {
@@ -243,8 +210,6 @@ func miqt_exec_callback_QMenuBar_triggered(cb C.intptr_t, action *C.QAction) {
 }
 
 func (this *QMenuBar) Hovered(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QMenuBar_hovered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnHovered(slot func(action *QAction)) {
@@ -287,19 +252,15 @@ func QMenuBar_Tr3(s string, c string, n int) string {
 }
 
 func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QMenuBar_setCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
 func (this *QMenuBar) CornerWidgetWithCorner(corner Corner) *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QMenuBar_cornerWidgetWithCorner(this.h, (C.int)(corner)))
 }
 
 // UpdateMicroFocus can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMenuBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -312,7 +273,6 @@ func (this *QMenuBar) UpdateMicroFocus() {
 
 // Create can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMenuBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -325,7 +285,6 @@ func (this *QMenuBar) Create() {
 
 // Destroy can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMenuBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -338,7 +297,6 @@ func (this *QMenuBar) Destroy() {
 
 // FocusNextChild can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMenuBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -353,7 +311,6 @@ func (this *QMenuBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMenuBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -368,7 +325,6 @@ func (this *QMenuBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMenuBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -383,7 +339,6 @@ func (this *QMenuBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMenuBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -398,7 +353,6 @@ func (this *QMenuBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -415,7 +369,6 @@ func (this *QMenuBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMenuBar that was directly constructed.
 func (this *QMenuBar) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -430,7 +383,6 @@ func (this *QMenuBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMenuBar) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMenuBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -459,7 +411,6 @@ func miqt_exec_callback_QMenuBar_sizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QS
 }
 
 func (this *QMenuBar) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMenuBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -488,7 +439,6 @@ func miqt_exec_callback_QMenuBar_minimumSizeHint(self *C.QMenuBar, cb C.intptr_t
 }
 
 func (this *QMenuBar) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMenuBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -517,7 +467,6 @@ func miqt_exec_callback_QMenuBar_heightForWidth(self *C.QMenuBar, cb C.intptr_t,
 }
 
 func (this *QMenuBar) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QMenuBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -544,7 +493,6 @@ func miqt_exec_callback_QMenuBar_setVisible(self *C.QMenuBar, cb C.intptr_t, vis
 }
 
 func (this *QMenuBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -572,7 +520,6 @@ func miqt_exec_callback_QMenuBar_changeEvent(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -600,7 +547,6 @@ func miqt_exec_callback_QMenuBar_keyPressEvent(self *C.QMenuBar, cb C.intptr_t, 
 }
 
 func (this *QMenuBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -628,7 +574,6 @@ func miqt_exec_callback_QMenuBar_mouseReleaseEvent(self *C.QMenuBar, cb C.intptr
 }
 
 func (this *QMenuBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -656,7 +601,6 @@ func miqt_exec_callback_QMenuBar_mousePressEvent(self *C.QMenuBar, cb C.intptr_t
 }
 
 func (this *QMenuBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -684,7 +628,6 @@ func miqt_exec_callback_QMenuBar_mouseMoveEvent(self *C.QMenuBar, cb C.intptr_t,
 }
 
 func (this *QMenuBar) callVirtualBase_LeaveEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -712,7 +655,6 @@ func miqt_exec_callback_QMenuBar_leaveEvent(self *C.QMenuBar, cb C.intptr_t, par
 }
 
 func (this *QMenuBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -740,7 +682,6 @@ func miqt_exec_callback_QMenuBar_paintEvent(self *C.QMenuBar, cb C.intptr_t, par
 }
 
 func (this *QMenuBar) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -768,7 +709,6 @@ func miqt_exec_callback_QMenuBar_resizeEvent(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_ActionEvent(param1 *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_actionEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -796,7 +736,6 @@ func miqt_exec_callback_QMenuBar_actionEvent(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -824,7 +763,6 @@ func miqt_exec_callback_QMenuBar_focusOutEvent(self *C.QMenuBar, cb C.intptr_t, 
 }
 
 func (this *QMenuBar) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -852,7 +790,6 @@ func miqt_exec_callback_QMenuBar_focusInEvent(self *C.QMenuBar, cb C.intptr_t, p
 }
 
 func (this *QMenuBar) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -880,8 +817,6 @@ func miqt_exec_callback_QMenuBar_timerEvent(self *C.QMenuBar, cb C.intptr_t, par
 }
 
 func (this *QMenuBar) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QMenuBar_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -913,7 +848,6 @@ func miqt_exec_callback_QMenuBar_eventFilter(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_Event(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QMenuBar_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
@@ -943,9 +877,7 @@ func miqt_exec_callback_QMenuBar_event(self *C.QMenuBar, cb C.intptr_t, param1 *
 }
 
 func (this *QMenuBar) callVirtualBase_InitStyleOption(option *QStyleOptionMenuItem, action *QAction) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(action)
 
 	C.QMenuBar_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer(), action.cPointer())
 
@@ -974,7 +906,6 @@ func miqt_exec_callback_QMenuBar_initStyleOption(self *C.QMenuBar, cb C.intptr_t
 }
 
 func (this *QMenuBar) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMenuBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1000,7 +931,6 @@ func miqt_exec_callback_QMenuBar_devType(self *C.QMenuBar, cb C.intptr_t) C.int 
 }
 
 func (this *QMenuBar) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMenuBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1026,7 +956,6 @@ func miqt_exec_callback_QMenuBar_hasHeightForWidth(self *C.QMenuBar, cb C.intptr
 }
 
 func (this *QMenuBar) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QMenuBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1053,7 +982,6 @@ func miqt_exec_callback_QMenuBar_paintEngine(self *C.QMenuBar, cb C.intptr_t) *C
 }
 
 func (this *QMenuBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1081,7 +1009,6 @@ func miqt_exec_callback_QMenuBar_mouseDoubleClickEvent(self *C.QMenuBar, cb C.in
 }
 
 func (this *QMenuBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1109,7 +1036,6 @@ func miqt_exec_callback_QMenuBar_wheelEvent(self *C.QMenuBar, cb C.intptr_t, eve
 }
 
 func (this *QMenuBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1137,7 +1063,6 @@ func miqt_exec_callback_QMenuBar_keyReleaseEvent(self *C.QMenuBar, cb C.intptr_t
 }
 
 func (this *QMenuBar) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1165,7 +1090,6 @@ func miqt_exec_callback_QMenuBar_enterEvent(self *C.QMenuBar, cb C.intptr_t, eve
 }
 
 func (this *QMenuBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1193,7 +1117,6 @@ func miqt_exec_callback_QMenuBar_moveEvent(self *C.QMenuBar, cb C.intptr_t, even
 }
 
 func (this *QMenuBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1221,7 +1144,6 @@ func miqt_exec_callback_QMenuBar_closeEvent(self *C.QMenuBar, cb C.intptr_t, eve
 }
 
 func (this *QMenuBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1249,7 +1171,6 @@ func miqt_exec_callback_QMenuBar_contextMenuEvent(self *C.QMenuBar, cb C.intptr_
 }
 
 func (this *QMenuBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1277,7 +1198,6 @@ func miqt_exec_callback_QMenuBar_tabletEvent(self *C.QMenuBar, cb C.intptr_t, ev
 }
 
 func (this *QMenuBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1305,7 +1225,6 @@ func miqt_exec_callback_QMenuBar_dragEnterEvent(self *C.QMenuBar, cb C.intptr_t,
 }
 
 func (this *QMenuBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1333,7 +1252,6 @@ func miqt_exec_callback_QMenuBar_dragMoveEvent(self *C.QMenuBar, cb C.intptr_t, 
 }
 
 func (this *QMenuBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1361,7 +1279,6 @@ func miqt_exec_callback_QMenuBar_dragLeaveEvent(self *C.QMenuBar, cb C.intptr_t,
 }
 
 func (this *QMenuBar) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1389,7 +1306,6 @@ func miqt_exec_callback_QMenuBar_dropEvent(self *C.QMenuBar, cb C.intptr_t, even
 }
 
 func (this *QMenuBar) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1417,7 +1333,6 @@ func miqt_exec_callback_QMenuBar_showEvent(self *C.QMenuBar, cb C.intptr_t, even
 }
 
 func (this *QMenuBar) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1445,7 +1360,6 @@ func miqt_exec_callback_QMenuBar_hideEvent(self *C.QMenuBar, cb C.intptr_t, even
 }
 
 func (this *QMenuBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1487,7 +1401,6 @@ func miqt_exec_callback_QMenuBar_nativeEvent(self *C.QMenuBar, cb C.intptr_t, ev
 }
 
 func (this *QMenuBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMenuBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1516,7 +1429,6 @@ func miqt_exec_callback_QMenuBar_metric(self *C.QMenuBar, cb C.intptr_t, param1 
 }
 
 func (this *QMenuBar) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QMenuBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1544,7 +1456,6 @@ func miqt_exec_callback_QMenuBar_initPainter(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMenuBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1575,7 +1486,6 @@ func miqt_exec_callback_QMenuBar_redirected(self *C.QMenuBar, cb C.intptr_t, off
 }
 
 func (this *QMenuBar) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QMenuBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1602,7 +1512,6 @@ func miqt_exec_callback_QMenuBar_sharedPainter(self *C.QMenuBar, cb C.intptr_t) 
 }
 
 func (this *QMenuBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMenuBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1630,7 +1539,6 @@ func miqt_exec_callback_QMenuBar_inputMethodEvent(self *C.QMenuBar, cb C.intptr_
 }
 
 func (this *QMenuBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QMenuBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1662,7 +1570,6 @@ func miqt_exec_callback_QMenuBar_inputMethodQuery(self *C.QMenuBar, cb C.intptr_
 }
 
 func (this *QMenuBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMenuBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1691,7 +1598,6 @@ func miqt_exec_callback_QMenuBar_focusNextPrevChild(self *C.QMenuBar, cb C.intpt
 }
 
 func (this *QMenuBar) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1719,7 +1625,6 @@ func miqt_exec_callback_QMenuBar_childEvent(self *C.QMenuBar, cb C.intptr_t, eve
 }
 
 func (this *QMenuBar) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMenuBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1747,7 +1652,6 @@ func miqt_exec_callback_QMenuBar_customEvent(self *C.QMenuBar, cb C.intptr_t, ev
 }
 
 func (this *QMenuBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMenuBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1775,7 +1679,6 @@ func miqt_exec_callback_QMenuBar_connectNotify(self *C.QMenuBar, cb C.intptr_t, 
 }
 
 func (this *QMenuBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMenuBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1810,6 +1713,8 @@ func (this *QMenuBar) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMenuBar) GoGC() {
 	if this.gc != nil {
 		return

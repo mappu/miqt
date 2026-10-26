@@ -80,7 +80,6 @@ func UnsafeNewQComboBox(h unsafe.Pointer) *QComboBox {
 
 // NewQComboBox constructs a new QComboBox object.
 func NewQComboBox(parent *QWidget) *QComboBox {
-	defer runtime.KeepAlive(parent)
 
 	return newQComboBox(C.QComboBox_new(parent.cPointer()))
 }
@@ -92,12 +91,10 @@ func NewQComboBox2() *QComboBox {
 }
 
 func (this *QComboBox) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QComboBox_metaObject(this.h))
 }
 
 func (this *QComboBox) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QComboBox_metacast(this.h, param1_Cstring))
@@ -113,52 +110,42 @@ func QComboBox_Tr(s string) string {
 }
 
 func (this *QComboBox) MaxVisibleItems() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_maxVisibleItems(this.h))
 }
 
 func (this *QComboBox) SetMaxVisibleItems(maxItems int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setMaxVisibleItems(this.h, (C.int)(maxItems))
 }
 
 func (this *QComboBox) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_count(this.h))
 }
 
 func (this *QComboBox) SetMaxCount(max int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setMaxCount(this.h, (C.int)(max))
 }
 
 func (this *QComboBox) MaxCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_maxCount(this.h))
 }
 
 func (this *QComboBox) DuplicatesEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QComboBox_duplicatesEnabled(this.h))
 }
 
 func (this *QComboBox) SetDuplicatesEnabled(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setDuplicatesEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QComboBox) SetFrame(frame bool) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QComboBox) HasFrame() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QComboBox_hasFrame(this.h))
 }
 
 func (this *QComboBox) FindText(text string) int {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -167,56 +154,46 @@ func (this *QComboBox) FindText(text string) int {
 }
 
 func (this *QComboBox) FindData(data *QVariant) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(data)
 	return (int)(C.QComboBox_findData(this.h, data.cPointer()))
 }
 
 func (this *QComboBox) InsertPolicy() QComboBox__InsertPolicy {
-	defer runtime.KeepAlive(this)
 	return (QComboBox__InsertPolicy)(C.QComboBox_insertPolicy(this.h))
 }
 
 func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setInsertPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
-	defer runtime.KeepAlive(this)
 	return (QComboBox__SizeAdjustPolicy)(C.QComboBox_sizeAdjustPolicy(this.h))
 }
 
 func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) MinimumContentsLength() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_minimumContentsLength(this.h))
 }
 
 func (this *QComboBox) SetMinimumContentsLength(characters int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setMinimumContentsLength(this.h, (C.int)(characters))
 }
 
 func (this *QComboBox) IconSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QComboBox_iconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) SetIconSize(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QComboBox_setIconSize(this.h, size.cPointer())
 }
 
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
-	defer runtime.KeepAlive(this)
 	placeholderText_ms := C.struct_miqt_string{}
 	placeholderText_ms.data = C.CString(placeholderText)
 	placeholderText_ms.len = C.size_t(len(placeholderText))
@@ -225,7 +202,6 @@ func (this *QComboBox) SetPlaceholderText(placeholderText string) {
 }
 
 func (this *QComboBox) PlaceholderText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QComboBox_placeholderText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -233,100 +209,77 @@ func (this *QComboBox) PlaceholderText() string {
 }
 
 func (this *QComboBox) IsEditable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QComboBox_isEditable(this.h))
 }
 
 func (this *QComboBox) SetEditable(editable bool) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QComboBox) SetLineEdit(edit *QLineEdit) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(edit)
 	C.QComboBox_setLineEdit(this.h, edit.cPointer())
 }
 
 func (this *QComboBox) LineEdit() *QLineEdit {
-	defer runtime.KeepAlive(this)
 	return newQLineEdit(C.QComboBox_lineEdit(this.h))
 }
 
 func (this *QComboBox) SetValidator(v *QValidator) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(v)
 	C.QComboBox_setValidator(this.h, v.cPointer())
 }
 
 func (this *QComboBox) Validator() *QValidator {
-	defer runtime.KeepAlive(this)
 	return newQValidator(C.QComboBox_validator(this.h))
 }
 
 func (this *QComboBox) SetCompleter(c *QCompleter) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(c)
 	C.QComboBox_setCompleter(this.h, c.cPointer())
 }
 
 func (this *QComboBox) Completer() *QCompleter {
-	defer runtime.KeepAlive(this)
 	return newQCompleter(C.QComboBox_completer(this.h))
 }
 
 func (this *QComboBox) ItemDelegate() *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemDelegate(C.QComboBox_itemDelegate(this.h))
 }
 
 func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(delegate)
 	C.QComboBox_setItemDelegate(this.h, delegate.cPointer())
 }
 
 func (this *QComboBox) Model() *QAbstractItemModel {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QComboBox_model(this.h))
 }
 
 func (this *QComboBox) SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 	C.QComboBox_setModel(this.h, model.cPointer())
 }
 
 func (this *QComboBox) RootModelIndex() *QModelIndex {
-	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QComboBox_rootModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) SetRootModelIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QComboBox_setRootModelIndex(this.h, index.cPointer())
 }
 
 func (this *QComboBox) ModelColumn() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_modelColumn(this.h))
 }
 
 func (this *QComboBox) SetModelColumn(visibleColumn int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setModelColumn(this.h, (C.int)(visibleColumn))
 }
 
 func (this *QComboBox) CurrentIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QComboBox_currentIndex(this.h))
 }
 
 func (this *QComboBox) CurrentText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QComboBox_currentText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -334,14 +287,12 @@ func (this *QComboBox) CurrentText() string {
 }
 
 func (this *QComboBox) CurrentData() *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QComboBox_currentData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemText(index int) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QComboBox_itemText(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -349,21 +300,18 @@ func (this *QComboBox) ItemText(index int) string {
 }
 
 func (this *QComboBox) ItemIcon(index int) *QIcon {
-	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QComboBox_itemIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData(index int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QComboBox_itemData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) AddItem(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -372,7 +320,6 @@ func (this *QComboBox) AddItem(text string) {
 }
 
 func (this *QComboBox) AddItem2(icon *QIcon, text string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -382,7 +329,6 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 }
 
 func (this *QComboBox) AddItems(texts []string) {
-	defer runtime.KeepAlive(this)
 	texts_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray_ptr))
 	texts_CArray := unsafe.Slice(texts_CArray_ptr, len(texts))
@@ -398,7 +344,6 @@ func (this *QComboBox) AddItems(texts []string) {
 }
 
 func (this *QComboBox) InsertItem(index int, text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -407,7 +352,6 @@ func (this *QComboBox) InsertItem(index int, text string) {
 }
 
 func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -417,7 +361,6 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
-	defer runtime.KeepAlive(this)
 	texts_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray_ptr))
 	texts_CArray := unsafe.Slice(texts_CArray_ptr, len(texts))
@@ -433,17 +376,14 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 }
 
 func (this *QComboBox) InsertSeparator(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_insertSeparator(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) RemoveItem(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_removeItem(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) SetItemText(index int, text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -452,67 +392,55 @@ func (this *QComboBox) SetItemText(index int, text string) {
 }
 
 func (this *QComboBox) SetItemIcon(index int, icon *QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	C.QComboBox_setItemIcon(this.h, (C.int)(index), icon.cPointer())
 }
 
 func (this *QComboBox) SetItemData(index int, value *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QComboBox_setItemData(this.h, (C.int)(index), value.cPointer())
 }
 
 func (this *QComboBox) View() *QAbstractItemView {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemView(C.QComboBox_view(this.h))
 }
 
 func (this *QComboBox) SetView(itemView *QAbstractItemView) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(itemView)
 	C.QComboBox_setView(this.h, itemView.cPointer())
 }
 
 func (this *QComboBox) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QComboBox_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QComboBox_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ShowPopup() {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_showPopup(this.h)
 }
 
 func (this *QComboBox) HidePopup() {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_hidePopup(this.h)
 }
 
 func (this *QComboBox) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QComboBox_event(this.h, event.cPointer()))
 }
 
 func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QComboBox_inputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(argument)
 	_goptr := newQVariant(C.QComboBox_inputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -520,17 +448,14 @@ func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVari
 }
 
 func (this *QComboBox) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_clear(this.h)
 }
 
 func (this *QComboBox) ClearEditText() {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_clearEditText(this.h)
 }
 
 func (this *QComboBox) SetEditText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -539,12 +464,10 @@ func (this *QComboBox) SetEditText(text string) {
 }
 
 func (this *QComboBox) SetCurrentIndex(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_setCurrentIndex(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) SetCurrentText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -553,7 +476,6 @@ func (this *QComboBox) SetCurrentText(text string) {
 }
 
 func (this *QComboBox) EditTextChanged(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -581,7 +503,6 @@ func miqt_exec_callback_QComboBox_editTextChanged(cb C.intptr_t, param1 C.struct
 }
 
 func (this *QComboBox) Activated(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_activated(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnActivated(slot func(index int)) {
@@ -602,7 +523,6 @@ func miqt_exec_callback_QComboBox_activated(cb C.intptr_t, index C.int) {
 }
 
 func (this *QComboBox) TextActivated(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -630,7 +550,6 @@ func miqt_exec_callback_QComboBox_textActivated(cb C.intptr_t, param1 C.struct_m
 }
 
 func (this *QComboBox) Highlighted(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_highlighted(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnHighlighted(slot func(index int)) {
@@ -651,7 +570,6 @@ func miqt_exec_callback_QComboBox_highlighted(cb C.intptr_t, index C.int) {
 }
 
 func (this *QComboBox) TextHighlighted(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -679,7 +597,6 @@ func miqt_exec_callback_QComboBox_textHighlighted(cb C.intptr_t, param1 C.struct
 }
 
 func (this *QComboBox) CurrentIndexChanged(index int) {
-	defer runtime.KeepAlive(this)
 	C.QComboBox_currentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnCurrentIndexChanged(slot func(index int)) {
@@ -700,7 +617,6 @@ func miqt_exec_callback_QComboBox_currentIndexChanged(cb C.intptr_t, index C.int
 }
 
 func (this *QComboBox) CurrentTextChanged(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -750,7 +666,6 @@ func QComboBox_Tr3(s string, c string, n int) string {
 }
 
 func (this *QComboBox) FindText2(text string, flags MatchFlag) int {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -759,33 +674,28 @@ func (this *QComboBox) FindText2(text string, flags MatchFlag) int {
 }
 
 func (this *QComboBox) FindData2(data *QVariant, role int) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(data)
 	return (int)(C.QComboBox_findData2(this.h, data.cPointer(), (C.int)(role)))
 }
 
 func (this *QComboBox) FindData3(data *QVariant, role int, flags MatchFlag) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(data)
 	return (int)(C.QComboBox_findData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
 }
 
 func (this *QComboBox) CurrentDataWithRole(role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QComboBox_currentDataWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData2(index int, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QComboBox_itemData2(this.h, (C.int)(index), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) AddItem3(text string, userData *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(userData)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -795,7 +705,6 @@ func (this *QComboBox) AddItem3(text string, userData *QVariant) {
 }
 
 func (this *QComboBox) AddItem4(icon *QIcon, text string, userData *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	defer runtime.KeepAlive(userData)
 	text_ms := C.struct_miqt_string{}
@@ -806,7 +715,6 @@ func (this *QComboBox) AddItem4(icon *QIcon, text string, userData *QVariant) {
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(userData)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -816,7 +724,6 @@ func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
 }
 
 func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	defer runtime.KeepAlive(userData)
 	text_ms := C.struct_miqt_string{}
@@ -827,14 +734,12 @@ func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData
 }
 
 func (this *QComboBox) SetItemData2(index int, value *QVariant, role int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QComboBox_setItemData2(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
 }
 
 // UpdateMicroFocus can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QComboBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -847,7 +752,6 @@ func (this *QComboBox) UpdateMicroFocus() {
 
 // Create can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QComboBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -860,7 +764,6 @@ func (this *QComboBox) Create() {
 
 // Destroy can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QComboBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -873,7 +776,6 @@ func (this *QComboBox) Destroy() {
 
 // FocusNextChild can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QComboBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -888,7 +790,6 @@ func (this *QComboBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QComboBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -903,7 +804,6 @@ func (this *QComboBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QComboBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -918,7 +818,6 @@ func (this *QComboBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QComboBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -933,7 +832,6 @@ func (this *QComboBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -950,7 +848,6 @@ func (this *QComboBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QComboBox that was directly constructed.
 func (this *QComboBox) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -965,8 +862,6 @@ func (this *QComboBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QComboBox) callVirtualBase_SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 
 	C.QComboBox_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -993,7 +888,6 @@ func miqt_exec_callback_QComboBox_setModel(self *C.QComboBox, cb C.intptr_t, mod
 }
 
 func (this *QComboBox) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1022,7 +916,6 @@ func miqt_exec_callback_QComboBox_sizeHint(self *C.QComboBox, cb C.intptr_t) *C.
 }
 
 func (this *QComboBox) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QComboBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1051,7 +944,6 @@ func miqt_exec_callback_QComboBox_minimumSizeHint(self *C.QComboBox, cb C.intptr
 }
 
 func (this *QComboBox) callVirtualBase_ShowPopup() {
-	defer runtime.KeepAlive(this)
 
 	C.QComboBox_virtualbase_showPopup(unsafe.Pointer(this.h))
 
@@ -1075,7 +967,6 @@ func miqt_exec_callback_QComboBox_showPopup(self *C.QComboBox, cb C.intptr_t) {
 }
 
 func (this *QComboBox) callVirtualBase_HidePopup() {
-	defer runtime.KeepAlive(this)
 
 	C.QComboBox_virtualbase_hidePopup(unsafe.Pointer(this.h))
 
@@ -1099,7 +990,6 @@ func miqt_exec_callback_QComboBox_hidePopup(self *C.QComboBox, cb C.intptr_t) {
 }
 
 func (this *QComboBox) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QComboBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1129,7 +1019,6 @@ func miqt_exec_callback_QComboBox_event(self *C.QComboBox, cb C.intptr_t, event 
 }
 
 func (this *QComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QComboBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1161,7 +1050,6 @@ func miqt_exec_callback_QComboBox_inputMethodQuery(self *C.QComboBox, cb C.intpt
 }
 
 func (this *QComboBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1189,7 +1077,6 @@ func miqt_exec_callback_QComboBox_focusInEvent(self *C.QComboBox, cb C.intptr_t,
 }
 
 func (this *QComboBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1217,7 +1104,6 @@ func miqt_exec_callback_QComboBox_focusOutEvent(self *C.QComboBox, cb C.intptr_t
 }
 
 func (this *QComboBox) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1245,7 +1131,6 @@ func miqt_exec_callback_QComboBox_changeEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1273,7 +1158,6 @@ func miqt_exec_callback_QComboBox_resizeEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_PaintEvent(e *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1301,7 +1185,6 @@ func miqt_exec_callback_QComboBox_paintEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_ShowEvent(e *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_showEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1329,7 +1212,6 @@ func miqt_exec_callback_QComboBox_showEvent(self *C.QComboBox, cb C.intptr_t, e 
 }
 
 func (this *QComboBox) callVirtualBase_HideEvent(e *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_hideEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1357,7 +1239,6 @@ func miqt_exec_callback_QComboBox_hideEvent(self *C.QComboBox, cb C.intptr_t, e 
 }
 
 func (this *QComboBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1385,7 +1266,6 @@ func miqt_exec_callback_QComboBox_mousePressEvent(self *C.QComboBox, cb C.intptr
 }
 
 func (this *QComboBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1413,7 +1293,6 @@ func miqt_exec_callback_QComboBox_mouseReleaseEvent(self *C.QComboBox, cb C.intp
 }
 
 func (this *QComboBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1441,7 +1320,6 @@ func miqt_exec_callback_QComboBox_keyPressEvent(self *C.QComboBox, cb C.intptr_t
 }
 
 func (this *QComboBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1469,7 +1347,6 @@ func miqt_exec_callback_QComboBox_keyReleaseEvent(self *C.QComboBox, cb C.intptr
 }
 
 func (this *QComboBox) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1497,7 +1374,6 @@ func miqt_exec_callback_QComboBox_wheelEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QComboBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1525,7 +1401,6 @@ func miqt_exec_callback_QComboBox_contextMenuEvent(self *C.QComboBox, cb C.intpt
 }
 
 func (this *QComboBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QComboBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1553,7 +1428,6 @@ func miqt_exec_callback_QComboBox_inputMethodEvent(self *C.QComboBox, cb C.intpt
 }
 
 func (this *QComboBox) callVirtualBase_InitStyleOption(option *QStyleOptionComboBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QComboBox_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -1581,7 +1455,6 @@ func miqt_exec_callback_QComboBox_initStyleOption(self *C.QComboBox, cb C.intptr
 }
 
 func (this *QComboBox) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QComboBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1607,7 +1480,6 @@ func miqt_exec_callback_QComboBox_devType(self *C.QComboBox, cb C.intptr_t) C.in
 }
 
 func (this *QComboBox) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QComboBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1634,7 +1506,6 @@ func miqt_exec_callback_QComboBox_setVisible(self *C.QComboBox, cb C.intptr_t, v
 }
 
 func (this *QComboBox) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QComboBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1663,7 +1534,6 @@ func miqt_exec_callback_QComboBox_heightForWidth(self *C.QComboBox, cb C.intptr_
 }
 
 func (this *QComboBox) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QComboBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1689,7 +1559,6 @@ func miqt_exec_callback_QComboBox_hasHeightForWidth(self *C.QComboBox, cb C.intp
 }
 
 func (this *QComboBox) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QComboBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1716,7 +1585,6 @@ func miqt_exec_callback_QComboBox_paintEngine(self *C.QComboBox, cb C.intptr_t) 
 }
 
 func (this *QComboBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1744,7 +1612,6 @@ func miqt_exec_callback_QComboBox_mouseDoubleClickEvent(self *C.QComboBox, cb C.
 }
 
 func (this *QComboBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1772,7 +1639,6 @@ func miqt_exec_callback_QComboBox_mouseMoveEvent(self *C.QComboBox, cb C.intptr_
 }
 
 func (this *QComboBox) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1800,7 +1666,6 @@ func miqt_exec_callback_QComboBox_enterEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1828,7 +1693,6 @@ func miqt_exec_callback_QComboBox_leaveEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1856,7 +1720,6 @@ func miqt_exec_callback_QComboBox_moveEvent(self *C.QComboBox, cb C.intptr_t, ev
 }
 
 func (this *QComboBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1884,7 +1747,6 @@ func miqt_exec_callback_QComboBox_closeEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1912,7 +1774,6 @@ func miqt_exec_callback_QComboBox_tabletEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1940,7 +1801,6 @@ func miqt_exec_callback_QComboBox_actionEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1968,7 +1828,6 @@ func miqt_exec_callback_QComboBox_dragEnterEvent(self *C.QComboBox, cb C.intptr_
 }
 
 func (this *QComboBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1996,7 +1855,6 @@ func miqt_exec_callback_QComboBox_dragMoveEvent(self *C.QComboBox, cb C.intptr_t
 }
 
 func (this *QComboBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2024,7 +1882,6 @@ func miqt_exec_callback_QComboBox_dragLeaveEvent(self *C.QComboBox, cb C.intptr_
 }
 
 func (this *QComboBox) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2052,7 +1909,6 @@ func miqt_exec_callback_QComboBox_dropEvent(self *C.QComboBox, cb C.intptr_t, ev
 }
 
 func (this *QComboBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2094,7 +1950,6 @@ func miqt_exec_callback_QComboBox_nativeEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QComboBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2123,7 +1978,6 @@ func miqt_exec_callback_QComboBox_metric(self *C.QComboBox, cb C.intptr_t, param
 }
 
 func (this *QComboBox) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QComboBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -2151,7 +2005,6 @@ func miqt_exec_callback_QComboBox_initPainter(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QComboBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -2182,7 +2035,6 @@ func miqt_exec_callback_QComboBox_redirected(self *C.QComboBox, cb C.intptr_t, o
 }
 
 func (this *QComboBox) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QComboBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2209,7 +2061,6 @@ func miqt_exec_callback_QComboBox_sharedPainter(self *C.QComboBox, cb C.intptr_t
 }
 
 func (this *QComboBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QComboBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2238,8 +2089,6 @@ func miqt_exec_callback_QComboBox_focusNextPrevChild(self *C.QComboBox, cb C.int
 }
 
 func (this *QComboBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QComboBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2271,7 +2120,6 @@ func miqt_exec_callback_QComboBox_eventFilter(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2299,7 +2147,6 @@ func miqt_exec_callback_QComboBox_timerEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2327,7 +2174,6 @@ func miqt_exec_callback_QComboBox_childEvent(self *C.QComboBox, cb C.intptr_t, e
 }
 
 func (this *QComboBox) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QComboBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2355,7 +2201,6 @@ func miqt_exec_callback_QComboBox_customEvent(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QComboBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2383,7 +2228,6 @@ func miqt_exec_callback_QComboBox_connectNotify(self *C.QComboBox, cb C.intptr_t
 }
 
 func (this *QComboBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QComboBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2418,6 +2262,8 @@ func (this *QComboBox) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QComboBox) GoGC() {
 	if this.gc != nil {
 		return

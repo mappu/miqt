@@ -66,18 +66,15 @@ func NewQTimer() *QTimer {
 
 // NewQTimer2 constructs a new QTimer object.
 func NewQTimer2(parent *QObject) *QTimer {
-	defer runtime.KeepAlive(parent)
 
 	return newQTimer(C.QTimer_new2(parent.cPointer()))
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTimer_metaObject(this.h))
 }
 
 func (this *QTimer) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTimer_metacast(this.h, param1_Cstring))
@@ -93,82 +90,66 @@ func QTimer_Tr(s string) string {
 }
 
 func (this *QTimer) IsActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTimer_isActive(this.h))
 }
 
 func (this *QTimer) TimerId() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTimer_timerId(this.h))
 }
 
 func (this *QTimer) SetInterval(msec int) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_setInterval(this.h, (C.int)(msec))
 }
 
 func (this *QTimer) Interval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTimer_interval(this.h))
 }
 
 func (this *QTimer) RemainingTime() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTimer_remainingTime(this.h))
 }
 
 func (this *QTimer) SetTimerType(atype TimerType) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_setTimerType(this.h, (C.int)(atype))
 }
 
 func (this *QTimer) TimerType() TimerType {
-	defer runtime.KeepAlive(this)
 	return (TimerType)(C.QTimer_timerType(this.h))
 }
 
 func (this *QTimer) SetSingleShot(singleShot bool) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_setSingleShot(this.h, (C.bool)(singleShot))
 }
 
 func (this *QTimer) IsSingleShot() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTimer_isSingleShot(this.h))
 }
 
 func (this *QTimer) Start(msec int) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_start(this.h, (C.int)(msec))
 }
 
 func (this *QTimer) Start2() {
-	defer runtime.KeepAlive(this)
 	C.QTimer_start2(this.h)
 }
 
 func (this *QTimer) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QTimer_stop(this.h)
 }
 
 func (this *QTimer) SetIntervalWithValue(value Milliseconds) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_setIntervalWithValue(this.h, (C.int64_t)(value))
 }
 
 func (this *QTimer) IntervalAsDuration() Milliseconds {
-	defer runtime.KeepAlive(this)
 	return (Milliseconds)(C.QTimer_intervalAsDuration(this.h))
 }
 
 func (this *QTimer) RemainingTimeAsDuration() Milliseconds {
-	defer runtime.KeepAlive(this)
 	return (Milliseconds)(C.QTimer_remainingTimeAsDuration(this.h))
 }
 
 func (this *QTimer) StartWithValue(value Milliseconds) {
-	defer runtime.KeepAlive(this)
 	C.QTimer_startWithValue(this.h, (C.int64_t)(value))
 }
 
@@ -196,7 +177,6 @@ func QTimer_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QTimer that was directly constructed.
 func (this *QTimer) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTimer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -211,7 +191,6 @@ func (this *QTimer) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTimer that was directly constructed.
 func (this *QTimer) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTimer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -226,7 +205,6 @@ func (this *QTimer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTimer that was directly constructed.
 func (this *QTimer) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -243,7 +221,6 @@ func (this *QTimer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTimer that was directly constructed.
 func (this *QTimer) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -258,7 +235,6 @@ func (this *QTimer) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTimer) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTimer_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -286,7 +262,6 @@ func miqt_exec_callback_QTimer_timerEvent(self *C.QTimer, cb C.intptr_t, param1 
 }
 
 func (this *QTimer) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimer_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -316,8 +291,6 @@ func miqt_exec_callback_QTimer_event(self *C.QTimer, cb C.intptr_t, event *C.QEv
 }
 
 func (this *QTimer) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimer_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -349,7 +322,6 @@ func miqt_exec_callback_QTimer_eventFilter(self *C.QTimer, cb C.intptr_t, watche
 }
 
 func (this *QTimer) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimer_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -377,7 +349,6 @@ func miqt_exec_callback_QTimer_childEvent(self *C.QTimer, cb C.intptr_t, event *
 }
 
 func (this *QTimer) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimer_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -405,7 +376,6 @@ func miqt_exec_callback_QTimer_customEvent(self *C.QTimer, cb C.intptr_t, event 
 }
 
 func (this *QTimer) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTimer_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -433,7 +403,6 @@ func miqt_exec_callback_QTimer_connectNotify(self *C.QTimer, cb C.intptr_t, sign
 }
 
 func (this *QTimer) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTimer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -481,6 +450,8 @@ func (this *QTimer) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTimer) GoGC() {
 	if this.gc != nil {
 		return

@@ -97,18 +97,15 @@ func NewQNetworkSession(connConfig *QNetworkConfiguration) *QNetworkSession {
 // NewQNetworkSession2 constructs a new QNetworkSession object.
 func NewQNetworkSession2(connConfig *QNetworkConfiguration, parent *qt.QObject) *QNetworkSession {
 	defer runtime.KeepAlive(connConfig)
-	defer runtime.KeepAlive(parent)
 
 	return newQNetworkSession(C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkSession) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkSession_metaObject(this.h)))
 }
 
 func (this *QNetworkSession) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkSession_metacast(this.h, param1_Cstring))
@@ -133,36 +130,30 @@ func QNetworkSession_TrUtf8(s string) string {
 }
 
 func (this *QNetworkSession) IsOpen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkSession_isOpen(this.h))
 }
 
 func (this *QNetworkSession) Configuration() *QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkConfiguration(C.QNetworkSession_configuration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkSession) Interface() *QNetworkInterface {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkInterface(C.QNetworkSession_interface(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkSession) State() QNetworkSession__State {
-	defer runtime.KeepAlive(this)
 	return (QNetworkSession__State)(C.QNetworkSession_state(this.h))
 }
 
 func (this *QNetworkSession) Error() QNetworkSession__SessionError {
-	defer runtime.KeepAlive(this)
 	return (QNetworkSession__SessionError)(C.QNetworkSession_error(this.h))
 }
 
 func (this *QNetworkSession) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkSession_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -170,7 +161,6 @@ func (this *QNetworkSession) ErrorString() string {
 }
 
 func (this *QNetworkSession) SessionProperty(key string) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -181,7 +171,6 @@ func (this *QNetworkSession) SessionProperty(key string) *qt.QVariant {
 }
 
 func (this *QNetworkSession) SetSessionProperty(key string, value *qt.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
@@ -191,67 +180,54 @@ func (this *QNetworkSession) SetSessionProperty(key string, value *qt.QVariant) 
 }
 
 func (this *QNetworkSession) BytesWritten() uint64 {
-	defer runtime.KeepAlive(this)
 	return (uint64)(C.QNetworkSession_bytesWritten(this.h))
 }
 
 func (this *QNetworkSession) BytesReceived() uint64 {
-	defer runtime.KeepAlive(this)
 	return (uint64)(C.QNetworkSession_bytesReceived(this.h))
 }
 
 func (this *QNetworkSession) ActiveTime() uint64 {
-	defer runtime.KeepAlive(this)
 	return (uint64)(C.QNetworkSession_activeTime(this.h))
 }
 
 func (this *QNetworkSession) UsagePolicies() QNetworkSession__UsagePolicy {
-	defer runtime.KeepAlive(this)
 	return (QNetworkSession__UsagePolicy)(C.QNetworkSession_usagePolicies(this.h))
 }
 
 func (this *QNetworkSession) WaitForOpened() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkSession_waitForOpened(this.h))
 }
 
 func (this *QNetworkSession) Open() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_open(this.h)
 }
 
 func (this *QNetworkSession) Close() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_close(this.h)
 }
 
 func (this *QNetworkSession) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_stop(this.h)
 }
 
 func (this *QNetworkSession) Migrate() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_migrate(this.h)
 }
 
 func (this *QNetworkSession) Ignore() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_ignore(this.h)
 }
 
 func (this *QNetworkSession) Accept() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_accept(this.h)
 }
 
 func (this *QNetworkSession) Reject() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_reject(this.h)
 }
 
 func (this *QNetworkSession) StateChanged(param1 QNetworkSession__State) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_stateChanged(this.h, (C.int)(param1))
 }
 func (this *QNetworkSession) OnStateChanged(slot func(param1 QNetworkSession__State)) {
@@ -272,7 +248,6 @@ func miqt_exec_callback_QNetworkSession_stateChanged(cb C.intptr_t, param1 C.int
 }
 
 func (this *QNetworkSession) Opened() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_opened(this.h)
 }
 func (this *QNetworkSession) OnOpened(slot func()) {
@@ -290,7 +265,6 @@ func miqt_exec_callback_QNetworkSession_opened(cb C.intptr_t) {
 }
 
 func (this *QNetworkSession) Closed() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_closed(this.h)
 }
 func (this *QNetworkSession) OnClosed(slot func()) {
@@ -308,7 +282,6 @@ func miqt_exec_callback_QNetworkSession_closed(cb C.intptr_t) {
 }
 
 func (this *QNetworkSession) ErrorWithQNetworkSessionSessionError(param1 QNetworkSession__SessionError) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_errorWithQNetworkSessionSessionError(this.h, (C.int)(param1))
 }
 func (this *QNetworkSession) OnErrorWithQNetworkSessionSessionError(slot func(param1 QNetworkSession__SessionError)) {
@@ -329,7 +302,6 @@ func miqt_exec_callback_QNetworkSession_errorWithQNetworkSessionSessionError(cb 
 }
 
 func (this *QNetworkSession) PreferredConfigurationChanged(config *QNetworkConfiguration, isSeamless bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(config)
 	C.QNetworkSession_preferredConfigurationChanged(this.h, config.cPointer(), (C.bool)(isSeamless))
 }
@@ -353,7 +325,6 @@ func miqt_exec_callback_QNetworkSession_preferredConfigurationChanged(cb C.intpt
 }
 
 func (this *QNetworkSession) NewConfigurationActivated() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_newConfigurationActivated(this.h)
 }
 func (this *QNetworkSession) OnNewConfigurationActivated(slot func()) {
@@ -371,7 +342,6 @@ func miqt_exec_callback_QNetworkSession_newConfigurationActivated(cb C.intptr_t)
 }
 
 func (this *QNetworkSession) UsagePoliciesChanged(usagePolicies QNetworkSession__UsagePolicy) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkSession_usagePoliciesChanged(this.h, (C.int)(usagePolicies))
 }
 func (this *QNetworkSession) OnUsagePoliciesChanged(slot func(usagePolicies QNetworkSession__UsagePolicy)) {
@@ -436,13 +406,11 @@ func QNetworkSession_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QNetworkSession) WaitForOpenedWithMsecs(msecs int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkSession_waitForOpenedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // Sender can only be called from a QNetworkSession that was directly constructed.
 func (this *QNetworkSession) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QNetworkSession_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -457,7 +425,6 @@ func (this *QNetworkSession) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QNetworkSession that was directly constructed.
 func (this *QNetworkSession) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNetworkSession_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -472,7 +439,6 @@ func (this *QNetworkSession) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNetworkSession that was directly constructed.
 func (this *QNetworkSession) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -489,7 +455,6 @@ func (this *QNetworkSession) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNetworkSession that was directly constructed.
 func (this *QNetworkSession) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -504,7 +469,6 @@ func (this *QNetworkSession) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QNetworkSession) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkSession_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -532,7 +496,6 @@ func miqt_exec_callback_QNetworkSession_connectNotify(self *C.QNetworkSession, c
 }
 
 func (this *QNetworkSession) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkSession_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -560,7 +523,6 @@ func miqt_exec_callback_QNetworkSession_disconnectNotify(self *C.QNetworkSession
 }
 
 func (this *QNetworkSession) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkSession_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -590,8 +552,6 @@ func miqt_exec_callback_QNetworkSession_event(self *C.QNetworkSession, cb C.intp
 }
 
 func (this *QNetworkSession) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkSession_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -623,7 +583,6 @@ func miqt_exec_callback_QNetworkSession_eventFilter(self *C.QNetworkSession, cb 
 }
 
 func (this *QNetworkSession) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkSession_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -651,7 +610,6 @@ func miqt_exec_callback_QNetworkSession_timerEvent(self *C.QNetworkSession, cb C
 }
 
 func (this *QNetworkSession) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkSession_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -679,7 +637,6 @@ func miqt_exec_callback_QNetworkSession_childEvent(self *C.QNetworkSession, cb C
 }
 
 func (this *QNetworkSession) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkSession_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -714,6 +671,8 @@ func (this *QNetworkSession) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QNetworkSession) GoGC() {
 	if this.gc != nil {
 		return

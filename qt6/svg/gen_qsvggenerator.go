@@ -161,7 +161,6 @@ func (this *QSvgGenerator) OutputDevice() *qt6.QIODevice {
 
 func (this *QSvgGenerator) SetOutputDevice(outputDevice *qt6.QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(outputDevice)
 	C.QSvgGenerator_setOutputDevice(this.h, (*C.QIODevice)(outputDevice.UnsafePointer()))
 }
 

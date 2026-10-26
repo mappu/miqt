@@ -77,7 +77,6 @@ func UnsafeNewQSslCertificate(h unsafe.Pointer) *QSslCertificate {
 
 // NewQSslCertificate constructs a new QSslCertificate object.
 func NewQSslCertificate(device *qt.QIODevice) *QSslCertificate {
-	defer runtime.KeepAlive(device)
 
 	return newQSslCertificate(C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer())))
 }
@@ -97,7 +96,6 @@ func NewQSslCertificate3(other *QSslCertificate) *QSslCertificate {
 
 // NewQSslCertificate4 constructs a new QSslCertificate object.
 func NewQSslCertificate4(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
-	defer runtime.KeepAlive(device)
 
 	return newQSslCertificate(C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 }
@@ -401,7 +399,6 @@ func QSslCertificate_FromPathWithPath(path string) []QSslCertificate {
 }
 
 func QSslCertificate_FromDevice(device *qt.QIODevice) []QSslCertificate {
-	defer runtime.KeepAlive(device)
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromDevice((*C.QIODevice)(device.UnsafePointer()))
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -453,7 +450,6 @@ func QSslCertificate_Verify(certificateChain []QSslCertificate) []QSslError {
 }
 
 func QSslCertificate_ImportPkcs12(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate) bool {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(key)
 	defer runtime.KeepAlive(cert)
 	return (bool)(C.QSslCertificate_importPkcs12((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer()))
@@ -505,7 +501,6 @@ func QSslCertificate_FromPath3(path string, format QSsl__EncodingFormat, syntax 
 }
 
 func QSslCertificate_FromDevice2(device *qt.QIODevice, format QSsl__EncodingFormat) []QSslCertificate {
-	defer runtime.KeepAlive(device)
 	var _ma C.struct_miqt_array = C.QSslCertificate_fromDevice2((*C.QIODevice)(device.UnsafePointer()), (C.int)(format))
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -561,7 +556,6 @@ func QSslCertificate_Verify2(certificateChain []QSslCertificate, hostName string
 }
 
 func QSslCertificate_ImportPkcs122(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate) bool {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(key)
 	defer runtime.KeepAlive(cert)
 	defer runtime.KeepAlive(caCertificates)
@@ -576,7 +570,6 @@ func QSslCertificate_ImportPkcs122(device *qt.QIODevice, key *QSslKey, cert *QSs
 }
 
 func QSslCertificate_ImportPkcs123(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate, passPhrase []byte) bool {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(key)
 	defer runtime.KeepAlive(cert)
 	defer runtime.KeepAlive(caCertificates)

@@ -62,15 +62,12 @@ func NewQQmlListReference() *QQmlListReference {
 // NewQQmlListReference2 constructs a new QQmlListReference object.
 func NewQQmlListReference2(variant *qt6.QVariant, engine *QQmlEngine) *QQmlListReference {
 	defer runtime.KeepAlive(variant)
-	defer runtime.KeepAlive(engine)
 
 	return newQQmlListReference(C.QQmlListReference_new2((*C.QVariant)(variant.UnsafePointer()), engine.cPointer()))
 }
 
 // NewQQmlListReference3 constructs a new QQmlListReference object.
 func NewQQmlListReference3(o *qt6.QObject, property string, engine *QQmlEngine) *QQmlListReference {
-	defer runtime.KeepAlive(o)
-	defer runtime.KeepAlive(engine)
 	property_Cstring := C.CString(property)
 	defer C.free(unsafe.Pointer(property_Cstring))
 
@@ -86,7 +83,6 @@ func NewQQmlListReference4(variant *qt6.QVariant) *QQmlListReference {
 
 // NewQQmlListReference5 constructs a new QQmlListReference object.
 func NewQQmlListReference5(o *qt6.QObject, property string) *QQmlListReference {
-	defer runtime.KeepAlive(o)
 	property_Cstring := C.CString(property)
 	defer C.free(unsafe.Pointer(property_Cstring))
 
@@ -163,7 +159,6 @@ func (this *QQmlListReference) IsReadable() bool {
 
 func (this *QQmlListReference) Append(param1 *qt6.QObject) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QQmlListReference_append(this.h, (*C.QObject)(param1.UnsafePointer())))
 }
 
@@ -189,7 +184,6 @@ func (this *QQmlListReference) Size() int64 {
 
 func (this *QQmlListReference) Replace(param1 int64, param2 *qt6.QObject) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
 	return (bool)(C.QQmlListReference_replace(this.h, (C.ptrdiff_t)(param1), (*C.QObject)(param2.UnsafePointer())))
 }
 

@@ -60,7 +60,6 @@ func UnsafeNewQToolBar(h unsafe.Pointer) *QToolBar {
 
 // NewQToolBar constructs a new QToolBar object.
 func NewQToolBar(parent *QWidget) *QToolBar {
-	defer runtime.KeepAlive(parent)
 
 	return newQToolBar(C.QToolBar_new(parent.cPointer()))
 }
@@ -83,7 +82,6 @@ func NewQToolBar3() *QToolBar {
 
 // NewQToolBar4 constructs a new QToolBar object.
 func NewQToolBar4(title string, parent *QWidget) *QToolBar {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -93,12 +91,10 @@ func NewQToolBar4(title string, parent *QWidget) *QToolBar {
 }
 
 func (this *QToolBar) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QToolBar_metaObject(this.h))
 }
 
 func (this *QToolBar) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QToolBar_metacast(this.h, param1_Cstring))
@@ -123,47 +119,38 @@ func QToolBar_TrUtf8(s string) string {
 }
 
 func (this *QToolBar) SetMovable(movable bool) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_setMovable(this.h, (C.bool)(movable))
 }
 
 func (this *QToolBar) IsMovable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QToolBar_isMovable(this.h))
 }
 
 func (this *QToolBar) SetAllowedAreas(areas ToolBarArea) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_setAllowedAreas(this.h, (C.int)(areas))
 }
 
 func (this *QToolBar) AllowedAreas() ToolBarArea {
-	defer runtime.KeepAlive(this)
 	return (ToolBarArea)(C.QToolBar_allowedAreas(this.h))
 }
 
 func (this *QToolBar) IsAreaAllowed(area ToolBarArea) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QToolBar_isAreaAllowed(this.h, (C.int)(area)))
 }
 
 func (this *QToolBar) SetOrientation(orientation Orientation) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QToolBar) Orientation() Orientation {
-	defer runtime.KeepAlive(this)
 	return (Orientation)(C.QToolBar_orientation(this.h))
 }
 
 func (this *QToolBar) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_clear(this.h)
 }
 
 func (this *QToolBar) AddAction(text string) *QAction {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -172,7 +159,6 @@ func (this *QToolBar) AddAction(text string) *QAction {
 }
 
 func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -182,100 +168,76 @@ func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
 }
 
 func (this *QToolBar) AddSeparator() *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QToolBar_addSeparator(this.h))
 }
 
 func (this *QToolBar) InsertSeparator(before *QAction) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
 	return newQAction(C.QToolBar_insertSeparator(this.h, before.cPointer()))
 }
 
 func (this *QToolBar) AddWidget(widget *QWidget) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return newQAction(C.QToolBar_addWidget(this.h, widget.cPointer()))
 }
 
 func (this *QToolBar) InsertWidget(before *QAction, widget *QWidget) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
-	defer runtime.KeepAlive(widget)
 	return newQAction(C.QToolBar_insertWidget(this.h, before.cPointer(), widget.cPointer()))
 }
 
 func (this *QToolBar) ActionGeometry(action *QAction) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	_goptr := newQRect(C.QToolBar_actionGeometry(this.h, action.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QToolBar) ActionAt(p *QPoint) *QAction {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 	return newQAction(C.QToolBar_actionAt(this.h, p.cPointer()))
 }
 
 func (this *QToolBar) ActionAt2(x int, y int) *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QToolBar_actionAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QToolBar) ToggleViewAction() *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QToolBar_toggleViewAction(this.h))
 }
 
 func (this *QToolBar) IconSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QToolBar_iconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QToolBar) ToolButtonStyle() ToolButtonStyle {
-	defer runtime.KeepAlive(this)
 	return (ToolButtonStyle)(C.QToolBar_toolButtonStyle(this.h))
 }
 
 func (this *QToolBar) WidgetForAction(action *QAction) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	return newQWidget(C.QToolBar_widgetForAction(this.h, action.cPointer()))
 }
 
 func (this *QToolBar) IsFloatable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QToolBar_isFloatable(this.h))
 }
 
 func (this *QToolBar) SetFloatable(floatable bool) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_setFloatable(this.h, (C.bool)(floatable))
 }
 
 func (this *QToolBar) IsFloating() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QToolBar_isFloating(this.h))
 }
 
 func (this *QToolBar) SetIconSize(iconSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(iconSize)
 	C.QToolBar_setIconSize(this.h, iconSize.cPointer())
 }
 
 func (this *QToolBar) SetToolButtonStyle(toolButtonStyle ToolButtonStyle) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_setToolButtonStyle(this.h, (C.int)(toolButtonStyle))
 }
 
 func (this *QToolBar) ActionTriggered(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QToolBar_actionTriggered(this.h, action.cPointer())
 }
 func (this *QToolBar) OnActionTriggered(slot func(action *QAction)) {
@@ -296,7 +258,6 @@ func miqt_exec_callback_QToolBar_actionTriggered(cb C.intptr_t, action *C.QActio
 }
 
 func (this *QToolBar) MovableChanged(movable bool) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_movableChanged(this.h, (C.bool)(movable))
 }
 func (this *QToolBar) OnMovableChanged(slot func(movable bool)) {
@@ -317,7 +278,6 @@ func miqt_exec_callback_QToolBar_movableChanged(cb C.intptr_t, movable C.bool) {
 }
 
 func (this *QToolBar) AllowedAreasChanged(allowedAreas ToolBarArea) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_allowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas ToolBarArea)) {
@@ -338,7 +298,6 @@ func miqt_exec_callback_QToolBar_allowedAreasChanged(cb C.intptr_t, allowedAreas
 }
 
 func (this *QToolBar) OrientationChanged(orientation Orientation) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_orientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QToolBar) OnOrientationChanged(slot func(orientation Orientation)) {
@@ -359,7 +318,6 @@ func miqt_exec_callback_QToolBar_orientationChanged(cb C.intptr_t, orientation C
 }
 
 func (this *QToolBar) IconSizeChanged(iconSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(iconSize)
 	C.QToolBar_iconSizeChanged(this.h, iconSize.cPointer())
 }
@@ -381,7 +339,6 @@ func miqt_exec_callback_QToolBar_iconSizeChanged(cb C.intptr_t, iconSize *C.QSiz
 }
 
 func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle ToolButtonStyle) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_toolButtonStyleChanged(this.h, (C.int)(toolButtonStyle))
 }
 func (this *QToolBar) OnToolButtonStyleChanged(slot func(toolButtonStyle ToolButtonStyle)) {
@@ -402,7 +359,6 @@ func miqt_exec_callback_QToolBar_toolButtonStyleChanged(cb C.intptr_t, toolButto
 }
 
 func (this *QToolBar) TopLevelChanged(topLevel bool) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_topLevelChanged(this.h, (C.bool)(topLevel))
 }
 func (this *QToolBar) OnTopLevelChanged(slot func(topLevel bool)) {
@@ -423,7 +379,6 @@ func miqt_exec_callback_QToolBar_topLevelChanged(cb C.intptr_t, topLevel C.bool)
 }
 
 func (this *QToolBar) VisibilityChanged(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QToolBar_visibilityChanged(this.h, (C.bool)(visible))
 }
 func (this *QToolBar) OnVisibilityChanged(slot func(visible bool)) {
@@ -489,7 +444,6 @@ func QToolBar_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) InitStyleOption(option *QStyleOptionToolBar) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -503,7 +457,6 @@ func (this *QToolBar) InitStyleOption(option *QStyleOptionToolBar) {
 
 // UpdateMicroFocus can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QToolBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -516,7 +469,6 @@ func (this *QToolBar) UpdateMicroFocus() {
 
 // Create can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QToolBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -529,7 +481,6 @@ func (this *QToolBar) Create() {
 
 // Destroy can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QToolBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -542,7 +493,6 @@ func (this *QToolBar) Destroy() {
 
 // FocusNextChild can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QToolBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -557,7 +507,6 @@ func (this *QToolBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QToolBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -572,7 +521,6 @@ func (this *QToolBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QToolBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -587,7 +535,6 @@ func (this *QToolBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QToolBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -602,7 +549,6 @@ func (this *QToolBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -619,7 +565,6 @@ func (this *QToolBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QToolBar that was directly constructed.
 func (this *QToolBar) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -634,7 +579,6 @@ func (this *QToolBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QToolBar) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -662,7 +606,6 @@ func miqt_exec_callback_QToolBar_actionEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -690,7 +633,6 @@ func miqt_exec_callback_QToolBar_changeEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -718,7 +660,6 @@ func miqt_exec_callback_QToolBar_paintEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QToolBar_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -748,7 +689,6 @@ func miqt_exec_callback_QToolBar_event(self *C.QToolBar, cb C.intptr_t, event *C
 }
 
 func (this *QToolBar) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QToolBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -774,7 +714,6 @@ func miqt_exec_callback_QToolBar_devType(self *C.QToolBar, cb C.intptr_t) C.int 
 }
 
 func (this *QToolBar) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QToolBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -801,7 +740,6 @@ func miqt_exec_callback_QToolBar_setVisible(self *C.QToolBar, cb C.intptr_t, vis
 }
 
 func (this *QToolBar) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QToolBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -830,7 +768,6 @@ func miqt_exec_callback_QToolBar_sizeHint(self *C.QToolBar, cb C.intptr_t) *C.QS
 }
 
 func (this *QToolBar) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QToolBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -859,7 +796,6 @@ func miqt_exec_callback_QToolBar_minimumSizeHint(self *C.QToolBar, cb C.intptr_t
 }
 
 func (this *QToolBar) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QToolBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -888,7 +824,6 @@ func miqt_exec_callback_QToolBar_heightForWidth(self *C.QToolBar, cb C.intptr_t,
 }
 
 func (this *QToolBar) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QToolBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -914,7 +849,6 @@ func miqt_exec_callback_QToolBar_hasHeightForWidth(self *C.QToolBar, cb C.intptr
 }
 
 func (this *QToolBar) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QToolBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -941,7 +875,6 @@ func miqt_exec_callback_QToolBar_paintEngine(self *C.QToolBar, cb C.intptr_t) *C
 }
 
 func (this *QToolBar) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -969,7 +902,6 @@ func miqt_exec_callback_QToolBar_mousePressEvent(self *C.QToolBar, cb C.intptr_t
 }
 
 func (this *QToolBar) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -997,7 +929,6 @@ func miqt_exec_callback_QToolBar_mouseReleaseEvent(self *C.QToolBar, cb C.intptr
 }
 
 func (this *QToolBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1025,7 +956,6 @@ func miqt_exec_callback_QToolBar_mouseDoubleClickEvent(self *C.QToolBar, cb C.in
 }
 
 func (this *QToolBar) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1053,7 +983,6 @@ func miqt_exec_callback_QToolBar_mouseMoveEvent(self *C.QToolBar, cb C.intptr_t,
 }
 
 func (this *QToolBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1081,7 +1010,6 @@ func miqt_exec_callback_QToolBar_wheelEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1109,7 +1037,6 @@ func miqt_exec_callback_QToolBar_keyPressEvent(self *C.QToolBar, cb C.intptr_t, 
 }
 
 func (this *QToolBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1137,7 +1064,6 @@ func miqt_exec_callback_QToolBar_keyReleaseEvent(self *C.QToolBar, cb C.intptr_t
 }
 
 func (this *QToolBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1165,7 +1091,6 @@ func miqt_exec_callback_QToolBar_focusInEvent(self *C.QToolBar, cb C.intptr_t, e
 }
 
 func (this *QToolBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1193,7 +1118,6 @@ func miqt_exec_callback_QToolBar_focusOutEvent(self *C.QToolBar, cb C.intptr_t, 
 }
 
 func (this *QToolBar) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1221,7 +1145,6 @@ func miqt_exec_callback_QToolBar_enterEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1249,7 +1172,6 @@ func miqt_exec_callback_QToolBar_leaveEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1277,7 +1199,6 @@ func miqt_exec_callback_QToolBar_moveEvent(self *C.QToolBar, cb C.intptr_t, even
 }
 
 func (this *QToolBar) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1305,7 +1226,6 @@ func miqt_exec_callback_QToolBar_resizeEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1333,7 +1253,6 @@ func miqt_exec_callback_QToolBar_closeEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1361,7 +1280,6 @@ func miqt_exec_callback_QToolBar_contextMenuEvent(self *C.QToolBar, cb C.intptr_
 }
 
 func (this *QToolBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1389,7 +1307,6 @@ func miqt_exec_callback_QToolBar_tabletEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1417,7 +1334,6 @@ func miqt_exec_callback_QToolBar_dragEnterEvent(self *C.QToolBar, cb C.intptr_t,
 }
 
 func (this *QToolBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1445,7 +1361,6 @@ func miqt_exec_callback_QToolBar_dragMoveEvent(self *C.QToolBar, cb C.intptr_t, 
 }
 
 func (this *QToolBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1473,7 +1388,6 @@ func miqt_exec_callback_QToolBar_dragLeaveEvent(self *C.QToolBar, cb C.intptr_t,
 }
 
 func (this *QToolBar) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1501,7 +1415,6 @@ func miqt_exec_callback_QToolBar_dropEvent(self *C.QToolBar, cb C.intptr_t, even
 }
 
 func (this *QToolBar) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1529,7 +1442,6 @@ func miqt_exec_callback_QToolBar_showEvent(self *C.QToolBar, cb C.intptr_t, even
 }
 
 func (this *QToolBar) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1557,7 +1469,6 @@ func miqt_exec_callback_QToolBar_hideEvent(self *C.QToolBar, cb C.intptr_t, even
 }
 
 func (this *QToolBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1599,7 +1510,6 @@ func miqt_exec_callback_QToolBar_nativeEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QToolBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1628,7 +1538,6 @@ func miqt_exec_callback_QToolBar_metric(self *C.QToolBar, cb C.intptr_t, param1 
 }
 
 func (this *QToolBar) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QToolBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1656,7 +1565,6 @@ func miqt_exec_callback_QToolBar_initPainter(self *C.QToolBar, cb C.intptr_t, pa
 }
 
 func (this *QToolBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QToolBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1687,7 +1595,6 @@ func miqt_exec_callback_QToolBar_redirected(self *C.QToolBar, cb C.intptr_t, off
 }
 
 func (this *QToolBar) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QToolBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1714,7 +1621,6 @@ func miqt_exec_callback_QToolBar_sharedPainter(self *C.QToolBar, cb C.intptr_t) 
 }
 
 func (this *QToolBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QToolBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1742,7 +1648,6 @@ func miqt_exec_callback_QToolBar_inputMethodEvent(self *C.QToolBar, cb C.intptr_
 }
 
 func (this *QToolBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QToolBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1774,7 +1679,6 @@ func miqt_exec_callback_QToolBar_inputMethodQuery(self *C.QToolBar, cb C.intptr_
 }
 
 func (this *QToolBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QToolBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1803,8 +1707,6 @@ func miqt_exec_callback_QToolBar_focusNextPrevChild(self *C.QToolBar, cb C.intpt
 }
 
 func (this *QToolBar) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QToolBar_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1836,7 +1738,6 @@ func miqt_exec_callback_QToolBar_eventFilter(self *C.QToolBar, cb C.intptr_t, wa
 }
 
 func (this *QToolBar) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1864,7 +1765,6 @@ func miqt_exec_callback_QToolBar_timerEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1892,7 +1792,6 @@ func miqt_exec_callback_QToolBar_childEvent(self *C.QToolBar, cb C.intptr_t, eve
 }
 
 func (this *QToolBar) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QToolBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1920,7 +1819,6 @@ func miqt_exec_callback_QToolBar_customEvent(self *C.QToolBar, cb C.intptr_t, ev
 }
 
 func (this *QToolBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QToolBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1948,7 +1846,6 @@ func miqt_exec_callback_QToolBar_connectNotify(self *C.QToolBar, cb C.intptr_t, 
 }
 
 func (this *QToolBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QToolBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1983,6 +1880,8 @@ func (this *QToolBar) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QToolBar) GoGC() {
 	if this.gc != nil {
 		return

@@ -66,18 +66,15 @@ func NewQAccessiblePlugin() *QAccessiblePlugin {
 
 // NewQAccessiblePlugin2 constructs a new QAccessiblePlugin object.
 func NewQAccessiblePlugin2(parent *QObject) *QAccessiblePlugin {
-	defer runtime.KeepAlive(parent)
 
 	return newQAccessiblePlugin(C.QAccessiblePlugin_new2(parent.cPointer()))
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAccessiblePlugin_metaObject(this.h))
 }
 
 func (this *QAccessiblePlugin) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAccessiblePlugin_metacast(this.h, param1_Cstring))
@@ -93,8 +90,6 @@ func QAccessiblePlugin_Tr(s string) string {
 }
 
 func (this *QAccessiblePlugin) Create(key string, object *QObject) *QAccessibleInterface {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -126,7 +121,6 @@ func QAccessiblePlugin_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QAccessiblePlugin that was directly constructed.
 func (this *QAccessiblePlugin) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAccessiblePlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -141,7 +135,6 @@ func (this *QAccessiblePlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAccessiblePlugin that was directly constructed.
 func (this *QAccessiblePlugin) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAccessiblePlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -156,7 +149,6 @@ func (this *QAccessiblePlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAccessiblePlugin that was directly constructed.
 func (this *QAccessiblePlugin) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -173,7 +165,6 @@ func (this *QAccessiblePlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAccessiblePlugin that was directly constructed.
 func (this *QAccessiblePlugin) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -215,7 +206,6 @@ func miqt_exec_callback_QAccessiblePlugin_create(self *C.QAccessiblePlugin, cb C
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAccessiblePlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -245,8 +235,6 @@ func miqt_exec_callback_QAccessiblePlugin_event(self *C.QAccessiblePlugin, cb C.
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAccessiblePlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -278,7 +266,6 @@ func miqt_exec_callback_QAccessiblePlugin_eventFilter(self *C.QAccessiblePlugin,
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAccessiblePlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -306,7 +293,6 @@ func miqt_exec_callback_QAccessiblePlugin_timerEvent(self *C.QAccessiblePlugin, 
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAccessiblePlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -334,7 +320,6 @@ func miqt_exec_callback_QAccessiblePlugin_childEvent(self *C.QAccessiblePlugin, 
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAccessiblePlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -362,7 +347,6 @@ func miqt_exec_callback_QAccessiblePlugin_customEvent(self *C.QAccessiblePlugin,
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAccessiblePlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -390,7 +374,6 @@ func miqt_exec_callback_QAccessiblePlugin_connectNotify(self *C.QAccessiblePlugi
 }
 
 func (this *QAccessiblePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAccessiblePlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -425,6 +408,8 @@ func (this *QAccessiblePlugin) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAccessiblePlugin) GoGC() {
 	if this.gc != nil {
 		return

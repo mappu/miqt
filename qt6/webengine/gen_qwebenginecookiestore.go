@@ -60,12 +60,10 @@ func UnsafeNewQWebEngineCookieStore(h unsafe.Pointer) *QWebEngineCookieStore {
 }
 
 func (this *QWebEngineCookieStore) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineCookieStore_metaObject(this.h)))
 }
 
 func (this *QWebEngineCookieStore) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineCookieStore_metacast(this.h, param1_Cstring))
@@ -81,34 +79,28 @@ func QWebEngineCookieStore_Tr(s string) string {
 }
 
 func (this *QWebEngineCookieStore) SetCookie(cookie *network.QNetworkCookie) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_setCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie(cookie *network.QNetworkCookie) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_deleteCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteSessionCookies() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_deleteSessionCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) DeleteAllCookies() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_deleteAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) LoadAllCookies() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineCookieStore_loadAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) CookieAdded(cookie *network.QNetworkCookie) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_cookieAdded(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
@@ -130,7 +122,6 @@ func miqt_exec_callback_QWebEngineCookieStore_cookieAdded(cb C.intptr_t, cookie 
 }
 
 func (this *QWebEngineCookieStore) CookieRemoved(cookie *network.QNetworkCookie) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	C.QWebEngineCookieStore_cookieRemoved(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
@@ -174,14 +165,12 @@ func QWebEngineCookieStore_Tr3(s string, c string, n int) string {
 }
 
 func (this *QWebEngineCookieStore) SetCookie2(cookie *network.QNetworkCookie, origin *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	defer runtime.KeepAlive(origin)
 	C.QWebEngineCookieStore_setCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie2(cookie *network.QNetworkCookie, origin *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cookie)
 	defer runtime.KeepAlive(origin)
 	C.QWebEngineCookieStore_deleteCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
@@ -195,6 +184,8 @@ func (this *QWebEngineCookieStore) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEngineCookieStore) GoGC() {
 	if this.gc != nil {
 		return

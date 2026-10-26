@@ -69,7 +69,6 @@ func NewQImageWriter() *QImageWriter {
 
 // NewQImageWriter2 constructs a new QImageWriter object.
 func NewQImageWriter2(device *QIODevice, format []byte) *QImageWriter {
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -139,7 +138,6 @@ func (this *QImageWriter) Format() []byte {
 
 func (this *QImageWriter) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QImageWriter_setDevice(this.h, device.cPointer())
 }
 

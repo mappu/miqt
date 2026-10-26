@@ -67,18 +67,15 @@ func NewQHorizontalPercentBarSeries() *QHorizontalPercentBarSeries {
 
 // NewQHorizontalPercentBarSeries2 constructs a new QHorizontalPercentBarSeries object.
 func NewQHorizontalPercentBarSeries2(parent *qt6.QObject) *QHorizontalPercentBarSeries {
-	defer runtime.KeepAlive(parent)
 
 	return newQHorizontalPercentBarSeries(C.QHorizontalPercentBarSeries_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QHorizontalPercentBarSeries) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QHorizontalPercentBarSeries_metaObject(this.h)))
 }
 
 func (this *QHorizontalPercentBarSeries) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHorizontalPercentBarSeries_metacast(this.h, param1_Cstring))
@@ -94,7 +91,6 @@ func QHorizontalPercentBarSeries_Tr(s string) string {
 }
 
 func (this *QHorizontalPercentBarSeries) Type() QAbstractSeries__SeriesType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QHorizontalPercentBarSeries_type(this.h))
 }
 
@@ -122,7 +118,6 @@ func QHorizontalPercentBarSeries_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QHorizontalPercentBarSeries that was directly constructed.
 func (this *QHorizontalPercentBarSeries) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QHorizontalPercentBarSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -137,7 +132,6 @@ func (this *QHorizontalPercentBarSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QHorizontalPercentBarSeries that was directly constructed.
 func (this *QHorizontalPercentBarSeries) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHorizontalPercentBarSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -152,7 +146,6 @@ func (this *QHorizontalPercentBarSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHorizontalPercentBarSeries that was directly constructed.
 func (this *QHorizontalPercentBarSeries) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -169,7 +162,6 @@ func (this *QHorizontalPercentBarSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHorizontalPercentBarSeries that was directly constructed.
 func (this *QHorizontalPercentBarSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -184,7 +176,6 @@ func (this *QHorizontalPercentBarSeries) IsSignalConnected(signal *qt6.QMetaMeth
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QHorizontalPercentBarSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -210,7 +201,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_type(self *C.QHorizontalPerc
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHorizontalPercentBarSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -240,8 +230,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_event(self *C.QHorizontalPer
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHorizontalPercentBarSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -273,7 +261,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_eventFilter(self *C.QHorizon
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHorizontalPercentBarSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -301,7 +288,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_timerEvent(self *C.QHorizont
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHorizontalPercentBarSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -329,7 +315,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_childEvent(self *C.QHorizont
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHorizontalPercentBarSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -357,7 +342,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_customEvent(self *C.QHorizon
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QHorizontalPercentBarSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -385,7 +369,6 @@ func miqt_exec_callback_QHorizontalPercentBarSeries_connectNotify(self *C.QHoriz
 }
 
 func (this *QHorizontalPercentBarSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QHorizontalPercentBarSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -420,6 +403,8 @@ func (this *QHorizontalPercentBarSeries) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QHorizontalPercentBarSeries) GoGC() {
 	if this.gc != nil {
 		return

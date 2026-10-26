@@ -81,7 +81,6 @@ func UnsafeNewQwtKnob(h unsafe.Pointer) *QwtKnob {
 
 // NewQwtKnob constructs a new QwtKnob object.
 func NewQwtKnob(parent *qt.QWidget) *QwtKnob {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtKnob(C.QwtKnob_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -93,12 +92,10 @@ func NewQwtKnob2() *QwtKnob {
 }
 
 func (this *QwtKnob) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtKnob_metaObject(this.h)))
 }
 
 func (this *QwtKnob) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtKnob_metacast(this.h, param1_Cstring))
@@ -123,117 +120,95 @@ func QwtKnob_TrUtf8(s string) string {
 }
 
 func (this *QwtKnob) SetAlignment(alignment qt.AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QwtKnob) Alignment() qt.AlignmentFlag {
-	defer runtime.KeepAlive(this)
 	return (qt.AlignmentFlag)(C.QwtKnob_alignment(this.h))
 }
 
 func (this *QwtKnob) SetKnobWidth(knobWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setKnobWidth(this.h, (C.int)(knobWidth))
 }
 
 func (this *QwtKnob) KnobWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtKnob_knobWidth(this.h))
 }
 
 func (this *QwtKnob) SetNumTurns(numTurns int) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setNumTurns(this.h, (C.int)(numTurns))
 }
 
 func (this *QwtKnob) NumTurns() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtKnob_numTurns(this.h))
 }
 
 func (this *QwtKnob) SetTotalAngle(angle float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setTotalAngle(this.h, (C.double)(angle))
 }
 
 func (this *QwtKnob) TotalAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtKnob_totalAngle(this.h))
 }
 
 func (this *QwtKnob) SetKnobStyle(knobStyle QwtKnob__KnobStyle) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setKnobStyle(this.h, (C.int)(knobStyle))
 }
 
 func (this *QwtKnob) KnobStyle() QwtKnob__KnobStyle {
-	defer runtime.KeepAlive(this)
 	return (QwtKnob__KnobStyle)(C.QwtKnob_knobStyle(this.h))
 }
 
 func (this *QwtKnob) SetBorderWidth(borderWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setBorderWidth(this.h, (C.int)(borderWidth))
 }
 
 func (this *QwtKnob) BorderWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtKnob_borderWidth(this.h))
 }
 
 func (this *QwtKnob) SetMarkerStyle(markerStyle QwtKnob__MarkerStyle) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setMarkerStyle(this.h, (C.int)(markerStyle))
 }
 
 func (this *QwtKnob) MarkerStyle() QwtKnob__MarkerStyle {
-	defer runtime.KeepAlive(this)
 	return (QwtKnob__MarkerStyle)(C.QwtKnob_markerStyle(this.h))
 }
 
 func (this *QwtKnob) SetMarkerSize(markerSize int) {
-	defer runtime.KeepAlive(this)
 	C.QwtKnob_setMarkerSize(this.h, (C.int)(markerSize))
 }
 
 func (this *QwtKnob) MarkerSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtKnob_markerSize(this.h))
 }
 
 func (this *QwtKnob) SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtKnob) MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_minimumSizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtKnob) SetScaleDraw(scaleDraw *QwtRoundScaleDraw) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(scaleDraw)
 	C.QwtKnob_setScaleDraw(this.h, scaleDraw.cPointer())
 }
 
 func (this *QwtKnob) ScaleDraw() *QwtRoundScaleDraw {
-	defer runtime.KeepAlive(this)
 	return newQwtRoundScaleDraw(C.QwtKnob_scaleDraw(this.h))
 }
 
 func (this *QwtKnob) ScaleDraw2() *QwtRoundScaleDraw {
-	defer runtime.KeepAlive(this)
 	return newQwtRoundScaleDraw(C.QwtKnob_scaleDraw2(this.h))
 }
 
 func (this *QwtKnob) KnobRect() *qt.QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtKnob_knobRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -285,7 +260,6 @@ func QwtKnob_TrUtf83(s string, c string, n int) string {
 
 // IncrementValue can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) IncrementValue(stepCount int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtKnob_protectedbase_incrementValue(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(stepCount))
@@ -298,7 +272,6 @@ func (this *QwtKnob) IncrementValue(stepCount int) {
 
 // IncrementedValue can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) IncrementedValue(value float64, stepCount int) float64 {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtKnob_protectedbase_incrementedValue(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value), (C.int)(stepCount)))
@@ -313,7 +286,6 @@ func (this *QwtKnob) IncrementedValue(value float64, stepCount int) float64 {
 
 // Rescale can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) Rescale(lowerBound float64, upperBound float64, stepSize float64) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtKnob_protectedbase_rescale(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(lowerBound), (C.double)(upperBound), (C.double)(stepSize))
@@ -326,7 +298,6 @@ func (this *QwtKnob) Rescale(lowerBound float64, upperBound float64, stepSize fl
 
 // SetAbstractScaleDraw can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScaleDraw) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(abstractScaleDraw)
 
 	var _dynamic_cast_ok C.bool = false
@@ -340,7 +311,6 @@ func (this *QwtKnob) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScaleDra
 
 // AbstractScaleDraw can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) AbstractScaleDraw() *QwtAbstractScaleDraw {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtAbstractScaleDraw(C.QwtKnob_protectedbase_abstractScaleDraw(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -355,7 +325,6 @@ func (this *QwtKnob) AbstractScaleDraw() *QwtAbstractScaleDraw {
 
 // UpdateMicroFocus can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtKnob_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -368,7 +337,6 @@ func (this *QwtKnob) UpdateMicroFocus() {
 
 // Create can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtKnob_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -381,7 +349,6 @@ func (this *QwtKnob) Create() {
 
 // Destroy can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtKnob_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -394,7 +361,6 @@ func (this *QwtKnob) Destroy() {
 
 // FocusNextChild can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtKnob_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -409,7 +375,6 @@ func (this *QwtKnob) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtKnob_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -424,7 +389,6 @@ func (this *QwtKnob) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtKnob_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -439,7 +403,6 @@ func (this *QwtKnob) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtKnob_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -454,7 +417,6 @@ func (this *QwtKnob) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -471,7 +433,6 @@ func (this *QwtKnob) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtKnob that was directly constructed.
 func (this *QwtKnob) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -486,7 +447,6 @@ func (this *QwtKnob) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtKnob) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -515,7 +475,6 @@ func miqt_exec_callback_QwtKnob_sizeHint(self *C.QwtKnob, cb C.intptr_t) *C.QSiz
 }
 
 func (this *QwtKnob) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -544,7 +503,6 @@ func miqt_exec_callback_QwtKnob_minimumSizeHint(self *C.QwtKnob, cb C.intptr_t) 
 }
 
 func (this *QwtKnob) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
@@ -572,7 +530,6 @@ func miqt_exec_callback_QwtKnob_paintEvent(self *C.QwtKnob, cb C.intptr_t, param
 }
 
 func (this *QwtKnob) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -600,7 +557,6 @@ func miqt_exec_callback_QwtKnob_changeEvent(self *C.QwtKnob, cb C.intptr_t, para
 }
 
 func (this *QwtKnob) callVirtualBase_DrawKnob(param1 *qt.QPainter, param2 *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -631,7 +587,6 @@ func miqt_exec_callback_QwtKnob_drawKnob(self *C.QwtKnob, cb C.intptr_t, param1 
 }
 
 func (this *QwtKnob) callVirtualBase_DrawFocusIndicator(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_drawFocusIndicator(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -659,7 +614,6 @@ func miqt_exec_callback_QwtKnob_drawFocusIndicator(self *C.QwtKnob, cb C.intptr_
 }
 
 func (this *QwtKnob) callVirtualBase_DrawMarker(param1 *qt.QPainter, param2 *qt.QRectF, angle float64) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -692,7 +646,6 @@ func miqt_exec_callback_QwtKnob_drawMarker(self *C.QwtKnob, cb C.intptr_t, param
 }
 
 func (this *QwtKnob) callVirtualBase_ScrolledTo(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (float64)(C.QwtKnob_virtualbase_scrolledTo(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -722,7 +675,6 @@ func miqt_exec_callback_QwtKnob_scrolledTo(self *C.QwtKnob, cb C.intptr_t, param
 }
 
 func (this *QwtKnob) callVirtualBase_IsScrollPosition(param1 *qt.QPoint) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QwtKnob_virtualbase_isScrollPosition(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -752,7 +704,6 @@ func miqt_exec_callback_QwtKnob_isScrollPosition(self *C.QwtKnob, cb C.intptr_t,
 }
 
 func (this *QwtKnob) callVirtualBase_MousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -780,7 +731,6 @@ func miqt_exec_callback_QwtKnob_mousePressEvent(self *C.QwtKnob, cb C.intptr_t, 
 }
 
 func (this *QwtKnob) callVirtualBase_MouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -808,7 +758,6 @@ func miqt_exec_callback_QwtKnob_mouseReleaseEvent(self *C.QwtKnob, cb C.intptr_t
 }
 
 func (this *QwtKnob) callVirtualBase_MouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -836,7 +785,6 @@ func miqt_exec_callback_QwtKnob_mouseMoveEvent(self *C.QwtKnob, cb C.intptr_t, p
 }
 
 func (this *QwtKnob) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -864,7 +812,6 @@ func miqt_exec_callback_QwtKnob_keyPressEvent(self *C.QwtKnob, cb C.intptr_t, pa
 }
 
 func (this *QwtKnob) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -892,7 +839,6 @@ func miqt_exec_callback_QwtKnob_wheelEvent(self *C.QwtKnob, cb C.intptr_t, param
 }
 
 func (this *QwtKnob) callVirtualBase_ScaleChange() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtKnob_virtualbase_scaleChange(unsafe.Pointer(this.h))
 
@@ -916,7 +862,6 @@ func miqt_exec_callback_QwtKnob_scaleChange(self *C.QwtKnob, cb C.intptr_t) {
 }
 
 func (this *QwtKnob) callVirtualBase_SliderChange() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtKnob_virtualbase_sliderChange(unsafe.Pointer(this.h))
 
@@ -940,7 +885,6 @@ func miqt_exec_callback_QwtKnob_sliderChange(self *C.QwtKnob, cb C.intptr_t) {
 }
 
 func (this *QwtKnob) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtKnob_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -966,7 +910,6 @@ func miqt_exec_callback_QwtKnob_devType(self *C.QwtKnob, cb C.intptr_t) C.int {
 }
 
 func (this *QwtKnob) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtKnob_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -993,7 +936,6 @@ func miqt_exec_callback_QwtKnob_setVisible(self *C.QwtKnob, cb C.intptr_t, visib
 }
 
 func (this *QwtKnob) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtKnob_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1022,7 +964,6 @@ func miqt_exec_callback_QwtKnob_heightForWidth(self *C.QwtKnob, cb C.intptr_t, p
 }
 
 func (this *QwtKnob) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtKnob_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1048,7 +989,6 @@ func miqt_exec_callback_QwtKnob_hasHeightForWidth(self *C.QwtKnob, cb C.intptr_t
 }
 
 func (this *QwtKnob) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtKnob_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1075,7 +1015,6 @@ func miqt_exec_callback_QwtKnob_paintEngine(self *C.QwtKnob, cb C.intptr_t) *C.Q
 }
 
 func (this *QwtKnob) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtKnob_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1105,7 +1044,6 @@ func miqt_exec_callback_QwtKnob_event(self *C.QwtKnob, cb C.intptr_t, event *C.Q
 }
 
 func (this *QwtKnob) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1133,7 +1071,6 @@ func miqt_exec_callback_QwtKnob_mouseDoubleClickEvent(self *C.QwtKnob, cb C.intp
 }
 
 func (this *QwtKnob) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1161,7 +1098,6 @@ func miqt_exec_callback_QwtKnob_keyReleaseEvent(self *C.QwtKnob, cb C.intptr_t, 
 }
 
 func (this *QwtKnob) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1189,7 +1125,6 @@ func miqt_exec_callback_QwtKnob_focusInEvent(self *C.QwtKnob, cb C.intptr_t, eve
 }
 
 func (this *QwtKnob) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1217,7 +1152,6 @@ func miqt_exec_callback_QwtKnob_focusOutEvent(self *C.QwtKnob, cb C.intptr_t, ev
 }
 
 func (this *QwtKnob) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1245,7 +1179,6 @@ func miqt_exec_callback_QwtKnob_enterEvent(self *C.QwtKnob, cb C.intptr_t, event
 }
 
 func (this *QwtKnob) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1273,7 +1206,6 @@ func miqt_exec_callback_QwtKnob_leaveEvent(self *C.QwtKnob, cb C.intptr_t, event
 }
 
 func (this *QwtKnob) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1301,7 +1233,6 @@ func miqt_exec_callback_QwtKnob_moveEvent(self *C.QwtKnob, cb C.intptr_t, event 
 }
 
 func (this *QwtKnob) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -1329,7 +1260,6 @@ func miqt_exec_callback_QwtKnob_resizeEvent(self *C.QwtKnob, cb C.intptr_t, even
 }
 
 func (this *QwtKnob) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1357,7 +1287,6 @@ func miqt_exec_callback_QwtKnob_closeEvent(self *C.QwtKnob, cb C.intptr_t, event
 }
 
 func (this *QwtKnob) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1385,7 +1314,6 @@ func miqt_exec_callback_QwtKnob_contextMenuEvent(self *C.QwtKnob, cb C.intptr_t,
 }
 
 func (this *QwtKnob) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1413,7 +1341,6 @@ func miqt_exec_callback_QwtKnob_tabletEvent(self *C.QwtKnob, cb C.intptr_t, even
 }
 
 func (this *QwtKnob) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1441,7 +1368,6 @@ func miqt_exec_callback_QwtKnob_actionEvent(self *C.QwtKnob, cb C.intptr_t, even
 }
 
 func (this *QwtKnob) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1469,7 +1395,6 @@ func miqt_exec_callback_QwtKnob_dragEnterEvent(self *C.QwtKnob, cb C.intptr_t, e
 }
 
 func (this *QwtKnob) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1497,7 +1422,6 @@ func miqt_exec_callback_QwtKnob_dragMoveEvent(self *C.QwtKnob, cb C.intptr_t, ev
 }
 
 func (this *QwtKnob) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1525,7 +1449,6 @@ func miqt_exec_callback_QwtKnob_dragLeaveEvent(self *C.QwtKnob, cb C.intptr_t, e
 }
 
 func (this *QwtKnob) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1553,7 +1476,6 @@ func miqt_exec_callback_QwtKnob_dropEvent(self *C.QwtKnob, cb C.intptr_t, event 
 }
 
 func (this *QwtKnob) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1581,7 +1503,6 @@ func miqt_exec_callback_QwtKnob_showEvent(self *C.QwtKnob, cb C.intptr_t, event 
 }
 
 func (this *QwtKnob) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1609,7 +1530,6 @@ func miqt_exec_callback_QwtKnob_hideEvent(self *C.QwtKnob, cb C.intptr_t, event 
 }
 
 func (this *QwtKnob) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1651,7 +1571,6 @@ func miqt_exec_callback_QwtKnob_nativeEvent(self *C.QwtKnob, cb C.intptr_t, even
 }
 
 func (this *QwtKnob) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtKnob_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1680,7 +1599,6 @@ func miqt_exec_callback_QwtKnob_metric(self *C.QwtKnob, cb C.intptr_t, param1 C.
 }
 
 func (this *QwtKnob) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtKnob_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1708,7 +1626,6 @@ func miqt_exec_callback_QwtKnob_initPainter(self *C.QwtKnob, cb C.intptr_t, pain
 }
 
 func (this *QwtKnob) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtKnob_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1739,7 +1656,6 @@ func miqt_exec_callback_QwtKnob_redirected(self *C.QwtKnob, cb C.intptr_t, offse
 }
 
 func (this *QwtKnob) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtKnob_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1766,7 +1682,6 @@ func miqt_exec_callback_QwtKnob_sharedPainter(self *C.QwtKnob, cb C.intptr_t) *C
 }
 
 func (this *QwtKnob) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtKnob_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1794,7 +1709,6 @@ func miqt_exec_callback_QwtKnob_inputMethodEvent(self *C.QwtKnob, cb C.intptr_t,
 }
 
 func (this *QwtKnob) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtKnob_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1826,7 +1740,6 @@ func miqt_exec_callback_QwtKnob_inputMethodQuery(self *C.QwtKnob, cb C.intptr_t,
 }
 
 func (this *QwtKnob) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtKnob_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1855,8 +1768,6 @@ func miqt_exec_callback_QwtKnob_focusNextPrevChild(self *C.QwtKnob, cb C.intptr_
 }
 
 func (this *QwtKnob) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtKnob_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1888,7 +1799,6 @@ func miqt_exec_callback_QwtKnob_eventFilter(self *C.QwtKnob, cb C.intptr_t, watc
 }
 
 func (this *QwtKnob) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1916,7 +1826,6 @@ func miqt_exec_callback_QwtKnob_timerEvent(self *C.QwtKnob, cb C.intptr_t, event
 }
 
 func (this *QwtKnob) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1944,7 +1853,6 @@ func miqt_exec_callback_QwtKnob_childEvent(self *C.QwtKnob, cb C.intptr_t, event
 }
 
 func (this *QwtKnob) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtKnob_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1972,7 +1880,6 @@ func miqt_exec_callback_QwtKnob_customEvent(self *C.QwtKnob, cb C.intptr_t, even
 }
 
 func (this *QwtKnob) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtKnob_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2000,7 +1907,6 @@ func miqt_exec_callback_QwtKnob_connectNotify(self *C.QwtKnob, cb C.intptr_t, si
 }
 
 func (this *QwtKnob) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtKnob_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2035,6 +1941,8 @@ func (this *QwtKnob) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtKnob) GoGC() {
 	if this.gc != nil {
 		return

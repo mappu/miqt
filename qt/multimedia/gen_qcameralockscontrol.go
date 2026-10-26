@@ -60,12 +60,10 @@ func UnsafeNewQCameraLocksControl(h unsafe.Pointer) *QCameraLocksControl {
 }
 
 func (this *QCameraLocksControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraLocksControl_metaObject(this.h)))
 }
 
 func (this *QCameraLocksControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraLocksControl_metacast(this.h, param1_Cstring))
@@ -90,27 +88,22 @@ func QCameraLocksControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraLocksControl) SupportedLocks() QCamera__LockType {
-	defer runtime.KeepAlive(this)
 	return (QCamera__LockType)(C.QCameraLocksControl_supportedLocks(this.h))
 }
 
 func (this *QCameraLocksControl) LockStatus(lock QCamera__LockType) QCamera__LockStatus {
-	defer runtime.KeepAlive(this)
 	return (QCamera__LockStatus)(C.QCameraLocksControl_lockStatus(this.h, (C.int)(lock)))
 }
 
 func (this *QCameraLocksControl) SearchAndLock(locks QCamera__LockType) {
-	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_searchAndLock(this.h, (C.int)(locks))
 }
 
 func (this *QCameraLocksControl) Unlock(locks QCamera__LockType) {
-	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_unlock(this.h, (C.int)(locks))
 }
 
 func (this *QCameraLocksControl) LockStatusChanged(typeVal QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason) {
-	defer runtime.KeepAlive(this)
 	C.QCameraLocksControl_lockStatusChanged(this.h, (C.int)(typeVal), (C.int)(status), (C.int)(reason))
 }
 func (this *QCameraLocksControl) OnLockStatusChanged(slot func(typeVal QCamera__LockType, status QCamera__LockStatus, reason QCamera__LockChangeReason)) {
@@ -186,6 +179,8 @@ func (this *QCameraLocksControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraLocksControl) GoGC() {
 	if this.gc != nil {
 		return

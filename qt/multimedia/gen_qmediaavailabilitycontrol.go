@@ -60,12 +60,10 @@ func UnsafeNewQMediaAvailabilityControl(h unsafe.Pointer) *QMediaAvailabilityCon
 }
 
 func (this *QMediaAvailabilityControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAvailabilityControl_metaObject(this.h)))
 }
 
 func (this *QMediaAvailabilityControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaAvailabilityControl_metacast(this.h, param1_Cstring))
@@ -90,12 +88,10 @@ func QMediaAvailabilityControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaAvailabilityControl) Availability() QMultimedia__AvailabilityStatus {
-	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QMediaAvailabilityControl_availability(this.h))
 }
 
 func (this *QMediaAvailabilityControl) AvailabilityChanged(availability QMultimedia__AvailabilityStatus) {
-	defer runtime.KeepAlive(this)
 	C.QMediaAvailabilityControl_availabilityChanged(this.h, (C.int)(availability))
 }
 func (this *QMediaAvailabilityControl) OnAvailabilityChanged(slot func(availability QMultimedia__AvailabilityStatus)) {
@@ -167,6 +163,8 @@ func (this *QMediaAvailabilityControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaAvailabilityControl) GoGC() {
 	if this.gc != nil {
 		return

@@ -59,12 +59,10 @@ func UnsafeNewQCameraInfoControl(h unsafe.Pointer) *QCameraInfoControl {
 }
 
 func (this *QCameraInfoControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraInfoControl_metaObject(this.h)))
 }
 
 func (this *QCameraInfoControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraInfoControl_metacast(this.h, param1_Cstring))
@@ -89,7 +87,6 @@ func QCameraInfoControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraInfoControl) CameraPosition(deviceName string) QCamera__Position {
-	defer runtime.KeepAlive(this)
 	deviceName_ms := C.struct_miqt_string{}
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
@@ -98,7 +95,6 @@ func (this *QCameraInfoControl) CameraPosition(deviceName string) QCamera__Posit
 }
 
 func (this *QCameraInfoControl) CameraOrientation(deviceName string) int {
-	defer runtime.KeepAlive(this)
 	deviceName_ms := C.struct_miqt_string{}
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
@@ -158,6 +154,8 @@ func (this *QCameraInfoControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraInfoControl) GoGC() {
 	if this.gc != nil {
 		return

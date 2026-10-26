@@ -67,33 +67,27 @@ func NewQAreaSeries() *QAreaSeries {
 
 // NewQAreaSeries2 constructs a new QAreaSeries object.
 func NewQAreaSeries2(upperSeries *QLineSeries) *QAreaSeries {
-	defer runtime.KeepAlive(upperSeries)
 
 	return newQAreaSeries(C.QAreaSeries_new2(upperSeries.cPointer()))
 }
 
 // NewQAreaSeries3 constructs a new QAreaSeries object.
 func NewQAreaSeries3(parent *qt6.QObject) *QAreaSeries {
-	defer runtime.KeepAlive(parent)
 
 	return newQAreaSeries(C.QAreaSeries_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQAreaSeries4 constructs a new QAreaSeries object.
 func NewQAreaSeries4(upperSeries *QLineSeries, lowerSeries *QLineSeries) *QAreaSeries {
-	defer runtime.KeepAlive(upperSeries)
-	defer runtime.KeepAlive(lowerSeries)
 
 	return newQAreaSeries(C.QAreaSeries_new4(upperSeries.cPointer(), lowerSeries.cPointer()))
 }
 
 func (this *QAreaSeries) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAreaSeries_metaObject(this.h)))
 }
 
 func (this *QAreaSeries) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAreaSeries_metacast(this.h, param1_Cstring))
@@ -109,96 +103,78 @@ func QAreaSeries_Tr(s string) string {
 }
 
 func (this *QAreaSeries) Type() QAbstractSeries__SeriesType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractSeries__SeriesType)(C.QAreaSeries_type(this.h))
 }
 
 func (this *QAreaSeries) SetUpperSeries(series *QLineSeries) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(series)
 	C.QAreaSeries_setUpperSeries(this.h, series.cPointer())
 }
 
 func (this *QAreaSeries) UpperSeries() *QLineSeries {
-	defer runtime.KeepAlive(this)
 	return newQLineSeries(C.QAreaSeries_upperSeries(this.h))
 }
 
 func (this *QAreaSeries) SetLowerSeries(series *QLineSeries) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(series)
 	C.QAreaSeries_setLowerSeries(this.h, series.cPointer())
 }
 
 func (this *QAreaSeries) LowerSeries() *QLineSeries {
-	defer runtime.KeepAlive(this)
 	return newQLineSeries(C.QAreaSeries_lowerSeries(this.h))
 }
 
 func (this *QAreaSeries) SetPen(pen *qt6.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pen)
 	C.QAreaSeries_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QAreaSeries) Pen() *qt6.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QAreaSeries_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QAreaSeries_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QAreaSeries) Brush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QAreaSeries_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAreaSeries) Color() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetBorderColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAreaSeries) BorderColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_borderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetPointsVisible() {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointsVisible(this.h)
 }
 
 func (this *QAreaSeries) PointsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAreaSeries_pointsVisible(this.h))
 }
 
 func (this *QAreaSeries) SetPointLabelsFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -207,7 +183,6 @@ func (this *QAreaSeries) SetPointLabelsFormat(format string) {
 }
 
 func (this *QAreaSeries) PointLabelsFormat() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAreaSeries_pointLabelsFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -215,53 +190,44 @@ func (this *QAreaSeries) PointLabelsFormat() string {
 }
 
 func (this *QAreaSeries) SetPointLabelsVisible() {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointLabelsVisible(this.h)
 }
 
 func (this *QAreaSeries) PointLabelsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAreaSeries_pointLabelsVisible(this.h))
 }
 
 func (this *QAreaSeries) SetPointLabelsFont(font *qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QAreaSeries_setPointLabelsFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QAreaSeries) PointLabelsFont() *qt6.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QAreaSeries_pointLabelsFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetPointLabelsColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_setPointLabelsColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QAreaSeries) PointLabelsColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_pointLabelsColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAreaSeries) SetPointLabelsClipping() {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointLabelsClipping(this.h)
 }
 
 func (this *QAreaSeries) PointLabelsClipping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAreaSeries_pointLabelsClipping(this.h))
 }
 
 func (this *QAreaSeries) Clicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QAreaSeries_clicked(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
@@ -283,7 +249,6 @@ func miqt_exec_callback_QAreaSeries_clicked(cb C.intptr_t, point *C.QPointF) {
 }
 
 func (this *QAreaSeries) Hovered(point *qt6.QPointF, state bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QAreaSeries_hovered(this.h, (*C.QPointF)(point.UnsafePointer()), (C.bool)(state))
 }
@@ -307,7 +272,6 @@ func miqt_exec_callback_QAreaSeries_hovered(cb C.intptr_t, point *C.QPointF, sta
 }
 
 func (this *QAreaSeries) Pressed(point *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QAreaSeries_pressed(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
@@ -329,7 +293,6 @@ func miqt_exec_callback_QAreaSeries_pressed(cb C.intptr_t, point *C.QPointF) {
 }
 
 func (this *QAreaSeries) Released(point *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QAreaSeries_released(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
@@ -351,7 +314,6 @@ func miqt_exec_callback_QAreaSeries_released(cb C.intptr_t, point *C.QPointF) {
 }
 
 func (this *QAreaSeries) DoubleClicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QAreaSeries_doubleClicked(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
@@ -373,7 +335,6 @@ func miqt_exec_callback_QAreaSeries_doubleClicked(cb C.intptr_t, point *C.QPoint
 }
 
 func (this *QAreaSeries) Selected() {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_selected(this.h)
 }
 func (this *QAreaSeries) OnSelected(slot func()) {
@@ -391,7 +352,6 @@ func miqt_exec_callback_QAreaSeries_selected(cb C.intptr_t) {
 }
 
 func (this *QAreaSeries) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -415,7 +375,6 @@ func miqt_exec_callback_QAreaSeries_colorChanged(cb C.intptr_t, color *C.QColor)
 }
 
 func (this *QAreaSeries) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -439,7 +398,6 @@ func miqt_exec_callback_QAreaSeries_borderColorChanged(cb C.intptr_t, color *C.Q
 }
 
 func (this *QAreaSeries) PointLabelsFormatChanged(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -467,7 +425,6 @@ func miqt_exec_callback_QAreaSeries_pointLabelsFormatChanged(cb C.intptr_t, form
 }
 
 func (this *QAreaSeries) PointLabelsVisibilityChanged(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_pointLabelsVisibilityChanged(this.h, (C.bool)(visible))
 }
 func (this *QAreaSeries) OnPointLabelsVisibilityChanged(slot func(visible bool)) {
@@ -488,7 +445,6 @@ func miqt_exec_callback_QAreaSeries_pointLabelsVisibilityChanged(cb C.intptr_t, 
 }
 
 func (this *QAreaSeries) PointLabelsFontChanged(font *qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QAreaSeries_pointLabelsFontChanged(this.h, (*C.QFont)(font.UnsafePointer()))
 }
@@ -510,7 +466,6 @@ func miqt_exec_callback_QAreaSeries_pointLabelsFontChanged(cb C.intptr_t, font *
 }
 
 func (this *QAreaSeries) PointLabelsColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QAreaSeries_pointLabelsColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -532,7 +487,6 @@ func miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(cb C.intptr_t, color
 }
 
 func (this *QAreaSeries) PointLabelsClippingChanged(clipping bool) {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_pointLabelsClippingChanged(this.h, (C.bool)(clipping))
 }
 func (this *QAreaSeries) OnPointLabelsClippingChanged(slot func(clipping bool)) {
@@ -575,23 +529,19 @@ func QAreaSeries_Tr3(s string, c string, n int) string {
 }
 
 func (this *QAreaSeries) SetPointsVisibleWithVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAreaSeries) SetPointLabelsVisibleWithVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QAreaSeries) SetPointLabelsClippingWithEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QAreaSeries_setPointLabelsClippingWithEnabled(this.h, (C.bool)(enabled))
 }
 
 // Sender can only be called from a QAreaSeries that was directly constructed.
 func (this *QAreaSeries) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAreaSeries_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -606,7 +556,6 @@ func (this *QAreaSeries) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAreaSeries that was directly constructed.
 func (this *QAreaSeries) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAreaSeries_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -621,7 +570,6 @@ func (this *QAreaSeries) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAreaSeries that was directly constructed.
 func (this *QAreaSeries) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -638,7 +586,6 @@ func (this *QAreaSeries) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAreaSeries that was directly constructed.
 func (this *QAreaSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -653,7 +600,6 @@ func (this *QAreaSeries) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAreaSeries) callVirtualBase_Type() QAbstractSeries__SeriesType {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSeries__SeriesType)(C.QAreaSeries_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -679,7 +625,6 @@ func miqt_exec_callback_QAreaSeries_type(self *C.QAreaSeries, cb C.intptr_t) C.i
 }
 
 func (this *QAreaSeries) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAreaSeries_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -709,8 +654,6 @@ func miqt_exec_callback_QAreaSeries_event(self *C.QAreaSeries, cb C.intptr_t, ev
 }
 
 func (this *QAreaSeries) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAreaSeries_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -742,7 +685,6 @@ func miqt_exec_callback_QAreaSeries_eventFilter(self *C.QAreaSeries, cb C.intptr
 }
 
 func (this *QAreaSeries) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAreaSeries_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -770,7 +712,6 @@ func miqt_exec_callback_QAreaSeries_timerEvent(self *C.QAreaSeries, cb C.intptr_
 }
 
 func (this *QAreaSeries) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAreaSeries_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -798,7 +739,6 @@ func miqt_exec_callback_QAreaSeries_childEvent(self *C.QAreaSeries, cb C.intptr_
 }
 
 func (this *QAreaSeries) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAreaSeries_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -826,7 +766,6 @@ func miqt_exec_callback_QAreaSeries_customEvent(self *C.QAreaSeries, cb C.intptr
 }
 
 func (this *QAreaSeries) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAreaSeries_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -854,7 +793,6 @@ func miqt_exec_callback_QAreaSeries_connectNotify(self *C.QAreaSeries, cb C.intp
 }
 
 func (this *QAreaSeries) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAreaSeries_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -889,6 +827,8 @@ func (this *QAreaSeries) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAreaSeries) GoGC() {
 	if this.gc != nil {
 		return

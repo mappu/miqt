@@ -66,18 +66,15 @@ func NewQTranslator() *QTranslator {
 
 // NewQTranslator2 constructs a new QTranslator object.
 func NewQTranslator2(parent *QObject) *QTranslator {
-	defer runtime.KeepAlive(parent)
 
 	return newQTranslator(C.QTranslator_new2(parent.cPointer()))
 }
 
 func (this *QTranslator) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTranslator_metaObject(this.h))
 }
 
 func (this *QTranslator) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTranslator_metacast(this.h, param1_Cstring))
@@ -93,7 +90,6 @@ func QTranslator_Tr(s string) string {
 }
 
 func (this *QTranslator) Translate(context string, sourceText string, disambiguation string, n int) string {
-	defer runtime.KeepAlive(this)
 	context_Cstring := C.CString(context)
 	defer C.free(unsafe.Pointer(context_Cstring))
 	sourceText_Cstring := C.CString(sourceText)
@@ -107,12 +103,10 @@ func (this *QTranslator) Translate(context string, sourceText string, disambigua
 }
 
 func (this *QTranslator) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTranslator_isEmpty(this.h))
 }
 
 func (this *QTranslator) Language() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTranslator_language(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -120,7 +114,6 @@ func (this *QTranslator) Language() string {
 }
 
 func (this *QTranslator) FilePath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTranslator_filePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -128,7 +121,6 @@ func (this *QTranslator) FilePath() string {
 }
 
 func (this *QTranslator) Load(filename string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -137,7 +129,6 @@ func (this *QTranslator) Load(filename string) bool {
 }
 
 func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -147,7 +138,6 @@ func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
 }
 
 func (this *QTranslator) Load3(data *byte, lenVal int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTranslator_load3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal)))
 }
 
@@ -174,7 +164,6 @@ func QTranslator_Tr3(s string, c string, n int) string {
 }
 
 func (this *QTranslator) Load4(filename string, directory string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -187,7 +176,6 @@ func (this *QTranslator) Load4(filename string, directory string) bool {
 }
 
 func (this *QTranslator) Load5(filename string, directory string, search_delimiters string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -204,7 +192,6 @@ func (this *QTranslator) Load5(filename string, directory string, search_delimit
 }
 
 func (this *QTranslator) Load6(filename string, directory string, search_delimiters string, suffix string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -225,7 +212,6 @@ func (this *QTranslator) Load6(filename string, directory string, search_delimit
 }
 
 func (this *QTranslator) Load7(locale *QLocale, filename string, prefix string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -239,7 +225,6 @@ func (this *QTranslator) Load7(locale *QLocale, filename string, prefix string) 
 }
 
 func (this *QTranslator) Load8(locale *QLocale, filename string, prefix string, directory string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -257,7 +242,6 @@ func (this *QTranslator) Load8(locale *QLocale, filename string, prefix string, 
 }
 
 func (this *QTranslator) Load9(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -279,7 +263,6 @@ func (this *QTranslator) Load9(locale *QLocale, filename string, prefix string, 
 }
 
 func (this *QTranslator) Load10(data *byte, lenVal int, directory string) bool {
-	defer runtime.KeepAlive(this)
 	directory_ms := C.struct_miqt_string{}
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
@@ -289,7 +272,6 @@ func (this *QTranslator) Load10(data *byte, lenVal int, directory string) bool {
 
 // Sender can only be called from a QTranslator that was directly constructed.
 func (this *QTranslator) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTranslator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -304,7 +286,6 @@ func (this *QTranslator) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTranslator that was directly constructed.
 func (this *QTranslator) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTranslator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -319,7 +300,6 @@ func (this *QTranslator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTranslator that was directly constructed.
 func (this *QTranslator) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -336,7 +316,6 @@ func (this *QTranslator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTranslator that was directly constructed.
 func (this *QTranslator) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -351,7 +330,6 @@ func (this *QTranslator) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTranslator) callVirtualBase_Translate(context string, sourceText string, disambiguation string, n int) string {
-	defer runtime.KeepAlive(this)
 	context_Cstring := C.CString(context)
 	defer C.free(unsafe.Pointer(context_Cstring))
 	sourceText_Cstring := C.CString(sourceText)
@@ -400,7 +378,6 @@ func miqt_exec_callback_QTranslator_translate(self *C.QTranslator, cb C.intptr_t
 }
 
 func (this *QTranslator) callVirtualBase_IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTranslator_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -426,7 +403,6 @@ func miqt_exec_callback_QTranslator_isEmpty(self *C.QTranslator, cb C.intptr_t) 
 }
 
 func (this *QTranslator) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTranslator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -456,8 +432,6 @@ func miqt_exec_callback_QTranslator_event(self *C.QTranslator, cb C.intptr_t, ev
 }
 
 func (this *QTranslator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTranslator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -489,7 +463,6 @@ func miqt_exec_callback_QTranslator_eventFilter(self *C.QTranslator, cb C.intptr
 }
 
 func (this *QTranslator) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTranslator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -517,7 +490,6 @@ func miqt_exec_callback_QTranslator_timerEvent(self *C.QTranslator, cb C.intptr_
 }
 
 func (this *QTranslator) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTranslator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -545,7 +517,6 @@ func miqt_exec_callback_QTranslator_childEvent(self *C.QTranslator, cb C.intptr_
 }
 
 func (this *QTranslator) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTranslator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -573,7 +544,6 @@ func miqt_exec_callback_QTranslator_customEvent(self *C.QTranslator, cb C.intptr
 }
 
 func (this *QTranslator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTranslator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -601,7 +571,6 @@ func miqt_exec_callback_QTranslator_connectNotify(self *C.QTranslator, cb C.intp
 }
 
 func (this *QTranslator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTranslator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -636,6 +605,8 @@ func (this *QTranslator) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTranslator) GoGC() {
 	if this.gc != nil {
 		return

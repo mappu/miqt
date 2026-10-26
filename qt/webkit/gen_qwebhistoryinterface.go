@@ -66,18 +66,15 @@ func NewQWebHistoryInterface() *QWebHistoryInterface {
 
 // NewQWebHistoryInterface2 constructs a new QWebHistoryInterface object.
 func NewQWebHistoryInterface2(parent *qt.QObject) *QWebHistoryInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQWebHistoryInterface(C.QWebHistoryInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebHistoryInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHistoryInterface_metaObject(this.h)))
 }
 
 func (this *QWebHistoryInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebHistoryInterface_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QWebHistoryInterface_TrUtf8(s string) string {
 }
 
 func QWebHistoryInterface_SetDefaultInterface(defaultInterface *QWebHistoryInterface) {
-	defer runtime.KeepAlive(defaultInterface)
 	C.QWebHistoryInterface_setDefaultInterface(defaultInterface.cPointer())
 }
 
@@ -111,7 +107,6 @@ func QWebHistoryInterface_DefaultInterface() *QWebHistoryInterface {
 }
 
 func (this *QWebHistoryInterface) HistoryContains(url string) bool {
-	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -120,7 +115,6 @@ func (this *QWebHistoryInterface) HistoryContains(url string) bool {
 }
 
 func (this *QWebHistoryInterface) AddHistoryEntry(url string) {
-	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -174,7 +168,6 @@ func QWebHistoryInterface_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QWebHistoryInterface that was directly constructed.
 func (this *QWebHistoryInterface) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QWebHistoryInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -189,7 +182,6 @@ func (this *QWebHistoryInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QWebHistoryInterface that was directly constructed.
 func (this *QWebHistoryInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebHistoryInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -204,7 +196,6 @@ func (this *QWebHistoryInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebHistoryInterface that was directly constructed.
 func (this *QWebHistoryInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -221,7 +212,6 @@ func (this *QWebHistoryInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebHistoryInterface that was directly constructed.
 func (this *QWebHistoryInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -284,7 +274,6 @@ func miqt_exec_callback_QWebHistoryInterface_addHistoryEntry(self *C.QWebHistory
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebHistoryInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -314,8 +303,6 @@ func miqt_exec_callback_QWebHistoryInterface_event(self *C.QWebHistoryInterface,
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebHistoryInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -347,7 +334,6 @@ func miqt_exec_callback_QWebHistoryInterface_eventFilter(self *C.QWebHistoryInte
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebHistoryInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -375,7 +361,6 @@ func miqt_exec_callback_QWebHistoryInterface_timerEvent(self *C.QWebHistoryInter
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebHistoryInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -403,7 +388,6 @@ func miqt_exec_callback_QWebHistoryInterface_childEvent(self *C.QWebHistoryInter
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebHistoryInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -431,7 +415,6 @@ func miqt_exec_callback_QWebHistoryInterface_customEvent(self *C.QWebHistoryInte
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebHistoryInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -459,7 +442,6 @@ func miqt_exec_callback_QWebHistoryInterface_connectNotify(self *C.QWebHistoryIn
 }
 
 func (this *QWebHistoryInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebHistoryInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -494,6 +476,8 @@ func (this *QWebHistoryInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebHistoryInterface) GoGC() {
 	if this.gc != nil {
 		return

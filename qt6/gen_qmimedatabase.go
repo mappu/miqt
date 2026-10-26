@@ -129,7 +129,6 @@ func (this *QMimeDatabase) MimeTypeForData(data []byte) *QMimeType {
 
 func (this *QMimeDatabase) MimeTypeForDataWithDevice(device *QIODevice) *QMimeType {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	_goptr := newQMimeType(C.QMimeDatabase_mimeTypeForDataWithDevice(this.h, device.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -145,7 +144,6 @@ func (this *QMimeDatabase) MimeTypeForUrl(url *QUrl) *QMimeType {
 
 func (this *QMimeDatabase) MimeTypeForFileNameAndData(fileName string, device *QIODevice) *QMimeType {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))

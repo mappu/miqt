@@ -547,7 +547,6 @@ func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
-	defer runtime.KeepAlive(child)
 
 	return newQChildEvent(C.QChildEvent_new((C.int)(typeVal), child.cPointer()))
 }

@@ -473,7 +473,6 @@ func (this *QGraphicsItem) GraphicsEffect() *QGraphicsEffect {
 
 func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(effect)
 	C.QGraphicsItem_setGraphicsEffect(this.h, effect.cPointer())
 }
 
@@ -752,7 +751,6 @@ func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 
 func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransform) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(transformations)
 	transformations_CArray_ptr := (**C.QGraphicsTransform)(C.malloc(C.size_t(8 * len(transformations))))
 	defer C.free(unsafe.Pointer(transformations_CArray_ptr))
 	transformations_CArray := unsafe.Slice(transformations_CArray_ptr, len(transformations))
@@ -916,7 +914,6 @@ func (this *QGraphicsItem) Paint(painter *QPainter, option *QStyleOptionGraphics
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -2461,12 +2458,10 @@ func NewQGraphicsObject2(parent *QGraphicsItem) *QGraphicsObject {
 }
 
 func (this *QGraphicsObject) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsObject_metaObject(this.h))
 }
 
 func (this *QGraphicsObject) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsObject_metacast(this.h, param1_Cstring))
@@ -2491,17 +2486,14 @@ func QGraphicsObject_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsObject) GrabGesture(typeVal GestureType) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_grabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QGraphicsObject) UngrabGesture(typeVal GestureType) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_ungrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QGraphicsObject) ParentChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_parentChanged(this.h)
 }
 func (this *QGraphicsObject) OnParentChanged(slot func()) {
@@ -2519,7 +2511,6 @@ func miqt_exec_callback_QGraphicsObject_parentChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) OpacityChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_opacityChanged(this.h)
 }
 func (this *QGraphicsObject) OnOpacityChanged(slot func()) {
@@ -2537,7 +2528,6 @@ func miqt_exec_callback_QGraphicsObject_opacityChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) VisibleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_visibleChanged(this.h)
 }
 func (this *QGraphicsObject) OnVisibleChanged(slot func()) {
@@ -2555,7 +2545,6 @@ func miqt_exec_callback_QGraphicsObject_visibleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) EnabledChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_enabledChanged(this.h)
 }
 func (this *QGraphicsObject) OnEnabledChanged(slot func()) {
@@ -2573,7 +2562,6 @@ func miqt_exec_callback_QGraphicsObject_enabledChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) XChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_xChanged(this.h)
 }
 func (this *QGraphicsObject) OnXChanged(slot func()) {
@@ -2591,7 +2579,6 @@ func miqt_exec_callback_QGraphicsObject_xChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) YChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_yChanged(this.h)
 }
 func (this *QGraphicsObject) OnYChanged(slot func()) {
@@ -2609,7 +2596,6 @@ func miqt_exec_callback_QGraphicsObject_yChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) ZChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_zChanged(this.h)
 }
 func (this *QGraphicsObject) OnZChanged(slot func()) {
@@ -2627,7 +2613,6 @@ func miqt_exec_callback_QGraphicsObject_zChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) RotationChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_rotationChanged(this.h)
 }
 func (this *QGraphicsObject) OnRotationChanged(slot func()) {
@@ -2645,7 +2630,6 @@ func miqt_exec_callback_QGraphicsObject_rotationChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) ScaleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_scaleChanged(this.h)
 }
 func (this *QGraphicsObject) OnScaleChanged(slot func()) {
@@ -2663,7 +2647,6 @@ func miqt_exec_callback_QGraphicsObject_scaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) ChildrenChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_childrenChanged(this.h)
 }
 func (this *QGraphicsObject) OnChildrenChanged(slot func()) {
@@ -2681,7 +2664,6 @@ func miqt_exec_callback_QGraphicsObject_childrenChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) WidthChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_widthChanged(this.h)
 }
 func (this *QGraphicsObject) OnWidthChanged(slot func()) {
@@ -2699,7 +2681,6 @@ func miqt_exec_callback_QGraphicsObject_widthChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsObject) HeightChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_heightChanged(this.h)
 }
 func (this *QGraphicsObject) OnHeightChanged(slot func()) {
@@ -2761,13 +2742,11 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags GestureFlag) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsObject_grabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
 // UpdateMicroFocus can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsObject_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2780,7 +2759,6 @@ func (this *QGraphicsObject) UpdateMicroFocus() {
 
 // Sender can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsObject_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2795,7 +2773,6 @@ func (this *QGraphicsObject) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsObject_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2810,7 +2787,6 @@ func (this *QGraphicsObject) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2827,7 +2803,6 @@ func (this *QGraphicsObject) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -2843,7 +2818,6 @@ func (this *QGraphicsObject) IsSignalConnected(signal *QMetaMethod) bool {
 
 // AddToIndex can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) AddToIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsObject_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2856,7 +2830,6 @@ func (this *QGraphicsObject) AddToIndex() {
 
 // RemoveFromIndex can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) RemoveFromIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsObject_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2869,7 +2842,6 @@ func (this *QGraphicsObject) RemoveFromIndex() {
 
 // PrepareGeometryChange can only be called from a QGraphicsObject that was directly constructed.
 func (this *QGraphicsObject) PrepareGeometryChange() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsObject_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2881,7 +2853,6 @@ func (this *QGraphicsObject) PrepareGeometryChange() {
 }
 
 func (this *QGraphicsObject) callVirtualBase_Event(ev *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	return (bool)(C.QGraphicsObject_virtualbase_event(unsafe.Pointer(this.h), ev.cPointer()))
@@ -2911,8 +2882,6 @@ func miqt_exec_callback_QGraphicsObject_event(self *C.QGraphicsObject, cb C.intp
 }
 
 func (this *QGraphicsObject) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsObject_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2944,7 +2913,6 @@ func miqt_exec_callback_QGraphicsObject_eventFilter(self *C.QGraphicsObject, cb 
 }
 
 func (this *QGraphicsObject) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2972,7 +2940,6 @@ func miqt_exec_callback_QGraphicsObject_timerEvent(self *C.QGraphicsObject, cb C
 }
 
 func (this *QGraphicsObject) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3000,7 +2967,6 @@ func miqt_exec_callback_QGraphicsObject_childEvent(self *C.QGraphicsObject, cb C
 }
 
 func (this *QGraphicsObject) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3028,7 +2994,6 @@ func miqt_exec_callback_QGraphicsObject_customEvent(self *C.QGraphicsObject, cb 
 }
 
 func (this *QGraphicsObject) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsObject_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3056,7 +3021,6 @@ func miqt_exec_callback_QGraphicsObject_connectNotify(self *C.QGraphicsObject, c
 }
 
 func (this *QGraphicsObject) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsObject_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3084,7 +3048,6 @@ func miqt_exec_callback_QGraphicsObject_disconnectNotify(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_Advance(phase int) {
-	defer runtime.KeepAlive(this)
 
 	C.QGraphicsObject_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
 
@@ -3131,7 +3094,6 @@ func miqt_exec_callback_QGraphicsObject_boundingRect(self *C.QGraphicsObject, cb
 }
 
 func (this *QGraphicsObject) callVirtualBase_Shape() *QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsObject_virtualbase_shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3160,7 +3122,6 @@ func miqt_exec_callback_QGraphicsObject_shape(self *C.QGraphicsObject, cb C.intp
 }
 
 func (this *QGraphicsObject) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 
 	return (bool)(C.QGraphicsObject_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
@@ -3190,7 +3151,6 @@ func miqt_exec_callback_QGraphicsObject_contains(self *C.QGraphicsObject, cb C.i
 }
 
 func (this *QGraphicsObject) callVirtualBase_CollidesWithItem(other *QGraphicsItem, mode ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QGraphicsObject_virtualbase_collidesWithItem(unsafe.Pointer(this.h), other.cPointer(), (C.int)(mode)))
@@ -3222,7 +3182,6 @@ func miqt_exec_callback_QGraphicsObject_collidesWithItem(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_CollidesWithPath(path *QPainterPath, mode ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(path)
 
 	return (bool)(C.QGraphicsObject_virtualbase_collidesWithPath(unsafe.Pointer(this.h), path.cPointer(), (C.int)(mode)))
@@ -3254,7 +3213,6 @@ func miqt_exec_callback_QGraphicsObject_collidesWithPath(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_IsObscuredBy(item *QGraphicsItem) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	return (bool)(C.QGraphicsObject_virtualbase_isObscuredBy(unsafe.Pointer(this.h), item.cPointer()))
@@ -3284,7 +3242,6 @@ func miqt_exec_callback_QGraphicsObject_isObscuredBy(self *C.QGraphicsObject, cb
 }
 
 func (this *QGraphicsObject) callVirtualBase_OpaqueArea() *QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsObject_virtualbase_opaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3337,7 +3294,6 @@ func miqt_exec_callback_QGraphicsObject_paint(self *C.QGraphicsObject, cb C.intp
 }
 
 func (this *QGraphicsObject) callVirtualBase_Type() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsObject_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -3363,7 +3319,6 @@ func miqt_exec_callback_QGraphicsObject_type(self *C.QGraphicsObject, cb C.intpt
 }
 
 func (this *QGraphicsObject) callVirtualBase_SceneEventFilter(watched *QGraphicsItem, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
@@ -3396,7 +3351,6 @@ func miqt_exec_callback_QGraphicsObject_sceneEventFilter(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_SceneEvent(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsObject_virtualbase_sceneEvent(unsafe.Pointer(this.h), event.cPointer()))
@@ -3426,7 +3380,6 @@ func miqt_exec_callback_QGraphicsObject_sceneEvent(self *C.QGraphicsObject, cb C
 }
 
 func (this *QGraphicsObject) callVirtualBase_ContextMenuEvent(event *QGraphicsSceneContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3454,7 +3407,6 @@ func miqt_exec_callback_QGraphicsObject_contextMenuEvent(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_DragEnterEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3482,7 +3434,6 @@ func miqt_exec_callback_QGraphicsObject_dragEnterEvent(self *C.QGraphicsObject, 
 }
 
 func (this *QGraphicsObject) callVirtualBase_DragLeaveEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3510,7 +3461,6 @@ func miqt_exec_callback_QGraphicsObject_dragLeaveEvent(self *C.QGraphicsObject, 
 }
 
 func (this *QGraphicsObject) callVirtualBase_DragMoveEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3538,7 +3488,6 @@ func miqt_exec_callback_QGraphicsObject_dragMoveEvent(self *C.QGraphicsObject, c
 }
 
 func (this *QGraphicsObject) callVirtualBase_DropEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3566,7 +3515,6 @@ func miqt_exec_callback_QGraphicsObject_dropEvent(self *C.QGraphicsObject, cb C.
 }
 
 func (this *QGraphicsObject) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3594,7 +3542,6 @@ func miqt_exec_callback_QGraphicsObject_focusInEvent(self *C.QGraphicsObject, cb
 }
 
 func (this *QGraphicsObject) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3622,7 +3569,6 @@ func miqt_exec_callback_QGraphicsObject_focusOutEvent(self *C.QGraphicsObject, c
 }
 
 func (this *QGraphicsObject) callVirtualBase_HoverEnterEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_hoverEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3650,7 +3596,6 @@ func miqt_exec_callback_QGraphicsObject_hoverEnterEvent(self *C.QGraphicsObject,
 }
 
 func (this *QGraphicsObject) callVirtualBase_HoverMoveEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_hoverMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3678,7 +3623,6 @@ func miqt_exec_callback_QGraphicsObject_hoverMoveEvent(self *C.QGraphicsObject, 
 }
 
 func (this *QGraphicsObject) callVirtualBase_HoverLeaveEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_hoverLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3706,7 +3650,6 @@ func miqt_exec_callback_QGraphicsObject_hoverLeaveEvent(self *C.QGraphicsObject,
 }
 
 func (this *QGraphicsObject) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3734,7 +3677,6 @@ func miqt_exec_callback_QGraphicsObject_keyPressEvent(self *C.QGraphicsObject, c
 }
 
 func (this *QGraphicsObject) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3762,7 +3704,6 @@ func miqt_exec_callback_QGraphicsObject_keyReleaseEvent(self *C.QGraphicsObject,
 }
 
 func (this *QGraphicsObject) callVirtualBase_MousePressEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3790,7 +3731,6 @@ func miqt_exec_callback_QGraphicsObject_mousePressEvent(self *C.QGraphicsObject,
 }
 
 func (this *QGraphicsObject) callVirtualBase_MouseMoveEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3818,7 +3758,6 @@ func miqt_exec_callback_QGraphicsObject_mouseMoveEvent(self *C.QGraphicsObject, 
 }
 
 func (this *QGraphicsObject) callVirtualBase_MouseReleaseEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3846,7 +3785,6 @@ func miqt_exec_callback_QGraphicsObject_mouseReleaseEvent(self *C.QGraphicsObjec
 }
 
 func (this *QGraphicsObject) callVirtualBase_MouseDoubleClickEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3874,7 +3812,6 @@ func miqt_exec_callback_QGraphicsObject_mouseDoubleClickEvent(self *C.QGraphicsO
 }
 
 func (this *QGraphicsObject) callVirtualBase_WheelEvent(event *QGraphicsSceneWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3902,7 +3839,6 @@ func miqt_exec_callback_QGraphicsObject_wheelEvent(self *C.QGraphicsObject, cb C
 }
 
 func (this *QGraphicsObject) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsObject_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3930,7 +3866,6 @@ func miqt_exec_callback_QGraphicsObject_inputMethodEvent(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QGraphicsObject_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3962,7 +3897,6 @@ func miqt_exec_callback_QGraphicsObject_inputMethodQuery(self *C.QGraphicsObject
 }
 
 func (this *QGraphicsObject) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	_goptr := newQVariant(C.QGraphicsObject_virtualbase_itemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
@@ -3997,7 +3931,6 @@ func miqt_exec_callback_QGraphicsObject_itemChange(self *C.QGraphicsObject, cb C
 }
 
 func (this *QGraphicsObject) callVirtualBase_SupportsExtension(extension QGraphicsItem__Extension) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsObject_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -4026,7 +3959,6 @@ func miqt_exec_callback_QGraphicsObject_supportsExtension(self *C.QGraphicsObjec
 }
 
 func (this *QGraphicsObject) callVirtualBase_SetExtension(extension QGraphicsItem__Extension, variant *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	C.QGraphicsObject_virtualbase_setExtension(unsafe.Pointer(this.h), (C.int)(extension), variant.cPointer())
@@ -4056,7 +3988,6 @@ func miqt_exec_callback_QGraphicsObject_setExtension(self *C.QGraphicsObject, cb
 }
 
 func (this *QGraphicsObject) callVirtualBase_Extension(variant *QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	_goptr := newQVariant(C.QGraphicsObject_virtualbase_extension(unsafe.Pointer(this.h), variant.cPointer()))
@@ -4096,6 +4027,8 @@ func (this *QGraphicsObject) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsObject) GoGC() {
 	if this.gc != nil {
 		return
@@ -5388,7 +5321,6 @@ func (this *QGraphicsPathItem) Paint(painter *QPainter, option *QStyleOptionGrap
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsPathItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -5554,7 +5486,6 @@ func (this *QGraphicsPathItem) callVirtualBase_Paint(painter *QPainter, option *
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsPathItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -6632,7 +6563,6 @@ func (this *QGraphicsRectItem) Paint(painter *QPainter, option *QStyleOptionGrap
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsRectItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -6798,7 +6728,6 @@ func (this *QGraphicsRectItem) callVirtualBase_Paint(painter *QPainter, option *
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsRectItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -7896,7 +7825,6 @@ func (this *QGraphicsEllipseItem) Paint(painter *QPainter, option *QStyleOptionG
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsEllipseItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -8062,7 +7990,6 @@ func (this *QGraphicsEllipseItem) callVirtualBase_Paint(painter *QPainter, optio
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsEllipseItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -9104,7 +9031,6 @@ func (this *QGraphicsPolygonItem) Paint(painter *QPainter, option *QStyleOptionG
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsPolygonItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -9270,7 +9196,6 @@ func (this *QGraphicsPolygonItem) callVirtualBase_Paint(painter *QPainter, optio
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsPolygonItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -10361,7 +10286,6 @@ func (this *QGraphicsLineItem) Paint(painter *QPainter, option *QStyleOptionGrap
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsLineItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -10527,7 +10451,6 @@ func (this *QGraphicsLineItem) callVirtualBase_Paint(painter *QPainter, option *
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsLineItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -11615,7 +11538,6 @@ func (this *QGraphicsPixmapItem) Paint(painter *QPainter, option *QStyleOptionGr
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsPixmapItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -11791,7 +11713,6 @@ func (this *QGraphicsPixmapItem) callVirtualBase_Paint(painter *QPainter, option
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsPixmapItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -12821,12 +12742,10 @@ func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsTextItem_metaObject(this.h))
 }
 
 func (this *QGraphicsTextItem) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsTextItem_metacast(this.h, param1_Cstring))
@@ -12851,7 +12770,6 @@ func QGraphicsTextItem_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsTextItem) ToHtml() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGraphicsTextItem_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -12859,7 +12777,6 @@ func (this *QGraphicsTextItem) ToHtml() string {
 }
 
 func (this *QGraphicsTextItem) SetHtml(html string) {
-	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -12868,7 +12785,6 @@ func (this *QGraphicsTextItem) SetHtml(html string) {
 }
 
 func (this *QGraphicsTextItem) ToPlainText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QGraphicsTextItem_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -12876,7 +12792,6 @@ func (this *QGraphicsTextItem) ToPlainText() string {
 }
 
 func (this *QGraphicsTextItem) SetPlainText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -12885,148 +12800,121 @@ func (this *QGraphicsTextItem) SetPlainText(text string) {
 }
 
 func (this *QGraphicsTextItem) Font() *QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QGraphicsTextItem_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) SetFont(font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QGraphicsTextItem_setFont(this.h, font.cPointer())
 }
 
 func (this *QGraphicsTextItem) SetDefaultTextColor(c *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(c)
 	C.QGraphicsTextItem_setDefaultTextColor(this.h, c.cPointer())
 }
 
 func (this *QGraphicsTextItem) DefaultTextColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QGraphicsTextItem_defaultTextColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) BoundingRect() *QRectF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRectF(C.QGraphicsTextItem_boundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) Shape() *QPainterPath {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPainterPath(C.QGraphicsTextItem_shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	return (bool)(C.QGraphicsTextItem_contains(this.h, point.cPointer()))
 }
 
 func (this *QGraphicsTextItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsTextItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
 func (this *QGraphicsTextItem) IsObscuredBy(item *QGraphicsItem) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return (bool)(C.QGraphicsTextItem_isObscuredBy(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsTextItem) OpaqueArea() *QPainterPath {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPainterPath(C.QGraphicsTextItem_opaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) Type() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsTextItem_type(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTextWidth(width float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsTextItem_setTextWidth(this.h, (C.double)(width))
 }
 
 func (this *QGraphicsTextItem) TextWidth() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsTextItem_textWidth(this.h))
 }
 
 func (this *QGraphicsTextItem) AdjustSize() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsTextItem_adjustSize(this.h)
 }
 
 func (this *QGraphicsTextItem) SetDocument(document *QTextDocument) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(document)
 	C.QGraphicsTextItem_setDocument(this.h, document.cPointer())
 }
 
 func (this *QGraphicsTextItem) Document() *QTextDocument {
-	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QGraphicsTextItem_document(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags TextInteractionFlag) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsTextItem_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGraphicsTextItem) TextInteractionFlags() TextInteractionFlag {
-	defer runtime.KeepAlive(this)
 	return (TextInteractionFlag)(C.QGraphicsTextItem_textInteractionFlags(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTabChangesFocus(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsTextItem_setTabChangesFocus(this.h, (C.bool)(b))
 }
 
 func (this *QGraphicsTextItem) TabChangesFocus() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsTextItem_tabChangesFocus(this.h))
 }
 
 func (this *QGraphicsTextItem) SetOpenExternalLinks(open bool) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsTextItem_setOpenExternalLinks(this.h, (C.bool)(open))
 }
 
 func (this *QGraphicsTextItem) OpenExternalLinks() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QGraphicsTextItem_openExternalLinks(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTextCursor(cursor *QTextCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 	C.QGraphicsTextItem_setTextCursor(this.h, cursor.cPointer())
 }
 
 func (this *QGraphicsTextItem) TextCursor() *QTextCursor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QGraphicsTextItem_textCursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) LinkActivated(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -13054,7 +12942,6 @@ func miqt_exec_callback_QGraphicsTextItem_linkActivated(cb C.intptr_t, param1 C.
 }
 
 func (this *QGraphicsTextItem) LinkHovered(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -13127,7 +13014,6 @@ func QGraphicsTextItem_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsTextItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -13140,7 +13026,6 @@ func (this *QGraphicsTextItem) UpdateMicroFocus() {
 
 // Sender can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsTextItem_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -13155,7 +13040,6 @@ func (this *QGraphicsTextItem) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsTextItem_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -13170,7 +13054,6 @@ func (this *QGraphicsTextItem) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -13187,7 +13070,6 @@ func (this *QGraphicsTextItem) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -13203,7 +13085,6 @@ func (this *QGraphicsTextItem) IsSignalConnected(signal *QMetaMethod) bool {
 
 // AddToIndex can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) AddToIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsTextItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -13216,7 +13097,6 @@ func (this *QGraphicsTextItem) AddToIndex() {
 
 // RemoveFromIndex can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) RemoveFromIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsTextItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -13229,7 +13109,6 @@ func (this *QGraphicsTextItem) RemoveFromIndex() {
 
 // PrepareGeometryChange can only be called from a QGraphicsTextItem that was directly constructed.
 func (this *QGraphicsTextItem) PrepareGeometryChange() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsTextItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -13241,7 +13120,6 @@ func (this *QGraphicsTextItem) PrepareGeometryChange() {
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() *QRectF {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQRectF(C.QGraphicsTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -13270,7 +13148,6 @@ func miqt_exec_callback_QGraphicsTextItem_boundingRect(self *C.QGraphicsTextItem
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Shape() *QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsTextItem_virtualbase_shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -13299,7 +13176,6 @@ func miqt_exec_callback_QGraphicsTextItem_shape(self *C.QGraphicsTextItem, cb C.
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
@@ -13329,10 +13205,8 @@ func miqt_exec_callback_QGraphicsTextItem_contains(self *C.QGraphicsTextItem, cb
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsTextItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -13363,7 +13237,6 @@ func miqt_exec_callback_QGraphicsTextItem_paint(self *C.QGraphicsTextItem, cb C.
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_IsObscuredBy(item *QGraphicsItem) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_isObscuredBy(unsafe.Pointer(this.h), item.cPointer()))
@@ -13393,7 +13266,6 @@ func miqt_exec_callback_QGraphicsTextItem_isObscuredBy(self *C.QGraphicsTextItem
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_OpaqueArea() *QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQPainterPath(C.QGraphicsTextItem_virtualbase_opaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -13422,7 +13294,6 @@ func miqt_exec_callback_QGraphicsTextItem_opaqueArea(self *C.QGraphicsTextItem, 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Type() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsTextItem_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -13448,7 +13319,6 @@ func miqt_exec_callback_QGraphicsTextItem_type(self *C.QGraphicsTextItem, cb C.i
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_SceneEvent(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_sceneEvent(unsafe.Pointer(this.h), event.cPointer()))
@@ -13478,7 +13348,6 @@ func miqt_exec_callback_QGraphicsTextItem_sceneEvent(self *C.QGraphicsTextItem, 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_MousePressEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13506,7 +13375,6 @@ func miqt_exec_callback_QGraphicsTextItem_mousePressEvent(self *C.QGraphicsTextI
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_MouseMoveEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13534,7 +13402,6 @@ func miqt_exec_callback_QGraphicsTextItem_mouseMoveEvent(self *C.QGraphicsTextIt
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_MouseReleaseEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13562,7 +13429,6 @@ func miqt_exec_callback_QGraphicsTextItem_mouseReleaseEvent(self *C.QGraphicsTex
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_MouseDoubleClickEvent(event *QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13590,7 +13456,6 @@ func miqt_exec_callback_QGraphicsTextItem_mouseDoubleClickEvent(self *C.QGraphic
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_ContextMenuEvent(event *QGraphicsSceneContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13618,7 +13483,6 @@ func miqt_exec_callback_QGraphicsTextItem_contextMenuEvent(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13646,7 +13510,6 @@ func miqt_exec_callback_QGraphicsTextItem_keyPressEvent(self *C.QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13674,7 +13537,6 @@ func miqt_exec_callback_QGraphicsTextItem_keyReleaseEvent(self *C.QGraphicsTextI
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13702,7 +13564,6 @@ func miqt_exec_callback_QGraphicsTextItem_focusInEvent(self *C.QGraphicsTextItem
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13730,7 +13591,6 @@ func miqt_exec_callback_QGraphicsTextItem_focusOutEvent(self *C.QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_DragEnterEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13758,7 +13618,6 @@ func miqt_exec_callback_QGraphicsTextItem_dragEnterEvent(self *C.QGraphicsTextIt
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_DragLeaveEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13786,7 +13645,6 @@ func miqt_exec_callback_QGraphicsTextItem_dragLeaveEvent(self *C.QGraphicsTextIt
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_DragMoveEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13814,7 +13672,6 @@ func miqt_exec_callback_QGraphicsTextItem_dragMoveEvent(self *C.QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_DropEvent(event *QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13842,7 +13699,6 @@ func miqt_exec_callback_QGraphicsTextItem_dropEvent(self *C.QGraphicsTextItem, c
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13870,7 +13726,6 @@ func miqt_exec_callback_QGraphicsTextItem_inputMethodEvent(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_HoverEnterEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_hoverEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13898,7 +13753,6 @@ func miqt_exec_callback_QGraphicsTextItem_hoverEnterEvent(self *C.QGraphicsTextI
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_HoverMoveEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_hoverMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13926,7 +13780,6 @@ func miqt_exec_callback_QGraphicsTextItem_hoverMoveEvent(self *C.QGraphicsTextIt
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_HoverLeaveEvent(event *QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_hoverLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -13954,7 +13807,6 @@ func miqt_exec_callback_QGraphicsTextItem_hoverLeaveEvent(self *C.QGraphicsTextI
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QGraphicsTextItem_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -13986,7 +13838,6 @@ func miqt_exec_callback_QGraphicsTextItem_inputMethodQuery(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_SupportsExtension(extension QGraphicsItem__Extension) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -14015,7 +13866,6 @@ func miqt_exec_callback_QGraphicsTextItem_supportsExtension(self *C.QGraphicsTex
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_SetExtension(extension QGraphicsItem__Extension, variant *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	C.QGraphicsTextItem_virtualbase_setExtension(unsafe.Pointer(this.h), (C.int)(extension), variant.cPointer())
@@ -14045,7 +13895,6 @@ func miqt_exec_callback_QGraphicsTextItem_setExtension(self *C.QGraphicsTextItem
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	_goptr := newQVariant(C.QGraphicsTextItem_virtualbase_extension(unsafe.Pointer(this.h), variant.cPointer()))
@@ -14078,7 +13927,6 @@ func miqt_exec_callback_QGraphicsTextItem_extension(self *C.QGraphicsTextItem, c
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Event(ev *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_event(unsafe.Pointer(this.h), ev.cPointer()))
@@ -14108,8 +13956,6 @@ func miqt_exec_callback_QGraphicsTextItem_event(self *C.QGraphicsTextItem, cb C.
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -14141,7 +13987,6 @@ func miqt_exec_callback_QGraphicsTextItem_eventFilter(self *C.QGraphicsTextItem,
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -14169,7 +14014,6 @@ func miqt_exec_callback_QGraphicsTextItem_timerEvent(self *C.QGraphicsTextItem, 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -14197,7 +14041,6 @@ func miqt_exec_callback_QGraphicsTextItem_childEvent(self *C.QGraphicsTextItem, 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -14225,7 +14068,6 @@ func miqt_exec_callback_QGraphicsTextItem_customEvent(self *C.QGraphicsTextItem,
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsTextItem_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -14253,7 +14095,6 @@ func miqt_exec_callback_QGraphicsTextItem_connectNotify(self *C.QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsTextItem_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -14281,7 +14122,6 @@ func miqt_exec_callback_QGraphicsTextItem_disconnectNotify(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_Advance(phase int) {
-	defer runtime.KeepAlive(this)
 
 	C.QGraphicsTextItem_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
 
@@ -14308,7 +14148,6 @@ func miqt_exec_callback_QGraphicsTextItem_advance(self *C.QGraphicsTextItem, cb 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_CollidesWithItem(other *QGraphicsItem, mode ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_collidesWithItem(unsafe.Pointer(this.h), other.cPointer(), (C.int)(mode)))
@@ -14340,7 +14179,6 @@ func miqt_exec_callback_QGraphicsTextItem_collidesWithItem(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_CollidesWithPath(path *QPainterPath, mode ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(path)
 
 	return (bool)(C.QGraphicsTextItem_virtualbase_collidesWithPath(unsafe.Pointer(this.h), path.cPointer(), (C.int)(mode)))
@@ -14372,7 +14210,6 @@ func miqt_exec_callback_QGraphicsTextItem_collidesWithPath(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_SceneEventFilter(watched *QGraphicsItem, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
@@ -14405,7 +14242,6 @@ func miqt_exec_callback_QGraphicsTextItem_sceneEventFilter(self *C.QGraphicsText
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_WheelEvent(event *QGraphicsSceneWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTextItem_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -14433,7 +14269,6 @@ func miqt_exec_callback_QGraphicsTextItem_wheelEvent(self *C.QGraphicsTextItem, 
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	_goptr := newQVariant(C.QGraphicsTextItem_virtualbase_itemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
@@ -14475,6 +14310,8 @@ func (this *QGraphicsTextItem) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsTextItem) GoGC() {
 	if this.gc != nil {
 		return
@@ -14618,7 +14455,6 @@ func (this *QGraphicsSimpleTextItem) Paint(painter *QPainter, option *QStyleOpti
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsSimpleTextItem_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -14784,7 +14620,6 @@ func (this *QGraphicsSimpleTextItem) callVirtualBase_Paint(painter *QPainter, op
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsSimpleTextItem_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 
@@ -15815,7 +15650,6 @@ func (this *QGraphicsItemGroup) Paint(painter *QPainter, option *QStyleOptionGra
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsItemGroup_paint(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
@@ -15922,7 +15756,6 @@ func (this *QGraphicsItemGroup) callVirtualBase_Paint(painter *QPainter, option 
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsItemGroup_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), widget.cPointer())
 

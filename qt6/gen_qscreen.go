@@ -59,12 +59,10 @@ func UnsafeNewQScreen(h unsafe.Pointer) *QScreen {
 }
 
 func (this *QScreen) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QScreen_metaObject(this.h))
 }
 
 func (this *QScreen) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QScreen_metacast(this.h, param1_Cstring))
@@ -80,7 +78,6 @@ func QScreen_Tr(s string) string {
 }
 
 func (this *QScreen) Name() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScreen_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -88,7 +85,6 @@ func (this *QScreen) Name() string {
 }
 
 func (this *QScreen) Manufacturer() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScreen_manufacturer(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -96,7 +92,6 @@ func (this *QScreen) Manufacturer() string {
 }
 
 func (this *QScreen) Model() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScreen_model(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,7 +99,6 @@ func (this *QScreen) Model() string {
 }
 
 func (this *QScreen) SerialNumber() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QScreen_serialNumber(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -112,82 +106,68 @@ func (this *QScreen) SerialNumber() string {
 }
 
 func (this *QScreen) Depth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QScreen_depth(this.h))
 }
 
 func (this *QScreen) Size() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QScreen_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) Geometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QScreen_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) PhysicalSize() *QSizeF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSizeF(C.QScreen_physicalSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) PhysicalDotsPerInchX() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_physicalDotsPerInchX(this.h))
 }
 
 func (this *QScreen) PhysicalDotsPerInchY() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_physicalDotsPerInchY(this.h))
 }
 
 func (this *QScreen) PhysicalDotsPerInch() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_physicalDotsPerInch(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInchX() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_logicalDotsPerInchX(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInchY() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_logicalDotsPerInchY(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInch() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_logicalDotsPerInch(this.h))
 }
 
 func (this *QScreen) DevicePixelRatio() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_devicePixelRatio(this.h))
 }
 
 func (this *QScreen) AvailableSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QScreen_availableSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) AvailableGeometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QScreen_availableGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) VirtualSiblings() []*QScreen {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QScreen_virtualSiblings(this.h)
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QScreen)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -198,61 +178,51 @@ func (this *QScreen) VirtualSiblings() []*QScreen {
 }
 
 func (this *QScreen) VirtualSiblingAt(point QPoint) *QScreen {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	return newQScreen(C.QScreen_virtualSiblingAt(this.h, point.cPointer()))
 }
 
 func (this *QScreen) VirtualSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QScreen_virtualSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) VirtualGeometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QScreen_virtualGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) AvailableVirtualSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QScreen_availableVirtualSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) AvailableVirtualGeometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QScreen_availableVirtualGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) PrimaryOrientation() ScreenOrientation {
-	defer runtime.KeepAlive(this)
 	return (ScreenOrientation)(C.QScreen_primaryOrientation(this.h))
 }
 
 func (this *QScreen) Orientation() ScreenOrientation {
-	defer runtime.KeepAlive(this)
 	return (ScreenOrientation)(C.QScreen_orientation(this.h))
 }
 
 func (this *QScreen) NativeOrientation() ScreenOrientation {
-	defer runtime.KeepAlive(this)
 	return (ScreenOrientation)(C.QScreen_nativeOrientation(this.h))
 }
 
 func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QScreen_angleBetween(this.h, (C.int)(a), (C.int)(b)))
 }
 
 func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target *QRect) *QTransform {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	_goptr := newQTransform(C.QScreen_transformBetween(this.h, (C.int)(a), (C.int)(b), target.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -260,7 +230,6 @@ func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, 
 }
 
 func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *QRect) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	_goptr := newQRect(C.QScreen_mapBetween(this.h, (C.int)(a), (C.int)(b), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -268,29 +237,24 @@ func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *
 }
 
 func (this *QScreen) IsPortrait(orientation ScreenOrientation) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QScreen_isPortrait(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QScreen_isLandscape(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) GrabWindow() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindow(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) RefreshRate() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QScreen_refreshRate(this.h))
 }
 
 func (this *QScreen) GeometryChanged(geometry *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(geometry)
 	C.QScreen_geometryChanged(this.h, geometry.cPointer())
 }
@@ -312,7 +276,6 @@ func miqt_exec_callback_QScreen_geometryChanged(cb C.intptr_t, geometry *C.QRect
 }
 
 func (this *QScreen) AvailableGeometryChanged(geometry *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(geometry)
 	C.QScreen_availableGeometryChanged(this.h, geometry.cPointer())
 }
@@ -334,7 +297,6 @@ func miqt_exec_callback_QScreen_availableGeometryChanged(cb C.intptr_t, geometry
 }
 
 func (this *QScreen) PhysicalSizeChanged(size *QSizeF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QScreen_physicalSizeChanged(this.h, size.cPointer())
 }
@@ -356,7 +318,6 @@ func miqt_exec_callback_QScreen_physicalSizeChanged(cb C.intptr_t, size *C.QSize
 }
 
 func (this *QScreen) PhysicalDotsPerInchChanged(dpi float64) {
-	defer runtime.KeepAlive(this)
 	C.QScreen_physicalDotsPerInchChanged(this.h, (C.double)(dpi))
 }
 func (this *QScreen) OnPhysicalDotsPerInchChanged(slot func(dpi float64)) {
@@ -377,7 +338,6 @@ func miqt_exec_callback_QScreen_physicalDotsPerInchChanged(cb C.intptr_t, dpi C.
 }
 
 func (this *QScreen) LogicalDotsPerInchChanged(dpi float64) {
-	defer runtime.KeepAlive(this)
 	C.QScreen_logicalDotsPerInchChanged(this.h, (C.double)(dpi))
 }
 func (this *QScreen) OnLogicalDotsPerInchChanged(slot func(dpi float64)) {
@@ -398,7 +358,6 @@ func miqt_exec_callback_QScreen_logicalDotsPerInchChanged(cb C.intptr_t, dpi C.d
 }
 
 func (this *QScreen) VirtualGeometryChanged(rect *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QScreen_virtualGeometryChanged(this.h, rect.cPointer())
 }
@@ -420,7 +379,6 @@ func miqt_exec_callback_QScreen_virtualGeometryChanged(cb C.intptr_t, rect *C.QR
 }
 
 func (this *QScreen) PrimaryOrientationChanged(orientation ScreenOrientation) {
-	defer runtime.KeepAlive(this)
 	C.QScreen_primaryOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnPrimaryOrientationChanged(slot func(orientation ScreenOrientation)) {
@@ -441,7 +399,6 @@ func miqt_exec_callback_QScreen_primaryOrientationChanged(cb C.intptr_t, orienta
 }
 
 func (this *QScreen) OrientationChanged(orientation ScreenOrientation) {
-	defer runtime.KeepAlive(this)
 	C.QScreen_orientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnOrientationChanged(slot func(orientation ScreenOrientation)) {
@@ -462,7 +419,6 @@ func miqt_exec_callback_QScreen_orientationChanged(cb C.intptr_t, orientation C.
 }
 
 func (this *QScreen) RefreshRateChanged(refreshRate float64) {
-	defer runtime.KeepAlive(this)
 	C.QScreen_refreshRateChanged(this.h, (C.double)(refreshRate))
 }
 func (this *QScreen) OnRefreshRateChanged(slot func(refreshRate float64)) {
@@ -505,35 +461,30 @@ func QScreen_Tr3(s string, c string, n int) string {
 }
 
 func (this *QScreen) GrabWindowWithWindow(window uintptr) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindowWithWindow(this.h, (C.uintptr_t)(window)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow2(window uintptr, x int) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindow2(this.h, (C.uintptr_t)(window), (C.int)(x)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow3(window uintptr, x int, y int) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindow3(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow4(window uintptr, x int, y int, w int) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindow4(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow5(window uintptr, x int, y int, w int, h int) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QScreen_grabWindow5(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -547,6 +498,8 @@ func (this *QScreen) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QScreen) GoGC() {
 	if this.gc != nil {
 		return

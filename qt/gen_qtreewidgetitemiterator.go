@@ -86,7 +86,6 @@ func NewQTreeWidgetItemIterator(it *QTreeWidgetItemIterator) *QTreeWidgetItemIte
 
 // NewQTreeWidgetItemIterator2 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator2(widget *QTreeWidget) *QTreeWidgetItemIterator {
-	defer runtime.KeepAlive(widget)
 
 	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new2(widget.cPointer()))
 }
@@ -100,7 +99,6 @@ func NewQTreeWidgetItemIterator3(item *QTreeWidgetItem) *QTreeWidgetItemIterator
 
 // NewQTreeWidgetItemIterator4 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator4(widget *QTreeWidget, flags QTreeWidgetItemIterator__IteratorFlag) *QTreeWidgetItemIterator {
-	defer runtime.KeepAlive(widget)
 
 	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags)))
 }

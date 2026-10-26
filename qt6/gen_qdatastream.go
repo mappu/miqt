@@ -131,7 +131,6 @@ func NewQDataStream() *QDataStream {
 
 // NewQDataStream2 constructs a new QDataStream object.
 func NewQDataStream2(param1 *QIODevice) *QDataStream {
-	defer runtime.KeepAlive(param1)
 
 	return newQDataStream(C.QDataStream_new2(param1.cPointer()))
 }
@@ -156,7 +155,6 @@ func (this *QDataStream) Device() *QIODevice {
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QDataStream_setDevice(this.h, device.cPointer())
 }
 

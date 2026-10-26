@@ -68,7 +68,6 @@ func UnsafeNewQColorDialog(h unsafe.Pointer) *QColorDialog {
 
 // NewQColorDialog constructs a new QColorDialog object.
 func NewQColorDialog(parent *QWidget) *QColorDialog {
-	defer runtime.KeepAlive(parent)
 
 	return newQColorDialog(C.QColorDialog_new(parent.cPointer()))
 }
@@ -89,18 +88,15 @@ func NewQColorDialog3(initial *QColor) *QColorDialog {
 // NewQColorDialog4 constructs a new QColorDialog object.
 func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 
 	return newQColorDialog(C.QColorDialog_new4(initial.cPointer(), parent.cPointer()))
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QColorDialog_metaObject(this.h))
 }
 
 func (this *QColorDialog) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QColorDialog_metacast(this.h, param1_Cstring))
@@ -125,47 +121,39 @@ func QColorDialog_TrUtf8(s string) string {
 }
 
 func (this *QColorDialog) SetCurrentColor(color *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QColorDialog_setCurrentColor(this.h, color.cPointer())
 }
 
 func (this *QColorDialog) CurrentColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColorDialog_currentColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorDialog) SelectedColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QColorDialog_selectedColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
-	defer runtime.KeepAlive(this)
 	C.QColorDialog_setOption(this.h, (C.int)(option))
 }
 
 func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QColorDialog_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QColorDialog) SetOptions(options QColorDialog__ColorDialogOption) {
-	defer runtime.KeepAlive(this)
 	C.QColorDialog_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QColorDialog) Options() QColorDialog__ColorDialogOption {
-	defer runtime.KeepAlive(this)
 	return (QColorDialog__ColorDialogOption)(C.QColorDialog_options(this.h))
 }
 
 func (this *QColorDialog) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QColorDialog_setVisible(this.h, (C.bool)(visible))
 }
 
@@ -206,7 +194,6 @@ func QColorDialog_SetStandardColor(index int, color QColor) {
 }
 
 func (this *QColorDialog) CurrentColorChanged(color *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QColorDialog_currentColorChanged(this.h, color.cPointer())
 }
@@ -228,7 +215,6 @@ func miqt_exec_callback_QColorDialog_currentColorChanged(cb C.intptr_t, color *C
 }
 
 func (this *QColorDialog) ColorSelected(color *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QColorDialog_colorSelected(this.h, color.cPointer())
 }
@@ -294,7 +280,6 @@ func QColorDialog_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QColorDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
@@ -307,7 +292,6 @@ func QColorDialog_GetColorWithInitial(initial *QColor) *QColor {
 
 func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	_goptr := newQColor(C.QColorDialog_getColor2(initial.cPointer(), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -315,7 +299,6 @@ func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
 
 func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -327,7 +310,6 @@ func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QCo
 
 func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options QColorDialog__ColorDialogOption) *QColor {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -346,14 +328,11 @@ func QColorDialog_GetRgba2(rgba uint, ok *bool) uint {
 }
 
 func QColorDialog_GetRgba3(rgba uint, ok *bool, parent *QWidget) uint {
-	defer runtime.KeepAlive(parent)
 	return (uint)(C.QColorDialog_getRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 }
 
 // AdjustPosition can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) AdjustPosition(param1 *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColorDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -366,7 +345,6 @@ func (this *QColorDialog) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColorDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -379,7 +357,6 @@ func (this *QColorDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColorDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -392,7 +369,6 @@ func (this *QColorDialog) Create() {
 
 // Destroy can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QColorDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -405,7 +381,6 @@ func (this *QColorDialog) Destroy() {
 
 // FocusNextChild can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QColorDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -420,7 +395,6 @@ func (this *QColorDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QColorDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -435,7 +409,6 @@ func (this *QColorDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QColorDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -450,7 +423,6 @@ func (this *QColorDialog) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QColorDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -465,7 +437,6 @@ func (this *QColorDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -482,7 +453,6 @@ func (this *QColorDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QColorDialog that was directly constructed.
 func (this *QColorDialog) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -497,7 +467,6 @@ func (this *QColorDialog) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QColorDialog) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QColorDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -524,7 +493,6 @@ func miqt_exec_callback_QColorDialog_setVisible(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -552,7 +520,6 @@ func miqt_exec_callback_QColorDialog_changeEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_Done(result int) {
-	defer runtime.KeepAlive(this)
 
 	C.QColorDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -579,7 +546,6 @@ func miqt_exec_callback_QColorDialog_done(self *C.QColorDialog, cb C.intptr_t, r
 }
 
 func (this *QColorDialog) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QColorDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -608,7 +574,6 @@ func miqt_exec_callback_QColorDialog_sizeHint(self *C.QColorDialog, cb C.intptr_
 }
 
 func (this *QColorDialog) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QColorDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -637,7 +602,6 @@ func miqt_exec_callback_QColorDialog_minimumSizeHint(self *C.QColorDialog, cb C.
 }
 
 func (this *QColorDialog) callVirtualBase_Open() {
-	defer runtime.KeepAlive(this)
 
 	C.QColorDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -661,7 +625,6 @@ func miqt_exec_callback_QColorDialog_open(self *C.QColorDialog, cb C.intptr_t) {
 }
 
 func (this *QColorDialog) callVirtualBase_Exec() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColorDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -687,7 +650,6 @@ func miqt_exec_callback_QColorDialog_exec(self *C.QColorDialog, cb C.intptr_t) C
 }
 
 func (this *QColorDialog) callVirtualBase_Accept() {
-	defer runtime.KeepAlive(this)
 
 	C.QColorDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -711,7 +673,6 @@ func miqt_exec_callback_QColorDialog_accept(self *C.QColorDialog, cb C.intptr_t)
 }
 
 func (this *QColorDialog) callVirtualBase_Reject() {
-	defer runtime.KeepAlive(this)
 
 	C.QColorDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -735,7 +696,6 @@ func miqt_exec_callback_QColorDialog_reject(self *C.QColorDialog, cb C.intptr_t)
 }
 
 func (this *QColorDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -763,7 +723,6 @@ func miqt_exec_callback_QColorDialog_keyPressEvent(self *C.QColorDialog, cb C.in
 }
 
 func (this *QColorDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -791,7 +750,6 @@ func miqt_exec_callback_QColorDialog_closeEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -819,7 +777,6 @@ func miqt_exec_callback_QColorDialog_showEvent(self *C.QColorDialog, cb C.intptr
 }
 
 func (this *QColorDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -847,7 +804,6 @@ func miqt_exec_callback_QColorDialog_resizeEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -875,8 +831,6 @@ func miqt_exec_callback_QColorDialog_contextMenuEvent(self *C.QColorDialog, cb C
 }
 
 func (this *QColorDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QColorDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -908,7 +862,6 @@ func miqt_exec_callback_QColorDialog_eventFilter(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColorDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -934,7 +887,6 @@ func miqt_exec_callback_QColorDialog_devType(self *C.QColorDialog, cb C.intptr_t
 }
 
 func (this *QColorDialog) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColorDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -963,7 +915,6 @@ func miqt_exec_callback_QColorDialog_heightForWidth(self *C.QColorDialog, cb C.i
 }
 
 func (this *QColorDialog) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QColorDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -989,7 +940,6 @@ func miqt_exec_callback_QColorDialog_hasHeightForWidth(self *C.QColorDialog, cb 
 }
 
 func (this *QColorDialog) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QColorDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1016,7 +966,6 @@ func miqt_exec_callback_QColorDialog_paintEngine(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QColorDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1046,7 +995,6 @@ func miqt_exec_callback_QColorDialog_event(self *C.QColorDialog, cb C.intptr_t, 
 }
 
 func (this *QColorDialog) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1074,7 +1022,6 @@ func miqt_exec_callback_QColorDialog_mousePressEvent(self *C.QColorDialog, cb C.
 }
 
 func (this *QColorDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1102,7 +1049,6 @@ func miqt_exec_callback_QColorDialog_mouseReleaseEvent(self *C.QColorDialog, cb 
 }
 
 func (this *QColorDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1130,7 +1076,6 @@ func miqt_exec_callback_QColorDialog_mouseDoubleClickEvent(self *C.QColorDialog,
 }
 
 func (this *QColorDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1158,7 +1103,6 @@ func miqt_exec_callback_QColorDialog_mouseMoveEvent(self *C.QColorDialog, cb C.i
 }
 
 func (this *QColorDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1186,7 +1130,6 @@ func miqt_exec_callback_QColorDialog_wheelEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1214,7 +1157,6 @@ func miqt_exec_callback_QColorDialog_keyReleaseEvent(self *C.QColorDialog, cb C.
 }
 
 func (this *QColorDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1242,7 +1184,6 @@ func miqt_exec_callback_QColorDialog_focusInEvent(self *C.QColorDialog, cb C.int
 }
 
 func (this *QColorDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1270,7 +1211,6 @@ func miqt_exec_callback_QColorDialog_focusOutEvent(self *C.QColorDialog, cb C.in
 }
 
 func (this *QColorDialog) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1298,7 +1238,6 @@ func miqt_exec_callback_QColorDialog_enterEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1326,7 +1265,6 @@ func miqt_exec_callback_QColorDialog_leaveEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1354,7 +1292,6 @@ func miqt_exec_callback_QColorDialog_paintEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1382,7 +1319,6 @@ func miqt_exec_callback_QColorDialog_moveEvent(self *C.QColorDialog, cb C.intptr
 }
 
 func (this *QColorDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1410,7 +1346,6 @@ func miqt_exec_callback_QColorDialog_tabletEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1438,7 +1373,6 @@ func miqt_exec_callback_QColorDialog_actionEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1466,7 +1400,6 @@ func miqt_exec_callback_QColorDialog_dragEnterEvent(self *C.QColorDialog, cb C.i
 }
 
 func (this *QColorDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1494,7 +1427,6 @@ func miqt_exec_callback_QColorDialog_dragMoveEvent(self *C.QColorDialog, cb C.in
 }
 
 func (this *QColorDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1522,7 +1454,6 @@ func miqt_exec_callback_QColorDialog_dragLeaveEvent(self *C.QColorDialog, cb C.i
 }
 
 func (this *QColorDialog) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1550,7 +1481,6 @@ func miqt_exec_callback_QColorDialog_dropEvent(self *C.QColorDialog, cb C.intptr
 }
 
 func (this *QColorDialog) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1578,7 +1508,6 @@ func miqt_exec_callback_QColorDialog_hideEvent(self *C.QColorDialog, cb C.intptr
 }
 
 func (this *QColorDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1620,7 +1549,6 @@ func miqt_exec_callback_QColorDialog_nativeEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QColorDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1649,7 +1577,6 @@ func miqt_exec_callback_QColorDialog_metric(self *C.QColorDialog, cb C.intptr_t,
 }
 
 func (this *QColorDialog) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QColorDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1677,7 +1604,6 @@ func miqt_exec_callback_QColorDialog_initPainter(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QColorDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1708,7 +1634,6 @@ func miqt_exec_callback_QColorDialog_redirected(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QColorDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1735,7 +1660,6 @@ func miqt_exec_callback_QColorDialog_sharedPainter(self *C.QColorDialog, cb C.in
 }
 
 func (this *QColorDialog) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QColorDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1763,7 +1687,6 @@ func miqt_exec_callback_QColorDialog_inputMethodEvent(self *C.QColorDialog, cb C
 }
 
 func (this *QColorDialog) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QColorDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1795,7 +1718,6 @@ func miqt_exec_callback_QColorDialog_inputMethodQuery(self *C.QColorDialog, cb C
 }
 
 func (this *QColorDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QColorDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1824,7 +1746,6 @@ func miqt_exec_callback_QColorDialog_focusNextPrevChild(self *C.QColorDialog, cb
 }
 
 func (this *QColorDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1852,7 +1773,6 @@ func miqt_exec_callback_QColorDialog_timerEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1880,7 +1800,6 @@ func miqt_exec_callback_QColorDialog_childEvent(self *C.QColorDialog, cb C.intpt
 }
 
 func (this *QColorDialog) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QColorDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1908,7 +1827,6 @@ func miqt_exec_callback_QColorDialog_customEvent(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QColorDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1936,7 +1854,6 @@ func miqt_exec_callback_QColorDialog_connectNotify(self *C.QColorDialog, cb C.in
 }
 
 func (this *QColorDialog) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QColorDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1971,6 +1888,8 @@ func (this *QColorDialog) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QColorDialog) GoGC() {
 	if this.gc != nil {
 		return

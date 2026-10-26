@@ -292,13 +292,11 @@ func (this *QMetaObject) Inherits(metaObject *QMetaObject) bool {
 
 func (this *QMetaObject) Cast(obj *QObject) *QObject {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	return newQObject(C.QMetaObject_cast(this.h, obj.cPointer()))
 }
 
 func (this *QMetaObject) CastWithObj(obj *QObject) *QObject {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	return newQObject(C.QMetaObject_castWithObj(this.h, obj.cPointer()))
 }
 
@@ -483,32 +481,24 @@ func QMetaObject_NormalizedType(typeVal string) []byte {
 }
 
 func QMetaObject_Connect(sender *QObject, signal_index int, receiver *QObject, method_index int) *QMetaObject__Connection {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(receiver)
 	_goptr := newQMetaObject__Connection(C.QMetaObject_connect(sender.cPointer(), (C.int)(signal_index), receiver.cPointer(), (C.int)(method_index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMetaObject_Disconnect(sender *QObject, signal_index int, receiver *QObject, method_index int) bool {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(receiver)
 	return (bool)(C.QMetaObject_disconnect(sender.cPointer(), (C.int)(signal_index), receiver.cPointer(), (C.int)(method_index)))
 }
 
 func QMetaObject_DisconnectOne(sender *QObject, signal_index int, receiver *QObject, method_index int) bool {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(receiver)
 	return (bool)(C.QMetaObject_disconnectOne(sender.cPointer(), (C.int)(signal_index), receiver.cPointer(), (C.int)(method_index)))
 }
 
 func QMetaObject_ConnectSlotsByName(o *QObject) {
-	defer runtime.KeepAlive(o)
 	C.QMetaObject_connectSlotsByName(o.cPointer())
 }
 
 func QMetaObject_InvokeMethod(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
@@ -516,7 +506,6 @@ func QMetaObject_InvokeMethod(obj *QObject, member string, param3 ConnectionType
 }
 
 func QMetaObject_InvokeMethod2(obj *QObject, member string, retVal QGenericReturnArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
@@ -524,14 +513,12 @@ func QMetaObject_InvokeMethod2(obj *QObject, member string, retVal QGenericRetur
 }
 
 func QMetaObject_InvokeMethod3(obj *QObject, member string, typeVal ConnectionType) bool {
-	defer runtime.KeepAlive(obj)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	return (bool)(C.QMetaObject_invokeMethod3(obj.cPointer(), member_Cstring, (C.int)(typeVal)))
 }
 
 func QMetaObject_InvokeMethod4(obj *QObject, member string) bool {
-	defer runtime.KeepAlive(obj)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	return (bool)(C.QMetaObject_invokeMethod4(obj.cPointer(), member_Cstring))
@@ -561,23 +548,18 @@ func (this *QMetaObject) Tr2(s string, c string, n int) string {
 }
 
 func QMetaObject_Connect2(sender *QObject, signal_index int, receiver *QObject, method_index int, typeVal int) *QMetaObject__Connection {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(receiver)
 	_goptr := newQMetaObject__Connection(C.QMetaObject_connect2(sender.cPointer(), (C.int)(signal_index), receiver.cPointer(), (C.int)(method_index), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMetaObject_Connect3(sender *QObject, signal_index int, receiver *QObject, method_index int, typeVal int, types *int) *QMetaObject__Connection {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(receiver)
 	_goptr := newQMetaObject__Connection(C.QMetaObject_connect3(sender.cPointer(), (C.int)(signal_index), receiver.cPointer(), (C.int)(method_index), (C.int)(typeVal), (*C.int)(unsafe.Pointer(types))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMetaObject_InvokeMethod5(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	member_Cstring := C.CString(member)
@@ -586,7 +568,6 @@ func QMetaObject_InvokeMethod5(obj *QObject, member string, param3 ConnectionTyp
 }
 
 func QMetaObject_InvokeMethod6(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -596,7 +577,6 @@ func QMetaObject_InvokeMethod6(obj *QObject, member string, param3 ConnectionTyp
 }
 
 func QMetaObject_InvokeMethod7(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -607,7 +587,6 @@ func QMetaObject_InvokeMethod7(obj *QObject, member string, param3 ConnectionTyp
 }
 
 func QMetaObject_InvokeMethod8(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -619,7 +598,6 @@ func QMetaObject_InvokeMethod8(obj *QObject, member string, param3 ConnectionTyp
 }
 
 func QMetaObject_InvokeMethod9(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -632,7 +610,6 @@ func QMetaObject_InvokeMethod9(obj *QObject, member string, param3 ConnectionTyp
 }
 
 func QMetaObject_InvokeMethod10(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -646,7 +623,6 @@ func QMetaObject_InvokeMethod10(obj *QObject, member string, param3 ConnectionTy
 }
 
 func QMetaObject_InvokeMethod11(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -661,7 +637,6 @@ func QMetaObject_InvokeMethod11(obj *QObject, member string, param3 ConnectionTy
 }
 
 func QMetaObject_InvokeMethod12(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -677,7 +652,6 @@ func QMetaObject_InvokeMethod12(obj *QObject, member string, param3 ConnectionTy
 }
 
 func QMetaObject_InvokeMethod13(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -694,7 +668,6 @@ func QMetaObject_InvokeMethod13(obj *QObject, member string, param3 ConnectionTy
 }
 
 func QMetaObject_InvokeMethod14(obj *QObject, member string, param3 ConnectionType, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -712,7 +685,6 @@ func QMetaObject_InvokeMethod14(obj *QObject, member string, param3 ConnectionTy
 }
 
 func QMetaObject_InvokeMethod15(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	member_Cstring := C.CString(member)
@@ -721,7 +693,6 @@ func QMetaObject_InvokeMethod15(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod16(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -731,7 +702,6 @@ func QMetaObject_InvokeMethod16(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod17(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -742,7 +712,6 @@ func QMetaObject_InvokeMethod17(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod18(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -754,7 +723,6 @@ func QMetaObject_InvokeMethod18(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod19(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -767,7 +735,6 @@ func QMetaObject_InvokeMethod19(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod20(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -781,7 +748,6 @@ func QMetaObject_InvokeMethod20(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod21(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -796,7 +762,6 @@ func QMetaObject_InvokeMethod21(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod22(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -812,7 +777,6 @@ func QMetaObject_InvokeMethod22(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod23(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -829,7 +793,6 @@ func QMetaObject_InvokeMethod23(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod24(obj *QObject, member string, retVal QGenericReturnArgument, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(retVal)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
@@ -847,7 +810,6 @@ func QMetaObject_InvokeMethod24(obj *QObject, member string, retVal QGenericRetu
 }
 
 func QMetaObject_InvokeMethod25(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
@@ -855,7 +817,6 @@ func QMetaObject_InvokeMethod25(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod26(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	member_Cstring := C.CString(member)
@@ -864,7 +825,6 @@ func QMetaObject_InvokeMethod26(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod27(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -874,7 +834,6 @@ func QMetaObject_InvokeMethod27(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod28(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -885,7 +844,6 @@ func QMetaObject_InvokeMethod28(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod29(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -897,7 +855,6 @@ func QMetaObject_InvokeMethod29(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod30(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -910,7 +867,6 @@ func QMetaObject_InvokeMethod30(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod31(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -924,7 +880,6 @@ func QMetaObject_InvokeMethod31(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod32(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -939,7 +894,6 @@ func QMetaObject_InvokeMethod32(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod33(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -955,7 +909,6 @@ func QMetaObject_InvokeMethod33(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod34(obj *QObject, member string, typeVal ConnectionType, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -972,7 +925,6 @@ func QMetaObject_InvokeMethod34(obj *QObject, member string, typeVal ConnectionT
 }
 
 func QMetaObject_InvokeMethod35(obj *QObject, member string, val0 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
@@ -980,7 +932,6 @@ func QMetaObject_InvokeMethod35(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod36(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	member_Cstring := C.CString(member)
@@ -989,7 +940,6 @@ func QMetaObject_InvokeMethod36(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod37(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -999,7 +949,6 @@ func QMetaObject_InvokeMethod37(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod38(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1010,7 +959,6 @@ func QMetaObject_InvokeMethod38(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod39(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1022,7 +970,6 @@ func QMetaObject_InvokeMethod39(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod40(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1035,7 +982,6 @@ func QMetaObject_InvokeMethod40(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod41(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1049,7 +995,6 @@ func QMetaObject_InvokeMethod41(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod42(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1064,7 +1009,6 @@ func QMetaObject_InvokeMethod42(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod43(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)
@@ -1080,7 +1024,6 @@ func QMetaObject_InvokeMethod43(obj *QObject, member string, val0 QGenericArgume
 }
 
 func QMetaObject_InvokeMethod44(obj *QObject, member string, val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) bool {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val0)
 	defer runtime.KeepAlive(val1)
 	defer runtime.KeepAlive(val2)

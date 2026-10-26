@@ -190,7 +190,6 @@ func QCursor_Pos() *QPoint {
 }
 
 func QCursor_PosWithScreen(screen *QScreen) *QPoint {
-	defer runtime.KeepAlive(screen)
 	_goptr := newQPoint(C.QCursor_posWithScreen(screen.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -201,7 +200,6 @@ func QCursor_SetPos(x int, y int) {
 }
 
 func QCursor_SetPos2(screen *QScreen, x int, y int) {
-	defer runtime.KeepAlive(screen)
 	C.QCursor_setPos2(screen.cPointer(), (C.int)(x), (C.int)(y))
 }
 
@@ -211,7 +209,6 @@ func QCursor_SetPosWithQPoint(p *QPoint) {
 }
 
 func QCursor_SetPos3(screen *QScreen, p *QPoint) {
-	defer runtime.KeepAlive(screen)
 	defer runtime.KeepAlive(p)
 	C.QCursor_setPos3(screen.cPointer(), p.cPointer())
 }

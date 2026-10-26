@@ -62,7 +62,6 @@ func UnsafeNewQScriptEngineAgent(h unsafe.Pointer) *QScriptEngineAgent {
 
 // NewQScriptEngineAgent constructs a new QScriptEngineAgent object.
 func NewQScriptEngineAgent(engine *QScriptEngine) *QScriptEngineAgent {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptEngineAgent(C.QScriptEngineAgent_new(engine.cPointer()))
 }

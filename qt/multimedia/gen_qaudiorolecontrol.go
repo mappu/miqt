@@ -60,12 +60,10 @@ func UnsafeNewQAudioRoleControl(h unsafe.Pointer) *QAudioRoleControl {
 }
 
 func (this *QAudioRoleControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioRoleControl_metaObject(this.h)))
 }
 
 func (this *QAudioRoleControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioRoleControl_metacast(this.h, param1_Cstring))
@@ -90,17 +88,14 @@ func QAudioRoleControl_TrUtf8(s string) string {
 }
 
 func (this *QAudioRoleControl) AudioRole() QAudio__Role {
-	defer runtime.KeepAlive(this)
 	return (QAudio__Role)(C.QAudioRoleControl_audioRole(this.h))
 }
 
 func (this *QAudioRoleControl) SetAudioRole(role QAudio__Role) {
-	defer runtime.KeepAlive(this)
 	C.QAudioRoleControl_setAudioRole(this.h, (C.int)(role))
 }
 
 func (this *QAudioRoleControl) SupportedAudioRoles() []QAudio__Role {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAudioRoleControl_supportedAudioRoles(this.h)
 	_ret := make([]QAudio__Role, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -111,7 +106,6 @@ func (this *QAudioRoleControl) SupportedAudioRoles() []QAudio__Role {
 }
 
 func (this *QAudioRoleControl) AudioRoleChanged(role QAudio__Role) {
-	defer runtime.KeepAlive(this)
 	C.QAudioRoleControl_audioRoleChanged(this.h, (C.int)(role))
 }
 func (this *QAudioRoleControl) OnAudioRoleChanged(slot func(role QAudio__Role)) {
@@ -183,6 +177,8 @@ func (this *QAudioRoleControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAudioRoleControl) GoGC() {
 	if this.gc != nil {
 		return

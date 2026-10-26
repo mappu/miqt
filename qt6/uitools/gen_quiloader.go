@@ -66,18 +66,15 @@ func NewQUiLoader() *QUiLoader {
 
 // NewQUiLoader2 constructs a new QUiLoader object.
 func NewQUiLoader2(parent *qt6.QObject) *QUiLoader {
-	defer runtime.KeepAlive(parent)
 
 	return newQUiLoader(C.QUiLoader_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QUiLoader) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QUiLoader_metaObject(this.h)))
 }
 
 func (this *QUiLoader) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QUiLoader_metacast(this.h, param1_Cstring))
@@ -93,7 +90,6 @@ func QUiLoader_Tr(s string) string {
 }
 
 func (this *QUiLoader) PluginPaths() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QUiLoader_pluginPaths(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -107,12 +103,10 @@ func (this *QUiLoader) PluginPaths() []string {
 }
 
 func (this *QUiLoader) ClearPluginPaths() {
-	defer runtime.KeepAlive(this)
 	C.QUiLoader_clearPluginPaths(this.h)
 }
 
 func (this *QUiLoader) AddPluginPath(path string) {
-	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -121,13 +115,10 @@ func (this *QUiLoader) AddPluginPath(path string) {
 }
 
 func (this *QUiLoader) Load(device *qt6.QIODevice) *qt6.QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QUiLoader_load(this.h, (*C.QIODevice)(device.UnsafePointer()))))
 }
 
 func (this *QUiLoader) AvailableWidgets() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QUiLoader_availableWidgets(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -141,7 +132,6 @@ func (this *QUiLoader) AvailableWidgets() []string {
 }
 
 func (this *QUiLoader) AvailableLayouts() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QUiLoader_availableLayouts(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -155,8 +145,6 @@ func (this *QUiLoader) AvailableLayouts() []string {
 }
 
 func (this *QUiLoader) CreateWidget(className string, parent *qt6.QWidget, name string) *qt6.QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -169,8 +157,6 @@ func (this *QUiLoader) CreateWidget(className string, parent *qt6.QWidget, name 
 }
 
 func (this *QUiLoader) CreateLayout(className string, parent *qt6.QObject, name string) *qt6.QLayout {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -183,8 +169,6 @@ func (this *QUiLoader) CreateLayout(className string, parent *qt6.QObject, name 
 }
 
 func (this *QUiLoader) CreateActionGroup(parent *qt6.QObject, name string) *qt6.QActionGroup {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -193,8 +177,6 @@ func (this *QUiLoader) CreateActionGroup(parent *qt6.QObject, name string) *qt6.
 }
 
 func (this *QUiLoader) CreateAction(parent *qt6.QObject, name string) *qt6.QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -203,40 +185,33 @@ func (this *QUiLoader) CreateAction(parent *qt6.QObject, name string) *qt6.QActi
 }
 
 func (this *QUiLoader) SetWorkingDirectory(dir *qt6.QDir) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dir)
 	C.QUiLoader_setWorkingDirectory(this.h, (*C.QDir)(dir.UnsafePointer()))
 }
 
 func (this *QUiLoader) WorkingDirectory() *qt6.QDir {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDir(unsafe.Pointer(C.QUiLoader_workingDirectory(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUiLoader) SetLanguageChangeEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QUiLoader_setLanguageChangeEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QUiLoader) IsLanguageChangeEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUiLoader_isLanguageChangeEnabled(this.h))
 }
 
 func (this *QUiLoader) SetTranslationEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QUiLoader_setTranslationEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QUiLoader) IsTranslationEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUiLoader_isTranslationEnabled(this.h))
 }
 
 func (this *QUiLoader) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUiLoader_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -266,15 +241,11 @@ func QUiLoader_Tr3(s string, c string, n int) string {
 }
 
 func (this *QUiLoader) Load2(device *qt6.QIODevice, parentWidget *qt6.QWidget) *qt6.QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
-	defer runtime.KeepAlive(parentWidget)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QUiLoader_load2(this.h, (*C.QIODevice)(device.UnsafePointer()), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
 // Sender can only be called from a QUiLoader that was directly constructed.
 func (this *QUiLoader) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QUiLoader_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -289,7 +260,6 @@ func (this *QUiLoader) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QUiLoader that was directly constructed.
 func (this *QUiLoader) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUiLoader_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -304,7 +274,6 @@ func (this *QUiLoader) SenderSignalIndex() int {
 
 // Receivers can only be called from a QUiLoader that was directly constructed.
 func (this *QUiLoader) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -321,7 +290,6 @@ func (this *QUiLoader) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QUiLoader that was directly constructed.
 func (this *QUiLoader) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -336,8 +304,6 @@ func (this *QUiLoader) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QUiLoader) callVirtualBase_CreateWidget(className string, parent *qt6.QWidget, name string) *qt6.QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -377,15 +343,12 @@ func miqt_exec_callback_QUiLoader_createWidget(self *C.QUiLoader, cb C.intptr_t,
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QUiLoader{h: self}).callVirtualBase_CreateWidget, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QUiLoader) callVirtualBase_CreateLayout(className string, parent *qt6.QObject, name string) *qt6.QLayout {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -425,15 +388,12 @@ func miqt_exec_callback_QUiLoader_createLayout(self *C.QUiLoader, cb C.intptr_t,
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QUiLoader{h: self}).callVirtualBase_CreateLayout, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QLayout)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QUiLoader) callVirtualBase_CreateActionGroup(parent *qt6.QObject, name string) *qt6.QActionGroup {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -465,15 +425,12 @@ func miqt_exec_callback_QUiLoader_createActionGroup(self *C.QUiLoader, cb C.intp
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QUiLoader{h: self}).callVirtualBase_CreateActionGroup, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QActionGroup)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QUiLoader) callVirtualBase_CreateAction(parent *qt6.QObject, name string) *qt6.QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -505,14 +462,12 @@ func miqt_exec_callback_QUiLoader_createAction(self *C.QUiLoader, cb C.intptr_t,
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QUiLoader{h: self}).callVirtualBase_CreateAction, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QUiLoader) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUiLoader_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -542,8 +497,6 @@ func miqt_exec_callback_QUiLoader_event(self *C.QUiLoader, cb C.intptr_t, event 
 }
 
 func (this *QUiLoader) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUiLoader_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -575,7 +528,6 @@ func miqt_exec_callback_QUiLoader_eventFilter(self *C.QUiLoader, cb C.intptr_t, 
 }
 
 func (this *QUiLoader) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUiLoader_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -603,7 +555,6 @@ func miqt_exec_callback_QUiLoader_timerEvent(self *C.QUiLoader, cb C.intptr_t, e
 }
 
 func (this *QUiLoader) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUiLoader_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -631,7 +582,6 @@ func miqt_exec_callback_QUiLoader_childEvent(self *C.QUiLoader, cb C.intptr_t, e
 }
 
 func (this *QUiLoader) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUiLoader_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -659,7 +609,6 @@ func miqt_exec_callback_QUiLoader_customEvent(self *C.QUiLoader, cb C.intptr_t, 
 }
 
 func (this *QUiLoader) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUiLoader_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -687,7 +636,6 @@ func miqt_exec_callback_QUiLoader_connectNotify(self *C.QUiLoader, cb C.intptr_t
 }
 
 func (this *QUiLoader) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUiLoader_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -722,6 +670,8 @@ func (this *QUiLoader) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QUiLoader) GoGC() {
 	if this.gc != nil {
 		return

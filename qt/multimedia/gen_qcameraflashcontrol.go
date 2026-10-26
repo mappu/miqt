@@ -60,12 +60,10 @@ func UnsafeNewQCameraFlashControl(h unsafe.Pointer) *QCameraFlashControl {
 }
 
 func (this *QCameraFlashControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFlashControl_metaObject(this.h)))
 }
 
 func (this *QCameraFlashControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraFlashControl_metacast(this.h, param1_Cstring))
@@ -90,27 +88,22 @@ func QCameraFlashControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraFlashControl) FlashMode() QCameraExposure__FlashMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraExposure__FlashMode)(C.QCameraFlashControl_flashMode(this.h))
 }
 
 func (this *QCameraFlashControl) SetFlashMode(mode QCameraExposure__FlashMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFlashControl_setFlashMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFlashControl) IsFlashModeSupported(mode QCameraExposure__FlashMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFlashControl_isFlashModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFlashControl) IsFlashReady() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFlashControl_isFlashReady(this.h))
 }
 
 func (this *QCameraFlashControl) FlashReady(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFlashControl_flashReady(this.h, (C.bool)(param1))
 }
 func (this *QCameraFlashControl) OnFlashReady(slot func(param1 bool)) {
@@ -182,6 +175,8 @@ func (this *QCameraFlashControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraFlashControl) GoGC() {
 	if this.gc != nil {
 		return

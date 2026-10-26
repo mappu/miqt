@@ -66,18 +66,15 @@ func NewQMediaCaptureSession() *QMediaCaptureSession {
 
 // NewQMediaCaptureSession2 constructs a new QMediaCaptureSession object.
 func NewQMediaCaptureSession2(parent *qt6.QObject) *QMediaCaptureSession {
-	defer runtime.KeepAlive(parent)
 
 	return newQMediaCaptureSession(C.QMediaCaptureSession_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QMediaCaptureSession) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaCaptureSession_metaObject(this.h)))
 }
 
 func (this *QMediaCaptureSession) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaCaptureSession_metacast(this.h, param1_Cstring))
@@ -93,84 +90,62 @@ func QMediaCaptureSession_Tr(s string) string {
 }
 
 func (this *QMediaCaptureSession) AudioInput() *QAudioInput {
-	defer runtime.KeepAlive(this)
 	return newQAudioInput(C.QMediaCaptureSession_audioInput(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(input)
 	C.QMediaCaptureSession_setAudioInput(this.h, input.cPointer())
 }
 
 func (this *QMediaCaptureSession) Camera() *QCamera {
-	defer runtime.KeepAlive(this)
 	return newQCamera(C.QMediaCaptureSession_camera(this.h))
 }
 
 func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(camera)
 	C.QMediaCaptureSession_setCamera(this.h, camera.cPointer())
 }
 
 func (this *QMediaCaptureSession) ImageCapture() *QImageCapture {
-	defer runtime.KeepAlive(this)
 	return newQImageCapture(C.QMediaCaptureSession_imageCapture(this.h))
 }
 
 func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(imageCapture)
 	C.QMediaCaptureSession_setImageCapture(this.h, imageCapture.cPointer())
 }
 
 func (this *QMediaCaptureSession) Recorder() *QMediaRecorder {
-	defer runtime.KeepAlive(this)
 	return newQMediaRecorder(C.QMediaCaptureSession_recorder(this.h))
 }
 
 func (this *QMediaCaptureSession) SetRecorder(recorder *QMediaRecorder) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(recorder)
 	C.QMediaCaptureSession_setRecorder(this.h, recorder.cPointer())
 }
 
 func (this *QMediaCaptureSession) SetVideoOutput(output *qt6.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(output)
 	C.QMediaCaptureSession_setVideoOutput(this.h, (*C.QObject)(output.UnsafePointer()))
 }
 
 func (this *QMediaCaptureSession) VideoOutput() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaCaptureSession_videoOutput(this.h)))
 }
 
 func (this *QMediaCaptureSession) SetVideoSink(sink *QVideoSink) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sink)
 	C.QMediaCaptureSession_setVideoSink(this.h, sink.cPointer())
 }
 
 func (this *QMediaCaptureSession) VideoSink() *QVideoSink {
-	defer runtime.KeepAlive(this)
 	return newQVideoSink(C.QMediaCaptureSession_videoSink(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(output)
 	C.QMediaCaptureSession_setAudioOutput(this.h, output.cPointer())
 }
 
 func (this *QMediaCaptureSession) AudioOutput() *QAudioOutput {
-	defer runtime.KeepAlive(this)
 	return newQAudioOutput(C.QMediaCaptureSession_audioOutput(this.h))
 }
 
 func (this *QMediaCaptureSession) AudioInputChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_audioInputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnAudioInputChanged(slot func()) {
@@ -188,7 +163,6 @@ func miqt_exec_callback_QMediaCaptureSession_audioInputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) CameraChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_cameraChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnCameraChanged(slot func()) {
@@ -206,7 +180,6 @@ func miqt_exec_callback_QMediaCaptureSession_cameraChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) ImageCaptureChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_imageCaptureChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnImageCaptureChanged(slot func()) {
@@ -224,7 +197,6 @@ func miqt_exec_callback_QMediaCaptureSession_imageCaptureChanged(cb C.intptr_t) 
 }
 
 func (this *QMediaCaptureSession) RecorderChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_recorderChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnRecorderChanged(slot func()) {
@@ -242,7 +214,6 @@ func miqt_exec_callback_QMediaCaptureSession_recorderChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) VideoOutputChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_videoOutputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnVideoOutputChanged(slot func()) {
@@ -260,7 +231,6 @@ func miqt_exec_callback_QMediaCaptureSession_videoOutputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) AudioOutputChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaCaptureSession_audioOutputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnAudioOutputChanged(slot func()) {
@@ -301,7 +271,6 @@ func QMediaCaptureSession_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QMediaCaptureSession that was directly constructed.
 func (this *QMediaCaptureSession) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaCaptureSession_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -316,7 +285,6 @@ func (this *QMediaCaptureSession) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QMediaCaptureSession that was directly constructed.
 func (this *QMediaCaptureSession) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMediaCaptureSession_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -331,7 +299,6 @@ func (this *QMediaCaptureSession) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMediaCaptureSession that was directly constructed.
 func (this *QMediaCaptureSession) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -348,7 +315,6 @@ func (this *QMediaCaptureSession) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMediaCaptureSession that was directly constructed.
 func (this *QMediaCaptureSession) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -363,7 +329,6 @@ func (this *QMediaCaptureSession) IsSignalConnected(signal *qt6.QMetaMethod) boo
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaCaptureSession_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -393,8 +358,6 @@ func miqt_exec_callback_QMediaCaptureSession_event(self *C.QMediaCaptureSession,
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaCaptureSession_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -426,7 +389,6 @@ func miqt_exec_callback_QMediaCaptureSession_eventFilter(self *C.QMediaCaptureSe
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaCaptureSession_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -454,7 +416,6 @@ func miqt_exec_callback_QMediaCaptureSession_timerEvent(self *C.QMediaCaptureSes
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaCaptureSession_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -482,7 +443,6 @@ func miqt_exec_callback_QMediaCaptureSession_childEvent(self *C.QMediaCaptureSes
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaCaptureSession_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -510,7 +470,6 @@ func miqt_exec_callback_QMediaCaptureSession_customEvent(self *C.QMediaCaptureSe
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMediaCaptureSession_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -538,7 +497,6 @@ func miqt_exec_callback_QMediaCaptureSession_connectNotify(self *C.QMediaCapture
 }
 
 func (this *QMediaCaptureSession) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMediaCaptureSession_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -573,6 +531,8 @@ func (this *QMediaCaptureSession) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaCaptureSession) GoGC() {
 	if this.gc != nil {
 		return

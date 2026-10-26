@@ -59,12 +59,10 @@ func UnsafeNewQGraphicsAnchor(h unsafe.Pointer) *QGraphicsAnchor {
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsAnchor_metaObject(this.h))
 }
 
 func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsAnchor_metacast(this.h, param1_Cstring))
@@ -89,27 +87,22 @@ func QGraphicsAnchor_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsAnchor) SetSpacing(spacing float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchor) UnsetSpacing() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_unsetSpacing(this.h)
 }
 
 func (this *QGraphicsAnchor) Spacing() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsAnchor_spacing(this.h))
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsAnchor_setSizePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
-	defer runtime.KeepAlive(this)
 	return (QSizePolicy__Policy)(C.QGraphicsAnchor_sizePolicy(this.h))
 }
 
@@ -165,6 +158,8 @@ func (this *QGraphicsAnchor) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsAnchor) GoGC() {
 	if this.gc != nil {
 		return

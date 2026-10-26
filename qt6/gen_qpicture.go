@@ -113,7 +113,6 @@ func (this *QPicture) Play(p *QPainter) bool {
 
 func (this *QPicture) Load(dev *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_load(this.h, dev.cPointer()))
 }
 
@@ -128,7 +127,6 @@ func (this *QPicture) LoadWithFileName(fileName string) bool {
 
 func (this *QPicture) Save(dev *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_save(this.h, dev.cPointer()))
 }
 

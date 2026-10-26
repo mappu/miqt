@@ -99,7 +99,6 @@ func UnsafeNewQwtPlotItem(h unsafe.Pointer) *QwtPlotItem {
 
 func (this *QwtPlotItem) Attach(plot *QwtPlot) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(plot)
 	C.QwtPlotItem_attach(this.h, plot.cPointer())
 }
 

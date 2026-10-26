@@ -99,14 +99,12 @@ func UnsafeNewQInputEvent(h unsafe.Pointer) *QInputEvent {
 
 // NewQInputEvent constructs a new QInputEvent object.
 func NewQInputEvent(typeVal QEvent__Type, m_dev *QInputDevice) *QInputEvent {
-	defer runtime.KeepAlive(m_dev)
 
 	return newQInputEvent(C.QInputEvent_new((C.int)(typeVal), m_dev.cPointer()))
 }
 
 // NewQInputEvent2 constructs a new QInputEvent object.
 func NewQInputEvent2(typeVal QEvent__Type, m_dev *QInputDevice, modifiers KeyboardModifier) *QInputEvent {
-	defer runtime.KeepAlive(m_dev)
 
 	return newQInputEvent(C.QInputEvent_new2((C.int)(typeVal), m_dev.cPointer(), (C.int)(modifiers)))
 }
@@ -292,21 +290,18 @@ func UnsafeNewQPointerEvent(h unsafe.Pointer) *QPointerEvent {
 
 // NewQPointerEvent constructs a new QPointerEvent object.
 func NewQPointerEvent(typeVal QEvent__Type, dev *QPointingDevice) *QPointerEvent {
-	defer runtime.KeepAlive(dev)
 
 	return newQPointerEvent(C.QPointerEvent_new((C.int)(typeVal), dev.cPointer()))
 }
 
 // NewQPointerEvent2 constructs a new QPointerEvent object.
 func NewQPointerEvent2(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier) *QPointerEvent {
-	defer runtime.KeepAlive(dev)
 
 	return newQPointerEvent(C.QPointerEvent_new2((C.int)(typeVal), dev.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQPointerEvent3 constructs a new QPointerEvent object.
 func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier, points []QEventPoint) *QPointerEvent {
-	defer runtime.KeepAlive(dev)
 	defer runtime.KeepAlive(points)
 	points_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray_ptr))
@@ -408,7 +403,6 @@ func (this *QPointerEvent) ExclusiveGrabber(point *QEventPoint) *QObject {
 func (this *QPointerEvent) SetExclusiveGrabber(point *QEventPoint, exclusiveGrabber *QObject) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
-	defer runtime.KeepAlive(exclusiveGrabber)
 	C.QPointerEvent_setExclusiveGrabber(this.h, point.cPointer(), exclusiveGrabber.cPointer())
 }
 
@@ -421,14 +415,12 @@ func (this *QPointerEvent) ClearPassiveGrabbers(point *QEventPoint) {
 func (this *QPointerEvent) AddPassiveGrabber(point *QEventPoint, grabber *QObject) bool {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
-	defer runtime.KeepAlive(grabber)
 	return (bool)(C.QPointerEvent_addPassiveGrabber(this.h, point.cPointer(), grabber.cPointer()))
 }
 
 func (this *QPointerEvent) RemovePassiveGrabber(point *QEventPoint, grabber *QObject) bool {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
-	defer runtime.KeepAlive(grabber)
 	return (bool)(C.QPointerEvent_removePassiveGrabber(this.h, point.cPointer(), grabber.cPointer()))
 }
 
@@ -712,7 +704,6 @@ func (this *QSinglePointEvent) ExclusivePointGrabber() *QObject {
 
 func (this *QSinglePointEvent) SetExclusivePointGrabber(exclusiveGrabber *QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(exclusiveGrabber)
 	C.QSinglePointEvent_setExclusivePointGrabber(this.h, exclusiveGrabber.cPointer())
 }
 
@@ -793,7 +784,6 @@ func NewQEnterEvent2(localPos *QPointF, scenePos *QPointF, globalPos *QPointF, d
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(device)
 
 	return newQEnterEvent(C.QEnterEvent_new2(localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), device.cPointer()))
 }
@@ -1116,7 +1106,6 @@ func NewQMouseEvent4(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF,
 // NewQMouseEvent5 constructs a new QMouseEvent object.
 func NewQMouseEvent5(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
 	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new5((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
@@ -1125,7 +1114,6 @@ func NewQMouseEvent5(typeVal QEvent__Type, localPos *QPointF, button MouseButton
 func NewQMouseEvent6(typeVal QEvent__Type, localPos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new6((C.int)(typeVal), localPos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
@@ -1135,7 +1123,6 @@ func NewQMouseEvent7(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF,
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new7((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
@@ -1145,7 +1132,6 @@ func NewQMouseEvent8(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF,
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(device)
 
 	return newQMouseEvent(C.QMouseEvent_new8((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source), device.cPointer()))
 }
@@ -1473,7 +1459,6 @@ func NewQHoverEvent4(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
 	defer runtime.KeepAlive(oldPos)
-	defer runtime.KeepAlive(device)
 
 	return newQHoverEvent(C.QHoverEvent_new4((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
 }
@@ -1490,7 +1475,6 @@ func NewQHoverEvent5(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifi
 func NewQHoverEvent6(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
 	defer runtime.KeepAlive(pos)
 	defer runtime.KeepAlive(oldPos)
-	defer runtime.KeepAlive(device)
 
 	return newQHoverEvent(C.QHoverEvent_new6((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
 }
@@ -1781,7 +1765,6 @@ func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleD
 	defer runtime.KeepAlive(globalPos)
 	defer runtime.KeepAlive(pixelDelta)
 	defer runtime.KeepAlive(angleDelta)
-	defer runtime.KeepAlive(device)
 
 	return newQWheelEvent(C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source), device.cPointer()))
 }
@@ -2069,7 +2052,6 @@ func UnsafeNewQTabletEvent(h unsafe.Pointer) *QTabletEvent {
 
 // NewQTabletEvent constructs a new QTabletEvent object.
 func NewQTabletEvent(t QEvent__Type, device *QPointingDevice, pos *QPointF, globalPos *QPointF, pressure float64, xTilt float32, yTilt float32, tangentialPressure float32, rotation float64, z float32, keyState KeyboardModifier, button MouseButton, buttons MouseButton) *QTabletEvent {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(pos)
 	defer runtime.KeepAlive(globalPos)
 
@@ -2398,7 +2380,6 @@ func UnsafeNewQNativeGestureEvent(h unsafe.Pointer) *QNativeGestureEvent {
 
 // NewQNativeGestureEvent constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent(typeVal NativeGestureType, dev *QPointingDevice, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
-	defer runtime.KeepAlive(dev)
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
@@ -2408,7 +2389,6 @@ func NewQNativeGestureEvent(typeVal NativeGestureType, dev *QPointingDevice, loc
 
 // NewQNativeGestureEvent2 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF) *QNativeGestureEvent {
-	defer runtime.KeepAlive(dev)
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
@@ -2419,7 +2399,6 @@ func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QPointingDevice, fi
 
 // NewQNativeGestureEvent3 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent3(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF, sequenceId uint64) *QNativeGestureEvent {
-	defer runtime.KeepAlive(dev)
 	defer runtime.KeepAlive(localPos)
 	defer runtime.KeepAlive(scenePos)
 	defer runtime.KeepAlive(globalPos)
@@ -2786,7 +2765,6 @@ func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 
 // NewQKeyEvent9 constructs a new QKeyEvent object.
 func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16, device *QInputDevice) *QKeyEvent {
-	defer runtime.KeepAlive(device)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -4939,7 +4917,6 @@ func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 // NewQDropEvent constructs a new QDropEvent object.
 func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -4947,7 +4924,6 @@ func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons Mo
 // NewQDropEvent2 constructs a new QDropEvent object.
 func NewQDropEvent2(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
@@ -5153,7 +5129,6 @@ func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -5161,7 +5136,6 @@ func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons
 // NewQDragMoveEvent2 constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent2(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
@@ -5320,7 +5294,6 @@ func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
 func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -6021,15 +5994,12 @@ func UnsafeNewQActionEvent(h unsafe.Pointer) *QActionEvent {
 
 // NewQActionEvent constructs a new QActionEvent object.
 func NewQActionEvent(typeVal int, action *QAction) *QActionEvent {
-	defer runtime.KeepAlive(action)
 
 	return newQActionEvent(C.QActionEvent_new((C.int)(typeVal), action.cPointer()))
 }
 
 // NewQActionEvent2 constructs a new QActionEvent object.
 func NewQActionEvent2(typeVal int, action *QAction, before *QAction) *QActionEvent {
-	defer runtime.KeepAlive(action)
-	defer runtime.KeepAlive(before)
 
 	return newQActionEvent(C.QActionEvent_new2((C.int)(typeVal), action.cPointer(), before.cPointer()))
 }
@@ -6205,7 +6175,6 @@ func (this *QFileOpenEvent) Url() *QUrl {
 
 func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODeviceBase__OpenModeFlag) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(file)
 	return (bool)(C.QFileOpenEvent_openFile(this.h, file.cPointer(), (C.int)(flags)))
 }
 
@@ -6764,28 +6733,24 @@ func NewQTouchEvent(eventType QEvent__Type) *QTouchEvent {
 
 // NewQTouchEvent2 constructs a new QTouchEvent object.
 func NewQTouchEvent2(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State) *QTouchEvent {
-	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new2((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uint8_t)(touchPointStates)))
 }
 
 // NewQTouchEvent3 constructs a new QTouchEvent object.
 func NewQTouchEvent3(eventType QEvent__Type, device *QPointingDevice) *QTouchEvent {
-	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new3((C.int)(eventType), device.cPointer()))
 }
 
 // NewQTouchEvent4 constructs a new QTouchEvent object.
 func NewQTouchEvent4(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier) *QTouchEvent {
-	defer runtime.KeepAlive(device)
 
 	return newQTouchEvent(C.QTouchEvent_new4((C.int)(eventType), device.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQTouchEvent5 constructs a new QTouchEvent object.
 func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPoints []QEventPoint) *QTouchEvent {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(touchPoints)
 	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
@@ -6800,7 +6765,6 @@ func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers 
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State, touchPoints []QEventPoint) *QTouchEvent {
-	defer runtime.KeepAlive(device)
 	defer runtime.KeepAlive(touchPoints)
 	touchPoints_CArray_ptr := (**C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray_ptr))
@@ -7404,7 +7368,6 @@ func UnsafeNewQScreenOrientationChangeEvent(h unsafe.Pointer) *QScreenOrientatio
 
 // NewQScreenOrientationChangeEvent constructs a new QScreenOrientationChangeEvent object.
 func NewQScreenOrientationChangeEvent(screen *QScreen, orientation ScreenOrientation) *QScreenOrientationChangeEvent {
-	defer runtime.KeepAlive(screen)
 
 	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.int)(orientation)))
 }

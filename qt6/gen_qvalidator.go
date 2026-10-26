@@ -81,18 +81,15 @@ func NewQValidator() *QValidator {
 
 // NewQValidator2 constructs a new QValidator object.
 func NewQValidator2(parent *QObject) *QValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQValidator(C.QValidator_new2(parent.cPointer()))
 }
 
 func (this *QValidator) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QValidator_metaObject(this.h))
 }
 
 func (this *QValidator) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QValidator_metacast(this.h, param1_Cstring))
@@ -108,20 +105,17 @@ func QValidator_Tr(s string) string {
 }
 
 func (this *QValidator) SetLocale(locale *QLocale) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	C.QValidator_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QValidator) Locale() *QLocale {
-	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QValidator_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QValidator) Validate(param1 string, param2 *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -130,7 +124,6 @@ func (this *QValidator) Validate(param1 string, param2 *int) QValidator__State {
 }
 
 func (this *QValidator) Fixup(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -139,7 +132,6 @@ func (this *QValidator) Fixup(param1 string) {
 }
 
 func (this *QValidator) Changed() {
-	defer runtime.KeepAlive(this)
 	C.QValidator_changed(this.h)
 }
 func (this *QValidator) OnChanged(slot func()) {
@@ -180,7 +172,6 @@ func QValidator_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QValidator that was directly constructed.
 func (this *QValidator) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QValidator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -195,7 +186,6 @@ func (this *QValidator) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QValidator that was directly constructed.
 func (this *QValidator) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QValidator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -210,7 +200,6 @@ func (this *QValidator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QValidator that was directly constructed.
 func (this *QValidator) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -227,7 +216,6 @@ func (this *QValidator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QValidator that was directly constructed.
 func (this *QValidator) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -268,7 +256,6 @@ func miqt_exec_callback_QValidator_validate(self *C.QValidator, cb C.intptr_t, p
 }
 
 func (this *QValidator) callVirtualBase_Fixup(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -302,7 +289,6 @@ func miqt_exec_callback_QValidator_fixup(self *C.QValidator, cb C.intptr_t, para
 }
 
 func (this *QValidator) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -332,8 +318,6 @@ func miqt_exec_callback_QValidator_event(self *C.QValidator, cb C.intptr_t, even
 }
 
 func (this *QValidator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -365,7 +349,6 @@ func miqt_exec_callback_QValidator_eventFilter(self *C.QValidator, cb C.intptr_t
 }
 
 func (this *QValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -393,7 +376,6 @@ func miqt_exec_callback_QValidator_timerEvent(self *C.QValidator, cb C.intptr_t,
 }
 
 func (this *QValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -421,7 +403,6 @@ func miqt_exec_callback_QValidator_childEvent(self *C.QValidator, cb C.intptr_t,
 }
 
 func (this *QValidator) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -449,7 +430,6 @@ func miqt_exec_callback_QValidator_customEvent(self *C.QValidator, cb C.intptr_t
 }
 
 func (this *QValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -477,7 +457,6 @@ func miqt_exec_callback_QValidator_connectNotify(self *C.QValidator, cb C.intptr
 }
 
 func (this *QValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -512,6 +491,8 @@ func (this *QValidator) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QValidator) GoGC() {
 	if this.gc != nil {
 		return
@@ -581,25 +562,21 @@ func NewQIntValidator2(bottom int, top int) *QIntValidator {
 
 // NewQIntValidator3 constructs a new QIntValidator object.
 func NewQIntValidator3(parent *QObject) *QIntValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQIntValidator(C.QIntValidator_new3(parent.cPointer()))
 }
 
 // NewQIntValidator4 constructs a new QIntValidator object.
 func NewQIntValidator4(bottom int, top int, parent *QObject) *QIntValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQIntValidator(C.QIntValidator_new4((C.int)(bottom), (C.int)(top), parent.cPointer()))
 }
 
 func (this *QIntValidator) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QIntValidator_metaObject(this.h))
 }
 
 func (this *QIntValidator) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QIntValidator_metacast(this.h, param1_Cstring))
@@ -615,7 +592,6 @@ func QIntValidator_Tr(s string) string {
 }
 
 func (this *QIntValidator) Validate(param1 string, param2 *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -624,7 +600,6 @@ func (this *QIntValidator) Validate(param1 string, param2 *int) QValidator__Stat
 }
 
 func (this *QIntValidator) Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -633,32 +608,26 @@ func (this *QIntValidator) Fixup(input string) {
 }
 
 func (this *QIntValidator) SetBottom(bottom int) {
-	defer runtime.KeepAlive(this)
 	C.QIntValidator_setBottom(this.h, (C.int)(bottom))
 }
 
 func (this *QIntValidator) SetTop(top int) {
-	defer runtime.KeepAlive(this)
 	C.QIntValidator_setTop(this.h, (C.int)(top))
 }
 
 func (this *QIntValidator) SetRange(bottom int, top int) {
-	defer runtime.KeepAlive(this)
 	C.QIntValidator_setRange(this.h, (C.int)(bottom), (C.int)(top))
 }
 
 func (this *QIntValidator) Bottom() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QIntValidator_bottom(this.h))
 }
 
 func (this *QIntValidator) Top() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QIntValidator_top(this.h))
 }
 
 func (this *QIntValidator) BottomChanged(bottom int) {
-	defer runtime.KeepAlive(this)
 	C.QIntValidator_bottomChanged(this.h, (C.int)(bottom))
 }
 func (this *QIntValidator) OnBottomChanged(slot func(bottom int)) {
@@ -679,7 +648,6 @@ func miqt_exec_callback_QIntValidator_bottomChanged(cb C.intptr_t, bottom C.int)
 }
 
 func (this *QIntValidator) TopChanged(top int) {
-	defer runtime.KeepAlive(this)
 	C.QIntValidator_topChanged(this.h, (C.int)(top))
 }
 func (this *QIntValidator) OnTopChanged(slot func(top int)) {
@@ -723,7 +691,6 @@ func QIntValidator_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QIntValidator that was directly constructed.
 func (this *QIntValidator) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QIntValidator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -738,7 +705,6 @@ func (this *QIntValidator) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QIntValidator that was directly constructed.
 func (this *QIntValidator) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QIntValidator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -753,7 +719,6 @@ func (this *QIntValidator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QIntValidator that was directly constructed.
 func (this *QIntValidator) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -770,7 +735,6 @@ func (this *QIntValidator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QIntValidator that was directly constructed.
 func (this *QIntValidator) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -785,7 +749,6 @@ func (this *QIntValidator) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QIntValidator) callVirtualBase_Validate(param1 string, param2 *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -822,7 +785,6 @@ func miqt_exec_callback_QIntValidator_validate(self *C.QIntValidator, cb C.intpt
 }
 
 func (this *QIntValidator) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -856,7 +818,6 @@ func miqt_exec_callback_QIntValidator_fixup(self *C.QIntValidator, cb C.intptr_t
 }
 
 func (this *QIntValidator) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIntValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -886,8 +847,6 @@ func miqt_exec_callback_QIntValidator_event(self *C.QIntValidator, cb C.intptr_t
 }
 
 func (this *QIntValidator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIntValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -919,7 +878,6 @@ func miqt_exec_callback_QIntValidator_eventFilter(self *C.QIntValidator, cb C.in
 }
 
 func (this *QIntValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIntValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -947,7 +905,6 @@ func miqt_exec_callback_QIntValidator_timerEvent(self *C.QIntValidator, cb C.int
 }
 
 func (this *QIntValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIntValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -975,7 +932,6 @@ func miqt_exec_callback_QIntValidator_childEvent(self *C.QIntValidator, cb C.int
 }
 
 func (this *QIntValidator) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIntValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1003,7 +959,6 @@ func miqt_exec_callback_QIntValidator_customEvent(self *C.QIntValidator, cb C.in
 }
 
 func (this *QIntValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QIntValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1031,7 +986,6 @@ func miqt_exec_callback_QIntValidator_connectNotify(self *C.QIntValidator, cb C.
 }
 
 func (this *QIntValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QIntValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1066,6 +1020,8 @@ func (this *QIntValidator) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QIntValidator) GoGC() {
 	if this.gc != nil {
 		return
@@ -1135,25 +1091,21 @@ func NewQDoubleValidator2(bottom float64, top float64, decimals int) *QDoubleVal
 
 // NewQDoubleValidator3 constructs a new QDoubleValidator object.
 func NewQDoubleValidator3(parent *QObject) *QDoubleValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQDoubleValidator(C.QDoubleValidator_new3(parent.cPointer()))
 }
 
 // NewQDoubleValidator4 constructs a new QDoubleValidator object.
 func NewQDoubleValidator4(bottom float64, top float64, decimals int, parent *QObject) *QDoubleValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQDoubleValidator(C.QDoubleValidator_new4((C.double)(bottom), (C.double)(top), (C.int)(decimals), parent.cPointer()))
 }
 
 func (this *QDoubleValidator) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDoubleValidator_metaObject(this.h))
 }
 
 func (this *QDoubleValidator) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDoubleValidator_metacast(this.h, param1_Cstring))
@@ -1169,7 +1121,6 @@ func QDoubleValidator_Tr(s string) string {
 }
 
 func (this *QDoubleValidator) Validate(param1 string, param2 *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -1178,7 +1129,6 @@ func (this *QDoubleValidator) Validate(param1 string, param2 *int) QValidator__S
 }
 
 func (this *QDoubleValidator) Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -1187,57 +1137,46 @@ func (this *QDoubleValidator) Fixup(input string) {
 }
 
 func (this *QDoubleValidator) SetRange(bottom float64, top float64, decimals int) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setRange(this.h, (C.double)(bottom), (C.double)(top), (C.int)(decimals))
 }
 
 func (this *QDoubleValidator) SetRange2(bottom float64, top float64) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setRange2(this.h, (C.double)(bottom), (C.double)(top))
 }
 
 func (this *QDoubleValidator) SetBottom(bottom float64) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setBottom(this.h, (C.double)(bottom))
 }
 
 func (this *QDoubleValidator) SetTop(top float64) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setTop(this.h, (C.double)(top))
 }
 
 func (this *QDoubleValidator) SetDecimals(decimals int) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setDecimals(this.h, (C.int)(decimals))
 }
 
 func (this *QDoubleValidator) SetNotation(notation QDoubleValidator__Notation) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_setNotation(this.h, (C.int)(notation))
 }
 
 func (this *QDoubleValidator) Bottom() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QDoubleValidator_bottom(this.h))
 }
 
 func (this *QDoubleValidator) Top() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QDoubleValidator_top(this.h))
 }
 
 func (this *QDoubleValidator) Decimals() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDoubleValidator_decimals(this.h))
 }
 
 func (this *QDoubleValidator) Notation() QDoubleValidator__Notation {
-	defer runtime.KeepAlive(this)
 	return (QDoubleValidator__Notation)(C.QDoubleValidator_notation(this.h))
 }
 
 func (this *QDoubleValidator) BottomChanged(bottom float64) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_bottomChanged(this.h, (C.double)(bottom))
 }
 func (this *QDoubleValidator) OnBottomChanged(slot func(bottom float64)) {
@@ -1258,7 +1197,6 @@ func miqt_exec_callback_QDoubleValidator_bottomChanged(cb C.intptr_t, bottom C.d
 }
 
 func (this *QDoubleValidator) TopChanged(top float64) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_topChanged(this.h, (C.double)(top))
 }
 func (this *QDoubleValidator) OnTopChanged(slot func(top float64)) {
@@ -1279,7 +1217,6 @@ func miqt_exec_callback_QDoubleValidator_topChanged(cb C.intptr_t, top C.double)
 }
 
 func (this *QDoubleValidator) DecimalsChanged(decimals int) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_decimalsChanged(this.h, (C.int)(decimals))
 }
 func (this *QDoubleValidator) OnDecimalsChanged(slot func(decimals int)) {
@@ -1300,7 +1237,6 @@ func miqt_exec_callback_QDoubleValidator_decimalsChanged(cb C.intptr_t, decimals
 }
 
 func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notation) {
-	defer runtime.KeepAlive(this)
 	C.QDoubleValidator_notationChanged(this.h, (C.int)(notation))
 }
 func (this *QDoubleValidator) OnNotationChanged(slot func(notation QDoubleValidator__Notation)) {
@@ -1344,7 +1280,6 @@ func QDoubleValidator_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QDoubleValidator that was directly constructed.
 func (this *QDoubleValidator) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDoubleValidator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1359,7 +1294,6 @@ func (this *QDoubleValidator) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDoubleValidator that was directly constructed.
 func (this *QDoubleValidator) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDoubleValidator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1374,7 +1308,6 @@ func (this *QDoubleValidator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDoubleValidator that was directly constructed.
 func (this *QDoubleValidator) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1391,7 +1324,6 @@ func (this *QDoubleValidator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDoubleValidator that was directly constructed.
 func (this *QDoubleValidator) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1406,7 +1338,6 @@ func (this *QDoubleValidator) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDoubleValidator) callVirtualBase_Validate(param1 string, param2 *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -1443,7 +1374,6 @@ func miqt_exec_callback_QDoubleValidator_validate(self *C.QDoubleValidator, cb C
 }
 
 func (this *QDoubleValidator) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -1477,7 +1407,6 @@ func miqt_exec_callback_QDoubleValidator_fixup(self *C.QDoubleValidator, cb C.in
 }
 
 func (this *QDoubleValidator) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDoubleValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1507,8 +1436,6 @@ func miqt_exec_callback_QDoubleValidator_event(self *C.QDoubleValidator, cb C.in
 }
 
 func (this *QDoubleValidator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDoubleValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1540,7 +1467,6 @@ func miqt_exec_callback_QDoubleValidator_eventFilter(self *C.QDoubleValidator, c
 }
 
 func (this *QDoubleValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDoubleValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1568,7 +1494,6 @@ func miqt_exec_callback_QDoubleValidator_timerEvent(self *C.QDoubleValidator, cb
 }
 
 func (this *QDoubleValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDoubleValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1596,7 +1521,6 @@ func miqt_exec_callback_QDoubleValidator_childEvent(self *C.QDoubleValidator, cb
 }
 
 func (this *QDoubleValidator) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDoubleValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1624,7 +1548,6 @@ func miqt_exec_callback_QDoubleValidator_customEvent(self *C.QDoubleValidator, c
 }
 
 func (this *QDoubleValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDoubleValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1652,7 +1575,6 @@ func miqt_exec_callback_QDoubleValidator_connectNotify(self *C.QDoubleValidator,
 }
 
 func (this *QDoubleValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDoubleValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1687,6 +1609,8 @@ func (this *QDoubleValidator) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDoubleValidator) GoGC() {
 	if this.gc != nil {
 		return
@@ -1757,7 +1681,6 @@ func NewQRegularExpressionValidator2(re *QRegularExpression) *QRegularExpression
 
 // NewQRegularExpressionValidator3 constructs a new QRegularExpressionValidator object.
 func NewQRegularExpressionValidator3(parent *QObject) *QRegularExpressionValidator {
-	defer runtime.KeepAlive(parent)
 
 	return newQRegularExpressionValidator(C.QRegularExpressionValidator_new3(parent.cPointer()))
 }
@@ -1765,18 +1688,15 @@ func NewQRegularExpressionValidator3(parent *QObject) *QRegularExpressionValidat
 // NewQRegularExpressionValidator4 constructs a new QRegularExpressionValidator object.
 func NewQRegularExpressionValidator4(re *QRegularExpression, parent *QObject) *QRegularExpressionValidator {
 	defer runtime.KeepAlive(re)
-	defer runtime.KeepAlive(parent)
 
 	return newQRegularExpressionValidator(C.QRegularExpressionValidator_new4(re.cPointer(), parent.cPointer()))
 }
 
 func (this *QRegularExpressionValidator) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QRegularExpressionValidator_metaObject(this.h))
 }
 
 func (this *QRegularExpressionValidator) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRegularExpressionValidator_metacast(this.h, param1_Cstring))
@@ -1792,7 +1712,6 @@ func QRegularExpressionValidator_Tr(s string) string {
 }
 
 func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -1801,20 +1720,17 @@ func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValid
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRegularExpression(C.QRegularExpressionValidator_regularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionValidator) SetRegularExpression(re *QRegularExpression) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(re)
 	C.QRegularExpressionValidator_setRegularExpression(this.h, re.cPointer())
 }
 
 func (this *QRegularExpressionValidator) RegularExpressionChanged(re *QRegularExpression) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(re)
 	C.QRegularExpressionValidator_regularExpressionChanged(this.h, re.cPointer())
 }
@@ -1859,7 +1775,6 @@ func QRegularExpressionValidator_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QRegularExpressionValidator that was directly constructed.
 func (this *QRegularExpressionValidator) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QRegularExpressionValidator_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1874,7 +1789,6 @@ func (this *QRegularExpressionValidator) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QRegularExpressionValidator that was directly constructed.
 func (this *QRegularExpressionValidator) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRegularExpressionValidator_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1889,7 +1803,6 @@ func (this *QRegularExpressionValidator) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRegularExpressionValidator that was directly constructed.
 func (this *QRegularExpressionValidator) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1906,7 +1819,6 @@ func (this *QRegularExpressionValidator) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRegularExpressionValidator that was directly constructed.
 func (this *QRegularExpressionValidator) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1921,7 +1833,6 @@ func (this *QRegularExpressionValidator) IsSignalConnected(signal *QMetaMethod) 
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -1958,7 +1869,6 @@ func miqt_exec_callback_QRegularExpressionValidator_validate(self *C.QRegularExp
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_Fixup(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -1992,7 +1902,6 @@ func miqt_exec_callback_QRegularExpressionValidator_fixup(self *C.QRegularExpres
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRegularExpressionValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2022,8 +1931,6 @@ func miqt_exec_callback_QRegularExpressionValidator_event(self *C.QRegularExpres
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRegularExpressionValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2055,7 +1962,6 @@ func miqt_exec_callback_QRegularExpressionValidator_eventFilter(self *C.QRegular
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRegularExpressionValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2083,7 +1989,6 @@ func miqt_exec_callback_QRegularExpressionValidator_timerEvent(self *C.QRegularE
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRegularExpressionValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2111,7 +2016,6 @@ func miqt_exec_callback_QRegularExpressionValidator_childEvent(self *C.QRegularE
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRegularExpressionValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2139,7 +2043,6 @@ func miqt_exec_callback_QRegularExpressionValidator_customEvent(self *C.QRegular
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRegularExpressionValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2167,7 +2070,6 @@ func miqt_exec_callback_QRegularExpressionValidator_connectNotify(self *C.QRegul
 }
 
 func (this *QRegularExpressionValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRegularExpressionValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2202,6 +2104,8 @@ func (this *QRegularExpressionValidator) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QRegularExpressionValidator) GoGC() {
 	if this.gc != nil {
 		return

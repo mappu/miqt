@@ -60,7 +60,6 @@ func NewQTextDocumentWriter() *QTextDocumentWriter {
 
 // NewQTextDocumentWriter2 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter2(device *QIODevice, format []byte) *QTextDocumentWriter {
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -121,7 +120,6 @@ func (this *QTextDocumentWriter) Format() []byte {
 
 func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QTextDocumentWriter_setDevice(this.h, device.cPointer())
 }
 
@@ -149,7 +147,6 @@ func (this *QTextDocumentWriter) FileName() string {
 
 func (this *QTextDocumentWriter) Write(document *QTextDocument) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(document)
 	return (bool)(C.QTextDocumentWriter_write(this.h, document.cPointer()))
 }
 

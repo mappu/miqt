@@ -98,42 +98,36 @@ func NewQScriptValue2(other *QScriptValue) *QScriptValue {
 
 // NewQScriptValue3 constructs a new QScriptValue object.
 func NewQScriptValue3(engine *QScriptEngine, val QScriptValue__SpecialValue) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new3(engine.cPointer(), (C.int)(val)))
 }
 
 // NewQScriptValue4 constructs a new QScriptValue object.
 func NewQScriptValue4(engine *QScriptEngine, val bool) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new4(engine.cPointer(), (C.bool)(val)))
 }
 
 // NewQScriptValue5 constructs a new QScriptValue object.
 func NewQScriptValue5(engine *QScriptEngine, val int) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new5(engine.cPointer(), (C.int)(val)))
 }
 
 // NewQScriptValue6 constructs a new QScriptValue object.
 func NewQScriptValue6(engine *QScriptEngine, val uint) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new6(engine.cPointer(), (C.uint)(val)))
 }
 
 // NewQScriptValue7 constructs a new QScriptValue object.
 func NewQScriptValue7(engine *QScriptEngine, val float64) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptValue(C.QScriptValue_new7(engine.cPointer(), (C.double)(val)))
 }
 
 // NewQScriptValue8 constructs a new QScriptValue object.
 func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 	val_ms := C.struct_miqt_string{}
 	val_ms.data = C.CString(val)
 	val_ms.len = C.size_t(len(val))
@@ -144,7 +138,6 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 
 // NewQScriptValue9 constructs a new QScriptValue object.
 func NewQScriptValue9(engine *QScriptEngine, val string) *QScriptValue {
-	defer runtime.KeepAlive(engine)
 	val_Cstring := C.CString(val)
 	defer C.free(unsafe.Pointer(val_Cstring))
 

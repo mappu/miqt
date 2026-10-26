@@ -70,7 +70,6 @@ func UnsafeNewQChartView(h unsafe.Pointer) *QChartView {
 
 // NewQChartView constructs a new QChartView object.
 func NewQChartView(parent *qt6.QWidget) *QChartView {
-	defer runtime.KeepAlive(parent)
 
 	return newQChartView(C.QChartView_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -83,26 +82,21 @@ func NewQChartView2() *QChartView {
 
 // NewQChartView3 constructs a new QChartView object.
 func NewQChartView3(chart *QChart) *QChartView {
-	defer runtime.KeepAlive(chart)
 
 	return newQChartView(C.QChartView_new3(chart.cPointer()))
 }
 
 // NewQChartView4 constructs a new QChartView object.
 func NewQChartView4(chart *QChart, parent *qt6.QWidget) *QChartView {
-	defer runtime.KeepAlive(chart)
-	defer runtime.KeepAlive(parent)
 
 	return newQChartView(C.QChartView_new4(chart.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QChartView) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QChartView_metaObject(this.h)))
 }
 
 func (this *QChartView) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QChartView_metacast(this.h, param1_Cstring))
@@ -118,23 +112,18 @@ func QChartView_Tr(s string) string {
 }
 
 func (this *QChartView) SetRubberBand(rubberBands *QChartView__RubberBand) {
-	defer runtime.KeepAlive(this)
 	C.QChartView_setRubberBand(this.h, (*C.int)(unsafe.Pointer(rubberBands)))
 }
 
 func (this *QChartView) RubberBand() QChartView__RubberBand {
-	defer runtime.KeepAlive(this)
 	return (QChartView__RubberBand)(C.QChartView_rubberBand(this.h))
 }
 
 func (this *QChartView) Chart() *QChart {
-	defer runtime.KeepAlive(this)
 	return newQChart(C.QChartView_chart(this.h))
 }
 
 func (this *QChartView) SetChart(chart *QChart) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(chart)
 	C.QChartView_setChart(this.h, chart.cPointer())
 }
 
@@ -162,7 +151,6 @@ func QChartView_Tr3(s string, c string, n int) string {
 
 // SetViewportMargins can only be called from a QChartView that was directly constructed.
 func (this *QChartView) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QChartView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -175,7 +163,6 @@ func (this *QChartView) SetViewportMargins(left int, top int, right int, bottom 
 
 // ViewportMargins can only be called from a QChartView that was directly constructed.
 func (this *QChartView) ViewportMargins() qt6.QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QChartView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -192,7 +179,6 @@ func (this *QChartView) ViewportMargins() qt6.QMargins {
 
 // DrawFrame can only be called from a QChartView that was directly constructed.
 func (this *QChartView) DrawFrame(param1 *qt6.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -206,7 +192,6 @@ func (this *QChartView) DrawFrame(param1 *qt6.QPainter) {
 
 // UpdateMicroFocus can only be called from a QChartView that was directly constructed.
 func (this *QChartView) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QChartView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -219,7 +204,6 @@ func (this *QChartView) UpdateMicroFocus() {
 
 // Create can only be called from a QChartView that was directly constructed.
 func (this *QChartView) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QChartView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -232,7 +216,6 @@ func (this *QChartView) Create() {
 
 // Destroy can only be called from a QChartView that was directly constructed.
 func (this *QChartView) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QChartView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -245,7 +228,6 @@ func (this *QChartView) Destroy() {
 
 // FocusNextChild can only be called from a QChartView that was directly constructed.
 func (this *QChartView) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QChartView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -260,7 +242,6 @@ func (this *QChartView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QChartView that was directly constructed.
 func (this *QChartView) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QChartView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -275,7 +256,6 @@ func (this *QChartView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QChartView that was directly constructed.
 func (this *QChartView) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QChartView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -290,7 +270,6 @@ func (this *QChartView) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QChartView that was directly constructed.
 func (this *QChartView) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QChartView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -305,7 +284,6 @@ func (this *QChartView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QChartView that was directly constructed.
 func (this *QChartView) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -322,7 +300,6 @@ func (this *QChartView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QChartView that was directly constructed.
 func (this *QChartView) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -337,7 +314,6 @@ func (this *QChartView) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QChartView) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -365,7 +341,6 @@ func miqt_exec_callback_QChartView_resizeEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_MousePressEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -393,7 +368,6 @@ func miqt_exec_callback_QChartView_mousePressEvent(self *C.QChartView, cb C.intp
 }
 
 func (this *QChartView) callVirtualBase_MouseMoveEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -421,7 +395,6 @@ func miqt_exec_callback_QChartView_mouseMoveEvent(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_MouseReleaseEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -449,7 +422,6 @@ func miqt_exec_callback_QChartView_mouseReleaseEvent(self *C.QChartView, cb C.in
 }
 
 func (this *QChartView) callVirtualBase_SizeHint() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -478,7 +450,6 @@ func miqt_exec_callback_QChartView_sizeHint(self *C.QChartView, cb C.intptr_t) *
 }
 
 func (this *QChartView) callVirtualBase_InputMethodQuery(query qt6.InputMethodQuery) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QChartView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -510,8 +481,6 @@ func miqt_exec_callback_QChartView_inputMethodQuery(self *C.QChartView, cb C.int
 }
 
 func (this *QChartView) callVirtualBase_SetupViewport(widget *qt6.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 
 	C.QChartView_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -538,7 +507,6 @@ func miqt_exec_callback_QChartView_setupViewport(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QChartView_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -568,7 +536,6 @@ func miqt_exec_callback_QChartView_event(self *C.QChartView, cb C.intptr_t, even
 }
 
 func (this *QChartView) callVirtualBase_ViewportEvent(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QChartView_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -598,7 +565,6 @@ func miqt_exec_callback_QChartView_viewportEvent(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_ContextMenuEvent(event *qt6.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -626,7 +592,6 @@ func miqt_exec_callback_QChartView_contextMenuEvent(self *C.QChartView, cb C.int
 }
 
 func (this *QChartView) callVirtualBase_DragEnterEvent(event *qt6.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -654,7 +619,6 @@ func miqt_exec_callback_QChartView_dragEnterEvent(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_DragLeaveEvent(event *qt6.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -682,7 +646,6 @@ func miqt_exec_callback_QChartView_dragLeaveEvent(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_DragMoveEvent(event *qt6.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -710,7 +673,6 @@ func miqt_exec_callback_QChartView_dragMoveEvent(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_DropEvent(event *qt6.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -738,7 +700,6 @@ func miqt_exec_callback_QChartView_dropEvent(self *C.QChartView, cb C.intptr_t, 
 }
 
 func (this *QChartView) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -766,7 +727,6 @@ func miqt_exec_callback_QChartView_focusInEvent(self *C.QChartView, cb C.intptr_
 }
 
 func (this *QChartView) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QChartView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -795,7 +755,6 @@ func miqt_exec_callback_QChartView_focusNextPrevChild(self *C.QChartView, cb C.i
 }
 
 func (this *QChartView) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -823,7 +782,6 @@ func miqt_exec_callback_QChartView_focusOutEvent(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -851,7 +809,6 @@ func miqt_exec_callback_QChartView_keyPressEvent(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -879,7 +836,6 @@ func miqt_exec_callback_QChartView_keyReleaseEvent(self *C.QChartView, cb C.intp
 }
 
 func (this *QChartView) callVirtualBase_MouseDoubleClickEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -907,7 +863,6 @@ func miqt_exec_callback_QChartView_mouseDoubleClickEvent(self *C.QChartView, cb 
 }
 
 func (this *QChartView) callVirtualBase_WheelEvent(event *qt6.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -935,7 +890,6 @@ func miqt_exec_callback_QChartView_wheelEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -963,7 +917,6 @@ func miqt_exec_callback_QChartView_paintEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QChartView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -992,7 +945,6 @@ func miqt_exec_callback_QChartView_scrollContentsBy(self *C.QChartView, cb C.int
 }
 
 func (this *QChartView) callVirtualBase_ShowEvent(event *qt6.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1020,7 +972,6 @@ func miqt_exec_callback_QChartView_showEvent(self *C.QChartView, cb C.intptr_t, 
 }
 
 func (this *QChartView) callVirtualBase_InputMethodEvent(event *qt6.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
@@ -1048,7 +999,6 @@ func miqt_exec_callback_QChartView_inputMethodEvent(self *C.QChartView, cb C.int
 }
 
 func (this *QChartView) callVirtualBase_DrawBackground(painter *qt6.QPainter, rect *qt6.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 
@@ -1079,7 +1029,6 @@ func miqt_exec_callback_QChartView_drawBackground(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_DrawForeground(painter *qt6.QPainter, rect *qt6.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 
@@ -1110,7 +1059,6 @@ func miqt_exec_callback_QChartView_drawForeground(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_MinimumSizeHint() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1139,8 +1087,6 @@ func miqt_exec_callback_QChartView_minimumSizeHint(self *C.QChartView, cb C.intp
 }
 
 func (this *QChartView) callVirtualBase_EventFilter(param1 *qt6.QObject, param2 *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QChartView_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -1172,7 +1118,6 @@ func miqt_exec_callback_QChartView_eventFilter(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_ViewportSizeHint() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1201,7 +1146,6 @@ func miqt_exec_callback_QChartView_viewportSizeHint(self *C.QChartView, cb C.int
 }
 
 func (this *QChartView) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QChartView_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1229,7 +1173,6 @@ func miqt_exec_callback_QChartView_changeEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_InitStyleOption(option *qt6.QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QChartView_virtualbase_initStyleOption(unsafe.Pointer(this.h), (*C.QStyleOptionFrame)(option.UnsafePointer()))
@@ -1257,7 +1200,6 @@ func miqt_exec_callback_QChartView_initStyleOption(self *C.QChartView, cb C.intp
 }
 
 func (this *QChartView) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QChartView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1283,7 +1225,6 @@ func miqt_exec_callback_QChartView_devType(self *C.QChartView, cb C.intptr_t) C.
 }
 
 func (this *QChartView) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QChartView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1310,7 +1251,6 @@ func miqt_exec_callback_QChartView_setVisible(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QChartView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1339,7 +1279,6 @@ func miqt_exec_callback_QChartView_heightForWidth(self *C.QChartView, cb C.intpt
 }
 
 func (this *QChartView) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QChartView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1365,7 +1304,6 @@ func miqt_exec_callback_QChartView_hasHeightForWidth(self *C.QChartView, cb C.in
 }
 
 func (this *QChartView) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QChartView_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1392,7 +1330,6 @@ func miqt_exec_callback_QChartView_paintEngine(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEnterEvent)(event.UnsafePointer()))
@@ -1420,7 +1357,6 @@ func miqt_exec_callback_QChartView_enterEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1448,7 +1384,6 @@ func miqt_exec_callback_QChartView_leaveEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1476,7 +1411,6 @@ func miqt_exec_callback_QChartView_moveEvent(self *C.QChartView, cb C.intptr_t, 
 }
 
 func (this *QChartView) callVirtualBase_CloseEvent(event *qt6.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1504,7 +1438,6 @@ func miqt_exec_callback_QChartView_closeEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_TabletEvent(event *qt6.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1532,7 +1465,6 @@ func miqt_exec_callback_QChartView_tabletEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_ActionEvent(event *qt6.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1560,7 +1492,6 @@ func miqt_exec_callback_QChartView_actionEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_HideEvent(event *qt6.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1588,7 +1519,6 @@ func miqt_exec_callback_QChartView_hideEvent(self *C.QChartView, cb C.intptr_t, 
 }
 
 func (this *QChartView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1630,7 +1560,6 @@ func miqt_exec_callback_QChartView_nativeEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QChartView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1659,7 +1588,6 @@ func miqt_exec_callback_QChartView_metric(self *C.QChartView, cb C.intptr_t, par
 }
 
 func (this *QChartView) callVirtualBase_InitPainter(painter *qt6.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QChartView_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1687,7 +1615,6 @@ func miqt_exec_callback_QChartView_initPainter(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QChartView_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1718,7 +1645,6 @@ func miqt_exec_callback_QChartView_redirected(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_SharedPainter() *qt6.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QChartView_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1745,7 +1671,6 @@ func miqt_exec_callback_QChartView_sharedPainter(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1773,7 +1698,6 @@ func miqt_exec_callback_QChartView_timerEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1801,7 +1725,6 @@ func miqt_exec_callback_QChartView_childEvent(self *C.QChartView, cb C.intptr_t,
 }
 
 func (this *QChartView) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QChartView_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1829,7 +1752,6 @@ func miqt_exec_callback_QChartView_customEvent(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QChartView_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1857,7 +1779,6 @@ func miqt_exec_callback_QChartView_connectNotify(self *C.QChartView, cb C.intptr
 }
 
 func (this *QChartView) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QChartView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1892,6 +1813,8 @@ func (this *QChartView) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QChartView) GoGC() {
 	if this.gc != nil {
 		return

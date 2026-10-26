@@ -79,7 +79,6 @@ func (this *QGraphicsSceneEvent) Widget() *QWidget {
 
 func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsSceneEvent_setWidget(this.h, widget.cPointer())
 }
 
@@ -1420,7 +1419,6 @@ func (this *QGraphicsSceneDragDropEvent) Source() *QWidget {
 
 func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 	C.QGraphicsSceneDragDropEvent_setSource(this.h, source.cPointer())
 }
 
@@ -1431,7 +1429,6 @@ func (this *QGraphicsSceneDragDropEvent) MimeData() *QMimeData {
 
 func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	C.QGraphicsSceneDragDropEvent_setMimeData(this.h, data.cPointer())
 }
 

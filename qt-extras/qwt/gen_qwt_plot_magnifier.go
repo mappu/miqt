@@ -61,18 +61,15 @@ func UnsafeNewQwtPlotMagnifier(h unsafe.Pointer) *QwtPlotMagnifier {
 
 // NewQwtPlotMagnifier constructs a new QwtPlotMagnifier object.
 func NewQwtPlotMagnifier(param1 *qt.QWidget) *QwtPlotMagnifier {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtPlotMagnifier(C.QwtPlotMagnifier_new((*C.QWidget)(param1.UnsafePointer())))
 }
 
 func (this *QwtPlotMagnifier) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtPlotMagnifier_metaObject(this.h)))
 }
 
 func (this *QwtPlotMagnifier) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtPlotMagnifier_metacast(this.h, param1_Cstring))
@@ -97,32 +94,26 @@ func QwtPlotMagnifier_TrUtf8(s string) string {
 }
 
 func (this *QwtPlotMagnifier) SetAxisEnabled(axis int, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotMagnifier_setAxisEnabled(this.h, (C.int)(axis), (C.bool)(on))
 }
 
 func (this *QwtPlotMagnifier) IsAxisEnabled(axis int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotMagnifier_isAxisEnabled(this.h, (C.int)(axis)))
 }
 
 func (this *QwtPlotMagnifier) Canvas() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotMagnifier_canvas(this.h)))
 }
 
 func (this *QwtPlotMagnifier) Canvas2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotMagnifier_canvas2(this.h)))
 }
 
 func (this *QwtPlotMagnifier) Plot() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotMagnifier_plot(this.h))
 }
 
 func (this *QwtPlotMagnifier) Plot2() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotMagnifier_plot2(this.h))
 }
 
@@ -172,7 +163,6 @@ func QwtPlotMagnifier_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QwtPlotMagnifier that was directly constructed.
 func (this *QwtPlotMagnifier) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPlotMagnifier_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -187,7 +177,6 @@ func (this *QwtPlotMagnifier) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPlotMagnifier that was directly constructed.
 func (this *QwtPlotMagnifier) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPlotMagnifier_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -202,7 +191,6 @@ func (this *QwtPlotMagnifier) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPlotMagnifier that was directly constructed.
 func (this *QwtPlotMagnifier) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -219,7 +207,6 @@ func (this *QwtPlotMagnifier) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPlotMagnifier that was directly constructed.
 func (this *QwtPlotMagnifier) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -234,7 +221,6 @@ func (this *QwtPlotMagnifier) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_Rescale(factor float64) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotMagnifier_virtualbase_rescale(unsafe.Pointer(this.h), (C.double)(factor))
 
@@ -261,8 +247,6 @@ func miqt_exec_callback_QwtPlotMagnifier_rescale(self *C.QwtPlotMagnifier, cb C.
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotMagnifier_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -294,7 +278,6 @@ func miqt_exec_callback_QwtPlotMagnifier_eventFilter(self *C.QwtPlotMagnifier, c
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -322,7 +305,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetMousePressEvent(self *C.QwtPlotMa
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -350,7 +332,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetMouseReleaseEvent(self *C.QwtPlot
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -378,7 +359,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetMouseMoveEvent(self *C.QwtPlotMag
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetWheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetWheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -406,7 +386,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetWheelEvent(self *C.QwtPlotMagnifi
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -434,7 +413,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetKeyPressEvent(self *C.QwtPlotMagn
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotMagnifier_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -462,7 +440,6 @@ func miqt_exec_callback_QwtPlotMagnifier_widgetKeyReleaseEvent(self *C.QwtPlotMa
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPlotMagnifier_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -492,7 +469,6 @@ func miqt_exec_callback_QwtPlotMagnifier_event(self *C.QwtPlotMagnifier, cb C.in
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotMagnifier_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -520,7 +496,6 @@ func miqt_exec_callback_QwtPlotMagnifier_timerEvent(self *C.QwtPlotMagnifier, cb
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotMagnifier_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -548,7 +523,6 @@ func miqt_exec_callback_QwtPlotMagnifier_childEvent(self *C.QwtPlotMagnifier, cb
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotMagnifier_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -576,7 +550,6 @@ func miqt_exec_callback_QwtPlotMagnifier_customEvent(self *C.QwtPlotMagnifier, c
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotMagnifier_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -604,7 +577,6 @@ func miqt_exec_callback_QwtPlotMagnifier_connectNotify(self *C.QwtPlotMagnifier,
 }
 
 func (this *QwtPlotMagnifier) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotMagnifier_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -639,6 +611,8 @@ func (this *QwtPlotMagnifier) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtPlotMagnifier) GoGC() {
 	if this.gc != nil {
 		return

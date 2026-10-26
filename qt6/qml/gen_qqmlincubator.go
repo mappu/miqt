@@ -197,7 +197,6 @@ func miqt_exec_callback_QQmlIncubator_statusChanged(self *C.QQmlIncubator, cb C.
 
 func (this *QQmlIncubator) callVirtualBase_SetInitialState(initialState *qt6.QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(initialState)
 
 	C.QQmlIncubator_virtualbase_setInitialState(unsafe.Pointer(this.h), (*C.QObject)(initialState.UnsafePointer()))
 

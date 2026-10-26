@@ -62,7 +62,6 @@ func UnsafeNewQDebug(h unsafe.Pointer) *QDebug {
 
 // NewQDebug constructs a new QDebug object.
 func NewQDebug(device *QIODevice) *QDebug {
-	defer runtime.KeepAlive(device)
 
 	return newQDebug(C.QDebug_new(device.cPointer()))
 }

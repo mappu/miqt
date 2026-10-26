@@ -66,18 +66,15 @@ func NewQConcatenateTablesProxyModel() *QConcatenateTablesProxyModel {
 
 // NewQConcatenateTablesProxyModel2 constructs a new QConcatenateTablesProxyModel object.
 func NewQConcatenateTablesProxyModel2(parent *QObject) *QConcatenateTablesProxyModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new2(parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QConcatenateTablesProxyModel_metaObject(this.h))
 }
 
 func (this *QConcatenateTablesProxyModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QConcatenateTablesProxyModel_metacast(this.h, param1_Cstring))
@@ -93,7 +90,6 @@ func QConcatenateTablesProxyModel_Tr(s string) string {
 }
 
 func (this *QConcatenateTablesProxyModel) SourceModels() []*QAbstractItemModel {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_sourceModels(this.h)
 	_ret := make([]*QAbstractItemModel, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractItemModel)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -104,19 +100,14 @@ func (this *QConcatenateTablesProxyModel) SourceModels() []*QAbstractItemModel {
 }
 
 func (this *QConcatenateTablesProxyModel) AddSourceModel(sourceModel *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sourceModel)
 	C.QConcatenateTablesProxyModel_addSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QConcatenateTablesProxyModel) RemoveSourceModel(sourceModel *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sourceModel)
 	C.QConcatenateTablesProxyModel_removeSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QConcatenateTablesProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceIndex)
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -124,7 +115,6 @@ func (this *QConcatenateTablesProxyModel) MapFromSource(sourceIndex *QModelIndex
 }
 
 func (this *QConcatenateTablesProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -132,7 +122,6 @@ func (this *QConcatenateTablesProxyModel) MapToSource(proxyIndex *QModelIndex) *
 }
 
 func (this *QConcatenateTablesProxyModel) Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QConcatenateTablesProxyModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -140,14 +129,12 @@ func (this *QConcatenateTablesProxyModel) Data(index *QModelIndex, role int) *QV
 }
 
 func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 	return (bool)(C.QConcatenateTablesProxyModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_itemData(this.h, proxyIndex.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -166,7 +153,6 @@ func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex *QModelIndex) map[
 }
 
 func (this *QConcatenateTablesProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -190,13 +176,11 @@ func (this *QConcatenateTablesProxyModel) SetItemData(index *QModelIndex, roles 
 }
 
 func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QConcatenateTablesProxyModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -204,7 +188,6 @@ func (this *QConcatenateTablesProxyModel) Index(row int, column int, parent *QMo
 }
 
 func (this *QConcatenateTablesProxyModel) Parent(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_parent(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -212,26 +195,22 @@ func (this *QConcatenateTablesProxyModel) Parent(index *QModelIndex) *QModelInde
 }
 
 func (this *QConcatenateTablesProxyModel) RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QConcatenateTablesProxyModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QConcatenateTablesProxyModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QConcatenateTablesProxyModel) ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QConcatenateTablesProxyModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -245,7 +224,6 @@ func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
 }
 
 func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -258,21 +236,16 @@ func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMime
 }
 
 func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QConcatenateTablesProxyModel_canDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QConcatenateTablesProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QConcatenateTablesProxyModel_span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -303,7 +276,6 @@ func QConcatenateTablesProxyModel_Tr3(s string, c string, n int) string {
 
 // CreateIndex can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -320,7 +292,6 @@ func (this *QConcatenateTablesProxyModel) CreateIndex(row int, column int) QMode
 
 // EncodeData can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -342,7 +313,6 @@ func (this *QConcatenateTablesProxyModel) EncodeData(indexes []QModelIndex, stre
 
 // DecodeData can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -359,7 +329,6 @@ func (this *QConcatenateTablesProxyModel) DecodeData(row int, column int, parent
 
 // BeginInsertRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -373,7 +342,6 @@ func (this *QConcatenateTablesProxyModel) BeginInsertRows(parent *QModelIndex, f
 
 // EndInsertRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -386,7 +354,6 @@ func (this *QConcatenateTablesProxyModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -400,7 +367,6 @@ func (this *QConcatenateTablesProxyModel) BeginRemoveRows(parent *QModelIndex, f
 
 // EndRemoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -413,7 +379,6 @@ func (this *QConcatenateTablesProxyModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -430,7 +395,6 @@ func (this *QConcatenateTablesProxyModel) BeginMoveRows(sourceParent *QModelInde
 
 // EndMoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -443,7 +407,6 @@ func (this *QConcatenateTablesProxyModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -457,7 +420,6 @@ func (this *QConcatenateTablesProxyModel) BeginInsertColumns(parent *QModelIndex
 
 // EndInsertColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -470,7 +432,6 @@ func (this *QConcatenateTablesProxyModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -484,7 +445,6 @@ func (this *QConcatenateTablesProxyModel) BeginRemoveColumns(parent *QModelIndex
 
 // EndRemoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -497,7 +457,6 @@ func (this *QConcatenateTablesProxyModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -514,7 +473,6 @@ func (this *QConcatenateTablesProxyModel) BeginMoveColumns(sourceParent *QModelI
 
 // EndMoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -527,7 +485,6 @@ func (this *QConcatenateTablesProxyModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -540,7 +497,6 @@ func (this *QConcatenateTablesProxyModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QConcatenateTablesProxyModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -553,7 +509,6 @@ func (this *QConcatenateTablesProxyModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -568,7 +523,6 @@ func (this *QConcatenateTablesProxyModel) ChangePersistentIndex(from *QModelInde
 
 // ChangePersistentIndexList can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -597,7 +551,6 @@ func (this *QConcatenateTablesProxyModel) ChangePersistentIndexList(from []QMode
 
 // PersistentIndexList can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -620,7 +573,6 @@ func (this *QConcatenateTablesProxyModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QConcatenateTablesProxyModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -635,7 +587,6 @@ func (this *QConcatenateTablesProxyModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -650,7 +601,6 @@ func (this *QConcatenateTablesProxyModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -667,7 +617,6 @@ func (this *QConcatenateTablesProxyModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -682,7 +631,6 @@ func (this *QConcatenateTablesProxyModel) IsSignalConnected(signal *QMetaMethod)
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQVariant(C.QConcatenateTablesProxyModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
@@ -717,7 +665,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_data(self *C.QConcatenateTa
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -752,7 +699,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_setData(self *C.QConcatenat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ItemData(proxyIndex *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 
 	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), proxyIndex.cPointer())
@@ -811,7 +757,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_itemData(self *C.QConcatena
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -874,7 +819,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QConcatenateTablesProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -904,7 +848,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_flags(self *C.QConcatenateT
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -941,7 +884,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_index(self *C.QConcatenateT
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Parent(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_parent(unsafe.Pointer(this.h), index.cPointer()))
@@ -974,7 +916,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_parent(self *C.QConcatenate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QConcatenateTablesProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1004,7 +945,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(self *C.QConcatena
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QConcatenateTablesProxyModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1040,7 +980,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_headerData(self *C.QConcate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QConcatenateTablesProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1070,7 +1009,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1114,7 +1052,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_mimeTypes(self *C.QConcaten
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -1153,15 +1090,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(self *C.QConcatena
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1199,8 +1133,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(self *C.QCo
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1238,7 +1170,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(self *C.QConca
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QConcatenateTablesProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -1271,7 +1202,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_span(self *C.QConcatenateTa
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -1308,7 +1238,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_sibling(self *C.QConcatenat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1338,7 +1267,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -1374,7 +1302,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_setHeaderData(self *C.QConc
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
@@ -1404,7 +1331,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_clearItemData(self *C.QConc
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QConcatenateTablesProxyModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1430,7 +1356,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_supportedDropActions(self *
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QConcatenateTablesProxyModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1456,7 +1381,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_supportedDragActions(self *
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -1490,7 +1414,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(self *C.QConcate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1524,7 +1447,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(self *C.QConc
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -1558,7 +1480,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(self *C.QConcate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1592,7 +1513,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(self *C.QConc
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1631,7 +1551,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(self *C.QConcatena
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1670,7 +1589,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QConcatenateTablesProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -1698,7 +1616,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(self *C.QConcaten
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1728,7 +1645,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(self *C.QConca
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QConcatenateTablesProxyModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1757,7 +1673,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_sort(self *C.QConcatenateTa
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -1790,7 +1705,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_buddy(self *C.QConcatenateT
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -1844,7 +1758,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_match(self *C.QConcatenateT
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -1905,7 +1818,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_roleNames(self *C.QConcaten
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roleDataSpan)
 
@@ -1938,7 +1850,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_multiData(self *C.QConcaten
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1964,7 +1875,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_submit(self *C.QConcatenate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QConcatenateTablesProxyModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1988,7 +1898,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_revert(self *C.QConcatenate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	C.QConcatenateTablesProxyModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -2012,7 +1921,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_resetInternalData(self *C.Q
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2042,8 +1950,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_event(self *C.QConcatenateT
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2075,7 +1981,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_eventFilter(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QConcatenateTablesProxyModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2103,7 +2008,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_timerEvent(self *C.QConcate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QConcatenateTablesProxyModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2131,7 +2035,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_childEvent(self *C.QConcate
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QConcatenateTablesProxyModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2159,7 +2062,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_customEvent(self *C.QConcat
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QConcatenateTablesProxyModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2187,7 +2089,6 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_connectNotify(self *C.QConc
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QConcatenateTablesProxyModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2222,6 +2123,8 @@ func (this *QConcatenateTablesProxyModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QConcatenateTablesProxyModel) GoGC() {
 	if this.gc != nil {
 		return

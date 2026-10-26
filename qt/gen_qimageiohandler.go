@@ -107,7 +107,6 @@ func NewQImageIOHandler() *QImageIOHandler {
 
 func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QImageIOHandler_setDevice(this.h, device.cPointer())
 }
 
@@ -684,18 +683,15 @@ func NewQImageIOPlugin() *QImageIOPlugin {
 
 // NewQImageIOPlugin2 constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
-	defer runtime.KeepAlive(parent)
 
 	return newQImageIOPlugin(C.QImageIOPlugin_new2(parent.cPointer()))
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QImageIOPlugin_metaObject(this.h))
 }
 
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QImageIOPlugin_metacast(this.h, param1_Cstring))
@@ -720,8 +716,6 @@ func QImageIOPlugin_TrUtf8(s string) string {
 }
 
 func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImageIOPlugin__Capability {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -733,8 +727,6 @@ func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImag
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHandler {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -791,7 +783,6 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QImageIOPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -806,7 +797,6 @@ func (this *QImageIOPlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QImageIOPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -821,7 +811,6 @@ func (this *QImageIOPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -838,7 +827,6 @@ func (this *QImageIOPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QImageIOPlugin that was directly constructed.
 func (this *QImageIOPlugin) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -908,7 +896,6 @@ func miqt_exec_callback_QImageIOPlugin_create(self *C.QImageIOPlugin, cb C.intpt
 }
 
 func (this *QImageIOPlugin) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QImageIOPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -938,8 +925,6 @@ func miqt_exec_callback_QImageIOPlugin_event(self *C.QImageIOPlugin, cb C.intptr
 }
 
 func (this *QImageIOPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QImageIOPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -971,7 +956,6 @@ func miqt_exec_callback_QImageIOPlugin_eventFilter(self *C.QImageIOPlugin, cb C.
 }
 
 func (this *QImageIOPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -999,7 +983,6 @@ func miqt_exec_callback_QImageIOPlugin_timerEvent(self *C.QImageIOPlugin, cb C.i
 }
 
 func (this *QImageIOPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1027,7 +1010,6 @@ func miqt_exec_callback_QImageIOPlugin_childEvent(self *C.QImageIOPlugin, cb C.i
 }
 
 func (this *QImageIOPlugin) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QImageIOPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1055,7 +1037,6 @@ func miqt_exec_callback_QImageIOPlugin_customEvent(self *C.QImageIOPlugin, cb C.
 }
 
 func (this *QImageIOPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QImageIOPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1083,7 +1064,6 @@ func miqt_exec_callback_QImageIOPlugin_connectNotify(self *C.QImageIOPlugin, cb 
 }
 
 func (this *QImageIOPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QImageIOPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1118,6 +1098,8 @@ func (this *QImageIOPlugin) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QImageIOPlugin) GoGC() {
 	if this.gc != nil {
 		return

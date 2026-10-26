@@ -60,7 +60,6 @@ func UnsafeNewQShortcut(h unsafe.Pointer) *QShortcut {
 
 // NewQShortcut constructs a new QShortcut object.
 func NewQShortcut(parent *QWidget) *QShortcut {
-	defer runtime.KeepAlive(parent)
 
 	return newQShortcut(C.QShortcut_new(parent.cPointer()))
 }
@@ -68,7 +67,6 @@ func NewQShortcut(parent *QWidget) *QShortcut {
 // NewQShortcut2 constructs a new QShortcut object.
 func NewQShortcut2(key *QKeySequence, parent *QWidget) *QShortcut {
 	defer runtime.KeepAlive(key)
-	defer runtime.KeepAlive(parent)
 
 	return newQShortcut(C.QShortcut_new2(key.cPointer(), parent.cPointer()))
 }
@@ -76,7 +74,6 @@ func NewQShortcut2(key *QKeySequence, parent *QWidget) *QShortcut {
 // NewQShortcut3 constructs a new QShortcut object.
 func NewQShortcut3(key *QKeySequence, parent *QWidget, member string) *QShortcut {
 	defer runtime.KeepAlive(key)
-	defer runtime.KeepAlive(parent)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 
@@ -86,7 +83,6 @@ func NewQShortcut3(key *QKeySequence, parent *QWidget, member string) *QShortcut
 // NewQShortcut4 constructs a new QShortcut object.
 func NewQShortcut4(key *QKeySequence, parent *QWidget, member string, ambiguousMember string) *QShortcut {
 	defer runtime.KeepAlive(key)
-	defer runtime.KeepAlive(parent)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
@@ -98,7 +94,6 @@ func NewQShortcut4(key *QKeySequence, parent *QWidget, member string, ambiguousM
 // NewQShortcut5 constructs a new QShortcut object.
 func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousMember string, shortcutContext ShortcutContext) *QShortcut {
 	defer runtime.KeepAlive(key)
-	defer runtime.KeepAlive(parent)
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
@@ -108,12 +103,10 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QShortcut_metaObject(this.h))
 }
 
 func (this *QShortcut) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QShortcut_metacast(this.h, param1_Cstring))
@@ -138,40 +131,33 @@ func QShortcut_TrUtf8(s string) string {
 }
 
 func (this *QShortcut) SetKey(key *QKeySequence) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(key)
 	C.QShortcut_setKey(this.h, key.cPointer())
 }
 
 func (this *QShortcut) Key() *QKeySequence {
-	defer runtime.KeepAlive(this)
 	_goptr := newQKeySequence(C.QShortcut_key(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QShortcut) SetEnabled(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QShortcut_setEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QShortcut) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QShortcut_isEnabled(this.h))
 }
 
 func (this *QShortcut) SetContext(context ShortcutContext) {
-	defer runtime.KeepAlive(this)
 	C.QShortcut_setContext(this.h, (C.int)(context))
 }
 
 func (this *QShortcut) Context() ShortcutContext {
-	defer runtime.KeepAlive(this)
 	return (ShortcutContext)(C.QShortcut_context(this.h))
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -180,7 +166,6 @@ func (this *QShortcut) SetWhatsThis(text string) {
 }
 
 func (this *QShortcut) WhatsThis() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QShortcut_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -188,27 +173,22 @@ func (this *QShortcut) WhatsThis() string {
 }
 
 func (this *QShortcut) SetAutoRepeat(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QShortcut_setAutoRepeat(this.h, (C.bool)(on))
 }
 
 func (this *QShortcut) AutoRepeat() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QShortcut_autoRepeat(this.h))
 }
 
 func (this *QShortcut) Id() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QShortcut_id(this.h))
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QShortcut_parentWidget(this.h))
 }
 
 func (this *QShortcut) Activated() {
-	defer runtime.KeepAlive(this)
 	C.QShortcut_activated(this.h)
 }
 func (this *QShortcut) OnActivated(slot func()) {
@@ -226,7 +206,6 @@ func miqt_exec_callback_QShortcut_activated(cb C.intptr_t) {
 }
 
 func (this *QShortcut) ActivatedAmbiguously() {
-	defer runtime.KeepAlive(this)
 	C.QShortcut_activatedAmbiguously(this.h)
 }
 func (this *QShortcut) OnActivatedAmbiguously(slot func()) {
@@ -289,7 +268,6 @@ func QShortcut_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QShortcut that was directly constructed.
 func (this *QShortcut) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QShortcut_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -304,7 +282,6 @@ func (this *QShortcut) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QShortcut that was directly constructed.
 func (this *QShortcut) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QShortcut_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -319,7 +296,6 @@ func (this *QShortcut) SenderSignalIndex() int {
 
 // Receivers can only be called from a QShortcut that was directly constructed.
 func (this *QShortcut) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -336,7 +312,6 @@ func (this *QShortcut) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QShortcut that was directly constructed.
 func (this *QShortcut) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -351,7 +326,6 @@ func (this *QShortcut) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QShortcut) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QShortcut_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -381,8 +355,6 @@ func miqt_exec_callback_QShortcut_event(self *C.QShortcut, cb C.intptr_t, e *C.Q
 }
 
 func (this *QShortcut) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QShortcut_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -414,7 +386,6 @@ func miqt_exec_callback_QShortcut_eventFilter(self *C.QShortcut, cb C.intptr_t, 
 }
 
 func (this *QShortcut) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QShortcut_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -442,7 +413,6 @@ func miqt_exec_callback_QShortcut_timerEvent(self *C.QShortcut, cb C.intptr_t, e
 }
 
 func (this *QShortcut) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QShortcut_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -470,7 +440,6 @@ func miqt_exec_callback_QShortcut_childEvent(self *C.QShortcut, cb C.intptr_t, e
 }
 
 func (this *QShortcut) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QShortcut_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -498,7 +467,6 @@ func miqt_exec_callback_QShortcut_customEvent(self *C.QShortcut, cb C.intptr_t, 
 }
 
 func (this *QShortcut) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QShortcut_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -526,7 +494,6 @@ func miqt_exec_callback_QShortcut_connectNotify(self *C.QShortcut, cb C.intptr_t
 }
 
 func (this *QShortcut) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QShortcut_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -561,6 +528,8 @@ func (this *QShortcut) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QShortcut) GoGC() {
 	if this.gc != nil {
 		return

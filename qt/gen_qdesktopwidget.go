@@ -65,12 +65,10 @@ func NewQDesktopWidget() *QDesktopWidget {
 }
 
 func (this *QDesktopWidget) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDesktopWidget_metaObject(this.h))
 }
 
 func (this *QDesktopWidget) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesktopWidget_metacast(this.h, param1_Cstring))
@@ -95,66 +93,53 @@ func QDesktopWidget_TrUtf8(s string) string {
 }
 
 func (this *QDesktopWidget) ScreenNumber() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesktopWidget_screenNumber(this.h))
 }
 
 func (this *QDesktopWidget) ScreenGeometry(widget *QWidget) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QDesktopWidget_screenGeometry(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometry(widget *QWidget) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QDesktopWidget_availableGeometry(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) IsVirtualDesktop() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesktopWidget_isVirtualDesktop(this.h))
 }
 
 func (this *QDesktopWidget) NumScreens() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesktopWidget_numScreens(this.h))
 }
 
 func (this *QDesktopWidget) ScreenCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesktopWidget_screenCount(this.h))
 }
 
 func (this *QDesktopWidget) PrimaryScreen() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesktopWidget_primaryScreen(this.h))
 }
 
 func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 *QPoint) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return (int)(C.QDesktopWidget_screenNumberWithQPoint(this.h, param1.cPointer()))
 }
 
 func (this *QDesktopWidget) Screen() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QDesktopWidget_screen(this.h))
 }
 
 func (this *QDesktopWidget) ScreenGeometry2() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QDesktopWidget_screenGeometry2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) ScreenGeometryWithPoint(point *QPoint) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	_goptr := newQRect(C.QDesktopWidget_screenGeometryWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -162,14 +147,12 @@ func (this *QDesktopWidget) ScreenGeometryWithPoint(point *QPoint) *QRect {
 }
 
 func (this *QDesktopWidget) AvailableGeometry2() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QDesktopWidget_availableGeometry2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometryWithPoint(point *QPoint) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	_goptr := newQRect(C.QDesktopWidget_availableGeometryWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -177,7 +160,6 @@ func (this *QDesktopWidget) AvailableGeometryWithPoint(point *QPoint) *QRect {
 }
 
 func (this *QDesktopWidget) Resized(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QDesktopWidget_resized(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnResized(slot func(param1 int)) {
@@ -198,7 +180,6 @@ func miqt_exec_callback_QDesktopWidget_resized(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QDesktopWidget) WorkAreaResized(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QDesktopWidget_workAreaResized(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnWorkAreaResized(slot func(param1 int)) {
@@ -219,7 +200,6 @@ func miqt_exec_callback_QDesktopWidget_workAreaResized(cb C.intptr_t, param1 C.i
 }
 
 func (this *QDesktopWidget) ScreenCountChanged(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QDesktopWidget_screenCountChanged(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnScreenCountChanged(slot func(param1 int)) {
@@ -240,7 +220,6 @@ func miqt_exec_callback_QDesktopWidget_screenCountChanged(cb C.intptr_t, param1 
 }
 
 func (this *QDesktopWidget) PrimaryScreenChanged() {
-	defer runtime.KeepAlive(this)
 	C.QDesktopWidget_primaryScreenChanged(this.h)
 }
 func (this *QDesktopWidget) OnPrimaryScreenChanged(slot func()) {
@@ -302,25 +281,20 @@ func QDesktopWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDesktopWidget) ScreenNumberWithWidget(widget *QWidget) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QDesktopWidget_screenNumberWithWidget(this.h, widget.cPointer()))
 }
 
 func (this *QDesktopWidget) ScreenWithScreen(screen int) *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QDesktopWidget_screenWithScreen(this.h, (C.int)(screen)))
 }
 
 func (this *QDesktopWidget) ScreenGeometryWithScreen(screen int) *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QDesktopWidget_screenGeometryWithScreen(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometryWithScreen(screen int) *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QDesktopWidget_availableGeometryWithScreen(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -328,7 +302,6 @@ func (this *QDesktopWidget) AvailableGeometryWithScreen(screen int) *QRect {
 
 // UpdateMicroFocus can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesktopWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -341,7 +314,6 @@ func (this *QDesktopWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesktopWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -354,7 +326,6 @@ func (this *QDesktopWidget) Create() {
 
 // Destroy can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesktopWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -367,7 +338,6 @@ func (this *QDesktopWidget) Destroy() {
 
 // FocusNextChild can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesktopWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -382,7 +352,6 @@ func (this *QDesktopWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesktopWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -397,7 +366,6 @@ func (this *QDesktopWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDesktopWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -412,7 +380,6 @@ func (this *QDesktopWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesktopWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -427,7 +394,6 @@ func (this *QDesktopWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -444,7 +410,6 @@ func (this *QDesktopWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesktopWidget that was directly constructed.
 func (this *QDesktopWidget) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -459,7 +424,6 @@ func (this *QDesktopWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDesktopWidget) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QDesktopWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -487,7 +451,6 @@ func miqt_exec_callback_QDesktopWidget_resizeEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesktopWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -513,7 +476,6 @@ func miqt_exec_callback_QDesktopWidget_devType(self *C.QDesktopWidget, cb C.intp
 }
 
 func (this *QDesktopWidget) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDesktopWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -540,7 +502,6 @@ func miqt_exec_callback_QDesktopWidget_setVisible(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDesktopWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -569,7 +530,6 @@ func miqt_exec_callback_QDesktopWidget_sizeHint(self *C.QDesktopWidget, cb C.int
 }
 
 func (this *QDesktopWidget) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDesktopWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -598,7 +558,6 @@ func miqt_exec_callback_QDesktopWidget_minimumSizeHint(self *C.QDesktopWidget, c
 }
 
 func (this *QDesktopWidget) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesktopWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -627,7 +586,6 @@ func miqt_exec_callback_QDesktopWidget_heightForWidth(self *C.QDesktopWidget, cb
 }
 
 func (this *QDesktopWidget) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesktopWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -653,7 +611,6 @@ func miqt_exec_callback_QDesktopWidget_hasHeightForWidth(self *C.QDesktopWidget,
 }
 
 func (this *QDesktopWidget) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDesktopWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -680,7 +637,6 @@ func miqt_exec_callback_QDesktopWidget_paintEngine(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesktopWidget_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -710,7 +666,6 @@ func miqt_exec_callback_QDesktopWidget_event(self *C.QDesktopWidget, cb C.intptr
 }
 
 func (this *QDesktopWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -738,7 +693,6 @@ func miqt_exec_callback_QDesktopWidget_mousePressEvent(self *C.QDesktopWidget, c
 }
 
 func (this *QDesktopWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -766,7 +720,6 @@ func miqt_exec_callback_QDesktopWidget_mouseReleaseEvent(self *C.QDesktopWidget,
 }
 
 func (this *QDesktopWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -794,7 +747,6 @@ func miqt_exec_callback_QDesktopWidget_mouseDoubleClickEvent(self *C.QDesktopWid
 }
 
 func (this *QDesktopWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -822,7 +774,6 @@ func miqt_exec_callback_QDesktopWidget_mouseMoveEvent(self *C.QDesktopWidget, cb
 }
 
 func (this *QDesktopWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -850,7 +801,6 @@ func miqt_exec_callback_QDesktopWidget_wheelEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -878,7 +828,6 @@ func miqt_exec_callback_QDesktopWidget_keyPressEvent(self *C.QDesktopWidget, cb 
 }
 
 func (this *QDesktopWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -906,7 +855,6 @@ func miqt_exec_callback_QDesktopWidget_keyReleaseEvent(self *C.QDesktopWidget, c
 }
 
 func (this *QDesktopWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -934,7 +882,6 @@ func miqt_exec_callback_QDesktopWidget_focusInEvent(self *C.QDesktopWidget, cb C
 }
 
 func (this *QDesktopWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -962,7 +909,6 @@ func miqt_exec_callback_QDesktopWidget_focusOutEvent(self *C.QDesktopWidget, cb 
 }
 
 func (this *QDesktopWidget) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -990,7 +936,6 @@ func miqt_exec_callback_QDesktopWidget_enterEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1018,7 +963,6 @@ func miqt_exec_callback_QDesktopWidget_leaveEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1046,7 +990,6 @@ func miqt_exec_callback_QDesktopWidget_paintEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1074,7 +1017,6 @@ func miqt_exec_callback_QDesktopWidget_moveEvent(self *C.QDesktopWidget, cb C.in
 }
 
 func (this *QDesktopWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1102,7 +1044,6 @@ func miqt_exec_callback_QDesktopWidget_closeEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1130,7 +1071,6 @@ func miqt_exec_callback_QDesktopWidget_contextMenuEvent(self *C.QDesktopWidget, 
 }
 
 func (this *QDesktopWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1158,7 +1098,6 @@ func miqt_exec_callback_QDesktopWidget_tabletEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1186,7 +1125,6 @@ func miqt_exec_callback_QDesktopWidget_actionEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1214,7 +1152,6 @@ func miqt_exec_callback_QDesktopWidget_dragEnterEvent(self *C.QDesktopWidget, cb
 }
 
 func (this *QDesktopWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1242,7 +1179,6 @@ func miqt_exec_callback_QDesktopWidget_dragMoveEvent(self *C.QDesktopWidget, cb 
 }
 
 func (this *QDesktopWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1270,7 +1206,6 @@ func miqt_exec_callback_QDesktopWidget_dragLeaveEvent(self *C.QDesktopWidget, cb
 }
 
 func (this *QDesktopWidget) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1298,7 +1233,6 @@ func miqt_exec_callback_QDesktopWidget_dropEvent(self *C.QDesktopWidget, cb C.in
 }
 
 func (this *QDesktopWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1326,7 +1260,6 @@ func miqt_exec_callback_QDesktopWidget_showEvent(self *C.QDesktopWidget, cb C.in
 }
 
 func (this *QDesktopWidget) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1354,7 +1287,6 @@ func miqt_exec_callback_QDesktopWidget_hideEvent(self *C.QDesktopWidget, cb C.in
 }
 
 func (this *QDesktopWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1396,7 +1328,6 @@ func miqt_exec_callback_QDesktopWidget_nativeEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesktopWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1424,7 +1355,6 @@ func miqt_exec_callback_QDesktopWidget_changeEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesktopWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1453,7 +1383,6 @@ func miqt_exec_callback_QDesktopWidget_metric(self *C.QDesktopWidget, cb C.intpt
 }
 
 func (this *QDesktopWidget) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDesktopWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1481,7 +1410,6 @@ func miqt_exec_callback_QDesktopWidget_initPainter(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDesktopWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1512,7 +1440,6 @@ func miqt_exec_callback_QDesktopWidget_redirected(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDesktopWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1539,7 +1466,6 @@ func miqt_exec_callback_QDesktopWidget_sharedPainter(self *C.QDesktopWidget, cb 
 }
 
 func (this *QDesktopWidget) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesktopWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1567,7 +1493,6 @@ func miqt_exec_callback_QDesktopWidget_inputMethodEvent(self *C.QDesktopWidget, 
 }
 
 func (this *QDesktopWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDesktopWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1599,7 +1524,6 @@ func miqt_exec_callback_QDesktopWidget_inputMethodQuery(self *C.QDesktopWidget, 
 }
 
 func (this *QDesktopWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesktopWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1628,8 +1552,6 @@ func miqt_exec_callback_QDesktopWidget_focusNextPrevChild(self *C.QDesktopWidget
 }
 
 func (this *QDesktopWidget) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesktopWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1661,7 +1583,6 @@ func miqt_exec_callback_QDesktopWidget_eventFilter(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1689,7 +1610,6 @@ func miqt_exec_callback_QDesktopWidget_timerEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1717,7 +1637,6 @@ func miqt_exec_callback_QDesktopWidget_childEvent(self *C.QDesktopWidget, cb C.i
 }
 
 func (this *QDesktopWidget) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesktopWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1745,7 +1664,6 @@ func miqt_exec_callback_QDesktopWidget_customEvent(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesktopWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1773,7 +1691,6 @@ func miqt_exec_callback_QDesktopWidget_connectNotify(self *C.QDesktopWidget, cb 
 }
 
 func (this *QDesktopWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesktopWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1808,6 +1725,8 @@ func (this *QDesktopWidget) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesktopWidget) GoGC() {
 	if this.gc != nil {
 		return

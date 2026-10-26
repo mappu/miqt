@@ -59,12 +59,10 @@ func UnsafeNewQDesignerNewFormWidgetInterface(h unsafe.Pointer) *QDesignerNewFor
 }
 
 func (this *QDesignerNewFormWidgetInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerNewFormWidgetInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerNewFormWidgetInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerNewFormWidgetInterface_metacast(this.h, param1_Cstring))
@@ -89,17 +87,14 @@ func QDesignerNewFormWidgetInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerNewFormWidgetInterface) HasCurrentTemplate() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerNewFormWidgetInterface_hasCurrentTemplate(this.h))
 }
 
 func QDesignerNewFormWidgetInterface_CreateNewFormWidget(core *QDesignerFormEditorInterface) *QDesignerNewFormWidgetInterface {
-	defer runtime.KeepAlive(core)
 	return newQDesignerNewFormWidgetInterface(C.QDesignerNewFormWidgetInterface_createNewFormWidget(core.cPointer()))
 }
 
 func (this *QDesignerNewFormWidgetInterface) TemplateActivated() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerNewFormWidgetInterface_templateActivated(this.h)
 }
 func (this *QDesignerNewFormWidgetInterface) OnTemplateActivated(slot func()) {
@@ -117,7 +112,6 @@ func miqt_exec_callback_QDesignerNewFormWidgetInterface_templateActivated(cb C.i
 }
 
 func (this *QDesignerNewFormWidgetInterface) CurrentTemplateChanged(templateSelected bool) {
-	defer runtime.KeepAlive(this)
 	C.QDesignerNewFormWidgetInterface_currentTemplateChanged(this.h, (C.bool)(templateSelected))
 }
 func (this *QDesignerNewFormWidgetInterface) OnCurrentTemplateChanged(slot func(templateSelected bool)) {
@@ -182,8 +176,6 @@ func QDesignerNewFormWidgetInterface_TrUtf83(s string, c string, n int) string {
 }
 
 func QDesignerNewFormWidgetInterface_CreateNewFormWidget2(core *QDesignerFormEditorInterface, parent *qt.QWidget) *QDesignerNewFormWidgetInterface {
-	defer runtime.KeepAlive(core)
-	defer runtime.KeepAlive(parent)
 	return newQDesignerNewFormWidgetInterface(C.QDesignerNewFormWidgetInterface_createNewFormWidget2(core.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
@@ -195,6 +187,8 @@ func (this *QDesignerNewFormWidgetInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerNewFormWidgetInterface) GoGC() {
 	if this.gc != nil {
 		return

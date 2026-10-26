@@ -61,12 +61,10 @@ func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer) *QMediaNetworkAccessC
 }
 
 func (this *QMediaNetworkAccessControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaNetworkAccessControl_metaObject(this.h)))
 }
 
 func (this *QMediaNetworkAccessControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaNetworkAccessControl_metacast(this.h, param1_Cstring))
@@ -91,7 +89,6 @@ func QMediaNetworkAccessControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []network.QNetworkConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(configuration)
 	configuration_CArray_ptr := (**C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configuration))))
 	defer C.free(unsafe.Pointer(configuration_CArray_ptr))
@@ -104,14 +101,12 @@ func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []networ
 }
 
 func (this *QMediaNetworkAccessControl) CurrentConfiguration() *network.QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(C.QMediaNetworkAccessControl_currentConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaNetworkAccessControl) ConfigurationChanged(configuration *network.QNetworkConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(configuration)
 	C.QMediaNetworkAccessControl_configurationChanged(this.h, (*C.QNetworkConfiguration)(configuration.UnsafePointer()))
 }
@@ -184,6 +179,8 @@ func (this *QMediaNetworkAccessControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaNetworkAccessControl) GoGC() {
 	if this.gc != nil {
 		return

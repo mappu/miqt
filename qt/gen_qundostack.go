@@ -328,18 +328,15 @@ func NewQUndoStack() *QUndoStack {
 
 // NewQUndoStack2 constructs a new QUndoStack object.
 func NewQUndoStack2(parent *QObject) *QUndoStack {
-	defer runtime.KeepAlive(parent)
 
 	return newQUndoStack(C.QUndoStack_new2(parent.cPointer()))
 }
 
 func (this *QUndoStack) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QUndoStack_metaObject(this.h))
 }
 
 func (this *QUndoStack) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QUndoStack_metacast(this.h, param1_Cstring))
@@ -364,28 +361,23 @@ func QUndoStack_TrUtf8(s string) string {
 }
 
 func (this *QUndoStack) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_clear(this.h)
 }
 
 func (this *QUndoStack) Push(cmd *QUndoCommand) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cmd)
 	C.QUndoStack_push(this.h, cmd.cPointer())
 }
 
 func (this *QUndoStack) CanUndo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoStack_canUndo(this.h))
 }
 
 func (this *QUndoStack) CanRedo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoStack_canRedo(this.h))
 }
 
 func (this *QUndoStack) UndoText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoStack_undoText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -393,7 +385,6 @@ func (this *QUndoStack) UndoText() string {
 }
 
 func (this *QUndoStack) RedoText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoStack_redoText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -401,17 +392,14 @@ func (this *QUndoStack) RedoText() string {
 }
 
 func (this *QUndoStack) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QUndoStack_count(this.h))
 }
 
 func (this *QUndoStack) Index() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QUndoStack_index(this.h))
 }
 
 func (this *QUndoStack) Text(idx int) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoStack_text(this.h, (C.int)(idx))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -419,34 +407,26 @@ func (this *QUndoStack) Text(idx int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction(parent *QObject) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQAction(C.QUndoStack_createUndoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoStack) CreateRedoAction(parent *QObject) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQAction(C.QUndoStack_createRedoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoStack) IsActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoStack_isActive(this.h))
 }
 
 func (this *QUndoStack) IsClean() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoStack_isClean(this.h))
 }
 
 func (this *QUndoStack) CleanIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QUndoStack_cleanIndex(this.h))
 }
 
 func (this *QUndoStack) BeginMacro(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -455,57 +435,46 @@ func (this *QUndoStack) BeginMacro(text string) {
 }
 
 func (this *QUndoStack) EndMacro() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_endMacro(this.h)
 }
 
 func (this *QUndoStack) SetUndoLimit(limit int) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_setUndoLimit(this.h, (C.int)(limit))
 }
 
 func (this *QUndoStack) UndoLimit() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QUndoStack_undoLimit(this.h))
 }
 
 func (this *QUndoStack) Command(index int) *QUndoCommand {
-	defer runtime.KeepAlive(this)
 	return newQUndoCommand(C.QUndoStack_command(this.h, (C.int)(index)))
 }
 
 func (this *QUndoStack) SetClean() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_setClean(this.h)
 }
 
 func (this *QUndoStack) ResetClean() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_resetClean(this.h)
 }
 
 func (this *QUndoStack) SetIndex(idx int) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_setIndex(this.h, (C.int)(idx))
 }
 
 func (this *QUndoStack) Undo() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_undo(this.h)
 }
 
 func (this *QUndoStack) Redo() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_redo(this.h)
 }
 
 func (this *QUndoStack) SetActive() {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_setActive(this.h)
 }
 
 func (this *QUndoStack) IndexChanged(idx int) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_indexChanged(this.h, (C.int)(idx))
 }
 func (this *QUndoStack) OnIndexChanged(slot func(idx int)) {
@@ -526,7 +495,6 @@ func miqt_exec_callback_QUndoStack_indexChanged(cb C.intptr_t, idx C.int) {
 }
 
 func (this *QUndoStack) CleanChanged(clean bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_cleanChanged(this.h, (C.bool)(clean))
 }
 func (this *QUndoStack) OnCleanChanged(slot func(clean bool)) {
@@ -547,7 +515,6 @@ func miqt_exec_callback_QUndoStack_cleanChanged(cb C.intptr_t, clean C.bool) {
 }
 
 func (this *QUndoStack) CanUndoChanged(canUndo bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_canUndoChanged(this.h, (C.bool)(canUndo))
 }
 func (this *QUndoStack) OnCanUndoChanged(slot func(canUndo bool)) {
@@ -568,7 +535,6 @@ func miqt_exec_callback_QUndoStack_canUndoChanged(cb C.intptr_t, canUndo C.bool)
 }
 
 func (this *QUndoStack) CanRedoChanged(canRedo bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_canRedoChanged(this.h, (C.bool)(canRedo))
 }
 func (this *QUndoStack) OnCanRedoChanged(slot func(canRedo bool)) {
@@ -589,7 +555,6 @@ func miqt_exec_callback_QUndoStack_canRedoChanged(cb C.intptr_t, canRedo C.bool)
 }
 
 func (this *QUndoStack) UndoTextChanged(undoText string) {
-	defer runtime.KeepAlive(this)
 	undoText_ms := C.struct_miqt_string{}
 	undoText_ms.data = C.CString(undoText)
 	undoText_ms.len = C.size_t(len(undoText))
@@ -617,7 +582,6 @@ func miqt_exec_callback_QUndoStack_undoTextChanged(cb C.intptr_t, undoText C.str
 }
 
 func (this *QUndoStack) RedoTextChanged(redoText string) {
-	defer runtime.KeepAlive(this)
 	redoText_ms := C.struct_miqt_string{}
 	redoText_ms.data = C.CString(redoText)
 	redoText_ms.len = C.size_t(len(redoText))
@@ -689,8 +653,6 @@ func QUndoStack_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -699,8 +661,6 @@ func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QActi
 }
 
 func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -709,13 +669,11 @@ func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QActi
 }
 
 func (this *QUndoStack) SetActiveWithActive(active bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoStack_setActiveWithActive(this.h, (C.bool)(active))
 }
 
 // Sender can only be called from a QUndoStack that was directly constructed.
 func (this *QUndoStack) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QUndoStack_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -730,7 +688,6 @@ func (this *QUndoStack) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QUndoStack that was directly constructed.
 func (this *QUndoStack) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUndoStack_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -745,7 +702,6 @@ func (this *QUndoStack) SenderSignalIndex() int {
 
 // Receivers can only be called from a QUndoStack that was directly constructed.
 func (this *QUndoStack) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -762,7 +718,6 @@ func (this *QUndoStack) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QUndoStack that was directly constructed.
 func (this *QUndoStack) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -777,7 +732,6 @@ func (this *QUndoStack) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QUndoStack) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoStack_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -807,8 +761,6 @@ func miqt_exec_callback_QUndoStack_event(self *C.QUndoStack, cb C.intptr_t, even
 }
 
 func (this *QUndoStack) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoStack_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -840,7 +792,6 @@ func miqt_exec_callback_QUndoStack_eventFilter(self *C.QUndoStack, cb C.intptr_t
 }
 
 func (this *QUndoStack) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoStack_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -868,7 +819,6 @@ func miqt_exec_callback_QUndoStack_timerEvent(self *C.QUndoStack, cb C.intptr_t,
 }
 
 func (this *QUndoStack) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoStack_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -896,7 +846,6 @@ func miqt_exec_callback_QUndoStack_childEvent(self *C.QUndoStack, cb C.intptr_t,
 }
 
 func (this *QUndoStack) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoStack_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -924,7 +873,6 @@ func miqt_exec_callback_QUndoStack_customEvent(self *C.QUndoStack, cb C.intptr_t
 }
 
 func (this *QUndoStack) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUndoStack_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -952,7 +900,6 @@ func miqt_exec_callback_QUndoStack_connectNotify(self *C.QUndoStack, cb C.intptr
 }
 
 func (this *QUndoStack) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUndoStack_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -987,6 +934,8 @@ func (this *QUndoStack) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QUndoStack) GoGC() {
 	if this.gc != nil {
 		return

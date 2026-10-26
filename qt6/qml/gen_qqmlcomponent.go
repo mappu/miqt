@@ -82,14 +82,12 @@ func NewQQmlComponent() *QQmlComponent {
 
 // NewQQmlComponent2 constructs a new QQmlComponent object.
 func NewQQmlComponent2(param1 *QQmlEngine) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 
 	return newQQmlComponent(C.QQmlComponent_new2(param1.cPointer()))
 }
 
 // NewQQmlComponent3 constructs a new QQmlComponent object.
 func NewQQmlComponent3(param1 *QQmlEngine, fileName string) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -100,7 +98,6 @@ func NewQQmlComponent3(param1 *QQmlEngine, fileName string) *QQmlComponent {
 
 // NewQQmlComponent4 constructs a new QQmlComponent object.
 func NewQQmlComponent4(param1 *QQmlEngine, fileName string, mode QQmlComponent__CompilationMode) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -111,7 +108,6 @@ func NewQQmlComponent4(param1 *QQmlEngine, fileName string, mode QQmlComponent__
 
 // NewQQmlComponent5 constructs a new QQmlComponent object.
 func NewQQmlComponent5(param1 *QQmlEngine, url *qt6.QUrl) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(url)
 
 	return newQQmlComponent(C.QQmlComponent_new5(param1.cPointer(), (*C.QUrl)(url.UnsafePointer())))
@@ -119,7 +115,6 @@ func NewQQmlComponent5(param1 *QQmlEngine, url *qt6.QUrl) *QQmlComponent {
 
 // NewQQmlComponent6 constructs a new QQmlComponent object.
 func NewQQmlComponent6(param1 *QQmlEngine, url *qt6.QUrl, mode QQmlComponent__CompilationMode) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(url)
 
 	return newQQmlComponent(C.QQmlComponent_new6(param1.cPointer(), (*C.QUrl)(url.UnsafePointer()), (C.int)(mode)))
@@ -127,23 +122,18 @@ func NewQQmlComponent6(param1 *QQmlEngine, url *qt6.QUrl, mode QQmlComponent__Co
 
 // NewQQmlComponent7 constructs a new QQmlComponent object.
 func NewQQmlComponent7(parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlComponent(C.QQmlComponent_new7((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQQmlComponent8 constructs a new QQmlComponent object.
 func NewQQmlComponent8(param1 *QQmlEngine, parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlComponent(C.QQmlComponent_new8(param1.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQQmlComponent9 constructs a new QQmlComponent object.
 func NewQQmlComponent9(param1 *QQmlEngine, fileName string, parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -154,8 +144,6 @@ func NewQQmlComponent9(param1 *QQmlEngine, fileName string, parent *qt6.QObject)
 
 // NewQQmlComponent10 constructs a new QQmlComponent object.
 func NewQQmlComponent10(param1 *QQmlEngine, fileName string, mode QQmlComponent__CompilationMode, parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -166,29 +154,23 @@ func NewQQmlComponent10(param1 *QQmlEngine, fileName string, mode QQmlComponent_
 
 // NewQQmlComponent11 constructs a new QQmlComponent object.
 func NewQQmlComponent11(param1 *QQmlEngine, url *qt6.QUrl, parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(url)
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlComponent(C.QQmlComponent_new11(param1.cPointer(), (*C.QUrl)(url.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQQmlComponent12 constructs a new QQmlComponent object.
 func NewQQmlComponent12(param1 *QQmlEngine, url *qt6.QUrl, mode QQmlComponent__CompilationMode, parent *qt6.QObject) *QQmlComponent {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(url)
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlComponent(C.QQmlComponent_new12(param1.cPointer(), (*C.QUrl)(url.UnsafePointer()), (C.int)(mode), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlComponent) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlComponent_metaObject(this.h)))
 }
 
 func (this *QQmlComponent) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlComponent_metacast(this.h, param1_Cstring))
@@ -204,37 +186,30 @@ func QQmlComponent_Tr(s string) string {
 }
 
 func (this *QQmlComponent) Status() QQmlComponent__Status {
-	defer runtime.KeepAlive(this)
 	return (QQmlComponent__Status)(C.QQmlComponent_status(this.h))
 }
 
 func (this *QQmlComponent) IsNull() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlComponent_isNull(this.h))
 }
 
 func (this *QQmlComponent) IsReady() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlComponent_isReady(this.h))
 }
 
 func (this *QQmlComponent) IsError() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlComponent_isError(this.h))
 }
 
 func (this *QQmlComponent) IsLoading() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlComponent_isLoading(this.h))
 }
 
 func (this *QQmlComponent) IsBound() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlComponent_isBound(this.h))
 }
 
 func (this *QQmlComponent) Errors() []QQmlError {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlComponent_errors(this.h)
 	_ret := make([]QQmlError, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QQmlError)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -247,7 +222,6 @@ func (this *QQmlComponent) Errors() []QQmlError {
 }
 
 func (this *QQmlComponent) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QQmlComponent_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -255,25 +229,20 @@ func (this *QQmlComponent) ErrorString() string {
 }
 
 func (this *QQmlComponent) Progress() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QQmlComponent_progress(this.h))
 }
 
 func (this *QQmlComponent) Url() *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlComponent_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlComponent) Create(context *QQmlContext) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(context)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_create(this.h, context.cPointer())))
 }
 
 func (this *QQmlComponent) CreateWithInitialProperties(initialProperties map[string]qt6.QVariant) *qt6.QObject {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(initialProperties)
 	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
 	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
@@ -300,8 +269,6 @@ func (this *QQmlComponent) CreateWithInitialProperties(initialProperties map[str
 }
 
 func (this *QQmlComponent) SetInitialProperties(component *qt6.QObject, properties map[string]qt6.QVariant) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(component)
 	defer runtime.KeepAlive(properties)
 	properties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
 	defer C.free(unsafe.Pointer(properties_Keys_CArray_ptr))
@@ -328,46 +295,37 @@ func (this *QQmlComponent) SetInitialProperties(component *qt6.QObject, properti
 }
 
 func (this *QQmlComponent) BeginCreate(param1 *QQmlContext) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_beginCreate(this.h, param1.cPointer())))
 }
 
 func (this *QQmlComponent) CompleteCreate() {
-	defer runtime.KeepAlive(this)
 	C.QQmlComponent_completeCreate(this.h)
 }
 
 func (this *QQmlComponent) CreateWithQQmlIncubator(param1 *QQmlIncubator) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QQmlComponent_createWithQQmlIncubator(this.h, param1.cPointer())
 }
 
 func (this *QQmlComponent) CreationContext() *QQmlContext {
-	defer runtime.KeepAlive(this)
 	return newQQmlContext(C.QQmlComponent_creationContext(this.h))
 }
 
 func (this *QQmlComponent) Engine() *QQmlEngine {
-	defer runtime.KeepAlive(this)
 	return newQQmlEngine(C.QQmlComponent_engine(this.h))
 }
 
 func (this *QQmlComponent) LoadUrl(url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QQmlComponent_loadUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QQmlComponent) LoadUrl2(url *qt6.QUrl, mode QQmlComponent__CompilationMode) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QQmlComponent_loadUrl2(this.h, (*C.QUrl)(url.UnsafePointer()), (C.int)(mode))
 }
 
 func (this *QQmlComponent) SetData(param1 []byte, baseUrl *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(baseUrl)
 	param1_alias := C.struct_miqt_string{}
 	if len(param1) > 0 {
@@ -380,7 +338,6 @@ func (this *QQmlComponent) SetData(param1 []byte, baseUrl *qt6.QUrl) {
 }
 
 func (this *QQmlComponent) StatusChanged(param1 QQmlComponent__Status) {
-	defer runtime.KeepAlive(this)
 	C.QQmlComponent_statusChanged(this.h, (C.int)(param1))
 }
 func (this *QQmlComponent) OnStatusChanged(slot func(param1 QQmlComponent__Status)) {
@@ -401,7 +358,6 @@ func miqt_exec_callback_QQmlComponent_statusChanged(cb C.intptr_t, param1 C.int)
 }
 
 func (this *QQmlComponent) ProgressChanged(param1 float64) {
-	defer runtime.KeepAlive(this)
 	C.QQmlComponent_progressChanged(this.h, (C.double)(param1))
 }
 func (this *QQmlComponent) OnProgressChanged(slot func(param1 float64)) {
@@ -444,9 +400,7 @@ func QQmlComponent_Tr3(s string, c string, n int) string {
 }
 
 func (this *QQmlComponent) CreateWithInitialProperties2(initialProperties map[string]qt6.QVariant, context *QQmlContext) *qt6.QObject {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(initialProperties)
-	defer runtime.KeepAlive(context)
 	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
 	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
 	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
@@ -472,23 +426,17 @@ func (this *QQmlComponent) CreateWithInitialProperties2(initialProperties map[st
 }
 
 func (this *QQmlComponent) Create2(param1 *QQmlIncubator, context *QQmlContext) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(context)
 	C.QQmlComponent_create2(this.h, param1.cPointer(), context.cPointer())
 }
 
 func (this *QQmlComponent) Create3(param1 *QQmlIncubator, context *QQmlContext, forContext *QQmlContext) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(context)
-	defer runtime.KeepAlive(forContext)
 	C.QQmlComponent_create3(this.h, param1.cPointer(), context.cPointer(), forContext.cPointer())
 }
 
 // CreateObject2 can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) CreateObject2() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObject2(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -503,8 +451,6 @@ func (this *QQmlComponent) CreateObject2() *qt6.QObject {
 
 // CreateObjectWithParent can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) CreateObjectWithParent(parent *qt6.QObject) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObjectWithParent(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QObject)(parent.UnsafePointer()))))
@@ -519,8 +465,6 @@ func (this *QQmlComponent) CreateObjectWithParent(parent *qt6.QObject) *qt6.QObj
 
 // CreateObject3 can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) CreateObject3(parent *qt6.QObject, properties map[string]qt6.QVariant) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(properties)
 	properties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
 	defer C.free(unsafe.Pointer(properties_Keys_CArray_ptr))
@@ -557,7 +501,6 @@ func (this *QQmlComponent) CreateObject3(parent *qt6.QObject, properties map[str
 
 // Sender can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -572,7 +515,6 @@ func (this *QQmlComponent) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlComponent_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -587,7 +529,6 @@ func (this *QQmlComponent) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -604,7 +545,6 @@ func (this *QQmlComponent) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -619,8 +559,6 @@ func (this *QQmlComponent) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QQmlComponent) callVirtualBase_Create(context *QQmlContext) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(context)
 
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_virtualbase_create(unsafe.Pointer(this.h), context.cPointer())))
 
@@ -643,15 +581,12 @@ func miqt_exec_callback_QQmlComponent_create(self *C.QQmlComponent, cb C.intptr_
 	slotval1 := newQQmlContext(context)
 
 	virtualReturn := gofunc((&QQmlComponent{h: self}).callVirtualBase_Create, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QObject)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QQmlComponent) callVirtualBase_BeginCreate(param1 *QQmlContext) *qt6.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_virtualbase_beginCreate(unsafe.Pointer(this.h), param1.cPointer())))
 
@@ -674,14 +609,12 @@ func miqt_exec_callback_QQmlComponent_beginCreate(self *C.QQmlComponent, cb C.in
 	slotval1 := newQQmlContext(param1)
 
 	virtualReturn := gofunc((&QQmlComponent{h: self}).callVirtualBase_BeginCreate, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QObject)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QQmlComponent) callVirtualBase_CompleteCreate() {
-	defer runtime.KeepAlive(this)
 
 	C.QQmlComponent_virtualbase_completeCreate(unsafe.Pointer(this.h))
 
@@ -705,7 +638,6 @@ func miqt_exec_callback_QQmlComponent_completeCreate(self *C.QQmlComponent, cb C
 }
 
 func (this *QQmlComponent) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlComponent_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -735,8 +667,6 @@ func miqt_exec_callback_QQmlComponent_event(self *C.QQmlComponent, cb C.intptr_t
 }
 
 func (this *QQmlComponent) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlComponent_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -768,7 +698,6 @@ func miqt_exec_callback_QQmlComponent_eventFilter(self *C.QQmlComponent, cb C.in
 }
 
 func (this *QQmlComponent) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlComponent_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -796,7 +725,6 @@ func miqt_exec_callback_QQmlComponent_timerEvent(self *C.QQmlComponent, cb C.int
 }
 
 func (this *QQmlComponent) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlComponent_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -824,7 +752,6 @@ func miqt_exec_callback_QQmlComponent_childEvent(self *C.QQmlComponent, cb C.int
 }
 
 func (this *QQmlComponent) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlComponent_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -852,7 +779,6 @@ func miqt_exec_callback_QQmlComponent_customEvent(self *C.QQmlComponent, cb C.in
 }
 
 func (this *QQmlComponent) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlComponent_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -880,7 +806,6 @@ func miqt_exec_callback_QQmlComponent_connectNotify(self *C.QQmlComponent, cb C.
 }
 
 func (this *QQmlComponent) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlComponent_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -915,6 +840,8 @@ func (this *QQmlComponent) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QQmlComponent) GoGC() {
 	if this.gc != nil {
 		return

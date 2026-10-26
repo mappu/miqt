@@ -66,18 +66,15 @@ func NewQFileSelector() *QFileSelector {
 
 // NewQFileSelector2 constructs a new QFileSelector object.
 func NewQFileSelector2(parent *QObject) *QFileSelector {
-	defer runtime.KeepAlive(parent)
 
 	return newQFileSelector(C.QFileSelector_new2(parent.cPointer()))
 }
 
 func (this *QFileSelector) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFileSelector_metaObject(this.h))
 }
 
 func (this *QFileSelector) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFileSelector_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QFileSelector_TrUtf8(s string) string {
 }
 
 func (this *QFileSelector) Select(filePath string) string {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -114,7 +110,6 @@ func (this *QFileSelector) Select(filePath string) string {
 }
 
 func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(filePath)
 	_goptr := newQUrl(C.QFileSelector_selectWithFilePath(this.h, filePath.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -122,7 +117,6 @@ func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
 }
 
 func (this *QFileSelector) ExtraSelectors() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFileSelector_extraSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -136,7 +130,6 @@ func (this *QFileSelector) ExtraSelectors() []string {
 }
 
 func (this *QFileSelector) SetExtraSelectors(list []string) {
-	defer runtime.KeepAlive(this)
 	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray_ptr))
 	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
@@ -152,7 +145,6 @@ func (this *QFileSelector) SetExtraSelectors(list []string) {
 }
 
 func (this *QFileSelector) AllSelectors() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QFileSelector_allSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -211,7 +203,6 @@ func QFileSelector_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QFileSelector that was directly constructed.
 func (this *QFileSelector) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFileSelector_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -226,7 +217,6 @@ func (this *QFileSelector) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFileSelector that was directly constructed.
 func (this *QFileSelector) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFileSelector_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -241,7 +231,6 @@ func (this *QFileSelector) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFileSelector that was directly constructed.
 func (this *QFileSelector) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -258,7 +247,6 @@ func (this *QFileSelector) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFileSelector that was directly constructed.
 func (this *QFileSelector) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -273,7 +261,6 @@ func (this *QFileSelector) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFileSelector) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFileSelector_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -303,8 +290,6 @@ func miqt_exec_callback_QFileSelector_event(self *C.QFileSelector, cb C.intptr_t
 }
 
 func (this *QFileSelector) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFileSelector_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -336,7 +321,6 @@ func miqt_exec_callback_QFileSelector_eventFilter(self *C.QFileSelector, cb C.in
 }
 
 func (this *QFileSelector) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFileSelector_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -364,7 +348,6 @@ func miqt_exec_callback_QFileSelector_timerEvent(self *C.QFileSelector, cb C.int
 }
 
 func (this *QFileSelector) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFileSelector_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -392,7 +375,6 @@ func miqt_exec_callback_QFileSelector_childEvent(self *C.QFileSelector, cb C.int
 }
 
 func (this *QFileSelector) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFileSelector_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -420,7 +402,6 @@ func miqt_exec_callback_QFileSelector_customEvent(self *C.QFileSelector, cb C.in
 }
 
 func (this *QFileSelector) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFileSelector_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -448,7 +429,6 @@ func miqt_exec_callback_QFileSelector_connectNotify(self *C.QFileSelector, cb C.
 }
 
 func (this *QFileSelector) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFileSelector_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -483,6 +463,8 @@ func (this *QFileSelector) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QFileSelector) GoGC() {
 	if this.gc != nil {
 		return

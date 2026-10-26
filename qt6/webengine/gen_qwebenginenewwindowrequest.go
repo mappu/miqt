@@ -67,12 +67,10 @@ func UnsafeNewQWebEngineNewWindowRequest(h unsafe.Pointer) *QWebEngineNewWindowR
 }
 
 func (this *QWebEngineNewWindowRequest) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNewWindowRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNewWindowRequest) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineNewWindowRequest_metacast(this.h, param1_Cstring))
@@ -88,32 +86,26 @@ func QWebEngineNewWindowRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineNewWindowRequest) Destination() QWebEngineNewWindowRequest__DestinationType {
-	defer runtime.KeepAlive(this)
 	return (QWebEngineNewWindowRequest__DestinationType)(C.QWebEngineNewWindowRequest_destination(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedUrl() *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedGeometry() *qt6.QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedGeometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) IsUserInitiated() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineNewWindowRequest_isUserInitiated(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) OpenIn(param1 *QWebEnginePage) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QWebEngineNewWindowRequest_openIn(this.h, param1.cPointer())
 }
 
@@ -147,6 +139,8 @@ func (this *QWebEngineNewWindowRequest) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEngineNewWindowRequest) GoGC() {
 	if this.gc != nil {
 		return

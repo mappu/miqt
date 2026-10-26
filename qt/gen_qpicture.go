@@ -113,7 +113,6 @@ func (this *QPicture) Play(p *QPainter) bool {
 
 func (this *QPicture) Load(dev *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_load(this.h, dev.cPointer()))
 }
 
@@ -128,7 +127,6 @@ func (this *QPicture) LoadWithFileName(fileName string) bool {
 
 func (this *QPicture) Save(dev *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	return (bool)(C.QPicture_save(this.h, dev.cPointer()))
 }
 
@@ -244,7 +242,6 @@ func (this *QPicture) PaintEngine() *QPaintEngine {
 
 func (this *QPicture) Load2(dev *QIODevice, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPicture_load2(this.h, dev.cPointer(), format_Cstring))
@@ -263,7 +260,6 @@ func (this *QPicture) Load3(fileName string, format string) bool {
 
 func (this *QPicture) Save2(dev *QIODevice, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPicture_save2(this.h, dev.cPointer(), format_Cstring))
@@ -546,7 +542,6 @@ func NewQPictureIO() *QPictureIO {
 
 // NewQPictureIO2 constructs a new QPictureIO object.
 func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
-	defer runtime.KeepAlive(ioDevice)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 
@@ -640,7 +635,6 @@ func (this *QPictureIO) SetFormat(format string) {
 
 func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(iODevice)
 	C.QPictureIO_setIODevice(this.h, iODevice.cPointer())
 }
 
@@ -701,7 +695,6 @@ func QPictureIO_PictureFormat(fileName string) []byte {
 }
 
 func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
-	defer runtime.KeepAlive(param1)
 	var _bytearray C.struct_miqt_string = C.QPictureIO_pictureFormatWithQIODevice(param1.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))

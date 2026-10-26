@@ -55,7 +55,6 @@ func UnsafeNewQAbstractExtensionFactory(h unsafe.Pointer) *QAbstractExtensionFac
 
 func (this *QAbstractExtensionFactory) Extension(object *qt.QObject, iid string) *qt.QObject {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -149,7 +148,6 @@ func (this *QAbstractExtensionManager) UnregisterExtensions(factory *QAbstractEx
 
 func (this *QAbstractExtensionManager) Extension(object *qt.QObject, iid string) *qt.QObject {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))

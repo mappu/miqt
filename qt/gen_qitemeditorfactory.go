@@ -55,7 +55,6 @@ func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QItemEditorCreatorBase_createWidget(this.h, parent.cPointer()))
 }
 
@@ -146,7 +145,6 @@ func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QItemEditorFactory_createEditor(this.h, (C.int)(userType), parent.cPointer()))
 }
 
@@ -181,7 +179,6 @@ func (this *QItemEditorFactory) OperatorAssign(param1 *QItemEditorFactory) {
 
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 
 	return newQWidget(C.QItemEditorFactory_virtualbase_createEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
 
@@ -206,7 +203,6 @@ func miqt_exec_callback_QItemEditorFactory_createEditor(self *C.QItemEditorFacto
 	slotval2 := newQWidget(parent)
 
 	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 

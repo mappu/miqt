@@ -104,14 +104,12 @@ func NewQMediaContent6(other *QMediaContent) *QMediaContent {
 
 // NewQMediaContent7 constructs a new QMediaContent object.
 func NewQMediaContent7(playlist *QMediaPlaylist) *QMediaContent {
-	defer runtime.KeepAlive(playlist)
 
 	return newQMediaContent(C.QMediaContent_new7(playlist.cPointer()))
 }
 
 // NewQMediaContent8 constructs a new QMediaContent object.
 func NewQMediaContent8(playlist *QMediaPlaylist, contentUrl *qt.QUrl) *QMediaContent {
-	defer runtime.KeepAlive(playlist)
 	defer runtime.KeepAlive(contentUrl)
 
 	return newQMediaContent(C.QMediaContent_new8(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer())))
@@ -119,7 +117,6 @@ func NewQMediaContent8(playlist *QMediaPlaylist, contentUrl *qt.QUrl) *QMediaCon
 
 // NewQMediaContent9 constructs a new QMediaContent object.
 func NewQMediaContent9(playlist *QMediaPlaylist, contentUrl *qt.QUrl, takeOwnership bool) *QMediaContent {
-	defer runtime.KeepAlive(playlist)
 	defer runtime.KeepAlive(contentUrl)
 
 	return newQMediaContent(C.QMediaContent_new9(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer()), (C.bool)(takeOwnership)))

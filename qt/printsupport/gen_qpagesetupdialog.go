@@ -60,7 +60,6 @@ func UnsafeNewQPageSetupDialog(h unsafe.Pointer) *QPageSetupDialog {
 
 // NewQPageSetupDialog constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog(parent *qt.QWidget) *QPageSetupDialog {
-	defer runtime.KeepAlive(parent)
 
 	return newQPageSetupDialog(C.QPageSetupDialog_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -81,18 +80,15 @@ func NewQPageSetupDialog3() *QPageSetupDialog {
 // NewQPageSetupDialog4 constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog4(printer *QPrinter, parent *qt.QWidget) *QPageSetupDialog {
 	defer runtime.KeepAlive(printer)
-	defer runtime.KeepAlive(parent)
 
 	return newQPageSetupDialog(C.QPageSetupDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QPageSetupDialog) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPageSetupDialog_metaObject(this.h)))
 }
 
 func (this *QPageSetupDialog) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPageSetupDialog_metacast(this.h, param1_Cstring))
@@ -117,17 +113,14 @@ func QPageSetupDialog_TrUtf8(s string) string {
 }
 
 func (this *QPageSetupDialog) Exec() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QPageSetupDialog_exec(this.h))
 }
 
 func (this *QPageSetupDialog) Done(result int) {
-	defer runtime.KeepAlive(this)
 	C.QPageSetupDialog_done(this.h, (C.int)(result))
 }
 
 func (this *QPageSetupDialog) Printer() *QPrinter {
-	defer runtime.KeepAlive(this)
 	return newQPrinter(C.QPageSetupDialog_printer(this.h))
 }
 
@@ -177,8 +170,6 @@ func QPageSetupDialog_TrUtf83(s string, c string, n int) string {
 
 // AdjustPosition can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) AdjustPosition(param1 *qt.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPageSetupDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QWidget)(param1.UnsafePointer()))
@@ -191,7 +182,6 @@ func (this *QPageSetupDialog) AdjustPosition(param1 *qt.QWidget) {
 
 // UpdateMicroFocus can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPageSetupDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -204,7 +194,6 @@ func (this *QPageSetupDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPageSetupDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -217,7 +206,6 @@ func (this *QPageSetupDialog) Create() {
 
 // Destroy can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPageSetupDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -230,7 +218,6 @@ func (this *QPageSetupDialog) Destroy() {
 
 // FocusNextChild can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPageSetupDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -245,7 +232,6 @@ func (this *QPageSetupDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QPageSetupDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -260,7 +246,6 @@ func (this *QPageSetupDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QPageSetupDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -275,7 +260,6 @@ func (this *QPageSetupDialog) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPageSetupDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -290,7 +274,6 @@ func (this *QPageSetupDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -307,7 +290,6 @@ func (this *QPageSetupDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPageSetupDialog that was directly constructed.
 func (this *QPageSetupDialog) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -322,7 +304,6 @@ func (this *QPageSetupDialog) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Exec() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPageSetupDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -348,7 +329,6 @@ func miqt_exec_callback_QPageSetupDialog_exec(self *C.QPageSetupDialog, cb C.int
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Done(result int) {
-	defer runtime.KeepAlive(this)
 
 	C.QPageSetupDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -375,7 +355,6 @@ func miqt_exec_callback_QPageSetupDialog_done(self *C.QPageSetupDialog, cb C.int
 }
 
 func (this *QPageSetupDialog) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QPageSetupDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -402,7 +381,6 @@ func miqt_exec_callback_QPageSetupDialog_setVisible(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPageSetupDialog_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -431,7 +409,6 @@ func miqt_exec_callback_QPageSetupDialog_sizeHint(self *C.QPageSetupDialog, cb C
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPageSetupDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -460,7 +437,6 @@ func miqt_exec_callback_QPageSetupDialog_minimumSizeHint(self *C.QPageSetupDialo
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Open() {
-	defer runtime.KeepAlive(this)
 
 	C.QPageSetupDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -484,7 +460,6 @@ func miqt_exec_callback_QPageSetupDialog_open(self *C.QPageSetupDialog, cb C.int
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Accept() {
-	defer runtime.KeepAlive(this)
 
 	C.QPageSetupDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -508,7 +483,6 @@ func miqt_exec_callback_QPageSetupDialog_accept(self *C.QPageSetupDialog, cb C.i
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Reject() {
-	defer runtime.KeepAlive(this)
 
 	C.QPageSetupDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -532,7 +506,6 @@ func miqt_exec_callback_QPageSetupDialog_reject(self *C.QPageSetupDialog, cb C.i
 }
 
 func (this *QPageSetupDialog) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -560,7 +533,6 @@ func miqt_exec_callback_QPageSetupDialog_keyPressEvent(self *C.QPageSetupDialog,
 }
 
 func (this *QPageSetupDialog) callVirtualBase_CloseEvent(param1 *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(param1.UnsafePointer()))
@@ -588,7 +560,6 @@ func miqt_exec_callback_QPageSetupDialog_closeEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ShowEvent(param1 *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(param1.UnsafePointer()))
@@ -616,7 +587,6 @@ func miqt_exec_callback_QPageSetupDialog_showEvent(self *C.QPageSetupDialog, cb 
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
@@ -644,7 +614,6 @@ func miqt_exec_callback_QPageSetupDialog_resizeEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ContextMenuEvent(param1 *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(param1.UnsafePointer()))
@@ -672,8 +641,6 @@ func miqt_exec_callback_QPageSetupDialog_contextMenuEvent(self *C.QPageSetupDial
 }
 
 func (this *QPageSetupDialog) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QPageSetupDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -705,7 +672,6 @@ func miqt_exec_callback_QPageSetupDialog_eventFilter(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPageSetupDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -731,7 +697,6 @@ func miqt_exec_callback_QPageSetupDialog_devType(self *C.QPageSetupDialog, cb C.
 }
 
 func (this *QPageSetupDialog) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPageSetupDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -760,7 +725,6 @@ func miqt_exec_callback_QPageSetupDialog_heightForWidth(self *C.QPageSetupDialog
 }
 
 func (this *QPageSetupDialog) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPageSetupDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -786,7 +750,6 @@ func miqt_exec_callback_QPageSetupDialog_hasHeightForWidth(self *C.QPageSetupDia
 }
 
 func (this *QPageSetupDialog) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPageSetupDialog_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -813,7 +776,6 @@ func miqt_exec_callback_QPageSetupDialog_paintEngine(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPageSetupDialog_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -843,7 +805,6 @@ func miqt_exec_callback_QPageSetupDialog_event(self *C.QPageSetupDialog, cb C.in
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -871,7 +832,6 @@ func miqt_exec_callback_QPageSetupDialog_mousePressEvent(self *C.QPageSetupDialo
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -899,7 +859,6 @@ func miqt_exec_callback_QPageSetupDialog_mouseReleaseEvent(self *C.QPageSetupDia
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -927,7 +886,6 @@ func miqt_exec_callback_QPageSetupDialog_mouseDoubleClickEvent(self *C.QPageSetu
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -955,7 +913,6 @@ func miqt_exec_callback_QPageSetupDialog_mouseMoveEvent(self *C.QPageSetupDialog
 }
 
 func (this *QPageSetupDialog) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -983,7 +940,6 @@ func miqt_exec_callback_QPageSetupDialog_wheelEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1011,7 +967,6 @@ func miqt_exec_callback_QPageSetupDialog_keyReleaseEvent(self *C.QPageSetupDialo
 }
 
 func (this *QPageSetupDialog) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1039,7 +994,6 @@ func miqt_exec_callback_QPageSetupDialog_focusInEvent(self *C.QPageSetupDialog, 
 }
 
 func (this *QPageSetupDialog) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1067,7 +1021,6 @@ func miqt_exec_callback_QPageSetupDialog_focusOutEvent(self *C.QPageSetupDialog,
 }
 
 func (this *QPageSetupDialog) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1095,7 +1048,6 @@ func miqt_exec_callback_QPageSetupDialog_enterEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1123,7 +1075,6 @@ func miqt_exec_callback_QPageSetupDialog_leaveEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -1151,7 +1102,6 @@ func miqt_exec_callback_QPageSetupDialog_paintEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1179,7 +1129,6 @@ func miqt_exec_callback_QPageSetupDialog_moveEvent(self *C.QPageSetupDialog, cb 
 }
 
 func (this *QPageSetupDialog) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1207,7 +1156,6 @@ func miqt_exec_callback_QPageSetupDialog_tabletEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1235,7 +1183,6 @@ func miqt_exec_callback_QPageSetupDialog_actionEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1263,7 +1210,6 @@ func miqt_exec_callback_QPageSetupDialog_dragEnterEvent(self *C.QPageSetupDialog
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1291,7 +1237,6 @@ func miqt_exec_callback_QPageSetupDialog_dragMoveEvent(self *C.QPageSetupDialog,
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1319,7 +1264,6 @@ func miqt_exec_callback_QPageSetupDialog_dragLeaveEvent(self *C.QPageSetupDialog
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1347,7 +1291,6 @@ func miqt_exec_callback_QPageSetupDialog_dropEvent(self *C.QPageSetupDialog, cb 
 }
 
 func (this *QPageSetupDialog) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1375,7 +1318,6 @@ func miqt_exec_callback_QPageSetupDialog_hideEvent(self *C.QPageSetupDialog, cb 
 }
 
 func (this *QPageSetupDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1417,7 +1359,6 @@ func miqt_exec_callback_QPageSetupDialog_nativeEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1445,7 +1386,6 @@ func miqt_exec_callback_QPageSetupDialog_changeEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QPageSetupDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1474,7 +1414,6 @@ func miqt_exec_callback_QPageSetupDialog_metric(self *C.QPageSetupDialog, cb C.i
 }
 
 func (this *QPageSetupDialog) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QPageSetupDialog_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1502,7 +1441,6 @@ func miqt_exec_callback_QPageSetupDialog_initPainter(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPageSetupDialog_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1533,7 +1471,6 @@ func miqt_exec_callback_QPageSetupDialog_redirected(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QPageSetupDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1560,7 +1497,6 @@ func miqt_exec_callback_QPageSetupDialog_sharedPainter(self *C.QPageSetupDialog,
 }
 
 func (this *QPageSetupDialog) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QPageSetupDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1588,7 +1524,6 @@ func miqt_exec_callback_QPageSetupDialog_inputMethodEvent(self *C.QPageSetupDial
 }
 
 func (this *QPageSetupDialog) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPageSetupDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1620,7 +1555,6 @@ func miqt_exec_callback_QPageSetupDialog_inputMethodQuery(self *C.QPageSetupDial
 }
 
 func (this *QPageSetupDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPageSetupDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1649,7 +1583,6 @@ func miqt_exec_callback_QPageSetupDialog_focusNextPrevChild(self *C.QPageSetupDi
 }
 
 func (this *QPageSetupDialog) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1677,7 +1610,6 @@ func miqt_exec_callback_QPageSetupDialog_timerEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1705,7 +1637,6 @@ func miqt_exec_callback_QPageSetupDialog_childEvent(self *C.QPageSetupDialog, cb
 }
 
 func (this *QPageSetupDialog) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPageSetupDialog_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1733,7 +1664,6 @@ func miqt_exec_callback_QPageSetupDialog_customEvent(self *C.QPageSetupDialog, c
 }
 
 func (this *QPageSetupDialog) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPageSetupDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1761,7 +1691,6 @@ func miqt_exec_callback_QPageSetupDialog_connectNotify(self *C.QPageSetupDialog,
 }
 
 func (this *QPageSetupDialog) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPageSetupDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1796,6 +1725,8 @@ func (this *QPageSetupDialog) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPageSetupDialog) GoGC() {
 	if this.gc != nil {
 		return

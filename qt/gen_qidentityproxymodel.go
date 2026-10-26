@@ -66,18 +66,15 @@ func NewQIdentityProxyModel() *QIdentityProxyModel {
 
 // NewQIdentityProxyModel2 constructs a new QIdentityProxyModel object.
 func NewQIdentityProxyModel2(parent *QObject) *QIdentityProxyModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQIdentityProxyModel(C.QIdentityProxyModel_new2(parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QIdentityProxyModel_metaObject(this.h))
 }
 
 func (this *QIdentityProxyModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QIdentityProxyModel_metacast(this.h, param1_Cstring))
@@ -102,13 +99,11 @@ func QIdentityProxyModel_TrUtf8(s string) string {
 }
 
 func (this *QIdentityProxyModel) ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QIdentityProxyModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QIdentityProxyModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -116,7 +111,6 @@ func (this *QIdentityProxyModel) Index(row int, column int, parent *QModelIndex)
 }
 
 func (this *QIdentityProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceIndex)
 	_goptr := newQModelIndex(C.QIdentityProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -124,7 +118,6 @@ func (this *QIdentityProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModel
 }
 
 func (this *QIdentityProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 	_goptr := newQModelIndex(C.QIdentityProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -132,7 +125,6 @@ func (this *QIdentityProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelInd
 }
 
 func (this *QIdentityProxyModel) Parent(child *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(child)
 	_goptr := newQModelIndex(C.QIdentityProxyModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -140,27 +132,22 @@ func (this *QIdentityProxyModel) Parent(child *QModelIndex) *QModelIndex {
 }
 
 func (this *QIdentityProxyModel) RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QIdentityProxyModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QIdentityProxyModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QIdentityProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QIdentityProxyModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -168,7 +155,6 @@ func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QIdentityProxyModel) MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 	_goptr := newQItemSelection(C.QIdentityProxyModel_mapSelectionFromSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -176,7 +162,6 @@ func (this *QIdentityProxyModel) MapSelectionFromSource(selection *QItemSelectio
 }
 
 func (this *QIdentityProxyModel) MapSelectionToSource(selection *QItemSelection) *QItemSelection {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 	_goptr := newQItemSelection(C.QIdentityProxyModel_mapSelectionToSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -184,7 +169,6 @@ func (this *QIdentityProxyModel) MapSelectionToSource(selection *QItemSelection)
 }
 
 func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 	var _ma C.struct_miqt_array = C.QIdentityProxyModel_match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
@@ -199,44 +183,36 @@ func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVar
 }
 
 func (this *QIdentityProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sourceModel)
 	C.QIdentityProxyModel_setSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QIdentityProxyModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QIdentityProxyModel_insertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QIdentityProxyModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QIdentityProxyModel_removeColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QIdentityProxyModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QIdentityProxyModel_moveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QIdentityProxyModel) MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QIdentityProxyModel_moveColumns(this.h, sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
@@ -288,7 +264,6 @@ func QIdentityProxyModel_TrUtf83(s string, c string, n int) string {
 
 // ResetInternalData can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -301,7 +276,6 @@ func (this *QIdentityProxyModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QIdentityProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -318,7 +292,6 @@ func (this *QIdentityProxyModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -340,7 +313,6 @@ func (this *QIdentityProxyModel) EncodeData(indexes []QModelIndex, stream *QData
 
 // DecodeData can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -357,7 +329,6 @@ func (this *QIdentityProxyModel) DecodeData(row int, column int, parent *QModelI
 
 // BeginInsertRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -371,7 +342,6 @@ func (this *QIdentityProxyModel) BeginInsertRows(parent *QModelIndex, first int,
 
 // EndInsertRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -384,7 +354,6 @@ func (this *QIdentityProxyModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -398,7 +367,6 @@ func (this *QIdentityProxyModel) BeginRemoveRows(parent *QModelIndex, first int,
 
 // EndRemoveRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -411,7 +379,6 @@ func (this *QIdentityProxyModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -428,7 +395,6 @@ func (this *QIdentityProxyModel) BeginMoveRows(sourceParent *QModelIndex, source
 
 // EndMoveRows can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -441,7 +407,6 @@ func (this *QIdentityProxyModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -455,7 +420,6 @@ func (this *QIdentityProxyModel) BeginInsertColumns(parent *QModelIndex, first i
 
 // EndInsertColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -468,7 +432,6 @@ func (this *QIdentityProxyModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -482,7 +445,6 @@ func (this *QIdentityProxyModel) BeginRemoveColumns(parent *QModelIndex, first i
 
 // EndRemoveColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -495,7 +457,6 @@ func (this *QIdentityProxyModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -512,7 +473,6 @@ func (this *QIdentityProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sou
 
 // EndMoveColumns can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -525,7 +485,6 @@ func (this *QIdentityProxyModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -538,7 +497,6 @@ func (this *QIdentityProxyModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QIdentityProxyModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -551,7 +509,6 @@ func (this *QIdentityProxyModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -566,7 +523,6 @@ func (this *QIdentityProxyModel) ChangePersistentIndex(from *QModelIndex, to *QM
 
 // ChangePersistentIndexList can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -595,7 +551,6 @@ func (this *QIdentityProxyModel) ChangePersistentIndexList(from []QModelIndex, t
 
 // PersistentIndexList can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QIdentityProxyModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -618,7 +573,6 @@ func (this *QIdentityProxyModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QIdentityProxyModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -633,7 +587,6 @@ func (this *QIdentityProxyModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QIdentityProxyModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -648,7 +601,6 @@ func (this *QIdentityProxyModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -665,7 +617,6 @@ func (this *QIdentityProxyModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QIdentityProxyModel that was directly constructed.
 func (this *QIdentityProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -680,7 +631,6 @@ func (this *QIdentityProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QIdentityProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
@@ -710,7 +660,6 @@ func miqt_exec_callback_QIdentityProxyModel_columnCount(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -747,7 +696,6 @@ func miqt_exec_callback_QIdentityProxyModel_index(self *C.QIdentityProxyModel, c
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceIndex)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_mapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
@@ -780,7 +728,6 @@ func miqt_exec_callback_QIdentityProxyModel_mapFromSource(self *C.QIdentityProxy
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_mapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
@@ -813,7 +760,6 @@ func miqt_exec_callback_QIdentityProxyModel_mapToSource(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(child)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_parent(unsafe.Pointer(this.h), child.cPointer()))
@@ -846,7 +792,6 @@ func miqt_exec_callback_QIdentityProxyModel_parent(self *C.QIdentityProxyModel, 
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QIdentityProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
@@ -876,7 +821,6 @@ func miqt_exec_callback_QIdentityProxyModel_rowCount(self *C.QIdentityProxyModel
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QIdentityProxyModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -912,8 +856,6 @@ func miqt_exec_callback_QIdentityProxyModel_headerData(self *C.QIdentityProxyMod
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -951,7 +893,6 @@ func miqt_exec_callback_QIdentityProxyModel_dropMimeData(self *C.QIdentityProxyM
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -988,7 +929,6 @@ func miqt_exec_callback_QIdentityProxyModel_sibling(self *C.QIdentityProxyModel,
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 
 	_goptr := newQItemSelection(C.QIdentityProxyModel_virtualbase_mapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer()))
@@ -1021,7 +961,6 @@ func miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(self *C.QIden
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 
 	_goptr := newQItemSelection(C.QIdentityProxyModel_virtualbase_mapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer()))
@@ -1054,7 +993,6 @@ func miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(self *C.QIdenti
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -1108,8 +1046,6 @@ func miqt_exec_callback_QIdentityProxyModel_match(self *C.QIdentityProxyModel, c
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SetSourceModel(sourceModel *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sourceModel)
 
 	C.QIdentityProxyModel_virtualbase_setSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
 
@@ -1136,7 +1072,6 @@ func miqt_exec_callback_QIdentityProxyModel_setSourceModel(self *C.QIdentityProx
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1170,7 +1105,6 @@ func miqt_exec_callback_QIdentityProxyModel_insertColumns(self *C.QIdentityProxy
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -1204,7 +1138,6 @@ func miqt_exec_callback_QIdentityProxyModel_insertRows(self *C.QIdentityProxyMod
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1238,7 +1171,6 @@ func miqt_exec_callback_QIdentityProxyModel_removeColumns(self *C.QIdentityProxy
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -1272,7 +1204,6 @@ func miqt_exec_callback_QIdentityProxyModel_removeRows(self *C.QIdentityProxyMod
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1311,7 +1242,6 @@ func miqt_exec_callback_QIdentityProxyModel_moveRows(self *C.QIdentityProxyModel
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1350,7 +1280,6 @@ func miqt_exec_callback_QIdentityProxyModel_moveColumns(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1376,7 +1305,6 @@ func miqt_exec_callback_QIdentityProxyModel_submit(self *C.QIdentityProxyModel, 
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QIdentityProxyModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1400,7 +1328,6 @@ func miqt_exec_callback_QIdentityProxyModel_revert(self *C.QIdentityProxyModel, 
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Data(proxyIndex *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxyIndex)
 
 	_goptr := newQVariant(C.QIdentityProxyModel_virtualbase_data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role)))
@@ -1435,7 +1362,6 @@ func miqt_exec_callback_QIdentityProxyModel_data(self *C.QIdentityProxyModel, cb
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QIdentityProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
@@ -1494,7 +1420,6 @@ func miqt_exec_callback_QIdentityProxyModel_itemData(self *C.QIdentityProxyModel
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QIdentityProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -1524,7 +1449,6 @@ func miqt_exec_callback_QIdentityProxyModel_flags(self *C.QIdentityProxyModel, c
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -1559,7 +1483,6 @@ func miqt_exec_callback_QIdentityProxyModel_setData(self *C.QIdentityProxyModel,
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1622,7 +1545,6 @@ func miqt_exec_callback_QIdentityProxyModel_setItemData(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -1658,7 +1580,6 @@ func miqt_exec_callback_QIdentityProxyModel_setHeaderData(self *C.QIdentityProxy
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -1691,7 +1612,6 @@ func miqt_exec_callback_QIdentityProxyModel_buddy(self *C.QIdentityProxyModel, c
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1721,7 +1641,6 @@ func miqt_exec_callback_QIdentityProxyModel_canFetchMore(self *C.QIdentityProxyM
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QIdentityProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -1749,7 +1668,6 @@ func miqt_exec_callback_QIdentityProxyModel_fetchMore(self *C.QIdentityProxyMode
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QIdentityProxyModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1778,7 +1696,6 @@ func miqt_exec_callback_QIdentityProxyModel_sort(self *C.QIdentityProxyModel, cb
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QIdentityProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -1811,7 +1728,6 @@ func miqt_exec_callback_QIdentityProxyModel_span(self *C.QIdentityProxyModel, cb
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1841,7 +1757,6 @@ func miqt_exec_callback_QIdentityProxyModel_hasChildren(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -1880,15 +1795,12 @@ func miqt_exec_callback_QIdentityProxyModel_mimeData(self *C.QIdentityProxyModel
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1926,7 +1838,6 @@ func miqt_exec_callback_QIdentityProxyModel_canDropMimeData(self *C.QIdentityPro
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QIdentityProxyModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1970,7 +1881,6 @@ func miqt_exec_callback_QIdentityProxyModel_mimeTypes(self *C.QIdentityProxyMode
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QIdentityProxyModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1996,7 +1906,6 @@ func miqt_exec_callback_QIdentityProxyModel_supportedDragActions(self *C.QIdenti
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QIdentityProxyModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -2022,7 +1931,6 @@ func miqt_exec_callback_QIdentityProxyModel_supportedDropActions(self *C.QIdenti
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QIdentityProxyModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -2083,7 +1991,6 @@ func miqt_exec_callback_QIdentityProxyModel_roleNames(self *C.QIdentityProxyMode
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2113,8 +2020,6 @@ func miqt_exec_callback_QIdentityProxyModel_event(self *C.QIdentityProxyModel, c
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QIdentityProxyModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2146,7 +2051,6 @@ func miqt_exec_callback_QIdentityProxyModel_eventFilter(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIdentityProxyModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2174,7 +2078,6 @@ func miqt_exec_callback_QIdentityProxyModel_timerEvent(self *C.QIdentityProxyMod
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIdentityProxyModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2202,7 +2105,6 @@ func miqt_exec_callback_QIdentityProxyModel_childEvent(self *C.QIdentityProxyMod
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QIdentityProxyModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2230,7 +2132,6 @@ func miqt_exec_callback_QIdentityProxyModel_customEvent(self *C.QIdentityProxyMo
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QIdentityProxyModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2258,7 +2159,6 @@ func miqt_exec_callback_QIdentityProxyModel_connectNotify(self *C.QIdentityProxy
 }
 
 func (this *QIdentityProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QIdentityProxyModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2293,6 +2193,8 @@ func (this *QIdentityProxyModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QIdentityProxyModel) GoGC() {
 	if this.gc != nil {
 		return

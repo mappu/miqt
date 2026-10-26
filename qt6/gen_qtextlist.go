@@ -60,18 +60,15 @@ func UnsafeNewQTextList(h unsafe.Pointer) *QTextList {
 
 // NewQTextList constructs a new QTextList object.
 func NewQTextList(doc *QTextDocument) *QTextList {
-	defer runtime.KeepAlive(doc)
 
 	return newQTextList(C.QTextList_new(doc.cPointer()))
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextList_metaObject(this.h))
 }
 
 func (this *QTextList) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextList_metacast(this.h, param1_Cstring))
@@ -87,25 +84,21 @@ func QTextList_Tr(s string) string {
 }
 
 func (this *QTextList) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextList_count(this.h))
 }
 
 func (this *QTextList) Item(i int) *QTextBlock {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextBlock(C.QTextList_item(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextList) ItemNumber(param1 *QTextBlock) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return (int)(C.QTextList_itemNumber(this.h, param1.cPointer()))
 }
 
 func (this *QTextList) ItemText(param1 *QTextBlock) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	var _ms C.struct_miqt_string = C.QTextList_itemText(this.h, param1.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -114,30 +107,25 @@ func (this *QTextList) ItemText(param1 *QTextBlock) string {
 }
 
 func (this *QTextList) RemoveItem(i int) {
-	defer runtime.KeepAlive(this)
 	C.QTextList_removeItem(this.h, (C.int)(i))
 }
 
 func (this *QTextList) Remove(param1 *QTextBlock) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QTextList_remove(this.h, param1.cPointer())
 }
 
 func (this *QTextList) Add(block *QTextBlock) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(block)
 	C.QTextList_add(this.h, block.cPointer())
 }
 
 func (this *QTextList) SetFormat(format *QTextListFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QTextList_setFormat(this.h, format.cPointer())
 }
 
 func (this *QTextList) Format() *QTextListFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextListFormat(C.QTextList_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -167,7 +155,6 @@ func QTextList_Tr3(s string, c string, n int) string {
 
 // BlockList can only be called from a QTextList that was directly constructed.
 func (this *QTextList) BlockList() []QTextBlock {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QTextList_protectedbase_blockList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -190,7 +177,6 @@ func (this *QTextList) BlockList() []QTextBlock {
 
 // Sender can only be called from a QTextList that was directly constructed.
 func (this *QTextList) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextList_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -205,7 +191,6 @@ func (this *QTextList) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextList that was directly constructed.
 func (this *QTextList) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextList_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -220,7 +205,6 @@ func (this *QTextList) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextList that was directly constructed.
 func (this *QTextList) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -237,7 +221,6 @@ func (this *QTextList) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextList that was directly constructed.
 func (this *QTextList) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -252,7 +235,6 @@ func (this *QTextList) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextList) callVirtualBase_BlockInserted(block *QTextBlock) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(block)
 
 	C.QTextList_virtualbase_blockInserted(unsafe.Pointer(this.h), block.cPointer())
@@ -280,7 +262,6 @@ func miqt_exec_callback_QTextList_blockInserted(self *C.QTextList, cb C.intptr_t
 }
 
 func (this *QTextList) callVirtualBase_BlockRemoved(block *QTextBlock) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(block)
 
 	C.QTextList_virtualbase_blockRemoved(unsafe.Pointer(this.h), block.cPointer())
@@ -308,7 +289,6 @@ func miqt_exec_callback_QTextList_blockRemoved(self *C.QTextList, cb C.intptr_t,
 }
 
 func (this *QTextList) callVirtualBase_BlockFormatChanged(block *QTextBlock) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(block)
 
 	C.QTextList_virtualbase_blockFormatChanged(unsafe.Pointer(this.h), block.cPointer())
@@ -336,7 +316,6 @@ func miqt_exec_callback_QTextList_blockFormatChanged(self *C.QTextList, cb C.int
 }
 
 func (this *QTextList) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextList_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -366,8 +345,6 @@ func miqt_exec_callback_QTextList_event(self *C.QTextList, cb C.intptr_t, event 
 }
 
 func (this *QTextList) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextList_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -399,7 +376,6 @@ func miqt_exec_callback_QTextList_eventFilter(self *C.QTextList, cb C.intptr_t, 
 }
 
 func (this *QTextList) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextList_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -427,7 +403,6 @@ func miqt_exec_callback_QTextList_timerEvent(self *C.QTextList, cb C.intptr_t, e
 }
 
 func (this *QTextList) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextList_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -455,7 +430,6 @@ func miqt_exec_callback_QTextList_childEvent(self *C.QTextList, cb C.intptr_t, e
 }
 
 func (this *QTextList) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextList_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -483,7 +457,6 @@ func miqt_exec_callback_QTextList_customEvent(self *C.QTextList, cb C.intptr_t, 
 }
 
 func (this *QTextList) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextList_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -511,7 +484,6 @@ func miqt_exec_callback_QTextList_connectNotify(self *C.QTextList, cb C.intptr_t
 }
 
 func (this *QTextList) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextList_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -546,6 +518,8 @@ func (this *QTextList) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTextList) GoGC() {
 	if this.gc != nil {
 		return

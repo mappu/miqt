@@ -6540,7 +6540,6 @@ func UnsafeNewScintillaEditBase(h unsafe.Pointer) *ScintillaEditBase {
 
 // NewScintillaEditBase constructs a new ScintillaEditBase object.
 func NewScintillaEditBase(parent *qt.QWidget) *ScintillaEditBase {
-	defer runtime.KeepAlive(parent)
 
 	return newScintillaEditBase(C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -6552,12 +6551,10 @@ func NewScintillaEditBase2() *ScintillaEditBase {
 }
 
 func (this *ScintillaEditBase) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEditBase_metaObject(this.h)))
 }
 
 func (this *ScintillaEditBase) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.ScintillaEditBase_metacast(this.h, param1_Cstring))
@@ -6582,40 +6579,33 @@ func ScintillaEditBase_TrUtf8(s string) string {
 }
 
 func (this *ScintillaEditBase) Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEditBase_send(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 }
 
 func (this *ScintillaEditBase) Sends(iMessage uint, wParam uintptr, s string) uintptr {
-	defer runtime.KeepAlive(this)
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 	return (uintptr)(C.ScintillaEditBase_sends(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
 }
 
 func (this *ScintillaEditBase) ScrollHorizontal(value int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_scrollHorizontal(this.h, (C.int)(value))
 }
 
 func (this *ScintillaEditBase) ScrollVertical(value int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_scrollVertical(this.h, (C.int)(value))
 }
 
 func (this *ScintillaEditBase) NotifyParent(scn Scintilla__NotificationData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(scn)
 	C.ScintillaEditBase_notifyParent(this.h, scn.cPointer())
 }
 
 func (this *ScintillaEditBase) EventCommand(wParam uintptr, lParam uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_eventCommand(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 
 func (this *ScintillaEditBase) HorizontalScrolled(value int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_horizontalScrolled(this.h, (C.int)(value))
 }
 func (this *ScintillaEditBase) OnHorizontalScrolled(slot func(value int)) {
@@ -6636,7 +6626,6 @@ func miqt_exec_callback_ScintillaEditBase_horizontalScrolled(cb C.intptr_t, valu
 }
 
 func (this *ScintillaEditBase) VerticalScrolled(value int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_verticalScrolled(this.h, (C.int)(value))
 }
 func (this *ScintillaEditBase) OnVerticalScrolled(slot func(value int)) {
@@ -6657,7 +6646,6 @@ func miqt_exec_callback_ScintillaEditBase_verticalScrolled(cb C.intptr_t, value 
 }
 
 func (this *ScintillaEditBase) HorizontalRangeChanged(max int, page int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_horizontalRangeChanged(this.h, (C.int)(max), (C.int)(page))
 }
 func (this *ScintillaEditBase) OnHorizontalRangeChanged(slot func(max int, page int)) {
@@ -6680,7 +6668,6 @@ func miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(cb C.intptr_t, 
 }
 
 func (this *ScintillaEditBase) VerticalRangeChanged(max int, page int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_verticalRangeChanged(this.h, (C.int)(max), (C.int)(page))
 }
 func (this *ScintillaEditBase) OnVerticalRangeChanged(slot func(max int, page int)) {
@@ -6703,7 +6690,6 @@ func miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(cb C.intptr_t, ma
 }
 
 func (this *ScintillaEditBase) NotifyChange() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_notifyChange(this.h)
 }
 func (this *ScintillaEditBase) OnNotifyChange(slot func()) {
@@ -6721,7 +6707,6 @@ func miqt_exec_callback_ScintillaEditBase_notifyChange(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) LinesAdded(linesAdded uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_linesAdded(this.h, (C.intptr_t)(linesAdded))
 }
 func (this *ScintillaEditBase) OnLinesAdded(slot func(linesAdded uintptr)) {
@@ -6742,8 +6727,6 @@ func miqt_exec_callback_ScintillaEditBase_linesAdded(cb C.intptr_t, linesAdded C
 }
 
 func (this *ScintillaEditBase) AboutToCopy(data *qt.QMimeData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	C.ScintillaEditBase_aboutToCopy(this.h, (*C.QMimeData)(data.UnsafePointer()))
 }
 func (this *ScintillaEditBase) OnAboutToCopy(slot func(data *qt.QMimeData)) {
@@ -6764,7 +6747,6 @@ func miqt_exec_callback_ScintillaEditBase_aboutToCopy(cb C.intptr_t, data *C.QMi
 }
 
 func (this *ScintillaEditBase) StyleNeeded(position uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_styleNeeded(this.h, (C.intptr_t)(position))
 }
 func (this *ScintillaEditBase) OnStyleNeeded(slot func(position uintptr)) {
@@ -6785,7 +6767,6 @@ func miqt_exec_callback_ScintillaEditBase_styleNeeded(cb C.intptr_t, position C.
 }
 
 func (this *ScintillaEditBase) CharAdded(ch int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_charAdded(this.h, (C.int)(ch))
 }
 func (this *ScintillaEditBase) OnCharAdded(slot func(ch int)) {
@@ -6806,7 +6787,6 @@ func miqt_exec_callback_ScintillaEditBase_charAdded(cb C.intptr_t, ch C.int) {
 }
 
 func (this *ScintillaEditBase) SavePointChanged(dirty bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_savePointChanged(this.h, (C.bool)(dirty))
 }
 func (this *ScintillaEditBase) OnSavePointChanged(slot func(dirty bool)) {
@@ -6827,7 +6807,6 @@ func miqt_exec_callback_ScintillaEditBase_savePointChanged(cb C.intptr_t, dirty 
 }
 
 func (this *ScintillaEditBase) ModifyAttemptReadOnly() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_modifyAttemptReadOnly(this.h)
 }
 func (this *ScintillaEditBase) OnModifyAttemptReadOnly(slot func()) {
@@ -6845,7 +6824,6 @@ func miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) Key(key int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_key(this.h, (C.int)(key))
 }
 func (this *ScintillaEditBase) OnKey(slot func(key int)) {
@@ -6866,7 +6844,6 @@ func miqt_exec_callback_ScintillaEditBase_key(cb C.intptr_t, key C.int) {
 }
 
 func (this *ScintillaEditBase) DoubleClick(position uintptr, line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_doubleClick(this.h, (C.intptr_t)(position), (C.intptr_t)(line))
 }
 func (this *ScintillaEditBase) OnDoubleClick(slot func(position uintptr, line uintptr)) {
@@ -6889,7 +6866,6 @@ func miqt_exec_callback_ScintillaEditBase_doubleClick(cb C.intptr_t, position C.
 }
 
 func (this *ScintillaEditBase) UpdateUi(updated Scintilla__Update) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_updateUi(this.h, (C.int)(updated))
 }
 func (this *ScintillaEditBase) OnUpdateUi(slot func(updated Scintilla__Update)) {
@@ -6910,7 +6886,6 @@ func miqt_exec_callback_ScintillaEditBase_updateUi(cb C.intptr_t, updated C.int)
 }
 
 func (this *ScintillaEditBase) Modified(typeVal Scintilla__ModificationFlags, position uintptr, length uintptr, linesAdded uintptr, text []byte, line uintptr, foldNow Scintilla__FoldLevel, foldPrev Scintilla__FoldLevel) {
-	defer runtime.KeepAlive(this)
 	text_alias := C.struct_miqt_string{}
 	if len(text) > 0 {
 		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
@@ -6954,7 +6929,6 @@ func miqt_exec_callback_ScintillaEditBase_modified(cb C.intptr_t, typeVal C.int,
 }
 
 func (this *ScintillaEditBase) MacroRecord(message Scintilla__Message, wParam uintptr, lParam uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_macroRecord(this.h, (C.int)(message), (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 func (this *ScintillaEditBase) OnMacroRecord(slot func(message Scintilla__Message, wParam uintptr, lParam uintptr)) {
@@ -6979,7 +6953,6 @@ func miqt_exec_callback_ScintillaEditBase_macroRecord(cb C.intptr_t, message C.i
 }
 
 func (this *ScintillaEditBase) MarginClicked(position uintptr, modifiers Scintilla__KeyMod, margin int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_marginClicked(this.h, (C.intptr_t)(position), (C.int)(modifiers), (C.int)(margin))
 }
 func (this *ScintillaEditBase) OnMarginClicked(slot func(position uintptr, modifiers Scintilla__KeyMod, margin int)) {
@@ -7004,7 +6977,6 @@ func miqt_exec_callback_ScintillaEditBase_marginClicked(cb C.intptr_t, position 
 }
 
 func (this *ScintillaEditBase) TextAreaClicked(line uintptr, modifiers int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_textAreaClicked(this.h, (C.intptr_t)(line), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnTextAreaClicked(slot func(line uintptr, modifiers int)) {
@@ -7027,7 +6999,6 @@ func miqt_exec_callback_ScintillaEditBase_textAreaClicked(cb C.intptr_t, line C.
 }
 
 func (this *ScintillaEditBase) NeedShown(position uintptr, length uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_needShown(this.h, (C.intptr_t)(position), (C.intptr_t)(length))
 }
 func (this *ScintillaEditBase) OnNeedShown(slot func(position uintptr, length uintptr)) {
@@ -7050,7 +7021,6 @@ func miqt_exec_callback_ScintillaEditBase_needShown(cb C.intptr_t, position C.in
 }
 
 func (this *ScintillaEditBase) Painted() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_painted(this.h)
 }
 func (this *ScintillaEditBase) OnPainted(slot func()) {
@@ -7068,7 +7038,6 @@ func miqt_exec_callback_ScintillaEditBase_painted(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) UserListSelection() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_userListSelection(this.h)
 }
 func (this *ScintillaEditBase) OnUserListSelection(slot func()) {
@@ -7086,7 +7055,6 @@ func miqt_exec_callback_ScintillaEditBase_userListSelection(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) UriDropped(uri string) {
-	defer runtime.KeepAlive(this)
 	uri_ms := C.struct_miqt_string{}
 	uri_ms.data = C.CString(uri)
 	uri_ms.len = C.size_t(len(uri))
@@ -7114,7 +7082,6 @@ func miqt_exec_callback_ScintillaEditBase_uriDropped(cb C.intptr_t, uri C.struct
 }
 
 func (this *ScintillaEditBase) DwellStart(x int, y int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_dwellStart(this.h, (C.int)(x), (C.int)(y))
 }
 func (this *ScintillaEditBase) OnDwellStart(slot func(x int, y int)) {
@@ -7137,7 +7104,6 @@ func miqt_exec_callback_ScintillaEditBase_dwellStart(cb C.intptr_t, x C.int, y C
 }
 
 func (this *ScintillaEditBase) DwellEnd(x int, y int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_dwellEnd(this.h, (C.int)(x), (C.int)(y))
 }
 func (this *ScintillaEditBase) OnDwellEnd(slot func(x int, y int)) {
@@ -7160,7 +7126,6 @@ func miqt_exec_callback_ScintillaEditBase_dwellEnd(cb C.intptr_t, x C.int, y C.i
 }
 
 func (this *ScintillaEditBase) Zoom(zoom int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_zoom(this.h, (C.int)(zoom))
 }
 func (this *ScintillaEditBase) OnZoom(slot func(zoom int)) {
@@ -7181,7 +7146,6 @@ func miqt_exec_callback_ScintillaEditBase_zoom(cb C.intptr_t, zoom C.int) {
 }
 
 func (this *ScintillaEditBase) HotSpotClick(position uintptr, modifiers Scintilla__KeyMod) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_hotSpotClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnHotSpotClick(slot func(position uintptr, modifiers Scintilla__KeyMod)) {
@@ -7204,7 +7168,6 @@ func miqt_exec_callback_ScintillaEditBase_hotSpotClick(cb C.intptr_t, position C
 }
 
 func (this *ScintillaEditBase) HotSpotDoubleClick(position uintptr, modifiers Scintilla__KeyMod) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_hotSpotDoubleClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnHotSpotDoubleClick(slot func(position uintptr, modifiers Scintilla__KeyMod)) {
@@ -7227,7 +7190,6 @@ func miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(cb C.intptr_t, posi
 }
 
 func (this *ScintillaEditBase) CallTipClick() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_callTipClick(this.h)
 }
 func (this *ScintillaEditBase) OnCallTipClick(slot func()) {
@@ -7245,7 +7207,6 @@ func miqt_exec_callback_ScintillaEditBase_callTipClick(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) AutoCompleteSelection(position uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -7275,7 +7236,6 @@ func miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(cb C.intptr_t, p
 }
 
 func (this *ScintillaEditBase) AutoCompleteCancelled() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_autoCompleteCancelled(this.h)
 }
 func (this *ScintillaEditBase) OnAutoCompleteCancelled(slot func()) {
@@ -7293,7 +7253,6 @@ func miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) FocusChanged(focused bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_focusChanged(this.h, (C.bool)(focused))
 }
 func (this *ScintillaEditBase) OnFocusChanged(slot func(focused bool)) {
@@ -7314,7 +7273,6 @@ func miqt_exec_callback_ScintillaEditBase_focusChanged(cb C.intptr_t, focused C.
 }
 
 func (this *ScintillaEditBase) Notify(pscn *Scintilla__NotificationData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pscn)
 	C.ScintillaEditBase_notify(this.h, pscn.cPointer())
 }
@@ -7336,7 +7294,6 @@ func miqt_exec_callback_ScintillaEditBase_notify(cb C.intptr_t, pscn *C.Scintill
 }
 
 func (this *ScintillaEditBase) Command(wParam uintptr, lParam uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_command(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 func (this *ScintillaEditBase) OnCommand(slot func(wParam uintptr, lParam uintptr)) {
@@ -7359,7 +7316,6 @@ func miqt_exec_callback_ScintillaEditBase_command(cb C.intptr_t, wParam C.uintpt
 }
 
 func (this *ScintillaEditBase) ButtonPressed(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	C.ScintillaEditBase_buttonPressed(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
 }
@@ -7381,7 +7337,6 @@ func miqt_exec_callback_ScintillaEditBase_buttonPressed(cb C.intptr_t, event *C.
 }
 
 func (this *ScintillaEditBase) ButtonReleased(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	C.ScintillaEditBase_buttonReleased(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
 }
@@ -7403,7 +7358,6 @@ func miqt_exec_callback_ScintillaEditBase_buttonReleased(cb C.intptr_t, event *C
 }
 
 func (this *ScintillaEditBase) KeyPressed(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	C.ScintillaEditBase_keyPressed(this.h, (*C.QKeyEvent)(event.UnsafePointer()))
 }
@@ -7425,7 +7379,6 @@ func miqt_exec_callback_ScintillaEditBase_keyPressed(cb C.intptr_t, event *C.QKe
 }
 
 func (this *ScintillaEditBase) Resized() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEditBase_resized(this.h)
 }
 func (this *ScintillaEditBase) OnResized(slot func()) {
@@ -7488,7 +7441,6 @@ func ScintillaEditBase_TrUtf83(s string, c string, n int) string {
 
 // SetViewportMargins can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEditBase_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -7501,7 +7453,6 @@ func (this *ScintillaEditBase) SetViewportMargins(left int, top int, right int, 
 
 // ViewportMargins can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) ViewportMargins() qt.QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.ScintillaEditBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -7518,7 +7469,6 @@ func (this *ScintillaEditBase) ViewportMargins() qt.QMargins {
 
 // DrawFrame can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) DrawFrame(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -7532,7 +7482,6 @@ func (this *ScintillaEditBase) DrawFrame(param1 *qt.QPainter) {
 
 // InitStyleOption can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) InitStyleOption(option *qt.QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -7546,7 +7495,6 @@ func (this *ScintillaEditBase) InitStyleOption(option *qt.QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEditBase_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -7559,7 +7507,6 @@ func (this *ScintillaEditBase) UpdateMicroFocus() {
 
 // Create can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEditBase_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -7572,7 +7519,6 @@ func (this *ScintillaEditBase) Create() {
 
 // Destroy can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEditBase_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -7585,7 +7531,6 @@ func (this *ScintillaEditBase) Destroy() {
 
 // FocusNextChild can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.ScintillaEditBase_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -7600,7 +7545,6 @@ func (this *ScintillaEditBase) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.ScintillaEditBase_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -7615,7 +7559,6 @@ func (this *ScintillaEditBase) FocusPreviousChild() bool {
 
 // Sender can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.ScintillaEditBase_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -7630,7 +7573,6 @@ func (this *ScintillaEditBase) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.ScintillaEditBase_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -7645,7 +7587,6 @@ func (this *ScintillaEditBase) SenderSignalIndex() int {
 
 // Receivers can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -7662,7 +7603,6 @@ func (this *ScintillaEditBase) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a ScintillaEditBase that was directly constructed.
 func (this *ScintillaEditBase) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -7677,7 +7617,6 @@ func (this *ScintillaEditBase) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 
 	return (uintptr)(C.ScintillaEditBase_virtualbase_send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 
@@ -7710,7 +7649,6 @@ func miqt_exec_callback_ScintillaEditBase_send(self *C.ScintillaEditBase, cb C.i
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Sends(iMessage uint, wParam uintptr, s string) uintptr {
-	defer runtime.KeepAlive(this)
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 
@@ -7746,7 +7684,6 @@ func miqt_exec_callback_ScintillaEditBase_sends(self *C.ScintillaEditBase, cb C.
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.ScintillaEditBase_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -7776,7 +7713,6 @@ func miqt_exec_callback_ScintillaEditBase_event(self *C.ScintillaEditBase, cb C.
 }
 
 func (this *ScintillaEditBase) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -7804,7 +7740,6 @@ func miqt_exec_callback_ScintillaEditBase_paintEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -7832,7 +7767,6 @@ func miqt_exec_callback_ScintillaEditBase_wheelEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -7860,7 +7794,6 @@ func miqt_exec_callback_ScintillaEditBase_focusInEvent(self *C.ScintillaEditBase
 }
 
 func (this *ScintillaEditBase) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -7888,7 +7821,6 @@ func miqt_exec_callback_ScintillaEditBase_focusOutEvent(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -7916,7 +7848,6 @@ func miqt_exec_callback_ScintillaEditBase_resizeEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -7944,7 +7875,6 @@ func miqt_exec_callback_ScintillaEditBase_keyPressEvent(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -7972,7 +7902,6 @@ func miqt_exec_callback_ScintillaEditBase_mousePressEvent(self *C.ScintillaEditB
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -8000,7 +7929,6 @@ func miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent(self *C.ScintillaEdi
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -8028,7 +7956,6 @@ func miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent(self *C.Scintill
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -8056,7 +7983,6 @@ func miqt_exec_callback_ScintillaEditBase_mouseMoveEvent(self *C.ScintillaEditBa
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -8084,7 +8010,6 @@ func miqt_exec_callback_ScintillaEditBase_contextMenuEvent(self *C.ScintillaEdit
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -8112,7 +8037,6 @@ func miqt_exec_callback_ScintillaEditBase_dragEnterEvent(self *C.ScintillaEditBa
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -8140,7 +8064,6 @@ func miqt_exec_callback_ScintillaEditBase_dragLeaveEvent(self *C.ScintillaEditBa
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -8168,7 +8091,6 @@ func miqt_exec_callback_ScintillaEditBase_dragMoveEvent(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -8196,7 +8118,6 @@ func miqt_exec_callback_ScintillaEditBase_dropEvent(self *C.ScintillaEditBase, c
 }
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
@@ -8224,7 +8145,6 @@ func miqt_exec_callback_ScintillaEditBase_inputMethodEvent(self *C.ScintillaEdit
 }
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEditBase_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -8256,7 +8176,6 @@ func miqt_exec_callback_ScintillaEditBase_inputMethodQuery(self *C.ScintillaEdit
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
-	defer runtime.KeepAlive(this)
 
 	C.ScintillaEditBase_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
 
@@ -8285,7 +8204,6 @@ func miqt_exec_callback_ScintillaEditBase_scrollContentsBy(self *C.ScintillaEdit
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -8314,7 +8232,6 @@ func miqt_exec_callback_ScintillaEditBase_minimumSizeHint(self *C.ScintillaEditB
 }
 
 func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -8343,8 +8260,6 @@ func miqt_exec_callback_ScintillaEditBase_sizeHint(self *C.ScintillaEditBase, cb
 }
 
 func (this *ScintillaEditBase) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.ScintillaEditBase_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
@@ -8371,8 +8286,6 @@ func miqt_exec_callback_ScintillaEditBase_setupViewport(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.ScintillaEditBase_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -8404,7 +8317,6 @@ func miqt_exec_callback_ScintillaEditBase_eventFilter(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.ScintillaEditBase_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
@@ -8434,7 +8346,6 @@ func miqt_exec_callback_ScintillaEditBase_viewportEvent(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -8463,7 +8374,6 @@ func miqt_exec_callback_ScintillaEditBase_viewportSizeHint(self *C.ScintillaEdit
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.ScintillaEditBase_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -8491,7 +8401,6 @@ func miqt_exec_callback_ScintillaEditBase_changeEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEditBase_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -8517,7 +8426,6 @@ func miqt_exec_callback_ScintillaEditBase_devType(self *C.ScintillaEditBase, cb 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.ScintillaEditBase_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -8544,7 +8452,6 @@ func miqt_exec_callback_ScintillaEditBase_setVisible(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEditBase_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -8573,7 +8480,6 @@ func miqt_exec_callback_ScintillaEditBase_heightForWidth(self *C.ScintillaEditBa
 }
 
 func (this *ScintillaEditBase) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.ScintillaEditBase_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -8599,7 +8505,6 @@ func miqt_exec_callback_ScintillaEditBase_hasHeightForWidth(self *C.ScintillaEdi
 }
 
 func (this *ScintillaEditBase) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEditBase_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -8626,7 +8531,6 @@ func miqt_exec_callback_ScintillaEditBase_paintEngine(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -8654,7 +8558,6 @@ func miqt_exec_callback_ScintillaEditBase_keyReleaseEvent(self *C.ScintillaEditB
 }
 
 func (this *ScintillaEditBase) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -8682,7 +8585,6 @@ func miqt_exec_callback_ScintillaEditBase_enterEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -8710,7 +8612,6 @@ func miqt_exec_callback_ScintillaEditBase_leaveEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -8738,7 +8639,6 @@ func miqt_exec_callback_ScintillaEditBase_moveEvent(self *C.ScintillaEditBase, c
 }
 
 func (this *ScintillaEditBase) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -8766,7 +8666,6 @@ func miqt_exec_callback_ScintillaEditBase_closeEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -8794,7 +8693,6 @@ func miqt_exec_callback_ScintillaEditBase_tabletEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -8822,7 +8720,6 @@ func miqt_exec_callback_ScintillaEditBase_actionEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -8850,7 +8747,6 @@ func miqt_exec_callback_ScintillaEditBase_showEvent(self *C.ScintillaEditBase, c
 }
 
 func (this *ScintillaEditBase) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -8878,7 +8774,6 @@ func miqt_exec_callback_ScintillaEditBase_hideEvent(self *C.ScintillaEditBase, c
 }
 
 func (this *ScintillaEditBase) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -8920,7 +8815,6 @@ func miqt_exec_callback_ScintillaEditBase_nativeEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEditBase_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -8949,7 +8843,6 @@ func miqt_exec_callback_ScintillaEditBase_metric(self *C.ScintillaEditBase, cb C
 }
 
 func (this *ScintillaEditBase) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.ScintillaEditBase_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -8977,7 +8870,6 @@ func miqt_exec_callback_ScintillaEditBase_initPainter(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEditBase_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -9008,7 +8900,6 @@ func miqt_exec_callback_ScintillaEditBase_redirected(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEditBase_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -9035,7 +8926,6 @@ func miqt_exec_callback_ScintillaEditBase_sharedPainter(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.ScintillaEditBase_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -9064,7 +8954,6 @@ func miqt_exec_callback_ScintillaEditBase_focusNextPrevChild(self *C.ScintillaEd
 }
 
 func (this *ScintillaEditBase) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -9092,7 +8981,6 @@ func miqt_exec_callback_ScintillaEditBase_timerEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -9120,7 +9008,6 @@ func miqt_exec_callback_ScintillaEditBase_childEvent(self *C.ScintillaEditBase, 
 }
 
 func (this *ScintillaEditBase) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEditBase_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -9148,7 +9035,6 @@ func miqt_exec_callback_ScintillaEditBase_customEvent(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaEditBase_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -9176,7 +9062,6 @@ func miqt_exec_callback_ScintillaEditBase_connectNotify(self *C.ScintillaEditBas
 }
 
 func (this *ScintillaEditBase) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaEditBase_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -9211,6 +9096,8 @@ func (this *ScintillaEditBase) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *ScintillaEditBase) GoGC() {
 	if this.gc != nil {
 		return
@@ -9273,25 +9160,21 @@ func NewScintillaDocument() *ScintillaDocument {
 
 // NewScintillaDocument2 constructs a new ScintillaDocument object.
 func NewScintillaDocument2(parent *qt.QObject) *ScintillaDocument {
-	defer runtime.KeepAlive(parent)
 
 	return newScintillaDocument(C.ScintillaDocument_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewScintillaDocument3 constructs a new ScintillaDocument object.
 func NewScintillaDocument3(parent *qt.QObject, pdoc_ unsafe.Pointer) *ScintillaDocument {
-	defer runtime.KeepAlive(parent)
 
 	return newScintillaDocument(C.ScintillaDocument_new3((*C.QObject)(parent.UnsafePointer()), pdoc_))
 }
 
 func (this *ScintillaDocument) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaDocument_metaObject(this.h)))
 }
 
 func (this *ScintillaDocument) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.ScintillaDocument_metacast(this.h, param1_Cstring))
@@ -9316,92 +9199,74 @@ func ScintillaDocument_TrUtf8(s string) string {
 }
 
 func (this *ScintillaDocument) Pointer() unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	return (unsafe.Pointer)(C.ScintillaDocument_pointer(this.h))
 }
 
 func (this *ScintillaDocument) LineFromPosition(pos int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_lineFromPosition(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) IsCrLf(pos int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_isCrLf(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) DeleteChars(pos int, lenVal int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_deleteChars(this.h, (C.int)(pos), (C.int)(lenVal)))
 }
 
 func (this *ScintillaDocument) Undo() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_undo(this.h))
 }
 
 func (this *ScintillaDocument) Redo() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_redo(this.h))
 }
 
 func (this *ScintillaDocument) CanUndo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_canUndo(this.h))
 }
 
 func (this *ScintillaDocument) CanRedo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_canRedo(this.h))
 }
 
 func (this *ScintillaDocument) DeleteUndoHistory() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_deleteUndoHistory(this.h)
 }
 
 func (this *ScintillaDocument) SetUndoCollection(collect_undo bool) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_setUndoCollection(this.h, (C.bool)(collect_undo)))
 }
 
 func (this *ScintillaDocument) IsCollectingUndo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_isCollectingUndo(this.h))
 }
 
 func (this *ScintillaDocument) BeginUndoAction() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_beginUndoAction(this.h)
 }
 
 func (this *ScintillaDocument) EndUndoAction() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_endUndoAction(this.h)
 }
 
 func (this *ScintillaDocument) SetSavePoint() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_setSavePoint(this.h)
 }
 
 func (this *ScintillaDocument) IsSavePoint() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_isSavePoint(this.h))
 }
 
 func (this *ScintillaDocument) SetReadOnly(read_only bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_setReadOnly(this.h, (C.bool)(read_only))
 }
 
 func (this *ScintillaDocument) IsReadOnly() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_isReadOnly(this.h))
 }
 
 func (this *ScintillaDocument) InsertString(position int, str []byte) {
-	defer runtime.KeepAlive(this)
 	str_alias := C.struct_miqt_string{}
 	if len(str) > 0 {
 		str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
@@ -9413,7 +9278,6 @@ func (this *ScintillaDocument) InsertString(position int, str []byte) {
 }
 
 func (this *ScintillaDocument) GetCharRange(position int, length int) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaDocument_getCharRange(this.h, (C.int)(position), (C.int)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -9421,112 +9285,90 @@ func (this *ScintillaDocument) GetCharRange(position int, length int) []byte {
 }
 
 func (this *ScintillaDocument) StyleAt(position int) int8 {
-	defer runtime.KeepAlive(this)
 	return (int8)(C.ScintillaDocument_styleAt(this.h, (C.int)(position)))
 }
 
 func (this *ScintillaDocument) LineStart(lineno int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_lineStart(this.h, (C.int)(lineno)))
 }
 
 func (this *ScintillaDocument) LineEnd(lineno int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_lineEnd(this.h, (C.int)(lineno)))
 }
 
 func (this *ScintillaDocument) LineEndPosition(pos int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_lineEndPosition(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) Length() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_length(this.h))
 }
 
 func (this *ScintillaDocument) LinesTotal() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_linesTotal(this.h))
 }
 
 func (this *ScintillaDocument) StartStyling(position int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_startStyling(this.h, (C.int)(position))
 }
 
 func (this *ScintillaDocument) SetStyleFor(length int, style int8) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaDocument_setStyleFor(this.h, (C.int)(length), (C.char)(style)))
 }
 
 func (this *ScintillaDocument) GetEndStyled() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_getEndStyled(this.h))
 }
 
 func (this *ScintillaDocument) EnsureStyledTo(position int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_ensureStyledTo(this.h, (C.int)(position))
 }
 
 func (this *ScintillaDocument) SetCurrentIndicator(indic int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_setCurrentIndicator(this.h, (C.int)(indic))
 }
 
 func (this *ScintillaDocument) DecorationFillRange(position int, value int, fillLength int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_decorationFillRange(this.h, (C.int)(position), (C.int)(value), (C.int)(fillLength))
 }
 
 func (this *ScintillaDocument) DecorationsValueAt(indic int, position int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_decorationsValueAt(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) DecorationsStart(indic int, position int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_decorationsStart(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) DecorationsEnd(indic int, position int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_decorationsEnd(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) GetCodePage() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_getCodePage(this.h))
 }
 
 func (this *ScintillaDocument) SetCodePage(code_page int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_setCodePage(this.h, (C.int)(code_page))
 }
 
 func (this *ScintillaDocument) GetEolMode() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_getEolMode(this.h))
 }
 
 func (this *ScintillaDocument) SetEolMode(eol_mode int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_setEolMode(this.h, (C.int)(eol_mode))
 }
 
 func (this *ScintillaDocument) MovePositionOutsideChar(pos int, move_dir int, check_line_end bool) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_movePositionOutsideChar(this.h, (C.int)(pos), (C.int)(move_dir), (C.bool)(check_line_end)))
 }
 
 func (this *ScintillaDocument) GetCharacter(pos int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.ScintillaDocument_getCharacter(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) ModifyAttempt() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_modifyAttempt(this.h)
 }
 func (this *ScintillaDocument) OnModifyAttempt(slot func()) {
@@ -9544,7 +9386,6 @@ func miqt_exec_callback_ScintillaDocument_modifyAttempt(cb C.intptr_t) {
 }
 
 func (this *ScintillaDocument) SavePoint(atSavePoint bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_savePoint(this.h, (C.bool)(atSavePoint))
 }
 func (this *ScintillaDocument) OnSavePoint(slot func(atSavePoint bool)) {
@@ -9565,7 +9406,6 @@ func miqt_exec_callback_ScintillaDocument_savePoint(cb C.intptr_t, atSavePoint C
 }
 
 func (this *ScintillaDocument) Modified(position int, modification_type int, text []byte, length int, linesAdded int, line int, foldLevelNow int, foldLevelPrev int) {
-	defer runtime.KeepAlive(this)
 	text_alias := C.struct_miqt_string{}
 	if len(text) > 0 {
 		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
@@ -9609,7 +9449,6 @@ func miqt_exec_callback_ScintillaDocument_modified(cb C.intptr_t, position C.int
 }
 
 func (this *ScintillaDocument) StyleNeeded(pos int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_styleNeeded(this.h, (C.int)(pos))
 }
 func (this *ScintillaDocument) OnStyleNeeded(slot func(pos int)) {
@@ -9630,7 +9469,6 @@ func miqt_exec_callback_ScintillaDocument_styleNeeded(cb C.intptr_t, pos C.int) 
 }
 
 func (this *ScintillaDocument) ErrorOccurred(status int) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_errorOccurred(this.h, (C.int)(status))
 }
 func (this *ScintillaDocument) OnErrorOccurred(slot func(status int)) {
@@ -9695,13 +9533,11 @@ func ScintillaDocument_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *ScintillaDocument) BeginUndoActionWithCoalesceWithPrior(coalesceWithPrior bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaDocument_beginUndoActionWithCoalesceWithPrior(this.h, (C.bool)(coalesceWithPrior))
 }
 
 // Sender can only be called from a ScintillaDocument that was directly constructed.
 func (this *ScintillaDocument) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.ScintillaDocument_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -9716,7 +9552,6 @@ func (this *ScintillaDocument) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a ScintillaDocument that was directly constructed.
 func (this *ScintillaDocument) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.ScintillaDocument_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -9731,7 +9566,6 @@ func (this *ScintillaDocument) SenderSignalIndex() int {
 
 // Receivers can only be called from a ScintillaDocument that was directly constructed.
 func (this *ScintillaDocument) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -9748,7 +9582,6 @@ func (this *ScintillaDocument) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a ScintillaDocument that was directly constructed.
 func (this *ScintillaDocument) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -9763,7 +9596,6 @@ func (this *ScintillaDocument) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *ScintillaDocument) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.ScintillaDocument_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -9793,8 +9625,6 @@ func miqt_exec_callback_ScintillaDocument_event(self *C.ScintillaDocument, cb C.
 }
 
 func (this *ScintillaDocument) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.ScintillaDocument_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -9826,7 +9656,6 @@ func miqt_exec_callback_ScintillaDocument_eventFilter(self *C.ScintillaDocument,
 }
 
 func (this *ScintillaDocument) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaDocument_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -9854,7 +9683,6 @@ func miqt_exec_callback_ScintillaDocument_timerEvent(self *C.ScintillaDocument, 
 }
 
 func (this *ScintillaDocument) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaDocument_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -9882,7 +9710,6 @@ func miqt_exec_callback_ScintillaDocument_childEvent(self *C.ScintillaDocument, 
 }
 
 func (this *ScintillaDocument) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaDocument_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -9910,7 +9737,6 @@ func miqt_exec_callback_ScintillaDocument_customEvent(self *C.ScintillaDocument,
 }
 
 func (this *ScintillaDocument) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaDocument_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -9938,7 +9764,6 @@ func miqt_exec_callback_ScintillaDocument_connectNotify(self *C.ScintillaDocumen
 }
 
 func (this *ScintillaDocument) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaDocument_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -9973,6 +9798,8 @@ func (this *ScintillaDocument) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *ScintillaDocument) GoGC() {
 	if this.gc != nil {
 		return
@@ -10030,7 +9857,6 @@ func UnsafeNewScintillaEdit(h unsafe.Pointer) *ScintillaEdit {
 
 // NewScintillaEdit constructs a new ScintillaEdit object.
 func NewScintillaEdit(parent *qt.QWidget) *ScintillaEdit {
-	defer runtime.KeepAlive(parent)
 
 	return newScintillaEdit(C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -10042,12 +9868,10 @@ func NewScintillaEdit2() *ScintillaEdit {
 }
 
 func (this *ScintillaEdit) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEdit_metaObject(this.h)))
 }
 
 func (this *ScintillaEdit) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.ScintillaEdit_metacast(this.h, param1_Cstring))
@@ -10072,7 +9896,6 @@ func ScintillaEdit_TrUtf8(s string) string {
 }
 
 func (this *ScintillaEdit) TextReturner(message int, wParam uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_TextReturner(this.h, (C.int)(message), (C.uintptr_t)(wParam))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10083,7 +9906,6 @@ func (this *ScintillaEdit) FindText(flags int, text string, cpMin int, cpMax int
 	First  int
 	Second int
 } {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _mm C.struct_miqt_map = C.ScintillaEdit_findText(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
@@ -10100,7 +9922,6 @@ func (this *ScintillaEdit) FindText(flags int, text string, cpMin int, cpMax int
 }
 
 func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getTextRange(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10108,13 +9929,10 @@ func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
 }
 
 func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
-	defer runtime.KeepAlive(this)
 	return newScintillaDocument(C.ScintillaEdit_getDoc(this.h))
 }
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pdoc_)
 	C.ScintillaEdit_setDoc(this.h, pdoc_.cPointer())
 }
 
@@ -10122,7 +9940,6 @@ func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax in
 	First  int
 	Second int
 } {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	var _mm C.struct_miqt_map = C.ScintillaEdit_findText2(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
@@ -10139,7 +9956,6 @@ func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax in
 }
 
 func (this *ScintillaEdit) TextRange(start int, end int) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_textRange(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10147,7 +9963,6 @@ func (this *ScintillaEdit) TextRange(start int, end int) []byte {
 }
 
 func (this *ScintillaEdit) FormatRange(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(measure)
 	defer runtime.KeepAlive(print_rect)
@@ -10156,7 +9971,6 @@ func (this *ScintillaEdit) FormatRange(draw bool, target *qt.QPaintDevice, measu
 }
 
 func (this *ScintillaEdit) FormatRange2(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(measure)
 	defer runtime.KeepAlive(print_rect)
@@ -10165,175 +9979,142 @@ func (this *ScintillaEdit) FormatRange2(draw bool, target *qt.QPaintDevice, meas
 }
 
 func (this *ScintillaEdit) AddText(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_addText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) AddStyledText(length uintptr, c string) {
-	defer runtime.KeepAlive(this)
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
 	C.ScintillaEdit_addStyledText(this.h, (C.intptr_t)(length), c_Cstring)
 }
 
 func (this *ScintillaEdit) InsertText(pos uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_insertText(this.h, (C.intptr_t)(pos), text_Cstring)
 }
 
 func (this *ScintillaEdit) ChangeInsertion(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_changeInsertion(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) ClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearAll(this.h)
 }
 
 func (this *ScintillaEdit) DeleteRange(start uintptr, lengthDelete uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_deleteRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthDelete))
 }
 
 func (this *ScintillaEdit) ClearDocumentStyle() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearDocumentStyle(this.h)
 }
 
 func (this *ScintillaEdit) Length() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_length(this.h))
 }
 
 func (this *ScintillaEdit) CharAt(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_charAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) CurrentPos() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_currentPos(this.h))
 }
 
 func (this *ScintillaEdit) Anchor() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_anchor(this.h))
 }
 
 func (this *ScintillaEdit) StyleAt(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) StyleIndexAt(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleIndexAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) Redo() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_redo(this.h)
 }
 
 func (this *ScintillaEdit) SetUndoCollection(collectUndo bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUndoCollection(this.h, (C.bool)(collectUndo))
 }
 
 func (this *ScintillaEdit) SelectAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_selectAll(this.h)
 }
 
 func (this *ScintillaEdit) SetSavePoint() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSavePoint(this.h)
 }
 
 func (this *ScintillaEdit) CanRedo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_canRedo(this.h))
 }
 
 func (this *ScintillaEdit) MarkerLineFromHandle(markerHandle uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerLineFromHandle(this.h, (C.intptr_t)(markerHandle)))
 }
 
 func (this *ScintillaEdit) MarkerDeleteHandle(markerHandle uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerDeleteHandle(this.h, (C.intptr_t)(markerHandle))
 }
 
 func (this *ScintillaEdit) MarkerHandleFromLine(line uintptr, which uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerHandleFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) MarkerNumberFromLine(line uintptr, which uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerNumberFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) UndoCollection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_undoCollection(this.h))
 }
 
 func (this *ScintillaEdit) ViewWS() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_viewWS(this.h))
 }
 
 func (this *ScintillaEdit) SetViewWS(viewWS uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setViewWS(this.h, (C.intptr_t)(viewWS))
 }
 
 func (this *ScintillaEdit) TabDrawMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_tabDrawMode(this.h))
 }
 
 func (this *ScintillaEdit) SetTabDrawMode(tabDrawMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTabDrawMode(this.h, (C.intptr_t)(tabDrawMode))
 }
 
 func (this *ScintillaEdit) PositionFromPoint(x uintptr, y uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) PositionFromPointClose(x uintptr, y uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) GotoLine(line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_gotoLine(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) GotoPos(caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_gotoPos(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetAnchor(anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAnchor(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) GetCurLine(length uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getCurLine(this.h, (C.intptr_t)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10341,94 +10122,76 @@ func (this *ScintillaEdit) GetCurLine(length uintptr) []byte {
 }
 
 func (this *ScintillaEdit) EndStyled() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_endStyled(this.h))
 }
 
 func (this *ScintillaEdit) ConvertEOLs(eolMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_convertEOLs(this.h, (C.intptr_t)(eolMode))
 }
 
 func (this *ScintillaEdit) EOLMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_eOLMode(this.h))
 }
 
 func (this *ScintillaEdit) SetEOLMode(eolMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEOLMode(this.h, (C.intptr_t)(eolMode))
 }
 
 func (this *ScintillaEdit) StartStyling(start uintptr, unused uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_startStyling(this.h, (C.intptr_t)(start), (C.intptr_t)(unused))
 }
 
 func (this *ScintillaEdit) SetStyling(length uintptr, style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setStyling(this.h, (C.intptr_t)(length), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) BufferedDraw() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_bufferedDraw(this.h))
 }
 
 func (this *ScintillaEdit) SetBufferedDraw(buffered bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setBufferedDraw(this.h, (C.bool)(buffered))
 }
 
 func (this *ScintillaEdit) SetTabWidth(tabWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTabWidth(this.h, (C.intptr_t)(tabWidth))
 }
 
 func (this *ScintillaEdit) TabWidth() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_tabWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetTabMinimumWidth(pixels uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTabMinimumWidth(this.h, (C.intptr_t)(pixels))
 }
 
 func (this *ScintillaEdit) TabMinimumWidth() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_tabMinimumWidth(this.h))
 }
 
 func (this *ScintillaEdit) ClearTabStops(line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearTabStops(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) AddTabStop(line uintptr, x uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_addTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x))
 }
 
 func (this *ScintillaEdit) GetNextTabStop(line uintptr, x uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_getNextTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x)))
 }
 
 func (this *ScintillaEdit) SetCodePage(codePage uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCodePage(this.h, (C.intptr_t)(codePage))
 }
 
 func (this *ScintillaEdit) SetFontLocale(localeName string) {
-	defer runtime.KeepAlive(this)
 	localeName_Cstring := C.CString(localeName)
 	defer C.free(unsafe.Pointer(localeName_Cstring))
 	C.ScintillaEdit_setFontLocale(this.h, localeName_Cstring)
 }
 
 func (this *ScintillaEdit) FontLocale() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_fontLocale(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10436,266 +10199,214 @@ func (this *ScintillaEdit) FontLocale() []byte {
 }
 
 func (this *ScintillaEdit) IMEInteraction() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_iMEInteraction(this.h))
 }
 
 func (this *ScintillaEdit) SetIMEInteraction(imeInteraction uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIMEInteraction(this.h, (C.intptr_t)(imeInteraction))
 }
 
 func (this *ScintillaEdit) MarkerDefine(markerNumber uintptr, markerSymbol uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerDefine(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(markerSymbol))
 }
 
 func (this *ScintillaEdit) MarkerSetFore(markerNumber uintptr, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetFore(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) MarkerSetBack(markerNumber uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetBack(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetBackSelected(markerNumber uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetBackSelected(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetForeTranslucent(markerNumber uintptr, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetForeTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) MarkerSetBackTranslucent(markerNumber uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetBackTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetBackSelectedTranslucent(markerNumber uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetBackSelectedTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetStrokeWidth(markerNumber uintptr, hundredths uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetStrokeWidth(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(hundredths))
 }
 
 func (this *ScintillaEdit) MarkerEnableHighlight(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerEnableHighlight(this.h, (C.bool)(enabled))
 }
 
 func (this *ScintillaEdit) MarkerAdd(line uintptr, markerNumber uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerAdd(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarkerDelete(line uintptr, markerNumber uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerDelete(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber))
 }
 
 func (this *ScintillaEdit) MarkerDeleteAll(markerNumber uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerDeleteAll(this.h, (C.intptr_t)(markerNumber))
 }
 
 func (this *ScintillaEdit) MarkerGet(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerGet(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MarkerNext(lineStart uintptr, markerMask uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerNext(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
 }
 
 func (this *ScintillaEdit) MarkerPrevious(lineStart uintptr, markerMask uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerPrevious(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
 }
 
 func (this *ScintillaEdit) MarkerDefinePixmap(markerNumber uintptr, pixmap string) {
-	defer runtime.KeepAlive(this)
 	pixmap_Cstring := C.CString(pixmap)
 	defer C.free(unsafe.Pointer(pixmap_Cstring))
 	C.ScintillaEdit_markerDefinePixmap(this.h, (C.intptr_t)(markerNumber), pixmap_Cstring)
 }
 
 func (this *ScintillaEdit) MarkerAddSet(line uintptr, markerSet uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerAddSet(this.h, (C.intptr_t)(line), (C.intptr_t)(markerSet))
 }
 
 func (this *ScintillaEdit) MarkerSetAlpha(markerNumber uintptr, alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetAlpha(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) MarkerLayer(markerNumber uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerLayer(this.h, (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarkerSetLayer(markerNumber uintptr, layer uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_markerSetLayer(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) SetMarginTypeN(margin uintptr, marginType uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginTypeN(this.h, (C.intptr_t)(margin), (C.intptr_t)(marginType))
 }
 
 func (this *ScintillaEdit) MarginTypeN(margin uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginTypeN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginWidthN(margin uintptr, pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginWidthN(this.h, (C.intptr_t)(margin), (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginWidthN(margin uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginWidthN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginMaskN(margin uintptr, mask uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginMaskN(this.h, (C.intptr_t)(margin), (C.intptr_t)(mask))
 }
 
 func (this *ScintillaEdit) MarginMaskN(margin uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginMaskN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginSensitiveN(margin uintptr, sensitive bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginSensitiveN(this.h, (C.intptr_t)(margin), (C.bool)(sensitive))
 }
 
 func (this *ScintillaEdit) MarginSensitiveN(margin uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_marginSensitiveN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginCursorN(margin uintptr, cursor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginCursorN(this.h, (C.intptr_t)(margin), (C.intptr_t)(cursor))
 }
 
 func (this *ScintillaEdit) MarginCursorN(margin uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginCursorN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginBackN(margin uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginBackN(this.h, (C.intptr_t)(margin), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarginBackN(margin uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginBackN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMargins(margins uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMargins(this.h, (C.intptr_t)(margins))
 }
 
 func (this *ScintillaEdit) Margins() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_margins(this.h))
 }
 
 func (this *ScintillaEdit) StyleClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleClearAll(this.h)
 }
 
 func (this *ScintillaEdit) StyleSetFore(style uintptr, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetFore(this.h, (C.intptr_t)(style), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) StyleSetBack(style uintptr, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetBack(this.h, (C.intptr_t)(style), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) StyleSetBold(style uintptr, bold bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetBold(this.h, (C.intptr_t)(style), (C.bool)(bold))
 }
 
 func (this *ScintillaEdit) StyleSetItalic(style uintptr, italic bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetItalic(this.h, (C.intptr_t)(style), (C.bool)(italic))
 }
 
 func (this *ScintillaEdit) StyleSetSize(style uintptr, sizePoints uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetSize(this.h, (C.intptr_t)(style), (C.intptr_t)(sizePoints))
 }
 
 func (this *ScintillaEdit) StyleSetFont(style uintptr, fontName string) {
-	defer runtime.KeepAlive(this)
 	fontName_Cstring := C.CString(fontName)
 	defer C.free(unsafe.Pointer(fontName_Cstring))
 	C.ScintillaEdit_styleSetFont(this.h, (C.intptr_t)(style), fontName_Cstring)
 }
 
 func (this *ScintillaEdit) StyleSetEOLFilled(style uintptr, eolFilled bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetEOLFilled(this.h, (C.intptr_t)(style), (C.bool)(eolFilled))
 }
 
 func (this *ScintillaEdit) StyleResetDefault() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleResetDefault(this.h)
 }
 
 func (this *ScintillaEdit) StyleSetUnderline(style uintptr, underline bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetUnderline(this.h, (C.intptr_t)(style), (C.bool)(underline))
 }
 
 func (this *ScintillaEdit) StyleFore(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleFore(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleBack(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleBack(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleBold(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleBold(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleItalic(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleItalic(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSize(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleSize(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleFont(style uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_styleFont(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10703,104 +10414,84 @@ func (this *ScintillaEdit) StyleFont(style uintptr) []byte {
 }
 
 func (this *ScintillaEdit) StyleEOLFilled(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleEOLFilled(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleUnderline(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleUnderline(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleCase(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleCase(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleCharacterSet(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleCharacterSet(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleVisible(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleVisible(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleChangeable(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleChangeable(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleHotSpot(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleHotSpot(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetCase(style uintptr, caseVisible uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetCase(this.h, (C.intptr_t)(style), (C.intptr_t)(caseVisible))
 }
 
 func (this *ScintillaEdit) StyleSetSizeFractional(style uintptr, sizeHundredthPoints uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetSizeFractional(this.h, (C.intptr_t)(style), (C.intptr_t)(sizeHundredthPoints))
 }
 
 func (this *ScintillaEdit) StyleSizeFractional(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleSizeFractional(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetWeight(style uintptr, weight uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetWeight(this.h, (C.intptr_t)(style), (C.intptr_t)(weight))
 }
 
 func (this *ScintillaEdit) StyleWeight(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleWeight(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetCharacterSet(style uintptr, characterSet uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetCharacterSet(this.h, (C.intptr_t)(style), (C.intptr_t)(characterSet))
 }
 
 func (this *ScintillaEdit) StyleSetHotSpot(style uintptr, hotspot bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetHotSpot(this.h, (C.intptr_t)(style), (C.bool)(hotspot))
 }
 
 func (this *ScintillaEdit) StyleSetCheckMonospaced(style uintptr, checkMonospaced bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetCheckMonospaced(this.h, (C.intptr_t)(style), (C.bool)(checkMonospaced))
 }
 
 func (this *ScintillaEdit) StyleCheckMonospaced(style uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_styleCheckMonospaced(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetStretch(style uintptr, stretch uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetStretch(this.h, (C.intptr_t)(style), (C.intptr_t)(stretch))
 }
 
 func (this *ScintillaEdit) StyleStretch(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleStretch(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetInvisibleRepresentation(style uintptr, representation string) {
-	defer runtime.KeepAlive(this)
 	representation_Cstring := C.CString(representation)
 	defer C.free(unsafe.Pointer(representation_Cstring))
 	C.ScintillaEdit_styleSetInvisibleRepresentation(this.h, (C.intptr_t)(style), representation_Cstring)
 }
 
 func (this *ScintillaEdit) StyleInvisibleRepresentation(style uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_styleInvisibleRepresentation(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10808,146 +10499,118 @@ func (this *ScintillaEdit) StyleInvisibleRepresentation(style uintptr) []byte {
 }
 
 func (this *ScintillaEdit) SetElementColour(element uintptr, colourElement uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setElementColour(this.h, (C.intptr_t)(element), (C.intptr_t)(colourElement))
 }
 
 func (this *ScintillaEdit) ElementColour(element uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_elementColour(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ResetElementColour(element uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_resetElementColour(this.h, (C.intptr_t)(element))
 }
 
 func (this *ScintillaEdit) ElementIsSet(element uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_elementIsSet(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ElementAllowsTranslucent(element uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_elementAllowsTranslucent(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ElementBaseColour(element uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_elementBaseColour(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) SetSelFore(useSetting bool, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetSelBack(useSetting bool, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SelAlpha() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetSelAlpha(alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) SelEOLFilled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_selEOLFilled(this.h))
 }
 
 func (this *ScintillaEdit) SetSelEOLFilled(filled bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelEOLFilled(this.h, (C.bool)(filled))
 }
 
 func (this *ScintillaEdit) SelectionLayer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionLayer(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionLayer(layer uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionLayer(this.h, (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) CaretLineLayer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretLineLayer(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineLayer(layer uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineLayer(this.h, (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) CaretLineHighlightSubLine() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_caretLineHighlightSubLine(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineHighlightSubLine(subLine bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineHighlightSubLine(this.h, (C.bool)(subLine))
 }
 
 func (this *ScintillaEdit) SetCaretFore(fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) AssignCmdKey(keyDefinition uintptr, sciCommand uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_assignCmdKey(this.h, (C.intptr_t)(keyDefinition), (C.intptr_t)(sciCommand))
 }
 
 func (this *ScintillaEdit) ClearCmdKey(keyDefinition uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearCmdKey(this.h, (C.intptr_t)(keyDefinition))
 }
 
 func (this *ScintillaEdit) ClearAllCmdKeys() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearAllCmdKeys(this.h)
 }
 
 func (this *ScintillaEdit) SetStylingEx(length uintptr, styles string) {
-	defer runtime.KeepAlive(this)
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
 	C.ScintillaEdit_setStylingEx(this.h, (C.intptr_t)(length), styles_Cstring)
 }
 
 func (this *ScintillaEdit) StyleSetVisible(style uintptr, visible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetVisible(this.h, (C.intptr_t)(style), (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) CaretPeriod() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretPeriod(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretPeriod(periodMilliseconds uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretPeriod(this.h, (C.intptr_t)(periodMilliseconds))
 }
 
 func (this *ScintillaEdit) SetWordChars(characters string) {
-	defer runtime.KeepAlive(this)
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
 	C.ScintillaEdit_setWordChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) WordChars() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_wordChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -10955,99 +10618,80 @@ func (this *ScintillaEdit) WordChars() []byte {
 }
 
 func (this *ScintillaEdit) SetCharacterCategoryOptimization(countCharacters uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCharacterCategoryOptimization(this.h, (C.intptr_t)(countCharacters))
 }
 
 func (this *ScintillaEdit) CharacterCategoryOptimization() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_characterCategoryOptimization(this.h))
 }
 
 func (this *ScintillaEdit) BeginUndoAction() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_beginUndoAction(this.h)
 }
 
 func (this *ScintillaEdit) EndUndoAction() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_endUndoAction(this.h)
 }
 
 func (this *ScintillaEdit) UndoSequence() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoSequence(this.h))
 }
 
 func (this *ScintillaEdit) UndoActions() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoActions(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoSavePoint(action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUndoSavePoint(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoSavePoint() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoSavePoint(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoDetach(action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUndoDetach(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoDetach() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoDetach(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoTentative(action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUndoTentative(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoTentative() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoTentative(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoCurrent(action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUndoCurrent(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoCurrent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoCurrent(this.h))
 }
 
 func (this *ScintillaEdit) PushUndoActionType(typeVal uintptr, pos uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pushUndoActionType(this.h, (C.intptr_t)(typeVal), (C.intptr_t)(pos))
 }
 
 func (this *ScintillaEdit) ChangeLastUndoActionText(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_changeLastUndoActionText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) UndoActionType(action uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoActionType(this.h, (C.intptr_t)(action)))
 }
 
 func (this *ScintillaEdit) UndoActionPosition(action uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_undoActionPosition(this.h, (C.intptr_t)(action)))
 }
 
 func (this *ScintillaEdit) UndoActionText(action uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_undoActionText(this.h, (C.intptr_t)(action))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -11055,489 +10699,394 @@ func (this *ScintillaEdit) UndoActionText(action uintptr) []byte {
 }
 
 func (this *ScintillaEdit) IndicSetStyle(indicator uintptr, indicatorStyle uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
 }
 
 func (this *ScintillaEdit) IndicStyle(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicStyle(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetFore(indicator uintptr, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) IndicFore(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicFore(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetUnder(indicator uintptr, under bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetUnder(this.h, (C.intptr_t)(indicator), (C.bool)(under))
 }
 
 func (this *ScintillaEdit) IndicUnder(indicator uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_indicUnder(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetHoverStyle(indicator uintptr, indicatorStyle uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetHoverStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
 }
 
 func (this *ScintillaEdit) IndicHoverStyle(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicHoverStyle(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetHoverFore(indicator uintptr, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetHoverFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) IndicHoverFore(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicHoverFore(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetFlags(indicator uintptr, flags uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetFlags(this.h, (C.intptr_t)(indicator), (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) IndicFlags(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicFlags(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetStrokeWidth(indicator uintptr, hundredths uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetStrokeWidth(this.h, (C.intptr_t)(indicator), (C.intptr_t)(hundredths))
 }
 
 func (this *ScintillaEdit) IndicStrokeWidth(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicStrokeWidth(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) SetWhitespaceFore(useSetting bool, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWhitespaceFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetWhitespaceBack(useSetting bool, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWhitespaceBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetWhitespaceSize(size uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWhitespaceSize(this.h, (C.intptr_t)(size))
 }
 
 func (this *ScintillaEdit) WhitespaceSize() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_whitespaceSize(this.h))
 }
 
 func (this *ScintillaEdit) SetLineState(line uintptr, state uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLineState(this.h, (C.intptr_t)(line), (C.intptr_t)(state))
 }
 
 func (this *ScintillaEdit) LineState(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineState(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MaxLineState() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_maxLineState(this.h))
 }
 
 func (this *ScintillaEdit) CaretLineVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_caretLineVisible(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineVisible(show bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineVisible(this.h, (C.bool)(show))
 }
 
 func (this *ScintillaEdit) CaretLineBack() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretLineBack(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineBack(back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) CaretLineFrame() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretLineFrame(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineFrame(width uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineFrame(this.h, (C.intptr_t)(width))
 }
 
 func (this *ScintillaEdit) StyleSetChangeable(style uintptr, changeable bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_styleSetChangeable(this.h, (C.intptr_t)(style), (C.bool)(changeable))
 }
 
 func (this *ScintillaEdit) AutoCShow(lengthEntered uintptr, itemList string) {
-	defer runtime.KeepAlive(this)
 	itemList_Cstring := C.CString(itemList)
 	defer C.free(unsafe.Pointer(itemList_Cstring))
 	C.ScintillaEdit_autoCShow(this.h, (C.intptr_t)(lengthEntered), itemList_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCCancel() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCCancel(this.h)
 }
 
 func (this *ScintillaEdit) AutoCActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCActive(this.h))
 }
 
 func (this *ScintillaEdit) AutoCPosStart() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCPosStart(this.h))
 }
 
 func (this *ScintillaEdit) AutoCComplete() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCComplete(this.h)
 }
 
 func (this *ScintillaEdit) AutoCStops(characterSet string) {
-	defer runtime.KeepAlive(this)
 	characterSet_Cstring := C.CString(characterSet)
 	defer C.free(unsafe.Pointer(characterSet_Cstring))
 	C.ScintillaEdit_autoCStops(this.h, characterSet_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetSeparator(separatorCharacter uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetSeparator(this.h, (C.intptr_t)(separatorCharacter))
 }
 
 func (this *ScintillaEdit) AutoCSeparator() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCSeparator(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSelect(selectVal string) {
-	defer runtime.KeepAlive(this)
 	selectVal_Cstring := C.CString(selectVal)
 	defer C.free(unsafe.Pointer(selectVal_Cstring))
 	C.ScintillaEdit_autoCSelect(this.h, selectVal_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetCancelAtStart(cancel bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetCancelAtStart(this.h, (C.bool)(cancel))
 }
 
 func (this *ScintillaEdit) AutoCCancelAtStart() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCCancelAtStart(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetFillUps(characterSet string) {
-	defer runtime.KeepAlive(this)
 	characterSet_Cstring := C.CString(characterSet)
 	defer C.free(unsafe.Pointer(characterSet_Cstring))
 	C.ScintillaEdit_autoCSetFillUps(this.h, characterSet_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetChooseSingle(chooseSingle bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetChooseSingle(this.h, (C.bool)(chooseSingle))
 }
 
 func (this *ScintillaEdit) AutoCChooseSingle() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCChooseSingle(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetIgnoreCase(ignoreCase bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetIgnoreCase(this.h, (C.bool)(ignoreCase))
 }
 
 func (this *ScintillaEdit) AutoCIgnoreCase() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCIgnoreCase(this.h))
 }
 
 func (this *ScintillaEdit) UserListShow(listType uintptr, itemList string) {
-	defer runtime.KeepAlive(this)
 	itemList_Cstring := C.CString(itemList)
 	defer C.free(unsafe.Pointer(itemList_Cstring))
 	C.ScintillaEdit_userListShow(this.h, (C.intptr_t)(listType), itemList_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetAutoHide(autoHide bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetAutoHide(this.h, (C.bool)(autoHide))
 }
 
 func (this *ScintillaEdit) AutoCAutoHide() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCAutoHide(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetOptions(options uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetOptions(this.h, (C.intptr_t)(options))
 }
 
 func (this *ScintillaEdit) AutoCOptions() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCOptions(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetDropRestOfWord(dropRestOfWord bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetDropRestOfWord(this.h, (C.bool)(dropRestOfWord))
 }
 
 func (this *ScintillaEdit) AutoCDropRestOfWord() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_autoCDropRestOfWord(this.h))
 }
 
 func (this *ScintillaEdit) RegisterImage(typeVal uintptr, xpmData string) {
-	defer runtime.KeepAlive(this)
 	xpmData_Cstring := C.CString(xpmData)
 	defer C.free(unsafe.Pointer(xpmData_Cstring))
 	C.ScintillaEdit_registerImage(this.h, (C.intptr_t)(typeVal), xpmData_Cstring)
 }
 
 func (this *ScintillaEdit) ClearRegisteredImages() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearRegisteredImages(this.h)
 }
 
 func (this *ScintillaEdit) AutoCTypeSeparator() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCTypeSeparator(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetTypeSeparator(separatorCharacter uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetTypeSeparator(this.h, (C.intptr_t)(separatorCharacter))
 }
 
 func (this *ScintillaEdit) AutoCSetMaxWidth(characterCount uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetMaxWidth(this.h, (C.intptr_t)(characterCount))
 }
 
 func (this *ScintillaEdit) AutoCMaxWidth() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCMaxWidth(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetMaxHeight(rowCount uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetMaxHeight(this.h, (C.intptr_t)(rowCount))
 }
 
 func (this *ScintillaEdit) AutoCMaxHeight() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCMaxHeight(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetStyle(style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetStyle(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AutoCStyle() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetIndent(indentSize uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIndent(this.h, (C.intptr_t)(indentSize))
 }
 
 func (this *ScintillaEdit) Indent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indent(this.h))
 }
 
 func (this *ScintillaEdit) SetUseTabs(useTabs bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setUseTabs(this.h, (C.bool)(useTabs))
 }
 
 func (this *ScintillaEdit) UseTabs() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_useTabs(this.h))
 }
 
 func (this *ScintillaEdit) SetLineIndentation(line uintptr, indentation uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLineIndentation(this.h, (C.intptr_t)(line), (C.intptr_t)(indentation))
 }
 
 func (this *ScintillaEdit) LineIndentation(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineIndentation(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineIndentPosition(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineIndentPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) Column(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_column(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) CountCharacters(start uintptr, end uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_countCharacters(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) CountCodeUnits(start uintptr, end uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_countCodeUnits(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) SetHScrollBar(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHScrollBar(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) HScrollBar() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_hScrollBar(this.h))
 }
 
 func (this *ScintillaEdit) SetIndentationGuides(indentView uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIndentationGuides(this.h, (C.intptr_t)(indentView))
 }
 
 func (this *ScintillaEdit) IndentationGuides() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indentationGuides(this.h))
 }
 
 func (this *ScintillaEdit) SetHighlightGuide(column uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHighlightGuide(this.h, (C.intptr_t)(column))
 }
 
 func (this *ScintillaEdit) HighlightGuide() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_highlightGuide(this.h))
 }
 
 func (this *ScintillaEdit) LineEndPosition(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineEndPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) CodePage() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_codePage(this.h))
 }
 
 func (this *ScintillaEdit) CaretFore() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretFore(this.h))
 }
 
 func (this *ScintillaEdit) ReadOnly() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_readOnly(this.h))
 }
 
 func (this *ScintillaEdit) SetCurrentPos(caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCurrentPos(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetSelectionStart(anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionStart(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionStart() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionStart(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionEnd(caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionEnd(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionEnd() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionEnd(this.h))
 }
 
 func (this *ScintillaEdit) SetEmptySelection(caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEmptySelection(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetPrintMagnification(magnification uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPrintMagnification(this.h, (C.intptr_t)(magnification))
 }
 
 func (this *ScintillaEdit) PrintMagnification() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_printMagnification(this.h))
 }
 
 func (this *ScintillaEdit) SetPrintColourMode(mode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPrintColourMode(this.h, (C.intptr_t)(mode))
 }
 
 func (this *ScintillaEdit) PrintColourMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_printColourMode(this.h))
 }
 
 func (this *ScintillaEdit) SetChangeHistory(changeHistory uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setChangeHistory(this.h, (C.intptr_t)(changeHistory))
 }
 
 func (this *ScintillaEdit) ChangeHistory() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_changeHistory(this.h))
 }
 
 func (this *ScintillaEdit) FirstVisibleLine() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_firstVisibleLine(this.h))
 }
 
 func (this *ScintillaEdit) GetLine(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getLine(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -11545,47 +11094,38 @@ func (this *ScintillaEdit) GetLine(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) LineCount() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineCount(this.h))
 }
 
 func (this *ScintillaEdit) AllocateLines(lines uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_allocateLines(this.h, (C.intptr_t)(lines))
 }
 
 func (this *ScintillaEdit) SetMarginLeft(pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginLeft(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginLeft() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginLeft(this.h))
 }
 
 func (this *ScintillaEdit) SetMarginRight(pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginRight(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginRight() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginRight(this.h))
 }
 
 func (this *ScintillaEdit) Modify() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_modify(this.h))
 }
 
 func (this *ScintillaEdit) SetSel(anchor uintptr, caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSel(this.h, (C.intptr_t)(anchor), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) GetSelText() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getSelText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -11593,116 +11133,94 @@ func (this *ScintillaEdit) GetSelText() []byte {
 }
 
 func (this *ScintillaEdit) HideSelection(hide bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_hideSelection(this.h, (C.bool)(hide))
 }
 
 func (this *ScintillaEdit) SelectionHidden() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_selectionHidden(this.h))
 }
 
 func (this *ScintillaEdit) PointXFromPosition(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_pointXFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PointYFromPosition(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_pointYFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) LineFromPosition(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionFromLine(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionFromLine(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineScroll(columns uintptr, lines uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineScroll(this.h, (C.intptr_t)(columns), (C.intptr_t)(lines))
 }
 
 func (this *ScintillaEdit) ScrollCaret() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_scrollCaret(this.h)
 }
 
 func (this *ScintillaEdit) ScrollRange(secondary uintptr, primary uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_scrollRange(this.h, (C.intptr_t)(secondary), (C.intptr_t)(primary))
 }
 
 func (this *ScintillaEdit) ReplaceSel(text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_replaceSel(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) SetReadOnly(readOnly bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setReadOnly(this.h, (C.bool)(readOnly))
 }
 
 func (this *ScintillaEdit) Null() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_null(this.h)
 }
 
 func (this *ScintillaEdit) CanPaste() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_canPaste(this.h))
 }
 
 func (this *ScintillaEdit) CanUndo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_canUndo(this.h))
 }
 
 func (this *ScintillaEdit) EmptyUndoBuffer() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_emptyUndoBuffer(this.h)
 }
 
 func (this *ScintillaEdit) Undo() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_undo(this.h)
 }
 
 func (this *ScintillaEdit) Cut() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_cut(this.h)
 }
 
 func (this *ScintillaEdit) Copy() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_copy(this.h)
 }
 
 func (this *ScintillaEdit) Paste() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_paste(this.h)
 }
 
 func (this *ScintillaEdit) Clear() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clear(this.h)
 }
 
 func (this *ScintillaEdit) SetText(text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_setText(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) GetText(length uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getText(this.h, (C.intptr_t)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -11710,92 +11228,74 @@ func (this *ScintillaEdit) GetText(length uintptr) []byte {
 }
 
 func (this *ScintillaEdit) TextLength() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_textLength(this.h))
 }
 
 func (this *ScintillaEdit) DirectFunction() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_directFunction(this.h))
 }
 
 func (this *ScintillaEdit) DirectStatusFunction() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_directStatusFunction(this.h))
 }
 
 func (this *ScintillaEdit) DirectPointer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_directPointer(this.h))
 }
 
 func (this *ScintillaEdit) SetOvertype(overType bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setOvertype(this.h, (C.bool)(overType))
 }
 
 func (this *ScintillaEdit) Overtype() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_overtype(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretWidth(pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretWidth(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) CaretWidth() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetStart(start uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTargetStart(this.h, (C.intptr_t)(start))
 }
 
 func (this *ScintillaEdit) TargetStart() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_targetStart(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetStartVirtualSpace(space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTargetStartVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) TargetStartVirtualSpace() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_targetStartVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetEnd(end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTargetEnd(this.h, (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) TargetEnd() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_targetEnd(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetEndVirtualSpace(space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTargetEndVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) TargetEndVirtualSpace() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_targetEndVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetRange(start uintptr, end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTargetRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) TargetText() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_targetText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -11803,206 +11303,168 @@ func (this *ScintillaEdit) TargetText() []byte {
 }
 
 func (this *ScintillaEdit) TargetFromSelection() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_targetFromSelection(this.h)
 }
 
 func (this *ScintillaEdit) TargetWholeDocument() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_targetWholeDocument(this.h)
 }
 
 func (this *ScintillaEdit) ReplaceTarget(length uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_replaceTarget(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) ReplaceTargetRE(length uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_replaceTargetRE(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) ReplaceTargetMinimal(length uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_replaceTargetMinimal(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) SearchInTarget(length uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_searchInTarget(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) SetSearchFlags(searchFlags uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSearchFlags(this.h, (C.intptr_t)(searchFlags))
 }
 
 func (this *ScintillaEdit) SearchFlags() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_searchFlags(this.h))
 }
 
 func (this *ScintillaEdit) CallTipShow(pos uintptr, definition string) {
-	defer runtime.KeepAlive(this)
 	definition_Cstring := C.CString(definition)
 	defer C.free(unsafe.Pointer(definition_Cstring))
 	C.ScintillaEdit_callTipShow(this.h, (C.intptr_t)(pos), definition_Cstring)
 }
 
 func (this *ScintillaEdit) CallTipCancel() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipCancel(this.h)
 }
 
 func (this *ScintillaEdit) CallTipActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_callTipActive(this.h))
 }
 
 func (this *ScintillaEdit) CallTipPosStart() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_callTipPosStart(this.h))
 }
 
 func (this *ScintillaEdit) CallTipSetPosStart(posStart uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetPosStart(this.h, (C.intptr_t)(posStart))
 }
 
 func (this *ScintillaEdit) CallTipSetHlt(highlightStart uintptr, highlightEnd uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetHlt(this.h, (C.intptr_t)(highlightStart), (C.intptr_t)(highlightEnd))
 }
 
 func (this *ScintillaEdit) CallTipSetBack(back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) CallTipSetFore(fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) CallTipSetForeHlt(fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetForeHlt(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) CallTipUseStyle(tabSize uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipUseStyle(this.h, (C.intptr_t)(tabSize))
 }
 
 func (this *ScintillaEdit) CallTipSetPosition(above bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_callTipSetPosition(this.h, (C.bool)(above))
 }
 
 func (this *ScintillaEdit) VisibleFromDocLine(docLine uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_visibleFromDocLine(this.h, (C.intptr_t)(docLine)))
 }
 
 func (this *ScintillaEdit) DocLineFromVisible(displayLine uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_docLineFromVisible(this.h, (C.intptr_t)(displayLine)))
 }
 
 func (this *ScintillaEdit) WrapCount(docLine uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapCount(this.h, (C.intptr_t)(docLine)))
 }
 
 func (this *ScintillaEdit) SetFoldLevel(line uintptr, level uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFoldLevel(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
 }
 
 func (this *ScintillaEdit) FoldLevel(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_foldLevel(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LastChild(line uintptr, level uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lastChild(this.h, (C.intptr_t)(line), (C.intptr_t)(level)))
 }
 
 func (this *ScintillaEdit) FoldParent(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_foldParent(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) ShowLines(lineStart uintptr, lineEnd uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_showLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
 }
 
 func (this *ScintillaEdit) HideLines(lineStart uintptr, lineEnd uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_hideLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
 }
 
 func (this *ScintillaEdit) LineVisible(line uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_lineVisible(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AllLinesVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_allLinesVisible(this.h))
 }
 
 func (this *ScintillaEdit) SetFoldExpanded(line uintptr, expanded bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFoldExpanded(this.h, (C.intptr_t)(line), (C.bool)(expanded))
 }
 
 func (this *ScintillaEdit) FoldExpanded(line uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_foldExpanded(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) ToggleFold(line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_toggleFold(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) ToggleFoldShowText(line uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_toggleFoldShowText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) FoldDisplayTextSetStyle(style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_foldDisplayTextSetStyle(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) FoldDisplayTextStyle() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_foldDisplayTextStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetDefaultFoldDisplayText(text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_setDefaultFoldDisplayText(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) GetDefaultFoldDisplayText() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getDefaultFoldDisplayText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -12010,261 +11472,210 @@ func (this *ScintillaEdit) GetDefaultFoldDisplayText() []byte {
 }
 
 func (this *ScintillaEdit) FoldLine(line uintptr, action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_foldLine(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) FoldChildren(line uintptr, action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_foldChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) ExpandChildren(line uintptr, level uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_expandChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
 }
 
 func (this *ScintillaEdit) FoldAll(action uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_foldAll(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) EnsureVisible(line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_ensureVisible(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) SetAutomaticFold(automaticFold uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAutomaticFold(this.h, (C.intptr_t)(automaticFold))
 }
 
 func (this *ScintillaEdit) AutomaticFold() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_automaticFold(this.h))
 }
 
 func (this *ScintillaEdit) SetFoldFlags(flags uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFoldFlags(this.h, (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) EnsureVisibleEnforcePolicy(line uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_ensureVisibleEnforcePolicy(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) SetTabIndents(tabIndents bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTabIndents(this.h, (C.bool)(tabIndents))
 }
 
 func (this *ScintillaEdit) TabIndents() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_tabIndents(this.h))
 }
 
 func (this *ScintillaEdit) SetBackSpaceUnIndents(bsUnIndents bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setBackSpaceUnIndents(this.h, (C.bool)(bsUnIndents))
 }
 
 func (this *ScintillaEdit) BackSpaceUnIndents() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_backSpaceUnIndents(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseDwellTime(periodMilliseconds uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMouseDwellTime(this.h, (C.intptr_t)(periodMilliseconds))
 }
 
 func (this *ScintillaEdit) MouseDwellTime() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_mouseDwellTime(this.h))
 }
 
 func (this *ScintillaEdit) WordStartPosition(pos uintptr, onlyWordCharacters bool) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wordStartPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
 }
 
 func (this *ScintillaEdit) WordEndPosition(pos uintptr, onlyWordCharacters bool) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wordEndPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
 }
 
 func (this *ScintillaEdit) IsRangeWord(start uintptr, end uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_isRangeWord(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) SetIdleStyling(idleStyling uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIdleStyling(this.h, (C.intptr_t)(idleStyling))
 }
 
 func (this *ScintillaEdit) IdleStyling() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_idleStyling(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapMode(wrapMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWrapMode(this.h, (C.intptr_t)(wrapMode))
 }
 
 func (this *ScintillaEdit) WrapMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapMode(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapVisualFlags(wrapVisualFlags uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWrapVisualFlags(this.h, (C.intptr_t)(wrapVisualFlags))
 }
 
 func (this *ScintillaEdit) WrapVisualFlags() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapVisualFlags(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapVisualFlagsLocation(wrapVisualFlagsLocation uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWrapVisualFlagsLocation(this.h, (C.intptr_t)(wrapVisualFlagsLocation))
 }
 
 func (this *ScintillaEdit) WrapVisualFlagsLocation() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapVisualFlagsLocation(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapStartIndent(indent uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWrapStartIndent(this.h, (C.intptr_t)(indent))
 }
 
 func (this *ScintillaEdit) WrapStartIndent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapStartIndent(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapIndentMode(wrapIndentMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setWrapIndentMode(this.h, (C.intptr_t)(wrapIndentMode))
 }
 
 func (this *ScintillaEdit) WrapIndentMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_wrapIndentMode(this.h))
 }
 
 func (this *ScintillaEdit) SetLayoutCache(cacheMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLayoutCache(this.h, (C.intptr_t)(cacheMode))
 }
 
 func (this *ScintillaEdit) LayoutCache() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_layoutCache(this.h))
 }
 
 func (this *ScintillaEdit) SetScrollWidth(pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setScrollWidth(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) ScrollWidth() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_scrollWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetScrollWidthTracking(tracking bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setScrollWidthTracking(this.h, (C.bool)(tracking))
 }
 
 func (this *ScintillaEdit) ScrollWidthTracking() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_scrollWidthTracking(this.h))
 }
 
 func (this *ScintillaEdit) TextWidth(style uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_textWidth(this.h, (C.intptr_t)(style), text_Cstring))
 }
 
 func (this *ScintillaEdit) SetEndAtLastLine(endAtLastLine bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEndAtLastLine(this.h, (C.bool)(endAtLastLine))
 }
 
 func (this *ScintillaEdit) EndAtLastLine() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_endAtLastLine(this.h))
 }
 
 func (this *ScintillaEdit) TextHeight(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_textHeight(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) SetVScrollBar(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setVScrollBar(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) VScrollBar() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_vScrollBar(this.h))
 }
 
 func (this *ScintillaEdit) AppendText(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_appendText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) PhasesDraw() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_phasesDraw(this.h))
 }
 
 func (this *ScintillaEdit) SetPhasesDraw(phases uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPhasesDraw(this.h, (C.intptr_t)(phases))
 }
 
 func (this *ScintillaEdit) SetFontQuality(fontQuality uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFontQuality(this.h, (C.intptr_t)(fontQuality))
 }
 
 func (this *ScintillaEdit) FontQuality() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_fontQuality(this.h))
 }
 
 func (this *ScintillaEdit) SetFirstVisibleLine(displayLine uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFirstVisibleLine(this.h, (C.intptr_t)(displayLine))
 }
 
 func (this *ScintillaEdit) SetMultiPaste(multiPaste uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMultiPaste(this.h, (C.intptr_t)(multiPaste))
 }
 
 func (this *ScintillaEdit) MultiPaste() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_multiPaste(this.h))
 }
 
 func (this *ScintillaEdit) Tag(tagNumber uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_tag(this.h, (C.intptr_t)(tagNumber))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -12272,885 +11683,710 @@ func (this *ScintillaEdit) Tag(tagNumber uintptr) []byte {
 }
 
 func (this *ScintillaEdit) LinesJoin() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_linesJoin(this.h)
 }
 
 func (this *ScintillaEdit) LinesSplit(pixelWidth uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_linesSplit(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) SetFoldMarginColour(useSetting bool, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFoldMarginColour(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetFoldMarginHiColour(useSetting bool, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFoldMarginHiColour(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetAccessibility(accessibility uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAccessibility(this.h, (C.intptr_t)(accessibility))
 }
 
 func (this *ScintillaEdit) Accessibility() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_accessibility(this.h))
 }
 
 func (this *ScintillaEdit) LineDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDown(this.h)
 }
 
 func (this *ScintillaEdit) LineDownExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineUp(this.h)
 }
 
 func (this *ScintillaEdit) LineUpExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharLeft() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charLeft(this.h)
 }
 
 func (this *ScintillaEdit) CharLeftExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharRight() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charRight(this.h)
 }
 
 func (this *ScintillaEdit) CharRightExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordLeft() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordLeft(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordRight() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordRight(this.h)
 }
 
 func (this *ScintillaEdit) WordRightExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) Home() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_home(this.h)
 }
 
 func (this *ScintillaEdit) HomeExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEnd(this.h)
 }
 
 func (this *ScintillaEdit) LineEndExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) DocumentStart() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_documentStart(this.h)
 }
 
 func (this *ScintillaEdit) DocumentStartExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_documentStartExtend(this.h)
 }
 
 func (this *ScintillaEdit) DocumentEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_documentEnd(this.h)
 }
 
 func (this *ScintillaEdit) DocumentEndExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_documentEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageUp(this.h)
 }
 
 func (this *ScintillaEdit) PageUpExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageDown(this.h)
 }
 
 func (this *ScintillaEdit) PageDownExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) EditToggleOvertype() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_editToggleOvertype(this.h)
 }
 
 func (this *ScintillaEdit) Cancel() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_cancel(this.h)
 }
 
 func (this *ScintillaEdit) DeleteBack() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_deleteBack(this.h)
 }
 
 func (this *ScintillaEdit) Tab() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_tab(this.h)
 }
 
 func (this *ScintillaEdit) LineIndent() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineIndent(this.h)
 }
 
 func (this *ScintillaEdit) BackTab() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_backTab(this.h)
 }
 
 func (this *ScintillaEdit) LineDedent() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDedent(this.h)
 }
 
 func (this *ScintillaEdit) NewLine() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_newLine(this.h)
 }
 
 func (this *ScintillaEdit) FormFeed() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_formFeed(this.h)
 }
 
 func (this *ScintillaEdit) VCHome() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHome(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeExtend(this.h)
 }
 
 func (this *ScintillaEdit) ZoomIn() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_zoomIn(this.h)
 }
 
 func (this *ScintillaEdit) ZoomOut() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_zoomOut(this.h)
 }
 
 func (this *ScintillaEdit) DelWordLeft() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_delWordLeft(this.h)
 }
 
 func (this *ScintillaEdit) DelWordRight() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_delWordRight(this.h)
 }
 
 func (this *ScintillaEdit) DelWordRightEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_delWordRightEnd(this.h)
 }
 
 func (this *ScintillaEdit) LineCut() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineCut(this.h)
 }
 
 func (this *ScintillaEdit) LineDelete() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDelete(this.h)
 }
 
 func (this *ScintillaEdit) LineTranspose() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineTranspose(this.h)
 }
 
 func (this *ScintillaEdit) LineReverse() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineReverse(this.h)
 }
 
 func (this *ScintillaEdit) LineDuplicate() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDuplicate(this.h)
 }
 
 func (this *ScintillaEdit) LowerCase() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lowerCase(this.h)
 }
 
 func (this *ScintillaEdit) UpperCase() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_upperCase(this.h)
 }
 
 func (this *ScintillaEdit) LineScrollDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineScrollDown(this.h)
 }
 
 func (this *ScintillaEdit) LineScrollUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineScrollUp(this.h)
 }
 
 func (this *ScintillaEdit) DeleteBackNotLine() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_deleteBackNotLine(this.h)
 }
 
 func (this *ScintillaEdit) HomeDisplay() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeDisplay(this.h)
 }
 
 func (this *ScintillaEdit) HomeDisplayExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndDisplay() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndDisplay(this.h)
 }
 
 func (this *ScintillaEdit) LineEndDisplayExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) HomeWrap() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeWrap(this.h)
 }
 
 func (this *ScintillaEdit) HomeWrapExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndWrap() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndWrap(this.h)
 }
 
 func (this *ScintillaEdit) LineEndWrapExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeWrap() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeWrap(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeWrapExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineCopy() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineCopy(this.h)
 }
 
 func (this *ScintillaEdit) MoveCaretInsideView() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_moveCaretInsideView(this.h)
 }
 
 func (this *ScintillaEdit) LineLength(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineLength(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) BraceHighlight(posA uintptr, posB uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_braceHighlight(this.h, (C.intptr_t)(posA), (C.intptr_t)(posB))
 }
 
 func (this *ScintillaEdit) BraceHighlightIndicator(useSetting bool, indicator uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_braceHighlightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) BraceBadLight(pos uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_braceBadLight(this.h, (C.intptr_t)(pos))
 }
 
 func (this *ScintillaEdit) BraceBadLightIndicator(useSetting bool, indicator uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_braceBadLightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) BraceMatch(pos uintptr, maxReStyle uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_braceMatch(this.h, (C.intptr_t)(pos), (C.intptr_t)(maxReStyle)))
 }
 
 func (this *ScintillaEdit) BraceMatchNext(pos uintptr, startPos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_braceMatchNext(this.h, (C.intptr_t)(pos), (C.intptr_t)(startPos)))
 }
 
 func (this *ScintillaEdit) ViewEOL() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_viewEOL(this.h))
 }
 
 func (this *ScintillaEdit) SetViewEOL(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setViewEOL(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) DocPointer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_docPointer(this.h))
 }
 
 func (this *ScintillaEdit) SetDocPointer(doc uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setDocPointer(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) SetModEventMask(eventMask uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setModEventMask(this.h, (C.intptr_t)(eventMask))
 }
 
 func (this *ScintillaEdit) EdgeColumn() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_edgeColumn(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeColumn(column uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEdgeColumn(this.h, (C.intptr_t)(column))
 }
 
 func (this *ScintillaEdit) EdgeMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_edgeMode(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeMode(edgeMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEdgeMode(this.h, (C.intptr_t)(edgeMode))
 }
 
 func (this *ScintillaEdit) EdgeColour() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_edgeColour(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeColour(edgeColour uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setEdgeColour(this.h, (C.intptr_t)(edgeColour))
 }
 
 func (this *ScintillaEdit) MultiEdgeAddLine(column uintptr, edgeColour uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_multiEdgeAddLine(this.h, (C.intptr_t)(column), (C.intptr_t)(edgeColour))
 }
 
 func (this *ScintillaEdit) MultiEdgeClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_multiEdgeClearAll(this.h)
 }
 
 func (this *ScintillaEdit) MultiEdgeColumn(which uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_multiEdgeColumn(this.h, (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) SearchAnchor() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_searchAnchor(this.h)
 }
 
 func (this *ScintillaEdit) SearchNext(searchFlags uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_searchNext(this.h, (C.intptr_t)(searchFlags), text_Cstring))
 }
 
 func (this *ScintillaEdit) SearchPrev(searchFlags uintptr, text string) uintptr {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	return (uintptr)(C.ScintillaEdit_searchPrev(this.h, (C.intptr_t)(searchFlags), text_Cstring))
 }
 
 func (this *ScintillaEdit) LinesOnScreen() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_linesOnScreen(this.h))
 }
 
 func (this *ScintillaEdit) UsePopUp(popUpMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_usePopUp(this.h, (C.intptr_t)(popUpMode))
 }
 
 func (this *ScintillaEdit) SelectionIsRectangle() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_selectionIsRectangle(this.h))
 }
 
 func (this *ScintillaEdit) SetZoom(zoomInPoints uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setZoom(this.h, (C.intptr_t)(zoomInPoints))
 }
 
 func (this *ScintillaEdit) Zoom() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_zoom(this.h))
 }
 
 func (this *ScintillaEdit) CreateDocument(bytes uintptr, documentOptions uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_createDocument(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
 }
 
 func (this *ScintillaEdit) AddRefDocument(doc uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_addRefDocument(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) ReleaseDocument(doc uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_releaseDocument(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) DocumentOptions() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_documentOptions(this.h))
 }
 
 func (this *ScintillaEdit) ModEventMask() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_modEventMask(this.h))
 }
 
 func (this *ScintillaEdit) SetCommandEvents(commandEvents bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCommandEvents(this.h, (C.bool)(commandEvents))
 }
 
 func (this *ScintillaEdit) CommandEvents() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_commandEvents(this.h))
 }
 
 func (this *ScintillaEdit) SetFocus(focus bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setFocus(this.h, (C.bool)(focus))
 }
 
 func (this *ScintillaEdit) Focus() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_focus(this.h))
 }
 
 func (this *ScintillaEdit) SetStatus(status uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setStatus(this.h, (C.intptr_t)(status))
 }
 
 func (this *ScintillaEdit) Status() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_status(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseDownCaptures(captures bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMouseDownCaptures(this.h, (C.bool)(captures))
 }
 
 func (this *ScintillaEdit) MouseDownCaptures() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_mouseDownCaptures(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseWheelCaptures(captures bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMouseWheelCaptures(this.h, (C.bool)(captures))
 }
 
 func (this *ScintillaEdit) MouseWheelCaptures() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_mouseWheelCaptures(this.h))
 }
 
 func (this *ScintillaEdit) SetCursor(cursorType uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCursor(this.h, (C.intptr_t)(cursorType))
 }
 
 func (this *ScintillaEdit) Cursor() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_cursor(this.h))
 }
 
 func (this *ScintillaEdit) SetControlCharSymbol(symbol uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setControlCharSymbol(this.h, (C.intptr_t)(symbol))
 }
 
 func (this *ScintillaEdit) ControlCharSymbol() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_controlCharSymbol(this.h))
 }
 
 func (this *ScintillaEdit) WordPartLeft() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordPartLeft(this.h)
 }
 
 func (this *ScintillaEdit) WordPartLeftExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordPartLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordPartRight() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordPartRight(this.h)
 }
 
 func (this *ScintillaEdit) WordPartRightExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordPartRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) SetVisiblePolicy(visiblePolicy uintptr, visibleSlop uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setVisiblePolicy(this.h, (C.intptr_t)(visiblePolicy), (C.intptr_t)(visibleSlop))
 }
 
 func (this *ScintillaEdit) DelLineLeft() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_delLineLeft(this.h)
 }
 
 func (this *ScintillaEdit) DelLineRight() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_delLineRight(this.h)
 }
 
 func (this *ScintillaEdit) SetXOffset(xOffset uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setXOffset(this.h, (C.intptr_t)(xOffset))
 }
 
 func (this *ScintillaEdit) XOffset() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_xOffset(this.h))
 }
 
 func (this *ScintillaEdit) ChooseCaretX() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_chooseCaretX(this.h)
 }
 
 func (this *ScintillaEdit) GrabFocus() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_grabFocus(this.h)
 }
 
 func (this *ScintillaEdit) SetXCaretPolicy(caretPolicy uintptr, caretSlop uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setXCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
 }
 
 func (this *ScintillaEdit) SetYCaretPolicy(caretPolicy uintptr, caretSlop uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setYCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
 }
 
 func (this *ScintillaEdit) SetPrintWrapMode(wrapMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPrintWrapMode(this.h, (C.intptr_t)(wrapMode))
 }
 
 func (this *ScintillaEdit) PrintWrapMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_printWrapMode(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveFore(useSetting bool, fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHotspotActiveFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) HotspotActiveFore() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_hotspotActiveFore(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveBack(useSetting bool, back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHotspotActiveBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) HotspotActiveBack() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_hotspotActiveBack(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveUnderline(underline bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHotspotActiveUnderline(this.h, (C.bool)(underline))
 }
 
 func (this *ScintillaEdit) HotspotActiveUnderline() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_hotspotActiveUnderline(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotSingleLine(singleLine bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setHotspotSingleLine(this.h, (C.bool)(singleLine))
 }
 
 func (this *ScintillaEdit) HotspotSingleLine() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_hotspotSingleLine(this.h))
 }
 
 func (this *ScintillaEdit) ParaDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_paraDown(this.h)
 }
 
 func (this *ScintillaEdit) ParaDownExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_paraDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) ParaUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_paraUp(this.h)
 }
 
 func (this *ScintillaEdit) ParaUpExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_paraUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) PositionBefore(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionBefore(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionAfter(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionAfter(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionRelative(pos uintptr, relative uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionRelative(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
 }
 
 func (this *ScintillaEdit) PositionRelativeCodeUnits(pos uintptr, relative uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionRelativeCodeUnits(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
 }
 
 func (this *ScintillaEdit) CopyRange(start uintptr, end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_copyRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) CopyText(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_copyText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) SetSelectionMode(selectionMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionMode(this.h, (C.intptr_t)(selectionMode))
 }
 
 func (this *ScintillaEdit) ChangeSelectionMode(selectionMode uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_changeSelectionMode(this.h, (C.intptr_t)(selectionMode))
 }
 
 func (this *ScintillaEdit) SelectionMode() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionMode(this.h))
 }
 
 func (this *ScintillaEdit) SetMoveExtendsSelection(moveExtendsSelection bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMoveExtendsSelection(this.h, (C.bool)(moveExtendsSelection))
 }
 
 func (this *ScintillaEdit) MoveExtendsSelection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_moveExtendsSelection(this.h))
 }
 
 func (this *ScintillaEdit) GetLineSelStartPosition(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_getLineSelStartPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) GetLineSelEndPosition(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_getLineSelEndPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineDownRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineDownRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineUpRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineUpRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharLeftRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charLeftRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharRightRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_charRightRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) HomeRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_homeRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_lineEndRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageUpRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageUpRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageDownRectExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_pageDownRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_stutteredPageUp(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageUpExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_stutteredPageUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_stutteredPageDown(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageDownExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_stutteredPageDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordLeftEnd(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftEndExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordLeftEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordRightEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordRightEnd(this.h)
 }
 
 func (this *ScintillaEdit) WordRightEndExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_wordRightEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) SetWhitespaceChars(characters string) {
-	defer runtime.KeepAlive(this)
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
 	C.ScintillaEdit_setWhitespaceChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) WhitespaceChars() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_whitespaceChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13158,14 +12394,12 @@ func (this *ScintillaEdit) WhitespaceChars() []byte {
 }
 
 func (this *ScintillaEdit) SetPunctuationChars(characters string) {
-	defer runtime.KeepAlive(this)
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
 	C.ScintillaEdit_setPunctuationChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) PunctuationChars() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_punctuationChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13173,17 +12407,14 @@ func (this *ScintillaEdit) PunctuationChars() []byte {
 }
 
 func (this *ScintillaEdit) SetCharsDefault() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCharsDefault(this.h)
 }
 
 func (this *ScintillaEdit) AutoCCurrent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCCurrent(this.h))
 }
 
 func (this *ScintillaEdit) AutoCCurrentText() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_autoCCurrentText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13191,42 +12422,34 @@ func (this *ScintillaEdit) AutoCCurrentText() []byte {
 }
 
 func (this *ScintillaEdit) AutoCSetCaseInsensitiveBehaviour(behaviour uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetCaseInsensitiveBehaviour(this.h, (C.intptr_t)(behaviour))
 }
 
 func (this *ScintillaEdit) AutoCCaseInsensitiveBehaviour() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCCaseInsensitiveBehaviour(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetMulti(multi uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetMulti(this.h, (C.intptr_t)(multi))
 }
 
 func (this *ScintillaEdit) AutoCMulti() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCMulti(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetOrder(order uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_autoCSetOrder(this.h, (C.intptr_t)(order))
 }
 
 func (this *ScintillaEdit) AutoCOrder() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_autoCOrder(this.h))
 }
 
 func (this *ScintillaEdit) Allocate(bytes uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_allocate(this.h, (C.intptr_t)(bytes))
 }
 
 func (this *ScintillaEdit) TargetAsUTF8() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_targetAsUTF8(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13234,12 +12457,10 @@ func (this *ScintillaEdit) TargetAsUTF8() []byte {
 }
 
 func (this *ScintillaEdit) SetLengthForEncode(bytes uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLengthForEncode(this.h, (C.intptr_t)(bytes))
 }
 
 func (this *ScintillaEdit) EncodedFromUTF8(utf8 string) []byte {
-	defer runtime.KeepAlive(this)
 	utf8_Cstring := C.CString(utf8)
 	defer C.free(unsafe.Pointer(utf8_Cstring))
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_encodedFromUTF8(this.h, utf8_Cstring)
@@ -13249,156 +12470,126 @@ func (this *ScintillaEdit) EncodedFromUTF8(utf8 string) []byte {
 }
 
 func (this *ScintillaEdit) FindColumn(line uintptr, column uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_findColumn(this.h, (C.intptr_t)(line), (C.intptr_t)(column)))
 }
 
 func (this *ScintillaEdit) CaretSticky() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretSticky(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretSticky(useCaretStickyBehaviour uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretSticky(this.h, (C.intptr_t)(useCaretStickyBehaviour))
 }
 
 func (this *ScintillaEdit) ToggleCaretSticky() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_toggleCaretSticky(this.h)
 }
 
 func (this *ScintillaEdit) SetPasteConvertEndings(convert bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPasteConvertEndings(this.h, (C.bool)(convert))
 }
 
 func (this *ScintillaEdit) PasteConvertEndings() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_pasteConvertEndings(this.h))
 }
 
 func (this *ScintillaEdit) ReplaceRectangular(length uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_replaceRectangular(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) SelectionDuplicate() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_selectionDuplicate(this.h)
 }
 
 func (this *ScintillaEdit) SetCaretLineBackAlpha(alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineBackAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) CaretLineBackAlpha() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretLineBackAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretStyle(caretStyle uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretStyle(this.h, (C.intptr_t)(caretStyle))
 }
 
 func (this *ScintillaEdit) CaretStyle() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_caretStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetIndicatorCurrent(indicator uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIndicatorCurrent(this.h, (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) IndicatorCurrent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorCurrent(this.h))
 }
 
 func (this *ScintillaEdit) SetIndicatorValue(value uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIndicatorValue(this.h, (C.intptr_t)(value))
 }
 
 func (this *ScintillaEdit) IndicatorValue() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorValue(this.h))
 }
 
 func (this *ScintillaEdit) IndicatorFillRange(start uintptr, lengthFill uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicatorFillRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthFill))
 }
 
 func (this *ScintillaEdit) IndicatorClearRange(start uintptr, lengthClear uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicatorClearRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthClear))
 }
 
 func (this *ScintillaEdit) IndicatorAllOnFor(pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorAllOnFor(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorValueAt(indicator uintptr, pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorValueAt(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorStart(indicator uintptr, pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorStart(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorEnd(indicator uintptr, pos uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicatorEnd(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) SetPositionCache(size uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setPositionCache(this.h, (C.intptr_t)(size))
 }
 
 func (this *ScintillaEdit) PositionCache() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_positionCache(this.h))
 }
 
 func (this *ScintillaEdit) SetLayoutThreads(threads uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLayoutThreads(this.h, (C.intptr_t)(threads))
 }
 
 func (this *ScintillaEdit) LayoutThreads() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_layoutThreads(this.h))
 }
 
 func (this *ScintillaEdit) CopyAllowLine() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_copyAllowLine(this.h)
 }
 
 func (this *ScintillaEdit) CutAllowLine() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_cutAllowLine(this.h)
 }
 
 func (this *ScintillaEdit) SetCopySeparator(separator string) {
-	defer runtime.KeepAlive(this)
 	separator_Cstring := C.CString(separator)
 	defer C.free(unsafe.Pointer(separator_Cstring))
 	C.ScintillaEdit_setCopySeparator(this.h, separator_Cstring)
 }
 
 func (this *ScintillaEdit) CopySeparator() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_copySeparator(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13406,74 +12597,60 @@ func (this *ScintillaEdit) CopySeparator() []byte {
 }
 
 func (this *ScintillaEdit) CharacterPointer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_characterPointer(this.h))
 }
 
 func (this *ScintillaEdit) RangePointer(start uintptr, lengthRange uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rangePointer(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthRange)))
 }
 
 func (this *ScintillaEdit) GapPosition() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_gapPosition(this.h))
 }
 
 func (this *ScintillaEdit) IndicSetAlpha(indicator uintptr, alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) IndicAlpha(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicAlpha(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetOutlineAlpha(indicator uintptr, alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_indicSetOutlineAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) IndicOutlineAlpha(indicator uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indicOutlineAlpha(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) SetExtraAscent(extraAscent uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setExtraAscent(this.h, (C.intptr_t)(extraAscent))
 }
 
 func (this *ScintillaEdit) ExtraAscent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_extraAscent(this.h))
 }
 
 func (this *ScintillaEdit) SetExtraDescent(extraDescent uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setExtraDescent(this.h, (C.intptr_t)(extraDescent))
 }
 
 func (this *ScintillaEdit) ExtraDescent() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_extraDescent(this.h))
 }
 
 func (this *ScintillaEdit) MarkerSymbolDefined(markerNumber uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_markerSymbolDefined(this.h, (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarginSetText(line uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_marginSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) MarginText(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_marginText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13481,24 +12658,20 @@ func (this *ScintillaEdit) MarginText(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) MarginSetStyle(line uintptr, style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_marginSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) MarginStyle(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MarginSetStyles(line uintptr, styles string) {
-	defer runtime.KeepAlive(this)
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
 	C.ScintillaEdit_marginSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
 }
 
 func (this *ScintillaEdit) MarginStyles(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_marginStyles(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13506,39 +12679,32 @@ func (this *ScintillaEdit) MarginStyles(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) MarginTextClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_marginTextClearAll(this.h)
 }
 
 func (this *ScintillaEdit) MarginSetStyleOffset(style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_marginSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) MarginStyleOffset() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) SetMarginOptions(marginOptions uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMarginOptions(this.h, (C.intptr_t)(marginOptions))
 }
 
 func (this *ScintillaEdit) MarginOptions() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_marginOptions(this.h))
 }
 
 func (this *ScintillaEdit) AnnotationSetText(line uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_annotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) AnnotationText(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_annotationText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13546,24 +12712,20 @@ func (this *ScintillaEdit) AnnotationText(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) AnnotationSetStyle(line uintptr, style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_annotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AnnotationStyle(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_annotationStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AnnotationSetStyles(line uintptr, styles string) {
-	defer runtime.KeepAlive(this)
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
 	C.ScintillaEdit_annotationSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
 }
 
 func (this *ScintillaEdit) AnnotationStyles(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_annotationStyles(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -13571,476 +12733,382 @@ func (this *ScintillaEdit) AnnotationStyles(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) AnnotationLines(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_annotationLines(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AnnotationClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_annotationClearAll(this.h)
 }
 
 func (this *ScintillaEdit) AnnotationSetVisible(visible uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_annotationSetVisible(this.h, (C.intptr_t)(visible))
 }
 
 func (this *ScintillaEdit) AnnotationVisible() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_annotationVisible(this.h))
 }
 
 func (this *ScintillaEdit) AnnotationSetStyleOffset(style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_annotationSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AnnotationStyleOffset() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_annotationStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) ReleaseAllExtendedStyles() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_releaseAllExtendedStyles(this.h)
 }
 
 func (this *ScintillaEdit) AllocateExtendedStyles(numberStyles uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_allocateExtendedStyles(this.h, (C.intptr_t)(numberStyles)))
 }
 
 func (this *ScintillaEdit) AddUndoAction(token uintptr, flags uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_addUndoAction(this.h, (C.intptr_t)(token), (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) CharPositionFromPoint(x uintptr, y uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_charPositionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) CharPositionFromPointClose(x uintptr, y uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_charPositionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) SetMouseSelectionRectangularSwitch(mouseSelectionRectangularSwitch bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMouseSelectionRectangularSwitch(this.h, (C.bool)(mouseSelectionRectangularSwitch))
 }
 
 func (this *ScintillaEdit) MouseSelectionRectangularSwitch() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_mouseSelectionRectangularSwitch(this.h))
 }
 
 func (this *ScintillaEdit) SetMultipleSelection(multipleSelection bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMultipleSelection(this.h, (C.bool)(multipleSelection))
 }
 
 func (this *ScintillaEdit) MultipleSelection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_multipleSelection(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelectionTyping(additionalSelectionTyping bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalSelectionTyping(this.h, (C.bool)(additionalSelectionTyping))
 }
 
 func (this *ScintillaEdit) AdditionalSelectionTyping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_additionalSelectionTyping(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretsBlink(additionalCaretsBlink bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalCaretsBlink(this.h, (C.bool)(additionalCaretsBlink))
 }
 
 func (this *ScintillaEdit) AdditionalCaretsBlink() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_additionalCaretsBlink(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretsVisible(additionalCaretsVisible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalCaretsVisible(this.h, (C.bool)(additionalCaretsVisible))
 }
 
 func (this *ScintillaEdit) AdditionalCaretsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_additionalCaretsVisible(this.h))
 }
 
 func (this *ScintillaEdit) Selections() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selections(this.h))
 }
 
 func (this *ScintillaEdit) SelectionEmpty() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_selectionEmpty(this.h))
 }
 
 func (this *ScintillaEdit) ClearSelections() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearSelections(this.h)
 }
 
 func (this *ScintillaEdit) SetSelection(caret uintptr, anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) AddSelection(caret uintptr, anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_addSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionFromPoint(x uintptr, y uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) DropSelectionN(selection uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_dropSelectionN(this.h, (C.intptr_t)(selection))
 }
 
 func (this *ScintillaEdit) SetMainSelection(selection uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setMainSelection(this.h, (C.intptr_t)(selection))
 }
 
 func (this *ScintillaEdit) MainSelection() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_mainSelection(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionNCaret(selection uintptr, caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNCaret(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionNCaret(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNCaret(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNAnchor(selection uintptr, anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNAnchor(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionNAnchor(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNAnchor(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNCaretVirtualSpace(selection uintptr, space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) SelectionNCaretVirtualSpace(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNAnchorVirtualSpace(selection uintptr, space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) SelectionNAnchorVirtualSpace(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNStart(selection uintptr, anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNStart(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionNStart(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNStart(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SelectionNStartVirtualSpace(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNStartVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNEnd(selection uintptr, caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setSelectionNEnd(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionNEndVirtualSpace(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNEndVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SelectionNEnd(selection uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_selectionNEnd(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionCaret(caret uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setRectangularSelectionCaret(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) RectangularSelectionCaret() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rectangularSelectionCaret(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionAnchor(anchor uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setRectangularSelectionAnchor(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) RectangularSelectionAnchor() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rectangularSelectionAnchor(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionCaretVirtualSpace(space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setRectangularSelectionCaretVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) RectangularSelectionCaretVirtualSpace() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rectangularSelectionCaretVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionAnchorVirtualSpace(space uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setRectangularSelectionAnchorVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) RectangularSelectionAnchorVirtualSpace() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rectangularSelectionAnchorVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetVirtualSpaceOptions(virtualSpaceOptions uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setVirtualSpaceOptions(this.h, (C.intptr_t)(virtualSpaceOptions))
 }
 
 func (this *ScintillaEdit) VirtualSpaceOptions() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_virtualSpaceOptions(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionModifier(modifier uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setRectangularSelectionModifier(this.h, (C.intptr_t)(modifier))
 }
 
 func (this *ScintillaEdit) RectangularSelectionModifier() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_rectangularSelectionModifier(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelFore(fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalSelFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelBack(back uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalSelBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelAlpha(alpha uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalSelAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) AdditionalSelAlpha() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_additionalSelAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretFore(fore uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setAdditionalCaretFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) AdditionalCaretFore() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_additionalCaretFore(this.h))
 }
 
 func (this *ScintillaEdit) RotateSelection() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_rotateSelection(this.h)
 }
 
 func (this *ScintillaEdit) SwapMainAnchorCaret() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_swapMainAnchorCaret(this.h)
 }
 
 func (this *ScintillaEdit) MultipleSelectAddNext() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_multipleSelectAddNext(this.h)
 }
 
 func (this *ScintillaEdit) MultipleSelectAddEach() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_multipleSelectAddEach(this.h)
 }
 
 func (this *ScintillaEdit) ChangeLexerState(start uintptr, end uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_changeLexerState(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) ContractedFoldNext(lineStart uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_contractedFoldNext(this.h, (C.intptr_t)(lineStart)))
 }
 
 func (this *ScintillaEdit) VerticalCentreCaret() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_verticalCentreCaret(this.h)
 }
 
 func (this *ScintillaEdit) MoveSelectedLinesUp() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_moveSelectedLinesUp(this.h)
 }
 
 func (this *ScintillaEdit) MoveSelectedLinesDown() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_moveSelectedLinesDown(this.h)
 }
 
 func (this *ScintillaEdit) SetIdentifier(identifier uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setIdentifier(this.h, (C.intptr_t)(identifier))
 }
 
 func (this *ScintillaEdit) Identifier() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_identifier(this.h))
 }
 
 func (this *ScintillaEdit) RGBAImageSetWidth(width uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_rGBAImageSetWidth(this.h, (C.intptr_t)(width))
 }
 
 func (this *ScintillaEdit) RGBAImageSetHeight(height uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_rGBAImageSetHeight(this.h, (C.intptr_t)(height))
 }
 
 func (this *ScintillaEdit) RGBAImageSetScale(scalePercent uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_rGBAImageSetScale(this.h, (C.intptr_t)(scalePercent))
 }
 
 func (this *ScintillaEdit) MarkerDefineRGBAImage(markerNumber uintptr, pixels string) {
-	defer runtime.KeepAlive(this)
 	pixels_Cstring := C.CString(pixels)
 	defer C.free(unsafe.Pointer(pixels_Cstring))
 	C.ScintillaEdit_markerDefineRGBAImage(this.h, (C.intptr_t)(markerNumber), pixels_Cstring)
 }
 
 func (this *ScintillaEdit) RegisterRGBAImage(typeVal uintptr, pixels string) {
-	defer runtime.KeepAlive(this)
 	pixels_Cstring := C.CString(pixels)
 	defer C.free(unsafe.Pointer(pixels_Cstring))
 	C.ScintillaEdit_registerRGBAImage(this.h, (C.intptr_t)(typeVal), pixels_Cstring)
 }
 
 func (this *ScintillaEdit) ScrollToStart() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_scrollToStart(this.h)
 }
 
 func (this *ScintillaEdit) ScrollToEnd() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_scrollToEnd(this.h)
 }
 
 func (this *ScintillaEdit) SetTechnology(technology uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setTechnology(this.h, (C.intptr_t)(technology))
 }
 
 func (this *ScintillaEdit) Technology() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_technology(this.h))
 }
 
 func (this *ScintillaEdit) CreateLoader(bytes uintptr, documentOptions uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_createLoader(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
 }
 
 func (this *ScintillaEdit) FindIndicatorShow(start uintptr, end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_findIndicatorShow(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) FindIndicatorFlash(start uintptr, end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_findIndicatorFlash(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) FindIndicatorHide() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_findIndicatorHide(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeDisplay() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeDisplay(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeDisplayExtend() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_vCHomeDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) CaretLineVisibleAlways() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_caretLineVisibleAlways(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineVisibleAlways(alwaysVisible bool) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setCaretLineVisibleAlways(this.h, (C.bool)(alwaysVisible))
 }
 
 func (this *ScintillaEdit) SetLineEndTypesAllowed(lineEndBitSet uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setLineEndTypesAllowed(this.h, (C.intptr_t)(lineEndBitSet))
 }
 
 func (this *ScintillaEdit) LineEndTypesAllowed() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineEndTypesAllowed(this.h))
 }
 
 func (this *ScintillaEdit) LineEndTypesActive() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineEndTypesActive(this.h))
 }
 
 func (this *ScintillaEdit) SetRepresentation(encodedCharacter string, representation string) {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	representation_Cstring := C.CString(representation)
@@ -14049,7 +13117,6 @@ func (this *ScintillaEdit) SetRepresentation(encodedCharacter string, representa
 }
 
 func (this *ScintillaEdit) Representation(encodedCharacter string) []byte {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_representation(this.h, encodedCharacter_Cstring)
@@ -14059,54 +13126,46 @@ func (this *ScintillaEdit) Representation(encodedCharacter string) []byte {
 }
 
 func (this *ScintillaEdit) ClearRepresentation(encodedCharacter string) {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	C.ScintillaEdit_clearRepresentation(this.h, encodedCharacter_Cstring)
 }
 
 func (this *ScintillaEdit) ClearAllRepresentations() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_clearAllRepresentations(this.h)
 }
 
 func (this *ScintillaEdit) SetRepresentationAppearance(encodedCharacter string, appearance uintptr) {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	C.ScintillaEdit_setRepresentationAppearance(this.h, encodedCharacter_Cstring, (C.intptr_t)(appearance))
 }
 
 func (this *ScintillaEdit) RepresentationAppearance(encodedCharacter string) uintptr {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	return (uintptr)(C.ScintillaEdit_representationAppearance(this.h, encodedCharacter_Cstring))
 }
 
 func (this *ScintillaEdit) SetRepresentationColour(encodedCharacter string, colour uintptr) {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	C.ScintillaEdit_setRepresentationColour(this.h, encodedCharacter_Cstring, (C.intptr_t)(colour))
 }
 
 func (this *ScintillaEdit) RepresentationColour(encodedCharacter string) uintptr {
-	defer runtime.KeepAlive(this)
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	return (uintptr)(C.ScintillaEdit_representationColour(this.h, encodedCharacter_Cstring))
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetText(line uintptr, text string) {
-	defer runtime.KeepAlive(this)
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
 	C.ScintillaEdit_eOLAnnotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) EOLAnnotationText(line uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_eOLAnnotationText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14114,92 +13173,74 @@ func (this *ScintillaEdit) EOLAnnotationText(line uintptr) []byte {
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetStyle(line uintptr, style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_eOLAnnotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) EOLAnnotationStyle(line uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_eOLAnnotationStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) EOLAnnotationClearAll() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_eOLAnnotationClearAll(this.h)
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetVisible(visible uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_eOLAnnotationSetVisible(this.h, (C.intptr_t)(visible))
 }
 
 func (this *ScintillaEdit) EOLAnnotationVisible() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_eOLAnnotationVisible(this.h))
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetStyleOffset(style uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_eOLAnnotationSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) EOLAnnotationStyleOffset() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_eOLAnnotationStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) SupportsFeature(feature uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.ScintillaEdit_supportsFeature(this.h, (C.intptr_t)(feature)))
 }
 
 func (this *ScintillaEdit) LineCharacterIndex() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineCharacterIndex(this.h))
 }
 
 func (this *ScintillaEdit) AllocateLineCharacterIndex(lineCharacterIndex uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_allocateLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
 }
 
 func (this *ScintillaEdit) ReleaseLineCharacterIndex(lineCharacterIndex uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_releaseLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
 }
 
 func (this *ScintillaEdit) LineFromIndexPosition(pos uintptr, lineCharacterIndex uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineFromIndexPosition(this.h, (C.intptr_t)(pos), (C.intptr_t)(lineCharacterIndex)))
 }
 
 func (this *ScintillaEdit) IndexPositionFromLine(line uintptr, lineCharacterIndex uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_indexPositionFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(lineCharacterIndex)))
 }
 
 func (this *ScintillaEdit) StartRecord() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_startRecord(this.h)
 }
 
 func (this *ScintillaEdit) StopRecord() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_stopRecord(this.h)
 }
 
 func (this *ScintillaEdit) Lexer() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lexer(this.h))
 }
 
 func (this *ScintillaEdit) Colourise(start uintptr, end uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_colourise(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) SetProperty(key string, value string) {
-	defer runtime.KeepAlive(this)
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	value_Cstring := C.CString(value)
@@ -14208,14 +13249,12 @@ func (this *ScintillaEdit) SetProperty(key string, value string) {
 }
 
 func (this *ScintillaEdit) SetKeyWords(keyWordSet uintptr, keyWords string) {
-	defer runtime.KeepAlive(this)
 	keyWords_Cstring := C.CString(keyWords)
 	defer C.free(unsafe.Pointer(keyWords_Cstring))
 	C.ScintillaEdit_setKeyWords(this.h, (C.intptr_t)(keyWordSet), keyWords_Cstring)
 }
 
 func (this *ScintillaEdit) Property(key string) []byte {
-	defer runtime.KeepAlive(this)
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_property(this.h, key_Cstring)
@@ -14225,7 +13264,6 @@ func (this *ScintillaEdit) Property(key string) []byte {
 }
 
 func (this *ScintillaEdit) PropertyExpanded(key string) []byte {
-	defer runtime.KeepAlive(this)
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_propertyExpanded(this.h, key_Cstring)
@@ -14235,14 +13273,12 @@ func (this *ScintillaEdit) PropertyExpanded(key string) []byte {
 }
 
 func (this *ScintillaEdit) PropertyInt(key string, defaultValue uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	return (uintptr)(C.ScintillaEdit_propertyInt(this.h, key_Cstring, (C.intptr_t)(defaultValue)))
 }
 
 func (this *ScintillaEdit) LexerLanguage() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_lexerLanguage(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14250,12 +13286,10 @@ func (this *ScintillaEdit) LexerLanguage() []byte {
 }
 
 func (this *ScintillaEdit) PrivateLexerCall(operation uintptr, pointer uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_privateLexerCall(this.h, (C.intptr_t)(operation), (C.intptr_t)(pointer)))
 }
 
 func (this *ScintillaEdit) PropertyNames() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_propertyNames(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14263,14 +13297,12 @@ func (this *ScintillaEdit) PropertyNames() []byte {
 }
 
 func (this *ScintillaEdit) PropertyType(name string) uintptr {
-	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	return (uintptr)(C.ScintillaEdit_propertyType(this.h, name_Cstring))
 }
 
 func (this *ScintillaEdit) DescribeProperty(name string) []byte {
-	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_describeProperty(this.h, name_Cstring)
@@ -14280,7 +13312,6 @@ func (this *ScintillaEdit) DescribeProperty(name string) []byte {
 }
 
 func (this *ScintillaEdit) DescribeKeyWordSets() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_describeKeyWordSets(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14288,54 +13319,44 @@ func (this *ScintillaEdit) DescribeKeyWordSets() []byte {
 }
 
 func (this *ScintillaEdit) LineEndTypesSupported() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_lineEndTypesSupported(this.h))
 }
 
 func (this *ScintillaEdit) AllocateSubStyles(styleBase uintptr, numberStyles uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_allocateSubStyles(this.h, (C.intptr_t)(styleBase), (C.intptr_t)(numberStyles)))
 }
 
 func (this *ScintillaEdit) SubStylesStart(styleBase uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_subStylesStart(this.h, (C.intptr_t)(styleBase)))
 }
 
 func (this *ScintillaEdit) SubStylesLength(styleBase uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_subStylesLength(this.h, (C.intptr_t)(styleBase)))
 }
 
 func (this *ScintillaEdit) StyleFromSubStyle(subStyle uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_styleFromSubStyle(this.h, (C.intptr_t)(subStyle)))
 }
 
 func (this *ScintillaEdit) PrimaryStyleFromStyle(style uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_primaryStyleFromStyle(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) FreeSubStyles() {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_freeSubStyles(this.h)
 }
 
 func (this *ScintillaEdit) SetIdentifiers(style uintptr, identifiers string) {
-	defer runtime.KeepAlive(this)
 	identifiers_Cstring := C.CString(identifiers)
 	defer C.free(unsafe.Pointer(identifiers_Cstring))
 	C.ScintillaEdit_setIdentifiers(this.h, (C.intptr_t)(style), identifiers_Cstring)
 }
 
 func (this *ScintillaEdit) DistanceToSecondaryStyles() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_distanceToSecondaryStyles(this.h))
 }
 
 func (this *ScintillaEdit) SubStyleBases() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_subStyleBases(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14343,12 +13364,10 @@ func (this *ScintillaEdit) SubStyleBases() []byte {
 }
 
 func (this *ScintillaEdit) NamedStyles() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_namedStyles(this.h))
 }
 
 func (this *ScintillaEdit) NameOfStyle(style uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_nameOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14356,7 +13375,6 @@ func (this *ScintillaEdit) NameOfStyle(style uintptr) []byte {
 }
 
 func (this *ScintillaEdit) TagsOfStyle(style uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_tagsOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14364,7 +13382,6 @@ func (this *ScintillaEdit) TagsOfStyle(style uintptr) []byte {
 }
 
 func (this *ScintillaEdit) DescriptionOfStyle(style uintptr) []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_descriptionOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -14372,17 +13389,14 @@ func (this *ScintillaEdit) DescriptionOfStyle(style uintptr) []byte {
 }
 
 func (this *ScintillaEdit) SetILexer(ilexer uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setILexer(this.h, (C.intptr_t)(ilexer))
 }
 
 func (this *ScintillaEdit) Bidirectional() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.ScintillaEdit_bidirectional(this.h))
 }
 
 func (this *ScintillaEdit) SetBidirectional(bidirectional uintptr) {
-	defer runtime.KeepAlive(this)
 	C.ScintillaEdit_setBidirectional(this.h, (C.intptr_t)(bidirectional))
 }
 
@@ -14432,7 +13446,6 @@ func ScintillaEdit_TrUtf83(s string, c string, n int) string {
 
 // SetViewportMargins can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEdit_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -14445,7 +13458,6 @@ func (this *ScintillaEdit) SetViewportMargins(left int, top int, right int, bott
 
 // ViewportMargins can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) ViewportMargins() qt.QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.ScintillaEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -14462,7 +13474,6 @@ func (this *ScintillaEdit) ViewportMargins() qt.QMargins {
 
 // DrawFrame can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) DrawFrame(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -14476,7 +13487,6 @@ func (this *ScintillaEdit) DrawFrame(param1 *qt.QPainter) {
 
 // InitStyleOption can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) InitStyleOption(option *qt.QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -14490,7 +13500,6 @@ func (this *ScintillaEdit) InitStyleOption(option *qt.QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -14503,7 +13512,6 @@ func (this *ScintillaEdit) UpdateMicroFocus() {
 
 // Create can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -14516,7 +13524,6 @@ func (this *ScintillaEdit) Create() {
 
 // Destroy can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.ScintillaEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -14529,7 +13536,6 @@ func (this *ScintillaEdit) Destroy() {
 
 // FocusNextChild can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.ScintillaEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -14544,7 +13550,6 @@ func (this *ScintillaEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.ScintillaEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -14559,7 +13564,6 @@ func (this *ScintillaEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.ScintillaEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -14574,7 +13578,6 @@ func (this *ScintillaEdit) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.ScintillaEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -14589,7 +13592,6 @@ func (this *ScintillaEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -14606,7 +13608,6 @@ func (this *ScintillaEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a ScintillaEdit that was directly constructed.
 func (this *ScintillaEdit) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -14621,7 +13622,6 @@ func (this *ScintillaEdit) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *ScintillaEdit) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
-	defer runtime.KeepAlive(this)
 
 	return (uintptr)(C.ScintillaEdit_virtualbase_send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 
@@ -14654,7 +13654,6 @@ func miqt_exec_callback_ScintillaEdit_send(self *C.ScintillaEdit, cb C.intptr_t,
 }
 
 func (this *ScintillaEdit) callVirtualBase_Sends(iMessage uint, wParam uintptr, s string) uintptr {
-	defer runtime.KeepAlive(this)
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 
@@ -14690,7 +13689,6 @@ func miqt_exec_callback_ScintillaEdit_sends(self *C.ScintillaEdit, cb C.intptr_t
 }
 
 func (this *ScintillaEdit) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.ScintillaEdit_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -14720,7 +13718,6 @@ func miqt_exec_callback_ScintillaEdit_event(self *C.ScintillaEdit, cb C.intptr_t
 }
 
 func (this *ScintillaEdit) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -14748,7 +13745,6 @@ func miqt_exec_callback_ScintillaEdit_paintEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -14776,7 +13772,6 @@ func miqt_exec_callback_ScintillaEdit_wheelEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -14804,7 +13799,6 @@ func miqt_exec_callback_ScintillaEdit_focusInEvent(self *C.ScintillaEdit, cb C.i
 }
 
 func (this *ScintillaEdit) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -14832,7 +13826,6 @@ func miqt_exec_callback_ScintillaEdit_focusOutEvent(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -14860,7 +13853,6 @@ func miqt_exec_callback_ScintillaEdit_resizeEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -14888,7 +13880,6 @@ func miqt_exec_callback_ScintillaEdit_keyPressEvent(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -14916,7 +13907,6 @@ func miqt_exec_callback_ScintillaEdit_mousePressEvent(self *C.ScintillaEdit, cb 
 }
 
 func (this *ScintillaEdit) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -14944,7 +13934,6 @@ func miqt_exec_callback_ScintillaEdit_mouseReleaseEvent(self *C.ScintillaEdit, c
 }
 
 func (this *ScintillaEdit) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -14972,7 +13961,6 @@ func miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent(self *C.ScintillaEdi
 }
 
 func (this *ScintillaEdit) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -15000,7 +13988,6 @@ func miqt_exec_callback_ScintillaEdit_mouseMoveEvent(self *C.ScintillaEdit, cb C
 }
 
 func (this *ScintillaEdit) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -15028,7 +14015,6 @@ func miqt_exec_callback_ScintillaEdit_contextMenuEvent(self *C.ScintillaEdit, cb
 }
 
 func (this *ScintillaEdit) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -15056,7 +14042,6 @@ func miqt_exec_callback_ScintillaEdit_dragEnterEvent(self *C.ScintillaEdit, cb C
 }
 
 func (this *ScintillaEdit) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -15084,7 +14069,6 @@ func miqt_exec_callback_ScintillaEdit_dragLeaveEvent(self *C.ScintillaEdit, cb C
 }
 
 func (this *ScintillaEdit) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -15112,7 +14096,6 @@ func miqt_exec_callback_ScintillaEdit_dragMoveEvent(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -15140,7 +14123,6 @@ func miqt_exec_callback_ScintillaEdit_dropEvent(self *C.ScintillaEdit, cb C.intp
 }
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
@@ -15168,7 +14150,6 @@ func miqt_exec_callback_ScintillaEdit_inputMethodEvent(self *C.ScintillaEdit, cb
 }
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -15200,7 +14181,6 @@ func miqt_exec_callback_ScintillaEdit_inputMethodQuery(self *C.ScintillaEdit, cb
 }
 
 func (this *ScintillaEdit) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
-	defer runtime.KeepAlive(this)
 
 	C.ScintillaEdit_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
 
@@ -15229,7 +14209,6 @@ func miqt_exec_callback_ScintillaEdit_scrollContentsBy(self *C.ScintillaEdit, cb
 }
 
 func (this *ScintillaEdit) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -15258,7 +14237,6 @@ func miqt_exec_callback_ScintillaEdit_minimumSizeHint(self *C.ScintillaEdit, cb 
 }
 
 func (this *ScintillaEdit) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -15287,8 +14265,6 @@ func miqt_exec_callback_ScintillaEdit_sizeHint(self *C.ScintillaEdit, cb C.intpt
 }
 
 func (this *ScintillaEdit) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.ScintillaEdit_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
@@ -15315,8 +14291,6 @@ func miqt_exec_callback_ScintillaEdit_setupViewport(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.ScintillaEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -15348,7 +14322,6 @@ func miqt_exec_callback_ScintillaEdit_eventFilter(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.ScintillaEdit_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
@@ -15378,7 +14351,6 @@ func miqt_exec_callback_ScintillaEdit_viewportEvent(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_ViewportSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -15407,7 +14379,6 @@ func miqt_exec_callback_ScintillaEdit_viewportSizeHint(self *C.ScintillaEdit, cb
 }
 
 func (this *ScintillaEdit) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.ScintillaEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -15435,7 +14406,6 @@ func miqt_exec_callback_ScintillaEdit_changeEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -15461,7 +14431,6 @@ func miqt_exec_callback_ScintillaEdit_devType(self *C.ScintillaEdit, cb C.intptr
 }
 
 func (this *ScintillaEdit) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.ScintillaEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -15488,7 +14457,6 @@ func miqt_exec_callback_ScintillaEdit_setVisible(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -15517,7 +14485,6 @@ func miqt_exec_callback_ScintillaEdit_heightForWidth(self *C.ScintillaEdit, cb C
 }
 
 func (this *ScintillaEdit) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.ScintillaEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -15543,7 +14510,6 @@ func miqt_exec_callback_ScintillaEdit_hasHeightForWidth(self *C.ScintillaEdit, c
 }
 
 func (this *ScintillaEdit) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEdit_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -15570,7 +14536,6 @@ func miqt_exec_callback_ScintillaEdit_paintEngine(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -15598,7 +14563,6 @@ func miqt_exec_callback_ScintillaEdit_keyReleaseEvent(self *C.ScintillaEdit, cb 
 }
 
 func (this *ScintillaEdit) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -15626,7 +14590,6 @@ func miqt_exec_callback_ScintillaEdit_enterEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -15654,7 +14617,6 @@ func miqt_exec_callback_ScintillaEdit_leaveEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -15682,7 +14644,6 @@ func miqt_exec_callback_ScintillaEdit_moveEvent(self *C.ScintillaEdit, cb C.intp
 }
 
 func (this *ScintillaEdit) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -15710,7 +14671,6 @@ func miqt_exec_callback_ScintillaEdit_closeEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -15738,7 +14698,6 @@ func miqt_exec_callback_ScintillaEdit_tabletEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -15766,7 +14725,6 @@ func miqt_exec_callback_ScintillaEdit_actionEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -15794,7 +14752,6 @@ func miqt_exec_callback_ScintillaEdit_showEvent(self *C.ScintillaEdit, cb C.intp
 }
 
 func (this *ScintillaEdit) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -15822,7 +14779,6 @@ func miqt_exec_callback_ScintillaEdit_hideEvent(self *C.ScintillaEdit, cb C.intp
 }
 
 func (this *ScintillaEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -15864,7 +14820,6 @@ func miqt_exec_callback_ScintillaEdit_nativeEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.ScintillaEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -15893,7 +14848,6 @@ func miqt_exec_callback_ScintillaEdit_metric(self *C.ScintillaEdit, cb C.intptr_
 }
 
 func (this *ScintillaEdit) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.ScintillaEdit_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -15921,7 +14875,6 @@ func miqt_exec_callback_ScintillaEdit_initPainter(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEdit_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -15952,7 +14905,6 @@ func miqt_exec_callback_ScintillaEdit_redirected(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -15979,7 +14931,6 @@ func miqt_exec_callback_ScintillaEdit_sharedPainter(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.ScintillaEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -16008,7 +14959,6 @@ func miqt_exec_callback_ScintillaEdit_focusNextPrevChild(self *C.ScintillaEdit, 
 }
 
 func (this *ScintillaEdit) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -16036,7 +14986,6 @@ func miqt_exec_callback_ScintillaEdit_timerEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -16064,7 +15013,6 @@ func miqt_exec_callback_ScintillaEdit_childEvent(self *C.ScintillaEdit, cb C.int
 }
 
 func (this *ScintillaEdit) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.ScintillaEdit_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -16092,7 +15040,6 @@ func miqt_exec_callback_ScintillaEdit_customEvent(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -16120,7 +15067,6 @@ func miqt_exec_callback_ScintillaEdit_connectNotify(self *C.ScintillaEdit, cb C.
 }
 
 func (this *ScintillaEdit) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.ScintillaEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -16155,6 +15101,8 @@ func (this *ScintillaEdit) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *ScintillaEdit) GoGC() {
 	if this.gc != nil {
 		return

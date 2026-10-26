@@ -60,12 +60,10 @@ func UnsafeNewQCameraFocusControl(h unsafe.Pointer) *QCameraFocusControl {
 }
 
 func (this *QCameraFocusControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFocusControl_metaObject(this.h)))
 }
 
 func (this *QCameraFocusControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraFocusControl_metacast(this.h, param1_Cstring))
@@ -90,50 +88,41 @@ func QCameraFocusControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraFocusControl) FocusMode() QCameraFocus__FocusMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraFocus__FocusMode)(C.QCameraFocusControl_focusMode(this.h))
 }
 
 func (this *QCameraFocusControl) SetFocusMode(mode QCameraFocus__FocusMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFocusControl_setFocusMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocusControl) IsFocusModeSupported(mode QCameraFocus__FocusMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocusControl_isFocusModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFocusControl) FocusPointMode() QCameraFocus__FocusPointMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraFocus__FocusPointMode)(C.QCameraFocusControl_focusPointMode(this.h))
 }
 
 func (this *QCameraFocusControl) SetFocusPointMode(mode QCameraFocus__FocusPointMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFocusControl_setFocusPointMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocusControl) IsFocusPointModeSupported(mode QCameraFocus__FocusPointMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraFocusControl_isFocusPointModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFocusControl) CustomFocusPoint() *qt.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocusControl_customFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFocusControl) SetCustomFocusPoint(point *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QCameraFocusControl_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
 
 func (this *QCameraFocusControl) FocusZones() []QCameraFocusZone {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraFocusControl_focusZones(this.h)
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraFocusZone)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -146,7 +135,6 @@ func (this *QCameraFocusControl) FocusZones() []QCameraFocusZone {
 }
 
 func (this *QCameraFocusControl) FocusModeChanged(mode QCameraFocus__FocusMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFocusControl_focusModeChanged(this.h, (C.int)(mode))
 }
 func (this *QCameraFocusControl) OnFocusModeChanged(slot func(mode QCameraFocus__FocusMode)) {
@@ -167,7 +155,6 @@ func miqt_exec_callback_QCameraFocusControl_focusModeChanged(cb C.intptr_t, mode
 }
 
 func (this *QCameraFocusControl) FocusPointModeChanged(mode QCameraFocus__FocusPointMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraFocusControl_focusPointModeChanged(this.h, (C.int)(mode))
 }
 func (this *QCameraFocusControl) OnFocusPointModeChanged(slot func(mode QCameraFocus__FocusPointMode)) {
@@ -188,7 +175,6 @@ func miqt_exec_callback_QCameraFocusControl_focusPointModeChanged(cb C.intptr_t,
 }
 
 func (this *QCameraFocusControl) CustomFocusPointChanged(point *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QCameraFocusControl_customFocusPointChanged(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
@@ -210,7 +196,6 @@ func miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(cb C.intptr_
 }
 
 func (this *QCameraFocusControl) FocusZonesChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCameraFocusControl_focusZonesChanged(this.h)
 }
 func (this *QCameraFocusControl) OnFocusZonesChanged(slot func()) {
@@ -279,6 +264,8 @@ func (this *QCameraFocusControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraFocusControl) GoGC() {
 	if this.gc != nil {
 		return

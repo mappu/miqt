@@ -60,7 +60,6 @@ func NewQCameraInfo() *QCameraInfo {
 
 // NewQCameraInfo2 constructs a new QCameraInfo object.
 func NewQCameraInfo2(camera *QCamera) *QCameraInfo {
-	defer runtime.KeepAlive(camera)
 
 	return newQCameraInfo(C.QCameraInfo_new2(camera.cPointer()))
 }

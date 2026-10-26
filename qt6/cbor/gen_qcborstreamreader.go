@@ -116,14 +116,12 @@ func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 
 // NewQCborStreamReader5 constructs a new QCborStreamReader object.
 func NewQCborStreamReader5(device *qt6.QIODevice) *QCborStreamReader {
-	defer runtime.KeepAlive(device)
 
 	return newQCborStreamReader(C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer())))
 }
 
 func (this *QCborStreamReader) SetDevice(device *qt6.QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QCborStreamReader_setDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 

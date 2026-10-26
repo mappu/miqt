@@ -76,7 +76,6 @@ func NewQSaveFile2() *QSaveFile {
 
 // NewQSaveFile3 constructs a new QSaveFile object.
 func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -87,18 +86,15 @@ func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
 
 // NewQSaveFile4 constructs a new QSaveFile object.
 func NewQSaveFile4(parent *QObject) *QSaveFile {
-	defer runtime.KeepAlive(parent)
 
 	return newQSaveFile(C.QSaveFile_new4(parent.cPointer()))
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSaveFile_metaObject(this.h))
 }
 
 func (this *QSaveFile) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSaveFile_metacast(this.h, param1_Cstring))
@@ -123,7 +119,6 @@ func QSaveFile_TrUtf8(s string) string {
 }
 
 func (this *QSaveFile) FileName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSaveFile_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -131,7 +126,6 @@ func (this *QSaveFile) FileName() string {
 }
 
 func (this *QSaveFile) SetFileName(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -140,27 +134,22 @@ func (this *QSaveFile) SetFileName(name string) {
 }
 
 func (this *QSaveFile) Open(flags QIODevice__OpenModeFlag) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSaveFile_open(this.h, (C.int)(flags)))
 }
 
 func (this *QSaveFile) Commit() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSaveFile_commit(this.h))
 }
 
 func (this *QSaveFile) CancelWriting() {
-	defer runtime.KeepAlive(this)
 	C.QSaveFile_cancelWriting(this.h)
 }
 
 func (this *QSaveFile) SetDirectWriteFallback(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QSaveFile_setDirectWriteFallback(this.h, (C.bool)(enabled))
 }
 
 func (this *QSaveFile) DirectWriteFallback() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSaveFile_directWriteFallback(this.h))
 }
 
@@ -210,7 +199,6 @@ func QSaveFile_TrUtf83(s string, c string, n int) string {
 
 // SetOpenMode can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) SetOpenMode(openMode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSaveFile_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -223,7 +211,6 @@ func (this *QSaveFile) SetOpenMode(openMode QIODevice__OpenModeFlag) {
 
 // SetErrorString can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) SetErrorString(errorString string) {
-	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -240,7 +227,6 @@ func (this *QSaveFile) SetErrorString(errorString string) {
 
 // Sender can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSaveFile_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -255,7 +241,6 @@ func (this *QSaveFile) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSaveFile_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -270,7 +255,6 @@ func (this *QSaveFile) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -287,7 +271,6 @@ func (this *QSaveFile) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSaveFile that was directly constructed.
 func (this *QSaveFile) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -302,7 +285,6 @@ func (this *QSaveFile) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSaveFile) callVirtualBase_FileName() string {
-	defer runtime.KeepAlive(this)
 
 	var _ms C.struct_miqt_string = C.QSaveFile_virtualbase_fileName(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -333,7 +315,6 @@ func miqt_exec_callback_QSaveFile_fileName(self *C.QSaveFile, cb C.intptr_t) C.s
 }
 
 func (this *QSaveFile) callVirtualBase_Open(flags QIODevice__OpenModeFlag) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_open(unsafe.Pointer(this.h), (C.int)(flags)))
 
@@ -362,7 +343,6 @@ func miqt_exec_callback_QSaveFile_open(self *C.QSaveFile, cb C.intptr_t, flags C
 }
 
 func (this *QSaveFile) callVirtualBase_WriteData(data string, lenVal int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -396,7 +376,6 @@ func miqt_exec_callback_QSaveFile_writeData(self *C.QSaveFile, cb C.intptr_t, da
 }
 
 func (this *QSaveFile) callVirtualBase_IsSequential() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -422,7 +401,6 @@ func miqt_exec_callback_QSaveFile_isSequential(self *C.QSaveFile, cb C.intptr_t)
 }
 
 func (this *QSaveFile) callVirtualBase_Pos() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSaveFile_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -448,7 +426,6 @@ func miqt_exec_callback_QSaveFile_pos(self *C.QSaveFile, cb C.intptr_t) C.longlo
 }
 
 func (this *QSaveFile) callVirtualBase_Seek(offset int64) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(offset)))
 
@@ -477,7 +454,6 @@ func miqt_exec_callback_QSaveFile_seek(self *C.QSaveFile, cb C.intptr_t, offset 
 }
 
 func (this *QSaveFile) callVirtualBase_AtEnd() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -503,7 +479,6 @@ func miqt_exec_callback_QSaveFile_atEnd(self *C.QSaveFile, cb C.intptr_t) C.bool
 }
 
 func (this *QSaveFile) callVirtualBase_Size() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSaveFile_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -529,7 +504,6 @@ func miqt_exec_callback_QSaveFile_size(self *C.QSaveFile, cb C.intptr_t) C.longl
 }
 
 func (this *QSaveFile) callVirtualBase_Resize(sz int64) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_resize(unsafe.Pointer(this.h), (C.longlong)(sz)))
 
@@ -558,7 +532,6 @@ func miqt_exec_callback_QSaveFile_resize(self *C.QSaveFile, cb C.intptr_t, sz C.
 }
 
 func (this *QSaveFile) callVirtualBase_Permissions() QFileDevice__Permission {
-	defer runtime.KeepAlive(this)
 
 	return (QFileDevice__Permission)(C.QSaveFile_virtualbase_permissions(unsafe.Pointer(this.h)))
 
@@ -584,7 +557,6 @@ func miqt_exec_callback_QSaveFile_permissions(self *C.QSaveFile, cb C.intptr_t) 
 }
 
 func (this *QSaveFile) callVirtualBase_SetPermissions(permissionSpec QFileDevice__Permission) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_setPermissions(unsafe.Pointer(this.h), (C.int)(permissionSpec)))
 
@@ -613,7 +585,6 @@ func miqt_exec_callback_QSaveFile_setPermissions(self *C.QSaveFile, cb C.intptr_
 }
 
 func (this *QSaveFile) callVirtualBase_ReadData(data string, maxlen int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -647,7 +618,6 @@ func miqt_exec_callback_QSaveFile_readData(self *C.QSaveFile, cb C.intptr_t, dat
 }
 
 func (this *QSaveFile) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -681,7 +651,6 @@ func miqt_exec_callback_QSaveFile_readLineData(self *C.QSaveFile, cb C.intptr_t,
 }
 
 func (this *QSaveFile) callVirtualBase_Reset() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -707,7 +676,6 @@ func miqt_exec_callback_QSaveFile_reset(self *C.QSaveFile, cb C.intptr_t) C.bool
 }
 
 func (this *QSaveFile) callVirtualBase_BytesAvailable() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSaveFile_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -733,7 +701,6 @@ func miqt_exec_callback_QSaveFile_bytesAvailable(self *C.QSaveFile, cb C.intptr_
 }
 
 func (this *QSaveFile) callVirtualBase_BytesToWrite() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QSaveFile_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -759,7 +726,6 @@ func miqt_exec_callback_QSaveFile_bytesToWrite(self *C.QSaveFile, cb C.intptr_t)
 }
 
 func (this *QSaveFile) callVirtualBase_CanReadLine() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -785,7 +751,6 @@ func miqt_exec_callback_QSaveFile_canReadLine(self *C.QSaveFile, cb C.intptr_t) 
 }
 
 func (this *QSaveFile) callVirtualBase_WaitForReadyRead(msecs int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -814,7 +779,6 @@ func miqt_exec_callback_QSaveFile_waitForReadyRead(self *C.QSaveFile, cb C.intpt
 }
 
 func (this *QSaveFile) callVirtualBase_WaitForBytesWritten(msecs int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSaveFile_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -843,7 +807,6 @@ func miqt_exec_callback_QSaveFile_waitForBytesWritten(self *C.QSaveFile, cb C.in
 }
 
 func (this *QSaveFile) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSaveFile_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -873,8 +836,6 @@ func miqt_exec_callback_QSaveFile_event(self *C.QSaveFile, cb C.intptr_t, event 
 }
 
 func (this *QSaveFile) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSaveFile_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -906,7 +867,6 @@ func miqt_exec_callback_QSaveFile_eventFilter(self *C.QSaveFile, cb C.intptr_t, 
 }
 
 func (this *QSaveFile) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSaveFile_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -934,7 +894,6 @@ func miqt_exec_callback_QSaveFile_timerEvent(self *C.QSaveFile, cb C.intptr_t, e
 }
 
 func (this *QSaveFile) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSaveFile_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -962,7 +921,6 @@ func miqt_exec_callback_QSaveFile_childEvent(self *C.QSaveFile, cb C.intptr_t, e
 }
 
 func (this *QSaveFile) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSaveFile_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -990,7 +948,6 @@ func miqt_exec_callback_QSaveFile_customEvent(self *C.QSaveFile, cb C.intptr_t, 
 }
 
 func (this *QSaveFile) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSaveFile_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1018,7 +975,6 @@ func miqt_exec_callback_QSaveFile_connectNotify(self *C.QSaveFile, cb C.intptr_t
 }
 
 func (this *QSaveFile) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSaveFile_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1053,6 +1009,8 @@ func (this *QSaveFile) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSaveFile) GoGC() {
 	if this.gc != nil {
 		return

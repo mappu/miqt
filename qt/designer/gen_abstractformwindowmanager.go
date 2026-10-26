@@ -97,18 +97,15 @@ func NewQDesignerFormWindowManagerInterface() *QDesignerFormWindowManagerInterfa
 
 // NewQDesignerFormWindowManagerInterface2 constructs a new QDesignerFormWindowManagerInterface object.
 func NewQDesignerFormWindowManagerInterface2(parent *qt.QObject) *QDesignerFormWindowManagerInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerFormWindowManagerInterface(C.QDesignerFormWindowManagerInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerFormWindowManagerInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerFormWindowManagerInterface_metacast(this.h, param1_Cstring))
@@ -133,133 +130,106 @@ func QDesignerFormWindowManagerInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerFormWindowManagerInterface) Action(action QDesignerFormWindowManagerInterface__Action) *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_action(this.h, (C.int)(action))))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionGroup(actionGroup QDesignerFormWindowManagerInterface__ActionGroup) *qt.QActionGroup {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQActionGroup(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionGroup(this.h, (C.int)(actionGroup))))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionCut() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionCut(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionCopy() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionCopy(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionPaste() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionPaste(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionDelete() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionDelete(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionSelectAll() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionSelectAll(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionLower() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionLower(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionRaise() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionRaise(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionUndo() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionUndo(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionRedo() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionRedo(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionHorizontalLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionHorizontalLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionVerticalLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionVerticalLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionSplitHorizontal() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionSplitHorizontal(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionSplitVertical() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionSplitVertical(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionGridLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionGridLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionFormLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionFormLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionBreakLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionBreakLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionAdjustSize() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionAdjustSize(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActionSimplifyLayout() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_actionSimplifyLayout(this.h)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActiveFormWindow() *QDesignerFormWindowInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowManagerInterface_activeFormWindow(this.h))
 }
 
 func (this *QDesignerFormWindowManagerInterface) FormWindowCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerFormWindowManagerInterface_formWindowCount(this.h))
 }
 
 func (this *QDesignerFormWindowManagerInterface) FormWindow(index int) *QDesignerFormWindowInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowManagerInterface_formWindow(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) CreateFormWindow(parentWidget *qt.QWidget, flags qt.WindowType) *QDesignerFormWindowInterface {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parentWidget)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowManagerInterface_createFormWindow(this.h, (*C.QWidget)(parentWidget.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QDesignerFormWindowManagerInterface) Core() *QDesignerFormEditorInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerFormWindowManagerInterface_core(this.h))
 }
 
 func (this *QDesignerFormWindowManagerInterface) DragItems(item_list []*QDesignerDnDItemInterface) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item_list)
 	item_list_CArray_ptr := (**C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
 	defer C.free(unsafe.Pointer(item_list_CArray_ptr))
@@ -272,15 +242,12 @@ func (this *QDesignerFormWindowManagerInterface) DragItems(item_list []*QDesigne
 }
 
 func (this *QDesignerFormWindowManagerInterface) CreatePreviewPixmap() *qt.QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_createPreviewPixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerFormWindowManagerInterface) FormWindowAdded(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_formWindowAdded(this.h, formWindow.cPointer())
 }
 func (this *QDesignerFormWindowManagerInterface) OnFormWindowAdded(slot func(formWindow *QDesignerFormWindowInterface)) {
@@ -301,8 +268,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindowAdded(cb C
 }
 
 func (this *QDesignerFormWindowManagerInterface) FormWindowRemoved(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_formWindowRemoved(this.h, formWindow.cPointer())
 }
 func (this *QDesignerFormWindowManagerInterface) OnFormWindowRemoved(slot func(formWindow *QDesignerFormWindowInterface)) {
@@ -323,8 +288,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindowRemoved(cb
 }
 
 func (this *QDesignerFormWindowManagerInterface) ActiveFormWindowChanged(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_activeFormWindowChanged(this.h, formWindow.cPointer())
 }
 func (this *QDesignerFormWindowManagerInterface) OnActiveFormWindowChanged(slot func(formWindow *QDesignerFormWindowInterface)) {
@@ -345,8 +308,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_activeFormWindowChan
 }
 
 func (this *QDesignerFormWindowManagerInterface) FormWindowSettingsChanged(fw *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(fw)
 	C.QDesignerFormWindowManagerInterface_formWindowSettingsChanged(this.h, fw.cPointer())
 }
 func (this *QDesignerFormWindowManagerInterface) OnFormWindowSettingsChanged(slot func(fw *QDesignerFormWindowInterface)) {
@@ -367,35 +328,26 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindowSettingsCh
 }
 
 func (this *QDesignerFormWindowManagerInterface) AddFormWindow(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_addFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerFormWindowManagerInterface) RemoveFormWindow(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_removeFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerFormWindowManagerInterface) SetActiveFormWindow(formWindow *QDesignerFormWindowInterface) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
 	C.QDesignerFormWindowManagerInterface_setActiveFormWindow(this.h, formWindow.cPointer())
 }
 
 func (this *QDesignerFormWindowManagerInterface) ShowPreview() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowManagerInterface_showPreview(this.h)
 }
 
 func (this *QDesignerFormWindowManagerInterface) CloseAllPreviews() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowManagerInterface_closeAllPreviews(this.h)
 }
 
 func (this *QDesignerFormWindowManagerInterface) ShowPluginDialog() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowManagerInterface_showPluginDialog(this.h)
 }
 
@@ -445,7 +397,6 @@ func QDesignerFormWindowManagerInterface_TrUtf83(s string, c string, n int) stri
 
 // Sender can only be called from a QDesignerFormWindowManagerInterface that was directly constructed.
 func (this *QDesignerFormWindowManagerInterface) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerFormWindowManagerInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -460,7 +411,6 @@ func (this *QDesignerFormWindowManagerInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerFormWindowManagerInterface that was directly constructed.
 func (this *QDesignerFormWindowManagerInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerFormWindowManagerInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -475,7 +425,6 @@ func (this *QDesignerFormWindowManagerInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerFormWindowManagerInterface that was directly constructed.
 func (this *QDesignerFormWindowManagerInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -492,7 +441,6 @@ func (this *QDesignerFormWindowManagerInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerFormWindowManagerInterface that was directly constructed.
 func (this *QDesignerFormWindowManagerInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -523,7 +471,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_action(self *C.QDesi
 	slotval1 := (QDesignerFormWindowManagerInterface__Action)(action)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -546,7 +493,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_actionGroup(self *C.
 	slotval1 := (QDesignerFormWindowManagerInterface__ActionGroup)(actionGroup)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QActionGroup)(virtualReturn.UnsafePointer())
 
@@ -566,7 +512,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_activeFormWindow(sel
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -608,7 +553,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindow(self *C.Q
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -633,7 +577,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_createFormWindow(sel
 	slotval2 := (qt.WindowType)(flags)
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -653,7 +596,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_core(self *C.QDesign
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -817,7 +759,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_showPluginDialog(sel
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormWindowManagerInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -847,8 +788,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_event(self *C.QDesig
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormWindowManagerInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -880,7 +819,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_eventFilter(self *C.
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowManagerInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -908,7 +846,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_timerEvent(self *C.Q
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowManagerInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -936,7 +873,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_childEvent(self *C.Q
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowManagerInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -964,7 +900,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_customEvent(self *C.
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormWindowManagerInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -992,7 +927,6 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_connectNotify(self *
 }
 
 func (this *QDesignerFormWindowManagerInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormWindowManagerInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1027,6 +961,8 @@ func (this *QDesignerFormWindowManagerInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerFormWindowManagerInterface) GoGC() {
 	if this.gc != nil {
 		return

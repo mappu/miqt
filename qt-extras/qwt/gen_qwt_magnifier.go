@@ -60,18 +60,15 @@ func UnsafeNewQwtMagnifier(h unsafe.Pointer) *QwtMagnifier {
 
 // NewQwtMagnifier constructs a new QwtMagnifier object.
 func NewQwtMagnifier(param1 *qt.QWidget) *QwtMagnifier {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtMagnifier(C.QwtMagnifier_new((*C.QWidget)(param1.UnsafePointer())))
 }
 
 func (this *QwtMagnifier) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtMagnifier_metaObject(this.h)))
 }
 
 func (this *QwtMagnifier) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtMagnifier_metacast(this.h, param1_Cstring))
@@ -96,98 +93,78 @@ func QwtMagnifier_TrUtf8(s string) string {
 }
 
 func (this *QwtMagnifier) ParentWidget() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtMagnifier_parentWidget(this.h)))
 }
 
 func (this *QwtMagnifier) ParentWidget2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtMagnifier_parentWidget2(this.h)))
 }
 
 func (this *QwtMagnifier) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QwtMagnifier) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtMagnifier_isEnabled(this.h))
 }
 
 func (this *QwtMagnifier) SetMouseFactor(mouseFactor float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setMouseFactor(this.h, (C.double)(mouseFactor))
 }
 
 func (this *QwtMagnifier) MouseFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtMagnifier_mouseFactor(this.h))
 }
 
 func (this *QwtMagnifier) SetMouseButton(param1 qt.MouseButton) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setMouseButton(this.h, (C.int)(param1))
 }
 
 func (this *QwtMagnifier) GetMouseButton(param1 *qt.MouseButton, param2 *qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_getMouseButton(this.h, (*C.int)(unsafe.Pointer(param1)), (*C.int)(unsafe.Pointer(param2)))
 }
 
 func (this *QwtMagnifier) SetWheelFactor(wheelFactor float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setWheelFactor(this.h, (C.double)(wheelFactor))
 }
 
 func (this *QwtMagnifier) WheelFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtMagnifier_wheelFactor(this.h))
 }
 
 func (this *QwtMagnifier) SetWheelModifiers(wheelModifiers qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setWheelModifiers(this.h, (C.int)(wheelModifiers))
 }
 
 func (this *QwtMagnifier) WheelModifiers() qt.KeyboardModifier {
-	defer runtime.KeepAlive(this)
 	return (qt.KeyboardModifier)(C.QwtMagnifier_wheelModifiers(this.h))
 }
 
 func (this *QwtMagnifier) SetKeyFactor(keyFactor float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setKeyFactor(this.h, (C.double)(keyFactor))
 }
 
 func (this *QwtMagnifier) KeyFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtMagnifier_keyFactor(this.h))
 }
 
 func (this *QwtMagnifier) SetZoomInKey(key int) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setZoomInKey(this.h, (C.int)(key))
 }
 
 func (this *QwtMagnifier) GetZoomInKey(key *int, param2 *qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_getZoomInKey(this.h, (*C.int)(unsafe.Pointer(key)), (*C.int)(unsafe.Pointer(param2)))
 }
 
 func (this *QwtMagnifier) SetZoomOutKey(key int) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setZoomOutKey(this.h, (C.int)(key))
 }
 
 func (this *QwtMagnifier) GetZoomOutKey(key *int, param2 *qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_getZoomOutKey(this.h, (*C.int)(unsafe.Pointer(key)), (*C.int)(unsafe.Pointer(param2)))
 }
 
 func (this *QwtMagnifier) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtMagnifier_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
@@ -237,23 +214,19 @@ func QwtMagnifier_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QwtMagnifier) SetMouseButton2(param1 qt.MouseButton, param2 qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setMouseButton2(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 func (this *QwtMagnifier) SetZoomInKey2(key int, param2 qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setZoomInKey2(this.h, (C.int)(key), (C.int)(param2))
 }
 
 func (this *QwtMagnifier) SetZoomOutKey2(key int, param2 qt.KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QwtMagnifier_setZoomOutKey2(this.h, (C.int)(key), (C.int)(param2))
 }
 
 // Sender can only be called from a QwtMagnifier that was directly constructed.
 func (this *QwtMagnifier) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtMagnifier_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -268,7 +241,6 @@ func (this *QwtMagnifier) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtMagnifier that was directly constructed.
 func (this *QwtMagnifier) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtMagnifier_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -283,7 +255,6 @@ func (this *QwtMagnifier) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtMagnifier that was directly constructed.
 func (this *QwtMagnifier) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -300,7 +271,6 @@ func (this *QwtMagnifier) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtMagnifier that was directly constructed.
 func (this *QwtMagnifier) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -315,8 +285,6 @@ func (this *QwtMagnifier) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtMagnifier) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtMagnifier_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -368,7 +336,6 @@ func miqt_exec_callback_QwtMagnifier_rescale(self *C.QwtMagnifier, cb C.intptr_t
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -396,7 +363,6 @@ func miqt_exec_callback_QwtMagnifier_widgetMousePressEvent(self *C.QwtMagnifier,
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -424,7 +390,6 @@ func miqt_exec_callback_QwtMagnifier_widgetMouseReleaseEvent(self *C.QwtMagnifie
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -452,7 +417,6 @@ func miqt_exec_callback_QwtMagnifier_widgetMouseMoveEvent(self *C.QwtMagnifier, 
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetWheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetWheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -480,7 +444,6 @@ func miqt_exec_callback_QwtMagnifier_widgetWheelEvent(self *C.QwtMagnifier, cb C
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -508,7 +471,6 @@ func miqt_exec_callback_QwtMagnifier_widgetKeyPressEvent(self *C.QwtMagnifier, c
 }
 
 func (this *QwtMagnifier) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtMagnifier_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -536,7 +498,6 @@ func miqt_exec_callback_QwtMagnifier_widgetKeyReleaseEvent(self *C.QwtMagnifier,
 }
 
 func (this *QwtMagnifier) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtMagnifier_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -566,7 +527,6 @@ func miqt_exec_callback_QwtMagnifier_event(self *C.QwtMagnifier, cb C.intptr_t, 
 }
 
 func (this *QwtMagnifier) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtMagnifier_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -594,7 +554,6 @@ func miqt_exec_callback_QwtMagnifier_timerEvent(self *C.QwtMagnifier, cb C.intpt
 }
 
 func (this *QwtMagnifier) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtMagnifier_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -622,7 +581,6 @@ func miqt_exec_callback_QwtMagnifier_childEvent(self *C.QwtMagnifier, cb C.intpt
 }
 
 func (this *QwtMagnifier) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtMagnifier_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -650,7 +608,6 @@ func miqt_exec_callback_QwtMagnifier_customEvent(self *C.QwtMagnifier, cb C.intp
 }
 
 func (this *QwtMagnifier) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtMagnifier_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -678,7 +635,6 @@ func miqt_exec_callback_QwtMagnifier_connectNotify(self *C.QwtMagnifier, cb C.in
 }
 
 func (this *QwtMagnifier) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtMagnifier_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -713,6 +669,8 @@ func (this *QwtMagnifier) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtMagnifier) GoGC() {
 	if this.gc != nil {
 		return

@@ -87,13 +87,11 @@ func (this *QDesignerContainerExtension) CanAddWidget() bool {
 
 func (this *QDesignerContainerExtension) AddWidget(widget *qt6.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QDesignerContainerExtension_addWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QDesignerContainerExtension) InsertWidget(index int, widget *qt6.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QDesignerContainerExtension_insertWidget(this.h, (C.int)(index), (*C.QWidget)(widget.UnsafePointer()))
 }
 
@@ -143,7 +141,6 @@ func miqt_exec_callback_QDesignerContainerExtension_widget(self *C.QDesignerCont
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 

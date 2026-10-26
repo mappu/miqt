@@ -80,25 +80,21 @@ func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type) *QSocketN
 
 // NewQSocketNotifier3 constructs a new QSocketNotifier object.
 func NewQSocketNotifier3(param1 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	defer runtime.KeepAlive(parent)
 
 	return newQSocketNotifier(C.QSocketNotifier_new3((C.int)(param1), parent.cPointer()))
 }
 
 // NewQSocketNotifier4 constructs a new QSocketNotifier object.
 func NewQSocketNotifier4(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	defer runtime.KeepAlive(parent)
 
 	return newQSocketNotifier(C.QSocketNotifier_new4((C.intptr_t)(socket), (C.int)(param2), parent.cPointer()))
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSocketNotifier_metaObject(this.h))
 }
 
 func (this *QSocketNotifier) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSocketNotifier_metacast(this.h, param1_Cstring))
@@ -114,32 +110,26 @@ func QSocketNotifier_Tr(s string) string {
 }
 
 func (this *QSocketNotifier) SetSocket(socket uintptr) {
-	defer runtime.KeepAlive(this)
 	C.QSocketNotifier_setSocket(this.h, (C.intptr_t)(socket))
 }
 
 func (this *QSocketNotifier) Socket() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QSocketNotifier_socket(this.h))
 }
 
 func (this *QSocketNotifier) Type() QSocketNotifier__Type {
-	defer runtime.KeepAlive(this)
 	return (QSocketNotifier__Type)(C.QSocketNotifier_type(this.h))
 }
 
 func (this *QSocketNotifier) IsValid() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSocketNotifier_isValid(this.h))
 }
 
 func (this *QSocketNotifier) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSocketNotifier_isEnabled(this.h))
 }
 
 func (this *QSocketNotifier) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QSocketNotifier_setEnabled(this.h, (C.bool)(enabled))
 }
 
@@ -167,7 +157,6 @@ func QSocketNotifier_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QSocketNotifier that was directly constructed.
 func (this *QSocketNotifier) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSocketNotifier_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -182,7 +171,6 @@ func (this *QSocketNotifier) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSocketNotifier that was directly constructed.
 func (this *QSocketNotifier) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSocketNotifier_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -197,7 +185,6 @@ func (this *QSocketNotifier) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSocketNotifier that was directly constructed.
 func (this *QSocketNotifier) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -214,7 +201,6 @@ func (this *QSocketNotifier) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSocketNotifier that was directly constructed.
 func (this *QSocketNotifier) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -229,7 +215,6 @@ func (this *QSocketNotifier) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSocketNotifier) callVirtualBase_Event(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QSocketNotifier_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
@@ -259,8 +244,6 @@ func miqt_exec_callback_QSocketNotifier_event(self *C.QSocketNotifier, cb C.intp
 }
 
 func (this *QSocketNotifier) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSocketNotifier_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -292,7 +275,6 @@ func miqt_exec_callback_QSocketNotifier_eventFilter(self *C.QSocketNotifier, cb 
 }
 
 func (this *QSocketNotifier) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSocketNotifier_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -320,7 +302,6 @@ func miqt_exec_callback_QSocketNotifier_timerEvent(self *C.QSocketNotifier, cb C
 }
 
 func (this *QSocketNotifier) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSocketNotifier_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -348,7 +329,6 @@ func miqt_exec_callback_QSocketNotifier_childEvent(self *C.QSocketNotifier, cb C
 }
 
 func (this *QSocketNotifier) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSocketNotifier_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -376,7 +356,6 @@ func miqt_exec_callback_QSocketNotifier_customEvent(self *C.QSocketNotifier, cb 
 }
 
 func (this *QSocketNotifier) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSocketNotifier_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -404,7 +383,6 @@ func miqt_exec_callback_QSocketNotifier_connectNotify(self *C.QSocketNotifier, c
 }
 
 func (this *QSocketNotifier) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSocketNotifier_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -459,6 +437,8 @@ func (this *QSocketNotifier) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSocketNotifier) GoGC() {
 	if this.gc != nil {
 		return

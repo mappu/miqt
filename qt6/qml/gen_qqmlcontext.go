@@ -60,41 +60,33 @@ func UnsafeNewQQmlContext(h unsafe.Pointer) *QQmlContext {
 
 // NewQQmlContext constructs a new QQmlContext object.
 func NewQQmlContext(parent *QQmlEngine) *QQmlContext {
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlContext(C.QQmlContext_new(parent.cPointer()))
 }
 
 // NewQQmlContext2 constructs a new QQmlContext object.
 func NewQQmlContext2(parent *QQmlContext) *QQmlContext {
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlContext(C.QQmlContext_new2(parent.cPointer()))
 }
 
 // NewQQmlContext3 constructs a new QQmlContext object.
 func NewQQmlContext3(parent *QQmlEngine, objParent *qt6.QObject) *QQmlContext {
-	defer runtime.KeepAlive(parent)
-	defer runtime.KeepAlive(objParent)
 
 	return newQQmlContext(C.QQmlContext_new3(parent.cPointer(), (*C.QObject)(objParent.UnsafePointer())))
 }
 
 // NewQQmlContext4 constructs a new QQmlContext object.
 func NewQQmlContext4(parent *QQmlContext, objParent *qt6.QObject) *QQmlContext {
-	defer runtime.KeepAlive(parent)
-	defer runtime.KeepAlive(objParent)
 
 	return newQQmlContext(C.QQmlContext_new4(parent.cPointer(), (*C.QObject)(objParent.UnsafePointer())))
 }
 
 func (this *QQmlContext) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlContext_metaObject(this.h)))
 }
 
 func (this *QQmlContext) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlContext_metacast(this.h, param1_Cstring))
@@ -110,33 +102,26 @@ func QQmlContext_Tr(s string) string {
 }
 
 func (this *QQmlContext) IsValid() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QQmlContext_isValid(this.h))
 }
 
 func (this *QQmlContext) Engine() *QQmlEngine {
-	defer runtime.KeepAlive(this)
 	return newQQmlEngine(C.QQmlContext_engine(this.h))
 }
 
 func (this *QQmlContext) ParentContext() *QQmlContext {
-	defer runtime.KeepAlive(this)
 	return newQQmlContext(C.QQmlContext_parentContext(this.h))
 }
 
 func (this *QQmlContext) ContextObject() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlContext_contextObject(this.h)))
 }
 
 func (this *QQmlContext) SetContextObject(contextObject *qt6.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(contextObject)
 	C.QQmlContext_setContextObject(this.h, (*C.QObject)(contextObject.UnsafePointer()))
 }
 
 func (this *QQmlContext) ContextProperty(param1 string) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -147,8 +132,6 @@ func (this *QQmlContext) ContextProperty(param1 string) *qt6.QVariant {
 }
 
 func (this *QQmlContext) SetContextProperty(param1 string, param2 *qt6.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -157,7 +140,6 @@ func (this *QQmlContext) SetContextProperty(param1 string, param2 *qt6.QObject) 
 }
 
 func (this *QQmlContext) SetContextProperty2(param1 string, param2 *qt6.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param2)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
@@ -167,7 +149,6 @@ func (this *QQmlContext) SetContextProperty2(param1 string, param2 *qt6.QVariant
 }
 
 func (this *QQmlContext) SetContextProperties(properties []QQmlContext__PropertyPair) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(properties)
 	properties_CArray_ptr := (**C.QQmlContext__PropertyPair)(C.malloc(C.size_t(8 * len(properties))))
 	defer C.free(unsafe.Pointer(properties_CArray_ptr))
@@ -180,8 +161,6 @@ func (this *QQmlContext) SetContextProperties(properties []QQmlContext__Property
 }
 
 func (this *QQmlContext) NameForObject(param1 *qt6.QObject) string {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	var _ms C.struct_miqt_string = C.QQmlContext_nameForObject(this.h, (*C.QObject)(param1.UnsafePointer()))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -189,7 +168,6 @@ func (this *QQmlContext) NameForObject(param1 *qt6.QObject) string {
 }
 
 func (this *QQmlContext) ObjectForName(param1 string) *qt6.QObject {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -198,7 +176,6 @@ func (this *QQmlContext) ObjectForName(param1 string) *qt6.QObject {
 }
 
 func (this *QQmlContext) ResolvedUrl(param1 *qt6.QUrl) *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlContext_resolvedUrl(this.h, (*C.QUrl)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -206,20 +183,17 @@ func (this *QQmlContext) ResolvedUrl(param1 *qt6.QUrl) *qt6.QUrl {
 }
 
 func (this *QQmlContext) SetBaseUrl(baseUrl *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(baseUrl)
 	C.QQmlContext_setBaseUrl(this.h, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QQmlContext) BaseUrl() *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QQmlContext_baseUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QQmlContext) ImportedScript(name string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -253,7 +227,6 @@ func QQmlContext_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlContext that was directly constructed.
 func (this *QQmlContext) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlContext_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -268,7 +241,6 @@ func (this *QQmlContext) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlContext that was directly constructed.
 func (this *QQmlContext) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlContext_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -283,7 +255,6 @@ func (this *QQmlContext) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlContext that was directly constructed.
 func (this *QQmlContext) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -300,7 +271,6 @@ func (this *QQmlContext) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlContext that was directly constructed.
 func (this *QQmlContext) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -315,7 +285,6 @@ func (this *QQmlContext) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QQmlContext) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlContext_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -345,8 +314,6 @@ func miqt_exec_callback_QQmlContext_event(self *C.QQmlContext, cb C.intptr_t, ev
 }
 
 func (this *QQmlContext) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlContext_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -378,7 +345,6 @@ func miqt_exec_callback_QQmlContext_eventFilter(self *C.QQmlContext, cb C.intptr
 }
 
 func (this *QQmlContext) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlContext_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -406,7 +372,6 @@ func miqt_exec_callback_QQmlContext_timerEvent(self *C.QQmlContext, cb C.intptr_
 }
 
 func (this *QQmlContext) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlContext_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -434,7 +399,6 @@ func miqt_exec_callback_QQmlContext_childEvent(self *C.QQmlContext, cb C.intptr_
 }
 
 func (this *QQmlContext) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlContext_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -462,7 +426,6 @@ func miqt_exec_callback_QQmlContext_customEvent(self *C.QQmlContext, cb C.intptr
 }
 
 func (this *QQmlContext) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlContext_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -490,7 +453,6 @@ func miqt_exec_callback_QQmlContext_connectNotify(self *C.QQmlContext, cb C.intp
 }
 
 func (this *QQmlContext) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlContext_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -525,6 +487,8 @@ func (this *QQmlContext) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QQmlContext) GoGC() {
 	if this.gc != nil {
 		return

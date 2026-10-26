@@ -659,14 +659,12 @@ func NewQDnsLookup3(typeVal QDnsLookup__Type, name string, nameserver *QHostAddr
 
 // NewQDnsLookup4 constructs a new QDnsLookup object.
 func NewQDnsLookup4(parent *qt.QObject) *QDnsLookup {
-	defer runtime.KeepAlive(parent)
 
 	return newQDnsLookup(C.QDnsLookup_new4((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQDnsLookup5 constructs a new QDnsLookup object.
 func NewQDnsLookup5(typeVal QDnsLookup__Type, name string, parent *qt.QObject) *QDnsLookup {
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -678,7 +676,6 @@ func NewQDnsLookup5(typeVal QDnsLookup__Type, name string, parent *qt.QObject) *
 // NewQDnsLookup6 constructs a new QDnsLookup object.
 func NewQDnsLookup6(typeVal QDnsLookup__Type, name string, nameserver *QHostAddress, parent *qt.QObject) *QDnsLookup {
 	defer runtime.KeepAlive(nameserver)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -688,12 +685,10 @@ func NewQDnsLookup6(typeVal QDnsLookup__Type, name string, nameserver *QHostAddr
 }
 
 func (this *QDnsLookup) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDnsLookup_metaObject(this.h)))
 }
 
 func (this *QDnsLookup) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDnsLookup_metacast(this.h, param1_Cstring))
@@ -718,12 +713,10 @@ func QDnsLookup_TrUtf8(s string) string {
 }
 
 func (this *QDnsLookup) Error() QDnsLookup__Error {
-	defer runtime.KeepAlive(this)
 	return (QDnsLookup__Error)(C.QDnsLookup_error(this.h))
 }
 
 func (this *QDnsLookup) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDnsLookup_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -731,12 +724,10 @@ func (this *QDnsLookup) ErrorString() string {
 }
 
 func (this *QDnsLookup) IsFinished() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDnsLookup_isFinished(this.h))
 }
 
 func (this *QDnsLookup) Name() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDnsLookup_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -744,7 +735,6 @@ func (this *QDnsLookup) Name() string {
 }
 
 func (this *QDnsLookup) SetName(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -753,30 +743,25 @@ func (this *QDnsLookup) SetName(name string) {
 }
 
 func (this *QDnsLookup) Type() QDnsLookup__Type {
-	defer runtime.KeepAlive(this)
 	return (QDnsLookup__Type)(C.QDnsLookup_type(this.h))
 }
 
 func (this *QDnsLookup) SetType(typeVal QDnsLookup__Type) {
-	defer runtime.KeepAlive(this)
 	C.QDnsLookup_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QDnsLookup) Nameserver() *QHostAddress {
-	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QDnsLookup_nameserver(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDnsLookup) SetNameserver(nameserver *QHostAddress) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(nameserver)
 	C.QDnsLookup_setNameserver(this.h, nameserver.cPointer())
 }
 
 func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_canonicalNameRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -789,7 +774,6 @@ func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_hostAddressRecords(this.h)
 	_ret := make([]QDnsHostAddressRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -802,7 +786,6 @@ func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 }
 
 func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_mailExchangeRecords(this.h)
 	_ret := make([]QDnsMailExchangeRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -815,7 +798,6 @@ func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 }
 
 func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_nameServerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -828,7 +810,6 @@ func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_pointerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -841,7 +822,6 @@ func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_serviceRecords(this.h)
 	_ret := make([]QDnsServiceRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -854,7 +834,6 @@ func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 }
 
 func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QDnsLookup_textRecords(this.h)
 	_ret := make([]QDnsTextRecord, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QDnsTextRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -867,17 +846,14 @@ func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
 }
 
 func (this *QDnsLookup) Abort() {
-	defer runtime.KeepAlive(this)
 	C.QDnsLookup_abort(this.h)
 }
 
 func (this *QDnsLookup) Lookup() {
-	defer runtime.KeepAlive(this)
 	C.QDnsLookup_lookup(this.h)
 }
 
 func (this *QDnsLookup) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QDnsLookup_finished(this.h)
 }
 func (this *QDnsLookup) OnFinished(slot func()) {
@@ -895,7 +871,6 @@ func miqt_exec_callback_QDnsLookup_finished(cb C.intptr_t) {
 }
 
 func (this *QDnsLookup) NameChanged(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -923,7 +898,6 @@ func miqt_exec_callback_QDnsLookup_nameChanged(cb C.intptr_t, name C.struct_miqt
 }
 
 func (this *QDnsLookup) TypeChanged(typeVal QDnsLookup__Type) {
-	defer runtime.KeepAlive(this)
 	C.QDnsLookup_typeChanged(this.h, (C.int)(typeVal))
 }
 func (this *QDnsLookup) OnTypeChanged(slot func(typeVal QDnsLookup__Type)) {
@@ -944,7 +918,6 @@ func miqt_exec_callback_QDnsLookup_typeChanged(cb C.intptr_t, typeVal C.int) {
 }
 
 func (this *QDnsLookup) NameserverChanged(nameserver *QHostAddress) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(nameserver)
 	C.QDnsLookup_nameserverChanged(this.h, nameserver.cPointer())
 }
@@ -1011,7 +984,6 @@ func QDnsLookup_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QDnsLookup that was directly constructed.
 func (this *QDnsLookup) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDnsLookup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1026,7 +998,6 @@ func (this *QDnsLookup) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDnsLookup that was directly constructed.
 func (this *QDnsLookup) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDnsLookup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1041,7 +1012,6 @@ func (this *QDnsLookup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDnsLookup that was directly constructed.
 func (this *QDnsLookup) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1058,7 +1028,6 @@ func (this *QDnsLookup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDnsLookup that was directly constructed.
 func (this *QDnsLookup) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1073,7 +1042,6 @@ func (this *QDnsLookup) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QDnsLookup) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDnsLookup_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1103,8 +1071,6 @@ func miqt_exec_callback_QDnsLookup_event(self *C.QDnsLookup, cb C.intptr_t, even
 }
 
 func (this *QDnsLookup) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDnsLookup_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1136,7 +1102,6 @@ func miqt_exec_callback_QDnsLookup_eventFilter(self *C.QDnsLookup, cb C.intptr_t
 }
 
 func (this *QDnsLookup) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDnsLookup_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1164,7 +1129,6 @@ func miqt_exec_callback_QDnsLookup_timerEvent(self *C.QDnsLookup, cb C.intptr_t,
 }
 
 func (this *QDnsLookup) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDnsLookup_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1192,7 +1156,6 @@ func miqt_exec_callback_QDnsLookup_childEvent(self *C.QDnsLookup, cb C.intptr_t,
 }
 
 func (this *QDnsLookup) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDnsLookup_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1220,7 +1183,6 @@ func miqt_exec_callback_QDnsLookup_customEvent(self *C.QDnsLookup, cb C.intptr_t
 }
 
 func (this *QDnsLookup) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDnsLookup_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1248,7 +1210,6 @@ func miqt_exec_callback_QDnsLookup_connectNotify(self *C.QDnsLookup, cb C.intptr
 }
 
 func (this *QDnsLookup) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDnsLookup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1283,6 +1244,8 @@ func (this *QDnsLookup) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDnsLookup) GoGC() {
 	if this.gc != nil {
 		return

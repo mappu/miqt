@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"runtime"
 	"unsafe"
 )
 
@@ -67,12 +66,10 @@ func UnsafeNewQSessionManager(h unsafe.Pointer) *QSessionManager {
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSessionManager_metaObject(this.h))
 }
 
 func (this *QSessionManager) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSessionManager_metacast(this.h, param1_Cstring))
@@ -97,7 +94,6 @@ func QSessionManager_TrUtf8(s string) string {
 }
 
 func (this *QSessionManager) SessionId() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSessionManager_sessionId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -105,7 +101,6 @@ func (this *QSessionManager) SessionId() string {
 }
 
 func (this *QSessionManager) SessionKey() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSessionManager_sessionKey(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -113,37 +108,30 @@ func (this *QSessionManager) SessionKey() string {
 }
 
 func (this *QSessionManager) AllowsInteraction() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSessionManager_allowsInteraction(this.h))
 }
 
 func (this *QSessionManager) AllowsErrorInteraction() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSessionManager_allowsErrorInteraction(this.h))
 }
 
 func (this *QSessionManager) Release() {
-	defer runtime.KeepAlive(this)
 	C.QSessionManager_release(this.h)
 }
 
 func (this *QSessionManager) Cancel() {
-	defer runtime.KeepAlive(this)
 	C.QSessionManager_cancel(this.h)
 }
 
 func (this *QSessionManager) SetRestartHint(restartHint QSessionManager__RestartHint) {
-	defer runtime.KeepAlive(this)
 	C.QSessionManager_setRestartHint(this.h, (C.int)(restartHint))
 }
 
 func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
-	defer runtime.KeepAlive(this)
 	return (QSessionManager__RestartHint)(C.QSessionManager_restartHint(this.h))
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
-	defer runtime.KeepAlive(this)
 	restartCommand_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray_ptr))
 	restartCommand_CArray := unsafe.Slice(restartCommand_CArray_ptr, len(restartCommand))
@@ -159,7 +147,6 @@ func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 }
 
 func (this *QSessionManager) RestartCommand() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSessionManager_restartCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -173,7 +160,6 @@ func (this *QSessionManager) RestartCommand() []string {
 }
 
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
-	defer runtime.KeepAlive(this)
 	discardCommand_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray_ptr))
 	discardCommand_CArray := unsafe.Slice(discardCommand_CArray_ptr, len(discardCommand))
@@ -189,7 +175,6 @@ func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 }
 
 func (this *QSessionManager) DiscardCommand() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSessionManager_discardCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -203,7 +188,6 @@ func (this *QSessionManager) DiscardCommand() []string {
 }
 
 func (this *QSessionManager) SetManagerProperty(name string, value string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -216,7 +200,6 @@ func (this *QSessionManager) SetManagerProperty(name string, value string) {
 }
 
 func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -236,12 +219,10 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 }
 
 func (this *QSessionManager) IsPhase2() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSessionManager_isPhase2(this.h))
 }
 
 func (this *QSessionManager) RequestPhase2() {
-	defer runtime.KeepAlive(this)
 	C.QSessionManager_requestPhase2(this.h)
 }
 

@@ -60,12 +60,10 @@ func UnsafeNewQMediaGaplessPlaybackControl(h unsafe.Pointer) *QMediaGaplessPlayb
 }
 
 func (this *QMediaGaplessPlaybackControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaGaplessPlaybackControl_metaObject(this.h)))
 }
 
 func (this *QMediaGaplessPlaybackControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaGaplessPlaybackControl_metacast(this.h, param1_Cstring))
@@ -90,35 +88,29 @@ func QMediaGaplessPlaybackControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaGaplessPlaybackControl) NextMedia() *QMediaContent {
-	defer runtime.KeepAlive(this)
 	_goptr := newQMediaContent(C.QMediaGaplessPlaybackControl_nextMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaGaplessPlaybackControl) SetNextMedia(media *QMediaContent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(media)
 	C.QMediaGaplessPlaybackControl_setNextMedia(this.h, media.cPointer())
 }
 
 func (this *QMediaGaplessPlaybackControl) IsCrossfadeSupported() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaGaplessPlaybackControl_isCrossfadeSupported(this.h))
 }
 
 func (this *QMediaGaplessPlaybackControl) CrossfadeTime() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QMediaGaplessPlaybackControl_crossfadeTime(this.h))
 }
 
 func (this *QMediaGaplessPlaybackControl) SetCrossfadeTime(crossfadeTime float64) {
-	defer runtime.KeepAlive(this)
 	C.QMediaGaplessPlaybackControl_setCrossfadeTime(this.h, (C.double)(crossfadeTime))
 }
 
 func (this *QMediaGaplessPlaybackControl) CrossfadeTimeChanged(crossfadeTime float64) {
-	defer runtime.KeepAlive(this)
 	C.QMediaGaplessPlaybackControl_crossfadeTimeChanged(this.h, (C.double)(crossfadeTime))
 }
 func (this *QMediaGaplessPlaybackControl) OnCrossfadeTimeChanged(slot func(crossfadeTime float64)) {
@@ -139,7 +131,6 @@ func miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged(cb C.i
 }
 
 func (this *QMediaGaplessPlaybackControl) NextMediaChanged(media *QMediaContent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(media)
 	C.QMediaGaplessPlaybackControl_nextMediaChanged(this.h, media.cPointer())
 }
@@ -161,7 +152,6 @@ func miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged(cb C.intpt
 }
 
 func (this *QMediaGaplessPlaybackControl) AdvancedToNextMedia() {
-	defer runtime.KeepAlive(this)
 	C.QMediaGaplessPlaybackControl_advancedToNextMedia(this.h)
 }
 func (this *QMediaGaplessPlaybackControl) OnAdvancedToNextMedia(slot func()) {
@@ -230,6 +220,8 @@ func (this *QMediaGaplessPlaybackControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaGaplessPlaybackControl) GoGC() {
 	if this.gc != nil {
 		return

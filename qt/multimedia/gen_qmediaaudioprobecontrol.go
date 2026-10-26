@@ -60,12 +60,10 @@ func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer) *QMediaAudioProbeControl
 }
 
 func (this *QMediaAudioProbeControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAudioProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaAudioProbeControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaAudioProbeControl_metacast(this.h, param1_Cstring))
@@ -90,7 +88,6 @@ func QMediaAudioProbeControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaAudioProbeControl) AudioBufferProbed(buffer *QAudioBuffer) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(buffer)
 	C.QMediaAudioProbeControl_audioBufferProbed(this.h, buffer.cPointer())
 }
@@ -112,7 +109,6 @@ func miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(cb C.intptr_t,
 }
 
 func (this *QMediaAudioProbeControl) Flush() {
-	defer runtime.KeepAlive(this)
 	C.QMediaAudioProbeControl_flush(this.h)
 }
 func (this *QMediaAudioProbeControl) OnFlush(slot func()) {
@@ -181,6 +177,8 @@ func (this *QMediaAudioProbeControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaAudioProbeControl) GoGC() {
 	if this.gc != nil {
 		return

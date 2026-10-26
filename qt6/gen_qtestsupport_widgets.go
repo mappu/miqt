@@ -110,7 +110,6 @@ func (this *QTest__QTouchEventWidgetSequence) OperatorAssign(param1 *QTest__QTou
 func (this *QTest__QTouchEventWidgetSequence) Press2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pt)
-	defer runtime.KeepAlive(widget)
 	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret
@@ -119,7 +118,6 @@ func (this *QTest__QTouchEventWidgetSequence) Press2(touchId int, pt *QPoint, wi
 func (this *QTest__QTouchEventWidgetSequence) Move2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pt)
-	defer runtime.KeepAlive(widget)
 	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret
@@ -128,7 +126,6 @@ func (this *QTest__QTouchEventWidgetSequence) Move2(touchId int, pt *QPoint, wid
 func (this *QTest__QTouchEventWidgetSequence) Release2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pt)
-	defer runtime.KeepAlive(widget)
 	_ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret

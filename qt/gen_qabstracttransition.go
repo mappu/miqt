@@ -73,18 +73,15 @@ func NewQAbstractTransition() *QAbstractTransition {
 
 // NewQAbstractTransition2 constructs a new QAbstractTransition object.
 func NewQAbstractTransition2(sourceState *QState) *QAbstractTransition {
-	defer runtime.KeepAlive(sourceState)
 
 	return newQAbstractTransition(C.QAbstractTransition_new2(sourceState.cPointer()))
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractTransition_metaObject(this.h))
 }
 
 func (this *QAbstractTransition) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractTransition_metacast(this.h, param1_Cstring))
@@ -109,23 +106,18 @@ func QAbstractTransition_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	defer runtime.KeepAlive(this)
 	return newQState(C.QAbstractTransition_sourceState(this.h))
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	defer runtime.KeepAlive(this)
 	return newQAbstractState(C.QAbstractTransition_targetState(this.h))
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(target)
 	C.QAbstractTransition_setTargetState(this.h, target.cPointer())
 }
 
 func (this *QAbstractTransition) TargetStates() []*QAbstractState {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractTransition_targetStates(this.h)
 	_ret := make([]*QAbstractState, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractState)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -136,8 +128,6 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 }
 
 func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(targets)
 	targets_CArray_ptr := (**C.QAbstractState)(C.malloc(C.size_t(8 * len(targets))))
 	defer C.free(unsafe.Pointer(targets_CArray_ptr))
 	targets_CArray := unsafe.Slice(targets_CArray_ptr, len(targets))
@@ -149,34 +139,26 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 }
 
 func (this *QAbstractTransition) TransitionType() QAbstractTransition__TransitionType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractTransition__TransitionType)(C.QAbstractTransition_transitionType(this.h))
 }
 
 func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__TransitionType) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractTransition_setTransitionType(this.h, (C.int)(typeVal))
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	defer runtime.KeepAlive(this)
 	return newQStateMachine(C.QAbstractTransition_machine(this.h))
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(animation)
 	C.QAbstractTransition_addAnimation(this.h, animation.cPointer())
 }
 
 func (this *QAbstractTransition) RemoveAnimation(animation *QAbstractAnimation) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(animation)
 	C.QAbstractTransition_removeAnimation(this.h, animation.cPointer())
 }
 
 func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractTransition_animations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractAnimation)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -232,7 +214,6 @@ func QAbstractTransition_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QAbstractTransition that was directly constructed.
 func (this *QAbstractTransition) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractTransition_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -247,7 +228,6 @@ func (this *QAbstractTransition) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractTransition that was directly constructed.
 func (this *QAbstractTransition) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractTransition_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -262,7 +242,6 @@ func (this *QAbstractTransition) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractTransition that was directly constructed.
 func (this *QAbstractTransition) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -279,7 +258,6 @@ func (this *QAbstractTransition) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractTransition that was directly constructed.
 func (this *QAbstractTransition) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -336,7 +314,6 @@ func miqt_exec_callback_QAbstractTransition_onTransition(self *C.QAbstractTransi
 }
 
 func (this *QAbstractTransition) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QAbstractTransition_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -366,8 +343,6 @@ func miqt_exec_callback_QAbstractTransition_event(self *C.QAbstractTransition, c
 }
 
 func (this *QAbstractTransition) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -399,7 +374,6 @@ func miqt_exec_callback_QAbstractTransition_eventFilter(self *C.QAbstractTransit
 }
 
 func (this *QAbstractTransition) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -427,7 +401,6 @@ func miqt_exec_callback_QAbstractTransition_timerEvent(self *C.QAbstractTransiti
 }
 
 func (this *QAbstractTransition) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTransition_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -455,7 +428,6 @@ func miqt_exec_callback_QAbstractTransition_childEvent(self *C.QAbstractTransiti
 }
 
 func (this *QAbstractTransition) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTransition_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -483,7 +455,6 @@ func miqt_exec_callback_QAbstractTransition_customEvent(self *C.QAbstractTransit
 }
 
 func (this *QAbstractTransition) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -511,7 +482,6 @@ func miqt_exec_callback_QAbstractTransition_connectNotify(self *C.QAbstractTrans
 }
 
 func (this *QAbstractTransition) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -587,6 +557,8 @@ func (this *QAbstractTransition) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractTransition) GoGC() {
 	if this.gc != nil {
 		return

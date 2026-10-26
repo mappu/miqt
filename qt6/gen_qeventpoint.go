@@ -91,7 +91,6 @@ func NewQEventPoint4(id int) *QEventPoint {
 
 // NewQEventPoint5 constructs a new QEventPoint object.
 func NewQEventPoint5(id int, device *QPointingDevice) *QEventPoint {
-	defer runtime.KeepAlive(device)
 
 	return newQEventPoint(C.QEventPoint_new5((C.int)(id), device.cPointer()))
 }

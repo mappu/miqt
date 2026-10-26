@@ -63,19 +63,16 @@ func NewQGeoPositionInfoSourceFactory(param1 *QGeoPositionInfoSourceFactory) *QG
 
 func (this *QGeoPositionInfoSourceFactory) PositionInfoSource(parent *qt.QObject) *QGeoPositionInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQGeoPositionInfoSource(C.QGeoPositionInfoSourceFactory_positionInfoSource(this.h, (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QGeoPositionInfoSourceFactory) SatelliteInfoSource(parent *qt.QObject) *QGeoSatelliteInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQGeoSatelliteInfoSource(C.QGeoPositionInfoSourceFactory_satelliteInfoSource(this.h, (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QGeoPositionInfoSourceFactory) AreaMonitor(parent *qt.QObject) *QGeoAreaMonitorSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQGeoAreaMonitorSource(C.QGeoPositionInfoSourceFactory_areaMonitor(this.h, (*C.QObject)(parent.UnsafePointer())))
 }
 
@@ -102,7 +99,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactory_positionInfoSource(self *C
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -125,7 +121,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactory_satelliteInfoSource(self *
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -148,7 +143,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactory_areaMonitor(self *C.QGeoPo
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -226,7 +220,6 @@ func NewQGeoPositionInfoSourceFactoryV2(param1 *QGeoPositionInfoSourceFactoryV2)
 
 func (this *QGeoPositionInfoSourceFactoryV2) PositionInfoSourceWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoPositionInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
@@ -254,7 +247,6 @@ func (this *QGeoPositionInfoSourceFactoryV2) PositionInfoSourceWithParameters(pa
 
 func (this *QGeoPositionInfoSourceFactoryV2) SatelliteInfoSourceWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoSatelliteInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
@@ -282,7 +274,6 @@ func (this *QGeoPositionInfoSourceFactoryV2) SatelliteInfoSourceWithParameters(p
 
 func (this *QGeoPositionInfoSourceFactoryV2) AreaMonitorWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoAreaMonitorSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
@@ -348,7 +339,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSourceWithPa
 	slotval2 := parameters_ret
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -388,7 +378,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSourceWithP
 	slotval2 := parameters_ret
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -428,7 +417,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitorWithParameter
 	slotval2 := parameters_ret
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -451,7 +439,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSource(self 
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -474,7 +461,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSource(self
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -497,7 +483,6 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitor(self *C.QGeo
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 

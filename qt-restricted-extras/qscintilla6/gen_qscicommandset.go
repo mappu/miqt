@@ -55,13 +55,11 @@ func UnsafeNewQsciCommandSet(h unsafe.Pointer) *QsciCommandSet {
 
 func (this *QsciCommandSet) ReadSettings(qs *qt6.QSettings) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	return (bool)(C.QsciCommandSet_readSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
 }
 
 func (this *QsciCommandSet) WriteSettings(qs *qt6.QSettings) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	return (bool)(C.QsciCommandSet_writeSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
 }
 
@@ -98,7 +96,6 @@ func (this *QsciCommandSet) Find(command QsciCommand__Command) *QsciCommand {
 
 func (this *QsciCommandSet) ReadSettings2(qs *qt6.QSettings, prefix string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
 	return (bool)(C.QsciCommandSet_readSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
@@ -106,7 +103,6 @@ func (this *QsciCommandSet) ReadSettings2(qs *qt6.QSettings, prefix string) bool
 
 func (this *QsciCommandSet) WriteSettings2(qs *qt6.QSettings, prefix string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
 	return (bool)(C.QsciCommandSet_writeSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))

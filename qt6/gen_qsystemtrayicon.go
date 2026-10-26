@@ -92,7 +92,6 @@ func NewQSystemTrayIcon2(icon *QIcon) *QSystemTrayIcon {
 
 // NewQSystemTrayIcon3 constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon3(parent *QObject) *QSystemTrayIcon {
-	defer runtime.KeepAlive(parent)
 
 	return newQSystemTrayIcon(C.QSystemTrayIcon_new3(parent.cPointer()))
 }
@@ -100,18 +99,15 @@ func NewQSystemTrayIcon3(parent *QObject) *QSystemTrayIcon {
 // NewQSystemTrayIcon4 constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 	defer runtime.KeepAlive(icon)
-	defer runtime.KeepAlive(parent)
 
 	return newQSystemTrayIcon(C.QSystemTrayIcon_new4(icon.cPointer(), parent.cPointer()))
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSystemTrayIcon_metaObject(this.h))
 }
 
 func (this *QSystemTrayIcon) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSystemTrayIcon_metacast(this.h, param1_Cstring))
@@ -127,31 +123,25 @@ func QSystemTrayIcon_Tr(s string) string {
 }
 
 func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(menu)
 	C.QSystemTrayIcon_setContextMenu(this.h, menu.cPointer())
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	defer runtime.KeepAlive(this)
 	return newQMenu(C.QSystemTrayIcon_contextMenu(this.h))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
-	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QSystemTrayIcon_icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSystemTrayIcon) SetIcon(icon *QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	C.QSystemTrayIcon_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ToolTip() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSystemTrayIcon_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -159,7 +149,6 @@ func (this *QSystemTrayIcon) ToolTip() string {
 }
 
 func (this *QSystemTrayIcon) SetToolTip(tip string) {
-	defer runtime.KeepAlive(this)
 	tip_ms := C.struct_miqt_string{}
 	tip_ms.data = C.CString(tip)
 	tip_ms.len = C.size_t(len(tip))
@@ -176,34 +165,28 @@ func QSystemTrayIcon_SupportsMessages() bool {
 }
 
 func (this *QSystemTrayIcon) Geometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QSystemTrayIcon_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSystemTrayIcon) IsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSystemTrayIcon_isVisible(this.h))
 }
 
 func (this *QSystemTrayIcon) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QSystemTrayIcon_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QSystemTrayIcon) Show() {
-	defer runtime.KeepAlive(this)
 	C.QSystemTrayIcon_show(this.h)
 }
 
 func (this *QSystemTrayIcon) Hide() {
-	defer runtime.KeepAlive(this)
 	C.QSystemTrayIcon_hide(this.h)
 }
 
 func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
@@ -217,7 +200,6 @@ func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) 
 }
 
 func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -230,7 +212,6 @@ func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
 }
 
 func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason) {
-	defer runtime.KeepAlive(this)
 	C.QSystemTrayIcon_activated(this.h, (C.int)(reason))
 }
 func (this *QSystemTrayIcon) OnActivated(slot func(reason QSystemTrayIcon__ActivationReason)) {
@@ -251,7 +232,6 @@ func miqt_exec_callback_QSystemTrayIcon_activated(cb C.intptr_t, reason C.int) {
 }
 
 func (this *QSystemTrayIcon) MessageClicked() {
-	defer runtime.KeepAlive(this)
 	C.QSystemTrayIcon_messageClicked(this.h)
 }
 func (this *QSystemTrayIcon) OnMessageClicked(slot func()) {
@@ -291,7 +271,6 @@ func QSystemTrayIcon_Tr3(s string, c string, n int) string {
 }
 
 func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon *QIcon, msecs int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
@@ -305,7 +284,6 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon *QIcon,
 }
 
 func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -318,7 +296,6 @@ func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon QSystem
 }
 
 func (this *QSystemTrayIcon) ShowMessage5(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -332,7 +309,6 @@ func (this *QSystemTrayIcon) ShowMessage5(title string, msg string, icon QSystem
 
 // Sender can only be called from a QSystemTrayIcon that was directly constructed.
 func (this *QSystemTrayIcon) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSystemTrayIcon_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -347,7 +323,6 @@ func (this *QSystemTrayIcon) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSystemTrayIcon that was directly constructed.
 func (this *QSystemTrayIcon) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSystemTrayIcon_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -362,7 +337,6 @@ func (this *QSystemTrayIcon) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSystemTrayIcon that was directly constructed.
 func (this *QSystemTrayIcon) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -379,7 +353,6 @@ func (this *QSystemTrayIcon) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSystemTrayIcon that was directly constructed.
 func (this *QSystemTrayIcon) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -394,7 +367,6 @@ func (this *QSystemTrayIcon) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSystemTrayIcon_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -424,8 +396,6 @@ func miqt_exec_callback_QSystemTrayIcon_event(self *C.QSystemTrayIcon, cb C.intp
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSystemTrayIcon_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -457,7 +427,6 @@ func miqt_exec_callback_QSystemTrayIcon_eventFilter(self *C.QSystemTrayIcon, cb 
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSystemTrayIcon_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -485,7 +454,6 @@ func miqt_exec_callback_QSystemTrayIcon_timerEvent(self *C.QSystemTrayIcon, cb C
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSystemTrayIcon_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -513,7 +481,6 @@ func miqt_exec_callback_QSystemTrayIcon_childEvent(self *C.QSystemTrayIcon, cb C
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSystemTrayIcon_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -541,7 +508,6 @@ func miqt_exec_callback_QSystemTrayIcon_customEvent(self *C.QSystemTrayIcon, cb 
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSystemTrayIcon_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -569,7 +535,6 @@ func miqt_exec_callback_QSystemTrayIcon_connectNotify(self *C.QSystemTrayIcon, c
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSystemTrayIcon_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -604,6 +569,8 @@ func (this *QSystemTrayIcon) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSystemTrayIcon) GoGC() {
 	if this.gc != nil {
 		return

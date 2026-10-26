@@ -185,12 +185,10 @@ func UnsafeNewQWebEngineHistoryModel(h unsafe.Pointer) *QWebEngineHistoryModel {
 }
 
 func (this *QWebEngineHistoryModel) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineHistoryModel_metaObject(this.h)))
 }
 
 func (this *QWebEngineHistoryModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineHistoryModel_metacast(this.h, param1_Cstring))
@@ -206,13 +204,11 @@ func QWebEngineHistoryModel_Tr(s string) string {
 }
 
 func (this *QWebEngineHistoryModel) RowCount(parent *qt6.QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QWebEngineHistoryModel_rowCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
 }
 
 func (this *QWebEngineHistoryModel) Data(index *qt6.QModelIndex, role int) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineHistoryModel_data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -220,7 +216,6 @@ func (this *QWebEngineHistoryModel) Data(index *qt6.QModelIndex, role int) *qt6.
 }
 
 func (this *QWebEngineHistoryModel) RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QWebEngineHistoryModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -238,7 +233,6 @@ func (this *QWebEngineHistoryModel) RoleNames() map[int][]byte {
 }
 
 func (this *QWebEngineHistoryModel) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineHistoryModel_reset(this.h)
 }
 
@@ -308,12 +302,10 @@ func UnsafeNewQWebEngineHistory(h unsafe.Pointer) *QWebEngineHistory {
 }
 
 func (this *QWebEngineHistory) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineHistory_metaObject(this.h)))
 }
 
 func (this *QWebEngineHistory) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineHistory_metacast(this.h, param1_Cstring))
@@ -329,12 +321,10 @@ func QWebEngineHistory_Tr(s string) string {
 }
 
 func (this *QWebEngineHistory) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineHistory_clear(this.h)
 }
 
 func (this *QWebEngineHistory) Items() []QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_items(this.h)
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -347,7 +337,6 @@ func (this *QWebEngineHistory) Items() []QWebEngineHistoryItem {
 }
 
 func (this *QWebEngineHistory) BackItems(maxItems int) []QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_backItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -360,7 +349,6 @@ func (this *QWebEngineHistory) BackItems(maxItems int) []QWebEngineHistoryItem {
 }
 
 func (this *QWebEngineHistory) ForwardItems(maxItems int) []QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_forwardItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -373,81 +361,67 @@ func (this *QWebEngineHistory) ForwardItems(maxItems int) []QWebEngineHistoryIte
 }
 
 func (this *QWebEngineHistory) CanGoBack() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineHistory_canGoBack(this.h))
 }
 
 func (this *QWebEngineHistory) CanGoForward() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineHistory_canGoForward(this.h))
 }
 
 func (this *QWebEngineHistory) Back() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineHistory_back(this.h)
 }
 
 func (this *QWebEngineHistory) Forward() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineHistory_forward(this.h)
 }
 
 func (this *QWebEngineHistory) GoToItem(item *QWebEngineHistoryItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QWebEngineHistory_goToItem(this.h, item.cPointer())
 }
 
 func (this *QWebEngineHistory) BackItem() *QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_backItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) CurrentItem() *QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_currentItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) ForwardItem() *QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_forwardItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) ItemAt(i int) *QWebEngineHistoryItem {
-	defer runtime.KeepAlive(this)
 	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_itemAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) CurrentItemIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineHistory_currentItemIndex(this.h))
 }
 
 func (this *QWebEngineHistory) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineHistory_count(this.h))
 }
 
 func (this *QWebEngineHistory) ItemsModel() *QWebEngineHistoryModel {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineHistoryModel(C.QWebEngineHistory_itemsModel(this.h))
 }
 
 func (this *QWebEngineHistory) BackItemsModel() *QWebEngineHistoryModel {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineHistoryModel(C.QWebEngineHistory_backItemsModel(this.h))
 }
 
 func (this *QWebEngineHistory) ForwardItemsModel() *QWebEngineHistoryModel {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineHistoryModel(C.QWebEngineHistory_forwardItemsModel(this.h))
 }
 

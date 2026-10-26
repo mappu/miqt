@@ -74,65 +74,53 @@ func NewQwtPlotDirectPainter() *QwtPlotDirectPainter {
 
 // NewQwtPlotDirectPainter2 constructs a new QwtPlotDirectPainter object.
 func NewQwtPlotDirectPainter2(parent *qt.QObject) *QwtPlotDirectPainter {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtPlotDirectPainter(C.QwtPlotDirectPainter_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QwtPlotDirectPainter) SetAttribute(param1 QwtPlotDirectPainter__Attribute, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotDirectPainter_setAttribute(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtPlotDirectPainter) TestAttribute(param1 QwtPlotDirectPainter__Attribute) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotDirectPainter_testAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QwtPlotDirectPainter) SetClipping(clipping bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotDirectPainter_setClipping(this.h, (C.bool)(clipping))
 }
 
 func (this *QwtPlotDirectPainter) HasClipping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotDirectPainter_hasClipping(this.h))
 }
 
 func (this *QwtPlotDirectPainter) SetClipRegion(clipRegion *qt.QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(clipRegion)
 	C.QwtPlotDirectPainter_setClipRegion(this.h, (*C.QRegion)(clipRegion.UnsafePointer()))
 }
 
 func (this *QwtPlotDirectPainter) ClipRegion() *qt.QRegion {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPlotDirectPainter_clipRegion(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotDirectPainter) DrawSeries(param1 *QwtPlotSeriesItem, from int, to int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QwtPlotDirectPainter_drawSeries(this.h, param1.cPointer(), (C.int)(from), (C.int)(to))
 }
 
 func (this *QwtPlotDirectPainter) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotDirectPainter_reset(this.h)
 }
 
 func (this *QwtPlotDirectPainter) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtPlotDirectPainter_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 // Sender can only be called from a QwtPlotDirectPainter that was directly constructed.
 func (this *QwtPlotDirectPainter) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPlotDirectPainter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -147,7 +135,6 @@ func (this *QwtPlotDirectPainter) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPlotDirectPainter that was directly constructed.
 func (this *QwtPlotDirectPainter) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPlotDirectPainter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -162,7 +149,6 @@ func (this *QwtPlotDirectPainter) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPlotDirectPainter that was directly constructed.
 func (this *QwtPlotDirectPainter) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -179,7 +165,6 @@ func (this *QwtPlotDirectPainter) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPlotDirectPainter that was directly constructed.
 func (this *QwtPlotDirectPainter) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -194,8 +179,6 @@ func (this *QwtPlotDirectPainter) IsSignalConnected(signal *qt.QMetaMethod) bool
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotDirectPainter_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -227,7 +210,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_eventFilter(self *C.QwtPlotDirectPa
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPlotDirectPainter_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -257,7 +239,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_event(self *C.QwtPlotDirectPainter,
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotDirectPainter_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -285,7 +266,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_timerEvent(self *C.QwtPlotDirectPai
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotDirectPainter_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -313,7 +293,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_childEvent(self *C.QwtPlotDirectPai
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotDirectPainter_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -341,7 +320,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_customEvent(self *C.QwtPlotDirectPa
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotDirectPainter_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -369,7 +347,6 @@ func miqt_exec_callback_QwtPlotDirectPainter_connectNotify(self *C.QwtPlotDirect
 }
 
 func (this *QwtPlotDirectPainter) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotDirectPainter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -404,6 +381,8 @@ func (this *QwtPlotDirectPainter) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtPlotDirectPainter) GoGC() {
 	if this.gc != nil {
 		return

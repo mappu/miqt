@@ -91,18 +91,15 @@ func NewQMediaPlaylist() *QMediaPlaylist {
 
 // NewQMediaPlaylist2 constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist2(parent *qt.QObject) *QMediaPlaylist {
-	defer runtime.KeepAlive(parent)
 
 	return newQMediaPlaylist(C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QMediaPlaylist) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaPlaylist_metaObject(this.h)))
 }
 
 func (this *QMediaPlaylist) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaPlaylist_metacast(this.h, param1_Cstring))
@@ -127,72 +124,59 @@ func QMediaPlaylist_TrUtf8(s string) string {
 }
 
 func (this *QMediaPlaylist) MediaObject() *QMediaObject {
-	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QMediaPlaylist_mediaObject(this.h))
 }
 
 func (this *QMediaPlaylist) PlaybackMode() QMediaPlaylist__PlaybackMode {
-	defer runtime.KeepAlive(this)
 	return (QMediaPlaylist__PlaybackMode)(C.QMediaPlaylist_playbackMode(this.h))
 }
 
 func (this *QMediaPlaylist) SetPlaybackMode(mode QMediaPlaylist__PlaybackMode) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_setPlaybackMode(this.h, (C.int)(mode))
 }
 
 func (this *QMediaPlaylist) CurrentIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_currentIndex(this.h))
 }
 
 func (this *QMediaPlaylist) CurrentMedia() *QMediaContent {
-	defer runtime.KeepAlive(this)
 	_goptr := newQMediaContent(C.QMediaPlaylist_currentMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlaylist) NextIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_nextIndex(this.h))
 }
 
 func (this *QMediaPlaylist) PreviousIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_previousIndex(this.h))
 }
 
 func (this *QMediaPlaylist) Media(index int) *QMediaContent {
-	defer runtime.KeepAlive(this)
 	_goptr := newQMediaContent(C.QMediaPlaylist_media(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlaylist) MediaCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_mediaCount(this.h))
 }
 
 func (this *QMediaPlaylist) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_isEmpty(this.h))
 }
 
 func (this *QMediaPlaylist) IsReadOnly() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_isReadOnly(this.h))
 }
 
 func (this *QMediaPlaylist) AddMedia(content *QMediaContent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(content)
 	return (bool)(C.QMediaPlaylist_addMedia(this.h, content.cPointer()))
 }
 
 func (this *QMediaPlaylist) AddMediaWithItems(items []QMediaContent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
@@ -205,13 +189,11 @@ func (this *QMediaPlaylist) AddMediaWithItems(items []QMediaContent) bool {
 }
 
 func (this *QMediaPlaylist) InsertMedia(index int, content *QMediaContent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(content)
 	return (bool)(C.QMediaPlaylist_insertMedia(this.h, (C.int)(index), content.cPointer()))
 }
 
 func (this *QMediaPlaylist) InsertMedia2(index int, items []QMediaContent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
@@ -224,64 +206,51 @@ func (this *QMediaPlaylist) InsertMedia2(index int, items []QMediaContent) bool 
 }
 
 func (this *QMediaPlaylist) MoveMedia(from int, to int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_moveMedia(this.h, (C.int)(from), (C.int)(to)))
 }
 
 func (this *QMediaPlaylist) RemoveMedia(pos int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_removeMedia(this.h, (C.int)(pos)))
 }
 
 func (this *QMediaPlaylist) RemoveMedia2(start int, end int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_removeMedia2(this.h, (C.int)(start), (C.int)(end)))
 }
 
 func (this *QMediaPlaylist) Clear() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaPlaylist_clear(this.h))
 }
 
 func (this *QMediaPlaylist) Load(request *network.QNetworkRequest) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	C.QMediaPlaylist_load(this.h, (*C.QNetworkRequest)(request.UnsafePointer()))
 }
 
 func (this *QMediaPlaylist) LoadWithLocation(location *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(location)
 	C.QMediaPlaylist_loadWithLocation(this.h, (*C.QUrl)(location.UnsafePointer()))
 }
 
 func (this *QMediaPlaylist) LoadWithDevice(device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QMediaPlaylist_loadWithDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QMediaPlaylist) Save(location *qt.QUrl) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(location)
 	return (bool)(C.QMediaPlaylist_save(this.h, (*C.QUrl)(location.UnsafePointer())))
 }
 
 func (this *QMediaPlaylist) Save2(device *qt.QIODevice, format string) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QMediaPlaylist_save2(this.h, (*C.QIODevice)(device.UnsafePointer()), format_Cstring))
 }
 
 func (this *QMediaPlaylist) Error() QMediaPlaylist__Error {
-	defer runtime.KeepAlive(this)
 	return (QMediaPlaylist__Error)(C.QMediaPlaylist_error(this.h))
 }
 
 func (this *QMediaPlaylist) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaPlaylist_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -289,27 +258,22 @@ func (this *QMediaPlaylist) ErrorString() string {
 }
 
 func (this *QMediaPlaylist) Shuffle() {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_shuffle(this.h)
 }
 
 func (this *QMediaPlaylist) Next() {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_next(this.h)
 }
 
 func (this *QMediaPlaylist) Previous() {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_previous(this.h)
 }
 
 func (this *QMediaPlaylist) SetCurrentIndex(index int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_setCurrentIndex(this.h, (C.int)(index))
 }
 
 func (this *QMediaPlaylist) CurrentIndexChanged(index int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_currentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QMediaPlaylist) OnCurrentIndexChanged(slot func(index int)) {
@@ -330,7 +294,6 @@ func miqt_exec_callback_QMediaPlaylist_currentIndexChanged(cb C.intptr_t, index 
 }
 
 func (this *QMediaPlaylist) PlaybackModeChanged(mode QMediaPlaylist__PlaybackMode) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_playbackModeChanged(this.h, (C.int)(mode))
 }
 func (this *QMediaPlaylist) OnPlaybackModeChanged(slot func(mode QMediaPlaylist__PlaybackMode)) {
@@ -351,7 +314,6 @@ func miqt_exec_callback_QMediaPlaylist_playbackModeChanged(cb C.intptr_t, mode C
 }
 
 func (this *QMediaPlaylist) CurrentMediaChanged(param1 *QMediaContent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QMediaPlaylist_currentMediaChanged(this.h, param1.cPointer())
 }
@@ -373,7 +335,6 @@ func miqt_exec_callback_QMediaPlaylist_currentMediaChanged(cb C.intptr_t, param1
 }
 
 func (this *QMediaPlaylist) MediaAboutToBeInserted(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_mediaAboutToBeInserted(this.h, (C.int)(start), (C.int)(end))
 }
 func (this *QMediaPlaylist) OnMediaAboutToBeInserted(slot func(start int, end int)) {
@@ -396,7 +357,6 @@ func miqt_exec_callback_QMediaPlaylist_mediaAboutToBeInserted(cb C.intptr_t, sta
 }
 
 func (this *QMediaPlaylist) MediaInserted(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_mediaInserted(this.h, (C.int)(start), (C.int)(end))
 }
 func (this *QMediaPlaylist) OnMediaInserted(slot func(start int, end int)) {
@@ -419,7 +379,6 @@ func miqt_exec_callback_QMediaPlaylist_mediaInserted(cb C.intptr_t, start C.int,
 }
 
 func (this *QMediaPlaylist) MediaAboutToBeRemoved(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_mediaAboutToBeRemoved(this.h, (C.int)(start), (C.int)(end))
 }
 func (this *QMediaPlaylist) OnMediaAboutToBeRemoved(slot func(start int, end int)) {
@@ -442,7 +401,6 @@ func miqt_exec_callback_QMediaPlaylist_mediaAboutToBeRemoved(cb C.intptr_t, star
 }
 
 func (this *QMediaPlaylist) MediaRemoved(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_mediaRemoved(this.h, (C.int)(start), (C.int)(end))
 }
 func (this *QMediaPlaylist) OnMediaRemoved(slot func(start int, end int)) {
@@ -465,7 +423,6 @@ func miqt_exec_callback_QMediaPlaylist_mediaRemoved(cb C.intptr_t, start C.int, 
 }
 
 func (this *QMediaPlaylist) MediaChanged(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_mediaChanged(this.h, (C.int)(start), (C.int)(end))
 }
 func (this *QMediaPlaylist) OnMediaChanged(slot func(start int, end int)) {
@@ -488,7 +445,6 @@ func miqt_exec_callback_QMediaPlaylist_mediaChanged(cb C.intptr_t, start C.int, 
 }
 
 func (this *QMediaPlaylist) Loaded() {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_loaded(this.h)
 }
 func (this *QMediaPlaylist) OnLoaded(slot func()) {
@@ -506,7 +462,6 @@ func miqt_exec_callback_QMediaPlaylist_loaded(cb C.intptr_t) {
 }
 
 func (this *QMediaPlaylist) LoadFailed() {
-	defer runtime.KeepAlive(this)
 	C.QMediaPlaylist_loadFailed(this.h)
 }
 func (this *QMediaPlaylist) OnLoadFailed(slot func()) {
@@ -568,17 +523,14 @@ func QMediaPlaylist_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMediaPlaylist) NextIndexWithSteps(steps int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_nextIndexWithSteps(this.h, (C.int)(steps)))
 }
 
 func (this *QMediaPlaylist) PreviousIndexWithSteps(steps int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaPlaylist_previousIndexWithSteps(this.h, (C.int)(steps)))
 }
 
 func (this *QMediaPlaylist) Load2(request *network.QNetworkRequest, format string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -586,7 +538,6 @@ func (this *QMediaPlaylist) Load2(request *network.QNetworkRequest, format strin
 }
 
 func (this *QMediaPlaylist) Load3(location *qt.QUrl, format string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(location)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -594,15 +545,12 @@ func (this *QMediaPlaylist) Load3(location *qt.QUrl, format string) {
 }
 
 func (this *QMediaPlaylist) Load4(device *qt.QIODevice, format string) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	C.QMediaPlaylist_load4(this.h, (*C.QIODevice)(device.UnsafePointer()), format_Cstring)
 }
 
 func (this *QMediaPlaylist) Save3(location *qt.QUrl, format string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(location)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -611,7 +559,6 @@ func (this *QMediaPlaylist) Save3(location *qt.QUrl, format string) bool {
 
 // Sender can only be called from a QMediaPlaylist that was directly constructed.
 func (this *QMediaPlaylist) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMediaPlaylist_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -626,7 +573,6 @@ func (this *QMediaPlaylist) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QMediaPlaylist that was directly constructed.
 func (this *QMediaPlaylist) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMediaPlaylist_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -641,7 +587,6 @@ func (this *QMediaPlaylist) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMediaPlaylist that was directly constructed.
 func (this *QMediaPlaylist) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -658,7 +603,6 @@ func (this *QMediaPlaylist) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMediaPlaylist that was directly constructed.
 func (this *QMediaPlaylist) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -673,7 +617,6 @@ func (this *QMediaPlaylist) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
-	defer runtime.KeepAlive(this)
 
 	return newQMediaObject(C.QMediaPlaylist_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
@@ -693,15 +636,12 @@ func miqt_exec_callback_QMediaPlaylist_mediaObject(self *C.QMediaPlaylist, cb C.
 	}
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_MediaObject)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QMediaPlaylist) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 
 	return (bool)(C.QMediaPlaylist_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
@@ -730,7 +670,6 @@ func miqt_exec_callback_QMediaPlaylist_setMediaObject(self *C.QMediaPlaylist, cb
 }
 
 func (this *QMediaPlaylist) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaPlaylist_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -760,8 +699,6 @@ func miqt_exec_callback_QMediaPlaylist_event(self *C.QMediaPlaylist, cb C.intptr
 }
 
 func (this *QMediaPlaylist) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMediaPlaylist_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -793,7 +730,6 @@ func miqt_exec_callback_QMediaPlaylist_eventFilter(self *C.QMediaPlaylist, cb C.
 }
 
 func (this *QMediaPlaylist) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaPlaylist_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -821,7 +757,6 @@ func miqt_exec_callback_QMediaPlaylist_timerEvent(self *C.QMediaPlaylist, cb C.i
 }
 
 func (this *QMediaPlaylist) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaPlaylist_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -849,7 +784,6 @@ func miqt_exec_callback_QMediaPlaylist_childEvent(self *C.QMediaPlaylist, cb C.i
 }
 
 func (this *QMediaPlaylist) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMediaPlaylist_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -877,7 +811,6 @@ func miqt_exec_callback_QMediaPlaylist_customEvent(self *C.QMediaPlaylist, cb C.
 }
 
 func (this *QMediaPlaylist) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMediaPlaylist_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -905,7 +838,6 @@ func miqt_exec_callback_QMediaPlaylist_connectNotify(self *C.QMediaPlaylist, cb 
 }
 
 func (this *QMediaPlaylist) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMediaPlaylist_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -940,6 +872,8 @@ func (this *QMediaPlaylist) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaPlaylist) GoGC() {
 	if this.gc != nil {
 		return

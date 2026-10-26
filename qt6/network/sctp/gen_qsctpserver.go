@@ -67,18 +67,15 @@ func NewQSctpServer() *QSctpServer {
 
 // NewQSctpServer2 constructs a new QSctpServer object.
 func NewQSctpServer2(parent *qt6.QObject) *QSctpServer {
-	defer runtime.KeepAlive(parent)
 
 	return newQSctpServer(C.QSctpServer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSctpServer) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QSctpServer_metaObject(this.h)))
 }
 
 func (this *QSctpServer) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSctpServer_metacast(this.h, param1_Cstring))
@@ -94,17 +91,14 @@ func QSctpServer_Tr(s string) string {
 }
 
 func (this *QSctpServer) SetMaximumChannelCount(count int) {
-	defer runtime.KeepAlive(this)
 	C.QSctpServer_setMaximumChannelCount(this.h, (C.int)(count))
 }
 
 func (this *QSctpServer) MaximumChannelCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QSctpServer_maximumChannelCount(this.h))
 }
 
 func (this *QSctpServer) NextPendingDatagramConnection() *QSctpSocket {
-	defer runtime.KeepAlive(this)
 	return newQSctpSocket(C.QSctpServer_nextPendingDatagramConnection(this.h))
 }
 
@@ -132,8 +126,6 @@ func QSctpServer_Tr3(s string, c string, n int) string {
 
 // AddPendingConnection can only be called from a QSctpServer that was directly constructed.
 func (this *QSctpServer) AddPendingConnection(socket *network.QTcpSocket) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(socket)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSctpServer_protectedbase_addPendingConnection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QTcpSocket)(socket.UnsafePointer()))
@@ -146,7 +138,6 @@ func (this *QSctpServer) AddPendingConnection(socket *network.QTcpSocket) {
 
 // Sender can only be called from a QSctpServer that was directly constructed.
 func (this *QSctpServer) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QSctpServer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -161,7 +152,6 @@ func (this *QSctpServer) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QSctpServer that was directly constructed.
 func (this *QSctpServer) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSctpServer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -176,7 +166,6 @@ func (this *QSctpServer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSctpServer that was directly constructed.
 func (this *QSctpServer) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -193,7 +182,6 @@ func (this *QSctpServer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSctpServer that was directly constructed.
 func (this *QSctpServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -208,7 +196,6 @@ func (this *QSctpServer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QSctpServer) callVirtualBase_IncomingConnection(handle uintptr) {
-	defer runtime.KeepAlive(this)
 
 	C.QSctpServer_virtualbase_incomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(handle))
 
@@ -235,7 +222,6 @@ func miqt_exec_callback_QSctpServer_incomingConnection(self *C.QSctpServer, cb C
 }
 
 func (this *QSctpServer) callVirtualBase_HasPendingConnections() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSctpServer_virtualbase_hasPendingConnections(unsafe.Pointer(this.h)))
 
@@ -261,7 +247,6 @@ func miqt_exec_callback_QSctpServer_hasPendingConnections(self *C.QSctpServer, c
 }
 
 func (this *QSctpServer) callVirtualBase_NextPendingConnection() *network.QTcpSocket {
-	defer runtime.KeepAlive(this)
 
 	return network.UnsafeNewQTcpSocket(unsafe.Pointer(C.QSctpServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h))))
 
@@ -281,14 +266,12 @@ func miqt_exec_callback_QSctpServer_nextPendingConnection(self *C.QSctpServer, c
 	}
 
 	virtualReturn := gofunc((&QSctpServer{h: self}).callVirtualBase_NextPendingConnection)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QTcpSocket)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QSctpServer) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSctpServer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -318,8 +301,6 @@ func miqt_exec_callback_QSctpServer_event(self *C.QSctpServer, cb C.intptr_t, ev
 }
 
 func (this *QSctpServer) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSctpServer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -351,7 +332,6 @@ func miqt_exec_callback_QSctpServer_eventFilter(self *C.QSctpServer, cb C.intptr
 }
 
 func (this *QSctpServer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSctpServer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -379,7 +359,6 @@ func miqt_exec_callback_QSctpServer_timerEvent(self *C.QSctpServer, cb C.intptr_
 }
 
 func (this *QSctpServer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSctpServer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -407,7 +386,6 @@ func miqt_exec_callback_QSctpServer_childEvent(self *C.QSctpServer, cb C.intptr_
 }
 
 func (this *QSctpServer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSctpServer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -435,7 +413,6 @@ func miqt_exec_callback_QSctpServer_customEvent(self *C.QSctpServer, cb C.intptr
 }
 
 func (this *QSctpServer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSctpServer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -463,7 +440,6 @@ func miqt_exec_callback_QSctpServer_connectNotify(self *C.QSctpServer, cb C.intp
 }
 
 func (this *QSctpServer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSctpServer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -498,6 +474,8 @@ func (this *QSctpServer) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSctpServer) GoGC() {
 	if this.gc != nil {
 		return

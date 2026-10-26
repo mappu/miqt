@@ -69,12 +69,10 @@ func UnsafeNewQWebEngineUrlRequestJob(h unsafe.Pointer) *QWebEngineUrlRequestJob
 }
 
 func (this *QWebEngineUrlRequestJob) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlRequestJob_metaObject(this.h)))
 }
 
 func (this *QWebEngineUrlRequestJob) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineUrlRequestJob_metacast(this.h, param1_Cstring))
@@ -99,14 +97,12 @@ func QWebEngineUrlRequestJob_TrUtf8(s string) string {
 }
 
 func (this *QWebEngineUrlRequestJob) RequestUrl() *qt.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_requestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestJob_requestMethod(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -114,15 +110,12 @@ func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
 }
 
 func (this *QWebEngineUrlRequestJob) Initiator() *qt.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	contentType_alias := C.struct_miqt_string{}
 	if len(contentType) > 0 {
 		contentType_alias.data = (*C.char)(unsafe.Pointer(&contentType[0]))
@@ -134,12 +127,10 @@ func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt.QIODev
 }
 
 func (this *QWebEngineUrlRequestJob) Fail(error QWebEngineUrlRequestJob__Error) {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineUrlRequestJob_fail(this.h, (C.int)(error))
 }
 
 func (this *QWebEngineUrlRequestJob) Redirect(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEngineUrlRequestJob_redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
@@ -196,6 +187,8 @@ func (this *QWebEngineUrlRequestJob) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEngineUrlRequestJob) GoGC() {
 	if this.gc != nil {
 		return

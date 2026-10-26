@@ -78,18 +78,15 @@ func NewQNetworkAccessManager() *QNetworkAccessManager {
 
 // NewQNetworkAccessManager2 constructs a new QNetworkAccessManager object.
 func NewQNetworkAccessManager2(parent *qt6.QObject) *QNetworkAccessManager {
-	defer runtime.KeepAlive(parent)
 
 	return newQNetworkAccessManager(C.QNetworkAccessManager_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkAccessManager) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkAccessManager_metaObject(this.h)))
 }
 
 func (this *QNetworkAccessManager) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkAccessManager_metacast(this.h, param1_Cstring))
@@ -105,7 +102,6 @@ func QNetworkAccessManager_Tr(s string) string {
 }
 
 func (this *QNetworkAccessManager) SupportedSchemes() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_supportedSchemes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -119,83 +115,66 @@ func (this *QNetworkAccessManager) SupportedSchemes() []string {
 }
 
 func (this *QNetworkAccessManager) ClearAccessCache() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_clearAccessCache(this.h)
 }
 
 func (this *QNetworkAccessManager) ClearConnectionCache() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_clearConnectionCache(this.h)
 }
 
 func (this *QNetworkAccessManager) Proxy() *QNetworkProxy {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkProxy(C.QNetworkAccessManager_proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAccessManager) SetProxy(proxy *QNetworkProxy) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxy)
 	C.QNetworkAccessManager_setProxy(this.h, proxy.cPointer())
 }
 
 func (this *QNetworkAccessManager) ProxyFactory() *QNetworkProxyFactory {
-	defer runtime.KeepAlive(this)
 	return newQNetworkProxyFactory(C.QNetworkAccessManager_proxyFactory(this.h))
 }
 
 func (this *QNetworkAccessManager) SetProxyFactory(factory *QNetworkProxyFactory) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	C.QNetworkAccessManager_setProxyFactory(this.h, factory.cPointer())
 }
 
 func (this *QNetworkAccessManager) Cache() *QAbstractNetworkCache {
-	defer runtime.KeepAlive(this)
 	return newQAbstractNetworkCache(C.QNetworkAccessManager_cache(this.h))
 }
 
 func (this *QNetworkAccessManager) SetCache(cache *QAbstractNetworkCache) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(cache)
 	C.QNetworkAccessManager_setCache(this.h, cache.cPointer())
 }
 
 func (this *QNetworkAccessManager) CookieJar() *QNetworkCookieJar {
-	defer runtime.KeepAlive(this)
 	return newQNetworkCookieJar(C.QNetworkAccessManager_cookieJar(this.h))
 }
 
 func (this *QNetworkAccessManager) SetCookieJar(cookieJar *QNetworkCookieJar) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(cookieJar)
 	C.QNetworkAccessManager_setCookieJar(this.h, cookieJar.cPointer())
 }
 
 func (this *QNetworkAccessManager) SetStrictTransportSecurityEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_setStrictTransportSecurityEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QNetworkAccessManager) IsStrictTransportSecurityEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAccessManager_isStrictTransportSecurityEnabled(this.h))
 }
 
 func (this *QNetworkAccessManager) EnableStrictTransportSecurityStore(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_enableStrictTransportSecurityStore(this.h, (C.bool)(enabled))
 }
 
 func (this *QNetworkAccessManager) IsStrictTransportSecurityStoreEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAccessManager_isStrictTransportSecurityStoreEnabled(this.h))
 }
 
 func (this *QNetworkAccessManager) AddStrictTransportSecurityHosts(knownHosts []QHstsPolicy) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(knownHosts)
 	knownHosts_CArray_ptr := (**C.QHstsPolicy)(C.malloc(C.size_t(8 * len(knownHosts))))
 	defer C.free(unsafe.Pointer(knownHosts_CArray_ptr))
@@ -208,7 +187,6 @@ func (this *QNetworkAccessManager) AddStrictTransportSecurityHosts(knownHosts []
 }
 
 func (this *QNetworkAccessManager) StrictTransportSecurityHosts() []QHstsPolicy {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_strictTransportSecurityHosts(this.h)
 	_ret := make([]QHstsPolicy, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QHstsPolicy)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -221,26 +199,21 @@ func (this *QNetworkAccessManager) StrictTransportSecurityHosts() []QHstsPolicy 
 }
 
 func (this *QNetworkAccessManager) Head(request *QNetworkRequest) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	return newQNetworkReply(C.QNetworkAccessManager_head(this.h, request.cPointer()))
 }
 
 func (this *QNetworkAccessManager) Get(request *QNetworkRequest) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	return newQNetworkReply(C.QNetworkAccessManager_get(this.h, request.cPointer()))
 }
 
 func (this *QNetworkAccessManager) Post(request *QNetworkRequest, data *qt6.QIODevice) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(data)
 	return newQNetworkReply(C.QNetworkAccessManager_post(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer())))
 }
 
 func (this *QNetworkAccessManager) Post2(request *QNetworkRequest, data []byte) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
@@ -253,14 +226,11 @@ func (this *QNetworkAccessManager) Post2(request *QNetworkRequest, data []byte) 
 }
 
 func (this *QNetworkAccessManager) Put(request *QNetworkRequest, data *qt6.QIODevice) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(data)
 	return newQNetworkReply(C.QNetworkAccessManager_put(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer())))
 }
 
 func (this *QNetworkAccessManager) Put2(request *QNetworkRequest, data []byte) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
@@ -273,13 +243,11 @@ func (this *QNetworkAccessManager) Put2(request *QNetworkRequest, data []byte) *
 }
 
 func (this *QNetworkAccessManager) DeleteResource(request *QNetworkRequest) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	return newQNetworkReply(C.QNetworkAccessManager_deleteResource(this.h, request.cPointer()))
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest(request *QNetworkRequest, verb []byte) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	verb_alias := C.struct_miqt_string{}
 	if len(verb) > 0 {
@@ -292,7 +260,6 @@ func (this *QNetworkAccessManager) SendCustomRequest(request *QNetworkRequest, v
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest2(request *QNetworkRequest, verb []byte, data []byte) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	verb_alias := C.struct_miqt_string{}
 	if len(verb) > 0 {
@@ -312,23 +279,17 @@ func (this *QNetworkAccessManager) SendCustomRequest2(request *QNetworkRequest, 
 }
 
 func (this *QNetworkAccessManager) Post3(request *QNetworkRequest, multiPart *QHttpMultiPart) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(multiPart)
 	return newQNetworkReply(C.QNetworkAccessManager_post3(this.h, request.cPointer(), multiPart.cPointer()))
 }
 
 func (this *QNetworkAccessManager) Put3(request *QNetworkRequest, multiPart *QHttpMultiPart) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(multiPart)
 	return newQNetworkReply(C.QNetworkAccessManager_put3(this.h, request.cPointer(), multiPart.cPointer()))
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest3(request *QNetworkRequest, verb []byte, multiPart *QHttpMultiPart) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(multiPart)
 	verb_alias := C.struct_miqt_string{}
 	if len(verb) > 0 {
 		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
@@ -340,7 +301,6 @@ func (this *QNetworkAccessManager) SendCustomRequest3(request *QNetworkRequest, 
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted(hostName string) {
-	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -349,7 +309,6 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted(hostName string) {
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted2(hostName string, port uint16, sslConfiguration *QSslConfiguration, peerName string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sslConfiguration)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
@@ -363,7 +322,6 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted2(hostName string, port
 }
 
 func (this *QNetworkAccessManager) ConnectToHost(hostName string) {
-	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -372,37 +330,30 @@ func (this *QNetworkAccessManager) ConnectToHost(hostName string) {
 }
 
 func (this *QNetworkAccessManager) SetRedirectPolicy(policy QNetworkRequest__RedirectPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_setRedirectPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QNetworkAccessManager) RedirectPolicy() QNetworkRequest__RedirectPolicy {
-	defer runtime.KeepAlive(this)
 	return (QNetworkRequest__RedirectPolicy)(C.QNetworkAccessManager_redirectPolicy(this.h))
 }
 
 func (this *QNetworkAccessManager) AutoDeleteReplies() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkAccessManager_autoDeleteReplies(this.h))
 }
 
 func (this *QNetworkAccessManager) SetAutoDeleteReplies(autoDelete bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_setAutoDeleteReplies(this.h, (C.bool)(autoDelete))
 }
 
 func (this *QNetworkAccessManager) TransferTimeout() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QNetworkAccessManager_transferTimeout(this.h))
 }
 
 func (this *QNetworkAccessManager) SetTransferTimeout() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_setTransferTimeout(this.h)
 }
 
 func (this *QNetworkAccessManager) ProxyAuthenticationRequired(proxy *QNetworkProxy, authenticator *QAuthenticator) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(proxy)
 	defer runtime.KeepAlive(authenticator)
 	C.QNetworkAccessManager_proxyAuthenticationRequired(this.h, proxy.cPointer(), authenticator.cPointer())
@@ -427,8 +378,6 @@ func miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired(cb C.i
 }
 
 func (this *QNetworkAccessManager) AuthenticationRequired(reply *QNetworkReply, authenticator *QAuthenticator) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(reply)
 	defer runtime.KeepAlive(authenticator)
 	C.QNetworkAccessManager_authenticationRequired(this.h, reply.cPointer(), authenticator.cPointer())
 }
@@ -452,8 +401,6 @@ func miqt_exec_callback_QNetworkAccessManager_authenticationRequired(cb C.intptr
 }
 
 func (this *QNetworkAccessManager) Finished(reply *QNetworkReply) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(reply)
 	C.QNetworkAccessManager_finished(this.h, reply.cPointer())
 }
 func (this *QNetworkAccessManager) OnFinished(slot func(reply *QNetworkReply)) {
@@ -474,8 +421,6 @@ func miqt_exec_callback_QNetworkAccessManager_finished(cb C.intptr_t, reply *C.Q
 }
 
 func (this *QNetworkAccessManager) Encrypted(reply *QNetworkReply) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(reply)
 	C.QNetworkAccessManager_encrypted(this.h, reply.cPointer())
 }
 func (this *QNetworkAccessManager) OnEncrypted(slot func(reply *QNetworkReply)) {
@@ -496,8 +441,6 @@ func miqt_exec_callback_QNetworkAccessManager_encrypted(cb C.intptr_t, reply *C.
 }
 
 func (this *QNetworkAccessManager) SslErrors(reply *QNetworkReply, errors []QSslError) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(reply)
 	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
@@ -536,8 +479,6 @@ func miqt_exec_callback_QNetworkAccessManager_sslErrors(cb C.intptr_t, reply *C.
 }
 
 func (this *QNetworkAccessManager) PreSharedKeyAuthenticationRequired(reply *QNetworkReply, authenticator *QSslPreSharedKeyAuthenticator) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(reply)
 	defer runtime.KeepAlive(authenticator)
 	C.QNetworkAccessManager_preSharedKeyAuthenticationRequired(this.h, reply.cPointer(), authenticator.cPointer())
 }
@@ -583,7 +524,6 @@ func QNetworkAccessManager_Tr3(s string, c string, n int) string {
 }
 
 func (this *QNetworkAccessManager) EnableStrictTransportSecurityStore2(enabled bool, storeDir string) {
-	defer runtime.KeepAlive(this)
 	storeDir_ms := C.struct_miqt_string{}
 	storeDir_ms.data = C.CString(storeDir)
 	storeDir_ms.len = C.size_t(len(storeDir))
@@ -592,9 +532,7 @@ func (this *QNetworkAccessManager) EnableStrictTransportSecurityStore2(enabled b
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest4(request *QNetworkRequest, verb []byte, data *qt6.QIODevice) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(data)
 	verb_alias := C.struct_miqt_string{}
 	if len(verb) > 0 {
 		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
@@ -606,7 +544,6 @@ func (this *QNetworkAccessManager) SendCustomRequest4(request *QNetworkRequest, 
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted3(hostName string, port uint16) {
-	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -615,7 +552,6 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted3(hostName string, port
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted4(hostName string, port uint16, sslConfiguration *QSslConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sslConfiguration)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
@@ -625,7 +561,6 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted4(hostName string, port
 }
 
 func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) {
-	defer runtime.KeepAlive(this)
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -634,13 +569,11 @@ func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) 
 }
 
 func (this *QNetworkAccessManager) SetTransferTimeoutWithTimeout(timeout int) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkAccessManager_setTransferTimeoutWithTimeout(this.h, (C.int)(timeout))
 }
 
 // SupportedSchemesImplementation can only be called from a QNetworkAccessManager that was directly constructed.
 func (this *QNetworkAccessManager) SupportedSchemesImplementation() []string {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_protectedbase_supportedSchemesImplementation(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -664,7 +597,6 @@ func (this *QNetworkAccessManager) SupportedSchemesImplementation() []string {
 
 // Sender can only be called from a QNetworkAccessManager that was directly constructed.
 func (this *QNetworkAccessManager) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QNetworkAccessManager_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -679,7 +611,6 @@ func (this *QNetworkAccessManager) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QNetworkAccessManager that was directly constructed.
 func (this *QNetworkAccessManager) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNetworkAccessManager_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -694,7 +625,6 @@ func (this *QNetworkAccessManager) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNetworkAccessManager that was directly constructed.
 func (this *QNetworkAccessManager) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -711,7 +641,6 @@ func (this *QNetworkAccessManager) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNetworkAccessManager that was directly constructed.
 func (this *QNetworkAccessManager) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -726,7 +655,6 @@ func (this *QNetworkAccessManager) IsSignalConnected(signal *qt6.QMetaMethod) bo
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_SupportedSchemes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QNetworkAccessManager_virtualbase_supportedSchemes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -770,9 +698,7 @@ func miqt_exec_callback_QNetworkAccessManager_supportedSchemes(self *C.QNetworkA
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_CreateRequest(op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt6.QIODevice) *QNetworkReply {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
-	defer runtime.KeepAlive(outgoingData)
 
 	return newQNetworkReply(C.QNetworkAccessManager_virtualbase_createRequest(unsafe.Pointer(this.h), (C.int)(op), request.cPointer(), (*C.QIODevice)(outgoingData.UnsafePointer())))
 
@@ -799,14 +725,12 @@ func miqt_exec_callback_QNetworkAccessManager_createRequest(self *C.QNetworkAcce
 	slotval3 := qt6.UnsafeNewQIODevice(unsafe.Pointer(outgoingData))
 
 	virtualReturn := gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_CreateRequest, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkAccessManager_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -836,8 +760,6 @@ func miqt_exec_callback_QNetworkAccessManager_event(self *C.QNetworkAccessManage
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkAccessManager_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -869,7 +791,6 @@ func miqt_exec_callback_QNetworkAccessManager_eventFilter(self *C.QNetworkAccess
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkAccessManager_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -897,7 +818,6 @@ func miqt_exec_callback_QNetworkAccessManager_timerEvent(self *C.QNetworkAccessM
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkAccessManager_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -925,7 +845,6 @@ func miqt_exec_callback_QNetworkAccessManager_childEvent(self *C.QNetworkAccessM
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkAccessManager_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -953,7 +872,6 @@ func miqt_exec_callback_QNetworkAccessManager_customEvent(self *C.QNetworkAccess
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkAccessManager_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -981,7 +899,6 @@ func miqt_exec_callback_QNetworkAccessManager_connectNotify(self *C.QNetworkAcce
 }
 
 func (this *QNetworkAccessManager) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkAccessManager_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1016,6 +933,8 @@ func (this *QNetworkAccessManager) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QNetworkAccessManager) GoGC() {
 	if this.gc != nil {
 		return

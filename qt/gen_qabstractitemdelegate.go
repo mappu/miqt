@@ -76,18 +76,15 @@ func NewQAbstractItemDelegate() *QAbstractItemDelegate {
 
 // NewQAbstractItemDelegate2 constructs a new QAbstractItemDelegate object.
 func NewQAbstractItemDelegate2(parent *QObject) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractItemDelegate(C.QAbstractItemDelegate_new2(parent.cPointer()))
 }
 
 func (this *QAbstractItemDelegate) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractItemDelegate_metaObject(this.h))
 }
 
 func (this *QAbstractItemDelegate) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractItemDelegate_metacast(this.h, param1_Cstring))
@@ -112,7 +109,6 @@ func QAbstractItemDelegate_TrUtf8(s string) string {
 }
 
 func (this *QAbstractItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
@@ -120,7 +116,6 @@ func (this *QAbstractItemDelegate) Paint(painter *QPainter, option *QStyleOption
 }
 
 func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QAbstractItemDelegate_sizeHint(this.h, option.cPointer(), index.cPointer()))
@@ -129,47 +124,34 @@ func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index 
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	return newQWidget(C.QAbstractItemDelegate_createEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()))
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemDelegate_destroyEditor(this.h, editor.cPointer(), index.cPointer())
 }
 
 func (this *QAbstractItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemDelegate_setEditorData(this.h, editor.cPointer(), index.cPointer())
 }
 
 func (this *QAbstractItemDelegate) SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemDelegate_setModelData(this.h, editor.cPointer(), model.cPointer(), index.cPointer())
 }
 
 func (this *QAbstractItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemDelegate_updateEditorGeometry(this.h, editor.cPointer(), option.cPointer(), index.cPointer())
 }
 
 func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemDelegate_editorEvent(this.h, event.cPointer(), model.cPointer(), option.cPointer(), index.cPointer()))
@@ -188,16 +170,13 @@ func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode
 }
 
 func (this *QAbstractItemDelegate) HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(view)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemDelegate_helpEvent(this.h, event.cPointer(), view.cPointer(), option.cPointer(), index.cPointer()))
 }
 
 func (this *QAbstractItemDelegate) PaintingRoles() []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractItemDelegate_paintingRoles(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -208,8 +187,6 @@ func (this *QAbstractItemDelegate) PaintingRoles() []int {
 }
 
 func (this *QAbstractItemDelegate) CommitData(editor *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	C.QAbstractItemDelegate_commitData(this.h, editor.cPointer())
 }
 func (this *QAbstractItemDelegate) OnCommitData(slot func(editor *QWidget)) {
@@ -230,8 +207,6 @@ func miqt_exec_callback_QAbstractItemDelegate_commitData(cb C.intptr_t, editor *
 }
 
 func (this *QAbstractItemDelegate) CloseEditor(editor *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	C.QAbstractItemDelegate_closeEditor(this.h, editor.cPointer())
 }
 func (this *QAbstractItemDelegate) OnCloseEditor(slot func(editor *QWidget)) {
@@ -252,7 +227,6 @@ func miqt_exec_callback_QAbstractItemDelegate_closeEditor(cb C.intptr_t, editor 
 }
 
 func (this *QAbstractItemDelegate) SizeHintChanged(param1 *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QAbstractItemDelegate_sizeHintChanged(this.h, param1.cPointer())
 }
@@ -318,8 +292,6 @@ func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	C.QAbstractItemDelegate_closeEditor2(this.h, editor.cPointer(), (C.int)(hint))
 }
 func (this *QAbstractItemDelegate) OnCloseEditor2(slot func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
@@ -343,7 +315,6 @@ func miqt_exec_callback_QAbstractItemDelegate_closeEditor2(cb C.intptr_t, editor
 
 // Sender can only be called from a QAbstractItemDelegate that was directly constructed.
 func (this *QAbstractItemDelegate) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractItemDelegate_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -358,7 +329,6 @@ func (this *QAbstractItemDelegate) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractItemDelegate that was directly constructed.
 func (this *QAbstractItemDelegate) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractItemDelegate_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -373,7 +343,6 @@ func (this *QAbstractItemDelegate) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractItemDelegate that was directly constructed.
 func (this *QAbstractItemDelegate) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -390,7 +359,6 @@ func (this *QAbstractItemDelegate) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractItemDelegate that was directly constructed.
 func (this *QAbstractItemDelegate) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -454,8 +422,6 @@ func miqt_exec_callback_QAbstractItemDelegate_sizeHint(self *C.QAbstractItemDele
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -484,15 +450,12 @@ func miqt_exec_callback_QAbstractItemDelegate_createEditor(self *C.QAbstractItem
 	slotval3 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_DestroyEditor(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 
 	C.QAbstractItemDelegate_virtualbase_destroyEditor(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
@@ -522,8 +485,6 @@ func miqt_exec_callback_QAbstractItemDelegate_destroyEditor(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 
 	C.QAbstractItemDelegate_virtualbase_setEditorData(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
@@ -553,9 +514,6 @@ func miqt_exec_callback_QAbstractItemDelegate_setEditorData(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(index)
 
 	C.QAbstractItemDelegate_virtualbase_setModelData(unsafe.Pointer(this.h), editor.cPointer(), model.cPointer(), index.cPointer())
@@ -587,8 +545,6 @@ func miqt_exec_callback_QAbstractItemDelegate_setModelData(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -621,9 +577,7 @@ func miqt_exec_callback_QAbstractItemDelegate_updateEditorGeometry(self *C.QAbst
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -660,9 +614,7 @@ func miqt_exec_callback_QAbstractItemDelegate_editorEvent(self *C.QAbstractItemD
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(view)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -699,7 +651,6 @@ func miqt_exec_callback_QAbstractItemDelegate_helpEvent(self *C.QAbstractItemDel
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_PaintingRoles() []int {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QAbstractItemDelegate_virtualbase_paintingRoles(unsafe.Pointer(this.h))
 	_ret := make([]int, int(_ma.len))
@@ -737,7 +688,6 @@ func miqt_exec_callback_QAbstractItemDelegate_paintingRoles(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemDelegate_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -767,8 +717,6 @@ func miqt_exec_callback_QAbstractItemDelegate_event(self *C.QAbstractItemDelegat
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemDelegate_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -800,7 +748,6 @@ func miqt_exec_callback_QAbstractItemDelegate_eventFilter(self *C.QAbstractItemD
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemDelegate_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -828,7 +775,6 @@ func miqt_exec_callback_QAbstractItemDelegate_timerEvent(self *C.QAbstractItemDe
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemDelegate_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -856,7 +802,6 @@ func miqt_exec_callback_QAbstractItemDelegate_childEvent(self *C.QAbstractItemDe
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemDelegate_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -884,7 +829,6 @@ func miqt_exec_callback_QAbstractItemDelegate_customEvent(self *C.QAbstractItemD
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemDelegate_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -912,7 +856,6 @@ func miqt_exec_callback_QAbstractItemDelegate_connectNotify(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemDelegate) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemDelegate_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -947,6 +890,8 @@ func (this *QAbstractItemDelegate) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractItemDelegate) GoGC() {
 	if this.gc != nil {
 		return

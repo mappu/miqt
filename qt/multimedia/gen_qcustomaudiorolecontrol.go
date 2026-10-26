@@ -60,12 +60,10 @@ func UnsafeNewQCustomAudioRoleControl(h unsafe.Pointer) *QCustomAudioRoleControl
 }
 
 func (this *QCustomAudioRoleControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCustomAudioRoleControl_metaObject(this.h)))
 }
 
 func (this *QCustomAudioRoleControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCustomAudioRoleControl_metacast(this.h, param1_Cstring))
@@ -90,7 +88,6 @@ func QCustomAudioRoleControl_TrUtf8(s string) string {
 }
 
 func (this *QCustomAudioRoleControl) CustomAudioRole() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_customAudioRole(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -98,7 +95,6 @@ func (this *QCustomAudioRoleControl) CustomAudioRole() string {
 }
 
 func (this *QCustomAudioRoleControl) SetCustomAudioRole(role string) {
-	defer runtime.KeepAlive(this)
 	role_ms := C.struct_miqt_string{}
 	role_ms.data = C.CString(role)
 	role_ms.len = C.size_t(len(role))
@@ -107,7 +103,6 @@ func (this *QCustomAudioRoleControl) SetCustomAudioRole(role string) {
 }
 
 func (this *QCustomAudioRoleControl) SupportedCustomAudioRoles() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCustomAudioRoleControl_supportedCustomAudioRoles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -121,7 +116,6 @@ func (this *QCustomAudioRoleControl) SupportedCustomAudioRoles() []string {
 }
 
 func (this *QCustomAudioRoleControl) CustomAudioRoleChanged(role string) {
-	defer runtime.KeepAlive(this)
 	role_ms := C.struct_miqt_string{}
 	role_ms.data = C.CString(role)
 	role_ms.len = C.size_t(len(role))
@@ -200,6 +194,8 @@ func (this *QCustomAudioRoleControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCustomAudioRoleControl) GoGC() {
 	if this.gc != nil {
 		return

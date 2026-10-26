@@ -10,7 +10,6 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt"
-	"runtime"
 	"unsafe"
 )
 
@@ -88,12 +87,10 @@ func UnsafeNewQCameraImageProcessing(h unsafe.Pointer) *QCameraImageProcessing {
 }
 
 func (this *QCameraImageProcessing) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessing_metaObject(this.h)))
 }
 
 func (this *QCameraImageProcessing) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraImageProcessing_metacast(this.h, param1_Cstring))
@@ -118,97 +115,78 @@ func QCameraImageProcessing_TrUtf8(s string) string {
 }
 
 func (this *QCameraImageProcessing) IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraImageProcessing_isAvailable(this.h))
 }
 
 func (this *QCameraImageProcessing) WhiteBalanceMode() QCameraImageProcessing__WhiteBalanceMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraImageProcessing__WhiteBalanceMode)(C.QCameraImageProcessing_whiteBalanceMode(this.h))
 }
 
 func (this *QCameraImageProcessing) SetWhiteBalanceMode(mode QCameraImageProcessing__WhiteBalanceMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setWhiteBalanceMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraImageProcessing) IsWhiteBalanceModeSupported(mode QCameraImageProcessing__WhiteBalanceMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraImageProcessing_isWhiteBalanceModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraImageProcessing) ManualWhiteBalance() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_manualWhiteBalance(this.h))
 }
 
 func (this *QCameraImageProcessing) SetManualWhiteBalance(colorTemperature float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setManualWhiteBalance(this.h, (C.double)(colorTemperature))
 }
 
 func (this *QCameraImageProcessing) Brightness() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_brightness(this.h))
 }
 
 func (this *QCameraImageProcessing) SetBrightness(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setBrightness(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) Contrast() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_contrast(this.h))
 }
 
 func (this *QCameraImageProcessing) SetContrast(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setContrast(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) Saturation() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_saturation(this.h))
 }
 
 func (this *QCameraImageProcessing) SetSaturation(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setSaturation(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) SharpeningLevel() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_sharpeningLevel(this.h))
 }
 
 func (this *QCameraImageProcessing) SetSharpeningLevel(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setSharpeningLevel(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) DenoisingLevel() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraImageProcessing_denoisingLevel(this.h))
 }
 
 func (this *QCameraImageProcessing) SetDenoisingLevel(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setDenoisingLevel(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) ColorFilter() QCameraImageProcessing__ColorFilter {
-	defer runtime.KeepAlive(this)
 	return (QCameraImageProcessing__ColorFilter)(C.QCameraImageProcessing_colorFilter(this.h))
 }
 
 func (this *QCameraImageProcessing) SetColorFilter(filter QCameraImageProcessing__ColorFilter) {
-	defer runtime.KeepAlive(this)
 	C.QCameraImageProcessing_setColorFilter(this.h, (C.int)(filter))
 }
 
 func (this *QCameraImageProcessing) IsColorFilterSupported(filter QCameraImageProcessing__ColorFilter) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraImageProcessing_isColorFilterSupported(this.h, (C.int)(filter)))
 }
 

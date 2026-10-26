@@ -342,7 +342,6 @@ func (this *QPixmap) Save(fileName string) bool {
 
 func (this *QPixmap) SaveWithDevice(device *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	return (bool)(C.QPixmap_saveWithDevice(this.h, device.cPointer()))
 }
 
@@ -582,7 +581,6 @@ func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
 
 func (this *QPixmap) Save4(device *QIODevice, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_save4(this.h, device.cPointer(), format_Cstring))
@@ -590,7 +588,6 @@ func (this *QPixmap) Save4(device *QIODevice, format string) bool {
 
 func (this *QPixmap) Save5(device *QIODevice, format string, quality int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QPixmap_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
