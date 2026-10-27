@@ -611,10 +611,7 @@ func miqt_exec_callback_QLayout_geometry(self *C.QLayout, cb C.intptr_t) *C.QRec
 
 }
 func (this *QLayout) OnAddItem(slot func(param1 *QLayoutItem)) {
-	ok := C.QLayout_override_virtual_addItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayout_override_virtual_addItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayout_addItem
@@ -743,10 +740,7 @@ func miqt_exec_callback_QLayout_setGeometry(self *C.QLayout, cb C.intptr_t, geom
 
 }
 func (this *QLayout) OnItemAt(slot func(index int) *QLayoutItem) {
-	ok := C.QLayout_override_virtual_itemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayout_override_virtual_itemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayout_itemAt
@@ -766,10 +760,7 @@ func miqt_exec_callback_QLayout_itemAt(self *C.QLayout, cb C.intptr_t, index C.i
 
 }
 func (this *QLayout) OnTakeAt(slot func(index int) *QLayoutItem) {
-	ok := C.QLayout_override_virtual_takeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayout_override_virtual_takeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayout_takeAt
@@ -819,10 +810,7 @@ func miqt_exec_callback_QLayout_indexOf(self *C.QLayout, cb C.intptr_t, param1 *
 
 }
 func (this *QLayout) OnCount(slot func() int) {
-	ok := C.QLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayout_count
@@ -1120,10 +1108,7 @@ func miqt_exec_callback_QLayout_disconnectNotify(self *C.QLayout, cb C.intptr_t,
 
 }
 func (this *QLayout) OnSizeHint(slot func() *QSize) {
-	ok := C.QLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayout_sizeHint

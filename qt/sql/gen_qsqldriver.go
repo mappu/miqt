@@ -933,10 +933,7 @@ func miqt_exec_callback_QSqlDriver_handle(self *C.QSqlDriver, cb C.intptr_t) *C.
 
 }
 func (this *QSqlDriver) OnHasFeature(slot func(f QSqlDriver__DriverFeature) bool) {
-	ok := C.QSqlDriver_override_virtual_hasFeature(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSqlDriver_override_virtual_hasFeature(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSqlDriver_hasFeature
@@ -955,10 +952,7 @@ func miqt_exec_callback_QSqlDriver_hasFeature(self *C.QSqlDriver, cb C.intptr_t,
 
 }
 func (this *QSqlDriver) OnClose(slot func()) {
-	ok := C.QSqlDriver_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSqlDriver_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSqlDriver_close
@@ -972,10 +966,7 @@ func miqt_exec_callback_QSqlDriver_close(self *C.QSqlDriver, cb C.intptr_t) {
 
 }
 func (this *QSqlDriver) OnCreateResult(slot func() *QSqlResult) {
-	ok := C.QSqlDriver_override_virtual_createResult(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSqlDriver_override_virtual_createResult(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSqlDriver_createResult
@@ -992,10 +983,7 @@ func miqt_exec_callback_QSqlDriver_createResult(self *C.QSqlDriver, cb C.intptr_
 
 }
 func (this *QSqlDriver) OnOpen(slot func(db string, user string, password string, host string, port int, connOpts string) bool) {
-	ok := C.QSqlDriver_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSqlDriver_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSqlDriver_open

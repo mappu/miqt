@@ -313,10 +313,7 @@ func (this *QPagedPaintDevice) DevicePageLayout2() *QPageLayout {
 
 }
 func (this *QPagedPaintDevice) OnNewPage(slot func() bool) {
-	ok := C.QPagedPaintDevice_override_virtual_newPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPagedPaintDevice_override_virtual_newPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPagedPaintDevice_newPage
@@ -441,10 +438,7 @@ func miqt_exec_callback_QPagedPaintDevice_devType(self *C.QPagedPaintDevice, cb 
 
 }
 func (this *QPagedPaintDevice) OnPaintEngine(slot func() *QPaintEngine) {
-	ok := C.QPagedPaintDevice_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPagedPaintDevice_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPagedPaintDevice_paintEngine

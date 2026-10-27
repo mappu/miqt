@@ -363,10 +363,7 @@ func (this *QDesignerWidgetBoxInterface) IsSignalConnected(signal *qt6.QMetaMeth
 
 }
 func (this *QDesignerWidgetBoxInterface) OnCategoryCount(slot func() int) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_categoryCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_categoryCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_categoryCount
@@ -382,10 +379,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_categoryCount(self *C.QDesig
 
 }
 func (this *QDesignerWidgetBoxInterface) OnCategory(slot func(cat_idx int) *QDesignerWidgetBoxInterface__Category) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_category(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_category(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_category
@@ -405,10 +399,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_category(self *C.QDesignerWi
 
 }
 func (this *QDesignerWidgetBoxInterface) OnAddCategory(slot func(cat *QDesignerWidgetBoxInterface__Category)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_addCategory(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_addCategory(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_addCategory
@@ -425,10 +416,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_addCategory(self *C.QDesigne
 
 }
 func (this *QDesignerWidgetBoxInterface) OnRemoveCategory(slot func(cat_idx int)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_removeCategory(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_removeCategory(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_removeCategory
@@ -445,10 +433,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_removeCategory(self *C.QDesi
 
 }
 func (this *QDesignerWidgetBoxInterface) OnWidgetCount(slot func(cat_idx int) int) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_widgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_widgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_widgetCount
@@ -467,10 +452,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_widgetCount(self *C.QDesigne
 
 }
 func (this *QDesignerWidgetBoxInterface) OnWidget(slot func(cat_idx int, wgt_idx int) *QDesignerWidgetBoxInterface__Widget) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_widget
@@ -492,10 +474,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_widget(self *C.QDesignerWidg
 
 }
 func (this *QDesignerWidgetBoxInterface) OnAddWidget(slot func(cat_idx int, wgt *QDesignerWidgetBoxInterface__Widget)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_addWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_addWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_addWidget
@@ -514,10 +493,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_addWidget(self *C.QDesignerW
 
 }
 func (this *QDesignerWidgetBoxInterface) OnRemoveWidget(slot func(cat_idx int, wgt_idx int)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_removeWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_removeWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_removeWidget
@@ -536,10 +512,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_removeWidget(self *C.QDesign
 
 }
 func (this *QDesignerWidgetBoxInterface) OnDropWidgets(slot func(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt6.QPoint)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_dropWidgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_dropWidgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets
@@ -564,10 +537,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(self *C.QDesigne
 
 }
 func (this *QDesignerWidgetBoxInterface) OnSetFileName(slot func(file_name string)) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_setFileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_setFileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_setFileName
@@ -587,10 +557,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_setFileName(self *C.QDesigne
 
 }
 func (this *QDesignerWidgetBoxInterface) OnFileName(slot func() string) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_fileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_fileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_fileName
@@ -609,10 +576,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_fileName(self *C.QDesignerWi
 
 }
 func (this *QDesignerWidgetBoxInterface) OnLoad(slot func() bool) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_load(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_load(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_load
@@ -628,10 +592,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_load(self *C.QDesignerWidget
 
 }
 func (this *QDesignerWidgetBoxInterface) OnSave(slot func() bool) {
-	ok := C.QDesignerWidgetBoxInterface_override_virtual_save(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetBoxInterface_override_virtual_save(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_save

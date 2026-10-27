@@ -85,10 +85,7 @@ func (this *QGeoPositionInfoSourceFactory) OperatorAssign(param1 *QGeoPositionIn
 	C.QGeoPositionInfoSourceFactory_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QGeoPositionInfoSourceFactory) OnPositionInfoSource(slot func(parent *qt.QObject) *QGeoPositionInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactory_override_virtual_positionInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactory_override_virtual_positionInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactory_positionInfoSource
@@ -108,10 +105,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactory_positionInfoSource(self *C
 
 }
 func (this *QGeoPositionInfoSourceFactory) OnSatelliteInfoSource(slot func(parent *qt.QObject) *QGeoSatelliteInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactory_override_virtual_satelliteInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactory_override_virtual_satelliteInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactory_satelliteInfoSource
@@ -131,10 +125,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactory_satelliteInfoSource(self *
 
 }
 func (this *QGeoPositionInfoSourceFactory) OnAreaMonitor(slot func(parent *qt.QObject) *QGeoAreaMonitorSource) {
-	ok := C.QGeoPositionInfoSourceFactory_override_virtual_areaMonitor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactory_override_virtual_areaMonitor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactory_areaMonitor
@@ -314,10 +305,7 @@ func (this *QGeoPositionInfoSourceFactoryV2) OperatorAssign(param1 *QGeoPosition
 	C.QGeoPositionInfoSourceFactoryV2_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnPositionInfoSourceWithParameters(slot func(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoPositionInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_positionInfoSourceWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_positionInfoSourceWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSourceWithParameters
@@ -354,10 +342,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSourceWithPa
 
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnSatelliteInfoSourceWithParameters(slot func(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoSatelliteInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_satelliteInfoSourceWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_satelliteInfoSourceWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSourceWithParameters
@@ -394,10 +379,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSourceWithP
 
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnAreaMonitorWithParameters(slot func(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoAreaMonitorSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_areaMonitorWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_areaMonitorWithParameters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitorWithParameters
@@ -434,10 +416,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitorWithParameter
 
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnPositionInfoSource(slot func(parent *qt.QObject) *QGeoPositionInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_positionInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_positionInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSource
@@ -457,10 +436,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSource(self 
 
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnSatelliteInfoSource(slot func(parent *qt.QObject) *QGeoSatelliteInfoSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_satelliteInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_satelliteInfoSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSource
@@ -480,10 +456,7 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSource(self
 
 }
 func (this *QGeoPositionInfoSourceFactoryV2) OnAreaMonitor(slot func(parent *qt.QObject) *QGeoAreaMonitorSource) {
-	ok := C.QGeoPositionInfoSourceFactoryV2_override_virtual_areaMonitor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoPositionInfoSourceFactoryV2_override_virtual_areaMonitor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitor

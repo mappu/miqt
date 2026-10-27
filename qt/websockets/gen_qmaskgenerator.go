@@ -144,10 +144,7 @@ func (this *QMaskGenerator) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QMaskGenerator) OnSeed(slot func() bool) {
-	ok := C.QMaskGenerator_override_virtual_seed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QMaskGenerator_override_virtual_seed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMaskGenerator_seed
@@ -163,10 +160,7 @@ func miqt_exec_callback_QMaskGenerator_seed(self *C.QMaskGenerator, cb C.intptr_
 
 }
 func (this *QMaskGenerator) OnNextMask(slot func() uint) {
-	ok := C.QMaskGenerator_override_virtual_nextMask(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QMaskGenerator_override_virtual_nextMask(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMaskGenerator_nextMask

@@ -168,10 +168,7 @@ func (this *QDesignerFormWindowCursorInterface) IsWidgetSelected(widget *qt6.QWi
 	return (bool)(C.QDesignerFormWindowCursorInterface_isWidgetSelected(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 func (this *QDesignerFormWindowCursorInterface) OnFormWindow(slot func() *QDesignerFormWindowInterface) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_formWindow
@@ -188,10 +185,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_formWindow(self *C.QD
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnMovePosition(slot func(op QDesignerFormWindowCursorInterface__MoveOperation, mode QDesignerFormWindowCursorInterface__MoveMode) bool) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_movePosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_movePosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_movePosition
@@ -212,10 +206,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_movePosition(self *C.
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnPosition(slot func() int) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_position(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_position(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_position
@@ -231,10 +222,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_position(self *C.QDes
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnSetPosition(slot func(pos int, mode QDesignerFormWindowCursorInterface__MoveMode)) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_setPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_setPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_setPosition
@@ -253,10 +241,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_setPosition(self *C.Q
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnCurrent(slot func() *qt6.QWidget) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_current(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_current(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_current
@@ -273,10 +258,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_current(self *C.QDesi
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnWidgetCount(slot func() int) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_widgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_widgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_widgetCount
@@ -292,10 +274,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_widgetCount(self *C.Q
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnWidget(slot func(index int) *qt6.QWidget) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_widget
@@ -315,10 +294,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_widget(self *C.QDesig
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnHasSelection(slot func() bool) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_hasSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_hasSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_hasSelection
@@ -334,10 +310,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_hasSelection(self *C.
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnSelectedWidgetCount(slot func() int) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_selectedWidgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_selectedWidgetCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_selectedWidgetCount
@@ -353,10 +326,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_selectedWidgetCount(s
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnSelectedWidget(slot func(index int) *qt6.QWidget) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_selectedWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_selectedWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_selectedWidget
@@ -376,10 +346,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_selectedWidget(self *
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnSetProperty(slot func(name string, value *qt6.QVariant)) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_setProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_setProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_setProperty
@@ -400,10 +367,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_setProperty(self *C.Q
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnSetWidgetProperty(slot func(widget *qt6.QWidget, name string, value *qt6.QVariant)) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_setWidgetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_setWidgetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_setWidgetProperty
@@ -426,10 +390,7 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_setWidgetProperty(sel
 
 }
 func (this *QDesignerFormWindowCursorInterface) OnResetWidgetProperty(slot func(widget *qt6.QWidget, name string)) {
-	ok := C.QDesignerFormWindowCursorInterface_override_virtual_resetWidgetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowCursorInterface_override_virtual_resetWidgetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowCursorInterface_resetWidgetProperty

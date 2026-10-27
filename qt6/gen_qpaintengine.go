@@ -476,10 +476,7 @@ func (this *QPaintEngine) CreatePixmapFromImage(image QImage, flags ImageConvers
 	return _goptr
 }
 func (this *QPaintEngine) OnBegin(slot func(pdev *QPaintDevice) bool) {
-	ok := C.QPaintEngine_override_virtual_begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPaintEngine_override_virtual_begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_begin
@@ -498,10 +495,7 @@ func miqt_exec_callback_QPaintEngine_begin(self *C.QPaintEngine, cb C.intptr_t, 
 
 }
 func (this *QPaintEngine) OnEnd(slot func() bool) {
-	ok := C.QPaintEngine_override_virtual_end(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPaintEngine_override_virtual_end(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_end
@@ -517,10 +511,7 @@ func miqt_exec_callback_QPaintEngine_end(self *C.QPaintEngine, cb C.intptr_t) C.
 
 }
 func (this *QPaintEngine) OnUpdateState(slot func(state *QPaintEngineState)) {
-	ok := C.QPaintEngine_override_virtual_updateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPaintEngine_override_virtual_updateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_updateState
@@ -865,10 +856,7 @@ func miqt_exec_callback_QPaintEngine_drawPolygon2(self *C.QPaintEngine, cb C.int
 
 }
 func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRectF)) {
-	ok := C.QPaintEngine_override_virtual_drawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPaintEngine_override_virtual_drawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_drawPixmap
@@ -1019,10 +1007,7 @@ func miqt_exec_callback_QPaintEngine_coordinateOffset(self *C.QPaintEngine, cb C
 
 }
 func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
-	ok := C.QPaintEngine_override_virtual_type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPaintEngine_override_virtual_type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_type

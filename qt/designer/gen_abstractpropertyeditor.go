@@ -379,10 +379,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_core(self *C.QDesignerP
 
 }
 func (this *QDesignerPropertyEditorInterface) OnIsReadOnly(slot func() bool) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_isReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_isReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_isReadOnly
@@ -398,10 +395,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_isReadOnly(self *C.QDes
 
 }
 func (this *QDesignerPropertyEditorInterface) OnObject(slot func() *qt.QObject) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_object(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_object(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_object
@@ -418,10 +412,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_object(self *C.QDesigne
 
 }
 func (this *QDesignerPropertyEditorInterface) OnCurrentPropertyName(slot func() string) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_currentPropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_currentPropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_currentPropertyName
@@ -440,10 +431,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_currentPropertyName(sel
 
 }
 func (this *QDesignerPropertyEditorInterface) OnSetObject(slot func(object *qt.QObject)) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_setObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_setObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_setObject
@@ -460,10 +448,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_setObject(self *C.QDesi
 
 }
 func (this *QDesignerPropertyEditorInterface) OnSetPropertyValue(slot func(name string, value *qt.QVariant, changed bool)) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_setPropertyValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_setPropertyValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_setPropertyValue
@@ -486,10 +471,7 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_setPropertyValue(self *
 
 }
 func (this *QDesignerPropertyEditorInterface) OnSetReadOnly(slot func(readOnly bool)) {
-	ok := C.QDesignerPropertyEditorInterface_override_virtual_setReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertyEditorInterface_override_virtual_setReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_setReadOnly
