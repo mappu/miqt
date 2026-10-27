@@ -121,7 +121,11 @@ func parseHeaders(includeFiles []string, clangBin string, cflags []string, match
 			}()
 
 			result[i] = &CppParsedHeader{Filename: includeFile}
-			ast := getFilteredAst(includeFile, clangBin, cflags)
+			ast, err := getFilteredAst(includeFile, clangBin, cflags)
+			if err != nil {
+				log.Printf("Skipping %s: %v", includeFile, err)
+				return
+			}
 			// Convert it to our intermediate format
 			parseHeader(ast, "", result[i], matcher)
 		}(i, includeFile)
@@ -160,6 +164,9 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 	processHeaders := parseHeaders(includeFiles, clangBin, cflags, matcher)
 
 	for _, parsed := range processHeaders {
+		if parsed == nil {
+			continue
+		}
 		// AST transforms on our IL
 		astTransformChildClasses(parsed)             // must be first
 		astTransformApplyQuirks(packageName, parsed) // must be before optional/overload expansion
@@ -177,6 +184,9 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 	//
 
 	for _, parsed := range processHeaders {
+		if parsed == nil {
+			continue
+		}
 
 		log.Printf("Processing %q...", parsed.Filename)
 
