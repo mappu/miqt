@@ -610,6 +610,10 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		// and therefore we don't have to free it either
 		gfs.imports["unsafe"] = struct{}{}
 
+		if rt.ByteLengthParameter != "" {
+			return assignExpr + "string(unsafe.Slice((*byte)(unsafe.Pointer(" + rvalue + ")), int(" + rt.ByteLengthParameter + ")))\n"
+		}
+
 		shouldReturn = namePrefix + "_ret := "
 		afterword += assignExpr + " C.GoString(" + namePrefix + "_ret)\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword

@@ -761,6 +761,14 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		mm.RequireCpp = addr("QT_CONFIG(dtls)")
 	}
 
+	// QIODevice::writeData and its overrides receive counted binary data, not a C string.
+	if mm.MethodName == "writeData" && len(mm.Parameters) == 2 &&
+		mm.Parameters[0].ParameterType == "char" && mm.Parameters[0].Const &&
+		mm.Parameters[0].Pointer && mm.Parameters[0].PointerCount == 1 &&
+		mm.Parameters[1].ParameterType == "qint64" {
+		mm.Parameters[0].ByteLengthParameter = mm.Parameters[1].goParameterName()
+	}
+
 	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic && len(mm.Parameters) > 1 {
 		// The prototype was changed from
 		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
