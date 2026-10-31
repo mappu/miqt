@@ -932,8 +932,7 @@ func miqt_exec_callback_QTcpSocket_writeData(self *C.QTcpSocket, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	data_ret := data
-	slotval1 := C.GoString(data_ret)
+	slotval1 := string(unsafe.Slice((*byte)(unsafe.Pointer(data)), int(lenVal)))
 
 	slotval2 := (int64)(lenVal)
 
